@@ -454,7 +454,8 @@ mkdir:    %_DEST%\inc%_EXT%\external
     <h3 id="section-5.7">5.7 Can I get a <code>char *</code>, please?</h3>
 
     <p>
-      Just barely.  OO.o has at least four string wrappers:
+      Just barely.  OO.o has at least six string wrappers, although the C
+      implementations are of little interest:
     </p>
 
     <ul>
@@ -500,6 +501,16 @@ mkdir:    %_DEST%\inc%_EXT%\external
 	  what most of the OO.o code uses to pass strings around.
 	</p>
       </li>
+
+      <li>
+        <p>
+	  <code>String</code> &mdash; tools/inc/string.hxx<br>
+	  This is an obsolete string class, aliased to 'UniString'.
+	  It has a number of limitations such as 
+	  An rtl_uString wrapped inside a <code>class</code>.  This is
+	  what most of the OO.o code uses to pass strings around.
+        </p>
+      </li>
     </ul>
 
     <p>
@@ -533,32 +544,11 @@ complicate_things_into_ucs2_please (const char *utf8_string)
 	return rtl::OStringToOUString (ostring, RTL_TEXTENCODING_UTF8);
 }
     </pre>
-
-    <h4 id="section-5.7.1">5.7.1. Pitfalls</h4>
-
+   
     <p>
-      <strong>Important</strong>  The rtl_String and rtl_uString
-      APIs are massively clunky.  For the functions that create new
-      strings, you <em>have</em> to set the original value of the
-      string to NULL before calling them, like this:
-    </p>
-
-    <pre>
-rtl_String *str;
-
-str = NULL; /* If you don't do this, your program will crash */
-rtl_string_newFromStr (&amp;str, "hello world");
-
-rtl_uString *ustr;
-ustr = NULL; /* Same as above */
-rtl_uString_newFromAscii (&amp;str, "hello Unicode world");
-    </pre>
-
-    <p>
-      This is because those functions attempt to first call the
-      release() variants for the strings if they are not NULL &mdash;
-      in principle to avoid memory leaks should you try to re-assign
-      strings; in practice to make your life hard.
+      If you just want to programattically print out a string for
+      debugging purposes you probably want to see <a href="#printout">
+      this</a>.
     </p>
 
     <h4 id="section-5.7.2">5.7.2. Examining strings from GDB</h4>
@@ -571,7 +561,12 @@ rtl_uString_newFromAscii (&amp;str, "hello Unicode world");
     </p>
 
     <ul>
-      <li>from cvs branch cws_srx645_ooo112fix1 onwards you can use <pre>(gdb) print dbg_dump(sWhatEver)</pre> to print the contents of a UniString/ByteString/rtl::OUString/rtl::OString regardless of the type when debugging C++ code. See <a href="http://qa.openoffice.org/issues/show_bug.cgi?id=17295">issue 17295</a> for details.
+      <li>from cvs branch cws_srx645_ooo112fix1 onwards you can use
+      <pre>(gdb) print dbg_dump(sWhatEver)</pre> to print the contents
+      of a UniString/ByteString/rtl::OUString/rtl::OString regardless
+      of the type when debugging C++ code. See <a
+      href="http://qa.openoffice.org/issues/show_bug.cgi?id=17295">
+      issue 17295</a> for details.
     </ul>
     Alternatively if this support isn't in your version of OOo yet then...
     <ul>
@@ -590,8 +585,8 @@ rtl_uString_newFromAscii (&amp;str, "hello Unicode world");
       This should print the string as an array of shorts with
       ASCII char values nicely in a column.
       To programatically print a OUString (or String) you need:
-      <pre>::rtl::OString tmpStr = OUStringToOString (<i>MyOUString</i>, RTL_TEXTENCODING_UTF8);
-fprintf (stderr, "String is '%s'\n", tmpStr.getStr());</pre>.
+      <pre id="printout">::rtl::OString tmpStr = OUStringToOString (<i>MyOUString</i>, RTL_TEXTENCODING_UTF8);
+fprintf (stderr, "String is '%s'\n", tmpStr.getStr());</pre>
       </li>
     </ul>
 
