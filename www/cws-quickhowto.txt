@@ -25,7 +25,7 @@ The Prerequisites:
 XML::Parser   -> expat based parser for the new XML based build lists
 Config::Tiny  -> parsing .cwsrc configuration files
 Crypt::SSLeay -> for SSL encrypted SOAP connections
-Soap::Lite    -> access the SOAP based CWS web service
+SOAP::Lite    -> access the SOAP based CWS web service
 
 2) A valid OOo CVS account. The CWS tooling connects via HTTPS to the
 OOo CWS web service. As credentials is the OOo account name and the CVS
