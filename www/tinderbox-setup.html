@@ -1,0 +1,160 @@
+<!DOCTYPE doctype PUBLIC "-//W3C//DTD HTML 4.0//EN"><html lang="en"><head>
+    <meta lang="en" http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <title>OO.o Tinderbox setup guide</title></head>
+
+
+  <body>
+    <h1>OO.o Tinderbox setup guide</h1>
+
+    <p>
+      This document describes briefly how to setup a tinderbox build slave
+      to do a looped build of OO.o. A good way to ensure that OO.o releases
+      will build cleanly on your system / platform is to implement a
+      tinderbox slave such that people can fix build problems on your
+      system faster.
+    </p>
+    
+    <h2 id="section-1">1. What is tinderbox</h2>
+    <p>
+      In essence tinderbox is a perl script that processes mail, and turns
+      it into HTML. It expects to be mailed build logs from separate and
+      de-coupled build machines. Tinderbox has a few elaborations over
+      the most simple 'status' web-page, inasmuch that it integrates with
+      bonsai - to correlate builds against commits, and it has some nice
+      built in error-parsers to allow huge build logs to be condensed to
+      just a few (possible) tricky sections.
+    </p>
+
+    <h2 id="section-2">2. Setting up a build slave</h2>
+    <p>
+      To do this, you need to be able to build OO.o already; if you can't
+      do this see the <a href="http://ooo.ximian.com/hackers-guide.html">hackers guide</a>.
+      Assuming that you have a script that can build OO.o [NB. see
+      <a href="http://ooo.ximian.com/hackers-guide.html#section-10.3">this</a>], called
+      '<a href="http://ooo.ximian.com/build-ooo">build-ooo</a>' that dumps a log to stdout,
+      you're ready to go.
+    </p>
+
+    <p>
+      Ensure that you have done a cvs login to the anoncvs server, and that
+      you have a valid ~/.cvspass such that the cvs update will not try to be
+      interactive.
+    </p>
+
+    <p>
+      If your log files are too large they won't get through the Ximian firewall if you
+      send them as plain text. (The exact limit is unknown (to me), but the 16MB logfile
+      of a Windows build is too large.)
+
+      You need to get the <a href="http://ooo.ximian.com/tinder-compress">tinder-compress</a>
+      script and the Sender.pm Perl module from CPAN. See our <a href="http://ooo.ximian.com/cpan.html">CPAN</a>
+      link for details about getting this module. Then edit the following:
+      </p><ul>
+	<li>
+	  <pre>@BUILD_TAGS = ( 'OOO_STABLE_1', 'OO643C', 'OOO_STABLE_1' );</pre>
+	  <p>
+	    This is the list of CVS tags to build; the tag name is passed to
+	    the build-ooo script which is expected to be able to update and
+	    build the tree from there. NB. different tags may require different
+	    external packages (such as the jdk etc. beware).
+          </p>
+	</li> 
+	<li>
+	  <pre>$BUILDNAME = 'My BuildName';</pre>
+	  <p>This needs to be something that identifies your machine,
+	  nicely - preferably with an architectural flavour</p>
+	</li>
+	<li>
+	  <pre>$FROMADDRESS = 'myaddress@here.com';</pre>
+	  <p>Enter your email address.</p>
+	</li>
+	<li>
+      <p>If your smtpserver doesn't need authentification just enter the server name:
+	  <pre>$SMTPAUTH = '';
+$SMTPSERVER = 'smtpserver.without_pw.org';
+$SMTPAUTHID = '';
+$SMTPAUTHPW = '';</pre></p>
+	  <p>If it needs authentification also set $SMTPAUTH to 'LOGIN' and your username and password:
+<pre>#$SMTPAUTH = 'LOGIN'; # Don't change this!
+#$SMTPSERVER = 'smtpserver.with_pw.com';
+#$SMTPAUTHID = 'userid';
+#$SMTPAUTHPW = 'password';</pre>
+      </p>
+	</li>
+	<li>
+	  <p>Check your build script, it is called via:
+	  <pre>"system ("./build-ooo $tree 2&gt; $buildlog 2&gt;&amp;1")"</pre>
+	    This script needs to:
+	    </p><ul>
+	      <li>print out the architecture / bison / gcc / any other version
+	      information you can get your hands on to stdout - along with
+	      your name / E-mail address.
+	      </li><li>the output from the checkout / update of the openoffice
+	      source of the given tag.
+	      </li><li>the results of a configure / build pair
+	      </li><li>fail with a fatal error if the build fails, this is often
+	      a matter of appending many '<pre>|| exit 1;</pre>'s to lots
+	      of commands.
+	    </ul>
+	    <a href="build-ooo"><b>sample</b></a>.
+	  </p>
+	</li>
+      </ul>
+    </p>
+    <p>
+      Finally of course, you need to find a terminal, run <a href="http://ooo.ximian.com/hackers-guide.html#section-2.1">screen</a> and then
+      run tinder-compress.
+    </p>
+
+    <h2 id="section-3">3. Possible problems</h2>
+
+    <h3 id="section-3.1">3.1 Mail size issues</h3>
+    <p>
+      If you have problems with the tinder-compress script you can still try to use the former,
+      not compressing version. Get the <a href="http://ooo.ximian.com/tinder-build">tinder-build</a> script and
+      edit the following:
+      </p><ul>
+	<li>
+	  <pre>@BUILD_TAGS = ( 'OOO_STABLE_1', 'OO643C', 'OOO_STABLE_1' );</pre>
+	  <p>
+	    See above for comments.
+	  </p>
+	</li>
+	<li>
+	  <pre>$BUILDNAME = 'My BuildName';</pre>
+	  <p>See above for comments.</p>
+	</li>
+	<li>
+	  <p>Check your build script, it is called via:
+      <pre>"./build-ooo $tree --checkout 2&gt;&amp;1 |"</pre>
+	  </p>
+	  
+	</li>
+      <li>Mailer - you need a mailer to send mail with tinder-build, check you have sendmail
+      configured right, or hack the script to use your mailer.
+      </li></ul>
+
+    <h3 id="section-3.2">3.2 It sends fine but nothing shows up</h3>
+    <p>
+      There are two issues that may cause this. First, the tinderbox web-pages
+      are re-built every 5 minutes using a cron job; so wait for 6 before getting
+      to concerned.
+    </p>
+    <p>
+      The second thing is more crucial, since the tinderbox organises the logs
+      chronologically, it is vital to ensure that your system time is not ahead
+      of the tinderbox's, and that it is in the same decade, week, hour, minute etc.
+    </p>
+    <p>
+      Finally, it's possible that someone else has sent in corrupt logs that are
+      stopping the script completing, see <a href="tinderbox/err-log">here</a> for
+      any potential error messages, if any.
+    </p>
+  <hr>
+  <p>
+    Correction / new tinderboxes / need help ? please do mail
+    <a href="http://www.gnome.org/%7Emichael">me</a>,
+    at <a href="mailto:michael@ximian.com">michael@ximian.com</a> or Volker, at
+    <a href="mailto:quetschke@scytek.de">quetschke@scytek.de</a>.
+  </p>
+  </body></html>
