@@ -116,3 +116,4 @@ Bibek Sahu:Bibek:bibek:Impress pieces:Trees For Life:
 Thorsten Ziehm:thorstenziehm::QA Manager:Sun Microsystems, Inc.:
 G.Roderick Singleton:grsingleton:grsingleton:Documentation:pathtech.org:
 Matthias M&uuml;ller-Prove:mmp::User Experience Engineer, ui.openoffice.org:Sun Microsystems, Inc.:
+Ivo Hinkelmann:ihi:ivo:l10n tooling/general:Sun Microsystems, Inc.:
