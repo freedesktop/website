@@ -82,6 +82,22 @@ The include header file provided in angle brackets causes it to be picked up
 from the inc/ directory at the top, if quotes were used instead, the
 current directory would be searched in for the header file.
 
+[ Stephan Bergmann corrects:  #include "foo" first searches through user
+definable include directories for foo, then, if no foo has yet been found, 
+searches through compiler-specific include directories.  #include <foo> 
+only searches through compiler-specific include directories.  (From a 
+Standards perspective, this is not entirely precise, but should suffice 
+here.)  With all the compilers we use for OOo, we set up the command 
+line so that all the OOo-specific include directories are added to the 
+set of compiler-specific include directories, not to the set of 
+user-definable include directories.  Thus, there should be no difference 
+between using #include <helloworld.hxx> and #include "helloworld.hxx". 
+As a matter of style, I recommend using "..." for all OOo-specific 
+headers, and <...> for the official C++ headers (<string>, <cstring>, 
+<string.h> etc.) and system headers (<unistd.h> etc.) only.  Also see 
+the thread at 
+http://www.openoffice.org/servlets/ReadMsg?list=dev&msgNo=8008. ]
+
 With that in place, we launch 'build' again:
 
 build -- version: 1.130

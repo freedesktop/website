@@ -178,7 +178,14 @@ Making: ../unxlngi4.pro/lib/svx.lib
 no ImportLibs on Mac and *ix
 -------------
 
-Yes! :-) Our new library is linked and ready for action!
+Yes! :-) Our new library is linked and ready for action! There are two potential
+problems here, the first one being that the library being linked to being in
+the path that the linker looks in for the first stage where the linking is done.
+The second is that Checking DLL .. is the checkdll.sh which loads the newly
+generated library which in turn tries to load up the library linked to as well.
+So if the library being linked to is some odd location with the linker given to
+the path to it, the same path needs to be in the LD_LIBARY_PATH as well so that
+it can be loaded up in the next step.
 
 So we launch soffice to execute our new code path/library and ka-boom! It
 crashes :-( That's because we have our new library linked in, but the OOo
@@ -230,6 +237,13 @@ As for making the new helloworld/ project built as part of the rest of the
 projects, we just need to make the postprocess/ top-level project dependent on
 this project being built by adding the project name to the long list of projects
 that it is dependent on and the build procedure will take care of it. phew! :-)
+
+[ Joerg Barfurth corrects: If you are using your library in svx, then the proper
+way to make it part of the global build is of course to add it to the 
+dependencies of svx (in svx/prj/build.lst). Only if the output of your new
+module is not used by any other module at build time (i.e does not export
+headers or import libraries, for example e.g. if it only creates a UNO
+component) then postprocess/ is the one to use. ]
 
 And then, we are done! :-)
 
