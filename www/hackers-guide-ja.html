@@ -135,7 +135,7 @@
       のソースを再コンパイルした結果、イントールされたイメージから直接ビ
       ルドツリーからリンクすることによりハックしているような気分を得るこ
       とができる。これにより、ビルドとテストのサイクルがほんの数十秒で可
-      能になります。それを行うには、例:<pre>bin/linkoo
+      能になります。それを行うには、例:<pre>linkoo
       /usr/lib/ooo-1.0.3 /opt/openoffice/build/RC3_030729</pre>
       である
     </p>
@@ -1517,14 +1517,14 @@ status -v
     くいかないの ?</h3>
 
     <p>
-      <pre>bin/relocate /path/to/new/build/</pre>を実行させなければいけません。
+      <pre>relocate /path/to/new/build/</pre>を実行させなければいけません。
       他の面倒な方法として、再設定しなればいけないもの(LinuxIntelEnv.Setも新し
       いパスが必要だし、シェルに再インポートしなければいけません。)があり、相
       対パスで記述されていないので、
       
     </p>
     <p>
-      The simple answer is: you need to run <pre>bin/relocate /path/to/new/build</pre>;
+      The simple answer is: you need to run <pre>relocate /path/to/new/build</pre>;
       another more complex answer is:
     </p>
     <p>
