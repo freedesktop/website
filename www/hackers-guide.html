@@ -869,12 +869,25 @@ unset PRODUCT PROSWITCH PROFULLSWITCH
     </p>
     <p>
       Now - just run OO.o, and when it's in full-flow, press
-      <Alt>-<Shift>-<Control> 'D' in that order; this should
-      popup a debugging options window. The debugging options
+      &lt;Alt&gt;-&lt;Shift&gt;-&lt;Control&gt; 'D' in that
+      order; this should popup a debugging options window.
+      The debugging options
       are subsequently saved to the .dbgsv.init file for the
       next run; you can control the location of that with:
       <pre>export DBGSV_INIT=$(HOME)/.dbgsv.init</pre> eg. it
       is (unfortunately) a binary file.
+    </p>
+
+    <h3 id="section-6.14">6.14 Excel Interop debugging</h3>
+    <p>
+      This is fairly easy; edit sc/source/filter/inc/biffdump.hxx,
+      define EXC_INCL_DUMPER to 1, and re-build 'sc'. Also, copy
+      sc/source/filter/excel/biffrecdumper.ini to ~. Then run
+      <pre>soffice.bin foo.xls</pre> and you should get a
+      foo.xls.txt with the debug in it. If you get nothing, you
+      need to find/apply sc-biffdump.diff from <a
+      href="http://qa.openoffice.org/issues/show_bug.cgi?id=25430">
+      here</a>.
     </p>
 
     <h2 id="section-7">7. Contributing patches</h2>
