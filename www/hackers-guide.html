@@ -482,46 +482,7 @@ mkdir:    %_DEST%\inc%_EXT%\external
       this</a>.
     </p>
 
-    <h4 id="section-5.6.2">5.6.2. Examining strings from GDB</h4>
-
-    <p>
-      We have already seen that OO.o does not use humble <code>char *</code> 
-      strings.  If you thought this was painful enough when writing
-      code, wait until you have to debug it.  Here's how to get at
-      your strings from gdb/dbx which don't natively handle unicode.
-    </p>
-
-    <ul>
-      <li>from cvs branch cws_srx645_ooo112fix1 onwards you can use
-      <code>(gdb) print dbg_dump(sWhatEver)</code> to print the contents
-      of a UniString/ByteString/rtl::OUString/rtl::OString regardless
-      of the type when debugging C++ code. See <a
-      href="http://qa.openoffice.org/issues/show_bug.cgi?id=17295">
-      issue 17295</a> for details.
-    </ul>
-    Alternatively if this support isn't in your version of OOo yet then...
-    <ul>
-      <li>rtl_String: just poke at it</li>
-      <li>String: &mdash; note, the decl' of this uses the macro
-          'UniString' to confuse readers of tools/inc/string.hxx.
-	  Luckily programattically we can transparently cast a
-	  String to an OUString.
-      <li>OString: <i>p str-&gt;pData</i></li>
-      <li>OUString, rtl_uString: (great tip from Kevin Hendricks)
-      The quickest and best way to dump the string is to do:
-      <pre>
-      p *theString; # grab the length (2nd field)
-      x/&lt;length&gt;s theString-&gt;buffer</pre> eg. for a 20 character
-      string we want <code>x/20s theString-&gt;buffer</code>.
-      This should print the string as an array of shorts with
-      ASCII char values nicely in a column.
-      To programatically print a OUString (or String) you need:
-      <code id="printout">::rtl::OString tmpStr = OUStringToOString (<i>MyOUString</i>, RTL_TEXTENCODING_UTF8);
-fprintf (stderr, "String is '%s'\n", tmpStr.getStr());</code>
-      </li>
-    </ul>
-
-    <h4 id="section-5.8">5.8. Linkoo &amp; Limitations</h4>
+    <h4 id="section-5.7">5.7. Linkoo &amp; Limitations</h4>
     <p>
       Linkoo is the tool that implements the <code>-l</code>
       functionality of <code>bin/ooinstall</code>. It essentially
@@ -552,82 +513,11 @@ fprintf (stderr, "String is '%s'\n", tmpStr.getStr());</code>
 
     <p>
       OO.o includes a way to add debugging code in per module, via
-      the <tt>build debug=true</tt> command in each module.
-      Unfortunately this is not recommended to run for the whole
-      project, and in addition to including vital debugging symbols
-      it also includes scads of assertions, churning warnings, and
-      various other checks.
-    </p>
-    <p>
-      Thus if you want debugging symbols for everything, you have to
-      hack several makefiles to add debugging symbols, [ NB. this
-      makes the OO binaries ~1Gb small and the full build tree ~8Gb
-      so beware ], apply this patch:
-    </p>
-    <pre>
---- solenv/inc/unxlngi4.mk
-+++ solenv/inc/unxlngi4.mk
-@@ -92,18 +92,18 @@ cc=gcc
- # do not use standard header search paths
- # if installed elsewhere
- .IF "$(BUILD_SOSL)"!=""
--CFLAGS=
-+CFLAGS=-g
- .ENDIF
- CFLAGS+=-fmessage-length=0 -c $(INCLUDE)
- # flags for the C++ Compiler
--CFLAGSCC= -pipe -mcpu=pentiumpro
-+CFLAGSCC= -g -pipe -mcpu=pentiumpro
- # Flags for enabling exception handling
- CFLAGSEXCEPTIONS=-fexceptions -fno-enforce-eh-specs
- # Flags for disabling exception handling
- CFLAGS_NO_EXCEPTIONS=-fno-exceptions
- 
- # -fpermissive should be removed as soon as possible
--CFLAGSCXX= -pipe -mcpu=pentiumpro -fno-for-scope -fpermissive -fno-rtti 
-+CFLAGSCXX= -g -pipe -mcpu=pentiumpro -fno-for-scope -fpermissive -fno-rtti 
- 
- # HACK: enable Hamburg developers to build on glibc-2.2 machines but compile vs. glibc-2.1 headers
- .IF "$(BUILD_SOSL)"==""
-    </pre>
-    <p>
-      Of course, without debugging symbols gdb becomes even more
-      useless. To apply the patch cut and paste the above to /tmp/foo
-      and in the base directory:
-    </p>
-    <p><code>patch -p0 < /tmp/foo</code></p>
-
-    <h3 id="section-6.2">6.2. Setting breakpoints</h3>
-
-    <p>
-      Due to the general level of brokenness in gdb, it's most likely
-      that setting a breakpoint before running is unlikely to work;
-      thus the best scheme is to:
-    </p>
-
-    <pre>
-gdb ./soffice
-break main
-run # don't forget the arguments here
-# ... traps in main ...
-break osl_readFile
-continue
-    </pre>
-
-    <p>
-      Of course, this is never going to work if the code is
-      implemented in a library that is dlopened later, which 
-      accounts for the vast majority of OO code. Thus, you need
-      to trap the code loading and then put the breakpoint in.
-      To do that whack a breakpoint in osl_psz_loadModule, and
-      suffer.
-    </p>
-
-    <p>
-      Alternatively if you can instrument the code, it's pretty
-      easy to add #include &lt;signal.h&gt; and then put a
-      raise (SIGSTOP); somewhere in the code which will trap out
-      in the debugger.
+      the <code>build debug=true</code> command in each module.
+      This also adds lots of runtime assertions,
+      churning warnings etc. in addition to debug symbols - which
+      can be useful. To do just a plain build with debug symbols
+      though use <code>build debug=true dbg_build_only=true</code>
     </p>
 
     <h3 id="section-6.3">6.3. Starting at the beginning</h3>
@@ -647,17 +537,14 @@ continue
     <h3 id="section-6.4">6.4. Examining strings</h3>
 
     <p>
-      The humble char * (that gdb can natively display) is eschewed
-      in the object world by wrapping it with innumerable different
-      classes that gdb doesn't understand.  Worse, in many cases it
-      is extremely difficult even to print the string &mdash; one consequence
-      of the appalling decision to go with ucs-2 encoding. There
-      are also both mutable and immutable string classes.
-    </p>
-
-    <p>
-      Please read <a href="#section-5.6.2">section 5.6.2</a> to see
-      how strings work in OO.o and to get some debugging tips.
+      We have already <a href="#section-5.6">seen</a> that OO.o has
+      it's own set of string classes, none of which gdb understands.
+      You need to use:
+      <code>(gdb) print dbg_dump(sWhatEver)</code> to print the contents
+      of a UniString/ByteString/rtl::OUString/rtl::OString regardless
+      of the type when debugging C++ code. See Caolan's write-up
+      <a href="http://www.skynet.ie/~caolan/TechTexts/GdbUnicodePrinting.html">
+      here</a> for details.
     </p>
 
     <h3 id="section-6.5">6.5 Getting the build order right</h3>
@@ -838,10 +725,7 @@ unset PRODUCT PROSWITCH PROFULLSWITCH
       define EXC_INCL_DUMPER to 1, and re-build 'sc'. Also, copy
       sc/source/filter/excel/biffrecdumper.ini to ~. Then run
       <code>soffice.bin foo.xls</code> and you should get a
-      foo.txt with the debug data in it. If you get nothing, you
-      need to find/apply sc-biffdump.diff from <a
-      href="http://qa.openoffice.org/issues/show_bug.cgi?id=25430">
-      here</a>.
+      foo.txt with the debug data in it.
     </p>
 
     <h2 id="section-7">7. Contributing patches</h2>
@@ -896,8 +780,8 @@ unset PRODUCT PROSWITCH PROFULLSWITCH
       CVS server, ooo-build accounts are handled <a
       href="ooo-build.html#section-2.5.1">differently</a>. To see how
       the issue raising process works see eg. issue <a
-      href="http://www.openoffice.org/issues/show_bug.cgi?id=7270">#7270</a>. Having got
-      the account setup, you need to tunnel to the secure CVS server
+      href="http://www.openoffice.org/issues/show_bug.cgi?id=7270">#7270</a>.
+      Having got the account setup, you need to tunnel to the secure CVS server
       something like:
     </p>
 
@@ -945,15 +829,18 @@ unset PRODUCT PROSWITCH PROFULLSWITCH
         changes makes the patch hard to read; the '-w' flag to (cvs)
 	diff makes this easier.
   </ul>
+  <p>
+    Before committing a patch to ooo-build, test it with
+    <code>make patch.apply</code> in the top-level, NB. it really
+    pays to have 2 copies of the tree - 1 hacked, 1 pristine.
+  </p>
 
   <h3 id="section-8.3">8.3 Make clean</h3>
 
   <p>
-    Just use <i>dmake clean</i> in the toplevel directory. In pre
-    HEAD versions there was no 'clean' target so instead you had
-    to do something (what dmake clean does now) like:
+    Just use <code>dmake clean</code> in the <code>build/src680<code> directory.
+    Or for a more descructive version in ooo-build try <code>rm -Rf build</code>.
   </p>
-  <p><code>find -name 'unxlngi4.pro' -exec rm -Rf {} \; </code></p>
 
   <h3 id="section-8.4">8.4 CVS setup</h3>
 
@@ -974,9 +861,9 @@ status -v
 
     <p>
       Adding header files to the OO.o build is notoriously clunky.  To
-      add header files under external/, make sure you list them in
-      external/prj/d.lst so that they get copied under the
-      solver/641/unxlngi4.pro/inc/external directory when building.
+      add header files under <code>external/</code>, make sure you list them in
+      <code>external/prj/d.lst</code> so that they get copied under the
+      <code>solver/680/unxlngi4.pro/inc/external</code> directory when building.
     </p>
 
 
@@ -1013,10 +900,8 @@ status -v
     <p>
       Other related pages are:
 
-      <a href="http://ooodi.sourceforge.net/">OOODI</a>a Gtk+ Dictionary installer.
-
       <a href="http://ooextras.sourceforge.net">OOExtras</a> provides
-      extra templates, macros, and clip art.
+      extra templates, macros, and clip art (curiously licensed under the LGPL).
 
       <a href="http://ooqstart.sourceforge.net">Quickstart applet</a> for GNOME
       (and <a href="http://segfaultskde.berlios.de/index.php?content=oooqs">KDE</a>).
@@ -1029,18 +914,14 @@ status -v
     <p>
       While productising various releases of OpenOffice, different
       projects have come up with (quite huge) patch sets against OO.o.
-      Mercifully they are starting to get folded back in at a greater
-      rate, so no patches should be necessary to HEAD to build
-      it, similarly many have got into OOO_STABLE_1. It may be
-      necessary to use some/all of these nevertheless.
+      These have mostly been folded back into 2.0 but, there are still
+      a few outstanding. The separate packaging efforts can be found here:
     </p>
 
     <ul>
       <li>
 	<a href="http://ooo.ximian.com">Ximian</a>'s OO.o patches and build
-	tools / snapshots are all available as <a
-	href="http://ooo.ximian.com/packages">packages</a>; or
-	as <a href="http://ooo.ximian.com/patches">patches</a>.
+	tools / snapshots are all available.
       </li>
       <li>
 	<a href="http://www.debian.org">Debian</a>'s helpful OO.o <a
@@ -1052,21 +933,12 @@ status -v
       <li>
 	<a href="http://www.linux-mandrake.com">Mandrake</a>'s OO.o <a
         href="http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/SPECS/OpenOffice.org/">
-        patch archive</a>.
+        patch archive</a>. Mandrake do an appallingly bad job of working
+	with either the ooo-build or openoffice.org community.
       </li>
       <li>
         <a href="http://www.freebsd.org/cgi/cvsweb.cgi/ports/editors/openoffice/#dirlist">
 	FreeBSD</a>'s OO.o port patches.
-      </li>
-      <li>
-	Red Hat's .spec file (based on Mandrake's) is also worth a
-	read, from their <a
-	href="http://rawhide.redhat.com/pub/redhat/linux/rawhide/SRPMS/SRPMS/openoffice-1.0.1-6.src.rpm">SRPM</a>.
-      </li>
-      <li>
-        People wanting to localize OO.o should study these
-	<a href="ftp://ftp.linux.cz/pub/linux/people/pavel_janik/OpenOffice.org_1.0.1_CZ/build-13/build/Patches">
-	patches</a> from Pavel Janik.
       </li>
     </ul>
 
@@ -1077,26 +949,26 @@ status -v
       a bit (safer, wipe-clean, more durable questions).
     </p>
 
-    <h3 id="section-10.1">10.1. Why do branches like 'mws_srx644' have odd numbers in them ?</h3>
+    <h3 id="section-10.1">10.1. Why do branches like 'mws_srx645' have odd numbers in them ?</h3>
 
     <p>
       By consulting various oracles, entrails etc. it transpires that
-      in theory this number increments weekly, there being weekly
-      freezes and hence solvers, development environments.  However -
-      in recent time the process of solidifying a single build for
-      wider release, has taken longer than a week &mdash; creating a
-      quandary, and a mixed alphanumeric release tag. The 'mws' stands
-      for 'Master Workspace'.
+      in theory this number once incremented weekly, there being weekly
+      freezes and hence solvers, development environments.
+      The 'mws' stands for 'Master Workspace'. The latest 2.0 development
+      is done with the SRC680 stem; with auto-incrementing milestones; hence
+      tags like <code>SRC680_m66</code> would be common.
     </p>
 
     <h3 id="section-10.2">10.2. Why does the <b>build</b> require Java ?</h3>
 
     <p>
       Essentially it seems there are a lot of XML files involved in
-      component registration, and various other services. It turns
-      out that using Java is just an easy way to get this manipulation
-      done simply. Also, Java can be used nicely at run-time if it's
-      on the machine.
+      component registration, and various other services. Also, the person
+      who designed the XML files fell in love with trendy XML-things and
+      used not-very-standard, very complicated bits gratuitously. It turns
+      out that using Java is the best/only way to get this manipulation
+      done. Also, Java can be used nicely at run-time if it's on the machine.
     </p>
     <p>
       But from tag SRC680_m44 onwards there is an 
@@ -1133,9 +1005,7 @@ status -v
       likely down to the ubiquitous non-relative paths, coded in lots
       of generated / built files, particularly '.dpc*' (dependency)
       files. Try:
-      <pre>
-find -name '*.dpc*' -exec rm {} \;
-      </pre>
+      <code>find -name '*.dpc*' -exec rm {} \;</code>
     </p>
     <p>
       The stlport does some really <a href="#section-10.10">broken</a> things, so
@@ -1175,40 +1045,7 @@ find -name '*.dpc*' -exec rm {} \;
        toolbar icons first.
     </p>
 
-    <h3 id="section-10.9">10.9 I tried to build with gcc on a prefix with BUILD in it why does it break ?</h3>
-    <p>
-      This is due to some very serious crack smoking going on in stlport.
-      Essentially, there is some nasty header overriding, and they want to
-      be able to fallback to the previous header (with the same name) - thus
-      they have to hard-code the paths. To save doing that in lots of places,
-      they use a #define, the #define has macro expansion done on it. Thus
-      <b>if your gcc prefix contains an element which is a macro - you're stuffed</b>:
-    </p>
-    <p>
-      stlport config header: <code>#define _STLP_NATIVE_INCLUDE_PATH \
-        /home/michael/ximian-desktop/ooo/BUILD/ooo/include/c++/3.2.2</code>
-      stlport helpful macros:<code># define _STLP_MAKE_HEADER(path, header) &lt;path/header&gt;
-# define _STLP_NATIVE_CPP_C_HEADER(header)  \
-        _STLP_MAKE_HEADER(_STLP_NATIVE_INCLUDE_PATH,header)</code> and finally
-      stlport cunning native include: <code>#include _STLP_NATIVE_CPP_C_HEADER(foo)</code>
-    </p>
-    <p>
-      Net result:
-      <code>
-      g++ ... -D<b>BUILD</b>=<b>7663</b> ...
-      ...
-from /home/michael/ximian-desktop/ooo/<b>BUILD</b>/ooo/OOO_1_0_2/xml2cmp/source/xcd/main.cxx:62:
-/home/michael/ximian-desktop/ooo/<b>BUILD</b>/ooo/OOO_1_0_2/solver/641/unxlngi4.pro/inc/stl/cstddef:35:46:
-/home/michael/ximian-desktop/ooo/<b>7663</b>/ooo/include/c++/3.2.2/cstddef: No such file or directory
-      </code>
-    </p>
-
-    <h3 id="section-10.10">10.10 What are the UNO component XML descriptions for ?</h3>
-    <p>
-	Not much; worth installing, but currently highly under-used.
-    </p>
-
-    <h3 id="section-10.11">10.11 Why does the code look so ugly?</h3>
+    <h3 id="section-10.9">10.9 Why does the code look so ugly?</h3>
     <p>
       The authors must be using a really strange editor.
       It <em>thinks</em> tab stops are on every fourth column.
@@ -1227,7 +1064,9 @@ from /home/michael/ximian-desktop/ooo/<b>BUILD</b>/ooo/OOO_1_0_2/xml2cmp/source/
     <p>
       Henceforth emacs will use 4-column tabs for your OOo source files.
       (And use <em>C++-Mode</em> for <tt>sdi</tt>-, <tt>hrc</tt>-,
-      and <tt>src</tt>-files.)
+      and <tt>src</tt>-files.) Alternatively if you are sufficiently set in
+      your ways that you can't cope with investing these few seconds do:
+      <code>M-x set-variable\ntab-width 4</code> &amp; learn to love change.
     </p>
 
     <h2 id="section-11">11. Working with us</h2>
