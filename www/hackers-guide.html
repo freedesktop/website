@@ -837,6 +837,46 @@ xh      neon  :  soltools external expat NULL
       each paragraph is inserted.
     </p>
 
+    <h3 id="section-6.13">6.13 How do I use the debug console ?</h3>
+    <p>
+      So OO.o contains some hefty debugging infrastructure; pictured
+      <a href="images/debug-window.png">here</a>. Unfortunately
+      enabling it is not altogether trivial. Firstly - none of it is built
+      into a product build; so we need to go to re-build some core parts
+      of OO.o as non-product builds; and then we need to re-run linkoo
+      to link those new builds into our set.
+    </p>
+    <p>
+      First create a debug Environment file; I call it
+LinuxIntelEnv.Set.debug:
+<pre>
+TMPFILE=~/.Env.Set.debug
+
+# Purge .pro bits
+sed 's/\.pro//g' LinuxIntelEnv.Set.sh > $TMPFILE
+. $TMPFILE
+rm $TMPFILE
+
+# Clobber product parts
+unset PRODUCT PROSWITCH PROFULLSWITCH 
+</pre>
+      Now do <pre>source ./LinuxIntelEnv.Set.debug</pre>, this
+      sets up your environment for a non-product build.
+    </p>
+    <p>
+      cd vcl; build dbgutil=true --all
+      linkoo <install-path> <here>
+    </p>
+    <p>
+      Now - just run OO.o, and when it's in full-flow, press
+      <Alt>-<Shift>-<Control> 'D' in that order; this should
+      popup a debugging options window. The debugging options
+      are subsequently saved to the .dbgsv.init file for the
+      next run; you can control the location of that with:
+      <pre>export DBGSV_INIT=$(HOME)/.dbgsv.init</pre> eg. it
+      is (unfortunately) a binary file.
+    </p>
+
     <h2 id="section-7">7. Contributing patches</h2>
 
     <h3 id="section-7.1">7.1. Diff style</h3>
