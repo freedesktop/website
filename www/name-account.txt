@@ -30,7 +30,7 @@ Martin Kretzschmar:mkretzschmar:martink:Gnome/Debian:Student:
 Hans-Joachim Lankenau:hjs:ause:dmake makefile expert:Sun Microsystems,Inc.:
 Philipp Lohmann:pl:pl_hh:VCL/X11 (GSL) hacker:Sun Microsystems,Inc.:
 Will Lachance:wlach:wlach_:Word Perfect File Filters:NetIntegrationTechnologiesInc.:
-Friedrich Strba:fridrich_strba:Friedrich:Word Perfect Hacker::
+Fridrich Strba:fridrich_strba:Fridrich:Word Perfect Hacker::
 Jayant Balraj Madavi:mjayant:aZEN_JM:Connectivity / Database:Novell,Inc.:
 Martin Maher:mmaher::Writer &amp; Filter chap:Sun Microsystems,Inc.:
 Caolan McNamara:cmc:caolan:Writer &amp; Filter man:RedHat,Inc.:
@@ -41,7 +41,7 @@ Nitin Dongre::nitin_BITS::Novell,Inc.(intern):
 ShilpaS::shilpa::Novell,Inc.:
 NicelKM:mnicel:nicel::Novell,Inc.:
 Niklas Nebel:nn::Calc Hacker:Sun Microsystems,Inc.:
-Thomas O'Conner:toconner::Scripting Framework:Sun Microsystems,Inc.:
+Tomas O'Conner:toconner::Scripting Framework:Sun Microsystems,Inc.:
 Lars Oppermann:lo:::Sun Microsystems,Inc.:
 Rodrigo Parra Novo:rodarvus:rodarvus:config_office:Freedows:
 Christof Pintaske:cp:GSL Head Honcho:Sun Microsystems,Inc.:
@@ -88,7 +88,6 @@ Jens-Heiner Rechtien:hr:blauwal::Sun Microsystems,Inc.:
 Sven Jacobi:sj::Escherwizard:Sun Microsystems,Inc.:
 Hirano Kazunari:khirano::Japanese::
 Karl Hong:khong::::
-Gregor Hartmann:gh::::
 Armin Weiss:aw:::Sun Microsystems,Inc.:
 John Marmion:jmarmion:::Sun Microsystems,Inc.:
 Ocke Janssen:oj:::Sun Microsystems,Inc.:
@@ -104,12 +103,9 @@ Herbert Duerr:hdu:::Sun Microsystems,Inc.:
 Volker Ahrend:va:::Sun Microsystems,Inc.:
 Gregor Hartmann:gh:::Sun Microsystems,Inc.:
 Andreas Bregas:ab:::Sun Microsystems,Inc.:
-Sven Jacobi:sj:::Sun Microsystems,Inc.:
 Stephan Wunderlich:sw:::Sun Microsystems,Inc.:
 Duncan Foster:dfoster::::
-Tomas O'Connor:toconnor::::
 Daniel Rentz:dr:::Sun Microsystems,Inc.:
-Kurt Zenker:kz:::Sun Microsystems,Inc.:
 Hasan Ilter:hi::Writer:Sun Microsystems,Inc.:
 Stefan Baltzer:sba::UserInterface:Sun Microsystems,Inc.:
 Ulf Stroehler:us:::Sun Microsystems,Inc.:
