@@ -131,9 +131,10 @@
     <p>
       The result of a perfect build is a perfect zipped install set
       located in <pre>build/$TAG/instsetoo/unxlngi4.pro/01/normal/</pre>
-      or similar. You can either manually run the setup program from
-      there to install; <b>or</b> you can run <pre>sudo make install</pre>
-      which will install OO.o to the system prefix for you.
+      or similar. Then run the setup program from there to install
+      using eg. <pre>/opt/OOInstall</pre> to install to. It's possible
+      to do this you'll need to first remove your <pre>~/.sversionrc</pre>
+      file.
     <p>
 
     <p>
@@ -142,16 +143,16 @@
       by re-compiling a source sub-directory, you can simply re-run
       OO.o. This can get your build/test cycle down to a few tens of
       seconds. To do this do eg.
-      <pre>bin/linkoo /usr/lib/ooo-1.1 /opt/ooo-build/build/OOO_1_1_2</pre>
+      <pre>bin/linkoo /opt/OOInstall /opt/ooo-build/build/OOO_1_1_2</pre>
       NB. see also the <a href="section-5.8">linkoo limitations</a>.
     </p>
 
     <h2 id="section-4">4. Running OO.o</h2>
 
     <p>
-      Wander into the prefix you just ran linkoo on; and do:
-      <pre>cd program; . ./env</pre> this will setup your shell
-      for running OO.o directly. Then simply <pre>soffice.bin</pre>.
+      Now wander into <pre>/opt/OOInstall/program</pre> and do:
+      <pre>source ./env</pre> this will setup your (bash) shell for running
+      OO.o directly. Then simply <pre>soffice.bin</pre>.
       This is better than running soffice, or a wrapper script since
       it's very easy to attach the debugger: <pre>gdb soffice.bin</pre>.
     </p>
