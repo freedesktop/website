@@ -76,7 +76,7 @@
     <pre>
     export CVSROOT=':pserver:anonymous@anoncvs.gnome.org:/cvs/gnome'
     cvs login
-    cvs -z3 checkout -dP openoffice
+    cvs -z3 checkout -P openoffice
     </pre>
     <p>
       This will provide you with a copy of the ooo-build tree. If
@@ -946,7 +946,7 @@ find -name 'unxlngi4.pro' -exec rm -Rf {} \;
 cvs -z3 -q
 diff -upN 
 update -dP
-checkout -dP
+checkout -P
 status -v 
 </pre>
 
