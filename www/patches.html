@@ -10,6 +10,7 @@
     <li><a href="#style">Coding Style</a></li>
     <li><a href="#copy-n-paste">Copy &amp; Paste</a></li>
     <li><a href="#tab-stops">Tab stops</a></li>
+    <li><a href="#explanation">Explanation</a></li>
 </ul>
 
 Pre-amble - blurb - produce beautiful, consistent, maintainable
@@ -17,9 +18,9 @@ code that you can be proud of.
 
 <h3 id="read-it">Read your patch</h3>
 <p>
-  You should read what I'm going to read; ie. when you take your
-<code>diff -u &lt;files&gt;</code>, read it through rather than
-just mailing it. If you see chunks like this:
+  You should read what the reviewer is going to read; ie. when you
+take your <code>diff -u &lt;files&gt;</code>, read it through
+rather than just mailing it. If you see chunks like this:
 </p>
 <pre>@@ -838,9 +838,24 @@
 ...
@@ -42,6 +43,52 @@ If you notice any, go back and make it complete, then re-diff.
 
 <h3 id="cleanliness">Cleanliness: code hygine</h3>
 <p>
+  Leaving commented out code lying around is really bad news. It
+also advertises the programmers' uncertainty to the reader; such
+an uncertain change should never be committed. There is no point
+in pretending we have a fix, unless we are certain it is the correct
+fix. Until we have exceeded the understanding of the original
+author who made the slip, we can't make a reliable &amp; accurate
+fix. A simple example:
+</p>
+<p>
+<pre>//    if( 0 != a + 1 ) removed - looks wrong
+    if( 0 != a )</pre>
+Of course - as is likely with carelessly thought out code, that
+isn't written with a full understanding, this is likely to be
+wrong again; so we get:
+<pre>//    if( 0 != a + 1 ) removed before later H.Opeless change
+//    if( 0 != a ) - removed H.Opeless 2005/01/26 bug #123456
+    if( 0 != a - 1 )</pre>
+Notice how the programmer has helpfully tried to improve his lot
+by referencing the bug he (hopefully) fixed. Notice how unconfident
+he is in his fix. If this is indeed the correct fix. Notice also
+how the date information is redundant &amp unreliable clutter
+source should always be verified from an RCS for regression analysis.
+</p>
+<p>
+  Poor programmers often 'try' things, ie. when they reach a
+problem, instead of reading around it, understanding it well and
+then making a simple incision; they start fiddling (unsystematically)
+with ever increasing combinations of tweaks, testing each one -
+without any real understanding. Luckily they often leave a great
+trail of commented out things they tried before (perhaps)
+happening on a fix.
+</p>
+<p>
+An <i>excellent</i> programmer would provide a patch that removed
+any such cruft; it would perhaps add a single line and remove 3.
+<pre>-//    if( 0 != a + 1 ) removed before H.Opeless change
+-//    if( 0 != a ) - removed H.Opeless 2005/01/26 bug #123456
+-    if( 0 != a - 1 )
++    if( a > 1 )</pre>
+It would require no comment. It would perhaps also fix a
+similar mis-understanding in 2 other places; and add some
+pre-conditions or assertions, such that this couldn't happen
+again. She would also perhaps re-write a few German comments &amp;
+rename a few German variable-names to English equivalents. She
+would also provide a simple justification to the patch reviewer
+to make thei job easier.
 </p>
 
 <h3 id="style">Style</h3>
@@ -91,11 +138,13 @@ chunks of (what looks like) new code so quickly.
 <p>
   <b>Conversely</b> - anyone cutting and pasting more than 2 lines of code
 will just be laughed at, called an amateur, and poked with a sharp
-stick; before sending them to fix some vicious, but simple sounding
+stick; before sending them to tame some vicious, but simple sounding
 bug somewhere else. The net result of a nice patch should be to
 reduce complexity &amp; code-size while adding features and increasing
 maintainability; if some existing code needs to be re-factored to
 avoid copy/paste - then you need to do that first; it's not optional.
+Particularly laughed at are large blocks of very similar code with a
+few numbers changed.
 </p>
 
 <h3 id="tab-stops">Tab stops</h3>
@@ -143,5 +192,36 @@ When it all goes wrong: there is an app called 'expand' that will convert all
 your <i>0x09</i> tab characters to a given number of spaces. If you created
 the <b>entire</b> file on Unix ie. it <i>all</i> has this 8stop tab assumption,
 then <code>expand &lt;file&gt;</code> will do what you want.
+
+<h3 id="explanation">Explain your patch</h3>
+<p>
+  The person that reviews your patch is going to need to understand the
+context, and your reasoning. Hopefully the code you're changing is clear,
+and the bug is quite obvious, in that case - no explanation is necessary.
+Perhaps it's a simple kind of bug: eg. a buffer over-run. Then something
+like:
+</p>
+<p>
+<pre>-      for( i = 0; i < nLength; i++ )
++      for( i = 0; i < nLength + 1; i++ )</pre>
+<i>nLength is not the real length, cf. it's decl.</i>would be adequate.
+</p>
+<p>
+  When the bug or patch is more complex, proportionally more explanation
+is required. No essays are required though - bad grammer, mis-spelliing,
+rough code pointers &amp; terse explanation are fine. If you find the
+reviwer is asking you for an ever more detailed analysis - it's most
+likely because they think your fix is wrong &amp; want to encourage
+you to find that our for yourself - try thinking again - of course,
+they in turn may be wrong - convince them.
+</p>
+<p>
+When the patch re-factors, or re-indents a chunk of code, you
+can get hundreds of lines of unreadable diff; it's nice to have a comment
+on any substantive changes there: <i>Re-factored getFoo() into two methods
+getBaa() and getBaz() to allow re-use in getNurgh() - no other
+changes</i> is great.
+</p>
+
 </body>
 </html>
