@@ -433,6 +433,9 @@ mkdir:    %_DEST%\inc%_EXT%\external
 	  <code>rtlstring-&gt;length</code>.  This object encapsulates
 	  an generic 8bit string - of unknown encoding. Feel free to treat
 	  <code>rtlstring-&gt;buffer</code> as your beloved <code>char *</code>.
+	  If you really want to look at the implementation of some
+	  <code>rtl_String</code> function and lxr nor grep can help you, have
+	  a look at sal/rtl/source/strtmpl.c.
 	</p>
       </li>
 
@@ -453,6 +456,8 @@ mkdir:    %_DEST%\inc%_EXT%\external
 	  refcounted as well.  However, this one always comes in UCS-2
 	  encoding, presumably to be compatible with Java's
 	  questionable choices. 
+	  See <code>rtl_String</code> above to find where the implementation
+	  of some <code>rtl_uString</code>functions is hidden.
 	</p>
       </li>
 
