@@ -141,7 +141,8 @@ CWS_DB_SERVER_1=https://eis.services.openoffice.org/soap/servlet/rpcrouter
 CVS_ID=
 
 # Your scrambled CVS password (for authentication with the CWS database).
-# Take this one from .cvsrc
+# Take this one from .cvspass (should be last field on the line and look
+# like "Aac`l;kde" or something like that)
 CVS_PASSWORD=
 
 # OOo CVS tunnel
