@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Using quilt with ooo-build</title>
+  </head>
+
+  <body>
+    <h1>quilt and ooo-build</h1>
+    quilt is a tool to manage a stack of patches.
+    And you can use it in ooo-build.
+    <h2>Getting and installing quilt</h2>
+    <p>
+      quilt's home is <a href="http://savannah.nongnu.org/projects/quilt">http://savannah.nongnu.org/projects/quilt</a>
+      At the time of writing, its download directory was not yet restored on
+      savannah.
+    </p>
+    <p>
+      Mirrors are e.g.
+      <a href="ftp://ftp.debian.org/debian/pool/main/q/quilt/">ftp://ftp.debian.org/debian/pool/main/q/quilt/</a> or (currently more up-to-date):
+      <a href="http://graal.ens-lyon.fr/~mquinson/debian/dists/unstable/main/source/devel/">http://graal.ens-lyon.fr/~mquinson/debian/dists/unstable/main/source/devel/</a>
+    </p>
+    <p>
+      Unpack and install.
+    </p>
+    <p>
+      Add this to your <tt>~/.quiltrc</tt>:
+    </p>
+    <pre># -p : Show which C function each change is in.
+QUILT_DIFF_OPTS="-p${QUILT_DIFF_OPTS:+ $QUILT_DIFF_OPTS}"</pre>
+    <h2>Setting up your source tree for quilt</h2>
+    <h3>Unapply old patches</h3>
+    <p>
+      If you're starting from a clean OOo source, you can skip this section.
+    </p>
+    <p>
+      quilt doesn't know about the ooo-build patches yet.
+      If your tree was patched by ooo-build, revert the patches by running:
+      <pre>ooo-build/patches/apply.pl ooo-build/patches/OOO_1_1_0 <i>$OOBUILDDIR</i> --distro=<i>$DISTRO</i> -R</pre>
+      <i>$OOBUILDDIR</i> is the path to your OOo source tree,
+      <i>$DISTRO</i> is what you used for <tt>--with-distro=</tt> when you ran configure
+    </p>
+    <h3>Tell quilt about the ooo-build patches</h3>
+    <p>
+      quilt expects patches in the patches subdir of the source tree:
+      <pre>ln -s /path/to/ooo-build/patches <i>$OOBUILDDIR</i></pre>
+    </p>
+    <p>
+      quilt gets the list of patches from a `series' file, similar to
+      ooo-build's apply files.
+      You can generate a series file by running
+      <pre>ooo-build/patches/apply.pl ooo-build/patches/OOO_1_1_0 <i>$OOBUILDDIR</i> --distro=<i>$DISTRO</i> --export-series-to=series</pre>
+      in your working directory.
+    </p>
+    <p>
+      Now you can apply the patches with quilt using <tt>quilt push</tt>,
+      and revert them with <tt>quilt pop</tt> (one at a time, use the
+      <tt>-a</tt> switch to push/pop all).
+    </p>
+    <p>
+      A smoke test for your quilt setup (and the ooo-build patches) is:
+    </p>
+    <pre>quilt push -a
+quilt pop -a
+quilt push -a
+quilt pop -a</pre>
+    <p>
+      There should be no failure.
+    </p>
+
+    <h2>Use it</h2>
+    <p>
+      Now's a good time to read quilt.pdf from the quilt 0.29 (or later) tarball or
+      <a href="http://savannah.nongnu.org/cgi-bin/viewcvs/quilt/quilt/doc/quilt.pdf">http://savannah.nongnu.org/cgi-bin/viewcvs/quilt/quilt/doc/quilt.pdf</a>.
+    </p>
+    <h3>Create a new patch with quilt</h3>
+    <p>
+      Let's say you want to create a patch for
+      <a href="http://www.openoffice.org/issues/show_bug.cgi?id=13473">Issue 13473 LINK tags in HTML export of presentations</a>
+      Maybe you want to write your patch on top of all the other patches. Run <tt>quilt push -a</tt> to apply all patches.
+    </p>
+    <p>
+      In the OOo source tree run
+      <tt>quilt new patches/OOO_1_1/sd-export-html-link-rel.diff</tt>
+      to create the new patch.
+    </p>
+    <p>
+      You'll have to edit <tt>sd/source/filter/html/htmlex.cxx</tt>.
+      Run <tt>quilt add sd/source/filter/html/htmlex.cxx</tt>.
+      Quilt will make a backup copy of the file.
+      Later it can use that copy to create the diff.
+    </p>
+    <p>
+      Now edit sd/source/filter/html/htmlex.cxx, compile, test, edit again, ...
+    </p>
+    <p>
+      When you're finished (or just want to know what you have changed in the file),
+      run <tt>quilt refresh -p0</tt>. You can shorten <i>refresh</i> to ref, the -p0
+      is necessary because in ooo-build all patches are expected to be in -p0 format.
+    </p>
+    <p>
+      If you're confident that your patch is fine, add it to the apply file, write 
+      the ChangeLog entry and commit.
+    </p>
+    <p>
+      The neat thing is that you couldn't do this with a simple cvs diff, because
+      htmlex.cxx is modified by other patches as well.
+    </p>
+    <h2>Hints</h2>
+    <ul>
+      <li>Always run quilt in the top source dir.</li>
+      <li>Don't forget to <tt>quilt add</tt> files before modifying them.
+	This is inconvenient, I know.
+      </li>
+      <li>
+	It's no problem if you add a file you're not changing. Diffing will be some
+	milliseconds slower, but the patch will be fine.
+      </li>
+      <li>
+	Don't cvs update ooo-build when some patches are applied.
+	It's hard to revert patches that have been changed in cvs.
+	Run <tt>quilt pop -a</tt> before cvs update.
+	Regenerate the series file afterwards if necessary.
+      </li>
+      <li>
+	If you did cvs update when patches were applied, maybe
+	<tt>quilt pop -a -f</tt> can rescue you (-f as in force).
+      </li>
+      <li>
+	You can create series files for each distro, use
+	<tt>--export-series-to=debian-series</tt> and symlink <tt>series</tt>
+	to the one you want to work on. Don't forget to <tt>quilt pop -a</tt>
+	before changing the symlink.
+      </li>
+    </ul>
+    <h2>Problems</h2>
+    <ul>
+      <li>quilt has problems with hand-made patches that change file a, then file b, then file a again.</li>
+    </ul>
+<!-- FIXME check this -->
+<!--     <h2>Performance</h2> -->
+<!--     <p> -->
+<!--       MUCH faster than full tree cvs diffs. -->
+<!--       One quilt maintainer uses it to manage the SUSE kernel patches, -->
+<!--       i.e. a not too small codebase and LOTS of patches. -->
+<!--     </p> -->
+    <hr>
+    <address><a href="mailto:m_kretzschmar@gmx.net">Martin Kretzschmar</a></address>
+<!-- Created: Tue Jan  6 16:14:35 CET 2004 -->
+<!-- hhmts start -->
+Last modified: Wed Jan  7 11:20:01 CET 2004
+<!-- hhmts end -->
+  </body>
+</html>
