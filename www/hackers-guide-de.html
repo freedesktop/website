@@ -1,0 +1,1275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Unofficial OpenOffice Hacker's guide</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 1.1.3  (Win32)">
+	<META NAME="CREATED" CONTENT="20041014;10400826">
+	<META NAME="CHANGED" CONTENT="20041107;19342713">
+	<STYLE>
+	<!--
+		@page { size: 8.5in 11in }
+		P.list-1-cont- { margin-left: 0.2in; margin-bottom: 0.08in }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<TABLE CELLPADDING=2 CELLSPACING=2 STYLE="page-break-before: always">
+	<TR>
+		<TD>
+			<P><A HREF="http://ooo.ximian.com/hackers-guide.html">English</A></P>
+		</TD>
+		<TD>
+			<P><A HREF="http://ooo.ximian.com/hackers-guide-ja.html">Japanese</A></P>
+		</TD>
+		<TD>
+			<P><B>German</B></P>
+		</TD>
+	</TR>
+</TABLE>
+<H1 ALIGN=LEFT><FONT SIZE=6>Anleitung zum Hacken von OpenOffice.org</FONT></H1>
+<P ALIGN=LEFT><BR><BR>
+</P>
+<P ALIGN=LEFT><FONT FACE="Times New Roman, serif">Um OpenOffice.org
+(OOo) zu hacken/builden, bedarf es schon einiges an Geduld.</FONT></P>
+<P><FONT FACE="Times New Roman, serif">Dieses Dokument wird auf den
+kommenden Seiten versuchen, die Lernkurve steil verlaufen zu lassen
+und hoffentlich deinen Weg darauf erleichtern.</FONT></P>
+<P><FONT FACE="Times New Roman, serif">Es nimmt an, dass du ein
+relativ aktuelles und vern&uuml;nftiges Linux System benutzt und dich
+ausreichend mit PC Programmierung auskennst (C++ wird vorausgesetzt,
+es sei denn du willst dir nur mal einen &Uuml;berblick &uuml;ber den
+Buildablauf OOo's verschaffen).</FONT></P>
+<P><FONT FACE="Times New Roman, serif">Wahre Hacker benutzen </FONT><A HREF="http://www.gnu.org/" NAME="gnu"><FONT FACE="Times New Roman, serif">freie
+Software</FONT></A> <FONT FACE="Times New Roman, serif">und haben
+keine Zeit sich mit &quot;unfreiem Zeug&quot; zu besch&auml;ftigen.
+Ich pers&ouml;nlich empfehle hier neben OOo, SuSe &amp;&amp; Gnome.</FONT></P>
+<P><FONT FACE="Times New Roman, serif">Wir werden zumindest die
+folgenden Fragen beantworten: </FONT>
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Times New Roman, serif">Wie
+	builde ich OOo? </FONT>
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><SPAN STYLE="background: transparent">Wie
+	gehe ich mit einer Entwicklungs-Iteration um?</SPAN></FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Times New Roman, serif">Wie
+	kann ich OOo debuggen?</FONT></P>
+	<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Times New Roman, serif">Wie
+	kann ich einen &quot;Patch&quot; einsenden?</FONT></P>
+</UL>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P><FONT FACE="Times New Roman, serif">Wenn du Hilfe brauchst an den
+Ximian ooo-Build zu gelangen oder beim Hacken mithelfen willst, dann
+trete bitte der </FONT><A HREF="http://lists.ximian.com/mailman/listinfo/openoffice" NAME="xi-mailinglist"><FONT FACE="Times New Roman, serif">Mailing-Liste</FONT></A>
+<FONT FACE="Times New Roman, serif">bei (Kommunikation auf englisch).
+Dort werden deine Fragen sicher beantwort werden.</FONT> 
+</P>
+<P>Die deutsche Version wird versuchen in m&ouml;glichst vielen
+Situationen deutsche W&ouml;rter zu benutzen, jedoch ist klar, dass
+es auch eine ganze Menge an Begriffen in der IT Welt gibt, die im
+Sinne ihrer Originalit&auml;t im Englischen verbleiben, oder sollte
+ich einen &quot;OOo build&quot; -&gt; &quot;OOo Bau&quot; nennen?
+Dies nur mal als Beispiel. Ihr habt Kritik? Nehm ich gern an, <A HREF="mailto:christian@treesforlife.org">hier</A>
+gehts lang.</P>
+<H2><A NAME="section-0"></A>0. Inhaltsverzeichnis</H2>
+<UL>
+	<LI><P CLASS="list-1-cont-"><A HREF="#section1"><FONT FACE="Times New Roman, serif">1.
+	OOo <SPAN STYLE="background: transparent"><FONT COLOR="#000080">herunterladen</FONT></SPAN></FONT></A></P>
+	<LI><P CLASS="list-1-cont-"><A HREF="#section2"><FONT FACE="Times New Roman, serif">2.
+	OOo builden</FONT></A></P>
+	<LI><P CLASS="list-1-cont-"><A HREF="#section3"><FONT FACE="Times New Roman, serif">3.
+	OOo installieren</FONT></A></P>
+	<LI><P CLASS="list-1-cont-"><A HREF="#section4"><FONT FACE="Times New Roman, serif">4.
+	OOo ausf&uuml;hren</FONT></A></P>
+	<LI><P CLASS="list-1-cont-"><A HREF="#section5"><FONT FACE="Times New Roman, serif">5.
+	OOo hacken</FONT></A></P>
+	<LI><P CLASS="list-1-cont-"><A HREF="#section6"><FONT FACE="Times New Roman, serif">6.
+	OOo debuggen</FONT></A></P>
+	<LI><P CLASS="list-1-cont-"><A HREF="#section7"><FONT FACE="Times New Roman, serif">7.
+	Patche bereitstellen</FONT></A></P>
+	<LI><P CLASS="list-1-cont-"><A HREF="#section8"><FONT FACE="Times New Roman, serif">8.
+	Sonstige Tipps</FONT></A></P>
+	<LI><P CLASS="list-1-cont-"><A HREF="#section9"><FONT FACE="Times New Roman, serif">9.
+	N&uuml;tzliche Links</FONT></A></P>
+	<LI><P CLASS="list-1-cont-"><A HREF="#section10"><FONT FACE="Times New Roman, serif">10.
+	(F)AQ</FONT></A></P>
+	<LI><P CLASS="list-1-cont-" STYLE="margin-bottom: 0in"><A HREF="#section11"><FONT FACE="Times New Roman, serif">11.
+	Mit uns arbeiten</FONT></A></P>
+</UL>
+<P CLASS="list-1-cont-" STYLE="margin-bottom: 0in"><BR>
+</P>
+<P CLASS="list-1-cont-" STYLE="margin-bottom: 0in"><BR>
+</P>
+<P><FONT FACE="Times New Roman, serif">Der gesamte Prozess ist
+ausf&uuml;hrlicher in der </FONT><A HREF="http://ooo.ximian.com/detailed-build-guide.html"><FONT FACE="Times New Roman, serif">detaillierten
+Fassung</FONT></A> <FONT FACE="Times New Roman, serif">(englisch)
+<FONT FACE="Times New Roman, serif">dargestellt</FONT>.</FONT></P>
+<P><FONT FACE="Times New Roman, serif">Wir haben jedoch hart daran
+gearbeitet einen stabil durchf&uuml;hrbaren Prozess f&uuml;r reine
+Programmierer bereitzustellen, und die einfache Version folgt nun..</FONT></P>
+<H2><A NAME="section1"></A><A NAME="section-1"></A>1. OOo
+<SPAN STYLE="background: transparent"><FONT COLOR="#000000">herunterladen</FONT></SPAN></H2>
+<P><FONT FACE="Times New Roman, serif">Es gibt eine riesige Menge an
+konkurrierenden OOo Versionen und viele Auswahlm&ouml;glichkeiten an
+Zweigen (&quot;branches&quot;) mit vielz&auml;hligen qualitativen
+Patch Zusammenstellungen.</FONT></P>
+<P><FONT FACE="Times New Roman, serif">Ich empfehle CVS snapshots,
+die bekannt sind ordentlich zu builden, und mit Patch
+Zusammenstellungen, die sich einwandfrei einbinden lassen.</FONT></P>
+<P><FONT FACE="Times New Roman, serif">Um den <SPAN STYLE="background: transparent">Sourcecode<FONT COLOR="#000000">
+</FONT></SPAN>zu erhalten gehen wir wie folgt vor:</FONT></P>
+<PRE>export CVSROOT=':pserver:anonymous@anoncvs.gnome.org:/cvs/gnome'
+cvs login
+cvs -z3 checkout -P ooo-build</PRE><P>
+<FONT FACE="Times New Roman, serif">Das wird eine Kopie des OOo-build
+(= OOo ximian version) Baumverzeichnisses bereitstellen. Wenn du CVS
+nicht magst, dann kannst du auch eine aktuelle Version von </FONT><A HREF="http://ooo.ximian.com/packages"><FONT FACE="Times New Roman, serif">hier</FONT></A>
+<FONT FACE="Times New Roman, serif">downloaden. </FONT>
+</P>
+<P><STRONG><FONT FACE="Times New Roman, serif">Beachte:</FONT></STRONG>
+Du wirst <FONT FACE="Times New Roman, serif">ca. 200 MB an
+komprimierten Sourcecode downloaden und solltest ca. 5Gb an freiem
+Speicherplatz haben, um alles zu entpacken und zu builden.</FONT></P>
+<H2><A NAME="section2"></A><A NAME="section-2"></A>2. OOo builden 
+</H2>
+<H3><A NAME="section-2.1"></A>2.1. configure</H3>
+<P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Der komplette
+Buildprozess ist ziemlich kompliziert. Du hast erstmal die Wahl von
+zwei Befehlen, obwohl es eigentlich nichts ausmacht beide
+auszuf&uuml;hren:</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<PRE>        ./autogen.sh # the CVS version
+        ./configure  # the packaged version</PRE><P>
+<FONT FACE="Times New Roman, serif">Das wird wird herausfinden
+welchen <SPAN STYLE="background: transparent">Snapshot-Zweig</SPAN>
+du builden m&ouml;chtest. Wenn du andere Ideen hast, benutze bitte
+--with-tag Option, wie z.B. </FONT>
+</P>
+<PRE STYLE="margin-bottom: 0.2in">--with-tag=OOO_1_1_0</PRE><P>
+<FONT FACE="Times New Roman, serif">f&uuml;r einen Verm&auml;chtniszweig
+(=&quot;legacy branch&quot;).</FONT></P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<H3><A NAME="section-2.2"></A>2.2 download</H3>
+<P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Nach der Zeit, in
+der du dein System zu dem Stand gebracht hast, dass es alle
+ben&ouml;tigten Pakete hat (mozilla, libart etc.), ist fast schon der
+Zeitpunkt gekommen, den Sourcecode downzuloaden. Um das nach einem
+erfolgreichen configure Befehl zu machen, schreibe:</FONT></FONT></P>
+<PRE STYLE="margin-bottom: 0.2in"><FONT SIZE=3>./download</FONT></PRE><P>
+<BR><BR>
+</P>
+<P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>und warte[...]</FONT></FONT></P>
+<P><BR><BR>
+</P>
+<P><A NAME="section-2.3"></A><FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>make</B></FONT></FONT></P>
+<P><FONT FACE="Times New Roman, serif">Nun kommt der Knackpunkt:</FONT>
+</P>
+<PRE STYLE="margin-bottom: 0.2in">make</PRE><P>
+<FONT FACE="Times New Roman, serif">und vergesse nicht &lt;Enter&gt;
+zu dr&uuml;cken. Gut m&ouml;glich ist es auch, dass du die Ausgabe
+protokollieren willst, also warum nicht</FONT></P>
+<PRE STYLE="margin-bottom: 0.2in">make 2&gt;&amp;1 | tee /tmp/log</PRE><P>
+.</P>
+<H2><A NAME="section3"></A>3. OOo installieren</H2>
+<P><FONT FACE="Times New Roman, serif">Das Ergebnis eines
+ordentlichen Builds ist ein perfektes Installationspaket in</FONT></P>
+<PRE STYLE="margin-bottom: 0.2in">build/$TAG/instsetoo/unxlngi4.pro/01/normal/</PRE><P>
+<FONT FACE="Times New Roman, serif">oder &auml;hnlich. Dann f&uuml;hre
+zum Installieren das Setup-Programm von dort aus, in dem du z.B. </FONT>
+</P>
+<PRE STYLE="margin-bottom: 0.2in">/opt/OOInstall</PRE><P>
+<FONT FACE="Times New Roman, serif">benutzt. Um das funktionsf&auml;hig
+zu vollenden, musst du erst noch deine</FONT></P>
+<PRE STYLE="margin-bottom: 0.2in">~/.sversionrc</PRE><P>
+Datei ausf&uuml;hren.</P>
+<P><BR><BR>
+</P>
+<P><FONT FACE="Times New Roman, serif">Nun da es schon mal
+installiert ist, wollen wir auch gleich mal in die Stimmung kommen,
+OOo zu hacken, indem wir den build-tree direkt auf das installierte
+Abbild verweisen, sodass wir beim re-compilen eines
+Code-Unterverzeichnisses, OOo einfach neu ausf&uuml;hren k&ouml;nnen.
+Dies kann den Build/Test-Lauf um einige Zehntel schneller machen. Um
+dies zu erreichen, schreibe:</FONT></P>
+<PRE STYLE="margin-bottom: 0.2in">bin/linkoo /opt/OOInstall /opt/ooo-build/build/OOO_1_1_2</PRE><P>
+<FONT FACE="Times New Roman, serif">, schaue auch bitte die <A HREF="#section5-9">Linker
+Einschr&auml;nkungen</A> an.</FONT></P>
+<H2><A NAME="section4"></A>4. OOo ausf&uuml;hren</H2>
+<P><FONT FACE="Times New Roman, serif">Nun gehe man in</FONT></P>
+<PRE STYLE="margin-bottom: 0.2in">/opt/OOInstall/program</PRE><P>
+<FONT FACE="Times New Roman, serif">und schreibe </FONT>
+</P>
+<PRE STYLE="margin-bottom: 0.2in">source ./env</PRE><P>
+<FONT FACE="Times New Roman, serif">das wird die (bash) Shell <FONT COLOR="#000000"><SPAN STYLE="background: transparent">darauf
+einstellen, OOo direkt auszuf&uuml;hren</SPAN>.</FONT> Dann einfach</FONT></P>
+<PRE STYLE="margin-bottom: 0.2in">soffice.bin</PRE><P>
+<FONT FACE="Times New Roman, serif">. Dies ist besser als schlicht
+soffice auszuf&uuml;hren oder ein &quot;Wrapper-Skript&quot;, da es
+nun ganz einfach ist den Fehlersuchprogramm anzuh&auml;ngen:</FONT></P>
+<P>gdb soffice.bin</P>
+<P>. 
+</P>
+<P><BR><BR>
+</P>
+<P><STRONG><FONT FACE="Times New Roman, serif">Beachte:</FONT></STRONG>
+<FONT FACE="Times New Roman, serif">Benutze *nicht*: </FONT>
+</P>
+<PRE STYLE="margin-bottom: 0.2in">./soffice.bin</PRE><P>
+<FONT FACE="Times New Roman, serif">was wegen unerkl&auml;rten
+Gr&uuml;nden nicht richtig funktioniert. </FONT>
+</P>
+<P><STRONG><FONT FACE="Times New Roman, serif">Beachte:</FONT></STRONG>
+Du <FONT FACE="Times New Roman, serif">musst zuvor den auf OOo
+basierten ooo-wrapper ausf&uuml;hren, sodass ~/.sversionrc ordentlich
+eingestellt ist, ansonsten wird die soffice.bin zum GUI setup
+Werkzeug verweisen. Tue:</FONT></P>
+<PRE STYLE="margin-bottom: 0.2in">oowriter</PRE><P>
+<FONT FACE="Times New Roman, serif">vor dem Start.</FONT></P>
+<H2><A NAME="section5"></A>5. OOo hacken</H2>
+<H3><A NAME="section-5.0"></A>5.1 Der erste Hack</H3>
+<P><FONT FACE="Times New Roman, serif">Alsoo - wir haben OOo nun
+gebuildet und ausgef&uuml;hrt, und wir wollen uns selbst nun
+beweisen, dass es wirklich m&ouml;glich ist, das Biest zu hacken. In
+einem neuen Terminal machen wir also jenes:</FONT></P>
+<PRE>cd build/$TAG
+. ./LinuxIntelEnv.Set.sh
+cd vcl</PRE><P>
+<FONT FACE="Times New Roman, serif">Wie w&auml;rs nun mit einem Hack
+in vcl/source/window/toolbox2.cxx? Ich w&uuml;rde vorschlagen einfach
+mal ein</FONT></P>
+<PRE STYLE="margin-bottom: 0.2in">nPos = 0</PRE><P>
+<FONT FACE="Times New Roman, serif">irgendwo vor dem m_aItems.insert
+in ToolBox::InsertItem( const ResId &amp;rResId ...) hinzuzuf&uuml;gen.
+Dann abspeichern.</FONT></P>
+<P><FONT FACE="Times New Roman, serif">Noch in VCL, ja? Dann schreibe
+'build debug=true'; warte darauf, dass der rollende Text stoppt; (5
+Sekunden?). Nun neu ausf&uuml;hren..</FONT></P>
+<PRE STYLE="margin-bottom: 0.2in">soffice -writer</PRE><P>
+<FONT FACE="Times New Roman, serif">Du solltest den Effekt
+mitbekommen haben.</FONT></P>
+<P><BR><BR>
+</P>
+<P><STRONG><FONT FACE="Times New Roman, serif">Beachte:</FONT></STRONG>
+D<FONT FACE="Times New Roman, serif">ies stellt die Vorraussetzung,
+dass du die vorigen Schritte befolgt hast, speziell das linkoo in
+</FONT><A HREF="http://ooo.ximian.com/hackers-guide.html#section-3"><FONT FACE="Times New Roman, serif">Sektion
+3</FONT></A><FONT FACE="Times New Roman, serif">.</FONT></P>
+<P><STRONG><FONT FACE="Times New Roman, serif">Beachte:</FONT></STRONG>
+<FONT FACE="Times New Roman, serif">F&uuml;r simples ab-und-zumal
+hacken kannst du &quot;build&quot; im Source Tree ausf&uuml;hren.
+F&uuml;hre &quot;make&quot; *nicht* im Hauptverzeichnis</FONT></P>
+<PRE STYLE="margin-bottom: 0.2in">ooo-build/</PRE><P>
+<FONT FACE="Times New Roman, serif">aus, oder alle &Auml;nderungen
+k&ouml;nnen h&ouml;chstwahrscheinlich weggeschmissen werden. Es macht
+daher Sinn eine separate Kopie von </FONT>
+</P>
+<PRE STYLE="margin-bottom: 0.2in">build/OOO_1_1_2</PRE><P>
+<FONT FACE="Times New Roman, serif">zu haben, schaue </FONT><A HREF="http://ooo.ximian.com/hackers-guide.html#section-10.4"><FONT FACE="Times New Roman, serif">hier</FONT></A><FONT FACE="Times New Roman, serif">,
+um den Build schlie&szlig;lich wieder anzuordnen.</FONT></P>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-5.1"></A>5.2 Lese das Handbuch</H3>
+<P><FONT FACE="Times New Roman, serif">Mit der St&auml;rke von C++
+kommt die F&auml;higkeit sich selbst ins Knie zu schie&szlig;en,
+vergleiche </FONT><EM><FONT FACE="Times New Roman, serif">Holub,
+Rules for C and C++ programming, McGraw-Hill, 95.</FONT></EM></P>
+<P><FONT FACE="Times New Roman, serif">Der beste Weg sich f&uuml;r
+die Herausforderung vorzubereiten, ist erst einmal die OOo
+</FONT><A HREF="http://tools.openoffice.org/CodingGuidelines.sxw"><FONT FACE="Times New Roman, serif">Coding-Guidlines</FONT></A>
+<FONT FACE="Times New Roman, serif">zu lesen und f&uuml;r alle, die
+es nicht wissen, c'tor / d'tor sind die Abk&uuml;rzungen f&uuml;r
+constructor / destructor.</FONT></P>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-5.2"></A>5.3 Patche einsenden</H3>
+<P><FONT FACE="Times New Roman, serif">Selten ist klar welches Modul
+zu welchem Bugreport (Issuezilla) geh&ouml;rt. Ein m&ouml;glichst
+kurzer Weg dies herauszufinden, ist: </FONT>
+</P>
+<PRE>cvs status &lt;somefile&gt; | head
+    </PRE><P>
+<FONT FACE="Times New Roman, serif">Das sollte eine
+<SPAN STYLE="background: transparent"><FONT COLOR="#000000">'<SPAN STYLE="background: transparent">Archiv-Version</SPAN>(=&quot;repository
+revision&quot;):' </FONT></SPAN>Zeile geben, mit einem Pfad, dessen
+zweiter Teil den Modulnamen verr&auml;t.</FONT></P>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-5.3"></A>5.4 Den <SPAN STYLE="background: transparent">Installer</SPAN>
+hacken</H3>
+<P><FONT FACE="Times New Roman, serif">Da das Installationsabbild das
+ausf&uuml;hrbare tempor&auml;re Setupabbild in </FONT><TT><FONT FACE="Times New Roman, serif">/tmp/sv001.tmp
+l&ouml;scht, m&uuml;sstest du es dabei verhindern dies zu tuen. F&uuml;hre
+dazu bitte setup / install mit der -dontdeletetemp Option aus.</FONT></TT></P>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-5.4"></A>5.5 Andere Bereiche hacken</H3>
+<P><FONT FACE="Times New Roman, serif">Wenn ein funktionierender
+Installer vorliegt, ist der beste Weg den Hack zu integrieren, indem
+du <TT>program/lib<EM>foo</EM>641li.so</TT></FONT> <FONT FACE="Times New Roman, serif">zu
+der von dir gebuildeten Version <SPAN STYLE="background: transparent">symbolisch
+verweist </SPAN>- h&ouml;chstwahrscheinlich in:</FONT>
+<TT><EM><FONT FACE="Times New Roman, serif">foo</FONT></EM><FONT FACE="Times New Roman, serif">/unxlngi4.pro/lib/
+-, dann sollten die Ver&auml;nderungen eingearbeitet sein.</FONT></TT></P>
+<P><FONT FACE="Times New Roman, serif">Als Beispiel sagen wir mal, du
+willst &quot;sal&quot; (den System Abstraction Layer) hacken und du
+hast OOO_STABLE_1 in /opt/OOInstall installiert, dann f&uuml;hre das
+folgendes aus:</FONT></P>
+<PRE>cd /opt/OOInstall/program
+mkdir backup
+mv libsal.so.3.0.1 backup
+ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 </PRE><P>
+<BR><BR>
+</P>
+<H3><A NAME="section-5.5"></A>5.6 Dmake verstehen (man)</H3>
+<P><FONT FACE="Times New Roman, serif">W&auml;hrend das Build-System
+sehr &auml;hnlich ist zu anderen Systemen, hat es jedoch trotzdem
+noch seine besonderen Eigenheiten. Das gesamte Konzept besteht darin,
+dass jedes Modul einzeln gebuildet wird und die kompilierten Dateien
+in den </FONT><A HREF="http://www.openoffice.org/dev_docs/source/solver.html"><FONT FACE="Times New Roman, serif">Solver-Tree</FONT></A>
+<FONT FACE="Times New Roman, serif">wandern.</FONT></P>
+<P><FONT FACE="Times New Roman, serif">Jedes Modul selbst kompiliert
+gegen die Headerdateien des Solvers, deshalb entstehen grunds&auml;tzlich
+auch keine unn&ouml;tigen Komplikationen.</FONT></P>
+<P><BR><BR>
+</P>
+<UL>
+	<LI><P STYLE="font-style: normal"><FONT FACE="Times New Roman, serif"><I>built
+	</I>- Dieses Perl Skript solenv/bin/build.pl wird in Verbindung mit
+	prj/build.lst benutzt, um sicher zu gehen, dass jedes Modul das
+	gebraucht wird zuerst gebuildet wird.</FONT></P>
+	<LI><P STYLE="font-style: normal"><FONT FACE="Times New Roman, serif">deliver
+	- Dieses Perl Skript solenv/bin/deliver.pl installiert Headerdateien
+	und Bibliotheken in den Solver, wie in prj/d.lst beschrieben.
+	'deliver' &uuml;berpr&uuml;ft unter anderem, dass der Datumsstempel
+	jeder in den Solver kopierten Datei der gleiche ist wie im
+	Modulverzeichnis. </FONT>
+	</P>
+</UL>
+<H4><A NAME="section-5.5.1"></A>5.6.1 Standardverzeichnisse</H4>
+<P><FONT FACE="Times New Roman, serif">Es gibt einige
+Standardverzeichnisse, die in jedem OOo Modul vorhanden sind: </FONT>
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Times New Roman, serif"><B>prj</B>
+	</FONT>
+	</P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Times New Roman, serif"><I>build.lst</I>
+		&mdash; dies beschreibt die generierten Verzeichnisse, '^#'
+		Kommentare sind erlaubt, die Reihenfolge dieser Liste ist nicht von
+		Belangen, siehe <A HREF="#section5-6-2">Details</A>, <FONT COLOR="#000000">es
+		diktiert die Hauptoperationen von build</FONT><FONT COLOR="#ff0000">.
+		</FONT></FONT>
+		</P>
+		<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Times New Roman, serif"><I>d.lst</I>
+		&mdash; diese Datei beschreibt den &quot;<SPAN STYLE="background: transparent">Deliverprozess</SPAN>&quot;,
+		siehe </FONT><A HREF="#section5-6-3"><FONT FACE="Times New Roman, serif">Details</FONT></A><FONT FACE="Times New Roman, serif">.
+		</FONT>
+		</P>
+	</UL>
+	<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Times New Roman, serif"><B>util</B>
+	&mdash; <SPAN STYLE="background: transparent"><FONT COLOR="#000000">die
+	Dateien dieses Verzeichnisses haben normalerweise die Aufgabe die
+	<SPAN STYLE="background: transparent">Bibliotheken </SPAN>f&uuml;r
+	jedes <SPAN STYLE="background: transparent">Untermodul</SPAN> in
+	eine gr&ouml;&szlig;ere Bibliothek zusammenzuf&uuml;hren, es
+	integriert dabei auch die gebrauchten System-Bibliotheken und
+	buildet die GUI Resourcen etc</FONT></SPAN><FONT COLOR="#ff0000">.</FONT>
+	Die gesamte Vorgehensweise ist im <I>makefile.mk</I> beschrieben.
+	Dies ist &uuml;blicherweise das letzte zu buildende Verzeichnis in
+	einem Projekt. </FONT>
+	</P>
+	<LI><P><FONT FACE="Times New Roman, serif"><B>inc</B> &mdash;
+	allgemeine Headerdateien sind normalerweise im 'inc' Verzeichnis zu
+	finden. Diese werden durch 'deliver' in den Solver kopiert (dabei
+	wird <I>prj/d.lst </I>benutzt). </FONT>
+	</P>
+</UL>
+<P><FONT FACE="Times New Roman, serif">Es gibt mehrere Dateiformate
+die Build-spezifisch sind: </FONT>
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Times New Roman, serif"><B>makefile.rc</B>
+	&mdash; diese Dateien sind alle nebens&auml;chlich und gebrauchen
+	keiner Erkl&auml;rung.</FONT></P>
+	<LI><P><FONT FACE="Times New Roman, serif"><B>makefile.mk</B> &mdash;
+	diese hingegen sind die f&uuml;r jedes Modul wichtigen &quot;dmake&quot;
+	Dateien</FONT></P>
+</UL>
+<H4><A NAME="section5-6-2"></A><A NAME="section-5.5.2"></A>5.6.2
+build.lst</H4>
+<P>Auf den ersten Blick sieht <I>build.lst</I> ein bi&szlig;chen
+<FONT COLOR="#000000">schaurig</FONT> aus: 
+</P>
+<PRE>vc      vcl : nas freetype psprint rsc sot ucbhelper unotools sysui NULL
+vc      vcl                      usr1   -       all     vc_mkout NULL
+vc      vcl\source\unotypes      nmake  -       all     vc_unot NULL
+vc      vcl\source\glyphs        nmake  -       all     vc_glyphs vc_unot NULL</PRE><P>
+<FONT COLOR="#000000">sodass wir uns also gleich ranmachen das ganze
+St&uuml;ck f&uuml;r St&uuml;ck unter die Lupe zu nehmen, was uns dann
+zeigen wird, dass es nicht so arg schlimm ist, wie es auf den ersten
+Blick erscheinen mag.</FONT></P>
+<P>Als aller erstes f&auml;llt auf, dass jede Listenzeile mit einem
+'NULL'-String endet (man kann hier von einem Sentinel sprechen).
+Au&szlig;erdem verzeichnet jede Listenzeile &uuml;ber ein K&uuml;rzel
+ganz am Anfang, was aber f&uuml;r uns als irrelevant zu bezeichnen
+gilt. 
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in">Die allererste Zeile der Datei
+	enth&auml;lt einen Doppelpunkt ':', dies beschreibt den Bestand,
+	dass das Projekt (vcl) von anderen Modulen abh&auml;ngig ist. 'nas',
+	'freetype', 'psprint' etc. m&uuml;ssen also zuvor gebuildet worden
+	sein. Dies ist wichtig f&uuml;r das Ineinandergreifen der
+	verschiedenen Projekte. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Dann haben wir die eher
+	&uuml;berfl&uuml;ssige Zeile mit 'usr1' [ zum Spa&szlig; ? ],
+	tats&auml;chlich sind alle kommenden Zeilen nur g&uuml;ltig mit dem
+	speziellen 'nmake' String!</P>
+	<LI><P>Die n&auml;chste Zeile beschreibt projektinterne
+	Verzeichnisabh&auml;ngigkeiten: 
+	</P>
+	<PRE>[shortcut] [path to dir to build] nmake - [flags] [unique-name] [deps...] NULL
+vc           vcl\source\glyphs    nmake -   all     vc_glyphs   vc_unot   NULL
+             </PRE><P>
+	<I>shortcut</I> wird funktional nicht benutzt, <I>flags</I> stellt
+	fest, auf welcher Plattform das Projekt gebuildet wird.
+	Normalerweise stehen die kurzen Plattformbezeichnungen: 'dnpum' 'u'
+	f&uuml;r Unix. Je h&ouml;her das System, desto mehr wird 'all'
+	eingef&uuml;gt.</P>
+	<P><I>unique-name</I> dies ist ein spezieller Name, der von anderen
+	Zeilen f&uuml;r interne Zusammenh&auml;nge gebraucht wird. <SPAN STYLE="background: transparent"><I>deps...</I>
+	variable Anzahl von Verzeichnissen in dieser Datei, die zuvor
+	gebuildet werden m&uuml;ssen.</SPAN></P>
+</UL>
+<P>Im Falle von vcl (=&quot;Visual Component Library&quot;) sehen wir
+also, dass <I>vcl\source\unotypes </I>(vc_unot) noch vor
+<I>vcl\source\glyphs</I> (vc_glyphs) gebuildet werden muss. Es ist
+wirklich <B>wichtig </B>zu verstehen, dass die Reihenfolge der Liste
+unwesentlich ist und statt eine simple klar-geordnete Liste, haben
+wir eher ein komplexeres internes <FONT COLOR="#000000">Beziehungssystem,
+das demzugrunde von anderen make-Konzepten abweicht. </FONT>
+</P>
+<P>Eine detailliertere Dokumentation findet man <A HREF="http://tools.openoffice.org/tools/build.html">hier</A>
+</P>
+<H4><A NAME="section5-6-3"></A><A NAME="section-5.5.3"></A>5.6.3
+d.lst</H4>
+<P>d.lsts Syntax ist verst&auml;ndlicher als jene von build.lst, es
+unterl&auml;sst einge Standardfunktionen, wie z.B. das Kopieren von
+build.lst nach <I>inc/&lt;module&gt;/build.lst.</I></P>
+<P>Eine Zeile hat die folgende Form: 
+</P>
+<PRE>[action]: [arguments]
+mkdir:    %_DEST%\inc%_EXT%\external
+      </PRE><P>
+die standardgem&auml;&szlig;e Kopiefunktion wird durchgef&uuml;hrt,
+wenn '[action]:' weggelassen wird. Die typischen Ausf&uuml;hrungen
+sind <I>copy</I>, <I>mkdir</I>, <I>touch</I>, <I>hedabu</I>, <I>dos</I>
+and <I>linklib</I>.</P>
+<P>Speziell der 'hedabau' Befehl ist interessant, in der Weise, dass
+es die Headerdateien beim Installieren k&uuml;rzer werden l&auml;sst
+(ansonsten ist es eigentlich nicht viel anders als das &uuml;bliche
+Kopieren). 
+</P>
+<P>W&auml;hrend dieser Aktion werden verschiedene Macros verwendet,
+manche davon sind:</P>
+<UL>
+	<LI><P>%__SRC% - Distributionsverzeichnisname z.B. <I>unxlngi4.pro</I>
+		</P>
+	<LI><P>%_DEST% - absoluter Pfad zum Solver z.B.
+	<I>/opt/OpenOffice/OOO_STABLE_1/solver/641/unxlngi4.pro</I> 
+	</P>
+</UL>
+<UL>
+	<LI><P>%_EXT% - <FONT COLOR="#000000">End-Versionsnummer bei
+	Aktualisierungen, &uuml;blicherweise benutzt f&uuml;r jedes
+	Unterverzeichnis im <SPAN STYLE="background: transparent">Hauptast</SPAN>(&quot;MasterWorkspace&quot;)</FONT></P>
+</UL>
+<P>Wenn du wirklich eine bestimmte Regel einf&uuml;hren willst (wie
+z.B. impliziertes Verzeichniskopieren), dann wird dies dem folgenden
+Schema entsprechen: 
+</P>
+<PRE>..\%__SRC%\inc\sal\*.h %_DEST%\inc%_EXT%\sal\*.h
+      </PRE><P>
+Achte darauf, dass Pfade relativ zum 'prj/' Verzeichnis sind. 
+</P>
+<H3><A NAME="section-5.6"></A>5.7 <SPAN STYLE="background: transparent"><FONT COLOR="#000000">Schnelle
+Iteration</FONT></SPAN></H3>
+<P>Es gibt viele Wege zu schnellem <FONT COLOR="#000000"><SPAN STYLE="background: transparent">Entwicklungsfortschritt</SPAN>,</FONT>
+der wohl beste Weg ist <A HREF="#section3">linkoo</A> zu benutzen, um
+die Bibliotheken aus dem Installationspaket direkt in den Build-Tree
+symbolisch zu verweisen. Dann kannst du auf einfache Art und Weise
+Unterverzeichnisse &quot;re-builden&quot; und zwar indem du:</P>
+<PRE STYLE="margin-bottom: 0.2in">build</PRE><P>
+im Unterverzeichnis verwendest und soffice.bin neu ausf&uuml;hrst. 
+</P>
+<P>Nun kommen wir dann mal zum Sourcecode selbst..</P>
+<H3><A NAME="section5-8"></A><A NAME="section-5.7"></A>5.8 Kann ich
+<CODE>char * <FONT FACE="Times New Roman, serif">benutzen</FONT></CODE>?</H3>
+<P><FONT COLOR="#000000">Eher d&uuml;rftig</FONT>. OOo hat mindestens
+sechs String-Wrapper, wobei den C Umsetzungen nur sehr geringe
+Achtung geschenkt werden sollte:</P>
+<UL>
+	<LI><P><CODE>rtl_String</CODE> - sal/inc/rtl/string.h<BR>&quot;Normaler&quot;
+	String mit ref-counting. <CODE>rtlstring-&gt;buffer</CODE> ist
+	hilfreich, wie auch <CODE>rtlstring-&gt;length</CODE>. Dieser String
+	ist schon umgewandelt zu einem bestimmten Charakterset, siehe
+	sal/inc/rtl/textenc.h - die einzigen interessanteren F&auml;lle sind
+	<CODE>RTL_TEXTENCODING_UTF8 <FONT FACE="Times New Roman, serif">und
+	vielleicht noch</FONT> RTL_TEXTENCODING_ASCII_US</CODE> . F&uuml;hle
+	dich frei <CODE>rtlstring-&gt;buffer</CODE> als deinen beliebten C
+	<CODE>char * <FONT FACE="Times New Roman, serif">anzusehen</FONT></CODE>.
+		</P>
+	<LI><P><CODE>OString</CODE> - sal/inc/rtl/string.hxx<BR><CODE><FONT FACE="Times New Roman, serif">Der
+	<CODE>rtl_String</CODE> einfach als Klasse implementiert.</FONT></CODE>
+	Du kannst <CODE>ostring.pData</CODE> benutzen, um direkt an den
+	rtl_String zu gelangen. <CODE>OString</CODE> hat ganz sicher einige
+	n&uuml;tzliche Funktionen. 
+	</P>
+	<LI><P><CODE>rtl_uString</CODE> - sal/inc/rtl/ustring.h<BR>&quot;Normaler&quot;
+	Unicode String, &auml;hnlich wie rtl_String auch mit ref-counting.
+	Wie auch immer, dieser String kommt immer im UCS-2 enkodierten
+	Format, um mit Javas fraglicher Auswahl kompatible zu sein.</P>
+	<LI><P><CODE>OUString</CODE> - sal/inc/rtl/ustring.hxx<BR>Ein
+	rtl_uString <CODE><FONT FACE="Times New Roman, serif">als Klasse</FONT></CODE>.
+	Das ist der intern am h&auml;ufigsten benutzte String um Daten
+	auszutauschen.</P>
+	<LI><P><CODE>String</CODE> - tools/inc/string.hxx<BR>Das ist ein
+	veralteter Typ, der unter den Namen 'UniString' f&auml;llt. Es hat
+	einige Einschr&auml;nkungen wie ein rtl_uString <CODE><FONT FACE="Times New Roman, serif">innerhalb
+	einer Klasse</FONT></CODE>. 
+	</P>
+</UL>
+<P>Da ja jeder richtige Programmierer <CODE>char *</CODE> UTF-8
+enkodierte Strings verwendet, muss jeglicher System-API Aufruf wie
+z.B. 'printf' ein Chararray von <CODE>OUString</CODE> aus
+konvertieren: 
+</P>
+<PRE>static char *
+gimme_utf8_please (const rtl::OUString &amp;oustring)
+{
+        rtl::OString ostring;
+
+        ostring = ::rtl::OUStringToOString (oustring, RTL_TEXTENCODING_UTF8);
+        return strdup (ostring.pData-&gt;buffer);
+}
+    </PRE><P>
+und hier in entgegengesetzter Richtung: 
+</P>
+<PRE>static rtl::OUString
+complicate_things_into_ucs2_please (const char *utf8_string)
+{
+        rtl::OString ostring;
+
+        ostring = rtl::OString (utf8_string);
+        return rtl::OStringToOUString (ostring, RTL_TEXTENCODING_UTF8);
+}
+    </PRE><P>
+Wenn du einfach nur einen String f&uuml;r Fehlersuch-Zwecke schreiben
+lassen willst, dann wirst du wahrscheinlich <A HREF="#printout">das</A>
+hier haben.</P>
+<H4><A NAME="section-5.7.2"></A>5.8.1 Strings mit GDB untersuchen</H4>
+<P>Wir haben schon gesehen, dass OOo nicht die bescheidenen <CODE>char
+*</CODE> Strings benutzt. Wenn du nun dachtest es w&auml;r schon
+anstrengend genug Code zu schreiben, dann warte lieber ab bis wir
+noch zum Debugging kommen. Gl&uuml;cklicherweise zeigen wir dir nun
+wie du an Strings von gdb/dbx - die selbst nicht mit Unicode umgehen
+- herankommst: 
+</P>
+<UL>
+	<LI><P>vom CVS Zweig cws_srx645_ooo112fix1 aufw&auml;rts kann 
+	</P>
+	<PRE STYLE="margin-bottom: 0.2in">(gdb) print dbg_dump(sWhatEver)</PRE><P>
+	benutzt werden, um den Inhalt eines
+	UniString/ByteString/rtl::OUString/rtl::OString's auf den Bildschirm
+	zu drucken, dabei ist der Typ bei der Fehlerbeseitigung des C++
+	Codes egal. Siehe <A HREF="http://qa.openoffice.org/issues/show_bug.cgi?id=17295">iz17295</A>
+	f&uuml;r n&auml;here Details. 
+	</P>
+</UL>
+<P>Wenn das in deiner OOo Version noch nicht unterst&uuml;tzt wird,
+gibts noch eine Alternative... 
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in">rtl_String: probier rum damit! 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">String: Achte darauf, dass die
+	Deklaration das macro 'UniString' benutzt, um Leser von
+	tools/inc/string.hxx zu irritieren. Gl&uuml;cklicherweise k&ouml;nnen
+	wir leicht und locker ein String zu einem OUString konvertieren
+	(&quot;casten&quot;). 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">OString: <I>p str-&gt;pData</I> 
+	</P>
+	<LI><P>OUString, rtl_uString: (toller Tip von Kevin Hendricks) Der
+	schnellste und einfachste Weg den String auszuwerfen ist wie folgt: 
+	</P>
+	<PRE>      p *theString; # grab the length (2nd field)
+      x/&lt;length&gt;s theString-&gt;buffer</PRE><P>
+	f&uuml;r einen 20 Charakter-langen String wollen wir dann also 
+	</P>
+	<PRE STYLE="margin-bottom: 0.2in">x/20s theString-&gt;buffer</PRE><P>
+	. Das sollte dann den String als Array aus Elementen des Typs Short
+	mit ASCII Werten sauber und fein in eine Rubrik schreiben.. Um
+	programmtechnisch einen OUString (or String) <FONT COLOR="#000000">zu
+	erhalten</FONT>: 
+	</P>
+	<PRE><A NAME="printout"></A>::rtl::OString tmpStr = OUStringToOString (<I>MyOUString</I>, RTL_TEXTENCODING_UTF8);
+fprintf (stderr, &quot;String is '%s'\n&quot;, tmpStr.getStr());</PRE>
+</UL>
+<H3><A NAME="section5-9"></A><A NAME="section-5.8"></A>5.9 Linkoo
+Einschr&auml;nkungen</H3>
+<UL>
+	<P STYLE="margin-bottom: 0in">W&auml;hrend Linkoo f&uuml;r sich
+	recht &quot;leistungsf&auml;hig&quot; ist, wird es durch die Art und
+	Weise wie OOo zusammengeflickt ist in seiner St&auml;rke
+	eingeschr&auml;nkt. Es gibt hierbei zwei Musterprobleme: 
+	</P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in">Sonderbares Verhalten beim Linken
+		- wenn du die Bibliothek symbolisch verweist, dann folgt es dem
+		Link w&auml;hrend der Runtime und endet arg im Durcheinander.</P>
+		<UL>
+			<LI><P STYLE="margin-bottom: 0in">soffice.bin - muss bei jedem
+			<FONT COLOR="#000000">Enwticklungsdurchgang</FONT><FONT COLOR="#ff0000">
+			</FONT>von desktop/unxlngi4.pro/bin/soffice kopiert werden,
+			ansonsten <FONT COLOR="#000000">l&auml;uft die Fehlersuche
+			durcheinander.</FONT> 
+			</P>
+			<LI><P STYLE="margin-bottom: 0in">libcfgmgr2.so - muss jedes Mal
+			von configmgr/unxlngi4.pro/lib kopiert werden, ansonsten kann die
+			Konfiguration nicht richtig geladen werden. 
+			</P>
+		</UL>
+		<LI><P STYLE="margin-bottom: 0in"><SPAN STYLE="background: transparent">Merkw&uuml;rdiges
+		internes Bibliothekensystem</SPAN></P>
+		<UL>
+			<LI><P>Dateifilter haben Pr&uuml;fungs-Code (&quot;detection
+			code&quot;), wie sc/source/ui/app/sclib.cxx (ScDLL::DetectFilter)
+			z.B., welches zu statischen Bibliotheken kompiliert, installiert
+			und dann zu libwrp in desktop/source/offwrp gelinkt wird. Um 'sc'
+			erneut zu builden, mache: 
+			</P>
+			<PRE STYLE="margin-bottom: 0.2in"><A HREF="http://ooo.ximian.com/build">build</A> &amp;&amp; <A HREF="http://ooo.ximian.com/deliver">deliver</A></PRE><P>
+			dann im desktop/source/offwrp Ordner tue: 
+			</P>
+			<PRE STYLE="margin-bottom: 0.2in">touch wrapper.cxx &amp;&amp; dmake.</PRE>
+		</UL>
+	</UL>
+</UL>
+<UL>
+	<UL>
+		<UL>
+			<PRE STYLE="margin-bottom: 0.2in">            </PRE>
+		</UL>
+	</UL>
+</UL>
+<H2><A NAME="section6"></A><A NAME="section-6"></A>6. OOo debuggen</H2>
+<P>Dieses Kapitel setzt die Benutzung des GNU debuggers von der
+Konsole her voraus.</P>
+<H3><A NAME="section-6.1"></A>6.1 Mit Debugging-Symbolen builden</H3>
+<P>OOo beinhaltet die M&ouml;glichkeit Debugging-Code pro Modul zu
+integrieren, n&auml;mlich via den <TT>build debug=true</TT> Befehl in
+jedem Modul. Ungl&uuml;cklicherweise ist dies jedoch nicht f&uuml;r
+den Gebrauch des gesamten Projektes zu empfehlen und neben vitalen
+Debugging-Symbolen werden auch Unmengen an &quot;<SPAN STYLE="background: transparent">Assertions</SPAN>&quot;,
+aufkommende Warnungen und verschiedene andere Cheks mit
+eingeschlossen.</P>
+<P>Wenn du deshalb also Debugging-Symbole f&uuml;r alles haben
+willst, musst du mehrere Makefiles hacken um Debugging-Symbole
+hinzuzuf&uuml;gen (sei gewarnt, dass dies die binaries zu ca. 1GB
+anwachsen l&auml;sst und den vollen <FONT COLOR="#000000">Build-Tree
+sogar zu 8GB), wie hier beschrieben:</FONT></P>
+<PRE>--- solenv/inc/unxlngi4.mk
++++ solenv/inc/unxlngi4.mk
+@@ -92,18 +92,18 @@ cc=gcc
+ # do not use standard header search paths
+ # if installed elsewhere
+ .IF &quot;$(BUILD_SOSL)&quot;!=&quot;&quot;
+-CFLAGS=
++CFLAGS=-g
+ .ENDIF
+ CFLAGS+=-fmessage-length=0 -c $(INCLUDE)
+ # flags for the C++ Compiler
+-CFLAGSCC= -pipe -mcpu=pentiumpro
++CFLAGSCC= -g -pipe -mcpu=pentiumpro
+ # Flags for enabling exception handling
+ CFLAGSEXCEPTIONS=-fexceptions -fno-enforce-eh-specs
+ # Flags for disabling exception handling
+ CFLAGS_NO_EXCEPTIONS=-fno-exceptions
+ 
+ # -fpermissive should be removed as soon as possible
+-CFLAGSCXX= -pipe -mcpu=pentiumpro -fno-for-scope -fpermissive -fno-rtti 
++CFLAGSCXX= -g -pipe -mcpu=pentiumpro -fno-for-scope -fpermissive -fno-rtti 
+ 
+ # HACK: enable Hamburg developers to build on glibc-2.2 machines but compile vs. glibc-2.1 headers
+ .IF &quot;$(BUILD_SOSL)&quot;==&quot;&quot;
+    </PRE><P>
+Nat&uuml;rlich wird gdb recht sinnlos ohne Debugging-Symbole. Um den
+Patch also einzubringen, kopiere das oben stehende nach /tmp/foo und
+ins Hauptverzeichnis.</P>
+<PRE>patch -p0 &lt; /tmp/foo
+    </PRE><H3>
+<A NAME="section-6.2"></A>6.2 <SPAN STYLE="background: transparent">Breakpoints</SPAN>
+setzen</H3>
+<P>Wegen dem relativ groben Au&szlig;ma&szlig; an Fehlern mit gdb,
+ist es sehr wahrscheinlich, dass das Benutzen von Breakpoints nicht
+rein funktionieren wird, deshalb ist wohl die beste L&ouml;sung das
+folgende:</P>
+<PRE>gdb ./soffice
+break main
+run # don't forget the arguments here
+# ... traps in main ...
+break osl_readFile
+continue
+    </PRE><P>
+Offensichtlich wird dies niemals erfolgreich ablaufen, wenn der Code
+in einer Bibliothek implementiert ist, welche durch <FONT COLOR="#000000">'dlopen'
+sp&auml;ter geladen wird, was auf die gro&szlig;e Mehrheit des OOo
+Sourcecodes zutrifft. Deshalb sollte man den Code beim Laden
+abfangen, um dann erst den Breakpoint einzusetzen.</FONT></P>
+<P><FONT COLOR="#000000"><SPAN STYLE="background: transparent">Um
+dies zu machen, hau einen Breakpoint in osl_psz_loadModule rein und
+nun leide!</SPAN></FONT></P>
+<P>Als Alternative dazu, wenn du den Code instrumentalisieren kannst,
+sollte es ziemlich einfach sein einfach #include &lt;signal.h&gt;
+beizuf&uuml;gen und einen SIGSTOP irgendwo im code zu werfen, welcher
+dann den Debugger aufsp&uuml;rt.</P>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-6.3"></A>6.3 Wir beginnen immer am Anfang!</H3>
+<P>Wir starten mal mit einem sal Wrapper in 'main', der
+vcl/source/app/svmain.cxx (SVMain) anspricht.<FONT COLOR="#ff0000">
+</FONT><FONT COLOR="#000000">Main wird durch pSVData-&gt;mpApp
+ausgel&ouml;st, aber pSVData ist inline</FONT>. Um dies zu
+auszutesten, benutze die globale Variable pImplSVData. Z. B.:</P>
+<PRE STYLE="margin-bottom: 0.2in">      p pImplSVData-&gt;maAppData</PRE><P>
+Diese 'Main' Methode ist typicherweise in desktop/source/app/app.cxx
+. 
+</P>
+<H3><A NAME="section-6.4"></A>6.4 Strings untersuchen</H3>
+<P>Der C-Char-Array Typ (den gdb anzeigen kann) wird bei
+objekt-orientiertem Programmieren durch das <FONT COLOR="#000000">&quot;Wrappen&quot;</FONT>
+von unz&auml;hligen verschiedenen Klassen vermieden, da gdb diese
+Klassen naturell nicht versteht. Schlimmer noch, in vielen F&auml;llen
+ist es besonders schwer sogar einfach nur den String zu drucken -
+eine der Konsequenzen von Sun's Strategie mit ucs-2 Enkodierung
+fortzufahren. Es gibt dabei neben ver&auml;nderbaren auch
+unver&auml;nderbare Strings.</P>
+<P>Bitte siehe dir <A HREF="#section5-8">Sektion 5.8</A> an, um zu
+sehen wie man in OOo mit Strings um gehen sollte, Debugging Tips sind
+daf&uuml;r auch dabei.</P>
+<H3><A NAME="section-6.5"></A>6.5 Die Build-Abfolge auf die Reihe
+bekommen</H3>
+<P>Die Build-Abh&auml;ngigkeiten der Module sind nicht sehr eindeutig
+und einfach, um einen sauberen Build hinzubekommen. Wenn du 'build'
+in einem Modul schreibst, wird erstmal prj/build.lst analysiert, wie
+neon/prj/build.lst zum Beispiel..</P>
+<PRE>xh      neon  :  soltools external expat NULL
+      </PRE><P>
+dies macht klar, dass 'soltools', 'external' und 'expat' (mit
+Geduld!) vorher noch gebuildet werden und danach zugestellt
+(&quot;deliver&quot;) werden m&uuml;ssen, bevor 'neon' erstmal
+gebuildet werden kann. Manchmal kommt es vor, dass diese Regeln
+gebrochen werden und eine Weile vergeht, in der sowas nicht bemerkt
+wird. Deshalb ist Vorsicht geboten! 
+</P>
+<H3><A NAME="section-6.6"></A>6.6 Es crasht, aber nur in gdb</H3>
+<P>Was f&uuml;r ein Spa&szlig; das ganze ist - <SPAN STYLE="background: transparent">du
+hast im Installationsbaum desktop/unxlngi4.pro/bin/soffice zu
+soffice.bin verwiesen, oder nicht?!</SPAN> Das funktioniert ja auch
+ganz fein, wenn du es einfach ausf&uuml;hrst. Aber es scheint, dass
+gdb den symbolischen Link entpackt und einen regul&auml;ren Pfad als
+argv[0] sendet, was ungl&uuml;cklicherweise das Suchen nach dem
+bin&auml;ren Pfad auswirkt, sodass es also den Hauptfad des Programms
+als opt/OpenOffice/OOO_STABLE_1/desktop/unxlngi4.pro/bin zuweist und
+nun dort nach applicat.rdb (nur als Beispiel) am Suchen ist. Es ist
+deswegen auch klar wie Klosbr&uuml;he, dass es keine Setup
+Informationen findet <FONT COLOR="#000000">und der Build-Prozess
+irgendwo - ganz weit entfernt - in der Pr&auml;rie ausstirbt.</FONT></P>
+<H3><A NAME="section-6.7"></A>6.7 Es crasht, &quot;stirbt&quot; aber
+nicht</H3>
+<P>Wegen einigen Gr&uuml;nden werden Signalhandler aufgesp&uuml;rt,
+und das Leben kann dann ganz sch&ouml;n verwirrend werden, deshalb
+ist es f&uuml;r Entwickler durchaus gut etwas &auml;hnliches, wie
+unten beschrieben, zu integrieren: 
+</P>
+<PRE>--- sal/osl/unx/signal.c
++++ sal/osl/unx/signal.c
+@@ -188,6 +188,8 @@ static sal_Bool InitSignal()
+             bSetILLHandler = sal_True;
+        }
+ 
++       bSetSEGVHandler = bSetWINCHHandler = bSetILLHandler = bDoHardKill = sal_False;
++
+        SignalListMutex = osl_createMutex();
+ 
+        act.sa_handler = SignalHandlerFunction;</PRE><H3>
+<A NAME="section-6.8"></A>6.8 Ich kann den Code im Fehlerprotokoll
+nicht finden</H3>
+<P>Manche Methoden haben eine spezielle Verbindung(=linkage), sodass
+sie dann in Callbacks benutzt werden k&ouml;nnen.</P>
+<P>Diese haben typicherweise die Pr&auml;fix 'LinkStub', such deshalb
+am besten f&uuml;r das letztere in einer Freitext-Suche:</P>
+<PRE>      IMPL_LINK( Window, ImplHandlePaintHdl, void*, EMPTYARG )
+      </PRE><P>
+Dies bildet dann die 'LinkStubImplHandlePaintHdl' Methode. 
+</P>
+<H3><A NAME="section-6.9"></A>6.9 Wie kann ich die Dateien der
+Fehlersuche erneut builden?</H3>
+<P>Beim Benutzen von gdb kommt es oft vor, dass man es sich nicht
+leisten kann ewig lang zu warten (oowriter Modul Kompilierung w&auml;re
+so ein Fall). Deswegen haben wir ein kleines Perl Skript geschrieben,
+mit dem du Klassen-Namen und/oder Methoden - in die du interessiert
+bist - vom Kellerspeicher (&quot;stack&quot;) ausschneiden und
+einf&uuml;gen kannst, und dann wird das Perl-Hilfswerkzeug nur diese
+Strings antasten (&quot;touch&quot;), um einen schnelleren und
+einfacheren Build erfolgreich hinzulegen. Hier ist ein typischer
+Ablauf von Fehlersuche und -beseitigung:</P>
+<PRE>    gdb ./soffice.bin
+    ...
+    bt
+#0  0x40b4e0a1 in kill () from /lib/libc.so.6
+#1  0x409acfe6 in raise () from /lib/libpthread.so.0
+#2  0x447bcdbd in SfxMedium::DownLoad(Link const&amp;) () from ./libsfx641li.so
+#3  0x447be151 in SfxMedium::SfxMedium(String const&amp;, unsigned short, unsigned char, SfxFilter const*, SfxItemSet*) ()
+   from ./libsfx641li.so
+#4  0x448339d3 in getCppuType(com::sun::star::uno::Reference const*) () from ./libsfx641li.so
+...
+    quit
+    cd base/OOO_STABLE_1/sfx2
+    ootouch SfxMedium
+    build debug=true
+    </PRE><P>
+Demzufolge werden alle Dateien, die sich auf SfxMedium beziehen oder
+irgendwas davon implementieren angetastet und mit Debugging-Symbolen
+neu gebuildet.</P>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-6.10"></A>6.10 Wie kann ich alle Dateien eines
+Ordners builden?</H3>
+<P>Wenn du schlicht und weg den code in deinem aktuellen
+Arbeitsverzeichnis kompilieren willst, dann verwende den killobj
+dmake Befehl, um alle bereits existierende Objektdateien zu l&ouml;schen:</P>
+<PRE>    dmake killobj
+    dmake
+    </PRE><H3>
+<A NAME="section-6.11"></A>6.11 Es crasht immer in sal_XErrorhdl</H3>
+<P>Huch, dann bist du ein Opfer von asynchronem (oder einfacher:
+&quot;one-way&quot;) X Fehlerreport, das</P>
+<PRE STYLE="margin-bottom: 0.2in">export SAL_SYNCHRONIZE=1</PRE><P>
+wird jegliche &quot;X-Verkehrweichen&quot; auf synchron stellen, und
+den Fehler mit dem Benennen der Methode ausspucken. Es wird OOo auch
+um einiges langsamer machen und das OOo Zeitsystem umstellen. 
+</P>
+<H3><A NAME="section-6.12"></A>6.12 Stillschweigend schl&auml;gt es
+Fehl beim Importieren meiner Word Datei</H3>
+<P>Unser Caolan schl&auml;gt hier vor, Stopppunkte (fast schon
+Schifffahrt-m&auml;ssig mit drei &quot;f&quot; ;) ) oberhalb und
+unterhalb von SwWW8ImplReader::LoadDoc in ww8par.cxx einzuf&uuml;gen,
+und zu gehe sicher, dass das Dokument so weit geht wie der
+Importfilter.</P>
+<P>Ein gem&uuml;tlicher Platz f&uuml;r einen Stopppunkt w&auml;re bei
+SwWW8ImplReader::ReadPlainChars, wo du ganze Brocken an Text (wie sie
+eingelesen werden) sehen kannst. Eine Alternative w&auml;re auch
+SwWW8ImplReader::AppendTxtNode f&uuml;r jeden eingef&uuml;gten
+Paragraph.</P>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-6.13"></A>6.13 Wie benutze ich die
+<SPAN STYLE="background: transparent">Debug-Konsole?</SPAN></H3>
+<P>OOo beinhaltet eine ziemlich deftige Infrastruktur; seht <A HREF="http://ooo.ximian.com/images/debug-window.png">hier</A>
+selbst. Bedauerlicherweise ist das <SPAN STYLE="background: transparent">Durchsetzen</SPAN>
+nicht ganz so einfach. Zuerst einmal geht nichts davon in einen
+offiziellen Produkt-Build, sodass wir also dazu gezwungen sind einige
+OOo Kernst&uuml;cke neu zu builden. Und schlie&szlig;lich sollten wir
+linkoo neu ausf&uuml;hren, um diese neuen Builds in unser Paket
+einzubinden.</P>
+<P>Kreiere eine Umgebungsvariable (=&quot;environment variable&quot;),
+ich nenn sie hier LinuxIntelEnv.Set.debug: 
+</P>
+<PRE>TMPFILE=~/.Env.Set.debug
+
+# Purge .pro bits
+sed 's/\.pro//g' LinuxIntelEnv.Set.sh &gt; $TMPFILE
+. $TMPFILE
+rm $TMPFILE
+
+# Clobber product parts
+unset PRODUCT PROSWITCH PROFULLSWITCH </PRE><P>
+Nun tue</P>
+<PRE STYLE="margin-bottom: 0.2in">source ./LinuxIntelEnv.Set.debug</PRE><P>
+, dies wird deine Umgebung f&uuml;r einen<SPAN STYLE="background: transparent">
+<FONT COLOR="#000000">Build</FONT><FONT COLOR="#ff0000"> </FONT>erschaffen</SPAN></P>
+<PRE STYLE="margin-bottom: 0.2in">cd vcl; build dbgutil=true --all linkoo </PRE><P>
+nun f&uuml;hre OOo aus und wenn es gerade voll im Arbeitsprozess ist,
+dr&uuml;cke &lt;Alt&gt;-&lt;Shift&gt;-&lt;Control&gt; 'D' in
+genannter Reihenfolge. Das sollte ein Popup-Debugging-Fenster zum
+Erscheinen bringen. Die Fehlersuch-Optionen sind anschlie&szlig;end
+in die dbgsv.init Datei gespeichert f&uuml;r den n&auml;chsten
+Durchlauf. Du kannst den Ort dessen mit</P>
+<PRE STYLE="margin-bottom: 0.2in">export DBGSV_INIT=$(HOME)/.dbgsv.init</PRE><P>
+kontrollieren, leider handelt es sich hier um eine bin&auml;re Datei</P>
+<H3><A NAME="section-6.14"></A>6.14 Excel
+<SPAN STYLE="background: transparent">Interoperabilit&auml;ts</SPAN>-Debugging</H3>
+<P>Das ist ganz einfach: Editiere sc/source/filter/inc/biffdump.hxx,
+definiere EXC_INCL_DUMPER mit dem Wert 1 und dann builde 'sc' erneut.
+<SPAN STYLE="background: transparent"><FONT COLOR="#000000">Hinzuzuf&uuml;gen
+w&auml;re noch sc/source/filter/excel/biffrecdumper.ini zu xxx zu
+kopieren</FONT>.</SPAN> Dann f&uuml;hre 
+</P>
+<PRE STYLE="margin-bottom: 0.2in">soffice.bin foo.xls</PRE><P>
+aus und und voila es sollte eine foo.txt mit Debugging-Informationen
+erstellt worden sein. Wenn du nichts erhalten haben solltest, dann
+kannst du die sc-biffdump.diff <A HREF="http://qa.openoffice.org/issues/show_bug.cgi?id=25430">hier</A>
+finden. 
+</P>
+<H2><A NAME="section7"></A><A NAME="section-7"></A>7. Patche
+bereitstellen</H2>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-7.1"></A>7.1. Diff Tool</H3>
+<P>Wende diff immer im standardgem&auml;&szlig;en 'cvs -z3 diff -u'
+an, da dies die am einfachsten lesbaren diff-Dateien erstellt.</P>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-7.2"></A>7.2. Kommunikation</H3>
+<P>Bevor man einen eigens ausgearbeiteten <FONT COLOR="#000000">Fix
+(f&uuml;r einen Programmfehler)</FONT> implementiert, ist es ratsam
+sich mit dem ein oder anderen Entwickler vorher dar&uuml;ber zu
+unterhalten. Einer der besten Wege mit anderen Entwicklern in Kontakt
+zu treten ist an <A HREF="mailto:dev@openoffice.org">dev@openoffice.org</A>
+zu schreiben, oder im <FONT COLOR="#000000">channel #openoffice.org</FONT>
+auf dem IRC Server: irc.freenode.net (Port: 6667) Ausschau zu halten.
+IRC ist ein ziemlich stupides Kommunikationsmedium, aber es ist immer
+noch viel besser als gar keine Kommunikation. Schaue <A HREF="http://ooo.ximian.com/name-account.html">hier</A>
+nach, um zu erfahren, wer wer ist im channel. 
+</P>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-7.3"></A>7.3. ooo-build Patchsystem</H3>
+<P>Schaue <A HREF="http://ooo.ximian.com/ooo-build.html#section-2.2">hier</A>
+nach, um mehr &uuml;ber unsere <FONT COLOR="#000000">Patch-Struktur</FONT>
+zu erfahren.</P>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-7.4"></A>7.4 Programmfehler mitteilen</H3>
+<P><A HREF="http://ooo.ximian.com/bug.html">Hier</A> kannst du unsere
+mildere Version des OpenOffice IssueZilla Systems sehen und beruhigt
+benutzen :-).</P>
+<P>Da wir oftmals die Hauptperson eines Moduls durch das Checken des
+ADMIN_FILE_OWNER Tags herausbekommen k&ouml;nnen, haben wir daf&uuml;r
+extra ein kleines Tool f&uuml;r den ooo-build eingebaut: 
+</P>
+<P>bin/owner &lt;Dateiname&gt; hilft dir dabei, wem du bez&uuml;glich
+eines bestimmten Moduls e-mailen solltest. Es ist es in jedem Fall
+Wert bei sehr spezifisch einzuordnenden Programmfehlern mit dieser
+Person in Kontakt zu treten.</P>
+<P><BR><BR>
+</P>
+<H2><A NAME="section8"></A>8. Sonstige Tipps</H2>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-8.1"></A>8.1. Wie stelle ich eine Verbindung mit
+CVS Account her?</H3>
+<P>&Uuml;ber die sichere SSH Methode. Dieser Abschnitt beschreibt die
+Benutzung von CVS Accounts f&uuml;r den offiziellen OpenOffice.org
+up-stream Server, ooo-build Accounts werden <A HREF="http://ooo.ximian.com/ooo-build.html#section-2.5.1">anders</A>
+behandelt. Siehe auch i7270 im OOo Issuezilla. Sobald du den Account
+hast, kannst du den CVS Server etwa in dieser Art <SPAN STYLE="background: transparent">&quot;tunneln&quot;</SPAN>:</P>
+<PRE><FONT COLOR="#000000"><SPAN STYLE="background: transparent">ssh -f -2 -P -L 2401:localhost:2401 tunnel@openoffice.org sleep 1400 &lt; /dev/null &gt; /dev/null</SPAN></FONT>
+<FONT COLOR="#000000"><SPAN STYLE="background: transparent">    </SPAN></FONT></PRE><P>
+<FONT COLOR="#000000"><SPAN STYLE="background: transparent">Dann
+kannst du deinen CVSROOT auf-deine-Festplatte-zeigend wechseln, da
+dies ja der Ausgangspunkt des Tunnels ist:</SPAN></FONT></P>
+<PRE><FONT COLOR="#000000"><SPAN STYLE="background: transparent">:pserver:cj@localhost:/cvs</SPAN></FONT>
+<FONT COLOR="#000000"><SPAN STYLE="background: transparent">    </SPAN></FONT></PRE><P>
+<FONT COLOR="#000000"><SPAN STYLE="background: transparent">Dein
+Account Name und Passwort werden dieselben sein, wie im
+openoffice.org Mitgliedsportal. Log dich ein und du wirst schnell
+erkennen, dass du deine CVS Einstellungen zum neuen Server migrieren
+musst. Das folgende sollte gut funktionieren: </SPAN></FONT>
+</P>
+<PRE STYLE="margin-bottom: 0.2in"><FONT COLOR="#000000"><SPAN STYLE="background: transparent">bin/re-root /path/to/checkout &quot;:pserver:&lt;account-name-here&gt;@localhost:/cvs&quot;</SPAN></FONT></PRE><P>
+<FONT COLOR="#000000"><SPAN STYLE="background: transparent">Um etwas
+direkt einzubinden, brauchst du nat&uuml;rlich mehrere
+Projektprivilegien - und nebenbei musst du noch gegen die B&uuml;rokratie
+ank&auml;mpfen :-).</SPAN></FONT></P>
+<H3><A NAME="section-8.2"></A>8.2 patch / diff Benutzung</H3>
+<P><FONT COLOR="#000000">patch/diff sind wunderbare Werkzeuge, doch
+leider kommt es gar nicht mal so selten vor, dass wir Menschen Daten
+angeben, die diese total durcheinander bringen; ein wirres &quot;Klamaust&quot;
+entsteht als Folge.</FONT><FONT COLOR="#ff0000"> </FONT><FONT COLOR="#000000">Hier
+sind ein paar Tricks, um dieses Durcheinander zu ordnen: </FONT>
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in">Wenn generell unsicher, f&uuml;hre
+	patch mit der --dry-run Option aus, der dann anspringende Prozess
+	wird so erscheinen als verrichte er den Patch, tats&auml;chlich wird
+	aber nichts repariert (&quot;gepatcht&quot;). (Trotz einiger
+	Nebenwirkungen, kann dieses &quot;Simulieren&quot; in etlichen
+	Situationen sehr hilfreich sein)</P>
+	<LI><P STYLE="margin-bottom: 0in">In den meisten Situationen
+	solltest du patch -p0 benutzen. Die 0 steht f&uuml;r die Anzahl der
+	Pfadelemente, die vom Anfang des Dateipfades - wo diff hinzeigt -
+	abgeschnitten wird.</P>
+	<LI><P STYLE="margin-bottom: 0in">Wenn du es durcheinander bringst,
+	und schon die H&auml;lfte des Patches angelegt hast und du willst
+	mit einem sauberen Patch wieder von vorne beginnen, dann l&ouml;sche
+	entweder die Dateien und aktualisiere cvs, oder patche von neuem mit
+	der '-R' Option, <FONT COLOR="#000000">um den Spie&szlig; (der Patch
+	Prozess ist hier gemeint) umzudrehen.</FONT></P>
+	<LI><P>Manchmal macht diff das Lesen der Patches schwerer, wenn
+	viele L&uuml;cken(&quot;white-space&quot;)-Ver&auml;nderungen
+	zwischen den Modulen vorhanden sind. Der <FONT COLOR="#000000">Bitschalter
+	(&quot;flag&quot;)</FONT> '-w' zum cvs diff macht das ganze hierbei
+	um einiges leichter.</P>
+</UL>
+<H3><A NAME="section-8.3"></A>8.3 Make clean</H3>
+<P>Schreib einfach <I>dmake clean</I> im Hauptverzeichnis. In alten
+Versionen, die noch &uuml;ber kein HEAD verzeichneten, war kein
+allgemeines 'clean' Ziel, sodass man stattdessen etwas wie in der
+folgenden Art tuen musste: 
+</P>
+<PRE STYLE="margin-bottom: 0.2in">find -name 'unxlngi4.pro' -exec rm -Rf {} \;</PRE><H3>
+<A NAME="section-8.4"></A>8.4 CVS setup</H3>
+<P><FONT COLOR="#000000">Um die Bandbreite voll auszunutzen,
+generiere vern&uuml;nftige .diffs als Standard und folge dem Trend,
+du brauchst das in deiner ~/.cvsrc. </FONT>
+</P>
+<PRE>cvs -z3 -q
+diff -upN 
+update -dP
+checkout -P
+status -v </PRE><H3>
+<A NAME="section-8.5"></A>8.5. Headerdateien zum Build integrieren 
+</H3>
+<P>Die Integration von neuen Headerdateien in den Build Prozess ist
+ziemlich umst&auml;ndlich. Um Headerdateien unter external/
+einzubringen, gehe ganz sicher, dass diese dann auch in
+external/prj/d.lst aufgelistet sind, sodass sie beim Builden in das
+solver/641/unxlngi4.pro/inc/external Verzeichnis kopiert werden.</P>
+<H3><A NAME="section-8.6"></A><FONT COLOR="#000000">8.6. Beim Hacken
+die richtige Datei finden</FONT></H3>
+<P><FONT COLOR="#000000">Einen Programmfehler zu beheben, oder
+anderes, kann schon einige Zeit durch den OOo Dateiendschungel in
+Anspruch nehmen. Oft gibt es einen Verweis zu einem GUI Element in
+unmittelbarer N&auml;he, wo du gerade suchst. Finde also so einen
+String und suche mit <A HREF="http://ooo.ximian.com/lxr"><FONT COLOR="#000080">LXR</FONT></A><FONT COLOR="#000000">'s
+<B>Text</B> Suche, das sollte dann einen Identifier zum String
+enth&uuml;llen, wie z.B. SID_AUTOFORMAT oder FN_NUM_BULLET_ON.
+Nachdem du diesen herausgefunden hast, starte eine neue Suchanfrage
+und du wirst die Benutzung, oder sogar Definition/Deklaration des
+betreffenden Identifiers finden. </FONT></FONT>
+</P>
+<H2><A NAME="section9"></A>9. N&uuml;tzliche Links</H2>
+<H3><A NAME="section-9.1"></A>9.1 www.openoffice.org</H3>
+<P>W&auml;hrend das meiste des openoffice.org Portals nicht wirklich
+Hacker-orientiert ist, gibt es trotzdem einiges an <A HREF="http://www.openoffice.org/documentation.html">Dokumentation</A>
+f&uuml;r das Thema, du musst nur danach suchen. Die
+<A HREF="http://tools.openoffice.org/">Tools-Projektseite</A>
+schlie&szlig;t z.B. das richtige Kompilieren und Builden mit
+verschiedenen Compilern auf verschiedenen Plattformen ein.</P>
+<P><A HREF="http://www.ooodocs.org/">ooodocs.org</A> ist zwar nun
+seit einiger Zeit ein wenig veraltet, bietet jedoch trotzdem einiges
+an nennenswerten Informationen.</P>
+<P>Pers&ouml;nlich kann ich das <A HREF="http://www.oooforum.org/">oooforum</A>
+empfehlen, eines der wohl aktivsten Support-Forums im OpenSource
+Bereich.</P>
+<P>Andere verwandte Seiten sind: <A HREF="http://ooodi.sourceforge.net/">OOODI</A>
+ein Gtk+ Bibliotheken Installierer. <A HREF="http://ooextras.sourceforge.net/">OOExtras</A>
+bietet Templates, Macros und Clip Art. <A HREF="http://ooqstart.sourceforge.net/">Quickstart
+applet</A> f&uuml;r GNOME (und <A HREF="http://segfaultskde.berlios.de/index.php?content=oooqs">KDE</A>).
+<A HREF="http://dict.progbits.com/">Dictionaries &amp; Docs</A> von
+Kevin Hendricks. 
+</P>
+<P>Seit k&uuml;rzerer Zeit - genauer genommen seit Sun versprach eine
+neue CWS-Regelung zu erschaffen, um es f&uuml;r au&szlig;enstehende
+einfacher zu machen ein bestimmtes Feature f&uuml;r OOo zu entwickeln
+- gibt es auch den <A HREF="http://eis.services.openoffice.org/EIS2/servlet/GuestLogon">EIS-Service</A>,
+in dem CWSs (Plural !) organisiert werden k&ouml;nnen. F&uuml;r
+n&auml;here Informationen, kann ich nur die speziellen Pr&auml;sentationen
+der OOo Konferenz 2004 empfehlen.</P>
+<H3><A NAME="section-9.2"></A>9.2 Patch Archiv</H3>
+<P>W&auml;hrend viele verschiedene Versionen von OOo produziert
+werden, sind viele Projekte in der letzten Zeit mit eigenen
+beeindruckend gro&szlig;en Patch-Zusammenstellungen f&uuml;r OOo
+hervorgekommen. 
+</P>
+<P><BR><BR>
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0.16in"><A HREF="http://ooo.ximian.com/">Ximian</A>s
+	OOo Patche and Build-Werkzeuge / Snapshots sind als <A HREF="http://ooo.ximian.com/packages">Pakete</A>
+	oder <A HREF="http://ooo.ximian.com/patches">Patche</A> verf&uuml;gbar.</P>
+	<LI><P STYLE="margin-bottom: 0.16in"><A HREF="http://www.debian.org/">Debian</A>s
+	hilfreiche OOo <A HREF="http://www.linux-debian.de/openoffice/">Seite</A>,
+	mit diversen Patchen. Und Debians <A HREF="http://cvs.debian.org/oo-deb/debian/?cvsroot=debian-openoffice">CVS</A>.
+		</P>
+	<LI><P STYLE="margin-bottom: 0.16in"><A HREF="http://www.linux-mandrake.com/">Mandrake</A>s
+	OOo <A HREF="http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/SPECS/OpenOffice.org/">Patch
+	Archiv</A>. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0.16in"><A HREF="http://www.freebsd.org/cgi/cvsweb.cgi/ports/editors/openoffice/#dirlist">FreeBSD</A>s
+	OOo <SPAN STYLE="background: transparent">Port-Patche</SPAN>. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0.16in">Red Hats .spec Datei (basierend
+	auf Mandrake) ist auch Wert zu lesen: von ihrer <A HREF="http://rawhide.redhat.com/pub/redhat/linux/rawhide/SRPMS/SRPMS/openoffice-1.0.1-6.src.rpm">SRPM</A>
+	Seite</P>
+</UL>
+<UL>
+	<LI><P STYLE="margin-bottom: 0.16in">Leute, die OOo lokalisieren
+	wollen, k&ouml;nnen diese <A HREF="ftp://ftp.linux.cz/pub/linux/people/pavel_janik/OpenOffice.org_1.0.1_CZ/build-13/build/Patches">Patche</A>
+	von Pavel Janik studieren. 
+	</P>
+</UL>
+<H2><A NAME="section10"></A><A NAME="section-10"></A>10 (F)AQ</H2>
+<P>Warum (F)..? Nunja, der gute Michael hat sich die folgenden Fragen
+eher selbst gestellt.</P>
+<H3><A NAME="section-10.1"></A>10.1 Wieso enthalten <SPAN STYLE="background: transparent">Zweignamen,
+</SPAN>wie 'mws_srx644', ungerade Zahlen?</H3>
+<P>Theoretisch erh&ouml;ht sich die Nummer w&ouml;chentlich und da
+w&ouml;chentlich &quot;Freezes&quot; vollzogen werden, gibt es auch
+w&ouml;chentliche Solver und Entwicklungsumgebungen. Wie auch immer,
+seit k&uuml;rzester Zeit nimmt das Auskristallisieren eines einzigen
+Buildes mehr Zeit als eine Woche in Anspruch - das f&uuml;hrt dann
+zum Dilemma der gemischten alphanumerischen &quot;Versionstags&quot;.
+Das <SPAN STYLE="background: transparent">'mws' steht f&uuml;r
+'Master Workspace'.</SPAN></P>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-10.2"></A>10.2 Wieso wird Java unbedingt f&uuml;r
+einen Build gebraucht ?</H3>
+<P>Essenziell sieht es so aus, als seien, neben unterschiedlichen
+anderen Services, eine Menge an XML Dateien an der
+Komponentenregistration beteiligt. Es scheint so zu sein, dass dieser
+Prozess am einfachsten mit Java zu vollziehen ist. Hinzu kommt, dass
+Java effizient w&auml;hrend der Run-Time benutzt werden kann.</P>
+<P>Von <SPAN STYLE="background: transparent">&quot;Tag&quot;
+</SPAN>SRC680_m44 an gibt es nun jedoch eine <A HREF="http://www.openoffice.org/issues/show_bug.cgi?id=28773">Alternative</A>
+(geschrieben in Python), um das Problem des Analysierens der XML
+Dateien und haupts&auml;chlich ihrer Registration zu addressieren,
+sodass es also m&ouml;glich sein sollte nach m44 den Build ohne Java
+hinzubekommen.</P>
+<P><BR><BR>
+</P>
+<H3><A NAME="section-10.3"></A>10.3 Was zum Teufel ist mit [t]csh
+los?</H3>
+<P>Ganz einfach, csh funktioniert schlicht und einfach nicht richtig.
+&quot;Warum?&quot; ist nat&uuml;rlich die gro&szlig;e Frage und
+soweit ich es wei&szlig; h&auml;ngt es mit der speziellen Art
+zusammen, wie die Piping-Befehle f&uuml;r stdin verlaufen, n&auml;mlich
+ganz anders als von tty ausgehend:</P>
+<PRE STYLE="margin-bottom: 0.2in">echo 'echo #define DLL_NAME &quot;libsch641li.so&quot; &gt;./foo.hxx' | /bin/tcsh -s</PRE><P>
+Das ganze schl&auml;gt normalerweise Fehl, wobei es beim direkten
+Schreiben in die Shell jedoch funktioniert,</P>
+<PRE STYLE="margin-bottom: 0.2in">tcsh -fc 'echo #define DLL_NAME &quot;libsch641li.so&quot; &gt;./foo.hxx'</PRE><P>
+bringt das erw&uuml;nschte Ergebnis. Siehe auch <A HREF="http://www.faqs.org/faqs/unix-faq/shell/csh-whynot/">csh</A>.
+</P>
+<H3><A NAME="section-10.4"></A>10.4 Ich habe gerade versucht den
+Build <SPAN STYLE="background: transparent">woanders zu lokalisieren,
+wieso schl&auml;gt es nun Fehl </SPAN>?</H3>
+<P>Die verbl&uuml;ffende Antwort ist..... du musst 
+</P>
+<PRE STYLE="margin-bottom: 0.2in">bin/relocate /path/to/new/build</PRE><P>
+ausf&uuml;hren. Eine andere Antwortweise w&auml;re um einiges l&auml;nger:
+</P>
+<P>Wenn davon ausgegangen wird, dass du die n&ouml;tigen Dinge neu
+konfiguriert hast (auch LinuxIntelEnv.Set wird Rumbasteln der Pfade
+brauchen und in die Shell reimport werden m&uuml;ssen) - dann liegt
+das Problem wohl an den absoluten Pfaden, die vor allem in '.dpc*'
+vorkommen. Versuche: 
+</P>
+<PRE>find -name '*.dpc*' -exec rm {} \;
+      </PRE><P>
+Der stlport schw&auml;chelt in einigen Dingen, sodass du also auch
+'stl_gcc.h' innerhalb des solver/ Verzeichnisses editieren und die
+dortigen beiden Pfad-Erw&auml;hnungen ersetzen musst (siehe
+inc/stl/config/stl_gcc.h). 
+</P>
+<H3><A NAME="section-10.5"></A>10.5 CVS sagt 'Fatal Error aborting.
+[acc] no such user', wieso das denn jetzt ?</H3>
+<P>W&auml;hrend es nat&uuml;rlich m&ouml;glich ist, dass dein
+Username nicht registriert ist, meint es oftmals jedoch dass deine
+~/.cvspass Datei verschwunden ist und/oder, dass du dich nicht
+eingeloggt hast. cvs login, daraufhin wiederhole den Befehl.</P>
+<H3><A NAME="section-10.6"></A>10.6 Was habe ich unter '.pro' in
+'unxlngi4.pro' zu verstehen ?</H3>
+<P><I>Pro</I>duct - ist das nicht offensichtlich? :-) 
+</P>
+<H3><A NAME="section-10.7"></A>10.7 Wie ist OpenOffice intern
+aufgebaut ?</H3>
+<P><IMG SRC="hackers-guide_files/layers.png" NAME="Graphic1" ALT="Abstraction Layers" ALIGN=BOTTOM WIDTH=485 HEIGHT=330 BORDER=0>
+</P>
+<H3><A NAME="section-10.8"></A>10.8 <SPAN STYLE="background: transparent"><FONT COLOR="#000000">Wie
+nehme ich einen <SPAN STYLE="background: transparent">Screenshot</SPAN>
+von OOo auf </FONT></SPAN>?</H3>
+<P>Manche konventionelle Screenshot Programme bekommen keine scharfen
+Bilder auf die Reihe, weil OOo manche recht komische Dinge mit den X
+Resourcen anstellt. ImageMagicks 'import' sollte jedoch seinen Zweck
+erf&uuml;llen, benutze: 
+</P>
+<PRE STYLE="margin-bottom: 0.2in">import foo.png</PRE><P>
+von der Konsole, oder stattdessen</P>
+<PRE STYLE="margin-bottom: 0.2in">sleep 2; import -window root foo.png</PRE><P>
+. Es sei denn du willst deine &quot;Welt&quot; klein aussehen lassen,
+solltest du die &quot;Toolbar icons&quot; vorher auf gro&szlig;
+stellen, versteht sich.</P>
+<H3><A NAME="section-10.9"></A>10.9 Meine prefix Option beinhaltet
+&quot;BUILD&quot;, wieso schl&auml;gt der Build Fehl?</H3>
+<P>Das h&auml;ngt wieder mal mit unserem stlport zusammen, diesmal
+aber wirklich ein krummes Ding. Im Grunde genommen kommt es hier zum
+&Uuml;berschreiben einer Headerdatei und <I>sie</I> (denkt dir
+selbst, wer das sein k&ouml;nnte) wollen sich die Option freihalten
+zum vorigen Header - mit dem selben Namen - zur&uuml;ckfallen lassen
+zu k&ouml;nnen. Deswegen m&uuml;ssen die Pfade <SPAN STYLE="background: transparent">hart
+kodiert</SPAN> werden. Um sich das an vielen Pl&auml;tzen zu
+ersparen, benutzen <I>sie</I> einen #define mit Macro Expansion. Wenn
+deshalb deine gcc prefix ein Element enth&auml;lt, was auch ein Macro
+ist - kommt es kn&uuml;ppelhart:</P>
+<P>stlport config header: 
+</P>
+<PRE>#define _STLP_NATIVE_INCLUDE_PATH \
+        /home/michael/ximian-desktop/ooo/BUILD/ooo/include/c++/3.2.2</PRE><P>
+stlport n&uuml;tzliche Macros:</P>
+<PRE># define _STLP_MAKE_HEADER(path, header) &lt;path/header&gt;
+# define _STLP_NATIVE_CPP_C_HEADER(header)  \
+        _STLP_MAKE_HEADER(_STLP_NATIVE_INCLUDE_PATH,header)</PRE><P>
+und schlie&szlig;lich stlport`s schlaue Einbeziehung (=include
+directive): 
+</P>
+<PRE STYLE="margin-bottom: 0.2in">#include _STLP_NATIVE_CPP_C_HEADER(foo)</PRE><P>
+Resultat: 
+</P>
+<PRE>      g++ ... -D<B>BUILD</B>=<B>7663</B> ...
+      ...
+from /home/michael/ximian-desktop/ooo/<B>BUILD</B>/ooo/OOO_1_0_2/xml2cmp/source/xcd/main.cxx:62:
+/home/michael/ximian-desktop/ooo/<B>BUILD</B>/ooo/OOO_1_0_2/solver/641/unxlngi4.pro/inc/stl/cstddef:35:46:
+/home/michael/ximian-desktop/ooo/<B>7663</B>/ooo/include/c++/3.2.2/cstddef: No such file or directory
+      </PRE><H3>
+<A NAME="section-10.10"></A>10.10 F&uuml;r was ist <SPAN STYLE="background: transparent">die
+<SPAN STYLE="background: transparent">UNO-Komponentendoku in XML da</SPAN></SPAN>?</H3>
+<P><SPAN STYLE="background: transparent">Nicht viel. Obwohl es
+durchaus von Wert ist, diese mal runterzuladen, wird ihr zur Zeit
+jedoch sogut wie &uuml;berhaupt keine Beachtung geschenkt.</SPAN></P>
+<H3><BR><BR>
+</H3>
+<H2><A NAME="section11"></A><A NAME="section-11"></A>11. Mit uns
+arbeiten</H2>
+<P>Siehe das <A HREF="http://ooo.ximian.com/ooo-build.html">About
+ooo-build</A> Dokument an (englisch). 
+</P>
+<P><BR><BR>
+</P>
+<P ALIGN=LEFT STYLE="border-top: none; border-bottom: 1.10pt double #808080; border-left: none; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0in; padding-right: 0in">
+<FONT SIZE=2 STYLE="font-size: 9pt">auf deutsch &uuml;bersetzt von
+Christian Junker &deg;v0.8&deg;</FONT></P>
+</BODY>
+</HTML>
