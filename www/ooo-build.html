@@ -39,6 +39,14 @@
       and a flexible patching system allows the maintenance of a branch
       very much more easily.
     </p>
+    <p>
+      In fact, it's entirely possible that cvs does scale to projects
+      the size of OO.o - but due to (apparently unfixable) design
+      inefficiencies in Source-Cast [ having the cvs data remote via
+      NFS from the cvs server ], we have serious performance problems.
+      See <a href="http://www.openoffice.org/issues/show_bug.cgi?id=24771">
+      here</a> for more information.
+    </p>
     <h3 id="section-1.2">1.2 OO.o process is too slow</h3>
     <p>	
       Why do we have to have a branch, and a large patch set at all ?
