@@ -1,0 +1,81 @@
+<!DOCTYPE doctype PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html lang="en">
+<head>
+                                                                        
+               
+  <meta lang="en" http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  <title>Short guide for CPAN downloads</title>
+    
+</head>
+     <body>
+                                               
+<h1>Short guide for CPAN downloads</h1>
+                                                
+<p>       As you might need to install additional perl modules to use the 
+                   tinderbox script this document describes briefly how to 
+ access                 CPAN. </p>
+                                    
+<h2 id="section-1">What is CPAN?</h2>
+                                    
+<p>CPAN is the <b>C</b>omprehensive <b>P</b>erl <b>A</b>rchive <b>N</b>etwork, 
+        a large collection of Perl software and documentation. You can begin 
+   exploring     from either <a href="http://www.cpan.org/">http://www.cpan.org/</a>, 
+   <a href="http://www.perl.com/CPAN/">http://www.perl.com/CPAN/</a> or any 
+  of     the mirrors listed at <a href="http://www.cpan.org/SITES.html">http://www.cpan.org/SITES.html</a>
+          and <a href="http://mirror.cpan.org/">http://mirror.cpan.org/</a>.</p>
+                                    
+<p>Note that CPAN is also the name of a Perl module, CPAN.pm, which is used 
+        to download and install Perl software from the CPAN archive.</p>
+                                
+<p> This page tells you only enought to use this Perl module to install the
+         needed modules to run the tinderbox script. You may find the documentation 
+       for it by using <tt> perldoc CPAN </tt> via the command line or on 
+the    web   at  <a
+ href="http://search.cpan.org/author/JHI/perl-5.8.0/lib/CPAN.pm">  http://search.cpan.org/author/JHI/perl-5.8.0/lib/CPAN.pm</a>.</p>
+                                                       
+<h2 id="section-2">Install a module with CPAN.</h2>
+                                               
+<p>If you are behind a firewall set <tt>FTP_PASSIVE</tt> to 1.</p>
+     
+<blockquote>                     
+  <pre>$ export FTP_PASSIVE="1"</pre>
+      </blockquote>
+                                  
+<p>Start the CPAN module.</p>
+           
+<blockquote>                     
+  <pre>$ perl -MCPAN -e shell</pre>
+      </blockquote>
+           
+<p>If this is your first time you use this module you have to answer some
+       questions of this module. Just follow the directions on your screen.</p>
+                              
+<p>As you will probably need the sender module install it with:</p>
+           
+<blockquote>                     
+  <pre>cpan&gt; install Mail::Sender</pre>
+       </blockquote>
+                                                
+<p>Typing <tt>help</tt> gets you some online help.</p>
+           
+<blockquote>                     
+  <pre>cpan&gt; help</pre>
+      </blockquote>
+                  
+<p>And typing <tt>quit</tt> quits the module.</p>
+           
+<blockquote>                     
+  <pre>cpan&gt; quit</pre>
+      </blockquote>
+                  
+<p>This is everything you need to know to use the CPAN module.</p>
+                  
+<hr>                        
+<p>Need help ? please do mail <a href="http://www.gnome.org/%7Emichael">me</a>,
+    at <a href="mailto:michael@ximian.com">michael@ximian.com</a> or <a
+ href="mailto:quetschke@scytek.de">quetschke@scytek.de</a>   </p>
+   <br>
+                                         
+</body>
+</html>
