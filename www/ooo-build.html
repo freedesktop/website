@@ -94,7 +94,18 @@
       task - hopefully this will not result in an even bigger mess of
       alternative packaging schemes.
     </p>
-    <h3 id="section-1.4">1.4 lack of interest in up-streaming</h3>
+    <h3 id="section-1.4">1.4 flexible staging ground for patches in
+    progress</h3> <p>
+      We have introduced a way to select a subset of patches to apply to
+      a particular build.  For example, Ximian uses a set of patches to
+      use CUPS as the printing system, which Debian, as a more general
+      distribution cannot do, but both packages use the fontconfig support.
+    </p>
+    <p>
+      It also gives the patches a chance to be tested by a wider user 
+      community while they await integration into the main version.
+    </p>
+    <h3 id="section-1.5">1.5 lack of interest in up-streaming</h3>
     <p>
       There have been for many years, very many patches against OO.o to
       do all manner of useful things. Many of these have been submitted
@@ -159,9 +170,10 @@
       <ul>
         <li>Working outside CVS makes up-streaming harder, and commits
 	somewhat more painful.
-        <li>You get no 'official' recognition; no-matter how large your
-	contribution to OO.o you don't exist in the eyes of the artificial
-	OO.o <i>community</i>; however - we value you more.
+	<li>You get no immeditate 'official' recognition; no-matter how large
+	your contribution to OO.o you don't exist in the eyes of the artificial
+	OO.o <i>community</i> as ooo-build is not an 'official' project;
+	however - we value you more.
       </ul>
     </p>
    
