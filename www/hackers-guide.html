@@ -567,9 +567,13 @@ rtl_uString_newFromAscii (&amp;str, "hello Unicode world");
       We have already seen that OO.o does not use humble <code>char *</code> 
       strings.  If you thought this was painful enough when writing
       code, wait until you have to debug it.  Here's how to get at
-      your strings:
+      your strings from gdb/dbx which don't natively handle unicode.
     </p>
 
+    <ul>
+      <li>from cvs branch cws_srx645_ooo112fix1 onwards you can use <pre>(gdb) print dbg_dump(sWhatEver)</pre> to print the contents of a UniString/ByteString/rtl::OUString/rtl::OString regardless of the type when debugging C++ code. See <a href="http://qa.openoffice.org/issues/show_bug.cgi?id=17295">issue 17295</a> for details.
+    </ul>
+    Alternatively if this support isn't in your version of OOo yet then...
     <ul>
       <li>rtl_String: just poke at it</li>
       <li>String: &mdash; note, the decl' of this uses the macro
