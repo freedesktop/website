@@ -209,17 +209,19 @@ gui-toolbox-hack.diff
     <h3 id="section-2.5">2.5 Committing the new patch to openoffice.org</h3>
     <h4 id="section-2.5.1">2.5.1 your first commit to openoffice.org</h4>
     <ul>
-	<li>Create a perl crypted password:
-	    <b>perl -e "print ':'.crypt('mypassword', 'zt').':';"</b>
-	    'zt' should be 2 random chars, and 'mypassword' should be a strong
-	    password.
-	<li>E-mail this crypted password with your full name, and contact E-mail
+	<li>Create an ssh key, see <a href="http://sysadmin.gnome.org/users/security.html">
+	here</a> for more details. If you have a key already, send that - it probably
+	lives in ~/.ssh/id_dsa.pub or ~/.ssh/id_rsa.pub. Two things to note: <b>do not</b>
+	send the private key, and <b>do not</b> loose the key (or overwrite it, or ...).
+	<li>E-mail this public key file, with your full name, and contact E-mail
 	    address to <a href="mailto:michael@ximian.com">michael@ximian.com</a>
 	    and/or <a href="halls@debian.org">halls@debian.org</a>.
 	<li>If you overlap in European time poke michael / haggai on IRC.
 	<li>When you have a CVS account, you will need to switch 'ooo-build'
 	to the new root before you can commit, so run:
-<pre>ooo-build/bin/re-root ooo-build ':pserver:<b><i>UserName</i></b>@cvs.gnome.org:/cvs/gnome'</pre>
+<pre>ooo-build/bin/re-root ooo-build ':ext:<b><i>UserName</i></b>@cvs.gnome.org:/cvs/gnome'</pre>
+	<li>You will also need to export CVS_RSH=ssh before you can perform
+	CVS commands.
       </ul>
     <br/>
     <h4 id="section-2.5.2">2.5.2 how to commit</h4>
