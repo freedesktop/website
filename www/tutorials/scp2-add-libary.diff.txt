@@ -1,0 +1,18 @@
+--- scp2/source/ooo/file_library_ooo.scp	2004-12-21 14:49:11.000000000 +0530
++++ scp2/source/ooo/file_library_ooo.scp	2004-12-24 10:11:44.343252931 +0530
+@@ -458,6 +458,15 @@ File gid_File_Lib_Db_Cxx
+ End
+ #endif
+ 
++#ifdef UNX
++File gid_File_Lib_Hl_World
++    TXT_FILE_BODY;
++    Styles = (PACKED);
++    Dir = gid_Dir_Program;
++    Name = STRING(CONCAT4(libhworld,OFFICEUPD,DLLSUFFIX,UNXSUFFIX));
++End
++#endif
++
+ #endif
+ 
+ STD_UNO_LIB_FILE( gid_File_Lib_Dba, dba)

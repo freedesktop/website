@@ -1,0 +1,57 @@
+<html><pre><h4>
+Hack!
+
+-------------------------------------------------------------------------------
+
+Hack what ? We would have to start with what's available to hack first :-)
+
+So let's see, launching OOo with the newly installed 'soffice' launches the
+framework of the OpenOffice.org application. If it defaults to open with a
+default document, just close the application so that we have the blank
+framework window to start with.
+
+Doesnt look very complicated, so we have a menubar at the top and one toolbar
+below it. The help option in the menubar has as the last menuitem
+"About OpenOffice.org" which is what we're going to target now:
+
+Most of the functionality we are interested in is concentrated in relatively
+few of the top-level projects -
+
+sw - is the OpenOffice.org Writer
+sc - is the OpenOffice.org Calc
+sd - is the OpenOffice.org Impress and Draw
+
+And where functionality is common for all these applications, it is usually
+held in one of the desktop, svx and sfx2 projects.
+
+The objective of this hack is to attach a keyboard accelerator to the About
+Dialog, so similar to how Ctrl+N launches a New Document, we'll add in a Ctrl+T
+to launch the About Dialog.
+
+We want this to be accessible across all the applications, which is held in the
+top-level svx project. svx/source/src/app.src lists the accelerators that are
+common across all the applications and is the location where we'll start our
+hack:
+
+--- svx/source/src/app.src	2004-11-29 14:28:05.000000000 +0530
++++ svx/source/src/app.src	2004-12-20 21:54:16.895040960 +0530
+@@ -178,6 +178,7 @@ ACC RID_DEFAULTACCEL
+         ACC_CODE( SID_VIEW_DATA_SOURCE_BROWSER, KEY_F4, FALSE, FALSE, FALSE )
+         ACC_CODE( SID_FM_GRABCONTROLFOCUS, KEY_F5, FALSE, TRUE, FALSE )
+         ACC_CODE( SID_HANGUL_HANJA_CONVERSION, KEY_F7, TRUE, TRUE, FALSE )
++        ACC_CODE( SID_ABOUT, KEY_T, FALSE, TRUE, FALSE )
+ 	};
+ };
+
+Add in that single line, rebuild svx, and launch soffice with the blank
+framework window. Hitting Ctrl+T should launch the About Dialog :-)
+
+Now that's an interesting line which can be modified in a good number of ways,
+so maybe you'd like to try out the variations and see what happens :-)
+
+Go ahead!
+
+-------------------------------------------------------------------------------
+
+<a href="accelerator-about.diff.txt">accelerator-about.diff</a>                                            Next: <a href="toolbar.html">toolbar</a>
+</h4></pre></html>
