@@ -181,9 +181,10 @@
       cd vcl
     </pre>
     <p>
-      Now have a hack at vcl/source/window/toolbox.cxx; I suggest
-      adding (eg.) an <pre>if (i%2)</pre> before the ImplDrawItem
-      in ToolBox::Paint; save.
+      Now have a hack at vcl/source/window/toolbox2.cxx; I suggest
+      adding (eg.) an <pre>nPos = 0</pre> anywhere before the
+      m_aItems.insert in ToolBox::InsertItem( const ResId &rResId ...).
+      Then save.
     </p>
     <p>
       You're still in vcl/ yes ? then type 'build debug=true'; wait
