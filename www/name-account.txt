@@ -67,7 +67,7 @@ Claus S&oslash;rensen:cs:c26n,cHBs,chbs:Danish Localization and Project Manageme
 Kai Sommerfeld:kso:manager &amp; hacker:Sun Microsystems, Inc.:
 Louis Suarez-Potts:louis:louis:'Community Manager':Collab.net:
 Stefan Taxhet:st:stx12:interpersonal problem fixer:Sun Microsystems, Inc.:
-Tom Verbeek:tv::Sun Microsystems, Inc.:
+Tom Verbeek:tv:Art team:Sun Microsystems, Inc.:
 Jim Watson:sparcmoz:sparcmoz:Linux/sparc porter:clug.org.au:
 Jack Warchold:jw::QA:Sun Microsystems, Inc.:
 Dan Williams:fa:dcbw:Mac et. al. hacker:RedHat, Inc.:
