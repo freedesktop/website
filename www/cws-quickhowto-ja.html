@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<H1>** CWS tooling quick howto
+<H1>** CWS tooling quick howto<br>
 ** CWS ツール クイック HOWTO</H1>
 
 <a href="./index.html">back to index</a>
@@ -63,7 +63,7 @@ OOo CWS web service. As credentials is the OOo account name and the CVS
 style scrambled OOo password presented. The web service then uses the
 credentials to verify the legitimacy of the user with the help of the
 OOo CVS server.
-2) 正規のOOoのCVSアカウント．HTTPS経由でOOoのCWSウェブサービスへCWSツールを接続する．信頼するべきものは，OOoアカウント名とCVS形式で暗号化されたOOoパスワードの存在である．このWebサービスの時には，OOo CVSサーバーの助けとしてユーザーの整合性チェックをするために この信頼するべきもの を使う．(訳注：信頼するべきものとは，アカウント名とcvs形式で暗号化された一組のリストを指す)
+2) 正規のOOoのCVSアカウント．CWSツールはHTTPS経由でOOoのCWSウェブサービスへ接続する．信頼するべきものは，OOoアカウント名とCVS形式で暗号化されたOOoパスワードの存在である．このWebサービスの時には，OOo CVSサーバーの助けとしてユーザーの整合性チェックをするために この信頼するべきもの を使う．(訳注：信頼するべきものとは，アカウント名とcvs形式で暗号化された一組のリストを指す)
 
 3) A configuration file called $HOME/.cwsrc. I've attached an example.
 Enter you VCSID, scrambled CVS password, the CVS tunnel etc.
@@ -93,10 +93,13 @@ How it works:
 =============
 
 1) Check out the Openoffice alias, configure, source the script.
-1) OpenOffice.orgの別名, configure(設定), ソースコードのスクリプトを調べる
+1) configureスクリプトとソースコードが含まれているOpenOfficeというエイリ
+   アスをチェックアウトする」(訳注：ソースコードをCVSからチェックアウト
+   しなさい! ということか)
+
 
 2) To check the connection please do something like this
-2) 下記のような何かのコマンドを使って接続をチェックする．
+2) 接続をチェックするために下記のようにしなさい.
 
       $ cwsquery -m SRC680 latest
 
@@ -162,8 +165,8 @@ How it works:
       $ cwsresync -r
 
       The -m step merges your files and protcolls all conflicts etc.
-      -m ステップは，あなたのファイルを併合と，全ての矛盾を調停します
-      (訳注：protocol?調停とした)
+      -m ステップは，あなたのファイルを併合し，全ての競合を解決します
+      (訳注：protocol?には動詞の意味はないけど，この意味が妥当かと)
       The -c step commits the merges to the CVS. Do it always with
       cwsresync -c, never by hand!!
       -c ステップは，CVSに変更をコミットします．これは cwsresync -c
@@ -174,7 +177,7 @@ How it works:
       マイルストーン情報を更新する．
       The optional -r step removes solver and module output tree from your
       workspace. New milestones are almost always incompatible.
-      オプション -r ステップは，solverとワークスペースからモジュール
+      任意である -r ステップは，solverとワークスペースからモジュール
       出力ツリーをを削除します．新しいマイルストーンは，ほぼ必ず完全でない．
 
 Caveats
