@@ -86,7 +86,7 @@
 
     <p>
       <strong>Note:</strong> You are going to need to download
-      ~200Mb of compressed source, and have ~4Gb of space space
+      ~200Mb of compressed source, and have ~5Gb of space space
       to unpack and build it in.
     </p>
 
@@ -123,7 +123,7 @@
     <p>
       This is the taxing bit - type <pre>make</pre> and don't forget
       to press enter. Quite possibly you want to log the output, so
-      why not <pre>make 2>&1 | tee /tmp/log</pre>.
+      why not <pre>make 2&gt;&amp;1 | tee /tmp/log</pre>.
     </p>
 
     <h2 id="section-3">3. Installing OO.o</h2>
@@ -301,7 +301,7 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
       </ul>
     </p>
 
-    <h4 id="section-5.5.1">5.5.1 Standard directories</h3>
+    <h4 id="section-5.5.1">5.5.1 Standard directories</h4>
 
     <p>
       There are various standard directories and files in most of the
@@ -464,14 +464,14 @@ mkdir:    %_DEST%\inc%_EXT%\external
 	<p>
 	  <code>rtl_String</code> &mdash; sal/inc/rtl/string.h<br>
 	  "Normal" string plus reference counting.
-	  <code>rtlstring->buffer</code> is useful, as is
-	  <code>rtlstring->length</code>.  This string has already
+	  <code>rtlstring-&gt;buffer</code> is useful, as is
+	  <code>rtlstring-&gt;length</code>.  This string has already
 	  been converted to a particular character set; see
 	  sal/inc/rtl/textenc.h &mdash; the only interesting cases are
 	  <code>RTL_TEXTENCODING_UTF8</code> and perhaps
 	  <code>RTL_TEXTENCODING_ASCII_US</code>
 	  for real luddites.  Feel free to treat
-	  <code>rtlstring->buffer</code> as your beloved <code>char *</code>.
+	  <code>rtlstring-&gt;buffer</code> as your beloved <code>char *</code>.
 	</p>
       </li>
 
@@ -581,8 +581,8 @@ complicate_things_into_ucs2_please (const char *utf8_string)
       The quickest and best way to dump the string is to do:
       <pre>
       p *theString; # grab the length (2nd field)
-      x/&lt;length&gt;s theString->buffer</pre> eg. for a 20 character
-      string we want <pre>x/20s theString->buffer</pre>.
+      x/&lt;length&gt;s theString-&gt;buffer</pre> eg. for a 20 character
+      string we want <pre>x/20s theString-&gt;buffer</pre>.
       This should print the string as an array of shorts with
       ASCII char values nicely in a column.
       To programatically print a OUString (or String) you need:
@@ -686,10 +686,10 @@ continue
     <p>
       We start in 'main' with a sal wrapper, that calls
       vcl/source/app/svmain.cxx (SVMain). It invokes Main on
-      pSVData->mpApp; but pSVData is an in-line local. To
+      pSVData-&gt;mpApp; but pSVData is an in-line local. To
       debug this use the pImplSVData global variable. eg:
       <pre>
-      p pImplSVData->maAppData
+      p pImplSVData-&gt;maAppData
       </pre>
       This 'Main' method is typically:
       desktop/source/app/app.cxx (Main).
@@ -793,8 +793,8 @@ xh      neon  :  soltools external expat NULL
     bt
 #0  0x40b4e0a1 in kill () from /lib/libc.so.6
 #1  0x409acfe6 in raise () from /lib/libpthread.so.0
-#2  0x447bcdbd in SfxMedium::DownLoad(Link const&) () from ./libsfx641li.so
-#3  0x447be151 in SfxMedium::SfxMedium(String const&, unsigned short, unsigned char, SfxFilter const*, SfxItemSet*) ()
+#2  0x447bcdbd in SfxMedium::DownLoad(Link const&amp;) () from ./libsfx641li.so
+#3  0x447be151 in SfxMedium::SfxMedium(String const&amp;, unsigned short, unsigned char, SfxFilter const*, SfxItemSet*) ()
    from ./libsfx641li.so
 #4  0x448339d3 in getCppuType(com::sun::star::uno::Reference<com::sun::star::document::XImporter> const*) () from ./libsfx641li.so
 ...
@@ -858,7 +858,7 @@ LinuxIntelEnv.Set.debug:
 TMPFILE=~/.Env.Set.debug
 
 # Purge .pro bits
-sed 's/\.pro//g' LinuxIntelEnv.Set.sh > $TMPFILE
+sed 's/\.pro//g' LinuxIntelEnv.Set.sh &gt; $TMPFILE
 . $TMPFILE
 rm $TMPFILE
 
@@ -1168,10 +1168,10 @@ status -v
       This is rather inscrutable; some particularly curious brokenness
       would be the way piping commands on stdin is crucially different
       to inputting them from the tty thus:
-      <pre>echo 'echo #define DLL_NAME "libsch641li.so" >./foo.hxx' | /bin/tcsh -s</pre>
+      <pre>echo 'echo #define DLL_NAME "libsch641li.so" &gt;./foo.hxx' | /bin/tcsh -s</pre>
       fails to do anything whereas typing the same thing into the shell
       works just fine. Even more oddly:
-      <pre>tcsh -fc 'echo #define DLL_NAME "libsch641li.so" >./foo.hxx'</pre>
+      <pre>tcsh -fc 'echo #define DLL_NAME "libsch641li.so" &gt;./foo.hxx'</pre>
       does do the right thing. See also <a
       href="http://www.faqs.org/faqs/unix-faq/shell/csh-whynot/">csh</a>.
     </p>
