@@ -28,10 +28,10 @@
     <h2 id="section-2">2. Setting up a build slave</h2>
     <p>
       To do this, you need to be able to build OO.o already; if you can't
-      do this see the <a href="http://ooo.ximian.com/hackers-guide.html">hackers guide</a>.
+      do this see the <a href="http://go-ooo.org/hackers-guide.html">hackers guide</a>.
       Assuming that you have a script that can build OO.o [NB. see
-      <a href="http://ooo.ximian.com/hackers-guide.html#section-10.3">this</a>], called
-      '<a href="http://ooo.ximian.com/build-ooo">build-ooo</a>' that dumps a log to stdout,
+      <a href="http://go-ooo.org/hackers-guide.html#section-10.3">this</a>], called
+      '<a href="http://go-ooo.org/build-ooo">build-ooo</a>' that dumps a log to stdout,
       you're ready to go.
     </p>
 
@@ -46,8 +46,8 @@
       send them as plain text. (The exact limit is unknown (to me), but the 16MB logfile
       of a Windows build is too large.)
 
-      You need to get the <a href="http://ooo.ximian.com/tinder-compress">tinder-compress</a>
-      script and the Sender.pm Perl module from CPAN. See our <a href="http://ooo.ximian.com/cpan.html">CPAN</a>
+      You need to get the <a href="http://go-ooo.org/tinder-compress">tinder-compress</a>
+      script and the Sender.pm Perl module from CPAN. See our <a href="http://go-ooo.org/cpan.html">CPAN</a>
       link for details about getting this module. Then edit the following:
       </p><ul>
 	<li>
@@ -102,7 +102,7 @@ $SMTPAUTHPW = '';</pre></p>
       </ul>
     </p>
     <p>
-      Finally of course, you need to find a terminal, run <a href="http://ooo.ximian.com/hackers-guide.html#section-2.1">screen</a> and then
+      Finally of course, you need to find a terminal, run <a href="http://go-ooo.org/hackers-guide.html#section-2.1">screen</a> and then
       run tinder-compress.
     </p>
 
@@ -111,7 +111,7 @@ $SMTPAUTHPW = '';</pre></p>
     <h3 id="section-3.1">3.1 Mail size issues</h3>
     <p>
       If you have problems with the tinder-compress script you can still try to use the former,
-      not compressing version. Get the <a href="http://ooo.ximian.com/tinder-build">tinder-build</a> script and
+      not compressing version. Get the <a href="http://go-ooo.org/tinder-build">tinder-build</a> script and
       edit the following:
       </p><ul>
 	<li>
