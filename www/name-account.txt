@@ -122,3 +122,4 @@ Ivo Hinkelmann:ihi:ivo:l10n tooling/general:Sun Microsystems, Inc.:
 Oliver Craemer:oc::Calc/QA guy:Sun Microsystems, Inc.:
 Eric Bachard:ericb:ericb2:Mac OSX/Linux PPC ports:French OOo project:
 Rajesh Sola:rajeshsola:sola:misc,:NOSIP:
+Jody Goldberg:jodygoldberg:spreadsheet-ness:Novell, Inc.:
