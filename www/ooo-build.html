@@ -1,0 +1,110 @@
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html lang="en">
+  <head>
+    <meta lang="en" http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <title>About ooo-build</title>
+  </head>
+
+  <body>
+    <h1>About ooo-build</h1>
+    
+    <h2 id="section-0">0. Contents</h2>
+    <ul>
+       <li><a href="#section-1">1. Why ooo-build</a></li>
+       <li><a href="#section-2">2. The future</a></li>
+    </ul>
+
+    <h2 id="section-1">1. Why ooo-build</h2>
+    <p>
+      There are a number of reasons for the existence of ooo-build:
+      <ul>
+        <li>1. CVS doesn't scale
+	<li>2. OO.o process is too slow
+	<li>3. build / package infrastructure
+	<li>4. lack of interest in up-streaming
+      </ul>
+    </p>
+    <h2 id="section-1.1">1.1 CVS doesn't scale</h2>
+    <p>	
+      A simple cvs tag of the whole of the OO.o tree can take several
+      hours to complete; thus if you want to have a very extensive patch
+      set against OO.o you cannot work at a sensible speed. All cvs
+      operations, branching, merging, re-synching even simple updating,
+      take a very considerable time. Working from a separate base tar.gz
+      and a flexible patching system allows the maintenance of a branch
+      very much more easily.
+    </p>
+    <h2 id="section-1.2">1.2 OO.o process is too slow</h2>
+    <p>	
+      Why do we have to have a branch, and a large patch set at all ?
+      why can't we just work directly from OO.o CVS.
+    </p>
+    <p>
+      There are several answers here: primarily that CVS commits are
+      extremely restricted, the approval process from IssueZilla submit
+      to eventual CWS commit, to CWS merge takes a matter of weeks; this
+      is no way to create excitement, and provide fast problem fixes.
+      Furthermore, there are contraints to merging to a stable branch
+      that disallow many changes. Large changes cannot happen eg. (a
+      base vtable change, new icons) since Sun have to ship binary 
+      bug fix updates - which are required to be reasonably small
+      (ie. not all of OO.o again).
+    </p>
+    <p>
+      Furthermore, Sun will only accept patches after receipt of a
+      posted / FAXed, signed JCA. While we feel the JCA is a vital
+      to OO.o and mandate it's use for ooo-build commits, we are
+      happy to prune this postal / processing / CVS account bug ticket
+      creation / CVS account bug ticket assignment to collab.net / CVS
+      account creation / commit latency. With assurance of an in-flight
+      JCA - we can create a CVS account quickly and get you working with
+      a handful of hours.
+    </p>
+    <p>
+      Sun has a need for a highly stable / buildable branch from which
+      they can make releases. There are two approaches to get a
+      stable/buildable branch:
+      <ul>
+        <li>A. Mandate stringent testing, code review, debug builds, and
+	highly restricted commit access.
+	<li>B. Envourage a culture of carefulness, and highly unresticted
+	commit access.
+      </ul>
+      While B. results in frequent, temporary breakage, this is soon fixed,
+      and life is fast, smooth and happy. Situation B. leads to communal
+      frustration / strangulation - however it does provide a stable branch
+      at most times.
+    </p>
+    <p>
+      Of course - <i>hopefuly</i> at some time in the future problem <a
+      href="section-1.1">1.1</a> may get fixed - at which point keeping a
+      branch in OO.o cvs that allowed sensible communal development, while
+      allowing merge-backs to stable would be feasible; currently it's
+      hardly.
+    </p>
+    <h2 id="section-1.3">1.3 build / package infrastructure</h2>
+    <p>
+      The core OO.o build process is not easy to use, and the packaging
+      process on Unix is anachronistic, and inflicts incredible pain on
+      sysadmins and users. Thus, this has to be worked around externally
+      to OO.o. This is a substantial amount of work - unfortunately, it
+      seems the re-creation of a Unix build is also a pending internal
+      task - hopefully this will not result in an even bigger mess of
+      alternative packaging schemes.
+    </p>
+    <h2 id="section-1.4">1.4 lack of interest in up-streaming</h2>
+    <p>
+      There have been for many years, very many patches against OO.o to
+      do all manner of useful things. Many of these have been submitted
+      under the JCA. The pace of adoption of these changes is really
+      depressingly slow; and the level of engagement with external
+      contributors poor. In some cases whole chunks of functionality
+      have been re-written internally without reference to, acknowledgement
+      of, or discussion with the original author - this phenomenon
+      continues apace.
+    </p>
+
+
+  </body>
+</html>

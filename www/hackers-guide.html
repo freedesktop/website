@@ -47,7 +47,7 @@
 	<li><a href="#section-8">8. Misc. tips</a></li>
 	<li><a href="#section-9">9. Useful Links</a></li>
 	<li><a href="#section-10">10. IFAQ</a></li>
-	<li><a href="#section-11">11. OOO_STABLE_1</a></li>
+	<li><a href="#section-12">11. Working with us</a></li>
     </ul>
     <p>
 	This process is discussed in far more detail in the
@@ -1112,16 +1112,12 @@ status -v
       href="http://www.faqs.org/faqs/unix-faq/shell/csh-whynot/">csh</a>.
     </p>
 
-    <h3 id="section-10.4">10.4. Why will HEAD never be buildable ?</h3>
+    <h3 id="section-10.4">10.4. I just tried to re-locate the build, why doesn't it work ?</h3>
 
     <p>
-      This is down to how the SO team use CVS ( somewhat oddly ), they
-      commit their current (non-functioning) work to HEAD, and then tag
-      it to specify which version goes into the next weekly build.
+      The simple answer is: you need to run <pre>bin/relocate /path/to/new/build</pre>;
+      another more complex answer is:
     </p>
-
-    <h3 id="section-10.5">10.5. I just tried to re-locate the build, why doesn't it work ?</h3>
-
     <p>
       Well, <b>assuming</b> you have re-configured things (LinuxIntelEnv.Set will
       need paths tweaking too &mdash; and re-importing to your shell) &mdash; then it's most 
@@ -1138,7 +1134,7 @@ find -name '*.dpc*' -exec rm {} \;
       two path instances there (see inc/stl/config/stl_gcc.h).
     </p>
 
-    <h3 id="section-10.6">10.6 CVS says 'Fatal Error aborting. [acc] no such user', why ?</h3>
+    <h3 id="section-10.5">10.5 CVS says 'Fatal Error aborting. [acc] no such user', why ?</h3>
 
     <p>
       While of course it's possible that your user name is not registered; often
@@ -1146,29 +1142,31 @@ find -name '*.dpc*' -exec rm {} \;
       cvs login, and repeat the command.
     </p>
 
-    <h3 id="section-10.7">10.7 What does '.pro' in 'unxlngi4.pro' mean ?</h3>
+    <h3 id="section-10.6">10.6 What does '.pro' in 'unxlngi4.pro' mean ?</h3>
 
     <p>
       <i>Pro</i>duct &mdash; isn't it obvious ?
     </p>
 
-    <h3 id="section-10.8">10.8 What does OpenOffice really look like ?</h3>
+    <h3 id="section-10.7">10.7 What does OpenOffice really look like ?</h3>
 
     <p>
        Today I found a photograph of it on my system, so I stuck it in here:
     </p>
     <img src="layers.png" alt="Abstraction Layers">
 
-    <h3 id="section-10.9">10.9 How do I take a screenshot of OO.o ?</h3>
+    <h3 id="section-10.8">10.8 How do I take a screenshot of OO.o ?</h3>
     <p>
        OOo does some very odd things with X resources, thus some conventional
        screenshot apps fail to take accurate shots. ImageMagick's 'import'
        however does a good job; use:
        <pre>import foo.png</pre> from the console, or
        <pre>sleep 2; import -window root foo.png</pre> instead.
+       NB. unless you want your world to look tiny, you need to turn large
+       toolbar icons first.
     </p>
 
-    <h3 id="section-10.10">10.10 I tried to build with gcc on a prefix with BUILD in it why does it break ?</h3>
+    <h3 id="section-10.9">10.9 I tried to build with gcc on a prefix with BUILD in it why does it break ?</h3>
     <p>
       This is due to some very serious crack smoking going on in stlport.
       Essentially, there is some nasty header overriding, and they want to
@@ -1196,12 +1194,12 @@ from /home/michael/ximian-desktop/ooo/<b>BUILD</b>/ooo/OOO_1_0_2/xml2cmp/source/
       </pre>
     </p>
 
-    <h3 id="section-10.11">10.11 What are the UNO component XML descriptions for ?</h3>
+    <h3 id="section-10.10">10.10 What are the UNO component XML descriptions for ?</h3>
     <p>
 	Not much; worth installing, but currently highly under-used.
     </p>
 
-    <h3 id="section-10.12">10.12 Why does the code look so ugly?</h3>
+    <h3 id="section-10.11">10.11 Why does the code look so ugly?</h3>
     <p>
       The authors must be using a really strange editor.
       It <em>thinks</em> tab stops are on every fourth column.
@@ -1223,26 +1221,10 @@ from /home/michael/ximian-desktop/ooo/<b>BUILD</b>/ooo/OOO_1_0_2/xml2cmp/source/
       and <tt>src</tt>-files.)
     </p>
 
-    <h2 id="section-11">11. OOO_STABLE_1</h2>
-
+    <h2 id="section-11">11. Working with us</h2>
     <p>
-      This branch is more difficult to build; cf. the patch
-      archives in 9.2. Additional work may need doing to it to get it to build.
-      The code is however relatively stable.  Here is a list of problems you
-      may experience with it:
+      See the <a href="ooo-build.html">About ooo-build</a> document.
     </p>
-
-    <ul>
-      <li>
-	libstdc++*, libgcc_s* need copying from /opt/OpenOffice/lib
-	into the solver during the build, if you don't do this the build
-	will die in product/util, and you'll need to copy the files
-	before continuing:
-	<pre>
-cp -a /opt/OpenOffice/lib/libgcc_s.so* /opt/OpenOffice/lib/libstdc++* solver/641/unxlngi4.pro/lib/
-	</pre>
-      </li>
-    </ul>
 
   <hr>
   <p>If you have more hacking tips, corrections, a grip of correct
