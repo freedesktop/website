@@ -31,7 +31,7 @@ all this cruft; but we thought we'd keep it around.
     <p>
       The active development branch (currently HEAD) is the most
       buildable tree, however the OOO_STABLE_1 branch has the most
-      stable code.  Thus there we have a quandry.  This document deals
+      stable code.  Thus there we have a quandary.  This document deals
       only with HEAD, but <a href="#section-11">section 11</a>
       has some hints on building OOO_STABLE_1.
     </p>
@@ -146,7 +146,7 @@ cvs -z3 checkout OpenOffice
       done <i>odd</i> things to their gcc/libstdc++ combo - such that the
       'product' packaging phase <i>will not</i> work. This can be tweaked
       (with some evilness) in solenv/inc/tg_compv.mk - but it's easiest for
-      begginners to install their own gcc-3.2.2.
+      beginners to install their own gcc-3.2.2.
     </p>
 
     <h2 id="section-2">2. Building OO.o</h2>
@@ -298,7 +298,7 @@ export CXX='ccache g++'
       before configure time. If you are going to be hacking
       OpenOffice and going round development iterations, you
       should probably read <a href="#section-6.1">6.1</a> first,
-      since re-builing with different flags will invalidate the
+      since re-building with different flags will invalidate the
       cache.
     </p>
 
@@ -315,7 +315,7 @@ export CXX='ccache g++'
 
     <p>
       This process takes a snapshot of your environment, merges it
-      with the neccessary flags, makes several mistakes and sets up
+      with the necessary flags, makes several mistakes and sets up
       LinuxIntelEnv.Set.sh [or sim] in the base directory.  It's worth a
       read, particularly to check the PATH, LD_LIBRARY_PATH if things
       go wrong.
@@ -380,7 +380,7 @@ source LinuxIntelEnv.Set # <b>NB. no .sh</b>
       A marginal improvement in performance can be had by building
       several non-dependant toplevel modules in parallel &mdash; this is
       much safer than trying to dispatch multiple compiles
-      simultaneously, and uses the 'build' tool's dependecy
+      simultaneously, and uses the 'build' tool's dependency
       mechanism. Try <tt>build -PP</tt>.
     </p>
 
