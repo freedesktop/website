@@ -576,7 +576,7 @@ rtl_uString_newFromAscii (&amp;str, "hello Unicode world");
       The quickest and best way to dump the string is to do:
       <pre>
       p *theString; # grab the length (2nd field)
-      x/<length>s theString->buffer</pre> eg. for a 20 character
+      x/&lt;length&gt;s theString->buffer</pre> eg. for a 20 character
       string we want <pre>x/20s theString->buffer</pre>.
       This should print the string as an array of shorts with
       ascii char values nicely in a column.
