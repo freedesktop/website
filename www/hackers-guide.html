@@ -439,7 +439,7 @@ mkdir:    %_DEST%\inc%_EXT%\external
     <h3 id="section-5.6">5.6 fast iteration</h3>
 
     <p>
-      There are lots of ways to go round a devel iteration; the best
+      There are lots of ways to go round a development iteration; the best
       way is to use <a href="section-3">linkoo</a> to symlink the
       libraries from the install set directly into your build tree.
       Then you can simply re-build a sub-directory eg. <pre>vcl</pre>
@@ -579,7 +579,7 @@ rtl_uString_newFromAscii (&amp;str, "hello Unicode world");
       x/&lt;length&gt;s theString->buffer</pre> eg. for a 20 character
       string we want <pre>x/20s theString->buffer</pre>.
       This should print the string as an array of shorts with
-      ascii char values nicely in a column.
+      ASCII char values nicely in a column.
       To programatically print a OUString (or String) you need:
       <pre>::rtl::OString tmpStr = OUStringToOString (<i>MyOUString</i>, RTL_TEXTENCODING_UTF8);
 fprintf (stderr, "String is '%s'\n", tmpStr.getStr());</pre>.
