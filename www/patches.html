@@ -1,0 +1,147 @@
+<html>
+<body>
+<h1>Some brief notes on patch submission</h1>
+
+<h3>Contents</h3>
+
+<ul>
+    <li><a href="#read-it">Read your patch</a></li>
+    <li><a href="#cleanliness">Cleanliness</a></li>
+    <li><a href="#style">Coding Style</a></li>
+    <li><a href="#copy-n-paste">Copy &amp; Paste</a></li>
+    <li><a href="#tab-stops">Tab stops</a></li>
+</ul>
+
+Pre-amble - blurb - produce beautiful, consistent, maintainable
+code that you can be proud of.
+
+<h3 id="read-it">Read your patch</h3>
+<p>
+  You should read what I'm going to read; ie. when you take your
+<code>diff -u &lt;files&gt;</code>, read it through rather than
+just mailing it. If you see chunks like this:
+</p>
+<pre>@@ -838,9 +838,24 @@
+...
+	rtl::OUString   aWorkPath;
+-
++   
+ 	aSecurity.getHomeDir( aHomePath );
+...</pre>
+<p>
+  Then it's best to manually chop these out of the patch - this
+is just some rather irrelevant whitespace / other change that
+has happened. Strip all your debugging code out, and ensure what
+remains makes sense.
+</p>
+<p>
+  Reading the patch also has the distinct advantage of refreshing
+your memory of the whole change, which often flags missing pieces.
+If you notice any, go back and make it complete, then re-diff.
+</p>
+
+<h3 id="cleanliness">Cleanliness: code hygine</h3>
+<p>
+</p>
+
+<h3 id="style">Style</h3>
+<p>
+  Carefully written code matches the style of the surrounding
+code, or - where that is hetrogenous - creates an oasis of clean
+homogenous style amid the mess. Your code should be consistent
+and conservative wrt. whitespace usage.
+</p>
+<p>
+  It's well worth reading Linus' <a
+href="http://www.adamspiers.org/computing/Linus-Kernel-CodingStyle">
+coding style</a> document - although ignoring the tab-stop section.
+Particularly wasting vspace is frowned upon.
+<pre>if( something )
+{
+    one_line();
+}
+else
+{
+    another_line();
+}</pre>
+Wastes huge chunks of vspace; it should be:
+<pre>if( something )
+    one_line();
+else
+    another_line();</pre>
+But never:
+<pre>if( something) one_line();
+else another_line();</pre>
+or something equally cramped.
+</p>
+
+<h3 id="copy-n-paste">Copy &amp; Paste</h3>
+<p>
+  In the bad old days before keyboards, cutting and pasting
+took lots of time, glue &amp; co-ordination; it was also obvious
+that it filled your 128 bytes of memory with duplicate rubbish.
+In the modern world - the invention of the copy/paste combination
+has lead to a massive increasing in programmer productivity. Now -
+without the use of artificial arms, thousands of lines of bad code
+can be duplicated in many different places all over a largeish
+project. An added career benefit is that it looks as if you are
+<b>really</b> clever to have (apparently) written such large
+chunks of (what looks like) new code so quickly.
+</p>
+<p>
+  <b>Conversely</b> - anyone cutting and pasting more than 2 lines of code
+will just be laughed at, called an amateur, and poked with a sharp
+stick; before sending them to fix some vicious, but simple sounding
+bug somewhere else. The net result of a nice patch should be to
+reduce complexity &amp; code-size while adding features and increasing
+maintainability; if some existing code needs to be re-factored to
+avoid copy/paste - then you need to do that first; it's not optional.
+</p>
+
+<h3 id="tab-stops">Tab stops</h3>
+<p>
+    So - this is an old problem, and one that keeps coming back
+to bite people. Here is the problem: a tab character is 0x09.
+A space is 0x20. Indentation - is determined by the amount of
+visible space before code on a given line.
+</p>
+<p>
+    When an editor / viewer renders a '<i>0x09</i>' character there is
+a disagreement as to how many on-screen '<i>0x20</i>' characters to
+transliterate it into. Often in Unix-land it's 8. In Windows-land
+it's often 4 (by default etc.). ie. "<i>0x09</i>Hello World" would be:
+<pre>    Hello World	        on Win32
+        Hello World     in Linux</pre>
+<p>
+So what you say; it should be at least consistent. The problem is - for
+smaller indents there is a consistent method - the space. ie. for a small
+indents of 4 stops on Unix - you can just use 4 spaces; leaving tabs for
+the bigger 8 stop indents. ie.
+<pre>{
+    if (foo)
+<i>0x09</i>baa();
+}</pre>
+<p>Which will look fine on default Unix:</p>
+<pre>{
+    if (foo)
+        baa();
+}</pre>
+<p>But on Win32 since the 0x09 will turn into 4 spaces; you will see:</p>
+<pre>{
+    if (foo)
+    baa();
+}</pre>
+<p>which is ugly - and of course, is only a simple instance of this problem.</p>
+<p>
+How to fix it - since the OO.o standard is different to the stock Unix
+standard - first we need to configure our editor to deal with spaces, inside
+emacs you can use <code>M-x set-variable tab-width 4</code> to change the view
+of a single file; or a <code>setq tab-width 4</code> hook for certain files.
+</p>
+<p>
+When it all goes wrong: there is an app called 'expand' that will convert all
+your <i>0x09</i> tab characters to a given number of spaces. If you created
+the <b>entire</b> file on Unix ie. it <i>all</i> has this 8stop tab assumption,
+then <code>expand &lt;file&gt;</code> will do what you want.
+</body>
+</html>
