@@ -57,7 +57,7 @@ Michael R&uuml;&szlig;:mru::QA(Writer?):Sun Microsystems,Inc.:
 Stephan Sch&auml;fer:ssa:ssa:VCL:Sun Microsystems,Inc.:
 Andreas Schl&uuml;ns:as:::Sun Microsystems,Inc.:
 Frank Sch&ouml;nheit:fs::UI/configuration/database?:Sun Microsystems,Inc.:
-Ingo Schmidt:is::Installation:Sun Microsystems,Inc.:
+Ingo Schmidt:is::(Native) Installation:Sun Microsystems,Inc.:
 Juergen Schmidt:jsc::API:Sun Microsystems,Inc.:
 Darragh Sherwin:dsherwin:darragh:E-Legislation / E-GovSystems:Propylon:
 Raul Siddhartha:rsiddhartha:raul:GTK File Selector:Novell,Inc.:
