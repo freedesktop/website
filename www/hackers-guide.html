@@ -1201,6 +1201,28 @@ from /home/michael/ximian-desktop/ooo/<b>BUILD</b>/ooo/OOO_1_0_2/xml2cmp/source/
 	Not much; worth installing, but currently highly under-used.
     </p>
 
+    <h3 id="section-10.12">10.12 Why does the code look so ugly?</h3>
+    <p>
+      The authors must be using a really strange editor.
+      It <em>thinks</em> tab stops are on every fourth column.
+      Of course, the files come out ugly in Unix editors which <em>know</em>
+      that tabs are eight characters wide.
+    </p>
+    <p>
+      If you happen to use
+      <a href="http://www.gnu.org/software/emacs/">a Real Editor</a>,
+      we have some pink glasses to sell to you. Paste the contents of
+      <a href="http://ooo.ximian.com/emacs.el">http://ooo.ximian.com/emacs.el</a>
+      into your <tt>.emacs</tt>.
+      Or load it with a line like this: <tt>(load "/path/to/that/file.el")</tt>.
+      Don't forget to adapt <tt>my-openoffice-path-regexp</tt> to your needs.
+    </p>
+    <p>
+      Henceforth emacs will use 4-column tabs for your OOo source files.
+      (And use <em>C++-Mode</em> for <tt>sdi</tt>-, <tt>hrc</tt>-,
+      and <tt>src</tt>-files.)
+    </p>
+
     <h2 id="section-11">11. OOO_STABLE_1</h2>
 
     <p>
