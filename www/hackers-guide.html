@@ -147,7 +147,7 @@
     </p>
     <p>
       <strong>Note:</strong> do not use <pre>./soffice.bin</pre>
-      for reasons inscrutible this completely fails to work.
+      for reasons inscrutable this completely fails to work.
     </p>
 
     <h2 id="section-5">5. Hacking OO.o</h2>
@@ -155,7 +155,7 @@
     <h3 id="section-5.0">5.0. My first hack</h3>
 
     <p>
-      So - we've built and run OO.o, and we want to proove to ourselves
+      So - we've built and run OO.o, and we want to prove to ourselves
       that it is in fact possible to hack on it. So in a new terminal
       do this:
     </p>
@@ -179,7 +179,7 @@
 
     <p>
       With the power of C++ comes the ability to shoot yourself in the
-      foot all the more easily; (and implicitely), cf. <em>Holub,
+      foot all the more easily; (and implicitly), cf. <em>Holub,
       Rules for C and C++ programming, McGraw-Hill, 95</em>.
     </p>
 
@@ -613,7 +613,7 @@ fprintf (stderr, "String is '%s'\n", tmpStr.getStr());
     <p>
       OO.o includes a way to add debugging code in per module, via
       the <tt>build debug=true</tt> command in each module.
-      Unfortunately this is not reccommended to run for the whole
+      Unfortunately this is not recommended to run for the whole
       project, and in addition to including vital debugging symbols
       it also includes scads of assertions, churning warnings, and
       various other checks.
@@ -692,7 +692,7 @@ continue
       in the debugger.
     </p>
 
-    <h3 id="section-6.3">6.3. Starting at the beggining</h3>
+    <h3 id="section-6.3">6.3. Starting at the beginning</h3>
 
     <p>
       We start in 'main' with a sal wrapper, that calls
@@ -733,7 +733,7 @@ xh      neon  :  soltools external expat NULL
       </pre>
       this specifies that 'soltools', 'external' and 'expat' have to
       be satisfactorily built and delivered before neon can be built.
-      Occasionaly these rules get broken, and people don't notice for
+      Occasionally these rules get broken, and people don't notice for
       a while.
     </p>
 
@@ -870,7 +870,7 @@ xh      neon  :  soltools external expat NULL
       Some of the best ways to do this are to post to <a
       href="mailto:dev@openoffice.org">dev@openoffice.org</a> or lurk
       on IRC at <tt>irc.openprojects.net</tt> on the
-      <tt>#OpenOffice.org</tt> channel. IRC is an awefully poor
+      <tt>#OpenOffice.org</tt> channel. IRC is an awfully poor
       communication medium, but better than no communication.
     </p>
 
@@ -922,7 +922,7 @@ find -name 'Repository' -exec perl -pi.bak -e 's/^oo\///' {} \;
 	[ this can give bogus results with compound inter-depending
 	  patches, but is extremely useful ].
     <li>Mostly use patch -p0; 0 signifies the number of path
-        elements to strip from the beggining of the file path the
+        elements to strip from the beginning of the file path the
 	diff points at.
     <li>When you mess up, and have 1/2 of the patch applied and want
         to revert to clean, either remove the files and cvs update,
@@ -1031,7 +1031,7 @@ status -v
       Mercifully they are starting to get folded back in at a greater
       rate, so no patches should be necessary to HEAD to build
       it, similarly many have got into OOO_STABLE_1. It may be
-      neccesary to use some/all of these nevertheless.
+      necessary to use some/all of these nevertheless.
     </p>
 
     <ul>
@@ -1084,7 +1084,7 @@ status -v
       freezes and hence solvers, development environments.  However -
       in recent time the process of solidifying a single build for
       wider release, has taken longer than a week &mdash; creating a
-      quandry, and a mixed alphanumeric release tag. The 'mws' stands
+      quandary, and a mixed alphanumeric release tag. The 'mws' stands
       for 'Master Workspace'.
     </p>
 
@@ -1101,7 +1101,7 @@ status -v
     <h3 id="section-10.3">10.3. Why is [t]csh so broken ?</h3>
 
     <p>
-      This is rather inscrutible; some particularly curious brokenness
+      This is rather inscrutable; some particularly curious brokenness
       would be the way piping commands on stdin is crucially different
       to inputting them from the tty thus:
       <pre>echo 'echo #define DLL_NAME "libsch641li.so" >./foo.hxx' | /bin/tcsh -s</pre>
@@ -1142,7 +1142,7 @@ find -name '*.dpc*' -exec rm {} \;
 
     <p>
       While of course it's possible that your user name is not registered; often
-      this just means your ~/.cvspass got lost and/or that you havn't logged in.
+      this just means your ~/.cvspass got lost and/or that you haven't logged in.
       cvs login, and repeat the command.
     </p>
 
