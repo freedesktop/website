@@ -282,14 +282,14 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
       in the solver. Thus there are a few intricacies.
 
       <ul>
-        <li>
+        <li id="build">
 	  <i>build</i> &mdash; this perl script <i>solenv/bin/build.pl</i> is
 	  used in conjunction with <a href="#section-5.5.2">prj/build.lst</a>
 	  to ensure that every module that is needed is built first.<p>
 	  build then un-winds internal module dependencies, and builds
 	  each module with a chdir, dmake pair.
 	</li>
-	<li>
+	<li id="deliver">
 	  <i>deliver</i> &mdash; this perl script <i>solenv/bin/deliver.pl</i>
 	  installs headers, and libraries (etc.) into the solver, as
 	  informed by <a href="#section-5.5.3">prj/d.lst</a>. Crucially
@@ -613,9 +613,11 @@ fprintf (stderr, "String is '%s'\n", tmpStr.getStr());</pre>
 		<li>File filters have detection code; eg.
 		sc/source/ui/app/sclib.cxx (ScDLL::DetectFilter)
 		that is compiled to static libraries, installed
-		then linked into libwrp in desktop/source/source/offwrp.
-		To re-build, build, deliver in sc, then touch
-		wrapper.cxx and re-build in offwrp.
+		then linked into libwrp in desktop/source/offwrp.
+		To re-build in 'sc' run:
+		<pre><a href="build">build</a> &amp;&amp; <a href="deliver">deliver</a></pre>
+		then in desktop/source/offwrp run:
+		<pre>touch wrapper.cxx &amp;&amp; dmake</a>.
 	    </ul>
       </ul>
     </ul>
