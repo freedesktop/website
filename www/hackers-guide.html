@@ -563,7 +563,7 @@ rtl_uString_newFromAscii (&amp;str, "hello Unicode world");
       <li>String: &mdash; note, the decl' of this uses the macro
           'UniString' to confuse readers of tools/inc/string.hxx,
 	  <i>FIXME: need a macro to dump UniStrings nicely</i>
-	  To convert programattically to something you can print
+	  To convert programmatically to something you can print
 	  you probably want:
       <pre>
 fprintf (stderr, "String is '%s'\n",
@@ -921,7 +921,7 @@ ssh -f -2 -P -L 2401:localhost:2401 tunnel@openoffice.org sleep 1400 < /dev/null
     </p>
 
     <pre>
-echo ":pserver:&lt;account-name-here&gt;@localhost:/cvs" > tmp/Root
+echo ":pserver:&lt;account-name-here&gt;@localhost:/cvs" &gt; /tmp/Root
 find -name 'Root' -exec cp /tmp/Root {} \;
 find -name 'Repository' -exec perl -pi.bak -e 's/^oo\///' {} \;
     </pre>
