@@ -76,7 +76,7 @@
     <pre>
     export CVSROOT=':pserver:anonymous@anoncvs.gnome.org:/cvs/gnome'
     cvs login
-    cvs -z3 checkout -P openoffice
+    cvs -z3 checkout -P ooo-build
     </pre>
     <p>
       This will provide you with a copy of the ooo-build tree. If
@@ -142,7 +142,7 @@
       by re-compiling a source sub-directory, you can simply re-run
       OO.o. This can get your build/test cycle down to a few tens of
       seconds. To do this do eg.
-      <pre>bin/linkoo /usr/lib/ooo-1.1 /opt/openoffice/build/OOO_1_1_1</pre>
+      <pre>bin/linkoo /usr/lib/ooo-1.1 /opt/ooo-build/build/OOO_1_1_1</pre>
     </p>
 
     <h2 id="section-4">4. Running OO.o</h2>
@@ -199,7 +199,7 @@
     <p>
       <strong>Note:</strong> for day to day hacking you want to
       just run 'build' inside the source tree. <strong>Do not</strong>
-      run 'make' in the toplevel <pre>openoffice/</pre> directory or
+      run 'make' in the toplevel <pre>ooo-build/</pre> directory or
       you will (most likely) trash any changes you've made, and get
       depressed. It makes sense to keep an out-of line copy of
       <pre>build/OOO_1_1_0</pre> somewhere else see <a

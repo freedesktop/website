@@ -156,7 +156,7 @@
     <p>
       <strong>NB.</strong> the openoffice sources i.e the sources in
       build/OOO_1_1_0 are in openoffice.org anon-cvs server, whereas
-      the toplevel files i.e openoffice/*.* are in gnome cvs server. So
+      the toplevel files i.e ooo-build/*.* are in gnome cvs server. So
       for openoffice sources you have to set CVSROOT(as above) for
       performing diffs from the toplevel.
     </p>
@@ -215,14 +215,14 @@ gui-toolbox-hack.diff
 	    address to <a href="mailto:michael@ximian.com">michael@ximian.com</a>
 	    and/or <a href="halls@debian.org">halls@debian.org</a>.
 	<li>If you overlap in European time poke michael / haggai on IRC.
-	<li>When you have a CVS account, you will need to switch 'openoffice'
+	<li>When you have a CVS account, you will need to switch 'ooo-build'
 	to the new root before you can commit, so run:
-<pre>openoffice/bin/re-root openoffice ':pserver:<b><i>UserName</i></b>@cvs.gnome.org:/cvs/gnome'</pre>
+<pre>ooo-build/bin/re-root ooo-build ':pserver:<b><i>UserName</i></b>@cvs.gnome.org:/cvs/gnome'</pre>
       </ul>
     <br/>
     <h4 id="section-2.5.2">2.5.2 how to commit</h4>
     <p>
-      First ensure you have a ChangeLog entry in openoffice/ChangeLog, this
+      First ensure you have a ChangeLog entry in ooo-build/ChangeLog, this
       should look like:
     </p>
       <pre>
