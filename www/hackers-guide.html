@@ -143,6 +143,7 @@
       OO.o. This can get your build/test cycle down to a few tens of
       seconds. To do this do eg.
       <pre>bin/linkoo /usr/lib/ooo-1.1 /opt/ooo-build/build/OOO_1_1_1</pre>
+      NB. see also the <a href="section-5.8">linkoo limitations</a>.
     </p>
 
     <h2 id="section-4">4. Running OO.o</h2>
@@ -589,6 +590,40 @@ complicate_things_into_ucs2_please (const char *utf8_string)
       <pre id="printout">::rtl::OString tmpStr = OUStringToOString (<i>MyOUString</i>, RTL_TEXTENCODING_UTF8);
 fprintf (stderr, "String is '%s'\n", tmpStr.getStr());</pre>
       </li>
+    </ul>
+
+    <h4 id="section-5.8">5.8. Linkoo Limitations</h4>
+    <ul>
+      Linkoo while very powerful has a number of limitations imposed by
+    the way OO.o is put together. There are 2 sorts of problem:
+      <ul>
+	<li>Strange link behavior - ie. if you symlink the library it
+	follows the link at runtime and ends up highly confused.
+	    <ul>
+		<li>soffice.bin - this has to be copied from
+		desktop/unxlngi4.pro/bin/soffice each time you go
+		around a devel cycle; otherwise debugging gets
+		confused.
+		<li>libcfgmgr2.so - this has to be copied from
+		configmgr/unxlngi4.pro/lib each time, otherwise
+		the config cannot be loaded.
+	    </ul>
+	 <li>Odd internal library construction
+	    <ul>
+		<li>File filters have detection code; eg.
+		sc/source/ui/app/sclib.cxx (ScDLL::DetectFilter)
+		that is compiled to static libraries, installed
+		then linked into libwrp in desktop/source/source/offwrp.
+		To re-build, build, deliver in sc, then touch
+		wrapper.cxx and re-build in offwrp.
+	    </ul>
+      </ul>
+  
+      <ul>
+	<li>soffice.bin - this is compiled to desktop/unxlngi4.pro/bin
+	called 'soffice' - each time you re-compile the main binary you
+	need to re-run
+      </ul>
     </ul>
 
     <h2 id="section-6">6. Debugging OO.o</h2>
