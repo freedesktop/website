@@ -67,27 +67,26 @@
     <h2 id="section-1">1. Getting OO.o</h2>
 
     <p>
-      There are loads of competing versions of OO.o, and several
-      choices of branch, with multiple outstanding patch sets.
-      I recommend you build from CVS snapshots, that are known to
-      build, and with patch sets against them that are known to
-      apply. So to get the source do:
+      There are loads of versions of OO.o, and several choices of
+      branch, with multiple outstanding patch sets.
+      I recommend you build from up-stream CVS HEAD milestones
+      (SRC680 milestones), with patch sets to make them easier to
+      build from <a href="packages/SRC680">here</a>.
+    </p>
+    <p>
+      The very latest ooo-build (a small ~1.5Mb build wrapper) can
+      be got from CVS thus:
     </p>
     <pre>
     export CVSROOT=':pserver:anonymous@anoncvs.gnome.org:/cvs/gnome'
     cvs login
-    cvs -z3 checkout -r ooo-build-1-3 -P ooo-build
+    cvs -z3 checkout -Pd ooo-build
     </pre>
-    <p>
-      This will provide you with a copy of the ooo-build tree. If
-      CVS scares you, you may be able to get a recent packaged
-      version from <a href="packages">here</a>.
-    </p>
 
     <p>
       <strong>Note:</strong> You are going to need to download
-      ~200Mb of compressed source, and have ~5Gb of space space
-      to unpack and build it in.
+      an additional ~170Mb of compressed source, and have ~3Gb
+      of space space to unpack and build it in.
     </p>
 
     <h2 id="section-2">2. Building OO.o</h2>
@@ -99,13 +98,21 @@
       of commands now; although running both won't actually hurt:
     </p>
     <pre>
-      ./autogen.sh # the CVS version
+      ./autogen.sh # only for the CVS version
       ./configure  # the packaged version
     </pre>
     <p>
       This will guess which branch snapshot you want to build; if
       you have other ideas use the --with-tag option; eg.
-      <pre>--with-tag=OOO_1_1_0</pre> for a legacy branch.
+      <code>--with-tag=src680-m65</code> for a legacy branch.
+    </p>
+    <p>
+      In particular, building SRC680 requires a recent jdk &amp; a
+      version of apache-ant. If you use a Novell system, just do:
+      <code>sudo rug in apache-ant</code> Failing that see
+      <a href="http://ant.apache.org/bindownload.cgi">
+      Ant download</a> &amp; set the ANT environment variable
+      appropriately before configuring.
     </p>
 
     <h3 id="section-2.2">2.2 download</h3>
@@ -114,58 +121,46 @@
       By the time you've upgraded your system to the point that it
       has all the packages you need to start building OO.o (mozilla,
       recent libart etc. etc.) you're almost at the point that you
-      can download the source. To do this, after a successful
-      configure simply type: <pre>./download</pre> and wait.
+      can download the bulk of the source. To do this, after a
+      successful configure simply type: <code>./download</code> and wait.
+    </p>
+    <p>
+      If for whatever reason this fails, you can verify your download
+      by fetching the equivalent .md5 file &amp; comparing it to
+      the result of <code>md5sum &lt;archive&gt;</code>. The source
+      archives are <a href="http://ooo.ximian.com/packages/SRC680">
+      here</a> - put the source in ooo-build/src.
     </p>
 
     <h3 id="section-2.3">make</h3>
 
     <p>
-      This is the taxing bit - type <pre>make</pre> and don't forget
+      This is the taxing bit - type <code>make</code> and don't forget
       to press enter. Quite possibly you want to log the output, so
-      why not <pre>make 2&gt;&amp;1 | tee /tmp/log</pre>.
+      why not <code>make 2&gt;&amp;1 | tee /tmp/log</code>.
     </p>
 
     <h2 id="section-3">3. Installing OO.o</h2>
 
     <p>
-      The result of a perfect build is a perfect zipped install set
-      located in <pre>build/$TAG/instsetoo/unxlngi4.pro/01/normal/</pre>
-      or similar. Then run the setup program from there to install
-      using eg. <pre>/opt/OOInstall</pre> to install to. It's possible
-      to do this you'll need to first remove your <pre>~/.sversionrc</pre>
-      file.
-    <p>
-
-    <p>
-      Having installed, you want to get in the mood for hacking by
-      linking your build tree directly into the installed image, so
-      by re-compiling a source sub-directory, you can simply re-run
-      OO.o. This can get your build/test cycle down to a few tens of
-      seconds. To do this do eg.
-      <pre>linkoo /opt/OOInstall /opt/ooo-build/build/OOO_1_1_2</pre>
-      NB. see also the <a href="#section-5.8">linkoo limitations</a>.
+      When everything has finished building; you should get some happy
+      looking message. The easiest way to install is:
+      <code>bin/ooinstall -l &lt;path-to-install-to&gt;</code> I often use
+      <code>/opt/OOInstall</code>
     </p>
+    <p>
+      If you are a packager, you'll want to run <code>make install</code>
+      which honours DESTDIR &amp; does other packager-like things.
+    <p>
 
     <h2 id="section-4">4. Running OO.o</h2>
 
     <p>
-      Now wander into <pre>/opt/OOInstall/program</pre> and do:
-      <pre>source ./env</pre> this will setup your (bash) shell for running
-      OO.o directly. Then simply <pre>soffice.bin</pre>.
+      Now wander into <code>/opt/OOInstall/program</code> and do:
+      <code>source ./env</code> this will setup your (bash) shell for
+      running OO.o directly. Then simply <code>./soffice.bin -writer</code>.
       This is better than running soffice, or a wrapper script since
-      it's very easy to attach the debugger: <pre>gdb soffice.bin</pre>.
-    </p>
-    <p>
-      <strong>Note:</strong> do not use <pre>./soffice.bin</pre>
-      for reasons inscrutable this completely fails to work.
-    </p>
-    <p>
-      <strong>Note:</strong> you need to run the ooo-wrapper based
-      OO.o before this, such that ~/.sversionrc is setup correctly
-      first, otherwise running soffice.bin will throw you into the
-      GUI setup tool. Just do a one-off <pre>oowriter</pre> before
-      you start.
+      it's very easy to use the debugger: <code>gdb soffice.bin</code>.
     </p>
 
     <h2 id="section-5">5. Hacking OO.o</h2>
@@ -178,34 +173,30 @@
       do this:
     </p>
     <pre>
-      cd build/$TAG
+      cd build/src680-m66
       . ./LinuxIntelEnv.Set.sh
       cd vcl
     </pre>
     <p>
       Now have a hack at vcl/source/window/toolbox2.cxx; I suggest
-      adding (eg.) an <pre>nPos = 0</pre> anywhere before the
+      adding (eg.) an <code>nPos = 0</code> anywhere before the
       m_aItems.insert in ToolBox::InsertItem( const ResId &rResId ...).
       Then save.
     </p>
     <p>
       You're still in vcl/ yes ? then type 'build debug=true'; wait
       for the scrolling text to stop; (5 seconds?). Now re-run
-      <pre>soffice -writer</pre>. You should notice the effect.
-    </p>
-    <p>
-      <strong>Note:</strong> this assumes you have carefully
-      followed the previous steps, <i>particularly</i> the
-      linkoo in <a href="#section-3">Section 3</a>.
+      <code>soffice -writer</code>. You should notice the effect.
+      If not, ensure the previous soffice.bin was dead with
+      <code>killall -9 soffice.bin</code>
     </p>
     <p>
       <strong>Note:</strong> for day to day hacking you want to
-      just run 'build' inside the source tree. <strong>Do not</strong>
-      run 'make' in the toplevel <pre>ooo-build/</pre> directory or
-      you will (most likely) trash any changes you've made, and get
-      depressed. It makes sense to keep an out-of line copy of
-      <pre>build/OOO_1_1_2</pre> somewhere else see <a
-      href="#section-10.4">here</a> for help relocating the build.
+      just run 'build' inside the source tree. It is also highly
+      recommended to work inside a copy of the build tree, and
+      generate / test patches in an un-hacked version.
+      To copy just the build/src680-m66 directory elsewhere, you
+      need to use the <a href="#section-10.4">relocate</a> tool.
     </p>
     
     <h3 id="section-5.1">5.1. Read the Fine manual</h3>
@@ -229,50 +220,27 @@
     <p>
       It is seldom clear which module a patch resides in in bugzilla.
       A quick way to try and work this out is to do:
-    </p>
-
-    <pre>
-cvs status &lt;somefile&gt; | head
-    </pre>
-
-    <p>
+      <code>cvs status &lt;somefile&gt; | head</code>
       This should give a 'Repository Revision:' line, with a path, the
-      2nd fragment of this is the project name.
+      2nd fragment of this is the project name,
+      <code>ooo-build/bin/owner</code> automates that process for you.
     </p>
-
-    <h3 id="section-5.3">5.3 Hacking the installer</h3>
-
     <p>
-      Since the installer image deletes the (runnable) temporary setup
-      image in <tt>/tmp/sv001.tmp</tt>, you have to stop it doing
-      that. To do so, run setup / install with the -dontdeletetemp
-      option.
+      In addition, since the mapping of module names to IssueZilla
+      tickets is rather contorted &amp; un-documented, if you know
+      what module the bug is in, use <a href="http://ooo.ximian.com/bug.html">
+      this</a> page to file it.
     </p>
 
-    <h3 id="section-5.4">5.4. Hacking other bits</h3>
-
+    <h3 id="section-5.3">5.3. Starting the right app</h3>
     <p>
-      Having got a working install, the best way to add your hacks is
-      to symlink <tt>program/lib<em>foo</em>641li.so</tt> to the
-      version you just built &mdash; most likely in
-      <tt><em>foo</em>/unxlngi4.pro/lib/</tt>, then re-run the suite
-      and your changes should be incorporated.
+      As you start soffice.bin, there are several useful parameters to
+      use to accelerate your debugging experience; particularly
+      <code>-writer</code>, <code>-calc</code>, <code>-draw</code>,
+      and (the wizardly painful) <code>-impress</code> arguments.
     </p>
 
-    <p>
-      For example; say you want to hack 'sal' the System Abstraction
-      Layer and you've installed OOO_STABLE_1 into /opt/OOInstall you
-      need to do:
-    </p>
-
-    <pre>
-cd /opt/OOInstall/program
-mkdir backup
-mv libsal.so.3.0.1 backup
-ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
-    </pre>
-
-    <h3 id="section-5.5">5.5. Understanding D' make (man)</h3>
+    <h3 id="section-5.4">5.4. Understanding D' make (man)</h3>
 
     <p>
       While the build system is in similar to may other systems, it
@@ -285,7 +253,7 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
       <ul>
         <li id="build">
 	  <i>build</i> &mdash; this perl script <i>solenv/bin/build.pl</i> is
-	  used in conjunction with <a href="#section-5.5.2">prj/build.lst</a>
+	  used in conjunction with <a href="#section-5.4.2">prj/build.lst</a>
 	  to ensure that every module that is needed is built first.<p>
 	  build then un-winds internal module dependencies, and builds
 	  each module with a chdir, dmake pair.
@@ -293,7 +261,7 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
 	<li id="deliver">
 	  <i>deliver</i> &mdash; this perl script <i>solenv/bin/deliver.pl</i>
 	  installs headers, and libraries (etc.) into the solver, as
-	  informed by <a href="#section-5.5.3">prj/d.lst</a>. Crucially
+	  informed by <a href="#section-5.4.3">prj/d.lst</a>. Crucially
 	  deliver ensures that the date stamp on any file that is
 	  installed to the solver is the same as that in the module's
 	  directory. This ensures, that (particularly for headers) that
@@ -303,7 +271,7 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
       </ul>
     </p>
 
-    <h4 id="section-5.5.1">5.5.1 Standard directories</h4>
+    <h4 id="section-5.4.1">5.4.1 Standard directories</h4>
 
     <p>
       There are various standard directories and files in most of the
@@ -315,11 +283,11 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
 	    <li>
 	       <i>build.lst</i> &mdash; this lists directories to be made,
 	       '^#' comments are allowed, the order of the list is
-	       immaterial see <a href="#section-5.5.2">detail</a>, it
+	       immaterial see <a href="#section-5.4.2">detail</a>, it
 	       is dictates <i>build</i>'s operation.
 	    </li>
 	    <li><i>d.lst</i> &mdash; this file describes the <i>deliver</i>
-	       process, see <a href="#section-5.5.3">detail</a>.
+	       process, see <a href="#section-5.4.3">detail</a>.
 	    </li>
 	  </ul>
 	</li>
@@ -340,26 +308,17 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
     </p>
 
     <p>
-      There are also various file types that are (or are not)
-      interesting:
-      <ul>
-        <li>
-	  <b>makefile.rc</b> &mdash; these are ~all redundant, and can
-	  safely be ignored.
-	</li>
-	<li>
-	  <b>makefile.mk</b> &mdash; these in contrast are the 'dmake'
-	  files, that are used to build each source directory.
-	</li>
-      </ul>
+      Build's mode of operation is to invoke 'dmake' in each of the
+      projects' directories with a given dependency order. dmake
+      then executes the rules in makefile.mk.
     </p>
 
-    <h4 id="section-5.5.2">5.5.2 build.lst</h4>
+    <h4 id="section-5.4.2">5.4.2 build.lst</h4>
 
     <p>
       On first view build.lst looks scary:
       <pre>
-vc      vcl : nas freetype psprint rsc sot ucbhelper unotools sysui NULL
+vc      vcl : NAS:nas FREETYPE:freetype psprint rsc sot ucbhelper unotools sysui NULL
 vc      vcl                      usr1   -       all     vc_mkout NULL
 vc      vcl\source\unotypes      nmake  -       all     vc_unot NULL
 vc      vcl\source\glyphs        nmake  -       all     vc_glyphs vc_unot NULL
@@ -375,6 +334,11 @@ vc      vcl\source\glyphs        nmake  -       all     vc_glyphs vc_unot NULL
 	   fact that this project (vcl) depends on these other modules
 	   'nas', 'freetype', 'psprint' etc. to be built first. This is
 	   for inter-project dependencies.
+	 </li>
+	 <li>
+	   Some modules have a CAPITALS:lowercase arrangement; the first
+	   segment is a conditional, driven by a space delimited list in
+	   the BUILD_TYPE environment variable at build time.
 	 </li>
 	 <li>
 	   Then we have a redundant line 'usr1' [ for fun ? ], in fact
@@ -406,7 +370,7 @@ vc           vcl\source\glyphs    nmake -   all     vc_glyphs   vc_unot   NULL
       here</a> on it.
     <p>
 
-    <h4 id="section-5.5.3">5.5.3 d.lst</h4>
+    <h4 id="section-5.4.3">5.4.3 d.lst</h4>
 
     <p>
       The syntax of d.lst is more comprehensible than build.lst, it omits
@@ -444,17 +408,7 @@ mkdir:    %_DEST%\inc%_EXT%\external
       NB. relative paths are relative to the 'prj/' directory.
     </p>
 
-    <h3 id="section-5.6">5.6 fast iteration</h3>
-
-    <p>
-      There are lots of ways to go round a development iteration; the best
-      way is to use <a href="#section-3">linkoo</a> to symlink the
-      libraries from the install set directly into your build tree.
-      Then you can simply re-build a sub-directory eg. <pre>vcl</pre>
-      by running <pre>build</pre> and re-run soffice.bin.
-    </p>
-
-    <h3 id="section-5.7">5.7 Can I get a <code>char *</code>, please?</h3>
+    <h3 id="section-5.6">5.6 Can I get a <code>char *</code>, please?</h3>
 
     <p>
       Just barely.  OO.o has at least six string wrappers, although the C
@@ -467,12 +421,8 @@ mkdir:    %_DEST%\inc%_EXT%\external
 	  <code>rtl_String</code> &mdash; sal/inc/rtl/string.h<br>
 	  "Normal" string plus reference counting.
 	  <code>rtlstring-&gt;buffer</code> is useful, as is
-	  <code>rtlstring-&gt;length</code>.  This string has already
-	  been converted to a particular character set; see
-	  sal/inc/rtl/textenc.h &mdash; the only interesting cases are
-	  <code>RTL_TEXTENCODING_UTF8</code> and perhaps
-	  <code>RTL_TEXTENCODING_ASCII_US</code>
-	  for real luddites.  Feel free to treat
+	  <code>rtlstring-&gt;length</code>.  This object encapsulates
+	  an generic 8bit string - of unknown encoding. Feel free to treat
 	  <code>rtlstring-&gt;buffer</code> as your beloved <code>char *</code>.
 	</p>
       </li>
@@ -493,7 +443,7 @@ mkdir:    %_DEST%\inc%_EXT%\external
 	  "Normal" Unicode string, similar to rtl_String, and
 	  refcounted as well.  However, this one always comes in UCS-2
 	  encoding, presumably to be compatible with Java's
-	  questionable choices.
+	  questionable choices. 
 	</p>
       </li>
 
@@ -502,6 +452,10 @@ mkdir:    %_DEST%\inc%_EXT%\external
 	  <code>OUString</code> &mdash; sal/inc/rtl/ustring.hxx<br> 
 	  An rtl_uString wrapped inside a <code>class</code>.  This is
 	  what most of the OO.o code uses to pass strings around.
+	  To convert an <code>OString</code> to an <code>OUString</code>
+	  it is necessary to specify the character set of the
+	  <code>OString</code> see; <code>sal/inc/rtl/textenc.h</code>
+	  &mdash; the only interesting case is <code>RTL_TEXTENCODING_UTF8</code>
 	</p>
       </li>
 
@@ -509,44 +463,18 @@ mkdir:    %_DEST%\inc%_EXT%\external
         <p>
 	  <code>String</code> &mdash; tools/inc/string.hxx<br>
 	  This is an obsolete string class, aliased to 'UniString'.
-	  It has a number of limitations such as 
-	  An rtl_uString wrapped inside a <code>class</code>.  This is
-	  what most of the OO.o code uses to pass strings around.
+	  It has a number of limitations such as a 64k length limit.
         </p>
       </li>
     </ul>
 
     <p>
-      Since real men use <code>char *</code> strings encoded in UTF-8;
-      to use any system API such as 'printf' you need to extract a
-      char * from a <code>OUString</code> use this:
-    </p>
-
-    <pre>
-static char *
-gimme_utf8_please (const rtl::OUString &amp;oustring)
-{
-	rtl::OString ostring;
-
-	ostring = ::rtl::OUStringToOString (oustring, RTL_TEXTENCODING_UTF8);
-        return strdup (ostring.pData->buffer);
-}
-    </pre>
-
+      A couple of conversion functions are really useful here,
+      Particularly:
     <p>
-      And the reverse:
-    </p>
-
-    <pre>
-static rtl::OUString
-complicate_things_into_ucs2_please (const char *utf8_string)
-{
-	rtl::OString ostring;
-
-        ostring = rtl::OString (utf8_string);
-	return rtl::OStringToOUString (ostring, RTL_TEXTENCODING_UTF8);
-}
-    </pre>
+    <p><code>rtl::OString aOString = ::rtl::OUStringToOString (aOUString, RTL_TEXTENCODING_UTF8);</code></p>
+    <p>And the reverse:</p>
+    <p><code>rtl::OUString aOString = ::rtl::OStringToOUString (aOString, RTL_TEXTENCODING_UTF8);</code></p>
    
     <p>
       If you just want to programattically print out a string for
@@ -554,7 +482,7 @@ complicate_things_into_ucs2_please (const char *utf8_string)
       this</a>.
     </p>
 
-    <h4 id="section-5.7.2">5.7.2. Examining strings from GDB</h4>
+    <h4 id="section-5.6.2">5.6.2. Examining strings from GDB</h4>
 
     <p>
       We have already seen that OO.o does not use humble <code>char *</code> 
@@ -565,7 +493,7 @@ complicate_things_into_ucs2_please (const char *utf8_string)
 
     <ul>
       <li>from cvs branch cws_srx645_ooo112fix1 onwards you can use
-      <pre>(gdb) print dbg_dump(sWhatEver)</pre> to print the contents
+      <code>(gdb) print dbg_dump(sWhatEver)</code> to print the contents
       of a UniString/ByteString/rtl::OUString/rtl::OString regardless
       of the type when debugging C++ code. See <a
       href="http://qa.openoffice.org/issues/show_bug.cgi?id=17295">
@@ -584,44 +512,35 @@ complicate_things_into_ucs2_please (const char *utf8_string)
       <pre>
       p *theString; # grab the length (2nd field)
       x/&lt;length&gt;s theString-&gt;buffer</pre> eg. for a 20 character
-      string we want <pre>x/20s theString-&gt;buffer</pre>.
+      string we want <code>x/20s theString-&gt;buffer</code>.
       This should print the string as an array of shorts with
       ASCII char values nicely in a column.
       To programatically print a OUString (or String) you need:
-      <pre id="printout">::rtl::OString tmpStr = OUStringToOString (<i>MyOUString</i>, RTL_TEXTENCODING_UTF8);
-fprintf (stderr, "String is '%s'\n", tmpStr.getStr());</pre>
+      <code id="printout">::rtl::OString tmpStr = OUStringToOString (<i>MyOUString</i>, RTL_TEXTENCODING_UTF8);
+fprintf (stderr, "String is '%s'\n", tmpStr.getStr());</code>
       </li>
     </ul>
 
-    <h4 id="section-5.8">5.8. Linkoo Limitations</h4>
-    <ul>
-      Linkoo while very powerful has a number of limitations imposed by
-    the way OO.o is put together. There are 2 sorts of problem:
-      <ul>
-	<li>Strange link behavior - ie. if you symlink the library it
-	follows the link at runtime and ends up highly confused.
-	    <ul>
-		<li>soffice.bin - this has to be copied from
-		desktop/unxlngi4.pro/bin/soffice each time you go
-		around a devel cycle; otherwise debugging gets
-		confused.
-		<li>libcfgmgr2.so - this has to be copied from
-		configmgr/unxlngi4.pro/lib each time, otherwise
-		the config cannot be loaded.
-	    </ul>
-	 <li>Odd internal library construction
-	    <ul>
-		<li>File filters have detection code; eg.
-		sc/source/ui/app/sclib.cxx (ScDLL::DetectFilter)
-		that is compiled to static libraries, installed
-		then linked into libwrp in desktop/source/offwrp.
-		To re-build in 'sc' run:
-		<pre><a href="build">build</a> &amp;&amp; <a href="deliver">deliver</a></pre>
-		then in desktop/source/offwrp run:
-		<pre>touch wrapper.cxx &amp;&amp; dmake</a>.
-	    </ul>
-      </ul>
-    </ul>
+    <h4 id="section-5.8">5.8. Linkoo &amp; Limitations</h4>
+    <p>
+      Linkoo is the tool that implements the <code>-l</code>
+      functionality of <code>bin/ooinstall</code>. It essentially
+      sym-links files of similar names into your local tree,
+      allowing a fast development iteration.
+    </p>
+    <p>
+      It is however slightly limited - some of the modules
+      cannot be linked for various reasons; these are:
+      <code>cppuhelper</code> and <code>configmgr</code>,
+      thus in the rare case that these are altered, they
+      must be copied manually into <code>/opt/OOInstall/program</code>.
+    </p>
+    <p>
+      In addition symlinks cannot be used for soffice.bin, and
+      this is more commonly altered - it has to be installed
+      from <code>desktop/unxlngi4.pro/bin/soffice</code> NB.
+      with an appended '.bin'
+    </p>
 
     <h2 id="section-6">6. Debugging OO.o</h2>
 
@@ -676,9 +595,7 @@ fprintf (stderr, "String is '%s'\n", tmpStr.getStr());</pre>
       useless. To apply the patch cut and paste the above to /tmp/foo
       and in the base directory:
     </p>
-    <pre>
-patch -p0 < /tmp/foo
-    </pre>
+    <p><code>patch -p0 < /tmp/foo</code></p>
 
     <h3 id="section-6.2">6.2. Setting breakpoints</h3>
 
@@ -739,7 +656,7 @@ continue
     </p>
 
     <p>
-      Please read <a href="#section-5.7.2">section 5.7.2</a> to see
+      Please read <a href="#section-5.6.2">section 5.6.2</a> to see
       how strings work in OO.o and to get some debugging tips.
     </p>
 
@@ -856,7 +773,7 @@ xh      neon  :  soltools external expat NULL
 
     <p>
       You are a victim of asynchronous X error reporting;
-      <pre>export SAL_SYNCHRONIZE=1</pre> will make all the X traffic
+      <code>export SAL_SYNCHRONIZE=1</code> will make all the X traffic
       synchronous, and report the error by the method that caused it,
       it'll also make OO.o far slower, and the timing different.
     </p>
@@ -897,7 +814,7 @@ rm $TMPFILE
 # Clobber product parts
 unset PRODUCT PROSWITCH PROFULLSWITCH 
 </pre>
-      Now do <pre>source ./LinuxIntelEnv.Set.debug</pre>, this
+      Now do <code>source ./LinuxIntelEnv.Set.debug</code>, this
       sets up your environment for a non-product build.
     </p>
     <p>
@@ -911,7 +828,7 @@ unset PRODUCT PROSWITCH PROFULLSWITCH
       The debugging options
       are subsequently saved to the .dbgsv.init file for the
       next run; you can control the location of that with:
-      <pre>export DBGSV_INIT=$(HOME)/.dbgsv.init</pre> eg. it
+      <code>export DBGSV_INIT=$(HOME)/.dbgsv.init</code> eg. it
       is (unfortunately) a binary file.
     </p>
 
@@ -920,7 +837,7 @@ unset PRODUCT PROSWITCH PROFULLSWITCH
       This is fairly easy; edit sc/source/filter/inc/biffdump.hxx,
       define EXC_INCL_DUMPER to 1, and re-build 'sc'. Also, copy
       sc/source/filter/excel/biffrecdumper.ini to ~. Then run
-      <pre>soffice.bin foo.xls</pre> and you should get a
+      <code>soffice.bin foo.xls</code> and you should get a
       foo.txt with the debug data in it. If you get nothing, you
       need to find/apply sc-biffdump.diff from <a
       href="http://qa.openoffice.org/issues/show_bug.cgi?id=25430">
@@ -984,18 +901,14 @@ unset PRODUCT PROSWITCH PROFULLSWITCH
       something like:
     </p>
 
-    <pre>
-ssh -f -2 -P -L 2401:localhost:2401 tunnel@openoffice.org sleep 1400 < /dev/null > /dev/null
-    </pre>
+    <p><code>ssh -f -2 -P -L 2401:localhost:2401 tunnel@openoffice.org sleep 1400 < /dev/null > /dev/null</code></p>
 
     <p>
       Then you need to change your CVSROOT to point at your local
       machine, since this is the endpoint of the tunnel:
     </p>
 
-    <pre>
-:pserver:mmeeks@localhost:/cvs
-    </pre>
+    <p><code>:pserver:mmeeks@localhost:/cvs</code></p>
 
     <p>
       Your account name and password - will be the same as you use for
@@ -1004,7 +917,7 @@ ssh -f -2 -P -L 2401:localhost:2401 tunnel@openoffice.org sleep 1400 < /dev/null
       new server, to do this without wasting B/W with duplicate
       checkouts do:
     </p>
-    <pre>bin/re-root /path/to/checkout ":pserver:&lt;account-name-here&gt;@localhost:/cvs"</pre>
+    <code>bin/re-root /path/to/checkout ":pserver:&lt;account-name-here&gt;@localhost:/cvs"</code>
     <p>
       Of course, to commit anything, you'll need various project
       priviliges - and to battle the bureaucracy.
@@ -1040,9 +953,7 @@ ssh -f -2 -P -L 2401:localhost:2401 tunnel@openoffice.org sleep 1400 < /dev/null
     HEAD versions there was no 'clean' target so instead you had
     to do something (what dmake clean does now) like:
   </p>
-<pre>
-find -name 'unxlngi4.pro' -exec rm -Rf {} \;
-</pre>
+  <p><code>find -name 'unxlngi4.pro' -exec rm -Rf {} \; </code></p>
 
   <h3 id="section-8.4">8.4 CVS setup</h3>
 
@@ -1082,17 +993,6 @@ status -v
       else ]. For eg. menus/toolbar buttons the functionality is
       usually in a case statement eg. case SID_AUTOFORMAT: ...
     </p>
-<!--
-  <h3 id="section-8.X">8.X. Not failing at the first error</h3>
-
-  <p>
-    If you're leaving the computer for some time, and you know what
-    you're doing, it can be worthwhile doing a make that skips minor
-    build errors by using <pre>dmake -i</pre> ( similar to gmake -k ),
-    however this can result in an apparently successful but broken
-    build: not suitable for new builders.
-  </p>
--->
 
     <h2 id="section-9">9. Useful links</h2>
 
@@ -1213,10 +1113,10 @@ status -v
       This is rather inscrutable; some particularly curious brokenness
       would be the way piping commands on stdin is crucially different
       to inputting them from the tty thus:
-      <pre>echo 'echo #define DLL_NAME "libsch641li.so" &gt;./foo.hxx' | /bin/tcsh -s</pre>
+      <code>echo 'echo #define DLL_NAME "libsch641li.so" &gt;./foo.hxx' | /bin/tcsh -s</code>
       fails to do anything whereas typing the same thing into the shell
       works just fine. Even more oddly:
-      <pre>tcsh -fc 'echo #define DLL_NAME "libsch641li.so" &gt;./foo.hxx'</pre>
+      <code>tcsh -fc 'echo #define DLL_NAME "libsch641li.so" &gt;./foo.hxx'</code>
       does do the right thing. See also <a
       href="http://www.faqs.org/faqs/unix-faq/shell/csh-whynot/">csh</a>.
     </p>
@@ -1224,7 +1124,7 @@ status -v
     <h3 id="section-10.4">10.4. I just tried to re-locate the build, why doesn't it work ?</h3>
 
     <p>
-      The simple answer is: you need to run <pre>relocate /path/to/new/build</pre>;
+      The simple answer is: you need to run <code>relocate /path/to/new/build</code>;
       another more complex answer is:
     </p>
     <p>
@@ -1269,8 +1169,8 @@ find -name '*.dpc*' -exec rm {} \;
        OOo does some very odd things with X resources, thus some conventional
        screenshot apps fail to take accurate shots. ImageMagick's 'import'
        however does a good job; use:
-       <pre>import foo.png</pre> from the console, or
-       <pre>sleep 2; import -window root foo.png</pre> instead.
+       <code>import foo.png</code> from the console, or
+       <code>sleep 2; import -window root foo.png</code> instead.
        NB. unless you want your world to look tiny, you need to turn large
        toolbar icons first.
     </p>
@@ -1285,22 +1185,22 @@ find -name '*.dpc*' -exec rm {} \;
       <b>if your gcc prefix contains an element which is a macro - you're stuffed</b>:
     </p>
     <p>
-      stlport config header: <pre>#define _STLP_NATIVE_INCLUDE_PATH \
-        /home/michael/ximian-desktop/ooo/BUILD/ooo/include/c++/3.2.2</pre>
-      stlport helpful macros:<pre># define _STLP_MAKE_HEADER(path, header) &lt;path/header&gt;
+      stlport config header: <code>#define _STLP_NATIVE_INCLUDE_PATH \
+        /home/michael/ximian-desktop/ooo/BUILD/ooo/include/c++/3.2.2</code>
+      stlport helpful macros:<code># define _STLP_MAKE_HEADER(path, header) &lt;path/header&gt;
 # define _STLP_NATIVE_CPP_C_HEADER(header)  \
-        _STLP_MAKE_HEADER(_STLP_NATIVE_INCLUDE_PATH,header)</pre> and finally
-      stlport cunning native include: <pre>#include _STLP_NATIVE_CPP_C_HEADER(foo)</pre>
+        _STLP_MAKE_HEADER(_STLP_NATIVE_INCLUDE_PATH,header)</code> and finally
+      stlport cunning native include: <code>#include _STLP_NATIVE_CPP_C_HEADER(foo)</code>
     </p>
     <p>
       Net result:
-      <pre>
+      <code>
       g++ ... -D<b>BUILD</b>=<b>7663</b> ...
       ...
 from /home/michael/ximian-desktop/ooo/<b>BUILD</b>/ooo/OOO_1_0_2/xml2cmp/source/xcd/main.cxx:62:
 /home/michael/ximian-desktop/ooo/<b>BUILD</b>/ooo/OOO_1_0_2/solver/641/unxlngi4.pro/inc/stl/cstddef:35:46:
 /home/michael/ximian-desktop/ooo/<b>7663</b>/ooo/include/c++/3.2.2/cstddef: No such file or directory
-      </pre>
+      </code>
     </p>
 
     <h3 id="section-10.10">10.10 What are the UNO component XML descriptions for ?</h3>
