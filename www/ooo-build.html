@@ -68,7 +68,7 @@
       <ul>
         <li>A. Mandate stringent testing, code review, debug builds, and
 	highly restricted commit access.
-	<li>B. Envourage a culture of carefulness, and highly unresticted
+	<li>B. Encourage a culture of carefulness, and highly unresticted
 	commit access.
       </ul>
       While B. results in frequent, temporary breakage, this is soon fixed,
@@ -112,10 +112,11 @@
       done. It's also impossible to have any confidence that your patch
       will be useful / nicely designed. To try and overcome this, and to
       encourage each other - we hang out on channel #OpenOffice.org on
-      irc.freenode.net
-    IRC - it's important to lurk on #...
+      irc.freenode.net, you'll soon get to know the team. See also
+      <a href="name-account.html">here</a> to see who is whom.
     </p>
 
+    <h2 id="section-2.2">2.2 Your first patch</h2>
     <p>
       The process for submitting your first OO.o build patch is extremely simple:
       <ul>
@@ -126,24 +127,66 @@
 	    password.
 	<li>E-mail this crypted password with your full name, and contact E-mail
 	address to <a href="mailto:michael@ximian.com">michael@ximian.com</a> and/or
-	<a href="halls@debian_nospam.org">Chris</a>.
-	<li>If you're in European time poke them to read their mail on
+	<a href="halls@debian.org">halls@debian.org</a>.
+	<li>If you're in European time poke michael / haggai on IRC.
+	<li>Re-checkout openoffice from the master CVS server:
+	   <pre>export CVSROOT=':pserver:<i>jsmith</i>@cvs.gnome.org:/cvs/gnome'
+	   cvs login
+	   cvs -z3 checkout openoffice
+	   </pre>
+	   NB. your account name will usually by <lt>Initial<gt><lt>LastName<gt>
+	   as above.
+      </ul>
+
+      For this as every subsequent patch the process is far simpler
+      <ul>
+        <li>Create your patch (diff -u etc.)
+	<li>Submit the patch to <a href="http://www.openoffice.org">IssueZilla</a>
+	- this is about the most painful bit: re-login (again), 'File an Issue',
+	commit the issue, attach the patch - remember the IZ number.
+	<li>Commit your patch to the build set you're interested in, and add the
+	patch name to the 'apply' file - add a short comment describing what the
+	patch does, and append the IZ bug-number.
       </ul>
     </p>
 
     <h2 id="section-3">3. Downsides</h2>
     <p>
       <ul>
-        <li>Working outside CVS makes up-streaming harder.
-        <li>You get precisely no recognition; no-matter how large your
+        <li>Working outside CVS makes up-streaming harder, and commits
+	somewhat more painful.
+        <li>You get no 'official' recognition; no-matter how large your
 	contribution to OO.o you don't exist in the eyes of the artificial
-	OO.o <i>community</i>.
+	OO.o <i>community</i>; however - we value you more.
       </ul>
     </p>
    
-    <h2 id="section-4">4. Potential solutions</h2>
+    <h2 id="section-4">4. Areas for improvement</h2>
     <p>
-       Putting ooo-build in OO.o CVS, accelerating CVS, making account creation fast.
+      Obviously the existing situation is highly sub-optimal, here are some
+      possible improvements beyond our control that could be made:
+      <ul>
+	<li>1. accelerating CVS performance - this is a hard task, possible
+	<a href="http://subversion.tigris.org">subversion</a> may solve this
+	in due course. A more feasible alternative would to devote resources
+	to committing to merging CWS' targetting stable to our parallel branch
+	as well [ thus avoiding the need to merge ].
+        <li>2. accelerating OO.o CVS account creation, binning ACLs and
+	hugely increasing access (&amp; trust); thus we can get more people
+	involved more quickly without demoralisation.
+	<li>3. aggressive interest in working with external people, and merging
+	their patches; this involves at a minumum:
+	  <ul>
+	    <li>Rapid response to design queries.
+	    <li>Research and response to other OO.o development streams and
+	    their patch sets; discussion of requirements for merging.
+	    <li>Clear, interactive, casual access to relevant developers
+	    to discuss design before larger changes are attempted.
+	  </ul>
+	<li>4. recognising the needs of Unix packagers to have substantial
+	wrappers / work around OO.o, and allowing them to integrate all of
+	it, leaving no need for separate branches.
+      </ul>
     </p>
 
   </body>
