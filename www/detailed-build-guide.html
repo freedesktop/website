@@ -1,0 +1,456 @@
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html lang="en">
+<body>
+<h1>The detailed build guide</h1>
+
+<p>
+  Since we dramatically simplified the build process, we didn't need
+all this cruft; but we thought we'd keep it around.
+</p>
+
+    <h2 id="section-0">0. Contents</h2>
+
+    <ul>
+	<li><a href="#section-1">1. Getting OO.o</a></li>
+	<li><a href="#section-2">2. Building OO.o</a></li>
+	<li><a href="#section-3">3. Installing OO.o</a></li>
+    </ul>
+
+    <h2 id="section-1">1. Getting OO.o</h2>
+
+    <h3 id="section-1.1">1.1. Which OO</h3>
+
+    <p>
+      There are at least 3 important streams of development in the
+      OO.o world, see <a
+      href="http://tools.openoffice.org/releases">here</a>
+      for a map.
+    </p>
+
+    <p>
+      The active development branch (currently HEAD) is the most
+      buildable tree, however the OOO_STABLE_1 branch has the most
+      stable code.  Thus there we have a quandry.  This document deals
+      only with HEAD, but <a href="#section-11">section 11</a>
+      has some hints on building OOO_STABLE_1.
+    </p>
+    <p>
+      For a complete list of tags and their current status see the
+      <a href="http://tools.openoffice.org/builds/index.html">Build tags</a>
+      page.
+    </p>
+
+    <h3 id="section-1.2">1.2. Checking it out</h3>
+
+    <p>
+      The CVS root is structured differently from other projects.
+      There is an <tt>OpenOffice</tt> CVS alias that checks out a
+      whole bunch of modules.  These get checked out into the current
+      directory, and to perform a CVS update it is necessary to change
+      into each directory and do "cvs update" manually, or you can set
+      $CVSROOT beforehand.
+    </p>
+
+    <p>
+      Thus you should create a directory and then checkout inside it:
+    </p>
+
+    <pre>
+mkdir HEAD
+cd HEAD
+export CVSROOT=:pserver:anoncvs@anoncvs.services.openoffice.org:/cvs
+cvs login
+<em>You can just press Enter when it prompts you for the password</em>
+cvs -z3 checkout OpenOffice
+    </pre>
+
+    <p>
+      <strong>Note:</strong> The checkout size is ~250Mb these days,
+      (for reasons unknown this has increased sharply recently).
+    </p>
+    <p>
+      <strong>Note:</strong> The repository in the openoffice.org CVS
+      machine lives in a "/cvs" directory.  CVS has a misfeature
+      whereby it will prevent you from checking out stuff into a
+      directory with the same prefix as the one the CVS repository
+      uses.  So if you try to do this:
+    </p>
+
+    <pre>
+cd /cvs
+mkdir HEAD
+cd HEAD
+export CVSROOT=:pserver:anoncvs@anoncvs.services.openoffice.org:/cvs
+cvs login
+<em>You can just press Enter when it prompts you for the password</em>
+cvs -z3 checkout OpenOffice
+    </pre>
+
+    <p>
+      It will not work.  You should check out under /opt/OpenOffice/HEAD
+      or something like that, or alternatively create a /cvsoo directory
+      instead of your "normal" /cvs one.
+    </p>
+
+    <h3 id="section-1.3">1.3. Updating</h3>
+
+    <p>
+      Your base HEAD directory does not have a "CVS" subdirectory
+      inside it, so you cannot just cd into it and do "cvs update".
+      You have to set $CVSROOT beforehand.
+    </p>
+
+    <h3 id="section-1.4">1.4. Getting other bits</h3>
+
+    <p>
+      To build OO.o you really need:
+    </p>
+
+    <ul>
+      <li>
+	<a href="http://ooo.ximian.com/packages/binutils-2.13.2.1">binutils-2.13.2.1</a>,
+      </li>
+      <li>
+	<a href="http://ooo.ximian.com/packages/gcc-3.2.2">gcc-3.2.2</a>,
+      </li>
+      <li>
+	<a href="ftp://ftp.uk.linux.org/pub/linux/java/JDK-1.3.1/i386/FCS/j2sdk-1.3.1-FCS-linux-i386.tar.bz2">j2sdk-1.3.1</a>,
+	(for the 1.0.X branch; for later versions of OO.o you need):
+	<a href="http://ooo.ximian.com/packages/j2sdk-1.4.1-01-linux-i586-gcc3.2.tar.bz2">j2sdk-1.4.1-01-linux-i586-gcc3.2.tar.bz2</a>,
+      </li>
+      <li>
+	<a href="ftp://ftp.cs.man.ac.uk/pub/toby/gpc/gpc231.tar.Z">gpc231</a>
+	(This is the <a href="http://www.cs.man.ac.uk/aig/staff/alan/software/">General Polygon Clipper</a>
+	, <strong>not</strong> the <a href="http://www.gnu-pascal.de/">GNU Pascal Compiler</a>
+	- the source isn't that eclectic (yet).).
+      </li>
+      <li>
+        Optionally <a href="http://ccache.samba.org/ftp/ccache/ccache-1.9.tar.gz">ccache</a> to speed up
+	subsequent re-compiles, if you have lots of spare disk.
+      </li>
+
+    </ul>
+
+    <p>
+      Unpack them all joyfully somewhere; and copy the gpc231/gpc.[ch]
+      source files into into the HEAD/external/gpc directory.
+      These do not come with the base checkout because of dubious
+      licensing &mdash; this will be resolved shortly.
+    </p>
+
+    <p>
+      <strong>Note:</strong> for the too clever by half people among you who
+      have noticed your distribution (eg. RedHat9) ships versions as good as
+      this; you <i>will</i> get away with an older binutils; but Red Hat have
+      done <i>odd</i> things to their gcc/libstdc++ combo - such that the
+      'product' packaging phase <i>will not</i> work. This can be tweaked
+      (with some evilness) in solenv/inc/tg_compv.mk - but it's easiest for
+      begginners to install their own gcc-3.2.2.
+    </p>
+
+    <h2 id="section-2">2. Building OO.o</h2>
+
+    <h3 id="section-2.1">2.1. Use screen</h3>
+
+    <p>
+      Screen lets you run a shell, and detach from it at will. Use it!,
+      when X crashes, and the build keeps on running you'll thank. First
+      you need to insert:
+    </p>
+
+    <pre>
+deflog on
+logflush 5
+escape ``
+    </pre>
+
+    <p>
+      into your ~/.screenrc.  This will log to the current directory
+      when you start screen. To detach use ` d (&lt;backtick&gt; d),
+      and reattach use screen -r. The log of the build will appear as
+      screenlog.0 in the directory you start it in.
+    </p>
+
+    <h3 id="section-2.2">2.2. Know your tools</h3>
+
+    <p>
+      The primary build tool is <a
+      href="http://tools.openoffice.org/tools/dmake.html">dmake</a>.
+      There is a good overview of how it works <a
+      href="http://tools.openoffice.org/build_env_mkfiles.html">
+      here</a>. Essentially, the rules are much like normal make
+      rules, most rules are included from <tt>solenv/inc</tt>, and the
+      rules are informed by environment variables setup by the
+      configure process.
+    </p>
+
+    <p>
+      Other build tools are in <tt>solenv/bin</tt> particularly
+      <tt>build</tt>, which ensures that dependencies are built for
+      any given sub-project, and <tt>deliver</tt> which copies built
+      source into the <a
+      href="http://www.openoffice.org/dev_docs/source/solver.html">solver</a>
+    <p>
+
+    <h3 id="section-2.3">2.3. What to do</h3>
+
+    <p>
+      Make sure you have all the source, especially the Java bits,
+      which are required by the build for all manner of XML work, and
+      while the configure may let you get away without it &mdash; <em>the
+      build will not</em> &mdash; perhaps several hours in (just as you go
+      to bed).
+    </p>
+
+    <h4 id="section-2.3.1">2.3.1. Check source</h4>
+
+    <p>
+      You did read point <a href="#section-1.4">1.4</a> yes ? you'll
+      also need to snarf any random patches, and apply them at this
+      point.
+    </p>
+
+    <h4 id="section-2.3.2">2.3.2. build binutils</h4>
+
+    <p>
+      By now you will have chosen a prefix; here referred to as
+      /opt/OpenOffice, so unpack binutils there and:
+    </p>
+
+    <pre>
+./configure --prefix=/opt/OpenOffice
+make && make install
+    </pre>
+
+    <h4 id="section-2.3.3">2.3.3. Unpack jdk</h4>
+
+    <p>
+      Unpack the Jdk into your prefix /opt/OpenOffice/jdk-1.4.N, and
+      symlink it to 'jdk' for easy updates in future.
+    </p>
+
+    <h4 id="section-2.3.4">2.3.4. Setup paths</h4>
+
+    <p>
+      Ensure that /opt/OpenOffice is at the head of your path,
+      followed by the JDK binary path, say
+      /opt/OpenOffice/jdk/bin. Also you'll need the gcc bindir, if
+      it's different from /opt/OpenOffice
+    </p>
+
+    <pre>
+export PATH="/opt/OpenOffice/bin:/opt/OpenOffice/jdk/bin:$PATH";
+export LD_LIBRARY_PATH="/opt/OpenOffice/lib:/opt/OpenOffice/jdk/lib:$LD_LIBRARY_PATH"
+    </pre>
+
+    <p>
+      It's perhaps worth creating a script to do that.  NB. to execute
+      such a thing you need to use the invocation
+    </p>
+
+    <pre>
+. scriptname      # under bash or
+source scriptname # under broken shells
+    </pre>
+
+    <p>
+      If you try and run such a script normally, it'll run in it's
+      own shell, which will have it's environment beautifully setup,
+      before exiting back to the calling shell.
+    </p>
+
+    <h4 id="section-2.3.5">2.3.5. Build gcc</h4>
+
+    <p>
+      Unpack gcc and:
+    </p>
+
+    <pre>
+./configure --prefix=/opt/OpenOffice
+make && make install
+    </pre>
+
+    <p>
+      This should work flawlessly the first time.
+    </p>
+
+    <h4 id="section-2.3.6">2.3.6. Setup ccache</h4>
+
+    <p>
+      While you don't need ccache, it's use will speed up
+      re-compilation dramatically, cutting build times by more
+      than half.
+    </p>
+    <p>
+      Ccache can work in two ways, first by sym-linking ccache
+      to g++, gcc etc. and having these elsewhere in your path.
+      And secondly by invoking 'ccache gcc' instead of plain gcc.
+      Since HEAD currently has nasty path mangling mess it's
+      advisable to use the latter approach. To do this:
+    </p>
+    <pre>
+export CC='ccache gcc'
+export CXX='ccache g++'
+    </pre>
+    <p>
+      This (along with all environment setup) has to be done
+      before configure time. If you are going to be hacking
+      OpenOffice and going round development iterations, you
+      should probably read <a href="#section-6.1">6.1</a> first,
+      since re-builing with different flags will invalidate the
+      cache.
+    </p>
+
+    <h4 id="section-2.3.7">2.3.7. Configure OO.o</h4>
+
+    <p>
+      Pop into config_office/ and do:
+    </p>
+
+    <pre>
+<!-- autoconf - optional / not recommended -->
+./configure --with-gcc-home=/opt/OpenOffice
+    </pre>
+
+    <p>
+      This process takes a snapshot of your environment, merges it
+      with the neccessary flags, makes several mistakes and sets up
+      LinuxIntelEnv.Set.sh [or sim] in the base directory.  It's worth a
+      read, particularly to check the PATH, LD_LIBRARY_PATH if things
+      go wrong.
+    </p>
+
+    <p>
+      In places in this document, we use the target specific string
+      'unxlngi4.pro'. On other architectures this will be different,
+      inspect the value of $INPATH in FooPlatform.Set.sh in your base dir.
+    </p>
+
+    <h4 id="section-2.3.8">2.3.8. Bootstrap the environment</h4>
+
+    <p>
+	Recent versions of OO.o allow you to build with an
+      sh derived shell: bash, dash, ksh, zsh etc. ( which is
+      excellent ), just:
+    </p>
+
+    <pre>
+source LinuxIntelEnv.Set.<b>sh</b>
+./bootstrap
+    </pre>
+
+    <p>
+      Alternatively you can let the pain start here; switch to your
+      base directory and run tcsh (an improved
+      <a
+      href="http://www.faqs.org/faqs/unix-faq/shell/csh-whynot/">csh</a>).
+      Import the environment, then run the bootstrap process to build
+      the build tools. This habitually fails, and needs re-running -
+      don't be daunted:
+    </p>
+
+    <pre>
+tcsh
+# abandon all hope of sane tab completion, redirection etc.
+source LinuxIntelEnv.Set # <b>NB. no .sh</b>
+./bootstrap
+# watch it die sometimes for no really good reason
+./bootstrap
+# repeat until it succeeds
+    </pre>
+
+    <h4 id="section-2.3.9">2.3.9. Build in earnest</h4>
+
+    <p>
+      Now you're ready to make everything; ultimately, unless you have
+      a solver you get to build everything first time, so just type
+      <tt>dmake</tt> &mdash; you did read 2.1 first didn't you?
+    </p>
+
+    <p>
+      Unless you're building on RH 6.2 - you will need to hack <a
+      href="#section-2.5.1">this</a> first. Then, make a cup of tea,
+      sleep, wake up &mdash; and it's built.
+    </p>
+
+    <h3 id="section-2.4">2.4. Parallel building</h3>
+
+    <p>
+      A marginal improvement in performance can be had by building
+      several non-dependant toplevel modules in parallel &mdash; this is
+      much safer than trying to dispatch multiple compiles
+      simultaneously, and uses the 'build' tool's dependecy
+      mechanism. Try <tt>build -PP</tt>.
+    </p>
+
+    <h3 id="section-2.5">2.5. Common problems</h3>
+
+    <h4 id="section-2.5.1">2.5.1. Mozilla integration</h4>
+
+    <p>
+      Commonly, depending on gcc version the connectivity/mozab
+      project will not build. Disable this by removing 2 lines in
+      connectivity/prj/build.lst.
+    </p>
+
+    <h4 id="section-2.5.2">2.5.2 in<i>stl</i>ation path</h4>
+
+    <p>
+      Will Lachance reports: Don't checkout your source-tree
+      to any path with "stl" (e.g.: apostle, castle, etc.) in
+      it. OpenOffice will do a substitution called
+      "dont_use" to any path containing that sub-string.
+    </p>
+
+    <h2 id="section-3">3. Installing OO.o</h2>
+
+    <h3 id="section-3.1">3.1. Where is it ?</h3>
+
+    <p>
+      The result of a perfect build is a set of binaries in the
+      solver, these however are useless for running; indeed &mdash; go
+      no-where near them. A 2nd result of the build is that the
+      <tt>instsetoo</tt> directory contains an install set.
+    </p>
+
+    <h3 id="section-3.2">3.2. Fix your environment</h3>
+
+    <p>
+      Run a new terminal; ensure that you are running bash; breathe a
+      sigh of relief. Ensure that the $HOME environment variable is
+      set.
+    </p>
+
+    <h3 id="section-3.3">3.3. Run the installer</h3>
+
+    <p>
+      Go into <tt>instsetoo/unxlngi4.pro/01/normal</tt>, run the setup
+      program. Assuming all is well, this will execute a loader shim
+      that unzips all the f0_XYZ* files into
+      <tt>/tmp/sv001.tmp</tt>. These files contain the setup program,
+      which is then executed, which proceeds to unzip the remaining
+      f_XYZ* files. Install OO.o into some sensible prefix.
+    </p>
+
+    <h3 id="section-3.4">3.4. Watch it fail to detect the Jdk</h3>
+
+    <p>
+      Watch the installer ignore the JDK you built with, tell it the
+      path, and watch it ignore that too. Resign yourself to no Java
+      support. Or hack <tt>setup2/source/custom/jvmsetup/unx</tt>
+      somehow to fix it.
+    </p>
+
+    <h3 id="section-3.5">3.5. Force a re-install</h3>
+
+    <p>
+      The installer will refuse to re-install if you have already
+      installed OO.o, even if (eg.) you delete the old version. To
+      remedy this attack <tt>~/.sversionrc</tt>, however removing this
+      file will break everything, be careful.
+    </p>
+
+
+</body>
+</html>
