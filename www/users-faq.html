@@ -8,22 +8,22 @@
   </head>
 
   <body>
-      <h>OO.o frequently asked user questions</h2>
+      <h2>OO.o frequently asked user questions</h2>
 
       <h3>How do I turn off the splash screen ?</h3>
       <p>
-        Edit your <pre>/usr/lib/ooo-1.0.3/program/sofficerc</pre>
+        Edit your <code>/usr/lib/ooo-1.0.3/program/sofficerc</code>
 	(or equivalent), and set Logo=0 instead of 1.
       </p>
 
       <h3>What environment variables can I tweak when things don't work</h3>
       <p>
         For those unfamiliar with Unix; these variables can be set before
-	running OO.o by doing <pre>export <i>variable</i>=<i>value</i></pre>
+	running OO.o by doing <code>export <i>variable</i>=<i>value</i></code>
 	on the console. Make sure there is no existing OO.o running when
 	you re-run OO.o though.
       </p>
-      <table>
+      <table summary="Variables and their definitions">
         <tr>
 		<th>variable</th><th>values</th><th>behavior</th>
 	</tr>
@@ -45,7 +45,7 @@
 	<tr>
 		<td>GALLERY_ENABLE_ID_DIALOG</td><td><i>set</i></td>
 		<td>
-		   Enable a right click menu allowing the icons's ID to be
+		   Enable a right click menu allowing the icons' ID to be
 		   set, assuming you have write access to the gallery theme.
 		</td>
 	</tr>
@@ -73,11 +73,11 @@
 	<tr>
 		<td>SAL_DO_NOT_USE_INVERT50</td><td>true</td>
 		<td>
-		  If you are running XFree86 < 4.2 and have an S3 Savage
+		  If you are running XFree86 &lt; 4.2 and have an S3 Savage
 		  chip, you must use this, otherwise OOo will not work
 		  and the Xserver will eventually hang / lock the machine.
 		</td>
-	</td>
+	</tr>
 	<tr>
 		<td>SAL_ENABLE_GLX_XFREE4</td><td><i>set</i></td>
 		<td>
@@ -139,8 +139,8 @@
         If your X server is using the mga driver, you may find your X server
 	crashes.  If so, add this option to the mga 'Device' section of
 	/etc/X11/XFree86Config[-4]:
-	<pre>Option "XaaNoScreenToScreenColorExpandFill"</pre>
       </p>
+	<pre>Option "XaaNoScreenToScreenColorExpandFill"</pre>
 
   </body>
 </html>
