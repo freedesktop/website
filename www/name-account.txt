@@ -1,0 +1,118 @@
+Ramesh Babu::rbabu:QA/communitybits.:Novell,Inc.:
+Srinivasa Ragavan::srag::Novell,Inc.:
+Sascha Ballach:sab:::Sun Microsystems,Inc.:
+J&ouml;rg Barfurth:jb:JoergB:ConfigurationUtil:Sun Microsystems,Inc.:
+Mathias Bauer:::XML:Sun Microsystems,Inc.:
+Thorsten Behrens:thb::vcl/impress/toolkitvisionary:Sun Microsystems,Inc.:
+Stefan Bergmann:sb::tools&amp;UCBhacker:Sun Microsystems,Inc.:
+Oliver Bolte:obo:::Sun Microsystems,Inc.:
+Peter Burow:pb:::Sun Microsystems,Inc.:
+J&ouml;rg Budischewski:jbu:PyUNO+hacker:
+Colin Charles:drbyte:drbyte:Malaysiannative-langproject:bytebot.net:
+Behrend Cornelius:bc:::Sun Microsystems,Inc.:
+Carsten Driesner:cd::Framework:Sun Microsystems,Inc.:
+Ren&eacute; Engelhard:rene:_rene_:Debianpackager:Debian:
+Ken Foskey:waratah:waratah:config_office/dmakeman:slug.org.au:
+David Fraser:davidfraser:davidfraser:SouthAfricantranslations,multilingualbuilds:translate.org.za:
+Sunil Gandhi::tyro::NOSIP:
+Vladimir Glazounov:vg:::Sun Microsystems,Inc.:
+Bettina Haberer:bh::RFEOwner:Sun Microsystems,Inc.:
+Ingrid Halama:iha:::Sun Microsystems,Inc.:
+Chris Halls:haggai:haggai:Debianpackager&amp;misc.hacker:Debian:
+Kevin Hendricks:khendricks:PPC/portinglead:
+Con Hennessy:cphennessy:cph2:hacker&amp;councilperson:Independent:
+Michael Hoennig:mi::API:Sun Microsystems,Inc.:
+Jan Holesovsky:kendy:kendy:KDEintegration:Novell,Inc.:
+Martin Hollmichel:mh:Ratte/Nesshof:Build Maestro:Sun Microsystems,Inc.:
+Pavel Jan&iacute;k:pjanik:paveljanik:Czechnative-langproject,l10nbuilds:Novell,Inc.:
+Joerg Jahnke:jj::Internaltooling::
+Christian Jansen:Cj?::MenuandToolbar?:Sun Microsystems,Inc.:
+Martin Kretzschmar:mkretzschmar:martink:Gnome/Debian:Student:
+Hans-Joachim Lankenau:hjs:ause:dmake makefile expert:Sun Microsystems,Inc.:
+Philipp Lohmann:pl:pl_hh:VCL/X11 (GSL) hacker:Sun Microsystems,Inc.:
+Will Lachance:wlach:wlach_:Word Perfect File Filters:NetIntegrationTechnologiesInc.:
+Friedrich Strba:fridrich_strba:Friedrich:Word Perfect Hacker::
+Jayant Balraj Madavi:mjayant:aZEN_JM/mjayant:Connectivity / Database:Novell,Inc.:
+Martin Maher:mmaher::Writer &amp; Filter chap:Sun Microsystems,Inc.:
+Caolan McNamara:cmc:caolan:Writer &amp; Filter man:RedHat,Inc.:
+Michael Meeks:mmeeks:michael_:ugly hack-er:Novell,Inc.:
+Federico Mena-Quintero:federicomena:federico:perfectionist:Novell,Inc.:
+Shreyas Srinivasan::shres::Novell,Inc.:
+Nitin Dongre::nitin_BITS::Novell,Inc.(intern):
+ShilpaS::shilpa::Novell,Inc.:
+NicelKM:mnicel:nicel::Novell,Inc.:
+Niklas Nebel:nn::Calc Hacker:Sun Microsystems,Inc.:
+Thomas O'Conner:toconner::Scripting Framework:Sun Microsystems,Inc.:
+Lars Oppermann:lo:::Sun Microsystems,Inc.:
+Rodrigo Parra Novo:rodarvus:rodarvus:config_office:Freedows:
+Christof Pintaske:cp:GSL Head Honcho:Sun Microsystems,Inc.:
+Ron Piterman:rpiterman::::
+Ashwanth Premchandran::ashwanth::Novell,Inc.(intern):
+Nikolai Pretzell:np:::Sun Microsystems,Inc.:
+Volker Quetschke:vq:Windows Build Genius:Gravity Waves:
+Tino Rachui:tra::GSL/Unix Hacker:Sun Microsystems,Inc.:
+Kay Ramme:::UDK:Sun Microsystems,Inc.:
+Eike Rathke:er:erAck:Calc Hacker.:Sun Microsystems,Inc.:
+Hennes Rohling:hro::GSL&amp;Util:Sun Microsystems,Inc.:
+Michael R&uuml;&szlig;:mru::QA(Writer?):Sun Microsystems,Inc.:
+Stephan Sch&auml;fer:ssa:ssa:VCL:Sun Microsystems,Inc.:
+Andreas Schl&uuml;ns:as:::Sun Microsystems,Inc.:
+Frank Sch&ouml;nheit:fs::UI/configuration/database?:Sun Microsystems,Inc.:
+Ingo Schmidt:is::Installation:Sun Microsystems,Inc.:
+Juergen Schmidt:jsc::API:Sun Microsystems,Inc.:
+Darragh Sherwin:dsherwin:darragh:E-Legislation / E-GovSystems:Propylon:
+Raul Siddhartha:rsiddhartha:raul:GTK File Selector:Novell,Inc.:
+Claus S&oslash;rensen:cs:c26n,cHBs,chbs:Danish Localization and Project Management Tool(oopm):ProFOSS:
+Kai Sommerfeld:kso:manager&amp;hacker:Sun Microsystems,Inc.:
+Louis Suarez-Potts:louis:louis:'CommunityManager':Collab.net:
+Stefan Taxhet:st:stx12:interpersonalproblemfixer:Sun Microsystems,Inc.:
+Tom Verbeek:tv::Sun Microsystems,Inc.:
+Jim Watson:sparcmoz:sparcmoz:Linux/sparcporter:clug.org.au:
+Jack Warchold:jw::QA:Sun Microsystems,Inc.:
+Dan Williams:fa:dcbw:Macet.al.hacker:RedHat,Inc.:
+Dirk Grobler:dg::DatabaseAccess:Sun Microsystems,Inc.:
+Scott Carr:::Documentation:Sun Microsystems,Inc.:
+Kai Ahrens:ka::GraphicApplications:Sun Microsystems,Inc.:
+Christian Lippka:cl::GraphicApplications:Sun Microsystems,Inc.:
+Dirk Voelzke:dv::Installation:Sun Microsystems,Inc.:
+Dieter Loeschky:::Localization:Sun Microsystems,Inc.:
+Nils Fuhrmann:::Localization:Sun Microsystems,Inc.:
+Oliver Specht:os::UI:Sun Microsystems,Inc.:
+Andreas Martens:ama::Writer:Sun Microsystems,Inc.:
+Michael Brauer:mib::XML:Sun Microsystems,Inc.:
+Daniel Vogelheim:dvo::XML:Sun Microsystems,Inc.:
+Frank Meies:fme:::Sun Microsystems,Inc.:
+Oliver D&uuml;sterhoff:od:::Sun Microsystems,Inc.:
+Thomas Lange:tl:::Sun Microsystems,Inc.:
+Joachim Lingner:jl:::Sun Microsystems,Inc.:
+Jens-Heiner Rechtien:hr:blauwal::Sun Microsystems,Inc.:
+Sven Jacobi:sj::Escherwizard:Sun Microsystems,Inc.:
+Hirano Kazunari:khirano::Japanese::
+Karl Hong:khong::::
+Gregor Hartmann:gh::::
+Armin Weiss:aw:::Sun Microsystems,Inc.:
+John Marmion:jmarmion:::Sun Microsystems,Inc.:
+Ocke Janssen:oj:::Sun Microsystems,Inc.:
+Andreas Bille:abi:::Sun Microsystems,Inc.:
+Bjoern Mielke:bm:::Sun Microsystems,Inc.:
+Lars Langhans:lla::::
+Sarah Smith:ssmith::::
+Andre Fischer:af::Impress:Sun Microsystems,Inc.:
+R&uuml;diger Timm:rt::Build/Release Engineer(?):Sun Microsystems,Inc.:
+Kurt Zenker:kz:::Sun Microsystems,Inc.:
+Mikhail Voitenko:mav:::Sun Microsystems,Inc.:
+Herbert Duerr:hdu:::Sun Microsystems,Inc.:
+Volker Ahrend:va:::Sun Microsystems,Inc.:
+Gregor Hartmann:gh:::Sun Microsystems,Inc.:
+Andreas Bregas:ab:::Sun Microsystems,Inc.:
+Sven Jacobi:sj:::Sun Microsystems,Inc.:
+Stephan Wunderlich:sw:::Sun Microsystems,Inc.:
+Duncan Foster:dfoster::::
+Tomas O'Connor:toconnor::::
+Daniel Rentz:dr:::Sun Microsystems,Inc.:
+Kurt Zenker:kz:::Sun Microsystems,Inc.:
+Hasan Ilter:hi::Writer:Sun Microsystems,Inc.:
+Stefan Baltzer:sba::UserInterface:Sun Microsystems,Inc.:
+Ulf Stroehler:us:::Sun Microsystems,Inc.:
+Erick Savary:es:::Sun Microsystems,Inc.:
+Michael Cziebalski:mci:::Sun Microsystems,Inc.:
