@@ -142,7 +142,9 @@
       So; since the source tar.gz is a snapshot taken from a random user's
       account; you need to switch this to using the anoncvs root; to do this
       cd build/OOO_1_1_0 (eg.) and run <b>bin/re-root .</b> - this will
-      switch the CVS/Root directories to use the anon-cvs server.
+      switch the CVS/Root directories to use the anon-cvs server. To verify
+      that this has worked, do: cat moz/CVS/Root, and check it contains:
+      <pre>':pserver:anoncvs@anoncvs.services.openoffice.org:/cvs'</pre>.
     </p>
     <p>
       Since we are interested in diffs from the toplevel - which has no CVS
