@@ -619,7 +619,6 @@ xh      neon  :  soltools external expat NULL
       builds the 'LinkStubImplHandlePaintHdl' method.
     </p>
 
-
     <h3 id="section-6.8">6.8 How can I re-build just the files I see in the trace</h3>
 
     <p>
@@ -733,6 +732,36 @@ unset PRODUCT PROSWITCH PROFULLSWITCH
       sc/source/filter/excel/biffrecdumper.ini to ~. Then run
       <code>soffice.bin foo.xls</code> and you should get a
       foo.txt with the debug data in it.
+    </p>
+
+    <h3 id="section-6.14">6.14 The trace shows a crash in 'poll'</h3>
+    <p>
+      OO.o is a fairly threaded program, you're prolly just looking
+      at the wrong thread: there are not likely to be bugs in poll.
+      Use <code>thread apply all backtrace</code> to get a backtrace
+      of all threads - this will most likely fail. When it does do:
+      <code>thread 1</code> then <code>bt</code> - most crashers
+      occur in the 'main' thread.
+    </p>
+
+    <h3 id="section-6.15">6.15 What does this trace mean ?</h3>
+    <p>
+      There are several typical stack-traces that come up again
+      and again, one would be:
+    </p>
+    <pre>#15 0x4164a501 in raise () from /lib/tls/libc.so.6
+#16 0x4164bcd9 in abort () from /lib/tls/libc.so.6
+#17 0x415fb5a5 in std::set_unexpected ()
+   from /home/mnagashree/m72install/program/libstdc++.so.5
+#18 0x415fb5e2 in std::terminate ()
+   from /home/mnagashree/m72install/program/libstdc++.so.5
+#19 0x415fb69c in __cxa_rethrow ()
+    </pre>
+    <p>
+	This section of trace means (essentially) that an
+      exception was thrown - but there was no-one trying to
+      catch it. Often this means there was a missing
+      'try {} catch()' clause in one of the calling frames.
     </p>
 
     <h2 id="section-7">7. Contributing patches</h2>
