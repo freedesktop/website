@@ -6,7 +6,7 @@
 
   <body>    
     <h2>Installing and using the OO SDK</h2>
-    <p><h3>1.0 Introduction</h3></p>
+    <h3>1.0 Introduction</h3>
     <p>The OpenOffice.org SDK allows you to create components (e.g.: file filters) that interact with
       the OpenOffice suite without going through the pain of building them against the main OpenOffice tree.
       Unfortunately, the default set up of the SDK doesn't work perfectly (or, at least, it didn't work for me).
@@ -15,16 +15,16 @@
     <p>This document covers both version 1.0.1 (stable) and 643 (CVS SRX643). It only
       covers the GNU/Linux environment because, well, that's what the author uses (Debian/Unstable). Your feedback on 
       on using the SDK in other environments is welcomed.</p>
-    <p><h3>2.0 Getting it</h3></p>
+    <h3>2.0 Getting it</h3>
     <p><b>OpenOffice 1.0.1</b><br>
     Get it from the <a href="http://www.openoffice.org/dev_docs/source/1.0.1/index.html">OpenOffice downloads area</a>.</p>
     <p><b>OpenOffice 643 (CVS)</b><br>
     It can be built off of your source release. After building OpenOffice proper (see the 
       <a href="http://ooo.ximian.com/hackers-guide.html">unofficial hacker's guide</a>), build the following 
       modules in order: xmlwww, udkwww, apiwww, odk by running 'build' and 'deliver' in their directories.</p>
-    <p>After this process, you should have an SDK built in the '&#139;cvsroot&#155;/odk/unxlngi4.pro/bin' with the filename:
+    <p>After this process, you should have an SDK built in the '&lsaquo;cvsroot&rsaquo;/odk/unxlngi4.pro/bin' with the filename:
 	OpenOffice.org1.0.1_alpha_SDK.tar.gz.</p>
-    <p><h3>3.0 Installing it</h3></p>
+    <h3>3.0 Installing it</h3>
     <p> Untar the SDK into an appropriate directory. Run ./configure in this directory and answer the questions (with the exception
       of gcc, the default answers are usually fine). Type './setsdkenv_unix' on the commandline to setup the paths.</p>
     <p>Here's the tricky part: you <i>must</i> be using gcc version 3.0.x or greater. After setting up the paths, do a 'gcc -v'
@@ -36,16 +36,16 @@
       new gcc path. You have two options: either (1) delete your java/ant settings from the 'setsdkenv_unix' file or (2) paste them 
       somewhere else, so the gcc path takes priority. Given that java and OO/Linux is a dicey proposition anyway, I'd probably 
       recommend (1).</p>
-    <p>Finally, one of the settings files is not set up correctly. Go to '&#139;SdkRoot&#155;/settings' and open the file dk.mk in your
+    <p>Finally, one of the settings files is not set up correctly. Go to '&lsaquo;SdkRoot&rsaquo;;/settings' and open the file dk.mk in your
 	favourite text editor. Change:</p>
     <p>'udkapi.rdb' <i>to</i> 'DKREGISTRYNAME=$(OFFICE_PROGRAM_PATH)$(PS)applicat.rdb'.</p>
-    <p><h3>4.0 Using it</h3></p>
+    <h3>4.0 Using it</h3>
     <p>Probably the most interesting C++ example provided with the SDK is GenericXMLFilter (although it does lack some important services,
     like deep detection). With a correctly set up SDK, compiling/installing it should be straightforward: simply go to 
-    '&#139;SdkRoot&#155;/examples/cpp/GenericXMLFilter/' and execute 'make'. The README file should give instructions on how to install the 
+    '&lsaquo;SdkRoot&rsaquo;/examples/cpp/GenericXMLFilter/' and execute 'make'. The README file should give instructions on how to install the 
     TypeDetection.xml file so that the GenericXMLFilter is detected properly by OpenOffice. Note, however, that the TypeDetection facility has 
     changed in 643. If you're using that version , you'll want to download this <a href="TypeDetection.xcu">file</a> and place it in 
-    '&#139;OpenOfficeRoot&#155;/user/registry/data/org/openoffice/Office'.</p>
+    '&lsaquo;OpenOfficeRoot&rsaquo;/user/registry/data/org/openoffice/Office'.</p>
 
     <hr>
     <address><a href="mailto:w_lach@yahoo.ca">William Lachance</a></address>
