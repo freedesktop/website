@@ -1,14 +1,13 @@
-Ramesh Babu::rbabu:QA/communitybits.:Novell,Inc.:
 Srinivasa Ragavan::srag::Novell,Inc.:
 Sascha Ballach:sab:::Sun Microsystems,Inc.:
-J&ouml;rg Barfurth:jb:JoergB:ConfigurationUtil:Sun Microsystems,Inc.:
+J&ouml;rg Barfurth:jb:JoergB:Configuration Util:Sun Microsystems,Inc.:
 Mathias Bauer:::XML:Sun Microsystems,Inc.:
-Thorsten Behrens:thb::vcl/impress/toolkitvisionary:Sun Microsystems,Inc.:
+Thorsten Behrens:thb::vcl/impress/toolkit visionary:Sun Microsystems,Inc.:
 Stefan Bergmann:sb::tools&amp;UCBhacker:Sun Microsystems,Inc.:
 Oliver Bolte:obo:::Sun Microsystems,Inc.:
 Peter Burow:pb:::Sun Microsystems,Inc.:
-J&ouml;rg Budischewski:jbu:PyUNO+hacker:
-Colin Charles:drbyte:drbyte:Malaysiannative-langproject:bytebot.net:
+J&ouml;rg Budischewski:jbu:PyUNO+hacker::
+Colin Charles:drbyte:drbyte:Malaysian native-lang project:bytebot.net:
 Behrend Cornelius:bc:::Sun Microsystems,Inc.:
 Carsten Driesner:cd::Framework:Sun Microsystems,Inc.:
 Ren&eacute; Engelhard:rene:_rene_:Debianpackager:Debian:
@@ -19,7 +18,7 @@ Vladimir Glazounov:vg:::Sun Microsystems,Inc.:
 Bettina Haberer:bh::RFEOwner:Sun Microsystems,Inc.:
 Ingrid Halama:iha:::Sun Microsystems,Inc.:
 Chris Halls:haggai:haggai:Debianpackager&amp;misc.hacker:Debian:
-Kevin Hendricks:khendricks:PPC/portinglead:
+Kevin Hendricks:khendricks:PPC/portinglead::
 Con Hennessy:cphennessy:cph2:hacker&amp;councilperson:Independent:
 Michael Hoennig:mi::API:Sun Microsystems,Inc.:
 Jan Holesovsky:kendy:kendy:KDEintegration:Novell,Inc.:
@@ -32,7 +31,7 @@ Hans-Joachim Lankenau:hjs:ause:dmake makefile expert:Sun Microsystems,Inc.:
 Philipp Lohmann:pl:pl_hh:VCL/X11 (GSL) hacker:Sun Microsystems,Inc.:
 Will Lachance:wlach:wlach_:Word Perfect File Filters:NetIntegrationTechnologiesInc.:
 Friedrich Strba:fridrich_strba:Friedrich:Word Perfect Hacker::
-Jayant Balraj Madavi:mjayant:aZEN_JM/mjayant:Connectivity / Database:Novell,Inc.:
+Jayant Balraj Madavi:mjayant:aZEN_JM:Connectivity / Database:Novell,Inc.:
 Martin Maher:mmaher::Writer &amp; Filter chap:Sun Microsystems,Inc.:
 Caolan McNamara:cmc:caolan:Writer &amp; Filter man:RedHat,Inc.:
 Michael Meeks:mmeeks:michael_:ugly hack-er:Novell,Inc.:
