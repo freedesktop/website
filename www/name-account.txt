@@ -70,7 +70,7 @@ Jim Watson:sparcmoz:sparcmoz:Linux/sparcporter:clug.org.au:
 Jack Warchold:jw::QA:Sun Microsystems,Inc.:
 Dan Williams:fa:dcbw:Macet.al.hacker:RedHat,Inc.:
 Dirk Grobler:dg::DatabaseAccess:Sun Microsystems,Inc.:
-Scott Carr:::Documentation::
+Scott Carr:kcarr:kcarr:Documentation:Progbits:
 Kai Ahrens:ka::GraphicApplications:Sun Microsystems,Inc.:
 Christian Lippka:cl::GraphicApplications:Sun Microsystems,Inc.:
 Dirk Voelzke:dv::Installation:Sun Microsystems,Inc.:
@@ -113,3 +113,5 @@ Erick Savary:es:::Sun Microsystems,Inc.:
 Michael Cziebalski:mci:::Sun Microsystems,Inc.:
 Christian Junker:Cyb:Cyb'in_US:Impress pieces:Trees For Life:
 Bibek Sahu:Bibek:bibek:Impress pieces:Trees For Life:
+Thorsten Ziehm:thorstenziehm::QA Manager:Sun Microsystems,Inc.:
+G.Roderick Singleton:grsingleton:grsingleton:Documentation:pathtech.org

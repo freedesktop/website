@@ -109,7 +109,10 @@
     <p>
       In particular, building SRC680 requires a recent jdk &amp; a
       version of apache-ant. If you use a Novell system, just do:
-      <code>sudo rug in apache-ant</code> Failing that see
+      <code>sudo rug in apache-ant</code>, alternatively download
+      a package from <a
+      href="http://www.rpmfind.net/linux/rpm2html/search.php?query=apache-ant&submit=Search+...">
+      rpmfind.net</a>, or failing that see
       <a href="http://ant.apache.org/bindownload.cgi">
       Ant download</a> &amp; set the ANT environment variable
       appropriately before configuring.
@@ -151,7 +154,11 @@
     <p>
       If you are a packager, you'll want to run <code>make install</code>
       which honours DESTDIR &amp; does other packager-like things.
+    </p>
     <p>
+      <strong>Note:</strong> The '-l' to ooinstall runs a <a
+      href="#section-5.7">linkoo</a> on the installed result.
+    </p>
 
     <h2 id="section-4">4. Running OO.o</h2>
 
@@ -520,7 +527,7 @@ mkdir:    %_DEST%\inc%_EXT%\external
       though use <code>build debug=true dbg_build_only=true</code>
     </p>
 
-    <h3 id="section-6.3">6.3. Starting at the beginning</h3>
+    <h3 id="section-6.2">6.2. Starting at the beginning</h3>
 
     <p>
       We start in 'main' with a sal wrapper, that calls
@@ -534,7 +541,7 @@ mkdir:    %_DEST%\inc%_EXT%\external
       desktop/source/app/app.cxx (Main).
     </p>
 
-    <h3 id="section-6.4">6.4. Examining strings</h3>
+    <h3 id="section-6.3">6.3. Examining strings</h3>
 
     <p>
       We have already <a href="#section-5.6">seen</a> that OO.o has
@@ -547,7 +554,7 @@ mkdir:    %_DEST%\inc%_EXT%\external
       here</a> for details.
     </p>
 
-    <h3 id="section-6.5">6.5 Getting the build order right</h3>
+    <h3 id="section-6.4">6.4 Getting the build order right</h3>
 
     <p>
       The build dependencies of the modules are clearly crucial to
@@ -562,7 +569,7 @@ xh      neon  :  soltools external expat NULL
       a while.
     </p>
 
-    <h3 id="section-6.6">6.6 It crashes, but only in gdb</h3>
+    <h3 id="section-6.5">6.5 It crashes, but only in gdb</h3>
 
     <p>
       What fun &mdash; you symlinked desktop/unxlngi4.pro/bin/soffice to
@@ -576,7 +583,7 @@ xh      neon  :  soltools external expat NULL
       crashes somewhere else yards away from the original problem.
     </p>
 
-    <h3 id="section-6.7">6.7 It crashes, but doesn't crash</h3>
+    <h3 id="section-6.6">6.6 It crashes, but doesn't crash</h3>
 
     <p>
       For various reasons signal handlers are trapped and life
@@ -599,7 +606,7 @@ xh      neon  :  soltools external expat NULL
       NB. trailing space.
     </p>
 
-    <h3 id="section-6.8">6.8 I can't find the code from the trace</h3>
+    <h3 id="section-6.7">6.7 I can't find the code from the trace</h3>
 
     <p>
       Some methods, are described as having a special linkage, such that
@@ -613,15 +620,15 @@ xh      neon  :  soltools external expat NULL
     </p>
 
 
-    <h3 id="section-6.9">6.9 How can I re-build just the files I see in the trace</h3>
+    <h3 id="section-6.8">6.8 How can I re-build just the files I see in the trace</h3>
 
     <p>
-      Often when you run gdb on a non-debugging build, you can't afford
-      to wait, and re-compile (eg.) all of oowriter. Thus we have created
-      a small perl helper, with which you can cut and paste method / class
-      names you are interested in from the stack, and it'll touch just files
-      containing those strings &mdash; for easier re-build. Here is a typical
-      debugging workflow:
+      Often when you run gdb on a build without debugging symbols, you get
+      an unhelpful gdb trace, but yet you can't afford the time/space to
+      recompile all of OO.o with debugging symbols. Thus we have created
+      a small perl helper, which will hunt for &amp; touch files containing
+      the symbols from your trace. This sub-set can then be re-built with
+      debugging enabled for a better trace next time around:
     </p>
     <pre>
     gdb ./soffice.bin
@@ -645,7 +652,7 @@ xh      neon  :  soltools external expat NULL
       symbols.
     </p>
 
-    <h3 id="section-6.10">6.10 How can I re-build all the files in one source directory</h3>
+    <h3 id="section-6.9">6.9 How can I re-build all the files in one source directory</h3>
 
     <p>
       If you want to recompile the code in just your current directory, you can
@@ -656,7 +663,7 @@ xh      neon  :  soltools external expat NULL
     dmake
     </pre>
 
-    <h3 id="section-6.11">6.11 It always crashes in sal_XErrorHdl</h3>
+    <h3 id="section-6.10">6.10 It always crashes in sal_XErrorHdl</h3>
 
     <p>
       You are a victim of asynchronous X error reporting;
@@ -665,7 +672,7 @@ xh      neon  :  soltools external expat NULL
       it'll also make OO.o far slower, and the timing different.
     </p>
 
-    <h3 id="section-6.12">6.12 It silently fails to load my word file</h3>
+    <h3 id="section-6.11">6.11 It silently fails to load my word file</h3>
     <p>
       Caolan suggests: put breakpoints in ww8par.cxx top and tail of
       SwWW8ImplReader::LoadDoc, and confirm that the document gets as far
@@ -678,7 +685,7 @@ xh      neon  :  soltools external expat NULL
       each paragraph is inserted.
     </p>
 
-    <h3 id="section-6.13">6.13 How do I use the debug console ?</h3>
+    <h3 id="section-6.12">6.12 How do I use the debug console ?</h3>
     <p>
       So OO.o contains some hefty debugging infrastructure; pictured
       <a href="images/debug-window.png">here</a>. Unfortunately
@@ -719,7 +726,7 @@ unset PRODUCT PROSWITCH PROFULLSWITCH
       is (unfortunately) a binary file.
     </p>
 
-    <h3 id="section-6.14">6.14 Excel Interop debugging</h3>
+    <h3 id="section-6.13">6.14 Excel Interop debugging</h3>
     <p>
       This is fairly easy; edit sc/source/filter/inc/biffdump.hxx,
       define EXC_INCL_DUMPER to 1, and re-build 'sc'. Also, copy
@@ -908,6 +915,11 @@ status -v
 
       <a href="http://dict.progbits.com">Dictionaries &amp Docs</a> from Kevin Hendricks.
     <p>
+
+    <p>
+      And an interesting <a href="http://www.kaaredyret.dk/openoffice_links_uk.html">
+      portal</a>.
+    </p>
 
     <h3 id="section-9.2">9.2. Patch archives</h3>
 
