@@ -208,22 +208,20 @@
       Having created the patch, you then need to edit the relevant apply set; eg.
       <b>patches/OOO_1_1_0/apply</b> and add the patch to a relevant section,
       along with a comment line that describes it - and references the IZ number.
-      eg.
-<b># this adds a nasty hack to the toolbar - #32179
+      eg. <pre><b># this adds a nasty hack to the toolbar - #32179
 gui-toolbox-hack.diff
-</b>
+</b></pre>
     </p>
 
-    <h3 id="section-2.5">2.5 Committing the new patch to openoffice.org</h3>
-    <h4 id="section-2.5.1">2.5.1 your first commit to openoffice.org</h4>
+    <h3 id="section-2.5">2.5 Committing the new patch to ooo-build</h3>
+    <h4 id="section-2.5.1">2.5.1 your first commit to ooo-buil</h4>
     <ul>
 	<li>Create an ssh key, see <a href="http://sysadmin.gnome.org/users/security.html">
 	here</a> for more details. If you have a key already, send that - it probably
 	lives in ~/.ssh/id_dsa.pub or ~/.ssh/id_rsa.pub. Two things to note: <b>do not</b>
 	send the private key, and <b>do not</b> loose the key (or overwrite it, or ...).
 	<li>E-mail this public key file, with your full name, and contact E-mail
-	    address to <a href="mailto:michael@ximian.com">michael@ximian.com</a>
-	    and/or <a href="halls@debian.org">halls@debian.org</a>.
+	    address to <a href="mailto:michael@ximian.com">michael@ximian.com</a>.
 	<li>If you overlap in European time poke michael / haggai on IRC.
 	<li>When you have a CVS account, you will need to switch 'ooo-build'
 	to the new root before you can commit, so run:
