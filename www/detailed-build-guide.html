@@ -1,6 +1,9 @@
 <!doctype html PUBLIC "-//W3C//DTD HTML 4.0//EN">
 
 <html lang="en">
+<head>
+<title>ooo.ximian.org - Detail Build guide</title>
+</head>
 <body>
 <h1>The detailed build guide</h1>
 
@@ -191,7 +194,7 @@ escape ``
       any given sub-project, and <tt>deliver</tt> which copies built
       source into the <a
       href="http://www.openoffice.org/dev_docs/source/solver.html">solver</a>
-    <p>
+    </p>
 
     <h3 id="section-2.3">2.3. What to do</h3>
 
@@ -220,7 +223,7 @@ escape ``
 
     <pre>
 ./configure --prefix=/opt/OpenOffice
-make && make install
+make &amp;&amp; make install
     </pre>
 
     <h4 id="section-2.3.3">2.3.3. Unpack jdk</h4>
@@ -268,7 +271,7 @@ source scriptname # under broken shells
 
     <pre>
 ./configure --prefix=/opt/OpenOffice
-make && make install
+make &amp;&amp; make install
     </pre>
 
     <p>
@@ -316,7 +319,7 @@ export CXX='ccache g++'
     <p>
       This process takes a snapshot of your environment, merges it
       with the necessary flags, makes several mistakes and sets up
-      LinuxIntelEnv.Set.sh [or sim] in the base directory.  It's worth a
+      LinuxIntelEnv.Set.sh [or similar] in the base directory.  It's worth a
       read, particularly to check the PATH, LD_LIBRARY_PATH if things
       go wrong.
     </p>
