@@ -48,7 +48,7 @@ QUILT_DIFF_OPTS="-p${QUILT_DIFF_OPTS:+ $QUILT_DIFF_OPTS}"</pre>
       quilt gets the list of patches from a `series' file, similar to
       ooo-build's apply files.
       You can generate a series file by running
-      <pre>ooo-build/patches/apply.pl ooo-build/patches/OOO_1_1_0 <i>$OOBUILDDIR</i> --distro=<i>$DISTRO</i> --export-series-to=series</pre>
+      <pre>ooo-build/patches/apply.pl ooo-build/patches/OOO_1_1_0 --series-from=<i>$DISTRO</i> &gt; series</pre>
       in your working directory.
     </p>
     <p>
