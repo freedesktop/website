@@ -105,7 +105,7 @@ doesn't track commits. Just commit them to the branched
 modules you cwsadded.
 </p>
 <p>
-  CVS should add some helpful fields for you & some helpful
+  CVS should add some helpful fields for you &amp; some helpful
 blurb about what to write here - often it doesn't. The stock
 format is:
 </p>
@@ -140,4 +140,35 @@ bugs 'FIXED' first ? - don't run foul of the thought police ].
   You get to wait until the CWS is nominated by Sun QA up-stream,
 then it will (eventually) be merged into HEAD and released.
 </p>
+
+<h3>Updating to a newer milestone</h3>
+<p>
+  The long-term CWSes need a resync to a newer milestone from time to time.
+</p>
+<p>
+<pre>
+mkdir tmp
+cd tmp
+cwsresync -f <b>-m m79 all</b>
+<i>... resolve possible conflicts ...</i>
+cwsresync -f <b>-c all</b>
+cwsresync -f <b>-l m79</b>
+</pre>
+</p>
+<p>
+  You must start in an empty directory with a correctly set CWS_WORK_STAMP
+environment variable. First of all, <b>-m</b> merges files from the CWS
+(according to CWS_WORK_STAMP) with the specified milestone and protocolls all
+conflicts. <b>-c</b> then commits the merges to the CVS. NB.: Do it always
+with <code>cwsresync -c</code>, never by hand! Finally, <b>-l</b> updates the
+workspace and the milestone info of the CWS in the database<br/>
+</p>
+<p>
+  NB.: Don't forget to create a new &amp; empty directory for this. Really.
+</p>
+<p>
+  NB. -f: Speeds the things up by avoiding unnecessary updates.
+</p>
+
+</body>
 </html>
