@@ -118,9 +118,10 @@
       continues apace.
     </p>
 
-    <h2 id="section-2">2. Getting involved</h2>
+    <h2 id="section-2">2. Getting changes in</h2>
 
     <h3 id="section-2.1">2.1 Communication</h3>
+
     <p>
       Without communication it's impossible to co-ordinate what is being
       done. It's also impossible to have any confidence that your patch
@@ -130,38 +131,83 @@
       <a href="name-account.html">here</a> to see who is whom.
     </p>
 
-    <h3 id="section-2.3">2.3 Your first patch</h3>
+    <h3 id="section-2.2">2.2 First time setup</h3>
     <p>
-      The process for submitting your first OO.o build patch is extremely simple:
+      So; since the source tar.gz is a snapshot taken from a random user's
+      account; you need to switch this to using the anoncvs root; to do this
+      cd build/OOO_1_1_0 (eg.) and run <pre>bin/re-root .</pre> - this will
+      switch the CVS/Root directories to use the anon-cvs server.
+    </p>
+    <p>
+      Since we are interested in diffs from the toplevel - which has no CVS
+      directory; we also need to do: <pre>export CVSROOT=`cat moz/CVS/Root`</pre>
+      NB. '`' is a back-tick.
+    </p>
+    <p>
+        It is of course crucial that you or your company have signed and posted
+	the JCA; see <a href="http://www.openoffice.org/contributing">here</a>.
+    </p>
+
+    <h3 id="section-2.3">Generating the patch</h3>
+    <p>
+      Having done this we can make a patch; taking the sample toolbar change
+      from <a href="hackers-guide.html#section-5.0">here</a> we would do this:
+      <pre>
+      cvs -z3 diff -u vcl/source/window/toolbox.cxx | tee ../../patches/OOO_1_1/gui-toolbox-hack.diff
+      </pre>
+      <p>
+        <strong>NB.</strong> to append a patch to an existing diff use <pre>tee -a</pre>
+      </p>
+      <p>
+        <strong>NB.</strong> to avoid having to type -z3 &amp; -u grab <a
+	href="http://primates.ximian.com/~michael/.cvsrc"</a> and put it in ~.
+      </p>
+    </p>
+
+    <h3 id="section-2.4">2.4 Adding to the apply set</h3>
+    <p>
+	Before committing the patch, we need to submit it to <a
+	href="http://www.openoffice.org">IssueZilla</a> (IZ) - this is about the most
+	painful bit: re-login (again), hit <i>File an Issue</i>, commit the issue,
+	and attach the patch - remember the IZ number.
+    </p>
+    <p>
+      Having created the patch, you then need to edit the relevant apply set; eg.
+      <pre>patches/OOO_1_1_0/apply</pre> and add the patch to a relevant section,
+      along with a comment line that describes it - and references the IZ number.
+      eg.
+<pre># this adds a nasty hack to the toolbar - #32179
+gui-toolbox-hack.diff
+</pre>
+    </p>
+
+    <h3 id="section-2.4">2.4 Committing the new patch to openoffice</h3>
+    <h4 id="section-2.4.1">2.4.1 your first commit to openoffice</h4>
+    <p>
       <ul>
-        <li>Sign and post the JCA; see <a href="http://www.openoffice.org/contributing">here</a>
 	<li>Create a perl crypted password:
 	    <pre>perl -e "print ':'.crypt('mypassword', 'zt').':';"</pre>
 	    'zt' should be 2 random chars, and 'mypassword' should be a strong
 	    password.
 	<li>E-mail this crypted password with your full name, and contact E-mail
-	address to <a href="mailto:michael@ximian.com">michael@ximian.com</a> and/or
-	<a href="halls@debian.org">halls@debian.org</a>.
-	<li>If you're in European time poke michael / haggai on IRC.
-	<li>Re-checkout openoffice from the master CVS server:
-	   <pre>export CVSROOT=':pserver:<i>jsmith</i>@cvs.gnome.org:/cvs/gnome'
-	   cvs login
-	   cvs -z3 checkout openoffice
-	   </pre>
-	   NB. your account name will usually by <lt>Initial<gt><lt>LastName<gt>
-	   as above.
+	    address to <a href="mailto:michael@ximian.com">michael@ximian.com</a>
+	    and/or <a href="halls@debian.org">halls@debian.org</a>.
+	<li>If you overlap in European time poke michael / haggai on IRC.
       </ul>
+    </p>
+    <p>
+    <h4 id="section-2.4.2">2.4.2 how to commit</h4>
+    <p>
+      First ensure you have a ChangeLog entry in openoffice/ChangeLog, this
+      should look like:
+      <pre>
+2003-10-23  FirstName LastName  <EMail@MyCompany.com>
 
-      For this as every subsequent patch the process is far simpler
-      <ul>
-        <li>Create your patch (diff -u etc.)
-	<li>Submit the patch to <a href="http://www.openoffice.org">IssueZilla</a>
-	- this is about the most painful bit: re-login (again), 'File an Issue',
-	commit the issue, attach the patch - remember the IZ number.
-	<li>Commit your patch to the build set you're interested in, and add the
-	patch name to the 'apply' file - add a short comment describing what the
-	patch does, and append the IZ bug-number.
-      </ul>
+    * patches/OOO_1_1/gui-toolbox-hack.diff,
+    * patches/OOO_1_1_0/apply: add a nasty hack for toolbars.
+</pre>
+      Now, from the toplevel directory run <pre>cvs commit</pre>, use your
+ChangeLog text for the CVS commit message.
     </p>
 
     <h2 id="section-3">3. Downsides</h2>

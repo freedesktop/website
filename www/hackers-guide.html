@@ -143,11 +143,20 @@
     <p>
       Wander into the prefix you just ran linkoo on; and do:
       <pre>cd program; . ./env</pre> this will setup your shell
-      for running OO.o directly. Then simply <pre>soffice.bin</pre>
+      for running OO.o directly. Then simply <pre>soffice.bin</pre>.
+      This is better than running soffice, or a wrapper script since
+      it's very easy to attach the debugger: <pre>gdb soffice.bin</pre>.
     </p>
     <p>
       <strong>Note:</strong> do not use <pre>./soffice.bin</pre>
       for reasons inscrutable this completely fails to work.
+    </p>
+    <p>
+      <strong>Note:</strong> you need to run the ooo-wrapper based
+      OO.o before this, such that ~/.sversionrc is setup correctly
+      first, otherwise running soffice.bin will throw you into the
+      GUI setup tool. Just do a one-off <pre>oowriter</pre> before
+      you start.
     </p>
 
     <h2 id="section-5">5. Hacking OO.o</h2>
@@ -414,20 +423,11 @@ mkdir:    %_DEST%\inc%_EXT%\external
     <h3 id="section-5.6">5.6 fast iteration</h3>
 
     <p>
-      There are lots of ways to go round a devel iteration; eg. you
-      can symlink libraries from the solver into your working install
-      set; then with a 'build' / 'deliver' in a package, you can
-      test your mods.
-    </p>
-    <p>
-      One side-effect of this is (though) to force inter-module
-      re-builds if you (cosmetically) changed a header. This can be
-      avoided if you skip the 'deliver' stage, (only for those that
-      know what they're doing), and symlink directly from the module's
-      local build directory to the installed set. A script that helps
-      you do this is <a href="linkoo">linkoo</a>, although it works
-      only for a sub-set of libraries as yet. Having done this, you can
-      simply do a 'build', then run the app on another console.
+      There are lots of ways to go round a devel iteration; the best
+      way is to use <a href="section-3">linkoo</a> to symlink the
+      libraries from the install set directly into your build tree.
+      Then you can simply re-build a sub-directory eg. <pre>vcl</pre>
+      by running <pre>build</pre> and re-run soffice.bin.
     </p>
 
     <h3 id="section-5.7">5.7 Can I get a <code>char *</code>, please?</h3>
@@ -872,6 +872,8 @@ xh      neon  :  soltools external expat NULL
       on IRC at <tt>irc.freenode.net</tt> on the
       <tt>#OpenOffice.org</tt> channel. IRC is an awfully poor
       communication medium, but better than no communication.
+      See <a href="name-account.html">here</a> to unwind who is
+      whom.
     </p>
 
     <h3 id="section-7.3">7.3. ooo-build patch creation</h3>
