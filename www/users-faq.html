@@ -1,0 +1,107 @@
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html lang="en">
+  <head>
+    <meta lang="en" http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <title>OO.o frequently asked user questions</title>
+    <link rel="icon" href="http://www.ximian.com/favicon.png" type="image/png">
+  </head>
+
+  <body>
+      <h2>OO.o frequently asked user questions</h2>
+
+      <h5>How do I turn off the splash screen ?</h5>
+      <p>
+        Edit your <pre>/usr/lib/ooo-1.0.3/program/sofficerc</pre>
+	(or equivalent), and set Logo=0 instead of 1.
+      </p>
+
+      <h5>What environment variables can I tweak when things don't work</h5>
+      <p>
+        For those unfamilar with Unix; these variables can be set before
+	running OO.o by doing <pre>export <i>variable</i>=<i>value</i></pre>
+	on the console. Make sure there is no existing OO.o running when
+	you re-run OO.o though.
+      </p>
+      <table>
+        <tr>
+		<th>variable</th><th>values</th><th>behavior</th>
+	</tr>
+	<tr>
+		<td>AUDIODEV</td><td>eg. /dev/audio3</td>
+		<td>
+		   This allows a non-default audio device to be assigned
+		   for use in OO.o. Particularly useful in thin-client
+		   situations.
+		</td>
+	</tr>
+	<tr>
+		<td>DISPLAY</td><td>eg. :0.0</td>
+		<td>
+		  A very standard X environment variable to instruct the
+		  application to start on a remote / different display.
+		</td>
+	</tr>
+	<tr>
+		<td>SAL_ANTIALIAS_DISABLE</td><td><i>set</i></td>
+		<td>
+		   This disabled anti-aliased font rendering; useful
+		   for debugging.
+		</td>
+	</tr>
+	<tr>
+		<td>SAL_ENABLE_GLX_XFREE4</td><td><i>set</i></td>
+		<td>
+		   If set, this enables the use of XFree4.0's GLX
+		   module which is considered to be badly buggy and is
+		   disabled by default; apparently this is mostly
+		   Matrox related however.
+		</td>
+	</tr>
+	<tr>
+		<td>SAL_HIGHPRIORITY_REPAINT</td><td><i>any</i></td>
+		<td>
+		  Apparently useful for taking screenshots.
+		</td>
+	</tr>
+	<tr>
+		<td>SAL_IGNOREXERRORS</td><td><i>any</i></td>
+		<td>
+		  Instructs the GUI to ignore any errors from the X
+		  server.
+		</td>
+	</tr>
+	<tr>
+		<td>SAL_NOOPENGL</td><td>true</td>
+		<td>
+		   If set to 'true' this completely disables probing for
+		   and/or use of OpenGL within OO.o. This can be important
+		   for licensed and/or buggy implementations.
+		</td>
+	</tr>
+	<tr>
+		<td>SAL_SYNCHRONIZE</td><td><i>set</i></td>
+		<td>
+		  This forces the X server to report errors
+		  synchronously, which means that the application runs
+		  far slower, but pinpointing an error in the code is
+		  possible.
+		</td>
+	</tr>
+	<tr>
+		<td>SAL_VISUAL</td><td>eg. 24 <i>bitdepth</i></td>
+		<td>
+		  Overrides the choice of visual algorithem to force
+		  a certain choice of bitdepth from the list of
+		  supported visuals.
+		</td>
+	</tr>
+      </table>
+      <p>
+        This list is not exhaustive - there are many, many similar tweaks
+	built into OO.o; Search for 'getenv' in
+	<a href="http://ooo.ximian.com/lxr">LXR</a> for a more exhaustive
+	result.
+      </p>
+  </body>
+</html>
