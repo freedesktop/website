@@ -160,20 +160,24 @@
       performing diffs from the toplevel.
     </p>
 
-    <h3 id="section-2.3">Generating the patch</h3>
+    <h3 id="section-2.3">2.3 Generating the patch</h3>
     <p>
       Having done this we can make a patch; taking the sample toolbar change
       from <a href="hackers-guide.html#section-5.0">here</a> we would do this:
       <pre>
-      cvs -z3 diff -u vcl/source/window/toolbox.cxx | tee ../../patches/OOO_1_1/gui-toolbox-hack.diff
+      cvs -z3 diff -up vcl/source/window/toolbox.cxx | tee ../../patches/OOO_1_1/gui-toolbox-hack.diff
       </pre>
       <p>
         <strong>NB.</strong> to append a patch to an existing diff use <b>tee -a</b>
       </p>
       <p>
-        <strong>NB.</strong> to avoid having to type -z3 &amp; -u grab <a
+        <strong>NB.</strong> to avoid having to type -z3 &amp; -up grab <a
 	href="http://primates.ximian.com/~michael/.cvsrc">this</a> and
 	put it in ~.
+      </p>
+      <p>
+        If you're going to create or edit many patches, you should
+	<a href="quilt.html">try quilt.</a>
       </p>
     <br>
 
