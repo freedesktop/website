@@ -121,4 +121,3 @@ Matthias M&uuml;ller-Prove:mmp::User Experience Engineer, ui.openoffice.org:Sun 
 Ivo Hinkelmann:ihi:ivo:l10n tooling/general:Sun Microsystems, Inc.:
 Oliver Craemer:oc::Calc/QA guy:Sun Microsystems, Inc.:
 Eric Bachard:ericb:ericb2:Mac OSX/Linux PPC ports:French OOo project:
-
