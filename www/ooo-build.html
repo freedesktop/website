@@ -14,7 +14,7 @@
        <li><a href="#section-1">1. Why ooo-build</a></li>
        <li><a href="#section-2">2. Getting involved</a></li>
 <!-- FIXME - need structural docs on ooo-build and how it works -->
-       <li><a href="#section-3">3. Downsides</a></li>
+       <li><a href="#section-3">3. Releasing</a></li>
        <li><a href="#section-4">4. Areas for improvement</a></li>
     </ul>
 
@@ -214,7 +214,40 @@ gui-toolbox-hack.diff
 ChangeLog text for the CVS commit message.
     </p>
 
-    <h2 id="section-3">3. Downsides</h2>
+    <h2 id="section-3">3. Releasing</h2>
+    <p>
+      When there's a particularly good reason for a release, such as a
+      distro needs a stable base / we want to do something potentially
+      disruptive, one of the core ooo-build hackers will follow something
+      like this process:
+    </p>
+    <ul>
+      <li><pre>cvs update</pre> - get the latest everything
+      <li>Read back through the ChangeLog and update the NEWS file for
+      the release, summarizing and attributing the changes.
+      <li>edit configure.in, bump the version in the <pre>AM_INIT_AUTOMAKE</pre>
+      line, incrementing the minor version eg. <pre>AM_INIT_AUTOMAKE(ooo-build, X.Y.Z)</pre>
+      <li><pre>./autogen.sh</pre> - this re-builds configure with the version in place.
+      <li><pre>make dist</pre> - this builds the archive containing everything.
+      <li>Add a line to any handy ChangeLogs saying:
+<pre>2019-13-33  Ned Squeers  <ned@sqeers.com>
+
+	* Version X.Y.Z
+</pre> so we can easily see where this happened in the flow.
+      <li><pre>cvs commit</pre> - so what's there is what's there. If there
+      was a collision you get to loop to the first stage here, but don't
+      re-increment the number.
+      <li><pre>cvs -z3 tag OOO_BUILD_X_Y_Z</pre> - this leaves a static tag
+      so we can reproduce the build at any time and easily diff between
+      releases.
+      <li><pre>scp ooo-build-X.Y.Z.tar.gz ooo@ooo.ximian.com:/var/www/packages/OOO_1_1_0</pre>
+      of course, substitute the branch/ver for OOO_1_1_0.
+      <li>It's then customary to announce the release, see the template in
+      doc/announce.txt - update all the ***s to the right versions, insert
+      the contents of NEWS, fire and forget.
+    </ul>
+   
+    <h2 id="section-4">4. Areas for improvement</h2>
     <p>
       Of course this has a number of obvious down-sides for you as a
       contributor:
@@ -227,8 +260,6 @@ ChangeLog text for the CVS commit message.
 	however - we value you more.
       </ul>
     </p>
-   
-    <h2 id="section-4">4. Areas for improvement</h2>
     <p>
       Obviously the existing situation is highly sub-optimal, here are some
       possible improvements beyond our control that could be made:
