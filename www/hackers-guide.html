@@ -971,12 +971,15 @@ unset PRODUCT PROSWITCH PROFULLSWITCH
 
     <h2 id="section-8">8. Misc. tips</h2>
 
-    <h3 id="section-8.1">8.1. Getting a CVS account</h3>
+    <h3 id="section-8.1">8.1. Getting an OO.o CVS account</h3>
 
     <p>
-      To see how the issue raising process works see eg. issue #7270.
-      Having got the account setup, you need to tunnel to the secure
-      CVS server something like:
+      This is the process for getting CVS accounts for the up-stream
+      CVS server, ooo-build accounts are handled <a
+      href="ooo-build.html#section-2.5.1">differently</a>. To see how
+      the issue raising process works see eg. issue #7270. Having got
+      the account setup, you need to tunnel to the secure CVS server
+      something like:
     </p>
 
     <pre>
@@ -993,16 +996,17 @@ ssh -f -2 -P -L 2401:localhost:2401 tunnel@openoffice.org sleep 1400 < /dev/null
     </pre>
 
     <p>
-      Login, and ... you'll soon notice that you'll need to migrate
-      your CVS settings to the new server, to do this without wasting
-      B/W with duplicate checkouts do: [ slow but effective ]
+      Your account name and password - will be the same as you use for
+      filing bugs etc. in the SourceCast system. Login, and ... you'll
+      soon notice that you'll need to migrate your CVS settings to the
+      new server, to do this without wasting B/W with duplicate
+      checkouts do:
     </p>
-
-    <pre>
-echo ":pserver:&lt;account-name-here&gt;@localhost:/cvs" &gt; /tmp/Root
-find -name 'Root' -exec cp /tmp/Root {} \;
-find -name 'Repository' -exec perl -pi.bak -e 's/^oo\///' {} \;
-    </pre>
+    <pre>bin/re-root /path/to/checkout ":pserver:&lt;account-name-here&gt;@localhost:/cvs"</pre>
+    <p>
+      Of course, to commit anything, you'll need various project
+      priviliges - and to battle the bureaucracy.
+    </p>
 
   <h3 id="section-8.2">8.2 Using patch / diff</h3>
 
