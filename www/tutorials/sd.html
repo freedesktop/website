@@ -1,5 +1,5 @@
 <html><pre><h4>
-Hack Impress!
+Hack Impress!                                                             <a href="help.html">Help!</a>
 
 -------------------------------------------------------------------------------
 
@@ -262,13 +262,13 @@ save to and writes the graphic to disk once that's done.
 
 heh :-) That's a lotta code. So after we've sufficiently scared you away with
 all that code, let's try to win you back with taking apart the most important
-parts: 1) We need to launch the FilePicker to query the user for the location
+parts: We need to launch the FilePicker to query the user for the location
 to save which is accomplished by:
 
 +	FileDialogHelper aDlgHelper( TemplateDescription::FILESAVE_SIMPLE, 0 );
 +	Reference < XFilePicker > xFP = aDlgHelper.GetFilePicker();
 
-2) Then we need to pick up the graphic that is selected by the user :-) That's
+Then we need to pick up the graphic that is selected by the user :-) That's
 what we want to save, right ? Which would be the current selection [the term
 used is 'mark']- so we query for the MarkedObjectList of which we get the first
 'mark'  
@@ -367,5 +367,5 @@ save it to disk! Joy! :-)
 
 -------------------------------------------------------------------------------
 
-<a href="sd-save-image-context-menu.diff.txt">sd-save-image-context-menu.diff</a>                                      Next: <a href="make.html">make</a>
+<a href="sd-save-image-context-menu.diff.txt">sd-save-image-context-menu.diff</a>                                     Next: <a href="build.html">build</a>
 </h4></pre></html>
