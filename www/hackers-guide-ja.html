@@ -7,60 +7,60 @@
   </head>
 
   <body>
-    <h1>���ǧ OpenOffice �ϥå�����������</h1>
+    <h1>非公認 OpenOffice ハッカーズガイド</h1>
 
     <p>
-      OpenOffice.org (OO.o)��ӥ�ɤ����ꡢ�ϥå������ꤹ��ˤ�
-      ������Ĺ��������ƻ���Ф뤳�Ȥ�ɬ�פȤ���롣�Ǥ��뤳�Ȥʤ餳��
-      ʸ�Ϥ��ؽ�������¿��Ω���夲�γ��٤�夲�ơ��ޤ����޷��
-      �����ơ����ʤ��ν����Ȥʤ��⤯��Ǥ��ꤿ������������������ʬ�ä�������𤦡�
+      OpenOffice.org (OO.o)をビルドしたり、ハックしたりするには
+      本当に長ーーい坂道を登ることが必要とされる。できることならこの
+      文章が学習曲線を多少立ち上げの角度を上げて、またより急激に
+      させて、あなたの助けとなる歩く杖でありたい。《訳注：この部分特に訂正を乞う》
     </p>
 
     <p>
-      ����ʸ�Ϥϻ��֤����󤹤뤿��ˡ����ʤ������߻Ȥ��Ƥ������ʥС�������Linux��ȤäƤ��뤳�Ȥ��ꤷ�Ƥ��롣���Υϥå����ϡ�<a
-      href="http://www.gnu.org">Free software</a>��Ȥ��ޤ����ޤ���ե꡼�����ǤˤĤ����ɤ�Ǥ�����֤Ϥ���ޤ���
+      この文章は時間を節約するために、あなたが現在使われてる妥当なバージョンのLinuxを使っていることを仮定している。真のハッカーは、<a
+      href="http://www.gnu.org">Free software</a>を使います、また非フリーな要素について読んでいる時間はありません。
     </p>
 
     <p>
-      �桹�������ϡ����ʤ��Ȥ�ʲ��μ���������뤳�ȤǤ���
+      我々の狙いは、少なくとも以下の質問に答えることです。
     </p>
 
     <ul>
-	<li>�ɤ���ä�OO.o��ӥ�ɤ���Τ�?</li>
-	<li>�ɤ���äơ���ȯ���ؤ����äƤ������ɤ��Τ�?</li>
-	<li>�ɤ���äơ��ǥХå�������ɤ��Τ�?</li>
-	<li>�ɤ���äơ��ѥå���������ɤ��Τ�?</li>
+	<li>どうやってOO.oをビルドするのか?</li>
+	<li>どうやって、開発の輪に入っていけば良いのか?</li>
+	<li>どうやって、デバッグすれば良いのか?</li>
+	<li>どうやって、パッチを送れば良いのか?</li>
     </ul>
 
-    <h2 id="section-0">0. �ܼ�</h2>
+    <h2 id="section-0">0. 目次</h2>
 
     <ul>
-	<li><a href="#section-1">1. OO.o�����ꤹ��</a></li>
-	<li><a href="#section-2">2. OO.o��ӥ�ɤ���</a></li>
-	<li><a href="#section-3">3. OO.o�򥤥�ȡ��뤹��</a></li>
-	<li><a href="#section-4">4. OO.o��¹Ԥ���</a></li>
-	<li><a href="#section-5">5. OO.o��ϥå�����</a></li>
-	<li><a href="#section-6">6. OO.o��ǥХå�����</a></li>
-	<li><a href="#section-7">7. �ѥå������ۤ���ˤ�</a></li>
-	<li><a href="#section-8">8. ����¾��TIPS</a></li>
-	<li><a href="#section-9">9. ͭ�Ѥʥ�󥯽�</a></li>
+	<li><a href="#section-1">1. OO.oを入手する</a></li>
+	<li><a href="#section-2">2. OO.oをビルドする</a></li>
+	<li><a href="#section-3">3. OO.oをイントールする</a></li>
+	<li><a href="#section-4">4. OO.oを実行する</a></li>
+	<li><a href="#section-5">5. OO.oをハックする</a></li>
+	<li><a href="#section-6">6. OO.oをデバッグする</a></li>
+	<li><a href="#section-7">7. パッチを配布するには</a></li>
+	<li><a href="#section-8">8. その他、TIPS</a></li>
+	<li><a href="#section-9">9. 有用なリンク集</a></li>
 	<li><a href="#section-10">10. IFAQ</a></li>
-	<li><a href="#section-12">11. �桹�Ȱ��ˤ��ˤ�</a></li>
+	<li><a href="#section-12">11. 我々と一緒にやるには</a></li>
     </ul>
     <p>
-        ����(��Ϣ��)��Ȥξܺ٤ˤĤ��Ƥ�
-	<a href="detailed-build-guide.html">�ܺ٥ӥ�ɡ�������</a>���ä��礤�ޤ��礦��.
-	�桹�ϡ������˰�����̿��Ư���ơ�ñ�ʤ�ह�٤���̿�Υץ�����ޡ��Τ���μ¹Բ�ǽ�ʥץ��������ꤢ���ޤ����������ơ����δ�ñ��������ʲ��˹Ԥ��ޤ���
+        この(一連の)作業の詳細については
+	<a href="detailed-build-guide.html">詳細ビルド・ガイド</a>で話し合いましょう。.
+	我々は、本当に一生懸命に働いて、単なる死すべき運命のプログラマーのための実行可能なプロセスを作りあげました。そして、その簡単な説明を以下に行います。
     </p>
 
-    <h2 id="section-1">1. OO.o�����ꤹ��</h2>
+    <h2 id="section-1">1. OO.oを入手する</h2>
 
     <p>
-      ʣ����ͥ�줿�ѥå����åȤ�¸�ߤ��롢��������ζ��礹��
-      �С������Ȥ����Ĥ������Ф줿�֥�����OO.o������ޤ���
-      ��ϡ�CVS���ʥåץ���åȤ���Υӥ�ɤ򴫤�ޤ���������
-      �ӥ�ɤǤ��뤳�Ȥ��Τ�졢�ѥå����åȤ�Ŭ�ѤǤ��뤳�Ȥ��Τ���
-      ���ޤ����������������򤳤Τ褦�˼������Ƥߤޤ��礦��
+      複数の優れたパッチセットが存在する、たくさんの競合する
+      バージョンといくつかの選ばれたブランチのOO.oがあります。
+      私は、CVSスナップショットからのビルドを勧めます。それらは
+      ビルドできることが知られ、パッチセットが適用できることが知られて
+      います。さあ、ソースをこのように取得してみましょう：
     </p>
     <pre>
     export CVSROOT=':pserver:anonymous@anoncvs.gnome.org:/cvs/gnome'
@@ -68,106 +68,106 @@
     cvs -z3 checkout -dP openoffice
     </pre>
     <p>
-      �����ϡ�OO.o�Υӥ�ɤ�Ԥ��켰�Υ��ԡ��򤢤ʤ���(����ԥ塼���Υϡ��ɥǥ�������)����ߤޤ����⤷��CVS�����ʤ���ä������Τʤ顢�Ƕ�Υѥå����������줿�С�������<a href="packages">����</a>��������Ǥ��ޤ���
+      これらは、OO.oのビルドを行う一式のコピーをあなたの(コンピュータのハードディスクへ)落し込みます。もし、CVSがあなたを驚かせたのなら、最近のパッケージ化されたバージョンも<a href="packages">ここ</a>から取得できます。
     </p>
 
     <p>
-      <strong>����:</strong> ���ʤ��ϡ�OO.o��ӥ�ɤ���Τˡ�;ʬ�ʥ��ڡ�
-      ���Ȥ���4G�Х��Ȱʾ���ΰ褬ɬ�פ��������ơ��ӥ�ɤ��뤿��Υ�����
-      �����ɤ����������ɤ���Τ�200M�Х��Ȱʾ���ΰ褬ɬ�פ���
+      <strong>注記:</strong> あなたは、OO.oをビルドするのに、余分なスペー
+      スとして4Gバイト以上の領域が必要だ。そして、ビルドするためのソース
+      コードをダウンロードするのに200Mバイト以上の領域が必要だ。
     </p>
 
-    <h2 id="section-2">2. OO.o��ӥ�ɤ���</h2>
+    <h2 id="section-2">2. OO.oをビルドする</h2>
 
     <h3 id="section-2.1">2.1. configure</h3>
 
     <p>
-      �ӥ�ɤκ�Ȥϡ����ʤ�ʣ���Ǥ��롣���ʤ��Ϻ����ޥ��(�������ե��ޥ�ɥ饤
-      ��?)�����򤹤�Τ������ȤϤ���(�ӥ�ɤ�ʣ���Ǥ��뤳�Ȥȡ����ޥ�ɥ饤���
-      ���򤹤뤳�Ȥ�)�ϡ���������̿���ˤϤʤ�ʤ���
+      ビルドの作業は、かなり複雑である。あなたは今コマンド(《訳注》コマンドライ
+      ン?)を選択するのだが、とはいえ(ビルドが複雑であることと、コマンドラインを
+      選択することが)は、本当の致命傷にはならない。
     </p>
     <pre>
       ./autogen.sh # the CVS version
       ./configure  # the packaged version
     </pre>
     <p>
-      ����ϡ����ʤ����ӥ�ɤ������Τϡ����ʥåץ���åȡ��֥����Ǥ���
-      �Ȥ�����¬�Ǥ��롣�⤷�����ʤ����̤Υ����ǥ����Ȥ��Ƥϡ�
-      --with-tag���ץ����(��:<pre>--with-tag=OOO_1_0_3</pre>)�򤳤�ޤ�
-      �Υ֥�����Ʊ���褦�˻Ȥ����ȤǤ��礦��
+      これは、あなたがビルドしたいのは、スナップショット・ブランチである
+      という推測である。もし、あなたが別のアイディアとしては、
+      --with-tagオプション(例:<pre>--with-tag=OOO_1_0_3</pre>)をこれまで
+      のブランチと同じように使うことでしょう。
     </p>
 
-    <h3 id="section-2.2">2.2 �����������</h3>
+    <h3 id="section-2.2">2.2 ダウンロード</h3>
 
     <p>
-      ���ʤ�����ʬ�Υ����ƥ��OO.o��ӥ�ɤǤ���褦�����ƤΥѥå�����
-      (mozilla�䡢�Ƕ��libart�ʤɤʤ�)�򥢥åץ��졼�ɤ���ޤǤˤϡ���
-      �ʤ���(OO.o��)�����������������ɤ��뤳�Ȥ��Ǥ����ˡ��ۤ���Ƥ�
-      �롣�����Ԥ��ˤϡ�configure��������������ˡ�ñ��
-      <pre>./download</pre>�����Ϥ��ơ��ԤƤ��ɤ���
+      あなたが自分のシステムをOO.oをビルドできるように全てのパッケージ
+      (mozillaや、最近のlibartなどなど)をアップグレードするまでには、あ
+      なたは(OO.oの)ソースをダウンロードすることができる所に、ほぼ来てい
+      る。それを行うには、configureを成功させた後に、単に
+      <pre>./download</pre>と入力して、待てば良い。
     </p>
 
     <h3 id="section-2.3">make</h3>
 
     <p>
-      �����ϡ�����ä����ݤǤ���- <pre>make</pre>�����Ϥ��ơ�˺�줺��
-      Enter�����򲡤��ޤ��礦�������ʤ�������Ϥ��ߤ����Ȥ��ˤϡ�
-      <pre>make 2>&1 | tee /tmp/log</pre>�Ȥ�äƤߤƤϤɤ�?
+      ここは、ちょっと面倒です。- <pre>make</pre>と入力して、忘れずに
+      Enterキーを押しましょう。完全なるログ出力が欲しいときには、
+      <pre>make 2>&1 | tee /tmp/log</pre>とやってみてはどう?
     </p>
 
-    <h2 id="section-3">3. OO.o�򥤥󥹥ȡ��뤹��</h2>
+    <h2 id="section-3">3. OO.oをインストールする</h2>
 
     <p>
-      �����˥ӥ�ɤ�����̡�
-      <pre>build/$TAG/instsetoo/unxlngi4.pro/01/normal/</pre>�ʤɤξ��
-      �ǥ��󥹥ȡ����ѥ��åȤ�������zip�ǸǤ��줿������:�����ʤ�?��
-      ���֤ˤʤäƤ��ޤ������ʤ��ϡ���ư�ǥ��åȥ��åץץ�������ư����
-      �ƥ��󥹥ȡ��뤹�뤳�Ȥ��Ǥ��ޤ���<b>�ޤ���</b><pre>sudo make
-      install</pre> ��¹Ԥ��� ���ʤ��Τ���˥����ƥ�ץ�ե��å�������
-      ���줿���֤ǡ�OO.o�����󥹥ȡ��뤵��ޤ���
+      完璧にビルドした結果、
+      <pre>build/$TAG/instsetoo/unxlngi4.pro/01/normal/</pre>などの場所
+      でインストール用セットが完璧にzipで固められた《訳注:そうなの?》
+      状態になっています。あなたは、手動でセットアッププログラムを動かし
+      てインストールすることができます。<b>または</b><pre>sudo make
+      install</pre> を実行して あなたのためにシステムプレフィックス設定
+      された状態で、OO.oがインストールされます。
     <p>
 
     <p>
-      ���󥹥ȡ��뤵�줿�顢ñ��OO.o��Ƽ¹Ԥ��뤳�Ȥǡ����֥ǥ��쥯�ȥ�
-      �Υ�������ƥ���ѥ��뤷����̡�����ȡ��뤵�줿���᡼������ľ�ܥ�
-      ��ɥĥ꡼�����󥯤��뤳�Ȥˤ��ϥå����Ƥ���褦�ʵ�ʬ�����뤳
-      �Ȥ��Ǥ��롣����ˤ�ꡢ�ӥ�ɤȥƥ��ȤΥ������뤬�ۤ�ο����äǲ�
-      ǽ�ˤʤ�ޤ��������Ԥ��ˤϡ���:<pre>bin/linkoo
+      インストールされたら、単にOO.oを再実行することで、サブディレクトリ
+      のソースを再コンパイルした結果、イントールされたイメージから直接ビ
+      ルドツリーからリンクすることによりハックしているような気分を得るこ
+      とができる。これにより、ビルドとテストのサイクルがほんの数十秒で可
+      能になります。それを行うには、例:<pre>bin/linkoo
       /usr/lib/ooo-1.0.3 /opt/openoffice/build/RC3_030729</pre>
-      �Ǥ���
+      である
     </p>
 
-    <h2 id="section-4">4. OO.o��¹Ԥ���</h2>
+    <h2 id="section-4">4. OO.oを実行する</h2>
 
     <p>
-      linkoo��¹Ԥ���Ȥ��˥ץ�ե��å������դ������Ȥˡ��Ի׵Ĥ˻פä�
-      �Ȼפ���������<pre>cd program; . ./env</pre>��¹Ԥ������Ȥ⡣����
-      ��礬�����뤬OO.o��ľ�ܼ¹Ԥ��뤿��δĶ�����(���åȥ��å�)�ˤʤ�
-      �ޤ������θ塢<pre>soffice.bin</pre>��¹Ԥ��ޤ�������ϡ�soffice
-      ��¹Ԥ����ꡢ��åѥ�����ץȷ�ͳ�Ǽ¹Ԥ�����⡢<pre>gdb
-      soffice.bin</pre>�Τ褦�˥ǥХå��򥢥��å�����Τ������ưפǡ���
-      ����ˡ�Ǥ���
+      linkooを実行するときにプレフィックスを付けたことに、不思議に思った
+      と思う；そして<pre>cd program; . ./env</pre>を実行したことも。この
+      手順がシェルがOO.oを直接実行するための環境設定(セットアップ)になり
+      ます。その後、<pre>soffice.bin</pre>を実行します。これは、soffice
+      を実行したり、ラッパスクリプト経由で実行するよりも、<pre>gdb
+      soffice.bin</pre>のようにデバッガをアタッチするのが大変容易で、良
+      い方法です。
     </p>
     <p>
-      <strong>��:</strong> <pre>./soffice.bin</pre>���ԲĲ����ͳ�Ǵ�����
-      ư��˼��Ԥ���ϻȤ�ʤ��Ǥ���������
+      <strong>注:</strong> <pre>./soffice.bin</pre>は不可解な理由で完璧に
+      動作に失敗するは使わないでください。
     </p>
     <p>
-      <strong>��:</strong> ���ʤ��ϡ�ooo�Υ�åѤ���ޤ���OO.o�����餻��
-      ���ˡ�~/.sversionrc�Τ褦�ʤ�Τ��ǽ�����������ꤹ�뤫���ޤ���
-      soffice.bin�����餻�ơ�GUI����ġ����ư�����ޤ�������ϡ����ʤ�
-      ���Ϥ�����˰��٤���<pre>oowriter</pre>��¹Ԥ��Ƥ����ΤǤ���
+      <strong>注:</strong> あなたは、oooのラッパを噛ませたOO.oを走らせる
+      前に、~/.sversionrcのようなものをを最初に正しく設定するか、または
+      soffice.binを走らせて、GUI設定ツールを起動させます。これは、あなた
+      が始める前に一度だけ<pre>oowriter</pre>を実行しておくのです。
     </p>
 
-    <h2 id="section-5">5. OO.o��ϥå�����</h2>
+    <h2 id="section-5">5. OO.oをハックする</h2>
 
-    <h3 id="section-5.0">5.0. �ǽ�Υϥå�</h3>
+    <h3 id="section-5.0">5.0. 最初のハック</h3>
 
     <p>
-      �Ǥ� - �����ϡ�OO.o��ӥ�ɤ��Ƽ¹Ԥ��ޤ����������ơ��錄��
-      �����ϡ����ʤ��Υޥ���ξ��OO.o��ϥå����뤳�Ȥ��ºݤ˲�ǽ�Ǥ���
-      ���Ȥ錄���������Ȥ��������뤳�Ȥ�˾��Ǥ��ޤ����Ǥϡ�������������
-      �ʥ����ǡ��ʲ��Υ��ޥ�ɤ�¹Ԥ��ƤߤƤ�������:
+      では - われわれは、OO.oをビルドして実行しました。そして、わたし
+      たちは、あなたのマシンの上でOO.oをハックすることが実際に可能である
+      、とわたしたち自身が証明することを望んでいます。では、新しいターミ
+      ナルの中で、以下のコマンドを実行してみてください:
     </p>
     <pre>
       cd build/$TAG
@@ -175,49 +175,49 @@
       cd vcl
     </pre>
     <p>
-      ���ޡ�vcl/source/window/toolbox.cxx�����ϥå����Ƥ��ޤ�;
-      ��ϡ��㤨�С�ToolBox::Paint��ImplDrawItem������<pre>if
-      (i%2)</pre>���ɲä��Ƥߤơ���¸���ޤ���
+      いま、vcl/source/window/toolbox.cxxの中をハックしています;
+      私は、例えば、ToolBox::PaintのImplDrawItemの前に<pre>if
+      (i%2)</pre>を追加してみて、保存します。
     </p>
     <p>
-      �ޤ� vcl/����ˤ��ޤ���? �Ϥ������줫�顢'build debug=true'������
-      ���ơ�ʸ���󤬥��������뤷�ơ��ߤ�Τ��Ԥ��ޤ���(5�ä��餤?)���Ǥϡ�
-      <pre>soffice -writer</pre>��Ƽ¹Ԥ��ޤ������ʤ��ϡ����̤��Ф�Τ�
-      �����դ��Ƥ����ͤФʤ�ޤ���
+      まだ vcl/の中にいますか? はい。それから、'build debug=true'と入力
+      して、文字列がスクロールして、止るのを待ちます。(5秒ぐらい?)。では、
+      <pre>soffice -writer</pre>を再実行します。あなたは、効果が出るのか
+      を注意しておかねばなりません。
     </p>
     <p>
-      <strong>��:</strong>�����ϥå����Ƥ��뤢�ʤ��ϡ��������ĥ꡼�����'
-      build'��¹Ԥ������Ȼפ��Ǥ��礦��<strong>��äƤϤ����ޤ���</strong>
-      <pre>openoffice/</pre>�ǥ��쥯�ȥ�ΰ��־�Υ�٥��make��¹Ԥ���
-      ���Ȥϡ����ʤ��ϡ�����Ȭ�塢��ʬ���Ԥä��ѹ��򥴥�Ȣ�Ԥ��ˤ��뤳��
-      �ˤʤꡢ(���ʤ���)�յ����������ޤ���
-      ����ϡ������֤���ӥ�ɤ�Ԥ�������Ȥ��� <a
-      href="#section-10.4">����</a>�򸫤ơ��ɤ���
-      <pre>build/OOO_1_1_0</pre>��¾�Υ��ԡ��ϰϳ��Ǥ���ĤŤ���Τ�Ǽ��
-      �Ǥ��롣������:�������̣�����Ǥ�����
+      <strong>注:</strong>毎日ハックしているあなたは、ソースツリーの中で'
+      build'を実行したいと思うでしょう。<strong>やってはいけません</strong>
+      <pre>openoffice/</pre>ディレクトリの一番上のレベルでmakeを実行する
+      ことは。あなたは、十中八九、自分が行った変更をゴミ箱行きにすること
+      になり、(あなたを)意気消沈させます。
+      これは、再配置するビルドを行う手助けとして <a
+      href="#section-10.4">ここ</a>を見て、どこか
+      <pre>build/OOO_1_1_0</pre>の他のコピー範囲外でありつづけるのは納得
+      できる。《訳注:ここも意味不明です。》
     </p>
     
-    <h3 id="section-5.1">5.1. ���Ф餷���ޥ˥奢����ɤ�</h3>
+    <h3 id="section-5.1">5.1. すばらしいマニュアルを読む</h3>
 
     <p>
-      C++���Ϥ�Ȥ����Ȥˤ�ꡢ�ʤ����ش�ñ��(�ޤ��ϡ�����Ū��)(�褱����
-      ���Ȥ򤷤�)��ʬ����Ҥ��򾷤��褦��ǽ�Ϥ������ޤ�������<em>Holub,
-      Rules for C and C++ programming, McGraw-Hill, 95</em>������:amazon
-      �ˤϸ����κ߸ˤϤʤ��ä���̤��?��
+      C++の力を使うことにより、なお一層簡単に(または、暗黙的に)(よけいな
+      ことをして)自分から災いを招くような能力が得られます。参考<em>Holub,
+      Rules for C and C++ programming, McGraw-Hill, 95</em>《訳注:amazon
+      には原著の在庫はなかった。未訳?》
     </p>
 
     <p>
-      Ʈ�����פ�ǹ����ˡ�ϡ�OpenOffice�����ǥ��󥰡������ɥ饤��
+      闘いに臨む最高の方法は、OpenOfficeコーディング・ガイドライン
       <a href="http://tools.openoffice.org/CodingGuidelines.sxw">
-      ����</a>���ɤळ�ȤǤ��ꡢc'tor / d'tor�����󥹥ȥ饯��/�ǥ��ȥ饯
-      ����ά�Ǥ���Ȥ��䤹���ְ㤨�Ƥ��ޤ����ȤǤ��롣
+      ここ</a>を読むことであり、c'tor / d'torがコンストラクタ/デストラク
+      タの略であるとたやすく間違えてしまうことである。
     </p>
 
-    <h3 id="section-5.2">5.2. �ѥå�������</h3>
+    <h3 id="section-5.2">5.2. パッチを送る</h3>
 
     <p>
-      bugzilla������:�����襷���ƥ�դ���˥⥸�塼��Υѥå���¸�ߤ�
-      �뤳�ȤϤޤ�Ǥ��롣�ʲ��Τ褦�˻�ơ���Ȥ��Ƥߤ�Τ���ñ�Ǥ���
+      bugzilla《訳注:問題解決システム》の中にモジュールのパッチが存在す
+      ることはまれである。以下のように試して、作業してみるのが簡単である
     </p>
 
     <pre>
@@ -225,34 +225,34 @@ cvs status &lt;somefile&gt; | head
     </pre>
 
     <p>
-      ����ˤ��'Repository Revision:'�ιԡ��ѥ���������2���ܤ���ʬ����
-      ����������̾��ɽ�路�ޤ���
+      これにより'Repository Revision:'の行、パス、そして2つ目の部分がプ
+      ロジェクト名を表わします。
     </p>
 
-    <h3 id="section-5.3">5.3 ���󥹥ȡ����ϥå�����</h3>
+    <h3 id="section-5.3">5.3 インストーラをハックする</h3>
 
     <p>
-      ���󥹥ȡ��饤�᡼����(�¹Բ�ǽ��)�ƥ�ݥ�ꡦ���åȥ��åס����᡼
-      ��<tt>/tmp/sv001.tmp</tt>��������Ȥ��ˤϡ��������ߤ����Ƥ���
-      ɬ�פ����롣��������ˤϡ����åȥ��å�/���󥹥ȡ����-
-      dontdeletetemp���ץ������դ��Ƽ¹Ԥ��롣������:�������̣������
-      ���ܸ�ˤʤäƤ����
+      インストーライメージは(実行可能な)テンポラリ・セットアップ・イメー
+      ジ<tt>/tmp/sv001.tmp</tt>を削除するときには、それを停止させておく
+      必要がある。そうするには、セットアップ/インストールに-
+      dontdeletetempオプションを付けて実行する。《訳注:ここも意味不明な
+      日本語になっている》
     </p>
 
-    <h3 id="section-5.4">5.4. �̤���ʬ��ϥå�����</h3>
+    <h3 id="section-5.4">5.4. 別の部分をハックする</h3>
 
     <p>
-      ���󥹥ȡ��뤬ư���ȡ��ϥå����ɲä���Ǥ��ɤ���ˡ�ϡ�
-      <tt>program/lib<em>foo</em>641li.so</tt>�˥���ܥ�å���󥯤򤢤�
-      �����ӥ�ɤ����С�������ĥ�뤳�ȤǤ� &mdash; ���ꤽ���ʤΤϡ�
-      <tt><em>foo</em>/unxlngi4.pro/lib/</tt>�Ǥ��������θ塢(���ե���)
-      �������Ȥ�¹Ԥ���ȡ����ʤ��ιԤä��ѹ������äƤ���Ϥ��Ǥ���
+      インストールが動作すると、ハックを追加する最も良い方法は、
+      <tt>program/lib<em>foo</em>641li.so</tt>にシンボリックリンクをあな
+      たがビルドしたバージョンに張ることです &mdash; ありそうなのは、
+      <tt><em>foo</em>/unxlngi4.pro/lib/</tt>ですが。その後、(オフィス)
+      スイートを実行すると、あなたの行った変更が入っているはずです。
     </p>
 
     <p>
-      ��Ȥ��ơ����ʤ���'sal'(System Abstraction Layer��ά)��ϥå�����
-      ���Ȥ���ȡ����ʤ��ϡ�/opt/OOInstall����OOO_STABLE_1�򥤥󥹥ȡ���
-      �����Ȥ���ȡ����ʤ��Ϥ��Τ褦�ˤ���ɬ�פ����롣
+      例として、あなたが'sal'(System Abstraction Layerの略)をハックした
+      いとすると、あなたは、/opt/OOInstallからOOO_STABLE_1をインストール
+      したとすると、あなたはこのようにする必要がある。
     </p>
 
     <pre>
@@ -262,33 +262,33 @@ mv libsal.so.3.0.1 backup
 ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
     </pre>
 
-    <h3 id="section-5.5">5.5. D' make (man)�����򤹤�</h3>
+    <h3 id="section-5.5">5.5. D' make (man)を理解する</h3>
 
     <p>
-      �����ƥ��ӥ�ɤ��Ƥ���֡������褦��¾�Υ����ƥब����ޤ�������
-      �ϡ��ޤ�¿ʬ����äȤ����ۤʤ�ޤ�����ά�ϡ����줾��⥸�塼���
-      <i>�ӥ�ɤ��Ƥ������</i>�Ǥ��ꡢ���줫���̤�<i>����</i>����
+      システムをビルドしている間、似たような他のシステムがあります。これ
+      は、また多分ちょっとだけ異なります。概略は、それぞれモジュールを
+      <i>ビルドしていたもの</i>であり、それから結果が<i>派生</i>した
       <a href="http://www.openoffice.org/dev_docs/source/solver.html">
-      solver</a>�Ǥ��롣���Τ��ΤΥ⥸�塼��ϡ�solver����Υإå�������
-      ���ƥӥ�ɤ���롣�ʤΤǡ����Τ褦�ʾ���ʣ���ʤ��ȤˤʤäƤ��롣
+      solver</a>である。おのおののモジュールは、solverの中のヘッダーに対
+      してビルドされる。なので、このような少し複雑なことになっている。
       <ul>
         <li>
-	  <i>�ӥ��</i> &mdash; ����perl������ץ�
-	  <i>solenv/bin/build.pl</i>�ϡ��ǽ�˥ӥ�ɤ���ɬ�פ��������Ƥ�
-	  �⥸�塼���μ¤�<a href="#section-5.5.2">prj/build.lst</a>��
-	  ��Ϣ���ƻ��Ѥ����褦�ˤ��롣�ӥ�ɸ��un-winds�������⥸�塼
-	  ��ΰ�¸�ط����ޤ������줾��Υ⥸�塼�뤬�ǥ��쥯�ȥ���ѹ���
-	  dmake ���ȤΥӥ�ɡ�����:�������̣������
+	  <i>ビルド</i> &mdash; このperlスクリプト
+	  <i>solenv/bin/build.pl</i>は、最初にビルドする必要がある全ての
+	  モジュールを確実に<a href="#section-5.5.2">prj/build.lst</a>が
+	  関連して使用されるようにする。ビルド後のun-windsな内部モジュー
+	  ルの依存関係、また、それぞれのモジュールがディレクトリの変更、
+	  dmake の組のビルド《訳注:ここも意味不明》
 	</li>
 	<li>
-          <i>deliver</i> &mdash; ���� perl ������ץ�
-	  (<i>solenv/bin/deliver.pl</i>)�ϡ��إå���饤�֥��ʤɤʤ�<a
-	  href="#section-5.5.3">prj/d.lst</a>������solver��ȤäƤ򥤥�
-	  ���ȡ��뤷�ޤ�������Ū�ʤ��Ȥϡ�deliver�����⥸�塼��ǥ��쥯
-	  �ȥ����ˤ��� solver ��Ʊ�����˥��󥹥ȡ��뤵�줿�����ʤ�ե�
-	  ��������ե����ॹ����פ��ݾڤ��뤳�ȤǤ������Ρ�(�ä˥إå���
-	  ��)¾�Υ⥸�塼��κƥӥ�ɤΰ���������ή��˰�¸�ط����ʤ�
-	  ���Ȥ��ݾڤ��롣
+          <i>deliver</i> &mdash; この perl スクリプト
+	  (<i>solenv/bin/deliver.pl</i>)は、ヘッダやライブラリなどなど<a
+	  href="#section-5.5.3">prj/d.lst</a>形式でsolverを使ってをイン
+	  ストールします。決定的なことは、deliverが、モジュールディレク
+	  トリの中にある solver と同じ場所にインストールされたいかなるファ
+	  イルの日付タイムスタンプを保証することです。この、(特にヘッダー
+	  は)他のモジュールの再ビルドの引き金を引く流れに依存関係がない
+	  ことを保証する。
 	  <i>deliver</i> &mdash; this perl script <i>solenv/bin/deliver.pl</i>
 	  installs headers, and libraries (etc.) into the solver, as
 	  informed by <a href="#section-5.5.3">prj/d.lst</a>. Crucially
@@ -301,11 +301,11 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
       </ul>
     </p>
 
-    <h4 id="section-5.5.1">5.5.1 ɸ��Ū�ʥǥ��쥯�ȥ�</h3>
+    <h4 id="section-5.5.1">5.5.1 標準的なディレクトリ</h3>
 
     <p>
-      �����ϡ�OO.o����夲��⥸�塼������ɸ��Ū�ˤ����͡��ʥǥ���
-      ���ȥ��ե�����ǡ�����餬��������Ǥ��ͭ�פʤ�ΤǤ���
+      これらは、OO.oを作り上げるモジュールの中の標準的にある様々なディレ
+      クトリやファイルで、これらが、その中でより有益なものです。
       There are various standard directories and files in most of the
       modules that make up OO.o, here are some of the more useful:
 
@@ -314,10 +314,10 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
 	  <ul>
 	    <li>
 
-	       <i>build.lst</i> &mdash; ���Υǥ��쥯�ȥ�ꥹ�Ȥϡ�'^#'��
-	       �����Ȥ���������Υꥹ�Ȥ��¤ӽ�ϡ����פǤϤʤ���<a
-	       href="#section-5.5.2">�ܺ�</a>�򸫤衣�����<i>�ӥ��</i>
-	       ��Ȥ��������롣
+	       <i>build.lst</i> &mdash; このディレクトリリストは、'^#'の
+	       コメントを許し、このリストの並び順は、重要ではない。<a
+	       href="#section-5.5.2">詳細</a>を見よ。これは<i>ビルド</i>
+	       作業が作成する。
 
 	       <i>build.lst</i> &mdash; this lists directories to be made,
 	       '^#' comments are allowed, the order of the list is
@@ -325,8 +325,8 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
 	       is dictates <i>build</i>'s operation.
 	    </li>
 	    <li>
-	       <i>d.lst</i> &mdash; �����<i>deliver</i>�ץ������򵭽Ҥ�
-	       �롣<a href="#section-5.5.3">�ܺ�</a>�򸫤�
+	       <i>d.lst</i> &mdash; これは<i>deliver</i>プロセスを記述す
+	       る。<a href="#section-5.5.3">詳細</a>を見よ
 
 	       <i>d.lst</i> &mdash; this file describes the <i>deliver</i>
 	       process, see <a href="#section-5.5.3">detail</a>.
@@ -334,13 +334,13 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
 	  </ul>
 	</li>
 	<li>
-	  <b>util</b> &mdash; ����Ū��util�ǥ��쥯�ȥ�ϡ�GUI�꥽������
-	  �ե�����ʤɤ���������ꡢ�����ƥࡦ�饤�֥��˰�¸�ط����ɲä�
-	  ���ꡢ���줾��Υ��֡��⥸�塼��򥵥֡��饤�֥���ޤȤ�ơ���
-	  �Ĥ��礭�ʥ饤�֥��ˤޤȤ�����ܤ���äƤ��롣
-	  ���Ƥκ�Ȥϡ�<i>makefile.mk</i>�˵��Ҥ���Ƥ��롣����ϡ�����
-	  �Ƥ������Υץ��������ȡ�����:�ӥ�ɺ�ȤΥץ��������ȡդ�����
-	  ����Ǹ�Υǥ��쥯�ȥ�Ǥ��롣
+	  <b>util</b> &mdash; 一般的なutilディレクトリは、GUIリソース・
+	  ファイルなどを作成したり、システム・ライブラリに依存関係を追加し
+	  たり、それぞれのサブ・モジュールをサブ・ライブラリをまとめて、一
+	  つの大きなライブラリにまとめる役目を負っている。
+	  全ての作業は、<i>makefile.mk</i>に記述されている。これは、たい
+	  てい、このプロジェクト《訳注:ビルド作業のプロジェクト》が作成
+	  する最後のディレクトリである。
 
 	  <b>util</b> &mdash; typically the util directory is charged with
 	  glueing together the sub-libraries for each sub-module into
@@ -350,9 +350,9 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
 	  built in a project.
 	</li>
 	<li>
-	  <b>inc</b> &mdash; �����إå����̾'inc' �ǥ��쥯�ȥ��ʬΥ
-	  ����롣�����ϡ�'deliver'�ե�������(<i>prj/d.lst</i>��Ȥä�)
-	  solver�إ��󥹥ȡ��뤵��ޤ���
+	  <b>inc</b> &mdash; 公開ヘッダは通常、'inc' ディレクトリに分離
+	  される。これらは、'deliver'フェーズに(<i>prj/d.lst</i>を使って)
+	  solverへインストールされます。
 
 	  <b>inc</b> &mdash; public headers are typically separated
 	  into an 'inc' directory, these will be installed into
@@ -362,21 +362,21 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
     </p>
 
     <p>
-      ���줫���ޤ�����̣����(�����ʤ�)�ե�����Ǥ�:
+      これからもまた、興味深い(深くない)ファイルです:
 
       There are also various file types that are (or are not)
       interesting:
       <ul>
         <li>
-	  <b>makefile.rc</b> &mdash; ���줫��Ϥ��٤ơ���Ĺ�Ǥ��ꡢ̵��
-	  ���Ƥ�����פǤ���
+	  <b>makefile.rc</b> &mdash; これからはすべて、冗長であり、無視
+	  しても大丈夫です。
 
 	  <b>makefile.rc</b> &mdash; these are ~all redundant, and can
 	  safely be ignored.
 	</li>
 	<li>
-	  <b>makefile.mk</b> &mdash; �����ϡ��������ǥ��쥯�ȥ���˻�
-	  ����'dmake'�ե�����Ȥ�(�оȤˤ�äƼ������)���ۤǤ��롣
+	  <b>makefile.mk</b> &mdash; これらは、ソースディレクトリ毎に使
+	  われる'dmake'ファイルとの(対照によって示される)差異である。
 
 	  <b>makefile.mk</b> &mdash; these in contrast are the 'dmake'
 	  files, that are used to build each source directory.
@@ -387,7 +387,7 @@ ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
     <h4 id="section-5.5.2">5.5.2 build.lst</h4>
 
     <p>
-      ����äȸ��ˤϡ�build.lst �ϡ����ä��ʤ��褦�˸�����:
+      ちょっと見には、build.lst は、おっかないように見える:
       On first view build.lst looks scary:
       <pre>
 vc      vcl : nas freetype psprint rsc sot ucbhelper unotools sysui NULL
@@ -395,9 +395,9 @@ vc      vcl                      usr1   -       all     vc_mkout NULL
 vc      vcl\source\unotypes      nmake  -       all     vc_unot NULL
 vc      vcl\source\glyphs        nmake  -       all     vc_glyphs vc_unot NULL
       </pre>
-      �������桹�ϡ��ºݤϥѥäȸ��ۤɴ�̯�Ǥʤ��������ǲ����Ԥʤ��Ƥ���Τ�
-      ���äƤߤơ���������ɬ�פ����롣�ꥹ�Ȥκǽ�� 'NULL'ʸ���ǽ�ü
-      ����Ƥ���ƹԤϡ������������ˡ�ˤ����Ƭ�����Ĥ��Ƥ��롣
+      そう。我々は、実際はパッと見ほど奇妙でない、ここで何が行なわれているのか
+      をやってみて、解明する必要がある。リストの最初は 'NULL'文字で終端
+      されている各行は、見当外れの便法により接頭辞がついている。
 
       so we need to try and un-pack what's going on here, which is in fact not
       as odd as it might seem at first glance. Firstly lists are terminated
@@ -406,9 +406,9 @@ vc      vcl\source\glyphs        nmake  -       all     vc_glyphs vc_unot NULL
 
       <ul>
          <li>
-	   �ǽ��ͭ���Ԥϡ�':'��ޤ�Ǥ��ޤ�������ϡ����Υץ���������
-	   (vcl)��¾�Υ⥸�塼��'nas','freetype','psprint'�ʤɤ˰�¸����
-	   ������¤򵭽Ҥ��Ƥ��롣����ϥץ��������ȴ֤ΰ�¸�ط��Ǥ���
+	   最初の有効行は、':'を含んでいます。これは、このプロジェクト
+	   (vcl)が他のモジュール'nas','freetype','psprint'などに依存して
+	   いる事実を記述している。これはプロジェクト間の依存関係です。
 
 	   First active line contains a ':', this describes the
 	   fact that this project (vcl) depends on these other modules
@@ -416,16 +416,16 @@ vc      vcl\source\glyphs        nmake  -       all     vc_glyphs vc_unot NULL
 	   for inter-project dependencies.
 	 </li>
 	 <li>
-	   ���θ�Ρ�'usr1'�Ȥ�����Ĺ�� [ �ڤ��ߤΤ���? ]�����ºݤˤϡ�
-	   ��ˡ��ʸ����Ǥ���'nmake'��ޤ�Ǥ�������ʬ���������ΤǤ���
+	   その後の、'usr1'という冗長行 [ 楽しみのため? ]が、実際には、
+	   魔法の文字列である'nmake'を含んでいる後の部分が正しいのです。
 
 	   Then we have a redundant line 'usr1' [ for fun ? ], in fact
 	   only lines containing the magic string 'nmake' are valid after
 	   this.
 	 </li>
 	 <li>
-	   ���μ��ιԤϡ������Υץ��������ȡ��ǥ��쥯�ȥ국�Ҥ��ޤ�����
-	   �������:
+	   その次の行は、内部のプロジェクト・ディレクトリ記述します。こ
+	   んな風に:
 
 	   The next lines describe internal project directory dependencies
 	   and look like:
@@ -433,16 +433,16 @@ vc      vcl\source\glyphs        nmake  -       all     vc_glyphs vc_unot NULL
 [shortcut] [path to dir to build] nmake - [flags] [unique-name] [deps...] NULL
 vc           vcl\source\glyphs    nmake -   all     vc_glyphs   vc_unot   NULL
 	     </pre>
-	   <i>���硼�ȥ��å�(shortcut)</i> �Ȥ��ޤ���; <i>�ե饰
-	   (flags)</i> �ɤΥץ�åȥۡ���ǥӥ�ɤ��뤫����ꤷ�ޤ�;�̾�
-	   �� single char������:wide char(���ܤʤɤ�¿�Х��Ȥ�ɽ�魯)��
-	   ȿ�Фΰ�̣?�դΥץ�åȥۡ��ࡦ�����ɤǤ�:'dnpum' 'u'�ϡ�Unix
-	   �Ǥ�������ɤ������ƥ�ϡ����¿���Τ�����ʤ�Τ���������'
-	   all'�ե饰�ˤʤ�ޤ���<p>
-	   <i>unique-name</i> ����ϡ��ޥ��å�̾�������ΰ�¸�ط��򵭽Ҥ�
-	   ���̤ιԤǻȤ��ޤ���<i>deps...</i> ���Υե����뤬���롢����
-	   �ʤ�̾���Υǥ��쥯�ȥ�Ǥ��äƤ⡢����Ϻǽ�˥ӥ�ɤ���ͤ�
-	   �ʤ�ޤ���
+	   <i>ショートカット(shortcut)</i> 使いません; <i>フラグ
+	   (flags)</i> どのプラットホームでビルドするかを決定します;通常
+	   は single char《訳注:wide char(日本などの多バイトを表わす)の
+	   反対の意味?》のプラットホーム・コードです:'dnpum' 'u'は、Unix
+	   です。より良いシステムは、より多くのいろんなものを生成する'
+	   all'フラグになります。<p>
+	   <i>unique-name</i> これは、マジック名で内部の依存関係を記述す
+	   る別の行で使われます。<i>deps...</i> このファイルがある、いか
+	   なる名前のディレクトリであっても、これは最初にビルドされねば
+	   なりません。
 
 	   <i>shortcut</i> is not used; <i>flags</i> determines which platforms
 	   this builds on; usually single char platform codes: 'dnpum' 'u' being
@@ -452,12 +452,12 @@ vc           vcl\source\glyphs    nmake -   all     vc_glyphs   vc_unot   NULL
 	   other directories in this file, that must be built before this one.
 	 </li>
       </ul>
-      �������錄�������ϡ�<i>vcl\source\unotypes</i> (vc_unot) ��
-      <i>vcl\source\glyphs</i> (vc_glyphs)�������˥ӥ�ɤ���뤳�Ȥ��Τ�
-      �Ƥ��ޤ����ꥹ�Ȥ��¤ӽ�Ͻ��פǤʤ��Τȡ�ñ��ʽ���ꥹ�Ȥ�����
-      �ˡ��錄�������Ϥ��ʣ���������Ѱ�¸�ط�(�ݻ�)�����ƥ����äƤ���
-      �Ȥ������Ȥ����򤹤뤳�Ȥ�<b>����</b>�Ǥ� &mdash; ������Ӥˤ��¿
-      ����¾��make�����ƥ�Ȥ�����ˤʤ�ޤ���
+      そう、わたしたちは、<i>vcl\source\unotypes</i> (vc_unot) が
+      <i>vcl\source\glyphs</i> (vc_glyphs)よりも前にビルドされることを知っ
+      ています。リストの並び順は重要でないのと、単純な順序リストの代わり
+      に、わたしたちはより複雑な内部用依存関係(保持)システムを持っている
+      ということを理解することが<b>重要</b>です &mdash; この比較により多
+      くの他のmakeシステムとの対比になります。
 
       So we see in the vcl case that <i>vcl\source\unotypes</i> (vc_unot) has
       to be built before <i>vcl\source\glyphs</i> (vc_glyphs). It is
@@ -465,8 +465,8 @@ vc           vcl\source\glyphs    nmake -   all     vc_glyphs   vc_unot   NULL
       and instead of a simple ordered list, we have a more complex internal
       dependency system &mdash; this contrasts with most other make systems.
     <p>
-      <a href="http://tools.openoffice.org/tools/build.html">����</a>��
-      �⡢�ޤ��ɥ�����Ȥ�����ޤ���
+      <a href="http://tools.openoffice.org/tools/build.html">ここ</a>に
+      も、またドキュメントがあります。
 
 
       There is also documentation <a href="http://tools.openoffice.org/tools/build.html">
@@ -476,14 +476,14 @@ vc           vcl\source\glyphs    nmake -   all     vc_glyphs   vc_unot   NULL
     <h4 id="section-5.5.3">5.5.3 d.lst</h4>
 
     <p>
-      build.lst�ϡ�build.lst��<i>inc/&lt;module&gt;/build.lst</i>�إ�
-      �ԡ�����褦�ʡ������Ĥ��Υǥե���ȤΥ����������ά���Ƥ��ꡢ
-      d.lst��ʸˡ�ϡ�build.lst������䤹���Ǥ���<p>
+      build.lstは、build.lstを<i>inc/&lt;module&gt;/build.lst</i>へコ
+      ピーするような、いくつかのデフォルトのアクションを省略しており、
+      d.lstの文法は、build.lstよりも解りやすいです。<p>
     <p>
       The syntax of d.lst is more comprehensible than build.lst, it omits
       some default actions, such as copying build.lst into
       <i>inc/&lt;module&gt;/build.lst</i>.<p>
-      �Ԥη���:
+      行の形式:
       A line is of the form:
       <pre>
 [action]: [arguments]
@@ -493,10 +493,10 @@ mkdir:    %_DEST%\inc%_EXT%\external
 [action]: [arguments]
 mkdir:    %_DEST%\inc%_EXT%\external
       </pre>
-      �ɤ����Ǥ⤷��'[action]:'���ά�����顢����ư��Υǥե���Ȥ� '��
-      �ԡ�' ư��Ǥ���
-      ��ɽŪ��ư��� <i>copy</i>, <i>mkdir</i>, <i>touch</i>,
-      <i>hedabu</i>,<i>dos</i> and <i>linklib</i>.<p>�Ǥ���,
+      どこかでもし、'[action]:'を省略したら、その動作のデフォルトは 'コ
+      ピー' 動作です。
+      代表的な動作は <i>copy</i>, <i>mkdir</i>, <i>touch</i>,
+      <i>hedabu</i>,<i>dos</i> and <i>linklib</i>.<p>です。,
       where if '[action]:' is omitted, it defaults to the 'copy' action.
       Typical actions are <i>copy</i>, <i>mkdir</i>, <i>touch</i>, <i>hedabu</i>,
       <i>dos</i> and <i>linklib</i>.<p>
@@ -505,32 +505,32 @@ mkdir:    %_DEST%\inc%_EXT%\external
       Typical actions are <i>copy</i>, <i>mkdir</i>, <i>touch</i>, <i>hedabu</i>,
       <i>dos</i> and <i>linklib</i>.<p>
 
-      'hedabu'ư����ä˶�̣����, inasmuch �ϡ����ݤ��奤�󥹥ȡ������
-      �إå����򸫳ݤ�����������ƾ���������(�ޤ��ϡ����ԡ�ư��Τ褦��
-      �դ�ޤ�)
+      'hedabu'動作は特に興味深い, inasmuch は、見掛け上インストール時に
+      ヘッダーを見掛け上再整形して小さくする(または、コピー動作のように
+      ふるまう)
       <p>
       The 'hedabu' action is particularly interesting, inasmuch that it
       cosmetically re-formats the header to shrink it on install (otherwise
       it's much like the copy action).
       <p>
 
-      ư�����, �͡��ʥޥ����ѿ������Τ褦��Ÿ�������:
+      動作中は, 様々なマクロ変数がこのように展開される:
       <ul>
-        <li>%__SRC% &mdash; ���ۥǥ��쥯�ȥ�̾ �㤨�С�<i>unxlngi4.pro</i></li>
-	<li> %_DEST% &mdash; solver�ؤ����Хѥ� �㤨�С�<i>/opt/OpenOffice/OOO_STABLE_1/solver/641/unxlngi4.pro</i>
+        <li>%__SRC% &mdash; 配布ディレクトリ名 例えば、<i>unxlngi4.pro</i></li>
+	<li> %_DEST% &mdash; solverへの絶対パス 例えば、<i>/opt/OpenOffice/OOO_STABLE_1/solver/641/unxlngi4.pro</i>
 	</li>
 	<li>
-	  %_EXT% &mdash; (�̾�Ϥʤ�) way of having �ޥ��ʡ����� �㤨�С�
-	  641.1�Ǥ����̾掠�֥ǥ��쥯�ȥ�ΥС������̾�Ȥ��ƻȤ��ޤ���
+	  %_EXT% &mdash; (通常はない) way of having マイナー更新 例えば、
+	  641.1です。通常サブディレクトリのバージョン名として使われます。
         </li>
       </ul>
-      ����Ū�ʤ���¾�ϡ��⤷�ºݤˤ��ʤ����롼����ɲä���ɬ�פ�����Ȥ�
-      ��(���͡����ۤΥǥ��쥯�ȥꥳ�ԡ�)�ȡ�����ϲ����Τ褦�ʷ����ˤʤ�
-      ��������
+      一般的なその他は、もし実際にあなたがルールを追加する必要があるとす
+      る(参考：暗黙のディレクトリコピー)と、それは下記のような形式になる
+      だろう。
       <pre>
 ..\%__SRC%\inc\sal\*.h %_DEST%\inc%_EXT%\sal\*.h
       </pre>
-      ���դ���. ���Хѥ��ϡ�'proj/'�ǥ��쥯�ȥ�ؤ�����(�ѥ�)�Ǥ�
+      注意せよ. 相対パスは、'proj/'ディレクトリへの相対(パス)です
     </p>
 
 
@@ -554,16 +554,16 @@ mkdir:    %_DEST%\inc%_EXT%\external
       NB. relative paths are relative to the 'prj/' directory.
     </p>
 
-    <h3 id="section-5.6">5.6 �ե������� ���ƥ졼�����(�����֤�)</h3>
+    <h3 id="section-5.6">5.6 ファースト イテレーション(繰り返し)</h3>
    <h3 id="section-5.6">5.6 fast iteration</h3>
  
     <p>
-      �����ϡ���ȯ�������뤯�꤫������¿������ˡ�Ǥ����Ǿ����ˡ�ϡ�
-      <a href="section-3">linkoo</a>��Ĥ��äơ�
-      ���󥹥ȡ��륻�åȤ��� ���ʤ��Υӥ�ɥĥ꡼�إ饤�֥��򥷥�ܥ��
-      ����󥯤�ĥ�뤳�ȤǤ������Τ��ȡ����ʤ���ñ�˥��֥ǥ��쥯�ȥ���
-      �ӥ�ɤ��뤳�Ȥ��Ǥ��ޤ����㤨�С�<pre>vcl</pre>�ϡ�
-      <pre>build</pre>�ˤ��¹Ԥ��졢soffice.bin��ƤӼ¹Ԥ��ޤ���
+      これらは、開発サイクルくりかえす、多数の方法です。最上の方法は、
+      <a href="section-3">linkoo</a>をつかって、
+      インストールセットから あなたのビルドツリーへライブラリをシンボリッ
+      クリンクを張ることです。そのあと、あなたは単にサブディレクトリを再
+      ビルドすることができます。例えば、<pre>vcl</pre>は、
+      <pre>build</pre>により実行され、soffice.binを再び実行します。
     </p>
     <p>
       There are lots of ways to go round a devel iteration; the best
@@ -573,13 +573,13 @@ mkdir:    %_DEST%\inc%_EXT%\external
       by running <pre>build</pre> and re-run soffice.bin.
     </p>
 
-    <h3 id="section-5.7">5.7 �ɤ������顢<code>char *</code>���Ȥ��ޤ���
-      ���礦��?</h3>
+    <h3 id="section-5.7">5.7 どうしたら、<code>char *</code>が使えますで
+      しょうか?</h3>
     <h3 id="section-5.7">5.7 Can I get a <code>char *</code>, please?</h3>
 
     <p>
-      ��äȡ����������ơ�  OO.o �Ͼ��ʤ��Ȥ�4�Ĥ�ʸ�����åѡ��������
-      ����
+      やっと、かろうじて。  OO.o は少なくとも4つの文字列ラッパーがありま
+      す。
     </p>
     <p>
       Just barely.  OO.o has at least four string wrappers:
@@ -589,17 +589,17 @@ mkdir:    %_DEST%\inc%_EXT%\external
       <li>
 	<p>
 	  <code>rtl_String</code> &mdash; sal/inc/rtl/string.h<br>
-	  "�̾��" ʸ���󤪤�ӥ�ե���󥹥����󥿡�.
-	  <code>rtlstring->buffer</code> ��ͭ�ѤǤ������Τޤޤ�
-	  <code>rtlstring->length</code>.  ����ʸ����ϡ����Ǥˡ������
-	  ����饯����������Ѵ�����Ƥ��ޤ�; ���� sal/inc/rtl/textenc.h
-	  &mdash; ��̣�����������ϡ�
-	  <code>RTL_TEXTENCODING_UTF8</code> �ȡ����Ȥˤ���
+	  "通常は" 文字列およびレファレンスカウンター.
+	  <code>rtlstring->buffer</code> は有用です。そのままで
+	  <code>rtlstring->length</code>.  この文字列は、すでに、特定の
+	  キャラクター集合に変換されています; 参照 sal/inc/rtl/textenc.h
+	  &mdash; 興味深いケースは、
+	  <code>RTL_TEXTENCODING_UTF8</code> と、ことによると
 	  <code>RTL_TEXTENCODING_ASCII_US</code>
-	  �ϡ����Υ�å����ȱ�ư�ȤΤ���Ǥ��롣
-	  <code>rtlstring->buffer</code>�ϡ����ʤ��κǰ���<code>char *</code>
-	  <code>rtlstring->buffer</code> ��Ʊ���褦�˼�ͳ�˰�����ȴ���
-	  ��Ǥ��礦��
+	  は、真のラッダイト運動家のためである。
+	  <code>rtlstring->buffer</code>は、あなたの最愛の<code>char *</code>
+	  <code>rtlstring->buffer</code> と同じように自由に扱えると感じ
+	  るでしょう。
 	</p>
 	<p>
 	  <code>rtl_String</code> &mdash; sal/inc/rtl/string.h<br>
@@ -618,10 +618,10 @@ mkdir:    %_DEST%\inc%_EXT%\external
       <li>
 	<p>
 	  <code>OString</code> &mdash; sal/inc/rtl/string.hxx<br>
-	  �ϡ�ñ�� rtl_String �� <code>class</code>�� ��åԥ󥰤��Ƥ���
-	  �������ʤ��ϡ�<code>ostring.pData</code>��rtl_String(�ѥ֥��
-	  ��°����)���������˻Ȥ����Ȥ��Ǥ��롣<code>OString</code> �ϡ�
-	  �⤷���ʤ���ɬ�פȤ���ʤ顢�����ǻȤ��䤹���᥽�åɤǤ���
+	  は、単に rtl_String を <code>class</code>に ラッピングしていま
+	  す。あなたは、<code>ostring.pData</code>をrtl_String(パブリッ
+	  ク属性だ)を取得するに使うことができる。<code>OString</code> は、
+	  もしあなたが必要とするなら、妥当で使いやすいメソッドです。
 	</p>
 	<p>
 	  <code>OString</code> &mdash; sal/inc/rtl/string.hxx<br>
@@ -635,9 +635,9 @@ mkdir:    %_DEST%\inc%_EXT%\external
       <li>
 	<p>
 	  <code>rtl_uString</code> &mdash; sal/inc/rtl/ustring.h<br>
-	  "�̾��" ��˥�����ʸ����, rtl_String��Ʊ�ͤǡ����ȥ����󥿤�
-	  Ʊ�ͤǤ��롣�������ʤ��顢���η��ϡ����UCS-2���󥳡��ɤǤ��롣
-	  �פ���Java�ε��路������ؤθߴ����Τ���Υ��󥳡��ɤǤ���
+	  "通常は" ユニコード文字列, rtl_Stringと同様で、参照カウンタも
+	  同様である。しかしながら、この型は、常にUCS-2エンコードである。
+	  思うにJavaの疑わしき選択への互換性のためのエンコードである
 	</p>
 	<p>
 	  <code>rtl_uString</code> &mdash; sal/inc/rtl/ustring.h<br>
@@ -651,8 +651,8 @@ mkdir:    %_DEST%\inc%_EXT%\external
       <li>
 	<p>
 	  <code>OUString</code> &mdash; sal/inc/rtl/ustring.hxx<br> 
-	  rtl_uString�ϡ�<code>class</code>����˥�åפ���Ƥ���.
-	  ����ϡ�OO.o�Υ����ɤ�����ʬ������ʸ����򤳤η�������Ƥ��롣
+	  rtl_uStringは、<code>class</code>の中にラップされている.
+	  これは、OO.oのコードの大部分がこの文字列をこの型に入れている。
 	</p>
 	<p>
 	  <code>OUString</code> &mdash; sal/inc/rtl/ustring.hxx<br> 
@@ -663,9 +663,9 @@ mkdir:    %_DEST%\inc%_EXT%\external
     </ul>
 
     <p>
-      �����ˤϡ�UTF-8���󥳡���ʸ�����<code>char *</code>�ǰ�����
-      'printf'�Τ褦�ʡ�<code>OUString</code>����char *��Ƴ���Ф����Ȥ�
-      ɬ�פʤ����ʤ륷���ƥ�API�ϡ������Τ褦�˻��Ѥ���:
+      真の男は、UTF-8エンコード文字列を<code>char *</code>で扱う。
+      'printf'のような、<code>OUString</code>からchar *を導き出すことが
+      必要ないかなるシステムAPIは、下記のように使用する:
     </p>
     <p>
       Since real men use <code>char *</code> strings encoded in UTF-8;
@@ -685,7 +685,7 @@ gimme_utf8_please (const rtl::OUString &amp;oustring)
     </pre>
 
     <p>
-      �դξ��:
+      逆の場合:
     </p>
     <p>
       And the reverse:
@@ -702,14 +702,14 @@ complicate_things_into_ucs2_please (const char *utf8_string)
 }
     </pre>
 
-    <h4 id="section-5.7.1">5.7.1. ��Ȥ���</h4>
+    <h4 id="section-5.7.1">5.7.1. 落とし穴</h4>
     <h4 id="section-5.7.1">5.7.1. Pitfalls</h4>
 
     <p>
-      <strong>����</strong>  rtl_String �� rtl_uString
-      API�ϡ����ʤ��Ժٹ���.  ������ʸ�����������뤳���ε�ǽ�ϡ�����
-      �����������Τ褦�ˡ������(rtl_String��rtl_uString)��ƽФ�����ʸ��
-      ���NULL������ơ������ͤ����ꤷ�ʤ��Ƥ�*�ʤ�ʤ�*;
+      <strong>重要</strong>  rtl_String や rtl_uString
+      APIは、かなり不細工だ.  新しい文字列を作成するこれらの機能は、あな
+      たが、下記のように、これら(rtl_Stringやrtl_uString)を呼出す前に文字
+      列にNULLを入れて、元の値を設定しなくては*ならない*;
     </p>
     <p>
       <strong>Important</strong>  The rtl_String and rtl_uString
@@ -730,11 +730,11 @@ rtl_uString_newFromAscii (&amp;str, "hello Unicode world");
     </pre>
 
     <p>
-      �����δؿ������⤷����餬NULL�Ǥʤ����ʸ�����release()�����
-      �����Ѽ��ǽ�˸ƽФ���ߤ��롣�Ȥ����Τ���ͳ�Ǥ��롣&mdash;
-      ����꡼�����򤱤븶§�Ȥ��ơ����ʤ���ʸ���������ꤷ�������ɤ���
-      ;�ºݤ��ʤ��ο������񤷤����Ƥ���(ñ�ˤ��������ˤ��äƤ�������ǡ�
-      ��䤳�������Ƥ��뤰�餤���ɤ���)
+      これらの関数が、もしそれらがNULLでなければ文字列をrelease()する関
+      数の変種を最初に呼出す試みする。というのが理由である。&mdash;
+      メモリリークを避ける原則として、あなたは文字列を再設定した方が良い。
+      ;実際あなたの人生を難しくしている(単におおげさにいっているだけで、
+      ややこしくしているぐらいで良いか)
     </p>
     <p>
       This is because those functions attempt to first call the
@@ -743,14 +743,14 @@ rtl_uString_newFromAscii (&amp;str, "hello Unicode world");
       strings; in practice to make your life hard.
     </p>
 
-    <h4 id="section-5.7.2">5.7.2. GDB����ʸ�����Ĵ�٤�</h4>
+    <h4 id="section-5.7.2">5.7.2. GDBから文字列を調べる</h4>
     <h4 id="section-5.7.2">5.7.2. Examining strings from GDB</h4>
 
     <p>
-      �桹�ϴ���OO.o��������<code>char *</code>��ȤäƤ��ʤ����Ȥ򸫤�
-      �������⤷���ʤ��������ɤ�񤯤��ȤϽ�ʬ���ȹͤ��Ƥ���ʤ顢���ʤ�
-      �ϡ�OO.o��ǥХå����ʤ���Фʤ�ʤ��ʤ�ޤ��Ԥ��ʤ��ƤϤʤ�ʤ���
-      ʸ�����ɤΤ褦�˼���������������Ǥ�:
+      我々は既にOO.oが粗末な<code>char *</code>を使っていないことを見て
+      きた。もしあなたがコードを書くことは十分だと考えているなら、あなた
+      は、OO.oをデバッグしなければならなくなるまで待たなくてはならない。
+      文字列をどのように取りだすかがこの節です:
     </p>
     <p>
       We have already seen that OO.o does not use humble <code>char *</code> 
@@ -760,20 +760,20 @@ rtl_uString_newFromAscii (&amp;str, "hello Unicode world");
     </p>
 
     <ul>
-      <li>rtl_String: ������򸫤�</li>
+      <li>rtl_String: その中を見よ</li>
       <li>rtl_String: just poke at it</li>
-      <li>ʸ����: &mdash; ��, decl'��'UniString'�ޥ�����Ȥäơ�
-      tools/inc/string.hxx���ɤ߼���𤵤��ޤ���
-      <i>FIXME: UniStrings�Υޥ����򤭤���Ƚ��Ϥ���</i>
-      ���ʤ������֤�˾��褦�˽��ϤǤ���褦�ʷ����˵���Ū���Ѵ�����:
+      <li>文字列: &mdash; 注, decl'は'UniString'マクロを使って、
+      tools/inc/string.hxxの読み手を混乱させます。
+      <i>FIXME: UniStringsのマクロをきちんと出力する</i>
+      あなたがたぶん望むように出力できるような形式に機械的に変換する:
       <pre>
 fprintf (stderr, "String is '%s'\n",
          (::rtl::OString (<i>MyString</i>.GetBuffer (),
 	                  <i>MyString</i>.Len(),
 			  RTL_TEXTENCODING_UTF8)).getStr());
       </pre>
-      �������stdio.h��rtl/string.hxx���礱�Ƥ���ʤ饤�󥯥롼�ɤ���
-      ɬ�פ�����ޤ���
+      もちろん、stdio.hとrtl/string.hxxが欠けているならインクルードする
+      必要があります。
       </li>
       <li>String: &mdash; note, the decl' of this uses the macro
           'UniString' to confuse readers of tools/inc/string.hxx,
@@ -789,10 +789,10 @@ fprintf (stderr, "String is '%s'\n",
       of course, you also need to include stdio.h and rtl/string.hxx if
 they are missing.
       </li>
-      <li>OString: <i>gdb�Υ��ޥ�ɥץ���ץȤ�p str-&gt;pData�������</i></li>
+      <li>OString: <i>gdbのコマンドプロンプトでp str-&gt;pDataと入れよ</i></li>
       <li>OString: <i>p str-&gt;pData</i></li>
-      <li>OUString, rtl_uString: ���ʤ���~/.gdbinit�˲����ε��Ҥ�ɬ�פ�
-	   ��:
+      <li>OUString, rtl_uString: あなたの~/.gdbinitに下記の記述が必要で
+	   す:
       <pre>
 define prtls
 	set $poui = 0
@@ -817,9 +817,9 @@ define pou
 	prtls $arg0-&gt;pData
 end
       </pre>
-      ��. ����Ǥ��ʤ���ͳ�ˤ��gdb�ϡ�2���ܤ�ñ���ʸ�����ɽ�����ޤ�
-      'rtl_uString *'�Τ����<i>prtls</i> ��'OUString *'�Τ���� pou���
-      ���ޤ���OUString�Ϥ��ʤ���˾��褦�˵���Ū�˽��Ϥ��ޤ�:
+      注. 理解できない理由によりgdbは、2回目に単一の文字列を表示します
+      'rtl_uString *'のために<i>prtls</i> と'OUString *'のために pouを使
+      います。OUStringはあなたが望むように機械的に出力します:
       <pre>
 ::rtl::OString tmpStr = OUStringToOString (<i>MyOUString</i>, RTL_TEXTENCODING_UTF8);
 fprintf (stderr, "String is '%s'\n", tmpStr.getStr());
@@ -861,25 +861,25 @@ fprintf (stderr, "String is '%s'\n", tmpStr.getStr());
       </li>
     </ul>
 
-    <h2 id="section-6">6. OO.o��ǥХå�����</h2>
+    <h2 id="section-6">6. OO.oをデバッグする</h2>
     <h2 id="section-6">6. Debugging OO.o</h2>
 
     <p>
-      ������Ǥϡ�gdb�ϥ��󥽡��뤫��ȤäƤ���Ȳ��ꤷ�Ƥ��롣
+      この節では、gdbはコンソールから使っていると仮定している。
     </p>
     <p>
       This section assumes use of gdb, from the console.
     </p>
 
-    <h3 id="section-6.1">6.1. �ǥХå�����ܥ���դ��ƥӥ�ɤ�Ԥ�</h3>
+    <h3 id="section-6.1">6.1. デバッグシンボルを付けてビルドを行う</h3>
     <h3 id="section-6.1">6.1. Building with debugging symbols</h3>
 
     <p>
-      <tt>build debug=true</tt> ���ޥ�ɤ�⥸�塼����˹Ԥ����Ȥˤ�äơ�
-      OO.o�ϡ��ǥХå������ɤ�⥸�塼����˲ä�����ˡ��ޤ�Ǥ��롣
-      ��ǰ�ʤ��Ȥ���������(��ˡ)�ϡ������ ���äפ�Υ��������������
-      ��ȯ�����Ƥ����˥󥰡����ޤ��ޤʤ���¾�Υ����å�����̿Ū�ʥǥХ�
-      ������ܥ��ޤ�Ǥ��ꡢ�ץ������������Τ�¹Ԥ���ˤϴ�����ʤ���
+      <tt>build debug=true</tt> コマンドをモジュール毎に行うことによって、
+      OO.oは、デバッグコードをモジュール毎に加える方法を含んでいる。
+      残念なことだが、この(方法)は、それに たっぷりのアサーション、大量
+      に発生しているワーニング、さまざまなその他のチェックが致命的なデバッ
+      グシンボルを含んでおり、プロジェクト全体を実行するには勧められない。
     </p>
     <p>
       OO.o includes a way to add debugging code in per module, via
@@ -890,10 +890,10 @@ fprintf (stderr, "String is '%s'\n", tmpStr.getStr());
       various other checks.
     </p>
     <p>
-      ���Τ褦�ˡ����٤Ƥ˥ǥХå�����ܥ���դ��뤳�Ȥ�˾��ʤ顢
-      ���Ĥ���makefile�˥ǥХå�����ܥ���ɲä���褦���ѹ����������Υѥ�
-      ����Ŭ�Ѥ��ޤ���[��.���κ�������OO�Х��ʥ��~1�����Х��Ȥ�꾮������
-      �ե�ӥ�ɥĥ꡼�ʤ�~8�����Х��ȤǤ���]
+      このように、すべてにデバッグシンボルを付けることを望むなら、
+      幾つかのmakefileにデバッグシンボルを追加するように変更し、下記のパッ
+      チを適用します。[注.この作成したOOバイナリは~1ギガバイトより小さい。
+      フルビルドツリーなら~8ギガバイトである]
     </p>
     <p>
       Thus if you want debugging symbols for everything, you have to
@@ -928,9 +928,9 @@ fprintf (stderr, "String is '%s'\n", tmpStr.getStr());
  .IF "$(BUILD_SOSL)"==""
     </pre>
     <p>
-      ������󡢥ǥХå�����ܥ�ʤ��Ǥϡ�gdb�ϻȤ����餤���١����ǥ���
-      ���ȥ�ˤ���嵭�Υѥå���/tmp/foo�˥��åȥ���ɥڡ����Ȥ��ƥѥ�
-      ����Ŭ�Ѥ��롣
+      もちろん、デバッグシンボルなしでは、gdbは使いずらい。ベースディレ
+      クトリにある上記のパッチを、/tmp/fooにカットアンドペーストしてパッ
+      チを適用する。
     </p>
     <p>
       Of course, without debugging symbols gdb becomes even more
@@ -941,13 +941,13 @@ fprintf (stderr, "String is '%s'\n", tmpStr.getStr());
 patch -p0 < /tmp/foo
     </pre>
 
-    <h3 id="section-6.2">6.2. �֥졼���ݥ���Ȥ����ꤹ��</h3>
+    <h3 id="section-6.2">6.2. ブレークポイントを設定する</h3>
     <h3 id="section-6.2">6.2. Setting breakpoints</h3>
 
     <p>
-      gdb�ǲ�����ˤ�äơ���äȤ⤢�ꤽ���ʤΤ���ư�������ˤʤ�(�Х�
-      �ʥ��)�¹Ԥ������˥֥졼���ݥ���Ȥ����ꤹ�뤳�ȤǤ���
-      ���Τ褦�ʥ������ब�����Ǥ���
+      gdbで壊れ具合によって、もっともありそうなのが、動きそうにない(バイ
+      ナリを)実行する前にブレークポイントを設定することです。
+      このようなスキームが最善です。
     </p>
     <p>
       Due to the general level of brokenness in gdb, it's most likely
@@ -965,12 +965,12 @@ continue
     </pre>
 
     <p>
-      ������󡢤⤷�������ɤ��������OO.o�Υ����ɤ�����ʬaccounts��
-      dlopened������Υ饤�֥��˼�������ơ����줬ư���ȤϻפäƤ���
-      ����
-      ���Τ褦�ˡ����ʤ��ϡ������ɤ������ɤ���ơ��֥졼���ݥ���Ȥ�����
-      ���줿���ǻߤޤ�Τ�ª����ɬ�פ����롣osl_psz_loadModule����ǥ�
-      ���äȥ֥졼���ݥ���Ȼߤ�ơ���äƤߤ褦��
+      もちろん、もし、コードが、巨大なOO.oのコードの大部分accountsは
+      dlopenedした後のライブラリに実装されて、それが動くとは思っていな
+      い。
+      このように、あなたは、コードがロードされて、ブレークポイントが設定
+      された場所で止まるのを捉える必要がある。osl_psz_loadModuleの中でパ
+      シッとブレークポイント止めて、やってみよう。
     </p>
     <p>
       Of course, this is never going to work if the code is
@@ -982,10 +982,10 @@ continue
     </p>
 
     <p>
-      �̤���ˡ�Ȥ��ơ������ɤ˼¹Ԥ�����Ȥ���ʤ顢(�����������ɤ�)
-      #include &lt;signal.h&gt���ɲä���Τ���ñ�Ǥ���; �����ơ�
-      raise (SIGSTOP)��(�ߤ᤿������)�֤��ޤ���; (������)�����ɤΤɤ�
-      ���ǥХå����trap out(����ѳ䤳�ߤ�ȯ��������?)���롣
+      別の方法として、コードに実行させるとするなら、(ソースコードに)
+      #include &lt;signal.h&gtを追加するのが簡単です。; そして、
+      raise (SIGSTOP)を(止めたい場所に)置きます。; (ソース)コードのどこ
+      かデバッガ中でtrap out(停止用割こみを発生させる?)する。
     </p>
     <p>
       Alternatively if you can instrument the code, it's pretty
@@ -994,19 +994,19 @@ continue
       in the debugger.
     </p>
 
-    <h3 id="section-6.3">6.3. ���ϤλϤޤ�</h3>
+    <h3 id="section-6.3">6.3. 開始の始まり</h3>
     <h3 id="section-6.3">6.3. Starting at the beginning</h3>
 
     <p>
-      �����ϡ�vcl/source/app/svmain.cxx (SVMain)���Ƥ�Ǥ���sal���
-      �ѡ���main�ؿ��κǽ�ˤ��ޤ�������ϡ�main��pSVData->mpApp����Ƥ�
-      ������ޤ�����������pSVData�ϥ�������Υ���饤��(�ѿ�?)�Ǥ���
-      �ǥХå��򤹤뤿��ˡ��������Х��ѿ��Ǥ���pImplSVData��Ȥ��ޤ���
-      �㤨��
+      われわれは、vcl/source/app/svmain.cxx (SVMain)が呼んでいるsalラッ
+      パーのmain関数の最初にいます。それは、mainのpSVData->mpAppから呼び
+      だされます。しかし、pSVDataはローカルのインライン(変数?)です。
+      デバッグをするために、グローバル変数であるpImplSVDataを使います。
+      例えば
       <pre>
       p pImplSVData->maAppData
       </pre>
-      ���줬ŵ��Ū�� 'main'�᥽�åɤǤ�:
+      これが典型的な 'main'メソッドです:
       desktop/source/app/app.cxx (Main).
     </p>
     <p>
@@ -1021,17 +1021,17 @@ continue
       desktop/source/app/app.cxx (Main).
     </p>
 
-    <h3 id="section-6.4">6.4. ʸ�����Ĵ�٤�</h3>
+    <h3 id="section-6.4">6.4. 文字列を調べる</h3>
     <h3 id="section-6.4">6.4. Examining strings</h3>
 
     <p>
-      ������ char *(gdb�ϡ��ʤˤ⤷�ʤ��Ƥ�char *��ɽ�����뤳�Ȥ��Ǥ���)
-      �ϡ�gdb������Ǥ��ʤ�̵���ΰۤʤ륯�饹�ǡ�����(char *?)�ϡ���åӥ�
-      �󥰤���Ƥ��륪�֥�������(�ظ�)�������Ǥ��򤱤��Ƥ��롣����˰�
-      �����Ȥˡ�ʸ�����ץ��Ȥ���ΤǤ����ü���񤷤���礬�ۤȤ�ɤ�
-      ����-- ���η�̤ϡ�ucs-2���󥳡��ɤǹԤ��Ȥ������äȤ���褦�ʷ���
-      �ˤ��ޤ�������ϡ��Ѥ�䤹�����Ѥ�ˤ���ʸ�����饹��ξ���˸�����
-      ����
+      粗末な char *(gdbは、なにもしなくてもchar *を表示することができる)
+      は、gdbが理解できない無数の異なるクラスで、それ(char *?)は、ラッビッ
+      ングされているオブジェクト(指向)の世界では避けられている。さらに悪
+      いことに、文字列をプリントするのですら極端に難しい場合がほとんどで
+      す。-- この結果は、ucs-2エンコードで行くというぞっとするような決定
+      によります。これは、変りやすい、変りにくい文字クラスの両方に言えま
+      す。
     </p>
     <p>
       The humble char * (that gdb can natively display) is eschewed
@@ -1043,28 +1043,28 @@ continue
     </p>
 
     <p>
-      <a href="#section-5.7.2">5.7.2��</a>���ɤ�ǡ�OOo����ǤɤΤ褦��
-      ʸ����ư��Ƥ��뤫�ȡ��ǥХå���TIPS���μ������Ƥ���������
+      <a href="#section-5.7.2">5.7.2節</a>を読んで、OOoの中でどのように
+      文字列が動作しているかと、デバッグ用TIPSの知識を得てください。
     </p>
     <p>
       Please read <a href="#section-5.7.2">section 5.7.2</a> to see
       how strings work in OO.o and to get some debugging tips.
     </p>
 
-    <h3 id="section-6.5">6.5 �������ӥ�ɤν�����Τ�</h3>
+    <h3 id="section-6.5">6.5 正しいビルドの順序を知る</h3>
     <h3 id="section-6.5">6.5 Getting the build order right</h3>
 
     <p>
-      �ӥ�ɤΥ⥸�塼���¸�ط��ϡ����ä���Ȥ����ӥ�ɤ�Ԥ���������
-      �˽��פʤ��ȤǤ���Τϡ�����Ǥ��롣�⥸�塼����ǡ�'build'������
-      ����ȡ��ǽ�ӥ�ɤϡ�prj/build.list��Ĵ�٤ޤ������Ȥ��С�
-      neon/prj/build.lst:��
+      ビルドのモジュール依存関係は、すっきりとしたビルドを行うために非常
+      に重要なことであるのは、明白である。モジュール中で、'build'と入力
+      すると、最初ビルドは、prj/build.listを調べます。たとえば、
+      neon/prj/build.lst:は
       <pre>
 xh      neon  :  soltools external expat NULL
       </pre>
-      'soltools', 'external' �� 'expat' �Ȥ��������ϡ���­�˥ӥ�ɤ��졢
-      neon���ӥ�ɤǤ�������˾�����̤��Фʤ��ƤϤʤ�ʤ�������������
-      �롼�뤬����ơ����Ф餯�δֿ͡��˷ٹ𤵤�ʤ���
+      'soltools', 'external' や 'expat' という限定詞は、満足にビルドされ、
+      neonがビルドできる前に望んだ結果が出なくてはならない。時々これらの
+      ルールが壊れて、しばらくの間人々に警告されない。
     </p>
     <p>
       The build dependencies of the modules are clearly crucial to
@@ -1079,19 +1079,19 @@ xh      neon  :  soltools external expat NULL
       a while.
     </p>
 
-    <h3 id="section-6.6">6.6 gdb��������������������</h3>
+    <h3 id="section-6.6">6.6 gdbの中だけで落ちるんだけど</h3>
     <h3 id="section-6.6">6.6 It crashes, but only in gdb</h3>
 
     <p>
-      ���򤤤��Ȥ� &mdash; ���ʤ��������󥹥ȡ���ĥ꡼�����
-      desktop/unxlngi4.pro/bin/soffice��soffice.bin�˥�󥯤�ĥ�ä��Ȥ�
-      ���? �¹Ԥ�������ʤ顢��ʬ��ư������������gdb������ܥ�å����
-      ����Ÿ�����ơ��ѥ����(�¹�)�Х��ʥ���ܺ���Ǥ��ʤ�����(gdb��)
-      argv[0]��Ϳ������褦�ʴ����ѥ����Ϥ��ޤ�������(gdb)�ˤϡ�
-      /opt/OpenOffice/OOO_STABLE_1/desktop/unxlngi4.pro/bin�Τ褦�ʥץ�
-      �����Υ١����ѥ��������Ƥ�졢��������õ���Ϥ���ޤ���(��
-      applicat.rdb) ������󡢤����ʤ��������⸫�Ĥ����ʤ����ϡ�����
-      ���Ť��ˤɤ����ǥ���å��夹�뤫���������꤫���Υ�줿��ˤ��ޤ���
+      面白いことに &mdash; あなたが、インストールツリーの中で
+      desktop/unxlngi4.pro/bin/sofficeをsoffice.binにリンクを張ったとす
+      ると? 実行するだけなら、十分に動く。しかし、gdbがシンボリックリン
+      クを展開して、パス中の(実行)バイナリの捜索をできなくし、(gdbに)
+      argv[0]で与えられるような完全パスを渡します。これ(gdb)には、
+      /opt/OpenOffice/OOO_STABLE_1/desktop/unxlngi4.pro/binのようなプロ
+      グラムのベースパスが割当てられ、そこから探し始められます。(例
+      applicat.rdb) もちろん、いかなる設定情報も見つけられない時は、それ
+      は静かにどこかでクラッシュするか、元の問題から遠く離れた所にいます。
     </p>
     <p>
       What fun &mdash; you symlinked desktop/unxlngi4.pro/bin/soffice to
@@ -1105,13 +1105,13 @@ xh      neon  :  soltools external expat NULL
       crashes somewhere else yards away from the original problem.
     </p>
 
-    <h3 id="section-6.7">6.7 ����å��夷���ꡢ����å��夷�ʤ��ä��ꤷ
-      �ޤ�</h3>
+    <h3 id="section-6.7">6.7 クラッシュしたり、クラッシュしなかったりし
+      ます</h3>
     <h3 id="section-6.7">6.7 It crashes, but doesn't crash</h3>
 
     <p>
-      �͡�����ͳ�ˤ�ꡢ���������𤹤���ϥ����ʥ�ϥ�ɥ餬��ư�����
-      ��������ϡ����Τ褦�˺���Ƥ���Τ����֤Ǥ���
+      様々な理由により、人生が混乱するよりはシグナルハンドラが起動されま
+      す。それは、このように作られているのが一番です。
 <pre>
 --- sal/osl/unx/signal.c
 +++ sal/osl/unx/signal.c
@@ -1126,7 +1126,7 @@ xh      neon  :  soltools external expat NULL
         act.sa_handler = SignalHandlerFunction;
 
 </pre>
-      ��. ��³�Υ��ڡ���
+      注. 後続のスペース
     </p>
     <p>
       For various reasons signal handlers are trapped and life
@@ -1149,13 +1149,13 @@ xh      neon  :  soltools external expat NULL
       NB. trailing space.
     </p>
 
-    <h3 id="section-6.8">6.8 �ȥ졼��������̤��饳���ɤ򸫤Ĥ����ʤ�</h3>
+    <h3 id="section-6.8">6.8 トレースした結果からコードを見つけられない</h3>
     <h3 id="section-6.8">6.8 I can't find the code from the trace</h3>
 
     <p>
-      ���Ĥ��Υ᥽�åɤϡ�������Хå��Ȥ��ƻȤ����Ȥ��Ǥ������̤ʥ�󥱡�
-      ������äƤ���ȵ��Ҥ���Ƥ��롣�����ϡ��̾�'LinkStab'�Ȥ����ץ�
-      �ե��å�����Ĥ��Ƥ��롣
+      幾つかのメソッドは、コールバックとして使うことができる特別なリンケー
+      ジを持っていると記述されている。それらは、通常'LinkStab'というプレ
+      フィックスをつけている。
       they can be used in callbacks; these typically have a prefix:
       'LinkStub', so search for the latter part of the identifier in a
       freetext search. eg.
@@ -1175,15 +1175,15 @@ xh      neon  :  soltools external expat NULL
       builds the 'LinkStubImplHandlePaintHdl' method.
     </p>
 
-    <h3 id="section-6.9">6.9 �ȥ졼���Ǹ����ե����������ƥ���ѥ��뤹��ˤ�</h3>
+    <h3 id="section-6.9">6.9 トレースで見たファイルだけを再コンパイルするには</h3>
     
     <p>
-    �ǥХå����ץ�����Ĥ��ʤ��ӥ�ɤ�gdb��Ȥ��ȡ��Ѥ���줺��(�㤨��)
-    oowriter�����Ƥ�ƥ���ѥ��뤷�����ʤ�Ǥ��礦�������顢��ã��perl�Υإ��
-    ���ץꥱ����������ޤ���������perl�إ�ץ��ץꥱ�������ϥ����å��Τ�
-    ���Ƕ�̣�Τ���᥽�åɤ䥯�饹��̾���򥳥ԥڤ��뤳�Ȥˤ�äơ�������ʸ��
-    ���ޤ�ե����������touch���뤳�Ȥ��Ǥ����ƥ���ѥ��뤹��Τ��ưפˤʤ�
-    �ޤ����ʲ���ŵ��Ū�ʥǥХå���ή��Ǥ�:
+    デバックオプションをつけないビルドでgdbを使うと、耐えられずに(例えば)
+    oowriterの全てを再コンパイルしたくなるでしょう。だから、私達はperlのヘルプ
+    アプリケーションを作りました。そのperlヘルプアプリケーションはスタックのな
+    かで興味のあるメソッドやクラスの名前をコピペすることによって、それらの文字
+    列を含むファイルだけをtouchすることができ、再コンパイルするのが容易になり
+    ます。以下は典型的なデバッグの流れです:
     </p>
     <pre>
     gdb ./soffice.bin
@@ -1202,83 +1202,83 @@ xh      neon  :  soltools external expat NULL
     build debug=true
     </pre>
     <p>
-      �������ơ�SfxMedium�򻲾Ȥ����ꥤ��ץ���Ȥ��Ƥ���ʤˤ⤫�⤬touch��
-      �졢����ˤ��ǥХå�����ܥ��դ��Ǻƥӥ�ɤ��ޤ���
+      こうして、SfxMediumを参照したりインプリメントしているなにもかもがtouchさ
+      れ、それによりデバッグシンボル付きで再ビルドします。
     </p>
 
-    <h3 id="section-6.10">6.10 ���륽�����ǥ��쥯�ȥ�ˤ���ե�����Τߤ�ƥ�
-    ��ɤ���ˤ�</h3>
+    <h3 id="section-6.10">6.10 あるソースディレクトリにあるファイルのみを再ビ
+    ルドするには</h3>
     
     <p>
-      �⤷�������ȥǥ��쥯�ȥ�ˤ��륳���ɤΤߤ�ƥ���ѥ��뤷�����Τʤ�С�
-      killobj dmake�������åȤ�Ȥ����Ȥˤ�äƤ��Υ��֥������ȥե��������
-      ���뤳�Ȥ��Ǥ��ޤ�:
+      もし、カレントディレクトリにあるコードのみを再コンパイルしたいのならば、
+      killobj dmakeターゲットを使うことによってそのオブジェクトファイルを削除
+      することができます:
     </p>
     <pre>
     dmake killobj
     dmake
     </pre>
 
-    <h3 id="section-6.11">6.11 ���Ĥ�sal_XErrorHdl�ǥ���å��夹��������...</h3>
+    <h3 id="section-6.11">6.11 いつもsal_XErrorHdlでクラッシュするんだけど...</h3>
     
     <p>
-      ��Ʊ����X���顼��𤬸����Ǥ���
+      非同期なXエラー報告が原因です。
       <pre>export SAL_SYNCHRONIZE=1</pre>
-      �Ȥ��뤳�Ȥˤ�äơ����Ƥ�X���̿���Ʊ�����������Υ��顼�򵯤������᥽��
-      �ɤˤ�ꥨ�顼����𤹤�褦�ˤʤ뤬��OOo��ư��򤰤���٤��⤵���ޤ���
+      とすることによって、全てのXの通信を同期させ、そのエラーを起こしたメソッ
+      ドによりエラーを報告するようになるが、OOoの動作をぐんと遅くもさせます。
     </p>
 
-    <h3 id="section-6.12">6.12 ��ɥե�������ɤ߹�������ۤä����������
-    ��...</h3>
+    <h3 id="section-6.12">6.12 ワードファイルを読み込んだら黙って落ちるんだけ
+    ど...</h3>
 
     <p>
-      Caolan����Ƥ���ˤ�: ww8par.cxx��SwWW8ImplReader::LoadDoc�κǽ�ȺǸ��
-      �֥쥤���ݥ���Ȥ��֤����Ȥˤ�äơ��Ǥ��뤫������פʥե��륿��ɥ����
-      ��Ȥ����뤳�Ȥ��ǧ���ޤ���
+      Caolanの提案するには: ww8par.cxxのSwWW8ImplReader::LoadDocの最初と最後に
+      ブレイクポイントを置くことによって、できるかぎり重要なフィルタをドキュメ
+      ントが得ることを確認します。
     </p>
     <p>
-        �����Ԥ�SwWWI8ImplReader::ReadPlainChars�˥֥졼���ݥ���Ȥ��֤��С���
-        �߹��ޤ줿�ƥ����Ȥβ��򸫤뤳�Ȥ��Ǥ��ޤ������뤤�ϡ�
-        SwWWI8ImplReader::AppendTxtNode���������줿������򸫤뤳�Ȥ��Ǥ��ޤ���
+        熟練者はSwWWI8ImplReader::ReadPlainCharsにブレークポイントを置けば、読
+        み込まれたテキストの塊を見ることができます。あるいは、
+        SwWWI8ImplReader::AppendTxtNodeは挿入された各段落を見ることができます。
     </p>
 
-    <h2 id="section-7">7. �ѥå������ۤ���ˤ�</h2>
+    <h2 id="section-7">7. パッチを配布するには</h2>
 
-    <h3 id="section-7.1">7.1. Diff��������</h3>
+    <h3 id="section-7.1">7.1. Diffスタイル</h3>
 
     <p>
-      ���'cvs -z3 diff -u'�Ȥ���unified������ȤäƤ����������ʤ��ʤ�С�����
-      �����ָ��䤹�����������ɤ��Ŭ�Ѥ���Τ�Ŭ�ڤ�diff�Υ����פ�����Ǥ���
+      常に'cvs -z3 diff -u'としてunified形式を使ってください。なぜならば、それ
+      が一番見やすく、しかも読んで適用するのに適切なdiffのタイプだからです。
     </p>
 
-    <h3 id="section-7.2">7.2. ���ޤ�������Ǥ�餦����ˤ�</h3>
+    <h3 id="section-7.2">7.2. うまく取り込んでもらうためには</h3>
 
     <p>
-      ���ư�������ˡ��ɤ���ä��餢�ʤ��Υѥå��򤦤ޤ�������Ǥ�館��Τ�
-      �Ȥ������Ȥ�ͤ����ꡢ��ȯ�ԤȤ��Τ��ȤˤĤ������̤����ꤹ��ΤϤ褤����
-      �Ǥ���
-      ���Τ����Τ��������ˡ�ϡ�<a
-      href="mailto:dev@openoffice.org">dev@openoffice.org</a>����Ƥ��뤫
-      <tt>irc.freenode.net</tt>��<tt>#OpenOffice.org</tt>�����ͥ��IRC������
-      �Ǥ��뤳�ȤǤ���IRC�ϤȤƤ�Ȥ��ʤ����ߥ�˥�����������ΤǤ��������ߥ�
-      �˥��������򤷤ʤ����Ϥޤ��Ǥ��礦��<a href="name-account.html">����
-      </a>�򸫤�С�ï��ï�������狼��ޤ���
+      手を動かす前に、どうやったらあなたのパッチをうまく取り込んでもらえるのか
+      ということを考えたり、開発者とそのことについて相談したりするのはよいこと
+      です。
+      そのうちのお薦めの方法は、<a
+      href="mailto:dev@openoffice.org">dev@openoffice.org</a>に投稿するか
+      <tt>irc.freenode.net</tt>の<tt>#OpenOffice.org</tt>チャンネルにIRCで潜ん
+      でいることです。IRCはとても使えないコミュニケーション媒体ですが、コミュ
+      ニケーションをしないよりはましでしょう。<a href="name-account.html">ここ
+      </a>を見れば、誰が誰だかがわかります。
     </p>
 
-    <h3 id="section-7.3">7.3. ooo-build�ѥå��κ����</h3>
+    <h3 id="section-7.3">7.3. ooo-buildパッチの作り方</h3>
     <p>
-      ��ã�Υѥå�����ե�ˤĤ��ƤΤ��¿�����Τꤿ�����<a
-      href="ooo-build.html#section-2.2">����</a>�򸫤Ƥ���������
+      私達のパッチインフラについてのより多くを知りたければ<a
+      href="ooo-build.html#section-2.2">ここ</a>を見てください。
     </p>
 
-    <h2 id="section-8">8. ����¾��TIPS</h2>
+    <h2 id="section-8">8. その他、TIPS</h2>
 
-    <h3 id="section-8.1">8.1. CVS��������Ȥ��������</h3>
+    <h3 id="section-8.1">8.1. CVSアカウントを取得する</h3>
 
     <p>
-      Issue����𤵤��������ɤΤ褦�ˤʤäƤ���Τ�����ˤ��㤨��issue #7270
-      �򸫤Ƥ�����������������Ȥ���������顢�ޤ��ʲ��Τ褦�ˤ��ƥ����奢CVS
-      �����Ф˥ȥ�ͥ����ɬ�פ�����ޤ���
+      Issueが報告される過程がどのようになっているのか見るには例えばissue #7270
+      を見てください。アカウントを取得したら、まず以下のようにしてセキュアCVS
+      サーバにトンネルを作る必要があります。
     </p>    
 
     <pre>
@@ -1286,8 +1286,8 @@ ssh -f -2 -P -L 2401:localhost:2401 tunnel@openoffice.org sleep 1400 < /dev/null
     </pre>
 
     <p>
-      �������顢�ȥ�ͥ�ν�ü���������ޥ���ˤ��뤿��ˡ�CVSROOT����������
-      ����ΤȤ������ѹ����ޤ��礦��
+      そしたら、トンネルの終端をローカルマシンにするために、CVSROOTをローカルマ
+      シンのところに変更しましょう。
     </p>
 
     <pre>
@@ -1295,9 +1295,9 @@ ssh -f -2 -P -L 2401:localhost:2401 tunnel@openoffice.org sleep 1400 < /dev/null
     </pre>
 
     <p>
-      �������󤹤�ȡ������ˤ��ʤ���CVS������򿷤��������Ф˰ܤ��ʤ���Ф���
-      �ʤ����Ȥ˵��Ť��Ǥ��礦�������B/W��̵�̤ˤ����ˤ��ˤ�:[�٤����ɸ���
-      Ū�Ǥ�]
+      ログインすると、すぐにあなたのCVSの設定を新しいサーバに移さなければいけ
+      ないことに気づくでしょう。これをB/Wを無駄にせずにやるには:[遅いけど効果
+      的です]
     </p>
 
     <pre>
@@ -1306,47 +1306,47 @@ find -name 'Root' -exec cp /tmp/Root {} \;
 find -name 'Repository' -exec perl -pi.bak -e 's/^oo\///' {} \;
     </pre>
 
-  <h3 id="section-8.2">8.2 patch��diff��Ȥ�</h3>
+  <h3 id="section-8.2">8.2 patchやdiffを使う</h3>
 
   <p>
-    patch��diff�������餷���ġ���Ǥ������������͡��Ϥ����Υġ�����𤵤���
-    ���β�褬����ʥǡ������Ϥ����Ȥ��褯����ޤ����ʲ��ϡ������κ������
-    ���뤿��Τ����Ĥ��Υҥ�ȤǤ���
+    patchやdiffは素晴らしいツールです。しかし、人々はこれらのツールを混乱させ、
+    その解決が困難なデータを渡すことがよくあります。以下は、これらの混乱を解決
+    するためのいくつかのヒントです。
   </p>
 
   <ul>
-    <li>�������ʤ��ä��顢�ޤ�--dry-run���ץ������դ���patch���ޥ�ɤ�¹Ԥ�
-       �ޤ��礦�������patch���äƤ���褦�˸����ޤ������ºݤ�patch���ä�
-       ����櫓�ǤϤ���ޤ��󡣤����������¸�Υѥå����ȹ礻�ȤȤ�˥������
-       �ʷ�̤��֤����Ȥ�����ޤ������������������äƤ��ޤ�;��������������
-       �ޤ���
-    <li>�����Ƥ��ξ���"patch -p0"�Ȥ��Ƥ���������0��diff�������ե�����ѥ���
-      ��Ƭ���餤���ĤΥ���å���(�Ȥ��δ֤ˤ���ǥ��쥯�ȥ�̾)�����������ɽ
-      ���ޤ���
-    <li>����Ǥ櫓ʬ����ʤ��ʤäơ��ѥå���Ⱦʬ�����Ǥ�Ŭ�Ѥ���Ƥ��ޤäơ���
-      �ᤷ�����Ȥ����Ȥ��ˤϡ��ե������õ��CVS�ǥ��åץǡ��Ȥ��뤫��-R��
-      �ץ������դ��ƥѥå��򤢤�ľ���ޤ���
-    <li>���ޤˡ�diff�������ѹ�����������⥸�塼��֤ǻȤ��ȥѥå����ɤߤŤ�
-      �ʤ�ޤ���diff��'-w'�ե饰�����Ѥ���Ф���������ɤߤ䤹���ʤ�ޤ���
+    <li>自信がなかったら、まず--dry-runオプションを付けてpatchコマンドを実行し
+       ましょう。これはpatchを作っているように見えますが、実際にpatchを作って
+       いるわけではありません。これは内部依存のパッチの組合せとともにインチキ
+       な結果を返すことがありますが、しかしそれを補ってあまり余る便利さがあり
+       ます。
+    <li>たいていの場合は"patch -p0"としてください。0はdiffが示すファイルパスの
+      先頭からいくつのスラッシュ(とその間にあるディレクトリ名)を取り除くかを表
+      します。
+    <li>途中でわけ分からなくなって、パッチの半分がすでに適用されてしまって、元
+      戻したいというときには、ファイルを消去してCVSでアップデートするか、-Rオ
+      プションを付けてパッチをあて直します。
+    <li>たまに、diffを空白の変更が沢山あるモジュール間で使うとパッチが読みづら
+      なります。diffで'-w'フラグを利用すればこの問題を読みやすくなります。
   </ul>  
 
   <h3 id="section-8.3">8.3 make clean</h3>
 
   <p>
-    �ȥåץ�٥�ǥ��쥯�ȥ��<i>dmake clean</i>�Ȥ�������Ǥ���HEAD�ˤ�clean
-    �������åȤ�����ޤ��󤬡�dmake clean����äƤ��뤳�Ȥ��äƤ��뤳�Ȥ���
-    ���Ȥ��ơ��ʲ��Τ褦�ˤ��ޤ���
+    トップレベルディレクトリで<i>dmake clean</i>とするだけです。HEADにはclean
+    ターゲットがありませんが、dmake cleanがやっていることをやっていることの代
+    わりとして、以下のようにします。
   </p>
   
 <pre>
 find -name 'unxlngi4.pro' -exec rm -Rf {} \;
 </pre>
 
-  <h3 id="section-8.4">8.4 CVS������</h3>
+  <h3 id="section-8.4">8.4 CVSの設定</h3>
 
   <p>
-    �Х�������Ψ�褯���Ѥ��뤿��ˤϡ�Ŭ�ڤ�diff��ǥե���ȤǺ��褦�ˤ���
-    ���礦��~/.cvsrc�˰ʲ��ε��Ҥ��ɲä��ޤ��礦��
+    バンド幅を効率よく利用するためには、適切なdiffをデフォルトで作るようにしま
+    しょう。~/.cvsrcに以下の記述を追加しましょう。
   </p>
 <pre>
 cvs -z3 -q
@@ -1356,13 +1356,13 @@ checkout -dP
 status -v 
 </pre>
 
-    <h3 id="section-8.5">8.5. �إå��ե�������ɲä���</h3>
+    <h3 id="section-8.5">8.5. ヘッダファイルを追加する</h3>
 
     <p>
-      ʬ���äƤ���Ȥϻפ��ޤ�����OOo�˥إå��ե�������ɲä���Τ����ݤǤ���
-      �إå��ե������external/���ɲä���ˤϡ��إå��ե������
-      external/prj/d.lst���ɲä��ޤ��礦���ӥ�ɤ���Ȥ���
-      solver/641/unxlngi4.pro/inc/external�ǥ��쥯�ȥ�˥��ԡ�����ޤ���
+      分かっているとは思いますが、OOoにヘッダファイルを追加するのは面倒です。
+      ヘッダファイルをexternal/に追加するには、ヘッダファイルを
+      external/prj/d.lstに追加しましょう。ビルドするときに
+      solver/641/unxlngi4.pro/inc/externalディレクトリにコピーされます。
     </p>
 
     <h3 id="section-8.6">8.6. Finding where to hack</h3>
@@ -1390,134 +1390,134 @@ status -v
   </p>
 -->
 
-    <h2 id="section-9">9. ͭ�Ѥʥ�󥯽�</h2>
+    <h2 id="section-9">9. 有用なリンク集</h2>
 
     <h3 id="section-9.1">9.1. www.OpenOffice.org</h3>
 
     <p>
-      �����OpenOffice.org�Ȥ����ȿ��ΤۤȤ�ɤ��ϥå����ָ��Τ�ΤǤϤ���ޤ�
-      �󤬡�����ä�õ����������<a
-      href="http://www.openoffice.org/documentation.html">�ɥ������</a>����
-      ������ޤ���
+      初期のOpenOffice.orgという組織のほとんどがハッカー志向のものではありませ
+      んが、ちょっと探せば便利な<a
+      href="http://www.openoffice.org/documentation.html">ドキュメント</a>が沢
+      山あります。
     </p>
 
     <p>
-      OOo�Υ˥塼���䡢¾�ˤ�̵�����ä�OOo�ξ�����Τꤿ�����<a
-      href="http://www.ooodocs.org">ooodocs.org</a>�򸫤Ƥ���������
+      OOoのニュースや、他には無い独特のOOoの情報を知りたければ<a
+      href="http://www.ooodocs.org">ooodocs.org</a>を見てください。
     </p>
 
     <p>
-      ¾�ˤ�:
+      他には:
 
-      <a href="http://ooodi.sourceforge.net/">OOODI</a>��Gtk+�ǥ�������ʥꥤ��
-      ���ȡ��顼������Ƥ��ޤ���
+      <a href="http://ooodi.sourceforge.net/">OOODI</a>はGtk+ディクショナリイン
+      ストーラーを制作しています。
 
-      <a href="http://ooextras.sourceforge.net">OOExtras</a>�ϥƥ�ץ졼�Ȥ��
-      ����������åץ����Ȥ��󶡤��Ƥ��ޤ���
+      <a href="http://ooextras.sourceforge.net">OOExtras</a>はテンプレートやマ
+      クロ、クリップアートを提供しています。
 
-      <a href="http://ooqstart.sourceforge.net">Quickstart applet</a>��Gnome��
-      ���Ǥ�����<a
-      href="http://segfaultskde.berlios.de/index.php?content=oooqs">KDE����
-      </a>�Τ⤢��ޤ���
+      <a href="http://ooqstart.sourceforge.net">Quickstart applet</a>はGnome向
+      けですが、<a
+      href="http://segfaultskde.berlios.de/index.php?content=oooqs">KDE向け
+      </a>のもあります。
 
-      <a href="http://dict.progbits.com">Dictionaries &amp Docs</a>��Kevin
-      Hendricks�ˤ���󶡤Ǥ���
+      <a href="http://dict.progbits.com">Dictionaries &amp Docs</a>はKevin
+      Hendricksによる提供です。
     <p>
 
     <h3 id="section-9.2">9.2. Patch archives</h3>
 
     <p>
-      OpenOffice.org�������Υ�꡼���򤷤Ƥ�������ǡ��ۤʤ�ץ���������Ʊ�Τ�
-      OOo���Ф��������Υѥå�(������Ǥ�����)���ꤲ�ޤ��������ˤ⡢���ʤ�γ�
-      ����ޤ��֤����Ȥ��Ǥ���Τǡ��ɤΥѥå���ӥ�ɤ��뤿���HEAD�ˤ�ɬ�פ�
-      ��ޤ����㤨�С�¿���Τ�Τ�OOO_STABLE_1�˼��������ޤ���������ˤ�
-      ������餺�������Τ����Ĥ����뤤�����Ƥ����Ѥ��뤳�Ȥ�ɬ�פǤ���
+      OpenOffice.orgが沢山のリリースをしている一方で、異なるプロジェクト同士が
+      OOoに対して沢山のパッチ(しかもでかい奴)を投げます。幸いにも、かなりの割
+      合で折り返すことができるので、どのパッチもビルドするためにHEADには必要あ
+      りません。例えば、多くのものがOOO_STABLE_1に取り入れられました。それにも
+      かかわらず、これらのいくつかあるいは全てを利用することは必要です。
     </p>
 
     <ul>
       <li>
-	<a href="http://ooo.ximian.com">Ximian</a>�Υѥå��ȥӥ�ɥġ���䥹�ʥå�
-    ����åȤ�����<a
-	href="http://ooo.ximian.com/packages">�ѥå�����</a>�ޤ���<a
-    href="http://ooo.ximian.com/patches">�ѥå�</a>�Ȥ������Ѳ�ǽ�Ǥ���
+	<a href="http://ooo.ximian.com">Ximian</a>のパッチとビルドツールやスナップ
+    ショットは全て<a
+	href="http://ooo.ximian.com/packages">パッケージ</a>または<a
+    href="http://ooo.ximian.com/patches">パッチ</a>として利用可能です。
       </li>
       <li>
-	<a href="http://www.debian.org">Debian</a>�����Ω��OOo��<a
-	href="http://www.linux-debian.de/openoffice/">�ڡ���</a>�ˤϥѥå��������
-    ����Debian��<a
+	<a href="http://www.debian.org">Debian</a>の役に立つOOoの<a
+	href="http://www.linux-debian.de/openoffice/">ページ</a>にはパッチがありま
+    す。Debianの<a
 	href="http://cvs.debian.org/oo-deb/debian/?cvsroot=debian-openoffice">
-	CVS</a>��ͭ�ѤǤ���
+	CVS</a>も有用です。
       </li>
       <li>
-	<a href="http://www.linux-mandrake.com">Mandrake</a>��OOo<a
+	<a href="http://www.linux-mandrake.com">Mandrake</a>のOOo<a
         href="http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/SPECS/OpenOffice.org/">
-        �ѥå���</a>��
+        パッチ集</a>。
       </li>
       <li>
         <a href="http://www.freebsd.org/cgi/cvsweb.cgi/ports/editors/openoffice/#dirlist">
-	FreeBSD</a>��OOo port�Υѥå���
+	FreeBSD</a>のOOo portのパッチ。
       </li>
       <li>
-      Red Hat's��(Mandrake�Τ˴�Ť���).spec�ե�������ɤ���ͤ����ꡢRed Hat
-      ��<a
-	href="http://rawhide.redhat.com/pub/redhat/linux/rawhide/SRPMS/SRPMS/openoffice-1.0.1-6.src.rpm">SRPM</a>�ˤ���ޤ���
+      Red Hat'sの(Mandrakeのに基づいた).specファイルも読む価値があり、Red Hat
+      の<a
+	href="http://rawhide.redhat.com/pub/redhat/linux/rawhide/SRPMS/SRPMS/openoffice-1.0.1-6.src.rpm">SRPM</a>にあります。
       </li>
       <li>
-        OOo��������饤���������ͤ�Pavel Janik�ˤ��<a
-        href="ftp://ftp.linux.cz/pub/linux/people/pavel_janik/OpenOffice.org_1.0.1_CZ/build-13/build/Patches">�ѥå�</a>�򸫤��ٶ����ޤ��礦��
+        OOoをローカライズしたい人はPavel Janikによる<a
+        href="ftp://ftp.linux.cz/pub/linux/people/pavel_janik/OpenOffice.org_1.0.1_CZ/build-13/build/Patches">パッチ</a>を見て勉強しましょう。
       </li>
     </ul>
 
-    <h2 id="section-10">10. (��ä��ˤʤ�) FAQ</h2>
+    <h2 id="section-10">10. (めったにない) FAQ</h2>
 
-    <h3 id="section-10.1">10.1. �ɤ�����'mws_srx644'�ʤɤȤ��ä��֥����ϴ��
-    �ֹ��Ȥ�ʤ��Τ���</h3>
+    <h3 id="section-10.1">10.1. どうして'mws_srx644'などといったブランチは奇数
+    番号をとらないのか？</h3>
 
     <p>
-      �����Ȥ˥ե꡼����solver�䳫ȯ�Ķ�����꡼������뤿�ᡢ�����ͤϽ����Ȥ�
-      ������ȯ�����ޤ������������Ƕ���������꡼���Τ����ñ�ΤΥӥ�ɤ����
-      �����������ä����Ȥ˰콵�ְʾ夫���뤿��˱ѿ����������ä���꡼��������
-      ������ޤ���mws��Master Workspace���̣���ޤ���
+      週ごとにフリーズしsolverや開発環境がリリースされるため、この値は週ごとに
+      増え、発散します。しかし、最近幅広いリリースのための単体のビルドを作るプ
+      ロセスが困ったことに一週間以上かかるために英数字が混じったリリースタグが
+      うたれます。mwsはMaster Workspaceを意味します。
     </p>
 
-    <h3 id="section-10.2">10.2. �ɤ�����<b>�ӥ��</b>����Τ�Java�������?</h3>
+    <h3 id="section-10.2">10.2. どうして<b>ビルド</b>するのにJavaがいるの?</h3>
 
     <p>
-      �ɤ����Ƥ⡢����ݡ��ͥ�Ȥ䤤����ʥ����ӥ�����Ͽ����Τ�������XML�ե�
-      ���뤬ɬ�פˤʤ�ޤ���Java��Ȥ��Ф���������ñ�˹Ԥ��ޤ�������ˡ�
-      Java���ޥ���˥��󥹥ȡ��뤵��Ƥ���С�OOo��¹Ԥ���Ȥ��ˤ⤦�ޤ����
-      ��Java���Ȥ��ޤ���
+      どうしても、コンポーネントやいろんなサービスを登録するのに沢山のXMLファ
+      イルが必要になります。Javaを使えばこれらの操作が簡単に行えます。さらに、
+      Javaがマシンにインストールされていれば、OOoを実行するときにもうまい具合
+      にJavaが使われます。
     </p>
 
-    <h3 id="section-10.3">10.3. �ʤ��[t]csh�ϻȤ��ʤ���?</h3>
+    <h3 id="section-10.3">10.3. なんで[t]cshは使えないの?</h3>
 
     <p>
-      ����Ͼ����Ф����ԲĲ�Ǥ������ޥ�ɤ�ɸ����Ϥ˥ѥ��פ�����ˡ��ü������
-      ���Ϥ���ΤȤǡ�����Ū�˰㤤�ޤ���
+      これは少しばかり不可解です。コマンドを標準出力にパイプする方法が端末から
+      入力するのとで、決定的に違います。
     </p>
 
     <pre>echo 'echo #define DLL_NAME "libsch641li.so" >./foo.hxx' | /bin/tcsh -s</pre>
 
     <p>
-      �ϡ�Ʊ����Τ򥷥�����Ǥä��餦�ޤ������Τˡ����Ԥ��ޤ����ʤ��ѤǤ�����
+      は、同じものをシェルで打ったらうまくいくのに、失敗します。なんか変ですが、
     </p>
 
     <pre>tcsh -fc 'echo #define DLL_NAME "libsch641li.so" >./foo.hxx'</pre>
 
     <p>
-      �ʤ餦�ޤ������ޤ���<a
-      href="http://www.faqs.org/faqs/unix-faq/shell/csh-whynot/">csh</a>�⻲��
-      �ˤ��Ƥ���������
+      ならうまくいきます。<a
+      href="http://www.faqs.org/faqs/unix-faq/shell/csh-whynot/">csh</a>も参考
+      にしてください。
     </p>
 
-    <h3 id="section-10.4">10.4. �ӥ�ɤξ����ư�������Τ�����ɡ��ʤ�Ǥ���
-    �������ʤ��� ?</h3>
+    <h3 id="section-10.4">10.4. ビルドの場所を移動させたのだけれど、なんでうま
+    くいかないの ?</h3>
 
     <p>
-      <pre>bin/relocate /path/to/new/build/</pre>��¹Ԥ����ʤ���Ф����ޤ���
-      ¾�����ݤ���ˡ�Ȥ��ơ������ꤷ�ʤ�Ф����ʤ����(LinuxIntelEnv.Set�⿷��
-      ���ѥ���ɬ�פ�����������˺ƥ���ݡ��Ȥ��ʤ���Ф����ޤ���)�����ꡢ��
-      �Хѥ��ǵ��Ҥ���Ƥ��ʤ��Τǡ�
+      <pre>bin/relocate /path/to/new/build/</pre>を実行させなければいけません。
+      他の面倒な方法として、再設定しなればいけないもの(LinuxIntelEnv.Setも新し
+      いパスが必要だし、シェルに再インポートしなければいけません。)があり、相
+      対パスで記述されていないので、
       
     </p>
     <p>
@@ -1540,41 +1540,41 @@ find -name '*.dpc*' -exec rm {} \;
       two path instances there (see inc/stl/config/stl_gcc.h).
     </p>
 
-    <h3 id="section-10.5">10.5 CVS��'Fatal Error aborting. [acc] no such user'
-    �Ȥ������顼���Ǥ��ޤ����ɤ����ơ�</h3>
+    <h3 id="section-10.5">10.5 CVSが'Fatal Error aborting. [acc] no such user'
+    というエラーを吐きます。どうして？</h3>
 
     <p>
-      ���ʤ��Υ桼��̾����Ͽ����Ƥ��ʤ����Ȥ��ͤ����ޤ�������Ϥ��ʤ���~
-      /.cvspass�������ơ����Ǥ˥��������Ȥ���Ƥ���Τ������Ǥ�����������
-      �ʤ����ơ�Ʊ�����ޥ�ɤ��ǤäƤߤƤ���������
+      あなたのユーザ名が登録されていないことが考えられます。大抵はあなたの~
+      /.cvspassが失われて、すでにログアウトされているのが原因です。ログインし
+      なおして、同じコマンドを打ってみてください。
     </p>
 
-    <h3 id="section-10.6">10.6 'unxlngi4.pro'��'.pro'�ϲ����̣���Ƥ��?</h3>
+    <h3 id="section-10.6">10.6 'unxlngi4.pro'の'.pro'は何を意味してるの?</h3>
 
     <p>
-      <i>Pro</i>duct�Ǥ�������ʤ����餫�Ǥ��硣
+      <i>Pro</i>ductです。こんなん明らかでしょ。
     </p>
 
-    <h3 id="section-10.7">10.7 OpenOffice.org�äƤɤ�ʴ����ǤǤ��Ƥ��?</h3>
+    <h3 id="section-10.7">10.7 OpenOffice.orgってどんな感じでできてるの?</h3>
 
     <p>
-       ���ä�����ʿޤ򸫤Ĥ��Ƥ����Τǡ�Ž�äƤ����ޤ���
+       さっきこんな図を見つけてきたので、貼っておきます。
     </p>
     <img src="layers.png" alt="Abstraction Layers">
 
-    <h3 id="section-10.8">10.8 �ɤ���ä�OOo�Υ����꡼�󥷥�åȤ򻣤�ΤǤ���?</h3>
+    <h3 id="section-10.8">10.8 どうやってOOoのスクリーンショットを撮るのですか?</h3>
 
     <p>
-       OOo��X resouces�ˤȤƤ��Ѥʤ��Ȥ򤷤ޤ������Τ褦�˸Ť������꡼�󥷥��
-       �Ȥ�Ȥ륢�ץꥱ�����������Τʥ����꡼�󥷥�åȤ򻣤뤳�Ȥ��Ǥ��ޤ�
-       �󡣤�������ImageMagick��import���ޥ�ɤϻȤ��ޤ���
+       OOoはX resoucesにとても変なことをします。このように古いスクリーンショッ
+       トをとるアプリケーションは正確なスクリーンショットを撮ることができませ
+       ん。しかし、ImageMagickのimportコマンドは使えます。
        <pre>import foo.png</pre>
-       ���뤤�ϡ�
+       あるいは、
        <pre>sleep 2; import ^window root foo.png</pre>
-       �ȥ��󥽡�����Ǥ��ޤ���
+       とコンソールで打ちます。
        
-       (��)�����꡼��򾮤������������ΤǤʤ���С��ġ���С��Υ��������ޤ�
-       �礭������ɬ�פ�����ޤ���
+       (注)スクリーンを小さく見せたいのでなければ、ツールバーのアイコンをまず
+       大きくする必要があります。
     </p>
 
     <h3 id="section-10.9">10.9 I tried to build with gcc on a prefix with BUILD in it why does it break ?</h3>
@@ -1605,47 +1605,47 @@ from /home/michael/ximian-desktop/ooo/<b>BUILD</b>/ooo/OOO_1_0_2/xml2cmp/source/
       </pre>
     </p>
 
-    <h3 id="section-10.10">10.10 UNO����ݡ��ͥ�Ȥ�XML description�Ϥʤ�Τ�
-    ��ˤ���� ?</h3>
+    <h3 id="section-10.10">10.10 UNOコンポーネントのXML descriptionはなんのた
+    めにあるの ?</h3>
     <p>
-      �礷����ΤǤϤ���ޤ��󡣥��󥹥ȡ��뤹��Ȥ��˰�̣������ޤ�����������
-      ���ޤΤȤ����ۤȤ�ɻȤ��Ƥ��ޤ���
+      大したものではありません。インストールするときに意味がありますが、しかし
+      いまのところほとんど使われていません。
     </p>
 
-    <h3 id="section-10.11">10.11 �ʤ�Ǥ���ʤ˥����ɤ����Ť餤�Τ�?</h3>
+    <h3 id="section-10.11">10.11 なんでこんなにコードが見づらいのか?</h3>
 
     <p>
-      �����ɤ�񤯿ͤ��Ѥʥ��ǥ�����Ȥ�ʤ���Ф����ޤ��󡣥��֥��ȥåפ�4ʸ
-      ���ˤʤäƤ���Ȼפ��ޤ���������󡢥�������8ʸ���Ȼפ���Unix�Υ��ǥ�
-      �����Խ������ե�����ϸ��Ť餯�ʤ�ޤ���
+      コードを書く人は変なエディタを使わなければいけません。タブストップは4文
+      字になっていると思われます。もちろん、タブ幅が8文字と思われるUnixのエディ
+      タで編集したファイルは見づらくなります。
     </p>
     <p>
-      �⤷���ޤ���
-      <a href="http://www.gnu.org/software/emacs/">��ʪ�Υ��ǥ���</a>��Ȥä�
-      ����ΤǤ���С��ԥ󥯿��δ�������ޤ���
+      もしたまたま
+      <a href="http://www.gnu.org/software/emacs/">本物のエディタ</a>を使って
+      いるのであれば、ピンク色の眼鏡を売ります。
       <a
       href="http://ooo.ximian.com/emacs.el">http://ooo.ximian.com/emacs.el</a>
-      ��<tt>.emacs</tt>��Ž��Ĥ��뤫�����뤤�Ϥ��Υե������<tt>(load
-      "/path/to/that/file.el")</tt>�Ȥ����ɤߤ���Ǥ���������
-      <tt>my-openoffice-path-regexp</tt>��ʬ�δĶ���Ŭ�礵����Τ�˺��ʤ���
-      ����������
+      を<tt>.emacs</tt>に貼りつけるか、あるいはこのファイルを<tt>(load
+      "/path/to/that/file.el")</tt>として読みこんでください。
+      <tt>my-openoffice-path-regexp</tt>を自分の環境に適合させるのを忘れないで
+      ください。
     </p>
     <p>
-      ����ˤ�ꡢemacs��OOo�Υ������ե�����ˤ�4ʸ�����Υ��֤�Ȥ��ޤ���
-      (����ˡ�<tt>sdi</tt>��<tt>hrc</tt>��<tt>src</tt>�ե�������Ф���<em>C++
-      �⡼��</em>�ˤ�Ʊ�ͤ�4ʸ�����Υ��֤�Ȥ��ޤ���)
+      これにより、emacsはOOoのソースファイルには4文字幅のタブを使います。
+      (さらに、<tt>sdi</tt>、<tt>hrc</tt>、<tt>src</tt>ファイルに対する<em>C++
+      モード</em>にも同様に4文字幅のタブを使います。)
     </p>
 
-    <h2 id="section-11">11. �䤿���Ȱ��˺�Ȥ��褦</h2>
+    <h2 id="section-11">11. 私たちと一緒に作業しよう</h2>
     <p>
-      <a href="ooo-build.html">About ooo-build</a>��ߤƤ���������
+      <a href="ooo-build.html">About ooo-build</a>をみてください。
     </p>
 
   <hr>
   <p>If you have more hacking tips, corrections, a grip of correct
   spelling etc. please do mail <a href="http://www.gnome.org/~michael">me</a>,
   at <a href="mailto:michael@ximian.com">michael@ximian.com</a>.</p>
-  �������������˴ؤ��뤳�Ȥ�, yabuki [at] netfort.gr.jp �ء�ɬ�������Ǥ���Ȥϸ¤�ޤ���, ����Ū�������ո��ϴ��ޤ��ޤ�.��
-  ��������������, Yukiharu YABUKI �� Takashi Nakamoto ���Ԥ��ޤ���.��
+  《訳注：翻訳に関することは, yabuki [at] netfort.gr.jp へ。必ず応答できるとは限りませんが, 具体的な訂正意見は歓迎します.》
+  《訳注：翻訳は, Yukiharu YABUKI と Takashi Nakamoto が行いました.》
   </body>
 </html>
