@@ -187,7 +187,9 @@
     <p>
       Now have a hack at vcl/source/window/toolbox2.cxx; I suggest
       adding (eg.) an <code>nPos = 0</code> anywhere before the
-      m_aItems.insert in ToolBox::InsertItem( const ResId &rResId ...).
+      m_aItems.insert in the 4rd InsertItem method:
+      <code>void ToolBox::InsertItem( USHORT nItemId, const XubString& rText,
+	ToolBoxItemBits nBits, USHORT nPos )</code>.
       Then save.
     </p>
     <p>
