@@ -10,24 +10,24 @@
     <h1>About ooo-build</h1>
     
     <h2 id="section-0">0. Contents</h2>
-    <ul>
-       <li><a href="#section-1">1. Why ooo-build</a></li>
-       <li><a href="#section-2">2. Getting involved</a></li>
+    <ol>
+       <li><a href="#section-1">Why ooo-build</a></li>
+       <li><a href="#section-2">Getting involved</a></li>
 <!-- FIXME - need structural docs on ooo-build and how it works -->
-       <li><a href="#section-3">3. Releasing</a></li>
-       <li><a href="#section-4">4. Areas for improvement</a></li>
-    </ul>
+       <li><a href="#section-3">Releasing</a></li>
+       <li><a href="#section-4">Areas for improvement</a></li>
+    </ol>
 
     <h2 id="section-1">1. Why ooo-build</h2>
     <p>
       There are a number of reasons for the existence of ooo-build:
-      <ul>
-        <li>1. CVS doesn't scale
-	<li>2. OO.o process is too slow
-	<li>3. build / package infrastructure
-	<li>4. lack of interest in up-streaming
-      </ul>
     </p>
+      <ol>
+        <li>CVS doesn't scale
+        <li>OO.o process is too slow
+        <li>build / package infrastructure
+        <li>lack of interest in up-streaming
+      </ol>
     <h3 id="section-1.1">1.1 CVS doesn't scale</h3>
     <p>	
       A simple cvs tag of the whole of the OO.o tree can take several
@@ -73,7 +73,7 @@
 	highly restricted commit access.
 	<li>B. Encourage a culture of carefulness, and highly unrestricted
 	commit access.
-      </ul>
+      </ul><p>
       While B. results in frequent, temporary breakage, this is soon fixed,
       and life is fast, smooth and happy. The existing situation: A. leads
       to communal frustration / strangulation - however it does provide a
@@ -140,12 +140,12 @@
     <p>
       So; since the source tar.gz is a snapshot taken from a random user's
       account; you need to switch this to using the anoncvs root; to do this
-      cd build/OOO_1_1_0 (eg.) and run <pre>bin/re-root .</pre> - this will
+      cd build/OOO_1_1_0 (eg.) and run <b>bin/re-root .</b> - this will
       switch the CVS/Root directories to use the anon-cvs server.
     </p>
     <p>
       Since we are interested in diffs from the toplevel - which has no CVS
-      directory; we also need to do: <pre>export CVSROOT=`cat moz/CVS/Root`</pre>
+      directory; we also need to do: <b>export CVSROOT=`cat moz/CVS/Root`</b>
       NB. '`' is a back-tick.
     </p>
     <p>
@@ -161,14 +161,14 @@
       cvs -z3 diff -u vcl/source/window/toolbox.cxx | tee ../../patches/OOO_1_1/gui-toolbox-hack.diff
       </pre>
       <p>
-        <strong>NB.</strong> to append a patch to an existing diff use <pre>tee -a</pre>
+        <strong>NB.</strong> to append a patch to an existing diff use <b>tee -a</b>
       </p>
       <p>
         <strong>NB.</strong> to avoid having to type -z3 &amp; -u grab <a
 	href="http://primates.ximian.com/~michael/.cvsrc">this</a> and
 	put it in ~.
       </p>
-    </p>
+    <br>
 
     <h3 id="section-2.4">2.4 Adding to the apply set</h3>
     <p>
@@ -179,20 +179,19 @@
     </p>
     <p>
       Having created the patch, you then need to edit the relevant apply set; eg.
-      <pre>patches/OOO_1_1_0/apply</pre> and add the patch to a relevant section,
+      <b>patches/OOO_1_1_0/apply</b> and add the patch to a relevant section,
       along with a comment line that describes it - and references the IZ number.
       eg.
-<pre># this adds a nasty hack to the toolbar - #32179
+<b># this adds a nasty hack to the toolbar - #32179
 gui-toolbox-hack.diff
-</pre>
+</b>
     </p>
 
-    <h3 id="section-2.4">2.4 Committing the new patch to openoffice.org</h3>
-    <h4 id="section-2.4.1">2.4.1 your first commit to openoffice.org</h4>
-    <p>
-      <ul>
+    <h3 id="section-2.5">2.5 Committing the new patch to openoffice.org</h3>
+    <h4 id="section-2.5.1">2.5.1 your first commit to openoffice.org</h4>
+    <ul>
 	<li>Create a perl crypted password:
-	    <pre>perl -e "print ':'.crypt('mypassword', 'zt').':';"</pre>
+	    <b>perl -e "print ':'.crypt('mypassword', 'zt').':';"</b>
 	    'zt' should be 2 random chars, and 'mypassword' should be a strong
 	    password.
 	<li>E-mail this crypted password with your full name, and contact E-mail
@@ -203,19 +202,20 @@ gui-toolbox-hack.diff
 	to the new root before you can commit, so run:
 <pre>openoffice/bin/re-root openoffice ':pserver:<b><i>UserName</i></b>@cvs.gnome.org:/cvs/gnome'</pre>
       </ul>
-    </p>
-    <p>
-    <h4 id="section-2.4.2">2.4.2 how to commit</h4>
+    <br/>
+    <h4 id="section-2.5.2">2.5.2 how to commit</h4>
     <p>
       First ensure you have a ChangeLog entry in openoffice/ChangeLog, this
       should look like:
+    </p>
       <pre>
 2003-10-23  FirstName LastName  &lt;EMail@MyCompany.com&gt;
 
 	* patches/OOO_1_1/gui-toolbox-hack.diff,
 	* patches/OOO_1_1_0/apply: add a nasty hack for toolbars.
 </pre>
-      Now, from the toplevel directory run <pre>cvs commit</pre>, use your
+    <p>
+      Now, from the toplevel directory run <b>cvs commit</b>, use your
 ChangeLog text for the CVS commit message.
     </p>
 
@@ -227,73 +227,77 @@ ChangeLog text for the CVS commit message.
       like this process:
     </p>
     <ul>
-      <li><pre>cvs update</pre> - get the latest everything
-      <li>Read back through the ChangeLog and update the NEWS file for
-      the release, summarizing and attributing the changes.
-      <li>edit configure.in, bump the version in the <pre>AM_INIT_AUTOMAKE</pre>
-      line, incrementing the minor version eg. <pre>AM_INIT_AUTOMAKE(ooo-build, X.Y.Z)</pre>
-      <li><pre>./autogen.sh</pre> - this re-builds configure with the version in place.
-      <li><pre>make dist</pre> - this builds the archive containing everything.
-      <li>Add a line to any handy ChangeLogs saying:
-<pre>2019-13-33  Ned Squeers  <ned@sqeers.com>
+      <li><p><b>cvs update</b> - get the latest everything</p></li>
+      <li><p>Read back through the ChangeLog and update the NEWS file for
+      the release, summarizing and attributing the changes.</p></li>
+      <li><p>edit configure.in, bump the version in the <b>AM_INIT_AUTOMAKE</b>
+      line, incrementing the minor version eg. <b>AM_INIT_AUTOMAKE(ooo-build, X.Y.Z)</b>
+	      </p></li>
+      <li><p><b>./autogen.sh</b> - this re-builds configure with the version in place.
+	      </p></li>
+      <li><p><b>make dist</b> - this builds the archive containing everything.</p></li>
+      <li><p>Add a line to any handy ChangeLogs saying:</p>
+<pre>2019-13-33  Ned Squeers  &lt;ned@sqeers.com&gt;
 
 	* Version X.Y.Z
-</pre> so we can easily see where this happened in the flow.
-      <li><pre>cvs commit</pre> - so what's there is what's there. If there
+</pre>
+		   <p>so we can easily see where this happened in the flow.</p></li>
+      <li><p><b>cvs commit</b> - so what's there is what's there. If there
       was a collision you get to loop to the first stage here, but don't
-      re-increment the number.
-      <li><pre>cvs -z3 tag OOO_BUILD_X_Y_Z</pre> - this leaves a static tag
+      re-increment the number.</p></li>
+      <li><p><b>cvs -z3 tag OOO_BUILD_X_Y_Z</b> - this leaves a static tag
       so we can reproduce the build at any time and easily diff between
-      releases.
-      <li><pre>scp ooo-build-X.Y.Z.tar.gz ooo@ooo.ximian.com:/var/www/packages/OOO_1_1_0</pre>
-      of course, substitute the branch/ver for OOO_1_1_0.
-      <li>It's then customary to announce the release, see the template in
+      releases.</p></li>
+      <li><p><b>scp ooo-build-X.Y.Z.tar.gz ooo@ooo.ximian.com:/var/www/packages/OOO_1_1_0</b>
+      of course, substitute the branch/ver for OOO_1_1_0.</p></li>
+      <li><p>It's then customary to announce the release, see the template in
       doc/announce.txt - update all the ***s to the right versions, insert
-      the contents of NEWS, fire and forget.
+      the contents of NEWS, fire and forget.</p></li>
     </ul>
    
     <h2 id="section-4">4. Areas for improvement</h2>
     <p>
       Of course this has a number of obvious down-sides for you as a
       contributor:
-      <ul>
-        <li>Working outside CVS makes up-streaming harder, and commits
-	somewhat more painful.
-	<li>You get no immediate 'official' recognition; no-matter how large
-	your contribution to OO.o you don't exist in the eyes of the artificial
-	OO.o <i>community</i> as ooo-build is not an 'official' project;
-	however - we value you more.
-      </ul>
     </p>
+      <ul>
+        <li><p>Working outside CVS makes up-streaming harder, and commits
+            somewhat more painful.</p>
+        <li><p>You get no immediate 'official' recognition; no-matter how large
+            your contribution is to OO.o. You don't exist in the eyes of the artificial
+            OO.o <i>community</i> as ooo-build is not an 'official' project;
+            however - we value you more.</p>
+      </ul>
     <p>
       Obviously the existing situation is highly sub-optimal, here are some
       possible improvements beyond our control that could be made:
-      <ul>
-	<li>1. accelerating CVS performance - this is a hard task, possible
-	<a href="http://subversion.tigris.org">subversion</a> may solve this
-	in due course. A more feasible alternative would to devote resources
-	to committing to merging CWS' targeting stable to a parallel playground
-	branch in OO.o CVS as well [ thus avoiding painful community merging ].
-
-        <li>2. accelerating OO.o CVS account creation, binning ACLs and
-	hugely increasing access (&amp; trust); thus we can get more people
-	involved more quickly without demoralisation.
-
-	<li>3. aggressive interest in working with external people, and merging
-	their patches; this involves at a minimum:
-	  <ul>
-	    <li>Rapid response to design queries.
-	    <li>Research and response to other OO.o development streams and
-	    their patch sets; discussion of requirements for merging.
-	    <li>Clear, interactive, casual access to relevant developers
-	    to discuss design before larger changes are attempted.
-	  </ul>
-
-	<li>4. recognising the needs of Unix packagers to have substantial
-	wrappers / work around OO.o, and allowing them to integrate all of
-	it, leaving no need for separate branches.
-      </ul>
     </p>
+    <ol>
+	<li><p>accelerating CVS performance - this is a hard task, possible
+	  <a href="http://subversion.tigris.org">subversion</a> may solve this
+      in due course. A more feasible alternative would to devote resources
+      to committing to merging CWS' targeting stable to a parallel playground
+      branch in OO.o CVS as well [ thus avoiding painful community merging ].</p></li>
+
+    <li><p>accelerating OO.o CVS account creation, binning ACLs and
+	hugely increasing access (&amp; trust); thus we can get more people
+	involved more quickly without demoralisation.</p></li>
+
+	<li><p>aggressive interest in working with external people, and merging
+	their patches; this involves at a minimum:</p>
+	  <ul>
+	    <li>Rapid response to design queries.</li>
+	    <li>Research and response to other OO.o development streams and
+	    their patch sets; discussion of requirements for merging.</li>
+	    <li>Clear, interactive, casual access to relevant developers
+	    to discuss design before larger changes are attempted.</li>
+	  </ul>
+	  </li>
+
+	<li><p>recognising the needs of Unix packagers to have substantial
+	wrappers / work around OO.o, and allowing them to integrate all of
+	it, leaving no need for separate branches.</p></li>
+      </ol>
 
   </body>
 </html>
