@@ -15,7 +15,8 @@
        <li><a href="#section-2">Getting involved</a></li>
 <!-- FIXME - need structural docs on ooo-build and how it works -->
        <li><a href="#section-3">Releasing</a></li>
-       <li><a href="#section-4">Areas for improvement</a></li>
+       <li><a href="#section-4">Moving to a new OO.o version</a></li>
+       <li><a href="#section-5">Areas for improvement</a></li>
     </ol>
 
     <h2 id="section-1">1. Why ooo-build</h2>
@@ -266,7 +267,47 @@ ChangeLog text for the CVS commit message.
       the contents of NEWS, fire and forget.</p></li>
     </ul>
    
-    <h2 id="section-4">4. Areas for improvement</h2>
+    <h2 id="#section-4">4. Moving to a new OO.o version</h2>
+    <p>
+      This section is mostly of interest to people helping administer the
+      ooo-build package over time, and to avoid the patch set getting too
+      tangled and messy.
+    </p>
+    <p>
+      Taking the example of an upgrade from OO.o 1.1.0 to 1.1.1, there
+      will be several directories, that should end up containing this:
+<pre>
+patches/
+    OOO_1_1/ - only patches against the latest OOO_1_1_X version
+    OOO_1_1_0/ - 'apply' file, and old/stale/different patches
+    OOO_1_1_1/ - only an 'apply' file.
+</pre>
+      So - clearly in order to arrive at this scenario, we have to cvs
+add the new OOO_1_1_1 directory and it's apply file (based on the
+OOO_1_1_0 apply), and for each patch there are three scenarios:
+    <ul>
+	<li><strong>obsolete</strong> - already included upstream,
+	thus we need to move the patch to the OOO_1_1_0/ directory:
+<pre>mv OOO_1_1/foo.diff OOO_1_1_0
+cvs remove OOO_1_1/foo.diff
+cvs add    OOO_1_1_0/foo.diff</pre>
+	<li><strong>conflicts</strong> - we still need the patch but
+	will have to re-generate a new version of it. In this case we
+<pre>cp OOO_1_1/foo.diff OOO_1_1_0
+cvs add    OOO_1_1_0/foo.diff
+</pre> and then re-generate the diff for 1.1.1 into OOO_1_1/
+	<li><strong>no-conflicts</strong> - no work required.
+    </ul>
+    </p>
+    <p>
+      Final caveat: this works nicely for 2 version, but what about 3
+      or more, should we move a conflicting patch for 1.1.2 into both
+      1.1.1 and 1.1.0 ?. For complex scenarios we can update
+      the PATCHPATH in various 'apply' files to avoid excessive patch
+      duplication, and prune ancient versions over time.
+    </p>
+
+    <h2 id="section-5">5. Areas for improvement</h2>
     <p>
       Of course this has a number of obvious down-sides for you as a
       contributor:
