@@ -215,8 +215,14 @@ the code - that require special care and testing.
 	  or at least consider what defensive coding against this is used
 	  in similar code in that context.
 	</li>
+	<li>
+	  <b>I18n</b> - will it continue to work in other languages - or
+	  have you re-ordered things so as to break them ? eg. never prepend
+	  items to a stringlist used in a combo-box in only 1 language;
+	  indeed never pre-pending anything to an existing enumeration /
+	  item list is prolly a good rule of life. Test it in a new language.
+	</li>
     </ul>
-    <li><a href="#things-to-test">Testing</a></li>
 </p>
 
 <h3 id="explanation">Explain your patch</h3>
