@@ -10,6 +10,7 @@
     <li><a href="#style">Coding Style</a></li>
     <li><a href="#copy-n-paste">Copy &amp; Paste</a></li>
     <li><a href="#tab-stops">Tab stops</a></li>
+    <li><a href="#things-to-test">Testing</a></li>
     <li><a href="#explanation">Explanation</a></li>
 </ul>
 
@@ -195,6 +196,28 @@ When it all goes wrong: there is an app called 'expand' that will convert all
 your <i>0x09</i> tab characters to a given number of spaces. If you created
 the <b>entire</b> file on Unix ie. it <i>all</i> has this 8stop tab assumption,
 then <code>expand &lt;file&gt;</code> will do what you want.
+
+<h3 id="things-to-test">Testing</h3>
+<p>
+    There are a few things that people tend to forget about when altering
+the code - that require special care and testing.
+    <ul>
+	<li>
+	  <b>Redo/Undo</b> - if you're changing a UI relevant feature, have you
+	  added code with the correct *do contexts ? when you use this
+	  operation, does undo work correctly, how about a subsequent redo ?
+	</li>
+	<li>
+	  <b>Scripting</b> - lots of code has special cases for scripting,
+	  where many invariants that are true in GUI use are no longer true,
+	  in particular various interaction related objects may not be
+	  present; it's important to do something sensible for this case;
+	  or at least consider what defensive coding against this is used
+	  in similar code in that context.
+	</li>
+    </ul>
+    <li><a href="#things-to-test">Testing</a></li>
+</p>
 
 <h3 id="explanation">Explain your patch</h3>
 <p>
