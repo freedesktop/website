@@ -164,10 +164,15 @@
 
     <p>
       Now wander into <code>/opt/OOInstall/program</code> and do:
-      <code>source ./env</code> this will setup your (bash) shell for
+      <code>source ./ooenv</code> this will setup your (bash) shell for
       running OO.o directly. Then simply <code>./soffice.bin -writer</code>.
       This is better than running soffice, or a wrapper script since
       it's very easy to use the debugger: <code>gdb soffice.bin</code>.
+    </p>
+
+    <p>
+      <strong>Note:</strong> <code>ooenv</code> was formerly known as
+      <code>env</code>. It was renamed not to conflict with /usr/bin/env.
     </p>
 
     <h2 id="section-5">5. Hacking OO.o</h2>
