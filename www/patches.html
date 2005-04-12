@@ -44,8 +44,14 @@ remains makes sense.
 your memory of the whole change, which often flags missing pieces.
 If you notice any, go back and make it complete, then re-diff.
 </p>
+<p>
+  Some people believe that line-count is important in patches -
+however, the opposite is true, particularly for fixes; a neat &amp;
+well contained solution is usually best.
+</p>
 
 <h3 id="cleanliness">Cleanliness: code hygine</h3>
+<h5 id="commented-cruft">Commented out cruft</h5>
 <p>
   Leaving commented out code lying around is really bad news. It
 also advertises the programmers' uncertainty to the reader; such
@@ -93,6 +99,26 @@ again. She would also perhaps re-write a few German comments &amp;
 rename a few German variable-names to English equivalents. She
 would also provide a simple justification to the patch reviewer
 to make thei job easier.
+</p>
+<h5 id="commenting-fetish">Over-commenting</h5>
+<p>
+  No over-commenting: comments may describe the function of
+functions - however, functions should have clear names to avoid
+the necessity for that; people doing:
+<code>if( curLang & LANGUAGE_ENGLISH == LANGUAGE_ENGLISH )	// Some sort of english language</code>
+style commenting will be laughed at &amp; told to remove it.
+</p>
+<h5 id="sensible-bracketing">Bracket over-use</h5>
+<p>
+  Some people like (to (insert(random) ) brackets) in their
+expressions that server no useful purpose. Of course - sometimes
+brackets are helpful - when operator precedence is not obvious;
+eg. <code>a = 1 << 2 + 3</code> is a shooting offence [ NB. this
+is suprisingly effectively <code>a = 1 << (2 + 3)</code> ].
+</p>
+<p>
+  Other places people like to abuse brackets: 'return' is not a
+function: ie. <code>return 3;</code> not <code>return (3);</code>
 </p>
 
 <h3 id="style">Style</h3>
