@@ -1,23 +1,43 @@
 #!/usr/bin/perl -w
 
 use IO::Handle;
+use Cwd;
+
+my $debug_mail_to_log = '/tmp/tinder-log';
 
 # -- Things to tweak --
-@BUILD_TAGS = ( 'OOO_STABLE_1', 'HEAD' );
-$BUILDNAME = 'RH8.0(x86)'; # best if it includes the OS etc.
-$MAINTAINER = 'Michael Meeks <michael@ximian.com>';
-$BUILD_OS = 'RedHat 8.0';
+# Path to CWS tools modules
+use lib ('/opt/OpenOffice/ooo-build/build/src680-m94/solenv/bin/modules');
+$BUILD_DIR = '/tmp/tinder';
+@BUILD_TAGS = ();
+$BUILDNAME = 'NLD9/gcc33(x86)'; # best if it includes the OS etc.
+$MAINTAINER = 'Michael Meeks <michael.meeks@novell.com>';
+$BUILD_OS = 'NLD 9';
+$DEFAULT_MASTER = 'SRC680';
+$DEFAULT_CVSROOT = ':pserver:anoncvs@anoncvs.services.openoffice.org:/cvs';
+
+use Cws;
 
 # -- Things not to tweak --
-$TINDER_DEST = 'ooo@ooo.ximian.com';
+$TINDER_DEST = 'tinder@go-oo.org';
 $SENDMAIL = '/usr/sbin/sendmail';
 $LOGDIR = $ENV{'HOME'} . "/build-logs";
 `mkdir -p $LOGDIR`;
 
 -X $SENDMAIL || die "No sendmail";
 
+sub log_msg($@)
+{
+    my $log = shift;
+    my $logf;
+    open($logf, ">>$log") || die "Can't open log: $!";
+    print $logf $@;
+    close($logf);
+}
+
 # 'not_running', 'building', 'build_failed', 'test_failed', 'success'
-sub start_mail {
+sub start_mail($$$)
+{
 	my $status = shift;
 	my $tree   = shift;
 	my $starttime = shift;
@@ -39,28 +59,123 @@ sub start_mail {
 	print "Mailing '$status'\n";
 
 #	open ($MAIL, "|cat > $TINDER_DEST") || die "Can't log to file";
-	open ($MAIL, "|$SENDMAIL $TINDER_DEST") || die "Can't send mail";
+	if( $debug_mail_to_log ne '' ) {
+	    open ($MAIL, ">>$debug_mail_to_log");
+	} else {
+	    open ($MAIL, "|$SENDMAIL $TINDER_DEST") || die "Can't send mail";
+	}
 	print $MAIL $MAIL_HEADER;
 
 	return $MAIL;
 }
 
-sub end_mail {
+sub end_mail($)
+{
     my $MAIL = shift;
     close ($MAIL);
 }
 
-sub send_msg {
+sub send_log($$$$)
+{
     my $status = shift;
     my $tree   = shift;
     my $starttime = shift;
-    my $mailbody = shift;
+    my $buildlog = shift;
 
     $MAIL = start_mail ($status, $tree, $starttime);
     local $SIG{PIPE} = 'IGNORE';
     print $MAIL "Tinder build from $MAINTAINER, on $BUILD_OS\n"; 
-    print $MAIL $mailbody;
+
+    my $LOG;
+    open ($LOG, "$buildlog") || warn "Can't open $buildlog: $!";
+    while (<$LOG>) {
+	print $MAIL $_;
+    }
+    close ($LOG);
+
     end_mail ($MAIL);
+}
+
+sub cvs_op($$$)
+{
+    my $op = shift;
+    my $subdir = shift;
+    my $log = shift;
+
+    my $count = 0;
+    while (1) {
+	$count++;
+	if (`cd $BUILD_DIR/$subdir ; cvs $op 2>&1 | tee -a $log`) {
+	    if ($count < 5) {
+		log_msg ($log, "WARNING: $op failed, retrying $count\n");
+	    } else {
+		log_msg ($log, "ERROR: $op failed, retry limit reached\n");
+		return 0;
+	    }
+	} else {
+	    log_msg ($log, "cvs $op succeeded\n");
+	    return 1;
+	}
+    }
+}
+
+sub checkout_source($$)
+{
+    my $childws = shift;
+    my $log = shift;
+
+    log_msg ($log, "Checking out $childws ... \n");
+
+    my $cws = Cws->new();
+    $cws->child($childws);
+    $cws->master($DEFAULT_MASTER);
+    my $id = $cws->eis_id();
+    if (!$id) {
+	log_msg ($log, "Invalid cws / no EIS Id\n");
+	return 0;
+    }
+
+    my $milestone = $cws->milestone();
+    my @modules = $cws->modules();
+    log_msg ($log, "Modules:");
+    foreach (@modules) {
+	log_msg ($log, "\t$_\n");
+    }
+
+    cvs_op ("checkout -r SRC680_$milestone OpenOffice", '', $log);
+
+    for $module (@modules) {
+	if (! -d $BUILD_DIR/$module) {
+	    log_msg ($log, "ERROR: missing module $module: no directory\n");
+	    next;
+	}
+	cvs_op ("update -r cws_src680_$childws", $module, $log);
+    }
+
+    return 1;
+}
+
+sub clean_source($$)
+{
+    my $childws = shift;
+    my $log = shift;
+
+    log_msg ($log, "Cleaning tree ...\n");
+
+    if (`cd $BUILD_DIR; rm -Rf */unx*.pro 2>&1 | tee $log`) {
+	log_msg ($log, "ERROR: problem cleaning source");
+	return 0;
+    }
+    log_msg ($log, "Successfully cleaned");
+    return 1;
+}
+
+sub build_source($$)
+{
+    my $childws = shift;
+    my $log = shift;
+
+    log_msg ($log, "FIXME: no build logic yet");
 }
 
 sub build_one {
@@ -70,41 +185,33 @@ sub build_one {
     my $ret;
     my $MAIL;
 
-    print "Building $tree: ".$starttime."\n";
+    print "Building $tree: ".$starttime." log $buildlog\n";
 
     $MAIL = start_mail ('building', $tree, $starttime);
     end_mail ($MAIL);
 
-    my $mailbody = '';
-
-    printf "Building log: $buildlog ...\n";
-    if (system ("./build-ooo $tree --checkout >& $buildlog")) {
-	$status = 'build_failed';
-    } else {
+    if (checkout_source ($tree, $buildlog) &&
+	clean_source ($tree, $buildlog) &&
+	build_source ($tree, $buildlog) ) {
 	$status = 'success';
+    } else {
+	$status = 'build_failed';
     }
 
     sleep 1; # time to flush that log.
     
-    my $LOG;
-    open ($LOG, "$buildlog") || warn "Can't open $buildlog: $!";
-    while (<$LOG>) {
-	$mailbody .= $_;
-    }
-    close ($LOG);
-
-    send_msg ($status, $tree, $starttime, $mailbody);
+    send_log ($status, $tree, $starttime, $buildlog);
 }
 
 if (@ARGV) {
 	@BUILD_TAGS = @ARGV;
 }
 
-while (1) {
-	print "Starting cycle ".gmtime(time())."\n";
-	foreach $a (@BUILD_TAGS) {
-   		 build_one ($a);
-	}
-	print "Done cycle, pause ";
-	sleep (60 * 5);
+`mkdir -p $BUILD_DIR`;
+chdir ($BUILD_DIR) || die "Can't enter $BUILD_DIR: $!";
+$ENV{CVSROOT} = $DEFAULT_CVSROOT;
+
+log_msg ($log, "Starting build set ".gmtime(time())."\n");
+for my $tag (@BUILD_TAGS) {
+    build_one ($tag);
 }
