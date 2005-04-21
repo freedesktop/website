@@ -23,7 +23,7 @@ $COMMON_CONFIGURE_OPTIONS=
 $CONFIGURE_OPTIONS = "$COMMON_CONFIGURE_OPTIONS $CONFIGURE_OPTIONS";
 
 $BUILD_DIR = '/tmp/tinder';
-$BUILD_NCPUS = 4;
+$BUILD_NCPUS = 1;
 @BUILD_TAGS = ();
 $BUILDNAME = 'NLD9/gcc33(x86)'; # best if it includes the OS etc.
 $MAINTAINER = 'Michael Meeks <michael.meeks@novell.com>';
@@ -36,9 +36,9 @@ use Cws;
 use Eis;
 
 # -- debug tweaks --
-my $debug_mail_to_log = '/tmp/tinder-log';
-my $shortcircuit_checkout = 1;
-my $shortcircuit_clean = 1;
+my $debug = 1;
+my $shortcircuit_checkout = 0;
+my $shortcircuit_clean = 0;
 my $shortcircuit_build = 0;
 
 # -- Things not to tweak --
@@ -53,8 +53,11 @@ sub log_msg($@)
 {
     my $log = shift;
     my $logf;
+
+    print STDERR @_ if ($debug);
+
     open($logf, ">>$log") || die "Can't open log: $!";
-    print $logf $@;
+    print $logf @_;
     close($logf);
 }
 
@@ -82,8 +85,8 @@ sub start_mail($$$)
 	print "Mailing '$status'\n";
 
 #	open ($MAIL, "|cat > $TINDER_DEST") || die "Can't log to file";
-	if( $debug_mail_to_log ne '' ) {
-	    open ($MAIL, ">>$debug_mail_to_log");
+	if( $debug ) {
+	    $MAIL = STDERR;
 	} else {
 	    open ($MAIL, "|$SENDMAIL $TINDER_DEST") || die "Can't send mail";
 	}
@@ -95,7 +98,7 @@ sub start_mail($$$)
 sub end_mail($)
 {
     my $MAIL = shift;
-    close ($MAIL);
+    close ($MAIL) if (!$debug);
 }
 
 sub send_log($$$$)
@@ -128,7 +131,7 @@ sub cvs_op($$$)
     my $count = 0;
     while (1) {
 	$count++;
-	if (`cd $BUILD_DIR/$subdir ; cvs -z3 $op 2>&1 | tee -a $log`) {
+	if (system ("cd $BUILD_DIR/$subdir ; cvs -z3 $op 2>&1 | tee -a $log")) {
 	    if ($count < 5) {
 		log_msg ($log, "WARNING: $op failed, retrying $count\n");
 	    } else {
@@ -172,7 +175,7 @@ sub checkout_source($$)
     cvs_op ("checkout -r $master_milestone_tag OpenOffice", '', $log);
 
     for $module (@modules) {
-	if (! -d $BUILD_DIR/$module) {
+	if (! -d "$BUILD_DIR/$module") {
 	    log_msg ($log, "ERROR: missing module $module: no directory\n");
 	    next;
 	}
