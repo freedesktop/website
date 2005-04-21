@@ -104,7 +104,7 @@ Mikhail Voitenko:mav:::Sun Microsystems, Inc.:
 Herbert Duerr:hdu:::Sun Microsystems, Inc.:
 Volker Ahrend:va:::Sun Microsystems, Inc.:
 Gregor Hartmann:gh:::Sun Microsystems, Inc.:
-Andreas Bregas:ab:::Sun Microsystems, Inc.:
+Andreas Bregas:ab::StarBasic:Sun Microsystems, Inc.:
 Stephan Wunderlich:sw:::Sun Microsystems, Inc.:
 Duncan Foster:dfoster::::
 Daniel Rentz:dr:::Sun Microsystems, Inc.:
