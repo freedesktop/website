@@ -10,15 +10,14 @@ use lib ('/opt/OpenOffice/ooo-build/build/src680-m94/solenv/bin/modules');
 $CONFIGURE_OPTIONS =
     '--enable-gnome-vfs --with-ant-home=/usr/share/ant '.
     '--with-jdk-home=/usr/lib/SunJava2-1.4.2 --without-myspell-dicts' .
-    '--enable-libsn';
+    '--enable-libsn --enable-build-mozilla';
 
 $COMMON_CONFIGURE_OPTIONS=
     '--disable-binfilter --disable-crashdump ' .
     '--enable-crashdump=no --enable-cups --enable-fontconfig ' .
     '--enable-openldap --with-lang="en_US" --without-fonts --without-gpc ' .
     '--with-system-freetype --with-system-gcc --with-system-jpeg ' .
-    '--with-system-libxml --with-system-mozilla --with-system-python ' .
-    '--with-system-zlib';
+    '--with-system-python --with-system-zlib';
 
 $CONFIGURE_OPTIONS = "$COMMON_CONFIGURE_OPTIONS $CONFIGURE_OPTIONS";
 
@@ -31,6 +30,11 @@ $BUILD_OS = 'NLD 9';
 $DEFAULT_MASTER = 'SRC680';
 $DEFAULT_CVSROOT = ':pserver:anoncvs@anoncvs.services.openoffice.org:/cvs';
 $CHECK_MILESTONES = 4;
+
+# All for broken mozilla foo
+$BUILD_SRC = '/share/src';
+$MOZILLA_SRC = 'mozilla-source-1.7.5.tar.gz';
+$MOZILLA_URL = 'http://ftp.mozilla.org/pub/mozilla.org/mozilla/releases/mozilla1.7.5/source/';
 
 use Cws;
 use Eis;
@@ -196,6 +200,12 @@ sub clean_source($$)
 	log_msg ($log, "ERROR: problem cleaning source");
 	return 0;
     }
+
+    log_msg ($log, "Linking moz source ...\n");
+    my $dest = "$BUILD_DIR/moz/download/$MOZILLA_SRC";
+    unlink ($dest);
+    symlink ("$BUILD_SRC/$MOZILLA_SRC", $dest) || log_msg ($log, "Failed to link moz source: $!");
+
     log_msg ($log, "Successfully cleaned");
     return 1;
 }
@@ -354,6 +364,15 @@ sub get_cws_to_build()
 	push @cws_list, get_cws_for_milestone( "m$base" );
     }
     return @cws_list;
+}
+
+# Remove dependency on totally stupid
+sub make_tree_buildable()
+{
+}
+
+if (! -f "$BUILD_SRC/$MOZILLA_SRC") {
+    system( "cd $BUILD_SRC ; wget $MOZILLA_URL/$MOZILLA_SRC" ) && die "Failed to download $MOZILLA_SRC";
 }
 
 if (@ARGV) {
