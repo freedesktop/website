@@ -5,7 +5,7 @@ use Cwd;
 
 # -- Things to tweak --
 # Path to CWS tools modules
-use lib ('/opt/OpenOffice/ooo-build/build/src680-m94/solenv/bin/modules');
+use lib ('/opt/OpenOffice/src680-m92/solenv/bin/modules');
 
 $CONFIGURE_OPTIONS =
     '--enable-gnome-vfs --with-ant-home=/usr/share/ant '.
@@ -29,7 +29,6 @@ $MAINTAINER = 'Michael Meeks <michael.meeks@novell.com>';
 $BUILD_OS = 'NLD 9';
 $DEFAULT_MASTER = 'SRC680';
 $DEFAULT_CVSROOT = ':pserver:anoncvs@anoncvs.services.openoffice.org:/cvs';
-$CHECK_MILESTONES = 4;
 
 # All for broken mozilla foo
 $BUILD_SRC = '/share/src';
@@ -322,53 +321,21 @@ sub build_one {
     send_log ($status, $tree, $starttime, $buildlog);
 }
 
-sub get_cws_for_milestone($)
+# State can be 'integrated', 'ready for QA', 'planned', 'new' (etc.?)
+sub get_cws_with_state($)
 {
-    my $milestone = shift;
+    my $cws_list;
+    my $state = shift;
+
     my $eis = Cws::eis();
-    my $result;
-    print "Search milestone $milestone\n";
-    eval { $result = $eis->searchChildWorkspacesForMilestone($DEFAULT_MASTER, $milestone) };
-    if ( $@ ) {
-	print "Failed to search for cws' n $milestone\n";
-    }
-    my @cws_list = ();
-    for my $childws (@{$result}) {
-	my $cws = Cws->new();
-	$cws->child($childws);
-	$cws->master($DEFAULT_MASTER);
-	my $id = $cws->eis_id();
-	if (!$id) {
-	    print "Invalid cws $childws / no EIS Id\n";
-	    return 0;
-	}
-	my $status = $cws->get_approval();
+    
+    $cws_list = $eis->getCWSWithState( $DEFAULT_MASTER, $state );
 
-	print "\tcws: $childws: $status\n";
-	if ($status eq 'nominated') {
-	    push @cws_list, $childws;
-	}
-    }
-    return 
-}
+    my @list = @{$cws_list};
+    my $length = @lots;
+#    print STDERR "CWS list [$DEFAULT_MASTER] : @list ($length)\n";
 
-# This algorithm sucks - can the server help more ?
-sub get_cws_to_build()
-{
-    my @cws_list = ();
-    my $milestone = Cws::get_current_milestone_from_eis('',$DEFAULT_MASTER);
-    print "Latest milestone: '$milestone'\n";
-    $mbase = $milestone;
-    $mbase =~ s/^m//;
-    for (my $base = $mbase; $base > $mbase - $CHECK_MILESTONES; $base--) {
-	push @cws_list, get_cws_for_milestone( "m$base" );
-    }
-    return @cws_list;
-}
-
-# Remove dependency on totally stupid
-sub make_tree_buildable()
-{
+    return @list;
 }
 
 if (! -f "$BUILD_SRC/$MOZILLA_SRC") {
@@ -378,9 +345,9 @@ if (! -f "$BUILD_SRC/$MOZILLA_SRC") {
 if (@ARGV) {
 	@BUILD_TAGS = @ARGV;
 } else {
-    die "EIS can't cope";
     print ("Fetching suitable CWS' to build\n");
-    get_cws_to_build();
+    @BUILD_TAGS = get_cws_with_state( 'ready for QA' );
+    print 
 }
 
 `mkdir -p $BUILD_DIR`;
