@@ -1,7 +1,14 @@
 #!/usr/bin/perl -w
 
+#
+# TODO:
+#    Mangle master milestone into path, to avoid checkout pain.
+#	( Restrict to N milestones on disk. )
+#
+
 use IO::Handle;
 use Cwd;
+use List::Util qw(shuffle);
 
 # -- Things to tweak --
 # Path to CWS tools modules
@@ -152,28 +159,30 @@ sub checkout_source($$)
 {
     my $childws = shift;
     my $log = shift;
+    my $master = $DEFAULT_MASTER;
 
     log_msg ($log, "Checking out $childws ... \n");
 
-    my $cws = Cws->new();
-    $cws->child($childws);
-    $cws->master($DEFAULT_MASTER);
-    my $id = $cws->eis_id();
+    my $eis = Cws::eis();
+    $id = $eis->getChildWorkspaceId
+	( Eis::to_string($master),
+	  Eis::to_string($childws) );
     if (!$id) {
 	log_msg ($log, "Invalid cws / no EIS Id\n");
 	return 0;
     }
 
-    my $milestone = $cws->milestone();
-    my @modules = $cws->modules();
+    my @modules = @{$eis->getModules($id)};
+    my $milestone = $eis->getMilestone($id);
+
     log_msg ($log, "Modules:");
     foreach (@modules) {
 	log_msg ($log, "\t$_\n");
     }
 
-    my @tag_vals = $cws->get_tags();
-    my $cws_branch_tag = $tag_vals[1];
-    my $master_milestone_tag = $tag_vals[3];
+    my $creation_master = $eis->getCreationMasterWorkspace($id);
+    my $cws_branch_tag = 'cws_' . lc($creation_master) . '_' . lc($childws);
+    my $master_milestone_tag = uc($master) . "_" . $milestone;
 
     cvs_op ("checkout -r $master_milestone_tag OpenOffice", '', $log);
 
@@ -329,11 +338,11 @@ sub get_cws_with_state($)
 
     my $eis = Cws::eis();
     
-    $cws_list = $eis->getCWSWithState( $DEFAULT_MASTER, $state );
+    $cws_list = $eis->getCWSWithState( Eis::to_string( $DEFAULT_MASTER ),
+				       Eis::to_string( $state ) );
 
     my @list = @{$cws_list};
-    my $length = @lots;
-#    print STDERR "CWS list [$DEFAULT_MASTER] : @list ($length)\n";
+#    print STDERR "CWS list [$DEFAULT_MASTER] : @list\n";
 
     return @list;
 }
@@ -342,12 +351,20 @@ if (! -f "$BUILD_SRC/$MOZILLA_SRC") {
     system( "cd $BUILD_SRC ; wget $MOZILLA_URL/$MOZILLA_SRC" ) && die "Failed to download $MOZILLA_SRC";
 }
 
+#
+# FIXME - Fix all this ...
+#
+my $eis = Eis->new( uri => Cws::eis_uri(), 
+		    proxy_list => Cws::eis_proxy_list(), 
+		    net_proxy => Cws::net_proxy()
+		    );
+
 if (@ARGV) {
 	@BUILD_TAGS = @ARGV;
 } else {
     print ("Fetching suitable CWS' to build\n");
-    @BUILD_TAGS = get_cws_with_state( 'ready for QA' );
-    print 
+    @BUILD_TAGS = shuffle( get_cws_with_state( 'ready for QA' ) );
+    print "Tags to build '@BUILD_TAGS'\n";
 }
 
 `mkdir -p $BUILD_DIR`;
