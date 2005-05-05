@@ -234,6 +234,12 @@ the code - that require special care and testing.
 	  operation, does undo work correctly, how about a subsequent redo ?
 	</li>
 	<li>
+	  <b>Load/Save</b> - if you added a feature - does it serialize
+	  correctly, when you save some data &amp; close the file, can you
+	  load it again ? Is it backwards compatible with the older XML file
+	  format ?
+	</li>
+	<li>
 	  <b>Scripting</b> - lots of code has special cases for scripting,
 	  where many invariants that are true in GUI use are no longer true,
 	  in particular various interaction related objects may not be
