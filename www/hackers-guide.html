@@ -3,24 +3,26 @@
 <html lang="en">
   <head>
     <meta lang="en" http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-    <title>Unofficial OpenOffice Hacker's guide for 1.1</title>
+    <title>Unofficial OpenOffice Hacker's guide for 2.0</title>
   </head>
 
   <body>
     <table>
 	<tr>
 	  <td><b>English</b></td>
-	  <td><a href="hackers-guide-1.1-ja.html">Japanese</a></td>
-	  <td><a href="hackers-guide-1.1-de.html">German</a></td>
+<!--	  <td><a href="hackers-guide-1.1-ja.html">Japanese</a></td>
+	  <td><a href="hackers-guide-1.1-de.html">German</a></td> -->
 	</tr>
     </table>
-    <h1>Unofficial OpenOffice Hacker's guide for 1.1</h1>
+    <h1>Unofficial OpenOffice Hacker's guide for 2.0</h1>
 
     <p>
       Building and hacking on OpenOffice.org (OO.o) entails climbing a
       fairly lengthy incline.  Hopefully this document will make the
       learning curve somewhat steeper and more abrupt, and will
-      give you a walking stick to help you out.
+      give you a walking stick to help you out. <a
+      href="old-guides.html">Older hackers guides</a> targetting the 1.1
+      tree are available (also in German &amp; Japanese).
     </p>
 
     <p>
@@ -936,6 +938,32 @@ status -v
       and you'll find the usage [ or a chained define to something
       else ]. For eg. menus/toolbar buttons the functionality is
       usually in a case statement eg. case SID_AUTOFORMAT: ...
+    </p>
+
+    <h4 id="section-8.9">8.9. Adding an UNO interface</h4>
+    <p>
+      This is slightly more complex build wise than you might expect.
+      <ul>
+        <li>Add IDL file to offapi/com/sun/star/wherever/Foo.idl.
+	<li>If 'wherever is <i>not</i> a new path, add Foo.idl to
+	IDLFILES in wherever/makefile.mk.
+	<li>If 'wherever' <i>is</i> a new path, update offapi/util/makefile.mk to 
+	refer to the relevant TARGET .db, prolly 'whatever.db'.
+	<li>If 'wherever' <i>is</i> a new path, update offapi/prj/d.lst and
+	build.lst appropriately.
+      </ul>
+    </p>
+    <p>
+        This should result in your type information being built into
+      types.rdb &amp; installed. This is however only part of the mix:
+      the module 'offuh' builds &amp; installs the .hdl/.hpp files we
+      need (for C++), so if 'wherever' is a new path we need to update
+      offuh/prj/d.lst to install those files too.
+    </p>
+    <p>
+       Finally, check that the types.rdb in the install set has your
+       types; a <code>regview types.rdb / | grep 'whatever' -i</code>
+       would work well for that. If not, copy it in from the solver.
     </p>
 
     <h2 id="section-9">9. Useful links</h2>
