@@ -2,7 +2,7 @@ Srinivasa Ragavan::srag::Novell, Inc.:
 Sascha Ballach:sab:::Sun Microsystems, Inc.:
 J&ouml;rg Barfurth:jb:JoergB:Configuration Util:Sun Microsystems, Inc.:
 Mathias Bauer:::XML:Sun Microsystems, Inc.:
-Thorsten Behrens:thb::vcl/impress/toolkit visionary:Sun Microsystems, Inc.:
+Thorsten Behrens:thb:thorsten:vcl/impress/toolkit visionary:Sun Microsystems, Inc.:
 Stefan Bergmann:sb::tools&amp;UCB hacker:Sun Microsystems, Inc.:
 Oliver Bolte:obo:::Sun Microsystems, Inc.:
 Peter Burow:pb:::Sun Microsystems, Inc.:
@@ -125,3 +125,5 @@ Rajesh Sola:rajeshsola:sola:misc.:NOSIP:
 Jody Goldberg:jodygoldberg:jody:spreadsheet-ness:Novell, Inc.:
 Muthu Subramanian:muthusuba:muthusuba:misc.:NOSIP:
 Thomas Benisch:tbe::Scripting framework:Sun Microsystems, Inc.:
+Oliver Braun:obr:obr:Unix/Accessibility Hacker:Sun Microsystems, Inc.:
+Daniel B&ouml;ltzle:dbo:::Sun Microsystems, Inc.:
