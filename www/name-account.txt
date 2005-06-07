@@ -1,3 +1,7 @@
+#
+# Format:
+#   Name : account@oo.o : irc-nick : notes : affiliation :
+#
 Srinivasa Ragavan::srag::Novell, Inc.:
 Sascha Ballach:sab:::Sun Microsystems, Inc.:
 J&ouml;rg Barfurth:jb:JoergB:Configuration Util:Sun Microsystems, Inc.:
@@ -127,3 +131,5 @@ Muthu Subramanian:muthusuba:muthusuba:misc.:NOSIP:
 Thomas Benisch:tbe::Scripting framework:Sun Microsystems, Inc.:
 Oliver Braun:obr:obr:Unix/Accessibility Hacker:Sun Microsystems, Inc.:
 Daniel B&ouml;ltzle:dbo:::Sun Microsystems, Inc.:
+Kohei Yoshida:kohei:kohei:Calc enthusiast:Independent:
+#   Name : account@oo.o : irc-nick : notes : affiliation :
