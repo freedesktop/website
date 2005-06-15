@@ -132,4 +132,6 @@ Thomas Benisch:tbe::Scripting framework:Sun Microsystems, Inc.:
 Oliver Braun:obr:obr:Unix/Accessibility Hacker:Sun Microsystems, Inc.:
 Daniel B&ouml;ltzle:dbo:::Sun Microsystems, Inc.:
 Kohei Yoshida:kohei:kohei:Calc enthusiast:Independent:
+Nakata Maho:maho:_maho_:FreeBSD guy:Independent:
+
 #   Name : account@oo.o : irc-nick : notes : affiliation :
