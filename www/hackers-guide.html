@@ -82,7 +82,7 @@
     <pre>
     export CVSROOT=':pserver:anonymous@anoncvs.gnome.org:/cvs/gnome'
     cvs login
-    cvs -z3 checkout -Pd ooo-build
+    cvs -z3 checkout -P ooo-build
     </pre>
 
     <p>
@@ -107,6 +107,13 @@
       This will guess which branch snapshot you want to build; if
       you have other ideas use the --with-tag option; eg.
       <code>--with-tag=src680-m65</code> for a legacy branch.
+    </p>
+    <p>
+      If for some reason you have a 31337 multi-threaded computer,
+      with great slabs of RAM; you'll want to use --with-num-cpus=8
+      etc. NB. it's not clever to force the build to swap like a
+      demented pawnbroker by using an artificially high number; C++
+      compilation is seriously memory hungry.
     </p>
     <p>
       In particular, building SRC680 requires a recent jdk &amp; a
@@ -143,6 +150,14 @@
       This is the taxing bit - type <code>make</code> and don't forget
       to press enter. Quite possibly you want to log the output, so
       why not <code>make 2&gt;&amp;1 | tee /tmp/log</code>.
+    </p>
+    <p>
+      Since ooo-build wraps the actual OO.o configuration &amp;
+      build process, there are a number of internal config checks that
+      also need to pass. For a first time build it's well worth staying
+      near the console while everything unpacks, and the internal
+      configure runs; if that completes without incident - you're
+      usually into the heavy-duty thumb twiddling.
     </p>
 
     <h2 id="section-3">3. Installing OO.o</h2>
