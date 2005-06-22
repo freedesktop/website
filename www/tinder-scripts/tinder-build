@@ -41,7 +41,7 @@ my $shortcircuit_build = 0;
 # -- Things not to tweak --
 $BUILD_TAG_BASE = 'http://go-oo.org/tinderbox/tags/';
 $BUILD_TAG_NAME = 'tag-list';
-$TINDER_DEST = 'tinder@go-oo.org';
+$TINDER_DEST = 'ooo@go-oo.org';
 $SENDMAIL = '/usr/sbin/sendmail';
 $LOGDIR = $ENV{'HOME'} . "/build-logs";
 `mkdir -p $LOGDIR`;
@@ -146,38 +146,28 @@ sub cvs_op($$$)
 
 sub checkout_source($$)
 {
-    my $childws = shift;
+    my $cws = shift;
+    my $childws = $cws->{'name'};
     my $log = shift;
     my $master = $DEFAULT_MASTER;
 
     log_msg ($log, "Checking out $childws ... \n");
 
-    my $eis = Cws::eis();
-    $id = $eis->getChildWorkspaceId
-	( Eis::to_string($master),
-	  Eis::to_string($childws) );
-    if (!$id) {
-	log_msg ($log, "Invalid cws / no EIS Id\n");
-	return 0;
-    }
-
-    my @modules = @{$eis->getModules($id)};
-    my $milestone = $eis->getMilestone($id);
+    my @modules = split / /, $cws->{'modules'};
 
     log_msg ($log, "Modules:");
     foreach (@modules) {
 	log_msg ($log, "\t$_\n");
     }
 
-    my $creation_master = $eis->getCreationMasterWorkspace($id);
-    my $cws_branch_tag = 'cws_' . lc($creation_master) . '_' . lc($childws);
-    my $master_milestone_tag = uc($master) . "_" . $milestone;
+    my $cws_branch_tag = $cws->{'cws_tag'};
+    my $master_milestone_tag = $cws->{'master_tag'};
 
     cvs_op ("checkout -r $master_milestone_tag OpenOffice", '', $log);
 
     for $module (@modules) {
 	if (! -d "$BUILD_DIR/$module") {
-	    log_msg ($log, "ERROR: missing module $module: no directory\n");
+	    log_msg ($log, "ERROR: missing module $module: no directory to update to $cws_branch_tag\n");
 	    next;
 	}
 	cvs_op ("update -r $cws_branch_tag", $module, $log);
@@ -211,8 +201,6 @@ sub build_source($$)
 {
     my $childws = shift;
     my $log = shift;
-
-    log_msg ($log, "FIXME: no build logic yet");
 
     # FIXME - safe / random name
     my $script = '/tmp/build-ooo-bash';
@@ -295,7 +283,8 @@ EOF
 }
 
 sub build_one {
-    my $tree = shift;
+    my $cws = shift;
+    my $tree = $cws->{'name'};
     my $starttime = time();
     my $buildlog = "$LOGDIR/log-$tree-$starttime";
     my $ret;
@@ -306,7 +295,7 @@ sub build_one {
     $MAIL = start_mail ('building', $tree, $starttime);
     end_mail ($MAIL);
 
-    if (($shortcircuit_checkout || checkout_source ($tree, $buildlog)) &&
+    if (($shortcircuit_checkout || checkout_source ($cws, $buildlog)) &&
 	($shortcircuit_clean || clean_source ($tree, $buildlog)) &&
 	($shortcircuit_build || build_source ($tree, $buildlog)) ) {
 	$status = 'success';
@@ -348,18 +337,21 @@ my %cws_table;
 open ($TagList, $BUILD_TAG_NAME) || die "Can't open $BUILD_TAG_NAME: $!"; 
 while (<$TagList>) {
     /^\s*\#/ && next;
-    if (/\s*([^\s]+)\s*:\s*([^\s]+)\s*:\s*([^\s]+)\s*:\s*(.*)/) {
+    if (/\s*([^\s]+)\s*:\s*([^\s]+)\s*:\s*([^\s]+)\s*:\s*(.*)\s*/) {
+	my %values = ( 'name', $1, 'master_tag', $2, 'cws_tag', $3, 'modules', $4 );
+	$cws_table{$1} = \%values;
+#	print "Module '$1' '$2' '$3' '$4'\n";
     } else {
 	print STDERR "invalid line '$_'\n";
     }
 }
 close ($TagList);
 
-
 `mkdir -p $BUILD_DIR`;
 chdir ($BUILD_DIR) || die "Can't enter $BUILD_DIR: $!";
 $ENV{CVSROOT} = $DEFAULT_CVSROOT;
 
 for my $tag (shuffle(keys %cws_table)) {
-    build_one ($tag);
+    print "Build $tag\n";
+    build_one ($cws_table{$tag});
 }
