@@ -1,18 +1,10 @@
 #!/usr/bin/perl -w
 
-#
-# TODO:
-#    Mangle master milestone into path, to avoid checkout pain.
-#	( Restrict to N milestones on disk. )
-#
-
 use IO::Handle;
 use Cwd;
 use List::Util qw(shuffle);
 
 # -- Things to tweak --
-# Path to CWS tools modules
-use lib ('/opt/OpenOffice/src680-m92/solenv/bin/modules');
 
 $CONFIGURE_OPTIONS =
     '--enable-gnome-vfs --with-ant-home=/usr/share/ant '.
@@ -30,20 +22,15 @@ $CONFIGURE_OPTIONS = "$COMMON_CONFIGURE_OPTIONS $CONFIGURE_OPTIONS";
 
 $BUILD_DIR = '/tmp/tinder';
 $BUILD_NCPUS = 1;
-@BUILD_TAGS = ();
 $BUILDNAME = 'NLD9/gcc33(x86)'; # best if it includes the OS etc.
 $MAINTAINER = 'Michael Meeks <michael.meeks@novell.com>';
 $BUILD_OS = 'NLD 9';
-$DEFAULT_MASTER = 'SRC680';
 $DEFAULT_CVSROOT = ':pserver:anoncvs@anoncvs.services.openoffice.org:/cvs';
 
 # All for broken mozilla foo
 $BUILD_SRC = '/share/src';
 $MOZILLA_SRC = 'mozilla-source-1.7.5.tar.gz';
 $MOZILLA_URL = 'http://ftp.mozilla.org/pub/mozilla.org/mozilla/releases/mozilla1.7.5/source/';
-
-use Cws;
-use Eis;
 
 # -- debug tweaks --
 my $debug = 1;
@@ -52,6 +39,8 @@ my $shortcircuit_clean = 0;
 my $shortcircuit_build = 0;
 
 # -- Things not to tweak --
+$BUILD_TAG_BASE = 'http://go-oo.org/tinderbox/tags/';
+$BUILD_TAG_NAME = 'tag-list';
 $TINDER_DEST = 'tinder@go-oo.org';
 $SENDMAIL = '/usr/sbin/sendmail';
 $LOGDIR = $ENV{'HOME'} . "/build-logs";
@@ -351,26 +340,26 @@ if (! -f "$BUILD_SRC/$MOZILLA_SRC") {
     system( "cd $BUILD_SRC ; wget $MOZILLA_URL/$MOZILLA_SRC" ) && die "Failed to download $MOZILLA_SRC";
 }
 
-#
-# FIXME - Fix all this ...
-#
-my $eis = Eis->new( uri => Cws::eis_uri(), 
-		    proxy_list => Cws::eis_proxy_list(), 
-		    net_proxy => Cws::net_proxy()
-		    );
+unlink ($BUILD_TAG_NAME);
+system( "wget $BUILD_TAG_BASE/$BUILD_TAG_NAME" ) && die "Failed to download: $BUILD_TAG_BASE/$BUILD_TAG_NAME";
 
-if (@ARGV) {
-	@BUILD_TAGS = @ARGV;
-} else {
-    print ("Fetching suitable CWS' to build\n");
-    @BUILD_TAGS = shuffle( get_cws_with_state( 'ready for QA' ) );
-    print "Tags to build '@BUILD_TAGS'\n";
+my $TagList;
+my %cws_table;
+open ($TagList, $BUILD_TAG_NAME) || die "Can't open $BUILD_TAG_NAME: $!"; 
+while (<$TagList>) {
+    /^\s*\#/ && next;
+    if (/\s*([^\s]+)\s*:\s*([^\s]+)\s*:\s*([^\s]+)\s*:\s*(.*)/) {
+    } else {
+	print STDERR "invalid line '$_'\n";
+    }
 }
+close ($TagList);
+
 
 `mkdir -p $BUILD_DIR`;
 chdir ($BUILD_DIR) || die "Can't enter $BUILD_DIR: $!";
 $ENV{CVSROOT} = $DEFAULT_CVSROOT;
 
-for my $tag (@BUILD_TAGS) {
+for my $tag (shuffle(keys %cws_table)) {
     build_one ($tag);
 }
