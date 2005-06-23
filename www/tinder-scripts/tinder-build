@@ -163,14 +163,14 @@ sub checkout_source($$)
     my $cws_branch_tag = $cws->{'cws_tag'};
     my $master_milestone_tag = $cws->{'master_tag'};
 
-    cvs_op ("checkout -r $master_milestone_tag OpenOffice", '', $log);
+    cvs_op ("checkout -r $master_milestone_tag OpenOffice", '', $log) || return 0;
 
     for $module (@modules) {
 	if (! -d "$BUILD_DIR/$module") {
 	    log_msg ($log, "ERROR: missing module $module: no directory to update to $cws_branch_tag\n");
-	    next;
+	    return 0;
 	}
-	cvs_op ("update -r $cws_branch_tag", $module, $log);
+	cvs_op ("update -r $cws_branch_tag", $module, $log) || return 0;
     }
 
     return 1;
