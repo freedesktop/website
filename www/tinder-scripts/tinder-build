@@ -1,5 +1,10 @@
 #!/usr/bin/perl -w
 
+#
+# Todo:
+#   + download 
+#
+
 use IO::Handle;
 use Cwd;
 use List::Util qw(shuffle);
