@@ -133,6 +133,9 @@ Oliver Braun:obr:obr:Unix/Accessibility Hacker:Sun Microsystems, Inc.:
 Daniel B&ouml;ltzle:dbo:::Sun Microsystems, Inc.:
 Kohei Yoshida:kohei:kohei:Calc enthusiast:Independent:
 Nakata Maho:maho:_maho_:FreeBSD guy:Independent:
-Radek Doulik::rodo_:Canvas hacker:Novell, Inc.:
+Radek Doulik:radekdoulik:rodo_:Canvas hacker:Novell, Inc.:
+Naren Devaiah::ndev:Performance:Intel, Inc.:
+Dhananjay Keskar::dkeskar:Performance:Intel, Inc.:
+Michael Leibowitz::ikeleib:Canvas:Intell, Inc.:
 
 #   Name : account@oo.o : irc-nick : notes : affiliation :
