@@ -5,7 +5,7 @@
 Srinivasa Ragavan::srag::Novell, Inc.:
 Sascha Ballach:sab:::Sun Microsystems, Inc.:
 J&ouml;rg Barfurth:jb:JoergB:Configuration Util:Sun Microsystems, Inc.:
-Mathias Bauer:::XML:Sun Microsystems, Inc.:
+Mathias Bauer:mba::XML:Sun Microsystems, Inc.:
 Thorsten Behrens:thb:thorsten:vcl/impress/toolkit visionary:Sun Microsystems, Inc.:
 Stefan Bergmann:sb::tools&amp;UCB hacker:Sun Microsystems, Inc.:
 Oliver Bolte:obo:::Sun Microsystems, Inc.:
@@ -137,5 +137,6 @@ Radek Doulik:radekdoulik:rodo_:Canvas hacker:Novell, Inc.:
 Naren Devaiah::ndev:Performance:Intel, Inc.:
 Dhananjay Keskar::dkeskar:Performance:Intel, Inc.:
 Michael Leibowitz::ikeleib:Canvas:Intell, Inc.:
+Matthias Huetsch:mhu::Performance/strategy:Sun Microsystems, Inc.:
 
 #   Name : account@oo.o : irc-nick : notes : affiliation :
