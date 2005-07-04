@@ -13,7 +13,7 @@ use List::Util qw(shuffle);
 
 $CONFIGURE_OPTIONS =
     '--enable-gnome-vfs --with-ant-home=/usr/share/ant '.
-    '--with-jdk-home=/usr/lib/SunJava2-1.4.2 --without-myspell-dicts' .
+    '--with-jdk-home=/usr/lib/SunJava2-1.4.2 --without-myspell-dicts ' .
     '--enable-libsn --enable-build-mozilla';
 
 $COMMON_CONFIGURE_OPTIONS=
@@ -353,6 +353,9 @@ sub build_one {
     } else {
 	$status = 'build_failed';
     }
+
+    # autoconf / cvs conflict zone
+    unlink $BUILD_DIR/config_office/configure;
 
     sleep 1; # time to flush that log.
     
