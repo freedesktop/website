@@ -35,7 +35,7 @@ Hans-Joachim Lankenau:hjs:ause:dmake makefile expert:Sun Microsystems, Inc.:
 Philipp Lohmann:pl:pl_hh:VCL/X11 (GSL) hacker:Sun Microsystems, Inc.:
 Will Lachance:wlach:wlach_:Word Perfect File Filters:NetIntegrationTechnologiesInc.:
 Fridrich Strba:fridrich_strba:Fridrich:Word Perfect Hacker::
-Jayant Balraj Madavi:mjayant:aZEN_JM:Connectivity / Database:Novell, Inc.:
+Jayant Balraj Madavi:jayant_madavi:aZEN_JM:Connectivity / Database:Novell, Inc.:
 Martin Maher:mmaher::Writer &amp; Filter chap:Sun Microsystems, Inc.:
 Caolan McNamara:cmc:caolan:Writer &amp; Filter man:RedHat, Inc.:
 Michael Meeks:mmeeks:michael_:ugly hack-er:Novell, Inc.:
