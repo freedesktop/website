@@ -91,7 +91,7 @@
              $(ICUUCLIB) \
 -			$(AVMEDIALIB)	
 +			$(AVMEDIALIB)	\
-+		-lhworld
++		-lhworld680li
  
  .IF "$(GUI)"=="WNT"
  SHL1STDLIBS+=\

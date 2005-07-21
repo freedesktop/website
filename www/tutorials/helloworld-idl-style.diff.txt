@@ -1,0 +1,165 @@
+--- offapi/com/sun/star/ui/dialogs/XExecutableDialog.idl	2004-06-04 07:19:19.000000000 +0530
++++ offapi/com/sun/star/ui/dialogs/XHelloWorldDialog.idl	2005-07-21 14:46:31.000000000 +0530
+@@ -1,6 +1,6 @@
+ /*************************************************************************
+  *
+- *  $RCSfile$
++ *  $RCSfile$
+  *
+  *  $Revision$
+  *
+@@ -59,8 +59,8 @@
+  *
+  ************************************************************************/
+ 
+-#ifndef __com_sun_star_ui_dialogs_XExecutableDialog_idl__
+-#define __com_sun_star_ui_dialogs_XExecutableDialog_idl__
++#ifndef __com_sun_star_ui_dialogs_XHelloWorldDialog_idl__
++#define __com_sun_star_ui_dialogs_XHelloWorldDialog_idl__
+ 
+ #ifndef __com_sun_star_uno_RuntimeException_idl__
+ #include <com/sun/star/uno/RuntimeException.idl>
+@@ -79,25 +79,15 @@
+ */
+  
+ 
+-published interface XExecutableDialog: com::sun::star::uno::XInterface
++published interface XHelloWorldDialog: com::sun::star::uno::XInterface
+ {
+ 	//-------------------------------------------------------------------------
+-	/**	Sets the title of the dialog.
+-
+-		@param aTitle  
+-		Set an abitrary title for the dialog, 
+-		may be an empty string if the dialog should not
+-		have a title.
+-	*/
+-	void setTitle( [in] string aTitle );
+-
+-	//-------------------------------------------------------------------------
+ 	/**	Executes (shows) the dialog.
+ 
+ 		@returns 
+ 		A status code of type <type>ExecutableDialogResults</type>.
+ 	*/
+-	short execute();
++	void adios();
+ };
+ 
+ //=============================================================================
+--- helloworld/inc/helloworld.hxx	2005-07-20 13:26:05.000000000 +0530
++++ helloworld/inc/helloworld.hxx	2005-07-21 14:51:26.000000000 +0530
+@@ -16,8 +16,8 @@
+ #ifndef _COM_SUN_STAR_REGISTRY_XREGISTRYKEY_HPP_
+ #include <com/sun/star/registry/XRegistryKey.hpp>
+ #endif
+-#ifndef _COM_SUN_STAR_UI_DIALOGS_XEXECUTABLEDIALOG_HPP_
+-#include <com/sun/star/ui/dialogs/XExecutableDialog.hpp>
++#ifndef _COM_SUN_STAR_UI_DIALOGS_XHELLOWORLDDIALOG_HPP_
++#include <com/sun/star/ui/dialogs/XHelloWorldDialog.hpp>
+ #endif
+ 
+ using namespace rtl;
+@@ -25,27 +25,22 @@ using namespace com::sun::star::uno;
+ using namespace com::sun::star::lang;
+ using namespace com::sun::star::registry;
+ using namespace ::cppu;
+-using ::com::sun::star::ui::dialogs::XExecutableDialog;
++using ::com::sun::star::ui::dialogs::XHelloWorldDialog;
+ 
+ namespace hello {
+ 
+ 	namespace world {
+ 
+-	class HelloWorld : public WeakImplHelper1< XExecutableDialog > {
++	class HelloWorld : public WeakImplHelper1< XHelloWorldDialog > {
+ 
+ 		Reference< XMultiServiceFactory > _xServiceManager;
+ 
+ 	public:
+ 
+-		virtual void SAL_CALL setTitle( const OUString& aTitle ) 
+-			throw( RuntimeException );
+-
+-		virtual sal_Int16 SAL_CALL execute( ) 
+-			throw( RuntimeException );
+-
+ 		HelloWorld( const Reference< XMultiServiceFactory > & xServiceManager );
+ 
+-		void adios();
++		virtual void SAL_CALL adios()
++			throw( RuntimeException );
+ 
+ 		};
+ 	};
+--- helloworld/source/helloworld.cxx	2005-07-20 13:33:52.000000000 +0530
++++ helloworld/source/helloworld.cxx	2005-07-21 14:51:33.000000000 +0530
+@@ -10,27 +10,16 @@ HelloWorld::HelloWorld( const Reference<
+ {
+ }
+ 
+-void HelloWorld::adios()
++void SAL_CALL HelloWorld::adios() throw( RuntimeException )
+ {
+     fprintf( stderr, "Hello, World! :-)\n" );
+ }
+ 
+-// XExecutableDialog Methods
+-void SAL_CALL HelloWorld::setTitle( const OUString& rTitle ) throw( RuntimeException )
+-{
+-	fprintf( stderr, "HelloWorld::setTitle: %s\n", OU2A( rTitle ) );
+-}
+-
+-sal_Int16 SAL_CALL HelloWorld::execute() throw( RuntimeException )
+-{
+-	fprintf( stderr, "HelloWorld::execute\n" );
+-}
+-
+ // UNO component instantiator class
+ Reference< XInterface > createHelloWorld(
+ 	const Reference< XMultiServiceFactory > & xMgr )
+ {
+-	return Reference< XInterface >( static_cast< XExecutableDialog* >( new HelloWorld( xMgr ) ) );
++	return Reference< XInterface >( static_cast< XHelloWorldDialog* >( new HelloWorld( xMgr ) ) );
+ }
+ 
+ // UNO registration and invocation
+--- svx/source/dialog/charmap.cxx	2004-07-13 15:15:11.000000000 +0530
++++ svx/source/dialog/charmap.cxx	2005-07-21 14:54:49.000000000 +0530
+@@ -61,6 +61,8 @@
+ 
+ // include ---------------------------------------------------------------
+ 
++#include<helloworld/helloworld.hxx>
++
+ #include <stdio.h>
+ 
+ #define _SVX_CHARMAP_CXX_
+@@ -117,6 +119,9 @@
+ #ifndef _COMPHELPER_TYPES_HXX_
+ #include <comphelper/types.hxx>
+ #endif
++#ifndef _UNOTOOLS_PROCESSFACTORY_HXX
++#include <comphelper/processfactory.hxx>
++#endif
+ 
+ #include "rtl/ustrbuf.hxx"
+ 
+@@ -1097,6 +1102,17 @@ void SvxCharMapData::SetCharFont( const 
+ 
+ IMPL_LINK( SvxCharMapData, OKHdl, OKButton *, EMPTYARG )
+ {
++    Reference< XHelloWorldDialog > xHelloWorld( ::comphelper::getProcessServiceFactory()->
++        createInstance( ::rtl::OUString( RTL_CONSTASCII_USTRINGPARAM("org.openoffice.helloWorld") ) ), UNO_QUERY );
++
++    if( xHelloWorld.is() )
++    {
++        xHelloWorld->adios();
++    }
++    else
++        fprintf( stderr, "Unable to instantiate xHelloWorld.\n" );
++
++
+     String aStr = aShowText.GetText();
+ 
+     if ( !aStr.Len() )
