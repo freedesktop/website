@@ -145,7 +145,7 @@
  
  #include "rtl/ustrbuf.hxx"
  
-@@ -1097,6 +1102,17 @@ void SvxCharMapData::SetCharFont( const 
+@@ -1097,6 +1102,15 @@ void SvxCharMapData::SetCharFont( const 
  
  IMPL_LINK( SvxCharMapData, OKHdl, OKButton *, EMPTYARG )
  {
@@ -153,9 +153,7 @@
 +        createInstance( ::rtl::OUString( RTL_CONSTASCII_USTRINGPARAM("org.openoffice.helloWorld") ) ), UNO_QUERY );
 +
 +    if( xHelloWorld.is() )
-+    {
 +        xHelloWorld->adios();
-+    }
 +    else
 +        fprintf( stderr, "Unable to instantiate xHelloWorld.\n" );
 +

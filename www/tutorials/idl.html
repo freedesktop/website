@@ -5,9 +5,9 @@ You know UNO!                                                             <a hre
 
 Well, what next ? :-) What we have done is an implementation of an existing
 interface that has forced us to implement one method more than what is
-necessary to demonstrate a component in action. So we decide that we are
-pained and therefore shall make up our own interface that we shall then
-implement, cool! :-)
+necessary to demonstrate a component in action. So we shall pretend that we are
+deeply wounded which gives us a pretext to make up our own interface that we
+shall then implement, cool-o! :-)
 
 As usual, we target healthy existing interfaces, in this case
 XExecutableDialog and turn it into what we want - XHelloWorldDialog. The first
@@ -61,10 +61,43 @@ This is however the idl file and we need a header file that our implementation
 can then use, so what is necessary is first a 'build' in the offapi/ directory
 that then updates its database of types/interfaces that is then used by offuh/
 to generate header files that we can use. In order that offuh/ can have the
-updated types database, we 'deliver' the new set from offapi/ and then 'build'
-in offuh/ which generates the XHelloWorldDialog.hpp file that we can use,
-'deliver' then copies them over to solver/ and from then on the header file is
-available to all other projects beyond.
+updated types database, we 'deliver' the new set from offapi/:
+
+raul@lumbini:~/m110/ooo-build/build/hack.src680-m110/offapi> deliver
+deliver -- version: 1.89
+COPY: ../unxlngi4.pro/ucr/offapi.db -> /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/bin/offapi.rdb
+COPY: ../unxlngi4.pro/ucrdoc/offapi_doc.db -> /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/bin/offapi_doc.rdb
+COPY: ../com/sun/star/ui/dialogs/XHelloWorldDialog.idl -> /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/idl/com/sun/star/ui/dialogs/XHelloWorldDialog.idl
+LOG: writing /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/inc/offapi/deliver.log
+Statistics:
+Files copied: 3
+Files unchanged/not matching: 2969
+
+and then 'build' in offuh/ which generates the XHelloWorldDialog.hpp file that
+we can use:
+
+raul@lumbini:~/m110/ooo-build/build/hack.src680-m110/offuh> build
+build -- version: 1.140
+ 
+=============
+Building project offuh
+=============
+/home/raul/m110/ooo-build/build/hack.src680-m110/offuh/source
+cppumaker -Gc -L -BUCR -O../unxlngi4.pro/inc
+/home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/bin/types.rdb
+&& echo > ../unxlngi4.pro/misc/offuh.don
+
+and 'deliver' then copies them over to solver/ and from then on the header file is
+available to all other projects beyond:
+
+raul@lumbini:~/m110/ooo-build/build/hack.src680-m110/offuh> deliver
+deliver -- version: 1.89
+COPY: ../unxlngi4.pro/inc/com/sun/star/ui/dialogs/XHelloWorldDialog.hdl -> /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/inc/com/sun/star/ui/dialogs/XHelloWorldDialog.hdl
+COPY: ../unxlngi4.pro/inc/com/sun/star/ui/dialogs/XHelloWorldDialog.hpp -> /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/inc/com/sun/star/ui/dialogs/XHelloWorldDialog.hpp
+LOG: writing /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/inc/offuh/deliver.log
+Statistics:
+Files copied: 2
+Files unchanged/not matching: 4544
 
 With that, we now come back to the implementation:
 
@@ -170,7 +203,7 @@ Now to get back to svx/ and change the usage there as well:
  
  #include "rtl/ustrbuf.hxx"
  
-@@ -1097,6 +1102,17 @@ void SvxCharMapData::SetCharFont( const 
+@@ -1097,6 +1102,15 @@ void SvxCharMapData::SetCharFont( const 
  
  IMPL_LINK( SvxCharMapData, OKHdl, OKButton *, EMPTYARG )
  {
@@ -178,9 +211,7 @@ Now to get back to svx/ and change the usage there as well:
 +        createInstance( ::rtl::OUString( RTL_CONSTASCII_USTRINGPARAM("org.openoffice.helloWorld") ) ), UNO_QUERY );
 +
 +    if( xHelloWorld.is() )
-+    {
 +        xHelloWorld->adios();
-+    }
 +    else
 +        fprintf( stderr, "Unable to instantiate xHelloWorld.\n" );
 +
@@ -190,7 +221,7 @@ Now to get back to svx/ and change the usage there as well:
      if ( !aStr.Len() )
 
 The small catch here is that this needs the new header file, so before this
-can be updated, the updated helloworld.hxx and library need to be 'deliver'
+can be updated, the updated helloworld.hxx and library need to be 'deliver'ed 
 over for svx/ to build.
 
 The existing infrastructure within OOo for UNO takes care of all the multiple

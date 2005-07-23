@@ -3,8 +3,12 @@ You know UNO ?                                                            <a hre
 
 -------------------------------------------------------------------------------
 
-We continue right where we left where we use our new library from the svx/
-charmap dialog. So we have introuced a new project, but now to make it
+[ The last set of tutorials had introduced a new top-level project
+'helloworld' and presented how it is built into a library and then invoked
+from a different top-level project. This continues from that point onwards. ]
+
+So we continue right where we left it off when we use our new library from the
+svx/ charmap dialog. So we have introuced a new project, but now to make it
 interesting further by working it up the way most of the OOo code is organized 
 - as a UNO component!
 
@@ -43,13 +47,11 @@ helloworld Service. The first thing is to modify the header file:
  
  		};
 
-Every interface has a header file that we include first, and then the first
-derivation  from the WeakImplHelper1 helps our service to be managed better by
-the ServiceManager which does reference counting and similar service
-management operations. Then we specify the methods in the interface that we
-implement - every method in the interface needs to be implemented since they
-are all virtual. The ServiceManager reference is passed in to all components,
-which we also retain.
+Every interface has a header file that we include first, and then use help
+from the WeakImplHelper1 to manage our service better. Then we specify the
+methods in the interface that we implement - every method in the interface
+needs to be implemented since they are all virtual. The ServiceManager
+reference is passed in to all components, which we also retain.
 
 Then we flesh out the body of the methods in the component:
 
@@ -71,9 +73,11 @@ till it is shutdown. We'll just output a simple string just to keep the patch
 short :-)
 
 [ While we're here, since we hit an OUString that is used throughout OOo,
-let's just drop in the OU2A macro that comes in handy a lot of the time:
+let's just drop in the OU2A macro:
 
-+#define OU2A(rtlOUString)  (::rtl::OUStringToOString((rtlOUString), RTL_TEXTENCODING_ASCII_US).getStr()) ]
++#define OU2A(rtlOUString)  (::rtl::OUStringToOString((rtlOUString), RTL_TEXTENCODING_ASCII_US).getStr())
+
+since that comes in handy a lot of the time :-)]
 
 Then we need to implement a function that takes in the ServiceManager as a
 parameter and instantiates our object that implements the service:
@@ -109,7 +113,7 @@ pieces the UNO environment needs for operation:
 +}
 
 This function specifies the environment of the component, which in this case
-specifies the C++ component environment.
+specifies the C++ component environment as opposed to the others.
 
 --- helloworld/source/helloworld.cxx	2005-07-20 13:18:55.965713320 +0530
 +++ helloworld/source/helloworld.cxx	2005-07-20 13:33:52.756043677 +0530
@@ -128,7 +132,7 @@ specifies the C++ component environment.
 This portion is used to register the component - to write the information
 about the component into a registry. It says that the name of the service is
 "org.openoffice.helloWorld" and the service implementation has the name
-"/org.openoffice.world.hello". Because of this what happens is that when
+"org.openoffice.world.hello". Because of this what happens is that when
 someone queries for the service name, first the name of the implementation is
 given to them for further action.
 
@@ -181,83 +185,9 @@ ready to be built with one more change:
 
 Voila! That builds our shining new UNO helloworld component for us, all ready
 and waiting for action, so we shift gears in the charmap dialog and invoke our
-method UNO style:
-
---- svx/source/dialog/charmap.cxx	2004-07-13 15:15:11.000000000 +0530
-+++ svx/source/dialog/charmap.cxx	2005-07-20 13:57:39.557992653 +0530
-@@ -117,6 +119,9 @@
- #ifndef _COMPHELPER_TYPES_HXX_
- #include <comphelper/types.hxx>
- #endif
-+#ifndef _UNOTOOLS_PROCESSFACTORY_HXX
-+#include <comphelper/processfactory.hxx>
-+#endif
- 
- #include "rtl/ustrbuf.hxx"
- 
-@@ -1097,6 +1102,17 @@ void SvxCharMapData::SetCharFont( const 
- 
- IMPL_LINK( SvxCharMapData, OKHdl, OKButton *, EMPTYARG )
- {
-+    Reference< XExecutableDialog > xHelloWorld( ::comphelper::getProcessServiceFactory()->
-+        createInstance( ::rtl::OUString( RTL_CONSTASCII_USTRINGPARAM("org.openoffice.helloWorld") ) ), UNO_QUERY );
-+
-+    if( xHelloWorld.is() )
-+    {
-+        xHelloWorld->execute();
-+    }
-+    else
-+        fprintf( stderr, "Unable to instantiate xHelloWorld.\n" );
-+
-+
-     String aStr = aShowText.GetText();
- 
-     if ( !aStr.Len() )
-
-By invoking the global service factory to create an instance of our new
-component for us, we pass it the name of the service that we want to use and
-ask it to create one instance of it for us.
-
-Which of course fails :-) so what does happen is the printing of the error
-message that it is unable to instantiate xHelloWorld.
-
-While the component is built and ready, what happens is that all components
-are registered into the central registry which specifies the complete list of
-components available and where their implementations lie, which is in
-$OOoInstall/program/services.rdb. Which in turn is definitely not aware of our
-component and therefore the query for our service fails.
-
-Enter regview and regcomp :-) regview is the registry viewer that is built in
-registry/ and copied over to the solver, so the path to regview goes:
-solver/680/unxlngi4.pro/bin/regview. This is of course unnecessary if
-LinuxIntelEnvSet.sh is sourced, since that places the solver's bin/ directory
-in the $PATH.
-
-So if we shift over to the $OOoInstall/program directory and issue:
-
-regview services.rdb | less
-
-we would see the entire list of services and their implementations and
-checking for 'helloWorld' would confirm that our library is not registered
-within.
-
-What we therefore need to do is register our component implemented by our so
-into this registry, so we go:
-
-regcomp -register -r services.rdb -c libhworld680li.so
-
-and do a regview to check for the 'helloWorld' entry and success! :-)
-
-This time we run the code in charmap, the registry returns the right service
-implementation instance and execute()s it! w00t! :-)
-
-Similarly, regcomp -revoke -r services.rdb -c libhworld680li.so would remove
-the registry entry and we'd get back our error message :-) Do note that
-services.rdb is usually installed as read-only and it would probably be
-necessary to change its permissions in order to write/register/revoke to the
-registry. 
+method UNO style.
 
 -------------------------------------------------------------------------------
 
-<a href="helloworld-uno-style.diff.txt">helloworld-uno-style.diff</a>                                             Next: <a href="idl.html">idl</a>
+<a href="helloworld-uno-style.diff.txt">helloworld-uno-style.diff</a>                                       Next: <a href="component.html">component</a>
 </h4></pre></html>

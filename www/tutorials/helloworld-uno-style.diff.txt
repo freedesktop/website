@@ -164,7 +164,7 @@
  
  #include "rtl/ustrbuf.hxx"
  
-@@ -1097,6 +1102,17 @@ void SvxCharMapData::SetCharFont( const 
+@@ -1097,6 +1102,15 @@ void SvxCharMapData::SetCharFont( const 
  
  IMPL_LINK( SvxCharMapData, OKHdl, OKButton *, EMPTYARG )
  {
@@ -172,9 +172,7 @@
 +        createInstance( ::rtl::OUString( RTL_CONSTASCII_USTRINGPARAM("org.openoffice.helloWorld") ) ), UNO_QUERY );
 +
 +    if( xHelloWorld.is() )
-+    {
 +        xHelloWorld->execute();
-+    }
 +    else
 +        fprintf( stderr, "Unable to instantiate xHelloWorld.\n" );
 +
@@ -182,3 +180,22 @@
      String aStr = aShowText.GetText();
  
      if ( !aStr.Len() )
+--- scp2/source/ooo/file_library_ooo.scp	2004-12-21 14:49:11.000000000 +0530
++++ scp2/source/ooo/file_library_ooo.scp	2004-12-24 10:11:44.343252931 +0530
+@@ -458,6 +458,16 @@ File gid_File_Lib_Db_Cxx
+ End
+ #endif
+ 
++#ifdef UNX
++File gid_File_Lib_Hl_World
++    TXT_FILE_BODY;
++    Styles = (PACKED,UNO_COMPONENT);
++    RegistryID = gid_Starregistry_Services_Rdb;
++    Dir = gid_Dir_Program;
++    Name = STRING(CONCAT4(libhworld,OFFICEUPD,DLLSUFFIX,UNXSUFFIX));
++End
++#endif
++
+ #endif
+ 
+ STD_UNO_LIB_FILE( gid_File_Lib_Dba, dba)
