@@ -117,7 +117,7 @@ Stefan Baltzer:sba::User Interface:Sun Microsystems, Inc.:
 Ulf Stroehler:us:::Sun Microsystems, Inc.:
 Erick Savary:es:::Sun Microsystems, Inc.:
 Michael Cziebalski:mci:::Sun Microsystems, Inc.:
-Christian Junker:Cyb:Cyb'in_US:Impress pieces:Trees For Life:
+Christian Junker:Cyb:christianju:API:Trees For Life:
 Bibek Sahu:Bibek:bibek:Impress pieces:Trees For Life:
 Thorsten Ziehm:thorstenziehm::QA Manager:Sun Microsystems, Inc.:
 G.Roderick Singleton:grsingleton:grsingleton:Documentation:pathtech.org:
