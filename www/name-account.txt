@@ -138,5 +138,6 @@ Naren Devaiah::ndev:Performance:Intel, Inc.:
 Dhananjay Keskar::dkeskar:Performance:Intel, Inc.:
 Michael Leibowitz::ikeleib:Canvas:Intell, Inc.:
 Matthias Huetsch:mhu::Performance/strategy:Sun Microsystems, Inc.:
+Éric Bischoff:ebischoff:ebischoff:KDE A/B driver:Bureau Cornavin:
 
 #   Name : account@oo.o : irc-nick : notes : affiliation :
