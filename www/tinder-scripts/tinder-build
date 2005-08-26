@@ -362,23 +362,6 @@ sub build_one {
     send_log ($status, $tree, $starttime, $buildlog);
 }
 
-# State can be 'integrated', 'ready for QA', 'planned', 'new' (etc.?)
-sub get_cws_with_state($)
-{
-    my $cws_list;
-    my $state = shift;
-
-    my $eis = Cws::eis();
-    
-    $cws_list = $eis->getCWSWithState( Eis::to_string( $DEFAULT_MASTER ),
-				       Eis::to_string( $state ) );
-
-    my @list = @{$cws_list};
-#    print STDERR "CWS list [$DEFAULT_MASTER] : @list\n";
-
-    return @list;
-}
-
 if ($BUILDNAME =~ m/[\/!|~\#\?\>\<]/) {
     print "Invalid build name '$BUILDNAME'\n";
 }
