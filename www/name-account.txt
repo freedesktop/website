@@ -127,7 +127,7 @@ Oliver Craemer:oc::Calc/QA guy:Sun Microsystems, Inc.:
 Eric Bachard:ericb:ericb2:Mac OSX/Linux PPC ports:French OOo project:
 Rajesh Sola:rajeshsola:sola:misc.:NOSIP:
 Jody Goldberg:jodygoldberg:jody:spreadsheet-ness:Novell, Inc.:
-Muthu Subramanian:muthusuba:muthusuba:misc.:NOSIP:
+Muthu Subramanian:muthusuba:muthusuba:misc.::
 Thomas Benisch:tbe::Scripting framework:Sun Microsystems, Inc.:
 Oliver Braun:obr:obr:Unix/Accessibility Hacker:Sun Microsystems, Inc.:
 Daniel B&ouml;ltzle:dbo:::Sun Microsystems, Inc.:
