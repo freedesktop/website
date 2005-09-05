@@ -45,7 +45,7 @@ Shreyas Srinivasan:sshreyas:shres::Novell, Inc.:
 Nitin Dongre::nitin_BITS::Novell, Inc.(intern):
 Shilpa Sreeramulu:shilpas:shilpa::Novell, Inc.:
 NicelKM:mnicel:nicel::Novell, Inc.:
-Nagashree:nagashree:mnagashree::QA::Novell, Inc.:
+Nagashree:nagashree:mnagashree:QA::Novell, Inc.:
 Abdul Rauf:abdul:abdul::QA::Novell, Inc.:
 Niklas Nebel:nn::Calc Hacker:Sun Microsystems, Inc.:
 Tomas O'Connor:toconnor::Scripting Framework:Sun Microsystems, Inc.:
