@@ -1,20 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # Format:
 #   Name : account@oo.o : irc-nick : notes : affiliation :
 #
 Srinivasa Ragavan::srag::Novell, Inc.:
 Sascha Ballach:sab:::Sun Microsystems, Inc.:
-J&ouml;rg Barfurth:jb:JoergB:Configuration Util:Sun Microsystems, Inc.:
+Jörg Barfurth:jb:JoergB:Configuration Util:Sun Microsystems, Inc.:
 Mathias Bauer:mba::XML:Sun Microsystems, Inc.:
 Thorsten Behrens:thb:thorsten:vcl/impress/toolkit visionary:Sun Microsystems, Inc.:
 Stefan Bergmann:sb::tools&amp;UCB hacker:Sun Microsystems, Inc.:
 Oliver Bolte:obo:::Sun Microsystems, Inc.:
 Peter Burow:pb:::Sun Microsystems, Inc.:
-J&ouml;rg Budischewski:jbu:PyUNO+hacker::
+Jörg Budischewski:jbu:PyUNO hacker::
 Colin Charles:drbyte:drbyte:Malaysian native-lang project:bytebot.net:
 Behrend Cornelius:bc:::Sun Microsystems, Inc.:
 Carsten Driesner:cd::Framework:Sun Microsystems, Inc.:
-Ren&eacute; Engelhard:rene:_rene_:Debian packager:Debian:
+René Engelhard:rene:_rene_:Debian packager:Debian:
 Ken Foskey:waratah:waratah:config_office/dmake man:slug.org.au:
 David Fraser:davidfraser:davidfraser:South African translations, multilingual builds:translate.org.za:
 Sunil Gandhi::tyro::NOSIP:
@@ -24,20 +25,20 @@ Ingrid Halama:iha:::Sun Microsystems, Inc.:
 Chris Halls:haggai:haggai:Debian packager&amp;misc. hacker:Debian:
 Kevin Hendricks:khendricks:PPC/porting lead::
 Con Hennessy:cphennessy:cph2:hacker &amp; council person:Independent:
-Michael Hoennig:mi::API:Sun Microsystems, Inc.:
-Jan Holesovsky:kendy:kendy:KDE integration:Novell, Inc.:
+Michael Hönnig:mi::API:Sun Microsystems, Inc.:
+Jan Holešovský:kendy:kendy:KDE integration:Novell, Inc.:
 Martin Hollmichel:mh:Ratte/Nesshof:Build Maestro:Sun Microsystems, Inc.:
-Pavel Jan&iacute;k:pjanik:paveljanik:Czech native-lang project, l10n builds:Novell, Inc.:
-Joerg Jahnke:jj::Internal tooling::
+Pavel Janík:pjanik:paveljanik:Czech native-lang project, l10n builds:Novell, Inc.:
+Jörg Jahnke:jj::Internal tooling::
 Christian Jansen:Cj?::Menu and Toolbar?:Sun Microsystems, Inc.:
 Martin Kretzschmar:mkretzschmar:martink:Gnome / Debian:Student:
 Hans-Joachim Lankenau:hjs:ause:dmake makefile expert:Sun Microsystems, Inc.:
 Philipp Lohmann:pl:pl_hh:VCL/X11 (GSL) hacker:Sun Microsystems, Inc.:
-Will Lachance:wlach:wlach_:Word Perfect File Filters:NetIntegrationTechnologiesInc.:
+Will Lachance:wlach:wlach_:Word Perfect File Filters:Net Integration Technologies, Inc.:
 Fridrich Strba:fridrich_strba:Fridrich:Word Perfect Hacker::
 Jayant Balraj Madavi:jayant_madavi:aZEN_JM:Connectivity / Database:Novell, Inc.:
 Martin Maher:mmaher::Writer &amp; Filter chap:Sun Microsystems, Inc.:
-Caolan McNamara:cmc:caolan:Writer &amp; Filter man:RedHat, Inc.:
+Caolán McNamara:cmc:caolan:Writer &amp; Filter man:RedHat, Inc.:
 Michael Meeks:mmeeks:michael_:ugly hack-er:Novell, Inc.:
 Federico Mena-Quintero:federicomena:federico:perfectionist:Novell, Inc.:
 Shreyas Srinivasan:sshreyas:shres::Novell, Inc.:
@@ -47,7 +48,7 @@ NicelKM:mnicel:nicel::Novell, Inc.:
 Nagashree:nagashree:mnagashree::QA::Novell, Inc.:
 Abdul Rauf:abdul:abdul::QA::Novell, Inc.:
 Niklas Nebel:nn::Calc Hacker:Sun Microsystems, Inc.:
-Tomas O'Conner:toconner::Scripting Framework:Sun Microsystems, Inc.:
+Tomas O'Connor:toconnor::Scripting Framework:Sun Microsystems, Inc.:
 Lars Oppermann:lo:::Sun Microsystems, Inc.:
 Rodrigo Parra Novo:rodarvus:rodarvus:config_office:Freedows:
 Christof Pintaske:cp:GSL Head Honcho:Sun Microsystems, Inc.:
@@ -56,20 +57,20 @@ Ashwanth Premchandran::ashwanth::Novell, Inc.(intern):
 Nikolai Pretzell:np:::Sun Microsystems, Inc.:
 Volker Quetschke:vq:Windows Build Genius:Gravity Waves:
 Tino Rachui:tra::GSL/Unix Hacker:Sun Microsystems, Inc.:
-Kay Ramme:::UDK:Sun Microsystems, Inc.:
+Kay Ramme:kr::UDK:Sun Microsystems, Inc.:
 Eike Rathke:er:erAck:Calc Hacker.:Sun Microsystems, Inc.:
 Hennes Rohling:hro::GSL &amp; Util:Sun Microsystems, Inc.:
-Michael R&uuml;&szlig;:mru::QA (Writer?):Sun Microsystems, Inc.:
-Stephan Sch&auml;fer:ssa:ssa:VCL:Sun Microsystems, Inc.:
-Andreas Schl&uuml;ns:as:::Sun Microsystems, Inc.:
-Frank Sch&ouml;nheit:fs::UI/configuration/database?:Sun Microsystems, Inc.:
+Michael Rüß:mru::QA (Writer?):Sun Microsystems, Inc.:
+Stephan Schäfer:ssa:ssa:VCL:Sun Microsystems, Inc.:
+Andreas Schlüns:as:::Sun Microsystems, Inc.:
+Frank Schönheit:fs::UI/configuration/database?:Sun Microsystems, Inc.:
 Ingo Schmidt:is::(Native) Installation:Sun Microsystems, Inc.:
-Juergen Schmidt:jsc::API:Sun Microsystems, Inc.:
+Jürgen Schmidt:jsc::API:Sun Microsystems, Inc.:
 Darragh Sherwin:dsherwin:darragh:E-Legislation / E-GovSystems:Propylon:
 Raul Siddhartha:rsiddhartha:raul:GTK File Selector:Novell, Inc.:
-Claus S&oslash;rensen:cs:c26n,cHBs,chbs:Danish Localization and Project Management Tool(oopm):ProFOSS:
+Claus Sørensen:cs:c26n,cHBs,chbs:Danish Localization and Project Management Tool(oopm):ProFOSS:
 Kai Sommerfeld:kso:manager &amp; hacker:Sun Microsystems, Inc.:
-Louis Suarez-Potts:louis:louis:'Community Manager':Collab.net:
+Louis Suárez-Potts:louis:louis:'Community Manager':Collab.net:
 Stefan Taxhet:st:stx12:interpersonal problem fixer:Sun Microsystems, Inc.:
 Tom Verbeek:tv:Art team:Sun Microsystems, Inc.:
 Jim Watson:sparcmoz:sparcmoz:Linux/sparc porter:clug.org.au:
@@ -79,7 +80,7 @@ Dirk Grobler:dg::Database Access:Sun Microsystems, Inc.:
 Scott Carr:kcarr:kcarr:Documentation:Progbits:
 Kai Ahrens:ka::Graphic Applications:Sun Microsystems, Inc.:
 Christian Lippka:cl::Graphic Applications:Sun Microsystems, Inc.:
-Dirk Voelzke:dv::Installation:Sun Microsystems, Inc.:
+Dirk Völzke:dv::Installation:Sun Microsystems, Inc.:
 Dieter Loeschky:::Localization:Sun Microsystems, Inc.:
 Nils Fuhrmann:::Localization:Sun Microsystems, Inc.:
 Oliver Specht:os::UI:Sun Microsystems, Inc.:
@@ -87,7 +88,7 @@ Andreas Martens:ama::Writer:Sun Microsystems, Inc.:
 Michael Brauer:mib::XML:Sun Microsystems, Inc.:
 Daniel Vogelheim:dvo::XML:Sun Microsystems, Inc.:
 Frank Meies:fme:::Sun Microsystems, Inc.:
-Oliver D&uuml;sterhoff:od:::Sun Microsystems, Inc.:
+Oliver Düsterhoff:od:::Sun Microsystems, Inc.:
 Thomas Lange:tl:::Sun Microsystems, Inc.:
 Joachim Lingner:jl:::Sun Microsystems, Inc.:
 Jens-Heiner Rechtien:hr:blauwal::Sun Microsystems, Inc.:
@@ -102,7 +103,7 @@ Bjoern Mielke:bm:::Sun Microsystems, Inc.:
 Lars Langhans:lla::::
 Sarah Smith:ssmith::::
 Andre Fischer:af::Impress:Sun Microsystems, Inc.:
-R&uuml;diger Timm:rt::Build/Release Engineer(?):Sun Microsystems, Inc.:
+Rüdiger Timm:rt::Build/Release Engineer(?):Sun Microsystems, Inc.:
 Kurt Zenker:kz:::Sun Microsystems, Inc.:
 Mikhail Voitenko:mav:::Sun Microsystems, Inc.:
 Herbert Duerr:hdu:::Sun Microsystems, Inc.:
@@ -120,8 +121,8 @@ Michael Cziebalski:mci:::Sun Microsystems, Inc.:
 Christian Junker:Cyb:christianju:API:Trees For Life:
 Bibek Sahu:Bibek:bibek:Impress pieces:Trees For Life:
 Thorsten Ziehm:thorstenziehm::QA Manager:Sun Microsystems, Inc.:
-G.Roderick Singleton:grsingleton:grsingleton:Documentation:pathtech.org:
-Matthias M&uuml;ller-Prove:mmp::User Experience Engineer, ui.openoffice.org:Sun Microsystems, Inc.:
+G. Roderick Singleton:grsingleton:grsingleton:Documentation:pathtech.org:
+Matthias Müller-Prove:mmp::User Experience Engineer, ui.openoffice.org:Sun Microsystems, Inc.:
 Ivo Hinkelmann:ihi:ivo:l10n tooling/general:Sun Microsystems, Inc.:
 Oliver Craemer:oc::Calc/QA guy:Sun Microsystems, Inc.:
 Eric Bachard:ericb:ericb2:Mac OSX/Linux PPC ports:French OOo project:
@@ -130,14 +131,29 @@ Jody Goldberg:jodygoldberg:jody:spreadsheet-ness:Novell, Inc.:
 Muthu Subramanian:muthusuba:muthusuba:misc.::
 Thomas Benisch:tbe::Scripting framework:Sun Microsystems, Inc.:
 Oliver Braun:obr:obr:Unix/Accessibility Hacker:Sun Microsystems, Inc.:
-Daniel B&ouml;ltzle:dbo:::Sun Microsystems, Inc.:
+Daniel Boelzle:dbo:::Sun Microsystems, Inc.:
 Kohei Yoshida:kohei:kohei:Calc enthusiast:Independent:
 Nakata Maho:maho:_maho_:FreeBSD guy:Independent:
 Radek Doulik:radekdoulik:rodo_:Canvas hacker:Novell, Inc.:
 Naren Devaiah::ndev:Performance:Intel, Inc.:
 Dhananjay Keskar::dkeskar:Performance:Intel, Inc.:
-Michael Leibowitz::ikeleib:Canvas:Intell, Inc.:
+Michael Leibowitz::ikeleib:Canvas:Intel, Inc.:
 Matthias Huetsch:mhu::Performance/strategy:Sun Microsystems, Inc.:
 Éric Bischoff:ebischoff:ebischoff:KDE A/B driver:Bureau Cornavin:
+Edward Peterlin:OPENSTEP::Mac::
+Armin Theissen:armin::::
+Gene Anaya:ganaya::::
+George Zahopoulos:georgez::::
+Michael Rauch:mrauch::NetBSD::
+Nils Fuhrmann:nf::::
+Nick Blievers:nick::IRIX::
+Patrick Luby:pluby::Mac::
+Sander Vesik:svesik::::
+Gerhard Tonn:tonn::s390::
+Willem van Dorp:willem.vandorp::::
+Petr Mladek:pmladek:pmladek:SUSE RPMs, ooo-build releases:Novell, Inc.:
+Noel Power:npower:VBA Interop, Scripting:Novell, Inc.:
+Bernd Eilers:bei::Sun Microsystems, Inc.:
+Pascal Junck:pjunck::Sun Microsystems, Inc.:
 
 #   Name : account@oo.o : irc-nick : notes : affiliation :
