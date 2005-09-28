@@ -12,7 +12,7 @@ Stefan Bergmann:sb::tools&amp;UCB hacker:Sun Microsystems, Inc.:
 Oliver Bolte:obo:::Sun Microsystems, Inc.:
 Peter Burow:pb:::Sun Microsystems, Inc.:
 Jörg Budischewski:jbu:PyUNO hacker::
-Colin Charles:drbyte:drbyte:Malaysian native-lang project:bytebot.net:
+Colin Charles:drbyte:bytee:Malaysian native-lang project:bytebot.net:
 Behrend Cornelius:bc:::Sun Microsystems, Inc.:
 Carsten Driesner:cd::Framework:Sun Microsystems, Inc.:
 René Engelhard:rene:_rene_:Debian packager:Debian:
@@ -152,7 +152,24 @@ Gerhard Tonn:tonn::s390::
 Willem van Dorp:willem.vandorp::::
 Petr Mladek:pmladek:pmladek:SUSE RPMs, ooo-build releases:Novell, Inc.:
 Noel Power:npower:noelp:VBA Interop, Scripting:Novell, Inc.:
-Bernd Eilers:bei:::Sun Microsystems, Inc.:
+Bernd Eilers:bei:rfc821::Sun Microsystems, Inc.:
 Pascal Junck:pjunck:::Sun Microsystems, Inc.:
+Jörg Brunsmann:jbrunsmann::UDK::
+Jan Tietjens:tietjens::::
+Robert Vojta:rvojta:rvojta:VBA Interop::
+Aidan Butler:aidan::XML filters::
+Babak Mahbod:bmahbod::::
+Bertram Nolte:bnolte::::
+Bustamam Harun:bustamam::Malaysian stuff::
+Wind Li:windly::Address books::
+Mindy Liu:mindyliu::::
+Michael Mi:mmi::::
+Jörg Spindler:jspindler::::
+Laszlo Kovacs:lkovacs::Documentation::
+Frank Peters:fpe::Documentation::
+Ping Liao:pliao::::
+Robert Kinsella:rkinsella::::
+Eric Hoch:maveric:mav_eric:::
+Matthias Klose:doko:doko:Ubuntu, gcc, python packager:Canonical, Inc.:
 
 #   Name : account@oo.o : irc-nick : notes : affiliation :
