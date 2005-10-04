@@ -50,7 +50,7 @@ Abdul Rauf:abdul:abdul::QA::Novell, Inc.:
 Niklas Nebel:nn::Calc Hacker:Sun Microsystems, Inc.:
 Tomas O'Connor:toconnor::Scripting Framework:Sun Microsystems, Inc.:
 Lars Oppermann:lo:::Sun Microsystems, Inc.:
-Rodrigo Parra Novo:rodarvus:rodarvus:config_office:Freedows:
+Rodrigo Parra Novo:rodarvus:rodarvus:Gnumeric/Abiword OpenDocument Format support and port to Maemo:INdT (Instituto Nokia de Tecnologia):
 Christof Pintaske:cp::GSL Head Honcho:Sun Microsystems, Inc.:
 Ron Piterman:rpiterman::::
 Ashwanth Premchandran::ashwanth::Novell, Inc.(intern):
