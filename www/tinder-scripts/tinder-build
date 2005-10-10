@@ -13,7 +13,7 @@ use List::Util qw(shuffle);
 
 $CONFIGURE_OPTIONS =
     '--enable-gnome-vfs --with-ant-home=/usr/share/ant '.
-    '--with-jdk-home=/usr/lib/SunJava2-1.4.2 --without-myspell-dicts ' .
+    '--with-java=gij --without-myspell-dicts ' .
     '--enable-libsn --enable-build-mozilla';
 
 $COMMON_CONFIGURE_OPTIONS=
@@ -42,7 +42,7 @@ $MOZILLA_URL = 'http://ftp.mozilla.org/pub/mozilla.org/mozilla/releases/mozilla1
 $CVS_COMPRESS = '-z5';
 
 # -- debug tweaks --
-my $debug = 0;
+my $debug = 1;
 my $shortcircuit_checkout = 0;
 my $shortcircuit_pre_clean = 0;
 my $shortcircuit_build = 0;
@@ -186,43 +186,6 @@ sub checkout_complete($$)
     }
 
     log_msg ($log, "Completed checkout of $master_tag\n");
-
-    return 1;
-}
-
-sub checkout_source($$)
-{
-    my $cws = shift;
-    my $childws = $cws->{'name'};
-    my $log = shift;
-    my $master = $DEFAULT_MASTER;
-
-    log_msg ($log, "Checking out $childws ... \n");
-
-    my @modules = split / /, $cws->{'modules'};
-
-    log_msg ($log, "Modules:");
-    foreach (@modules) {
-	log_msg ($log, "\t$_\n");
-    }
-
-    my $cws_branch_tag = $cws->{'cws_tag'};
-    my $master_milestone_tag = $cws->{'master_tag'};
-
-    checkout_complete ($master_milestone_tag, $log) || return 0;
-
-#    unfortunately this fails ...
-#    cvs_op ("checkout -r $master_milestone_tag OpenOffice", '', $log) || return 0;
-
-    log_msg ($log, "Start update of modules to $cws_branch_tag\n");
-
-    for my $module (@modules) {
-	if (! -d "$BUILD_DIR/$module") {
-	    log_msg ($log, "ERROR: missing module $module: no directory to update to $cws_branch_tag\n");
-	    return 0;
-	}
-	cvs_op ("update -r $cws_branch_tag", $module, $log) || return 0;
-    }
 
     return 1;
 }
