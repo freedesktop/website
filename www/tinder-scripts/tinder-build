@@ -190,6 +190,43 @@ sub checkout_complete($$)
     return 1;
 }
 
+sub checkout_source($$)
+{
+    my $cws = shift;
+    my $childws = $cws->{'name'};
+    my $log = shift;
+    my $master = $DEFAULT_MASTER;
+
+    log_msg ($log, "Checking out $childws ... \n");
+
+    my @modules = split / /, $cws->{'modules'};
+
+    log_msg ($log, "Modules:");
+    foreach (@modules) {
+       log_msg ($log, "\t$_\n");
+    }
+
+    my $cws_branch_tag = $cws->{'cws_tag'};
+    my $master_milestone_tag = $cws->{'master_tag'};
+
+    checkout_complete ($master_milestone_tag, $log) || return 0;
+
+#    unfortunately this fails ...
+#    cvs_op ("checkout -r $master_milestone_tag OpenOffice", '', $log) || return 0;
+
+    log_msg ($log, "Start update of modules to $cws_branch_tag\n");
+
+    for my $module (@modules) {
+       if (! -d "$BUILD_DIR/$module") {
+           log_msg ($log, "ERROR: missing module $module: no directory to update to $cws_branch_tag\n");
+           return 0;
+       }
+       cvs_op ("update -r $cws_branch_tag", $module, $log) || return 0;
+    }
+
+    return 1;
+}
+
 sub clean_source($$)
 {
     my $childws = shift;
