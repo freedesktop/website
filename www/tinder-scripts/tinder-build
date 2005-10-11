@@ -42,7 +42,7 @@ $MOZILLA_URL = 'http://ftp.mozilla.org/pub/mozilla.org/mozilla/releases/mozilla1
 $CVS_COMPRESS = '-z5';
 
 # -- debug tweaks --
-my $debug = 1;
+my $debug = 0;
 my $shortcircuit_checkout = 0;
 my $shortcircuit_pre_clean = 0;
 my $shortcircuit_build = 0;
