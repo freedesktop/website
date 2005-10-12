@@ -195,7 +195,6 @@ sub checkout_source($$)
     my $cws = shift;
     my $childws = $cws->{'name'};
     my $log = shift;
-    my $master = $DEFAULT_MASTER;
 
     log_msg ($log, "Checking out $childws ... \n");
 
