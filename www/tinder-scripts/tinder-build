@@ -355,7 +355,7 @@ sub build_one {
     }
 
     # autoconf / cvs conflict zone
-    unlink $BUILD_DIR/config_office/configure;
+    unlink "$BUILD_DIR/config_office/configure";
 
     sleep 1; # time to flush that log.
     
