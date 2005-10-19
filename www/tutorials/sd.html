@@ -299,7 +299,9 @@ what we want to save, right ? Which would be the current selection [the term
 used is 'mark']- so we query for the MarkedObjectList of which we get the first
 'mark'  
 
+<pre>
 +       SdrGrafObj *pGrafObj = PTR_CAST( SdrGrafObj, pDrView-&gt;GetMarkedObjectList().GetMark( 0 )-&gt;GetObj() );
+</pre>
 
 <p>Then we include the types of file types/filters that we can support for the
 graphic and add them to the file picker:
