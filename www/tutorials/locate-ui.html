@@ -1,0 +1,92 @@
+<html><pre><h4>
+Locate! :-)                                                               <a href="help.html">Help!</a>
+
+-------------------------------------------------------------------------------
+
+Assumptions :-) we have an installation in /opt/ooinstall/ which we link
+to a build tree in ~/ooo-build/build/*680*/ and when run, this creates a user
+configuration dataset in ~/.ooo-2.0*
+
+At this point, we focus only on the UI elements - menus, toolbars, dialogs.
+
+The menus come from /opt/ooinstall/share/config/soffice.cfg/*, so we can now
+do a case study: Take Writer, and pick one menu item, say
+Format->Page... Let's go! :-)
+
+What happens is that the menu displayed for Writer comes from
+/opt/ooinstall/share/config/soffice.cfg/modules/swriter/menubar/menubar.xml,
+so we poke in and look for Format and see that it has an id of
+.uno:FormatMenu, while that is not exactly what we are looking for and move on
+to find that the Page... menu item has the id ".uno:PageDialog" which is
+exactly what we are looking for.
+
+With this id, we consider this a little more, if this functionality were
+shared across multiple modules, there would be higher probability of finding
+the code in sfx2/, svx/ or the svtools/ projects, but since this is the Format
+Page dialog of Writer, we can assume that this would be specific to the sw/
+project and grep for the id [ the uno part is common, so searching for just
+PageDialog would do ] there and we find:
+
+sw/sdi/swriter.sdi:6381:SfxVoidItem PageDialog FN_FORMAT_PAGE_DLG
+
+which is to say that the identifier FN_FORMAT_PAGE_DLG is what you'd expect to
+find throughout the code for this particular portion of code. So we grep for
+the identifier again but this time in the *.cxx files:
+
+find sw/ -name "*.cxx" -exec grep -Hn FN_FORMAT_PAGE_DLG {} \;
+
+and bingo:
+
+sw/source/ui/shells/basesh.cxx:2465:            case FN_FORMAT_PAGE_DLG:
+
+which goes on to a further:
+
+                rView.GetDocShell()->FormatPage(rPageDesc.GetName(),
+                                    nSlot == FN_FORMAT_PAGE_COLUMN_DLG,
+                                    &rSh );
+
+hmm... so it calls a function, so this time we can use LXR at go-oo.org or:
+
+find sw/ -name "*.cxx" -exec grep -Hn ::FormatPage {} \;
+
+to take advantage of the coding conventions applied to get:
+
+sw/source/ui/app/docst.cxx:1311:void SwDocShell::FormatPage( const String&
+rPage, BOOL bColumn, SwWrtShell*     pActShell )
+
+and then, we're in business :-) Actually no, it needs more digging, but the
+general idea remains much the same :-)
+
+The toolbars are also fairly similar, since they have an associated id which
+works fairly similarly.
+
+When looking for dialogs on the other hand, we aim at the strings, so suppose
+we were to launch the Format->Page... dialog, we pick a string we see: "Next
+Style" and do a grep in the src files for it:
+
+find sw/ -name "*.src" -exec grep -Hn "Next Style" {} \;
+
+and go oops! because it should really be "Ne~xt Style" we are searching for
+since ~ is what OOo uses internally to mark the keyboard shortcuts as. So we
+correct ourselves and go:
+
+find sw/ -name "*.src" -exec grep -Hn "Ne~xt Style" {} \;
+
+and still go blank! hmm... so we try hitting the surrounding areas - svx/,
+svtools/ and sfx2/ and voila:
+
+find sfx2/ -name "*.src" -exec grep -Hn "Ne~xt Style" {} \;
+
+gives us:
+
+sfx2/source/dialog/mgetempl.src:101:            Text [ en-US ] = "Ne~xt Style" ;
+
+which is what we're looking for and based on the typical style, the src file
+contains the layout of the dialog, where the code would be in mgetempl.cxx and
+the identifiers and header info would be in mgetempl.hrc and mgetempl.hxx
+respectively. Then we poke in for more fun :-)
+
+-------------------------------------------------------------------------------
+
+<a href="dummy.diff.txt">dummy.diff</a>                                                    Next: <a href="locate-func.html">locate-func</a>
+</h4></pre></html>

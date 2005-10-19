@@ -30,14 +30,14 @@ has what we're interested in, and we'll modify that:
 + <toolbar:toolbaritem xlink:href=".uno:Quit"/>
  </toolbar:toolbar>
 
-And run the application. Typically, there would be no change to notice :-)
-
-That is because the first time the application is run, all UI elements are
-copied into the user's OOo config directory which is usually ~/.ooo-2.0* and
-cached etc to make things run faster. This is a typical problem to look for
-when other changes are not reflected in the application for changes elsewhere
-as well. Removing that directory, and relaunching soffice does this time show
-up our change and clicking the icon brings us back to square one :-)
+And run the application. Typically, it should work! :-)                                                                                
+But if it does not, it would probably be because if any UI elements are
+modified, the modification is copied into the user's OOo config directory
+which is usually ~/.ooo-2.0* and cached etc to make things run faster. This is
+a typical problem to look for when other changes are not reflected in the
+application for changes elsewhere as well. Removing that directory, and
+relaunching soffice does this time show up our change and clicking the icon
+brings us back to square one :-)
 
 [ The file to target in the build tree for this change would be
 framework/uiconfig/startmodule/toolbar/standardbar.xml, which is then 
