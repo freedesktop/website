@@ -1,36 +1,50 @@
-<html><pre><h4>
-Hack! - The toolbar                                                       <a href="help.html">Help!</a>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Hack! - The toolbar</title>
+<meta name="generator" content="HTML::TextToHTML v2.43">
+</head>
+<body>
 
--------------------------------------------------------------------------------
+<table width=100%>
+ <tr>
+  <td align="left">Hack! - The toolbar</td>
+  <td align="right"><a href="help.html">Help!</a></td>
+ </tr> 
+</table>
 
-The UI elements in OOo 2.0 are maintained as xml files in two locations from
+<hr>
+
+<p>The UI elements in OOo 2.0 are maintained as xml files in two locations from
 the installation onwards and in five locations overall, but that sounds more
 complicated than it is, really :-)
 
-UI elements are toolbars, menus, accelerators and statusbars. And once
+<p>UI elements are toolbars, menus, accelerators and statusbars. And once
 installed, they are in $OOoInstall/share/config/soffice.sfg/ in different
 locations based on which product they are for. So Writer has its own set of
 UI elements, and so does Calc and so in fact does the base framework with no
 document open in it, which is what we will target now :-)
 
-Now what would be interesting is if we could add in a toolbar item of our own
+<p>Now what would be interesting is if we could add in a toolbar item of our own
 and since there is no toolbar item to exit the application with one click,
 that is what we'll try.
 
-For the moment we will focus only on the installation pieces, so:
+<p>For the moment we will focus only on the installation pieces, so:
 $OOoInstall/share/config/soffice.cfg/modules/StartModule/toolbar/standardbar.xml
 has what we're interested in, and we'll modify that:
 
---- modules/StartModule/toolbar/standardbar.xml	2005-07-23 15:08:51.788751294 +0530
-+++ modules/StartModule/toolbar/standardbar.xml	2005-07-23 15:06:41.962949847 +0530
+<pre>
+--- modules/StartModule/toolbar/standardbar.xml 2005-07-23 15:08:51.788751294 +0530
++++ modules/StartModule/toolbar/standardbar.xml 2005-07-23 15:06:41.962949847 +0530
 @@ -8,4 +8,5 @@
-  <toolbar:toolbarseparator/>
-  <toolbar:toolbaritem xlink:href=".uno:HelpIndex"/>
-  <toolbar:toolbaritem xlink:href=".uno:ExtendedHelp" toolbar:visible="false"/>
-+ <toolbar:toolbaritem xlink:href=".uno:Quit"/>
- </toolbar:toolbar>
+  &lt;toolbar:toolbarseparator/&gt;
+  &lt;toolbar:toolbaritem xlink:href=".uno:HelpIndex"/&gt;
+  &lt;toolbar:toolbaritem xlink:href=".uno:ExtendedHelp" toolbar:visible="false"/&gt;
++ &lt;toolbar:toolbaritem xlink:href=".uno:Quit"/&gt;
+ &lt;/toolbar:toolbar&gt;
+</pre>
 
-And run the application. Typically, it should work! :-)                                                                                
+<p>And run the application. Typically, it should work! :-)                                                                                
 But if it does not, it would probably be because if any UI elements are
 modified, the modification is copied into the user's OOo config directory
 which is usually ~/.ooo-2.0* and cached etc to make things run faster. This is
@@ -39,7 +53,7 @@ application for changes elsewhere as well. Removing that directory, and
 relaunching soffice does this time show up our change and clicking the icon
 brings us back to square one :-)
 
-[ The file to target in the build tree for this change would be
+<p>[ The file to target in the build tree for this change would be
 framework/uiconfig/startmodule/toolbar/standardbar.xml, which is then 
 copied over into the solver/ directory when it is 'deliver'ed over. Then
 postprocess/ zips up all UI elements in the solver into a consolidated
@@ -48,7 +62,14 @@ to be part of the installation packet. On installation, this uiconfig.zip is
 picked up and unzipped into the installation. The other projects UI elements
 would be in the top-level sw/, sd/ sc/, starmath/, basctl/ and sch/ ]
 
--------------------------------------------------------------------------------
+<hr>
 
-<a href="add-about-toolbar.diff.txt">add-about-toolbar.diff</a>                                              Next: <a href="about.html">about</a>
-</h4></pre></html>
+<table width=100%>
+ <tr>
+  <td align="left"><a href="add-about-toolbar.diff.txt">add-about-toolbar.diff</a></td>
+  <td align="right">Next: <a href="about.html">about</a></td>
+ </tr> 
+</table>
+
+</body>
+</html>

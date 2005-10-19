@@ -1,92 +1,131 @@
-<html><pre><h4>
-Locate! :-)                                                               <a href="help.html">Help!</a>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Locate! :-)</title>
+<meta name="generator" content="HTML::TextToHTML v2.43">
+</head>
+<body>
 
--------------------------------------------------------------------------------
+<table width=100%>
+ <tr>
+  <td align="left">Locate! :-)</td>
+  <td align="right"><a href="help.html">Help!</a></td>
+ </tr> 
+</table>
 
-Assumptions :-) we have an installation in /opt/ooinstall/ which we link
-to a build tree in ~/ooo-build/build/*680*/ and when run, this creates a user
+<hr>
+
+<p>Assumptions :-) we have an installation in /opt/ooinstall/ which we link
+to a build tree in ~/ooo-build/build/<em>680</em>/ and when run, this creates a user
 configuration dataset in ~/.ooo-2.0*
 
-At this point, we focus only on the UI elements - menus, toolbars, dialogs.
+<p>At this point, we focus only on the UI elements - menus, toolbars, dialogs.
 
-The menus come from /opt/ooinstall/share/config/soffice.cfg/*, so we can now
+<p>The menus come from /opt/ooinstall/share/config/soffice.cfg/*, so we can now
 do a case study: Take Writer, and pick one menu item, say
-Format->Page... Let's go! :-)
+Format-&gt;Page... Let's go! :-)
 
-What happens is that the menu displayed for Writer comes from
+<p>What happens is that the menu displayed for Writer comes from
 /opt/ooinstall/share/config/soffice.cfg/modules/swriter/menubar/menubar.xml,
 so we poke in and look for Format and see that it has an id of
 .uno:FormatMenu, while that is not exactly what we are looking for and move on
 to find that the Page... menu item has the id ".uno:PageDialog" which is
 exactly what we are looking for.
 
-With this id, we consider this a little more, if this functionality were
+<p>With this id, we consider this a little more, if this functionality were
 shared across multiple modules, there would be higher probability of finding
 the code in sfx2/, svx/ or the svtools/ projects, but since this is the Format
 Page dialog of Writer, we can assume that this would be specific to the sw/
 project and grep for the id [ the uno part is common, so searching for just
 PageDialog would do ] there and we find:
 
+<pre>
 sw/sdi/swriter.sdi:6381:SfxVoidItem PageDialog FN_FORMAT_PAGE_DLG
+</pre>
 
-which is to say that the identifier FN_FORMAT_PAGE_DLG is what you'd expect to
+<p>which is to say that the identifier FN_FORMAT_PAGE_DLG is what you'd expect to
 find throughout the code for this particular portion of code. So we grep for
 the identifier again but this time in the *.cxx files:
 
+<pre>
 find sw/ -name "*.cxx" -exec grep -Hn FN_FORMAT_PAGE_DLG {} \;
+</pre>
 
-and bingo:
+<p>and bingo:
 
+<pre>
 sw/source/ui/shells/basesh.cxx:2465:            case FN_FORMAT_PAGE_DLG:
+</pre>
 
-which goes on to a further:
+<p>which goes on to a further:
 
-                rView.GetDocShell()->FormatPage(rPageDesc.GetName(),
+<pre>
+                rView.GetDocShell()-&gt;FormatPage(rPageDesc.GetName(),
                                     nSlot == FN_FORMAT_PAGE_COLUMN_DLG,
-                                    &rSh );
+                                    &amp;rSh );
+</pre>
 
-hmm... so it calls a function, so this time we can use LXR at go-oo.org or:
+<p>hmm... so it calls a function, so this time we can use LXR at go-oo.org or:
 
+<pre>
 find sw/ -name "*.cxx" -exec grep -Hn ::FormatPage {} \;
+</pre>
 
-to take advantage of the coding conventions applied to get:
+<p>to take advantage of the coding conventions applied to get:
 
-sw/source/ui/app/docst.cxx:1311:void SwDocShell::FormatPage( const String&
+<pre>
+sw/source/ui/app/docst.cxx:1311:void SwDocShell::FormatPage( const String&amp;
 rPage, BOOL bColumn, SwWrtShell*     pActShell )
+</pre>
 
-and then, we're in business :-) Actually no, it needs more digging, but the
+<p>and then, we're in business :-) Actually no, it needs more digging, but the
 general idea remains much the same :-)
 
-The toolbars are also fairly similar, since they have an associated id which
-works fairly similarly.
+<p>The toolbars are also fairly similar, since they have an associated id which
+works fairly similarly which would be in modules/swriter/toolbar/*.xml
 
-When looking for dialogs on the other hand, we aim at the strings, so suppose
-we were to launch the Format->Page... dialog, we pick a string we see: "Next
+<p>When looking for dialogs on the other hand, we aim at the strings, so suppose
+we were to launch the Format-&gt;Page... dialog, we pick a string we see: "Next
 Style" and do a grep in the src files for it:
 
+<pre>
 find sw/ -name "*.src" -exec grep -Hn "Next Style" {} \;
+</pre>
 
-and go oops! because it should really be "Ne~xt Style" we are searching for
+<p>and go oops! because it should really be "Ne~xt Style" we are searching for
 since ~ is what OOo uses internally to mark the keyboard shortcuts as. So we
 correct ourselves and go:
 
+<pre>
 find sw/ -name "*.src" -exec grep -Hn "Ne~xt Style" {} \;
+</pre>
 
-and still go blank! hmm... so we try hitting the surrounding areas - svx/,
+<p>and still go blank! hmm... so we try hitting the surrounding areas - svx/,
 svtools/ and sfx2/ and voila:
 
+<pre>
 find sfx2/ -name "*.src" -exec grep -Hn "Ne~xt Style" {} \;
+</pre>
 
-gives us:
+<p>gives us:
 
+<pre>
 sfx2/source/dialog/mgetempl.src:101:            Text [ en-US ] = "Ne~xt Style" ;
+</pre>
 
-which is what we're looking for and based on the typical style, the src file
+<p>which is what we're looking for and based on the typical style, the src file
 contains the layout of the dialog, where the code would be in mgetempl.cxx and
 the identifiers and header info would be in mgetempl.hrc and mgetempl.hxx
 respectively. Then we poke in for more fun :-)
 
--------------------------------------------------------------------------------
+<hr>
 
-<a href="dummy.diff.txt">dummy.diff</a>                                                    Next: <a href="locate-func.html">locate-func</a>
-</h4></pre></html>
+<table width=100%>
+ <tr>
+  <td align="left"><a href="dummy.diff.txt">dummy.diff</a></td>
+  <td align="right">Next: <a href="locate-func.html">locate-func</a></td>
+ </tr> 
+</table>
+
+</body>
+</html>

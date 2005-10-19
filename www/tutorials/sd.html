@@ -1,24 +1,37 @@
-<html><pre><h4>
-Hack Impress!                                                             <a href="help.html">Help!</a>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Hack Impress!</title>
+<meta name="generator" content="HTML::TextToHTML v2.43">
+</head>
+<body>
 
--------------------------------------------------------------------------------
+<table width=100%>
+ <tr>
+  <td align="left">Hack Impress!</td>
+  <td align="right"><a href="help.html">Help!</a></td>
+ </tr> 
+</table>
 
-The plus side of this wonderful hack [ by Martin Kretzschmar ] is that it is
+<hr>
+
+<p>The plus side of this wonderful hack [ by Martin Kretzschmar ] is that it is
 actually shipping code, while the flip side is that it will probably already be
 in the source, so the changes are already done. It is also longer ;-) 
 
-The requirement was that it should be possible to select a graphic in an
+<p>The requirement was that it should be possible to select a graphic in an
 existing presentation in Impress and be able to save it to disk separately.
 So the idea is to add in a menu item to a menu that pops up on right-clicking
 a graphic in a presentation and that would launch file save dialog which one
 could use to save the graphic to some place on disk.
 
-Let's start! :-)
+<p>Let's start! :-)
 
-The first thing to do is declare an identifier for our menu item:
+<p>The first thing to do is declare an identifier for our menu item:
 
---- sd/inc/app.hrc	2004-12-07 18:49:43.000000000 +0530
-+++ sd/inc/app.hrc	2004-12-22 13:45:04.759048116 +0530
+<pre>
+--- sd/inc/app.hrc      2004-12-07 18:49:43.000000000 +0530
++++ sd/inc/app.hrc      2004-12-22 13:45:04.759048116 +0530
 @@ -487,4 +487,7 @@
  #define SID_RENAME_MASTER_PAGE              (SID_SD_START+433)
  #define SID_CLOSE_MASTER_VIEW               (SID_SD_START+434)
@@ -27,53 +40,56 @@ The first thing to do is declare an identifier for our menu item:
 +#define SID_SAVE_GRAPHIC               (SID_SD_START+450)
 +
  #endif
+</pre>
 
-
-Any item on the menu or a toolbar is an Sfx...Item which has a number of
+<p>Any item on the menu or a toolbar is an Sfx...Item which has a number of
 attributes that are set in order to decide how it would be handled. I'm not
 clear on most of them myself, maybe as time goes on, someone would help define
 how these help. But as far as hacks go, here goes! :-)
 
---- sd/sdi/sdraw.sdi	2004-12-07 18:50:09.000000000 +0530
-+++ sd/sdi/sdraw.sdi	2004-12-22 13:49:14.576627998 +0530
+<pre>
+--- sd/sdi/sdraw.sdi    2004-12-07 18:50:09.000000000 +0530
++++ sd/sdi/sdraw.sdi    2004-12-22 13:49:14.576627998 +0530
 @@ -4818,6 +4818,31 @@ SfxVoidItem OriginalSize SID_ORIGINAL_SI
  ]
- 
+
  //--------------------------------------------------------------------------
 +SfxVoidItem SaveGraphic SID_SAVE_GRAPHIC
 +()
 +[
-+	/* flags: */  
-+	AutoUpdate = FALSE, 
-+	Cachable = Cachable, 
-+	FastCall = FALSE, 
-+	HasCoreId = FALSE, 
-+	HasDialog = FALSE, 
-+	ReadOnlyDoc = TRUE, 
-+	Toggle = FALSE, 
-+	Container = FALSE, 
-+	RecordAbsolute = FALSE, 
-+	RecordPerSet;
-+	Synchron;
++       /* flags: */  
++       AutoUpdate = FALSE, 
++       Cachable = Cachable, 
++       FastCall = FALSE, 
++       HasCoreId = FALSE, 
++       HasDialog = FALSE, 
++       ReadOnlyDoc = TRUE, 
++       Toggle = FALSE, 
++       Container = FALSE, 
++       RecordAbsolute = FALSE, 
++       RecordPerSet;
++       Synchron;
 +
-+	/* config: */ 
-+	AccelConfig = FALSE, 
-+	MenuConfig = FALSE, 
-+	StatusBarConfig = FALSE, 
-+	ToolBoxConfig = FALSE, 
-+	GroupId = GID_MODIFY;
++       /* config: */ 
++       AccelConfig = FALSE, 
++       MenuConfig = FALSE, 
++       StatusBarConfig = FALSE, 
++       ToolBoxConfig = FALSE, 
++       GroupId = GID_MODIFY;
 +]
 +
 +//--------------------------------------------------------------------------
  SfxBoolItem OutlineMode SID_OUTLINEMODE
  
  [
+</pre>
 
-Next thing we do is indicate which functions would be called for the twin
+<p>Next thing we do is indicate which functions would be called for the twin
 purposes of qualifying the menu item and handling the click on the menu item.
 
---- sd/sdi/_drvwsh.sdi	2004-12-07 18:50:08.000000000 +0530
-+++ sd/sdi/_drvwsh.sdi	2004-12-22 13:46:11.454986298 +0530
+<pre>
+--- sd/sdi/_drvwsh.sdi  2004-12-07 18:50:08.000000000 +0530
++++ sd/sdi/_drvwsh.sdi  2004-12-22 13:46:11.454986298 +0530
 @@ -115,6 +115,11 @@ interface DrawView : Object
          ExecMethod = FuTemporary ;
          StateMethod = GetMenuState ;
@@ -86,270 +102,288 @@ purposes of qualifying the menu item and handling the click on the menu item.
      SID_CUT // ole : no, status : ?
      [
          ExecMethod = FuSupport ;
+</pre>
 
-That says that the menu item validity would be determined by the handler
+<p>That says that the menu item validity would be determined by the handler
 GetMenuState and the handling of the click by FuTemporary. The next thing to do
 would be to add in our cool menu item to the graphic popup menu:
 
---- sd/source/ui/app/popup2_tmpl.src	2004-12-07 18:50:16.000000000 +0530
-+++ sd/source/ui/app/popup2_tmpl.src	2004-12-22 14:34:39.511403825 +0530
+<pre>
+--- sd/source/ui/app/popup2_tmpl.src    2004-12-07 18:50:16.000000000 +0530
++++ sd/source/ui/app/popup2_tmpl.src    2004-12-22 14:34:39.511403825 +0530
 @@ -570,6 +570,15 @@
- 		MN_STARIMAGE
- 		MN_COLORRESOLUTION
-		SEPARATOR
-+		MenuItem\
-+		{\
-+		        Identifier = SID_SAVE_GRAPHIC ; \
-+			HelpID = SID_SAVE_GRAPHIC ; \
-+			Text [ de ] = "~Grafik speichern..." ; \
-+			Text [ en-US ] = "Save ~Graphic..." ; \
-+			Text [ x-comment ] = " "; \
-+		};
-+		SEPARATOR
- 		MN_CHAR_PARAGRAPH
- 		SEPARATOR
- 		MN_POSITION
+                MN_STARIMAGE
+                MN_COLORRESOLUTION
+                SEPARATOR
++               MenuItem\
++               {\
++                       Identifier = SID_SAVE_GRAPHIC ; \
++                       HelpID = SID_SAVE_GRAPHIC ; \
++                       Text [ de ] = "~Grafik speichern..." ; \
++                       Text [ en-US ] = "Save ~Graphic..." ; \
++                       Text [ x-comment ] = " "; \
++               };
++               SEPARATOR
+                MN_CHAR_PARAGRAPH
+                SEPARATOR
+                MN_POSITION
+</pre>
 
-Now that our menu item's in, to define the handlers that we have indicated will
+<p>Now that our menu item's in, to define the handlers that we have indicated will
 be the menu item's click handlers: 
 
---- sd/source/ui/view/drviewsj.cxx	2004-10-15 16:06:30.000000000 +0530
-+++ sd/source/ui/view/drviewsj.cxx	2004-12-22 14:11:09.285155629 +0530
+<pre>
+--- sd/source/ui/view/drviewsj.cxx      2004-10-15 16:06:30.000000000 +0530
++++ sd/source/ui/view/drviewsj.cxx      2004-12-22 14:11:09.285155629 +0530
 @@ -193,7 +193,8 @@ void DrawViewShell::GetMenuStateSel( Sfx
- 			SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_BEFORE_OBJ ) ||
- 			SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_BEHIND_OBJ ) ||
- 			SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_REVERSE_ORDER ) ||
--			SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_ORIGINAL_SIZE ) )
-+			SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_ORIGINAL_SIZE ) ||
-+			SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_SAVE_GRAPHIC ) )
- 		{
- 			const SdrObject* pObj = rMarkList.GetMark(0)->GetObj();
- 			UINT32 nInv = pObj->GetObjInventor();
+                        SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_BEFORE_OBJ ) ||
+                        SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_BEHIND_OBJ ) ||
+                        SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_REVERSE_ORDER ) ||
+-                       SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_ORIGINAL_SIZE ) )
++                       SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_ORIGINAL_SIZE ) ||
++                       SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_SAVE_GRAPHIC ) )
+                {
+                        const SdrObject* pObj = rMarkList.GetMark(0)-&gt;GetObj();
+                        UINT32 nInv = pObj-&gt;GetObjInventor();
 @@ -211,6 +212,11 @@ void DrawViewShell::GetMenuStateSel( Sfx
- 					rSet.DisableItem(SID_ORIGINAL_SIZE);
+                                        rSet.DisableItem(SID_ORIGINAL_SIZE);
              }
  
-+                        if( !( pObj->ISA( SdrGrafObj ) ) )
-+			{
-+				rSet.DisableItem( SID_SAVE_GRAPHIC );
-+			}
++                       if( !( pObj-&gt;ISA( SdrGrafObj ) ) )
++                       {
++                               rSet.DisableItem( SID_SAVE_GRAPHIC );
++                       }
 +
- 			// Wenn es sich um kein Gruppenobjekt oder 3D-Objekt handelt
- 			// wird "Gruppe betreten" disabled
- 			if( !( ( pObj->ISA( SdrObjGroup ) && nInv == SdrInventor ) ||
+                        // Wenn es sich um kein Gruppenobjekt oder 3D-Objekt handelt
+                        // wird "Gruppe betreten" disabled
+                        if( !( ( pObj-&gt;ISA( SdrObjGroup ) &amp;&amp; nInv == SdrInventor ) ||
+</pre>
 
-So GetMenuState turns the menu item off if it is not an item of a 'graphic'
+<p>So GetMenuState turns the menu item off if it is not an item of a 'graphic'
 type and otherwise it would be enabled.
 
-The actual click would be handed off to FuTemporary where we will include our
+<p>The actual click would be handed off to FuTemporary where we will include our
 handler:
 
---- sd/source/ui/view/drviews2.cxx	2004-12-07 18:50:29.000000000 +0530
-+++ sd/source/ui/view/drviews2.cxx	2004-12-22 14:53:06.888109360 +0530
+<pre>
+--- sd/source/ui/view/drviews2.cxx      2004-12-07 18:50:29.000000000 +0530
++++ sd/source/ui/view/drviews2.cxx      2004-12-22 14:53:06.888109360 +0530
 @@ -1256,6 +1285,12 @@ void DrawViewShell::FuTemporary(SfxReque
- 			rReq.Done();
- 		break;
+                        rReq.Done();
+                break;
  
-+		case SID_SAVE_GRAPHIC:
-+			SaveGraphic();
-+			Cancel();
-+			rReq.Ignore();
-+			break;
++               case SID_SAVE_GRAPHIC:
++                       SaveGraphic();
++                       Cancel();
++                       rReq.Ignore();
++                       break;
 +
- 		case SID_DRAW_FONTWORK:
- 		case SID_DRAW_FONTWORK_VERTICAL:
- 		{
+                case SID_DRAW_FONTWORK:
+                case SID_DRAW_FONTWORK_VERTICAL:
+                {
+</pre>
 
-So we have a function defined that would handle our click, and as the patch
+<p>So we have a function defined that would handle our click, and as the patch
 below shows we have a subfunction to help us as well with what we intend to do.
 What follows below is the long and gory SaveGraphic function that is called,
 which in turn invokes the FilePicker to let the user select the location to
 save to and writes the graphic to disk once that's done.
 
---- sd/source/ui/view/drviews2.cxx	2004-12-07 18:50:29.000000000 +0530
-+++ sd/source/ui/view/drviews2.cxx	2004-12-22 14:53:06.888109360 +0530
+<pre>
+--- sd/source/ui/view/drviews2.cxx      2004-12-07 18:50:29.000000000 +0530
++++ sd/source/ui/view/drviews2.cxx      2004-12-22 14:53:06.888109360 +0530
 @@ -1306,4 +1341,89 @@ SdPage* DrawViewShell::CreateOrDuplicate
      return pNewPage;
  }
  
 +
 +// From sw/source/ui/docvw/romenu.cxx
-+void lcl_GetPreferedExtension( String &rExt, const Graphic &rGrf )
++void lcl_GetPreferedExtension( String &amp;rExt, const Graphic &amp;rGrf )
 +{
-+	// dann ggfs. ueber die native-Info der Grafik den "besten"
-+	// Filter vorschlagen
-+	const sal_Char* pExt = "png";
-+	switch( ((Graphic *)&rGrf)->GetLink().GetType() )
-+	{
-+		case GFX_LINK_TYPE_NATIVE_GIF:      pExt = "gif"; break;
-+		case GFX_LINK_TYPE_NATIVE_TIF:      pExt = "tif"; break;
-+		case GFX_LINK_TYPE_NATIVE_WMF:      pExt = "wmf"; break;
-+		case GFX_LINK_TYPE_NATIVE_MET:      pExt = "met"; break;
-+		case GFX_LINK_TYPE_NATIVE_PCT:		pExt = "pct"; break;
-+		case GFX_LINK_TYPE_NATIVE_JPG:		pExt = "jpg"; break;
-+	}
-+	rExt.AssignAscii( pExt );
++       // dann ggfs. ueber die native-Info der Grafik den "besten"
++       // Filter vorschlagen
++       const sal_Char* pExt = "png";
++       switch( ((Graphic *)&amp;rGrf)-&gt;GetLink().GetType() )
++       {
++               case GFX_LINK_TYPE_NATIVE_GIF:      pExt = "gif"; break;
++               case GFX_LINK_TYPE_NATIVE_TIF:      pExt = "tif"; break;
++               case GFX_LINK_TYPE_NATIVE_WMF:      pExt = "wmf"; break;
++               case GFX_LINK_TYPE_NATIVE_MET:      pExt = "met"; break;
++               case GFX_LINK_TYPE_NATIVE_PCT:          pExt = "pct"; break;
++               case GFX_LINK_TYPE_NATIVE_JPG:          pExt = "jpg"; break;
++       }
++       rExt.AssignAscii( pExt );
 +}
 +
 +
 +void DrawViewShell::SaveGraphic()
 +{
 +
-+	using namespace com::sun::star::uno;
-+	using namespace com::sun::star::ui::dialogs;
-+	using namespace ::sfx2;
++       using namespace com::sun::star::uno;
++       using namespace com::sun::star::ui::dialogs;
++       using namespace ::sfx2;
 +
-+	SvtPathOptions aPathOpt;
-+	String sGrfPath( aPathOpt.GetGraphicPath() );
++       SvtPathOptions aPathOpt;
++       String sGrfPath( aPathOpt.GetGraphicPath() );
 +
-+	FileDialogHelper aDlgHelper( TemplateDescription::FILESAVE_SIMPLE, 0 );
-+	Reference < XFilePicker > xFP = aDlgHelper.GetFilePicker();
++       FileDialogHelper aDlgHelper( TemplateDescription::FILESAVE_SIMPLE, 0 );
++       Reference &lt; XFilePicker &gt; xFP = aDlgHelper.GetFilePicker();
 +
-+	INetURLObject aPath;
-+	aPath.SetSmartURL( sGrfPath);
++       INetURLObject aPath;
++       aPath.SetSmartURL( sGrfPath);
 +
-+	SdrGrafObj *pGrafObj = PTR_CAST( SdrGrafObj, pDrView->GetMarkedObjectList().GetMark( 0 )->GetObj() );
-+	if (0 == pGrafObj )
-+		return;
++       SdrGrafObj *pGrafObj = PTR_CAST( SdrGrafObj, pDrView-&gt;GetMarkedObjectList().GetMark( 0 )-&gt;GetObj() );
++       if (0 == pGrafObj )
++               return;
 +
-+	const Graphic &rGraphic = pGrafObj->GetGraphic();
++       const Graphic &amp;rGraphic = pGrafObj-&gt;GetGraphic();
 +
-+	String aExt;
-+	lcl_GetPreferedExtension( aExt, rGraphic );
-+	aExt.ToLowerAscii();
-+	int nDfltFilter = INT_MAX;
++       String aExt;
++       lcl_GetPreferedExtension( aExt, rGraphic );
++       aExt.ToLowerAscii();
++       int nDfltFilter = INT_MAX;
 +
-+	xFP->setDisplayDirectory( aPath.GetMainURL(INetURLObject::DECODE_TO_IURI) );
++       xFP-&gt;setDisplayDirectory( aPath.GetMainURL(INetURLObject::DECODE_TO_IURI) );
 +
-+	GraphicFilter& rGF = *GetGrfFilter();
-+	const USHORT nCount = rGF.GetExportFormatCount();
++       GraphicFilter&amp; rGF = *GetGrfFilter();
++       const USHORT nCount = rGF.GetExportFormatCount();
 +
-+	Reference<XFilterManager> xFltMgr(xFP, UNO_QUERY);
++       Reference&lt;XFilterManager&gt; xFltMgr(xFP, UNO_QUERY);
 +
-+	for ( int i = 0; i < nCount; i++ )
-+	{
-+	    xFltMgr->appendFilter( rGF.GetExportFormatName( i ), rGF.GetExportWildcard( i ) );
-+	    if ( COMPARE_EQUAL == aExt.CompareIgnoreCaseToAscii(rGF.GetExportFormatShortName( i ).ToLowerAscii() ))
-+			nDfltFilter = i;
-+	}
++       for ( int i = 0; i &lt; nCount; i++ )
++       {
++           xFltMgr-&gt;appendFilter( rGF.GetExportFormatName( i ), rGF.GetExportWildcard( i ) );
++           if ( COMPARE_EQUAL == aExt.CompareIgnoreCaseToAscii(rGF.GetExportFormatShortName( i ).ToLowerAscii() ))
++                       nDfltFilter = i;
++       }
 +
-+	if( INT_MAX == nDfltFilter )
-+		return;
-+	
-+	xFltMgr->setCurrentFilter( rGF.GetExportFormatName( nDfltFilter ) );
++       if( INT_MAX == nDfltFilter )
++               return;
++       
++       xFltMgr-&gt;setCurrentFilter( rGF.GetExportFormatName( nDfltFilter ) );
 +
-+	if( aDlgHelper.Execute() == ERRCODE_NONE )
-+	{
-+		String sPath( xFP->getFiles().getConstArray()[0] );
-+		//verwendeten Pfad merken - bitte nicht wieder wegoptimieren!
-+		aPath.SetSmartURL( sPath);
-+		sGrfPath = aPath.GetPath();
-+		
-+		int nFilter;
-+		if ( xFltMgr->getCurrentFilter().getLength() && rGF.GetExportFormatCount() )
-+			nFilter = rGF.GetExportFormatNumber( xFltMgr->getCurrentFilter() );
-+		else
-+			nFilter = GRFILTER_FORMAT_DONTKNOW;
-+		String aFilter( rGF.GetExportFormatShortName( nFilter ) );
-+		XOutBitmap::WriteGraphic( rGraphic, sPath, aFilter,
-+								  XOUTBMP_DONT_EXPAND_FILENAME );
-+		return;
-+	}
++       if( aDlgHelper.Execute() == ERRCODE_NONE )
++       {
++               String sPath( xFP-&gt;getFiles().getConstArray()[0] );
++               //verwendeten Pfad merken - bitte nicht wieder wegoptimieren!
++               aPath.SetSmartURL( sPath);
++               sGrfPath = aPath.GetPath();
++               
++               int nFilter;
++               if ( xFltMgr-&gt;getCurrentFilter().getLength() &amp;&amp; rGF.GetExportFormatCount() )
++                       nFilter = rGF.GetExportFormatNumber( xFltMgr-&gt;getCurrentFilter() );
++               else
++                       nFilter = GRFILTER_FORMAT_DONTKNOW;
++               String aFilter( rGF.GetExportFormatShortName( nFilter ) );
++               XOutBitmap::WriteGraphic( rGraphic, sPath, aFilter,
++                                                                 XOUTBMP_DONT_EXPAND_FILENAME );
++               return;
++       }
 +}
 +
  } // end of namespace sd
+</pre>
 
-
-heh :-) That's a lotta code. So after we've sufficiently scared you away with
+<p>heh :-) That's a lotta code. So after we've sufficiently scared you away with
 all that code, let's try to win you back with taking apart the most important
 parts: We need to launch the FilePicker to query the user for the location
 to save which is accomplished by:
 
-+	FileDialogHelper aDlgHelper( TemplateDescription::FILESAVE_SIMPLE, 0 );
-+	Reference < XFilePicker > xFP = aDlgHelper.GetFilePicker();
+<pre>
++       FileDialogHelper aDlgHelper( TemplateDescription::FILESAVE_SIMPLE, 0 );
++       Reference &lt; XFilePicker &gt; xFP = aDlgHelper.GetFilePicker();
+</pre>
 
-Then we need to pick up the graphic that is selected by the user :-) That's
+<p>Then we need to pick up the graphic that is selected by the user :-) That's
 what we want to save, right ? Which would be the current selection [the term
 used is 'mark']- so we query for the MarkedObjectList of which we get the first
 'mark'  
 
-+	SdrGrafObj *pGrafObj = PTR_CAST( SdrGrafObj, pDrView->GetMarkedObjectList().GetMark( 0 )->GetObj() );
++       SdrGrafObj *pGrafObj = PTR_CAST( SdrGrafObj, pDrView-&gt;GetMarkedObjectList().GetMark( 0 )-&gt;GetObj() );
 
-Then we include the types of file types/filters that we can support for the
+<p>Then we include the types of file types/filters that we can support for the
 graphic and add them to the file picker:
 
-+	for ( int i = 0; i < nCount; i++ )
-+	{
-+	    xFltMgr->appendFilter( rGF.GetExportFormatName( i ), rGF.GetExportWildcard( i ) );
-+	    if ( COMPARE_EQUAL == aExt.CompareIgnoreCaseToAscii(rGF.GetExportFormatShortName( i ).ToLowerAscii() ))
-+			nDfltFilter = i;
-+	}
+<pre>
++       for ( int i = 0; i &lt; nCount; i++ )
++       {
++           xFltMgr-&gt;appendFilter( rGF.GetExportFormatName( i ), rGF.GetExportWildcard( i ) );
++           if ( COMPARE_EQUAL == aExt.CompareIgnoreCaseToAscii(rGF.GetExportFormatShortName( i ).ToLowerAscii() ))
++                       nDfltFilter = i;
++       }
+</pre>
 
+<p>and launch the file picker, and naturally, pick up the filename selected:
 
-and launch the file picker, and naturally, pick up the filename selected:
+<pre>
++       if( aDlgHelper.Execute() == ERRCODE_NONE )
++       {
++               String sPath( xFP-&gt;getFiles().getConstArray()[0] );
+</pre>
 
-+	if( aDlgHelper.Execute() == ERRCODE_NONE )
-+	{
-+		String sPath( xFP->getFiles().getConstArray()[0] );
+<p>Then append the right filter to the filename and save it to disk:
 
-Then append the right filter to the filename and save it to disk:
+<pre>
++               if ( xFltMgr-&gt;getCurrentFilter().getLength() &amp;&amp; rGF.GetExportFormatCount() )
++                       nFilter = rGF.GetExportFormatNumber( xFltMgr-&gt;getCurrentFilter() );
++               else
++                       nFilter = GRFILTER_FORMAT_DONTKNOW;
++               String aFilter( rGF.GetExportFormatShortName( nFilter ) );
++               XOutBitmap::WriteGraphic( rGraphic, sPath, aFilter,
++                                                                 XOUTBMP_DONT_EXPAND_FILENAME );
+</pre>
 
-+		if ( xFltMgr->getCurrentFilter().getLength() && rGF.GetExportFormatCount() )
-+			nFilter = rGF.GetExportFormatNumber( xFltMgr->getCurrentFilter() );
-+		else
-+			nFilter = GRFILTER_FORMAT_DONTKNOW;
-+		String aFilter( rGF.GetExportFormatShortName( nFilter ) );
-+		XOutBitmap::WriteGraphic( rGraphic, sPath, aFilter,
-+								  XOUTBMP_DONT_EXPAND_FILENAME );
+<p>And then we are done! :-)
 
-And then we are done! :-)
+<p>In order to qualify all the objects we have used, we need their declarations:
 
-In order to qualify all the objects we have used, we need their declarations:
-
---- sd/source/ui/view/drviews2.cxx	2004-12-07 18:50:29.000000000 +0530
-+++ sd/source/ui/view/drviews2.cxx	2004-12-22 14:53:06.888109360 +0530
+<pre>
+--- sd/source/ui/view/drviews2.cxx      2004-12-07 18:50:29.000000000 +0530
++++ sd/source/ui/view/drviews2.cxx      2004-12-22 14:53:06.888109360 +0530
 @@ -112,6 +112,35 @@
- #include <basic/sbstar.hxx>
+ #include &lt;basic/sbstar.hxx&gt;
  #endif
  
 +#ifndef INCLUDED_SVTOOLS_PATHOPTIONS_HXX
-+#include <svtools/pathoptions.hxx>
++#include &lt;svtools/pathoptions.hxx&gt;
 +#endif
 +#ifndef _COM_SUN_STAR_UI_DIALOGS_XFILEPICKER_HPP_
-+#include <com/sun/star/ui/dialogs/XFilePicker.hpp>
++#include &lt;com/sun/star/ui/dialogs/XFilePicker.hpp&gt;
 +#endif
 +#ifndef _COM_SUN_STAR_UI_DIALOGS_XFILTERMANAGER_HPP_
-+#include <com/sun/star/ui/dialogs/XFilterManager.hpp>
++#include &lt;com/sun/star/ui/dialogs/XFilterManager.hpp&gt;
 +#endif
 +#ifndef  _COM_SUN_STAR_UI_DIALOGS_TEMPLATEDESCRIPTION_HPP_
-+#include <com/sun/star/ui/dialogs/TemplateDescription.hpp>
++#include &lt;com/sun/star/ui/dialogs/TemplateDescription.hpp&gt;
 +#endif
 +#ifndef _FILEDLGHELPER_HXX
-+#include <sfx2/filedlghelper.hxx>
++#include &lt;sfx2/filedlghelper.hxx&gt;
 +#endif
 +#ifndef _URLOBJ_HXX
-+#include <tools/urlobj.hxx>
++#include &lt;tools/urlobj.hxx&gt;
 +#endif
 +#ifndef _FILTER_HXX
-+#include <svtools/filter.hxx>
++#include &lt;svtools/filter.hxx&gt;
 +#endif
 +#ifndef _SVX_IMPGRF_HXX
-+#include <svx/impgrf.hxx>
++#include &lt;svx/impgrf.hxx&gt;
 +#endif
 +#ifndef _XOUTBMP_HXX
-+#include <svx/xoutbmp.hxx>
++#include &lt;svx/xoutbmp.hxx&gt;
 +#endif
 +
 +
- #define ITEMID_FIELD	EE_FEATURE_FIELD
+ #define ITEMID_FIELD   EE_FEATURE_FIELD
  #ifndef _SVX_FLDITEM_HXX //autogen
- #include <svx/flditem.hxx>
+ #include &lt;svx/flditem.hxx&gt;
+</pre>
 
-And last but definitely not the least, we need a declaration of the new
+<p>And last but definitely not the least, we need a declaration of the new
 function that we have added to the class:
 
---- sd/source/ui/inc/DrawViewShell.hxx	2004-12-07 18:50:23.000000000 +0530
-+++ sd/source/ui/inc/DrawViewShell.hxx	2004-12-22 14:00:43.278211965 +0530
+<pre>
+--- sd/source/ui/inc/DrawViewShell.hxx  2004-12-07 18:50:23.000000000 +0530
++++ sd/source/ui/inc/DrawViewShell.hxx  2004-12-22 14:00:43.278211965 +0530
 @@ -490,6 +490,9 @@ private:
          PageKind ePageKind,
          SdPage* pPage);
@@ -357,15 +391,23 @@ function that we have added to the class:
 +        /** Saves the selected graphic to a user-specified file */
 +        void SaveGraphic( );
 +
- 	::com::sun::star::uno::Reference< ::com::sun::star::scanner::XScannerManager >	mxScannerManager;
- 	::com::sun::star::uno::Reference< ::com::sun::star::lang::XEventListener >		mxScannerListener;
- 	TransferableClipboardListener*                                                  pClipEvtLstnr;
+        ::com::sun::star::uno::Reference&lt; ::com::sun::star::scanner::XScannerManager &gt;  mxScannerManager;
+        ::com::sun::star::uno::Reference&lt; ::com::sun::star::lang::XEventListener &gt;              mxScannerListener;
+        TransferableClipboardListener*                                                  pClipEvtLstnr;
+</pre>
 
-And voila! You could right-click on a graphic in Impress and find a brand new
+<p>And voila! You could right-click on a graphic in Impress and find a brand new
 menu item there which would launch a file save dialog that you could use to
 save it to disk! Joy! :-)
 
--------------------------------------------------------------------------------
+<hr>
 
-<a href="sd-save-image-context-menu.diff.txt">sd-save-image-context-menu.diff</a>                                     Next: <a href="build.html">build</a>
-</h4></pre></html>
+<table width=100%>
+ <tr>
+  <td align="left"><a href="sd-save-image-context-menu.diff.txt">sd-save-image-context-menu.diff</a></td>
+  <td align="right">Next: <a href="build.html">build</a></td>
+ </tr> 
+</table>
+
+</body>
+</html>

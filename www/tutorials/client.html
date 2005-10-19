@@ -1,16 +1,28 @@
-<html><pre><h4>
-Hack up a client for our library!                                         <a href="help.html">Help!</a>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Hack up a client for our library!</title>
+<meta name="generator" content="HTML::TextToHTML v2.43">
+</head>
+<body>
 
--------------------------------------------------------------------------------
+<table width=100%>
+ <tr>
+  <td align="left">Hack up a client for our library!</td>
+  <td align="right"><a href="help.html">Help!</a></td>
+ </tr> 
+</table>
 
-The procedure is that each top-level project is built by compiling the source
+<hr>
+
+<p>The procedure is that each top-level project is built by compiling the source
 into the unxlngi4.pro directory within that project. So what happens if you want
 to initiate a fresh build of just one project, you can rm -rf unxlngi4.pro and
 initiate a build again, but if the module is say sw, that means a long wait.
 Typically we can just back up the build directory and re-build while looking for
 errors.
 
-The cute build procedure is even further organised that after the project is
+<p>The cute build procedure is even further organised that after the project is
 'built' into unxlngi4.pro, the build results are copied over into the solver/
 top-level project that holds the complete build results of OO.o. So if you were
 looking just at the source, there would be no solver/ top-level directory, the
@@ -18,13 +30,14 @@ same way there would be no unxlngi4.pro/ directory in a top-level project if it
 has not been built yet. Looking at it in terms of size, the size of the solver
 directory is 435 MB on my machine...
 
-This information helps us better understand how we can use our brand new library
+<p>This information helps us better understand how we can use our brand new library
 from another top-level project. So let's go back to our earlier charmap
 modification [or it could be any other project] and add in a couple of lines to
 use the objects from our new library:
 
---- svx/source/dialog/charmap.cxx.orig	2005-01-11 12:01:02.238019934 +0530
-+++ svx/source/dialog/charmap.cxx	2005-01-11 12:02:24.277586493 +0530
+<pre>
+--- svx/source/dialog/charmap.cxx.orig  2005-01-11 12:01:02.238019934 +0530
++++ svx/source/dialog/charmap.cxx       2005-01-11 12:02:24.277586493 +0530
 @@ -1097,6 +1099,10 @@
  
  IMPL_LINK( SvxCharMapData, OKHdl, OKButton *, EMPTYARG )
@@ -36,149 +49,175 @@ use the objects from our new library:
      String aStr = aShowText.GetText();
  
      if ( !aStr.Len() )
+</pre>
 
+<p>With that lines in, we try to 'build' and promptly halt :-)
 
-With that lines in, we try to 'build' and promptly halt :-)
-
+<pre>
 /home/raul/HEAD/ooo-build/build/src680-m65/svx/source/dialog/charmap.cxx: In member function `long int SvxCharMapData::OKHdl(OKButton*)':
 /home/raul/HEAD/ooo-build/build/src680-m65/svx/source/dialog/charmap.cxx:1100: error: syntax error before `::' token
 /home/raul/HEAD/ooo-build/build/src680-m65/svx/source/dialog/charmap.cxx:1101: error: `HelloWorld' undeclared (first use this function)
 /home/raul/HEAD/ooo-build/build/src680-m65/svx/source/dialog/charmap.cxx:1101: error: (Each undeclared identifier is reported only once for each function it appears in.)
 /home/raul/HEAD/ooo-build/build/src680-m65/svx/source/dialog/charmap.cxx:1102: error: `hw' undeclared (first use this function)
+</pre>
 
-Since the new project has no information about our new projects, it needs to be
+<p>Since the new project has no information about our new projects, it needs to be
 informed of where it can find them which we do:
 
---- svx/source/dialog/charmap.cxx.orig	2005-01-11 12:01:02.238019934 +0530
-+++ svx/source/dialog/charmap.cxx	2005-01-11 12:02:24.277586493 +0530
+<pre>
+--- svx/source/dialog/charmap.cxx.orig 2005-01-11 12:01:02.238019934 +0530
++++ svx/source/dialog/charmap.cxx       2005-01-11 12:02:24.277586493 +0530
 @@ -120,6 +120,8 @@
  
  #include "rtl/ustrbuf.hxx"
  
-+#include <helloworld/helloworld.hxx>
++#include &lt;helloworld/helloworld.hxx&gt;
 +
  using namespace ::com::sun::star::accessibility;
  using namespace ::com::sun::star::uno;
  //CHINA001 // class SvxShowText =====================================================
+</pre>
 
-and 'build' to get:
+<p>and 'build' to get:
 
+<pre>
 /home/raul/HEAD/ooo-build/build/src680-m65/svx/source/dialog/charmap.cxx:123:37: helloworld/helloworld.hxx: No such file or directory
+</pre>
 
-So what happens in order to pick up header files is that two locations are
+<p>So what happens in order to pick up header files is that two locations are
 searched in - one is the project's own inc/ directory and the second is the
 solver/inc/ directory. So in order that the helloworld.hxx file can be picked
 up, it needs to be placed there first. The procedure to export such header files
 is what the deliver tool does which is:
 
+<pre>
 alias deliver='perl /home/raul/HEAD/ooo-build/build/src680-m65/solenv/bin/deliver.pl'
+</pre>
 
-The deliver.pl takes as input the prj/d.lst which has been empty so far and
+<p>The deliver.pl takes as input the prj/d.lst which has been empty so far and
 'delivers' the files indicated by the file into the solver directory which would
 then be available to any other top-level projects in OO.o. So we add in one line
 to d.lst:
 
---- /dev/null	2004-08-25 23:04:59.000000000 +0530
-+++ helloworld/prj/d.lst	2005-01-11 12:15:02.461404214 +0530
+<pre>
+--- /dev/null   2004-08-25 23:04:59.000000000 +0530
++++ helloworld/prj/d.lst        2005-01-11 12:15:02.461404214 +0530
 @@ -0,0 +1 @@
 +hedabu: ..\inc\helloworld.hxx %_DEST%\inc%_EXT%\helloworld\helloworld.hxx
+</pre>
 
-This is supposed to indicate that the header file is to be copied over to the
+<p>This is supposed to indicate that the header file is to be copied over to the
 solver/inc/ directory as the Hacker's Guide also indicates, and issue the
 'deliver' command from the helloworld/ project:
 
+<pre>
 deliver -- version: 1.77
-COPY: build.lst -> /home/raul/HEAD/ooo-build/build/src680-m65/solver/680/unxlngi4.pro/inc/helloworld/build.lst
-HEDABU: ../inc/helloworld.hxx -> /home/raul/HEAD/ooo-build/build/src680-m65/solver/680/unxlngi4.pro/inc/helloworld/helloworld.hxx
+COPY: build.lst -&gt; /home/raul/HEAD/ooo-build/build/src680-m65/solver/680/unxlngi4.pro/inc/helloworld/build.lst
+HEDABU: ../inc/helloworld.hxx -&gt; /home/raul/HEAD/ooo-build/build/src680-m65/solver/680/unxlngi4.pro/inc/helloworld/helloworld.hxx
 Statistics:
 Files copied: 2
 Files unchanged/not matching: 0
+</pre>
 
-That looks like it did the job, so shift back to the svx/ project and 'build'
+<p>That looks like it did the job, so shift back to the svx/ project and 'build'
 again and everything goes smoothly till:
 
+<pre>
 Checking DLL ../unxlngi4.pro/lib/check_libsvx680li.so ...: ERROR: ../unxlngi4.pro/lib/check_libsvx680li.so: undefined symbol: _ZN5hello5world10HelloWorld5adiosEv
 dmake:  Error code 1, while making '../unxlngi4.pro/lib/libsvx680li.so'
 '---* tg_merge.mk *---'
  
 ERROR: Error 65280 occurred while making /home/raul/HEAD/ooo-build/build/src680-m65/svx/util
+</pre>
 
-So our library says it has an undefined symbol, the rather unhelpful
+<p>So our library says it has an undefined symbol, the rather unhelpful
 _ZN5hello5world10HelloWorld5adiosEv which 'c++filt' helpfully translates to the
 more understandable: hello::world::HelloWorld::adios() So compilation has
 succeeded but linking is failing to find the object code/our library in order to
 link to it.
 
-So what happens in the linking phase to create the end so is that the top-level
+<p>So what happens in the linking phase to create the end so is that the top-level
 project has a util/makefile.mk which indicates which libraries it links against
 that now needs to be updated to look for our library. If we look into it, we
 find funny little acronyms sounding terms like SFX2LIB which obviously build
 seems to understand, so it must be part of the solenv/ directory, so we go in
 and poke there:
 
+<pre>
 grep -rn SFX2LIB *
+</pre>
 
-and promptly find solenv/inc/libs.mk which defines
+<p>and promptly find solenv/inc/libs.mk which defines
 SFX2LIB=-lsfx$(OFFICEUPD)$(DLLPOSTFIX) so we take the easy way out and modify
 the makefile directly:
 
---- svx/util/makefile.mk.orig	2005-01-11 12:21:28.351114984 +0530
-+++ svx/util/makefile.mk	2005-01-11 12:23:03.122572903 +0530
+<pre>
+--- svx/util/makefile.mk.orig   2005-01-11 12:21:28.351114984 +0530
++++ svx/util/makefile.mk        2005-01-11 12:23:03.122572903 +0530
 @@ -147,7 +147,8 @@
              $(SALLIB) \
                       $(XMLSCRIPTLIB) \
              $(ICUUCLIB) \
--			$(AVMEDIALIB)	
-+			$(AVMEDIALIB)	\
-+		-lhworld680li
+-                       $(AVMEDIALIB)   
++                       $(AVMEDIALIB)   \
++               -lhworld680li
  
  .IF "$(GUI)"=="WNT"
  SHL1STDLIBS+=\
+</pre>
 
-and 'build':
+<p>and 'build':
 
+<pre>
 /usr/lib/gcc-lib/i586-suse-linux/3.3.3/../../../../i586-suse-linux/bin/ld: cannot find -lhworld680li
 collect2: ld returned 1 exit status
 dmake:  Error code 1, while making '../unxlngi4.pro/lib/libsvx680li.so'
 '---* tg_merge.mk *---'
  
 ERROR: Error 65280 occurred while making /home/raul/HEAD/ooo-build/build/src680-m65/svx/util
+</pre>
 
-Grr... So the library is unavailable. Now what happens is that LD_LIBRARY_PATH
+<p>Grr... So the library is unavailable. Now what happens is that LD_LIBRARY_PATH
 and PATH include the solver directories which is where the world-famous :-D
 libhworld680li.so needs to be, in order to be picked up. And d.lst accomplishes
 the same thing using one more line to copy them over:
 
---- helloworld/prj/d.lst.orig	2005-01-11 12:15:02.461404214 +0530
-+++ helloworld/prj/d.lst	2005-01-11 12:59:08.464432327 +0530
+<pre>
+--- helloworld/prj/d.lst.orig   2005-01-11 12:15:02.461404214 +0530
++++ helloworld/prj/d.lst        2005-01-11 12:59:08.464432327 +0530
 @@ -1 +1,3 @@
  hedabu: ..\inc\helloworld.hxx %_DEST%\inc%_EXT%\helloworld\helloworld.hxx
 +
 +..\%__SRC%\lib\lib*.* %_DEST%\lib%_EXT%\lib*.*
+</pre>
 
-and run 'deliver' in the helloworld project:
+<p>and run 'deliver' in the helloworld project:
 
+<pre>
 deliver -- version: 1.77
-COPY: ../unxlngi4.pro/lib/libhworld680li.so -> /home/raul/HEAD/ooo-build/build/src680-m65/solver/680/unxlngi4.pro/lib/libhworld680li.so
+COPY: ../unxlngi4.pro/lib/libhworld680li.so -&gt; /home/raul/HEAD/ooo-build/build/src680-m65/solver/680/unxlngi4.pro/lib/libhworld680li.so
 Statistics:
 Files copied: 1
 Files unchanged/not matching: 2
+</pre>
 
-And the library is copied over into the solver directory. In the top-level make
+<p>And the library is copied over into the solver directory. In the top-level make
 or OOo build procedure, build and deliver are invoked in each project which
 ensures that the libraries built previously are available for the projects built
 later.
 
-With that, we go back to svx and 'build':
+<p>With that, we go back to svx and 'build':
 
+<pre>
 Checking DLL ../unxlngi4.pro/lib/check_libsvx680li.so ...: ok
 -rwxr-xr-x  1 raul users 17301776 2005-01-11 13:18 ../unxlngi4.pro/lib/libsvx680li.so
-------------------------------
+-----------------------------------------------
 Making: ../unxlngi4.pro/lib/svx.lib
 no ImportLibs on Mac and *ix
--------------
+-----------------------------------------------
+</pre>
 
-Yes! :-) Our new library is linked and ready for action! There are two potential
+<p>Yes! :-) Our new library is linked and ready for action! There are two potential
 problems here, the first one being that the library being linked to being in
 the path that the linker looks in for the first stage where the linking is done.
 The second is that Checking DLL .. is the checkdll.sh which loads the newly
@@ -187,30 +226,31 @@ So if the library being linked to is some odd location with the linker given to
 the path to it, the same path needs to be in the LD_LIBARY_PATH as well so that
 it can be loaded up in the next step.
 
-So we launch soffice to execute our new code path/library and ka-boom! It
+<p>So we launch soffice to execute our new code path/library and ka-boom! It
 crashes :-( That's because we have our new library linked in, but the OOo
 installation from which we run soffice is not aware of it at all whatsoever.
 Trying out 'ldd soffice.bin' or 'ldd libsvx680li.so' will show up the new
 library as not found.
 
-There are two ways to fix this up, we could include LD_LIBRARY_PATH to look
+<p>There are two ways to fix this up, we could include LD_LIBRARY_PATH to look
 for our new library, or we could copy it over into the installation as well.
 Whichever way, we are done and can see our "Hello, World!" intact :-) That is
 one entertaining hello world program now, ain't it ? :-)
 
-And are we done yet ? :-) Nope :-) We have one last thing - instead of copying
+<p>And are we done yet ? :-) Nope :-) We have one last thing - instead of copying
 over the library, it would be a lot cooler if we could include it in the
 installation so that it can take care of ensuring that our library is present
 when it runs, and then we can link that library to our build area to continue
 our hacking as the Hacker's Guide lays it out. So let's do just that :-)
 
-The packaging of the OOo files is done in the top-level scp2/ project which
+<p>The packaging of the OOo files is done in the top-level scp2/ project which
 specifies which files to package and what treatment they require in a long list
 of scp files. What we do is the usual - we look for a promising suspect and
 clone it :-D So we do:
 
---- scp2/source/ooo/file_library_ooo.scp	2004-12-21 14:49:11.000000000 +0530
-+++ scp2/source/ooo/file_library_ooo.scp	2004-12-24 10:11:44.343252931 +0530
+<pre>
+--- scp2/source/ooo/file_library_ooo.scp        2004-12-21 14:49:11.000000000 +0530
++++ scp2/source/ooo/file_library_ooo.scp        2004-12-24 10:11:44.343252931 +0530
 @@ -458,6 +458,15 @@ File gid_File_Lib_Db_Cxx
  End
  #endif
@@ -222,32 +262,40 @@ clone it :-D So we do:
 +    Dir = gid_Dir_Program;
 +    Name = STRING(CONCAT4(libhworld,OFFICEUPD,DLLSUFFIX,UNXSUFFIX));
 +End
-+#endif
++endif
 +
  #endif
  
  STD_UNO_LIB_FILE( gid_File_Lib_Dba, dba)
+</pre>
 
-And this time we know how it works. So after we do a 'build' in the directory,
+<p>And this time we know how it works. So after we do a 'build' in the directory,
 we do a 'deliver' so that the solver/ directory is updated with the new list
 of files to package. And this time, we run the installation, we'll have the
 library installed as well :-)
 
-As for making the new helloworld/ project built as part of the rest of the
+<p>As for making the new helloworld/ project built as part of the rest of the
 projects, we just need to make the postprocess/ top-level project dependent on
 this project being built by adding the project name to the long list of projects
 that it is dependent on and the build procedure will take care of it. phew! :-)
 
-[ Joerg Barfurth corrects: If you are using your library in svx, then the proper
+<p>[ Joerg Barfurth corrects: If you are using your library in svx, then the proper
 way to make it part of the global build is of course to add it to the 
 dependencies of svx (in svx/prj/build.lst). Only if the output of your new
 module is not used by any other module at build time (i.e does not export
 headers or import libraries, for example e.g. if it only creates a UNO
 component) then postprocess/ is the one to use. ]
 
-And then, we are done! :-)
+<p>And then, we are done! :-)
 
--------------------------------------------------------------------------------
+<hr>
 
-<a href="helloworld-ooo-style.diff.txt">helloworld-ooo-style.diff</a>                                             Next: <a href="uno.html">uno</a>
-</h4></pre></html>
+<table width=100%>
+ <tr>
+  <td align="left"><a href="helloworld-ooo-style.diff.txt">helloworld-ooo-style.diff</a></td>
+  <td align="right">Next: <a href="uno.html">uno</a></td>
+ </tr> 
+</table>
+
+</body>
+</html>

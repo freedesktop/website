@@ -1,193 +1,230 @@
-<html><pre><h4>
-You know UNO ?                                                            <a href="help.html">Help!</a>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>You know UNO ?</title>
+<meta name="generator" content="HTML::TextToHTML v2.43">
+</head>
+<body>
 
--------------------------------------------------------------------------------
+<table width=100%>
+ <tr>
+  <td align="left">You know UNO ?</td>
+  <td align="right"><a href="help.html">Help!</a></td>
+ </tr> 
+</table>
 
-[ The last set of tutorials had introduced a new top-level project
+<hr>
+
+<p>[ The last set of tutorials had introduced a new top-level project
 'helloworld' and presented how it is built into a library and then invoked
 from a different top-level project. This continues from that point onwards. ]
 
-So we continue right where we left it off when we use our new library from the
+<p>So we continue right where we left it off when we use our new library from the
 svx/ charmap dialog. So we have introuced a new project, but now to make it
 interesting further by working it up the way most of the OOo code is organized 
 - as a UNO component!
 
-UNO components are typically called 'services', and Services implement
+<p>UNO components are typically called 'services', and Services implement
 'interface's. So we pick the tiniest of Interfaces that we can work with -
 XExecutableDialog, with all of two methods specified: execute() and
 setTitle() and decide that this is the interface that we will implement as our
 helloworld Service. The first thing is to modify the header file:
 
---- helloworld/inc/helloworld.hxx	2005-07-20 13:17:57.504281011 +0530
-+++ helloworld/inc/helloworld.hxx	2005-07-20 13:26:05.653411957 +0530
+<pre>
+--- helloworld/inc/helloworld.hxx       2005-07-20 13:17:57.504281011 +0530
++++ helloworld/inc/helloworld.hxx       2005-07-20 13:26:05.653411957 +0530
 +#ifndef _COM_SUN_STAR_UI_DIALOGS_XEXECUTABLEDIALOG_HPP_
-+#include <com/sun/star/ui/dialogs/XExecutableDialog.hpp>
++#include &lt;com/sun/star/ui/dialogs/XExecutableDialog.hpp&gt;
 +#endif
 
  namespace hello {
  
- 	namespace world {
+        namespace world {
  
--	class HelloWorld {
-+	class HelloWorld : public WeakImplHelper1< XExecutableDialog > {
+-       class HelloWorld {
++       class HelloWorld : public WeakImplHelper1&lt; XExecutableDialog &gt; {
 +
-+		Reference< XMultiServiceFactory > _xServiceManager;
- 
- 	public:
- 
-+		virtual void SAL_CALL setTitle( const OUString& aTitle ) 
-+			throw( RuntimeException );
-+
-+		virtual sal_Int16 SAL_CALL execute( ) 
-+			throw( RuntimeException );
-+
-+		HelloWorld( const Reference< XMultiServiceFactory > & xServiceManager );
-+
- 		void adios();
- 
- 		};
++               Reference&lt; XMultiServiceFactory &gt; _xServiceManager;
+  
+    public:
 
-Every interface has a header file that we include first, and then use help
++               virtual void SAL_CALL setTitle( const OUString&amp; aTitle ) 
++                       throw( RuntimeException );
++
++               virtual sal_Int16 SAL_CALL execute( ) 
++                       throw( RuntimeException );
++
++               HelloWorld( const Reference&lt; XMultiServiceFactory &gt; &amp; xServiceManager );
++
+                void adios();
+ 
+                };
+</pre>
+
+<p>Every interface has a header file that we include first, and then use help
 from the WeakImplHelper1 to manage our service better. Then we specify the
 methods in the interface that we implement - every method in the interface
 needs to be implemented since they are all virtual. The ServiceManager
 reference is passed in to all components, which we also retain.
 
-Then we flesh out the body of the methods in the component:
+<p>Then we flesh out the body of the methods in the component:
 
---- helloworld/source/helloworld.cxx	2005-07-20 13:18:55.965713320 +0530
-+++ helloworld/source/helloworld.cxx	2005-07-20 13:33:52.756043677 +0530
+<pre>
+--- helloworld/source/helloworld.cxx    2005-07-20 13:18:55.965713320 +0530
++++ helloworld/source/helloworld.cxx    2005-07-20 13:33:52.756043677 +0530
 +// XExecutableDialog Methods
-+void SAL_CALL HelloWorld::setTitle( const OUString& rTitle ) throw( RuntimeException )
++void SAL_CALL HelloWorld::setTitle( const OUString&amp; rTitle ) throw( RuntimeException )
 +{
-+	fprintf( stderr, "HelloWorld::setTitle: %s\n", OU2A( rTitle ) );
++       fprintf( stderr, "HelloWorld::setTitle: %s\n", OU2A( rTitle ) );
 +}
 +
 +sal_Int16 SAL_CALL HelloWorld::execute() throw( RuntimeException )
 +{
-+	fprintf( stderr, "HelloWorld::execute\n" );
++       fprintf( stderr, "HelloWorld::execute\n" );
 +}
+</pre>
 
-The real idea of the interface is really to launch a dialog and operate it
+<p>The real idea of the interface is really to launch a dialog and operate it
 till it is shutdown. We'll just output a simple string just to keep the patch
 short :-)
 
-[ While we're here, since we hit an OUString that is used throughout OOo,
+<p>[ While we're here, since we hit an OUString that is used throughout OOo,
 let's just drop in the OU2A macro:
 
+<pre>
 +#define OU2A(rtlOUString)  (::rtl::OUStringToOString((rtlOUString), RTL_TEXTENCODING_ASCII_US).getStr())
+</pre>
 
-since that comes in handy a lot of the time :-)]
+<p>since that comes in handy a lot of the time :-)]
 
-Then we need to implement a function that takes in the ServiceManager as a
+<p>Then we need to implement a function that takes in the ServiceManager as a
 parameter and instantiates our object that implements the service:
 
---- helloworld/source/helloworld.cxx	2005-07-20 13:18:55.965713320 +0530
-+++ helloworld/source/helloworld.cxx	2005-07-20 13:33:52.756043677 +0530
+<pre>
+--- helloworld/source/helloworld.cxx    2005-07-20 13:18:55.965713320 +0530
++++ helloworld/source/helloworld.cxx    2005-07-20 13:33:52.756043677 +0530
 +// UNO component instantiator class
-+Reference< XInterface > createHelloWorld(
-+	const Reference< XMultiServiceFactory > & xMgr )
++Reference&lt; XInterface &gt; createHelloWorld(
++       const Reference&lt; XMultiServiceFactory &gt; &amp; xMgr )
 +{
-+	return Reference< XInterface >( static_cast< XExecutableDialog* >( new HelloWorld( xMgr ) ) );
++       return Reference&lt; XInterface &gt;( static_cast&lt; XExecutableDialog* &gt;( new HelloWorld( xMgr ) ) );
 +}
+</pre>
 
-And in order to keep track of the ServiceManager, we include a corresponding
+<p>And in order to keep track of the ServiceManager, we include a corresponding
 constructor for our class:
 
---- helloworld/source/helloworld.cxx	2005-07-20 13:18:55.965713320 +0530
-+++ helloworld/source/helloworld.cxx	2005-07-20 13:33:52.756043677 +0530
-+HelloWorld::HelloWorld( const Reference< XMultiServiceFactory > & xServiceManager )
-+	: _xServiceManager( xServiceManager )
+<pre>
+--- helloworld/source/helloworld.cxx    2005-07-20 13:18:55.965713320 +0530
++++ helloworld/source/helloworld.cxx    2005-07-20 13:33:52.756043677 +0530
++HelloWorld::HelloWorld( const Reference&lt; XMultiServiceFactory &gt; &amp; xServiceManager )
++       : _xServiceManager( xServiceManager )
 +{
 +}
+</pre>
 
-That takes care of the operation of the component entirely. Now to fill in the
+<p>That takes care of the operation of the component entirely. Now to fill in the
 pieces the UNO environment needs for operation:
 
---- helloworld/source/helloworld.cxx	2005-07-20 13:18:55.965713320 +0530
-+++ helloworld/source/helloworld.cxx	2005-07-20 13:33:52.756043677 +0530
+<pre>
+--- helloworld/source/helloworld.cxx    2005-07-20 13:18:55.965713320 +0530
++++ helloworld/source/helloworld.cxx    2005-07-20 13:33:52.756043677 +0530
 +void SAL_CALL component_getImplementationEnvironment(
-+	const sal_Char ** ppEnvTypeName, uno_Environment ** ppEnv )
++       const sal_Char ** ppEnvTypeName, uno_Environment ** ppEnv )
 +{
-+	*ppEnvTypeName = CPPU_CURRENT_LANGUAGE_BINDING_NAME;
++       *ppEnvTypeName = CPPU_CURRENT_LANGUAGE_BINDING_NAME;
 +}
+</pre>
 
-This function specifies the environment of the component, which in this case
+<p>This function specifies the environment of the component, which in this case
 specifies the C++ component environment as opposed to the others.
 
---- helloworld/source/helloworld.cxx	2005-07-20 13:18:55.965713320 +0530
-+++ helloworld/source/helloworld.cxx	2005-07-20 13:33:52.756043677 +0530
+<pre>
+--- helloworld/source/helloworld.cxx    2005-07-20 13:18:55.965713320 +0530
++++ helloworld/source/helloworld.cxx    2005-07-20 13:33:52.756043677 +0530
 +sal_Bool SAL_CALL component_writeInfo( void* pServiceManager, void* pRegistryKey )
 +{
-+	if ( pRegistryKey )
-+	{
-+		Reference< XRegistryKey > xNewKey( reinterpret_cast< XRegistryKey * >( pRegistryKey )->createKey(
-+			OUString( RTL_CONSTASCII_USTRINGPARAM("/org.openoffice.world.hello/UNO/SERVICES") ) ) );
-+		xNewKey->createKey( OUString( RTL_CONSTASCII_USTRINGPARAM("org.openoffice.helloWorld") ) );
-+		return sal_True;
-+	}
-+	return sal_False;
++       if ( pRegistryKey )
++       {
++               Reference&lt; XRegistryKey &gt; xNewKey( reinterpret_cast&lt; XRegistryKey * &gt;( pRegistryKey )-&gt;createKey(
++                       OUString( RTL_CONSTASCII_USTRINGPARAM("/org.openoffice.world.hello/UNO/SERVICES") ) ) );
++               xNewKey-&gt;createKey( OUString( RTL_CONSTASCII_USTRINGPARAM("org.openoffice.helloWorld") ) );
++               return sal_True;
++       }
++       return sal_False;
 +}
+</pre>
 
-This portion is used to register the component - to write the information
+<p>This portion is used to register the component - to write the information
 about the component into a registry. It says that the name of the service is
 "org.openoffice.helloWorld" and the service implementation has the name
 "org.openoffice.world.hello". Because of this what happens is that when
 someone queries for the service name, first the name of the implementation is
 given to them for further action.
 
---- helloworld/source/helloworld.cxx	2005-07-20 13:18:55.965713320 +0530
-+++ helloworld/source/helloworld.cxx	2005-07-20 13:33:52.756043677 +0530
+<pre>
+--- helloworld/source/helloworld.cxx    2005-07-20 13:18:55.965713320 +0530
++++ helloworld/source/helloworld.cxx    2005-07-20 13:33:52.756043677 +0530
 +void * SAL_CALL component_getFactory(
-+	const sal_Char * pImplName, void * pServiceManager, void * pRegistryKey )
++       const sal_Char * pImplName, void * pServiceManager, void * pRegistryKey )
 +{
-+	void * pRet = 0;
-+	if (pServiceManager && !rtl_str_compare( pImplName, "org.openoffice.world.hello" ))
-+	{
-+		OUString aServiceName( RTL_CONSTASCII_USTRINGPARAM("org.openoffice.helloWorld") );
-+		Reference< XSingleServiceFactory > xFactory(
-+			createSingleFactory(
-+				reinterpret_cast< XMultiServiceFactory * >( pServiceManager ),
-+				OUString::createFromAscii( pImplName ),
-+				createHelloWorld,
-+				Sequence< OUString >( &aServiceName, 1 ) ) );
-+		if (xFactory.is())
-+		{
-+			xFactory->acquire();
-+			pRet = xFactory.get();
-+		}
-+	}
-+	return pRet;
++       void * pRet = 0;
++       if (pServiceManager &amp;&amp; !rtl_str_compare( pImplName, "org.openoffice.world.hello" ))
++       {
++               OUString aServiceName( RTL_CONSTASCII_USTRINGPARAM("org.openoffice.helloWorld") );
++               Reference&lt; XSingleServiceFactory &gt; xFactory(
++                       createSingleFactory(
++                               reinterpret_cast&lt; XMultiServiceFactory * &gt;( pServiceManager ),
++                               OUString::createFromAscii( pImplName ),
++                               createHelloWorld,
++                               Sequence&lt; OUString &gt;( &amp;aServiceName, 1 ) ) );
++               if (xFactory.is())
++               {
++                       xFactory-&gt;acquire();
++                       pRet = xFactory.get();
++               }
++       }
++       return pRet;
 +}
+</pre>
 
-This function is what is executed when someone queries for a factory that can
+<p>This function is what is executed when someone queries for a factory that can
 create an instance of the component that contains the implementation that the
 registry specifies. What it says is that if someone queries for the
 implementation our component provides - "org.openoffice.world.hello", then
 return a factory to them with the name of the instantiating function which
 here is 'createHelloWorld'.
 
-These 3 functions are enclosed in an extern "C" so that the binary interface
+<p>These 3 functions are enclosed in an extern "C" so that the binary interface
 is exported without C++ mangling of the function names, and our component is
 ready to be built with one more change:
 
---- helloworld/source/makefile.mk	2005-07-20 13:15:10.908549636 +0530
-+++ helloworld/source/makefile.mk	2005-07-09 17:20:38.000000000 +0530
+<pre>
+--- helloworld/source/makefile.mk       2005-07-20 13:15:10.908549636 +0530
++++ helloworld/source/makefile.mk       2005-07-09 17:20:38.000000000 +0530
 @@ -15,6 +15,8 @@ SLOFILES=\
  
- SHL1TARGET= 	hworld$(UPD)$(DLLPOSTFIX)
+ SHL1TARGET=    hworld$(UPD)$(DLLPOSTFIX)
  SHL1LIBS=       $(SLB)$/helloworld.lib
 +SHL1STDLIBS=\
-+	$(CPPUHELPERLIB) 
++       $(CPPUHELPERLIB)
  
  # --- Targets ----------------------------------
  
+</pre>
 
-Voila! That builds our shining new UNO helloworld component for us, all ready
+<p>Voila! That builds our shining new UNO helloworld component for us, all ready
 and waiting for action, so we shift gears in the charmap dialog and invoke our
 method UNO style.
 
--------------------------------------------------------------------------------
+<hr>
 
-<a href="helloworld-uno-style.diff.txt">helloworld-uno-style.diff</a>                                       Next: <a href="component.html">component</a>
-</h4></pre></html>
+<table width=100%>
+ <tr>
+  <td align="left"><a href="helloworld-uno-style.diff.txt">helloworld-uno-style.diff</a></td>
+  <td align="right">Next: <a href="component.html">component</a></td>
+ </tr> 
+</table>
+
+</body>
+</html>
