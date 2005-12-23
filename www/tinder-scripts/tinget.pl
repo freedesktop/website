@@ -1,5 +1,16 @@
 #!/usr/bin/perl -w
 
+# tinget.pl - perl script to "refresh" the workspace directory
+#
+# Version 0.2 - 22.12.2005
+#
+# Syntax (all four parameters are needed):
+# tinget.pl ws buildlog src_path {co|up|cont|clean}
+#  ws          - See tinder-main.pl.
+#  buildlog    - logfile name
+#  src_path    - See tinder-main.pl.
+#  {co|up|cont|clean} - See tin-main.pl.
+
 my $tree = shift;
 my $log = shift;
 my $builddir = shift;
