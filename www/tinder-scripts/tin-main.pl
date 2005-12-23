@@ -27,7 +27,6 @@ use tinsend;
 
 # Get parameter
 
-# Name for the build "OOo W32-MSVC6" or "OOo W32-NET2002"
 $tinderbuildname = "$ARGV[0]";
 if ( "$tinderbuildname" eq "" ) {
     die "No tinderbuildname";
@@ -65,7 +64,7 @@ print("Buildnamepara: ".$tinderbuildname."\nOOo srcpath: ".$ooosrcpath."\nBuildt
 $tinsend::BUILDNAME = $tinderbuildname;
 
 # -- Things to tweak --
-$tinsend::FROMADDRESS = 'Volker Quetschke <quetschke@scytek.de>';
+$tinsend::FROMADDRESS = 'OOo Builder <me@here.com>';
 
 ## Choose the correct smtp settings:
 # -- smtpserver without password --
