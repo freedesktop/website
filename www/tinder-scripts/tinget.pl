@@ -26,7 +26,7 @@ $BUILD_TAG_BASE = 'http://go-oo.org/tinderbox/tags/';
 $BUILD_TAG_NAME = 'tag-list';
 $BUILD_MASTER_TAG_NAME = 'tag-latest-master-list';
 
-my $cvshost="vq\@localhost";
+my $cvshost="anoncvs\@anoncvs.services.openoffice.org";
 
 sub log_msg($@)
 {
