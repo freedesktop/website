@@ -3,7 +3,7 @@
 # tinsend.pm - perl module to simplify the submission of
 # compressed tinderbox logfiles.
 #
-# Version 0.2 - 2004.08.27
+# Version 0.3 - 22.12.2005
 
 package tinsend;
 
