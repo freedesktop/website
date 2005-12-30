@@ -3,7 +3,7 @@
 # tinbuild.sh - The build script that starts the build and captures the
 # logfile
 #
-# Version 0.2 - 22.12.2005
+# Version 0.3 - 30.12.2005
 #
 # Syntax:
 # tinbuild.sh ws buildlog src_path
@@ -103,8 +103,8 @@ echo $BUILDSTART >> $logfile
 BUILDSTARTSEC=`date +%s`
 
 cd $builddir
-source winenv.set.sh >> $logfile 2>&1 || touch $logfile.err
 ./bootstrap >> $logfile 2>&1 || touch $logfile.err
+source winenv.set.sh >> $logfile 2>&1 || touch $logfile.err
 if [ -e $logfile.err ]; then
   exit 1
 fi
