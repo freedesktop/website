@@ -137,6 +137,9 @@ my @cwsmodules;
 my %incws;
 my $mastertag;
 if( $cwsname !~ /^\w\w\w680_m/ ) {
+    if( !defined($cws_table{$cwsname}) ) {
+        die("\nThe requested CWS name [$cwsname] does not exist! Aborting ...\n");
+    }
     $cwstag=$cws_table{$cwsname}->{'cws_tag'};
     @cwsmodules = split / /, $cws_table{$cwsname}->{'modules'};
     for (@cwsmodules) { $incws{$_} = 1 }
