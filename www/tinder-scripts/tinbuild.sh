@@ -3,7 +3,7 @@
 # tinbuild.sh - The build script that starts the build and captures the
 # logfile
 #
-# Version 0.3 - 30.12.2005
+# Version 0.4 - 09.02.2006
 #
 # Syntax:
 # tinbuild.sh ws buildlog src_path
@@ -24,7 +24,7 @@ if [ "$2" = "" ]; then
   exit 1
 fi
 echo Writing log to: $logfile
-echo Logfile name: $logfile > $logfile
+echo Logfile name: $logfile >> $logfile
 
 builddir=$3
 if [ "$3" = "" ]; then
@@ -74,7 +74,7 @@ buildmoz=""
 crashdump=""
 #crashdump="--enable-crashdump"
 #languages=""
-languages="--with-lang=de"
+languages="--with-lang=de en-GB"
 
 jdk_home="/cygdrive/c/j2sdk1.4.2_05"
 
@@ -84,7 +84,7 @@ jdk_home="/cygdrive/c/j2sdk1.4.2_05"
   --with-ant-home=/cygdrive/c/apache-ant-1.6.5 \
   --with-csc-path=/cygdrive/c/WINDOWS/Microsoft.NET/Framework/v1.1.4322 \
   --with-build-version="W32-tcsh on opti" \
- && exit 1
+ || touch $logfile.err
 
 # -- End of Things to tweak --
 
