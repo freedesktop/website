@@ -2,7 +2,7 @@
 
 # tinget.pl - perl script to "refresh" the workspace directory
 #
-# Version 0.2 - 22.12.2005
+# Version 0.3 - 24.02.2006
 #
 # Syntax (all four parameters are needed):
 # tinget.pl ws buildlog src_path {co|up|cont|clean}
@@ -56,11 +56,10 @@ sub cvs_op($$)
 
 
     if( $do_up eq "co") {
-        $cmd="cvs -z3 -d :pserver:".$cvshost.":/cvs co -r$tag $subdir >> $log.up 2>> $log.uperr ; true 1";
-# Workaround! remove true 1
+        $cmd="cvs -z3 -d :pserver:".$cvshost.":/cvs co -r$tag $subdir >> $log.up 2>> $log.uperr";
         $cmd2="";
     } elsif( $do_up eq "up") {
-        $cmd="mkdir -p $subdir && cd $subdir && cvs -z3 -d :pserver:".$cvshost.":/cvs up -r$tag -dPRC -I ! -I CVS > $log.clean 2>> $log.uperr ; true";
+        $cmd="mkdir -p $subdir && cd $subdir && cvs -z3 -d :pserver:".$cvshost.":/cvs up -r$tag -dPRC -I ! -I CVS > $log.clean 2>> $log.uperr";
         $cmd2="cd $subdir && awk '{ if ( \$1 == \"?\" ) { system( \"{ echo loesche:\"\$2\": ; rm -rf \"\$2\" ; }\" ) } else { print \$0 } }' $log.clean >> $log.up 2>> $log.uperr";
     } elsif( $do_up eq "clean") {
         $cmd="rm -rf $subdir/wntmsci*.pro >> $log.up 2>> $log.uperr";
@@ -90,6 +89,7 @@ sub cvs_op($$)
 	    log_msg ($log.'.up', "cvs $do_up in $subdir succeeded\n");
 	    return 1;
       }
+      sleep(30);
     }
   }
 

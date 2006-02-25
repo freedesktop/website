@@ -2,7 +2,7 @@
 
 # tinprep.sh - Prepare the workspace.
 #
-# Version 0.1 - 22.12.2005
+# Version 0.2 - 24.02.2006
 #
 # Syntax:
 # tinprep.sh src_path
@@ -21,18 +21,18 @@ fi
 # can go into this file. Currently the commands here show an example for a
 # Windows build configuration.
 
+patdir="/cygdrive/d/w1/ooopatches"
 cd $builddir
 
 # Copy some files that are needed for the build
-cp ../ooopatches/unicows/unicows.dll external/unicows/
-cp ../ooopatches/dbghelp/dbghelp.dll external/dbghelp/
-cp -rf ../ooopatches/gpc external/
-cp ../ooopatches/moz/mozilla-source-1.7.5.tar.gz moz/download/
-cp ../ooopatches/moz/vc71-glib-1.2.10-bin.zip moz/download/
-cp ../ooopatches/moz/vc71-libIDL-0.6.8-bin.zip moz/download/
-cp ../ooopatches/moz/wintools.zip moz/download/
+cp ${patdir}/unicows/unicows.dll external/unicows/
+cp ${patdir}/dbghelp/dbghelp.dll external/dbghelp/
+cp -rf ${patdir}/gpc external/
+cp --preserve=timestamps ${patdir}/moz/mozilla-source-1.7.5.tar.gz moz/download/
+cp --preserve=timestamps ${patdir}/moz/vc71-glib-1.2.10-bin.zip moz/download/
+cp --preserve=timestamps ${patdir}/moz/vc71-libIDL-0.6.8-bin.zip moz/download/
+cp --preserve=timestamps ${patdir}/moz/wintools.zip moz/download/
 
-cp -rf ../ooopatches/zipped moz/
+cp -rf --preserve=timestamps ${patdir}/zipped moz/
 
-cp -rf ../ooopatches/msvcp71 external/
-
+cp -rf --preserve=timestamps ${patdir}/msvcp71 external/

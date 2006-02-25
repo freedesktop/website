@@ -2,7 +2,7 @@
 
 # tin-main.pl - Main perl program to send reports to the tinderbox.
 #
-# Version 0.2 - 22.12.2005
+# Version 0.3 - 24.02.2006
 #
 # Syntax (all five parameters are needed):
 # tin-main.pl buildstring src_path ws {co|up|cont|clean} {send|nosend}
@@ -119,10 +119,9 @@ sub build_one {
     logprint("--------------------------------------------------\n");
     logprint($CVSSTARTTIME);
 
+    $status = 'success';
     if (system ("./tinget.pl $tree $buildlog $sourcedir $ws_cmd")) {
 	$status = 'ws_cmd_failed';
-    } else {
-	$status = 'success';
     }
     logprint("tinget.pl ended at: ".qx(date +%T)." with: $status\n");
     logprint("--------------------------------------------------\n");
@@ -130,17 +129,14 @@ sub build_one {
     logprint("Preparing, running tinprep.sh ...\n");
     if ($status eq 'success' and system ("./tinprep.sh $sourcedir >> $buildlog 2>&1")) {
 	$status = 'something_failed';
-    } else {
-	$status = 'success';
     }
+
     logprint("tinprep.sh ended with: $status\n");
     logprint("--------------------------------------------------\n");
 
     logprint("Building ... (log: $buildlog)\n");
     if ($status eq 'success' and system ("./tinbuild.sh $tree $buildlog $sourcedir")) {
 	$status = 'build_failed';
-    } else {
-	$status = 'success';
     }
 
     $err = "";
