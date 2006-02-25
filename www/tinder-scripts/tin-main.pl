@@ -2,7 +2,7 @@
 
 # tin-main.pl - Main perl program to send reports to the tinderbox.
 #
-# Version 0.3 - 24.02.2006
+# Version 0.4 - 25.02.2006
 #
 # Syntax (all five parameters are needed):
 # tin-main.pl buildstring src_path ws {co|up|cont|clean} {send|nosend}
@@ -140,6 +140,10 @@ sub build_one {
     }
 
     $err = "";
+    if( $status ne "success" ) {
+        # The tinderbox needs this status.
+        $status = 'build_failed';
+    }
     do {
         $err=tinsend::mailsend ($status, $tree, $starttime, "Mailbody for mail with logfile\n", $buildlog) if ( $REALLYSEND ) ;
         if($err){
