@@ -2,7 +2,7 @@
 
 # tinget.pl - perl script to "refresh" the workspace directory
 #
-# Version 0.3 - 24.02.2006
+# Version 0.4 - 25.02.2006
 #
 # Syntax (all four parameters are needed):
 # tinget.pl ws buildlog src_path {co|up|cont|clean}
@@ -42,7 +42,7 @@ sub log_msg($@)
 }
 
 sub cvs_op($$)
-  {
+{
     my $tag = shift;
     my $subdir = shift;
     my $count = 0;
@@ -54,17 +54,27 @@ sub cvs_op($$)
     log_msg ($log.'.uperr', "Starting cvs $do_up in $subdir with $tag ...\n");
     print("Starting cvs $do_up in $subdir with $tag ...\n");
 
+    if( $subdir eq "xmerge" && -d "$subdir/java/org" ) {
+	log_msg ($log, "WARNING: Found xmerge/java/, see iz62573, removed.\n");
+	qx{rm -rf "$subdir/java"};
+    }
 
-    if( $do_up eq "co") {
+    # If there is no CVS dir do a "co" instead of "up"
+    if ( $do_up eq "up" and (! -d "$subdir/CVS") ) {
+        log_msg ($log, "WARNING: $subdir missing, cvs up not possible, doing cvs co.\n");
+        $do_up = "co";
+    }
+
+    if ( $do_up eq "co") {
         $cmd="cvs -z3 -d :pserver:".$cvshost.":/cvs co -r$tag $subdir >> $log.up 2>> $log.uperr";
         $cmd2="";
-    } elsif( $do_up eq "up") {
-        $cmd="mkdir -p $subdir && cd $subdir && cvs -z3 -d :pserver:".$cvshost.":/cvs up -r$tag -dPRC -I ! -I CVS > $log.clean 2>> $log.uperr";
+    } elsif ( $do_up eq "up") {
+        $cmd="cd $subdir && cvs -z3 -d :pserver:".$cvshost.":/cvs up -r$tag -dPRC -I ! -I CVS > $log.clean 2>> $log.uperr";
         $cmd2="cd $subdir && awk '{ if ( \$1 == \"?\" ) { system( \"{ echo loesche:\"\$2\": ; rm -rf \"\$2\" ; }\" ) } else { print \$0 } }' $log.clean >> $log.up 2>> $log.uperr";
-    } elsif( $do_up eq "clean") {
+    } elsif ( $do_up eq "clean") {
         $cmd="rm -rf $subdir/wntmsci*.pro >> $log.up 2>> $log.uperr";
         $cmd2="";
-    } elsif( $do_up eq "cont") {
+    } elsif ( $do_up eq "cont") {
         $cmd="";
         $cmd2="";
     } else {
@@ -73,23 +83,29 @@ sub cvs_op($$)
 
     while (1) {
       $count++;
+
+      if ( $cmd eq "" && $cmd2 eq "" ) {
+	    log_msg ($log.'.up', "Nothing to do in $subdir\n");
+	    return 1;
+      }
+
       if ( $cmd && system ($cmd)) {
 	    if ($count < 5) {
-          log_msg ($log, "WARNING: $do_up failed, retrying $count\n");
+          log_msg ($log, "WARNING: $do_up in $subdir failed, retrying $count\n");
 	    } else {
-          log_msg ($log, "ERROR: $do_up failed, retry limit reached\n");
+          log_msg ($log, "ERROR: $do_up in $subdir failed, retry limit reached\n");
+          sleep(30);
           return 0;
 	    }
       } else {
           if ( $cmd2 && system ($cmd2) ) {
-              log_msg ($log, "ERROR: $do_up / $cmd2 failed\n");
+              log_msg ($log, "ERROR: $do_up / $cmd2 in $subdir failed\n");
+              sleep(30);
               return 0;
           }
-
 	    log_msg ($log.'.up', "cvs $do_up in $subdir succeeded\n");
 	    return 1;
       }
-      sleep(30);
     }
   }
 
