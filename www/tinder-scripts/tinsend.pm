@@ -3,7 +3,7 @@
 # tinsend.pm - perl module to simplify the submission of
 # compressed tinderbox logfiles.
 #
-# Version 0.3 - 22.12.2005
+# Version 0.4 - 31.05.2006
 
 package tinsend;
 
@@ -21,7 +21,7 @@ $SMTPSERVER = 'smtpserver.without_pw.org';
 $SMTPAUTHID = '';
 $SMTPAUTHPW = '';
 
-$TINDER_DEST = 'ooo@ooo.ximian.com';
+$TINDER_DEST = 'ooo@go-oo.org';
 
 ############################################
 # Functions

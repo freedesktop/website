@@ -2,7 +2,7 @@
 
 # tinget.pl - perl script to "refresh" the workspace directory
 #
-# Version 0.4 - 25.02.2006
+# Version 0.5 - 25.06.2006
 #
 # Syntax (all four parameters are needed):
 # tinget.pl ws buildlog src_path {co|up|cont|clean}
@@ -27,6 +27,7 @@ $BUILD_TAG_NAME = 'tag-list';
 $BUILD_MASTER_TAG_NAME = 'tag-latest-master-list';
 
 my $cvshost="anoncvs\@anoncvs.services.openoffice.org";
+#my $cvshost="<ooo-login>\@localhost";
 
 sub log_msg($@)
 {
@@ -49,6 +50,8 @@ sub cvs_op($$)
 
     my $cmd;
     my $cmd2;
+
+    my $retval;
 
     log_msg ($log.'.up', "Starting cvs $do_up in $subdir with $tag ...\n");
     log_msg ($log.'.uperr', "Starting cvs $do_up in $subdir with $tag ...\n");
@@ -89,7 +92,21 @@ sub cvs_op($$)
 	    return 1;
       }
 
-      if ( $cmd && system ($cmd)) {
+      if ( $cmd ) {
+          $retval = system ($cmd);
+      } else {
+          $retval = 0;
+      }
+
+      # Try again if the problem came from:
+      # cvs update: conflict: xxx is modified but no longer in the repository
+      if ( $retval ) {
+          if ( system( "egrep '^C .+' $log.clean" ) == 0 ) {
+              system("cd $subdir && awk '{ if ( \$1 == \"C\" ) { system( \"{ echo loesche:\"\$2\": ; rm -rf \"\$2\" ; }\" ) } else { print \$0 } }' $log.clean >> $log.up 2>> $log.uperr") && die "Deleting of conflicting files failed!";
+          }
+      }
+
+      if ( $retval ) {
 	    if ($count < 5) {
           log_msg ($log, "WARNING: $do_up in $subdir failed, retrying $count\n");
 	    } else {
@@ -167,9 +184,12 @@ if( $cwsname !~ /^\w\w\w680_m/ ) {
     $mastertag = $cwsname;
 }
 
-# Just use some key of the mws hash. It's not guaranteed that the mws
-# that belongs to the cws is included in the 3 element mws list
+# Just use some (the first) key of the mws hash. It's not guaranteed that
+# the mws that belongs to the cws is included in the 3 element mws list
 my $mastercolist = each %mws_table;
+if( !defined($mastercolist) ) {
+    die("\nNo MWS list present - check http://go-oo.org/tinderbox/tags/tag-latest-master-list");
+}
 #print $mastertag;
 
 my @mwsmodules = split / /, $mws_table{$mastercolist}->{'modules'};

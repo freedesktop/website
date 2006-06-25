@@ -2,9 +2,9 @@
 
 # tin-main.pl - Main perl program to send reports to the tinderbox.
 #
-# Version 0.4 - 25.02.2006
+# Version 0.5 - 25.06.2006
 #
-# Syntax (all five parameters are needed):
+# Syntax (first five parameters are needed, the sixth is optional):
 # tin-main.pl buildstring src_path ws {co|up|cont|clean} {send|nosend}
 #  buildstring - Name that will appear in the tinderbox
 #  src_path    - Pointing to source to be used
@@ -18,6 +18,7 @@
 #                with current repo, and clean removes all wntmsci10.pro
 #                before rebuilding. (Needs pacthing for UNX ;) )
 #  send|nosend - send the logfile to the tinderbox (or not)
+#  tcsh|bash|4nt - Choose a shell (optional, default is tcsh)
 #
 # Example: ./ti-main.pl "OOoW32-(opti)" /cygdrive/d/w1/SRC680_m140 SRC680_m140 co send
 
@@ -58,7 +59,16 @@ if ( ($REALLYSEND eq "true") or ($REALLYSEND eq "send") or ($REALLYSEND eq "") )
 	$REALLYSEND = "";
 }
 
-print("Buildnamepara: ".$tinderbuildname."\nOOo srcpath: ".$ooosrcpath."\nBuildtag: ".$oootag."\nBuildtype: ".$ws_cmd."\n");
+# Choose a shell
+$buildshell = "$ARGV[5]";
+if ( "$buildshell" eq "" ) {
+    $buildshell = 'tcsh';
+}
+elsif ( "$buildshell" !~ /^tcsh$|^bash$|^4nt$/ ) {
+    die("Unknown 6th parameter: $buildshell\n");
+}
+
+print("Buildnamepara: ".$tinderbuildname."\nOOo srcpath: ".$ooosrcpath."\nBuildtag: ".$oootag."\nBuildtype: ".$ws_cmd."\nShell: ".$buildshell."\n");
 #die "end";
 
 $tinsend::BUILDNAME = $tinderbuildname;
@@ -127,7 +137,7 @@ sub build_one {
     logprint("--------------------------------------------------\n");
 
     logprint("Preparing, running tinprep.sh ...\n");
-    if ($status eq 'success' and system ("./tinprep.sh $sourcedir >> $buildlog 2>&1")) {
+    if ($status eq 'success' and system ("./tinprep.sh $sourcedir $tree $buildshell >> $buildlog 2>&1")) {
 	$status = 'something_failed';
     }
 
@@ -135,7 +145,7 @@ sub build_one {
     logprint("--------------------------------------------------\n");
 
     logprint("Building ... (log: $buildlog)\n");
-    if ($status eq 'success' and system ("./tinbuild.sh $tree $buildlog $sourcedir")) {
+    if ($status eq 'success' and system ("./tinbuild.sh $tree $buildlog $sourcedir $buildshell")) {
 	$status = 'build_failed';
     }
 

@@ -2,7 +2,7 @@
 
 # tinprep.sh - Prepare the workspace.
 #
-# Version 0.2 - 24.02.2006
+# Version 0.3 - 25.06.2006
 #
 # Syntax:
 # tinprep.sh src_path
@@ -15,6 +15,8 @@ if [ "$1" = "" ]; then
   echo First parameter is the build dir
   exit
 fi
+# Second parameter (optional): ws name
+# Third parameter (optional): shell to be used
 
 # -- Things to tweak --
 # OOo needs some things prepared before it can be build. Things like that
@@ -27,6 +29,7 @@ cd $builddir
 # Copy some files that are needed for the build
 cp ${patdir}/unicows/unicows.dll external/unicows/
 cp ${patdir}/dbghelp/dbghelp.dll external/dbghelp/
+cp ${patdir}/gdiplus/gdiplus.dll external/gdiplus/
 cp -rf ${patdir}/gpc external/
 cp --preserve=timestamps ${patdir}/moz/mozilla-source-1.7.5.tar.gz moz/download/
 cp --preserve=timestamps ${patdir}/moz/vc71-glib-1.2.10-bin.zip moz/download/
