@@ -48,6 +48,8 @@ sub cvs_op($$)
     my $subdir = shift;
     my $count = 0;
 
+    my $loc_do_up = $do_up;
+
     my $cmd;
     my $cmd2;
 
@@ -63,25 +65,27 @@ sub cvs_op($$)
     }
 
     # If there is no CVS dir do a "co" instead of "up"
-    if ( $do_up eq "up" and (! -d "$subdir/CVS") ) {
+    if ( $loc_do_up eq "up" and (! -d "$subdir/CVS") ) {
         log_msg ($log, "WARNING: $subdir missing, cvs up not possible, doing cvs co.\n");
-        $do_up = "co";
+        $loc_do_up = "co";
+        # Remove $subdir to recreate it properly.
+        qx{rm -rf "$subdir"};
     }
 
-    if ( $do_up eq "co") {
+    if ( $loc_do_up eq "co") {
         $cmd="cvs -z3 -d :pserver:".$cvshost.":/cvs co -r$tag $subdir >> $log.up 2>> $log.uperr";
         $cmd2="";
-    } elsif ( $do_up eq "up") {
+    } elsif ( $loc_do_up eq "up") {
         $cmd="cd $subdir && cvs -z3 -d :pserver:".$cvshost.":/cvs up -r$tag -dPRC -I ! -I CVS > $log.clean 2>> $log.uperr";
         $cmd2="cd $subdir && awk '{ if ( \$1 == \"?\" ) { system( \"{ echo loesche:\"\$2\": ; rm -rf \"\$2\" ; }\" ) } else { print \$0 } }' $log.clean >> $log.up 2>> $log.uperr";
-    } elsif ( $do_up eq "clean") {
+    } elsif ( $loc_do_up eq "clean") {
         $cmd="rm -rf $subdir/wntmsci*.pro >> $log.up 2>> $log.uperr";
         $cmd2="";
-    } elsif ( $do_up eq "cont") {
+    } elsif ( $loc_do_up eq "cont") {
         $cmd="";
         $cmd2="";
     } else {
-        die "Unknown parameter: $do_up";
+        die "Unknown parameter: $loc_do_up";
     }
 
     while (1) {
