@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+ 
+<head>
+<title><TMPL_VAR name></title>
+<link rel="stylesheet" href="http://planet.go-oo.org/planet.css" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="Planet OpenOffice.org - Developer News" href="http://planet.go-oo.org/rss20.xml">
+</head>
+
+<body style=" font-family: verdana">
+<div class="title"> <TMPL_VAR name></div>
+
+<div id="content">
+	<div id="blogarea">
+		<TMPL_LOOP Items>
+			<TMPL_IF new_date>
+				<div class="date"><TMPL_VAR new_date></div>
+			</TMPL_IF>
+
+			<div class="blog">
+				<div class="blog-topic">
+					<a href="<TMPL_VAR channel_link ESCAPE="HTML">" title="<TMPL_VAR channel_title ESCAPE="HTML">"><TMPL_VAR channel_name></a><TMPL_IF title> &mdash; <a href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_VAR title></a></TMPL_IF>
+				</div>
+				<div class="blog-content">
+					<TMPL_IF channel_face>
+						<img <TMPL_IF channel_facewidth>width=<TMPL_VAR channel_facewidth></TMPL_IF> <TMPL_IF channel_faceheight>height=<TMPL_VAR channel_faceheight></TMPL_IF> src=<TMPL_VAR channel_face> class="right">
+					</TMPL_IF>
+					<TMPL_VAR content>
+					<p><a class="blog-link" href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_IF author><TMPL_VAR author ESCAPE="HTML">, </TMPL_IF><TMPL_VAR date></a></p>
+				</div>
+			</div>
+		</TMPL_LOOP>
+
+	<hr>
+	<p>
+		<em>Last updated: <TMPL_VAR date></em>
+	</p>
+	<div id="maintainer">
+	This site is maintained by <a href="mailto:<TMPL_VAR owner_email ESCAPE="HTML">"><TMPL_VAR owner_name ESCAPE="HTML"></a>
+	</div>
+</div>
+
+<div id="sidebar">
+<p class="section">Subscriptions</p>
+<ul>
+<TMPL_LOOP Channels>
+<li><a href="<TMPL_VAR link ESCAPE="HTML">" title="<TMPL_VAR title ESCAPE="HTML">"><TMPL_VAR name></a> <a href="<TMPL_VAR url ESCAPE="HTML">">(feed)</a></li>
+</TMPL_LOOP>
+</ul>
+
+<p class="section">Planetarium</p>
+	<ul>
+		<li><a href="http://advogato.org/recentlog.html?thresh=4">Advogato</a>
+			<a href="http://advogato.org/">(main)</a></li>
+
+		<li><a href="http://www.planetapache.org/">Apache</a></li>
+		<li><a href="http://planet.arslinux.com/">Ars Linux</a></li>
+		<li><a href="http://planet.debian.net/">Debian</a></li>
+		<li><a href="http://fedoraproject.org/people/">Fedora</a></li>
+		<li><a href="http://planet.freedesktop.org/">freedesktop.org</a></li>
+		<li><a href="http://gnome.or.kr/pgk/">GNOME Korea</a></li>
+
+		<li><a href="http://planeta.hispalinux.es/">Hispalinux</a></li>
+		<li><a href="http://www.kdedevelopers.org/blog">KDE Developers</a></li>
+		<li><a href="http://kerneltrap.org/hackers/linux">Linux @ KernelTrap</a></li>
+		<li><a href="http://live.linuxchix.org/">LinuxChix</a></li>
+		<li><a href="http://planet.lisp.org/">Lisp</a></li>
+		<li><a href="http://www.go-mono.com/monologue/">Mono</a></li>
+		<li><a href="http://www.planetmysql.org/">MySQL</a></li>
+		<li><a href="http://people.novell.com/pn/">Novell</a> (offline atm)</li>
+		<li><a href="http://planet.perl.org/">Perl</a></li>
+		<li><a href="http://www.planet-php.net/">PHP</a></li>
+		<li><a href="http://www.mechanicalcat.net/pyblagg.html">Python</a></li>
+		<li><a href="http://planet.rdfhack.com/">RDF</a></li>
+
+		<li><a href="http://planet.slug.org.au/">SLUG</a></li>
+		<li><a href="http://www.rubberturnip.org.uk/planetsuse/">SuSE</a></li>
+		<li><a href="http://planet.twistedmatrix.com/">Twisted</a></li>
+		<li><a href="http://xfce.org/blog/">XFce</a></li>
+	</ul>
+
+<p class="section">Subscribe</p>
+	<ul>
+		<li><a href="rss20.xml">RSS 2.0</a></li>
+		<li><a href="rss10.xml">RSS 1.0</a></li>
+		<li><a href="atom.xml">Atom</a></li>
+		<li><a href="foafroll.xml">FOAF</a></li>
+		<li><a href="opml.xml">OPML</a></li>
+	</ul>
+
+</div>
+
+</div>
+</body>
+
+</html>
