@@ -1,0 +1,134 @@
+body          { font-size: 87.5%;  }  /* IE6 */
+html > body   { font-size: 14px; }
+
+body {
+    margin: 0;
+    background-color: #333;
+}
+
+#wrap {
+    background: #fff url(../img/bg-content.png) repeat-y left;
+    border: 1px solid #555;
+    border-width: 0 1px;
+    position: relative;
+    margin: 0 auto;
+}
+#wrap,
+#header,
+#container,
+.tabs-container {
+    max-width: 50em;
+}
+
+#header {
+    text-align: left;
+    background: #fdcc84 url(../img/bg-header.png) repeat-x top;
+    overflow: hidden;
+}
+
+    #header h1 {
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        background: #f35b27 url(../img/bg-logo.png) repeat-x top;
+        width: 115px;
+    }
+    #header h1 a {
+        display: block;
+        background: url(../img/logo.png) no-repeat 50% 50%;
+        width: 115px;
+        height: 100px;
+        text-indent: -5000px;
+    }
+
+#nav {
+    text-align: right;
+    position: absolute;
+    left: 115px;
+    top: 100px;
+    margin: -3em 0 0 12px;
+}
+    #nav li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: inline;
+    }
+        #nav li a {
+            float: left;
+            display: block;
+            margin-left: 0;
+            font-size: 120%;
+            padding: 0.5em 18px;
+            color: #a40000;
+            text-decoration: none;
+        }
+        #nav li a:hover {
+            text-decoration: underline;
+            color: #a00;
+        }
+
+        #nav li.tabs-selected a {
+            cursor: default;
+            color: #222;
+            background-color: #fff;
+        }
+        #nav li.tabs-selected a:hover {
+            text-decoration: none;
+        }
+
+#container {
+    padding: 0 0 2em 115px;
+}
+
+.tabs-container {
+    margin: 2em auto;
+    width: 90%;
+}
+
+p {
+    text-align: left;
+}
+
+#sidebar {
+    position: absolute;
+    color: #999;
+    top: 100px;
+    width: 115px;
+    left: 0;
+    bottom: 0;
+    background: url(../img/bg-circles.png) no-repeat 40% -50px;
+}
+    #sidebar .text {
+        text-align: right;
+        margin: 12px;
+    }
+
+#dev-tools {
+    position: relative;
+    overflow: hidden;
+}
+    #dev-tools dl {}
+        #dev-tools dt {
+            clear: both;
+        }
+        #dev-tools dd {
+            position: relative;
+            overflow: hidden;
+        }
+            #dev-tools dd form {
+                display: block;
+                width: 50%;
+                float: left;
+            }
+
+    #dev-tools label a {
+        float: left;
+        min-width: 10ex;
+        text-align: right;
+        padding: 0 1ex;
+    }
+
+#quicklinks li {
+    font-size: 87.5%;
+}
