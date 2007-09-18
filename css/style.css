@@ -132,3 +132,11 @@ p {
 #quicklinks li {
     font-size: 87.5%;
 }
+
+#dis {
+    font-size: 85%;
+}
+#dis td {
+    valign: top;
+    bgcolor: "#d0e0f0";
+}

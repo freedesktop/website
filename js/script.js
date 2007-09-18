@@ -18,3 +18,18 @@ $(function() {
                 }
             });
         });
+
+$(function() {
+        $('#discovercontent').load('discover.html');
+
+        updateTitle(this.location.hash);
+
+        $('#container').tabs({ 
+            //fxFade: 'true',
+            //fxSpeed: 'fast',
+            fxAutoHeight: true,
+            onShow: function(){
+                updateTitle(this.location.hash);
+                }
+            });
+        });
