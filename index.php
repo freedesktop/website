@@ -17,7 +17,7 @@ print_page("Go-OO!", "summary",
                    "         to give a foretaste of new features in development".
                    "         and includes functionality not acceptable to Sun.".
                    "     </p>".
-                   "     <a href="/download/">Download OpenOffice</a>"
+                   "     <a href=\"/download/\">Download OpenOffice</a>"
 );
 
 ?>
