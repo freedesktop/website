@@ -1,7 +1,7 @@
 <?php
 require("../template.php");
 
-print_page("Go-OO! - About",
+print_page("Go-OO! - About", "about", 
    "The people behind go-oo.org",
    "<p>Go-oo has been contributed to by many people, past and present.</p>".
    "<br>".     

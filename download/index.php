@@ -1,7 +1,7 @@
 <?php
 require("../template.php");
 
-print_page("Go-OO! - Download",
+print_page("Go-OO! - Download", "download",
 		   "Download OpenOffice.org",
                    "Choose the version of OpenOffice that matches your computer's operating system.".
                    "<dl>".

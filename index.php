@@ -1,7 +1,7 @@
 <?php
 require("template.php");
 
-print_page("Go-OO!",
+print_page("Go-OO!", "summary",
 		   "Your Open Office",
 		   "<p id=\"tagline\">".
 		   "<p>With word processing, spreadsheets,".

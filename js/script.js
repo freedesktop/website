@@ -5,18 +5,18 @@ function updateTitle(href) {
 }
 
 $(function() {
-        $('#devcontent').load('developer.html');
-        $('#discovercontent').load('discover.html');
-        $('#aboutcontent').load('about.html');
+	//        $('#devcontent').load('developer.html');
+        //$('#discovercontent').load('discover.html');
+        //$('#aboutcontent').load('about.html');
 
-        updateTitle(this.location.hash);
+        //updateTitle(this.location.hash);
 
         $('#container').tabs({ 
             //fxFade: 'true',
             //fxSpeed: 'fast',
             fxAutoHeight: true,
             onShow: function(){
-                updateTitle(this.location.hash);
+		    //updateTitle(this.location.hash);
                 }
             });
         });
