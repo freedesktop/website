@@ -47,7 +47,7 @@ print_page("Go-OO! - Discover", "discover",
    "<tr><td><a href=\"go-docx-sample.png\"><img src=\"go-docx-sample-thumb.png\"/></a></td>".
    "<td><a href=\"go-xslx-sample1.png\"><img src=\"go-xslx-sample1-thumb.png\"/></a></td>".
    "<td><a href=\"go-xslx-sample2.png\"><img src=\"go-xslx-sample2-thumb.png\"/></a></td></tr>".
-   
+   "</table>".
 
    ""
    );
