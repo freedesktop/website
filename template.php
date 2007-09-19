@@ -8,16 +8,16 @@ function print_page($title, $heading, $content)
     <head>
         <title><?php print $heading; ?></title>
         <style type="text/css">
-            @import url(css/blueprint/print.css) print;
-            @import url(css/blueprint/screen.css) screen;
-            @import url(css/tabs.css);
-            @import url(css/style.css);
+            @import url(/css/blueprint/print.css) print;
+            @import url(/css/blueprint/screen.css) screen;
+            @import url(/css/tabs.css);
+            @import url(/css/style.css);
         </style>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/jquery.history_remote.pack.js"></script>
-        <script type="text/javascript" src="js/jquery.tabs.pack.js"></script>
-        <script type="text/javascript" src="js/interface.js"></script>
-        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/jquery.history_remote.pack.js"></script>
+        <script type="text/javascript" src="/js/jquery.tabs.pack.js"></script>
+        <script type="text/javascript" src="/js/interface.js"></script>
+        <script type="text/javascript" src="/js/script.js"></script>
     </head>
     <body>
         <div id="wrap">
