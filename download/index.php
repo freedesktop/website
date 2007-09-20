@@ -27,15 +27,22 @@ print_page("Go-OO! - Download", "download",
                     "<dt>Debian</dt>\n".
 		    "<dd>Debian provides OpenOffice.org in their repositories. ".
 		    "To install it just type as root <pre># apt-get install openoffice.org</pre></dd>\n".
+                    "<dt>DroplineGNOME</dt>".
+		    "<dd>DroplineGNOME provide pre-builds packages for OpenOffice.org:<ul>\n".
+		    "<li><a href=\"http://trovao.droplinegnome.org/extras/2.18/openoffice/\">i686 builds</a></li>\n".
+		    "<li><a href=\"http://saxa.droplinegnome.org/ooo/\">x86_64 builds</a></li>\n".
+		    "</ul></dd>".
                     "<dt>Frugalware</dt>".
 		    "<dd>Frugalware provides OpenOffice.org in their repositories. To install it just type as root ".
 		    "<pre># pacman-g2 -S openoffice.org</pre></dd>\n".
+                    "<dt>Gentoo</dt>".
+		    "<dd>Gentoo provides OpenOffice.org in their repositories. ".
+		    "To build and install it just type as root <pre># emerge openoffice</pre></dd>\n".
                     "<dt>Ubuntu</dt>".
 		    "<dd>Ubuntu provides OpenOffice.org in their repositories. ".
 		    "To install it just type as root <pre># apt-get install openoffice.org</pre></dd>\n".
                     "<dt>Mandriva</dt>\n".
 		    "<dd></dd>\n".
-                    "<dt>Gentoo</dt>".
 		    "<dd></dd>\n".
                     "<dt>Ark</dt>".
 		    "<dd></dd>\n".
@@ -46,8 +53,6 @@ print_page("Go-OO! - Download", "download",
                     "<dt>Pardus</dt>".
 		    "<dd></dd>\n".
                     "<dt>QiLinux</dt>".
-		    "<dd></dd>\n".
-                    "<dt>DroplineGNOME</dt>".
 		    "<dd></dd>\n".
                     "</dl>"
 		    
