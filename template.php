@@ -68,7 +68,7 @@ function print_page($title, $id, $heading, $content)
 
             <div id="sidebar">
                 <div class="text">
-                    openoffice<br>
+                    openoffice.org<br>
                     development
                 </div>
             </div>

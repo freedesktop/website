@@ -27,6 +27,9 @@ print_page("Go-OO! - Download", "download",
                     "<dt>Debian</dt>\n".
 		    "<dd>Debian provides OpenOffice.org in their repositories. ".
 		    "To install it just type as root <pre># apt-get install openoffice.org</pre></dd>\n".
+                    "<dt>Frugalware</dt>".
+		    "<dd>Frugalware provides OpenOffice.org in their repositories. To install it just type as root ".
+		    "<pre># pacman-g2 -S openoffice.org</pre></dd>\n".
                     "<dt>Ubuntu</dt>".
 		    "<dd>Ubuntu provides OpenOffice.org in their repositories. ".
 		    "To install it just type as root <pre># apt-get install openoffice.org</pre></dd>\n".
@@ -45,8 +48,6 @@ print_page("Go-OO! - Download", "download",
                     "<dt>QiLinux</dt>".
 		    "<dd></dd>\n".
                     "<dt>DroplineGNOME</dt>".
-		    "<dd></dd>\n".
-                    "<dt>Frugalware</dt>".
 		    "<dd></dd>\n".
                     "</dl>"
 		    

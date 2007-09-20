@@ -2,7 +2,7 @@
 require("../template.php");
 
 print_page("Go-OO! - Discover", "discover",
-   "Discover OpenOffice",
+   "Discover OpenOffice.org",
 
    "<p>Here you'll discover what Go-oo has to offer in addition to the ".
    "regular build of OpenOffice.org</p>\n" .
