@@ -10,15 +10,15 @@ print_page("Go-OO! - Download", "download",
                    "<dt>SUSE</dt>".
                    "<dd>Stable: ".
 		   "<ul>".
-                   "<li><a href=\"http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/SLED_10/\">SLED10</a></li>".
-                   "<li><a href=\"http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/SUSE_Linux_10.1/\">10.1</a></li>".
-                   "<li><a href=\"http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_10.2/\">10.2</a></li>".
-		   "</ul></dd>".
-                   "<dd>Unstable: ".
-		   "<ul>" .
                    "<li><a href=\"http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/SLED_10/\">SLED10</a></li>".
                    "<li><a href=\"http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/SUSE_Linux_10.1/\">10.1</a></li>".
                    "<li><a href=\"http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/openSUSE_10.2/\">10.2</a></li>".
+		   "</ul></dd>".
+                   "<dd>Unstable: ".
+		   "<ul>" .
+                   "<li><a href=\"http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/SLED_10/\">SLED10</a></li>".
+                   "<li><a href=\"http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/SUSE_Linux_10.1/\">10.1</a></li>".
+                   "<li><a href=\"http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_10.2/\">10.2</a></li>".
 		   "</ul>".
                    "To add a repository with <a href=\"http://en.opensuse.org/Zypper\">zypper</a>:".
 "<pre># zypper sa http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/openSUSE_10.2\n".
@@ -47,8 +47,6 @@ print_page("Go-OO! - Download", "download",
                     "<dt>DroplineGNOME</dt>".
 		    "<dd></dd>\n".
                     "<dt>Frugalware</dt>".
-		    "<dd></dd>\n".
-                    "<dt>Solaris</dt>".
 		    "<dd></dd>\n".
                     "</dl>"
 		    
