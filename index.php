@@ -15,7 +15,7 @@ print_page("Go-OO!", "summary",
                    "     <p>".
                    "         The go-oo version of OpenOffice.org is designed".
                    "         to give a foretaste of new features in development".
-                   "         and includes functionality not acceptable to Sun.".
+                   "         and includes functionality not yet accepted up-stream.".
                    "     </p>".
                    "     <a href=\"/download/\">Download OpenOffice.org</a>"
 );
