@@ -3,44 +3,6 @@ require("../template.php");
 
 print_page("Go-OO! - Developers", "developers",
    "Developers",
-"        <h4>Quick links</h4>".
-"        <dl id=\"quicklinks\">".
-"            <dt>Development Tools</dt>".
-"            <dd>".
-"            <ul>".
-"                <li><a href=\"http://lxr.go-oo.org/\">LXR</a></li>".
-"                <li><a href=\"http://bonsai.go-oo.org/cvsqueryform.cgi\">Bonsai</a></li>".
-"                <li><a href=\"tinderbox\">Tinderbox</a></li>".
-"            </ul>".
-"            </dd>".
-"            <dt>Hacker Guides</dt> ".
-"            <dd>".
-"            <ul>".
-"                <li><a href=\"hackers-guide.html\">English</a></li>".
-"                <li><a href=\"hackers-guide-ja.html\">Japanese</a> 1.1</li>".
-"                <li><a href=\"hackers-guide-de.html\">German</a> 1.1</li>".
-"                <li><a href=\"http://babelfish.altavista.com/tr?doit=done&amp;url=http://go-oo.org/hackers-guide.html&amp;lp=?\" target=\"new\">Other</a></li>".
-"                <li><a href=\"old-guides.html\">Old</a></li>".
-"            </ul>".
-"            </dd>".
-"            <dt>Resources</dt>".
-"            <dd>".
-"            <ul>".
-"                <li><b><a href=\"http://wiki.services.openoffice.org/wiki/\">Wiki</a></b></li>".
-"                <li><a href=\"http://planet.go-oo.org/\">Planet OO.o</a> &amp; <a href=\"http://planet.go-oo.org/rss20.xml\">(rss)</a></li>".
-"                <li><a href=\"tutorials\">Hackers Tutorials</a></li>".
-"                <li><a href=\"cws.html\">Hackers CWS howto</a> &amp; <a href=\"cws-quickhowto-ja.html\">Japanese</a></li>".
-"                <li><a href=\"http://wiki.services.openoffice.org/wiki/Ooo-build\">About ooo-build</a></li>".
-"                <li><a href=\"users-faq.html\">Users' FAQ</a></li>".
-"                <li><a href=\"http://wiki.services.openoffice.org/wiki/DomainDeveloper\">Who is Whom?</a></li>".
-"                <li><a href=\"http://eis.services.openoffice.org/EIS2/servlet/GuestLogon\">EIS</a></li>".
-"                <li><a href=\"http://wiki.services.openoffice.org/wiki/Tinderbox_Setup\">Tinderbox setup</a></li>".
-"                <li>ooo-build <a href=\"packages\">source</a> &amp; <a href=\"patches\">patches</a></li>".
-"                <li><a href=\"mgp-users.html\">MagicPoint users</a></li>".
-"            </ul>".
-"            </dd>".
-"        </dl>".
-"        <hr>".
 "        <div id=\"dev-tools\">".
 "            <dl>".
 "                <dt>LXR</dt>".
@@ -81,7 +43,6 @@ print_page("Go-OO! - Developers", "developers",
 "                </form>".
 "                </dd>".
 "            </dl>".
-"        </div>".
 "        <hr>".
 "        <form action=\"http://babelfish.altavista.com/tr\" method=\"post\" name=\"frmTrText\">".
 "            <input name=\"doit\" value=\"done\" type=\"hidden\"> ".
@@ -91,6 +52,45 @@ print_page("Go-OO! - Developers", "developers",
 "            <input name=\"lp\" value=\"de_en\" type=\"hidden\"> ".
 "            <input value=\"Translate\" type=\"submit\">".
 "        </form>".
+"        </div>".
+"        <hr>".
+"        <h4>Quick links</h4>".
+"        <dl id=\"quicklinks\">".
+"            <dt>Development Tools</dt>".
+"            <dd>".
+"            <ul>".
+"                <li><a href=\"http://lxr.go-oo.org/\">LXR</a></li>".
+"                <li><a href=\"http://bonsai.go-oo.org/cvsqueryform.cgi\">Bonsai</a></li>".
+"                <li><a href=\"tinderbox\">Tinderbox</a></li>".
+"            </ul>".
+"            </dd>".
+"            <dt>Hacker Guides</dt> ".
+"            <dd>".
+"            <ul>".
+"                <li><a href=\"hackers-guide.html\">English</a></li>".
+"                <li><a href=\"hackers-guide-ja.html\">Japanese</a> 1.1</li>".
+"                <li><a href=\"hackers-guide-de.html\">German</a> 1.1</li>".
+"                <li><a href=\"http://babelfish.altavista.com/tr?doit=done&amp;url=http://go-oo.org/hackers-guide.html&amp;lp=?\" target=\"new\">Other</a></li>".
+"                <li><a href=\"old-guides.html\">Old</a></li>".
+"            </ul>".
+"            </dd>".
+"            <dt>Resources</dt>".
+"            <dd>".
+"            <ul>".
+"                <li><b><a href=\"http://wiki.services.openoffice.org/wiki/\">Wiki</a></b></li>".
+"                <li><a href=\"http://planet.go-oo.org/\">Planet OO.o</a> &amp; <a href=\"http://planet.go-oo.org/rss20.xml\">(rss)</a></li>".
+"                <li><a href=\"tutorials\">Hackers Tutorials</a></li>".
+"                <li><a href=\"cws.html\">Hackers CWS howto</a> &amp; <a href=\"cws-quickhowto-ja.html\">Japanese</a></li>".
+"                <li><a href=\"http://wiki.services.openoffice.org/wiki/Ooo-build\">About ooo-build</a></li>".
+"                <li><a href=\"users-faq.html\">Users' FAQ</a></li>".
+"                <li><a href=\"http://wiki.services.openoffice.org/wiki/DomainDeveloper\">Who is Whom?</a></li>".
+"                <li><a href=\"http://eis.services.openoffice.org/EIS2/servlet/GuestLogon\">EIS</a></li>".
+"                <li><a href=\"http://wiki.services.openoffice.org/wiki/Tinderbox_Setup\">Tinderbox setup</a></li>".
+"                <li>ooo-build <a href=\"packages\">source</a> &amp; <a href=\"patches\">patches</a></li>".
+"                <li><a href=\"mgp-users.html\">MagicPoint users</a></li>".
+"            </ul>".
+"            </dd>".
+"        </dl>".
 "        <h5>Tinderbox Build Status</h5>".
 "        <p>Find an overview over the last tinderbox build results <a href=\"http://go-oo.org/tinderbox/all_trees.express.html\">here</a>.</p>".
 "        <p>A list of the currently open tinderbox branches (CWSs and MWSs) can be found <a href=\"tinderbox\">here</a>.</p>".
