@@ -12,9 +12,9 @@ print_page("Go-OO! - Discover", "discover",
 
    "<td>".
    "<h4>VBA support</h4>".
-   "<p>Go-oo provide VBA macros support for OpenOffice.org</p>".
+   "<p>Go-oo provide VBA macros support for OpenOffice.org (<a href=\"excel-vba.xls\">download</a>)</p>".
    "<p><a href=\"go-excel-vba.png\">".
-   "<img src=\"go-excel-vba-thumb.png\" /></a></p>".
+   "<img src=\"go-excel-vba-thumb.png\"/></a></p>".
    "</td>".
 
    "<td>".
