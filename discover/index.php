@@ -7,6 +7,26 @@ print_page("Go-OO! - Discover", "discover",
    "<p>Here you'll discover what Go-oo has to offer in addition to the ".
    "regular build of OpenOffice.org</p>\n" .
 
+   "<table>".
+   "<tr>".
+
+   "<td>".
+   "<h4>VBA support</h4>".
+   "<p>Go-oo provide VBA macros support for OpenOffice.org</p>".
+   "<p><a href=\"go-excel-vba.png\">".
+   "<img src=\"go-excel-vba-thumb.png\" /></a></p>".
+   "</td>".
+
+   "<td>".
+   "<h4>Startup performance</h4>".
+   "<p>Go-oo starts faster: (go-oo 2.1 vs. Sun/OO.o 2.3)</p>".
+   "<img src=\"startup.png\"/></a>".
+   "</td>".
+
+   "</tr>".
+   "<tr>".
+
+   "<td colspan=\"2\">".
    "<h4>GStreamer integration</h4>".
    "<p>Go-oo supports multimedia content into your document using the ".
    "gstreamer multimedia framework".
@@ -18,20 +38,26 @@ print_page("Go-OO! - Discover", "discover",
    "<td><a href=\"go-gstreamer.png\"><img src=\"go-gstreamer-thumb.png\"".
    "/></a></td></tr>\n".
    "</table>".
+   "</td>".
 
-   "<h4>VBA support</h4>".
-   "<p>Go-oo provide VBA macros support for OpenOffice.org</p>".
-   "<p><a href=\"go-excel-vba.png\">".
-   "<img src=\"go-excel-vba-thumb.png\" /></a></p>".
+   "</tr>".
+   "<tr>".
 
+   "<td>".
+   "<h4>MS-Works import</h4>".
+   "<p>Go-oo supports MS-Works files.</p>".
+   "<a href=\"go-msworks.png\"><img src=\"go-msworks-thumb.png\" /></a>".
+   "</td>".
+
+   "<td>".
    "<h4>WordPerfect Graphics import</h4>".
    "<p>Go-oo imports graphics in the WPG format coming from WordPerfect".
    "which supplement the WordPerfect importer also available in Go-oo.</p>".
    "<a href=\"go-wpg-support.png\"><img src=\"go-wpg-support-thumb.png\" /></a>".
+   "</td>".
 
-   "<h4>MS-Works import</h4>".
-   "<p>Go-oo supports MS-Works files.</p>".
-   "<a href=\"go-msworks.png\"><img src=\"go-msworks-thumb.png\" /></a>".
+   "</tr>".
+   "</table>".
 
 //   "<h4>Office OpenXML import</h4>".
 //   "<p>Go-oo integrates the work in progress made with importing documents in the Microsoft ".
