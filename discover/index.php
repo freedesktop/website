@@ -25,13 +25,14 @@ print_page("Go-OO! - Discover", "discover",
 
    "</tr>\n".
 
-   "<tr><td>\n".
+   "<tr><td colspan=\"2\">\n".
    "<h4>Calc solver</h4>\n".
    "<p>Go-oo has a linear optimization solver to optimize a cell value based\n".
    "on arbitrary constraints, built into Calc.</p>".
    "<a href=\"go-calc-solver.png\">".
    "<img src=\"go-calc-solver-thumb.png\" /></a>".
-   "</td></tr>\n".
+   "</td>".
+   "</tr>\n".
 
    "<tr>\n".
 
