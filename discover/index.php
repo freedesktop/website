@@ -62,7 +62,7 @@ print_page("Go-OO! - Discover", "discover",
 
    "<td>".
    "<h4>T602 import</h4>".
-   "<p>Go-oo supports T602 files (<a href=\"cti_lasr.602\">download</a>)</p>".
+   "<p>Go-oo supports T602 files (<a href=\"cti_lasr.602\" type=\"application/x-t602\">download</a>)</p>".
    "<a href=\"go-t602.png\"><img src=\"go-t602-thumb.png\" /></a>".
    "</td>\n".
 
