@@ -45,15 +45,25 @@ print_page("Go-OO! - Discover", "discover",
 
    "<td>".
    "<h4>MS-Works import</h4>".
-   "<p>Go-oo supports MS-Works files.</p>".
+   "<p>Go-oo supports MS-Works files (<a href=\"msworks.wps\">download</a>)</p>".
    "<a href=\"go-msworks.png\"><img src=\"go-msworks-thumb.png\" /></a>".
    "</td>".
 
    "<td>".
    "<h4>WordPerfect Graphics import</h4>".
    "<p>Go-oo imports graphics in the WPG format coming from WordPerfect".
-   "which supplement the WordPerfect importer also available in Go-oo.</p>".
+   "which supplement the WordPerfect importer also available in Go-oo ".
+   "(<a href=\"wpg-support.wpg\">download</a>)</p>".
    "<a href=\"go-wpg-support.png\"><img src=\"go-wpg-support-thumb.png\" /></a>".
+   "</td>".
+
+   "</tr>".
+   "<tr>".
+
+   "<td>".
+   "<h4>T602 import</h4>".
+   "<p>Go-oo supports T602 files (<a href=\"cti_lasr.602\">download</a>)</p>".
+   "<a href=\"go-t602.png\"><img src=\"go-t602-thumb.png\" /></a>".
    "</td>".
 
    "</tr>".
