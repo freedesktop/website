@@ -17,7 +17,7 @@ body {
 #header,
 #container,
 .tabs-container {
-    max-width: 75em;
+    max-width: 65em; /* bigger apparently force the page to scroll on 1024x768 */
 }
 
 #container .container {
