@@ -10,7 +10,7 @@ Choose the version of OpenOffice that matches your computer's operating system.
 <a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/">svn view</a> or:
 <pre>\$ svn checkout http://svn.gnome.org/svn/ooo-build/trunk ooo-build</pre>
 </dd>
-<dt><a href="http://go-oo.org/tstnvl/GoOo/">Windows</a></dt>
+<dt><a href="http://download.go-oo.org/tstnvl/GoOo/">Windows</a></dt>
 <dd>Simply download the zip file and run the embedded setup to install.</dd>
 <br>
 <dt>OpenSUSE</dt>
