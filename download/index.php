@@ -25,9 +25,10 @@ Choose the version of OpenOffice that matches your computer's operating system.
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/SUSE_Linux_10.1/">10.1</a>, 
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_10.2/">10.2</a>
 </dd>
-<dd>To add a repository with <a href="http://en.opensuse.org/Zypper">zypper</a> eg.
+<dd>To add a repository with <a href="http://en.opensuse.org/Zypper">zypper</a> (NB. OO.o
+has been split into more individual packages here so make sure you get all of them):
 <pre># zypper sa http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_10.2
-# zypper --non-interactive in OpenOffice_org-gnome</pre>
+# zypper --non-interactive in OpenOffice_org-gnome OpenOffice_org-writer OpenOffice_org-calc ...</pre>
 </dd>
 <dt>Debian</dt>
 <dd>Debian provides OpenOffice.org in their repositories. 
