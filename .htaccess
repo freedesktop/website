@@ -7,4 +7,7 @@ DirectoryIndex index.html index.php
     Order allow,deny
     Deny from all
 </Files>
-
+<Files ~ "^.svn">
+    Order allow,deny
+    Deny from all
+</Files>
