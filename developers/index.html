@@ -64,22 +64,8 @@
                     <input name="id" size="6"> 
                     <input type="submit" value="Find" class="hide">
                 </form>
-                <form method="get" action="http://bugzilla.novell.com/show_bug.cgi">
-                    <a href="http://bugzilla.novell.com/query.cgi?format=advanced">Novell Issue</a> <a href="https://bugzilla.novell.com/enter_bug.cgi?product=OpenOffice.org+2.0">New</a> 
-                    <input name="id" size="6"> 
-                    <input type="submit" value="Find" class="hide">
-                </form>
                 </dd>
             </dl>
-        <hr>
-        <form action="http://babelfish.altavista.com/tr" method="post" name="frmTrText">
-            <input name="doit" value="done" type="hidden"> 
-            <input name="intl" value="1" type="hidden"> <b>Translate a short German comment: [ thanks to <a href="http://babelfish.altavista.com">BabelFish</a> ]</b><br>
-            <input name="tt" value="urltext" type="hidden"> 
-            <textarea rows="2" wrap="virtual" cols="42" style="width: 400px;" name="trtext"></textarea><br>
-            <input name="lp" value="de_en" type="hidden"> 
-            <input value="Translate" type="submit">
-        </form>
         </div>
         <hr>
         <h4>Quick links</h4>
@@ -119,19 +105,47 @@
             </ul>
             </dd>
         </dl>
-        <h5>Tinderbox Build Status</h5>
-        <p>Find an overview over the last tinderbox build results <a href="http://go-oo.org/tinderbox/all_trees.express.html">here</a>.</p>
-        <p>A list of the currently open tinderbox branches (CWSs and MWSs) can be found <a href="tinderbox">here</a>.</p>
-        <p>For more information on branches, see the <a href="http://development.openoffice.org/releases/ooo_roadmap.pdf">roadmap</a> and <a href="http://development.openoffice.org/releases/">codelines</a> documents. To create your own tinderbox, check the <a href="http://wiki.services.openoffice.org/wiki/Tinderbox_Setup">Tinderbox setup guide</a>.</p>
-        <h5>Changes in ooo-build</h5>
-        <p>Use <a href="http://cia.vc/stats/project/gnome/ooo-build">CIA</a> to look up the latest changes in ooo-build cvs.</p>
-        <h5>Tarballs</h5>
-        <p>You can download <a href="packages/">packages of OO.o here</a>. These are tested to ensure clean builds.</p>
-        <h5>Local web tools</h5>
-        <p>Our patches to sync bonsai via cvsup, and a description of how to make LXR work on RH 8.0+ can be found <a href="web-patches">here</a>.</p>
-        <h5 id="irc">IRC</h5>
-        <p>We have a channel #go-oo on irc.freenode.net, where you can discuss development issues with hackers.</p>
-        <p>To contact anyone wrt. go-oo see the ooo-build <a href="http://cvs.gnome.org/viewcvs/*checkout*/ooo-build/AUTHORS">maintainers</a> or contact <i>mmeeks T novell com</i></p>
+        
+	<h5>Tinderbox Build Status</h5>
+        <p>Find an overview over the last tinderbox build results 
+	<a href="http://go-oo.org/tinderbox/all_trees.express.html">here</a>.</p>
+        <p>A list of the currently open tinderbox branches (CWSs and MWSs) can be 
+	found <a href="http://tinderbox.go-oo.org">here</a>.</p>
+        <p>For more information on branches, see the 
+	<a href="http://development.openoffice.org/releases/ooo_roadmap.pdf">roadmap</a> 
+	and <a href="http://development.openoffice.org/releases/">codelines</a> documents. 
+	To create your own tinderbox, check the 
+	<a href="http://wiki.services.openoffice.org/wiki/Tinderbox_Setup">Tinderbox 
+	setup guide</a>.</p>
+        
+	<h5>Changes in ooo-build</h5>
+        <p>Use <a href="http://cia.vc/stats/project/gnome/ooo-build">CIA</a> to look up 
+	the latest changes in ooo-build cvs.</p>
+        
+	<h5>Tarballs</h5>
+        <p>You can download <a href="http://download.go-oo.org/">packages of OO.o here</a>. 
+	These are tested to ensure clean builds.</p>
+        
+	<h5>Local web tools</h5>
+        <p>Our patches to sync bonsai via cvsup, and a description of how to make LXR work 
+	on RH 8.0+ can be found <a href="web-patches">here</a>.</p>
+        
+	<h5 id="irc">IRC</h5>
+        <p>We have a channel #go-oo on irc.freenode.net, where you can discuss development 
+	issues with hackers.</p>
+        <p>To contact anyone wrt. go-oo see the ooo-build 
+	<a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/AUTHORS?revision=6632&view=markup">maintainers</a> 
+	or contact <i>mmeeks T novell com</i></p>
+
+        <hr />
+        <form action="http://babelfish.altavista.com/tr" method="post" name="frmTrText">
+            <input name="doit" value="done" type="hidden"> 
+            <input name="intl" value="1" type="hidden"> <b>Translate a short German comment: [ thanks to <a href="http://babelfish.altavista.com">BabelFish</a> ]</b><br>
+            <input name="tt" value="urltext" type="hidden"> 
+            <textarea rows="2" wrap="virtual" cols="42" style="width: 400px;" name="trtext"></textarea><br>
+            <input name="lp" value="de_en" type="hidden"> 
+            <input value="Translate" type="submit">
+        </form>
                     </div>
                 </div>
 
