@@ -1,0 +1,13 @@
+--- sfx2/source/appl/app.src	2004-12-16 17:28:29.000000000 +0530
++++ sfx2/source/appl/app.src	2004-12-21 13:14:18.943812188 +0530
+@@ -4928,6 +4928,10 @@ ToolBox RID_ENVTOOLBOX
+ 			Identifier = SID_CLOSEDOC;
+ 			Hide = TRUE;
+ 		};
++		ToolBoxItem
++		{
++			Identifier = SID_ABOUT;
++		};
+ 	};
+ };
+ 

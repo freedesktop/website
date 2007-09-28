@@ -79,7 +79,7 @@ print_page("Go-OO! - Developers", "developers",
 "            <ul>".
 "                <li><b><a href=\"http://wiki.services.openoffice.org/wiki/\">Wiki</a></b></li>".
 "                <li><a href=\"http://planet.go-oo.org/\">Planet OO.o</a> &amp; <a href=\"http://planet.go-oo.org/rss20.xml\">(rss)</a></li>".
-"                <li><a href=\"tutorials\">Hackers Tutorials</a></li>".
+"                <li><a href=\"tutorials/\">Hackers Tutorials</a></li>".
 "                <li><a href=\"cws.html\">Hackers CWS howto</a> &amp; <a href=\"cws-quickhowto-ja.html\">Japanese</a></li>".
 "                <li><a href=\"http://wiki.services.openoffice.org/wiki/Ooo-build\">About ooo-build</a></li>".
 "                <li><a href=\"/users/faq/\">Users' FAQ</a></li>".

@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>You know UNO!</title>
+<meta name="generator" content="HTML::TextToHTML v2.43">
+</head>
+<body>
+
+<table width=100%>
+ <tr>
+  <td align="left">Hack!</td>
+  <td align="right"><a href="help.html">Help!</a></td>
+ </tr> 
+</table>
+
+<hr>
+
+<p>Well, what next ? :-) What we have done is an implementation of an existing
+interface that has forced us to implement one method more than what is
+necessary to demonstrate a component in action. So we shall pretend that we are
+deeply wounded which gives us a pretext to make up our own interface that we
+shall then implement, cool-o! :-)
+
+<p>As usual, we target healthy existing interfaces, in this case
+XExecutableDialog and turn it into what we want - XHelloWorldDialog. The first
+step is to make up the idl for our interface:
+
+<pre>
+--- offapi/com/sun/star/ui/dialogs/XExecutableDialog.idl        2004-06-04 07:19:19.000000000 +0530
++++ offapi/com/sun/star/ui/dialogs/XHelloWorldDialog.idl        2005-07-21 14:46:31.000000000 +0530
+@@ -59,8 +59,8 @@
+  *
+  ************************************************************************/
+  
+-#ifndef __com_sun_star_ui_dialogs_XExecutableDialog_idl__
+-#define __com_sun_star_ui_dialogs_XExecutableDialog_idl__
++#ifndef __com_sun_star_ui_dialogs_XHelloWorldDialog_idl__
++#define __com_sun_star_ui_dialogs_XHelloWorldDialog_idl__
+  
+ #ifndef __com_sun_star_uno_RuntimeException_idl__
+ #include <com/sun/star/uno/RuntimeException.idl>
+@@ -79,25 +79,15 @@
+ */
+   
+  
+-published interface XExecutableDialog: com::sun::star::uno::XInterface
++published interface XHelloWorldDialog: com::sun::star::uno::XInterface
+ {
+        //-------------------------------------------------------------------------
+-       /**     Sets the title of the dialog.
+-
+-               @param aTitle
+-               Set an abitrary title for the dialog,
+-               may be an empty string if the dialog should not
+-               have a title.
+-       */
+-       void setTitle( [in] string aTitle );
+-
+-
+//-------------------------------------------------------------------------
+        /**     Executes (shows) the dialog.
+                                                                                                                  
+                @returns
+                A status code of type <type>ExecutableDialogResults</type>.
+        */
+-       short execute();
++       void adios();
+ };
+                                                                                                                  
+ //=============================================================================
+</pre>
+
+<p>and insist that we prefer adios really much better :-D
+
+<p>This is however the idl file and we need a header file that our implementation
+can then use, so what is necessary is first a 'build' in the offapi/ directory
+that then updates its database of types/interfaces that is then used by offuh/
+to generate header files that we can use. In order that offuh/ can have the
+updated types database, we 'deliver' the new set from offapi/:
+
+<pre>
+raul@lumbini:~/m110/ooo-build/build/hack.src680-m110/offapi&gt; deliver
+deliver -- version: 1.89
+COPY: ../unxlngi4.pro/ucr/offapi.db -&gt; /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/bin/offapi.rdb
+COPY: ../unxlngi4.pro/ucrdoc/offapi_doc.db -&gt; /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/bin/offapi_doc.rdb
+COPY: ../com/sun/star/ui/dialogs/XHelloWorldDialog.idl -&gt; /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/idl/com/sun/star/ui/dialogs/XHelloWorldDialog.idl
+LOG: writing /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/inc/offapi/deliver.log
+Statistics:
+Files copied: 3
+Files unchanged/not matching: 2969
+</pre>
+
+<p>and then 'build' in offuh/ which generates the XHelloWorldDialog.hpp file that
+we can use:
+
+<pre>
+raul@lumbini:~/m110/ooo-build/build/hack.src680-m110/offuh&gt; build
+build -- version: 1.140
+ 
+-----------------------------------------------
+Building project offuh
+-----------------------------------------------
+/home/raul/m110/ooo-build/build/hack.src680-m110/offuh/source
+cppumaker -Gc -L -BUCR -O../unxlngi4.pro/inc
+/home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/bin/types.rdb
+&amp;&amp; echo &gt; ../unxlngi4.pro/misc/offuh.don
+</pre>
+
+<p>and 'deliver' then copies them over to solver/ and from then on the header file is
+available to all other projects beyond:
+
+<pre>
+raul@lumbini:~/m110/ooo-build/build/hack.src680-m110/offuh&gt; deliver
+deliver -- version: 1.89
+COPY: ../unxlngi4.pro/inc/com/sun/star/ui/dialogs/XHelloWorldDialog.hdl -&gt; /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/inc/com/sun/star/ui/dialogs/XHelloWorldDialog.hdl
+COPY: ../unxlngi4.pro/inc/com/sun/star/ui/dialogs/XHelloWorldDialog.hpp -&gt; /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/inc/com/sun/star/ui/dialogs/XHelloWorldDialog.hpp
+LOG: writing /home/raul/m110/ooo-build/build/hack.src680-m110//solver/680/unxlngi4.pro/inc/offuh/deliver.log
+Statistics:
+Files copied: 2
+Files unchanged/not matching: 4544
+</pre>
+
+<p>With that, we now come back to the implementation:
+
+<pre>
+--- helloworld/inc/helloworld.hxx       2005-07-20 13:26:05.000000000 +0530
++++ helloworld/inc/helloworld.hxx       2005-07-21 14:51:26.000000000 +0530
+@@ -16,8 +16,8 @@
+ #ifndef _COM_SUN_STAR_REGISTRY_XREGISTRYKEY_HPP_
+ #include &lt;com/sun/star/registry/XRegistryKey.hpp&gt;
+ #endif
+-#ifndef _COM_SUN_STAR_UI_DIALOGS_XEXECUTABLEDIALOG_HPP_
+-#include &lt;com/sun/star/ui/dialogs/XExecutableDialog.hpp&gt;
++#ifndef _COM_SUN_STAR_UI_DIALOGS_XHELLOWORLDDIALOG_HPP_
++#include &lt;com/sun/star/ui/dialogs/XHelloWorldDialog.hpp&gt;
+ #endif
+  
+ using namespace rtl;
+@@ -25,27 +25,22 @@ using namespace com::sun::star::uno;
+  
+ namespace hello {
+  
+        namespace world {
+  
+-       class HelloWorld : public WeakImplHelper1< XExecutableDialog > {
++       class HelloWorld : public WeakImplHelper1< XHelloWorldDialog > {
+  
+                Reference< XMultiServiceFactory > _xServiceManager;
+  
+        public:
+  
+-               virtual void SAL_CALL setTitle( const OUString& aTitle )
+-                       throw( RuntimeException );
+-
+-               virtual sal_Int16 SAL_CALL execute( )
+-                       throw( RuntimeException );
+-
+                HelloWorld( const Reference< XMultiServiceFactory > &
+				xServiceManager );
+                                                                                                                  
+-               void adios();
++               virtual void SAL_CALL adios()
++                       throw( RuntimeException );
+
+                };
+        };
+</pre>
+
+<p>We replace the XExecutableDialog with XHelloWorldDialog, and along with the
+associated methods in the header file and similarly for the source file:
+
+<pre>
+--- helloworld/source/helloworld.cxx    2005-07-20 13:33:52.000000000 +0530
++++ helloworld/source/helloworld.cxx    2005-07-21 14:51:33.000000000 +0530
+@@ -10,27 +10,16 @@ HelloWorld::HelloWorld( const Reference&lt;
+ {
+ }
+ 
+-void HelloWorld::adios()
++void SAL_CALL HelloWorld::adios() throw( RuntimeException )
+ {
+     fprintf( stderr, "Hello, World! :-)\n" );
+ }
+ 
+-// XExecutableDialog Methods
+-void SAL_CALL HelloWorld::setTitle( const OUString&amp; rTitle ) throw( RuntimeException )
+-{
+-       fprintf( stderr, "HelloWorld::setTitle: %s\n", OU2A( rTitle ) );
+-}
+-
+-sal_Int16 SAL_CALL HelloWorld::execute() throw( RuntimeException )
+-{
+-       fprintf( stderr, "HelloWorld::execute\n" );
+-}
+-
+ // UNO component instantiator class
+ Reference&lt; XInterface &gt; createHelloWorld(
+        const Reference&lt; XMultiServiceFactory &gt; &amp; xMgr )
+ {
+-       return Reference&lt; XInterface &gt;( static_cast&lt; XExecutableDialog* &gt;( new HelloWorld( xMgr ) ) );
++       return Reference&lt; XInterface &gt;( static_cast&lt; XHelloWorldDialog* &gt;( new HelloWorld( xMgr ) ) );
+ }
+ 
+ // UNO registration and invocation
+</pre>
+
+<p>And there, we're grandly back to square one! :-)
+
+<p>Now to get back to svx/ and change the usage there as well:
+
+<pre>
+--- svx/source/dialog/charmap.cxx       2004-07-13 15:15:11.000000000 +0530
++++ svx/source/dialog/charmap.cxx       2005-07-21 14:54:49.000000000 +0530
+@@ -61,6 +61,8 @@
+ 
+ // include ---------------------------------------------------------------
+ 
++#include&lt;helloworld/helloworld.hxx&gt;
++
+ #include &lt;stdio.h&gt;
+ 
+ #define _SVX_CHARMAP_CXX_
+@@ -117,6 +119,9 @@<br>
+ #ifndef _COMPHELPER_TYPES_HXX_
+ #include &lt;comphelper/types.hxx&gt;
+ #endif
++#ifndef _UNOTOOLS_PROCESSFACTORY_HXX
++#include &lt;comphelper/processfactory.hxx&gt;
++#endif
+ 
+ #include "rtl/ustrbuf.hxx"
+ 
+@@ -1097,6 +1102,15 @@ void SvxCharMapData::SetCharFont( const 
+ 
+ IMPL_LINK( SvxCharMapData, OKHdl, OKButton *, EMPTYARG )
+ {
++    Reference&lt; XHelloWorldDialog &gt; xHelloWorld( ::comphelper::getProcessServiceFactory()-&gt;
++        createInstance( ::rtl::OUString( RTL_CONSTASCII_USTRINGPARAM("org.openoffice.helloWorld") ) ), UNO_QUERY );
++
++    if( xHelloWorld.is() )
++        xHelloWorld-&gt;adios();
++    else
++        fprintf( stderr, "Unable to instantiate xHelloWorld.\n" );
++
++
+     String aStr = aShowText.GetText();
+ 
+     if ( !aStr.Len() )
+</pre>
+
+<p>The small catch here is that this needs the new header file, so before this
+can be updated, the updated helloworld.hxx and library need to be 'deliver'ed 
+over for svx/ to build.
+
+<p>The existing infrastructure within OOo for UNO takes care of all the multiple
+stages otherwise required in between to get a UNO component up so that we can
+focus on what matters most - the functionality! Adios :-)
+
+<hr>
+
+<table width=100%>
+ <tr>
+  <td align="left"><a href="helloworld-idl-style.diff.txt">helloworld-idl-style.diff</a></td>
+  <td align="right">Next: <a href="locate-ui.html">locate-ui</a></td>
+ </tr> 
+</table>
+
+</body>
+</html>

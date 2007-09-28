@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Hack the Dialog - src style!</title>
+<meta name="generator" content="HTML::TextToHTML v2.43">
+</head>
+<body>
+
+<table width=100%>
+ <tr>
+  <td align="left">Hack the Dialog - src style!</td>
+  <td align="right"><a href="help.html">Help!</a></td>
+ </tr> 
+</table>
+
+<hr>
+
+<p>Now let's look for another dialog to hack and test out our theories on - hmm...
+there's the small zoom dialog that prompts for the zoom factor to be applied on
+the document - [find svx/ -name *zoom*]. But there is also the Character Map
+dialog that comes up on selecting Insert-&gt;Special Character. 
+
+<p>OK, but how do we locate this dialog ? Since again we know that it is a shared
+dialog, we can do a find svx/ -name *char* but that returns a load of results
+this time. Another way is to look for a string on the dialog that we can grep
+for, in the source. So we look up the dialog and it is titled - "Special
+Characters".
+
+<p>Strings are resources, so they would be located in the src files, so what we
+do is - find svx/ -name *.src -exec grep -Hn "Special Characters" {} \; and we
+hit Bulls-eye: charmap.src. And as we have seen earlier, the dialog is usually
+distributed across, so we can expect to find charmap.hxx, charmap.cxx and
+charmap.hrc which is what we'll be hacking :-)
+
+<p>We'll do the same thing as last time - add a button, but this time we'll
+define the strings as well and fill out the picture a little more.
+
+<p>First we add in the declaration of the new button in the header:
+
+<pre>
+--- svx/inc/charmap.hxx 2004-02-03 22:48:26.000000000 +0530
++++ svx/inc/charmap.hxx 2004-12-20 22:28:49.589943440 +0530
+@@ -278,6 +278,7 @@ friend class SvxCharacterMap;
+
+     CancelButton    aCancelBtn;
+     HelpButton      aHelpBtn;
+     PushButton      aDeleteBtn;
++    PushButton      aNoIdeaBtn;
+     FixedText       aFontText;
+     ListBox         aFontLB;
+     FixedText       aSubsetText;
+</pre>
+
+<p>And then we initialize it the same way it is done in the definition:
+
+<pre>
+--- svx/source/dialog/charmap.cxx       2004-07-13 15:15:11.000000000 +0530
++++ svx/source/dialog/charmap.cxx       2004-12-20 22:32:07.918792872 +0530
+@@ -984,6 +988,7 @@ SvxCharMapData::SvxCharMapData( SfxModal
+     aCancelBtn      ( pDialog, ResId( BTN_CHAR_CANCEL ) ),
+     aHelpBtn        ( pDialog, ResId( BTN_CHAR_HELP ) ),
+     aDeleteBtn      ( pDialog, ResId( BTN_DELETE ) ),
++    aNoIdeaBtn      ( pDialog, ResId( BTN_NOIDEA ) ),
+     pSubsetMap( NULL ),
+     bOne( bOne_ )
+ {
+</pre>
+
+<p>So we define our own resource BTN_NOIDEA which will be what is displayed on the
+button this time. Correspondingly this resource will have an entry in the
+resource header file:
+
+<pre>
+--- svx/source/dialog/charmap.hrc       2000-10-17 22:43:27.000000000 +0530
++++ svx/source/dialog/charmap.hrc       2004-12-20 22:23:31.657276552 +0530
+@@ -74,6 +74,7 @@
+ #define BTN_CHAR_CANCEL        18
+ #define BTN_CHAR_HELP  19
+ #define BTN_DELETE             20
++#define BTN_NOIDEA             21
+ #define FT_SUBSET              30
+ #define LB_SUBSET              31
+</pre>
+ 
+<p>And in the resource source file, we add in the strings that are to be displayed
+for the button. And as you see in the patch below, the positions and the sizes
+of the buttons are also in the resource file. Since the button would otherwise
+not have space to be displayed, we'll also move the rest of the buttons in
+order to make space for our brand new button :-)
+
+<pre>
+--- svx/source/dialog/charmap.src       2004-06-25 17:21:00.000000000 +0530
++++ svx/source/dialog/charmap.src       2004-12-20 22:26:09.211324696 +0530
+@@ -157,31 +157,39 @@ ModalDialog RID_SVXDLG_CHARMAP
+        };
+        OKButton BTN_CHAR_OK
+        {
+-               Pos = MAP_APPFONT ( 242 , 6 ) ;
+-               Size = MAP_APPFONT ( 50 , 14 ) ;
++               Pos = MAP_APPFONT ( 242 , 3 ) ;
++               Size = MAP_APPFONT ( 50 , 12 ) ;
+                TabStop = TRUE ;
+                DefButton = TRUE ;
+        };
+        CancelButton BTN_CHAR_CANCEL
+        {
+-               Pos = MAP_APPFONT ( 242 , 23 ) ;
+-               Size = MAP_APPFONT ( 50 , 14 ) ;
++               Pos = MAP_APPFONT ( 242 , 18 ) ;
++               Size = MAP_APPFONT ( 50 , 12 ) ;
+                TabStop = TRUE ;
+        };
+        HelpButton BTN_CHAR_HELP
+        {
+-               Pos = MAP_APPFONT ( 242 , 43 ) ;
+-               Size = MAP_APPFONT ( 50 , 14 ) ;
++               Pos = MAP_APPFONT ( 242 , 33 ) ;
++               Size = MAP_APPFONT ( 50 , 12 ) ;
+                TabStop = TRUE ;
+        };
+        PushButton BTN_DELETE
+        {
+-               Pos = MAP_APPFONT ( 242 , 63 ) ;
+-               Size = MAP_APPFONT ( 50 , 14 ) ;
++               Pos = MAP_APPFONT ( 242 , 48 ) ;
++               Size = MAP_APPFONT ( 50 , 12 ) ;
+                Text [ de ] = "~L&ouml;schen";
+                Text [ en-US ] = "~Delete";
+                Text [ x-comment ] = " ";
+        };
++       PushButton BTN_NOIDEA
++       {
++               Pos = MAP_APPFONT ( 242 , 63 ) ;
++               Size = MAP_APPFONT ( 50 , 12 ) ;
++               Text [ de ] = "~Keine Ahnung";
++               Text [ en-US ] = "~No Idea";
++               Text [ x-comment ] = " ";
++       };
+        Text [ x-comment ] = " ";
+ };
+</pre> 
+
+<p>That's basically it. But wait, the button still does nothing when clicked! So
+we'll fix that. We'll set it up so that when clicked it pops up a small little
+message box acknowledging the person :-)
+
+<p>So how that's done is that we first declare that the button handles an event 
+[include the function prototype]:
+
+<pre>
+--- svx/inc/charmap.hxx 2004-02-03 22:48:26.000000000 +0530
++++ svx/inc/charmap.hxx 2004-12-20 22:28:49.589943440 +0530
+@@ -298,6 +299,7 @@ friend class SvxCharacterMap;
+     DECL_LINK( CharHighlightHdl, Control* pControl );
+     DECL_LINK( CharPreSelectHdl, Control* pControl );
+     DECL_LINK( DeleteHdl, PushButton* pBtn );
++    DECL_LINK( NoIdeaHdl, PushButton* pBtn );
+ };
+ #endif
+</pre> 
+
+<p>And we initialize the click handler in the definition so that the button has
+the callback attached to it:
+
+<pre>
+--- svx/source/dialog/charmap.cxx       2004-07-13 15:15:11.000000000 +0530
++++ svx/source/dialog/charmap.cxx       2004-12-20 22:32:07.918792872 +0530
+@@ -1049,6 +1054,7 @@ SvxCharMapData::SvxCharMapData( SfxModal
+     aShowSet.SetHighlightHdl( LINK( this, SvxCharMapData, CharHighlightHdl ) );
+     aShowSet.SetPreSelectHdl( LINK( this, SvxCharMapData, CharPreSelectHdl ) );
+     aDeleteBtn.SetClickHdl( LINK( this, SvxCharMapData, DeleteHdl ) );
++    aNoIdeaBtn.SetClickHdl( LINK( this, SvxCharMapData, NoIdeaHdl ) );
+
+     aOKBtn.Disable();
+</pre> 
+
+<p>And fill out the body of the handler function in the definition that will pop
+up the message box for the user:
+
+<pre>
+--- svx/source/dialog/charmap.cxx       2004-07-13 15:15:11.000000000 +0530
++++ svx/source/dialog/charmap.cxx       2004-12-20 22:32:07.918792872 +0530
+@@ -1276,6 +1282,15 @@ IMPL_LINK( SvxCharMapData, DeleteHdl, Pu
+     return 0;
+ }
++// -----------------------------------------------------------------------
++
++IMPL_LINK( SvxCharMapData, NoIdeaHdl, PushButton *, EMPTYARG )
++{
++    InfoBox( NULL, ::rtl::OUString::createFromAscii( 
++                 "Success! That was a wonderful click!!! :-)") ).Execute();
++    return 0;
++}
++
+ // class SubsetMap =======================================================
+ // TODO: should be moved into Font Attributes stuff
+ // we let it mature here though because it is currently the only use
+</pre>
+
+<p>And since we're launching an InfoBox that isn't used here uptil now, we
+include the definition of the InfoBox as well:
+
+<pre>
+--- svx/source/dialog/charmap.cxx       2004-07-13 15:15:11.000000000 +0530
++++ svx/source/dialog/charmap.cxx       2004-12-20 22:32:07.918792872 +0530
+@@ -91,6 +91,10 @@
+ #endif
+ #pragma hdrstop
++#ifndef _SV_MSGBOX_HXX //autogen
++#include &lt;vcl/msgbox.hxx&gt;
++#endif
++
+ #ifndef INCLUDED_SVTOOLS_COLORCFG_HXX
+ #include &lt;svtools/colorcfg.hxx&gt;
+ #endif
+</pre>
+
+<p>Voila! :-) Rebuild svx, and launch any of the applications, and select Insert-&gt;
+Special Character and yippee! :-) We have our new little button and clicking it
+praises us back! :-)
+
+<p>The other boxes available are ErrorBox, WarningBox, QueryBox and there are more
+changes you can make throughout to poke and check how things are. 
+
+<p>Go for it! :-)
+
+<hr>
+
+<table width=100%>
+ <tr>
+  <td align="left"><a href="new-button-charmap.diff.txt">new-button-charmap.diff</a></td>
+  <td align="right">Next: <a href="sw.html">sw</a></td>
+ </tr> 
+</table>
+
+</body>
+</html>
