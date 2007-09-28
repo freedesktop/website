@@ -1,0 +1,239 @@
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html lang="ja">
+<head>
+<meta lang="ja" http-equiv="content-type" content="text/html; charset=utf-8">
+<title>** CWS tooling quick howto
+** CWS ツール クイック HOWTO</title>
+</head>
+
+<body>
+<H1>** CWS tooling quick howto<br>
+** CWS ツール クイック HOWTO</H1>
+
+<a href="./index.html">back to index</a>
+
+<pre>
+From Jens-Heiner.Rechtien@sun.com Fri Jul  9 12:46:16 2004
+
+Hi,
+やぁ
+
+we are ready to go live with the CWS tooling. The stuff probably still
+has some rough edges here and there, it's essentially an adaption (done
+by Vladimir and me) of the in-house tools we use for some time now here
+in Hamburg. Sorry Volker, I haven't been able to add your patches yet,
+so for the time being this is still Unix only.
+私達は、CWSツールと一緒にやっていく準備ができた．この素材はまだ，
+そこかしこにあらがをあるが，いま，ここハンブルグで我々が内部で使っている
+ツールと本質的には互換性(これはVladimirと私がやった)がある．Volkerすまない，
+私は，まだ君のパッチを適用出来ていない，今回は，Unixだけだ．
+
+
+The following is just a short description of the tooling, the real
+documentation is here:
+http://tools.openoffice.org/dev_docs/ooo-cws-tools-doc.sxw
+ツールについての簡単な説明は以下にをある，また本格的なドキョメントは，
+http://tools.openoffice.org/dev_docs/ooo-cws-tools-doc.sxw
+にある．
+
+This tooling is for committers only, most of it (with the possible
+exception of 'cwsquery' and 'cwsanalyze') doesn't make sense for the
+general public.
+このツールはコミッターだけのものである．多くのツール('cwsquery' や 
+'cwsanalyze'は例外の可能性がある)は，一般に開放するのには納得できない．
+
+The Prerequisites:
+先行条件:
+=================
+
+1) The following perl modules need to be installed:
+1) 以下のperlモジュールがインストールしてある必要があります．
+XML::Parser   -> expat based parser for the new XML based build lists
+                 build listを元としてexpatをベースとした新しいXMLパーサーです．
+Config::Tiny  -> parsing .cwsrc configuration files
+                 .cwsrc設定ファイルのパーサー
+Crypt::SSLeay -> for SSL encrypted SOAP connections
+                 SSLで暗号化されたSOAP接続
+SOAP::Lite    -> access the SOAP based CWS web service
+                 SOAPベースのCWSのwebサービスへのアクセス
+
+2) A valid OOo CVS account. The CWS tooling connects via HTTPS to the
+OOo CWS web service. As credentials is the OOo account name and the CVS
+style scrambled OOo password presented. The web service then uses the
+credentials to verify the legitimacy of the user with the help of the
+OOo CVS server.
+2) 正規のOOoのCVSアカウント．CWSツールはHTTPS経由でOOoのCWSウェブサービスへ接続する．信頼するべきものは，OOoアカウント名とCVS形式で暗号化されたOOoパスワードの存在である．このWebサービスの時には，OOo CVSサーバーの助けとしてユーザーの整合性チェックをするために この信頼するべきもの を使う．(訳注：信頼するべきものとは，アカウント名とcvs形式で暗号化された一組のリストを指す)
+
+3) A configuration file called $HOME/.cwsrc. I've attached an example.
+Enter you VCSID, scrambled CVS password, the CVS tunnel etc.
+3) $HOME/.cwsrcにある設定ファイルが呼び出されます．例を添付します．
+VCSID，暗号化したCVSのパスワード，CVSトンネルなど が入ってます．
+
+4) Check out solenv/bin and solenv/bin/modules toplevel. You'll get a
+      bunch of perl scripts. The tools are:
+4) solenv/binとsolenv/bin/modulesのディレクトリーを調べてみてください．
+   あなたは，ひとかたまりになったperlのスクリプトを取得できるでしょう．
+   それらのツールは、
+     a) cwsquery      query misc. stuff from the CWS database
+     a) cwsquery      様々な問合せ．CWSデータベースを元にする
+     b) cwscreate     create a CWS
+     b) cwscreate     CWSを作成する
+     c) cwsadd        add modules to the CWS
+     c) cwsadd        CWSへモジュールを追加する
+     d) cwsaddtask    add tasks to the CWS
+     d) cwsaddtask    CWSへタスクを追加する
+     e) cwsresync     resync a CWS to a new milestone
+     e) cwsresync     新しいマイルストーンのためにCWSと同期する
+     f) cwsanalyze    analyze a CWS, compare it to the current master
+     f) cwsanalyze    CWSを分析する．現在のマスタと比較する．
+
+
+How it works:
+=============
+
+1) Check out the Openoffice alias, configure, source the script.
+1) configureスクリプトとソースコードが含まれているOpenOfficeというエイリ
+   アスをチェックアウトする」(訳注：ソースコードをCVSからチェックアウト
+   しなさい! ということか)
+
+
+2) To check the connection please do something like this
+2) 接続をチェックするために下記のようにしなさい.
+
+      $ cwsquery -m SRC680 latest
+
+      This command should print the latest released milestone for SRC680
+      このコマンドは，SRC680最終リリースのマイルストーンが表示されます．
+
+3) Create a CWS:
+3) CWSを作ります:
+
+      $ cwscreate SRC680 m44 mycws01
+
+      This creates a CWS based on SRC680 m44 called 'mycws01' (no
+      underscores and other funny characters please ...)
+      SRC680 m44をベースとしてCWSを作成したのを 'mycws01'と呼びます．
+      (_や他の変な文字を使わないで お願い....)
+
+      ATTENTION: This updates your workspace to the mentioned milestone, so
+      make a copy if you have modified files in there.
+      注意：そこにある変更したファイルがあるなら，複製を作る．そのマイル
+      ストーンに言及するためにあなたのワークスペースを更新する．
+
+4) set the CWS_WORK_STAMP environment variable
+4) CWS_WORK_STAMP環境変数を設定する
+
+      $ setenv CWS_WORK_STAMP mycws01
+
+5) add some modules
+5) モジュールを追加する．
+
+      $ cwsadd tools sal
+
+6) Add some tasks to the CWS
+6) CWSへタスクを追加する
+
+      $ cwsaddtask i4711 i123456
+
+7) Modify files on your CWS ...
+7) あなたのCWSで，ファイルを変更する．
+
+8) Analyze your CWS in a scratch directory.
+8) CWSにある変更したディレクトリを分析する
+
+      $ cd /tmp
+      $ cwsanalyze all
+
+      This will tell you how many conflict you'll have with the current
+      HEAD of the master. You can try this with every CWS, even with old
+      ones which have long been integrated
+      現在のマスターのヘッド(ブランチ)を使っているだろうから，これにより
+      どれだけ差異があるかが判ります．すでに統合されている古い版ですら，
+      CWS毎に試すことができます．
+
+9) Resync to a newer milestone. This is a 5 step operation (the
+      fifth step is optional)
+9) 新しいマイルストーンに再同期します．これは，5ステップの操作です．
+   (5つのステップは，任意です．)
+
+      $ cd /tmp
+      $ cwsresync -m m45 all
+      $ .. resolve your conflicts
+      $ cwsresync -c all
+      $ cwsresync -l m45
+      $ cwsresync -r
+
+      The -m step merges your files and protcolls all conflicts etc.
+      -m ステップは，あなたのファイルを併合し，全ての競合を解決します
+      (訳注：protocol?には動詞の意味はないけど，この意味が妥当かと)
+      The -c step commits the merges to the CVS. Do it always with
+      cwsresync -c, never by hand!!
+      -c ステップは，CVSに変更をコミットします．これは cwsresync -c
+      で行なうこと，絶対手でやらないで!!
+      The -l step updates your workspace and updates the milestone info
+      of the CWS in the database
+      -l ステップは，ワークスペースの更新と データベースの中に CWSの
+      マイルストーン情報を更新する．
+      The optional -r step removes solver and module output tree from your
+      workspace. New milestones are almost always incompatible.
+      任意である -r ステップは，solverとワークスペースからモジュール
+      出力ツリーをを削除します．新しいマイルストーンは，ほぼ必ず完全でない．
+
+Caveats
+=======
+補足説明
+========
+
+
+- does not yet work on Windows, but will RSN.
+- Windowsの上ではまだ動いていない．でも，大急ぎでやるだろう．
+- still has some rough edges (spellling mistakes etc), probably a bug or
+     two :-)
+- まだ荒削りである(綴間違いなど)，バグも1，2個あるだろう．
+
+Heiner
+
+-- 
+Jens-Heiner Rechtien
+rechtien@sun.com
+
+
+
+--------------010205020207000104050109
+Content-Type: text/plain; name=".cwsrc"
+Content-Disposition: inline; filename=".cwsrc"
+Content-Transfer-Encoding: 8bit
+
+[CWS_CONFIG]
+# Network proxy. Comment in if you need to access the net via a proxy.
+# Example: PROXY=http://myproxy.company.com:8080
+# PROXY=
+
+# CWS Database server (SOAP). It's possible specify to several backup server,
+# currently there are none.
+CWS_DB_SERVER_1=https://eis.services.openoffice.org/soap/servlet/rpcrouter
+
+# Your CVS login (for authentication with the CWS database).
+CVS_ID=
+
+# Your scrambled CVS password (for authentication with the CWS database).
+# Take this one from .cvspass (should be last field on the line and look
+# like "Aac`l;kde" or something like that)
+CVS_PASSWORD=
+
+# OOo CVS tunnel
+# Example: CVS_SERVER_ROOT=pserver:cvs_id@mytunnel.mydomain.de:/cvs
+CVS_SERVER_ROOT=
+
+# Local OOo CVSUP mirror (optional)
+# Example: CVS_MIRROR=:pserver:cvs_id@mycvsup.mydomain.de:/cvs
+#CVS_MIRROR_ROOT=
+
+# Path to the cvs binary (optional)
+# Example: CVS_BINARY=/usr/bin/cvs
+#CVS_BINARY=
+
+</pre>
+</body>
+</html>
