@@ -64,7 +64,7 @@ To install it just type as root <pre># apt-get install openoffice.org</pre></dd>
 EOT;
 
 
-print_page("Go-OO! - Download", "download",
+print_page("Go-OO! - Download", array("download", "summary"),
 		   "Download OpenOffice.org",
 		   $content 
 		   );

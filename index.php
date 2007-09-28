@@ -19,7 +19,7 @@ $content = <<<EOT
      <a href="/download/">Download OpenOffice.org</a>
 EOT;
 
-print_page("Go-OO!", "summary",
+print_page("Go-OO!", array("summary"),
 		   "Your OpenOffice.org",
 		   $content);
 

@@ -6,6 +6,8 @@ $content = <<<EOT
 <p>Here you'll discover what Go-oo has to offer in addition to the 
 regular build of OpenOffice.org</p>
 
+<p>Not without mentionning what is <a href="comingsoon/">coming soon</a></p>
+
 <table>
 <tr>
 
@@ -95,7 +97,7 @@ which supplement the WordPerfect importer also available in Go-oo
 EOT;
 
 
-print_page("Go-OO! - Discover", "discover",
+print_page("Go-OO! - Discover", array("discover", "summary"),
    "Discover OpenOffice.org",
    $content
    );

@@ -26,7 +26,7 @@ ping me <i>michael dot meeks at</i><i> novell.com</i></p>
 EOT;
 
 
-print_page("Go-OO! - About", "about", 
+print_page("Go-OO! - About", array("about", "summary"), 
    "The people behind go-oo.org",
    $content
    );

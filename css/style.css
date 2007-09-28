@@ -20,6 +20,15 @@ body {
     max-width: 65em; /* bigger apparently force the page to scroll on 1024x768 */
 }
 
+#hnav {
+    text-indent: 2em;
+    font-size: 90%;
+}
+
+#hnav .current {
+    font-weight: bold;
+}
+
 #container .container {
     width: 90%;
 }

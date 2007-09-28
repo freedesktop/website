@@ -1,4 +1,7 @@
 DirectoryIndex index.html index.php
+Redirect /packages http://download.go-oo.org
+Redirect /tstnvl http://download.go-oo.org/tstnvl
+Redirect /tstooo http://download.go-oo.org/tstooo
 <Files ~ "include.mk">
     Order allow,deny
     Deny from all

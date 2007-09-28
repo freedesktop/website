@@ -1,7 +1,23 @@
 <?php
 
-function print_page($title, $id, $heading, $content)
+function print_page($title, $context, $heading, $content)
 {
+	$hnav = array( "summary" => array("/", "Summary"),
+			"download" => array("/download/", "Download"),
+			"discover" => array("/discover/", "Discover"),
+			"comingsoon" => array("/discover/comingsoon/", "Coming Soon", "discover"),
+			"developers" => array("/developers/", "Developers"),
+			"about" => array("/about/", "About") 
+			);
+	
+	$link = $hnav[$context[0]];
+	if( isset($link[2]) ) {
+		$id = $link[2];
+	}
+	else {
+		$id = $context[0];
+	}
+
 	$state = array ( "container", "container", 
 	       "container", "container",
 	       "container" ); 
@@ -56,6 +72,18 @@ function print_page($title, $id, $heading, $content)
                     <li class="tabs-<?php print $state[3]; ?>"><a href="/developers/">Developers</a></li>
                     <li class="tabs-<?php print $state[4]; ?>"><a href="/about/">About</a></li>
                 </ul>
+		<div id="hnav">
+		        <?php
+			$count = count($context);
+			for( $i = $count - 1; $i > 0; $i--) {
+				$link = $hnav[$context[$i]];
+				echo "<a href=\"$link[0]\">$link[1]</a> &lt;&lt ";
+			}
+			$link = $hnav[$context[0]];
+			echo "<span class=\"current\">$link[1]</span>";
+			?>
+
+		</div>
 
                 <div class="container">
                     <div id="splash">

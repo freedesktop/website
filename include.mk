@@ -3,4 +3,5 @@
 PHP ?= php
 
 %.html: %.php $(PWD)/template.php
-	(cd `dirname $<` ; $(PHP) `basename $<` > `basename $@`)
+	@echo "Processing $<"
+	@(cd `dirname $<` ; $(PHP) `basename $<` > `basename $@`)

@@ -116,7 +116,7 @@ $content = <<<EOT
         <p>We have a channel #go-oo on irc.freenode.net, where you can discuss development 
 	issues with hackers.</p>
         <p>To contact anyone wrt. go-oo see the ooo-build 
-	<a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/AUTHORS?revision=6632&view=markup">maintainers</a> 
+	<a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/AUTHORS?view=markup">maintainers</a> 
 	or contact <i>mmeeks T novell com</i></p>
 
         <hr />
@@ -130,7 +130,7 @@ $content = <<<EOT
         </form>
 EOT;
 
-print_page("Go-OO! - Developers", "developers",
+print_page("Go-OO! - Developers", array("developers", "summary"),
    "Developers",
    $content
 );
