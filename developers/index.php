@@ -49,9 +49,11 @@ $content = <<<EOT
                 </dd>
             </dl>
         </div>
-        <hr>
+        <hr />
+	<div id="quicklinks">
         <h4>Quick links</h4>
-        <dl id="quicklinks">
+        <dl>
+	<div class="leftcol">
             <dt>Development Tools</dt>
             <dd>
             <ul>
@@ -70,6 +72,8 @@ $content = <<<EOT
                 <li><a href="old-guides.html">Old</a></li>
             </ul>
             </dd>
+	</div>
+	<div class="rightcol">
             <dt>Resources</dt>
             <dd>
             <ul>
@@ -86,8 +90,13 @@ $content = <<<EOT
                 <li><a href="/users/mgp/">MagicPoint users</a></li>
             </ul>
             </dd>
+	    </div>
         </dl>
-        
+	</div>
+
+	<hr />
+
+	<div>        
 	<h5>Tinderbox Build Status</h5>
         <p>Find an overview over the last tinderbox build results 
 	<a href="http://go-oo.org/tinderbox/all_trees.express.html">here</a>.</p>
@@ -128,6 +137,7 @@ $content = <<<EOT
             <input name="lp" value="de_en" type="hidden"> 
             <input value="Translate" type="submit">
         </form>
+	</div>
 EOT;
 
 print_page("Go-OO! - Developers", array("developers", "summary"),

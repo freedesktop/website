@@ -144,8 +144,29 @@ p {
         padding: 0 1ex;
     }
 
-#quicklinks li {
-    font-size: 87.5%;
+#quicklinks {
+    position: relative;
+}
+
+
+#quicklinks .leftcol {
+    position: relative;
+    top: 0px;
+    left: 0%;
+    width: 50%;
+}
+
+#quicklinks .rightcol {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    width: 50%;
+}
+
+#other {
+    position: absolute;
+    top: 10px;
+    width: 100%;
 }
 
 #dis {
