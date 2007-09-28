@@ -5,9 +5,16 @@ require("../template.php");
 $content = <<<EOT
 Choose the version of OpenOffice that matches your computer's operating system.
 <dl>
+<dt><a href="http://download.go-oo.org/">Source Code</a></dt>
+<dd><a href="http://download.go-oo.org/OOG680/ooo-build-2.3.0.1.tar.gz">ooo-build-2.3.0.1</a> or
+<a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/">svn view</a> or:
+<pre>svn checkout http://svn.gnome.org/svn/ooo-build/trunk ooo-build</pre>
+</dd>
+<br>
 <dt><a href="http://go-oo.org/tstnvl/GoOo/">Windows</a></dt>
 <dd>Simply download the zip file and run the embedded setup to install.</dd>
-<dt>SUSE</dt>
+<br>
+<dt>OpenSUSE</dt>
 <dd>Stable: 
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/SLED_10/">SLED10</a>, 
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/SUSE_Linux_10.1/">10.1</a>, 
@@ -18,8 +25,8 @@ Choose the version of OpenOffice that matches your computer's operating system.
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/SUSE_Linux_10.1/">10.1</a>, 
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_10.2/">10.2</a>
 </dd>
-<dd>To add a repository with <a href="http://en.opensuse.org/Zypper">zypper</a>:
-<pre># zypper sa http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/openSUSE_10.2
+<dd>To add a repository with <a href="http://en.opensuse.org/Zypper">zypper</a> eg.
+<pre># zypper sa http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_10.2
 # zypper --non-interactive in OpenOffice_org-gnome</pre>
 </dd>
 <dt>Debian</dt>
