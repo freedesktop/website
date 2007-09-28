@@ -1,0 +1,10 @@
+DirectoryIndex index.html index.php
+<Files ~ "include.mk">
+    Order allow,deny
+    Deny from all
+</Files>
+<Files ~ "Makefile">
+    Order allow,deny
+    Deny from all
+</Files>
+
