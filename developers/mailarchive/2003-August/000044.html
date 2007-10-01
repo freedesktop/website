@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOo Compile Succeded!!!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:cvences%40yahoo.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000039.html">
+   <LINK REL="Next"  HREF="000045.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOo Compile Succeded!!!
+   </H1>
+    <B>Carlos Alberto
+    </B> 
+    <A HREF="mailto:cvences%40yahoo.com"
+       TITLE="[Open Office] OOo Compile Succeded!!!">cvences@yahoo.com
+       </A><BR>
+    <I>Sat, 30 Aug 2003 17:46:43 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000039.html">[Open Office] Re: Openoffice digest, Vol 1 #9 - 5 msgs
+</A></li>
+        <LI> Next message: <A HREF="000045.html">[Open Office] OOo Compile Succeded!!!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#44">[ date ]</a>
+              <a href="thread.html#44">[ thread ]</a>
+              <a href="subject.html#44">[ subject ]</a>
+              <a href="author.html#44">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi again, thanks Michael, I've just downloaded and
+compiled RC3_030729 and everything run perfectly.
+
+I would like to write this for those to attempt to
+build OOo on a RH9 machine.
+
+Built on:
+   * Red Hat 9 (All development and libraries 
+     packages installed, even libart and gcc)
+   * Intel Pentium 4 1.5 Ghz
+
+Dependencies:
+   * libart 2.3.13
+   * libgnomecups 0.1.4
+
+Step by Step: 
+(As shown in Michael's
+<A HREF="http://ooo.ximian.com/hackers-guide.html">http://ooo.ximian.com/hackers-guide.html</A>)
+   1 export
+CVSROOT=':pserver:<A HREF="mailto:anonymous@anoncvs.gnome.org">anonymous@anoncvs.gnome.org</A>:/cvs/gnome'
+   2 cvs login
+    ^------ If you cannot connect then just give it a
+try several times :)
+    When you are asked for a password just press enter
+   3 cvs -z3 checkout openoffice
+
+   4 ./autogen.sh
+
+   5 ./download &amp;&amp; make &amp;&amp; sudo make install
+
+   ^------ Downloading time depends on you interNet
+connection, and I spend more than 12 hours on the
+compile &amp;&amp; make process so I suggest &quot;./download &amp;&amp;
+make &amp;&amp; sudo make install&quot; and in this way you can
+freely go to take a snap :)
+
+  And here is another question. When you run an
+application the first menu is usually called FILE and
+the last option is called EXIT. My question is how can
+I delete, remove or hide that menu option (EXIT) ?, so
+this way the user cannot kill the application by using
+this command. Can you give me a hand??
+
+
+=====
+Atte.Carlos Alberto Vences Sánchez0172112393Metepec, Mé<A HREF="mailto:xicoxneon79@netscape.net">xicoxneon79@netscape.net</A>
+
+__________________________________
+Do you Yahoo!?
+Yahoo! SiteBuilder - Free, easy-to-use web site design software
+<A HREF="http://sitebuilder.yahoo.com">http://sitebuilder.yahoo.com</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000039.html">[Open Office] Re: Openoffice digest, Vol 1 #9 - 5 msgs
+</A></li>
+	<LI> Next message: <A HREF="000045.html">[Open Office] OOo Compile Succeded!!!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#44">[ date ]</a>
+              <a href="thread.html#44">[ thread ]</a>
+              <a href="subject.html#44">[ subject ]</a>
+              <a href="author.html#44">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,557 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Latest solver - building on Windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Latest%20solver%20-%20building%20on%20Windows&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001838.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Latest solver - building on Windows</H1>
+    <B>KamiH&#237;r</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Latest%20solver%20-%20building%20on%20Windows&In-Reply-To="
+       TITLE="[Open Office] Latest solver - building on Windows">kamihir at freemail.hu
+       </A><BR>
+    <I>Sat Jun  3 06:44:34 EDT 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001838.html">[Open Office] Latest solver - building on Windows
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1837">[ date ]</a>
+              <a href="thread.html#1837">[ thread ]</a>
+              <a href="subject.html#1837">[ subject ]</a>
+              <a href="author.html#1837">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+
+I would like to help out Kohei with a Windows build of solver but I get 
+this error during building scsolver:
+
+41) : error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_binary&lt;E
+1,E2,F&gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expressio
+n.hpp(1980) : see declaration of 
+'boost::numeric::ublas::matrix_binary&lt;E1,E2,F&gt;:
+:<i>const_iterator2'
+</I>c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expression.hpp(28
+11) : error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_binary_s
+calar1&lt;E1,E2,F&gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expressio
+n.hpp(2692) : see declaration of 
+'boost::numeric::ublas::matrix_binary_scalar1&lt;E
+1,E2,F&gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expressio
+n.hpp(2745) : see reference to class template instantiation 
+'boost::numeric::ubl
+as::matrix_binary_scalar1&lt;E1,E2,F&gt;::const_iterator1' being compiled
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expressio
+n.hpp(3033) : see reference to class template instantiation 
+'boost::numeric::ubl
+as::matrix_binary_scalar1&lt;E1,E2,F&gt;' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expression.hpp(28
+15) : error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_binary_s
+calar1&lt;E1,E2,F&gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expressio
+n.hpp(2692) : see declaration of 
+'boost::numeric::ublas::matrix_binary_scalar1&lt;E
+1,E2,F&gt;::const_iterator2'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expression.hpp(32
+43) : error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_binary_s
+calar2&lt;E1,E2,F&gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expressio
+n.hpp(3124) : see declaration of 
+'boost::numeric::ublas::matrix_binary_scalar2&lt;E
+1,E2,F&gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expressio
+n.hpp(3177) : see reference to class template instantiation 
+'boost::numeric::ubl
+as::matrix_binary_scalar2&lt;E1,E2,F&gt;::const_iterator1' being compiled
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expressio
+n.hpp(3465) : see reference to class template instantiation 
+'boost::numeric::ubl
+as::matrix_binary_scalar2&lt;E1,E2,F&gt;' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expression.hpp(32
+47) : error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_binary_s
+calar2&lt;E1,E2,F&gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expressio
+n.hpp(3124) : see declaration of 
+'boost::numeric::ublas::matrix_binary_scalar2&lt;E
+1,E2,F&gt;::const_iterator2'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expression.hpp(45
+33) : error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_matrix_b
+inary&lt;E1,E2,F&gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expressio
+n.hpp(4338) : see declaration of 
+'boost::numeric::ublas::matrix_matrix_binary&lt;E1
+,E2,F&gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expressio
+n.hpp(4410) : see reference to class template instantiation 
+'boost::numeric::ubl
+as::matrix_matrix_binary&lt;E1,E2,F&gt;::const_iterator1' being compiled
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expressio
+n.hpp(4826) : see reference to class template instantiation 
+'boost::numeric::ubl
+as::matrix_matrix_binary&lt;E1,E2,F&gt;' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expression.hpp(45
+37) : error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_matrix_b
+inary&lt;E1,E2,F&gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expressio
+n.hpp(4338) : see declaration of 
+'boost::numeric::ublas::matrix_matrix_binary&lt;E1
+,E2,F&gt;::const_iterator2'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp(3001) 
+:<i>
+</I> error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_range&lt;M&gt;::con
+st_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(2841) : see declaration of 
+'boost::numeric::ublas::matrix_range&lt;M&gt;::const_itera
+tor2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(2933) : see reference to class template instantiation 
+'boost::numeric::ublas::m
+atrix_range&lt;M&gt;::const_iterator1' being compiled
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(3497) : see reference to class template instantiation 
+'boost::numeric::ublas::m
+atrix_range&lt;M&gt;' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp(3006) 
+:<i>
+</I> error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_range&lt;M&gt;::con
+st_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(2841) : see declaration of 
+'boost::numeric::ublas::matrix_range&lt;M&gt;::const_itera
+tor2'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp(3129) 
+:<i>
+</I> error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_range&lt;M&gt;::ite
+rator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(2842) : see declaration of 
+'boost::numeric::ublas::matrix_range&lt;M&gt;::iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(3064) : see reference to class template instantiation 
+'boost::numeric::ublas::m
+atrix_range&lt;M&gt;::iterator1' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp(3134) 
+:<i>
+</I> error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_range&lt;M&gt;::ite
+rator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(2842) : see declaration of 
+'boost::numeric::ublas::matrix_range&lt;M&gt;::iterator2'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp(3909) 
+:<i>
+</I> error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_slice&lt;M&gt;::con
+st_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(3761) : see declaration of 
+'boost::numeric::ublas::matrix_slice&lt;M&gt;::const_itera
+tor2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(3845) : see reference to class template instantiation 
+'boost::numeric::ublas::m
+atrix_slice&lt;M&gt;::const_iterator1' being compiled
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(4401) : see reference to class template instantiation 
+'boost::numeric::ublas::m
+atrix_slice&lt;M&gt;' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp(3913) 
+:<i>
+</I> error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_slice&lt;M&gt;::con
+st_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(3761) : see declaration of 
+'boost::numeric::ublas::matrix_slice&lt;M&gt;::const_itera
+tor2'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp(4035) 
+:<i>
+</I> error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_slice&lt;M&gt;::ite
+rator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(3762) : see declaration of 
+'boost::numeric::ublas::matrix_slice&lt;M&gt;::iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(3974) : see reference to class template instantiation 
+'boost::numeric::ublas::m
+atrix_slice&lt;M&gt;::iterator1' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp(4039) 
+:<i>
+</I> error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_slice&lt;M&gt;::ite
+rator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(3762) : see declaration of 
+'boost::numeric::ublas::matrix_slice&lt;M&gt;::iterator2'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp(4819) 
+:<i>
+</I> error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_indirect&lt;M,IA
+ &gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(4671) : see declaration of 
+'boost::numeric::ublas::matrix_indirect&lt;M,IA&gt;::const
+_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(4755) : see reference to class template instantiation 
+'boost::numeric::ublas::m
+atrix_indirect&lt;M,IA&gt;::const_iterator1' being compiled
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(5311) : see reference to class template instantiation 
+'boost::numeric::ublas::m
+atrix_indirect&lt;M,IA&gt;' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp(4823) 
+:<i>
+</I> error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_indirect&lt;M,IA
+ &gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(4671) : see declaration of 
+'boost::numeric::ublas::matrix_indirect&lt;M,IA&gt;::const
+_iterator2'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp(4945) 
+:<i>
+</I> error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_indirect&lt;M,IA
+ &gt;::iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(4672) : see declaration of 
+'boost::numeric::ublas::matrix_indirect&lt;M,IA&gt;::itera
+tor2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(4884) : see reference to class template instantiation 
+'boost::numeric::ublas::m
+atrix_indirect&lt;M,IA&gt;::iterator1' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp(4949) 
+:<i>
+</I> error C2027: use of undefined type 
+'boost::numeric::ublas::matrix_indirect&lt;M,IA
+ &gt;::iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_proxy.hpp
+(4672) : see declaration of 
+'boost::numeric::ublas::matrix_indirect&lt;M,IA&gt;::itera
+tor2'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(405) 
+:<i> error
+</I>C2027: use of undefined type 
+'boost::numeric::ublas::matrix&lt;T,F,A&gt;::const_iterat
+or2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(257)
+:<i> see declaration of 'boost::numeric::ublas::matrix&lt;T,F,A&gt;::const_iterator2'
+</I>        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(341)
+:<i> see reference to class template instantiation 
+</I>'boost::numeric::ublas::matrix&lt;T
+,F,A&gt;::const_iterator1' being compiled
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(896)
+:<i> see reference to class template instantiation 
+</I>'boost::numeric::ublas::matrix&lt;T
+,F,A&gt;' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(410) 
+:<i> error
+</I>C2027: use of undefined type 
+'boost::numeric::ublas::matrix&lt;T,F,A&gt;::const_iterat
+or2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(257)
+:<i> see declaration of 'boost::numeric::ublas::matrix&lt;T,F,A&gt;::const_iterator2'
+</I>c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(531) 
+:<i> error
+</I>C2027: use of undefined type 
+'boost::numeric::ublas::matrix&lt;T,F,A&gt;::iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(258)
+:<i> see declaration of 'boost::numeric::ublas::matrix&lt;T,F,A&gt;::iterator2'
+</I>        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(472)
+:<i> see reference to class template instantiation 
+</I>'boost::numeric::ublas::matrix&lt;T
+,F,A&gt;::iterator1' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(536) 
+:<i> error
+</I>C2027: use of undefined type 
+'boost::numeric::ublas::matrix&lt;T,F,A&gt;::iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(258)
+:<i> see declaration of 'boost::numeric::ublas::matrix&lt;T,F,A&gt;::iterator2'
+</I>c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1294) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::vector_of_vector&lt;T,F,A&gt;::c
+onst_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1131)
+ : see declaration of 
+'boost::numeric::ublas::vector_of_vector&lt;T,F,A&gt;::const_ite
+rator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1215)
+ : see reference to class template instantiation 
+'boost::numeric::ublas::vector_
+of_vector&lt;T,F,A&gt;::const_iterator1' being compiled
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1838)
+ : see reference to class template instantiation 
+'boost::numeric::ublas::vector_
+of_vector&lt;T,F,A&gt;' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1299) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::vector_of_vector&lt;T,F,A&gt;::c
+onst_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1131)
+ : see declaration of 
+'boost::numeric::ublas::vector_of_vector&lt;T,F,A&gt;::const_ite
+rator2'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1437) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::vector_of_vector&lt;T,F,A&gt;::i
+terator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1132)
+ : see declaration of 
+'boost::numeric::ublas::vector_of_vector&lt;T,F,A&gt;::iterator2
+'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1363)
+ : see reference to class template instantiation 
+'boost::numeric::ublas::vector_
+of_vector&lt;T,F,A&gt;::iterator1' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1442) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::vector_of_vector&lt;T,F,A&gt;::i
+terator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1132)
+ : see declaration of 
+'boost::numeric::ublas::vector_of_vector&lt;T,F,A&gt;::iterator2
+'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2060) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::identity_matrix&lt;T&gt;::const_
+iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1951)
+ : see declaration of 
+'boost::numeric::ublas::identity_matrix&lt;T&gt;::const_iterator
+2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1998)
+ : see reference to class template instantiation 
+'boost::numeric::ublas::identit
+y_matrix&lt;T&gt;::const_iterator1' being compiled
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2284)
+ : see reference to class template instantiation 
+'boost::numeric::ublas::identit
+y_matrix&lt;T&gt;' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2065) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::identity_matrix&lt;T&gt;::const_
+iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(1951)
+ : see declaration of 
+'boost::numeric::ublas::identity_matrix&lt;T&gt;::const_iterator
+2'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2503) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::zero_matrix&lt;T&gt;::const_iter
+ator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2402)
+ : see declaration of 
+'boost::numeric::ublas::zero_matrix&lt;T&gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2441)
+ : see reference to class template instantiation 
+'boost::numeric::ublas::zero_ma
+trix&lt;T&gt;::const_iterator1' being compiled
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2720)
+ : see reference to class template instantiation 
+'boost::numeric::ublas::zero_ma
+trix&lt;T&gt;' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2508) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::zero_matrix&lt;T&gt;::const_iter
+ator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2402)
+ : see declaration of 
+'boost::numeric::ublas::zero_matrix&lt;T&gt;::const_iterator2'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2931) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::scalar_matrix&lt;T&gt;::const_it
+erator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2830)
+ : see declaration of 
+'boost::numeric::ublas::scalar_matrix&lt;T&gt;::const_iterator2'
+
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2869)
+ : see reference to class template instantiation 
+'boost::numeric::ublas::scalar_
+matrix&lt;T&gt;::const_iterator1' being compiled
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(3154)
+ : see reference to class template instantiation 
+'boost::numeric::ublas::scalar_
+matrix&lt;T&gt;' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2936) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::scalar_matrix&lt;T&gt;::const_it
+erator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(2830)
+ : see declaration of 
+'boost::numeric::ublas::scalar_matrix&lt;T&gt;::const_iterator2'
+
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(3545) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::c_matrix&lt;T,N,M&gt;::const_ite
+rator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(3397)
+ : see declaration of 
+'boost::numeric::ublas::c_matrix&lt;T,N,M&gt;::const_iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(3481)
+ : see reference to class template instantiation 
+'boost::numeric::ublas::c_matri
+x&lt;T,N,M&gt;::const_iterator1' being compiled
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(4036)
+ : see reference to class template instantiation 
+'boost::numeric::ublas::c_matri
+x&lt;T,N,M&gt;' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(3550) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::c_matrix&lt;T,N,M&gt;::const_ite
+rator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(3397)
+ : see declaration of 
+'boost::numeric::ublas::c_matrix&lt;T,N,M&gt;::const_iterator2'
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(3671) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::c_matrix&lt;T,N,M&gt;::iterator2
+'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(3398)
+ : see declaration of 'boost::numeric::ublas::c_matrix&lt;T,N,M&gt;::iterator2'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(3612)
+ : see reference to class template instantiation 
+'boost::numeric::ublas::c_matri
+x&lt;T,N,M&gt;::iterator1' being compiled
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(3676) 
+:<i> error
+</I> C2027: use of undefined type 
+'boost::numeric::ublas::c_matrix&lt;T,N,M&gt;::iterator2
+'
+        
+c:\203\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix.hpp(3398)
+ : see declaration of 'boost::numeric::ublas::c_matrix&lt;T,N,M&gt;::iterator2'
+dmake:  Error code 2, while making '../../wntmsci10.pro/slo/lpbuilder.obj'
+---* tg_merge.mk *---
+
+ERROR: Error 65280 occurred while making /cygdrive/c/203/scsolver/source/ui
+[<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">ooo at winooobuilder</A> ...203/scsolver]$
+
+Thanks,
+KAMI
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001838.html">[Open Office] Latest solver - building on Windows
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1837">[ date ]</a>
+              <a href="thread.html#1837">[ thread ]</a>
+              <a href="subject.html#1837">[ subject ]</a>
+              <a href="author.html#1837">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

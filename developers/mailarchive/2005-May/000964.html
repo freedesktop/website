@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status recently
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Status%20recently&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000965.html">
+   <LINK REL="Next"  HREF="000966.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status recently</H1>
+    <B>Raul Siddhartha</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Status%20recently&In-Reply-To="
+       TITLE="[Open Office] Status recently">rsiddhartha at novell.com
+       </A><BR>
+    <I>Sat May 21 02:28:45 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000965.html">[Open Office] Segfault with ooo-build-m100
+</A></li>
+        <LI>Next message: <A HREF="000966.html">[Open Office] &quot;save as&quot; does not work in m100 and m104
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#964">[ date ]</a>
+              <a href="thread.html#964">[ thread ]</a>
+              <a href="subject.html#964">[ subject ]</a>
+              <a href="author.html#964">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+
+ - Have been looking into integrating the OpenOffice settings with the
+desktop settings and played around with the new GconfBackend in
+shell/source/backends/gconfbe/ to retrieve the desktop settings using
+that. Once that is done, the settings have to be propagated back into
+OOo, so that the same settings are applied everywhere.
+
+ - Putting everything together is the patch attached that needs to be
+sent upstream for review.
+
+ - Backported a fix in save as documents that fixed two major bugs.
+
+ - Looked into the GNOME mini-commander for a change, poking at it to
+get it to launch an email composer window when an email address is typed
+in, and found/filed some problems there while getting that done.
+
+ - In between, biked home ( motorcycle - 550 km ) with a friend over a
+weekend through areas with temperatures averaging 40 degrees centigrade
+just for the heck of it :-)
+
+Regards,
+Raul
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: printing-desktop-integration.diff
+Type: text/x-patch
+Size: 11506 bytes
+Desc: not available
+Url : <A HREF="http://galactus.ximian.com/pipermail/openoffice/attachments/20050521/2cad76b9/printing-desktop-integration.bin">http://galactus.ximian.com/pipermail/openoffice/attachments/20050521/2cad76b9/printing-desktop-integration.bin</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000965.html">[Open Office] Segfault with ooo-build-m100
+</A></li>
+	<LI>Next message: <A HREF="000966.html">[Open Office] &quot;save as&quot; does not work in m100 and m104
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#964">[ date ]</a>
+              <a href="thread.html#964">[ thread ]</a>
+              <a href="subject.html#964">[ subject ]</a>
+              <a href="author.html#964">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

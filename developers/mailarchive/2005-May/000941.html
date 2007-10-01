@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] --enable-symbols (doh)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:michael.meeks%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000940.html">
+   <LINK REL="Next"  HREF="000944.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] --enable-symbols (doh)
+   </H1>
+    <B>michael meeks
+    </B> 
+    <A HREF="mailto:michael.meeks%40novell.com"
+       TITLE="[Open Office] --enable-symbols (doh)">michael.meeks@novell.com
+       </A><BR>
+    <I>Mon, 09 May 2005 15:46:58 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000940.html">[Open Office] --enable-symbols (doh)
+</A></li>
+        <LI> Next message: <A HREF="000944.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#941">[ date ]</a>
+              <a href="thread.html#941">[ thread ]</a>
+              <a href="subject.html#941">[ subject ]</a>
+              <a href="author.html#941">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 2005-05-09 at 10:35 -0400, Jody Goldberg wrote:
+&gt;<i> On Mon, May 09, 2005 at 10:33:22AM +0100, Michael Meeks wrote:
+</I>&gt;<i> &gt; 	Jan just pointed out: I'm a dofus; I mean --enable-symbols not
+</I>&gt;<i> &gt; --enable-debug [ which would be a stupid option ], the idea is to just
+</I>&gt;<i> &gt; build with debugging symbols.
+</I>&gt;<i> 
+</I>&gt;<i> Jan's proposal of per-module symbols may be preferable.  I can
+</I>&gt;<i> replicate your ~ 30% size increase when symbols are enabled, but gdb
+</I>&gt;<i> memory usage seems to at least double with all the extra symbols.
+</I>
+	I guess; still - I'd prefer to get all the symbols in there &amp; allow
+people to strip out the ones they don't want.
+
+	It'd be pretty easy to write an 'oostrip' script that would strip
+things we didn't want. A quick hack is to do:
+
+	mkdir foo
+	for a in `cat pagein-common pagein-calc`; do mv $a foo; done
+	for a in *.so; do strip $a; done
+	mv foo/* .
+
+	Or something :-)
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000940.html">[Open Office] --enable-symbols (doh)
+</A></li>
+	<LI> Next message: <A HREF="000944.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#941">[ date ]</a>
+              <a href="thread.html#941">[ thread ]</a>
+              <a href="subject.html#941">[ subject ]</a>
+              <a href="author.html#941">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

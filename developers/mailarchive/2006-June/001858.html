@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build --with-vendor configure switch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20--with-vendor%20configure%20switch&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001863.html">
+   <LINK REL="Next"  HREF="001862.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build --with-vendor configure switch</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20--with-vendor%20configure%20switch&In-Reply-To="
+       TITLE="[Open Office] ooo-build --with-vendor configure switch">kendy at suse.cz
+       </A><BR>
+    <I>Wed Jun 21 05:42:56 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001863.html">[Open Office] fix up msaccess-db-create-dialog-fix.diff for	ooc680-m6
+</A></li>
+        <LI>Next message: <A HREF="001862.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1858">[ date ]</a>
+              <a href="thread.html#1858">[ thread ]</a>
+              <a href="subject.html#1858">[ subject ]</a>
+              <a href="author.html#1858">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+suka found out that the new branding thing gets broken when you specify 
+--with-vendor to ooo-build's configure - that's because the ooo-build's 
+configure switches are propagated to config_office/configure.
+
+Now - how to fix it the best way ;-)  I'd like to get rid of the ooo-build's 
+--with-vendor switch.  It sets a VENDORNAME variable which seems just to do 
+nearly the same thing as --with-distro - installs stuff according to the 
+distro.  I propose to change the VENDORNAME occurrences to use the DISTRO 
+instead.
+
+Distro maintainers, do you agree with the proposed change, please? ;-)
+
+Thank you,
+Jan
+</PRE>
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001863.html">[Open Office] fix up msaccess-db-create-dialog-fix.diff for	ooc680-m6
+</A></li>
+	<LI>Next message: <A HREF="001862.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1858">[ date ]</a>
+              <a href="thread.html#1858">[ thread ]</a>
+              <a href="subject.html#1858">[ subject ]</a>
+              <a href="author.html#1858">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

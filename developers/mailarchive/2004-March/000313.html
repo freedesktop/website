@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Xinerama Errors
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-March/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000312.html">
+   <LINK REL="Next"  HREF="000314.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Xinerama Errors
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Xinerama Errors">michael@ximian.com
+       </A><BR>
+    <I>Thu, 04 Mar 2004 12:03:30 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000312.html">[Open Office] Xinerama Errors
+</A></li>
+        <LI> Next message: <A HREF="000314.html">[Open Office] Menu Row Bar
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#313">[ date ]</a>
+              <a href="thread.html#313">[ thread ]</a>
+              <a href="subject.html#313">[ subject ]</a>
+              <a href="author.html#313">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Nick,
+
+On Wed, 2004-03-03 at 12:36 -0600, Nick Hudson wrote:
+&gt;<i>     I was wondering if there was a way to compile Openoffice without 
+</I>&gt;<i> Xinerama support in the X server?  I have a few users who get errors 
+</I>&gt;<i> while trying to compileit do to they are missing the libXinerama.so 
+</I>&gt;<i> libraries in /usr/X11R6/lib.  IS there anyway that it can be built 
+</I>&gt;<i> without Xinerama support?
+</I>
+	Sure - I believe the code is all located in:
+
+	vcl/unx/source/app/saldisp.cxx;
+
+	it should be fairly easy to add a conditional there; a makefile.mk
+switch of some sort, and a configure update, and send us a patch :-)
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000312.html">[Open Office] Xinerama Errors
+</A></li>
+	<LI> Next message: <A HREF="000314.html">[Open Office] Menu Row Bar
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#313">[ date ]</a>
+              <a href="thread.html#313">[ thread ]</a>
+              <a href="subject.html#313">[ subject ]</a>
+              <a href="author.html#313">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

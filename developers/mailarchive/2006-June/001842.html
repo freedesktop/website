@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Branding made easier
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Branding%20made%20easier&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001841.html">
+   <LINK REL="Next"  HREF="001843.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Branding made easier</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Branding%20made%20easier&In-Reply-To="
+       TITLE="[Open Office] Branding made easier">kendy at suse.cz
+       </A><BR>
+    <I>Mon Jun 12 13:26:33 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001841.html">[Open Office] lpsolve package dependency
+</A></li>
+        <LI>Next message: <A HREF="001843.html">[Open Office] Branding made easier
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1842">[ date ]</a>
+              <a href="thread.html#1842">[ thread ]</a>
+              <a href="subject.html#1842">[ subject ]</a>
+              <a href="author.html#1842">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've created patches that make the branding easier for the distributors.  From 
+now on, you can use --with-intro-bitmaps, --with-about-bitmaps, and 
+--with-vendor in your distro-configs/*.conf.in files in order to specify the 
+intro and about bitmaps, and the vendor name.  The bitmaps you specify in the 
+--with-*-bitmaps will be copied to the solver &amp; installed in &lt;OOo&gt;/program/.
+
+You can specify more than one bitmap in the --with-*-bitmaps; then the order 
+means priority.  Eg. when you specify 
+--with-intro-bitmaps=&quot;/path/to/first.bmp /another/path/second.bmp&quot;, first.bmp 
+will be used during OOo startup if exists.  If not, second.bmp will be used.  
+If even that one does not exist, the OOo default bitmap will be used.  This 
+is interesting for packagers that package OOo for several products.
+
+From now on, your distro-config file should start with something like:
+
+--with-intro-bitmaps=\&quot;$SRCDIR/yourintro.bmp\&quot;
+--with-about-bitmaps=\&quot;$SRCDIR/yourabout.bmp\&quot;
+--with-vendor=\&quot;Your company\&quot;
+
+if you have your branding bitmaps in the src/ subdir.  Please consult 
+distro-configs/SUSE*.conf.in if in doubt.
+
+Please update your distro-configs &amp; remove the *splash.diff accordingly:
+
+ark-splash.diff
+dropline-gnome-splash.diff
+gentoo-splash.diff
+mandriva-splash.diff
+pld-splash.diff
+qilinux-splash.diff
+translate-org-za-splash.diff
+ubuntu-splash.diff
+
+I'd like you to get rid of the *-splash.diff soon; then we'll be able to avoid 
+copying the src/*.bmp to the OOo tree.
+
+Thank you,
+Jan
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001841.html">[Open Office] lpsolve package dependency
+</A></li>
+	<LI>Next message: <A HREF="001843.html">[Open Office] Branding made easier
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1842">[ date ]</a>
+              <a href="thread.html#1842">[ thread ]</a>
+              <a href="subject.html#1842">[ subject ]</a>
+              <a href="author.html#1842">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

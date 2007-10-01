@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build 1.9.70: build errors in pyuno and connectivity (evo2)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:j%40bitron.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000723.html">
+   <LINK REL="Next"  HREF="000702.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build 1.9.70: build errors in pyuno and connectivity (evo2)
+   </H1>
+    <B>J�rg Billeter
+    </B> 
+    <A HREF="mailto:j%40bitron.ch"
+       TITLE="[Open Office] ooo-build 1.9.70: build errors in pyuno and connectivity (evo2)">j@bitron.ch
+       </A><BR>
+    <I>Wed, 19 Jan 2005 22:59:34 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000723.html">[Open Office] Volunteers desired for OpenOffice.org Booth at LWE Boston
+</A></li>
+        <LI> Next message: <A HREF="000702.html">[Open Office] ooo-build 1.9.70: build errors in pyuno and
+ connectivity (evo2)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#701">[ date ]</a>
+              <a href="thread.html#701">[ thread ]</a>
+              <a href="subject.html#701">[ subject ]</a>
+              <a href="author.html#701">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm currently trying to build 1.9.70 on a Linux x86 machine with gcc 3.4
+and want to report some problems I've noticed. My build configuration is
+pretty much like the default one besides having disabled java and kde
+widgets.
+
+* pyuno/source/loader: the build breaks with undefined references to
+python::Runtime::Runtime among others. Should perhaps in makefile.mk
+the .ENDIF line below PYUNOLIB=... be moved above the .IF &quot;$(GUI)&quot; line
+so that the PYUNOLIB variable gets defined when using system-python,
+too? (not yet tested)
+
+* pyuno/source/loader: after circumventing the above problem, the build
+breaks when trying to register reflection.uno with the error
+terminate called after throwing an instance of
+'com::sun::star::registry::InvalidValueException'
+Don't know whether this problem has the same origin as the one above,
+doesn't look like.
+
+* connectivity/source/drivers/evoab1.5: the build breaks due to
+undefined references to functions of gobject-2.0. 
+Please merge the changes in
+ooo-build/patches/evo2/connectivity-source-drivers-evoab1-5-makefile-mk
+from ooo-build-1-3 (1.2 -&gt; 1.2.6.1) to HEAD
+<A HREF="http://cvs.gnome.org/viewcvs/ooo-build/patches/evo2/connectivity-source-dri=">http://cvs.gnome.org/viewcvs/ooo-build/patches/evo2/connectivity-source-dri=</A>
+vers-evoab1-5-makefile-mk.diff?r1=1.2&amp;r2=1.2.6.1
+
+Regards,
+
+Jürg
+
+-- 
+Jürg Billeter &lt;<A HREF="mailto:j@bitron.ch">j@bitron.ch</A>&gt;
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000723.html">[Open Office] Volunteers desired for OpenOffice.org Booth at LWE Boston
+</A></li>
+	<LI> Next message: <A HREF="000702.html">[Open Office] ooo-build 1.9.70: build errors in pyuno and
+ connectivity (evo2)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#701">[ date ]</a>
+              <a href="thread.html#701">[ thread ]</a>
+              <a href="subject.html#701">[ subject ]</a>
+              <a href="author.html#701">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

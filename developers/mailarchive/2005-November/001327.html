@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] patch to solve ld problem while builiding module of
+	svtools
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20patch%20to%20solve%20ld%20problem%20while%20builiding%20module%20of%0A%09svtools&In-Reply-To=571ACEFD467F7749BC50E0A98C17CDD808903503%40pdsmsx403">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001321.html">
+   <LINK REL="Next"  HREF="001315.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] patch to solve ld problem while builiding module of
+	svtools</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20patch%20to%20solve%20ld%20problem%20while%20builiding%20module%20of%0A%09svtools&In-Reply-To=571ACEFD467F7749BC50E0A98C17CDD808903503%40pdsmsx403"
+       TITLE="[Open Office] patch to solve ld problem while builiding module of
+	svtools">kendy at suse.cz
+       </A><BR>
+    <I>Mon Nov 28 03:06:49 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001321.html">[Open Office] patch to solve ld problem while builiding module of
+	svtools
+</A></li>
+        <LI>Next message: <A HREF="001315.html">[Open Office] Dropline GNOME patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1327">[ date ]</a>
+              <a href="thread.html#1327">[ thread ]</a>
+              <a href="subject.html#1327">[ subject ]</a>
+              <a href="author.html#1327">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Weichuan,
+
+On Friday 25 November 2005 10:40, Lin, Weichuan wrote:
+&gt;<i> I don't know why kendy comment out the patch of
+</I>&gt;<i> 64bit/buildfix-64bit-system-jpeg.diff in apply file, I find the building
+</I>&gt;<i> process really need it.
+</I>
+Right, the bug appears just when building with java, IIRC.  I build 
+--without-java now, so it did not break for me (&amp; I did not remember why the 
+patch was needed when I went through the set of patches).
+
+Sorry for that, I'll enable it in the apply file again.  As Rene pointed out, 
+the patch needs improvements before up-streaming, but having it in the 
+[64bitPatches] section is OK.
+
+Regards,
+Jan
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001321.html">[Open Office] patch to solve ld problem while builiding module of
+	svtools
+</A></li>
+	<LI>Next message: <A HREF="001315.html">[Open Office] Dropline GNOME patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1327">[ date ]</a>
+              <a href="thread.html#1327">[ thread ]</a>
+              <a href="subject.html#1327">[ subject ]</a>
+              <a href="author.html#1327">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] src-pack / up-stream etc. ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20src-pack%20/%20up-stream%20etc.%20...&In-Reply-To=1132656261.6080.20.camel%40linux.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001299.html">
+   <LINK REL="Next"  HREF="001301.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] src-pack / up-stream etc. ...</H1>
+    <B>Caolan McNamara</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20src-pack%20/%20up-stream%20etc.%20...&In-Reply-To=1132656261.6080.20.camel%40linux.site"
+       TITLE="[Open Office] src-pack / up-stream etc. ...">caolanm at redhat.com
+       </A><BR>
+    <I>Tue Nov 22 06:08:16 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001299.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+        <LI>Next message: <A HREF="001301.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1300">[ date ]</a>
+              <a href="thread.html#1300">[ thread ]</a>
+              <a href="subject.html#1300">[ subject ]</a>
+              <a href="author.html#1300">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 2005-11-22 at 10:44 +0000, michael meeks wrote:
+&gt;<i> Hi Martin,
+</I>&gt;<i> 	boost, icu, berkeleydb, xalan, stlport
+</I>&gt;<i> 
+</I>&gt;<i> 	We should prolly work on trying to migrate them to the -system package,
+</I>&gt;<i> as/when systems are prevalant with the right versions installed on them.
+</I>&gt;<i> [ it seems not even Debian is using --system-icu or --system-boost ].
+</I>&gt;<i> 
+</I>&gt;<i> 	Martin - what do you think ?
+</I>
+FWIW: there is that &quot;externals&quot; alias on ooo cvs, so there is some sort
+of precedent for aliasing the OOo checkout to be something like &quot;core&quot; +
+&quot;system&quot; + &quot;binfilter&quot; aliases or something. e.g. currently on fc5 we
+don't checkout any of the &quot;external&quot; contents except for a few things
+like
+
+'regexp': because it's highly patched
+'rhino': because fc5 doesn't provide it
+'stlport': because of the abi issues/and because gcc's stl doesn't work
+with visibility
+'agg': because it appeared recently.
+
+C.
+
+
+
+
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001299.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+	<LI>Next message: <A HREF="001301.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1300">[ date ]</a>
+              <a href="thread.html#1300">[ thread ]</a>
+              <a href="subject.html#1300">[ subject ]</a>
+              <a href="author.html#1300">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

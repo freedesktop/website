@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] &#31572;&#22797;&#65306; [PATCH]Bug 129410] I need a plus /  minus sign next to each heading in Navigator]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%3D%3Futf-8%3Fb%3F562U5aSN77yaIFtQQVRDSF1CdWcgMTI5NDEwXSBJ%3F%3D%0A%20%3D%3Futf-8%3Fq%3F_need_a_plus_/__minus_sign_next_to_each_heading_in_Navigator%3D5D%3F%3D&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001787.html">
+   <LINK REL="Next"  HREF="001790.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] &#31572;&#22797;&#65306; [PATCH]Bug 129410] I need a plus /  minus sign next to each heading in Navigator]</H1>
+    <B>Jian Hua Jiao</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%3D%3Futf-8%3Fb%3F562U5aSN77yaIFtQQVRDSF1CdWcgMTI5NDEwXSBJ%3F%3D%0A%20%3D%3Futf-8%3Fq%3F_need_a_plus_/__minus_sign_next_to_each_heading_in_Navigator%3D5D%3F%3D&In-Reply-To="
+       TITLE="[Open Office] &#31572;&#22797;&#65306; [PATCH]Bug 129410] I need a plus /  minus sign next to each heading in Navigator]">jjiao at novell.com
+       </A><BR>
+    <I>Thu Apr 27 11:53:32 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001787.html">[Open Office] cws-commit-patch
+</A></li>
+        <LI>Next message: <A HREF="001790.html">[Open Office] java registration problems on x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1788">[ date ]</a>
+              <a href="thread.html#1788">[ thread ]</a>
+              <a href="subject.html#1788">[ subject ]</a>
+              <a href="author.html#1788">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>1. add plus/minus 
+2. changed select outlines goto the assosiate content
+
+Attachment: Patch
+-------------- next part --------------
+--- sw/source/ui/utlui/content.cxx	2006-03-27 18:18:48.000000000 +0800
++++ sw/source/ui/utlui/content.cxx	2006-04-27 23:29:42.000000000 +0800
+@@ -1255,19 +1255,64 @@
+ 			SwContentType* pCntType = (SwContentType*)pParent-&gt;GetUserData();
+ 
+ 			sal_uInt16 nCount = pCntType-&gt;GetMemberCount();
+-			for(sal_uInt16 i = 0; i &lt; nCount; i++)
+-			{
+-				const SwContent* pCnt = pCntType-&gt;GetMember(i);
+-				if(pCnt)
+-				{
+-					String sEntry = pCnt-&gt;GetName();
+-					if(!sEntry.Len())
++            /**************************************************************
++                Add for outline plus/minus
++            ***************************************************************/
++            if(pCntType-&gt;GetType() == CONTENT_TYPE_OUTLINE)
++            {
++                SvLBoxEntry* pChild = 0;
++                for(sal_uInt16 i = 0; i &lt; nCount; i++)
++                {
++                    const SwContent* pCnt = pCntType-&gt;GetMember(i);
++                    if(pCnt)
++                    {
++                        sal_uInt16 nLevel = ((SwOutlineContent*)pCnt)-&gt;GetOutlineLevel();
++                        String sEntry = pCnt-&gt;GetName();
++                        if(!sEntry.Len())
++                            sEntry = sSpace;
++                        if(!pChild || (nLevel == 0))
++                            pChild = InsertEntry(sEntry, pParent,
++                                        sal_False, LIST_APPEND,(void*)pCnt);
++                        else
++                        {
++                            //back search parent.
++                            if(((SwOutlineContent*)pCntType-&gt;GetMember(i-1))-&gt;GetOutlineLevel() &lt; nLevel)
++                                pChild = InsertEntry(sEntry, pChild,
++                                        sal_False, LIST_APPEND, (void*)pCnt);
++                            else
++                            {
++                                pChild = Prev(pChild);
++                                while(pChild &amp;&amp;
++                                        lcl_IsContent(pChild) &amp;&amp;
++                                        !(((SwOutlineContent*)pChild-&gt;GetUserData())-&gt;GetOutlineLevel() &lt; nLevel)
++                                     )
++                                {
++                                    pChild = Prev(pChild);
++                                }
++                                if(pChild)
++                                    pChild = InsertEntry(sEntry, pChild,
++                                                sal_False, LIST_APPEND, (void*)pCnt);
++                            }
++                        }
++                    }
++                }
++            }
++            else
++            {
++			    for(sal_uInt16 i = 0; i &lt; nCount; i++)
++			    {
++				    const SwContent* pCnt = pCntType-&gt;GetMember(i);
++				    if(pCnt)
++				    {
++					    String sEntry = pCnt-&gt;GetName();
++					    if(!sEntry.Len())
+ 						sEntry = sSpace;
+-					SvLBoxEntry* pChild = InsertEntry(sEntry, pParent,
+-							sal_False, LIST_APPEND, (void*)pCnt);
+-				}
++					    SvLBoxEntry* pChild = InsertEntry(sEntry, pParent,
++							    sal_False, LIST_APPEND, (void*)pCnt);
++				    }
+ 
+-			}
++			    }
++            }
+ 		}
+ 	}
+ }
+@@ -1291,6 +1336,19 @@
+ 			}
+ 			else
+ 				nHiddenBlock |= nOr;
++            if((pCntType-&gt;GetType() == CONTENT_TYPE_OUTLINE))
++            {
++                sal_Bool bBool = SvTreeListBox::Expand(pParent);
++                SvLBoxEntry* pChild = Next(pParent);
++                while(pChild &amp;&amp; lcl_IsContent(pChild) &amp;&amp; pParent-&gt;HasChilds())
++                {
++                    if(pChild-&gt;HasChilds())
++                        SvTreeListBox::Expand(pChild);
++                    pChild = Next(pChild);
++                }
++                return bBool;
++            }
++
+ 		}
+ 	}
+ 	return SvTreeListBox::Expand(pParent);
+@@ -1338,7 +1396,7 @@
+ 	DBG_ASSERT(pEntry, &quot;kein aktueller Eintrag!&quot;)
+ 	if(pEntry)
+ 	{
+-		if(lcl_IsContentType(pEntry))
++		if(lcl_IsContentType(pEntry) &amp;&amp; !pEntry-&gt;HasChilds())
+ 			RequestingChilds(pEntry);
+ 		else if(bIsActive || bIsConstant)
+ 		{
+@@ -1864,9 +1922,9 @@
+ 					// or if the visibility of objects (frames, sections, tables) has changed
+ 					// i.e. in header/footer
+ 					pArrType-&gt;FillMemberList(&amp;bLevelOrVisibiblityChanged);
+-					if(bLevelOrVisibiblityChanged)
+-						bInvalidate = sal_True;
+ 					sal_uInt16 nChildCount = (sal_uInt16)GetChildCount(pEntry);
++                    if((nType == CONTENT_TYPE_OUTLINE) &amp;&amp; bLevelOrVisibiblityChanged)
++                        bRepaint = sal_True;
+ 					if(bLevelOrVisibiblityChanged)
+ 						bInvalidate = sal_True;
+ 
+@@ -2759,6 +2817,10 @@
+ 		return sal_False;
+ 	sal_Bool bEnable = sal_False;
+ 	SvLBoxEntry* pParentEntry = GetParent(pEntry);
++    while(pParentEntry &amp;&amp; (!lcl_IsContentType(pParentEntry)))
++    {
++        pParentEntry = GetParent(pParentEntry);
++    }
+ 	if(!bIsLastReadOnly &amp;&amp; (!IsVisible() ||
+ 		(bIsRoot &amp;&amp; nRootType == CONTENT_TYPE_OUTLINE &amp;&amp; pParentEntry ||
+ 			lcl_IsContent(pEntry) &amp;&amp; ((SwContentType*)pParentEntry-&gt;GetUserData())-&gt;GetType() == CONTENT_TYPE_OUTLINE)))
+@@ -2768,6 +2830,11 @@
+ 	pNavi-&gt;aContentToolBox.EnableItem(FN_ITEM_DOWN, bEnable);
+ 	pNavi-&gt;aContentToolBox.EnableItem(FN_ITEM_LEFT, bEnable);
+ 	pNavi-&gt;aContentToolBox.EnableItem(FN_ITEM_RIGHT,bEnable);
++    if(pParentEntry &amp;&amp; (((SwContentType*)pParentEntry-&gt;GetUserData())-&gt;GetType() == CONTENT_TYPE_OUTLINE) &amp;&amp; bSelect)
++    {
++		SwContent* pCnt = (SwContent*)pEntry-&gt;GetUserData();
++		GotoContent(pCnt);
++    }
+ 
+ 	return SvTreeListBox::Select(pEntry, bSelect);
+ }
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001787.html">[Open Office] cws-commit-patch
+</A></li>
+	<LI>Next message: <A HREF="001790.html">[Open Office] java registration problems on x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1788">[ date ]</a>
+              <a href="thread.html#1788">[ thread ]</a>
+              <a href="subject.html#1788">[ subject ]</a>
+              <a href="author.html#1788">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

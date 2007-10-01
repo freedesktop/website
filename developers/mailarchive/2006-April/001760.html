@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] troubles (solved) build m162 with current head
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20troubles%20%28solved%29%20build%20m162%20with%20current%20head&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001757.html">
+   <LINK REL="Next"  HREF="001761.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] troubles (solved) build m162 with current head</H1>
+    <B>Giuseppe Castagno</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20troubles%20%28solved%29%20build%20m162%20with%20current%20head&In-Reply-To="
+       TITLE="[Open Office] troubles (solved) build m162 with current head">giuseppe.castagno at gmail.com
+       </A><BR>
+    <I>Tue Apr 11 15:18:33 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001757.html">[Open Office] [PATCH] fix for i#63816# to be included in ooo-build?
+</A></li>
+        <LI>Next message: <A HREF="001761.html">[Open Office] Re: Unidentified subject!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1760">[ date ]</a>
+              <a href="thread.html#1760">[ thread ]</a>
+              <a href="subject.html#1760">[ subject ]</a>
+              <a href="author.html#1760">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+I successfully built, with some trouble, the src-m162 tag on Fedora Core 5.
+This message is meant only to indicate that a clean build wasn't
+possible from the beginning, may be someone can correct it.
+
+The first line of ooo-build/ChangeLog reads:
+
+2006-04-11  Jan Holesovsky  &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">kendy at suse.cz</A>&gt;
+
+	* patches/src680/buildfix-sd-exceptions2.diff: Fix one more undefined
+	  reference to `boost::throw_exception(std::exception const&amp;)'.
+
+	* patches/src680/apply: Build with 64bit patches even on 32bit archs
+	  always, they are all considered safe.
+
+First issue I came across was:
+....
+Looking for src680-m162-core.tar.bz2 ... ok
+Unpacking OO.o build tree - [ go make some tea ] ...
+Fixing unfortunate snafus
+cp: cannot stat
+`/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/ooo_custom_images/industrial/res/commandimagelist/../../sw/imglst/sc20130.png':
+No such file or directory
+cp: cannot stat
+`/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/ooo_custom_images/industrial/res/commandimagelist/../../sw/imglst/sc20139.png':
+No such file or directory
+cp: cannot stat
+`/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/ooo_custom_images/industrial/res/commandimagelist/../../sw/imglst/sc20131.png':
+No such file or directory
+cp: cannot stat
+`/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/ooo_custom_images/industrial/res/commandimagelist/../../sw/imglst/sc20140.png':
+No such file or directory
+
+I stopped the build.
+I downloaded ooo_custom_images-13.tar.bz2, expanded, copied
+ooo_custom_images in src-m162, the error was corrected.
+Then the restarted build proceeded till:
+.....
+------------------------------
+Making: ../../unxlngi6.pro/obj/includes.obj
+ccache g++ -Wreturn-type -fmessage-length=0 -c -I.  -I. -I../inc
+-I../../inc -I../../unx/inc -I../../unxlngi6.pro/inc -I.
+-I/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/solver/680/unxlngi6.pro/inc/stl
+-I/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/solver/680/unxlngi6.pro/inc/external
+-I/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/solver/680/unxlngi6.pro/inc
+-I/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/solenv/unxlngi6/inc
+-I/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/solenv/inc
+-I/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/res
+-I/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/solver/680/unxlngi6.pro/inc/stl
+-I/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/solenv/inc/Xp31
+-I/usr/java/j2sdk1.4.2_09/include
+-I/usr/java/j2sdk1.4.2_09/include/linux
+-I/usr/java/j2sdk1.4.2_09/include/native_threads/include
+-I/usr/include     -I. -I../../res -I. -Os -fno-strict-aliasing
+-Wuninitialized   -pipe -mtune=pentiumpro -Wno-ctor-dtor-privacy
+-fvisibility-inlines-hidden -fexceptions -fno-enforce-eh-specs   
+-DLINUX -DUNX -DVCL -DGCC -DC341 -DINTEL -DCVER=C341 -D_USE_NAMESPACE
+-DNPTL -DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR
+-D_USE_NAMESPACE=1 -DSTLPORT_VERSION=400 -DHAVE_GCC_VISIBILITY_FEATURE
+-D__DMAKE -DUNIX -DCPPU_ENV=gcc3
+-DGXX_INCLUDE_PATH=/usr/lib/gcc/i386-redhat-linux/4.1.0/../../../../include/c++/4.1.0
+-DSUPD=680 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0
+-DOPTIMIZE -DEXCEPTIONS_ON -DCUI -DSOLAR_JAVA -DSRC680=SRC680  
+-DMULTITHREAD   -o ../../unxlngi6.pro/obj/includes.o
+/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/codemaker/source/cppumaker/includes.cxx
+if ( -e ../../unxlngi6.pro/obj/includes.o) touch
+../../unxlngi6.pro/obj/includes.obj
+dmake:  Error: -- `../../unxlngi6.pro/lib/libcommoncpp.a' not found,
+and can't be made
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making
+/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/codemaker/source/cppumaker
+make: *** [stamp/build] Error 1
+
+Strangely enough by building codemaker module directly, by doing:
+
+cd bu*/src*
+. ./LinuxIntelEnv.Set.sh
+cd codemaker
+build
+deliver
+
+it compiled correctly, then the build, restarted from the beginning,
+could be continued till this:
+.....
+------------------------------
+Making: ../unxlngi6.pro/bin/images_tt.zip
+cp -f /media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/solver/680/unxlngi6.pro/res/img/stt*.ilst
+../unxlngi6.pro/misc
+cp -f /media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/solver/680/unxlngi6.pro/res/img/svt*.ilst
+../unxlngi6.pro/misc
+cp -f /media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/solver/680/unxlngi6.pro/res/img/fps*.ilst
+../unxlngi6.pro/misc
+cp: No match.
+dmake:  Error code 1, while making '../unxlngi6.pro/bin/images_tt.zip'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making
+/media/usb-li/home/beppe/ooo-b.m162/build/src680-m162/automation/packimages
+make: *** [stamp/build] Error 1
+
+I built manually fpicker (build;deliver the usual), then restart the
+main build.
+It appears that the build order of fpicker and automation is reversed
+then expected.
+Build proceeded until completion.
+
+My ooo-build/configure line:
+./configure  --with-gcc-speedup=ccache --with-lang='en-US' --with-distro=&quot;FC-gc&quot;
+
+My OOo configuration flags (Common.conf remains the checkedout one),
+in FC-gc.conf:
+--with-system-neon
+--with-system-expat
+--with-system-curl
+--with-system-boost
+--with-system-sane-headers
+--with-system-sndfile
+--with-system-xrender-headers
+--enable-gnome-vfs
+--enable-kde
+--enable-gtk
+--with-ant-home=/opt/apache-ant-1.6.5
+--with-jdk-home=/usr/java/j2sdk1.4.2_09
+--without-myspell-dicts
+--without-nas
+--enable-lockdown
+
+My patch distro in patches/src680/apply is:
+
+gcBase : LinuxCommon, NotDebian, Lockdown, CalcSolver, AtkBridge
+FC-gc :  gcBase, gcOnly, gcLinux
+
+gcOnly, gcLinux contain patches that don't touch the build system.
+
+System is FC5 updated to current.
+
+--
+Kind Regards,
+Giuseppe Castagno
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001757.html">[Open Office] [PATCH] fix for i#63816# to be included in ooo-build?
+</A></li>
+	<LI>Next message: <A HREF="001761.html">[Open Office] Re: Unidentified subject!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1760">[ date ]</a>
+              <a href="thread.html#1760">[ thread ]</a>
+              <a href="subject.html#1760">[ subject ]</a>
+              <a href="author.html#1760">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

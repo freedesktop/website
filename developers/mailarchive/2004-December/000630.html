@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] gcc34-main.diff in cvs ooo-build-1-3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:h.mth%40web.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000628.html">
+   <LINK REL="Next"  HREF="000631.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] gcc34-main.diff in cvs ooo-build-1-3
+   </H1>
+    <B>Hanno Meyer-Thurow
+    </B> 
+    <A HREF="mailto:h.mth%40web.de"
+       TITLE="[Open Office] gcc34-main.diff in cvs ooo-build-1-3">h.mth@web.de
+       </A><BR>
+    <I>Sat, 11 Dec 2004 19:13:52 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000628.html">[Open Office] Re: Ximian's 1.3.7 GCC 3.4 patches - update
+</A></li>
+        <LI> Next message: <A HREF="000631.html">[Open Office] Status 2004-12-14
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#630">[ date ]</a>
+              <a href="thread.html#630">[ thread ]</a>
+              <a href="subject.html#630">[ subject ]</a>
+              <a href="author.html#630">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a multi-part message in MIME format.
+
+--Multipart=_Sat__11_Dec_2004_19_13_52_+0100_G25e18zWbjrrO/xa
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+
+Hey Bero,
+hey Michael,
+
+just checked out ooo-build-1-3 and found two missing and two wrong diffs in ooo-build/patches/gcc34/gcc34-main.diff:
+
+1. Since module psprint is back to m46 the diff for psprint/source/helper/ppdparser.cxx should be back in. Or am I wrong? :)
+
+2. The diff for vcl/util/makefile.mk should be there for binutils-2.15, thanks!
+
+3. Please drop the diffs for connectivity/source/drivers/mozab/makefile.mk and connectivity/source/drivers/mozab/mozillasrc/makefile.mk because they break '--disable-mozilla', thanks. If you want to build with '--enable-mozilla' the diffs should drop the IF-clauses so that they are not build - independent from the configure switches.
+
+The patch for ooo-build/patches/gcc34/gcc34-main.diff is attached.
+
+
+Sincerely,
+Hanno
+
+--Multipart=_Sat__11_Dec_2004_19_13_52_+0100_G25e18zWbjrrO/xa
+Content-Type: text/x-patch;
+ name=&quot;gcc34-update.diff&quot;
+Content-Disposition: attachment;
+ filename=&quot;gcc34-update.diff&quot;
+Content-Transfer-Encoding: 7bit
+
+--- ooo-build/patches/gcc34/gcc34-main.diff.orig	2004-12-11 18:54:57.110094256 +0100
++++ ooo-build/patches/gcc34/gcc34-main.diff	2004-12-11 18:57:07.941204904 +0100
+@@ -4359,6 +4359,28 @@
+  			 ++aIt)
+  			if (aIt-&gt;m_aRegexp.matches(rString, pTranslation, pTranslated))
+  				return &amp;aIt-&gt;m_aValue;
++--- psprint/source/helper/ppdparser.cxx	2004-11-07 15:29:03.104216512 +0100
+++++ psprint/source/helper/ppdparser.cxx	2004-11-07 15:29:23.969044576 +0100
++@@ -68,7 +68,7 @@
++ namespace psp { class PPDKey; }
++ 
++ namespace  _STL {
++-struct hash&lt; const psp::PPDKey* &gt;
+++template&lt;&gt; struct hash&lt; const psp::PPDKey* &gt;
++ {
++     size_t operator()( const psp::PPDKey * pKey) const
++     { return (size_t)pKey; }
++--- vcl/util/makefile.mk	2004-11-08 12:58:28.376950856 +0100
+++++ vcl/util/makefile.mk	2004-11-08 12:50:18.281456696 +0100
++@@ -66,6 +66,8 @@
++ TARGET=vcl
++ VERSION=$(UPD)
++ 
+++LINKFLAGSDEFS = # do not fail with missing symbols
+++
++ # --- Settings -----------------------------------------------------------
++ 
++ .INCLUDE :  settings.mk
+ --- vcl/inc/glyphcache.hxx.orig	2004-11-01 17:03:13.382022656 +0100
+ +++ vcl/inc/glyphcache.hxx	2004-11-01 17:03:40.646877768 +0100
+ @@ -244,8 +244,8 @@
+@@ -4781,28 +4803,6 @@
+  //-----------------------------------------------------------------------------
+  OSQLParseNode::OSQLParseNode(const sal_Char * pNewValue,
+  							 SQLNodeType eNewNodeType,
+---- connectivity/source/drivers/mozab/makefile.mk.orig	2004-11-01 20:13:45.576064992 +0100
+-+++ connectivity/source/drivers/mozab/makefile.mk	2004-11-01 20:14:15.982442520 +0100
+-@@ -66,7 +66,7 @@
+- TARGET=$(MOZAB_TARGET)
+- TARGET2=$(MOZAB_TARGET)drv
+- 
+--.IF &quot;$(OS)&quot;==&quot;MACOSX&quot; || &quot;$(WITH_MOZILLA)&quot; == &quot;NO&quot;
+-+.IF &quot;$(OS)&quot;==&quot;MACOSX&quot; || &quot;$(WITH_MOZILLA)&quot; == &quot;YES&quot;
+- all: 
+- 	@echo &quot;		Not building the mozabsrc stuff in OpenOffice.org build&quot;
+- 	@echo &quot;		dependency to Mozilla developer snapshots not feasable at the moment&quot;
+---- connectivity/source/drivers/mozab/mozillasrc/makefile.mk.orig	2004-11-01 20:14:28.564529752 +0100
+-+++ connectivity/source/drivers/mozab/mozillasrc/makefile.mk	2004-11-01 20:14:46.543796488 +0100
+-@@ -85,7 +85,7 @@
+- 
+- .INCLUDE : settings.mk
+- 
+--.IF &quot;$(OS)&quot;==&quot;MACOSX&quot; || &quot;$(WITH_MOZILLA)&quot; == &quot;NO&quot;
+-+.IF &quot;$(OS)&quot;==&quot;MACOSX&quot; || &quot;$(WITH_MOZILLA)&quot; == &quot;YES&quot;
+- 
+- dummy:
+- 	@echo &quot;		Not building the mozillasrc stuff in OpenOffice.org build&quot;
+ --- svx/inc/frmsel.hxx.orig	2004-11-01 23:28:50.451653432 +0100
+ +++ svx/inc/frmsel.hxx	2004-11-01 23:29:09.691728496 +0100
+ @@ -172,8 +172,8 @@
+
+--Multipart=_Sat__11_Dec_2004_19_13_52_+0100_G25e18zWbjrrO/xa--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000628.html">[Open Office] Re: Ximian's 1.3.7 GCC 3.4 patches - update
+</A></li>
+	<LI> Next message: <A HREF="000631.html">[Open Office] Status 2004-12-14
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#630">[ date ]</a>
+              <a href="thread.html#630">[ thread ]</a>
+              <a href="subject.html#630">[ subject ]</a>
+              <a href="author.html#630">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

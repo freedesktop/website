@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] python module missing in src680-m62
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-November/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000594.html">
+   <LINK REL="Next"  HREF="000597.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] python module missing in src680-m62
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] python module missing in src680-m62">michael@ximian.com
+       </A><BR>
+    <I>Thu, 25 Nov 2004 10:19:39 +0530</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000594.html">[Open Office] python module missing in src680-m62
+</A></li>
+        <LI> Next message: <A HREF="000597.html">[Open Office] OpenOffice.org 1.1.3, ooo-build, langs other then ENUS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#595">[ date ]</a>
+              <a href="thread.html#595">[ thread ]</a>
+              <a href="subject.html#595">[ subject ]</a>
+              <a href="author.html#595">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 2004-11-23 at 14:53 +0100, Jan Holesovsky wrote:
+&gt;<i> &gt; I was trying to build m62 using the internal python to compile pyuno, but I
+</I>&gt;<i> &gt; saw no python in the tarball. Was this exclusion intentional?
+</I>&gt;<i> 
+</I>&gt;<i> Yes, the m62 package is split into &quot;core&quot;, &quot;system&quot;, and &quot;binfilter&quot; archives 
+</I>&gt;<i> do decrease the download size (AFAIK, Michael will tell you more). You need 
+</I>&gt;<i> src680-m62-system.tar.bz2 from <A HREF="http://ooo.ximian.com/packages/SRC680/">http://ooo.ximian.com/packages/SRC680/</A> to 
+</I>&gt;<i> compile with the internal python.
+</I>
+	Quite right. Of course, we should adapt our 'download' script depending
+on whether you want to use a system (or not) python; IMHO though ~all
+linux builders should be using the system python [ just install the
+python-devel package ]. For Win32 we should download the m62-system
+package already though.
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000594.html">[Open Office] python module missing in src680-m62
+</A></li>
+	<LI> Next message: <A HREF="000597.html">[Open Office] OpenOffice.org 1.1.3, ooo-build, langs other then ENUS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#595">[ date ]</a>
+              <a href="thread.html#595">[ thread ]</a>
+              <a href="subject.html#595">[ subject ]</a>
+              <a href="author.html#595">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] gcj and helpcontent2 issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20gcj%20and%20helpcontent2%20issues&In-Reply-To=20051202114131.a1e7b535.h.mth%40web.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001374.html">
+   <LINK REL="Next"  HREF="001376.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] gcj and helpcontent2 issues</H1>
+    <B>Caolan McNamara</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20gcj%20and%20helpcontent2%20issues&In-Reply-To=20051202114131.a1e7b535.h.mth%40web.de"
+       TITLE="[Open Office] gcj and helpcontent2 issues">caolanm at redhat.com
+       </A><BR>
+    <I>Fri Dec  2 04:53:34 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001374.html">[Open Office] gcj and helpcontent2 issues
+</A></li>
+        <LI>Next message: <A HREF="001376.html">[Open Office] gcj and helpcontent2 issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1375">[ date ]</a>
+              <a href="thread.html#1375">[ thread ]</a>
+              <a href="subject.html#1375">[ subject ]</a>
+              <a href="author.html#1375">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2005-12-02 at 11:41 +0100, Hanno Meyer-Thurow wrote:
+&gt;<i> Hi list,
+</I>&gt;<i> this time I build SRC680_m142 with ooo-build, GCJ-4.1.0-20051125 without gcj-dbtool because
+</I>&gt;<i> this machine needs 2h30m to cache xalan.jar, for example.
+</I>&gt;<i> Centrino 1.6GHz, 512MB Ram.
+</I>&gt;<i> 
+</I>&gt;<i> On module helpcontent2 it fails:
+</I>&gt;<i> 
+</I>&gt;<i> It should not take '-Dgnu.gcj.precompiled.db.path=.../ooo-build/build/src680-m142/solver/680/unxlngi6.pro/lib/openoffice.org.gcjdb'
+</I>&gt;<i> having gcj-dbtool disabled, should it? I applied attached diff. It fails again:
+</I>
+...
+
+&gt;<i> GC Warning: Repeated allocation of very large block (appr. size 1024000):
+</I>&gt;<i>         May lead to memory leak and poor performance.
+</I>&gt;<i> GC Warning: Repeated allocation of very large block (appr. size 1024000):
+</I>&gt;<i>         May lead to memory leak and poor performance.
+</I>&gt;<i> Killed
+</I>&gt;<i> dmake:  Error code 137, while making '../../unxlngi6.pro/bin/sbasic_en-US.zip'
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>
+I think you simply have found a bug with gcj-4.1 (or perhaps an
+underlying bug in the xmlhelp linker that hasn't been noticed before)
+because it seems ok with gcj-4.0.2. The -Dgnu...path= stuff just points
+gij to a little database of jars to precompiled .so's, if one is not
+found it is supposed to use the jar directly, so it should be ok to have
+-Dgnu.. even if some/all of the jars haven't be ahead of time compiled
+to .sos.
+
+&gt;<i> Is it good to make gcj-dbtool optional?
+</I>&gt;<i> I will try with gcj-dbtool enabled.
+</I>
+If you are building OOo for many languages, e.g. 16+ and do not use aot
+compiled .so with gcj it will take helpcontent an extraordinary long
+time to build, 10+hours, while with aot compiled stuff in the cache it
+will shrink to around &lt; 2.
+
+&gt;<i> Btw, were not these gcj-no-broken-jaxp.diff, gcj-no-com.sun.xml.diff, workspace.jaxpapi.diff
+</I>&gt;<i> to fix helpcontent2 with gcj? Or at least to improve?
+</I>&gt;<i> Are there plans to move them from ArkOnly to GCJ anytime soon?
+</I>
+I plan to upstream the jaxpapi.diff workspace to OOo at least.
+
+C.
+
+C.
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001374.html">[Open Office] gcj and helpcontent2 issues
+</A></li>
+	<LI>Next message: <A HREF="001376.html">[Open Office] gcj and helpcontent2 issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1375">[ date ]</a>
+              <a href="thread.html#1375">[ thread ]</a>
+              <a href="subject.html#1375">[ subject ]</a>
+              <a href="author.html#1375">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build --with-vendor configure switch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20--with-vendor%20configure%20switch&In-Reply-To=200606211611.45772.pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001865.html">
+   <LINK REL="Next"  HREF="001900.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build --with-vendor configure switch</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20--with-vendor%20configure%20switch&In-Reply-To=200606211611.45772.pmladek%40suse.cz"
+       TITLE="[Open Office] ooo-build --with-vendor configure switch">ghibo at mandriva.com
+       </A><BR>
+    <I>Sun Jun 25 12:46:46 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001865.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+        <LI>Next message: <A HREF="001900.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1897">[ date ]</a>
+              <a href="thread.html#1897">[ thread ]</a>
+              <a href="subject.html#1897">[ subject ]</a>
+              <a href="author.html#1897">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Petr Mladek wrote:
+&gt;<i> On Wednesday 21 June 2006 16:08, Jan Holesovsky wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>On Wednesday 21 June 2006 15:23, Petr Mladek wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>suka found out that the new branding thing gets broken when you specify
+</I>&gt;&gt;&gt;&gt;<i>--with-vendor to ooo-build's configure - that's because the ooo-build's
+</I>&gt;&gt;&gt;&gt;<i>configure switches are propagated to config_office/configure.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>Now - how to fix it the best way ;-)  I'd like to get rid of the
+</I>&gt;&gt;&gt;&gt;<i>ooo-build's --with-vendor switch.  It sets a VENDORNAME variable which
+</I>&gt;&gt;&gt;&gt;<i>seems just to do nearly the same thing as --with-distro - installs
+</I>&gt;&gt;&gt;&gt;<i>stuff according to the distro.  I propose to change the VENDORNAME
+</I>&gt;&gt;&gt;&gt;<i>occurrences to use the DISTRO instead.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>Distro maintainers, do you agree with the proposed change, please? ;-)
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Hmm, the problem is that many ooo-build hacks are vendor specific. Most
+</I>&gt;&gt;&gt;<i>vendors use more than one distro.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Oh, OK.  So what about to let VENDORNAME as it is, but set it
+</I>&gt;&gt;<i>programatically based on DISTRO? ;-)  Something like the following in the
+</I>&gt;&gt;<i>configure.in:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>case $DISTRO in
+</I>&gt;&gt;<i>	Ark*) VENDORNAME=&quot;Ark&quot; ;;
+</I>&gt;&gt;<i>	Debian*) VENDORNAME=&quot;Debian&quot; ;;
+</I>&gt;&gt;<i>	Frugalware*) VENDORNAME=&quot;Frugalware&quot; ;;
+</I>&gt;&gt;<i>	Mandriva*) VENDORNAME=&quot;Mandriva&quot; ;;
+</I>&gt;&gt;<i>	SUSE*|Novell*|NLD*) VENDORNAME=&quot;Novell&quot; ;;
+</I>&gt;&gt;<i>	Ubuntu*) VENDORNAME=&quot;Ubuntu&quot; ;;
+</I>&gt;&gt;<i>	*) VENDORNAME=&quot;$DISTRO&quot; ;;
+</I>&gt;&gt;<i>esac
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Would it be OK?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> +1
+</I>&gt;<i> Sounds good.
+</I>&gt;<i> 
+</I>
+So --with-distro=... switch will remain as is (and with config
+files into distro-configs/*)?
+
+Bye
+Giuseppe.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001865.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+	<LI>Next message: <A HREF="001900.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1897">[ date ]</a>
+              <a href="thread.html#1897">[ thread ]</a>
+              <a href="subject.html#1897">[ subject ]</a>
+              <a href="author.html#1897">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

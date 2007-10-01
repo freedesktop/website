@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] fontconfig patches from FC
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20fontconfig%20patches%20from%20FC&In-Reply-To=1159522940.16322.3.camel%40echelon.vojta">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002026.html">
+   <LINK REL="Next"  HREF="002028.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] fontconfig patches from FC</H1>
+    <B>Robert Vojta</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20fontconfig%20patches%20from%20FC&In-Reply-To=1159522940.16322.3.camel%40echelon.vojta"
+       TITLE="[Open Office] fontconfig patches from FC">robert at vojta.name
+       </A><BR>
+    <I>Fri Sep 29 08:03:57 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002026.html">[Open Office] fontconfig patches from FC
+</A></li>
+        <LI>Next message: <A HREF="002028.html">[Open Office] fontconfig patches from FC
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2027">[ date ]</a>
+              <a href="thread.html#2027">[ thread ]</a>
+              <a href="subject.html#2027">[ subject ]</a>
+              <a href="author.html#2027">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2006-09-29 at 11:42 +0200, Robert Vojta wrote:
+
+Hallo Matthias,
+
+&gt;<i> when I apply your latest fontconfig-* patches (from FC), ooo-build fails
+</I>&gt;<i> to build for Windows somewhere in vcl. AFAIK it was something to do with
+</I>&gt;<i> 'std::abs', but I can't remember, haven't access to my home machine logs
+</I>&gt;<i> now. I'll send you more details tomorrow ...
+</I>
+  as tml wrote on IRC, it's enough to change ...
+
+  if ((n+1 &lt; nLevel) &amp;&amp; (std::abs(nCharPos[n] - nOrigCharPos)))
+
+  ... to ...
+
+  if ((n+1 &lt; nLevel) &amp;&amp; ((nCharPos[n] - nOrigCharPos) != 0))
+
+  Hmm, but I think that there is another mistake in this patch too. Look
+at following conditions. The 1st and 2nd are same.
+
++     if (nOrigCharPos &lt; nCharPos[n])   &lt;---!!!!!
++     {
++         if (nCharPos[n+1] &gt; nOrigCharPos &amp;&amp; (nCharPos[n+1] &lt; nCharPos[n]))
++            break;
++     }
++     else if (nOrigCharPos &lt; nCharPos[n]) &lt;---!!!!!!
++     {
++         if (nCharPos[n+1] &gt; nCharPos[n] &amp;&amp; (nCharPos[n+1] &lt; nOrigCharPos))
++             break;
++     }
+
+  And the next thing from tml is, how can nOrigCharPos differ from
+nCharPos[n] when nOrigCharPos is defined as int nOrigCharPos = nCharPos[n]?
+
+-- 
+Robert Vojta
+
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002026.html">[Open Office] fontconfig patches from FC
+</A></li>
+	<LI>Next message: <A HREF="002028.html">[Open Office] fontconfig patches from FC
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2027">[ date ]</a>
+              <a href="thread.html#2027">[ thread ]</a>
+              <a href="subject.html#2027">[ subject ]</a>
+              <a href="author.html#2027">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

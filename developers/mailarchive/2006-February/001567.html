@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] parallel building fails...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20parallel%20building%20fails...&In-Reply-To=1139474485.3457.11.camel%40localhost.localdomain">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001566.html">
+   <LINK REL="Next"  HREF="001568.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] parallel building fails...</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20parallel%20building%20fails...&In-Reply-To=1139474485.3457.11.camel%40localhost.localdomain"
+       TITLE="[Open Office] parallel building fails...">ghibo at mandriva.com
+       </A><BR>
+    <I>Thu Feb  9 05:28:03 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001566.html">[Open Office] parallel building fails...
+</A></li>
+        <LI>Next message: <A HREF="001568.html">[Open Office] parallel building fails...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1567">[ date ]</a>
+              <a href="thread.html#1567">[ thread ]</a>
+              <a href="subject.html#1567">[ subject ]</a>
+              <a href="author.html#1567">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Caolan McNamara wrote:
+&gt;<i> On Thu, 2006-02-09 at 09:21 +0100, Giuseppe Ghib&#242; wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Caolan McNamara wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>On Sun, 2006-02-05 at 20:06 +0100, Giuseppe Ghib&#242; wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>[ ParallelMake ]
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>cws-dmake43p01-20060131.diff
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>but it didn't help, as I still get errors:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i><A HREF="http://peoples.mandriva.com/~ghibo/failed_2.txt.bz2">http://peoples.mandriva.com/~ghibo/failed_2.txt.bz2</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i>At this point the error seems in:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Checking DLL ../unxlngi6.pro/lib/check_libswui680li.so ...dmake:  Error: -- 
+</I>&gt;&gt;<i>`../unxlngi6.pro/slb/vbaobj.lib' not found, and can't be made
+</I>&gt;&gt;<i>'---* tg_merge.mk *---'
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> It's a parallel build so the output is mixed up. The process from where
+</I>&gt;<i> the &quot;dmake:  Error: --&quot; error was reported is mixed up with the
+</I>&gt;<i> perfectly ok &quot;Checking DLL...&quot; output from the other process. If you
+</I>&gt;<i> look further down your log at the end you have...
+</I>&gt;<i> 
+</I>&gt;<i> &quot;ERROR: error 65280 occurred while
+</I>&gt;<i> making /home/ghibo/rpm/BUILD/ooo-build/build/src680-m155/sc/util&quot;
+</I>&gt;<i> 
+</I>&gt;<i> So if you take your full log and search backwards for error: around sc
+</I>&gt;<i> \/util then you should see the line which really caused &quot;vbaobj.lib not
+</I>&gt;<i> found&quot;
+</I>&gt;<i> 
+</I>
+Searching backwards there aren't errors AFAIK (full log is 45MB), and vbaobj.lib
+is anyway built (I've the file into ./build/src680-m155/sc/unxlngi6.pro/slb/vbaobj.lib), but 
+later the point where there is
+Checking DLL ../unxlngi6.pro/lib/check_libswui680li.so ...dmake... =&gt; Error,
+so IMHO it's a missed dependency (maybe in the VBA patchset)
+from libswui680li.so to vbaobj.lib.
+
+&gt;<i> 
+</I>&gt;&gt;<i>i.e. vbaobj.lib not built (but later).
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Without the dmak43p01 patch I don't trust the logs but with it in place
+</I>&gt;<i> we can be fairly sure that what it complains about is really there. So
+</I>&gt;<i> something uses &quot;vbaobj.lib&quot; but doesn't have correct dependencies
+</I>&gt;<i> actually set on that.
+</I>
+but I already used the dmake43p01 patch.
+
+Bye
+Giuseppe.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001566.html">[Open Office] parallel building fails...
+</A></li>
+	<LI>Next message: <A HREF="001568.html">[Open Office] parallel building fails...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1567">[ date ]</a>
+              <a href="thread.html#1567">[ thread ]</a>
+              <a href="subject.html#1567">[ subject ]</a>
+              <a href="author.html#1567">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

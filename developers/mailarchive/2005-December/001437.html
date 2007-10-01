@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] building ooo-build from cvs head
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20building%20ooo-build%20from%20cvs%20head&In-Reply-To=200512280206.55525.ismail%40uludag.org.tr">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001436.html">
+   <LINK REL="Next"  HREF="001440.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] building ooo-build from cvs head</H1>
+    <B>Daniel Morgan</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20building%20ooo-build%20from%20cvs%20head&In-Reply-To=200512280206.55525.ismail%40uludag.org.tr"
+       TITLE="[Open Office] building ooo-build from cvs head">monodanmorg at yahoo.com
+       </A><BR>
+    <I>Tue Dec 27 19:40:43 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001436.html">[Open Office] building ooo-build from cvs head
+</A></li>
+        <LI>Next message: <A HREF="001440.html">[Open Office] typo in size-strip.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1437">[ date ]</a>
+              <a href="thread.html#1437">[ thread ]</a>
+              <a href="subject.html#1437">[ subject ]</a>
+              <a href="author.html#1437">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks for your help.  I found some devel rpms for mozilla, nss, and nspr at fedora.  I build using --with-mozilla
+ 
+ However, I get a configure error about missing Ant.  I found some rpms for Ant, but there are WAY TOO MANY depedencies for Ant itself.  Is there away I can build ooo-build without Ant or Java?
+ 
+ configure: WARNING: X11/extensions/Xinerama.h: in the future, the compiler will take precedence
+ configure: WARNING:     ## ------------------------------------------ ##
+ configure: WARNING:     ## Report this to the AC_PACKAGE_NAME lists.  ##
+ configure: WARNING:     ## ------------------------------------------ ##
+ checking for X11/extensions/Xinerama.h... yes
+ checking for XineramaIsActive in -lXinerama... yes
+ checking for jakarta-ant... no
+ checking for ant... no
+ checking for ant.sh... no
+ checking for ant.bat... no
+ configure: error: Ant not found - Make sure it's in the path or use --with-ant-home
+ make: *** [stamp/build] Error 1
+ 
+
+Ismail Donmez &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">ismail at uludag.org.tr</A>&gt; wrote: &#195;&#135;ar&#197;&#159;amba 28 Aral&#196;&#177;k 2005 02:05 tarihinde, Daniel Morgan &#197;&#159;unlar&#196;&#177; yazm&#196;&#177;&#197;&#159;t&#196;&#177;: 
+&gt;<i>  How do I get past the mozilla-xpcom dependency building ooo-build?
+</I>&gt;<i>
+</I>&gt;<i>  checking which mozilla to use... external
+</I>&gt;<i>  checking whether to use Mozilla or Firefox... Mozilla
+</I>&gt;<i>  checking for mozilla-xpcom ... Package mozilla-xpcom was not found in the
+</I>&gt;<i> pkg-config search path. Perhaps you should add the directory containing
+</I>&gt;<i> `mozilla-xpcom.pc' to the PKG_CONFIG_PATH environment variable
+</I>&gt;<i>  No package 'mozilla-xpcom' found
+</I>&gt;<i>
+</I>&gt;<i>  configure: error: Library requirements (mozilla-xpcom ) not met; consider
+</I>&gt;<i> adjusting the PKG_CONFIG_PATH environment variable if your libraries are in
+</I>&gt;<i> a nonstandard prefix so pkg-config can find them. make: *** [stamp/build]
+</I>&gt;<i> Error 1
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  I am building on fedora core 3.  I even tried --disable-mozilla and that
+</I>&gt;<i> does not work.
+</I>
+Maybe try --with-firefox and install firefox-devel package ?
+
+Regards,
+ismail
+_______________________________________________
+Openoffice mailing list
+<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">Openoffice at lists.ximian.com</A>
+<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+
+
+
+		
+---------------------------------
+Yahoo! for Good - Make a difference this year. 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051227/29778ede/attachment.html">http://lists.ximian.com/pipermail/openoffice/attachments/20051227/29778ede/attachment.html</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001436.html">[Open Office] building ooo-build from cvs head
+</A></li>
+	<LI>Next message: <A HREF="001440.html">[Open Office] typo in size-strip.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1437">[ date ]</a>
+              <a href="thread.html#1437">[ thread ]</a>
+              <a href="subject.html#1437">[ subject ]</a>
+              <a href="author.html#1437">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] looking through ooo-build patches
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000374.html">
+   <LINK REL="Next"  HREF="000375.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] looking through ooo-build patches
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] looking through ooo-build patches">michael@ximian.com
+       </A><BR>
+    <I>Mon, 26 Apr 2004 12:22:17 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000374.html">[Open Office] looking through ooo-build patches
+</A></li>
+        <LI> Next message: <A HREF="000375.html">[Open Office] misc. build issues ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#377">[ date ]</a>
+              <a href="thread.html#377">[ thread ]</a>
+              <a href="subject.html#377">[ subject ]</a>
+              <a href="author.html#377">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Caolan,
+
+On Wed, 2004-04-21 at 04:11 -0400, Caolan McNamara wrote:
+&gt;<i> I'm looking through the ooo-build patches, and I've commited a small few of the
+</I>&gt;<i> ww filter ones back to 112_fix and I see that a few more have made their way
+</I>&gt;<i> into that series. But there are a few chunks without associated issuezilla ids
+</I>&gt;<i> as far as I can see, i.e.
+</I>
+	Ok;
+
+&gt;<i> build-optimized-link.diff, changes solenv/inc/unxlngi4.mk to add -O2 and
+</I>&gt;<i> -Bsymbolic to LINKFLAGS. Is there an OOo issuezill for that one ? (and do the
+</I>&gt;<i> changes make a discernible difference :-)?)
+</I>
+	Well - no, the idea is that -Bsymbolic bins a load of symbols that
+there is no need to make external, which might speedup linking - at
+least; I think that's what it (might) do ;-) either way, it doesn't seem
+to hurt - I think the functionality may be subsumed by some other
+optimisation flags as well.
+
+&gt;<i> There is already a -Wl,-O1 for linker flags in LINKFLAGSOPTIMIZE and -Bsymbolic
+</I>&gt;<i> should probably be added to DYNAMIC, not that it makes any real difference, but
+</I>&gt;<i> formats it in what I feel to be an more upstream acceptable patch.
+</I>
+	Oh; sounds most reasonable; go for it :-)
+
+	Any others ? obviously we'd like to get as many up-stream as possible,
+it's just a matter of time really. Any idea how long the 1.1.2 lifecycle
+is ? and/or what branch to commit these to ? :-)
+
+	Also - we have in the past tried to tag which patches are up-stream
+already in 'apply' to save people effort doing further up-streaming
+scans; if that's easy.
+
+	Regards,
+
+		Michael.
+
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000374.html">[Open Office] looking through ooo-build patches
+</A></li>
+	<LI> Next message: <A HREF="000375.html">[Open Office] misc. build issues ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#377">[ date ]</a>
+              <a href="thread.html#377">[ thread ]</a>
+              <a href="subject.html#377">[ subject ]</a>
+              <a href="author.html#377">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

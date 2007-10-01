@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] hungarian-help.diff conflicts with norwegian-translation.diff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000375.html">
+   <LINK REL="Next"  HREF="000379.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] hungarian-help.diff conflicts with norwegian-translation.diff
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] hungarian-help.diff conflicts with norwegian-translation.diff">halls@debian.org
+       </A><BR>
+    <I>Mon, 26 Apr 2004 18:33:15 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000375.html">[Open Office] misc. build issues ...
+</A></li>
+        <LI> Next message: <A HREF="000379.html">[Open Office] ximian edition much faster?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#378">[ date ]</a>
+              <a href="thread.html#378">[ thread ]</a>
+              <a href="subject.html#378">[ subject ]</a>
+              <a href="author.html#378">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>It seems that hungarian-help and norwegian-translation both modify the
+same file (gid.inc).  Maybe we have to start collecting these 'add
+language NN to OOo patches into 1 patch, like we are with the
+config-switches patch.
+
+hungarian-help.diff: testing...patch -l -b -p0 -f -d . --dry-run  &lt;
+ooo-build/patches/OOO_1_1_1/../OOO_1_1/hungarian
+-help.diff
+patching file scp/inc/gid.inc
+Hunk #1 FAILED at 329.
+Hunk #2 FAILED at 967.
+2 out of 2 hunks FAILED -- saving rejects to file scp/inc/gid.inc.rej
+Testing patch hungarian-help.diff failed. at ooo-build/patches/apply.pl
+line 44.
+make: *** [debian/stampdir/patch.apply] Error 1
+
+Chris
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000375.html">[Open Office] misc. build issues ...
+</A></li>
+	<LI> Next message: <A HREF="000379.html">[Open Office] ximian edition much faster?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#378">[ date ]</a>
+              <a href="thread.html#378">[ thread ]</a>
+              <a href="subject.html#378">[ subject ]</a>
+              <a href="author.html#378">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

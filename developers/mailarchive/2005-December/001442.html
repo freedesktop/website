@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] buildfix-gcc41-pointers-icu
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20buildfix-gcc41-pointers-icu&In-Reply-To=43B3D87C.3040500%40sjsoft.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001441.html">
+   <LINK REL="Next"  HREF="001443.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] buildfix-gcc41-pointers-icu</H1>
+    <B>Jim Watson</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20buildfix-gcc41-pointers-icu&In-Reply-To=43B3D87C.3040500%40sjsoft.com"
+       TITLE="[Open Office] buildfix-gcc41-pointers-icu">jim at amarooas.com.au
+       </A><BR>
+    <I>Thu Dec 29 17:46:38 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001441.html">[Open Office] buildfix-gcc41-pointers-icu
+</A></li>
+        <LI>Next message: <A HREF="001443.html">[Open Office] various fixes to ooo-build HEAD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1442">[ date ]</a>
+              <a href="thread.html#1442">[ thread ]</a>
+              <a href="subject.html#1442">[ subject ]</a>
+              <a href="author.html#1442">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Quoting David Fraser &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">davidf at sjsoft.com</A>&gt;:
+&gt;<i> I had a problem building icu on ooo-build HEAD recently.
+</I>
+&gt;<i> ICU_DATA=../data/out/build 
+</I>&gt;<i> 
+</I>&gt;<i>LD_LIBRARY_PATH=../common:../i18n:../tools/toolutil:../layout:../layoutex:../extra/ustdio:../tools/ctestfw:../data/out:../data:../stubdata/:$LD_LIBRARY_PATH
+</I>&gt;<i>  
+</I>&gt;<i> ../tools/genbrk/genbrk -r ../data/brkitr/line.txt -o 
+</I>&gt;<i> ../data/out/build/icudt26l_line.brk
+</I>&gt;<i> make[2]: *** [../data/out/build/icudt26l_line.brk] Segmentation fault
+</I>
+&gt;<i> 
+</I>&gt;<i> This is on Fedora Core 4, with gcc 4.0.2.
+</I>&gt;<i> Commenting out buildfix-gcc41-pointers-icu.diff fixed the problem.
+</I>&gt;<i> I can't pretend to understand why though :-)
+</I>
+
+There is some information upstream issue 59722
+<A HREF="http://qa.openoffice.org/issues/show_bug.cgi?id=59722">http://qa.openoffice.org/issues/show_bug.cgi?id=59722</A>
+
+Some compiler versions give this message instead:
+
+../data/out/build/icudt26b_line.brk
+ucnv_toUChars: ICU Error &quot;[BOGUS UErrorCode]&quot;
+make[1]: *** [../data/out/build/icudt26b_line.brk] Error 93
+
+This is work in progress for building with gcc4.1
+
+jim
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001441.html">[Open Office] buildfix-gcc41-pointers-icu
+</A></li>
+	<LI>Next message: <A HREF="001443.html">[Open Office] various fixes to ooo-build HEAD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1442">[ date ]</a>
+              <a href="thread.html#1442">[ thread ]</a>
+              <a href="subject.html#1442">[ subject ]</a>
+              <a href="author.html#1442">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

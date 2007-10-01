@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Ark/Debian configure options ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:rene%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000785.html">
+   <LINK REL="Next"  HREF="000755.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Ark/Debian configure options ...
+   </H1>
+    <B>Rene Engelhard
+    </B> 
+    <A HREF="mailto:rene%40debian.org"
+       TITLE="[Open Office] Re: Ark/Debian configure options ...">rene@debian.org
+       </A><BR>
+    <I>Tue, 15 Feb 2005 11:51:44 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000785.html">[Open Office] Re: Ark/Debian configure options ...
+</A></li>
+        <LI> Next message: <A HREF="000755.html">[Open Office] More src680-m76 build breakages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#786">[ date ]</a>
+              <a href="thread.html#786">[ thread ]</a>
+              <a href="subject.html#786">[ subject ]</a>
+              <a href="author.html#786">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Am Montag, 14. Februar 2005 12:05 schrieb michael meeks:
+&gt;<i> &gt; Agreed absolutely. Btw, what version of mozilla includes does src680-m76
+</I>&gt;<i> &gt; expect? So far all my builds (even the ones with --without-mozilla) have
+</I>&gt;<i> &gt; failed because my nspr includes don't seem to match what it expects.
+</I>&gt;<i>
+</I>&gt;<i> 	No idea, Jan is the expert here. We extract &amp; build internally a chunk
+</I>&gt;<i> of nss to allow us to not use the builtin mozilla stuff AFAIR.
+</I>
+You AFAIS *can* build against the system mozilla / system nss. The only=20
+problem is that a function is needed which isn't exported in older=20
+nsses/mozillas. If you have mozilla 1.7.5 / Firefox 1.0[1] (-&gt; nss 3.9.3).=
+=20
+you are fine.
+
+The configure check I implemented (based on caolans one) in cws systemmozil=
+la=20
+checks for this:
+
+    save_CPPFLAGS=3D&quot;$CPPFLAGS&quot;
+    save_LDFLAGS=3D&quot;$LDFLAGS&quot;
+    CPPFLAGS=3D&quot;$CPPFLAGS $MOZ_NSS_CFLAGS&quot;
+    LDFLAGS=3D&quot;$LDFLAGS $MOZ_NSS_LIBS&quot;
+    AC_CHECK_LIB(nss3, PK11_GetCertFromPrivateKey, [],
+      [AC_MSG_ERROR(PK11_GetCertFromPrivateKey missing but needed.
+See <A HREF="https://bugzilla.mozilla.org/show_bug.cgi?id=3D262274.">https://bugzilla.mozilla.org/show_bug.cgi?id=3D262274.</A>
+=46ixed since nss 3.9.3 (contained by e.g. mozilla &gt;=3D 1.7.5))], [])
+    LDFLAGS=3D&quot;$save_LDFLAGS&quot;
+    CPPFLAGS=3D&quot;$save_CPPFLAGS&quot;
+
+I am not really sure whether we should add the MOZ_NSS_HACK (maybe modified=
+ to=20
+have the added files some prefix so you can find and remove them later=20
+easily...) to the official tree...
+
+Regards,
+
+Rene
+
+[1] while the configure check atm only checks for mozilla-nss. Since the=20
+mozilla folks iirc discourage of building something against FF I am not sur=
+e=20
+we should encourage it ;)
+=2D-=20
+ .''`.  Ren=C3=A9 Engelhard -- Debian GNU/Linux Developer
+ : :' : <A HREF="http://www.debian.org">http://www.debian.org</A> | <A HREF="http://people.debian.org/~rene/">http://people.debian.org/~rene/</A>
+ `. `'  <A HREF="mailto:rene@debian.org">rene@debian.org</A> | GnuPG-Key ID: 248AEB73
+   `-   Fingerprint: 41FA F208 28D4 7CA5 19BB  7AD9 F859 90B0 248A EB73
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000785.html">[Open Office] Re: Ark/Debian configure options ...
+</A></li>
+	<LI> Next message: <A HREF="000755.html">[Open Office] More src680-m76 build breakages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#786">[ date ]</a>
+              <a href="thread.html#786">[ thread ]</a>
+              <a href="subject.html#786">[ subject ]</a>
+              <a href="author.html#786">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

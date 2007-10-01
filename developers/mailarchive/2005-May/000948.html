@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ERROR: Source for autotextshare_af.zip not found!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000947.html">
+   <LINK REL="Next"  HREF="000950.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ERROR: Source for autotextshare_af.zip not found!
+   </H1>
+    <B>Petr Mladek
+    </B> 
+    <A HREF="mailto:pmladek%40suse.cz"
+       TITLE="[Open Office] ERROR: Source for autotextshare_af.zip not found!">pmladek@suse.cz
+       </A><BR>
+    <I>Wed, 11 May 2005 11:45:19 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000947.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+        <LI> Next message: <A HREF="000950.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#948">[ date ]</a>
+              <a href="thread.html#948">[ thread ]</a>
+              <a href="subject.html#948">[ subject ]</a>
+              <a href="author.html#948">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 11 May 2005 10:26, michael meeks wrote:
+&gt;<i> On Tue, 2005-05-10 at 18:02 +0200, Petr Mladek wrote:
+</I>&gt;<i> &gt; On Tuesday 10 May 2005 11:04, Arkadiusz Miskiewicz wrote:
+</I>&gt;<i> &gt; &gt; Has anyone saw this? ooobuild few commits after 1.9.100 release.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I wonder why the make_installer.pl and the epm is called even during the
+</I>&gt;<i> &gt; build phase now.
+</I>&gt;<i>
+</I>&gt;<i> 	It really shouldn't in m100:
+</I>&gt;<i>
+</I>&gt;<i> instsetoo_native/util/makefile.mk:
+</I>&gt;<i>
+</I>&gt;<i> .IF &quot;$(PKGFORMAT)&quot;!=&quot;&quot; &amp;&amp; &quot;$(EPM)&quot;==&quot;NO&quot; &amp;&amp; &quot;$(USE_PACKAGER)&quot;==&quot;&quot;
+</I>&gt;<i> ALLTAR : $(LOCALPYFILES)
+</I>&gt;<i> 	@echo &quot;No EPM: do no packaging at this stage&quot;
+</I>
+Ah, the problem is that the variable PKGFORMAT is set only if EPM is enabled. 
+The configure check for the PKGFORMAT is done only unless --disable-epm is 
+used now.
+
+We should remove the &quot;$(PKGFORMAT)&quot;!=&quot;&quot; test. The test &quot;$(EPM)&quot;==&quot;NO&quot; should 
+be enough.
+
+What do you think?
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="mailto:pmladek@suse.cz">pmladek@suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000947.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+	<LI> Next message: <A HREF="000950.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#948">[ date ]</a>
+              <a href="thread.html#948">[ thread ]</a>
+              <a href="subject.html#948">[ subject ]</a>
+              <a href="author.html#948">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

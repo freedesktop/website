@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ERROR: Error 65280 occurred while making	/cygdrive/c/ooo2/libwpd
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ERROR%3A%20Error%2065280%20occurred%20while%20making%0A%09/cygdrive/c/ooo2/libwpd&In-Reply-To=45AA2CFF.6010305%40freemail.hu">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002199.html">
+   <LINK REL="Next"  HREF="002201.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ERROR: Error 65280 occurred while making	/cygdrive/c/ooo2/libwpd</H1>
+    <B>KamiH&#237;r</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ERROR%3A%20Error%2065280%20occurred%20while%20making%0A%09/cygdrive/c/ooo2/libwpd&In-Reply-To=45AA2CFF.6010305%40freemail.hu"
+       TITLE="[Open Office] ERROR: Error 65280 occurred while making	/cygdrive/c/ooo2/libwpd">kamihir at freemail.hu
+       </A><BR>
+    <I>Tue Jan 16 15:56:04 EST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002199.html">[Open Office] autoreconf: aclocal-1.9: cannot open &gt; aclocal.m4: Permission denied
+</A></li>
+        <LI>Next message: <A HREF="002201.html">[Open Office] ERROR: Error 65280 occurred while making	/cygdrive/c/ooo2/libwpd
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2200">[ date ]</a>
+              <a href="thread.html#2200">[ thread ]</a>
+              <a href="subject.html#2200">[ subject ]</a>
+              <a href="author.html#2200">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello!
+
+I tried to compile OOo 2.1 under Windows/Cygwin, but somehow liwpd has 
+error. Here is my log:
+
+
+=============
+Building project libwpd
+=============
+/cygdrive/c/ooo2/libwpd
+mkout -- version: 1.7
+dmake: Executing shell macro: +$(WRAPCMD) echo $(subst,$/stl, $(SOLARINC))
+-------------
+if ( -e ./wntmsci10.pro/misc/build/libwpd-0.8.6 ) mv 
+./wntmsci10.pro/misc/build/libwpd-0.8.6 
+./wntmsci10.pro/misc/build/libwpd-0.8.6_removeme
+rm -rf ./wntmsci10.pro/misc/build/libwpd-0.8.6_removeme
+mkdir: cannot create directory `./wntmsci10.pro/misc/': File exists
+dmake: Executing shell macro: +$(TYPE) 
+$(PRJ)$/$(ROUT)$/misc$/$(TARFILE_NAME).unpack
+cd ./wntmsci10.pro/misc/build &amp;&amp; ( gunzip -c 
+../../../download/libwpd-0.8.6.tar.gz  | tar  -xvf -) &amp;&amp; 
+/usr/bin/touch.exe so_unpacked_wpd
+libwpd-0.8.6/
+[...]
+libwpd-0.8.6/docs/doxygen/header.html.in
+make writeable...
+cd ./wntmsci10.pro/misc/build &amp;&amp; cat ../../../libwpd-0.8.6.diff | tr -d 
+&quot;\015&quot; | patch -b -p2 &amp;&amp; /usr/bin/touch.exe so_patched_wpd
+patching file libwpd-0.8.6/src/lib/makefile.mk
+patching file libwpd-0.8.6/src/lib/WP3VariableLengthGroup.cpp
+/usr/bin/touch.exe ./wntmsci10.pro/misc/build/so_configured_wpd
+mkdir ./wntmsci10.pro/misc/build/libwpd-0.8.6/src/lib
+mkdir: cannot create directory 
+`./wntmsci10.pro/misc/build/libwpd-0.8.6/src/lib': File exists
+cd ./wntmsci10.pro/misc/build/libwpd-0.8.6/src/lib &amp;&amp; dmake    &amp;&amp; 
+/usr/bin/touch.exe 
+/cygdrive/c/ooo2/libwpd/./wntmsci10.pro/misc/build/so_built_wpd
+dmake:  Error code 5, while making 
+'../../../../../../wntmsci10.pro/misc/s_WP3UnsupportedFixedLengthGroup.dpcc' 
+
+dmake:  
+'../../../../../../wntmsci10.pro/misc/s_WP3UnsupportedFixedLengthGroup.dpcc' 
+removed.
+---* TARGET.MK *---
+dmake:  Error code 255, while making 
+'./wntmsci10.pro/misc/build/so_built_wpd'
+---* tg_merge.mk *---
+
+ERROR: Error 65280 occurred while making /cygdrive/c/ooo2/libwpd
+
+
+Can you help me?
+
+KAMI
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070116/639beec2/attachment.html">http://lists.ximian.com/pipermail/openoffice/attachments/20070116/639beec2/attachment.html</A> 
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002199.html">[Open Office] autoreconf: aclocal-1.9: cannot open &gt; aclocal.m4: Permission denied
+</A></li>
+	<LI>Next message: <A HREF="002201.html">[Open Office] ERROR: Error 65280 occurred while making	/cygdrive/c/ooo2/libwpd
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2200">[ date ]</a>
+              <a href="thread.html#2200">[ thread ]</a>
+              <a href="subject.html#2200">[ subject ]</a>
+              <a href="author.html#2200">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

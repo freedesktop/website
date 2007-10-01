@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Problems building OO.o
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:nhudson%40lunar-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   
+   <LINK REL="Next"  HREF="000050.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Problems building OO.o
+   </H1>
+    <B>Nick Hudson
+    </B> 
+    <A HREF="mailto:nhudson%40lunar-linux.org"
+       TITLE="[Open Office] Problems building OO.o">nhudson@lunar-linux.org
+       </A><BR>
+    <I>Fri, 08 Aug 2003 07:11:50 -0500</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="000050.html">[Open Office] Problems building OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1">[ date ]</a>
+              <a href="thread.html#1">[ thread ]</a>
+              <a href="subject.html#1">[ subject ]</a>
+              <a href="author.html#1">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-4/i/7QTT3nISsJCYvycB
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Greetings,
+
+	I was wondering if maybe someone could tell me why I keep generating
+what looks to be bison errors.  I have created a few patches for the
+errors but they keep coming up in diffrent spots but its always the same
+kind of error.  Here is the url for the patches:
+
+<A HREF="http://www.lunar-linux.org/~nhudson/patches/ooo-fix1.patch">http://www.lunar-linux.org/~nhudson/patches/ooo-fix1.patch</A>
+<A HREF="http://www.lunar-linux.org/~nhudson/patches/ooo-fix2.patch">http://www.lunar-linux.org/~nhudson/patches/ooo-fix2.patch</A>
+<A HREF="http://www.lunar-linux.org/~nhudson/patches/ooo-fix3.patch">http://www.lunar-linux.org/~nhudson/patches/ooo-fix3.patch</A>
+
+Now the only problem with this it looks to me is that you cannot apply
+the patches until after you get the error that comes up.  Its always in
+the same kind of directory.  For example:
+
+build/RC_030729/idlc/unxlngi4.pro/misc/parser.cxx
+
+That is the directory where you would apply the 1st patch seems on like
+4740 there is a missing ; before the goto .  Now the bad thing is that I
+cannot apply that patch until after the error because the code isnt
+generated till it builds.  Now I guess I am asking why am I getting
+these errors?  Is it a bison problem or is it something else.?  I am
+using the openoffice build script from gnome cvs.
+
+Thanks
+
+Nick Hudson
+
+--=-4/i/7QTT3nISsJCYvycB
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.2 (GNU/Linux)
+
+iD8DBQA/M5OGG5D1jWCZpTwRAnmgAJ956qv4fHfpTsaADQFI44TwV2I2xQCdHZfx
+jYf1AAO+QrWnHw9i7mJHxZs=
+=wcBu
+-----END PGP SIGNATURE-----
+
+--=-4/i/7QTT3nISsJCYvycB--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="000050.html">[Open Office] Problems building OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1">[ date ]</a>
+              <a href="thread.html#1">[ thread ]</a>
+              <a href="subject.html#1">[ subject ]</a>
+              <a href="author.html#1">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

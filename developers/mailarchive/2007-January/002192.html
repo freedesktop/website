@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Keep 2.0 prefix for OOo-2.1?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Keep%202.0%20prefix%20for%20OOo-2.1%3F&In-Reply-To=200701051505.37162.pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002191.html">
+   <LINK REL="Next"  HREF="002194.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Keep 2.0 prefix for OOo-2.1?</H1>
+    <B>Caolan McNamara</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Keep%202.0%20prefix%20for%20OOo-2.1%3F&In-Reply-To=200701051505.37162.pmladek%40suse.cz"
+       TITLE="[Open Office] Keep 2.0 prefix for OOo-2.1?">caolanm at redhat.com
+       </A><BR>
+    <I>Fri Jan  5 09:15:05 EST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002191.html">[Open Office] Keep 2.0 prefix for OOo-2.1?
+</A></li>
+        <LI>Next message: <A HREF="002194.html">[Open Office] Keep 2.0 prefix for OOo-2.1?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2192">[ date ]</a>
+              <a href="thread.html#2192">[ thread ]</a>
+              <a href="subject.html#2192">[ subject ]</a>
+              <a href="author.html#2192">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2007-01-05 at 15:05 +0100, Petr Mladek wrote:
+&gt;<i>
+</I>&gt;<i> We could do something similar in ooo-build:
+</I>&gt;<i> 
+</I>&gt;<i> 	/usr/lib/ooo-2.0 -&gt; /usr/lib/ooo2
+</I>&gt;<i> 	/usr/share/ooo-2.0 -&gt; /usr/share/ooo2
+</I>&gt;<i> 	/usr/include/ooo-2.0 -&gt; /usr/include/ooo2
+</I>&gt;<i> 	/usr/lib/pkgconfig/mono-ooo-2.0.pc -&gt; /usr/lib/pkgconfig/mono-ooo2.pc
+</I>&gt;<i> 	~/.ooo-2.0 -&gt; ~/.ooo2
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Though, I vote to keep the 2.0 paths because:
+</I>&gt;<i> 
+</I>&gt;<i> 1. If we switch to ~/.ooo2, users would &quot;lost&quot; their older setting.
+</I>&gt;<i> 2. If we keep ~/.ooo-2.0 and change only other prefixes, it would be 
+</I>&gt;<i> inconsistent.
+</I>
+You kind of have to keep to ~/.ooo2.0 until (if ever) upstream changes
+the home dir ~/. and adds a new migration thing.
+
+For /usr/lib/foo I guess it doesn't really matter, but perhaps everyone
+should simply move to /usr/lib/openoffice.org and stick with that
+regardless of later version changes. That way various hacky utilities
+could find the distro OOo install location regardless of the distro or
+future version of OOo.
+
+C.
+
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002191.html">[Open Office] Keep 2.0 prefix for OOo-2.1?
+</A></li>
+	<LI>Next message: <A HREF="002194.html">[Open Office] Keep 2.0 prefix for OOo-2.1?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2192">[ date ]</a>
+              <a href="thread.html#2192">[ thread ]</a>
+              <a href="subject.html#2192">[ subject ]</a>
+              <a href="author.html#2192">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

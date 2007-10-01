@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Wednesday, Thursday
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000799.html">
+   <LINK REL="Next"  HREF="000801.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Wednesday, Thursday
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Status Wednesday, Thursday">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Thu, 24 Feb 2005 18:44:40 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000799.html">[Open Office] Status Tuesday
+</A></li>
+        <LI> Next message: <A HREF="000801.html">[Open Office] Status Wed, Thu
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#800">[ date ]</a>
+              <a href="thread.html#800">[ thread ]</a>
+              <a href="subject.html#800">[ subject ]</a>
+              <a href="author.html#800">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I continued porting C++ to C# (finished MapToManaged, ported
+MapManagedType and MapUnoType (+ dependencies) which translate between
+UNO typelib TypeDescriptions and managed System.Types). Also ported the
+Cli_environment (a hashtable of UNO objects/their managed Proxies). 
+
+Then I started with the UNO side proxy for managed objects. I'm trying
+to keep most of the implementation of this in C# and have very thin glue
+to provide the expected C interface.
+
+I found out that my plan for climaker (assembly generator similar to
+cppumaker, javamaker) had a bootstrapping flaw. I thought I could
+rewrite it completely in C#, using the cli uno bridge. But the project
+that builds climaker must be built before the bridge code. Will have to
+find another plan when it's time to get climaker running.
+
+Regards,
+
+Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000799.html">[Open Office] Status Tuesday
+</A></li>
+	<LI> Next message: <A HREF="000801.html">[Open Office] Status Wed, Thu
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#800">[ date ]</a>
+              <a href="thread.html#800">[ thread ]</a>
+              <a href="subject.html#800">[ subject ]</a>
+              <a href="author.html#800">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

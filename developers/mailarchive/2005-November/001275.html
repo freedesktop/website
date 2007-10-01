@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-2.0.0.1 on FreeBSD
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-2.0.0.1%20on%20FreeBSD&In-Reply-To=20051101.164047.85416181.chat95%40mac.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001257.html">
+   <LINK REL="Next"  HREF="001258.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-2.0.0.1 on FreeBSD</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-2.0.0.1%20on%20FreeBSD&In-Reply-To=20051101.164047.85416181.chat95%40mac.com"
+       TITLE="[Open Office] ooo-build-2.0.0.1 on FreeBSD">michael.meeks at novell.com
+       </A><BR>
+    <I>Fri Nov  4 06:40:42 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001257.html">[Open Office] ooo-build-2.0.0.1 on FreeBSD
+</A></li>
+        <LI>Next message: <A HREF="001258.html">[Open Office] Cairo patch for FreeBSD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1275">[ date ]</a>
+              <a href="thread.html#1275">[ thread ]</a>
+              <a href="subject.html#1275">[ subject ]</a>
+              <a href="author.html#1275">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+On Tue, 2005-11-01 at 16:40 +0900, NAKATA Maho wrote:
+&gt;<i> o FreeBSD's native patch is different, and gpatch is GNU's patch
+</I>&gt;<i> here is dirty patch.
+</I>
+	So - we need a configure.in check for the right patch &amp; to propagate
+this to Makefile.shared - then an option to apply.pl [ or an environment
+variable might be better ] and it should use that.
+
+	Happy to take a patch that does that.
+
+&gt;<i> o add definition for FreeBSD. Well it is quite same as GNU/Linux :)
+</I>
+	Easy to add; but lets do that with the above.
+
+&gt;<i> @@ -480,7 +482,7 @@
+</I>&gt;<i>  # Fix missing __cxa_guard_acquire/__cxa_guard_release - #34676 (for FC3)
+</I>&gt;<i>  sal-cxa-guard.diff
+</I>&gt;<i>  # do not pack any potential .orig files with ppds
+</I>&gt;<i> -psprint_config-no-orig.diff
+</I>&gt;<i> +#psprint_config-no-orig.diff
+</I>
+&gt;<i> o psprint_config-no-orig.diff contains ^M and doesn't apply cleanly.
+</I>
+	OK - so, it's possible that the file it's patching contains a ^M - if
+so we have a problem; is your gpatch up to date ? - there have been bugs
+fixed in this regard in recent memory. Also - I believe apply.pl has
+some 'tr' magic to sed patches / files before they're applied have a
+look - perhaps that would help you.
+
+&gt;<i> anyway, how do I fix it?
+</I>
+	Sounds good, patches appreciated.
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001257.html">[Open Office] ooo-build-2.0.0.1 on FreeBSD
+</A></li>
+	<LI>Next message: <A HREF="001258.html">[Open Office] Cairo patch for FreeBSD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1275">[ date ]</a>
+              <a href="thread.html#1275">[ thread ]</a>
+              <a href="subject.html#1275">[ subject ]</a>
+              <a href="author.html#1275">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

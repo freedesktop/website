@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Where does the standard symbol font come from?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000079.html">
+   <LINK REL="Next"  HREF="000085.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Where does the standard symbol font come from?
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Where does the standard symbol font come from?">michael@ximian.com
+       </A><BR>
+    <I>Mon, 06 Oct 2003 15:02:25 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000079.html">[Open Office] Where does the standard symbol font come from?
+</A></li>
+        <LI> Next message: <A HREF="000085.html">[Open Office] Where does the standard symbol font come from?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#83">[ date ]</a>
+              <a href="thread.html#83">[ thread ]</a>
+              <a href="subject.html#83">[ subject ]</a>
+              <a href="author.html#83">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Will,
+
+On Fri, 2003-10-03 at 20:09, William Lachance wrote:
+&gt;<i> It seems that in standard OOo, there's a font called &quot;Standard Symbols&quot;,
+</I>&gt;<i> which is mapped to correspond to a private unicode codespace (F0xx).
+</I>
+	So - the no. 1 tool for font work is pfaedit; I'd grab that and have a
+poke inside the relevant fonts; particularly opens___.ttf.
+
+	Of course (it seems to me) the free font setup gets less testing than
+the StarSymbol version of OO.o.
+
+&gt;<i> _think_ what's going on is that standard OpenOffice.org is mapping the
+</I>&gt;<i> character C2B7 (given the font &quot;Symbols&quot;) to this font w/ the unicode
+</I>&gt;<i> number F0B7. Hence perfect bullets every time. Is this correct?
+</I>
+	Have a dig at vcl/source/gdi/fontcvt.cxx - possibly therein lies the
+answer to the question in the form of a broken mapping somewhere; my
+feeling is that last time I looked at this the starsymbol mapping was
+shared with opensymbol despite these two fonts being substantially
+differently layed out (in error).
+
+	Anyhow; fontcvt is the place to dig, for sure.
+
+	HTH,
+
+		Micahel.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000079.html">[Open Office] Where does the standard symbol font come from?
+</A></li>
+	<LI> Next message: <A HREF="000085.html">[Open Office] Where does the standard symbol font come from?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#83">[ date ]</a>
+              <a href="thread.html#83">[ thread ]</a>
+              <a href="subject.html#83">[ subject ]</a>
+              <a href="author.html#83">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

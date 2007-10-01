@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-2-0-4 build problem	in	sd/source/ui/slideshow
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-2-0-4%20build%20problem%0A%09in%09sd/source/ui/slideshow&In-Reply-To=20061013201951.GB30657%40genesis.frugalware.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002049.html">
+   <LINK REL="Next"  HREF="002054.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-2-0-4 build problem	in	sd/source/ui/slideshow</H1>
+    <B>Andreas Proschofsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-2-0-4%20build%20problem%0A%09in%09sd/source/ui/slideshow&In-Reply-To=20061013201951.GB30657%40genesis.frugalware.org"
+       TITLE="[Open Office] ooo-build-2-0-4 build problem	in	sd/source/ui/slideshow">suka at gentoo.org
+       </A><BR>
+    <I>Fri Oct 13 17:05:17 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002049.html">[Open Office] ooo-build-2-0-4 build problem in	sd/source/ui/slideshow
+</A></li>
+        <LI>Next message: <A HREF="002054.html">[Open Office] ooo-build-2-0-4 build problem in	sd/source/ui/slideshow
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2050">[ date ]</a>
+              <a href="thread.html#2050">[ thread ]</a>
+              <a href="subject.html#2050">[ subject ]</a>
+              <a href="author.html#2050">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+This is known and was already fixed by Rene earlier today:
+
+2006-10-13  Rene Engelhard  &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rene at debian.org</A>&gt;
+
+	* patches/src680/sd-slideshowimpl-check-for-viewframe.diff: add
+	  .hxx part
+
+
+On Fri, 2006-10-13 at 22:19 +0200, VMiklos wrote:
+&gt;<i> hi
+</I>&gt;<i> 
+</I>&gt;<i> i hit the following issue:
+</I>&gt;<i> 
+</I>&gt;<i> Making: ../../../unxlngx6.pro/slo/slideshowimpl.obj
+</I>&gt;<i> ccache g++ -Wreturn-type -fmessage-length=0 -c -O2 -fno-strict-aliasing
+</I>&gt;<i> -Wuninitialized   -D_FILE_OFFSET_BITS=no -fvisibilit
+</I>&gt;<i> y=hidden -I.  -I../../../unxlngx6.pro/inc/slideshow
+</I>&gt;<i> -I/var/tmp/fst/src/ooo-build-2.0.4/build/current/solver/680/unxlngx6.pro
+</I>&gt;<i> /inc/offuh -I../inc -I../../../inc/pch -I../../../inc -I../../../unx/inc
+</I>&gt;<i> -I../../../unxlngx6.pro/inc -I. -I/var/tmp/fst/src/
+</I>&gt;<i> ooo-build-2.0.4/build/current/solver/680/unxlngx6.pro/inc/stl
+</I>&gt;<i> -I/var/tmp/fst/src/ooo-build-2.0.4/build/current/solver/680/un
+</I>&gt;<i> xlngx6.pro/inc/external
+</I>&gt;<i> -I/var/tmp/fst/src/ooo-build-2.0.4/build/current/solver/680/unxlngx6.pro/inc
+</I>&gt;<i> -I/var/tmp/fst/src/ooo-
+</I>&gt;<i> build-2.0.4/build/current/solenv/unxlngx6/inc
+</I>&gt;<i> -I/var/tmp/fst/src/ooo-build-2.0.4/build/current/solenv/inc
+</I>&gt;<i> -I/var/tmp/fst/src
+</I>&gt;<i> /ooo-build-2.0.4/build/current/res
+</I>&gt;<i> -I/var/tmp/fst/src/ooo-build-2.0.4/build/current/solver/680/unxlngx6.pro/inc/stl
+</I>&gt;<i> -I/var/t
+</I>&gt;<i> mp/fst/src/ooo-build-2.0.4/build/current/solenv/inc/Xp31 -I/usr/include
+</I>&gt;<i> -I/usr/include     -I/var/tmp/fst/src/ooo-build-2.0.
+</I>&gt;<i> 4/build/current/solver/680/unxlngx6.pro/inc/offuh -I. -I../../../res -I.
+</I>&gt;<i> -pipe  -Wno-ctor-dtor-privacy -fno-use-cxa-atexit -
+</I>&gt;<i> fvisibility-inlines-hidden -g -fexceptions -fno-enforce-eh-specs
+</I>&gt;<i> -fpic -DLINUX -DUNX -DVCL -DGCC -DC341 -DX86_64 -DCVER=C
+</I>&gt;<i> 341 -DNPTL -DGLIBC=2 -DX86_64 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR
+</I>&gt;<i> -D_USE_NAMESPACE=1 -DSTLPORT_VERSION=400 -DHAVE_GCC_VISIB
+</I>&gt;<i> ILITY_FEATURE -D__DMAKE -DUNIX -DCPPU_ENV=gcc3
+</I>&gt;<i> -DGXX_INCLUDE_PATH=/usr/lib/gcc/x86_64-unknown-linux-gnu/4.1.1/../../../../in
+</I>&gt;<i> clude/c++/4.1.1 -DSUPD=680 -DPRODUCT -DNDEBUG -DPRODUCT_FULL
+</I>&gt;<i> -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DEXCEPTIONS_ON -DGSTREAMER -DCU
+</I>&gt;<i> I -DSOLAR_JAVA -DOOD680=OOD680   -DSD_DLLIMPLEMENTATION -DSHAREDLIB
+</I>&gt;<i> -D_DLL_  -DMULTITHREAD  -o ../../../unxlngx6.pro/slo/sli
+</I>&gt;<i> deshowimpl.o
+</I>&gt;<i> /var/tmp/fst/src/ooo-build-2.0.4/build/current/sd/source/ui/slideshow/slideshowimpl.cxx
+</I>&gt;<i> /var/tmp/fst/src/ooo-build-2.0.4/build/current/sd/source/ui/slideshow/slideshowimpl.cxx:
+</I>&gt;<i> In member function 'bool sd::Slides
+</I>&gt;<i> howImpl::startShow(sd::PresentationSettings*)':
+</I>&gt;<i> /var/tmp/fst/src/ooo-build-2.0.4/build/current/sd/source/ui/slideshow/slideshowimpl.cxx:895:
+</I>&gt;<i> error: 'getBindings' was not de
+</I>&gt;<i> clared in this scope
+</I>&gt;<i> /var/tmp/fst/src/ooo-build-2.0.4/build/current/sd/source/ui/slideshow/slideshowimpl.cxx:
+</I>&gt;<i> In member function 'void sd::Slides
+</I>&gt;<i> howImpl::stopShow()':
+</I>&gt;<i> /var/tmp/fst/src/ooo-build-2.0.4/build/current/sd/source/ui/slideshow/slideshowimpl.cxx:1173:
+</I>&gt;<i> error: 'getDispatcher' was not
+</I>&gt;<i>  declared in this scope
+</I>&gt;<i> /var/tmp/fst/src/ooo-build-2.0.4/build/current/sd/source/ui/slideshow/slideshowimpl.cxx:
+</I>&gt;<i> In member function 'void sd::Slides
+</I>&gt;<i> howImpl::displayCurrentSlide()':
+</I>&gt;<i> /var/tmp/fst/src/ooo-build-2.0.4/build/current/sd/source/ui/slideshow/slideshowimpl.cxx:1451:
+</I>&gt;<i> error: 'getBindings' was not d
+</I>&gt;<i> eclared in this scope
+</I>&gt;<i> /var/tmp/fst/src/ooo-build-2.0.4/build/current/sd/source/ui/slideshow/slideshowimpl.cxx:
+</I>&gt;<i> At global scope:
+</I>&gt;<i> /var/tmp/fst/src/ooo-build-2.0.4/build/current/sd/source/ui/slideshow/slideshowimpl.cxx:2488:
+</I>&gt;<i> error: no 'SfxDispatcher* sd::
+</I>&gt;<i> SlideshowImpl::getDispatcher() const' member function declared in class
+</I>&gt;<i> 'sd::SlideshowImpl'
+</I>&gt;<i> /var/tmp/fst/src/ooo-build-2.0.4/build/current/sd/source/ui/slideshow/slideshowimpl.cxx:2493:
+</I>&gt;<i> error: no 'SfxBindings* sd::Sl
+</I>&gt;<i> ideshowImpl::getBindings() const' member function declared in class
+</I>&gt;<i> 'sd::SlideshowImpl'
+</I>&gt;<i> dmake:  Error code 1, while making
+</I>&gt;<i> '../../../unxlngx6.pro/slo/slideshowimpl.obj'
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>&gt;<i> 
+</I>&gt;<i> ERROR: Error 65280 occurred while making
+</I>&gt;<i> /var/tmp/fst/src/ooo-build-2.0.4/build/current/sd/source/ui/slideshow
+</I>&gt;<i> make: *** [stamp/build] Error 1
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">fst at helicon</A>:~/src/ooo-build-2.0.4$ head ChangeLog
+</I>&gt;<i> 2006-10-12  Rene Engelhard  &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rene at debian.org</A>&gt;
+</I>&gt;<i> 
+</I>&gt;<i>         * patches/src680/apply: (DebianBaseOnly) remove
+</I>&gt;<i>           ooo69530.sd.crash.diff in favour of identical
+</I>&gt;<i>           sd-slideshowimpl-check-for-viewframe.diff
+</I>&gt;<i>         * patches/src680/ooo69530.sd.crash.diff: remove
+</I>&gt;<i> 
+</I>&gt;<i> is this a known problem?
+</I>&gt;<i> 
+</I>&gt;<i> (afaik) with the same config ood680-m5 built fine
+</I>&gt;<i> 
+</I>&gt;<i> thanks,
+</I>&gt;<i> VMiklos
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">Openoffice at lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>-- 
+Andreas Proschofsky
+Gentoo Developer / OpenOffice.org
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: This is a digitally signed message part
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20061013/e7a024ec/attachment.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20061013/e7a024ec/attachment.bin</A> 
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002049.html">[Open Office] ooo-build-2-0-4 build problem in	sd/source/ui/slideshow
+</A></li>
+	<LI>Next message: <A HREF="002054.html">[Open Office] ooo-build-2-0-4 build problem in	sd/source/ui/slideshow
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2050">[ date ]</a>
+              <a href="thread.html#2050">[ thread ]</a>
+              <a href="subject.html#2050">[ subject ]</a>
+              <a href="author.html#2050">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

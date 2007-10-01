@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] other compile problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:nhudson%40lunar-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000032.html">
+   <LINK REL="Next"  HREF="000031.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] other compile problems
+   </H1>
+    <B>Nick Hudson
+    </B> 
+    <A HREF="mailto:nhudson%40lunar-linux.org"
+       TITLE="[Open Office] other compile problems">nhudson@lunar-linux.org
+       </A><BR>
+    <I>Sat, 23 Aug 2003 12:04:02 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000032.html">[Open Office] Re: oo.o libary errors
+</A></li>
+        <LI> Next message: <A HREF="000031.html">[Open Office] other compile problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#29">[ date ]</a>
+              <a href="thread.html#29">[ thread ]</a>
+              <a href="subject.html#29">[ subject ]</a>
+              <a href="author.html#29">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-cgrWJeR8K1tz5A4xZxm4
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Ok I got past the part of my last few emails but now it is stopping at a
+diffrent point that I will port later in the email.  Another thing I
+found useful while compiling gcc if you add these flags to the compile
+it will compile faster and will not compile java which you do not need.
+
+--enable-static --disable-shared --enable-languages=3Dc++
+
+That way you only build gcc and g++ and also it makes it so for those of
+us who have tar as a dynamic link can compile the gcc part of it.  I
+noticed if I compiled tar with static links it would compile gcc but if
+I compiled tar with dynamic links it would not build gcc.  Now I have no
+idea why but this fixed it. =20
+
+Now after all of this I get a compile error in OO.o and the error is the
+same with or without the changes in gcc so I know that isnt the
+problem.  I just cant figure out what might be the problem because it
+doesnt really give me a definitive answer on why it is failing.  I was
+using the cvs version of the scrips but I went back using the released
+version 1.1.35.  Either one I get the same error at the same point
+everytime I compile it.  Here is the error
+
+echo &quot;Solar-Version: 645m13s2(Build:8662)&quot; &gt;&gt;
+../../../../../../unxlngi4.pro/class/META-INF/MANIFEST.MF
+cd ../../../../../../unxlngi4.pro/class &amp;&amp; zip -u -r officebean.jar=20
+META-INF/MANIFEST.MF  com/sun/star/beans
+updating: META-INF/MANIFEST.MF (deflated 10%)
+-------------
+/usr/src/ooo-build-1.1.35/build/RC3_030729/odk/examples/OLE
+dmake:  Error --
+`../../unxlngi4.pro/bin/odk645/examples/OLE/delphi/InsertTables/Project1.dp=
+r' not found, and can't be made
+---* RULES.MK *---
+=20
+ERROR: Error 65280 occurred while making
+/usr/src/ooo-build-1.1.35/build/RC3_030729/odk/examples/OLE
+dmake:  Error code 1, while making 'build_all'
+---* TG_SLO.MK *---
+make[1]: *** [all] Error 1
+make[1]: Leaving directory `/usr/src/ooo-build-1.1.35/bin'
+make: *** [all-recursive] Error 1
+
+
+Anyway any help on this would be great!
+
+Thanks
+
+Nick Hudson
+
+--=-cgrWJeR8K1tz5A4xZxm4
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.2 (GNU/Linux)
+
+iD8DBQA/R56CG5D1jWCZpTwRAod4AJ9u3g8Bm7EpqrM+O1kJGpqYSjkazwCdGmIv
+z0pQfDuvinUSaRZJ+AMbIl0=
+=7Wc0
+-----END PGP SIGNATURE-----
+
+--=-cgrWJeR8K1tz5A4xZxm4--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000032.html">[Open Office] Re: oo.o libary errors
+</A></li>
+	<LI> Next message: <A HREF="000031.html">[Open Office] other compile problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#29">[ date ]</a>
+              <a href="thread.html#29">[ thread ]</a>
+              <a href="subject.html#29">[ subject ]</a>
+              <a href="author.html#29">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build 1.3.7/1.9.70 crashes with gnome file
+ picker
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:caolanm%40redhat.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000787.html">
+   <LINK REL="Next"  HREF="000789.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build 1.3.7/1.9.70 crashes with gnome file
+ picker
+   </H1>
+    <B>Caolan McNamara
+    </B> 
+    <A HREF="mailto:caolanm%40redhat.com"
+       TITLE="[Open Office] ooo-build 1.3.7/1.9.70 crashes with gnome file
+ picker">caolanm@redhat.com
+       </A><BR>
+    <I>Thu, 17 Feb 2005 15:55:42 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000787.html">[Open Office] ooo-build 1.3.7/1.9.70 crashes with gnome file
+ picker
+</A></li>
+        <LI> Next message: <A HREF="000789.html">[Open Office] Status Tuesday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#792">[ date ]</a>
+              <a href="thread.html#792">[ thread ]</a>
+              <a href="subject.html#792">[ subject ]</a>
+              <a href="author.html#792">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 2005-02-15 at 11:39 +0000, Caolan McNamara wrote:
+&gt;<i> On Tue, 2005-01-25 at 14:07 +0000, Michael Meeks wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; On Fri, 2005-01-21 at 09:12 +0100, Juerg Billeter wrote:
+</I>&gt;<i> &gt; &gt; I experience a similar crash with gnome's file picker as described in
+</I>&gt;<i> &gt; &gt; <A HREF="http://lists.ximian.com/archives/public/openoffice/2004-December/000646.html">http://lists.ximian.com/archives/public/openoffice/2004-December/000646.html</A>
+</I>&gt;<i> &gt; &gt; It doesn't always happen and it happens with both, ooo-build 1.3.7 and
+</I>&gt;<i> &gt; &gt; 1.9.70 - using gtk+ 2.6.1. I've attached the backtrace of the 1.9.70
+</I>&gt;<i> &gt; &gt; version using gtk+ debugging symbols.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 	So - this looks like this:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; #64 0xb593c051 in IA__g_assert_warning (log_domain=0x0, file=0x0,
+</I>&gt;<i> &gt; line=0, 
+</I>&gt;<i> &gt;     pretty_function=0xa91c408b &quot;gnome_vfs_cancellation_cancel&quot;, 
+</I>&gt;<i> &gt;     expression=0xa91c4143 &quot;gnome_vfs_is_primary_thread()&quot;) at
+</I>&gt;<i> &gt; gmessages.c:542
+</I>&gt;<i> &gt; No locals.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 	might be the problem; do you get assertion output on the console ? also
+</I>&gt;<i> &gt; - what version of libgnomevfs 2.x do you have ?
+</I>&gt;<i> 
+</I>&gt;<i> A stinky gnome-vfs problem, hit me today, see
+</I>&gt;<i> <A HREF="http://bugzilla.gnome.org/show_bug.cgi?id=166852">http://bugzilla.gnome.org/show_bug.cgi?id=166852</A>
+</I>&gt;<i> as a workaround try firing up gconf-editor and set the key
+</I>&gt;<i> /desktop/gnome/interface/file_chooser_backend to gtk+
+</I>
+Alex has this fixed in gnome-vfs, I'd suggest distributers should poke
+their gnome-vfs maintainers about it :-)
+
+C.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000787.html">[Open Office] ooo-build 1.3.7/1.9.70 crashes with gnome file
+ picker
+</A></li>
+	<LI> Next message: <A HREF="000789.html">[Open Office] Status Tuesday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#792">[ date ]</a>
+              <a href="thread.html#792">[ thread ]</a>
+              <a href="subject.html#792">[ subject ]</a>
+              <a href="author.html#792">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Is it the right place submitting patches to
+	ooo-build?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Is%20it%20the%20right%20place%20submitting%20patches%20to%0A%09ooo-build%3F&In-Reply-To=20051006140327.GA16634%40thegoldbergs.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001177.html">
+   <LINK REL="Next"  HREF="001218.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Is it the right place submitting patches to
+	ooo-build?</H1>
+    <B>Funda Wang</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Is%20it%20the%20right%20place%20submitting%20patches%20to%0A%09ooo-build%3F&In-Reply-To=20051006140327.GA16634%40thegoldbergs.ca"
+       TITLE="[Open Office] Is it the right place submitting patches to
+	ooo-build?">fundawang at linux.net.cn
+       </A><BR>
+    <I>Thu Oct  6 12:27:49 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001177.html">[Open Office] Is it the right place submitting patches to
+	ooo-build?
+</A></li>
+        <LI>Next message: <A HREF="001218.html">[Open Office] Is it the right place submitting patches to
+	ooo-build?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1179">[ date ]</a>
+              <a href="thread.html#1179">[ thread ]</a>
+              <a href="subject.html#1179">[ subject ]</a>
+              <a href="author.html#1179">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jody&gt; 	a) Why is 20pts a reasonable threshold to increase the
+Jody&gt; 	font's gamma ?
+Probably because that glyphs &lt;= 20pt are rendered tighter or lighter
+by freetype, especially when rendering the artificial italic style
+CJK characters.
+
+Jody&gt; 	b) Why do this ?
+Jody&gt; 	-    FT_Int nLoadFlags = FT_LOAD_NO_HINTING | FT_LOAD_NO_BITMAP;
+Jody&gt; 	+    FT_Int nLoadFlags = FT_LOAD_DEFAULT | FT_LOAD_TARGET_LIGHT;
+Sorry, I cannot answer this question :( As I'm not familiar with freetype.
+
+Jody&gt; 	c) Are those the only code pages that are interesting ?
+I'm not sure, but we could at least take making CJK users happier
+as a start point :)
+
+Regards.
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001177.html">[Open Office] Is it the right place submitting patches to
+	ooo-build?
+</A></li>
+	<LI>Next message: <A HREF="001218.html">[Open Office] Is it the right place submitting patches to
+	ooo-build?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1179">[ date ]</a>
+              <a href="thread.html#1179">[ thread ]</a>
+              <a href="subject.html#1179">[ subject ]</a>
+              <a href="author.html#1179">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

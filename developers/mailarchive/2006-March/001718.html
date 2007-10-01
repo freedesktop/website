@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Fonts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Fonts&In-Reply-To=441907E5.6080900%40sun.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001716.html">
+   <LINK REL="Next"  HREF="001719.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Fonts</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Fonts&In-Reply-To=441907E5.6080900%40sun.com"
+       TITLE="[Open Office] Fonts">ghibo at mandriva.com
+       </A><BR>
+    <I>Thu Mar 16 07:16:52 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001716.html">[Open Office] Re: [tools-dev] Re: apply.pl &amp; 'download'
+	up-streaming ...
+</A></li>
+        <LI>Next message: <A HREF="001719.html">[Open Office] Fonts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1718">[ date ]</a>
+              <a href="thread.html#1718">[ thread ]</a>
+              <a href="subject.html#1718">[ subject ]</a>
+              <a href="author.html#1718">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Herbert Duerr wrote:
+
+&gt;<i> NAKATA Maho wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Giuseppe Ghib&#242; &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">ghibo at mandriva.com</A>&gt; wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Anyone knows how to debug the list of fonts recognized by OOo? I.e. see
+</I>&gt;&gt;&gt;<i> in console the list of fonts available into menu Insert/Special 
+</I>&gt;&gt;&gt;<i> Character?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> HDU, could you please help us? o we'd like to know the list of fonts 
+</I>&gt;&gt;<i> recognized by OOo. Is it an easy job for you?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> On X11 or windows?
+</I>&gt;<i> If on X11 look for the file &quot;pspfontcache&quot;.
+</I>&gt;<i> 
+</I>
+in X11. In other words I was referring to lists all the fonts that OOo might see 
+(where it get from the font path, I mean all the fonts outside the
+path &lt;oooinst&gt;/share/fonts/truetype,
+and those which are &quot;discarded&quot; because are not good for it.
+In particular I've seen that I've to look at the
+$HOME/.ooo-2.0/user/psprint/pspfontcache as the system-wide one
+in &lt;oooinst&gt;/share/psprint/fontmetric/pspfontcache is fixed.
+
+What I wonder is this. How the pspfontcache is generated? Where it takes
+the list of fonts path from? Apparently it seemed from the X11 xfs font server
+(through /etc/X11/fs/config, or through command /usr/sbin/chkfontpath),
+but indeed if I look at the $HOME/.ooo-2.0/user/psprint/pspfontcache I obtain
+it lists also fonts which are not in the X11 font path, nor in fontconfig
+(/etc/fonts/fonts.conf). E.g., I see in $HOME/.ooo-2.0/user/psprint/pspfontcache
+entries like:
+
+FontCacheDirectory:1128446655:/usr/lib/jdk-1.5.0_06/jre/lib/fonts
+File:LucidaBrightDemiBold.ttf
+2;1
+Lucida Bright
+-1;LucidaBright-Demi;0;8;5;2;65535;950;213;163;0;1404;1163;1404;1163;0;2
+...
+
+where it takes the path /usr/lib/jdk-1.5.0_06/jre/lib/fonts from?
+An in case of OOo running remotely through X11, where it get the list from?
+
+Now consider this case: I would like to get the Helvetica font shown
+in documents that I import, with full antialias. But I don't have installed 
+Helvetica (nor Arial) either in Type1 or TrueType/OTF. The X11 font server 
+contains an Helvetica font, but it's not in Type1 but rather in ugly bitmap 
+(file is in PCF format), so OOo 2.0 (at least those built to ignore the bitmap 
+fonts) don't use nor show it as available. But indeed there is
+&quot;Nimbus Sans L&quot; which is the &quot;Helvetica&quot; clone, part of free URW fonts in Type1. 
+In the past OOO 1.1.X to do this, I had just to provide a &quot;fake&quot; &quot;fonts.dir&quot; 
+somewhere containing entries, like:
+
+n019003l.pfb -URW-Helvetica-medium-r-normal--0-0-0-0-p-0-iso8859-1
+
+and OOo would have considered the file n019003l.pfb (which is indeed
+font /NimbusSanL-Regu) as a real /Helvetica Type1 font. Now this seems ignored,
+and the real name NimbusSanL-Regu (of family &quot;Nimbus Sans L&quot;) is used.
+Note that this is different than providing &quot;font replacement table&quot; (menu
+Tools/Options/Fonts, as with replacement you get basically replacement fallback 
+for documents that you &quot;import&quot;
+and that contains fonts which are not available, not
+for documents that you &quot;export&quot; to platform where such font (in this
+case Helvetica) might be available. In other words if you don't see
+&quot;Helvetica&quot; Type1 listed into menu Insert/Special Character and
+thus I guess into file pspfontcache, you can't write any document
+from scratch using this font, even whether when importing a document
+written in Helvetica it might use already some replacement.
+Is there a way to achieve this? Apparently seems one have to add manually
+entries into system-wide &lt;oooinst&gt;/share/psprint/fontmetric/pspfontcache
+like this:
+
+FontCacheDirectory:1137059379:/usr/X11R6/lib/X11/fonts/Type1
+File:n019003l.pfb
+1;1
+Helvetica
+-1;Helvetica;1;8;0;1;65535;1012;211;223;0;755;723;755;723;0;Helvetica.afm;Regular
+
+but the format of this file is not totally clear to me, and also it
+seems dinamically regenerated at every run.
+
+Thanks.
+Bye
+Giuseppe
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001716.html">[Open Office] Re: [tools-dev] Re: apply.pl &amp; 'download'
+	up-streaming ...
+</A></li>
+	<LI>Next message: <A HREF="001719.html">[Open Office] Fonts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1718">[ date ]</a>
+              <a href="thread.html#1718">[ thread ]</a>
+              <a href="subject.html#1718">[ subject ]</a>
+              <a href="author.html#1718">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

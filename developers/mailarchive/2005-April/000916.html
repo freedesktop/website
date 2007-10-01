@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] configure.in change ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000915.html">
+   <LINK REL="Next"  HREF="000921.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] configure.in change ...
+   </H1>
+    <B>Jan Holesovsky
+    </B> 
+    <A HREF="mailto:kendy%40suse.cz"
+       TITLE="[Open Office] configure.in change ...">kendy@suse.cz
+       </A><BR>
+    <I>Fri, 22 Apr 2005 11:01:06 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000915.html">[Open Office] configure.in change ...
+</A></li>
+        <LI> Next message: <A HREF="000921.html">[Open Office] Can ximian-ooo-2.0-pre be compiled with JDK_1.5?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#916">[ date ]</a>
+              <a href="thread.html#916">[ thread ]</a>
+              <a href="subject.html#916">[ subject ]</a>
+              <a href="author.html#916">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Michael,
+
+On Thursday 21 April 2005 22:46, michael meeks wrote:
+
+&gt;<i> 	It seems to work (for me), as long as I use configure, rather
+</I>&gt;<i> than ./autogen.sh &lt;args&gt; - seems autogen.sh is corrupting them as they
+</I>&gt;<i> get passed on via @* - no idea why.
+</I>
+I guess that it is thanks to
+  ./configure $@
+
+It should be
+  ./configure &quot;$@&quot;
+
+Bye,
+Jan
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000915.html">[Open Office] configure.in change ...
+</A></li>
+	<LI> Next message: <A HREF="000921.html">[Open Office] Can ximian-ooo-2.0-pre be compiled with JDK_1.5?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#916">[ date ]</a>
+              <a href="thread.html#916">[ thread ]</a>
+              <a href="subject.html#916">[ subject ]</a>
+              <a href="author.html#916">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

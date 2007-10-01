@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Trying to make sense out of unopkg errors
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Trying%20to%20make%20sense%20out%20of%20unopkg%20errors&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002075.html">
+   <LINK REL="Next"  HREF="002077.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Trying to make sense out of unopkg errors</H1>
+    <B>Ismail Donmez</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Trying%20to%20make%20sense%20out%20of%20unopkg%20errors&In-Reply-To="
+       TITLE="[Open Office] Trying to make sense out of unopkg errors">ismail at pardus.org.tr
+       </A><BR>
+    <I>Thu Oct 19 11:13:39 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002075.html">[Open Office] OO.o 2.0.3 and file requesters...
+</A></li>
+        <LI>Next message: <A HREF="002077.html">[Open Office] Trying to make sense out of unopkg errors
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2076">[ date ]</a>
+              <a href="thread.html#2076">[ thread ]</a>
+              <a href="subject.html#2076">[ subject ]</a>
+              <a href="author.html#2076">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I am trying to understand the error in this case:
+
+[~]&gt; sudo /opt/OpenOffice.org/lib/ooo-2.0/program/unopkg 
+add --shared -v /opt/OpenOffice.org/lib/ooo-2.0/share/uno_packages/zemberek.zip
+
+ERROR: Error while adding package: 
+<A HREF="file:///opt/OpenOffice.org/lib/ooo-2.0/share/uno_packages/zemberek.zip">file:///opt/OpenOffice.org/lib/ooo-2.0/share/uno_packages/zemberek.zip</A>
+       Cause: (com.sun.star.ucb.InteractiveAugmentedIOException) { { { { 
+Message = &quot;an error occured during file opening&quot;, Context = 
+(com.sun.star.uno.XInterface) @8107354 (ImplementationName 
+= &quot;com.sun.star.comp.ucb.FileContent&quot;) }, Classification = 
+(com.sun.star.task.InteractionClassification) ERROR }, Code = 
+(com.sun.star.ucb.IOErrorCode) NOT_EXISTING }, Arguments = ([]any) { { 
+(com.sun.star.beans.PropertyValue) { Name = &quot;Uri&quot;, Handle = (long) -1, Value 
+= (any) 
+{ &quot;<A HREF="file:///opt/OpenOffice.org/lib/ooo-2.0/share/uno_packages/zemberek.zip&quot;">file:///opt/OpenOffice.org/lib/ooo-2.0/share/uno_packages/zemberek.zip&quot;</A> }, 
+State = (com.sun.star.beans.PropertyState) DIRECT_VALUE } }, { 
+(com.sun.star.beans.PropertyValue) { Name = &quot;ResourceName&quot;, Handle = 
+(long) -1, Value = (any) 
+{ &quot;/opt/OpenOffice.org/lib/ooo-2.0/share/uno_packages/zemberek.zip&quot; }, State 
+= (com.sun.star.beans.PropertyState) DIRECT_VALUE } } } }
+
+zemberek.zip can be downloaded from 
+<A HREF="https://zemberek.dev.java.net/files/documents/2681/28336/zemberek-ooo-1.0-Beta3.zip">https://zemberek.dev.java.net/files/documents/2681/28336/zemberek-ooo-1.0-Beta3.zip</A> .
+
+Does anyone have any idea what this error might be saying? The package worked 
+fine with OO 2.0.{0,1,2} but seems to be broken upwards.
+
+Regards,
+ismail
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002075.html">[Open Office] OO.o 2.0.3 and file requesters...
+</A></li>
+	<LI>Next message: <A HREF="002077.html">[Open Office] Trying to make sense out of unopkg errors
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2076">[ date ]</a>
+              <a href="thread.html#2076">[ thread ]</a>
+              <a href="subject.html#2076">[ subject ]</a>
+              <a href="author.html#2076">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

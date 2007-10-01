@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: ooo-build 1.1.57 (download.in)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-June/index.html" >
+   <LINK REL="made" HREF="mailto:rmrmg%40wp.pl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+   <LINK REL="Previous"  HREF="000407.html">
+   <LINK REL="Next"  HREF="000410.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: ooo-build 1.1.57 (download.in)
+   </H1>
+    <B>Rafał 'rmrmg' Roszak
+    </B> 
+    <A HREF="mailto:rmrmg%40wp.pl"
+       TITLE="[Open Office] Re: ooo-build 1.1.57 (download.in)">rmrmg@wp.pl
+       </A><BR>
+    <I>Thu, 3 Jun 2004 21:53:17 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000407.html">[Open Office] Re: ooo-build 1.1.57
+</A></li>
+        <LI> Next message: <A HREF="000410.html">[Open Office] Re: ooo-build 1.1.57 (download.in)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#409">[ date ]</a>
+              <a href="thread.html#409">[ thread ]</a>
+              <a href="subject.html#409">[ subject ]</a>
+              <a href="author.html#409">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a multi-part message in MIME format.
+
+--Multipart=_Thu__3_Jun_2004_21_53_17_+0200_/co+PmYyIFxheY.2
+Content-Type: text/plain; charset=ISO-8859-2
+Content-Transfer-Encoding: quoted-printable
+
+begin  Michael Meeks &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt; quote:
+
+&gt;<i> ; I've just pushed ooo-build-1.1.58
+</I>
+Annother problem:
+
+[<A HREF="mailto:root@slack">root@slack</A>:/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.58#]
+./download            Downloading files for @TAG@
+            Skipping binutils-2.13.2.1.tar.bz2
+            Skipping gcc-3.2.2.tar.bz2
+            Skipping ooo-icons-OOO_1_1-9.tar.gz
+            No file src/@<A HREF="mailto:TAG@.tar.bz2">TAG@.tar.bz2</A>
+            Use of uninitialized value in concatenation (.) or string at
+./download line 45.            Get /@<A HREF="mailto:TAG@.tar.bz2">TAG@.tar.bz2</A> -&gt; src
+            /@<A HREF="mailto:TAG@.tar.bz2">TAG@.tar.bz2</A>: Nieobs=B3ugiwany schemat.
+            Failed fetch at ./download line 8.
+
+Reason:
+
+
+$ less ../ooo-build-1.1.55/configure| grep @TAG@=20
+<A HREF="mailto:s,@TAG">s,@TAG</A>@,$TAG,;t t
+
+$ less ../ooo-build-1.1.58/configure| grep @CVSTAG@
+<A HREF="mailto:s,@CVSTAG">s,@CVSTAG</A>@,$CVSTAG,;t t
+
+
+solution
+My patch change @TAG@ for @CVSTAG@ in download.in.
+
+--=20
+. JID: rmrmg(at)jabberpl(dot)org |   RMRMG   .
+.           gg: #2311504         | signature .
+.   mail: rmrmg(at)wp(dot)pl     |  version  .
+.  registered Linux user 261525  |   0.0.3   .
+
+--Multipart=_Thu__3_Jun_2004_21_53_17_+0200_/co+PmYyIFxheY.2
+Content-Type: application/octet-stream;
+ name=&quot;TAG.patch&quot;
+Content-Disposition: attachment;
+ filename=&quot;TAG.patch&quot;
+Content-Transfer-Encoding: base64
+
+LS0tIC4vZG93bmxvYWQuaW4JMjAwNC0wNi0wMyAyMTo0NjozNy4wMDAwMDAwMDAgKzAyMDAKKysr
+IC4vZG93bmxvYWQuaW4tcm1ybWcJMjAwNC0wNi0wMyAyMTo0NTozNS4wMDAwMDAwMDAgKzAyMDAK
+QEAgLTU1LDcgKzU1LDcgQEAKIEBmaWxlcyA9ICgpOwogCiAjIERlZmF1bHRzCi0kdGFnID0gJ0BU
+QUdAJzsKKyR0YWcgPSAnQENWU1RBR0AnOwogaWYgKCdAU1lTVEVNX0dDQ0AnIG5lICcnKSB7CiAg
+ICAgJHN1cHBvcnRfZmlsZXM9ICdub25lJzsKIH0gZWxzZSB7Cg==
+
+--Multipart=_Thu__3_Jun_2004_21_53_17_+0200_/co+PmYyIFxheY.2--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000407.html">[Open Office] Re: ooo-build 1.1.57
+</A></li>
+	<LI> Next message: <A HREF="000410.html">[Open Office] Re: ooo-build 1.1.57 (download.in)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#409">[ date ]</a>
+              <a href="thread.html#409">[ thread ]</a>
+              <a href="subject.html#409">[ subject ]</a>
+              <a href="author.html#409">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

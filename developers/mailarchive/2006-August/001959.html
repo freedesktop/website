@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] problem with OOo file digital signature ( using	--with-system-xmlsec ) in m179
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20problem%20with%20OOo%20file%20digital%20signature%20%28%20using%0A%09--with-system-xmlsec%20%29%20in%20m179&In-Reply-To=20060804215344.GE32055%40rene-engelhard.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001958.html">
+   <LINK REL="Next"  HREF="001961.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] problem with OOo file digital signature ( using	--with-system-xmlsec ) in m179</H1>
+    <B>Giuseppe Castagno</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20problem%20with%20OOo%20file%20digital%20signature%20%28%20using%0A%09--with-system-xmlsec%20%29%20in%20m179&In-Reply-To=20060804215344.GE32055%40rene-engelhard.de"
+       TITLE="[Open Office] problem with OOo file digital signature ( using	--with-system-xmlsec ) in m179">giuseppe.castagno at gmail.com
+       </A><BR>
+    <I>Sat Aug  5 07:29:31 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001958.html">[Open Office] problem with OOo file digital signature ( using	--with-system-xmlsec ) in m179
+</A></li>
+        <LI>Next message: <A HREF="001961.html">[Open Office] problem with OOo file digital signature (	using	--with-system-xmlsec ) in m179
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1959">[ date ]</a>
+              <a href="thread.html#1959">[ thread ]</a>
+              <a href="subject.html#1959">[ subject ]</a>
+              <a href="author.html#1959">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 8/4/06, Rene Engelhard &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rene at debian.org</A>&gt; wrote:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> Giuseppe Castagno wrote:
+</I>&gt;<i> &gt; Works like a charm, could see existent and I was able to add a
+</I>&gt;<i> &gt; signature as well, thank you Caolan !
+</I>
+damn, it seems I was too quick to declare the bug dead, I built m180
+overnight with Rene updatated patch and it appears the fix's only
+partial.
+
+I can see the signatures on a signed OOo file, but when I try to add a
+new signature it chrashes.
+
+Behaviour and backtrace are here:
+<A HREF="https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=201305#c5">https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=201305#c5</A>
+
+So the current patch it's OK to correct part of the bug.
+
+When yesterday I tried the m179 build tree I only deleted the binary
+in src60-m179/libxmlsec and src60-m179/xmlsecurity, but it seems it
+would have been better if I have done a clean build.
+
+-- 
+Kind regards,
+Giuseppe Castagno
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001958.html">[Open Office] problem with OOo file digital signature ( using	--with-system-xmlsec ) in m179
+</A></li>
+	<LI>Next message: <A HREF="001961.html">[Open Office] problem with OOo file digital signature (	using	--with-system-xmlsec ) in m179
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1959">[ date ]</a>
+              <a href="thread.html#1959">[ thread ]</a>
+              <a href="subject.html#1959">[ subject ]</a>
+              <a href="author.html#1959">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Too small menu fonts (only) in OpenOffice
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000074.html">
+   <LINK REL="Next"  HREF="000078.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Too small menu fonts (only) in OpenOffice
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Too small menu fonts (only) in OpenOffice">michael@ximian.com
+       </A><BR>
+    <I>Fri, 03 Oct 2003 09:18:17 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000074.html">[Open Office] Too small menu fonts (only) in OpenOffice
+</A></li>
+        <LI> Next message: <A HREF="000078.html">[Open Office] Moz getting Compiled in Somehow
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#75">[ date ]</a>
+              <a href="thread.html#75">[ thread ]</a>
+              <a href="subject.html#75">[ subject ]</a>
+              <a href="author.html#75">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Vladimir,
+
+On Fri, 2003-10-03 at 03:28, Vladimir G. Ivanovic wrote:
+&gt;<i> If I change the Font Settings dpi to 75 and adjust my font sizes, then
+</I>&gt;<i> X, Xft and the Font Settings applet are all in alignment (along with
+</I>&gt;<i> Mars, Jupiter and several lesser asteroids).
+</I>
+	Ok - it sounds as if (for reasons inscrutible) that for some reason VCL
+is using the X servers' DPI setting in combination with the version it
+gets from the Xsetting in some odd way ;-)
+
+	Anyhow - there are _loads_ of ugly hacks in OO.o to screw with the DPI
+setting; frequently there was code like:
+
+	if (display_x &lt; 1024)
+		DPI_X = 0.75;
+
+	etc. ;-) we exorcised a lot of that mess in 1.0.3 - but possibly more
+has crept in for 1.1.
+
+	Anyway - the best way to fix the problem is to build OO.o :-) [ this
+sounds frightening but is in fact quite easy ]. Simply wander across to:
+<A HREF="http://ooo.ximian.com/packages/OOO_1_1_0,">http://ooo.ximian.com/packages/OOO_1_1_0,</A> download the latest
+ooo-build-1.1.43.tar.gz, ./autogen.sh, ./download ; make ; sudo make
+install and you can have a play about; when you get to that stage let me
+know and I'll give you some pointers to the DPI code.
+
+	FWIW you'll need ~4Gb+ of spare space, download 150Mb of code, and be
+able to leave it running overnight ...
+
+	It'd be great to have you digging into this with us; with a few simple
+bits of debug we should be able to get much further,
+
+	Regards,
+
+		Michael. 
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000074.html">[Open Office] Too small menu fonts (only) in OpenOffice
+</A></li>
+	<LI> Next message: <A HREF="000078.html">[Open Office] Moz getting Compiled in Somehow
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#75">[ date ]</a>
+              <a href="thread.html#75">[ thread ]</a>
+              <a href="subject.html#75">[ subject ]</a>
+              <a href="author.html#75">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,925 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] gtk fpicker and the &quot;Versions&quot; list
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-September/index.html" >
+   <LINK REL="made" HREF="mailto:caolanm%40redhat.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000540.html">
+   <LINK REL="Next"  HREF="000543.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] gtk fpicker and the &quot;Versions&quot; list
+   </H1>
+    <B>Caolan McNamara
+    </B> 
+    <A HREF="mailto:caolanm%40redhat.com"
+       TITLE="[Open Office] gtk fpicker and the &quot;Versions&quot; list">caolanm@redhat.com
+       </A><BR>
+    <I>Wed, 08 Sep 2004 16:16:42 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000540.html">[Open Office] gtk folder picker
+</A></li>
+        <LI> Next message: <A HREF="000543.html">[Open Office] ooo-build and repeated OO build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#541">[ date ]</a>
+              <a href="thread.html#541">[ thread ]</a>
+              <a href="subject.html#541">[ subject ]</a>
+              <a href="author.html#541">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-Xfwf6XgiyG3yRwB16dzE
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+Attached patch makes &quot;Versions&quot; work in the gtk file picker, also
+attached is an example .sxw which has such versions.
+
+All works wonderfully, except I have only a passing acquaintance with
+gtk so need some guidance on how to handle the variable width of the
+Versions dropdown, e.g. selecting the example .sxw in the dialog which
+has an deliberately extraordinarily long entry for one of its Versions.
+
+C.
+
+--=-Xfwf6XgiyG3yRwB16dzE
+Content-Disposition: attachment; filename=fpicker.versions.patch
+Content-Type: text/x-patch; name=fpicker.versions.patch; charset=ANSI_X3.4-1968
+Content-Transfer-Encoding: 7bit
+
+? source/unx/foo
+? source/win32/misc/.resourceprovider.cxx.swp
+Index: source/unx/gnome/SalGtkFilePicker.cxx
+===================================================================
+RCS file: /cvs/gsl/fpicker/source/unx/gnome/Attic/SalGtkFilePicker.cxx,v
+retrieving revision 1.1.2.4
+diff -u -p -r1.1.2.4 SalGtkFilePicker.cxx
+--- source/unx/gnome/SalGtkFilePicker.cxx	8 Sep 2004 09:42:07 -0000	1.1.2.4
++++ source/unx/gnome/SalGtkFilePicker.cxx	8 Sep 2004 15:01:23 -0000
+@@ -90,6 +90,9 @@
+ #ifndef _COM_SUN_STAR_UI_DIALOGS_TEMPLATEDESCRIPTION_HPP_
+ #include &lt;com/sun/star/ui/dialogs/TemplateDescription.hpp&gt;
+ #endif
++#ifndef _COM_SUN_STAR_UI_DIALOGS_CONTROLACTIONS_HPP_
++#include &lt;com/sun/star/ui/dialogs/ControlActions.hpp&gt;
++#endif
+ #ifndef  _COM_SUN_STAR_UNO_ANY_HXX_
+ #include &lt;com/sun/star/uno/Any.hxx&gt;
+ #endif
+@@ -169,6 +172,7 @@ SalGtkFilePicker::SalGtkFilePicker( cons
+ 	m_pVBox ( NULL ),
+ 	m_pFilterList( NULL ),
+ 	mHID_Preview( ( gulong ) NULL ),
++	mHID_FolderChange( ( gulong ) NULL ),
+ 	m_pPreview( NULL ),
+ 	m_PreviewImageWidth( 256 ),
+ 	m_PreviewImageHeight( 256 )
+@@ -185,10 +189,12 @@ SalGtkFilePicker::SalGtkFilePicker( cons
+ 		m_pButtons[i] = NULL;
+ 
+ 	for( i = 0; i &lt; LIST_LAST; i++ )
++    {
++        m_pHBoxs[i] = NULL;
+ 		m_pLists[i] = NULL;
+-
+-	for( i = 0; i &lt; LIST_LABEL_LAST; i++ )
+ 		m_pListLabels[i] = NULL;
++		mbListVisibility[i] = false;
++    }
+ }
+ 
+ //------------------------------------------------------------------------------------
+@@ -234,20 +240,18 @@ void SAL_CALL SalGtkFilePicker::disposin
+ 
+ void SAL_CALL SalGtkFilePicker::fileSelectionChanged( FilePickerEvent aEvent ) 
+ {
+-	/* TODO
++	OSL_TRACE( &quot;file selection changed&quot;);
+ 	aEvent.Source = uno::Reference&lt;uno::XInterface&gt;( static_cast&lt;XFilePickerNotifier*&gt;( this ) );
+ 	m_aAsyncEventNotifier.notifyEvent(
+ 		new SalGtkFilePickerParamEventNotification( &amp;XFilePickerListener::fileSelectionChanged, aEvent ) );
+-	*/
+ }
+ 
+ void SAL_CALL SalGtkFilePicker::directoryChanged( FilePickerEvent aEvent ) 
+ {
+-#if 0
++	OSL_TRACE(&quot;directory changed&quot;);
+ 	aEvent.Source = uno::Reference&lt;uno::XInterface&gt;( static_cast&lt;XFilePickerNotifier*&gt;( this ) );
+ 	m_aAsyncEventNotifier.notifyEvent(
+ 		new SalGtkFilePickerParamEventNotification( &amp;XFilePickerListener::directoryChanged, aEvent ) );
+-#endif
+ }
+ 
+ void SAL_CALL SalGtkFilePicker::controlStateChanged( FilePickerEvent aEvent ) 
+@@ -314,13 +318,29 @@ rtl::OUString SAL_CALL SalGtkFilePicker:
+ bool SalGtkFilePicker::startupEventNotification( bool bStartupSuspended ) 
+ {
+ 	OSL_TRACE( &quot;attempting to start\n&quot;);
+-	return m_aAsyncEventNotifier.startup( bStartupSuspended );
++	bool bRet = m_aAsyncEventNotifier.startup( bStartupSuspended );
++	if (bRet)
++	{
++		mHID_FolderChange = 
++			g_signal_connect( GTK_FILE_CHOOSER( m_pDialog ), &quot;current-folder-changed&quot;,
++				G_CALLBACK( folder_changed_cb ), ( gpointer )this );
++
++		mHID_SelectionChange = 
++			g_signal_connect( GTK_FILE_CHOOSER( m_pDialog ), &quot;selection-changed&quot;,
++				G_CALLBACK( selection_changed_cb ), ( gpointer )this );
++
++	}
++	return bRet;
+ }
+ 
+ void SalGtkFilePicker::shutdownEventNotification()
+ {
+ 	OSL_TRACE( &quot;before terminate, risky for some reason\n&quot; );
+ 	m_aAsyncEventNotifier.shutdown();
++	if (mHID_FolderChange)
++		g_signal_handler_disconnect(GTK_FILE_CHOOSER( m_pDialog ), mHID_FolderChange);
++	if (mHID_SelectionChange)
++		g_signal_handler_disconnect(GTK_FILE_CHOOSER( m_pDialog ), mHID_SelectionChange);
+ 	OSL_TRACE( &quot;after terminate, risky for some reason\n&quot; );
+ }
+ 
+@@ -854,6 +874,7 @@ sal_Int16 SAL_CALL SalGtkFilePicker::exe
+ // cf. offapi/com/sun/star/ui/dialogs/ExtendedFilePickerElementIds.idl
+ GtkWidget *SalGtkFilePicker::getWidget( sal_Int16 nControlId, GType *pType )
+ {
++	OSL_TRACE(&quot;control id is %d&quot;, nControlId);
+ 	GType      tType;
+ 	GtkWidget *pWidget;
+ 
+@@ -867,10 +888,10 @@ GtkWidget *SalGtkFilePicker::getWidget( 
+ 			break
+ #define MAP_LIST( elem ) \
+ 		case ExtendedFilePickerElementIds::LISTBOX_##elem: \
+-			pWidget = m_pLists[elem]; tType = GTK_TYPE_LIST; \
++			pWidget = m_pLists[elem]; tType = GTK_TYPE_COMBO_BOX; \
+ 			break
+ #define MAP_LIST_LABEL( elem ) \
+-		case ExtendedFilePickerElementIds::LISTBOX_##elem: \
++		case ExtendedFilePickerElementIds::LISTBOX_##elem##_LABEL: \
+ 			pWidget = m_pListLabels[elem]; tType = GTK_TYPE_LABEL; \
+ 			break
+ 
+@@ -887,9 +908,9 @@ GtkWidget *SalGtkFilePicker::getWidget( 
+ 		MAP_LIST( VERSION );
+ 		MAP_LIST( TEMPLATE );
+ 		MAP_LIST( IMAGE_TEMPLATE );
+-		MAP_LIST_LABEL( VERSION_LABEL );
+-		MAP_LIST_LABEL( TEMPLATE_LABEL );
+-		MAP_LIST_LABEL( IMAGE_TEMPLATE_LABEL );
++		MAP_LIST_LABEL( VERSION );
++		MAP_LIST_LABEL( TEMPLATE );
++		MAP_LIST_LABEL( IMAGE_TEMPLATE );
+ 	default:
+ 		OSL_TRACE(&quot;Handle unknown control %d\n&quot;, nControlId);
+ 		break;
+@@ -906,6 +927,129 @@ GtkWidget *SalGtkFilePicker::getWidget( 
+ //------------------------------------------------------------------------------------
+ // XFilePickerControlAccess functions
+ //------------------------------------------------------------------------------------
++namespace
++{
++    void HandleSetListValue(GtkComboBox *pWidget, sal_Int16 nControlAction, const uno::Any&amp; rValue)
++    {
++        switch (nControlAction)
++        {
++            case ControlActions::ADD_ITEM:
++                {
++                    OUString sItem;
++                    rValue &gt;&gt;= sItem;
++                    gtk_combo_box_append_text(pWidget, rtl::OUStringToOString(sItem, RTL_TEXTENCODING_UTF8).getStr());
++                }
++                break;
++            case ControlActions::ADD_ITEMS:
++                {
++                    Sequence&lt; OUString &gt; aStringList;
++                    rValue &gt;&gt;= aStringList;
++                    sal_Int32 nItemCount = aStringList.getLength();
++                    for (sal_Int32 i = 0; i &lt; nItemCount; ++i)
++                    {
++                        gtk_combo_box_append_text(pWidget, 
++                            rtl::OUStringToOString(aStringList[i], RTL_TEXTENCODING_UTF8).getStr());
++                    }
++                }
++                break;
++            case ControlActions::DELETE_ITEM:
++                {
++                    sal_Int32 nPos;
++                    rValue &gt;&gt;= nPos;
++                    gtk_combo_box_remove_text(pWidget, nPos);
++                }
++                break;
++            case ControlActions::DELETE_ITEMS:
++                {
++                    gtk_combo_box_set_active(pWidget, -1);
++                    gint nItems = 0;
++                    do
++                    {
++                            nItems = 
++                                    gtk_tree_model_iter_n_children(
++                                      gtk_combo_box_get_model(pWidget), NULL);
++                            for (gint nI = 0; nI &lt; nItems; ++nI)
++                                gtk_combo_box_remove_text(pWidget, nI);
++                    }
++                    while (nItems);
++                }
++                break;
++            case ControlActions::SET_SELECT_ITEM:
++                {
++                    sal_Int32 nPos;
++                    rValue &gt;&gt;= nPos;
++                    gtk_combo_box_set_active(pWidget, nPos);
++                }
++                break;
++            default:
++                OSL_TRACE(&quot;undocumented/unimplemented ControlAction for a list&quot;);
++                break;
++        }
++
++        //I think its best to make it insensitive unless there is the chance to
++        //actually select something from the list.
++        gint nItems = gtk_tree_model_iter_n_children(
++                        gtk_combo_box_get_model(pWidget), NULL);
++        gtk_widget_set_sensitive(GTK_WIDGET(pWidget), nItems &gt; 1 ? true : false);
++    }
++
++    uno::Any HandleGetListValue(GtkComboBox *pWidget, sal_Int16 nControlAction)
++    {
++        uno::Any aAny;
++        switch (nControlAction)
++        {
++            case ControlActions::GET_ITEMS:
++                {
++                    Sequence&lt; OUString &gt; aItemList;
++                        
++                    GtkTreeModel *pTree = gtk_combo_box_get_model(pWidget);
++                    GtkTreeIter iter;
++                    if (gtk_tree_model_get_iter_first(pTree, &amp;iter))
++                    {
++                        sal_Int32 nSize = gtk_tree_model_iter_n_children(
++                            pTree, NULL);
++
++                        aItemList.realloc(nSize);
++                        for (sal_Int32 i=0; i &lt; nSize; ++i)
++                        {
++                            gchar *item;
++                            gtk_tree_model_get(gtk_combo_box_get_model(pWidget), 
++                                &amp;iter, 0, &amp;item, -1);
++                            aItemList[i] = OUString(item, strlen(item), RTL_TEXTENCODING_UTF8);
++                            g_free(item);
++                            gtk_tree_model_iter_next(pTree, &amp;iter);
++                        }
++                    }
++                    aAny &lt;&lt;= aItemList;
++                }
++                break;
++            case ControlActions::GET_SELECTED_ITEM:
++                {
++                    GtkTreeIter iter;
++                    if (gtk_combo_box_get_active_iter(pWidget, &amp;iter))
++                    {
++                            gchar *item;
++                            gtk_tree_model_get(gtk_combo_box_get_model(pWidget), 
++                                &amp;iter, 0, &amp;item, -1);
++                            OUString sItem(item, strlen(item), RTL_TEXTENCODING_UTF8);
++                            aAny &lt;&lt;= sItem;
++                            g_free(item);
++                    }
++                }
++                break;
++            case ControlActions::GET_SELECTED_ITEM_INDEX:
++                {
++                    gint nActive = gtk_combo_box_get_active(pWidget);
++                    aAny &lt;&lt;= static_cast&lt; sal_Int32 &gt;(nActive);
++                }
++                break;
++            default:
++                OSL_TRACE(&quot;undocumented/unimplemented ControlAction for a list&quot;);
++                break;
++        }
++        return aAny;
++    }
++}
+ 
+ void SAL_CALL SalGtkFilePicker::setValue( sal_Int16 nControlId, sal_Int16 nControlAction, const uno::Any&amp; rValue ) 
+ 	throw( uno::RuntimeException )
+@@ -926,9 +1070,13 @@ void SAL_CALL SalGtkFilePicker::setValue
+ 		rValue &gt;&gt;= bChecked;
+ 		gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pWidget ), bChecked );
+ 	}
++	else if( tType == GTK_TYPE_COMBO_BOX )
++		HandleSetListValue(GTK_COMBO_BOX(pWidget), nControlAction, rValue);
+ 	else
++	{
+ 		OSL_TRACE(&quot;Can't set value on button / list %d %d\n&quot;, 
+ 			nControlId, nControlAction);
++	}
+ }
+ 
+ uno::Any SAL_CALL SalGtkFilePicker::getValue( sal_Int16 nControlId, sal_Int16 nControlAction ) 
+@@ -946,7 +1094,8 @@ uno::Any SAL_CALL SalGtkFilePicker::getV
+ 	
+ 	else if( tType == GTK_TYPE_TOGGLE_BUTTON )
+ 		aRetval &lt;&lt;= (sal_Bool) gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pWidget ) );
+-
++	else if( tType == GTK_TYPE_COMBO_BOX )
++		aRetval = HandleGetListValue(GTK_COMBO_BOX(pWidget), nControlAction);
+ 	else
+ 		OSL_TRACE(&quot;Can't get value on button / list %d %d\n&quot;, 
+ 			nControlId, nControlAction );
+@@ -967,13 +1116,11 @@ throw( uno::RuntimeException )
+ 		if( bEnable )
+ 		{
+ 			OSL_TRACE( &quot;enable\n&quot; );
+-//			gtk_widget_show( pWidget );
+ 			gtk_widget_set_sensitive( pWidget, TRUE );
+ 		}
+ 		else
+ 		{
+ 			OSL_TRACE( &quot;disable\n&quot; );
+-//			gtk_widget_hide( pWidget );
+ 			gtk_widget_set_sensitive( pWidget, FALSE );
+ 		}
+ 	}
+@@ -1082,15 +1229,27 @@ void SalGtkFilePicker::filter_changed_cb
+ 	pobjFP-&gt;controlStateChanged( evt );
+ }
+ 
+-void SalGtkFilePicker::update_preview_cb( GtkFileChooser *file_chooser, gpointer data )
++void SalGtkFilePicker::folder_changed_cb( GtkFileChooser *file_chooser, SalGtkFilePicker *pobjFP )
++{
++	FilePickerEvent evt;
++	OSL_TRACE( &quot;folder_changed, isn't it great %x\n&quot;, pobjFP );
++	pobjFP-&gt;directoryChanged( evt );
++}
++
++void SalGtkFilePicker::selection_changed_cb( GtkFileChooser *file_chooser, SalGtkFilePicker *pobjFP )
++{
++	FilePickerEvent evt;
++	OSL_TRACE( &quot;selection_changed, isn't it great %x\n&quot;, pobjFP );
++	pobjFP-&gt;fileSelectionChanged( evt );
++}
++
++void SalGtkFilePicker::update_preview_cb( GtkFileChooser *file_chooser, SalGtkFilePicker* pobjFP )
+ {
+ 	GtkWidget *preview;
+ 	char *filename;
+ 	GdkPixbuf *pixbuf;
+ 	gboolean have_preview = FALSE;
+ 
+-	SalGtkFilePicker* pobjFP = ( SalGtkFilePicker * )data;
+-                                                                              
+ 	preview = pobjFP-&gt;m_pPreview;
+ 	filename = gtk_file_chooser_get_preview_filename( file_chooser );
+ 
+@@ -1261,7 +1420,7 @@ void SAL_CALL SalGtkFilePicker::initiali
+ 			eAction = GTK_FILE_CHOOSER_ACTION_OPEN;
+ 			first_button_text = GTK_STOCK_OPEN;
+ 			mbToggleVisibility[READONLY] = true;
+-			// TODO show 'readonly' control cf. 
++            mbListVisibility[VERSION] = true;
+ 			break;
+ 		case FILEOPEN_LINK_PREVIEW:
+ 			eAction = GTK_FILE_CHOOSER_ACTION_OPEN;
+@@ -1352,31 +1511,32 @@ void SAL_CALL SalGtkFilePicker::initiali
+ 
+ 	for( i = 0; i &lt; LIST_LAST; i++ )
+ 	{
+-		m_pLists[i] = gtk_list_new();
+-		gtk_box_pack_end( GTK_BOX( m_pVBox ), m_pLists[i], FALSE, TRUE, 0 );
+-	}
++        m_pHBoxs[i] = gtk_hbox_new( FALSE, 0 );
++
++		m_pLists[i] = gtk_combo_box_new_text();
+ 
+-	for( i = 0; i &lt; LIST_LABEL_LAST; i++ )
+-	{
+ 		m_pListLabels[i] = gtk_label_new( &quot;&quot; );
+ 
+ #define LABEL_LIST( elem ) \
+ 		case elem : \
+-			aLabel = aResProvider.getResString( LISTBOX_##elem ); \
+-			setLabel( LISTBOX_##elem, aLabel ); \
++			aLabel = aResProvider.getResString( LISTBOX_##elem##_LABEL ); \
++			setLabel( LISTBOX_##elem##_LABEL, aLabel ); \
+ 			break
+ 
+-  		switch( i ) {
+-
+-		LABEL_LIST( VERSION_LABEL );
+-		LABEL_LIST( TEMPLATE_LABEL );
+-		LABEL_LIST( IMAGE_TEMPLATE_LABEL );
++  		switch( i ) 
++        {
++            LABEL_LIST( VERSION );
++            LABEL_LIST( TEMPLATE );
++            LABEL_LIST( IMAGE_TEMPLATE );
+ 			default:
+ 				OSL_TRACE(&quot;Handle unknown control %d\n&quot;, i);
+ 				break;
+ 		}
+ 
+-		gtk_box_pack_end( GTK_BOX( m_pVBox ), m_pListLabels[i], FALSE, TRUE, 0 );
++		gtk_box_pack_end( GTK_BOX( m_pHBoxs[i] ), m_pLists[i], FALSE, TRUE, 0 );
++		gtk_box_pack_end( GTK_BOX( m_pHBoxs[i] ), m_pListLabels[i], FALSE, TRUE, 0 );
++
++		gtk_box_pack_end( GTK_BOX( m_pVBox ), m_pHBoxs[i], FALSE, TRUE, 0 );
+ 	}
+ 
+ 	gtk_file_chooser_set_extra_widget( GTK_FILE_CHOOSER( m_pDialog ), m_pVBox );
+@@ -1388,22 +1548,31 @@ void SAL_CALL SalGtkFilePicker::initiali
+ 			gtk_widget_show( m_pToggles[ nTVIndex ] );
+ 	}
+ 
++	for( int nTVIndex = 0; nTVIndex &lt; LIST_LAST; nTVIndex++ )
++	{
++		if( mbListVisibility[nTVIndex] )
++        {
++            gtk_widget_set_sensitive( m_pLists[ nTVIndex ], false );
++			gtk_widget_show( m_pLists[ nTVIndex ] );
++			gtk_widget_show( m_pListLabels[ nTVIndex ] );
++			gtk_widget_show( m_pHBoxs[ nTVIndex ] );
++        }
++	}
++
+ 	gtk_widget_show( m_pVBox );
+ 
+ 	// if Preview check is visible, connect the signal handler
+ 	if( mbToggleVisibility[PREVIEW] )
+ 		gtk_signal_connect( GTK_OBJECT( m_pToggles[PREVIEW] ), &quot;toggled&quot;,
+-			GTK_SIGNAL_FUNC( preview_toggled ), ( gpointer )this );
++			GTK_SIGNAL_FUNC( preview_toggled_cb ), ( gpointer )this );
+ 
+ 	//Be informed when a filter changes
+ 	g_signal_connect( GTK_OBJECT( m_pDialog ), &quot;notify::filter&quot;,
+ 			G_CALLBACK( filter_changed_cb ), this );
+ }
+ 
+-void SalGtkFilePicker::preview_toggled( GtkObject *cb, gpointer data )
++void SalGtkFilePicker::preview_toggled_cb( GtkObject *cb, SalGtkFilePicker* pobjFP )
+ {
+-	SalGtkFilePicker* pobjFP = ( SalGtkFilePicker *) data;
+-
+ 	pobjFP-&gt;setShowState( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( cb ) ) );
+ }
+ 
+@@ -1582,13 +1751,15 @@ SalGtkFilePicker::~SalGtkFilePicker()
+ 		gtk_widget_destroy( m_pButtons[i] );
+ 
+ 	for( i = 0; i &lt; LIST_LAST; i++ )
++    {
+ 		gtk_widget_destroy( m_pLists[i] );
+-
+-	for( i = 0; i &lt; LIST_LABEL_LAST; i++ )
+ 		gtk_widget_destroy( m_pListLabels[i] );
++		gtk_widget_destroy( m_pHBoxs[i] );
++    }
+ 
+-	if ( m_pFilterList )
+-		m_pFilterList-&gt;clear();
++	delete m_pFilterList;
+ 
+ 	gtk_widget_destroy( m_pVBox );
+ }
++
++/* vi:set tabstop=4 shiftwidth=4 expandtab: */
+Index: source/unx/gnome/SalGtkFilePicker.hxx
+===================================================================
+RCS file: /cvs/gsl/fpicker/source/unx/gnome/Attic/SalGtkFilePicker.hxx,v
+retrieving revision 1.1.2.3
+diff -u -p -r1.1.2.3 SalGtkFilePicker.hxx
+--- source/unx/gnome/SalGtkFilePicker.hxx	8 Sep 2004 09:42:07 -0000	1.1.2.3
++++ source/unx/gnome/SalGtkFilePicker.hxx	8 Sep 2004 15:01:23 -0000
+@@ -356,16 +356,10 @@ class SalGtkFilePicker : 
+ 			LIST_LAST
+ 		      };
+ 
+-		GtkWidget  *m_pLists[ LIST_LAST ];
+-
+-		enum { 
+-			VERSION_LABEL,
+-			TEMPLATE_LABEL,
+-			IMAGE_TEMPLATE_LABEL,
+-			LIST_LABEL_LAST
+-		      };
+-
+-		GtkWidget  *m_pListLabels[ LIST_LABEL_LAST ];
++		GtkWidget *m_pHBoxs[ LIST_LAST ];
++		GtkWidget *m_pLists[ LIST_LAST ];
++		GtkWidget *m_pListLabels[ LIST_LAST ];
++		bool mbListVisibility[ LIST_LAST ];
+ 
+ 		::rtl::OUString	m_aCurrentFilter;
+ 
+@@ -380,13 +374,17 @@ class SalGtkFilePicker : 
+ 
+ 		sal_Bool mbPreviewState;
+ 		gulong mHID_Preview;
++		gulong mHID_FolderChange;
++		gulong mHID_SelectionChange;
+ 		GtkWidget* m_pPreview;
+ 		sal_Int32 m_PreviewImageWidth;
+ 		sal_Int32 m_PreviewImageHeight;
+ 
+-		static void preview_toggled (GtkObject *cb, gpointer data);
++		static void preview_toggled_cb (GtkObject *cb, SalGtkFilePicker *pobjFP);
+ 		static void filter_changed_cb (GtkFileChooser *file_chooser, GParamSpec *pspec, SalGtkFilePicker *pobjFP);
+-		static void update_preview_cb (GtkFileChooser *file_chooser, gpointer data);
++		static void folder_changed_cb (GtkFileChooser *file_chooser, SalGtkFilePicker *pobjFP);
++		static void selection_changed_cb (GtkFileChooser *file_chooser, SalGtkFilePicker *pobjFP);
++		static void update_preview_cb (GtkFileChooser *file_chooser, SalGtkFilePicker *pobjFP);
+ 
+ 	public: 
+ 		 virtual ~SalGtkFilePicker();
+
+--=-Xfwf6XgiyG3yRwB16dzE
+Content-Disposition: attachment; filename=versionexample.sxw
+Content-Type: application/vnd.sun.xml.writer; name=versionexample.sxw
+Content-Transfer-Encoding: base64
+
+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
+Ri04Ij8+CjxvZmZpY2U6ZG9jdW1lbnQtbWV0YSB4bWxuczpvZmZpY2U9InVybjpvYXNpczpuYW1l
+czp0YzpvcGVub2ZmaWNlOnhtbG5zOm9mZmljZToxLjAiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3
+LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRz
+LzEuMS8iIHhtbG5zOm1ldGE9InVybjpvYXNpczpuYW1lczp0YzpvcGVub2ZmaWNlOnhtbG5zOm1l
+dGE6MS4wIiB4bWxuczpvb289Imh0dHA6Ly9vcGVub2ZmaWNlLm9yZy8yMDA0L29mZmljZSIgb2Zm
+aWNlOnZlcnNpb249IjEuMCI+PG9mZmljZTptZXRhPjxtZXRhOmdlbmVyYXRvcj5PcGVuT2ZmaWNl
+Lm9yZy8xLjkkTGludXggT3Blbk9mZmljZS5vcmdfcHJvamVjdC82ODAkQnVpbGQtODc5ODwvbWV0
+YTpnZW5lcmF0b3I+PG1ldGE6Y3JlYXRpb24tZGF0ZT4yMDA0LTA5LTA3VDEyOjMzOjA4PC9tZXRh
+OmNyZWF0aW9uLWRhdGU+PGRjOmRhdGU+MjAwNC0wOS0wOFQxNTo1NDozMjwvZGM6ZGF0ZT48ZGM6
+bGFuZ3VhZ2U+ZW4tVVM8L2RjOmxhbmd1YWdlPjxtZXRhOmVkaXRpbmctY3ljbGVzPjY8L21ldGE6
+ZWRpdGluZy1jeWNsZXM+PG1ldGE6ZWRpdGluZy1kdXJhdGlvbj5QVDFNMzBTPC9tZXRhOmVkaXRp
+bmctZHVyYXRpb24+PG1ldGE6dXNlci1kZWZpbmVkIG1ldGE6bmFtZT0iSW5mbyAxIi8+PG1ldGE6
+dXNlci1kZWZpbmVkIG1ldGE6bmFtZT0iSW5mbyAyIi8+PG1ldGE6dXNlci1kZWZpbmVkIG1ldGE6
+bmFtZT0iSW5mbyAzIi8+PG1ldGE6dXNlci1kZWZpbmVkIG1ldGE6bmFtZT0iSW5mbyA0Ii8+PG1l
+dGE6ZG9jdW1lbnQtc3RhdGlzdGljIG1ldGE6dGFibGUtY291bnQ9IjAiIG1ldGE6aW1hZ2UtY291
+bnQ9IjAiIG1ldGE6b2JqZWN0LWNvdW50PSIwIiBtZXRhOnBhZ2UtY291bnQ9IjEiIG1ldGE6cGFy
+YWdyYXBoLWNvdW50PSI0IiBtZXRhOndvcmQtY291bnQ9IjEwIiBtZXRhOmNoYXJhY3Rlci1jb3Vu
+dD0iNTAiLz48L29mZmljZTptZXRhPjwvb2ZmaWNlOmRvY3VtZW50LW1ldGE+UEsDBBQACAAIANB+
+KDEAAAAAAAAAAAAAAAARAAAAVmVyc2lvbnMvVmVyc2lvbjGNWAk4lG0Xlj3KHpE0dsnM2NeZsS8l
+S/ZdY2YwjBnMWJO1FMqWfRlLMsguW0JSlojK1iBKm+xbJP760acvXf/3X9/zXs9c855z3+c5c97z
+Xs89j7E+FTUHxe5QQIpKrbP7SIjufN+d9DvTA+2BIgR4ouCenhg0Ak5A47Bgf6AvFgnCwfFoPAjn
+icLinJ3RCBSIgPInGO8Fo9+5doNR/DYYdyYChyWgsASQvwfmTkpP7KgkR+TGZYaemIXws5+d9Phv
+WwzpJaeBGEx93HnpSr8ljjKF1VfMx8dzaAjy8z+ETYbM4d9eebJ6wdMzd1RSOFWSeJ4/N7HoRvdr
+thYPh3zRr1kttkUQlysi6QJ3cl/qaJ2dhYWZ6t8aHBaWqD3PId8rxMboxqbPZm4cwOlHFsoyWzx+
+aUrwyaF5NyB01MvEaD3JX2V9MNS3Nr1jSLFY1F68acoO+HZiVEC9qKTkrFymWLPmchBMt3X4zFr+
+vYd1YXFZ3ZMRQZV1qQJAy6QMOnHB694zZ5yNIVEX2hnclhsoIOTmZoknKTMJbYiYCnFnpibb5aA0
+Q1IXmefGXBWfNTl0vUempyPFJcUnGbS6FYZRzbN0OYKruKsPrD3ulyh6CQ3IOCZIVUoutynWZ7df
+Ekk4daF54fmQ/YOXvSav27rtsy4ajtqdkTLuO64kkE83GcSSRTVjkHGP+0xjpsiF2MM3pc81nOXy
+Gbk3luuwdQT4tkRIop1Wn13zjXJhG/U7Uvmx/K3gFkn30kKr0BwzROV6onvIoldeL+kExiM0F6/V
+JuE1j3+YsRm13MpIKA9UiKWLfSU5YvpGpewhs3Al743FUws6GLlT80UFGY3rz11C/CoiI2cuTXTe
+8cFKCF5YQhi7k0vmBkHb04Zc8NAT30iEftLwiy8i9LbcMjSdJL3k4Wd6PF4j14IOv2YWS5udC3r3
+gIDy4TJ+6bjB75IpMt35oKGCWWXTRpWgQRNZYzGYGL9ZxFkOTOEe5j6vemIk6LvPuvENljyp2Jts
+HHojrh0pAcHLsYG1Os3yalQ/YC9bjfXp6Idve9k4UlJQtOz08T/3JcPOxBMCMCj8blvOW9vixuQ5
+gicrWGQxuHtCoh6ICsOwo2KSgNftiUyXzrhGVTecK1Az8XrpONmeqTWWeHvoMnclhJql32+By2F7
+/bWpqW6clt5TskgfJ5qXNWU1vPq1yPevS3yvHy9iQ/x7ehI/Iu2XHrjTm+qVfMrook9Lt7OdElmg
+tsVLFNvJjLM0Wmxm1F9RmmBpko+ei2aViyOraTpoEwchFjchbx6PNdoclX0PpJ7oRwzpXUd22a0Y
+2J0eKr+FbJ0Er1sygnzP1tmUJbYuLiZu2MlaBSyZGpA/nX2Qt67zAVo+r+VhrE2Mz5i+0i1ki4zq
+lNd6G8DkinSFzmYAWWWyOxlykOdhCx3b1oXoDIpn7SsMMenpcs/b1+yO4Qfw5leyWDbdBEYVuukA
+GSGnFiLtop2JIjch9JogV5UB9ZijjUqnol1Dt9QcRNdV1Bb7H22EiwtQ+gdzEt8pLyKeZUYRnA8D
+WAIGn3Dp9uVFqONnSee64flJiqJFgAAgbnK05HOq4FaZ4L2oxftZnFZOIjWK4dHLlZHD/fxyhn09
+m8nixdRtBmtcrIr3RyRIK8EdwNTWGxeB/LGUx4DmSkn9gpxmRjdSj9Cfh8520ojziQ2ardGRdUNW
+aGvO/oj1FGyxhoyy6lBfXWExnLAeSCzevu/TFOXPxWAyVe5rG5M61zt+eNxCNg46fPm2hVoYg3Zb
+INRNXaCXkhqRACBP8eqASxpyHR9S2OGmCAkoshxNO+l5nI0NLFy4NA24Qa0iMqRktQodNTXnb0pO
+bkhRt7GVqFyWWxtMlOV7a+hVRu1twPgIyDHicbWZEtHJ6cZVx1oEzzhj9MK+4qa7/6G5WjW3sU6u
+OkgXFe5O39S901C7MW8nuOjhhg6Gpedman3uTLbX2E4qFWVF2QAbhfW/0XSRq82dyzowI29PSrAy
+Pg3oTAoV2PQPEeBsc32CKSHTlQ6/rbK4FUM0/Yi+UTPhS/K7ITvdHzAw/B5dnXdzik+25D4p9rSq
+EBNZ2bVQ6eQwacMujnzreUpMOL2pgvGL+CGeejbxz1err5qZ93toH7d4zBXYQL9FyVbQlsTffEfw
+3ZSIAzF01NACrOZm58p+MtvLtTNyPS+brOzR6T1kHXYJ0K5Dp/QituWVbUuIsTq8S7JMyN6uIqUi
+sk8V08opPX865zA6YUolX3xqS3izdei7aRlnXdrRb9BB9TBtViN54ogl4jS/X/w0/zxphS/0Ozo9
+eHRlilyjUVsrF6xDJcDQfUscntc6mOeF17zr4LZKy+jKLgZ3TU8afenlblueBJMujFn7eM6vnaWT
+a8qPLnsNGHvjSbeSqXvCpxOzmADUatmPo/WBsUGd50MbKX80mX1Ny+nRRYKerme4MElV5wxFOjkT
+W2kKB/CfXQsKsAWv5C69I3n6hsu8fu+pd43p5CuIz5UAZQOXjocNicSFwd6+1cVSgNGkVM9gl0rm
+h8WkStxdv9vhfk/5/HSH3RoODS88hs+/YGTxXxRLizy3Ol0VVbttPd4T01ABmmppub41pD1eAZ4K
+xrNuPNMevxvTUEOIhqaXqnUcSzDuKC1oMkxD2A2yx89WJOLvtHY+dimPmJNbZh3JhnU0aveLsY4n
+F0vH8ayzcC29qhsgQYD9qsR1h/5qFtAtU9qXXlTN/icT2sKl5G5pUoGmE8Xw9vbNTExliLdeJpGS
+gwVmsTrWoN6t26DtN9oP9U7wUa5Z8yIfodrZtx9EaHLzugKa6UzrPKr9qfH3fhx/SuT8ZrDo/FYB
+VmPDev/uPWZyAc5Q+bEhf8NMBPMrVDrjq4Di6LiNEUyQO9Rm+MWLRcee29lWijGcA6nUl3QXRWuB
+aoNvSBOnLo/yEK/wqiUOx9S0hT6DXWb3XwCfdtUHUES2hZZbKAgC7MT1NsRouX4QTMhBY+KVs5QZ
+o58dWr6hFa0y9Z/GFW/GtJMiq5ICW8XDv7zuCxLKq2mbKs7NWzeMecbKI3GJu1m+vkg4G9p3TZ5Z
+mydpO2ENuc2VPFaxux0UMpa6jdBQUCRw728H+5pHfTZCUZCagmJ37mkeFAG+uxlAVHc+AL4ob/yO
+6oEKSIEkBQAoLAKHRGNdoALmZjpARQFVGAPkp/5RRuIQPh478ga4ywfsULF45Z8uqICPN1Z5TzAp
+Y+EeKLwyAaH8t3JS/h2rvLfMT4s/Bo11hwq4EgieymCwn58fyE8GhPN2AUspKSmB97z7UCTiF87T
+xxuzh0IiwCgMajclPFgKJAXex+7m9+9S2kX+nhAOh/u1zG/Kb3cxaUlJWfDPewHAX0EOlA62X6fd
+oDDIXmgXFBblDSfgvGFGO9GM/o4mBVISOo/G+vgDDjocPb1xbigEASyvKCmk4YPGIIGKCkqKQpqW
+pkAXgruzJxrhjvKWgoD/CP9zOYQ3ak/BApFwAgq2mzFQUgkoqWAmJa0sI6MsqfgX7yAOgkQo/2+C
+rAIEvO/cRWHgWBcfuAsKhsICzU33fL9MPzNAIdGEne4BIgIQO4oDJvfXgn+YD2KRPt572cCMzWSl
+TP9g/HL+5PjgUd5AJMoZjUUhAXuW3YcLFTiLdcYBpATA/wYm/e9gMv8OJvsL9uv9wBN2UsYT0Iif
+YALcCYMCInA+WAJUYKfV9oxoj52i/WnEOe0++z+tnr8hpX7ZvOEu3nBP132H9F8OP5w3ct8m+5cN
+4bqDRhB2fsQ+eO+3gQ/0K/h/veWwf9aVR3Z1JYqw+5D2lOUza1t8iR5L8KRjwpRPT+hH78FoosaR
+qMbj7+Q+elyxUOJ2Lkrnn978MpbrzC5Isksq+aLuCXJUgDpOLs18ekQSXQQUdFobnCHyjB6WvNbE
+lzl0T30SlFSb86W1/CthRsnYp5H920Mz9XCTBi3iG1+Ru3c/Z3AyWHzQCqx+ep25uiRLnDm0zC/E
+wdZAq0yHcxCBk/MoNzMe+iIWbXi7xhTkHFhlUjzdPedc3E4ezJwXda1drwH0bV5LC0kVzT8X6VVe
+Eewu6p4Gdi7GYSoD1r4N2TycMVni+FplbzjcXuUkd1TbYhJ6HSZROD+64dPPMpJJqZdDN+qsA6TK
+Wk57OdOR/P0kPGSQLq2E96Iu8e7HJk99F9WnH9orcW2Zz/zE7SUctxt6aScyV4sYQdWMpUpwmXhb
+SpEsU8D5u2dYNeS5gcMskMSlLns9zRw28Y1I8FchMf/eqzQNkx61mXbdfASbqvH+KaCfvnkxtbTl
+3U4ICKXaLTtl/72hy/+KlFv0raycVBl2m0B2Bl2/W9RfXoGyQ30HHgj6NvcWGuSesDu9QAqYCJCf
+s+z7D0zAYwDTp+1r+zhX3ouDqwkeo6PzJmXuEI1umDsjb9ebDhVa1S3k6NroMz/wQ0J1CKXN0Svh
+Yuddfgizp5eP8YevHTbJ42IRZaLqpEc43iFIPigCPf7MWYfol1o6VRl6nBp0oWlqKZKPnCuFpxc6
+SR+zFUbBPcKoS/J1yuEbJT46mVNQWEwlca86Fvgc3MYsNvHJp/ckW+h1mi9qV8eqlo6bxFdH5cAM
+SHprkBvJEN0sPmWh1Hy4fRKB2vK4b7zxRuV4ioaQHVEBovPYZGDDTGl5inft5mW19LypM5wnHdXy
+m59I2XhnRHw/DLmefWUb8ykwxHer3qE6sx1+e3F8goZ9+E5f7/ZkMDGm/VPb4kWiXT+PvvR9SQdH
+m6aU2POrLwpmT913qDPY8gmtx91yGZjbPFZxCXHiHbGx8hWdIQriykznq+IdxHNfof3OB0tP7PWN
+OnWd5EoZzAOV0ibeuCL45rzfp0iTT/Vhx+cd370I9/028uI2d9Fyz0nN3vplMTFlF/sv0V+zW06f
+KhMLdM3YeGeibdi3MOHgyEOL5ump49YyRKvbh4h5vSZtjly04zFjWQ3wfO1heK6KuDq7rO+HfeZW
+SzUNl+4wT4QNmOp1TLf0Vc2ujX6KyrRRGygOtiI8cACQufOY1cZV36/OfUfSHrJnEroucuH916U6
+usFnMuNrXSpHLMt+sNeIpQYItVt1Hf3ArpE56yfulZzYmVD/HkqsPw19pMyPN0t7rsiMvYDriG+G
+PolgSp3Iecwb76HB/9xGqn5qmtfxEoSjT4FkJ1e2JaLLMr/45D+Fy8LDuQOMFj1M9ALy1gWMZMsX
+BeSe4hXXbjrpMGadjxdcz1U2LqkDxvBzYr5rwMKZ06WmK0GFMIlBvXhAV5XBoxJjWivOj1dDIr71
+Q0XpvNOTVsQSwgxuaKdRyW5Mh9qnG6U13RZUeV/b0xmmahD89gLGyT6WxJT/xI6eolXyQrwwc/3h
+ysPm+CPMNBgtpaOIbGnVN+w+Y3mqhxJEU6Wi5a6vyrNDkMU3f1R1e1p99WBgEwYbraA1eTjm4Yi7
+t+6w6V02KgjZmtUw2tIkfWfeFVP3MF5WT3fkEhvP//tvfWxnGmibqQPPGuqAPeBYtDMKv3f6U/ay
+yq1dkoX2TbNR3gQoZ6CYWiWs4zTH6GiEDIFjXYn1VWIlqC14SzzinVo1dfXZqYUmR43uwGkbr/wJ
+d3cTKy0peunksloyqfKM6geVUktwt3sK7mmr0xllFEGTmDqgwdEUt1hxkyIqTUU6YGA6WmBskbVG
+ml3V1L6Stb4VcFE52q2c/029Mz1qG5X5KIwMZPVYmp9rfbJMScqniLJ2I+gnHtl4Z+5UUpsIUT6n
+rjQyc86rQY5pBTnTJV5xmSAXhr6Y1pSJGDtH+hpPSQmTnWsxmY6Og27q1uJBR5gJjmWlb5/zZjMS
+Pwfy2a4Yuag4fdkufcz7fVHYI1xBFfNlr4JKWSmcP3bqs0m5W8FDlBwU/3wId3DsH8nts/Yr//t5
+B+MBhsHBs7c/ib8rY4YDxA+Uvx+O/Jnmn7r577FG/7eK/nO131vnyAEW9OjBLfNP5u8lO3aAqc72
+D41mrE9Duwug3blsDlFQRLDv3v0XUEsHCMEte5CJEQAA8xQAAFBLAwQUAAgACADQfigxAAAAAAAA
+AAAAAAAAEQAAAFZlcnNpb25zL1ZlcnNpb24yjVgJOJTt9xbKlmUQLZItITNj7MaMNXuWbFmmZZoZ
+zVhmMGMNIbvssi+JiOwisiUyKFt24rOkSCVLZKl+Rp++dP2///U97/XMNe85932eM+c97/Xc8xjp
+0dByUlHGfWcRyBqHi/iZne+USb8zHXAOGJKHIwbp6GiPQyFJOAIe7A50xaNBBCQRRwQRHDF4go0N
+DoUBkTDuJKPdYPQ7FyUY1W+DaWeiCHgSBk8CuTvYF5m/iByV4BxfPysOfsIkfD+c//SxygLNghbS
+BexAkRNP6XstW0Xa7w2R+moiAZr32AVa1tOImTXIJS82ng/5sufbOVvjRGlN2e9I1ehPrX/RW6XN
+rJBjMuO83SN0MYfddDREBDd+RL5KWqc0t/SV5IVhiTht8Qc64jqmOrOhr8nCEybykLU2rVj4o+7K
+1avkCyfeHOQgtHp+6VGSG6rm1XKILo73ds4yrq6oOs9WsOBp3C2sS7gAy+zu7R5grxcBljo00XW9
+KVGte+yqGsNy0TzlhqkB2+yj+STVJSFNoLlROPl0D99W7wtd+we8ybCqrwUom8b6O92186SwtKLA
+mJODgooLWYkfk2dRY1Ivts5f3BhXqczseSi1WTI0W5NodXulnw/coSJ9Vkv4aKl3lfE7fmjzmFqD
+1lRDcPHiM7tO8QG4fA3TmaS44kHdw4+kNFkAvd5SXmxp7E+GpS1rzRkf69+j5jg+G+8YB3zWTyLz
+vZY7ojtVLiBOPqTHoT4pnBvI0BrlffbcuosSxK4w18L3lCmq1FZkyJPglP8y+MTwVd+77+6hE6qX
+RlCdKRFLJVSeWROdMwe47d7aMHrdl/maS5twa+NbYG2M9VMta7F8GzxsVWcRj8U+aMwjIizPoI6F
+1kWqpmOyl1FufYWf7Ke4q7Maz677vA8oZvVT7kgWVVDSLCjHa70KqVV4I0pijZYLfu81Vefs4HJA
+ZCRgK3r4if4m5Mj6CjKme+r+jKIEolLSyGs2WwVhKU4sJCZ5S+O/pnTrZPGoqqECItg5teWwreYa
+S40D40fcWdVwnlxa3LcCQDaHmbcr279TGenR0S+M6zhiqamoTjBQUf17gzLuTCLJwx5DpPTnR0tr
+wpgsp89fJWzS9oRHQmccUCUGfswiEnzjzbEsN85iQ8urdXNUjJ1eXfmrOfXcWGz2gPexUhgtW7fb
+J+7L22vjJiZaUee0O0aEu7hwPICEFf/yceHvXz/zjrcs4m+6v3gR+xZ96XOdHb2JdsG7lDb6pGSE
+9bTwJ1prong+Quo1W435RsrjAIUJtlrZsA9hAJmoERX1yxoZ/TDzCNhky1iNFbP0GyDtRDdqQDsE
+3YZY1keIDhTHoRv/Aq9dZAK56lRZFcU2Li7GriOkLTw+m+iPvNOpy1rTnIUXfzznYKSREZ0yF9Au
+ZI0OJcuem/JgwaKx8IUUIEAqncyYiT6v9Kl12zIXl0LV2bzMGJ6cLNPTvIo4QuwjmgWksW3YCozK
+tdPxpdw89SkIEWaTIRwBo1cHYRX7VMOZaxROhWF9t1Qun1lTVFnsfrbuLyZA7e7DlTEDXUR1poaS
+bBj42Dz6n3NrdWXdUiUu5Om2I+/Fy595wOcBJPw1WjCfKLhVJPgodPFJGpfFNeEKef+wpdKgwW5+
+GYOuFxt3xPJpm/RXuQHyT4bE85Z9WoGJjbevAvkjqY8AzRTiuwW5TA1vJx6mPw9fIB8U4xXpN12l
+G9G6uXyoQudHpKNggyVsFKBJG7jMZjBh2Rebv/3EpTbUnZvReLrY1To88cPL1wyvzaWj4IPe2eYq
+fowaTZ5wW1WBl9S0qBi+kWkeTXBB9d0rT6kQhGlSDGZE5mBzXk+UlZWS/+nCJOA6raLwgILFCnzU
+xIy/9s6d6gRVK2vx0iWZ1f5Yad4pA6ciWmd9pmdAziGHwHpqFJnLlrsK8ACZctaw91JJhJ37gQ+V
+KrZjZO4qWBsN4X7X9CNROGLM+RryDEN1K+PnHlOVLjsW62D2kwoP0kKtgDWn9TYPto2Um9kUtdoP
+TZ0UBzB1eJDjfQU23G8KcDVhn9sXjNAVDk6VmceFZ5i8xd2umHDNc7stPdft0Tf4BleeFTHNK13w
+JC9SVFmIZQSKzVU4OZi3jogaietJCPenN5Ez6o0eOP6YXWw+sDzQ1KzbQeOoeQu3ZzX9FjV7TlM8
+f/19wZlp4csZvqMG5mAVWwSW42S6E5YctJaVPgJ1IDsPWPrd4GvWpFPojWwYtm64aaSKbJMoErqE
+KEkoCepStm/kkvwomsmAi5lWvCc2vXV6o3Hgu0kRV1US8ya8X9VPA2AomzF0ESXK7xY9x/8xb5nX
+9zsu2Wd0eXqkQq2yUsZHk0aAsT1ODJnV2J/lRFR/eNl25RATlkMEiU2OH33lZGddHK8kmRu++lbX
+rZmNzD3tRpe+Coy8/bxdwcQu5t2JBXsPzErRD+bHnpFe5PO+NdQ/ak2/JmW+0EKDOtZSrrNAyjMH
+gq7ZZDQezO0jzmNzcvA5wzI3ZvIcXf2lxt84ageznByGuQR4QPWvtz6tjs341P+ya2WxkM/wL8iL
+/jbF1NnF+FLCQ7dsf7cOXjetQdvqA4OfWpAfe5nY3BdFkoJ0V+bKQiu3LV+/CK8uAU03NIRsDWi8
+LgFP+xAB650arx+GV1eQwuDJhSqtR2KMWgtzag2SUIh+juiFklji/UZyy/XiWx9klgBD6UqtNRrd
+IoDXd/Ilo46vsXF/Hq7qy4MBu5Uz1i53l7OB4kwOvXKiqXc/GdPkD5GJU6cBzcWKEC9dqmdhKUJN
+ORkHSfTnmEZqWoJebmWDtic1nmqf4KVeteRBP8M0c2zX3VI/xoPlq6czqXIod6clPvpxtCODa1N/
+0WZKTqnCCvDk4SPWkRyCAbTFgL/6/S3WYUwy07BHfljU+pC9lx3carC3d/HKi+x0C/lwrr5E2hta
+i2cqgSr9k3kTp7xHj2cE8KjEDoZXNPl2KnlzuH8Ci2L1+KiCmnyLzeUE+RBi2usih7h/kIxHvMbE
+SheoU0bnLzds4uQtUvU6ovI3wpvzgsriPRvF/L+Md3kJZVU0TeffzVozCO8EHBe/caxe9vGD0+nw
+rmBZVo3j8dsxq+ht7jtjJZTtIJep0HboIBVVzLG97WBP/LhcCcvioKWiosxd8YMhISmbAUx554PP
+FeNM3JE/cAEISEKAD4NHEdA4/HW4gJmpJlBeQFmJEfZTCEHRBJSLw47OAVL4fDtUPBH60wUXcHHG
+Q3eVExSPdMAQoSQU9B8JBf0dC91d5qfF3R6Ht4MLYEkkRygY7ObmBnKTAhGcr4MhCgoK4F3vHhSN
++oVzdHG230WhUWCMPYaSEhEMAUHAe1hKfv8tJQry94QIBMKvZX6TgJTFJCUkpME/7wX4/g6yr3RK
+e3WiBFWC7Ya+jsFjnJEkgrOS4U40w3+iQUAKQudxeBd3vv2OK47OBFsMigSWlZcQUnPB2aOB8nIK
+8jDwH+F+hkc5Y3alKxCNJGGUKBkCJRSAEnKmEEmolBRUYo+3HwdDo6D7CfKmEGmoJAQKkYCB95wU
+lD0Sf90FeR2jhMEDzUx2fb9MPzPAoHGknW4BojxQOwpDSfbvBf8w78eiXZx3s1EyMpWRMfmD8cv5
+k+NCxDgD0RgbHB6D5tu1UB4mXEAHb0PggwiA/wtM8r/BpP4bTPoX7Nf7QCTtpEwk4VA/wSTkNXsM
+EEVwwZPgAjuttWvEOewU7U8j4RrlWf9pdfwNCfllc0Zed0Y6YvccUn873AjO6D2b3N82FHYHjSLt
+/Ig9sCwlafC+/gT/X2+10r/ryMMUHYkhUR7SrpLstBxznpZn8/6rRHvD5WxT9AtaMWSHSlo0Ez+C
+hvAM//SWeL7QsWavb1XMaA7/PItbDxPo7MXnSbUum8J4H5CXpyRdPqwLH7GdjEujIlYvlLUX9X4c
+zhtq7V6+IucFW+MRqXnN4HV109RvUF4jfdI5V/fhlLVgdGFL6LJpKOCUqY7iaZBv0cWbGdZhGkUZ
+4g/INo9bTe0udMw+k4AxdXdXp71Zfn4Nwh2Fz4WmRdS3+/ibE5WZptNuhmy4eYoXXE3hrhkgzKCZ
+V56Lz0Ywy5ZcbrBksrhkAGf2QSfGfZnRLrOm0Uh4yxtwikvKtWjrSW7wCpAhpzmw7Fivnp8gb5/m
+SF27t9bwqS/HWqE0ww3v3s+DXj/biFpYaC499TT1vJtYemPDttMdljr4LJIJgeY2zQvQV3FgOOpk
+4CeRXYihmkf3W2osGzUxufEzeJ9/MHrie/+Z6X4USPzpN/zD8TdhQ3f7OmZ9uEpqrQvEgDE1mgrT
+TvzfDIQBi+/JmA7gbSOOnZ8ncOU8U0EdIDC7Vue2p31ipKq1zgSg5rJtX2vPkWKZ9TjYosDJtWhi
+4y3tMelU5+QJLsADfZ7OWfxwXTJ7dfGoSlPv5Cj7qRzHmZOsylvoV59HO90Mn5LKb1JbwemFepO6
+vusJlyMe6wjNs+WoWbOdYaQh06Ou3JeG1M1xnZvnqkJ1Qz5nlvnOMSbOXXJyV48i9SQpCMWyoO9s
+qfmHvQ/MNlGsMjzhYDgVE8Xe13+Ay8qSnDCXOMkUtm7pQIyjj465Kzt3VZGLV53RWHatb2jpaGhG
+YNn0esgr9Ti0sXRheGzum+PNLOzvGRLGjEP8H4aHkUMQx2vgZpH18jTegqd6zO9uhGmQudnsrswe
+BSp0qvw4yvvGQM2niugh7fFV8WKpXf3l+zMwWBjA7sL1a98IyoSNCev1x0mtQysdsavgzqkb3kP9
+DZh6C89vgom1VcAbw8/HRuY6y0d9eu3Gx97edQAWfKDJk5+T9bxUC4AqMb/emih/z+1UGLxepbP5
+/O7Iw5cnB61YNvsLNyNqiIb5K2PnbreWqN5UTU2v/fyc3fPz9zY2ouxceB1x4pV6C8FV/Isxc/O7
+lC/SIpwDc9tOsl4lSTk2oBMJ9OnP/J/4GE7VGc6oQ0RI4SEbg/V2A5qB2t3z45P1MkVd2EnY6ks8
+EuJmd2/h69p9zMXcZrUS9YmD3un8E822yqx3Y54fHXJK0TeQEa14CuUu6XMMJn9CHEz5wB6s0Vt7
+EHpQcPVYyFZwXebEojj/XPlDlcEQYXLwY/hdfAIyX/9tj/VJQF252KxYeM4xhpo8r3NYB+81djMp
+S3uPS/ApH+sOwcJjElp0kIiKSa4vwodHxgYR0jXL34Xe+hZyaocOhlUf0ViaG33rR2pQmC2oGZcL
+9bf3IlDLMkvmu6Y6lKW4qrCVtQtYtjWEteojNY/oXoLHAbwkJMP9Tf0677Oyj2Qg35VlN5aRrFHw
+uFlFl6tZW7H0MUjFwIFsdgslm8CbUZuG8DM0zpbxyxIJfp0GdyTosG97D9TKZUq4ab1zbVt6SQ5q
+jPSZMre/dimolqW8C8HmeyVJpC2Wbox2OKBANCjYxN5CgVkg3bhx8qzLCT9l6uTTiZAwsxCpVG3e
+0hYaf1TcVOln6zih26yW5biLYpwfkSi9+Fx2bZhhh/dWuGDiKtlw4xRFWyFms6Xnd9QT9Pj/91f7
+yM7U1zBVBeoYaIIdkHicDYb481ToVZltswTbocl6w6wJUGZfPq2iX6so5+joLSkS55oCYDi2FNTk
+syV2a0alnLZcZ/pT7RW1ds85K6d7E3Z2xhbnIPSSd4oqR/JKzyrPKhZeBLfbJRA6Gq+dhWJI6hmJ
+fWqctVGLJRFUoUmKkh59c2ECY4uACkkOZZNLpYDHjXxXoWG2xfyTj23oMduY1Gd+I0CAw+ePHxqf
+L1Hn3aMKtbQl6cUeXp8xu1ZQGQuD6qoqDL3XdaqWYVlGv28TK/EmyfjhribVpqLGdPO+RlNTK0l/
+aDCeC4uCb2hVEkGHWUlXigqnenjSmTLmPXmtlw2vK177sl3YwvN98bSDv5yy/RdWSgUV0hK4fuzU
+Z4OaUsED1JxU/344t3/sHdXtsfYq//vxB9M+hv7+M7k/ib8LZcZ9xE/Uv5+V/JnmnzL6n/GN/h9R
+/edqv7fO4X0sWeb9O+qfzN9LdmQf05L9XxrNSO/gIQrg0M5ldYCKKpWDcvc/UEsHCCJZhk2pEQAA
+CxUAAFBLAwQUAAgACADQfigxAAAAAAAAAAAAAAAAEQAAAFZlcnNpb25zL1ZlcnNpb24zjVgJOJTt
+90ayKyKVSgjZZsbYZxhL2feyZNeYGWYYM8yMvYSk7Nmy81lKZIvs2UWSJfsuKmTfIlL90KcvXf/v
+f33Pez1zzXvOfZ/nzHnPez33PHqaRyhZyfZGpxc/eIPFWfjS7ve9SbM7HTAOKJK7Iwru6IjFIOAk
+DB4HcgO44JBAPJyIIQLxjigc3sYGg0ABSSg3kt5+MJrday8Y2W+Dfnci8DgSCkcCujlgi41aQ4dE
+WEc3hYRBFfR8j4K4eINNDS8aWlfwixmWNjnVZl/IWmD68nXoGK06l/iJXD+aFdj0iC3OWJaDktoz
+m1Ff9O4Kko48WgmlhdP/sr3KCqtt/phw9zVRBR0hcI1O0EEp6vki3Tmz+IySxwU9olcHRCLVhJ+o
+C6sbKH4MGHnJV6d/y3o+PIyHGh1j/6kuNN0DGRYghaiiQsckYMxD0j0yhFAxiU9ZF3MAJ/yys+MN
+igK6zFg7ponriKrLuhr02LPLPmJbRKYLOQ56GS9PPpoij2ZWgnw+L8af3Pikjs5upYxStvBslfBL
+/9nwFkQQCGqzMWy/9SJBJ/PVIPvpQTissIh8CN8hfHY42aQPVfF6iSr7m3dyEvgmLL+9qsc68VLY
+fLQP2ihYq6DJZVAj6d4MA55ui6N38zzJmcUSY5O1WNuiLV2X+LzYyPqvJDDh/v3Fb8uKjhpPSjEP
+20xbRiUDCFroqKv1bYSrutqeDLOeVqmseRr1otgCcTAlzpo99sbOQPFlktk0S1GTXeDRLzoSVPa6
+5T2eQfQoOfO6PioaKJDOJuBsCqzvDT645mgn7WcbDtcyNzjuce11Ux+8xg1I7PiFMqHy3i9oTd7e
+NyH35D6NMjAyft4khWrOIYUvXu0EPynGGrhg8TuzlsB6Cqn165/GdHM7P3LRqJ4RO9rcrBbdt6DG
+7iR1T/buIjndVAXUShpkYWZBprHtuHTCExNRrfvy2wuzD8RvXbTnT+eZXtW//DE9vqzE2MbY1nHr
+bdnEWkrkZbCvXxPNWV7+B7jOYMDajtXTSiEaDr+u9dv3PS28S2NbiqCzIQKz2iLsX94/32HU06Sm
+yWAwnnOiICNzpyUj+/dOpdudRJI7FkXca9QFEzP8sCSr13g+kzgW/5znkgMiX8eHkV+Ec7Qh4pin
+EDqgsEwjQ+GaU5fVeEOC0nBEeu+tMwWylEwdrounLHc2RvX1VcOU1F4P8rWzYc4xP1zzLRzl+/5l
+mWO0cQl32621NWIKabH8wp5GXy17Ov4VTWycudkk3yKlGVE4y1xshKncaCu+1A8yxlQpGTgfyCwR
+NqhwxVI5uUfWKET2XeNwuSmj+AcA5VgHolftPvKV+aq2uUBvXiSyZhy0cZ0e6KJeYpobUbO0FLFp
+Lm7svqyvPTit/iJ1Q+UjLG9ByUFPOflB/IxfC48ZMqBZUmnC/RgaiYbNxQOYxZKa6VKQWnKLTTsm
+jzHxZG0Nq3RBcXESnQ3r5ieJ3URDv0SmLTvuIakWas742xcW/c0DbZL5QmRprgDRMt2KQYzlkAuB
+aO+vCpaXNmQUljrqN30FuSncvNiS30OXEG0JASQbWk4m956Xp1TbU+8oEucyNVrgaVHSl55wugPw
+40PZn2Iufs29+DxgqSKRzdiar0jaN3ClwL+vg0tCp711K1owi7JOe/0Us3RFv3DmqlcTIKYm+AaA
+K5TiJMAQEtVxkc1ANziGgUYLNtd8VJCDv8dgnXpQ9fYqVZH6j1DHi9UmskPMKpR3V5l0xky6I7J2
+KpwrA9xO0V2bzHMxC4qZfzNCO2IkHgbru5VupOBDp1znAbNT5H5DQYkI5xycPKcCyi77y6qWzBw/
+SQpHDUocbcjsDDM1lfPlzYkFbFLK8PVCjNdgQ/qGXJXR0WUPFU3NhAtWJNZ7IsQ5JnSccikJ2vT1
+ANZ+h7tVFIhmNrtTJcxP4PFCum8t8kPs3cjnixXshptPlci+OoJ/1D75XABmPkywhl+iLWuiW+40
+UGi3P2Z278R5yJPEAFNAOa/m9tFXg4WGNrlN2P6J88LM9K/dm6O8ubfcbnOz1aFfYrMHqXP6Jp4Z
+RQYl609hgovGXDJdg8VnOty7+z5gClNDJjnEsysyQwXkeY4NQtGPIef7MjfNwwYjOx8G+dLoS+m9
+fdDLXnpC8NPdwrsGhh0OyqeNGk95lNF8pTiRURfFVfXo4vtJPstk7yEdI5CCnTma5XySE7rZfyM1
+aRDq0EzoNfHx5GxQoYa8Da0eMKu+racIfyWSy2Nhnv8w379dHlvDJrogkEKLCZ+USROc/Mq7VdP7
+XT+XrSSWcRvWo+ijzKwrmdx/HSHA5fpghmshc5XD+zsmzmtodXKw6HJxsYSXyhFuupZIQXhqTU+q
+E/HKU0u7NSp6NAs/HB0XNdTlZG+WFyUn+jhofUrDtYGp+dSkK3XSOiA0+GULRN8+fPrsHNYdtZb7
+g7HUI/Rms5Z3OcWPSoMvsSmtqkjg641422PgwpRef2ub5Jqjj7uJn9AZGbiMAQnP95mOLr5iox8c
+1e4dOz8g6+znDtW2baoti0he7HnTvraUw6k7Dm7teSWT8HEpqgD/1DXd1/U1h6tqn10Zed9iI3zh
+LT2T2xJ/rL/G2syzgOIdk5HWoLJ84GR19f2vvcoj+aBJLyLzZpvyyNOgsiJSICwuR6HpZLheU05G
+pU4swryH5cFcfgTxUU1zo23enXmJFeb+JLmmcuUOfuaR6CzRMPYNplPLAyXdmbKADvnkDcuOQiZg
+pD5Vl9ORKrfz4XW+YInIK0eAMxH8RAuLqmPHchETTtf8RXoyDEJVTIBvvqYDd94p16qd5aBYNzmH
+rEc1sOy8uHPlzDk0ZxW1folDoRsl8fmP06+T2ba1l2wmpOSKTJkrnj4/PpiB14E26nCVzd45PoCK
+ox9wzwoM2+zH3rSHmfa9fbtk1ZqeZCwdxNYdQ+mpunSpGKDQ8y5z7MKtIfZkv3MKEX1BRXXebXK3
+WNwWQQJoTU4y/zrvPCOpi5zmgmqb/FSnfpCuDd4cFiyYo4gf+mRZvY2RNk7QfB2WtRXUkOn/LMqj
+RtD382j7TZ7UorrJrL9SN3SC2pjZhT3PVEmWPuFNgrXfkzyuzB61E76O3DkVPZy/tx08ps+x6z9K
+RhZ+5mA7OFBBMOwZLjZKMrK9ua+CUCT43mYgK7/7wemCIhB3dRCMGwwU4eZE4RB4JAZnC+M2NFAB
+SHPLy9HJ/lREUCQe4eywK3gAe3zOXSqOCP3pgnE7E3DQfQkFxcEdUEQoCQH9R0tBf8dC95f5aXHD
+YnD2MG40ieQIBYFcXV2BrmJAPMEWBIZAIKB97wEUifiFc3QmYPdRSAQIhUXtpUQEgYFg0AF2L7//
+ltIe8veE8Hj8r2V+04J7i4mKiIiDft5zc/4d5FDp5A7qtBdUTnY/tC0KhyLASXiCnO5uNN1/ooGB
+EB4tDM7ZjfOww8qRgLdDIUggSWkRnsvOGCwSIC0FkZYF/RHuZ3gEAbWvYQFIOAklt5chQAQCEJEy
+AItCxcSgIge8wzhZJAJ6mCBtAJaASojvcmRBB849FBaOs3WG26LkUDiAof6+75fpZwYoJIa02y0A
+hDtiV2HISf294B/mw1ikM2E/Gzk9A7C2GFj/D84v90+WMxFFACBRNhgcCsm5b9l7nDBudZwNnhPM
+DfovMNH/BhP7bzDxX7BfbwSRtJsykYRB/AST4NZYFACBd8aRYNy7zbVvxDjslu1PI95672n/aXX8
+DQn+ZSPAbQlwR/SBQ/xvhyuegPwFPoiAQO/CEaTdX/G3R0JkL2vQoRYF/V8vtty/S0mGPSmJIu09
+pX0x2WYyTJiUZro1nq+25Sx05wpOgVfrzH0WApef/TvtAUa3B7zRPIjY/PESH+zlZVZ7x95V7xDe
+JFypznhjW8ddXd0pzujmwVynjQZxHW/IyOeBD30zLvPdvitFO/2MF8Jg1BpAV4oLsXKGf0noXL1U
+lpjVZfelj4ZHyClN1tC6kdqwSyeA/sZcb8r0Q+urTy/Rzz4bzAX3mkYRykUYbvtNy5clfmgPfGkN
+5BjVcpY+6xn5jTJ3youtEfKDaW1p3dhgTBxEeDre1MI+FWTy+uxZrGXVzSK2gopED/adV8BLc83h
+1qVUgcJtMBp5YZt5001n7ePTZifU7tEjxNJiKFRlH4cUukd+DS2QnxULdqYquNXR221RtrU2d3lC
+ZJ56ma87SSPlJDA/v8unNFMW6xM07zsbVUD7BEB+sV2AySaqmIEzKRj6VI1D0G0CyJMaRmvo2ZCy
+rZTo8ebu0bJxh+IE8xV2kmn5SMeks6um4SNe0X5+Vdn2zPEWnkkLi1PXcHC/+Hc816dj+jGK0VJp
+jiSpgKthC11gtFCLDHe/psPQ6Yr64imviGmLjAYOwqIrEybBRh/YPcxNURyQXj7C6GnzmDLvqaSe
+o3hZSSO1wIhbc0OHXJz4C5e1URaRpPkUb6PjFOrij4t+RAQI9zucUIdSZnWyNQbU14LrB64LaDOA
+Ko5erbi7MEBk2LEV5qyo5/W4fm6s8+J5cZtjARlHTD5WP/grzWNipid0oVtlWN/tQ3qjuLP3XaO+
+Z7zbvF98J28ZDY/wUCB5njBCB0LvNj/wjQr5tu4sq5JmC8/5Aktb7+SJY2WcS8sQKG8quOPn4fux
+hDXt3WzaJJg7RgWnG40AtSuMv6J+fhJdbf125Wjj0HWIiqaOWKe8P3V55IOUBXMObY7v7R8XTPOv
+f5I+HmbdaNoTZ/xjuGPYZCn3q5nW+zl3lPp2zNRyVbW93XihpXDV9/DWk9hWDpcVF0mPopwSq3XT
+zRII2ixI8GutwLGKEMt+nF+o7pHN6tKcbeVzcxNVDhFeYPSGIPFe8cM7chJPvRCLI/qzO5LM6Sv2
+nVadNtPAm8/8OF7IizYmMm5PvoHgP3FNSsk89MjynyC2ebB/CLIjfZc+W31d65pYDKOmn46XokVN
+puNY5krq6Q+Vyo0358aK7dJvZkyv45bH4o1sxR05PGykamIrJd463/zaVSjUDa/u51ryrW5nWoIX
+p1B3vrIOnpNu48uMjzK5kRTUjylrQLjmUWi7BDSkzYxSJPkybzM0frsyprvk+pCJNGjIaa8U+b5h
+mENPqrWgh484kxtKY2kSTYhW7gr2G9GX435eIucZkB0nXPIiL9mxBvCRuY8hNv1ObJOJY5AHi/+8
+gz0w3tz99gmighFdhpK98khgmhvJYU0BOp5I6B1ZTFBSlKyWIk+gijOobCsx1pbhvD+ADBdGWim/
+fyySTvcoL7mFRu50nLJidu1UF3UAtqNgbeDtuHFF7rPkltUkaEHnLXW/VwVJ9bNXaYUvFNXXqH7L
+TI4kLxfWcD/dWmuTqRF7RHxtxns0QTe2Mp0o88FtCtFgpVrjKCT5DNhgQW1iC6SpBWmxIlvuOFBg
+L/eyNjQISOYkUoXrZFktR1eE1F7weRPRevqlYGOcNs9x40nyumctjsZfctVPNN0THnwudDJwo+AZ
+r4Y+LU/ypY/V316Ga26/z9w5vievrE6XWHzaFVBQ9v/v3/bJ3amtbKAIUNdRATnAcRgbFHH/hCi3
+65ldgwgT1bsq3dQxYEp3FqWMT5MA69DQHTES6waEeSCiAFjn9VXwznuFQspC9cnFSqvLLR4zpk5p
+Y/b214yVwDSi0bnFg5kFQvIfZXKug1rsH+Jf11gLQVGkK8kx3ZdZK8OW8kPIAmJlRN27ZwK5h5eY
+i0RZ5PUtCphLazhvQAPt8rjeldrQoHZQCfU+gwBmh+WF+ZqXKxSZaWQBJnYkzQiGzfeG1tnFEbJQ
+DUVI/6yGU5nEsVXk7CvB/FskCR/MjdjKBMSwRuaXBxQUcuLz1ddmAsNgW6rFRCDDcZJVbs5E57kk
++uRPHhxmq7q2Mtafd3Iaz31f4nXwlZLHft6vICTxIduP3fpsUexVkJyClezfD+oOj4NjuwPWQeV/
+PwGhP8TQPnw+9yfxd61Md4i4SfH7ccmfaf6ppP8ZVLT/6Oo/V/u9dRgOsS4zHt5R/2T+XrKTh5io
+E//SaHqaR6n2E9q9TMnJyDJZ9u7+B1BLBwiAnQqGsxEAABcVAABQSwMEFAAIAAgA0H4oMQAAAAAA
+AAAAAAAAABgAAABUaHVtYm5haWxzL3RodW1ibmFpbC5wbmfrDPBz5+WS4mJgYOD19HAJAtI1QLyA
+gw1InnvE8YqBgfGHp4tjSMWctzcOZjU7iDhc5Pr5P37b2yQHl9ZpgeLf5/TOatG4c6TyR+T1r919
+52+LH9jM0i9o4/ZB4mAydkZa1IfUyGvyp8t+//5VV3/t54/5mQfdz6y+8fi4wes5f+7qbv+Se2Vz
+7b1EXpDaVxfMvn1//bUuY/O0/em/LpSV1HyVO1/kDTZvxkv/W9uOJ9f/Z3mXYf3aaofZX3k7pnm8
+WenR8wpPL74aef9kzTWIpTtLvexnnzqevub7+d21XvZSz749rDz3OHhX5r/Ya7gdOrIZM/KfWK8L
+OCxr7Q1MCgyern4u65wSmgBQSwcIhQPKDwsBAAAxAgAAUEsDBBQACAAIANB+KDEAAAAAAAAAAAAA
+AAAMAAAAc2V0dGluZ3MueG1szVnbcuI4EH3fr0j5dSuDQ25AJUwZiBNyIYRr4E3YDXiQJZUkY5iv
+37aBbELwFGtw1fKAjSWdbrdO38TNz4VPT+YglcfZrXH2wzROgDnc9djk1uh27NOC8bP81w0fjz0H
+Si53Ah+YPlWgNU5RJ7icqdJq+NYIJCtxojxVYsQHVdJOiQtg69Wf55ZiUasnC+qx2a0x1VqUcrkw
+DH+E5z+4nOTOisViLh7dTHU4G3uT/QSt5n4WxDn/EPPv9FhU3jQvcqvfxska5otZyhsbbF69fLMW
+sLqcehr8yC4n68eRYrcGiizNPQg/LGbsWvd1TQ/nWxJIhwtjM6KXAkc8po2yeZP7jrA/6jOMdQaw
+fc/V0124+fPrQuEw7AfwJtOdSp8VLq+v0oG3pzxsgYvsguqUsAmoLQEjzikQZpS1DCCdjDqrSB4q
+eOEuJKGPCVV7w5/6RJx6zIUFuN9ttZtc8Rp0Wrncz+J1d0tVpSUy1yhHPM6n38kk4l1dF1JuYYSa
+4CRX55fXaUGVN6JwdDeJUY/t0jFoK8k7ItdLbdoYusK15n6S512kwx5y7ncQaZtmUy7T2yICtYmj
+udwNe2amBK6rNlBwNLi2xAcp3HjHw88+mTS8dvPdEzCd7J+AVg8CSTSms/+SiSzXbRJJOgSp0BbE
+icLAMcLYVylNDC+6BVG6he3Ycwz8ZywgusIlelcc3tAjHTRmDomkA1nlvpCgonrh6NSO7dNG21N4
+5KPENHWAhVbWsSX6JfiC4n1W29wkAmQkqA062I6Fx5CClI399HU8RqJnYaz4PaL00CSZFA3roqQp
+ucawg4R6guW2FKLg6qLiMSKXRm5PlWMvzkDfyAe0FWi+YtHxBcTaVzlGS04z0D+GB7mTkJ/tXB5N
+Hv7O5e1ar1fpOA+PYsRa1JlY/9vP21nvrftbTOPreWVJ+pfm8L2+a2rfsl4svf6RyxVsyx528XY2
+erOstl/0Wve2OWhbiyr7wCkOuo1e126Ejk8D9763rPpFHOvhvW2SfjFo9ipzh7WWgz41q35j7txT
+6vw2EaPxa9Bf0GbnLnyxhB68PzLEnA364sw5b+kh4jc7lnqphuFzzXoa5ItqdP44G75XTFIzlw1L
+hE5+QV2/p3Dep/GhGOS7RcR86961aqN8pOf0bvDemlZnNHAeemY3v5i7NdF1fPvSsivTYb7XIe+C
+vs4Q72G1nwfQyGKM6zjNJqealFlgnYvXabjDY3euAk12icOi6N0CnYIR+gzE/UPeT+93lhB02VUg
+a0ST48PbHlA3y7DUJnPorY4IXlmVcpVF0oyE3FM+IrS2PnuJqpkstryunnC/LeUR1gyYo4OYxllw
+i3oThuxtay6aXHl/EnNAVgqkRGtF3IqieHRt80A635xy1dzum0RBNr43AZsGmVS7zbZYTTsgiNhk
+kSxkX0XjpjCjCqWunskIPhiZRUGqwObSB4lsz7Dz2NHfWLqtsZ7J8p06sNB9SYTIsJ3C6lEJLB+z
+wr9H/aeekwG5LEp5GMvAZqdKmAM08+iA3ZtPmLujczvkeOZjw19Hv3ArNrEuw10HWWcuCMAvTBRk
+yYNtAmxC1RTDwyk2rJwGkU6pX/CVuo3AH4HMkssYxSrEmU0kD1jiAcGxyXBY+K1JEsaHLNm0KxWK
+9rCxJUpTCSSeJ+W+/cWRS/rjp/wPUEsHCF8Ytl3pBAAAOhoAAFBLAwQUAAgACADQfigxAAAAAAAA
+AAAAAAAAFQAAAE1FVEEtSU5GL21hbmlmZXN0LnhtbLXUUWvCMBAA4Pf9iizv7al7GWIVZh0M3PSh
+DnzM2qsNpEloTtF/v8isFSYDR3y7hNyXyyVkNNnXiu2wcdLohPfjHmeoc1NIvUn4KnuNnvlk/DB6
+TBfTbL2csVpoWaKjYRuw5epl/jZlPAJYWNSLspQ5xqbZAKRZyt7bdd4GmH1wxtupuKCCe/y36YvS
+7jxMeEVkhwDG+6bzB71eH9pFHmKdVEqFEWpqDhcVYyFFRAeLCRfWKpkL8qeGfbTTRWyEky6+2IFw
+T7zLLrdKRVZQlXDgcNNm15WlzGnboAujff5c4Vz6tvru3WgezwrHtKt2bjT55OCuo4NCF5ytkcQ/
+0D/76uAU9O+iDu6iPoVVg2hZta2/tJDKAbVhbPUmNB72oSKR/xDPT3UEHXIKxt9QSwcIOIqM2y0B
+AABKBQAAUEsBAhQAFAAAAAAA0H4oMfYTdSwnAAAAJwAAAAgAAAAAAAAAAAAAAAAAAAAAAG1pbWV0
+eXBlUEsBAhQAFAAIAAgA0H4oMYbIWPcnAQAA3AIAAA8AAAAAAAAAAAAAAAAATQAAAFZlcnNpb25M
+aXN0LnhtbFBLAQIUABQACAAIANB+KDGkDFjrcQIAAHkJAAALAAAAAAAAAAAAAAAAALEBAABjb250
+ZW50LnhtbFBLAQIUABQACAAIANB+KDGmC6xq1wUAAJEZAAAKAAAAAAAAAAAAAAAAAFsEAABzdHls
+ZXMueG1sUEsBAhQAFAAAAAAA0H4oMbyMal0WBAAAFgQAAAgAAAAAAAAAAAAAAAAAagoAAG1ldGEu
+eG1sUEsBAhQAFAAIAAgA0H4oMcEte5CJEQAA8xQAABEAAAAAAAAAAAAAAAAApg4AAFZlcnNpb25z
+L1ZlcnNpb24xUEsBAhQAFAAIAAgA0H4oMSJZhk2pEQAACxUAABEAAAAAAAAAAAAAAAAAbiAAAFZl
+cnNpb25zL1ZlcnNpb24yUEsBAhQAFAAIAAgA0H4oMYCdCoazEQAAFxUAABEAAAAAAAAAAAAAAAAA
+VjIAAFZlcnNpb25zL1ZlcnNpb24zUEsBAhQAFAAIAAgA0H4oMYUDyg8LAQAAMQIAABgAAAAAAAAA
+AAAAAAAASEQAAFRodW1ibmFpbHMvdGh1bWJuYWlsLnBuZ1BLAQIUABQACAAIANB+KDFfGLZd6QQA
+ADoaAAAMAAAAAAAAAAAAAAAAAJlFAABzZXR0aW5ncy54bWxQSwECFAAUAAgACADQfigxOIqM2y0B
+AABKBQAAFQAAAAAAAAAAAAAAAAC8SgAATUVUQS1JTkYvbWFuaWZlc3QueG1sUEsFBgAAAAALAAsA
+mgIAACxMAAAAAB==
+
+
+--=-Xfwf6XgiyG3yRwB16dzE--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000540.html">[Open Office] gtk folder picker
+</A></li>
+	<LI> Next message: <A HREF="000543.html">[Open Office] ooo-build and repeated OO build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#541">[ date ]</a>
+              <a href="thread.html#541">[ thread ]</a>
+              <a href="subject.html#541">[ subject ]</a>
+              <a href="author.html#541">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

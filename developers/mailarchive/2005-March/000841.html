@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Thu-Fri
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:rsiddhartha%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000840.html">
+   <LINK REL="Next"  HREF="000842.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Thu-Fri
+   </H1>
+    <B>Raul Siddhartha
+    </B> 
+    <A HREF="mailto:rsiddhartha%40novell.com"
+       TITLE="[Open Office] Status Thu-Fri">rsiddhartha@novell.com
+       </A><BR>
+    <I>Fri, 11 Mar 2005 16:44:36 +0530</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000840.html">[Open Office] Status Wednesday/Thursday
+</A></li>
+        <LI> Next message: <A HREF="000842.html">[Open Office] Status Thu-Fri
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#841">[ date ]</a>
+              <a href="thread.html#841">[ thread ]</a>
+              <a href="subject.html#841">[ subject ]</a>
+              <a href="author.html#841">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> - Was looking at the wizards crasher bug #10512/IZ#43665 chasing
+EventListeners all over.
+
+Had an invalid Window pointer to start with but no ISA function
+available, tried to add it in with a TYPEINFO() and brought everything
+crashing down. Shifted to plan B trying to print out the DECL_LINK to
+get to the names of the EventHandlers actually registered to the Window,
+but finally gave up after rebuilding every module that was dependent on
+the tools/inc/link.hxx. Added in fprintfs printing out the Window and
+EventHandler pointers and the number of EventHandlers, tracing out their
+start and end points and eventually realized matching them up that the
+EventHandler was called with a VCLEVENT_OBJECT_DYING, and was crashing
+when invoked with an event beyond that, which should not have been
+happening:
+
+--- toolkit/source/awt/vclxaccessiblecomponent.cxx     2004-10-22 17:06:04.000000000 +0530
++++ toolkit/source/awt/vclxaccessiblecomponent.cxx      2005-03-11 13:45:05.395403899 +0530
+@@ -202,7 +202,7 @@ IMPL_LINK( VCLXAccessibleComponent, Wind
+        DBG_CHKTHIS(VCLXAccessibleComponent,0);
+  
+        DBG_ASSERT( pEvent &amp;&amp; pEvent-&gt;ISA( VclWindowEvent ), &quot;Unknown WindowEvent!&quot; );
+-       if ( pEvent &amp;&amp; pEvent-&gt;ISA( VclWindowEvent ) )
++       if ( mxWindow.is() &amp;&amp; pEvent &amp;&amp; pEvent-&gt;ISA( VclWindowEvent ) )
+        {
+                DBG_ASSERT( ((VclWindowEvent*)pEvent)-&gt;GetWindow(), &quot;Window???&quot; );
+         if( !((VclWindowEvent*)pEvent)-&gt;GetWindow()-&gt;IsAccessibilityEventsSuppressed() || ( pEvent-&gt;GetId() == VCLEVENT_OBJECT_DYING ) )
+
+Doesnt crash anymore :-)
+
+The problem though, is that the pEvent was initialized/associated and
+holds a pointer (copy) to its native Window, which is what is returned
+by GetWindow() and by the time the EventListeners are called, the Window
+doesnt exist anymore. So a check for NULL passes clean through.
+
+Regards,
+Raul
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000840.html">[Open Office] Status Wednesday/Thursday
+</A></li>
+	<LI> Next message: <A HREF="000842.html">[Open Office] Status Thu-Fri
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#841">[ date ]</a>
+              <a href="thread.html#841">[ thread ]</a>
+              <a href="subject.html#841">[ subject ]</a>
+              <a href="author.html#841">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

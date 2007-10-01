@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Fonts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Fonts&In-Reply-To=4419704B.9040303%40Sun.COM">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001718.html">
+   <LINK REL="Next"  HREF="001720.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Fonts</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Fonts&In-Reply-To=4419704B.9040303%40Sun.COM"
+       TITLE="[Open Office] Fonts">ghibo at mandriva.com
+       </A><BR>
+    <I>Thu Mar 16 10:36:43 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001718.html">[Open Office] Fonts
+</A></li>
+        <LI>Next message: <A HREF="001720.html">[Open Office] gcc41 issue for SRC680_m160
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1719">[ date ]</a>
+              <a href="thread.html#1719">[ thread ]</a>
+              <a href="subject.html#1719">[ subject ]</a>
+              <a href="author.html#1719">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Philipp Lohmann - Sun Germany - ham02 - Hamburg wrote:
+
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> here a short overview over psprint's font discovery that i hope covers 
+</I>&gt;<i> the open questions. Please feel free to contact me if you want to know 
+</I>&gt;<i> more.
+</I>&gt;<i> 
+</I>&gt;<i> psprint discovers fonts in this order:
+</I>&gt;<i> - from fontconfig if available
+</I>&gt;<i> - from &lt;office&gt;/share/fonts/truetype,
+</I>&gt;<i>        &lt;office&gt;/share/fonts/type1,
+</I>&gt;<i>        &lt;userinst&gt;/user/fonts
+</I>&gt;<i>        the currently selected java runtime (jre)
+</I>&gt;<i> - from the environment variable SAL_PRIVATE_FONTPATH (usually empty)
+</I>&gt;<i> - from the X fontpath if fontconfig was NOT available (also on a remote 
+</I>&gt;<i> connection since these paths are often the same within a network)
+</I>&gt;<i> - from chkfontpath if the X font path is examined and server entries found
+</I>&gt;<i> - from some standard X font directories if the X font path is examined
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> in the directories collected the fonts.alias files are opened and 
+</I>&gt;<i> corresponding alias names are added to the discovered fonts.
+</I>&gt;<i> 
+</I>&gt;<i> The attributes of all discovered fonts are stored in pspfontcache as to 
+</I>&gt;<i> not access every font on startup; a group of font cache entries gets 
+</I>&gt;<i> invalidated if the modification time of the directory containing those 
+</I>&gt;<i> entries has changed.
+</I>
+This means that it's not possible to provide an hand-tuned system-wide 
+pspfontcache? As I've seen there it's possible to provide Type1 metric .afm
+files as standalone (i.e. without the corresponding .pfb file), or metric .afm 
+for different PFB/Type1 fonts.
+
+&gt;<i> 
+</I>&gt;<i> psprint's fontlist concerns only fonts for which we have access to the 
+</I>&gt;<i> font files (so we can download them to PostScript or PDF or render them 
+</I>&gt;<i> with freetype). In vcl the normal X fonts are added to this list, but of
+</I>&gt;<i> course X fonts can only be displayed on the display. If there are two 
+</I>&gt;<i> fonts with the same name and attributes, then the psprint font gets 
+</I>&gt;<i> chosen since X fonts tend to be low quality (no antialiasing, often only 
+</I>&gt;<i> certain sizes available).
+</I>
+In fact I think I build with a patch disabling thus bitmap/no AAsed fonts.
+
+&gt;<i> 
+</I>&gt;<i> As for the question of document creation on systems where you do not 
+</I>&gt;<i> have Helvetica: you can always create a document with Helvetica by 
+</I>&gt;<i> entering &quot;Helvetica&quot; into the font combobox. The font stored in the 
+</I>&gt;<i> document will be &quot;Helvetica&quot; then regardless what actually gets shown on 
+</I>&gt;<i> the screen. Of course it is always helpful to have either a Helvetica 
+</I>&gt;<i> font or a font aliased to Helvetica (either through fontconfig or 
+</I>&gt;<i> fonts.alias, if you don't have fontconfig).
+</I>&gt;<i> 
+</I>
+The problem is that in fontconfig (I've both fontconfig and xfs/chkfontpath)
+I've already entries/rules for getting Helvetica-&gt;Nimbus Sans L aliases
+(or the same for Times-Roman-&gt;Nimbus Roman No9 L), but they seems ignored
+by OOo2. What I wonder is also whether fonts.dir is now ignored?
+
+The second problem is that if in the font box I type Helvetica
+(or any other fontname, such as 'MyGenericFont'), as
+soon as I switch to the composition window, the current font automatically
+switches to the default font and not to Helvetica or what I've type in the
+fontbox.
+
+Furthermore if I provide the Helvetica in fonts.alias instead of fonts.dir
+I think that it will confuse the xfs font server, as Helvetica
+already exists in PCF/bitmap format.
+
+
+IMHO we can have this cases:
+
+- suppose I'm successfully in let OOo see the n019003l.pfb
+as &quot;Helvetica&quot; (the n019003l.pfb has fontname /NimbusSanL-Regu)
+but when printing there are two choice IMHO:
+
+1) since Helvetica is part of the AdobeStandard 35 fonts, as well
+as of the standard PDF 14 fonts, it's a &quot;resident&quot; font, so it
+could also not be included in either the PostScript or PDF output.
+Of course this won't apply if instead of Helvetica I've a
+font called &quot;MyGenericFont&quot; which is mapped to n019003l.pfb.
+
+2) since /Helvetica mapped to /NimbusSanL-Regu might
+become a de-facto like any other OOo fonts, probably the
+PS/PDF output might contain the NimbusSanL-Regu font (or
+a subset of it).
+
+Thanks.
+Bye
+Giuseppe.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001718.html">[Open Office] Fonts
+</A></li>
+	<LI>Next message: <A HREF="001720.html">[Open Office] gcc41 issue for SRC680_m160
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1719">[ date ]</a>
+              <a href="thread.html#1719">[ thread ]</a>
+              <a href="subject.html#1719">[ subject ]</a>
+              <a href="author.html#1719">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

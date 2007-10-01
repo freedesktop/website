@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Building without translations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000643.html">
+   <LINK REL="Next"  HREF="000646.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Building without translations
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Building without translations">michael@ximian.com
+       </A><BR>
+    <I>Mon, 20 Dec 2004 11:38:21 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000643.html">[Open Office] Building without translations
+</A></li>
+        <LI> Next message: <A HREF="000646.html">[Open Office] ooo 1.1.3 crashs with gtk+-2.6.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#649">[ date ]</a>
+              <a href="thread.html#649">[ thread ]</a>
+              <a href="subject.html#649">[ subject ]</a>
+              <a href="author.html#649">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Michael / Kartik,
+
+On Sat, 2004-12-18 at 14:55 +0100, Michael Monreal wrote:
+&gt;<i> Hi, seeing that my current OO build is about 650 megs I wonder how I can get
+</I>&gt;<i> it a bit smaller... Is there a way I can do a build with only one locale (en_US)
+</I>&gt;<i> and skip all the other translations?
+</I>
+	Ok - so there are also a number of tricks that can be done to try to
+shrink build size.
+
+	Both previous posts are not that helpful, since they deal with a
+natively configured OO.o - instead of using the (far easier) ooo-build.
+While ooo-build produces an ideal result for packagers - for individual
+hackers it can be more painful - as you see.
+
+	To shrink the list of languages built hack bin/setup.in, shrink the
+LANGS=&quot;&quot; line - to whichever you want; re-configure [to generate
+bin/setup] &amp; re-run make.
+
+	We pass:
+
+    EXTRA_BUILD_FLAGS=&quot;--dlv_switch link $EXTRA_BUILD_FLAGS&quot;
+
+	which should use hard links on all the libraries installed into the
+solver - which should save space etc. And we use &quot;export nodep=1&quot; which
+saves generating the dependencies.
+
+	Ultimately though - you're going to need of the order of 4Gb to build
+OO.o 1.1.x and ~3Gb to build the 1.9.x pre-releases - if you have an RPM
+based system, this command:
+
+	rpm -qa --queryformat '%{NAME}\t%{SIZE}\n' | sort -n +1
+
+	Should help identify suitable disk hogs to remove :-) if you use either
+KDE or Gnome exclusively eg. removing big chunks of the other one can
+save a lot of space.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000643.html">[Open Office] Building without translations
+</A></li>
+	<LI> Next message: <A HREF="000646.html">[Open Office] ooo 1.1.3 crashs with gtk+-2.6.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#649">[ date ]</a>
+              <a href="thread.html#649">[ thread ]</a>
+              <a href="subject.html#649">[ subject ]</a>
+              <a href="author.html#649">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

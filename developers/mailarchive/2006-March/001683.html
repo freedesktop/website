@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Build without java broken
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build%20without%20java%20broken&In-Reply-To=1141716151.6766.24.camel%40g-one">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001681.html">
+   <LINK REL="Next"  HREF="001682.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Build without java broken</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build%20without%20java%20broken&In-Reply-To=1141716151.6766.24.camel%40g-one"
+       TITLE="[Open Office] Build without java broken">pmladek at suse.cz
+       </A><BR>
+    <I>Tue Mar  7 06:15:18 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001681.html">[Open Office] Build without java broken
+</A></li>
+        <LI>Next message: <A HREF="001682.html">[Open Office] ooo-wrapper.in
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1683">[ date ]</a>
+              <a href="thread.html#1683">[ thread ]</a>
+              <a href="subject.html#1683">[ subject ]</a>
+              <a href="author.html#1683">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday 07 March 2006 08:22, Andreas Proschofsky wrote:
+&gt;<i> This didn't happen with 2.0.1, someone has a pointer what is causing
+</I>&gt;<i> this (or even better, a fix ;) ). sandbox looks for javac even if we
+</I>&gt;<i> build without java:
+</I>
+I expect that it is the same problem I had last week. See 
+<A HREF="http://www.openoffice.org/issues/show_bug.cgi?id=62716.">http://www.openoffice.org/issues/show_bug.cgi?id=62716.</A> There is attached a 
+patch that helps to solve it on ppc.
+
+You would probably need a similar patch for solenv/inc/unxlngi6.mk.
+
+Best Regards,
+Petr
+
+
+&gt;<i> =============
+</I>&gt;<i> Building project sandbox
+</I>&gt;<i> =============
+</I>&gt;<i> /var/tmp/portage/openoffice-2.0.2_rc4/work/ooo-build-oob680.5.0/build/oob68
+</I>&gt;<i>0-m5/sandbox/com/sun/star/lib/sandbox mkout -- version: 1.6
+</I>&gt;<i> /var/tmp/portage/openoffice-2.0.2_rc4/work/ooo-build-oob680.5.0/build/oob68
+</I>&gt;<i>0-m5/sandbox/com/sun/star/lib/sandboxdmake: Executing shell macro: +echo
+</I>&gt;<i> $(IDLPACKAGE) | $(SED) 's/\\/\//g'
+</I>&gt;<i> Making dpj...
+</I>&gt;<i> javac -classpath
+</I>&gt;<i> &quot;.:../../../../../unxlngi6.pro/class:NO_JAVA_HOME/jre/lib/rt.jar:.&quot; -d
+</I>&gt;<i> ../../../../../unxlngi6.pro/class  AudioProxy.java
+</I>&gt;<i>       Cachable.java                                       ClassContext.java
+</I>&gt;<i>                         ClassContextImpl.java
+</I>&gt;<i> ClassContextProxy.java        CodeSource.java
+</I>&gt;<i> Disposable.java                                 ExecutionContext.java
+</I>&gt;<i>           Holder.java
+</I>&gt;<i> ImageProducerProxy.java   JarEntry.java
+</I>&gt;<i> JarInputStream.java                         Permission.java
+</I>&gt;<i> PermissionCollection.java                    ProtectionDomain.java
+</I>&gt;<i>              Resource.java    ResourceImpl.java
+</I>&gt;<i> ResourceProxy.java                              ResourceViewer.java
+</I>&gt;<i>           SandboxMessageHandler.java                 
+</I>&gt;<i> SandboxThreadGroup.java SandboxSecurity.java
+</I>&gt;<i> SandboxSecurityException.java           WeakRef.java    WeakTable.java
+</I>&gt;<i>                                  WeakEntry.java
+</I>&gt;<i>          XImage.java
+</I>&gt;<i> javac: Command not found.
+</I>&gt;<i> dmake:  Error code 1, while making
+</I>&gt;<i> '../../../../../unxlngi6.pro/misc/lib_sandbox_dummy.java'
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>&gt;<i>
+</I>&gt;<i> ERROR: Error 65280 occurred while making
+</I>&gt;<i> /var/tmp/portage/openoffice-2.0.2_rc4/work/ooo-build-oob680.5.0/build/oob68
+</I>&gt;<i>0-m5/sandbox/com/sun/star/lib/sandbox make: *** [stamp/build] Error 1
+</I>&gt;<i>
+</I>&gt;<i> bye Andreas
+</I></PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001681.html">[Open Office] Build without java broken
+</A></li>
+	<LI>Next message: <A HREF="001682.html">[Open Office] ooo-wrapper.in
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1683">[ date ]</a>
+              <a href="thread.html#1683">[ thread ]</a>
+              <a href="subject.html#1683">[ subject ]</a>
+              <a href="author.html#1683">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

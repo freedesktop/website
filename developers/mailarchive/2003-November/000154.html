@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] gtk+ file selector integration ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000152.html">
+   <LINK REL="Next"  HREF="000155.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] gtk+ file selector integration ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] gtk+ file selector integration ...">michael@ximian.com
+       </A><BR>
+    <I>Mon, 17 Nov 2003 15:27:08 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000152.html">[Open Office] Patch for defect 49914...
+</A></li>
+        <LI> Next message: <A HREF="000155.html">[Open Office] evolution / LDAP / Exchange / Groupwise integration ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#154">[ date ]</a>
+              <a href="thread.html#154">[ thread ]</a>
+              <a href="subject.html#154">[ subject ]</a>
+              <a href="author.html#154">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Anil,
+
+	So - in addition to the various minor tasks / bug fixing that goes on
+I'd like you to be working towards making this happen. The big picture
+is that we require the gtk+ HEAD file selector (gtkfilechooser) to be
+used instead of the native OO.o file selector. Federico is working on
+the gtkfilechooser and assures me that the API is equivalent and will
+cause no problems.
+
+	Splitting this down this means you should:
+
+	+ build HEAD glib, pango, atk, gtk+ and install them
+	+ get familiar with their API / how they work
+	+ investigate and document the OO.o file selector code
+	  in openoffice/doc/filepicker.txt - there is already a chunk
+	  of research / pointers in there.
+	+ implement a file selector component for gtk+ in the same
+	  style that the win32 component does this
+	  (in fpicker/source/win32/filepicker)
+	+ investigate completing the gtk+ mainloop integration cf.
+	  the TestGtkIntegration section in 'OOO_1_1_0/apply'
+	+ investigate cross-toolkit VCL &lt;-&gt; Gtk+ modality issues -
+	  the file selector is modal.
+
+	This is a longish term task :-) I'm hoping we can make good progress on
+this in the next few months though.
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000152.html">[Open Office] Patch for defect 49914...
+</A></li>
+	<LI> Next message: <A HREF="000155.html">[Open Office] evolution / LDAP / Exchange / Groupwise integration ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#154">[ date ]</a>
+              <a href="thread.html#154">[ thread ]</a>
+              <a href="subject.html#154">[ subject ]</a>
+              <a href="author.html#154">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

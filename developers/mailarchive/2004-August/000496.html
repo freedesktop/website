@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ANNOUNCE: ooo-build-1.3.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:suka%40gentoo.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000494.html">
+   <LINK REL="Next"  HREF="000504.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ANNOUNCE: ooo-build-1.3.0
+   </H1>
+    <B>suka
+    </B> 
+    <A HREF="mailto:suka%40gentoo.org"
+       TITLE="[Open Office] ANNOUNCE: ooo-build-1.3.0">suka@gentoo.org
+       </A><BR>
+    <I>Sat, 21 Aug 2004 09:22:16 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000494.html">[Open Office] ANNOUNCE: ooo-build-1.3.0
+</A></li>
+        <LI> Next message: <A HREF="000504.html">[Open Office] ANNOUNCE: ooo-build-1.3.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#496">[ date ]</a>
+              <a href="thread.html#496">[ thread ]</a>
+              <a href="subject.html#496">[ subject ]</a>
+              <a href="author.html#496">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-Xz46AiKDZOcLVRc0qEsu
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Fri, 2004-08-20 at 17:09 +0200, Jan Holesovsky wrote:
+&gt;<i> Hi!
+</I>&gt;<i>=20
+</I>&gt;<i> Could you please try with the CVS version of ooo-build that contains the=20
+</I>&gt;<i> following fix:
+</I>&gt;<i>=20
+</I>&gt;<i> 2004-08-20  Jan Holesovsky  &lt;<A HREF="mailto:kendy@suse.cz">kendy@suse.cz</A>&gt;
+</I>&gt;<i>=20
+</I>&gt;<i> 	* patches/OOO_1_1/fpicker-common.diff: Use
+</I>&gt;<i> 	com/sun/star/uno/{Any,Sequence,Reference}.hxx, not
+</I>&gt;<i> 	com/sun/star/uno/{Any,Sequence,Reference}.h, leads to unexisting
+</I>&gt;<i> 	symbols (and a refusal to compile on some systems).
+</I>&gt;<i>=20
+</I>&gt;<i> I was unable to reproduce the problem myself, but I belive I fixed it :)
+</I>&gt;<i>=20
+</I>&gt;<i> Thank you,
+</I>&gt;<i> Jan
+</I>
+
+Ok, this fixed this issue, great! But later on it dies again with:
+
+CREATING ImageList for language: deut [ /var/tmp/portage/openoffice-
+ximian-1.3.0/work/oo_1.1.2_src/sc/res/imglst/apptbx; /var/tmp/portage/openo=
+ffice-ximian-1.3.0/work/oo_1.1.2_src/res;  ]
+Successfully generated ImageList /var/tmp/portage/openoffice-
+ximian-1.3.0/work/oo_1.1.2_src/sc/unxlngi4.pro/res/49/lch_off.bmp
+
+sh: crash_report: command not found
+
+
+Fatal exception: Signal 6
+Stack:
+/var/tmp/portage/openoffice-
+ximian-1.3.0/work/oo_1.1.2_src/solver/645/unxlngi4.pro/lib/libsal.so.3
+[0x403d05ca]
+/var/tmp/portage/openoffice-
+ximian-1.3.0/work/oo_1.1.2_src/solver/645/unxlngi4.pro/lib/libsal.so.3
+[0x403d076d]
+/var/tmp/portage/openoffice-
+ximian-1.3.0/work/oo_1.1.2_src/solver/645/unxlngi4.pro/lib/libsal.so.3
+[0x403d0818]
+[0xffffe420]
+bmp(_ZN6BmpApp5StartERKN4_STL6vectorI6StringNS0_9allocatorIS2_EEEE
++0x23c)[0x804bc8c]
+bmp(main+0xe2)[0x804be72]
+/lib/libc.so.6(__libc_start_main+0xf1)[0x4069df71]
+bmp(__gxx_personality_v0+0x29d)[0x804b1e1]
+Abort
+dmake:  Error code 134, while making
+'../../../unxlngi4.pro/misc/ui_img49.don'
+---* TG_SLO.MK *---
+
+ERROR: Error 65280 occurred while making /var/tmp/portage/openoffice-
+ximian-1.3.0/work/oo_1.1.2_src/sc/source/ui/src
+
+!!! ERROR: app-office/openoffice-ximian-1.3.0 failed.
+!!! Function src_compile, Line 373, Exitcode 1
+!!! Build failed!
+!!! If you need support, post the topmost build error, NOT this status
+message.
+
+bye suka
+--=20
+Andreas Proschofsky
+Gentoo Developer / OpenOffice.org
+
+--=-Xz46AiKDZOcLVRc0qEsu
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.5 (GNU/Linux)
+
+iD8DBQBBJvgnauoogOee02MRAoq7AJ9hBjxkinDbkNePGM+7V8fDhto+QwCggr6Z
+IoQPZlKQ4mwUnIt0FaTLcng=
+=1X67
+-----END PGP SIGNATURE-----
+
+--=-Xz46AiKDZOcLVRc0qEsu--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000494.html">[Open Office] ANNOUNCE: ooo-build-1.3.0
+</A></li>
+	<LI> Next message: <A HREF="000504.html">[Open Office] ANNOUNCE: ooo-build-1.3.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#496">[ date ]</a>
+              <a href="thread.html#496">[ thread ]</a>
+              <a href="subject.html#496">[ subject ]</a>
+              <a href="author.html#496">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

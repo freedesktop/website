@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Introducing JDK dependency?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000465.html">
+   <LINK REL="Next"  HREF="000473.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Introducing JDK dependency?
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Introducing JDK dependency?">michael@ximian.com
+       </A><BR>
+    <I>Tue, 03 Aug 2004 19:19:33 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000465.html">[Open Office] Introducing JDK dependency?
+</A></li>
+        <LI> Next message: <A HREF="000473.html">[Open Office] Re: writerperfect / integration &amp; accounts ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#471">[ date ]</a>
+              <a href="thread.html#471">[ thread ]</a>
+              <a href="subject.html#471">[ subject ]</a>
+              <a href="author.html#471">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Daniel,
+
+	No idea about this - but this missing feature is hurting OO.o's use of
+xsltproc to the extent that people are considering using something else
+(which is prolly a mistake for other reasons).
+
+	Since I know nothing about the issue - what is the deal with
+import/uses constructs ? are they that much of a pain to implement ?
+
+	Thanks,
+
+		Michael.
+
+On Mon, 2004-08-02 at 14:08 +0200, Chris Halls wrote:
+&gt;<i> Sorry for the cross posting; please send replies to
+</I>&gt;<i> <A HREF="mailto:dev@porting.openoffice.org.">dev@porting.openoffice.org.</A>
+</I>&gt;<i> 
+</I>&gt;<i> I have been working on getting OOo 1.9.x to build without usage of a
+</I>&gt;<i> proprietary JDK and have run into problems in the officecfg project (see
+</I>&gt;<i> Issue #32143).  Up until now, we have concentrated on fixing build
+</I>&gt;<i> problems by reimplementing essential build tools written in Java: 
+</I>&gt;<i> Officecfg has used xsltproc, and Dan wrote a Python script for
+</I>&gt;<i> fcjmerge.   Now I have the problem that xsltproc does not support the
+</I>&gt;<i> XML Schemas Part 1 specification, and I have to pick one of the
+</I>&gt;<i> following choices:
+</I>&gt;<i> 
+</I>&gt;<i> 1. Rework the XML source not to use the import/uses constructs.
+</I>&gt;<i> 
+</I>&gt;<i> This is possible, but would involve duplicating parts of the schema, or
+</I>&gt;<i> using some sort of preprocessing of the input files.
+</I>&gt;<i> 
+</I>&gt;<i> 2. Find another parser that implements the spec
+</I>&gt;<i> 
+</I>&gt;<i> xalan could perhaps be used.  It is part of the same project that is
+</I>&gt;<i> used for the Java based processing.  I tried xalan out, but had similar
+</I>&gt;<i> errors as seen with xsltproc.
+</I>&gt;<i> 
+</I>&gt;<i> 3. Add a dependency on a (free or non-free) JDK for all builds
+</I>&gt;<i> 
+</I>&gt;<i> The officecfg and fcjmerge projects already build successfully with free
+</I>&gt;<i> JDKs such as gcj or Kaffe.
+</I>&gt;<i> 
+</I>&gt;<i> As part of the conference call about supporting free JDKs with OOo, all
+</I>&gt;<i> present agreed that it would be acceptable to introduce core features
+</I>&gt;<i> that depend on Java, as long as they do not use interfaces that are not
+</I>&gt;<i> yet implemented in free JDKs.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> I have already spent a lot of time looking at these problems in
+</I>&gt;<i> officecfg and playing catch up in these projects, and I would like to
+</I>&gt;<i> consider requiring a JDK to compile and run these build-time modules so
+</I>&gt;<i> I can spend the time I have on something more useful instead.
+</I>&gt;<i> 
+</I>&gt;<i> So I would like to propose introducing a JDK dependency for m50, for a
+</I>&gt;<i> JDK that is able to compile and run these Java modules at a minimum,
+</I>&gt;<i> without having to support the full Java UNO.   
+</I>&gt;<i> 
+</I>&gt;<i> Is anyone aware of a platform that does not have a suitable gcj or kaffe
+</I>&gt;<i> implementation, that would be adversely affected by this?  What is the
+</I>&gt;<i> situation with Windows?
+</I>&gt;<i> 
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Chris
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000465.html">[Open Office] Introducing JDK dependency?
+</A></li>
+	<LI> Next message: <A HREF="000473.html">[Open Office] Re: writerperfect / integration &amp; accounts ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#471">[ date ]</a>
+              <a href="thread.html#471">[ thread ]</a>
+              <a href="subject.html#471">[ subject ]</a>
+              <a href="author.html#471">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

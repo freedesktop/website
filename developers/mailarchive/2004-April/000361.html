@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOo 1.1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:rmrmg%40wp.pl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+   <LINK REL="Previous"  HREF="000363.html">
+   <LINK REL="Next"  HREF="000364.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOo 1.1.1
+   </H1>
+    <B>Rafał 'rmrmg' Roszak
+    </B> 
+    <A HREF="mailto:rmrmg%40wp.pl"
+       TITLE="[Open Office] OOo 1.1.1">rmrmg@wp.pl
+       </A><BR>
+    <I>Sat, 10 Apr 2004 09:40:15 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000363.html">[Open Office] Evolution address book
+</A></li>
+        <LI> Next message: <A HREF="000364.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#361">[ date ]</a>
+              <a href="thread.html#361">[ thread ]</a>
+              <a href="subject.html#361">[ subject ]</a>
+              <a href="author.html#361">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>begin  Rafał 'rmrmg' Roszak &lt;<A HREF="mailto:rmrmg@wp.pl">rmrmg@wp.pl</A>&gt; quote:
+
+
+&gt;<i> -INO_JAVA_HOME/include/linux-INO_JAVA_HOME/include/native_threads/inc
+</I>&gt;<i> lude -I/usr/X11R6/include    -I. -I../../res -I. -O1   -pipe
+</I>&gt;<i> mcpu=athlon-xp   -DLINUX -DUNX -DVCL-DGCC -DC300 -DINTEL
+</I>^^^^^^^^
+this cause problems
+
+&gt;<i> ../../unxlngi4.pro/obj/ooovirgx.o ooovirgx.c gcc: cannot specify -o
+</I>&gt;<i> with-c or -S and multiple compilations dmake:  Error code 1,
+</I>
+stupid message
+
+but I had another problem
+
+[....]
+
+i4.pro/slo/sm.o ../unxlngi4.pro/slo/stacktrace.o
+../unxlngi4.pro/slo/keysymnames.o ../unxlngi4.pro/slo/wmadaptor.o
+../unxlngi4.pro/slo/glyphcache.o ../unxlngi4.pro/slo/gcach_rbmp.o
+../unxlngi4.pro/slo/gcach_vdev.o ../unxlngi4.pro/slo/gcach_ftyp.o
+../unxlngi4.pro/slo/gcach_layout.o -lpsp645li -lsot645li -lutl645li
+-ltl645li -lcomphelp3gcc3 -lucbhelper2gcc3 -lcppuhelpergcc3 -lcppu
+-lvos3gcc3 -lsal -licuuc -licule -L/usr//lib -lfreetype -lz -L/usr//lib
+-lgnomecups-1.0 -lcups -lssl -lcrypto -lnsl -lgobject-2.0 -lglib-2.0
+-lstartup-notification-1 -Wl,-Bstatic -lXinerama -Wl,-Bdynamic -lXext
+-lSM -lICE -lX11 -laudio -ldl -lpthread -lm -Wl,-Bdynamic -lstlport_gcc
+-lstdc++/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.52/build/
+lib/gcc-lib/i686-pc-linux-gnu/3.2.2/../../../../i686-pc-linux-gnu/bin/l
+d: cannot find -lXinerama collect2: ld returned 1 exit status
+dmake:  Error code 1, while making '../unxlngi4.pro/lib/libvcl645li.so'
+
+I have only libXinerama.so so i must remove -Bstatic. Maybe add to
+configure checking libXinerama and if libXinerama.a don't exist aplly
+this patch?
+
+--- ./vcl/util/makefile.mk.orig 2004-04-09 09:18:20.000000000 +0200
++++ ./vcl/util/makefile.mk      2004-04-09 18:17:11.000000000 +0200
+@@ -299,7 +299,7 @@
+ SHL1STDLIBS += -lXp -lXext -lSM -lICE -lX11
+ .ELSE
+ .IF &quot;$(CPU)&quot; == &quot;I&quot;
+-SHL1STDLIBS += -Wl,-Bstatic -lXinerama -Wl,-Bdynamic 
++SHL1STDLIBS += -lXinerama
+ .ENDIF
+ SHL1STDLIBS += -lXext -lSM -lICE -lX11
+ .ENDIF          # &quot;$(USE_XPRINT)&quot; == &quot;TRUE&quot;
+
+
+
+-- 
+. JID: rmrmg(at)jabberpl(dot)org |   RMRMG   .
+.           gg: #2311504         | signature .
+.   mail: rmrmg(at)wp(dot)pl     |  version  .
+.  registered Linux user 261525  |   0.0.3   .
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000363.html">[Open Office] Evolution address book
+</A></li>
+	<LI> Next message: <A HREF="000364.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#361">[ date ]</a>
+              <a href="thread.html#361">[ thread ]</a>
+              <a href="subject.html#361">[ subject ]</a>
+              <a href="author.html#361">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

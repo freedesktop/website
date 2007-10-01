@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Bug 52734
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000254.html">
+   <LINK REL="Next"  HREF="000262.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Bug 52734
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: Bug 52734">michael@ximian.com
+       </A><BR>
+    <I>Sat, 24 Jan 2004 01:00:14 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000254.html">[Open Office] Re: Bug 52734
+</A></li>
+        <LI> Next message: <A HREF="000262.html">[Open Office] Re: Bug 52734
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Rafal,
+
+On Thu, 2004-01-22 at 17:58, Rafa³ 'rmrmg' Roszak wrote:
+&gt;<i> [<A HREF="mailto:root@slack">root@slack</A>:/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.49.2/
+</I>
+	Ok - so the preprocessed output does in fact include zlib.h but we end
+up with:
+
+int ZEXPORT compress2 ( Bytef * dest, uLongf * destLen,
+                        const Bytef * source, uLong sourceLen,
+                        int level)
+
+	So ... this was always a bad idea cutting and pasting this code in
+here; we badly need to kill it. We should chop this and up-stream it and
+file a bug so we can attach a patch for Christian.
+
+	Can you verify that this builds fine for you if you hack that whole
+section off the end of that file ? - it should build just fine I think.
+
+	Thanks for the report,
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000254.html">[Open Office] Re: Bug 52734
+</A></li>
+	<LI> Next message: <A HREF="000262.html">[Open Office] Re: Bug 52734
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

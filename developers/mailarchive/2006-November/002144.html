@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regcomp segfaults when registering java components
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=45467B5C.7020203%40norbit.no">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002143.html">
+   <LINK REL="Next"  HREF="002145.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regcomp segfaults when registering java components</H1>
+    <B>Andreas Radke</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=45467B5C.7020203%40norbit.no"
+       TITLE="[Open Office] Regcomp segfaults when registering java components">a.radke at arcor.de
+       </A><BR>
+    <I>Wed Nov 29 16:24:03 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002143.html">[Open Office] ooe680 build times
+</A></li>
+        <LI>Next message: <A HREF="002145.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2144">[ date ]</a>
+              <a href="thread.html#2144">[ thread ]</a>
+              <a href="subject.html#2144">[ subject ]</a>
+              <a href="author.html#2144">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>something similar here building(OOo source 2.0.4 and 2.1rc1) for arch64
+using gcc-gij 4.1.2 prerelease:
+
+regcomp -register -r ../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb
+-c javaloader.uno.so \ -c javavm.uno.so -c uriproc.uno.so
+register component 'javaloader.uno.so' in registry
+'../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb' succesful! register
+component 'javavm.uno.so' in registry
+'../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb' succesful! register
+component 'uriproc.uno.so' in registry
+'../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb' succesful!
+mkdir ../../unxlngx6.pro/lib/ mkdir: cannot create directory
+`../../unxlngx6.pro/lib/': File exists cd ../../unxlngx6.pro/lib &amp;&amp;
+regcomp -register -br uno_types.rdb -r uno_services.rdb\ -c
+acceptor.uno.so \ -c bridgefac.uno.so \ -c connector.uno.so \ -c
+remotebridge.uno.so \ -c uuresolver.uno.so \
+        -c bridgetest.uno.so \
+        -c cppobj.uno.so \
+        -c uriproc.uno.so \
+        -c constructors.uno.so
+register component 'acceptor.uno.so' in registry 'uno_services.rdb'
+succesful! register component 'bridgefac.uno.so' in registry
+'uno_services.rdb' succesful! register component 'connector.uno.so' in
+registry 'uno_services.rdb' succesful! register component
+'remotebridge.uno.so' in registry 'uno_services.rdb' succesful!
+register component 'uuresolver.uno.so' in registry 'uno_services.rdb'
+succesful! register component 'bridgetest.uno.so' in registry
+'uno_services.rdb' succesful! register component 'cppobj.uno.so' in
+registry 'uno_services.rdb' succesful! register component
+'uriproc.uno.so' in registry 'uno_services.rdb' succesful! register
+component 'constructors.uno.so' in registry 'uno_services.rdb'
+succesful! regcomp -register -br ../../unxlngx6.pro/lib/uno_types.rdb
+-r ../../unxlngx6.pro/lib/uno_services.rdb \ -c javaloader.uno.so -c
+javavm.uno.so register component 'javaloader.uno.so' in registry
+'../../unxlngx6.pro/lib/uno_services.rdb' succesful! register component
+'javavm.uno.so' in registry '../../unxlngx6.pro/lib/uno_services.rdb'
+succesful! regcomp -register
+-br ../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb
+-r ../../unxlngx6.pro/lib/uno_services.rdb -c \
+<A HREF="file:///var/abs/local/openoffice-base/src/ooo_OOE680_m5_src/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar">file:///var/abs/local/openoffice-base/src/ooo_OOE680_m5_src/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar</A>
+\
+-env:URE_INTERNAL_JAVA_DIR=<A HREF="file:///var/abs/local/openoffice-base/src/ooo_OOE680_m5_src/solver/680/unxlngx6.pro/bin">file:///var/abs/local/openoffice-base/src/ooo_OOE680_m5_src/solver/680/unxlngx6.pro/bin</A>
+Segmentation fault dmake:  Error code 139, while making
+'../../unxlngx6.pro/lib/uno_services.rdb' dmake:
+'../../unxlngx6.pro/lib/uno_services.rdb' removed. '---* tg_merge.mk
+*---'
+
+ERROR: Error 65280 occurred while
+making /var/abs/local/openoffice-base/src/ooo_OOE680_m5_src/testtools/source/bridgetest
+dmake:  Error code 1, while making 'build_instsetoo_native' '---*  *---'
+==&gt; ERROR: Build Failed.  Aborting...
+
+
+How can I solve that segfault?
+
+I already tried the gcc-gcj patch
+(<A HREF="http://gcc.gnu.org/bugzilla/show_bug.cgi?id=13212">http://gcc.gnu.org/bugzilla/show_bug.cgi?id=13212</A>) and
+the disable-regcomp-java.diff disable-regcomp-java.diff
+without any change.
+
+Andreas Radke
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002143.html">[Open Office] ooe680 build times
+</A></li>
+	<LI>Next message: <A HREF="002145.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2144">[ date ]</a>
+              <a href="thread.html#2144">[ thread ]</a>
+              <a href="subject.html#2144">[ subject ]</a>
+              <a href="author.html#2144">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

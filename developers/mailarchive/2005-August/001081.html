@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.9.121.1: build broken on x86_64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-August/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-1.9.121.1%3A%20build%20broken%20on%20x86_64&In-Reply-To=1123420441.3788.4.camel%40juerg-pd.bitron.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001080.html">
+   <LINK REL="Next"  HREF="001082.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.9.121.1: build broken on x86_64</H1>
+    <B>Martin Kretzschmar</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-1.9.121.1%3A%20build%20broken%20on%20x86_64&In-Reply-To=1123420441.3788.4.camel%40juerg-pd.bitron.ch"
+       TITLE="[Open Office] ooo-build-1.9.121.1: build broken on x86_64">m_kretzschmar at gmx.net
+       </A><BR>
+    <I>Sun Aug  7 09:37:51 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001080.html">[Open Office] ooo-build-1.9.121.1: build broken on x86_64
+</A></li>
+        <LI>Next message: <A HREF="001082.html">[Open Office] Problems building OOffice-m121/122
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1081">[ date ]</a>
+              <a href="thread.html#1081">[ thread ]</a>
+              <a href="subject.html#1081">[ subject ]</a>
+              <a href="author.html#1081">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>J&#252;rg Billeter schrieb:
+&gt;<i> On Son, 2005-08-07 at 14:52 +0200, Martin Kretzschmar wrote:
+</I>&gt;&gt;<i>Can you try and change (after removing mdbtools/unxlngx4.pro)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>CONFIGURE_ACTION=./configure CFLAGS=&quot;-O2 $(ARCH_FLAGS)&quot;
+</I>&gt;&gt;<i>to
+</I>&gt;&gt;<i>CONFIGURE_ACTION=./configure CFLAGS=&quot;-O2 $(ARCH_FLAGS) --with-pic&quot;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>in mdbtools/makefile.mk.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> --with-pic didn't work, gcc doesn't accept this parameter. Replacing it
+</I>&gt;<i> by -fPIC seems to have worked, build and delivery of mdbtools and
+</I>&gt;<i> connectivity succeeded. Didn't try to complete the whole build, though.
+</I>
+D'oh, sorry. Can you try
+
+CONFIGURE_ACTION=./configure CFLAGS=&quot;-O2 $(ARCH_FLAGS)&quot; --with-pic
+
+or add --with-pic to the CONFIGURE_FLAGS line (that's what I should have 
+said the first time; and it's a slightly cleaner solution than adding 
+-fPIC directly)?
+
+Thanks,
+
+Martin
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001080.html">[Open Office] ooo-build-1.9.121.1: build broken on x86_64
+</A></li>
+	<LI>Next message: <A HREF="001082.html">[Open Office] Problems building OOffice-m121/122
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1081">[ date ]</a>
+              <a href="thread.html#1081">[ thread ]</a>
+              <a href="subject.html#1081">[ subject ]</a>
+              <a href="author.html#1081">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

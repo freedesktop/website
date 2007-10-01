@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build HEAD / OOo2m161 / gcc-3.4.6 error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20HEAD%20/%20OOo2m161%20/%20gcc-3.4.6%20error&In-Reply-To=20060331150119.acebd30c.h.mth%40web.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001747.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build HEAD / OOo2m161 / gcc-3.4.6 error</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20HEAD%20/%20OOo2m161%20/%20gcc-3.4.6%20error&In-Reply-To=20060331150119.acebd30c.h.mth%40web.de"
+       TITLE="[Open Office] ooo-build HEAD / OOo2m161 / gcc-3.4.6 error">h.mth at web.de
+       </A><BR>
+    <I>Sat Apr  1 09:23:44 EST 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001747.html">[Open Office] incremental build (tip) ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1746">[ date ]</a>
+              <a href="thread.html#1746">[ thread ]</a>
+              <a href="subject.html#1746">[ subject ]</a>
+              <a href="author.html#1746">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I thought it was STLport5 causing this.
+No, this persists with STLport 4.6.2.
+A downgrade to gcc-3.4.5 did not help either.
+
+Anyone with gcc-3.4.x can reproduce this?
+
+
+On Fri, 31 Mar 2006 15:01:19 +0200
+Hanno Meyer-Thurow &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">h.mth at web.de</A>&gt; wrote:
+
+&gt;<i> Hi list!
+</I>&gt;<i> I get an error building ooo-build HEAD with OOo2 m161 and gcc-3.4.6.
+</I>&gt;<i> This does not happen with gcc-4.1.0.
+</I>&gt;<i> 
+</I>&gt;<i> Making: ../../unxlngi6.pro/slo/providerimpl.obj
+</I>&gt;<i> g++ -Wreturn-type -fmessage-length=0 -c -I.  -I. -I../inc -I../../source/inc/inc -I../../inc -I../../unx/inc -I../../unxlngi6.pro/inc -I. -I/var/tmp/portage/openoffice-680.161.0/work/ooo-build/build/src680-m161/solver/680/unxlngi6.pro/inc/stl -I/var/tmp/portage/openoffice-680.161.0/work/ooo-build/build/src680-m161/solver/680/unxlngi6.pro/inc/external -I/var/tmp/portage/openoffice-680.161.0/work/ooo-build/build/src680-m161/solver/680/unxlngi6.pro/inc -I/var/tmp/portage/openoffice-680.161.0/work/ooo-build/build/src680-m161/solenv/unxlngi6/inc -I/var/tmp/portage/openoffice-680.161.0/work/ooo-build/build/src680-m161/solenv/inc -I/var/tmp/portage/openoffice-680.161.0/work/ooo-build/build/src680-m161/res -I/usr/stlport -I/usr/include/stlport -I/usr/include/stlport -I/var/tmp/portage/openoffice-680.161.0/work/ooo-build/build/src680-m161/solenv/inc/Xp31 -I/opt/gcj-4.1.0/include -I/usr/include     -I. -I../../res -I. -Os -fno-strict-aliasing -Wuninitialized   -pipe -O2 -mtune=pentium4 -march=pentium4 -pipe -momit-leaf-frame-pointer -fomit-frame-pointer -fvisibility-inlines-hidden -Wno-ctor-dtor-privacy -fvisibility-inlines-hidden -fexceptions -fno-enforce-eh-specs   -fpic -DLINUX -DUNX -DVCL -DGCC -DC341 -DINTEL -DCVER=C341 -D_USE_NAMESPACE -DNPTL -DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1 -DSTLPORT_VERSION=500 -DHAVE_GCC_VISIBILITY_FEATURE -D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DGXX_INCLUDE_PATH=/usr/lib/gcc/i686-pc-linux-gnu/3.4.6/include/g++-v3 -DSUPD=680 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DEXCEPTIONS_ON -DCUI -DSOLAR_JAVA -DSRC680=SRC680   -DSHAREDLIB -D_DLL_  -DMULTITHREAD  -o ../../unxlngi6.pro/slo/providerimpl.o /var/tmp/portage/openoffice-680.161.0/work/ooo-build/build/src680-m161/configmgr/source/api2/providerimpl.cxx
+</I>&gt;<i> In file included from /var/tmp/portage/openoffice-680.161.0/work/ooo-build/build/src680-m161/configmgr/source/api2/providerimpl.cxx:78:
+</I>&gt;<i> ../inc/treeaccessor.hxx: In member function `configmgr::data::NodeAddress configmgr::data::TreeAccessor::rootAddress(const configmgr::data::TreeAddress&amp;) const':
+</I>&gt;<i> ../inc/treeaccessor.hxx:137: Fehler: expected primary-expression vor &#187;,&#171;-Zeichen
+</I>&gt;<i> ../inc/treeaccessor.hxx:137: Fehler: &#187;nodes&#171; wurde in diesem G&#252;ltigkeitsbereich nicht definiert (not defined in this scope)
+</I>&gt;<i> ../inc/treeaccessor.hxx:137: Fehler: &#187;__builtin_offsetof&#171; wurde in diesem G&#252;ltigkeitsbereich nicht definiert (not defined in this scope)
+</I>&gt;<i> dmake:  Error code 1, while making '../../unxlngi6.pro/slo/providerimpl.obj'
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>&gt;<i> 
+</I>&gt;<i> ERROR: Error 65280 occurred while making /var/tmp/portage/openoffice-680.161.0/work/ooo-build/build/src680-m161/configmgr/source/api2
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001747.html">[Open Office] incremental build (tip) ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1746">[ date ]</a>
+              <a href="thread.html#1746">[ thread ]</a>
+              <a href="subject.html#1746">[ subject ]</a>
+              <a href="author.html#1746">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build on Fedora --with-lang=ALL: HostName error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20on%20Fedora%20--with-lang%3DALL%3A%20HostName%20error&In-Reply-To=42A85C4A.9020605%40math.unl.edu">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001000.html">
+   <LINK REL="Next"  HREF="001007.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build on Fedora --with-lang=ALL: HostName error</H1>
+    <B>David Fraser</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20on%20Fedora%20--with-lang%3DALL%3A%20HostName%20error&In-Reply-To=42A85C4A.9020605%40math.unl.edu"
+       TITLE="[Open Office] ooo-build on Fedora --with-lang=ALL: HostName error">davidf at sjsoft.com
+       </A><BR>
+    <I>Thu Jun  9 11:34:21 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001000.html">[Open Office] ooo-build on Fedora --with-lang=ALL: HostName error
+</A></li>
+        <LI>Next message: <A HREF="001007.html">[Open Office] ooo-build on Fedora --with-lang=ALL: HostName error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1001">[ date ]</a>
+              <a href="thread.html#1001">[ thread ]</a>
+              <a href="subject.html#1001">[ subject ]</a>
+              <a href="author.html#1001">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Rex Dieter wrote:
+
+&gt;<i> David Fraser wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> I've come back to building OOo again after months of absence...
+</I>&gt;&gt;<i> I setup ooo-build on Fedora Core 3 using the following configure 
+</I>&gt;&gt;<i> parameters:
+</I>&gt;&gt;<i> --enable-java --with-jdk-home=/usr/java/j2sdk1.4.2/ 
+</I>&gt;&gt;<i> --with-ant-home=/usr/local/apache-ant-1.6.2/ --with-icons=gnome,kde 
+</I>&gt;&gt;<i> --with-gcc-speedup=ccache --with-binsuffix=1.9df --with-lang=ALL
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I too have had past problems regarding --with-lang=ALL.  I've since 
+</I>&gt;<i> just left that out.
+</I>
+OK thanks...
+
+I just noticed that if I replaced ALL with en-US,af-ZA it works...
+
+So it would be good to come up with a fix so other people don't bang 
+their heads :-)
+Attached a trivial patch to tell people this is a problem for the mean 
+time ... if this makes sense to others I could apply it, but want to 
+make sure I'm not missing something
+
+David
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ooinstall-langALL-die.patch
+Type: text/x-patch
+Size: 648 bytes
+Desc: not available
+Url : <A HREF="http://galactus.ximian.com/pipermail/openoffice/attachments/20050609/8675d4c1/ooinstall-langALL-die-0001.bin">http://galactus.ximian.com/pipermail/openoffice/attachments/20050609/8675d4c1/ooinstall-langALL-die-0001.bin</A>
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001000.html">[Open Office] ooo-build on Fedora --with-lang=ALL: HostName error
+</A></li>
+	<LI>Next message: <A HREF="001007.html">[Open Office] ooo-build on Fedora --with-lang=ALL: HostName error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1001">[ date ]</a>
+              <a href="thread.html#1001">[ thread ]</a>
+              <a href="subject.html#1001">[ subject ]</a>
+              <a href="author.html#1001">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Support for OOO680_m* milestones
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Support%20for%20OOO680_m%2A%20milestones&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001174.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Support for OOO680_m* milestones</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Support%20for%20OOO680_m%2A%20milestones&In-Reply-To="
+       TITLE="[Open Office] Support for OOO680_m* milestones">kendy at suse.cz
+       </A><BR>
+    <I>Tue Oct  4 05:14:00 EDT 2005</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001174.html">[Open Office] Support for OOO680_m* milestones
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1173">[ date ]</a>
+              <a href="thread.html#1173">[ thread ]</a>
+              <a href="subject.html#1173">[ subject ]</a>
+              <a href="author.html#1173">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I have added support for OOO680_m* milestones (the milestones that will lead 
+to the official OOo2) to ooo-build.  For the builders, the only difference 
+should be the used tag; use e.g.
+
+  --with-tag=ooo680-m1
+
+and ooo-build with download &amp; compile OOo2 RC1.
+
+For the developers, the situation is a little more tricky.  These milestones 
+have their own 'apply' file located in patches/OOO_2_0/, but they still use 
+the patches from patches/src680/ subdirectory.  So:
+
+- When adding a patch to src680/apply, please also consider adding it to 
+OOO_2_0/apply, if it should be used in the final 2.0.
+
+- When updating a patch to a newer milestone - in addition to copying it to 
+XXX-mYYY.diff - please also copy it to patches/OOO_2_0/ .  E.g. let's have 
+patches/src680/some-patch.diff that applies in src680-m133 and also in 
+ooo680-m3, but breaks with src680-m134.  The procedure should look like:
+
+  cp patches/src680/some-patch.diff patches/OOO_2_0/
+  cp patches/src680/some-patch.diff patches/src680/some-patch-m133.diff
+  [edit patches/src680/apply as before]
+  cvs add patches/OOO_2_0/some-patch.diff
+  cvs add patches/src680/some-patch-m133.diff
+  [cvs commit, etc.]
+
+Thank you,
+Jan
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001174.html">[Open Office] Support for OOO680_m* milestones
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1173">[ date ]</a>
+              <a href="thread.html#1173">[ thread ]</a>
+              <a href="subject.html#1173">[ subject ]</a>
+              <a href="author.html#1173">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

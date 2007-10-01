@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Internal quickstarter
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To=200603020017.12415%40centrum.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001668.html">
+   <LINK REL="Next"  HREF="001675.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Internal quickstarter</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To=200603020017.12415%40centrum.cz"
+       TITLE="[Open Office] Internal quickstarter">ghibo at mandriva.com
+       </A><BR>
+    <I>Thu Mar  2 06:00:34 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001668.html">[Open Office] Internal quickstarter
+</A></li>
+        <LI>Next message: <A HREF="001675.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1669">[ date ]</a>
+              <a href="thread.html#1669">[ thread ]</a>
+              <a href="subject.html#1669">[ subject ]</a>
+              <a href="author.html#1669">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jan Uhlir wrote:
+
+&gt;<i> Hi Michael and Peter
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Hi Jan,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>	Did you mean to CC Peter / the list ?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> He is not subscribed in this mailing list? OK, I will send him a copy to be sure.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>Well, I don't know what your experience with KDE is  - no offence 
+</I>&gt;&gt;&gt;<i>please! - but KDE enables running Gnome applets for a long time.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>;-) OTOH KDE applets in Gnome suck badly; AFAIR a WM spec. violation on
+</I>&gt;&gt;<i>that side.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Anyway, we are the lucky ones. GTK applets runs on KDE reasonably
+</I>&gt;<i> well, the rest is not OOo business.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>In my KDE systray are KDE as well as Gnome applets running
+</I>&gt;&gt;&gt;<i>right now - Gaim and Gnome Network Monitor (it' better than KDE
+</I>&gt;&gt;&gt;<i>default one, so I'm using it) 
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>	Sure.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>What I want to say there is absolutely no need to do cross-desktop
+</I>&gt;&gt;&gt;<i>tweaking of any file. Just make a nice Gnome applet and don't disable
+</I>&gt;&gt;&gt;<i>it when KDE desktop is detected. Better not to detect running desktop 
+</I>&gt;&gt;&gt;<i>environment at all. They are all freedesktop.org compatible, 
+</I>&gt;&gt;&gt;<i>aren't they? ;-)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>	So - the thing is; if you want to test having Qt and Gtk+ both talking
+</I>&gt;&gt;<i>to X in the same process, and integrating nicely *And* take the
+</I>&gt;&gt;<i>performance hit from having both of those in process - that's fine;  but
+</I>&gt;&gt;<i>there are a ton of people out there with a rather frenzied antipathy to
+</I>&gt;&gt;<i>any gtk+ on KDE and VV. &amp; I don't want to fight them :-)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Let's concentrate on GTK plugin. 
+</I>&gt;<i> For GTK people: take it or leave it and use alternative external project.
+</I>&gt;<i> Just not disable completely quickstarter option.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i>It's easy to patch the comparison out; test it - if it works - go for
+</I>&gt;&gt;<i>it. Of course - more code is really required - to initialize gtk+
+</I>&gt;&gt;<i>correctly if it has not already been done [ for the right display etc. ]
+</I>&gt;&gt;<i>- and that is why we just check if gtk+ is inited already; but ... that
+</I>&gt;&gt;<i>code can be added: but it's work &amp; testing &amp; I don't have a KDE system
+</I>&gt;&gt;<i>&amp; ... :-)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> I will look at it.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>I suspect, that detection of running environment was &quot;enhanced&quot;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Not sure; I didn't touch that code for 1.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Dates at patch files are quite new so someone did.
+</I>&gt;<i> I will look at this.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>Well I discovered that oowriter runs ooqstarter which runs
+</I>&gt;&gt;&gt;<i>soffice (shell script) which lanches soffice.bin soffice.
+</I>&gt;&gt;&gt;<i>I can run soffice.bin stright away. So what is the point of this step?
+</I>&gt;&gt;&gt;<i>Can I say ooqstarter to skip this step?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Sure - ooqstart however helps you *a lot* on the 2nd start - that is
+</I>&gt;&gt;<i>particularly nice wrt. responsiveness - it also gives you the splash
+</I>&gt;&gt;<i>fast.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>So my question is how to launch ooffice not to be completely 
+</I>&gt;&gt;&gt;<i>released form memory when the last window is closed.
+</I>&gt;&gt;&gt;<i>Without this option any external quickstarter is useles.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Use the systray quickstarter ;-&gt;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Sorry I didn't get the point? I'm using systray quickstarter.
+</I>&gt;<i> 
+</I>&gt;<i> Anyway I also tried preloading &quot;manually&quot; using two consoles.
+</I>&gt;<i> In one:
+</I>&gt;<i> /usr/lib/OpenOffice.org.2/program/soffice.bin -nologo -nodefault
+</I>&gt;<i> ..to preload OOo
+</I>&gt;<i> In the other: 
+</I>&gt;<i> oowriter or oofice or ooqstart -writer or soffice.bin
+</I>&gt;<i> The first lunch was well acclerated, I get times even under 1s ! Amazing!
+</I>&gt;<i> But when I close Writer window, preloading instance was also shutted.
+</I>&gt;<i> So with another Writer launch I got just 'usual' times because nothing 
+</I>&gt;<i> was preloaded now.
+</I>&gt;<i> Is this an intended behaving? 
+</I>&gt;<i> Under such circumstances any external preloader couldn't work :( 
+</I>&gt;<i> 
+</I>&gt;<i> Anyway, I must congratulate to OOo developers team, overall statup times 
+</I>&gt;<i> are quite good now.
+</I>&gt;<i> 
+</I>&gt;<i> 1) preloaded OOo
+</I>&gt;<i> $time -p /usr/lib/OpenOffice.org.2/program/ooqstart -writer
+</I>&gt;<i> real 0.72 - COOL !! 
+</I>&gt;<i> 
+</I>&gt;<i> 2) preloaded OOo
+</I>&gt;<i> $time -p /usr/lib/OpenOffice.org.2/program/soffice.bin -writer -nologo
+</I>&gt;<i> real 1.67
+</I>&gt;<i> 
+</I>&gt;<i> 3) nothing preloaded, repeated ooqstart
+</I>&gt;<i> real 4.83 - GOOD time, but repeated startup has no effect, startup times were the same, roughly around 4.6s, strange
+</I>&gt;<i> 
+</I>&gt;<i> 4) nothing preloaded, repeated soffice.bin
+</I>&gt;<i> time -p /usr/lib/OpenOffice.org.2/program/soffice.bin -writer -nologo
+</I>&gt;<i> 6.5s - 8s
+</I>&gt;<i> time -p /usr/lib/OpenOffice.org.2/program/soffice.bin -nologo
+</I>&gt;<i> 4s - 5s
+</I>&gt;<i>  
+</I>&gt;<i> gcc4.0.2 vanilla, 2Ghz IBM ThinkPad, 512MB RAM 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">Openoffice at lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>
+Sorry but can someone be so kind of resuming me what exactly oooqstart does? 
+I've seen that --enable-quickstart is now the default in ooo-build and in the
+final /usr/bin/ooffice wrapper there is no longer the perl wrapper, but rather a 
+call to something like:
+
+#!/bin/sh
+export OOO_EXTRA_ARG=''
+/usr/lib/ooo-2.0/program/ooqstart &quot;$@&quot;
+
+Now what I see immediately as difference is the that ooqstart
+has a different progress bar in the splash screen: a progress bar in the
+bottom of the splash screen of the same theme of the KDE theme for progress
+bars [BTW, how to change the position of the progress bar in the ooqstart?]
+
+Apart this I do not see any speedup:
+
+OOO_EXTRA_ARG='' time -p /usr/lib/ooo-2.0/program/ooqstart -writer
+
+gives always (under KDE and with OOO KDE themes, etc) around:
+
+real 3.16
+user 0.03
+sys 0.00
+
+while:
+
+time -p /usr/lib/ooo-2.0/program/soffice.bin -writer -nologo
+
+gives always:
+
+real 3.77
+user 3.36
+sys 0.09
+
+
+under P4/3Ghz and 3ware controller for disks. How can you be below 1 second? You
+cited &quot;systray quickstarted&quot;. What's that?
+
+Furthermore instead of using &quot;time&quot; to measure which relies also on how
+much the user press CTRL-Q when the GUI is opened, Michael suggested to
+do:
+
+export RTL_LOGFILE=logfile.txt
+
+before calling ooffice, which should give the timing in milliseconds of each 
+function call.
+
+Also, how would be possible to customize things now what oooqstart
+has replaced the ooo-wrapper? For instance how one can add things like this,
+for instance to customize the widget, which before mcould be easy to add to the 
+wrapper?
+
+...
+if (-e &quot;$ENV{HOME}/.ooo-widget&quot;)
+{
+        open(OOOW, &quot;$ENV{HOME}/.ooo-widget&quot;);
+        $widgets_set = &lt;OOOW&gt;;
+        chomp $widgets_set;
+        close(OOOW);
+}
+
+...
+my @ooo_argv;
+
+Thanks
+Bye
+Giuseppe.
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001668.html">[Open Office] Internal quickstarter
+</A></li>
+	<LI>Next message: <A HREF="001675.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1669">[ date ]</a>
+              <a href="thread.html#1669">[ thread ]</a>
+              <a href="subject.html#1669">[ subject ]</a>
+              <a href="author.html#1669">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

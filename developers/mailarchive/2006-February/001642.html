@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] initVMConfiguration() always fail--64bit java relate
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20initVMConfiguration%28%29%20always%20fail--64bit%20java%20relate&In-Reply-To=e8b3acb60601180735m7870968flb075f0515a653d2c%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001630.html">
+   <LINK REL="Next"  HREF="001645.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] initVMConfiguration() always fail--64bit java relate</H1>
+    <B>Andreas Radke</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20initVMConfiguration%28%29%20always%20fail--64bit%20java%20relate&In-Reply-To=e8b3acb60601180735m7870968flb075f0515a653d2c%40mail.gmail.com"
+       TITLE="[Open Office] initVMConfiguration() always fail--64bit java relate">a.radke at arcor.de
+       </A><BR>
+    <I>Sun Feb 26 11:15:12 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001630.html">[Open Office] Internal quickstarter
+</A></li>
+        <LI>Next message: <A HREF="001645.html">[Open Office] initVMConfiguration() always fail--64bit java relate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1642">[ date ]</a>
+              <a href="thread.html#1642">[ thread ]</a>
+              <a href="subject.html#1642">[ subject ]</a>
+              <a href="author.html#1642">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>mkdir ../../unxlngx6.pro/lib/
+mkdir: cannot create directory `../../unxlngx6.pro/lib/': File exists
+cd ../../unxlngx6.pro/lib &amp;&amp;  regcomp -register -br uno_types.rdb -r
+uno_services.rdb\
+        -c acceptor.uno.so \
+        -c bridgefac.uno.so \
+        -c connector.uno.so \
+        -c remotebridge.uno.so \
+        -c uuresolver.uno.so \
+        -c bridgetest.uno.so \
+        -c cppobj.uno.so \
+        -c uriproc.uno.so \
+        -c constructors.uno.so
+register component 'acceptor.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'bridgefac.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'connector.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'remotebridge.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'uuresolver.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'bridgetest.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'cppobj.uno.so' in registry 'uno_services.rdb' succesful!
+register component 'uriproc.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'constructors.uno.so' in registry 'uno_services.rdb'
+succesful!
+regcomp -register -br ../../unxlngx6.pro/lib/uno_types.rdb -r
+../../unxlngx6.pro/lib/uno_services.rdb \
+        -c javaloader.uno.so -c javavm.uno.so
+register component 'javaloader.uno.so' in registry
+'../../unxlngx6.pro/lib/uno_services.rdb' succesful!
+register component 'javavm.uno.so' in registry
+'../../unxlngx6.pro/lib/uno_services.rdb' succesful!
+regcomp -register  -br ../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb
+-r ../../unxlngx6.pro/lib/uno_services.rdb -c \
+       
+<A HREF="file:///var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.3.0/build/oob680-m3/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar">file:///var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.3.0/build/oob680-m3/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar</A>
+\
+       
+-env:URE_INTERNAL_JAVA_DIR=<A HREF="file:///var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.3.0/build/oob680-m3/solver/680/unxlngx6.pro/bin">file:///var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.3.0/build/oob680-m3/solver/680/unxlngx6.pro/bin</A>
+using loader com.sun.star.loader.Java2
+register component
+'<A HREF="file:///var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.3.0/build/oob680-m3/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar'">file:///var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.3.0/build/oob680-m3/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar'</A>
+in registry '../../unxlngx6.pro/lib/uno_services.rdb' failed!
+error (RuntimeException): JNI exception occurred
+dmake:  Error code 1, while making '../../unxlngx6.pro/lib/uno_services.rdb'
+dmake:  '../../unxlngx6.pro/lib/uno_services.rdb' removed.
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.3.0/build/oob680-m3/testtools/source/bridgetest
+make: *** [stamp/build] Error 1
+==&gt; ERROR: Build Failed.  Aborting...
+
+real    44m13.770s
+user    20m18.512s
+sys     6m52.298s
+[<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">andyrtr at workstation64</A> openoffice.org-RC]$
+
+
+
+Looks like the same here. I'm compiling x86_64 for the archlinux64 port
+using OOB680-m3 sources with j2sdk 1.5.0_06.
+
+Any solution?
+
+Andreas Radke
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001630.html">[Open Office] Internal quickstarter
+</A></li>
+	<LI>Next message: <A HREF="001645.html">[Open Office] initVMConfiguration() always fail--64bit java relate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1642">[ date ]</a>
+              <a href="thread.html#1642">[ thread ]</a>
+              <a href="subject.html#1642">[ subject ]</a>
+              <a href="author.html#1642">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

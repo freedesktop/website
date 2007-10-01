@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Ximian OOo 1.3.7 compile error on module psprint
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:h.mth%40web.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000605.html">
+   <LINK REL="Next"  HREF="000607.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Ximian OOo 1.3.7 compile error on module psprint
+   </H1>
+    <B>Hanno Meyer-Thurow
+    </B> 
+    <A HREF="mailto:h.mth%40web.de"
+       TITLE="[Open Office] Ximian OOo 1.3.7 compile error on module psprint">h.mth@web.de
+       </A><BR>
+    <I>Thu, 2 Dec 2004 09:45:16 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000605.html">[Open Office] module vcl - checkdll
+ check_libvclplug_kde645li.so fails
+</A></li>
+        <LI> Next message: <A HREF="000607.html">[Open Office] Ximian OOo 1.3.7 compile error on module psprint
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#606">[ date ]</a>
+              <a href="thread.html#606">[ thread ]</a>
+              <a href="subject.html#606">[ subject ]</a>
+              <a href="author.html#606">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Here it is:
+
+Making: ../../unxlngi4.pro/slo/helper.obj
+g++ -fmessage-length=0 -c -I.  -I. -I../inc -I../../inc -I../../unx/inc -I../../unxlngi4.pro/inc -I. -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solver/645/unxlngi4.pro/inc/stl -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solver/645/unxlngi4.pro/inc/external -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solver/645/unxlngi4.pro/inc -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solenv/unxlngi4/inc -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solenv/inc -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/res -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solver/645/unxlngi4.pro/inc/stl -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solenv/inc/Xp31 -I/opt/blackdown-jdk-1.4.2.01/include -I/opt/blackdown-jdk-1.4.2.01/include/linux -I/opt/blackdown-jdk-1.4.2.01/include/native_threads/include -I/usr/X11R6/include     -I. -I../../res -I. -O1   -pipe -O2 -mtune=pentium4 -march=pentium4 -pipe -fforce-addr -fforce-mem -momit-leaf-frame-pointer -fomit-frame-pointer -fweb -ftracer -frename-registers -fvisibility-inlines-hidden -fno-for-scope -fpermissive -fno-rtti -include preinclude.h -fexceptions -fno-enforce-eh-specs   -fpic -DLINUX -DUNX -DVCL -DGCC -DC300 -DINTEL -DGXX_INCLUDE_PATH=/usr/lib/gcc/i686-pc-linux-gnu/3.4.3/include/g++-v3 -DCVER=C300 -D_USE_NAMESPACE -DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1 -DSTLPORT_VERSION=400 -D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DSUPD=645 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DEXCEPTIONS_ON -DCUI -DSOLAR_JAVA -DSRX645   -DSHAREDLIB -D_DLL_  -DMULTITHREAD   -o ../../unxlngi4.pro/slo/helper.o /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx
+
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:76:30: jvmfwk/framework.h: Datei oder Verzeichnis nicht gefunden &lt;&lt;&lt; file not found
+
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx: In function `const rtl::OUString&amp; psp::getFontPath()':
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:252: Fehler: `JavaInfo' undeclared (first use this function)
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:252: Fehler: (Each undeclared identifier is reported only once for each function it appears in.)
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:252: Fehler: `pInfo' undeclared (first use this function)
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:253: Fehler: `javaFrameworkError' undeclared (first use this function)
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:253: Fehler: expected `;' vor &quot;jerr&quot;
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:254: Fehler: `jerr' undeclared (first use this function)
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:254: Fehler: `JFW_E_NONE' undeclared (first use this function)
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:260: Fehler: `jfw_freeJavaInfo' undeclared (first use this function)
+dmake:  Error code 1, while making '../../unxlngi4.pro/slo/helper.obj'
+---* TG_SLO.MK *---
+
+ERROR: Error 65280 occurred while making /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper
+
+
+Anyone any ideas? Thanks for help! :)
+
+
+Sincerely,
+Hanno Meyer-Thurow
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000605.html">[Open Office] module vcl - checkdll
+ check_libvclplug_kde645li.so fails
+</A></li>
+	<LI> Next message: <A HREF="000607.html">[Open Office] Ximian OOo 1.3.7 compile error on module psprint
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#606">[ date ]</a>
+              <a href="thread.html#606">[ thread ]</a>
+              <a href="subject.html#606">[ subject ]</a>
+              <a href="author.html#606">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

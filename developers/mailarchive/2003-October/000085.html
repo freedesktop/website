@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Where does the standard symbol font come from?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:wlach%40nit.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000083.html">
+   <LINK REL="Next"  HREF="000109.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Where does the standard symbol font come from?
+   </H1>
+    <B>William Lachance
+    </B> 
+    <A HREF="mailto:wlach%40nit.ca"
+       TITLE="[Open Office] Where does the standard symbol font come from?">wlach@nit.ca
+       </A><BR>
+    <I>Mon, 06 Oct 2003 21:42:14 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000083.html">[Open Office] Where does the standard symbol font come from?
+</A></li>
+        <LI> Next message: <A HREF="000109.html">PATCH Re: [Open Office] Where does the standard symbol font come
+ from?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#85">[ date ]</a>
+              <a href="thread.html#85">[ thread ]</a>
+              <a href="subject.html#85">[ subject ]</a>
+              <a href="author.html#85">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 2003-10-06 at 10:02, Michael Meeks wrote:
+&gt;<i> Hi Will,
+</I>&gt;<i> 
+</I>&gt;<i> On Fri, 2003-10-03 at 20:09, William Lachance wrote:
+</I>&gt;<i> &gt; It seems that in standard OOo, there's a font called &quot;Standard Symbols&quot;,
+</I>&gt;<i> &gt; which is mapped to correspond to a private unicode codespace (F0xx).
+</I>&gt;<i> 
+</I>&gt;<i> 	So - the no. 1 tool for font work is pfaedit; I'd grab that and have a
+</I>&gt;<i> poke inside the relevant fonts; particularly opens___.ttf.
+</I>
+I checked this last Friday. Both of them have a bullet symbol in them,
+but I'm practically certain the font we're missing is a remapped
+&quot;Standard Symbols&quot;. Open up a copy of non-Ximianized OOo 1.1: go to
+insert character, and check out the Standard Symbols font: you'll see
+that it's exactly the same as URW Standard Symbols except that the
+unicode mappings are different (e.g.: F0B7 instead of B7). In Ximian
+OOo, there is _no_ such mapping (e.g.: we have B7 where we should have
+F0B7)
+
+Note, however, that the unicode points for the bullet in opens___.ttf
+are identical between Ximian OOo and stock OpenOffice.org (there do seem
+to be some minor differences elsewhere, which is worrying, but probably
+isn't the source of this particular problem).
+
+&gt;<i> 	Of course (it seems to me) the free font setup gets less testing than
+</I>&gt;<i> the StarSymbol version of OO.o.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; _think_ what's going on is that standard OpenOffice.org is mapping the
+</I>&gt;<i> &gt; character C2B7 (given the font &quot;Symbols&quot;) to this font w/ the unicode
+</I>&gt;<i> &gt; number F0B7. Hence perfect bullets every time. Is this correct?
+</I>&gt;<i> 
+</I>&gt;<i> 	Have a dig at vcl/source/gdi/fontcvt.cxx - possibly therein lies the
+</I>&gt;<i> answer to the question in the form of a broken mapping somewhere; my
+</I>&gt;<i> feeling is that last time I looked at this the starsymbol mapping was
+</I>&gt;<i> shared with opensymbol despite these two fonts being substantially
+</I>&gt;<i> differently layed out (in error).
+</I>
+I had a look at this code last week, nothing immediately popped out at
+me (I did notice the xx -&gt; F0xx stuff, though). I guess it doesn't hurt
+to check again, but I do feel rather lost. Surely there must be someone
+on dev@ who would know exactly what's going on? 
+
+Thanks,
+-- 
+William Lachance &lt;<A HREF="mailto:wlach@nit.ca">wlach@nit.ca</A>&gt;
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000083.html">[Open Office] Where does the standard symbol font come from?
+</A></li>
+	<LI> Next message: <A HREF="000109.html">PATCH Re: [Open Office] Where does the standard symbol font come
+ from?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#85">[ date ]</a>
+              <a href="thread.html#85">[ thread ]</a>
+              <a href="subject.html#85">[ subject ]</a>
+              <a href="author.html#85">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

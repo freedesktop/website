@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] icu snafu ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20icu%20snafu%20%3F&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001482.html">
+   <LINK REL="Next"  HREF="001485.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] icu snafu ?</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20icu%20snafu%20%3F&In-Reply-To="
+       TITLE="[Open Office] icu snafu ?">michael.meeks at novell.com
+       </A><BR>
+    <I>Wed Jan 11 04:44:44 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001482.html">[Open Office] Re: Fw: SIL OpenOffice.org
+</A></li>
+        <LI>Next message: <A HREF="001485.html">[Open Office] Issues i#59089 and i#57862
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1483">[ date ]</a>
+              <a href="thread.html#1483">[ thread ]</a>
+              <a href="subject.html#1483">[ subject ]</a>
+              <a href="author.html#1483">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there,
+
+	No idea if this is related to the gcc41 patching - but the ICU
+incremental build is broken for me on NLD9 for some odd reason:
+
+	HTH,
+
+		Michael.
+
+icu (re-) build problem ...
+
+
+o=============
+Building project icu
+=============
+/opt/OpenOffice/ooo-build/build/src680-m148/icu
+rm -f -r ./unxlngi4.pro/misc/build/icu &gt;&amp; /dev/null
+touch ./unxlngi4.pro/misc/remove_build.flag
+-------------
+echo dummy &gt; ./unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.cpp.dummy
+/unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.cpp.dummy: No such file or directory.
+touch ./unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.cpp.dummy
+touch: cannot touch `./unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.cpp.dummy': No such file or directory
+echo dummy &gt; ./unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.cpp
+/unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.cpp: No such file or directory.
+touch ./unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.cpp
+touch: cannot touch `./unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.cpp': No such file or directory
+echo dummy &gt; ./unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.h.dummy
+/unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.h.dummy: No such file or directory.
+touch ./unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.h.dummy
+touch: cannot touch `./unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.h.dummy': No such file or directory
+echo dummy &gt; ./unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.h
+/unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.h: No such file or directory.
+touch ./unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.h
+touch: cannot touch `./unxlngi4.pro/misc/build/icu/source/layout/TibetanLayoutEngine.h': No such file or directory
+echo dummy &gt; ./unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.cpp.dummy
+/unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.cpp.dummy: No such file or directory.
+touch ./unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.cpp.dummy
+touch: cannot touch `./unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.cpp.dummy': No such file or directory
+echo dummy &gt; ./unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.cpp
+/unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.cpp: No such file or directory.
+touch ./unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.cpp
+touch: cannot touch `./unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.cpp': No such file or directory
+echo dummy &gt; ./unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.h.dummy
+/unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.h.dummy: No such file or directory.
+touch ./unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.h.dummy
+touch: cannot touch `./unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.h.dummy': No such file or directory
+echo dummy &gt; ./unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.h
+/unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.h: No such file or directory.
+touch ./unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.h
+touch: cannot touch `./unxlngi4.pro/misc/build/icu/source/layout/KhmerLayoutEngine.h': No such file or directory
+echo dummy &gt; ./unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.cpp.dummy
+/unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.cpp.dummy: No such file or directory.
+touch ./unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.cpp.dummy
+touch: cannot touch `./unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.cpp.dummy': No such file or directory
+echo dummy &gt; ./unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.cpp
+/unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.cpp: No such file or directory.
+touch ./unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.cpp
+touch: cannot touch `./unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.cpp': No such file or directory
+echo dummy &gt; ./unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.h.dummy
+/unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.h.dummy: No such file or directory.
+touch ./unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.h.dummy
+touch: cannot touch `./unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.h.dummy': No such file or directory
+echo dummy &gt; ./unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.h
+/unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.h: No such file or directory.
+touch ./unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.h
+touch: cannot touch `./unxlngi4.pro/misc/build/icu/source/layout/KhmerReordering.h': No such file or directory
+cd ./unxlngi4.pro/misc/build &amp;&amp; cat ../../../icu-2.6.patch | patch -b -p2 &amp;&amp; touch so_patched_so_icu
+can't find file to patch at input line 3
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|<i>*** misc/icu/source/icudefs.mk.in      Tue Jun  3 08:44:40 2003
+</I>|<i>--- misc/build/icu/source/icudefs.mk.in        Wed Sep  7 20:31:58 2005
+</I>--------------------------
+File to patch: 
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001482.html">[Open Office] Re: Fw: SIL OpenOffice.org
+</A></li>
+	<LI>Next message: <A HREF="001485.html">[Open Office] Issues i#59089 and i#57862
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1483">[ date ]</a>
+              <a href="thread.html#1483">[ thread ]</a>
+              <a href="subject.html#1483">[ subject ]</a>
+              <a href="author.html#1483">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

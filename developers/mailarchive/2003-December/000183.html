@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] gui-symbol-replace breaks build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-December/index.html" >
+   <LINK REL="made" HREF="mailto:rene%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000185.html">
+   <LINK REL="Next"  HREF="000192.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] gui-symbol-replace breaks build
+   </H1>
+    <B>Rene Engelhard
+    </B> 
+    <A HREF="mailto:rene%40debian.org"
+       TITLE="[Open Office] gui-symbol-replace breaks build">rene@debian.org
+       </A><BR>
+    <I>Fri, 12 Dec 2003 14:23:40 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000185.html">[Open Office] Italic Fonts
+</A></li>
+        <LI> Next message: <A HREF="000192.html">[Open Office] gui-symbol-replace breaks build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#183">[ date ]</a>
+              <a href="thread.html#183">[ thread ]</a>
+              <a href="subject.html#183">[ subject ]</a>
+              <a href="author.html#183">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--Pd0ReVV5GZGQvF3a
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+gui-symbol-replace.diff causes the OOo build to fail:
+
+[snip]
+------------------------------
+Making: ../../unxlngi4.pro/slo/image.obj
+ccache g++ -fmessage-length=3D0 -c -I.  -I. -I../inc -I../../inc -I../../un=
+x/inc -I../../unxlngi4.pro/inc -I. -I/home/rene/Debian/Pakete/OpenOffice.or=
+g/Hauptpakete/openoffice.org-1.1.0/solver/645/unxlngi4.pro/inc/stl -I/home/=
+rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/solver/6=
+45/unxlngi4.pro/inc/external -I/home/rene/Debian/Pakete/OpenOffice.org/Haup=
+tpakete/openoffice.org-1.1.0/solver/645/unxlngi4.pro/inc -I/home/rene/Debia=
+n/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/solenv/unxlngi4/in=
+c -I/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.=
+0/solenv/inc -I/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffi=
+ce.org-1.1.0/res -I/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/open=
+office.org-1.1.0/solver/645/unxlngi4.pro/inc/stl -I/home/rene/Debian/Pakete=
+/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/solenv/inc/Xp31 -INO_JAVA_=
+HOME/include -INO_JAVA_HOME/include/linux -INO_JAVA_HOME/include/native_thr=
+eads/include -I/usr/X11R6/include     -I. -I../../res -I. -g1 -O1   -pipe -=
+mcpu=3Dpentiumpro -fno-for-scope -fpermissive -fno-rtti -include preinclude=
+=2Eh -fno-exceptions   -fpic -DLINUX -DUNX -DVCL -DGCC -DC300 -DINTEL -DCVE=
+R=3DC300 -D_USE_NAMESPACE -DGLIBC=3D2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_=
+SOLAR -D_USE_NAMESPACE=3D1 -DSTLPORT_VERSION=3D400 -D__DMAKE -DUNIX -DCPPU_=
+ENV=3Dgcc3 -DSUPD=3D645 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=
+=3D0 -DOPTIMIZE -DEXCEPTIONS_OFF -DCUI -DSRX645 -DUSE_BUILTIN_RASTERIZER -D=
+ENABLE_CTL -DSHAREDLIB -D_DLL_  -DMULTITHREAD   -o ../../unxlngi4.pro/slo/i=
+mage.o /home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1=
+=2E1.0/vcl/source/gdi/image.cxx
+In file included from ../../inc/outdev.hxx:429,
+                 from /home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/o=
+penoffice.org-1.1.0/vcl/source/gdi/image.cxx:93:
+=2E./../inc/outdev.imp:64: Warnung: class `OutputDevice' is implicitly frie=
+nds with itself
+=2E./../inc/outdev.imp:65: Warnung: `VirtualDevice' is already a friend of =
+`OutputDevice'
+=2E./../inc/outdev.imp:73: Warnung: `vcl::PDFWriterImpl' is already a frien=
+d of `OutputDevice'
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx:106:26: svx/svxids.hrc: Datei oder Verzeichnis nicht=
+ gefunden
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx:227: Warnung: `static' may not be used when defining=
+ (as opposed to declaring) a static data member
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx:231: error: `SID_OUTLINE_UP' was not declared in thi=
+s scope
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx:232: error: `SID_OUTLINE_DOWN' was not declared in t=
+his scope
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx:233: error: `SID_OUTLINE_LEFT' was not declared in t=
+his scope
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx:235: error: `SID_OUTLINE_RIGHT' was not declared in =
+this scope
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx:235: Warnung: initialization to non-pointer type `co=
+nst USHORT' from NULL
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx:235: Warnung: argument to non-pointer type `short un=
+signed int' from NULL
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx:235: Warnung: initialization to non-pointer type `co=
+nst USHORT' from NULL
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx:235: Warnung: argument to non-pointer type `short un=
+signed int' from NULL
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx:237: Warnung: `static' may not be used when defining=
+ (as opposed to declaring) a static data member
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx:240: Warnung: cannot declare member function `static=
+ BOOL Image::GetImageForSymbol(short unsigned int, Size, Image&amp;)' to have s=
+tatic linkage
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx: In function `void ImplBmpImageCreate(ImageList*, co=
+nst Bitmap&amp;, const Bitmap&amp;, const Color&amp;, unsigned char, short unsigned int=
+, USHORT*, short unsigned int)':
+/home/rene/Debian/Pakete/OpenOffice.org/Hauptpakete/openoffice.org-1.1.0/vc=
+l/source/gdi/image.cxx:853: Warnung: passing `const Bitmap' as `this' argum=
+ent of `Bitmap&amp; Bitmap::operator=3D(const Bitmap&amp;)' discards qualifiers
+dmake:  Error code 1, while making '../../unxlngi4.pro/slo/image.obj'
+---* TG_SLO.MK *---
+
+ERROR: Error 65280 occurred while making /home/rene/Debian/Pakete/OpenOffic=
+e.org/Hauptpakete/openoffice.org-1.1.0/vcl/source/gdi
+make: *** [debian/stampdir/solver] Fehler 1
+
+Not applying gui-symbol-replace fixes this and makes the build to
+complete.
+
+Datei oder Verzeichnis nicht gefunden =3D File or Directory not found
+
+Gr=FC=DFe/Regards,
+
+Ren=E9
+--=20
+ .''`.  Ren=E9 Engelhard -- Debian GNU/Linux Developer
+ : :' : <A HREF="http://www.debian.org">http://www.debian.org</A> | <A HREF="http://people.debian.org/~rene/">http://people.debian.org/~rene/</A>
+ `. `'  <A HREF="mailto:rene@debian.org">rene@debian.org</A> | GnuPG-Key ID: 248AEB73
+   `-   Fingerprint: 41FA F208 28D4 7CA5 19BB  7AD9 F859 90B0 248A EB73
+
+--Pd0ReVV5GZGQvF3a
+Content-Type: application/pgp-signature; name=&quot;signature.asc&quot;
+Content-Description: Digital signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.3 (GNU/Linux)
+
+iD8DBQE/2cFb+FmQsCSK63MRAupbAJ9r/jgVWS4ErpVJfk8RjFD7mPJTtgCfSBF/
+d7VyKWnUe4DjyOcLSL5s12c=
+=eqVo
+-----END PGP SIGNATURE-----
+
+--Pd0ReVV5GZGQvF3a--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000185.html">[Open Office] Italic Fonts
+</A></li>
+	<LI> Next message: <A HREF="000192.html">[Open Office] gui-symbol-replace breaks build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#183">[ date ]</a>
+              <a href="thread.html#183">[ thread ]</a>
+              <a href="subject.html#183">[ subject ]</a>
+              <a href="author.html#183">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

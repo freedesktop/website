@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.1.49
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:khirano%40transwift.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000209.html">
+   <LINK REL="Next"  HREF="000211.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.1.49
+   </H1>
+    <B>Hirano Kazunari
+    </B> 
+    <A HREF="mailto:khirano%40transwift.net"
+       TITLE="[Open Office] ooo-build-1.1.49">khirano@transwift.net
+       </A><BR>
+    <I>Mon, 12 Jan 2004 17:43:24 +0900</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000209.html">[Open Office] ooo-build-1.1.49
+</A></li>
+        <LI> Next message: <A HREF="000211.html">[Open Office] ooo-build-1.1.49
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#210">[ date ]</a>
+              <a href="thread.html#210">[ thread ]</a>
+              <a href="subject.html#210">[ subject ]</a>
+              <a href="author.html#210">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks Dan,
+
+Glad to see you here.
+
+Now I have done:
+[<A HREF="mailto:khirano@localhost">khirano@localhost</A> ooo-build-1.1.49]$ ./configure --with-system-gcc 
+--enable-bonobo --enable-java 
+--with-jdk-home=/home/khirano/j2sdk_nb/j2sdk1.4.2
+
+Then I got:
+
+Building openoffice
+        tag:                OOO_1_1_0
+        src:                ./src
+        build dir:          
+/home/khirano/ximian/ooo-build-1.1.49/build/OOO_1_1_0
+        distro:             Ximian
+        system gcc:         yes
+        ooo-bonobo:         yes
+        java:               yes
+        ooo-install-dir:    ooo-1.1.0
+ 
+To build run:
+        make
+        sudo make install
+
+Looks good!
+
+So I did &quot;make&quot;:
+[<A HREF="mailto:khirano@localhost">khirano@localhost</A> ooo-build-1.1.49]$ make
+Making all in po
+[snip]
+./build-ooo OOO_1_1_0 --checkout
+Setup:
+ Tag:        'OOO_1_1_0'
+ Flags:      ''
+ Suffix:     ''
+ Dir:        '/home/khirano/ximian/ooo-build-1.1.49/build'
+ DestDir:    ''
+ Path:       
+'/home/khirano/j2sdk_nb/j2sdk1.4.2:/home/khirano/ximian/ooo-build-1.1.49/build/bin:/usr/kerberos/bin:/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/home/khirano/bin'
+ Prefix:     '/usr'
+ Sysconf:    '/etc'
+ OOInBase:   '/usr/lib/ooo-1.1.0'
+ OOInstall:  '/usr/lib/ooo-1.1.0'
+ OODestDir:  ''
+ Config:     
+'--with-lang=ENUS,FREN,GERM,SPAN,ITAL,DTCH,PORT,SWED,POL,RUSS,DAN,GREEK,TURK,CHINSIM,CHINTRAD,JAPN,KOREAN,CAT,CZECH,SLOVAK,FINN   
+--enable-libart --enable-libsn --enable-crashdump=no             
+--without-fonts --disable-rpath                 --with-system-zlib 
+--enable-fontconfig                 --with-system-freetype 
+--with-jdk-home=/home/khirano/j2sdk_nb/j2sdk1.4.2'
+ OOo-Bonobo: 'yes'
+Creating environment
+Checking for source packages in /home/khirano/ximian/ooo-build-1.1.49/src
+Looking for OOO_1_1_0.tar.bz2 ... ok
+Looking for ooo-icons-OOO_1_1-7.tar.gz ... ok
+Skipping ooo-icons-OOO_1_1-7
+Reverting patches ...
+Use of uninitialized value in concatenation (.) or string at 
+/home/khirano/ximian/ooo-build-1.1.49/patches/apply.pl line 280.
+Execute:  for distro 'Ximian'
+Removing custom icons
+Exception on 'res' =&gt; '[si][cm][0-9]*\.bmp'
+Exception on 'sc/res/imglst/navipi' =&gt; 'na0.*\.bmp'
+Exception on 'sw/win/imglst' =&gt; '[sn][cr][0-9]*\.bmp'
+Binning dupped icons
+Completed cleanly.
+Poking resource builds
+find: /home/khirano/ximian/ooo-build-1.1.49/build/OOO_1_1_0/*/*.pro: no 
+such file or directory
+find: /home/khirano/ximian/ooo-build-1.1.49/build/OOO_1_1_0/*/*.pro: no 
+such file or directory
+find: /home/khirano/ximian/ooo-build-1.1.49/build/OOO_1_1_0/*/*.pro: no 
+such file or directory
+Updating source ...
+Re-applying patches
+Use of uninitialized value in concatenation (.) or string at 
+/home/khirano/ximian/ooo-build-1.1.49/patches/apply.pl line 280.
+Execute:  for distro 'Ximian'
+PATCHPATH =&gt; .:../OOO_1_1
+ 
+ 
+** Error ** - Can't find file 
+/home/khirano/ximian/ooo-build-1.1.49/patches/OOO_1_1_0/parallel-build-fix.patch
+ 
+ 
+make[1]: *** [all] error 1
+make[1]: exit directory `/home/khirano/ximian/ooo-build-1.1.49/bin'
+make: *** [all-recursive] error 1
+[<A HREF="mailto:khirano@localhost">khirano@localhost</A> ooo-build-1.1.49]$
+
+Why do I get this error?
+
+khirano
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000209.html">[Open Office] ooo-build-1.1.49
+</A></li>
+	<LI> Next message: <A HREF="000211.html">[Open Office] ooo-build-1.1.49
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#210">[ date ]</a>
+              <a href="thread.html#210">[ thread ]</a>
+              <a href="subject.html#210">[ subject ]</a>
+              <a href="author.html#210">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

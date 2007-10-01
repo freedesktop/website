@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot; module
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-November/index.html" >
+   <LINK REL="made" HREF="mailto:william.lachance%40sympatico.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000570.html">
+   <LINK REL="Next"  HREF="000573.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot; module
+   </H1>
+    <B>William Lachance
+    </B> 
+    <A HREF="mailto:william.lachance%40sympatico.ca"
+       TITLE="[Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot; module">william.lachance@sympatico.ca
+       </A><BR>
+    <I>Mon, 08 Nov 2004 04:59:23 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000570.html">[Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot; module
+</A></li>
+        <LI> Next message: <A HREF="000573.html">[Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot;
+ module
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#567">[ date ]</a>
+              <a href="thread.html#567">[ thread ]</a>
+              <a href="subject.html#567">[ subject ]</a>
+              <a href="author.html#567">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, 2004-07-11 at 19:02 +0100, Fridrich Strba wrote:
+&gt;<i> William,
+</I>&gt;<i> 
+</I>&gt;<i> William Lachance wrote:
+</I>&gt;<i> &gt; What this brings us:
+</I>&gt;<i> &gt; 1. Easier regression testing of WriterPerfect. Now we can use a sane
+</I>&gt;<i> &gt; command-line utility to see what's gone wrong with a minor change! This
+</I>&gt;<i> &gt; will also make it _much_ easier to refactor WriterPerfect in the future.
+</I>&gt;<i> 
+</I>&gt;<i> Authomatic regression: YES! Maybe we could even have automatically 
+</I>&gt;<i> validated the resulting XML ??? OK, just an idea.
+</I>
+Sounds like a pretty neat idea. It would be super trivial to check
+whether the resultant output is a valid XML document-- it may even be
+possible to check the semantics by using an XML schema (?).
+
+&gt;<i> BTW, would there be a way to integrate our (libwpd) file-type detection 
+</I>&gt;<i> mechanism in the build inside OOo tree? I was thinking that calling 
+</I>&gt;<i> WPDocument::isFooSupported would be possible from iodetect.hxx, but 
+</I>&gt;<i> mmeeks believes that it would just unnecessarily add to loaded elements. 
+</I>&gt;<i> I tried to think about another solution, but I do not see how to 
+</I>&gt;<i> identify the WP42 documents without Marc's heuristics. Any ideas?
+</I>
+Yes, this is an issue-- last I checked the hardcoded filedetection stuff
+didn't handle OLE documents either. I guess we could try splitting out
+the file detection stuff from libwpd itself and put that in a seperate
+shared library. Although that seems like it's treading dangerously into
+the waters of overengineering. Alternately, we could enhance the file
+detection stuff in OpenOffice.org to handle everything libwpd does.
+
+&gt;<i> P.S. In one week time I should be back from my leave and have some more 
+</I>&gt;<i> time for serious work.
+</I>
+No rush-- hope your son is doing well.
+
+Best,
+-- 
+William Lachance &lt;<A HREF="mailto:william.lachance@sympatico.ca">william.lachance@sympatico.ca</A>&gt;
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000570.html">[Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot; module
+</A></li>
+	<LI> Next message: <A HREF="000573.html">[Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot;
+ module
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#567">[ date ]</a>
+              <a href="thread.html#567">[ thread ]</a>
+              <a href="subject.html#567">[ subject ]</a>
+              <a href="author.html#567">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Internal quickstarter
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To=1140976668.4270.49.camel%40linux.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001667.html">
+   <LINK REL="Next"  HREF="001669.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Internal quickstarter</H1>
+    <B>Jan Uhlir</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To=1140976668.4270.49.camel%40linux.site"
+       TITLE="[Open Office] Internal quickstarter">espinosa_cz at centrum.cz
+       </A><BR>
+    <I>Wed Mar  1 18:17:28 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001667.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+        <LI>Next message: <A HREF="001669.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1668">[ date ]</a>
+              <a href="thread.html#1668">[ thread ]</a>
+              <a href="subject.html#1668">[ subject ]</a>
+              <a href="author.html#1668">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Michael and Peter
+
+&gt;<i>  Hi Jan,
+</I>&gt;<i> 
+</I>&gt;<i> 	Did you mean to CC Peter / the list ?
+</I>
+He is not subscribed in this mailing list? OK, I will send him a copy to be sure.
+
+&gt;<i> &gt; Well, I don't know what your experience with KDE is  - no offence 
+</I>&gt;<i> &gt; please! - but KDE enables running Gnome applets for a long time.
+</I>&gt;<i> 
+</I>&gt;<i> ;-) OTOH KDE applets in Gnome suck badly; AFAIR a WM spec. violation on
+</I>&gt;<i> that side.
+</I>
+Anyway, we are the lucky ones. GTK applets runs on KDE reasonably
+well, the rest is not OOo business.
+
+&gt;<i> 
+</I>&gt;<i> &gt; In my KDE systray are KDE as well as Gnome applets running
+</I>&gt;<i> &gt; right now - Gaim and Gnome Network Monitor (it' better than KDE
+</I>&gt;<i> &gt; default one, so I'm using it) 
+</I>&gt;<i> 
+</I>&gt;<i> 	Sure.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; What I want to say there is absolutely no need to do cross-desktop
+</I>&gt;<i> &gt; tweaking of any file. Just make a nice Gnome applet and don't disable
+</I>&gt;<i> &gt; it when KDE desktop is detected. Better not to detect running desktop 
+</I>&gt;<i> &gt; environment at all. They are all freedesktop.org compatible, 
+</I>&gt;<i> &gt; aren't they? ;-)
+</I>&gt;<i> 
+</I>&gt;<i> 	So - the thing is; if you want to test having Qt and Gtk+ both talking
+</I>&gt;<i> to X in the same process, and integrating nicely *And* take the
+</I>&gt;<i> performance hit from having both of those in process - that's fine;  but
+</I>&gt;<i> there are a ton of people out there with a rather frenzied antipathy to
+</I>&gt;<i> any gtk+ on KDE and VV. &amp; I don't want to fight them :-)
+</I>
+Let's concentrate on GTK plugin. 
+For GTK people: take it or leave it and use alternative external project.
+Just not disable completely quickstarter option.
+
+
+&gt;<i> It's easy to patch the comparison out; test it - if it works - go for
+</I>&gt;<i> it. Of course - more code is really required - to initialize gtk+
+</I>&gt;<i> correctly if it has not already been done [ for the right display etc. ]
+</I>&gt;<i> - and that is why we just check if gtk+ is inited already; but ... that
+</I>&gt;<i> code can be added: but it's work &amp; testing &amp; I don't have a KDE system
+</I>&gt;<i> &amp; ... :-)
+</I>
+I will look at it.
+
+
+&gt;<i> &gt; I suspect, that detection of running environment was &quot;enhanced&quot;
+</I>&gt;<i> 
+</I>&gt;<i> Not sure; I didn't touch that code for 1.
+</I>
+Dates at patch files are quite new so someone did.
+I will look at this.
+
+&gt;<i> 
+</I>&gt;<i> &gt; Well I discovered that oowriter runs ooqstarter which runs
+</I>&gt;<i> &gt; soffice (shell script) which lanches soffice.bin soffice.
+</I>&gt;<i> &gt; I can run soffice.bin stright away. So what is the point of this step?
+</I>&gt;<i> &gt; Can I say ooqstarter to skip this step?
+</I>&gt;<i> 
+</I>&gt;<i> Sure - ooqstart however helps you *a lot* on the 2nd start - that is
+</I>&gt;<i> particularly nice wrt. responsiveness - it also gives you the splash
+</I>&gt;<i> fast.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; So my question is how to launch ooffice not to be completely 
+</I>&gt;<i> &gt; released form memory when the last window is closed.
+</I>&gt;<i> &gt; Without this option any external quickstarter is useles.
+</I>&gt;<i>
+</I>&gt;<i> Use the systray quickstarter ;-&gt;
+</I>
+Sorry I didn't get the point? I'm using systray quickstarter.
+
+Anyway I also tried preloading &quot;manually&quot; using two consoles.
+In one:
+/usr/lib/OpenOffice.org.2/program/soffice.bin -nologo -nodefault
+..to preload OOo
+In the other: 
+oowriter or oofice or ooqstart -writer or soffice.bin
+The first lunch was well acclerated, I get times even under 1s ! Amazing!
+But when I close Writer window, preloading instance was also shutted.
+So with another Writer launch I got just 'usual' times because nothing 
+was preloaded now.
+Is this an intended behaving? 
+Under such circumstances any external preloader couldn't work :( 
+
+Anyway, I must congratulate to OOo developers team, overall statup times 
+are quite good now.
+
+1) preloaded OOo
+$time -p /usr/lib/OpenOffice.org.2/program/ooqstart -writer
+real 0.72 - COOL !! 
+
+2) preloaded OOo
+$time -p /usr/lib/OpenOffice.org.2/program/soffice.bin -writer -nologo
+real 1.67
+
+3) nothing preloaded, repeated ooqstart
+real 4.83 - GOOD time, but repeated startup has no effect, startup times were the same, roughly around 4.6s, strange
+
+4) nothing preloaded, repeated soffice.bin
+time -p /usr/lib/OpenOffice.org.2/program/soffice.bin -writer -nologo
+6.5s - 8s
+time -p /usr/lib/OpenOffice.org.2/program/soffice.bin -nologo
+4s - 5s
+ 
+gcc4.0.2 vanilla, 2Ghz IBM ThinkPad, 512MB RAM 
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001667.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+	<LI>Next message: <A HREF="001669.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1668">[ date ]</a>
+              <a href="thread.html#1668">[ thread ]</a>
+              <a href="subject.html#1668">[ subject ]</a>
+              <a href="author.html#1668">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] cws-extract did not extract everything by default
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20cws-extract%20did%20not%20extract%20everything%20by%20default&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002113.html">
+   <LINK REL="Next"  HREF="002116.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] cws-extract did not extract everything by default</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20cws-extract%20did%20not%20extract%20everything%20by%20default&In-Reply-To="
+       TITLE="[Open Office] cws-extract did not extract everything by default">pmladek at suse.cz
+       </A><BR>
+    <I>Tue Oct 31 12:54:40 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002113.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+        <LI>Next message: <A HREF="002116.html">[Open Office] cws-extract did not extract everything by default
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2115">[ date ]</a>
+              <a href="thread.html#2115">[ thread ]</a>
+              <a href="subject.html#2115">[ subject ]</a>
+              <a href="author.html#2115">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I have commited a fix to the CWS gtkquickstart2 using the tool cws-commit.
+Then I wanted to double check that everything was really commited, so I did:
+
+	cws-extract gtkquickstart2
+
+Unfortunatelly, one change did not appear in the extracted patch. So, I tried 
+to extract/diff it by hand and the change was there.
+
+It went out that the change was not visible with the anonymous cvs access. 
+Note that cws-extract uses the cvs_root from the current sources (usually the 
+anonymous one). You can redefine it by -d command but ...
+
+Do you know what is wrong?
+
+Thanks for help,
+Petr
+
+
+
+PS: I have attached output from the following commands to show the problem:
+
+cvs -d :pserver:<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">anoncvs at anoncvs.services.openoffice.org</A>:/cvs 
+diff -kk -upN -rCWS_SRC680_GTKQUICKSTART2_ANCHOR -rcws_src680_gtkquickstart2 
+sfx2 &gt;anonymous.diff
+
+and
+
+cvs -d :pserver:<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at localhost</A>:2401/cvs 
+diff -kk -upN -rCWS_SRC680_GTKQUICKSTART2_ANCHOR -rcws_src680_gtkquickstart2 
+sfx2 &gt;pmladek.diff
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: anonymous.diff
+Type: text/x-diff
+Size: 20684 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20061031/c9a56915/attachment-0002.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20061031/c9a56915/attachment-0002.bin</A> 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: pmladek.diff
+Type: text/x-diff
+Size: 21355 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20061031/c9a56915/attachment-0003.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20061031/c9a56915/attachment-0003.bin</A> 
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002113.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+	<LI>Next message: <A HREF="002116.html">[Open Office] cws-extract did not extract everything by default
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2115">[ date ]</a>
+              <a href="thread.html#2115">[ thread ]</a>
+              <a href="subject.html#2115">[ subject ]</a>
+              <a href="author.html#2115">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

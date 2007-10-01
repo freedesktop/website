@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] More src680-m76 build breakages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:mjayant%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000760.html">
+   <LINK REL="Next"  HREF="000765.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] More src680-m76 build breakages
+   </H1>
+    <B>Jayant B M
+    </B> 
+    <A HREF="mailto:mjayant%40novell.com"
+       TITLE="[Open Office] More src680-m76 build breakages">mjayant@novell.com
+       </A><BR>
+    <I>Wed, 09 Feb 2005 11:47:56 +0530</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000760.html">[Open Office] More src680-m76 build breakages
+</A></li>
+        <LI> Next message: <A HREF="000765.html">[Open Office] More src680-m76 build breakages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#762">[ date ]</a>
+              <a href="thread.html#762">[ thread ]</a>
+              <a href="subject.html#762">[ subject ]</a>
+              <a href="author.html#762">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+  Its working fine .. Prolly some deliver issue I guess :(
+
+Regards,
+Jayant
+
+On Tue, 2005-02-08 at 00:53 +0100, Bernhard Rosenkraenzer wrote:
+&gt;<i> This seems to be caused by sd-export-html-theme.diff:
+</I>&gt;<i>=20
+</I>&gt;<i> Making: ../unxlngi4.pro/lib/libsdui680li.so
+</I>&gt;<i> gcc -c -fPIC -o ../unxlngi4.pro/slo/sdui_dflt_version.o -DUNX =20
+</I>&gt;<i> -I../unxlngi4.pro/inc /usr/src/ark/BUILD/ooo-build-HEAD/build/src680-m76/=
+</I>solenv/src/version.c
+&gt;<i> gcc -O2 -Bsymbolic -z combreloc -z defs -Wl,-rpath,'$ORIGIN' -shared -Wl,=
+</I>-O1=20
+&gt;<i> -Wl,--version-script ../unxlngi4.pro/misc/sdui_sdui680li.map=20
+</I>&gt;<i> -L../unxlngi4.pro/lib-L../lib=20
+</I>&gt;<i> -L/usr/src/ark/BUILD/ooo-build-HEAD/build/src680-m76/solenv/unxlngi4/lib=20
+</I>&gt;<i> -L/usr/src/ark/BUILD/ooo-build-HEAD/build/src680-m76/solver/680/unxlngi4.=
+</I>pro/lib=20
+&gt;<i> -L/usr/src/ark/BUILD/ooo-build-HEAD/build/src680-m76/solenv/unxlngi4/lib=20
+</I>&gt;<i> -LNO_JAVA_HOME/lib -LNO_JAVA_HOME/jre/lib/i386=20
+</I>&gt;<i> -LNO_JAVA_HOME/jre/lib/i386/client -LNO_JAVA_HOME/jre/lib/i386/native_thr=
+</I>eads=20
+&gt;<i> -L/usr/X11R6/lib=20
+</I>&gt;<i> -L/usr/lib/mozilla-1.8b ../unxlngi4.pro/slo/sdui_dflt_version.o ../unxlng=
+</I>i4.pro/slo/sdui_dflt_description.o=20
+&gt;<i> -o ../unxlngi4.pro/lib/libsdui680li.so ../unxlngi4.pro/slo/masterlayoutdl=
+</I>g.o ../unxlngi4.pro/slo/headerfooterdlg.o ../unxlngi4.pro/slo/sduiexp.o ../=
+unxlngi4.pro/slo/sddlgfact.o ../unxlngi4.pro/slo/brkdlg.o ../unxlngi4.pro/s=
+lo/copydlg.o ../unxlngi4.pro/slo/custsdlg.o ../unxlngi4.pro/slo/dlgchar.o .=
+/unxlngi4.pro/slo/dlgass.o ../unxlngi4.pro/slo/dlgassim.o ../unxlngi4.pro/=
+slo/dlgfield.o ../unxlngi4.pro/slo/dlgpage.o ../unxlngi4.pro/slo/dlgsnap.o =
+./unxlngi4.pro/slo/inspage.o ../unxlngi4.pro/slo/ins_paste.o ../unxlngi4.p=
+ro/slo/inspagob.o ../unxlngi4.pro/slo/morphdlg.o ../unxlngi4.pro/slo/newfoi=
+l.o ../unxlngi4.pro/slo/dlgolbul.o ../unxlngi4.pro/slo/paragr.o ../unxlngi4=
+pro/slo/present.o ../unxlngi4.pro/slo/printdlg.o ../unxlngi4.pro/slo/prlte=
+mpl.o ../unxlngi4.pro/slo/sdpreslt.o ../unxlngi4.pro/slo/tabtempl.o ../unxl=
+ngi4.pro/slo/tpaction.o ../unxlngi4.pro/slo/tpoption.o ../unxlngi4.pro/slo/=
+vectdlg.o ../unxlngi4.pro/slo/prntopts.o ../unxlngi4.pro/slo/bulmaper.o ../=
+unxlngi4.pro/slo/htmlattr.o ../unxlngi4.pro/slo/pubdlg.o=20
+&gt;<i> -lsd680li -lsvx680li -lsfx680li -lsb680li -lbasegfx680li -lgo680li -lso68=
+</I>0li=20
+&gt;<i> -lsvt680li -ltk680li -lvcl680li -lsvl680li -lsot680li -lutl680li -ltl680l=
+</I>i=20
+&gt;<i> -lcomphelp4gcc3 -lucbhelper3gcc3 -luno_cppuhelpergcc3 -luno_cppu -lvos3gc=
+</I>c3=20
+&gt;<i> -luno_sal -ldl -lpthread -lm -Wl,-Bdynamic -lstlport_gcc -lstdc++
+</I>&gt;<i> ../unxlngi4.pro/slo/pubdlg.o(.text+0x7135): In function=20
+</I>&gt;<i> `SdPublishingDlg::LoadPreviewButtons()':
+</I>&gt;<i> pubdlg.cxx: undefined reference to `SdHtmlTheme::getTheme()'
+</I>&gt;<i> ../unxlngi4.pro/slo/pubdlg.o(.text+0x7190):pubdlg.cxx: undefined referenc=
+</I>e to=20
+&gt;<i> `SdHtmlTheme::getThumbnail(int) const'
+</I>&gt;<i> ../unxlngi4.pro/slo/pubdlg.o(.text+0x7201):pubdlg.cxx: undefined referenc=
+</I>e to=20
+&gt;<i> `SdHtmlTheme::getThemeCount() const'
+</I>&gt;<i> ../unxlngi4.pro/slo/pubdlg.o(.text+0x7214):pubdlg.cxx: undefined referenc=
+</I>e to=20
+&gt;<i> `SdHtmlTheme::~SdHtmlTheme()'
+</I>&gt;<i>=20
+</I>&gt;<i> To make things somewhat more strange:
+</I>&gt;<i> $ nm sd/unxlngi4.pro/lib/libsd680li.so |grep getTheme
+</I>&gt;<i> [...] 0027749c t _ZN11SdTheme8getThemeEv
+</I>&gt;<i> $ c++filt _ZN11SdTheme8getThemeEv
+</I>&gt;<i> SdHtmlTheme::getTheme()
+</I>&gt;<i>=20
+</I>&gt;<i> So this stuff definitely is being defined...
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000760.html">[Open Office] More src680-m76 build breakages
+</A></li>
+	<LI> Next message: <A HREF="000765.html">[Open Office] More src680-m76 build breakages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#762">[ date ]</a>
+              <a href="thread.html#762">[ thread ]</a>
+              <a href="subject.html#762">[ subject ]</a>
+              <a href="author.html#762">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,510 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Wednesday
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:rsiddhartha%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000660.html">
+   <LINK REL="Next"  HREF="000659.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Wednesday
+   </H1>
+    <B>Raul Siddhartha
+    </B> 
+    <A HREF="mailto:rsiddhartha%40novell.com"
+       TITLE="[Open Office] Status Wednesday">rsiddhartha@novell.com
+       </A><BR>
+    <I>Wed, 22 Dec 2004 16:24:15 +0530</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000660.html">[Open Office] Status tuesday
+</A></li>
+        <LI> Next message: <A HREF="000659.html">[Open Office] Status ( 22-12-04 )
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#658">[ date ]</a>
+              <a href="thread.html#658">[ thread ]</a>
+              <a href="subject.html#658">[ subject ]</a>
+              <a href="author.html#658">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-+5EnKWlpJ0hvyD6AbBLp
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+Hi!
+
+- Ported the sd-save-image-context-menu.diff over to HEAD. Still needs
+translations to be added into the new localize.sdf, I think.
+- Ported the corresponding sw-save-image-context-menu.diff as much as
+done over to HEAD as well.
+- Made up more notes based on the same.
+
+Regards,
+Raul
+
+--=-+5EnKWlpJ0hvyD6AbBLp
+Content-Disposition: attachment; filename=sd-save-image-context-menu.diff
+Content-Type: text/x-patch; name=sd-save-image-context-menu.diff; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+--- sd/inc/app.hrc	2004-12-07 18:49:43.000000000 +0530
++++ sd/inc/app.hrc	2004-12-22 13:45:04.759048116 +0530
+@@ -487,4 +487,7 @@
+ #define SID_RENAME_MASTER_PAGE              (SID_SD_START+433)
+ #define SID_CLOSE_MASTER_VIEW               (SID_SD_START+434)
+ 
++// FIXME get an official SID
++#define SID_SAVE_GRAPHIC               (SID_SD_START+450)
++
+ #endif
+--- sd/sdi/_drvwsh.sdi	2004-12-07 18:50:08.000000000 +0530
++++ sd/sdi/_drvwsh.sdi	2004-12-22 13:46:11.454986298 +0530
+@@ -115,6 +115,11 @@ interface DrawView : Object
+         ExecMethod = FuTemporary ;
+         StateMethod = GetMenuState ;
+     ]
++    SID_SAVE_GRAPHIC // ole : yes, status : ?
++    [
++        ExecMethod = FuTemporary ;
++        StateMethod = GetMenuState ;
++    ]
+     SID_CUT // ole : no, status : ?
+     [
+         ExecMethod = FuSupport ;
+--- sd/sdi/sdraw.sdi	2004-12-07 18:50:09.000000000 +0530
++++ sd/sdi/sdraw.sdi	2004-12-22 13:49:14.576627998 +0530
+@@ -4818,6 +4818,31 @@ SfxVoidItem OriginalSize SID_ORIGINAL_SI
+ ]
+ 
+ //--------------------------------------------------------------------------
++SfxVoidItem SaveGraphic SID_SAVE_GRAPHIC
++()
++[
++	/* flags: */  
++	AutoUpdate = FALSE, 
++	Cachable = Cachable, 
++	FastCall = FALSE, 
++	HasCoreId = FALSE, 
++	HasDialog = FALSE, 
++	ReadOnlyDoc = TRUE, 
++	Toggle = FALSE, 
++	Container = FALSE, 
++	RecordAbsolute = FALSE, 
++	RecordPerSet;
++	Synchron;
++
++	/* config: */ 
++	AccelConfig = FALSE, 
++	MenuConfig = FALSE, 
++	StatusBarConfig = FALSE, 
++	ToolBoxConfig = FALSE, 
++	GroupId = GID_MODIFY;
++]
++
++//--------------------------------------------------------------------------
+ SfxBoolItem OutlineMode SID_OUTLINEMODE
+ 
+ [
+--- sd/source/ui/app/popup2_tmpl.src	2004-12-07 18:50:16.000000000 +0530
++++ sd/source/ui/app/popup2_tmpl.src	2004-12-22 14:34:39.511403825 +0530
+@@ -569,7 +569,14 @@
+ 		MN_ORIGINAL_SIZE
+ 		MN_STARIMAGE
+ 		MN_COLORRESOLUTION
+-		SEPARATOR
++		MenuItem\
++		{\
++		        Identifier = SID_SAVE_GRAPHIC ; \
++			HelpID = SID_SAVE_GRAPHIC ; \
++			Text [ de ] = &quot;~Grafik speichern...&quot; ; \
++			Text [ en-US ] = &quot;Save ~Graphic...&quot; ; \
++			Text [ x-comment ] = &quot; &quot;; \
++		};
+ 		MN_CHAR_PARAGRAPH
+ 		SEPARATOR
+ 		MN_POSITION
+--- sd/source/ui/inc/DrawViewShell.hxx	2004-12-07 18:50:23.000000000 +0530
++++ sd/source/ui/inc/DrawViewShell.hxx	2004-12-22 14:00:43.278211965 +0530
+@@ -490,6 +490,9 @@ private:
+         PageKind ePageKind,
+         SdPage* pPage);
+ 
++        /** Saves the selected graphic to a user-specified file */
++        void SaveGraphic( );
++
+ 	::com::sun::star::uno::Reference&lt; ::com::sun::star::scanner::XScannerManager &gt;	mxScannerManager;
+ 	::com::sun::star::uno::Reference&lt; ::com::sun::star::lang::XEventListener &gt;		mxScannerListener;
+ 	TransferableClipboardListener*                                                  pClipEvtLstnr;
+--- sd/source/ui/view/drviews2.cxx	2004-12-07 18:50:29.000000000 +0530
++++ sd/source/ui/view/drviews2.cxx	2004-12-22 14:53:06.888109360 +0530
+@@ -112,6 +112,35 @@
+ #include &lt;basic/sbstar.hxx&gt;
+ #endif
+ 
++#ifndef INCLUDED_SVTOOLS_PATHOPTIONS_HXX
++#include &lt;svtools/pathoptions.hxx&gt;
++#endif
++#ifndef _COM_SUN_STAR_UI_DIALOGS_XFILEPICKER_HPP_
++#include &lt;com/sun/star/ui/dialogs/XFilePicker.hpp&gt;
++#endif
++#ifndef _COM_SUN_STAR_UI_DIALOGS_XFILTERMANAGER_HPP_
++#include &lt;com/sun/star/ui/dialogs/XFilterManager.hpp&gt;
++#endif
++#ifndef  _COM_SUN_STAR_UI_DIALOGS_TEMPLATEDESCRIPTION_HPP_
++#include &lt;com/sun/star/ui/dialogs/TemplateDescription.hpp&gt;
++#endif
++#ifndef _FILEDLGHELPER_HXX
++#include &lt;sfx2/filedlghelper.hxx&gt;
++#endif
++#ifndef _URLOBJ_HXX
++#include &lt;tools/urlobj.hxx&gt;
++#endif
++#ifndef _FILTER_HXX
++#include &lt;svtools/filter.hxx&gt;
++#endif
++#ifndef _SVX_IMPGRF_HXX
++#include &lt;svx/impgrf.hxx&gt;
++#endif
++#ifndef _XOUTBMP_HXX
++#include &lt;svx/xoutbmp.hxx&gt;
++#endif
++
++
+ #define ITEMID_FIELD	EE_FEATURE_FIELD
+ #ifndef _SVX_FLDITEM_HXX //autogen
+ #include &lt;svx/flditem.hxx&gt;
+@@ -1256,6 +1285,12 @@ void DrawViewShell::FuTemporary(SfxReque
+ 			rReq.Done();
+ 		break;
+ 
++		case SID_SAVE_GRAPHIC:
++			SaveGraphic();
++			Cancel();
++			rReq.Ignore();
++			break;
++
+ 		case SID_DRAW_FONTWORK:
+ 		case SID_DRAW_FONTWORK_VERTICAL:
+ 		{
+@@ -1306,4 +1341,89 @@ SdPage* DrawViewShell::CreateOrDuplicate
+     return pNewPage;
+ }
+ 
++
++// From sw/source/ui/docvw/romenu.cxx
++void lcl_GetPreferedExtension( String &amp;rExt, const Graphic &amp;rGrf )
++{
++	// dann ggfs. ueber die native-Info der Grafik den &quot;besten&quot;
++	// Filter vorschlagen
++	const sal_Char* pExt = &quot;png&quot;;
++	switch( ((Graphic *)&amp;rGrf)-&gt;GetLink().GetType() )
++	{
++		case GFX_LINK_TYPE_NATIVE_GIF:      pExt = &quot;gif&quot;; break;
++		case GFX_LINK_TYPE_NATIVE_TIF:      pExt = &quot;tif&quot;; break;
++		case GFX_LINK_TYPE_NATIVE_WMF:      pExt = &quot;wmf&quot;; break;
++		case GFX_LINK_TYPE_NATIVE_MET:      pExt = &quot;met&quot;; break;
++		case GFX_LINK_TYPE_NATIVE_PCT:		pExt = &quot;pct&quot;; break;
++		case GFX_LINK_TYPE_NATIVE_JPG:		pExt = &quot;jpg&quot;; break;
++	}
++	rExt.AssignAscii( pExt );
++}
++
++
++void DrawViewShell::SaveGraphic()
++{
++
++	using namespace com::sun::star::uno;
++	using namespace com::sun::star::ui::dialogs;
++	using namespace ::sfx2;
++
++	SvtPathOptions aPathOpt;
++	String sGrfPath( aPathOpt.GetGraphicPath() );
++
++	FileDialogHelper aDlgHelper( TemplateDescription::FILESAVE_SIMPLE, 0 );
++	Reference &lt; XFilePicker &gt; xFP = aDlgHelper.GetFilePicker();
++
++	INetURLObject aPath;
++	aPath.SetSmartURL( sGrfPath);
++
++	SdrGrafObj *pGrafObj = PTR_CAST( SdrGrafObj, pDrView-&gt;GetMarkedObjectList().GetMark( 0 )-&gt;GetObj() );
++	if (0 == pGrafObj )
++		return;
++
++	const Graphic &amp;rGraphic = pGrafObj-&gt;GetGraphic();
++
++	String aExt;
++	lcl_GetPreferedExtension( aExt, rGraphic );
++	aExt.ToLowerAscii();
++	int nDfltFilter = INT_MAX;
++
++	xFP-&gt;setDisplayDirectory( aPath.GetMainURL(INetURLObject::DECODE_TO_IURI) );
++
++	GraphicFilter&amp; rGF = *GetGrfFilter();
++	const USHORT nCount = rGF.GetExportFormatCount();
++
++	Reference&lt;XFilterManager&gt; xFltMgr(xFP, UNO_QUERY);
++
++	for ( int i = 0; i &lt; nCount; i++ )
++	{
++	    xFltMgr-&gt;appendFilter( rGF.GetExportFormatName( i ), rGF.GetExportWildcard( i ) );
++	    if ( COMPARE_EQUAL == aExt.CompareIgnoreCaseToAscii(rGF.GetExportFormatShortName( i ).ToLowerAscii() ))
++			nDfltFilter = i;
++	}
++
++	if( INT_MAX == nDfltFilter )
++		return;
++	
++	xFltMgr-&gt;setCurrentFilter( rGF.GetExportFormatName( nDfltFilter ) );
++
++	if( aDlgHelper.Execute() == ERRCODE_NONE )
++	{
++		String sPath( xFP-&gt;getFiles().getConstArray()[0] );
++		//verwendeten Pfad merken - bitte nicht wieder wegoptimieren!
++		aPath.SetSmartURL( sPath);
++		sGrfPath = aPath.GetPath();
++		
++		int nFilter;
++		if ( xFltMgr-&gt;getCurrentFilter().getLength() &amp;&amp; rGF.GetExportFormatCount() )
++			nFilter = rGF.GetExportFormatNumber( xFltMgr-&gt;getCurrentFilter() );
++		else
++			nFilter = GRFILTER_FORMAT_DONTKNOW;
++		String aFilter( rGF.GetExportFormatShortName( nFilter ) );
++		XOutBitmap::WriteGraphic( rGraphic, sPath, aFilter,
++								  XOUTBMP_DONT_EXPAND_FILENAME );
++		return;
++	}
++}
++
+ } // end of namespace sd
+--- sd/source/ui/view/drviewsj.cxx	2004-10-15 16:06:30.000000000 +0530
++++ sd/source/ui/view/drviewsj.cxx	2004-12-22 14:11:09.285155629 +0530
+@@ -193,7 +193,8 @@ void DrawViewShell::GetMenuStateSel( Sfx
+ 			SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_BEFORE_OBJ ) ||
+ 			SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_BEHIND_OBJ ) ||
+ 			SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_REVERSE_ORDER ) ||
+-			SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_ORIGINAL_SIZE ) )
++			SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_ORIGINAL_SIZE ) ||
++			SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_SAVE_GRAPHIC ) )
+ 		{
+ 			const SdrObject* pObj = rMarkList.GetMark(0)-&gt;GetObj();
+ 			UINT32 nInv = pObj-&gt;GetObjInventor();
+@@ -211,6 +212,11 @@ void DrawViewShell::GetMenuStateSel( Sfx
+ 					rSet.DisableItem(SID_ORIGINAL_SIZE);
+             }
+ 
++                        if( !( pObj-&gt;ISA( SdrGrafObj ) ) )
++			{
++				rSet.DisableItem( SID_SAVE_GRAPHIC );
++			}
++
+ 			// Wenn es sich um kein Gruppenobjekt oder 3D-Objekt handelt
+ 			// wird &quot;Gruppe betreten&quot; disabled
+ 			if( !( ( pObj-&gt;ISA( SdrObjGroup ) &amp;&amp; nInv == SdrInventor ) ||
+
+--=-+5EnKWlpJ0hvyD6AbBLp
+Content-Disposition: attachment; filename=sw-save-image-context-menu.diff
+Content-Type: text/x-patch; name=sw-save-image-context-menu.diff; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+--- sw/inc/cmdid.h	2004-12-07 18:57:10.000000000 +0530
++++ sw/inc/cmdid.h	2004-12-21 19:08:39.000000000 +0530
+@@ -159,6 +159,7 @@ Achtung: Ab sofort sind in diesem File k
+ 
+ #define FN_GET_DOCSTAT			(FN_FILE + 33)	  /* Dokumentstatistik einzeln auslesen */
+ 
++#define FN_SAVE_GRAPHIC       (FN_FILE + 34)    /* Save embedded graphic as */
+ 
+ #define FN_SAVE_SELECTION       (FN_FILE + 35)    /* Selektion speichern */
+ 
+--- sw/sdi/_grfsh.sdi	2004-10-15 16:13:21.000000000 +0530
++++ sw/sdi/_grfsh.sdi	2004-12-21 20:15:52.000000000 +0530
+@@ -85,6 +85,13 @@ interface BaseTextGraphic : Selection
+ 		DisableFlags=&quot;SW_DISABLE_ON_PROTECTED_CURSOR&quot;;
+ 	]
+ 
++	FN_SAVE_GRAPHIC
++	[
++		ExecMethod = Execute ;
++		StateMethod = NoState ;
++		DisableFlags=&quot;SW_DISABLE_ON_PROTECTED_CURSOR&quot;;
++	]
++
+ 	SID_INSERT_GRAPHIC // zeigt auf FN_FORMAT_GRAFIC_DLG
+ 	[
+ 		ExecMethod = Execute ;
+--- sw/sdi/swriter.sdi	2004-11-29 14:28:57.000000000 +0530
++++ sw/sdi/swriter.sdi	2004-12-21 19:13:45.000000000 +0530
+@@ -3466,6 +3466,31 @@ SfxVoidItem GraphicDialog FN_FORMAT_GRAF
+ ]
+ 
+ //--------------------------------------------------------------------------
++SfxVoidItem SaveGraphic FN_SAVE_GRAPHIC
++()
++[
++	/* flags: */
++	AutoUpdate = FALSE,
++	Cachable = Cachable,
++	FastCall = FALSE,
++	HasCoreId = FALSE,
++	HasDialog = TRUE,
++	ReadOnlyDoc = FALSE,
++	Toggle = FALSE,
++	Container = FALSE,
++	RecordAbsolute = FALSE,
++	RecordPerItem;
++	Asynchron;
++
++	/* config: */
++	AccelConfig = TRUE,
++	MenuConfig = TRUE,
++	StatusBarConfig = FALSE,
++	ToolBoxConfig = TRUE,
++	GroupId = GID_GRAPHIC;
++]
++
++//--------------------------------------------------------------------------
+ SfxVoidItem Grow FN_GROW_FONT_SIZE
+ ()
+ [
+--- sw/source/ui/app/localize.sdf	2004-12-07 18:57:26.000000000 +0530
++++ sw/source/ui/app/localize.sdf	2004-12-21 21:46:58.966499088 +0530
+@@ -4120,6 +4120,34 @@ sw	source\ui\app\mn.src	0	menuitem	MN_FR
+ sw	source\ui\app\mn.src	0	menuitem	MN_FRM	FN_FORMAT_FRAME_DLG	FN_FORMAT_FRAME_DLG		0	zh-TW	文字方塊(~F)...				2004-11-23 13:36:10.357
+ sw	source\ui\app\mn.src	0	menuitem	MN_FRM_CAPTION_ITEM	FN_INSERT_CAPTION	FN_INSERT_CAPTION		0	pt-BR	~Legenda...				2004-11-23 13:36:10.357
+ sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_FORMAT_GRAFIC_DLG	FN_FORMAT_GRAFIC_DLG		0	pt-BR	~Figuras...				2004-11-23 13:36:10.357
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	ar	...حفظ الصورة				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	ca	Desa ~imatge...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	cs	Uložit obrázek				2003-10-21 15:24:56.263
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	cz	Uložit obrázek				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	da	Gem grafik...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	el	Αποθήκευση ~γραφικού...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	es	Guardar ~imagen...				2004-10-06 18:01:49.373
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	et	Save Graphic...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	fi	Tallenna grafiikka...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	fr	Enregistrer l'~image...				2004-10-06 18:01:49.373
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	he	~Grafik speichern...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	hi-IN	सुचित्रों को संचित करो...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	hu	Kép mentése...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	it	~Salva immagine...				2004-10-06 18:01:49.373
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	ja	図の保存...				2004-10-06 18:01:49.373
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	ko	그래픽 저장...				2004-10-06 18:01:49.373
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	nl	Afbeelding ops~laan...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	pl	Zapisz grafikę...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	pt	~Guardar imagem...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	pt-BR	Salvar figura...				2004-10-06 18:01:49.373
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	ru	Сохранить графический объект...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	sk	Uložiť obrázok				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	sl	Shrani grafiko...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	sv	~Spara grafik...				2004-10-06 18:01:49.373
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	th	บันทึกกราฟิค...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	tr	Grafiği kaydet...				20040507 14:26:28
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	zh-CN	存盘图形...				2004-10-06 18:01:49.373
++sw	source\ui\app\mn.src	0	menuitem	MN_GRF_POPUPMENU	FN_SAVE_GRAPHIC		FN_SAVE_GRAPHIC		0	zh-TW	儲存圖形...				2004-10-06 18:01:49.373
+ sw	source\ui\app\mn.src	0	menuitem	MN_MOUSE_FRAME_BEGIN	MN_WRAP	MN_WRAP		0	es	~Ajuste				2004-11-23 13:36:10.357
+ sw	source\ui\app\mn.src	0	menuitem	MN_MOUSE_FRAME_BEGIN	MN_WRAP	MN_WRAP		0	fr	~Adaptation du texte				2004-11-23 13:36:10.357
+ sw	source\ui\app\mn.src	0	menuitem	MN_MOUSE_FRAME_BEGIN	MN_WRAP	MN_WRAP		0	it	~Scorrimento				2004-11-23 13:36:10.357
+--- sw/source/ui/app/mn.src	2004-11-29 14:29:10.000000000 +0530
++++ sw/source/ui/app/mn.src	2004-12-21 20:28:27.000000000 +0530
+@@ -945,6 +945,13 @@ Menu MN_GRF_POPUPMENU
+ 		SEPARATOR ;
+         MenuItem
+         {
++            Identifier = FN_SAVE_GRAPHIC ; 
++            HelpID = FN_SAVE_GRAPHIC ; 
++            Text [ de ] = &quot;~Grafik speichern...&quot; ; 
++            Text [ en-US ] = &quot;Save ~Graphic...&quot; ; 
++        };
++        MenuItem
++        {
+             Identifier = FN_FORMAT_GRAFIC_DLG ; 
+             HelpID = FN_FORMAT_GRAFIC_DLG ; 
+             Text [ de ] = &quot;~Grafik...&quot; ; 
+--- sw/source/ui/inc/grfsh.hxx	2000-10-05 17:04:19.000000000 +0530
++++ sw/source/ui/inc/grfsh.hxx	2004-12-21 19:24:14.000000000 +0530
+@@ -71,6 +71,7 @@ public:
+ 	void	Execute(SfxRequest &amp;);
+ 	void	ExecAttr(SfxRequest &amp;);
+ 	void	GetAttrState(SfxItemSet &amp;);
++	void	SaveGraphic();
+ 
+ 			SwGrfShell(SwView &amp;rView);
+ };
+--- sw/source/ui/shells/grfsh.cxx	2004-12-07 18:57:35.000000000 +0530
++++ sw/source/ui/shells/grfsh.cxx	2004-12-21 22:19:53.684296352 +0530
+@@ -137,6 +137,16 @@
+ #include &lt;svx/tbxcolor.hxx&gt;
+ #endif
+ 
++#ifndef _COM_SUN_STAR_UI_DIALOGS_XFILEPICKER_HPP_
++#include &lt;com/sun/star/ui/dialogs/XFilePicker.hpp&gt;
++#endif
++#ifndef  _COM_SUN_STAR_UI_DIALOGS_TEMPLATEDESCRIPTION_HPP_
++#include &lt;com/sun/star/ui/dialogs/TemplateDescription.hpp&gt;
++#endif
++#ifndef _FILEDLGHELPER_HXX
++#include &lt;sfx2/filedlghelper.hxx&gt;
++#endif
++
+ #ifndef _FMTURL_HXX //autogen
+ #include &lt;fmturl.hxx&gt;
+ #endif
+@@ -217,6 +227,11 @@ void SwGrfShell::Execute(SfxRequest &amp;rRe
+ 	USHORT nSlot = rReq.GetSlot();
+ 	switch(nSlot)
+ 	{
++		case FN_SAVE_GRAPHIC:
++		    SaveGraphic();
++		    rReq.Ignore();
++		    break;
++
+ 		case SID_INSERT_GRAPHIC:
+ 		case FN_FORMAT_GRAFIC_DLG:
+ 		{
+@@ -739,6 +754,20 @@ void SwGrfShell::GetAttrState(SfxItemSet
+ }
+ 
+ 
++void SwGrfShell::SaveGraphic()
++{
++	using namespace ::sfx2;
++	using namespace com::sun::star::ui::dialogs;
++	using namespace ::com::sun::star::uno;
++
++	FileDialogHelper aDlgHelper( TemplateDescription::FILESAVE_SIMPLE, 0 );
++	Reference  &lt; XFilePicker &gt; xFP = aDlgHelper.GetFilePicker();
++	aDlgHelper.Execute();
++
++	InfoBox( NULL, xFP-&gt;getFiles()[0] ).Execute();
++}
++
++
+ SwGrfShell::SwGrfShell(SwView &amp;rView) :
+ 	SwBaseShell(rView)
+ 
+
+--=-+5EnKWlpJ0hvyD6AbBLp--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000660.html">[Open Office] Status tuesday
+</A></li>
+	<LI> Next message: <A HREF="000659.html">[Open Office] Status ( 22-12-04 )
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#658">[ date ]</a>
+              <a href="thread.html#658">[ thread ]</a>
+              <a href="subject.html#658">[ subject ]</a>
+              <a href="author.html#658">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

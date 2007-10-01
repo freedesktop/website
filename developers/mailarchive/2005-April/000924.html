@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Tues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:jody%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000923.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Tues
+   </H1>
+    <B>Jody Goldberg
+    </B> 
+    <A HREF="mailto:jody%40novell.com"
+       TITLE="[Open Office] Status Tues">jody@novell.com
+       </A><BR>
+    <I>Wed, 27 Apr 2005 11:01:44 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000923.html">[Open Office] Re: Problem opening files with non-standart chars
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#924">[ date ]</a>
+              <a href="thread.html#924">[ thread ]</a>
+              <a href="subject.html#924">[ subject ]</a>
+              <a href="author.html#924">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Tues
+    - Tested and simplified the ocMissing patch which now accepts
+      user entries
+	  =foo(1;;2) without forcing an error
+    - verified xls import works.
+    - xls export seems to work, but I don't know why
+    - Patched the basic arg wrappers
+	: GetDouble : return 0
+	: GetString : return &quot;&quot;
+    - OOo requires us to audit each function for missing arg support
+    - ruled out possibility of north american style foo(a,b)
+      functions.  It would be too large a change.  Will be simpler
+      to piggy back on R1C1 support later
+    - some minor notes on where the expr parser lives
+
+Wed
+    - Search gnumeric for all DIV/0 and fwd to muthu
+    - commit and add the ocMissing patch
+    - Have another look at the mechanics of array iteration
+
+Breakfast of the day
+    - Saskatoon berry jam on Matzah with some water and leftover
+      grapes from the kids
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000923.html">[Open Office] Re: Problem opening files with non-standart chars
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#924">[ date ]</a>
+              <a href="thread.html#924">[ thread ]</a>
+              <a href="subject.html#924">[ subject ]</a>
+              <a href="author.html#924">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

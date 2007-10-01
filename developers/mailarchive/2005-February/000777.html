@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.9.78: build error in project shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:j%40bitron.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000778.html">
+   <LINK REL="Next"  HREF="000779.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.9.78: build error in project shell
+   </H1>
+    <B>J�rg Billeter
+    </B> 
+    <A HREF="mailto:j%40bitron.ch"
+       TITLE="[Open Office] ooo-build-1.9.78: build error in project shell">j@bitron.ch
+       </A><BR>
+    <I>Fri, 11 Feb 2005 13:10:54 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000778.html">[Open Office] Status this week
+</A></li>
+        <LI> Next message: <A HREF="000779.html">[Open Office] ooo-build-1.9.78: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#777">[ date ]</a>
+              <a href="thread.html#777">[ thread ]</a>
+              <a href="subject.html#777">[ subject ]</a>
+              <a href="author.html#777">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+
+Trying to compile ooo-build-1.9.78 results on my system in a build error
+in project shell due to an undefined reference to g_type_init, i.e. it
+seems that -lgobject-2.0 is missing.
+
+This happens using gcc 3.4.3 and a gnome 2.9.91 installation.
+
+------------------------------
+Making: ../../../unxlngi4.pro/lib/gconfbe1.uno.so
+gcc -O2 -Bsymbolic -z combreloc -z defs -Wl,-rpath,'$ORIGIN' -shared
+-Wl,-O1
+-Wl,--version-script ../../../unxlngi4.pro/misc/exports_gconfbe1.uno.map
+-L../../../unxlngi4.pro/lib -L../lib
+-L/usr/src/ooo-build-1.9.78/build/src680-m78/solenv/unxlngi4/lib
+-L/usr/src/ooo-build-1.9.78/build/src680-m78/solver/680/unxlngi4.pro/lib
+-L/usr/src/ooo-build-1.9.78/build/src680-m78/solenv/unxlngi4/lib
+-LNO_JAVA_HOME/lib -LNO_JAVA_HOME/jre/lib/i386
+-LNO_JAVA_HOME/jre/lib/i386/client
+-LNO_JAVA_HOME/jre/lib/i386/native_threads -L/usr/X11R6/lib
+-L/usr/lib/firefox ../../../unxlngi4.pro/slo/gconfbecdef.o ../../../unxlngi4.pro/slo/gconfbackend.o ../../../unxlngi4.pro/slo/gconfvcllayer.o ../../../unxlngi4.pro/slo/gconfinetlayer.o ../../../unxlngi4.pro/slo/gconfcommonlayer.o ../../../unxlngi4.pro/slo/gconfbe1.uno_version.o ../../../unxlngi4.pro/slo/gconfbe_description.o -o ../../../unxlngi4.pro/lib/gconfbe1.uno.so -luno_cppuhelpergcc3 -luno_cppu -luno_sal -Wl,--export-dynamic -Wl,--export-dynamic -pthread -lgconf-2 -lORBit-2 -lm -lgmodule-2.0 -ldl -lgthread-2.0 -lglib-2.0 -ldl -lpthread -lm -Wl,-Bdynamic -lstlport_gcc -lstdc++
+../../../unxlngi4.pro/slo/gconfbackend.o(.text+0x7fa): In function
+`GconfBackend::getGconfClient()':
+/usr/src/ooo-build-1.9.78/build/src680-m78/shell/source/backends/gconfbe/gconfbackend.cxx:161: undefined reference to `g_type_init'
+collect2: ld returned 1 exit status
+dmake:  Error code 1, while making
+'../../../unxlngi4.pro/lib/gconfbe1.uno.so'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while
+making /usr/src/ooo-build-1.9.78/build/src680-m78/shell/source/backends/gconfbe
+make: *** [stamp/build] Error 1
+*** Error: make
+*** ERROR: OpenOffice.org-x86-glibc-2.3-gcc-3.4-2-1.9.78-1
+
+
+Thanks for any hints,
+
+Jürg
+
+-- 
+Jürg Billeter &lt;<A HREF="mailto:j@bitron.ch">j@bitron.ch</A>&gt;
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000778.html">[Open Office] Status this week
+</A></li>
+	<LI> Next message: <A HREF="000779.html">[Open Office] ooo-build-1.9.78: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#777">[ date ]</a>
+              <a href="thread.html#777">[ thread ]</a>
+              <a href="subject.html#777">[ subject ]</a>
+              <a href="author.html#777">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

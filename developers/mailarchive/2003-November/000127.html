@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:cvences%40yahoo.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000129.html">
+   <LINK REL="Next"  HREF="000130.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+   </H1>
+    <B>Carlos Alberto
+    </B> 
+    <A HREF="mailto:cvences%40yahoo.com"
+       TITLE="[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg">cvences@yahoo.com
+       </A><BR>
+    <I>Tue, 4 Nov 2003 10:36:45 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000129.html">[Open Office] Reinstalling OOo1.1 stable
+</A></li>
+        <LI> Next message: <A HREF="000130.html">[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#127">[ date ]</a>
+              <a href="thread.html#127">[ thread ]</a>
+              <a href="subject.html#127">[ subject ]</a>
+              <a href="author.html#127">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin, 
+
+--- Martin Kretzschmar &lt;<A HREF="mailto:m_kretzschmar@gmx.net">m_kretzschmar@gmx.net</A>&gt; wrote:
+&gt;<i> &gt; Now that I compiled OOo 1.1.0, I tried to apply
+</I>&gt;<i> this
+</I>&gt;<i> &gt; patches for the OOo 1.0.3, sent by Martin (thank's
+</I>&gt;<i> for
+</I>&gt;<i> &gt; that), but I couldn't see any change after the
+</I>&gt;<i> &gt; patching job. (QuitApp menu option was still
+</I>&gt;<i> there,
+</I>&gt;<i> &gt; and Close option was  also in the same place.)
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Were there any changes concerning to Menu Items
+</I>&gt;<i> since
+</I>&gt;<i> &gt; 1.0.3?
+</I>&gt;<i> 
+</I>&gt;<i> the patch was against OOO 1.1RC3? I think.
+</I>
+Yes that was,
+
+&gt;<i> 
+</I>&gt;<i> You did a recompile after patching, right?
+</I>&gt;<i> 
+</I>
+yes, in fact I re-compiled every branch patched, but
+there was no effect
+
+&gt;<i> If you have already customized your menus (with
+</I>&gt;<i> OOo's &quot;menu editor&quot;),
+</I>&gt;<i> you won't see the change.
+</I>
+mmmm no, i don't think so, I just dowloaded sources
+from CVS and make-installed them. There is no
+OOO_1_0_3 nor OOO_1_1_RC3 files or directories so I'm
+working on a clean environment. After that, I patched
+source code and see nothing.
+
+I bypassed QUITAPP menu item with:
+
+    // Item in die MenuItemListe aufnehmen
+    if (nItemId!=5300)
+	MenuItemData* pData = pItemList-&gt;Insert( nItemId,
+MENUITEM_STRING,
+                             nItemBits, rStr, Image(),
+this, nPos );
+
+in /vcl/source/window/menu.cxx line 1291, and patches
+already applied; and it worked, so I don't really
+know, where the h*ll OOo gets ITEM_FILE_QUITAPP
+because this line is commented because of Martin
+patches.
+
+&gt;<i> 
+</I>&gt;<i> In &lt;user-installdir&gt;/user/config/soffice.cfg/ there
+</I>&gt;<i> are some xml files.
+</I>&gt;<i> Delete/move away those with &quot;menu&quot; in their name to
+</I>&gt;<i> uncustomize the
+</I>&gt;<i> menus. (&lt;user-installdir&gt; is something like
+</I>&gt;<i> ~/.xopenoffice.)
+</I>&gt;<i> 
+</I>&gt;<i> HTH,
+</I>&gt;<i> 	Martin
+</I>&gt;<i> 
+</I>
+Well I will keep trying, and I hope you guys could
+gimme a hand :)
+
+
+=====
+Atte.Carlos Alberto Vences Sánchez0172112393Metepec, Mé<A HREF="mailto:xicoxneon79@netscape.net">xicoxneon79@netscape.net</A>
+
+__________________________________
+Do you Yahoo!?
+Protect your identity with Yahoo! Mail AddressGuard
+<A HREF="http://antispam.yahoo.com/whatsnewfree">http://antispam.yahoo.com/whatsnewfree</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000129.html">[Open Office] Reinstalling OOo1.1 stable
+</A></li>
+	<LI> Next message: <A HREF="000130.html">[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#127">[ date ]</a>
+              <a href="thread.html#127">[ thread ]</a>
+              <a href="subject.html#127">[ subject ]</a>
+              <a href="author.html#127">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

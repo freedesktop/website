@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Problems building OO.o
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:nhudson%40lunar-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000012.html">
+   <LINK REL="Next"  HREF="000015.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Problems building OO.o
+   </H1>
+    <B>Nick Hudson
+    </B> 
+    <A HREF="mailto:nhudson%40lunar-linux.org"
+       TITLE="[Open Office] Problems building OO.o">nhudson@lunar-linux.org
+       </A><BR>
+    <I>Sat, 09 Aug 2003 23:37:30 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000012.html">[Open Office] Building OOo on debian.
+</A></li>
+        <LI> Next message: <A HREF="000015.html">[Open Office] Problems building OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-oNUmCQt//eVgS5yMKjEH
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Michael, Ken thanks for the help with the bison problem.  I updated to
+cvs version of bison and everything compiled and installed ok I do have
+another problem when it runs the configure on the openoffice build I am
+getting these errors./bin/sh
+/usr/src/openoffice/build/gcc-3.2.2/install-sh -c gccbug
+/usr/src/openoffice/build/bin/`echo gccbug|sed 's,x,x,'`
+rm -rf
+/usr/src/openoffice/build/lib/gcc-lib/i686-pc-linux-gnu/3.2.2/include
+mkdir
+/usr/src/openoffice/build/lib/gcc-lib/i686-pc-linux-gnu/3.2.2/include
+chmod a+rx
+/usr/src/openoffice/build/lib/gcc-lib/i686-pc-linux-gnu/3.2.2/include
+(cd `pwd`/include ; \
+ tar -cf - .; exit 0) | (cd
+/usr/src/openoffice/build/lib/gcc-lib/i686-pc-linux-gnu/3.2.2/include;
+tar xpf - )
+tar: ./GL: Cannot change ownership to uid 0, gid 0: No such file or
+directory
+tar: ./linux: Cannot change ownership to uid 0, gid 0: No such file or
+directory
+tar: ./X11: Cannot change ownership to uid 0, gid 0: No such file or
+directory
+tar: Error exit delayed from previous errors
+make[3]: *** [install-headers-tar] Error 2
+make[3]: Leaving directory `/usr/src/openoffice/build/gcc-3.2.2/gcc'
+make[2]: *** [install-gcc] Error 2
+make[2]: Leaving directory `/usr/src/openoffice/build/gcc-3.2.2'
+make[1]: *** [all] Error 1
+make[1]: Leaving directory `/usr/src/openoffice/bin'
+Creating /var/log/lunar/compile/openoffice-src-1.1rc3.bz2
+make: *** [all-recursive] Error 1
+! Problem detected during BUILD
+
+But if I type make after that everything compiles and installes fine.=20
+Basicly what I am trying to do it to get this into our distro, but our
+build scripts will error out when it comes to this error.  Any idea on
+why or what is causing this?
+
+Thanks
+
+Nick=20
+
+
+
+
+
+On Fri, 2003-08-08 at 19:18, Ken Foskey wrote:
+&gt;<i> On Sat, 2003-08-09 at 03:29, Nick Hudson wrote:
+</I>&gt;<i>=20
+</I>&gt;<i> &gt; &gt; 	* what version of bison you have
+</I>&gt;<i> &gt; Bison 1.875 of course built with gcc 3.2.3
+</I>&gt;<i>=20
+</I>&gt;<i> 1.875 is not supported there was a bug.  1.875a is.
+</I>
+--=-oNUmCQt//eVgS5yMKjEH
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.2 (GNU/Linux)
+
+iD8DBQA/NcwJG5D1jWCZpTwRAvoKAKDQacsv76hiKujiDiCe01BXQVqqcgCfdlMz
+Av7ubg30S0PXNWE15NJVxso=
+=7OkN
+-----END PGP SIGNATURE-----
+
+--=-oNUmCQt//eVgS5yMKjEH--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000012.html">[Open Office] Building OOo on debian.
+</A></li>
+	<LI> Next message: <A HREF="000015.html">[Open Office] Problems building OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

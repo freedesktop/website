@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Generic desktop adapter (proposal &amp; prototype)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Generic%20desktop%20adapter%20%28proposal%20%26%20prototype%29&In-Reply-To=1133437326.21930.75.camel%40linux.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001367.html">
+   <LINK REL="Next"  HREF="001368.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Generic desktop adapter (proposal &amp; prototype)</H1>
+    <B>nf2</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Generic%20desktop%20adapter%20%28proposal%20%26%20prototype%29&In-Reply-To=1133437326.21930.75.camel%40linux.site"
+       TITLE="[Open Office] Generic desktop adapter (proposal &amp; prototype)">nf2 at scheinwelt.at
+       </A><BR>
+    <I>Thu Dec  1 20:29:55 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001367.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+        <LI>Next message: <A HREF="001368.html">[Open Office] Build error in cli_ure with m142
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1373">[ date ]</a>
+              <a href="thread.html#1373">[ thread ]</a>
+              <a href="subject.html#1373">[ subject ]</a>
+              <a href="author.html#1373">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>michael meeks wrote:
+
+&gt;<i>Hi there,
+</I>&gt;<i>
+</I>&gt;<i>On Thu, 2005-12-01 at 00:39 +0100, nf2 wrote:
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>The problem with D-VFS is who's gonna start coding it (I could try, but 
+</I>&gt;&gt;<i>i can't afford doing such a huge thing as a hobby project ;-)).
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>	Quite.
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>I have played with that VFS stuff a bit (i tried to write a KIO-&gt;Gnome 
+</I>&gt;&gt;<i>VFS bridge once - called gvfs-kio), coded a very lightweight IPC library 
+</I>&gt;&gt;<i>called TVariant and wrote down my thoughts on that topic...
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>	Hmm - D/BUS fills this gap surely, and everything in future will/should
+</I>&gt;<i>be linked to it ?
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Don't know if D-Bus is lowlevel and flexible enough for streaming data 
+with the least possible overhead. The simplicity of the kio-slaves IPC 
+protocol has charm too...
+
+
+&gt;<i>	Either way - 1 thing I like about gnome-vfs is that it doens't
+</I>&gt;<i>introduce yet-another poorly-performing IPC mechanism between you and
+</I>&gt;<i>your 4Gb local-disk data file ;-) 
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Well. That might only be true for the synchronous (blocking) interface. 
+For the async interface i would guess that using thread bridges (like in 
+Gnome-VFS) or IPC-sockets (like in KIO-slaves) have similar performance 
+cost. IPC sockets might even be faster, cause they have buffers and 
+therefore reduce the number of context-switches (When pushing data 
+chunks or direntries through one-way).
+
+Generally speaking there are so many aspects in Gnome-VFS and KIO, that 
+it's impossible to say which one is better designed.
+
+If i were to design a shared VFS today, it would be a cluster of 
+daemons. But not one daemon per client (like in KIO), but rather one per 
+resource the VFS connects to (an account on a server, a tar.gz archive,...).
+
+Every daemon would be a kind of &quot;virtual mountpoint&quot;, with all the 
+session logic inside: passwords, connection pools, session state.
+
+The reason why i wouldn't pack everything into a single daemon is 
+stability and garbage-collection. Backends use 3rd party libraries to 
+connect to network resources which might be buggy and have memory leaks.
+
+regards,
+
+Norbert
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001367.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+	<LI>Next message: <A HREF="001368.html">[Open Office] Build error in cli_ure with m142
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1373">[ date ]</a>
+              <a href="thread.html#1373">[ thread ]</a>
+              <a href="subject.html#1373">[ subject ]</a>
+              <a href="author.html#1373">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

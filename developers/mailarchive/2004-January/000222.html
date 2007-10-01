@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.1.49
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000221.html">
+   <LINK REL="Next"  HREF="000224.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.1.49
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] ooo-build-1.1.49">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Mon, 12 Jan 2004 23:01:52 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000221.html">[Open Office] ooo-build-1.1.49
+</A></li>
+        <LI> Next message: <A HREF="000224.html">[Open Office] ooo-build-1.1.49
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#222">[ date ]</a>
+              <a href="thread.html#222">[ thread ]</a>
+              <a href="subject.html#222">[ subject ]</a>
+              <a href="author.html#222">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Rafa³,
+
+Am Mo, den 12.01.2004 schrieb Rafa³ 'rmrmg' Roszak um 22:22:
+&gt;<i> begin  Hirano Kazunari &lt;<A HREF="mailto:khirano@transwift.net">khirano@transwift.net</A>&gt; quote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Rafa? 'rmrmg' Roszak wrote:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Thanks. I did it and the build is going well so far until it meets the
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 52570.
+</I>&gt;<i> &gt; It takes for me to meet it because of my poor slow machine.
+</I>&gt;<i> 
+</I>&gt;<i> Comment to #52570:
+</I>&gt;<i> #v+
+</I>&gt;<i> +------- Additional Comments From <A HREF="mailto:m_kretzschmar@gmx.net">m_kretzschmar@gmx.net</A>  2004-01-12
+</I>&gt;<i> 15:14 -------+Do you have /usr/include/zlib.h? Which version?
+</I>&gt;<i> +
+</I>&gt;<i> +Try to run configure --without-system-zlib
+</I>&gt;<i> #v-
+</I>
+
+&gt;<i> So this can be depend on zlib version.
+</I>
+Not necessarily, this was a guess, because the first error in that
+compile log snippet pointed to code that uses zlib types.
+
+&gt;<i>  Which version zlib you have? I use zlib-1.2.1.
+</I>
+I've got the same version and didn't get this error.
+
+Hmm, that code (filter/source/flash/swfwriter1.cxx:2084) looks very
+strange. It defines a function that's declared in zlib.h!
+
+Martin
+
+<A HREF="http://bugzilla.ximian.com/show_bug.cgi?id=52734">http://bugzilla.ximian.com/show_bug.cgi?id=52734</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000221.html">[Open Office] ooo-build-1.1.49
+</A></li>
+	<LI> Next message: <A HREF="000224.html">[Open Office] ooo-build-1.1.49
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#222">[ date ]</a>
+              <a href="thread.html#222">[ thread ]</a>
+              <a href="subject.html#222">[ subject ]</a>
+              <a href="author.html#222">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

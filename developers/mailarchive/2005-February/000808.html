@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Monday
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000807.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Monday
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Status Monday">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Mon, 28 Feb 2005 19:47:09 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000807.html">[Open Office] Status
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#808">[ date ]</a>
+              <a href="thread.html#808">[ thread ]</a>
+              <a href="subject.html#808">[ subject ]</a>
+              <a href="author.html#808">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+mono_uno: moved code to the Bridge class and de-static-ized it (most of
+the code was in the uno_proxy.cs file because that was where I needed it
+first).
+
+general bug fixing: looked at the menu check mark alpha issues. Comments
+in DrawBitmap seem to imply that the old code was only working thanks to
+a DrawBitmap misfeature. I added a small hack to the menu painter to use
+the menu highlight color if necessary. Now you have to look close to see
+the bug, but it's still visible.
+
+Fixed the gtk nwf depressed toolbar toggle button appearance. Filed an
+issue, patch is in vcl37 now.
+
+Regards,
+
+Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000807.html">[Open Office] Status
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#808">[ date ]</a>
+              <a href="thread.html#808">[ thread ]</a>
+              <a href="subject.html#808">[ subject ]</a>
+              <a href="author.html#808">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

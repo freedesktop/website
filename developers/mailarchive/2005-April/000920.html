@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.9.90: build error in project shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:james%40jamesh.id.au">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000913.html">
+   <LINK REL="Next"  HREF="000915.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.9.90: build error in project shell
+   </H1>
+    <B>James Henstridge
+    </B> 
+    <A HREF="mailto:james%40jamesh.id.au"
+       TITLE="[Open Office] ooo-build-1.9.90: build error in project shell">james@jamesh.id.au
+       </A><BR>
+    <I>Thu, 21 Apr 2005 00:46:12 +0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000913.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+        <LI> Next message: <A HREF="000915.html">[Open Office] configure.in change ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#920">[ date ]</a>
+              <a href="thread.html#920">[ thread ]</a>
+              <a href="subject.html#920">[ subject ]</a>
+              <a href="author.html#920">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>michael meeks wrote:
+
+&gt;<i>	So - How odd ? Jurg - can you paste the link error again ? James - any
+</I>&gt;<i>ideas why is this now broken ? and/or the change in behavior here seems
+</I>&gt;<i>odd.
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>IIRC, the new behaviour is to omit dependent libraries if pkg-config
+thinks the system supports inter-library dependencies.
+
+That is, if gconf depends on ORBit2 and glib then linking against
+libgconf will pull in ORBit2 and glib by reference.
+
+If it is making the wrong decision about the platform's support for
+indirect dependencies, I'd suggest filing a bug at
+<A HREF="https://bugs.freedesktop.org.">https://bugs.freedesktop.org.</A>  Tollef has been pretty good about fixing
+the bugs I've found.
+
+Make sure you try the latest version first though (0.17.2).
+
+&gt;<i>	Before I try to get some odd-looking change up-stream here for all our
+</I>&gt;<i>pkg-config usage, it'd be nice to have some rational/authoritative
+</I>&gt;<i>explanation for why pkg-config has &quot;gone autotools&quot; in it's backwards
+</I>&gt;<i>compatibility strategy.
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Some of the breakage can be attributed to the long period of time
+between releases of pkg-config.  Some changes since 0.15 had been
+sitting in CVS for two years without wide testing.
+
+If you find something obviously broken in the new releases, report it as
+a bug.  I don't think the policy is to treat all incompatibilities as
+&quot;applications using undocumented APIs&quot; (0.17.2 fixes a number of
+problems that occurred with the 0.16 release).
+
+James.
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000913.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+	<LI> Next message: <A HREF="000915.html">[Open Office] configure.in change ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#920">[ date ]</a>
+              <a href="thread.html#920">[ thread ]</a>
+              <a href="subject.html#920">[ subject ]</a>
+              <a href="author.html#920">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

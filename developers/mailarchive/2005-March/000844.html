@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] (no subject)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:sashank%22%20%3Csssfriendsss%40rediffmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000843.html">
+   <LINK REL="Next"  HREF="000845.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] (no subject)
+   </H1>
+    <B>sashank
+    </B> 
+    <A HREF="mailto:sashank%22%20%3Csssfriendsss%40rediffmail.com"
+       TITLE="[Open Office] (no subject)">sashank&quot; &lt;sssfriendsss@rediffmail.com
+       </A><BR>
+    <I>12 Mar 2005 03:07:47 -0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000843.html">[Open Office] Status Friday
+</A></li>
+        <LI> Next message: <A HREF="000845.html">[Open Office] (no subject)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#844">[ date ]</a>
+              <a href="thread.html#844">[ thread ]</a>
+              <a href="subject.html#844">[ subject ]</a>
+              <a href="author.html#844">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> This is a multipart mime message
+
+
+--Next_1110596867---0-202.54.124.130-28591
+Content-type: multipart/alternative;
+	boundary=&quot;Next_1110596867---1-202.54.124.130-28591&quot;
+
+ This is a multipart mime message
+
+
+--Next_1110596867---1-202.54.124.130-28591
+Content-type: text/plain;
+	charset=iso-8859-1
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+ =A0hi,=0A=0Asrini sashank here writing on behalf of my group that is manis=
+h , prabir and me.=0A=0Ai have included the patch file in the attachment .a=
+nd under lies the steps how we achieved it.=0A=0A1.First of all we searched=
+ for insert note in menubar as the code was already persisting in the sourc=
+e code.=0A=0A2.We searched for menubar on the site go-ooo.org  in xlr cross=
+ reference.=0A=0A3.There we went for the path sc/uniconfig/scalc/ , there w=
+e got xml file menu. we opted to go for this path and a few more matching t=
+o this as this structure prexisting in our maching too in src680-m74.=0A=0A=
+4.There we got the help-id of insertnode .=0A=0A5.Then we right clicked the=
+ mouse on calc worksheet and went searching for show notes and defaults tha=
+t were among the option after rigt clicking and we assumed to find the code=
+ for the module soem where nearby.=0A=0A6.Then we identified popup.src and =
+went for that path /sc/source/ui/src&gt;=0A=0A7. There we got the code for all=
+ the options displayed during right click.=0A=0A8.so, we were sure that thi=
+s was the place where we are suppose to implement the code.=0A=0A9. Then as=
+ we were familiar that code for show note already existed so, we copied the=
+ code and pasted it. =0A=0A#define  FID_INOTE_VISIBLE 26276=0A=0Athen we bu=
+ilded it and created a patch file using diff command.=0A=0A=0A###NOTE :- th=
+ough we debugged the error we were not able to send the patch file properly=
+ because we were not familiar with the exact process. we came to know today=
+ that we are suppose to create it as a diff extension and redirect the patc=
+h to (bug no.-name). from the mailing list posted by nicel today.=0A=0AAnd =
+in creating the patch by mistake we were first giving the altered file  and=
+ then the original file.=0A=0A=0Ai hope this mail satisfies you , and we wi=
+ll send you the process that we have followed till now  for debugging the n=
+ext bug.=0A=0Asashank.=0A=0A=0A=0A
+--Next_1110596867---1-202.54.124.130-28591
+Content-type: text/html;
+	charset=iso-8859-1
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+&lt;P&gt;=0A&amp;nbsp; hi,&lt;BR&gt;=0A&lt;BR&gt;=0Asrini sashank here writing on behalf of my gr=
+oup that is manish , prabir and me.&lt;BR&gt;=0A&lt;BR&gt;=0Ai have included the patch =
+file in the attachment .and under lies the steps how we achieved it.&lt;BR&gt;=0A=
+&lt;BR&gt;=0A1.First of all we searched for insert note in menubar as the code wa=
+s already persisting in the source code.&lt;BR&gt;=0A&lt;BR&gt;=0A2.We searched for men=
+ubar on the site go-ooo.org&amp;nbsp; in xlr cross reference.&lt;BR&gt;=0A&lt;BR&gt;=0A3.Th=
+ere we went for the path sc/uniconfig/scalc/ , there we got xml file menu. =
+we opted to go for this path and a few more matching to this as this struct=
+ure prexisting in our maching too in src680-m74.&lt;BR&gt;=0A&lt;BR&gt;=0A4.There we go=
+t the help-id of insertnode .&lt;BR&gt;=0A&lt;BR&gt;=0A5.Then we right clicked the mous=
+e on calc worksheet and went searching for show notes and defaults that wer=
+e among the option after rigt clicking and we assumed to find the code for =
+the module soem where nearby.&lt;BR&gt;=0A&lt;BR&gt;=0A6.Then we identified popup.src a=
+nd went for that path /sc/source/ui/src&amp;gt;&lt;BR&gt;=0A&lt;BR&gt;=0A7. There we got th=
+e code for all the options displayed during right click.&lt;BR&gt;=0A&lt;BR&gt;=0A8.so,=
+ we were sure that this was the place where we are suppose to implement the=
+ code.&lt;BR&gt;=0A&lt;BR&gt;=0A9. Then as we were familiar that code for show note alr=
+eady existed so, we copied the code and pasted it. &lt;BR&gt;=0A&lt;BR&gt;=0A#define&amp;nb=
+sp; FID_INOTE_VISIBLE 26276&lt;BR&gt;=0A&lt;BR&gt;=0Athen we builded it and created a p=
+atch file using diff command.&lt;BR&gt;=0A&lt;BR&gt;=0A&lt;BR&gt;=0A###NOTE :- though we debu=
+gged the error we were not able to send the patch file properly because we =
+were not familiar with the exact process. we came to know today that we are=
+ suppose to create it as a diff extension and redirect the patch to (bug no=
+.-name). from the mailing list posted by nicel today.&lt;BR&gt;=0A&lt;BR&gt;=0AAnd in c=
+reating the patch by mistake we were first giving the altered file&amp;nbsp; an=
+d then the original file.&lt;BR&gt;=0A&lt;BR&gt;=0A&lt;BR&gt;=0Ai hope this mail satisfies yo=
+u , and we will send you the process that we have followed till now&amp;nbsp; f=
+or debugging the next bug.&lt;BR&gt;=0A&lt;BR&gt;=0Asashank.&lt;BR&gt;=0A&lt;BR&gt;=0A=0A&lt;/P&gt;=0A=0A=
+=0A&lt;br&gt;&lt;br&gt;=0A&lt;A target=3D&quot;_blank&quot; HREF=3D&quot;<A HREF="http://clients.rediff.com/signat=">http://clients.rediff.com/signat=</A>
+ure/track_sig.asp&quot;&gt;&lt;IMG SRC=3D&quot;<A HREF="http://ads.rediff.com/RealMedia/ads/adstream=">http://ads.rediff.com/RealMedia/ads/adstream=</A>
+_nx.cgi/www.rediffmail.com/<A HREF="mailto:inbox.htm@Bottom">inbox.htm@Bottom</A>&quot; BORDER=3D0 VSPACE=3D0 HSPACE=
+=3D0&gt;&lt;/a&gt;=0A
+--Next_1110596867---1-202.54.124.130-28591--
+
+--Next_1110596867---0-202.54.124.130-28591
+Content-type: text/plain;
+	charset=iso-8859-1
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+	filename=&quot;55943-insertnote.diff&quot;
+
+LS0tIHBvcHVwLnNyYy5vcmlnCTIwMDQtMDYtMjcgMDE6Mzg6NDAuMDAwMDAwMDAwICswNTMw
+CisrKyBwb3B1cC5zcmMJMjAwNS0wMy0wOSAxMTo1MDoxOC4wMDAwMDAwMDAgKzA1MzAKQEAg
+LTYxLDcgKzYxLDcgQEAKIAogI2luY2x1ZGUgInNjLmhyYyIgLy8gLT4gI2luY2x1ZGUgPHNm
+eC5ocmM+CiAjaW5jbHVkZSA8c3Z4L2dsb2JsbW4uaHJjPgotCisjZGVmaW5lIEZJRF9JTk9U
+RV9WSVNJQkxFIDI2Mjc2CiAKICAvLyBQb3B1cC1NZW51ZXMgLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogCkBAIC0x
+NjAsNiArMTYwLDE5IEBACiAJCQlUZXh0IFsgZW4tVVMgXSA9ICJQfmFzdGUgU3BlY2lhbC4u
+LiIgOwogCQkJVGV4dCBbIHgtY29tbWVudCBdID0gIiAiOwogCQl9OworCisgICAgICAgICAg
+ICAgICAgIC8vLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCisJCU1lbnVJdGVtIHsg
+U2VwYXJhdG9yID0gVFJVRSA7IH07CisJCSAvLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLQorCQlNZW51SXRlbQorCQl7CisJCQlJZGVudGlmaWVyID0gRklEX0lOT1RFX1ZJU0lC
+TEUgOworCQkJSGVscElkID0gRklEX0lOT1RFX1ZJU0lCTEUgOworCQkJVGV4dCBbIGRlIF0g
+PSAiflRhYmVsbGUgYW56ZWlnZW4uLi4iIDsKKwkJCVRleHQgWyBlbi1VUyBdID0gIn5JbnNl
+cnQgTm90ZS4uLiIgOworCQkJVGV4dCBbIHgtY29tbWVudCBdID0gIiAiOworCQl9OworCQkg
+CiAJCSAvLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogCQlNZW51SXRlbSB7IFNl
+cGFyYXRvciA9IFRSVUUgOyB9OwogCQkgLy8tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0KQEAgLTI2Miw2ICsyNzUsMTMgQEAKIAkJCVRleHQgWyB4LWNvbW1lbnQgXSA9ICIgIjsK
+IAkJfTsKIAkJTWVudUl0ZW0KKyAgICAgICAgICAgICAgICB7CisgICAgICAgICAgICAgICAg
+ICAgICAgICBJZGVudGlmaWVyID0gU0lEX1BJVk9UX0FGTVQgOworICAgICAgICAgICAgICAg
+ICAgICAgICAgSGVscElkID0gU0lEX1BJVk9UX0FGTVQgOworICAgICAgICAgICAgICAgICAg
+ICAgICAgVGV4dCA9ICJBfmt0dWFsaXNpZXJlbiIgOworCQkJVGV4dCBbIGVuLVVTIF0gPSAi
+fkF1dG9Gb3JtYXQuLi4iIDsgCisJCX07CisJCU1lbnVJdGVtCiAJCXsKIAkJCUlkZW50aWZp
+ZXIgPSBTSURfUElWT1RfUkVDQUxDIDsKIAkJCUhlbHBJZCA9IFNJRF9QSVZPVF9SRUNBTEMg
+Owo=
+
+--Next_1110596867---0-202.54.124.130-28591--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000843.html">[Open Office] Status Friday
+</A></li>
+	<LI> Next message: <A HREF="000845.html">[Open Office] (no subject)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#844">[ date ]</a>
+              <a href="thread.html#844">[ thread ]</a>
+              <a href="subject.html#844">[ subject ]</a>
+              <a href="author.html#844">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

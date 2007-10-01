@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.9.90: build error in project shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:j%40bitron.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000912.html">
+   <LINK REL="Next"  HREF="000920.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.9.90: build error in project shell
+   </H1>
+    <B>J�rg Billeter
+    </B> 
+    <A HREF="mailto:j%40bitron.ch"
+       TITLE="[Open Office] ooo-build-1.9.90: build error in project shell">j@bitron.ch
+       </A><BR>
+    <I>Wed, 20 Apr 2005 21:02:36 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000912.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+        <LI> Next message: <A HREF="000920.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#913">[ date ]</a>
+              <a href="thread.html#913">[ thread ]</a>
+              <a href="subject.html#913">[ subject ]</a>
+              <a href="author.html#913">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mit, 2005-04-20 at 15:52 +0200, Rene Engelhard wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> Am Mittwoch, 20. April 2005 13:07 schrieb michael meeks:
+</I>&gt;<i> &gt; &gt; The backward compatibility may be a problem but as I've built GNOME 2=
+</I>.10
+&gt;<i> &gt; &gt; without any issues from scratch, this doesn't seem to appear very oft=
+</I>en.
+&gt;<i> &gt; &gt; BTW: There is a pkgconfig compile-time option to disable the new
+</I>&gt;<i> &gt; &gt; behavior.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 	OK - so I understand the issue now :-) your patch looks fine in which
+</I>&gt;<i> &gt; case; I'll get it commited to ooo-build &amp; file it up-stream for you :-)
+</I>&gt;<i> 
+</I>&gt;<i> Linux' ld is able to figure out these weak references itself. There's no =
+</I>need 
+&gt;<i> for adding every -l *unless* you use -z,defs as argument to ld (which is =
+</I>the 
+&gt;<i> case here).
+</I>&gt;<i> 
+</I>&gt;<i> I personally think the proper fix is not to use -z,defs...
+</I>
+Not sure whether that would work as Inkscape had similar linker errors
+and they don't use -z,defs at all. AFAICT the linker errors are not
+caused by weak references but because ooo code explicitly uses functions
+of libraries it doesn't explicitly link to. IMO the proper fix is still
+to add the missing libraries (resp. pkgconfig modules) to the
+corresponding makefiles.
+
+Regards,
+
+Jürg
+
+-- 
+Jürg Billeter &lt;<A HREF="mailto:j@bitron.ch">j@bitron.ch</A>&gt;
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000912.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+	<LI> Next message: <A HREF="000920.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#913">[ date ]</a>
+              <a href="thread.html#913">[ thread ]</a>
+              <a href="subject.html#913">[ subject ]</a>
+              <a href="author.html#913">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

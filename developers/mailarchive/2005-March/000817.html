@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000816.html">
+   <LINK REL="Next"  HREF="000819.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Status">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Wed, 02 Mar 2005 09:54:33 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000816.html">[Open Office] Status
+</A></li>
+        <LI> Next message: <A HREF="000819.html">[Open Office] Status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#817">[ date ]</a>
+              <a href="thread.html#817">[ thread ]</a>
+              <a href="subject.html#817">[ subject ]</a>
+              <a href="author.html#817">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Dienstag, den 01.03.2005, 20:37 +0000 schrieb michael meeks:
+&gt;<i>On Tue, 2005-03-01 at 14:50 +0100, Martin Kretzschmar wrote:
+</I>&gt;&gt;<i>  * cscvs probably needs some logic to recognize CWS branches.
+</I>
+I forgot to mention that cscvs <A HREF="http://wiki.gnuarch.org/moin.cgi/cscvs">http://wiki.gnuarch.org/moin.cgi/cscvs</A> is
+a CVS to arch archive convertor/mirror script/whatever
+
+&gt;<i>
+</I>&gt;<i>	A CWS is just a simple cvs branch &amp; anchor point + some separate
+</I>&gt;<i>database for various work-flow processes. Ok - so resynching a CWS does
+</I>&gt;<i>some _highly_ dubious cvs operations [ moving branch tags etc. ;-] but -
+</I>&gt;<i>if you're converting a static snapshot you'll never notice that I think.
+</I>
+I don't know if Chris was thinking of arch that way, but I was thinking
+not of a static snapshot, but one where at least all open (+ recently
+integrated?) CWSs are available as arch branches. That way one could
+(depending on how good arch's merging really is, I never used it in
+multi-person projects ;-)) use the usual arch commands to
+
+ * start from some milestone
+
+ * take one build-fix patch from pj42
+
+ * merge in vcl501
+
+ * merge some branches representing ooo-build changes
+
+ * later update to a new milestone that has integrated pj42 with no
+conflicts (yeah, right. But at least there won't be a conflict because
+of that build-fix patch, because arch keeps track of changes that you
+already have from one branch and doesn't try to merge these again)
+
+For that to work, the information &quot;CWS foo resynced to m42&quot; must somehow
+get into arch, e.g. the cscvs could be patched to recognize &quot;RESYNC&quot;
+commit messages (are these machine generated or just convention?)
+
+But maybe I'm just smoking crack.
+
+Regards,
+
+Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000816.html">[Open Office] Status
+</A></li>
+	<LI> Next message: <A HREF="000819.html">[Open Office] Status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#817">[ date ]</a>
+              <a href="thread.html#817">[ thread ]</a>
+              <a href="subject.html#817">[ subject ]</a>
+              <a href="author.html#817">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] cvs problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:rmrmg%40wp.pl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+   <LINK REL="Previous"  HREF="000429.html">
+   <LINK REL="Next"  HREF="000432.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] cvs problem
+   </H1>
+    <B>Rafał 'rmrmg' Roszak
+    </B> 
+    <A HREF="mailto:rmrmg%40wp.pl"
+       TITLE="[Open Office] cvs problem">rmrmg@wp.pl
+       </A><BR>
+    <I>Sun, 4 Jul 2004 19:10:54 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000429.html">[Open Office] [ooo-build 1.1.60] error &quot;No ImageList found&quot;
+</A></li>
+        <LI> Next message: <A HREF="000432.html">[Open Office] cvs problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#430">[ date ]</a>
+              <a href="thread.html#430">[ thread ]</a>
+              <a href="subject.html#430">[ subject ]</a>
+              <a href="author.html#430">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+
+I've tried compile OOo 1.1.2  (oo-build from cvs) with any special
+options, and have this problem:
+
+#v+
+/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.60-cvs/build/OOO_
+1_1_2/vcl/source/control/tabctrl.cxx:1983: warning: cast to pointer from
+integer of different size In file included from
+../../inc/outdev.hxx:429,                 from ../../inc/window.hxx:69,
+                 from ../../inc/syswin.hxx:69,
+                 from ../../inc/dialog.hxx:69,
+                 from
+/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.60-cvs/build/OOO_
+1_1_2/vcl/source/control/button.cxx:91:../../inc/outdev.imp:64: warning:
+class `OutputDevice' is implicitly friends with
+itself../../inc/outdev.imp:65: warning: `VirtualDevice' is already a
+friend of `OutputDevice'../../inc/outdev.imp:73: warning:
+`vcl::PDFWriterImpl' is already a friend of
+`OutputDevice'/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.60-
+cvs/build/OOO_1_1_2/vcl/source/control/button.cxx: In member function
+`virtual void CheckBox::DataChanged(const
+DataChangedEvent&amp;)':/notslack/compiled/OpenOffice/oooximian/ooo-build-1
+.1.60-cvs/build/OOO_1_1_2/vcl/source/control/button.cxx:3514: parse
+error before `::'
+token/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.60-cvs/build
+/OOO_1_1_2/vcl/source/control/button.cxx:3519: `rNEvt' undeclared (first
+use this
+function)/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.60-cvs/b
+uild/OOO_1_1_2/vcl/source/control/button.cxx:3519: (Each undeclared
+identifier is reported only once for each function it appears
+in.)/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.60-cvs/build/
+OOO_1_1_2/vcl/source/control/button.cxx:3542: `nDone' undeclared (first
+use this
+function)/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.60-cvs/b
+uild/OOO_1_1_2/vcl/source/control/button.cxx:3542: warning:
+return-statement with a value, in function declared with a void return
+type/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.60-cvs/build/
+OOO_1_1_2/vcl/source/control/button.cxx: At global
+scope:/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.60-cvs/buil
+d/OOO_1_1_2/vcl/source/control/button.cxx:3546: parse error before `.'
+token/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.60-cvs/build
+/OOO_1_1_2/vcl/source/control/button.cxx:3551: warning: ISO C++ forbids
+declaration of `Invalidate' with no
+type/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.60-cvs/build/
+OOO_1_1_2/vcl/source/control/button.cxx:3552: parse error before `}'
+token dmake:  Error code 1, while making
+'../../unxlngi4.pro/slo/button.obj'
+
+ERROR: Error 65280 occurred while making
+/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.60-cvs/build/OOO_
+1_1_2/vcl/source/control make: *** [stamp/build] Błąd 1
+#v-
+
+-- 
+. JID: rmrmg(at)jabberpl(dot)org | Wszystko jest trudne
+.   mail: rmrmg(at)wp(dot)pl     |   przy odpowiednim
+.  registered Linux user 261525  |  stopniu abstrakcji
+ _______     RMRMG signature version 0.0.5     ________
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000429.html">[Open Office] [ooo-build 1.1.60] error &quot;No ImageList found&quot;
+</A></li>
+	<LI> Next message: <A HREF="000432.html">[Open Office] cvs problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#430">[ date ]</a>
+              <a href="thread.html#430">[ thread ]</a>
+              <a href="subject.html#430">[ subject ]</a>
+              <a href="author.html#430">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

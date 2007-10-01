@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] build stopped at readlicense_oo
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:khirano%40transwift.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000225.html">
+   <LINK REL="Next"  HREF="000233.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] build stopped at readlicense_oo
+   </H1>
+    <B>Hirano Kazunari
+    </B> 
+    <A HREF="mailto:khirano%40transwift.net"
+       TITLE="[Open Office] build stopped at readlicense_oo">khirano@transwift.net
+       </A><BR>
+    <I>Tue, 13 Jan 2004 20:26:35 +0900</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000225.html">[Open Office] Re: Gtk+ plugin branch ...
+</A></li>
+        <LI> Next message: <A HREF="000233.html">[Open Office] build stopped at readlicense_oo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#226">[ date ]</a>
+              <a href="thread.html#226">[ thread ]</a>
+              <a href="subject.html#226">[ subject ]</a>
+              <a href="author.html#226">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Building ooo_1_1_0 with ooo-build-1.1.49.2 stopped at:
+
+=============
+Building project readlicense_oo
+=============
+/home/khirano/ximian/ooo-build-1.1.49.2/build/OOO_1_1_0/readlicense_oo/html
+/home/khirano/ximian/ooo-build-1.1.49.2/build/OOO_1_1_0/readlicense_oo
+/home/khirano/ximian/ooo-build-1.1.49.2/build/OOO_1_1_0/readlicense_oo/docs/readme
+-------------[snip]
+java -classpath 
+/home/khirano/ximian/ooo-build-1.1.49.2/build/OOO_1_1_0/external/common/xt.jar:/home/khirano/ximian/ooo-build-1.1.49.2/build/OOO_1_1_0/external/common/parser.jar 
+-Dcom.jclark.xsl.sax.parser=com.sun.xml.parser.Parser 
+com.jclark.xsl.sax.Driver readme.xrm ../readme.xsl os1=LINUX gui1=UNX 
+cp1=INTEL com1=GCC lang1=de type=html 
+file=../../unxlngi4.pro/misc/49/readme49.html
+java: ???????????H^???????(sorry but garbage characters --khirano)
+dmake: Error code 1, while making '../../unxlngi4.pro/misc/49/readme49.html'
+---* TG_SLO.MK *---
+
+ERROR: Error 65280 occurred while making 
+/home/khirano/ximian/ooo-build-1.1.49.2/build/OOO_1_1_0/readlicense_oo/docs/readme
+dmake: Error code 1, while making 'build_all'
+---* TG_SLO.MK *---
+[<A HREF="mailto:khirano@localhost">khirano@localhost</A> OOO_1_1_0]$
+
+Maybe a java-related problem?
+
+khirano
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000225.html">[Open Office] Re: Gtk+ plugin branch ...
+</A></li>
+	<LI> Next message: <A HREF="000233.html">[Open Office] build stopped at readlicense_oo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#226">[ date ]</a>
+              <a href="thread.html#226">[ thread ]</a>
+              <a href="subject.html#226">[ subject ]</a>
+              <a href="author.html#226">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

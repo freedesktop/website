@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Disabling CUPS printer queue updates
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000766.html">
+   <LINK REL="Next"  HREF="000769.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Disabling CUPS printer queue updates
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] Disabling CUPS printer queue updates">halls@debian.org
+       </A><BR>
+    <I>Wed, 9 Feb 2005 12:38:39 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000766.html">[Open Office] Disabling CUPS printer queue updates
+</A></li>
+        <LI> Next message: <A HREF="000769.html">[Open Office] Status 1th - 9th Feb
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#768">[ date ]</a>
+              <a href="thread.html#768">[ thread ]</a>
+              <a href="subject.html#768">[ subject ]</a>
+              <a href="author.html#768">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 09 Feb 2005 11:14, Michael Meeks wrote:
+&gt;<i> On Wed, 2005-02-09 at 10:05 +0000, Chris Halls wrote:
+</I>&gt;<i> &gt; I managed to trace this odd behaviour to bugs in the event handlers for
+</I>&gt;<i> &gt; SALEVENT_PRINTERCHANGED.  For example, the font dialog in impress never
+</I>&gt;<i> &gt; updates a pointer to the FontList that is deleted when the printer
+</I>&gt;<i> &gt; changes.
+</I>&gt;<i>
+</I>&gt;<i>  Sigh; right. This is a shame; but - I guess unwinding all the fixes
+</I>&gt;<i> there would be a real pain.
+</I>
+Yup, I already spent hours tracking the problem down and tracing through all 
+the libs looking for a fix for just the one problem.
+
+&gt;<i>  As you say, prolly best to stick with the list we get on startup then -
+</I>&gt;<i> may improve performance too.
+</I>
+I think it will do.  It's not called really frequently but seems to be called 
+at times when the user is waiting for something to happen such as when 
+bringing up the character dialog, and it triggers callbacks all over the 
+place.  Next time I have a working 680 tree I'm going to check whether it is 
+happening there too.
+
+Chris
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000766.html">[Open Office] Disabling CUPS printer queue updates
+</A></li>
+	<LI> Next message: <A HREF="000769.html">[Open Office] Status 1th - 9th Feb
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#768">[ date ]</a>
+              <a href="thread.html#768">[ thread ]</a>
+              <a href="subject.html#768">[ subject ]</a>
+              <a href="author.html#768">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

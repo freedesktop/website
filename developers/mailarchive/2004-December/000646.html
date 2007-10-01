@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo 1.1.3 crashs with gtk+-2.6.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:chkr%40plauener.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000649.html">
+   <LINK REL="Next"  HREF="000647.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo 1.1.3 crashs with gtk+-2.6.0
+   </H1>
+    <B>Christian Krause
+    </B> 
+    <A HREF="mailto:chkr%40plauener.de"
+       TITLE="[Open Office] ooo 1.1.3 crashs with gtk+-2.6.0">chkr@plauener.de
+       </A><BR>
+    <I>Sun, 19 Dec 2004 01:53:16 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000649.html">[Open Office] Building without translations
+</A></li>
+        <LI> Next message: <A HREF="000647.html">[Open Office] ooo 1.1.3 crashs with gtk+-2.6.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#646">[ date ]</a>
+              <a href="thread.html#646">[ thread ]</a>
+              <a href="subject.html#646">[ subject ]</a>
+              <a href="author.html#646">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've a problem with openoffice 1.1.3, ooo-build 1.3.7-20041216 and gtk+-2.6.0:
+
+Openoffice crashs every time I open the filechooser with &quot;File: Open&quot;
+(see backtrace at the end of the mail). Bug-buddy is started and when I
+cancel it, an OO dialog appears: &quot;An unrecoverable error has
+occured&quot;. This seems to be a default segfault handler...
+
+I am not sure, whether this is a bug in OO, ooo-build or gtk+. But I know, that t
+the problem doesn't occur with gtk+2-2.4.14.
+
+I use the ooo-options --with-vendor=RedHat and --with-distro=RHFedora.
+
+Do you have an idea, how the problem can be solved?
+
+
+Thanks,
+Christian
+
+Backtrace was generated from '/usr/lib/ooo-1.1/program/soffice.bin'
+
+(no debugging symbols found)...Using host libthread_db library &quot;/lib/libthread_db.so.1&quot;.
+(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...[Thread debugging using libthread_db enabled]
+[New Thread -1244539216 (LWP 32005)]
+[New Thread -1345541200 (LWP 32040)]
+[Thread debugging using libthread_db enabled]
+[New Thread -1244539216 (LWP 32005)]
+[New Thread -1345541200 (LWP 32040)]
+[Thread debugging using libthread_db enabled]
+[New Thread -1244539216 (LWP 32005)]
+[New Thread -1345541200 (LWP 32040)]
+[New Thread -1345279056 (LWP 32039)]
+[New Thread -1336886352 (LWP 32038)]
+[New Thread -1336616016 (LWP 32037)]
+[New Thread -1336202320 (LWP 32036)]
+[New Thread -1327424592 (LWP 32028)]
+[New Thread -1283384400 (LWP 32026)]
+[New Thread -1270133840 (LWP 32023)]
+[New Thread -1259406416 (LWP 32022)]
+(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...(no debugging symbols found)...0xb704be99 in __lll_mutex_lock_wait () from /lib/libpthread.so.0
+#0  0xb704be99 in __lll_mutex_lock_wait () from /lib/libpthread.so.0
+#1  0xb7048cfb in _L_mutex_lock_140 () from /lib/libpthread.so.0
+#2  0x081fac60 in ?? ()
+#3  0xb75a7a4c in ?? () from /usr/lib/ooo-1.1/program/libsal.so.3
+#4  0xb716bf90 in ?? ()
+#5  0x0825b9f0 in ?? ()
+#6  0xbfffc28c in ?? ()
+#7  0xb7410e69 in osl_acquireMutex () from /usr/lib/ooo-1.1/program/libsal.so.3
+#8  0xb763264c in vos::OMutex::acquire ()
+   from /usr/lib/ooo-1.1/program/libvos3gcc3.so
+#9  0xb582ab5d in SalYieldMutex::acquire ()
+   from /usr/lib/ooo-1.1/program/libvclplug_gen645li.so
+#10 0xb5ca8f3b in GtkHookedYieldMutex::acquire ()
+   from /usr/lib/ooo-1.1/program/libvclplug_gtk645li.so
+#11 0xb5ca8b12 in GtkXLib::userEventFn ()
+   from /usr/lib/ooo-1.1/program/libvclplug_gtk645li.so
+#12 0xb69e21c0 in g_idle_dispatch (source=0x825b9f0, 
+    callback=0xb7050ff4 &lt;pthread_functions+532&gt;, user_data=0xfffffffc)
+    at gmain.c:3821
+#13 0xb69dee4d in IA__g_main_context_dispatch (context=0x80f8398)
+    at gmain.c:1947
+#14 0xb69e084e in g_main_context_iterate (context=0x80f8398, block=1, 
+    dispatch=1, self=0x80d7bb0) at gmain.c:2578
+#15 0xb69e0cef in IA__g_main_context_iteration (context=0x80f8398, may_block=1)
+    at gmain.c:2637
+#16 0xb5ca87f5 in GtkXLib::Yield ()
+   from /usr/lib/ooo-1.1/program/libvclplug_gtk645li.so
+#17 0xb582af71 in X11SalInstance::Yield ()
+   from /usr/lib/ooo-1.1/program/libvclplug_gen645li.so
+#18 0xb7e43704 in Application::Yield ()
+   from /usr/lib/ooo-1.1/program/libvcl645li.so
+#19 0xb210eec2 in sfx2::FileDialogHelper_Impl::implDoExecute ()
+   from /usr/lib/ooo-1.1/program/libsfx645li.so
+#20 0xb210f1ac in sfx2::FileDialogHelper_Impl::execute ()
+   from /usr/lib/ooo-1.1/program/libsfx645li.so
+#21 0xb2110911 in sfx2::FileDialogHelper::Execute ()
+   from /usr/lib/ooo-1.1/program/libsfx645li.so
+#22 0xb21138cc in sfx2::FileOpenDialog_Impl ()
+   from /usr/lib/ooo-1.1/program/libsfx645li.so
+#23 0xb1f69405 in SfxApplication::OpenDocExec_Impl ()
+   from /usr/lib/ooo-1.1/program/libsfx645li.so
+#24 0xb1f7cd7a in SfxStubSfxApplicationOpenDocExec_Impl ()
+   from /usr/lib/ooo-1.1/program/libsfx645li.so
+#25 0xb20aec8b in SfxDispatcher::Call_Impl ()
+   from /usr/lib/ooo-1.1/program/libsfx645li.so
+#26 0xb20af17e in SfxDispatcher::_Execute ()
+   from /usr/lib/ooo-1.1/program/libsfx645li.so
+#27 0xb20af803 in SfxDispatcher::Execute ()
+   from /usr/lib/ooo-1.1/program/libsfx645li.so
+#28 0xb20a348c in SfxDispatchController_Impl::dispatch ()
+   from /usr/lib/ooo-1.1/program/libsfx645li.so
+#29 0xb20a37bf in SfxOfficeDispatch::dispatch ()
+   from /usr/lib/ooo-1.1/program/libsfx645li.so
+#30 0xb3924dde in ?? () from /usr/lib/ooo-1.1/program/libfwk645li.so
+#31 0xb3924fa4 in ?? () from /usr/lib/ooo-1.1/program/libfwk645li.so
+#32 0xb7f1b124 in Menu::Select () from /usr/lib/ooo-1.1/program/libvcl645li.so
+#33 0xb7f1c861 in Menu::ImplCallSelect ()
+   from /usr/lib/ooo-1.1/program/libvcl645li.so
+#34 0xb7f1c880 in Menu::LinkStubImplCallSelect ()
+   from /usr/lib/ooo-1.1/program/libvcl645li.so
+#35 0xb7f5e67c in ImplWindowFrameProc ()
+   from /usr/lib/ooo-1.1/program/libvcl645li.so
+#36 0xb5829565 in SalDisplay::DispatchInternalEvent ()
+   from /usr/lib/ooo-1.1/program/libvclplug_gen645li.so
+#37 0xb5ca8b82 in GtkXLib::userEventFn ()
+   from /usr/lib/ooo-1.1/program/libvclplug_gtk645li.so
+#38 0xb69e21c0 in g_idle_dispatch (source=0x818ecb8, 
+    callback=0xb7050ff4 &lt;pthread_functions+532&gt;, user_data=0xfffffffc)
+    at gmain.c:3821
+#39 0xb69dee4d in IA__g_main_context_dispatch (context=0x80f8398)
+    at gmain.c:1947
+#40 0xb69e084e in g_main_context_iterate (context=0x80f8398, block=1, 
+    dispatch=1, self=0x80d7bb0) at gmain.c:2578
+#41 0xb69e0cef in IA__g_main_context_iteration (context=0x80f8398, may_block=1)
+    at gmain.c:2637
+#42 0xb5ca87f5 in GtkXLib::Yield ()
+   from /usr/lib/ooo-1.1/program/libvclplug_gtk645li.so
+#43 0xb582af71 in X11SalInstance::Yield ()
+   from /usr/lib/ooo-1.1/program/libvclplug_gen645li.so
+#44 0xb7e43704 in Application::Yield ()
+   from /usr/lib/ooo-1.1/program/libvcl645li.so
+#45 0xb7e4373f in Application::Execute ()
+   from /usr/lib/ooo-1.1/program/libvcl645li.so
+#46 0x0806911d in desktop::Desktop::Main ()
+#47 0xb7e481d3 in SVMain () from /usr/lib/ooo-1.1/program/libvcl645li.so
+#48 0xb7fb1168 in main () from /usr/lib/ooo-1.1/program/libvcl645li.so
+#49 0xb6d56e77 in __libc_start_main () from /lib/libc.so.6
+#50 0x00000001 in ?? ()
+#51 0xbffff614 in ?? ()
+#52 0xbffff61c in ?? ()
+#53 0x0804cbd4 in ?? ()
+#54 0xb6e6aff4 in ?? () from /lib/libc.so.6
+#55 0x00000000 in ?? ()
+#56 0xbffff5a0 in ?? ()
+#57 0x0807d4e0 in operator delete[] ()
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000649.html">[Open Office] Building without translations
+</A></li>
+	<LI> Next message: <A HREF="000647.html">[Open Office] ooo 1.1.3 crashs with gtk+-2.6.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#646">[ date ]</a>
+              <a href="thread.html#646">[ thread ]</a>
+              <a href="subject.html#646">[ subject ]</a>
+              <a href="author.html#646">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

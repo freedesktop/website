@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOo-Ximian with GCC-3.4.x - ucb module help
+ needed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-November/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000574.html">
+   <LINK REL="Next"  HREF="000580.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOo-Ximian with GCC-3.4.x - ucb module help
+ needed
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] OOo-Ximian with GCC-3.4.x - ucb module help
+ needed">michael@ximian.com
+       </A><BR>
+    <I>Fri, 12 Nov 2004 15:20:32 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000574.html">[Open Office] OOo-Ximian with GCC-3.4.x - ucb module help needed
+</A></li>
+        <LI> Next message: <A HREF="000580.html">[Open Office] OOo-Ximian with GCC-3.4.x - ucb module help
+ needed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#578">[ date ]</a>
+              <a href="thread.html#578">[ thread ]</a>
+              <a href="subject.html#578">[ subject ]</a>
+              <a href="author.html#578">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Hanno,
+
+On Tue, 2004-11-09 at 23:51 +0100, Hanno Meyer-Thurow wrote:
+&gt;<i> My name:	Hanno Meyer-Thurow
+</I>&gt;<i> My aim:	porting OOo 1.1/Ximian line to GCC-3.4
+</I>
+	Ah - ok; I would imagine that would have been rather difficult.
+
+&gt;<i> OOo 1.1.3 is already working except module 'pyuno'. There are
+</I>&gt;<i> undefined references to python functions on linking for the
+</I>&gt;<i> libraries. These functions i find in my system's python 2.3.4
+</I>&gt;<i> but not in the internal python 2.2.2. I took the bloody
+</I>&gt;<i> workaround from branch 'gcc340fixes01' to just ignore these
+</I>&gt;<i> undefined references. et viola.
+</I>
+	Wow :-) very impressive.
+
+&gt;<i> With Ximian (version 1.3.5.5) I have the same problem with
+</I>&gt;<i> module 'ucbl' for the Gnome and KDE specific code. The
+</I>&gt;<i> linking for two libraries fails. ATM, i use the same way as
+</I>&gt;<i> for module 'pyuno' to ignore the undefined references. I do
+</I>&gt;<i> not have the linking errors for KDE specific stuff because
+</I>&gt;<i> that testbox is of a friend and switched off right now. I
+</I>&gt;<i> hope I can serve it tomorrow if wanted. On my personal box
+</I>&gt;<i> there is no KDE/Gnome environment installed to test these.
+</I>&gt;<i> My Ximian version works (--disable-gtk --disable-kde).
+</I>
+	Ok - interesting.
+
+&gt;<i> As I have seen, the KDE linking error only appears if system's
+</I>&gt;<i> db (4.2) is used. At least I did it with system's db and it
+</I>&gt;<i> broke. Another one used internal db and '--enable-kde' and it
+</I>&gt;<i> did not break there. May be it is true for Gnome problem as
+</I>&gt;<i> well or I may be wrong. I do not know. That is why I ask on
+</I>&gt;<i> this list for help on that code parts.
+</I>
+	I'm not really clear what the problem with gcc 3.4 is - I guess
+standards compliance / ambiguous code generation changes.
+
+&gt;<i> These three problems are the last ones to get a clean(er)
+</I>&gt;<i> GCC-3.4 patchset for Ximian. I would appreciate it very
+</I>&gt;<i> much if anyone may help me with that. Thanks a lot in advance!
+</I>
+	Sure - I guess, the best thing to do is to get your changes into the
+ooo-build-1-3 cvs branch; then at least we can work incrementally to
+nail the remaining problems.
+
+&gt;<i> I hope my english is not that bad! ;)
+</I>
+	Not at all :-)
+
+&gt;<i> =============================================
+</I>&gt;<i> 
+</I>&gt;<i> One patch is needed for 'gvfs' code:
+</I>&gt;<i> 
+</I>&gt;<i> --- ucb/source/ucp/gvfs/directory.hxx.orig      2004-11-09 17:19:07.354395360 +0100
+</I>&gt;<i> +++ ucb/source/ucp/gvfs/directory.hxx   2004-11-09 17:24:48.330559104 +0
+</I>&gt;<i> 100
+</I>&gt;<i> @@ -37,7 +37,7 @@
+</I>&gt;<i>  };
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> -struct gvfs::DataSupplier_Impl;
+</I>&gt;<i> +struct DataSupplier_Impl;
+</I>&gt;<i>  class DataSupplier : public ucb::ResultSetDataSupplier
+</I>&gt;<i>  {
+</I>&gt;<i>  private:
+</I>&gt;<i> 
+</I>&gt;<i> =============================================
+</I>&gt;<i> 
+</I>&gt;<i> Then it fails on linking:
+</I>&gt;<i> 
+</I>&gt;<i> Making: ../../../unxlngi4.pro/lib/libucpgvfs1.so
+</I>&gt;<i> gcc -c -fPIC -o ../../../unxlngi4.pro/slo/ucpgvfs1_version.o -DUNX  -I../../../unxlngi4.pro/inc /var/tmp/portage/openoffice-ximian-1.3.5-r1/work/OOo_1.1.3_src/solenv/src/version.c
+</I>&gt;<i> g++ -O2 -Bsymbolic -z combreloc -z defs -shared -L../../../unxlngi4.pro/lib -L../lib -L/var/tmp/portage/openoffice-ximian-1.3.5-r1/work/OOo_1.1.3_src/solenv/unxlngi4/lib -L/var/tmp/portage/openoffice-ximian-1.3.5-r1/work/OOo_1.1.3_src/solver/645/unxlngi4.pro/lib -L/var/tmp/portage/openoffice-ximian-1.3.5-r1/work/OOo_1.1.3_src/solenv/unxlngi4/lib -L/opt/blackdown-jdk-1.4.2/lib -L/opt/blackdown-jdk-1.4.2/jre/lib/i386 -L/opt/blackdown-jdk-1.4.2/jre/lib/i386/client -L/opt/blackdown-jdk-1.4.2/jre/lib/i386/native_threads -L/usr/X11R6/lib ../../../unxlngi4.pro/slo/ucpgvfs1_version.o ../../../unxlngi4.pro/slo/ucpgvfs1_description.o -o ../../../unxlngi4.pro/lib/libucpgvfs1.so ../../../unxlngi4.pro/slo/content.o ../../../unxlngi4.pro/slo/directory.o ../../../unxlngi4.pro/slo/stream.o ../../../unxlngi4.pro/slo/provider.o -lcppuhelpergcc3 -lcppu -lsal -lvos3gcc3 -lucbhelper2gcc3 -lutl645li -pthread -Wl,--export-dynamic -lgnomevfs-2 -lbonobo-activation -lORBit-2 -lm -lgmodule-2.0 -ldl -lg
+</I>&gt;<i>  thread-2.0 -lglib-2.0 -ldl -lpthread -lm -Wl,-Bdynamic -lstlport_gcc -lstdc++
+</I>&gt;<i> ../../../unxlngi4.pro/slo/content.o(.text+0xb5d): In function `getDateFromUnix(long)':
+</I>&gt;<i> : undefined reference to `Date::Date()'
+</I>&gt;<i> ../../../unxlngi4.pro/slo/content.o(.text+0xb68): In function `getDateFromUnix(long)':
+</I>&gt;<i> : undefined reference to `Time::Time()'
+</I>&gt;<i> ../../../unxlngi4.pro/slo/content.o(.text+0xb84): In function `getDateFromUnix(long)':
+</I>&gt;<i> : undefined reference to `DateTime::MakeDateTimeFromSec(Date const&amp;, unsigned long)'
+</I>&gt;<i> ../../../unxlngi4.pro/slo/provider.o(.text+0xf61): In function `gvfs::ContentProvider::queryContent(com::sun::star::uno::Reference&lt;com::sun::star::ucb::XContentIdentifier&gt; const&amp;)':
+</I>&gt;<i> : undefined reference to `String::String(rtl::OUString const&amp;)'
+</I>&gt;<i> ../../../unxlngi4.pro/slo/provider.o(.text+0xf6f): In function `gvfs::ContentProvider::queryContent(com::sun::star::uno::Reference&lt;com::sun::star::ucb::XContentIdentifier&gt; const&amp;)':
+</I>&gt;<i> : undefined reference to `String::String()'
+</I>&gt;<i> ../../../unxlngi4.pro/slo/provider.o(.text+0x100b): In function `gvfs::ContentProvider::queryContent(com::sun::star::uno::Reference&lt;com::sun::star::ucb::XContentIdentifier&gt; const&amp;)':
+</I>&gt;<i> : undefined reference to `INetURLObject::setAbsURIRef(String const&amp;, bool, INetURLObject::EncodeMechanism, unsigned short, bool, INetURLObject::FSysStyle)'
+</I>&gt;<i> ../../../unxlngi4.pro/slo/provider.o(.text+0x1013): In function `gvfs::ContentProvider::queryContent(com::sun::star::uno::Reference&lt;com::sun::star::ucb::XContentIdentifier&gt; const&amp;)':
+</I>
+	This looks very odd; those should be defined in libtl - perhaps we need
+to update makefile.mk in there to add TOOLSLIB to the SHL1STDLIBS in
+makefile.mk.
+
+	I look forward to seeing your patches :-) they'll be most useful for
+supporting 1.1.x going forward.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000574.html">[Open Office] OOo-Ximian with GCC-3.4.x - ucb module help needed
+</A></li>
+	<LI> Next message: <A HREF="000580.html">[Open Office] OOo-Ximian with GCC-3.4.x - ucb module help
+ needed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#578">[ date ]</a>
+              <a href="thread.html#578">[ thread ]</a>
+              <a href="subject.html#578">[ subject ]</a>
+              <a href="author.html#578">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

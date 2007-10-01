@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%20own%0A%09distro%20tag&In-Reply-To=43FE32FE.8090201%40arcor.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001640.html">
+   <LINK REL="Next"  HREF="001609.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag</H1>
+    <B>Jim Watson</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%20own%0A%09distro%20tag&In-Reply-To=43FE32FE.8090201%40arcor.de"
+       TITLE="[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag">jim at amarooas.com.au
+       </A><BR>
+    <I>Thu Feb 23 17:57:02 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001640.html">[Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag
+</A></li>
+        <LI>Next message: <A HREF="001609.html">[Open Office] cwsextract, rdiff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1641">[ date ]</a>
+              <a href="thread.html#1641">[ thread ]</a>
+              <a href="subject.html#1641">[ subject ]</a>
+              <a href="author.html#1641">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Feb 23, 2006 at 11:11:10PM +0100, Andreas Radke wrote:
+&gt;<i>    --with-java \
+</I>&gt;<i>    --with-jdk-home=/opt/java \
+</I>&gt;<i> 
+</I>&gt;<i> Now it breaks much later this:
+</I> ...
+
+&gt;<i> [Java framework] The JRE specified by the bootstrap variable
+</I>&gt;<i> UNO_JAVA_JFW_JREHOME  or  UNO_JAVA_JFW_ENV_JREHOME  could not be
+</I>&gt;<i> recognized. Check the values and make sure that you use a plug-in
+</I>&gt;<i> library that can recognize that JRE.javaldx failed!
+</I>
+ ... 4 times
+&gt;<i> 
+</I>&gt;<i> So what's now the problem???
+</I>
+This was reported at issue 61361. The solution might be similar to issue 38974 adapted for your java.
+<A HREF="http://qa.openoffice.org/issues/show_bug.cgi?id=38974">http://qa.openoffice.org/issues/show_bug.cgi?id=38974</A>
+
+Meanhwile for upstream build system the build can be continued this way:
+
+cd instsetoo_native
+build --since testtools
+
+Because of time zones you will mostly get much faster answers if you search
+issuezilla before asking on the mailing lists. Also subscribe to the
+upstream mailing lists. At least <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">dev at tools</A>, <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">dev at porting</A> and <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">dev at openoffice</A>
+
+And lurk on the freenode IRC #openoffice.org
+
+By the way what is your java -version ?
+
+good luck
+
+jim
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001640.html">[Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag
+</A></li>
+	<LI>Next message: <A HREF="001609.html">[Open Office] cwsextract, rdiff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1641">[ date ]</a>
+              <a href="thread.html#1641">[ thread ]</a>
+              <a href="subject.html#1641">[ subject ]</a>
+              <a href="author.html#1641">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

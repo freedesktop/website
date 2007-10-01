@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] The dreaded HelpLinker NullPointerException and how
+	to fix it
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20The%20dreaded%20HelpLinker%20NullPointerException%20and%20how%0A%09to%20fix%20it&In-Reply-To=1140987078.8970.2.camel%40localhost.localdomain">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001648.html">
+   <LINK REL="Next"  HREF="001655.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] The dreaded HelpLinker NullPointerException and how
+	to fix it</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20The%20dreaded%20HelpLinker%20NullPointerException%20and%20how%0A%09to%20fix%20it&In-Reply-To=1140987078.8970.2.camel%40localhost.localdomain"
+       TITLE="[Open Office] The dreaded HelpLinker NullPointerException and how
+	to fix it">bero at arklinux.org
+       </A><BR>
+    <I>Sun Feb 26 16:25:35 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001648.html">[Open Office] The dreaded HelpLinker NullPointerException and
+	how to fix it
+</A></li>
+        <LI>Next message: <A HREF="001655.html">[Open Office] The dreaded HelpLinker NullPointerException and how
+	to fix it
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1649">[ date ]</a>
+              <a href="thread.html#1649">[ thread ]</a>
+              <a href="subject.html#1649">[ subject ]</a>
+              <a href="author.html#1649">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sunday, 26. February 2006 21:51, Caolan McNamara wrote:
+&gt;<i> &gt; I guess the right workaround for now is to force HelpLinker to use an
+</I>&gt;<i> &gt; org.apache.xerces.jaxp.SAXParserFactoryImpl as opposed to a
+</I>&gt;<i> &gt; gnu.xml.stream.SAXParserFactory -- any objections to this?
+</I>&gt;<i>
+</I>&gt;<i> Hmm, I wonder if that's the sort of thing that the &quot;alternatives&quot; setup
+</I>&gt;<i> on fedora addresses, i.e.
+</I>
+Yes, that seems to be what it does -- seems to be a set of wrappers that 
+define the properties.
+
+If we add 
+-Djavax.xml.parsers.SAXParserFactory=org.apache.xerces.jaxp.SAXParserFactoryImpl
+to the command line building, it does the same thing for everyone, including 
+ppl without the alternatives script (or with a messed setup thereof).
+
+Creating a $JAVA_HOME/lib/jaxp.properties saying
+javax.xml.parsers.SAXParserFactory=org.apache.xerces.jaxp.SAXParserFactoryImpl
+would have the same effect too (but we shouldn't touch the running system from 
+the makefiles).
+
+After fixing this, it still breaks a bit later here though:
+
+ERROR: XmlDocument.createXmlDocument() failed for 
+'../../unxlngi6.pro/misc/en-US/text/shared/guide/space_hyphen.xhp': 
+NOT_SUPPORTED_ERR: The implementation does not support the requested type of 
+object or operation
+
+But that's again caused by classpath defaulting to an implementation with 
+fewer functionalities than Xerces -- using Xerces wherever possible fixes 
+that too:
+
+-Djavax.xml.datatype.DatatypeFactory=org.apache.xerces.jaxp.datatype.DatatypeFactoryImpl
+-Djavax.xml.parsers.DocumentBuilderFactory=org.apache.xerces.jaxp.DocumentBuilderFactoryImpl
+-Djavax.xml.parsers.SAXParserFactory=org.apache.xerces.jaxp.SAXParserFactoryImpl
+-Djavax.xml.validation.SchemaFactory=org.apache.xerces.jaxp.validation.XMLSchemaFactory
+-Dorg.w3c.dom.DOMImplementationSourceList=org.apache.xerces.dom.DOMXSImplementationSourceImpl
+-Dorg.xml.sax.driver=org.apache.xerces.parsers.SAXParser
+
+I guess we should just hardcode all of them, our build process requires xerces 
+anyway, so there's no need to use something else for its job -- I don't think 
+this can hurt.
+My build with all of them set has progressed way past the HelpLinker 
+invocation now.
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001648.html">[Open Office] The dreaded HelpLinker NullPointerException and
+	how to fix it
+</A></li>
+	<LI>Next message: <A HREF="001655.html">[Open Office] The dreaded HelpLinker NullPointerException and how
+	to fix it
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1649">[ date ]</a>
+              <a href="thread.html#1649">[ thread ]</a>
+              <a href="subject.html#1649">[ subject ]</a>
+              <a href="author.html#1649">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

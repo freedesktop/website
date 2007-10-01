@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Fw: SIL OpenOffice.org
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Fw%3A%20SIL%20OpenOffice.org&In-Reply-To=1135970700.21195.80.camel%40localhost.localdomain">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001480.html">
+   <LINK REL="Next"  HREF="001483.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Fw: SIL OpenOffice.org</H1>
+    <B>David Fraser</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Fw%3A%20SIL%20OpenOffice.org&In-Reply-To=1135970700.21195.80.camel%40localhost.localdomain"
+       TITLE="[Open Office] Re: Fw: SIL OpenOffice.org">davidf at sjsoft.com
+       </A><BR>
+    <I>Tue Jan 10 11:49:01 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001480.html">[Open Office] NOSIP: OO[m148] Installation problem...
+</A></li>
+        <LI>Next message: <A HREF="001483.html">[Open Office] icu snafu ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1482">[ date ]</a>
+              <a href="thread.html#1482">[ thread ]</a>
+              <a href="subject.html#1482">[ subject ]</a>
+              <a href="author.html#1482">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all
+
+I've started looking at integrating the sil graphite patch into ooo-build
+
+This is just for interest, I've stripped the actual patch and logfile 
+but they're at <A HREF="http://davidf.sjsoft.com/files/ooo-build/">http://davidf.sjsoft.com/files/ooo-build/</A>
+
+For more information on the project, see:
+<A HREF="http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;item_id=OOo_20_graphite">http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;item_id=OOo_20_graphite</A>
+<A HREF="http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;item_id=OOo_20_source">http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;item_id=OOo_20_source</A>
+
+Tim Eves is the maintainer and he's wanting to get this into OOo CVS so 
+I suggested using ooo-build
+
+There's currently a problem with gcc4 and sil graphite though
+
+Cheers
+David
+
+Tim Eves wrote:
+&gt;<i> On Fri, 2005-12-30 at 20:20 +0200, David Fraser wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Yes, the main advantage of ooo-build is keeping a set of patches and 
+</I>&gt;&gt;<i> sharing them with others whilst waiting for integration into OOo CVS, 
+</I>&gt;&gt;<i> and a number of different groups are using it now.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;<i> This sounds exactly what I need then as I am keen to see my patches
+</I>&gt;<i> adopted into OOo CVS.
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Well the first would be to try a build using ooo-build. The wiki at 
+</I>&gt;&gt;<i> wiki.services.openoffice.org has lots of info. Also IRC chat is helpful, 
+</I>&gt;&gt;<i> #openoffice.org on Freenode for general OOo chat, but #go-oo is 
+</I>&gt;&gt;<i> specifically for using ooo-build and most of the people who use it hang 
+</I>&gt;&gt;<i> out there. If you've been building OOo find by yourself then it 
+</I>&gt;&gt;<i> shouldn't be too difficult.
+</I>&gt;&gt;<i> Also I've started working on making it build nicely on Windows using 
+</I>&gt;&gt;<i> ooo-build and others have now continued that so it is probably a nice 
+</I>&gt;&gt;<i> way to get some people to help porting the patch to windows.
+</I>&gt;&gt;<i> I'd love to help with the integration, so I'll see where you're at when 
+</I>&gt;&gt;<i> I get back from holiday.
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;<i> By the way, I couldn't see a link to the sil-graphite-1.1.2.tar.gz 
+</I>&gt;&gt;<i> that's included in the patch on the Graphite site, is it available 
+</I>&gt;&gt;<i> publicly somewhere?
+</I>&gt;&gt;<i>     
+</I>&gt;<i> There are 2 versions of the Graphite API, both use essentially the same
+</I>&gt;<i> underlying engine code.  The patches currently use v1 and shall be moved
+</I>&gt;<i> to v2 early in Jan.  Please note that the tarball is embedded in the
+</I>&gt;<i> patch file so there is no need to download it, the oo module also
+</I>&gt;<i> includes a patch file.  Part of the reason this patch is a bit of mess
+</I>&gt;<i> is that it was put together quite quickly in time for the recent WSIS.
+</I>&gt;<i> The CVS head and the included OO version are out of sync as some recent
+</I>&gt;<i> checkins to broke the Linux build in an attempt to fix gcc4.0 issues.
+</I>&gt;<i>   
+</I>Right, ooo-build usually has a mechanism for downloading the 'upstream'
+version of an included project rather than having to put the binary into
+CVS in the form of a patch, so it would help if there was some URL from
+which the tarball could be downloaded. I've put it on my own website
+temporarily or it could be put on the go-oo website, but it might be
+simpler to just push it into the sourceforge file release system.
+
+&gt;<i> Please note we consider the v1 API deprecated, so all current and future
+</I>&gt;<i> work is focused on v2 which means that you are more likely to see SIL
+</I>&gt;<i> OpenOffice.org upgraded to the v2 API before the v1 CVS and tarball sync
+</I>&gt;<i> up.
+</I>&gt;<i> Graphite v2 API is available via subversion at:
+</I>&gt;<i> 	<A HREF="svn://scripts.sil.org/graphite/graphite/trunk">svn://scripts.sil.org/graphite/graphite/trunk</A>
+</I>&gt;<i> however the latest version of v1 is available on sourceforge at:
+</I>&gt;<i> 	<A HREF="http://sourceforge.net/projects/silgraphite">http://sourceforge.net/projects/silgraphite</A>
+</I>&gt;<i> through the CVS repository there.
+</I>&gt;<i>   
+</I>OK great, thanks for the info
+
+I've just done the neccessary work to integrate the patch into
+ooo-build, and tested that it applies the patch etc fine on the old
+ooo-build-2-0 branch.
+Unfortunately it gives me an internal compiler error compiling the
+silgraphite project, I've attached the log file.
+This is in Fedora Core 4 with the following gcc:
+gcc (GCC) 4.0.2 20051125 (Red Hat 4.0.2-8)
+
+I've also attached the patch to ooo-build-2-0 and the slightly modified
+form of your patch (paths adjusted, without tarball)
+We'll need to test that it builds on HEAD / ooo-build-2-0-1 next before
+adding it (rather add experimental stuff on HEAD)
+
+Cheers
+David
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: silgraphite-ooo-2-0.patch
+Type: text/x-patch
+Size: 3832 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060110/edd7f899/silgraphite-ooo-2-0.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060110/edd7f899/silgraphite-ooo-2-0.bin</A>
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001480.html">[Open Office] NOSIP: OO[m148] Installation problem...
+</A></li>
+	<LI>Next message: <A HREF="001483.html">[Open Office] icu snafu ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1482">[ date ]</a>
+              <a href="thread.html#1482">[ thread ]</a>
+              <a href="subject.html#1482">[ subject ]</a>
+              <a href="author.html#1482">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

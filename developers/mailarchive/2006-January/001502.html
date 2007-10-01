@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] .desktop.in files untranslatable
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20.desktop.in%20files%20untranslatable&In-Reply-To=5b8c5a2c0601191540v6c228883j709168f2742935e6%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001501.html">
+   <LINK REL="Next"  HREF="001509.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] .desktop.in files untranslatable</H1>
+    <B>Dwayne Bailey</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20.desktop.in%20files%20untranslatable&In-Reply-To=5b8c5a2c0601191540v6c228883j709168f2742935e6%40mail.gmail.com"
+       TITLE="[Open Office] .desktop.in files untranslatable">dwayne at translate.org.za
+       </A><BR>
+    <I>Fri Jan 20 04:20:26 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001501.html">[Open Office] .desktop.in files untranslatable
+</A></li>
+        <LI>Next message: <A HREF="001509.html">[Open Office] .desktop.in files untranslatable
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1502">[ date ]</a>
+              <a href="thread.html#1502">[ thread ]</a>
+              <a href="subject.html#1502">[ subject ]</a>
+              <a href="author.html#1502">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2006-01-20 at 00:40 +0100, Martin Kretzschmar wrote:
+&gt;<i> Hi Dwayne,
+</I>&gt;<i> 
+</I>&gt;<i> On 1/20/06, Dwayne Bailey &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">dwayne at translate.org.za</A>&gt; wrote:
+</I>&gt;<i> &gt; In the following patch I have removed the translations from
+</I>&gt;<i> &gt; the .desktop.in files, marked the correct items as translatable.
+</I>&gt;<i> 
+</I>&gt;<i> Well, throwing away all existing translations doesn't sound like a smart idea.
+</I>
+But then throwing them in without a translator looking at them is also a
+bad idea.  I assume these translations were pulled from the OOo tree and
+thus the translations have come through the OOo process and are good?
+
+&gt;<i> How about: rename all .desktop.in files to .desktop in your local tree. Then run
+</I>&gt;<i> intltool-prepare in the ooo-build toplevel directory. That should move all
+</I>&gt;<i> existing translations to po files (and generate .desktop.in files). Then delete
+</I>&gt;<i> the .desktop files.
+</I>&gt;<i> 
+</I>&gt;<i> Now generate .desktop files in the same way as during a normal build and
+</I>&gt;<i> check that the result is at least as good as the old files.
+</I>
+I did that, attached is a diff (desktop-file-migration-results.diff)
+which shows that all the translations are preserved (German [de] shifts
+to alphabetical order and I deleted English [en] which was redundant).
+
+The spinoff however is that I have a number of new PO files that need to
+be added to CVS :).  All other PO files have been updated.
+
+I have also attached a .bz2 of the actual diff.
+
+-- 
+Dwayne Bailey
+Translate.org.za
+
++27-12-460-1095 (w)
++27-83-443-7114 (cell)
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: desktop-file-migration-results.diff
+Type: text/x-patch
+Size: 10832 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060120/6ccc8a5b/desktop-file-migration-results-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060120/6ccc8a5b/desktop-file-migration-results-0001.bin</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: desktop-file-localisation2.diff.bz2
+Type: application/x-bzip
+Size: 23492 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060120/6ccc8a5b/desktop-file-localisation2.diff-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060120/6ccc8a5b/desktop-file-localisation2.diff-0001.bin</A>
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001501.html">[Open Office] .desktop.in files untranslatable
+</A></li>
+	<LI>Next message: <A HREF="001509.html">[Open Office] .desktop.in files untranslatable
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1502">[ date ]</a>
+              <a href="thread.html#1502">[ thread ]</a>
+              <a href="subject.html#1502">[ subject ]</a>
+              <a href="author.html#1502">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

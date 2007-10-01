@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: compile troubles ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000030.html">
+   <LINK REL="Next"  HREF="000037.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: compile troubles ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: compile troubles ...">michael@ximian.com
+       </A><BR>
+    <I>Wed, 27 Aug 2003 09:36:09 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000030.html">[Open Office] [OpenOffice compile troubles]
+</A></li>
+        <LI> Next message: <A HREF="000037.html">[Open Office] ANNOUNCE: ooo-build-1.1.37
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#36">[ date ]</a>
+              <a href="thread.html#36">[ thread ]</a>
+              <a href="subject.html#36">[ subject ]</a>
+              <a href="author.html#36">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Carlos,
+
+On Tue, 2003-08-26 at 06:18, Carlos Alberto wrote:
+&gt;<i> Hi there!, i'm a newbi tryng to compile OOo from
+</I>&gt;<i> Ximian, but at the moment i still cannot get the sudo
+</I>&gt;<i> make install command. Here is a list of things i've
+</I>&gt;<i> done.
+</I>
+	Ah ! ;-) well - you fell foul of the fact that I've never tested the
+OOO_1_0_3 install using these ooo-build package ;-) since we went
+public, I've abandoned maintaining that stuff since it's rather
+uninteresting.
+
+	Try building the RC3_030729 [ just a simple configure with no arguments
+is good ], that should work better; also, I'm about to announce a new
+release - I'd play with that instead.
+
+&gt;<i>  it
+</I>&gt;<i> stops saying that it cannot find a .diff file called:
+</I>&gt;<i> print-1.0.3.1-fix.diff from /patches/OOO_1_0_3, but
+</I>&gt;<i> the file is actually there.
+</I>
+	Ah ;-) ok, I'll add a patch path to that file in CVS; which is what is
+missing, but we'll prolly bin that patch set completely shortly it's not
+intended to work; RC3 is far better in every respect already.
+
+&gt;<i> 0. Install the downloaded Java SDK nor other files
+</I>&gt;<i>    ^___ I thought it were installed by running
+</I>&gt;<i> ./configure, i will install these packages first and
+</I>&gt;<i> re-run ./configure &amp;&amp; make, but i think it'll be the
+</I>&gt;<i> same.
+</I>
+	Yes; sure gcc,jdk,binutils should all be built/installed by the build
+process :-)
+
+&gt;<i> can you give me a hand with this?
+</I>
+	As above really; you'd do best to checkout the new release.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000030.html">[Open Office] [OpenOffice compile troubles]
+</A></li>
+	<LI> Next message: <A HREF="000037.html">[Open Office] ANNOUNCE: ooo-build-1.1.37
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#36">[ date ]</a>
+              <a href="thread.html#36">[ thread ]</a>
+              <a href="subject.html#36">[ subject ]</a>
+              <a href="author.html#36">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

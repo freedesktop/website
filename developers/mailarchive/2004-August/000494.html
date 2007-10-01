@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ANNOUNCE: ooo-build-1.3.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000492.html">
+   <LINK REL="Next"  HREF="000496.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ANNOUNCE: ooo-build-1.3.0
+   </H1>
+    <B>Jan Holesovsky
+    </B> 
+    <A HREF="mailto:kendy%40suse.cz"
+       TITLE="[Open Office] ANNOUNCE: ooo-build-1.3.0">kendy@suse.cz
+       </A><BR>
+    <I>Fri, 20 Aug 2004 17:09:31 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000492.html">[Open Office] ANNOUNCE: ooo-build-1.3.0
+</A></li>
+        <LI> Next message: <A HREF="000496.html">[Open Office] ANNOUNCE: ooo-build-1.3.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#494">[ date ]</a>
+              <a href="thread.html#494">[ thread ]</a>
+              <a href="subject.html#494">[ subject ]</a>
+              <a href="author.html#494">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+
+On Thursday 19 August 2004 23:47, suka wrote:
+
+&gt;<i> Checking DLL ../unxlngi4.pro/lib/check_libfps_kde.so ...:
+</I>&gt;<i> ERROR: ../unxlngi4.pro/lib/check_libfps_kde.so: undefined symbol:
+</I>&gt;<i> _ZN3com3sun4star3uno8SequenceIN3rtl8OUStringEED1Ev
+</I>
+Could you please try with the CVS version of ooo-build that contains the 
+following fix:
+
+2004-08-20  Jan Holesovsky  &lt;<A HREF="mailto:kendy@suse.cz">kendy@suse.cz</A>&gt;
+
+	* patches/OOO_1_1/fpicker-common.diff: Use
+	com/sun/star/uno/{Any,Sequence,Reference}.hxx, not
+	com/sun/star/uno/{Any,Sequence,Reference}.h, leads to unexisting
+	symbols (and a refusal to compile on some systems).
+
+I was unable to reproduce the problem myself, but I belive I fixed it :)
+
+Thank you,
+Jan
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000492.html">[Open Office] ANNOUNCE: ooo-build-1.3.0
+</A></li>
+	<LI> Next message: <A HREF="000496.html">[Open Office] ANNOUNCE: ooo-build-1.3.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#494">[ date ]</a>
+              <a href="thread.html#494">[ thread ]</a>
+              <a href="subject.html#494">[ subject ]</a>
+              <a href="author.html#494">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

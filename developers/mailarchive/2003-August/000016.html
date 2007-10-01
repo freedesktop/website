@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Debian / Gnome OO.o
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000011.html">
+   <LINK REL="Next"  HREF="000017.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Debian / Gnome OO.o
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: Debian / Gnome OO.o">michael@ximian.com
+       </A><BR>
+    <I>Mon, 11 Aug 2003 10:05:50 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000011.html">[Open Office] Building OOo on debian.
+</A></li>
+        <LI> Next message: <A HREF="000017.html">[Open Office] Re: Debian / Gnome OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi guys,
+
+On Sat, 2003-08-09 at 11:48, Jérôme Warnier wrote:
+&gt;<i> &gt; I was doing what you/Chris describe/s in articles/51 too (changing the
+</I>&gt;<i> &gt; patches from -p0 to -p1 format). Eventually I got bored with that. Now
+</I>&gt;<i> &gt; I'm calling the apply script from ooo-build inside debian/rules. And I'm
+</I>&gt;<i> &gt; using the tarball from ooo.ximian.com because it's easier to sync 5
+</I>&gt;<i> &gt; Debian patches with the new tarball than 20 Ximian patches with the RC1
+</I>&gt;<i> &gt; tarball in Debian.
+</I>&gt;<i>
+</I>&gt;<i> They are too dependent on GNOME for inclusion in Debian. I'm going to
+</I>&gt;<i> make it little by little to integrate what is really needed to have
+</I>&gt;<i> eventually my flavour of the Debian packages become an experimental
+</I>&gt;<i> laboratory for OOo upstream. In the meanwhile, I would like to have the
+</I>&gt;<i> best packages in Debian.
+</I>
+	Well - so; I added support to the 'apply' and configure.in to allow a
+--with-distro=Debian option, and then annotating patches thus:
+
+[Debian,Ximian]
+foo-do-damnit-no-gnome-I-hate-gnome-stuff.diff
+
+[Ximian]
+the-actually-useful-cups-gnome-integration-stuff.diff
+
+[Debian]
+some-kde-integration-work-here.diff
+
+	etc. :-)
+
+	Such that we can host these 5 (?) Debian patches in CVS; and share the
+burden of releasing together.
+
+	If we do that it's no problem to get you CVS accounts to play with
+'openoffice'.
+
+	That's at least one suggestion,
+
+	Regards,
+
+		Michael.	
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000011.html">[Open Office] Building OOo on debian.
+</A></li>
+	<LI> Next message: <A HREF="000017.html">[Open Office] Re: Debian / Gnome OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

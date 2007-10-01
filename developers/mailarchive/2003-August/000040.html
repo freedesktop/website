@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] other compile problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:nhudson%40lunar-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000035.html">
+   <LINK REL="Next"  HREF="000041.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] other compile problems
+   </H1>
+    <B>Nick Hudson
+    </B> 
+    <A HREF="mailto:nhudson%40lunar-linux.org"
+       TITLE="[Open Office] other compile problems">nhudson@lunar-linux.org
+       </A><BR>
+    <I>Thu, 28 Aug 2003 22:52:59 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000035.html">[Open Office] other compile problems
+</A></li>
+        <LI> Next message: <A HREF="000041.html">[Open Office] other compile problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-4BkhJqjutbabCwKhJ3bm
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Ok well I have now attempted to compile the OOO_1_1_RC3 source and I get
+the following error while it is applying the patches
+
+copy build-lang-no-pack.diff -&gt;
+./applied_patches/076-build-lang-no-pack.diff
+=20
+build-instsetoo-lang.diff: testing...patch -l -b -p0  -d . --dry-run  &lt;
+../../patches/OOO_1_1_RC3//../RC3/build-instsetoo-lang.diff
+patching file instsetoo/util/makefile.mk
+Hunk #1 FAILED at 101.
+Hunk #2 succeeded at 136 (offset 2 lines).
+1 out of 2 hunks FAILED -- saving rejects to file
+instsetoo/util/makefile.mk.rej
+Testing patch build-instsetoo-lang.diff failed. at
+../../patches/apply.pl line 44.
+
+It craps out there because the patch doesnt patch correctly.  Sorry if
+you already knew this just thought it might be useful.
+
+Thanks
+
+Nick
+
+
+
+
+
+On Tue, 2003-08-26 at 11:48, Michael Meeks wrote:
+&gt;<i> Hi Nick,
+</I>&gt;<i>=20
+</I>&gt;<i> On Tue, 2003-08-26 at 12:21, Nick Hudson wrote:
+</I>&gt;<i> &gt; Yeah I saw that in HEAD and tried using it.  So far it doesnt work.  Th=
+</I>e
+&gt;<i> &gt; configure script in config_office tells you that your gcc is corrupt,
+</I>&gt;<i>=20
+</I>&gt;<i> 	Um; then your gcc is corrupt most likely ... what precisely does
+</I>&gt;<i> configure say ? can you post the output of the section around the
+</I>&gt;<i> problem. Are you sure you have no gcc aliases ?
+</I>&gt;<i>=20
+</I>&gt;<i> &gt;  I dont know maybe I need to check my MD5 of the
+</I>&gt;<i> &gt; source.  Can you give me the MD5 of the 20030729 source just to make
+</I>&gt;<i> &gt; sure?=20
+</I>&gt;<i>=20
+</I>&gt;<i> 	I believe there were md5sums on ooo.ximian.com/packages at one stage; I
+</I>&gt;<i> get:
+</I>&gt;<i>=20
+</I>&gt;<i> 30486e90a22d0693e3c1c2c2fc334dc9  src/RC3_030729.tar.bz2
+</I>&gt;<i>=20
+</I>&gt;<i> 	It would be great to add an md5sum checker to the 'download'
+</I>&gt;<i> perl-script if you had time for that [ shouldn't be too hard ].
+</I>&gt;<i>=20
+</I>&gt;<i> &gt; I have some other people trying to build it also and they are getting
+</I>&gt;<i> &gt; totally diffrent compile errors.  Mostly theirs are stopping when it
+</I>&gt;<i> &gt; tries to compile the mozilla stuff.
+</I>&gt;<i>=20
+</I>&gt;<i> 	HEAD doesn't compile any mozilla bits; I'd use that instead.
+</I>&gt;<i> =09
+</I>&gt;<i> &gt; Anyway for now I am going to try building gcc again and compiling with
+</I>&gt;<i> &gt; it to see what happens using the script from HEAD.  Thanks for all the
+</I>&gt;<i> &gt; help.
+</I>&gt;<i>=20
+</I>&gt;<i> 	No problem; hopefully we'll get you up and running and our process more
+</I>&gt;<i> bullet-proof as we go along,
+</I>&gt;<i>=20
+</I>&gt;<i> 	Regards,
+</I>&gt;<i>=20
+</I>&gt;<i> 		Michael.
+</I>
+--=-4BkhJqjutbabCwKhJ3bm
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.2 (GNU/Linux)
+
+iD8DBQA/Ts4bG5D1jWCZpTwRAtc6AJ9mutEUk8yu+hrfB3VZEorj1tpxWQCfRZwK
+eetEk9OZTYmDDUw322H8egs=
+=meD/
+-----END PGP SIGNATURE-----
+
+--=-4BkhJqjutbabCwKhJ3bm--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000035.html">[Open Office] other compile problems
+</A></li>
+	<LI> Next message: <A HREF="000041.html">[Open Office] other compile problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

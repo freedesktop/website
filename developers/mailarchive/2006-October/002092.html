@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%20building%202.0.4%0A%09on%09Mandriva%202007%20x86_64&In-Reply-To=45407AD9.1090605%40norbit.no">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002090.html">
+   <LINK REL="Next"  HREF="002097.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64</H1>
+    <B>Caolan McNamara</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%20building%202.0.4%0A%09on%09Mandriva%202007%20x86_64&In-Reply-To=45407AD9.1090605%40norbit.no"
+       TITLE="[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64">caolanm at redhat.com
+       </A><BR>
+    <I>Thu Oct 26 05:27:04 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002090.html">[Open Office] JRE register fails when building 2.0.4 on Mandriva 2007 x86_64
+</A></li>
+        <LI>Next message: <A HREF="002097.html">[Open Office] findhome Re: JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2092">[ date ]</a>
+              <a href="thread.html#2092">[ thread ]</a>
+              <a href="subject.html#2092">[ subject ]</a>
+              <a href="author.html#2092">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 2006-10-26 at 11:07 +0200, Atle Nissestad wrote:
+
+&gt;<i> I'm using gcj 4.1.1. It does not have libjvm.so.
+</I>&gt;<i> How are the library paths determined when compiling with
+</I>&gt;<i> --with-java=gij, then ?
+</I>&gt;<i> (JAVA_HOME is set to /usr inside the ooo build environment).
+</I>
+So then we're looking for libgcj.so...
+
+If you save this as findhome.java
+
+class findhome
+{
+        public static void main(String args[])
+        {
+                System.out.println(System.getProperty(&quot;java.home&quot;));
+
+System.out.println(System.getProperty(&quot;gnu.classpath.home.url&quot;));
+        }
+}
+
+gcj -C findhome.java
+gij findhome
+
+what does it say ?
+
+e.g. mine (on i386) is 
+/usr/lib/jvm/java-1.4.2-gcj-1.4.2.0/jre
+<A HREF="file:///usr/lib">file:///usr/lib</A>
+
+while on x86_64 it says...
+/usr/lib/jvm/java-1.4.2-gcj-1.4.2.0/jre
+<A HREF="file:///usr/lib64">file:///usr/lib64</A>
+
+Now the first line is java.home and the second is gnu.classpath.home.url
+and in jvmfwk/plugins/sunmajor/pluginlib/gnujre.cxx we assign java.home
+as m_sJavaHome and the other as m_sHome. We try m_sHome first and search
+for libjvm.so and the other various libgcj.sos, and then we search under
+m_sJavaHome.
+
+If for some reason we have *no* m_sJavaHome value, we set it to a
+default of /usr/lib. Depending on what you get as the results above it
+might be the case that we might need to change... 
+
+if (!m_sJavaHome.getLength())
+    m_sJavaHome = &quot;<A HREF="file:///usr/lib&quot;;">file:///usr/lib&quot;;</A>
+
+to
+
+if (!m_sJavaHome.getLength())
+#ifdef X86_64
+    m_sJavaHome = &quot;<A HREF="file:///usr/lib64&quot;;">file:///usr/lib64&quot;;</A>
+#else
+    m_sJavaHome = &quot;<A HREF="file:///usr/lib&quot;;">file:///usr/lib&quot;;</A>
+#endif
+
+but then we might fall afoul of gcj's on x86_64 where there isn't a
+java.home set, but libgcj.so has been put into /usr/lib in which case we
+might need an additional
+
+#ifdef X86_64
+    if (!bRt)
+    {
+        m_sHome = &quot;<A HREF="file:///usr/lib64&quot;;">file:///usr/lib64&quot;;</A>
+        for(i_path ip = libpaths.begin(); ip != libpaths.end(); ip++)
+        {
+            //Construct an absolute path to the possible runtime
+            OUString usRt= m_sHome + *ip;
+            DirectoryItem item;
+            if(DirectoryItem::get(usRt, item) == File::E_None)
+            {
+                //found runtime lib
+                m_sRuntimeLibrary = usRt;
+                bRt = true;
+                break;
+            }
+        }
+    }
+#endif
+
+after the existing last 
+if (!bRt) ...
+
+Depends on what you get from running the above java program I guess.
+
+C.
+
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002090.html">[Open Office] JRE register fails when building 2.0.4 on Mandriva 2007 x86_64
+</A></li>
+	<LI>Next message: <A HREF="002097.html">[Open Office] findhome Re: JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2092">[ date ]</a>
+              <a href="thread.html#2092">[ thread ]</a>
+              <a href="subject.html#2092">[ subject ]</a>
+              <a href="author.html#2092">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

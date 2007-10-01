@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.3.8 won't build without GTK2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:rdieter%40math.unl.edu">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000730.html">
+   <LINK REL="Next"  HREF="000732.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.3.8 won't build without GTK2
+   </H1>
+    <B>Rex Dieter
+    </B> 
+    <A HREF="mailto:rdieter%40math.unl.edu"
+       TITLE="[Open Office] ooo-build-1.3.8 won't build without GTK2">rdieter@math.unl.edu
+       </A><BR>
+    <I>Mon, 31 Jan 2005 07:19:41 -0600</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000730.html">[Open Office] ooo-build-1.3.8 won't build without QT.
+</A></li>
+        <LI> Next message: <A HREF="000732.html">[Open Office] ooo-build-1.3.8 won't build without QT.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#735">[ date ]</a>
+              <a href="thread.html#735">[ thread ]</a>
+              <a href="subject.html#735">[ subject ]</a>
+              <a href="author.html#735">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Robin Cook wrote:
+&gt;<i> I have tried to get it to compile without QT but keep failing on
+</I>&gt;<i> checking for Qt headers.
+</I>
+Similarly, build fails without GTK2 using
+./configure --disable-gtk --enable-kde
+
+...
+checking for  gtk+-2.0 libxml-2.0 fontconfig &gt;= 1.0.1 
+libstartup-notification-1.0 ... Package gtk+-2.0 was not found in the 
+pkg-config search path.
+Perhaps you should add the directory containing `gtk+-2.0.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'gtk+-2.0' found
+configure: error: Library requirements were not met
+...
+
+
+When/if I *do* have GTK2 installed, it enables gtk support whether I 
+explicitly disable it or not:
+./configure --disable-gtk --enable-kde
+...
+checking for widget sets... --enable-gtk  --enable-kde
+...
+  Config: 
+'--with-lang=ENUS,FREN,GERM,SPAN,ITAL,DTCH,PORT,SWED,POL,RUSS,DAN,GREEK,TURK,CHINSIM,CHINTRAD,JAPN,KOREAN,CAT,CZECH,SLOVAK,FINN,ARAB,HUNG,ESTONIAN,SLOVENIAN 
+--enable-libart --enable-libsn --enable-crashdump=no --enable-fontconfig 
+--without-fonts --with-system-curl --with-system-zlib 
+--with-system-freetype --with-system-xrender --with-system-sane-headers 
+--with-system-x11-extensions-headers --with-system-unixodbc-headers 
+--disable-mozilla --enable-gtk  --enable-kde 
+--with-jdk-home=/usr/lib/jvm/java-1.4.2 '
+
+-- Rex
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000730.html">[Open Office] ooo-build-1.3.8 won't build without QT.
+</A></li>
+	<LI> Next message: <A HREF="000732.html">[Open Office] ooo-build-1.3.8 won't build without QT.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#735">[ date ]</a>
+              <a href="thread.html#735">[ thread ]</a>
+              <a href="subject.html#735">[ subject ]</a>
+              <a href="author.html#735">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

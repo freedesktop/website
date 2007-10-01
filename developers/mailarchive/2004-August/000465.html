@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Introducing JDK dependency?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:dev%40porting.openoffice.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000464.html">
+   <LINK REL="Next"  HREF="000471.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Introducing JDK dependency?
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:dev%40porting.openoffice.org"
+       TITLE="[Open Office] Introducing JDK dependency?">dev@porting.openoffice.org
+       </A><BR>
+    <I>Mon, 02 Aug 2004 14:08:26 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000464.html">[Open Office] Mark config files in file lists
+</A></li>
+        <LI> Next message: <A HREF="000471.html">[Open Office] Introducing JDK dependency?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#465">[ date ]</a>
+              <a href="thread.html#465">[ thread ]</a>
+              <a href="subject.html#465">[ subject ]</a>
+              <a href="author.html#465">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sorry for the cross posting; please send replies to
+<A HREF="mailto:dev@porting.openoffice.org.">dev@porting.openoffice.org.</A>
+
+I have been working on getting OOo 1.9.x to build without usage of a
+proprietary JDK and have run into problems in the officecfg project (see
+Issue #32143).  Up until now, we have concentrated on fixing build
+problems by reimplementing essential build tools written in Java: 
+Officecfg has used xsltproc, and Dan wrote a Python script for
+fcjmerge.   Now I have the problem that xsltproc does not support the
+XML Schemas Part 1 specification, and I have to pick one of the
+following choices:
+
+1. Rework the XML source not to use the import/uses constructs.
+
+This is possible, but would involve duplicating parts of the schema, or
+using some sort of preprocessing of the input files.
+
+2. Find another parser that implements the spec
+
+xalan could perhaps be used.  It is part of the same project that is
+used for the Java based processing.  I tried xalan out, but had similar
+errors as seen with xsltproc.
+
+3. Add a dependency on a (free or non-free) JDK for all builds
+
+The officecfg and fcjmerge projects already build successfully with free
+JDKs such as gcj or Kaffe.
+
+As part of the conference call about supporting free JDKs with OOo, all
+present agreed that it would be acceptable to introduce core features
+that depend on Java, as long as they do not use interfaces that are not
+yet implemented in free JDKs.
+
+
+I have already spent a lot of time looking at these problems in
+officecfg and playing catch up in these projects, and I would like to
+consider requiring a JDK to compile and run these build-time modules so
+I can spend the time I have on something more useful instead.
+
+So I would like to propose introducing a JDK dependency for m50, for a
+JDK that is able to compile and run these Java modules at a minimum,
+without having to support the full Java UNO.   
+
+Is anyone aware of a platform that does not have a suitable gcj or kaffe
+implementation, that would be adversely affected by this?  What is the
+situation with Windows?
+
+Thanks,
+Chris
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000464.html">[Open Office] Mark config files in file lists
+</A></li>
+	<LI> Next message: <A HREF="000471.html">[Open Office] Introducing JDK dependency?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#465">[ date ]</a>
+              <a href="thread.html#465">[ thread ]</a>
+              <a href="subject.html#465">[ subject ]</a>
+              <a href="author.html#465">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

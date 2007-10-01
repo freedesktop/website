@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] &quot;save as&quot; does not work in m100 and m104
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%22save%20as%22%20does%20not%20work%20in%20m100%20and%20m104&In-Reply-To=200505261425.25754.Thorsten_Kolb%40urz.uni-heidelberg.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000978.html">
+   <LINK REL="Next"  HREF="000980.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] &quot;save as&quot; does not work in m100 and m104</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%22save%20as%22%20does%20not%20work%20in%20m100%20and%20m104&In-Reply-To=200505261425.25754.Thorsten_Kolb%40urz.uni-heidelberg.de"
+       TITLE="[Open Office] &quot;save as&quot; does not work in m100 and m104">kendy at suse.cz
+       </A><BR>
+    <I>Thu May 26 08:53:19 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000978.html">[Open Office] &quot;save as&quot; does not work in m100 and m104
+</A></li>
+        <LI>Next message: <A HREF="000980.html">[Open Office] &quot;save as&quot; does not work in m100 and m104
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#979">[ date ]</a>
+              <a href="thread.html#979">[ thread ]</a>
+              <a href="subject.html#979">[ subject ]</a>
+              <a href="author.html#979">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 26 May 2005 14:25, Thorsten Kolb wrote:
+&gt;<i> &gt; I've just fixed a problem in the KDE file dialog that could be related,
+</I>&gt;<i> &gt; but maybe it's not.  I used to use SvtResId to obtain the strings, but it
+</I>&gt;<i> &gt; does not work any more, and it returns just empty strings which results
+</I>&gt;<i> &gt; in empty labels for &quot;Read-only&quot;, etc. checkboxes.  Now I have to create
+</I>&gt;<i> &gt; an own ResMgr and ask it for the strings.  It is fpicker-kde-resmgr.diff
+</I>&gt;<i> &gt; in ooo-build.
+</I>&gt;<i>
+</I>&gt;<i> Where can I fin it?
+</I>
+It's in CVS, 
+<A HREF="http://cvs.gnome.org/viewcvs/ooo-build/patches/src680/fpicker-kde-resmgr.diff?rev=1.1&amp;view=log">http://cvs.gnome.org/viewcvs/ooo-build/patches/src680/fpicker-kde-resmgr.diff?rev=1.1&amp;view=log</A>
+
+If you do not want to build the ooo-build HEAD from CVS, it should be enough 
+to download it to your &lt;ooo-build&gt;/patches/src680/ subdir and add it to the 
+apply file, like:
+
+--- patches/src680/apply        26 May 2005 02:22:31 -0000      1.149
++++ patches/src680/apply        26 May 2005 10:09:59 -0000      1.151
+@@ -436,6 +436,8 @@ fpicker-kde-partial-kio.diff
+ # Workaround for 'Filter name (*.blah)' vs. 'Filter name' problem in
+ # Insert-&gt;Picture-&gt;From File... n#66873
+ fpicker-kde-filter-name.diff
++# Adapt to changes in resources handling of fpickers
++fpicker-kde-resmgr.diff
+
+ # Let the KDE and Gtk+ fpickers build and install FIXME IZ number
+ fpicker-common-scp2.diff
+
+Regards,
+Jan
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000978.html">[Open Office] &quot;save as&quot; does not work in m100 and m104
+</A></li>
+	<LI>Next message: <A HREF="000980.html">[Open Office] &quot;save as&quot; does not work in m100 and m104
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#979">[ date ]</a>
+              <a href="thread.html#979">[ thread ]</a>
+              <a href="subject.html#979">[ subject ]</a>
+              <a href="author.html#979">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

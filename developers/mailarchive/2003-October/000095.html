@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Other Build Problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:nhudson%40lunar-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000101.html">
+   <LINK REL="Next"  HREF="000096.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Other Build Problems
+   </H1>
+    <B>Nick Hudson
+    </B> 
+    <A HREF="mailto:nhudson%40lunar-linux.org"
+       TITLE="[Open Office] Other Build Problems">nhudson@lunar-linux.org
+       </A><BR>
+    <I>Fri, 10 Oct 2003 07:20:42 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000101.html">[Open Office] Building Problems
+</A></li>
+        <LI> Next message: <A HREF="000096.html">[Open Office] Other Build Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#95">[ date ]</a>
+              <a href="thread.html#95">[ thread ]</a>
+              <a href="subject.html#95">[ subject ]</a>
+              <a href="author.html#95">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-z6o4dtTqENFD/sTNKj7/
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Ok I have seemed to get past my mozilla problem and found another, any
+idea what this is?  Seems I am missing some header file called
+services.h for it to compile the bonobo stuff.
+
+obo-control.o `test -f 'ooo-bonobo-control.cxx' || echo
+'./'`ooo-bonobo-control.cxx
+ooo-bonobo-control.cxx:18:22: services.h: No such file or directory
+ooo-bonobo-control.cxx: In function `void
+   zoomable_report_zoom_level_changed(BonoboZoomable*,
+ =20
+com::sun::star::uno::Reference&lt;com::sun::star::beans::XPropertySet&gt;)':
+ooo-bonobo-control.cxx:56: `DECLARE_ASCII' undeclared (first use this
+function)
+ooo-bonobo-control.cxx:56: (Each undeclared identifier is reported only
+once
+   for each function it appears in.)
+ooo-bonobo-control.cxx: In function `int load_uri(BonoboPersistFile*,
+const
+   CORBA_char*, CORBA_Environment*, void*)':
+ooo-bonobo-control.cxx:279: `B2U' undeclared (first use this function)
+ooo-bonobo-control.cxx: In function `void
+ =20
+FrameLoadFileFromUrl(com::sun::star::uno::Reference&lt;com::sun::star::frame::=
+XFrame&gt;,
+ =20
+com::sun::star::uno::Reference&lt;com::sun::star::lang::XMultiServiceFactory&gt;,
+   rtl::OUString)':
+ooo-bonobo-control.cxx:290: `SERVICENAME_TYPEDETECTION' undeclared
+(first use
+   this function)
+ooo-bonobo-control.cxx:296: `SERVICENAME_FRAMELOADERFACTORY' undeclared
+(first
+   use this function)
+make[2]: *** [ooo-bonobo-control.o] Error 1
+make[2]: Leaving directory
+`/home/nhudson/ooo/ooo-build-1.1.44/bonobo/src'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/home/nhudson/ooo/ooo-build-1.1.44/bonobo'
+make: *** [all-recursive] Error 1
+
+
+Thanks
+
+Nick Hudson
+
+--=-z6o4dtTqENFD/sTNKj7/
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.3 (GNU/Linux)
+
+iD8DBQA/hqQZG5D1jWCZpTwRAglLAJ9NJRajguSM1LhsMpcidkQrqI7i9QCfSAgA
+6jbLE4/TS3J8vfusMVQaYtE=
+=qrfs
+-----END PGP SIGNATURE-----
+
+--=-z6o4dtTqENFD/sTNKj7/--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000101.html">[Open Office] Building Problems
+</A></li>
+	<LI> Next message: <A HREF="000096.html">[Open Office] Other Build Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#95">[ date ]</a>
+              <a href="thread.html#95">[ thread ]</a>
+              <a href="subject.html#95">[ subject ]</a>
+              <a href="author.html#95">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

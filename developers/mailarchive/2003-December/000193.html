@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] recent-files.diff broken?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-December/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000191.html">
+   <LINK REL="Next"  HREF="000194.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] recent-files.diff broken?
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] recent-files.diff broken?">halls@debian.org
+       </A><BR>
+    <I>Fri, 19 Dec 2003 11:03:27 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000191.html">[Open Office] Dictionaries in build 47
+</A></li>
+        <LI> Next message: <A HREF="000194.html">[Open Office] [Fwd: web site and build--ooo]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#193">[ date ]</a>
+              <a href="thread.html#193">[ thread ]</a>
+              <a href="subject.html#193">[ subject ]</a>
+              <a href="author.html#193">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Before I dig into this myself, does anyone know off the top of their
+what might be causing all these errors, and why no-one else sees them?
+
+Making: ../../unxlngi4.pro/slo/recent-files.obj
+ccache g++ -fmessage-length=0 -c [-I flags...]
+-INO_JAVA_HOME/include -INO_JAVA_HOME/include/linux
+-INO_JAVA_HOME/include/native_threads/include -I/usr/X11R6/include    
+-I. -I../../res -I. -g1 -O1   -Wall -pipe -mcpu=pentiumpro
+-fno-for-scope -fpermissive -fno-rtti -include preinclude.h
+-fno-exceptions   -fpic -DLINUX -DUNX -DVCL -DGCC -DC300 -DINTEL
+-DCVER=C300 -D_USE_NAMESPACE -DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT
+-DNEW_SOLAR -D_USE_NAMESPACE=1 -DSTLPORT_VERSION=400 -D__DMAKE -DUNIX
+-DCPPU_ENV=gcc3 -DSUPD=645 -DPRODUCT -DNDEBUG -DPRODUCT_FULL
+-DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DEXCEPTIONS_OFF -DCUI -DSRX645 
+-DSHAREDLIB -D_DLL_  -DMULTITHREAD   -o
+../../unxlngi4.pro/slo/recent-files.o
+oo/svtools/source/config/recent-files.cxx
+distcc[11980] ERROR: compile on localhost failed
+In file included from oo/svtools/source/config/recent-files.cxx:17:
+oo/solver/645/unxlngi4.pro/inc/tools/config.hxx:77: warning: `class Config' has virtual functions but non-virtual destructor
+oo/svtools/source/config/recent-files.cxx: In function `void svt::startElementCb(void*, const XML_Char*, const XML_Char**)':
+oo/svtools/source/config/recent-files.cxx:200: warning: invalid conversion from `void*' to `svt::ParseContext*'
+oo/svtools/source/config/recent-files.cxx: In function `void svt::endElementCb(void*, const XML_Char*)':
+oo/svtools/source/config/recent-files.cxx:265: warning: invalid conversion from `void*' to `svt::ParseContext*'
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h: At global scope:
+oo/svtools/source/config/recent-files.cxx: In instantiation of `_STL::binder2nd&lt;svt::CompareWithLength&gt;':
+oo/svtools/source/config/recent-files.cxx:368:   instantiated from here
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:47: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::first_argument_type' is inaccessible
+oo/svtools/source/config/recent-files.cxx:368: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:49: error: `typedef bool _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::result_type' is inaccessible
+oo/svtools/source/config/recent-files.cxx:368: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h: In instantiation of `_STL::binder2nd&lt;svt::CompareWithLength&gt;':
+oo/svtools/source/config/recent-files.cxx:368:   instantiated from here
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:48: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::second_argument_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:157: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:48: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::second_argument_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:161: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:48: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::second_argument_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:161: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:49: error: `typedef bool _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::result_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:163: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:47: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::first_argument_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:163: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:47: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::first_argument_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:163: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h: In function `_STL::binder2nd&lt;_Operation&gt; _STL::bind2nd(const _Operation&amp;, const _Tp&amp;) [with _Operation = svt::CompareWithLength, _Tp = rtl::OString]':
+oo/svtools/source/config/recent-files.cxx:368:   instantiated from here
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:48: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::second_argument_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:172: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:48: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::second_argument_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:173: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h: In constructor `_STL::binder2nd&lt;_Operation&gt;::binder2nd(const _Operation&amp;, typename _Operation::second_argument_type&amp;) [with _Operation = svt::CompareWithLength]':
+oo/svtools/source/config/recent-files.cxx:171:   instantiated from `_STL::binder2nd&lt;_Operation&gt; _STL::bind2nd(const _Operation&amp;, const _Tp&amp;) [with _Operation = svt::CompareWithLength, _Tp = rtl::OString]'
+oo/svtools/source/config/recent-files.cxx:368:   instantiated from here
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:48: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::second_argument_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:161: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:48: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::second_argument_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:161: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:48: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::second_argument_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:161: error: within this context
+oo/svtools/source/config/recent-files.cxx: In function `void svt::characterDataCb(void*, const XML_Char*, int)':
+oo/svtools/source/config/recent-files.cxx:382: warning: invalid conversion from `void*' to `svt::ParseContext*'
+oo/svtools/source/config/recent-files.cxx: In function `void svt::convertItems(svt::ParseContext*, svt::RecentFileItem**, int*)':
+oo/svtools/source/config/recent-files.cxx:571: warning: invalid conversion from `void*' to `svt::RecentFileItem*'
+oo/svtools/source/config/recent-files.cxx: In function `FILE* svt::openAndLock()':
+oo/svtools/source/config/recent-files.cxx:607: warning: invalid conversion from `const sal_Char*' to `char*'
+oo/svtools/source/config/recent-files.cxx: In function `void svt::recentFilesAddItem(rtl_uString*, const rtl_uString*)':
+oo/svtools/source/config/recent-files.cxx:761: warning: invalid conversion from `const void*' to `void*'
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h: In member function `typename _Operation::result_type _STL::binder2nd&lt;_Operation&gt;::operator()(typename _Operation::first_argument_type&amp;) const [with _Operation = svt::CompareWithLength]':
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_algobase.c:183:   instantiated from `_InputIter _STL::__find_if(_InputIter, _InputIter, _Predicate, const _STL::input_iterator_tag&amp;) [with _InputIter = _STL::_List_iterator&lt;rtl::OString, _STL::_Nonconst_traits&lt;rtl::OString&gt; &gt;, _Predicate = _STL::binder2nd&lt;svt::CompareWithLength&gt;]'
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_algobase.c:192:   instantiated from `_InputIter _STL::find_if(_InputIter, _InputIter, _Predicate) [with _InputIter = _STL::_List_iterator&lt;rtl::OString, _STL::_Nonconst_traits&lt;rtl::OString&gt; &gt;, _Predicate = _STL::binder2nd&lt;svt::CompareWithLength&gt;]'
+oo/svtools/source/config/recent-files.cxx:368:   instantiated from here
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:47: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::first_argument_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:163: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:49: error: `typedef bool _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::result_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:163: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:49: error: `typedef bool _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::result_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:163: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:47: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::first_argument_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:163: error: within this context
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function_base.h:47: error: `typedef class rtl::OString _STL::binary_function&lt;rtl::OString, rtl::OString, bool&gt;::first_argument_type' is inaccessible
+oo/solver/645/unxlngi4.pro/inc/stl/stl/_function.h:163: error: within this context
+dmake:  Error code 1, while making '../../unxlngi4.pro/slo/recent-files.obj'
+---* TG_SLO.MK *---
+
+ERROR: Error 65280 occurred while making oo/svtools/source/config
+make: *** [debian/stampdir/solver] Error 1
+
+$ g++ --version
+g++ (GCC) 3.3.3 20031206 (prerelease) (Debian)
+
+$ cvs status ooo-build/patches/OOO_1_1/recent-files.diff
+
+File: recent-files.diff Status: Up-to-date
+
+   Working revision:    1.3
+   Repository revision: 1.3     /cvs/gnome/openoffice/patches/OOO_1_1/recent-files.diff,v
+
+Thanks,
+Chris
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000191.html">[Open Office] Dictionaries in build 47
+</A></li>
+	<LI> Next message: <A HREF="000194.html">[Open Office] [Fwd: web site and build--ooo]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#193">[ date ]</a>
+              <a href="thread.html#193">[ thread ]</a>
+              <a href="subject.html#193">[ subject ]</a>
+              <a href="author.html#193">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

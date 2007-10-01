@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:cvences%40yahoo.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000130.html">
+   <LINK REL="Next"  HREF="000136.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+   </H1>
+    <B>Carlos Alberto
+    </B> 
+    <A HREF="mailto:cvences%40yahoo.com"
+       TITLE="[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg">cvences@yahoo.com
+       </A><BR>
+    <I>Thu, 6 Nov 2003 12:51:31 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000130.html">[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+</A></li>
+        <LI> Next message: <A HREF="000136.html">[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#132">[ date ]</a>
+              <a href="thread.html#132">[ thread ]</a>
+              <a href="subject.html#132">[ subject ]</a>
+              <a href="author.html#132">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--- Michael Meeks &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt; wrote:
+&gt;<i> Hi Carlos,
+</I>&gt;<i> 
+</I>&gt;<i> On Tue, 2003-11-04 at 18:36, Carlos Alberto wrote:
+</I>&gt;<i> &gt; yes, in fact I re-compiled every branch patched,
+</I>&gt;<i> but
+</I>&gt;<i> &gt; there was no effect
+</I>&gt;<i> 
+</I>&gt;<i> 	Interesting; so you have done a 'make' and a sudo
+</I>&gt;<i> 'make install' and
+</I>&gt;<i> done a killall -9 soffice.bin and re-run it and you
+</I>&gt;<i> get no joy ?
+</I>
+Yes, I've read ooo.ximian.com OOo hacker's guide. :P 
+
+I installed XD2, downloaded OOo through a CVS access,
+did  a ./autogen.sh, ./download, make &amp;&amp; sudo make
+install 
+
+&gt;<i> 	Did you read the new docs on using 'linkoo' in the
+</I>&gt;<i> hackers-guide, and
+</I>&gt;<i> going round a simple development loop ? that's
+</I>&gt;<i> prolly well worth doing.
+</I>&gt;<i> 
+</I>
+Yes after my firts compile I did bin/linkoo
+/usr/lib/ooo-1.0.0 /opt/openoffice/build/OOO_1_1_0
+
+In fact I had no problems when I first compiled
+OOO_1_1_RC3 but this time I must do something wrong :(
+
+&gt;<i> &gt; I bypassed QUITAPP menu item with:
+</I>&gt;<i> 
+</I>&gt;<i> 	It's prolly better to hack the .src file just to
+</I>&gt;<i> remove the item - then
+</I>&gt;<i> the user can add it back I guess if they like the
+</I>&gt;<i> pain :-) The trick is
+</I>&gt;<i> finding the right .src file.
+</I>&gt;<i> 
+</I>&gt;<i> 	I recommend that everyone does something like this:
+</I>&gt;<i> 
+</I>&gt;<i> 	find -name '*.?rc' -exec cat {} \; &gt; srcs
+</I>&gt;<i> 
+</I>&gt;<i> 	Then you can edit 'srcs' and very quickly grep for
+</I>&gt;<i> exact sub-strings; I
+</I>&gt;<i> guess we should really setup a web-tool to do that
+</I>&gt;<i> nicely a-la LXR but
+</I>&gt;<i> only for the UI, it's most useful. Having found the
+</I>&gt;<i> relevant SID for it,
+</I>&gt;<i> LXR text search for it and ... bingo :-)
+</I>
+Yep, I had to use LXR to know where to hack, and that
+find + cat + &gt; trick just shocked me, that way I will
+be able to know where and what to hack, :P thanks in
+advance :)
+
+&gt;<i> 
+</I>&gt;<i> 	HTH,
+</I>&gt;<i> 
+</I>&gt;<i> 		Michael.
+</I>&gt;<i> 
+</I>&gt;<i> -- 
+</I>&gt;<i>  <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant
+</I>&gt;<i> idiot
+</I>&gt;<i> 
+</I>
+
+
+=====
+Atte.Carlos Alberto Vences Sánchez0172112393Metepec, Mé<A HREF="mailto:xicoxneon79@netscape.net">xicoxneon79@netscape.net</A>
+
+__________________________________
+Do you Yahoo!?
+Protect your identity with Yahoo! Mail AddressGuard
+<A HREF="http://antispam.yahoo.com/whatsnewfree">http://antispam.yahoo.com/whatsnewfree</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000130.html">[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+</A></li>
+	<LI> Next message: <A HREF="000136.html">[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#132">[ date ]</a>
+              <a href="thread.html#132">[ thread ]</a>
+              <a href="subject.html#132">[ subject ]</a>
+              <a href="author.html#132">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

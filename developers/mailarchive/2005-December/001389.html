@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] m143 doesn't build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m143%20doesn%27t%20build&In-Reply-To=2e2d80650512040542m14ff72f6n5ad47a7e142ae0b0%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001388.html">
+   <LINK REL="Next"  HREF="001390.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] m143 doesn't build</H1>
+    <B>Ismail Donmez</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m143%20doesn%27t%20build&In-Reply-To=2e2d80650512040542m14ff72f6n5ad47a7e142ae0b0%40mail.gmail.com"
+       TITLE="[Open Office] m143 doesn't build">ismail at uludag.org.tr
+       </A><BR>
+    <I>Sun Dec  4 08:46:13 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001388.html">[Open Office] m143 doesn't build
+</A></li>
+        <LI>Next message: <A HREF="001390.html">[Open Office] m143 doesn't build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1389">[ date ]</a>
+              <a href="thread.html#1389">[ thread ]</a>
+              <a href="subject.html#1389">[ subject ]</a>
+              <a href="author.html#1389">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Pazar 4 Aral&#305;k 2005 15:42 tarihinde, Giuseppe Castagno &#351;unlar&#305; yazm&#305;&#351;t&#305;: 
+&gt;<i> On 12/4/05, Rene Engelhard &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rene at debian.org</A>&gt; wrote:
+</I>&gt;<i> &gt; Ismail Donmez wrote:
+</I>&gt;<i> &gt; &gt; error: no matching function for call to
+</I>&gt;<i> &gt; &gt; `icu_2_6::RuleBasedCollator::RuleBasedCollator(const sal_uInt8*&amp;, int,
+</I>&gt;<i> &gt; &gt; icu_2_6::RuleBasedCollator*&amp;, UErrorCode&amp;)'
+</I>&gt;<i> &gt; &gt; /home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi
+</I>&gt;<i> &gt; &gt;6.pro/inc/external/unicode/tblcoll.h:712: note: candidates are:
+</I>&gt;<i> &gt; &gt; icu_2_6::RuleBasedCollator::RuleBasedCollator(const
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; [ snip ]
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Damn. As I updated the system-icu patch I forgot to readd the #ifdef for
+</I>&gt;<i> &gt; internal icu...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; Any ideas?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Yes. system-icu is the problem, if you don't build with system-icu
+</I>&gt;<i> &gt; (which it looks like you do) you can comment out that patch as a
+</I>&gt;<i> &gt; temporary workaround.
+</I>&gt;<i>
+</I>&gt;<i> I stumbled on the same problem, on FC4 tring to compile m143, I
+</I>&gt;<i> commented out the system-icu patch (I had the same error log of
+</I>&gt;<i> Ismail, and don't use the system-icu) but I got this while applying
+</I>&gt;<i> the patches (full build from scratch):
+</I>&gt;<i>
+</I>&gt;<i> copy hebrew-culmus.diff -&gt;
+</I>&gt;<i> /media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/build/src680-m14
+</I>&gt;<i>3/applied_patches/242-hebrew-culmus.diff
+</I>&gt;<i>
+</I>&gt;<i> no-sans-serif-default.diff: testing...( sed 's/^\(@.*\)\r$/\1/' |
+</I>&gt;<i> patch -l -p0  -d
+</I>&gt;<i> /media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/build/src680-m14
+</I>&gt;<i>3 --dry-run ) &lt;
+</I>&gt;<i> /media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/patches/src680/.
+</I>&gt;<i>/no-sans-serif-default.diff patching file
+</I>&gt;<i> officecfg/registry/data/org/openoffice/VCL.xcu
+</I>&gt;<i> ( sed 's/^\(@.*\)\r$/\1/' | patch -l -p0  -d
+</I>&gt;<i> /media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/build/src680-m14
+</I>&gt;<i>3
+</I>&gt;<i>
+</I>&gt;<i> &gt; /dev/null) &lt;
+</I>&gt;<i> &gt; /media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/patches/src680
+</I>&gt;<i> &gt;/./no-sans-serif-default.diff
+</I>&gt;<i>
+</I>&gt;<i> done.
+</I>&gt;<i> copy no-sans-serif-default.diff -&gt;
+</I>&gt;<i> /media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/build/src680-m14
+</I>&gt;<i>3/applied_patches/243-no-sans-serif-default.diff
+</I>&gt;<i>
+</I>&gt;<i> system-xmlsec.diff: testing...( sed 's/^\(@.*\)\r$/\1/' | patch -l -p0
+</I>&gt;<i>  -d
+</I>&gt;<i> /media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/build/src680-m14
+</I>&gt;<i>3 --dry-run ) &lt;
+</I>&gt;<i> /media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/patches/src680/.
+</I>&gt;<i>/system-xmlsec.diff patching file config_office/configure.in
+</I>&gt;<i> Hunk #1 succeeded at 272 (offset 24 lines).
+</I>&gt;<i> Hunk #2 succeeded at 2528 (offset 110 lines).
+</I>&gt;<i> Hunk #3 succeeded at 3140 (offset 54 lines).
+</I>&gt;<i> patching file config_office/set_soenv.in
+</I>&gt;<i> Hunk #1 succeeded at 1791 (offset 36 lines).
+</I>&gt;<i> patching file scp2/source/ooo/file_library_ooo.scp
+</I>&gt;<i> Hunk #1 succeeded at 2310 (offset 114 lines).
+</I>&gt;<i> Hunk #2 succeeded at 2233 with fuzz 1.
+</I>&gt;<i> patching file scp2/source/ooo/makefile.mk
+</I>&gt;<i> Hunk #1 FAILED at 158.
+</I>&gt;<i> 1 out of 1 hunk FAILED -- saving rejects to file
+</I>&gt;<i> scp2/source/ooo/makefile.mk.rej patching file
+</I>&gt;<i> scp2/source/ooo/shortcut_ooo.scp
+</I>&gt;<i> Hunk #1 succeeded at 425 (offset -22 lines).
+</I>&gt;<i> Hunk #2 succeeded at 492 (offset 8 lines).
+</I>&gt;<i> patching file xmlsecurity/source/xmlsec/makefile.mk
+</I>&gt;<i> Hunk #1 succeeded at 51 (offset -27 lines).
+</I>&gt;<i> patching file xmlsecurity/source/xmlsec/nss/makefile.mk
+</I>&gt;<i> Hunk #1 succeeded at 62 (offset -27 lines).
+</I>&gt;<i> patching file xmlsecurity/source/xmlsec/nss/securityenvironment_nssimpl.cxx
+</I>&gt;<i> Hunk #1 succeeded at 63 (offset -26 lines).
+</I>&gt;<i> patching file xmlsecurity/source/xmlsec/nss/systemxmlsec.hxx
+</I>&gt;<i> patching file xmlsecurity/source/xmlsec/nss/systemxmlsec.cxx
+</I>&gt;<i> patching file xmlsecurity/util/makefile.mk
+</I>&gt;<i> Testing patch system-xmlsec.diff failed. at
+</I>&gt;<i> /media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/patches/apply.pl
+</I>&gt;<i> line 54.
+</I>&gt;<i> make: *** [stamp/patch.apply] Error 1
+</I>
+Yep I hit the same now, guess system-icu.diff and system-xmlsec.diff is 
+dependent on each other. So we will have to wait for a fixed system-icu.diff.
+
+Regards,
+ismail
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001388.html">[Open Office] m143 doesn't build
+</A></li>
+	<LI>Next message: <A HREF="001390.html">[Open Office] m143 doesn't build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1389">[ date ]</a>
+              <a href="thread.html#1389">[ thread ]</a>
+              <a href="subject.html#1389">[ subject ]</a>
+              <a href="author.html#1389">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

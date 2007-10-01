@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] toolbar pdf export button options...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:mailing%40conecta.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000149.html">
+   <LINK REL="Next"  HREF="000145.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] toolbar pdf export button options...
+   </H1>
+    <B>mailing@conecta.it
+    </B> 
+    <A HREF="mailto:mailing%40conecta.it"
+       TITLE="[Open Office] toolbar pdf export button options...">mailing@conecta.it
+       </A><BR>
+    <I>Wed, 12 Nov 2003 14:07:11 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000149.html">[Open Office] toolbar pdf export button options...
+</A></li>
+        <LI> Next message: <A HREF="000145.html">[Open Office] Re: [Fwd: Re: ttc font collections ...]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#150">[ date ]</a>
+              <a href="thread.html#150">[ thread ]</a>
+              <a href="subject.html#150">[ subject ]</a>
+              <a href="author.html#150">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Quoting Michael Meeks &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt;:
+
+&gt;<i> 	a) what environment you're running under
+</I>&gt;<i> 		+ if Gnome - there should be a DPI setting in the font 
+</I>&gt;<i> 		  preferences that should be consistent across the 
+</I>&gt;<i> 		  desktop
+</I>&gt;<i> 		+ is your font size synched with the desktop font size?
+</I>&gt;<i> 	b) What xrdb -query | grep Xft says for you
+</I>&gt;<i> 	c) What xdpyinfo claims your DPI setting is (quite prolly this 
+</I>&gt;<i> 	   is wrong &amp; needs tweaking).
+</I>&gt;<i> 
+</I>&gt;<i> 	Here (with Gnome) it integrates ~perfectly with my desktop syncing font
+</I>&gt;<i> size, if it doesn't for you we need to investigate it very carefully.
+</I>We have an heavily customized installation, based around xfce4 pls some gnome
+components. Gnome reports 96 dpi, Xtf reports 96 and xpdyinfo 72. It is probably
+this that needs to be addressed; probably our lack of a complete gnome install
+may cause this?
+
+&gt;<i> &gt; * The pdf export button in the toolbar does the export with the screen
+</I>&gt;<i> &gt; resolution for images by default. Can I suggest to set it to &quot;press&quot;? It
+</I>&gt;<i> &gt; seems more logical; eventually, do anybody know where the default is set?
+</I>&gt;<i> 
+</I>&gt;<i> 	Where is the option to set that ? I had a dig in the code to locate it
+</I>&gt;<i> (PDFWriter constructor parameter -&gt; PDFExport::Export's rFilterData
+</I>&gt;<i> 'CompressMode' property) it looks like it ends up loaded from
+</I>&gt;<i> Office.Common/Filter/PDF/Export (
+</I>&gt;<i> officecfg/registry/schema/org/openoffice/Office/Common.xcs - where
+</I>&gt;<i> indeed it defaults to '1' - which is 'Print' mode. cf.
+</I>&gt;<i> filter/source/pdf/impdialog.cxx &amp; pdfexport.cxx to verify.
+</I>&gt;<i> 
+</I>&gt;<i> 	Print seems a reasonable default to me - are you sure it defaults to
+</I>&gt;<i> 'Screen' - or is that just what you used last ?
+</I>Sorry, checked (thanks for the tip about the file) and simply we prefer to have
+&quot;press&quot; instead of &quot;print&quot; that is currently default. We will simply change the
+.xcs.
+
+&gt;<i> 
+</I>&gt;<i> &gt; * Also: what is the license for the icons created by Ximian? We would
+</I>&gt;<i> like
+</I>&gt;<i> &gt; to distribute our build of OOo with your icons; of course giving due
+</I>&gt;<i> &gt; credit and the url to get patches and files.
+</I>&gt;<i> 
+</I>&gt;<i> 	The license is LGPL / SISSL assigned under the JCA, copyright is Ximian
+</I>&gt;<i> of course :-) attributions gratefully received.
+</I>&gt;<i> 
+</I>&gt;<i> 	If you have your own 'distribution' and want to sub-set our patches;
+</I>&gt;<i> it's pretty easy to do; see patches/OOO_1_1_0/apply to see how Debian,
+</I>&gt;<i> Ximian and 3 versions of RH play together.
+</I>&gt;<i> 
+</I>&gt;<i> 	Finally I guess - if you're going to work with OO.o - it's best to sign
+</I>&gt;<i> the JCA up-front see <A HREF="http://www.openoffice.org/contributing.html">http://www.openoffice.org/contributing.html</A>
+</I>We are filling it right now. We hope to be able to help :-)
+cheers
+Carlo Daffara
+
+-------------------------------------------------
+This mail sent through Conecta.it: <A HREF="http://webmail.conecta.it">http://webmail.conecta.it</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000149.html">[Open Office] toolbar pdf export button options...
+</A></li>
+	<LI> Next message: <A HREF="000145.html">[Open Office] Re: [Fwd: Re: ttc font collections ...]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#150">[ date ]</a>
+              <a href="thread.html#150">[ thread ]</a>
+              <a href="subject.html#150">[ subject ]</a>
+              <a href="author.html#150">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

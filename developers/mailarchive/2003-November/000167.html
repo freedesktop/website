@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regarding issue no. 49919
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000166.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regarding issue no. 49919
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Regarding issue no. 49919">michael@ximian.com
+       </A><BR>
+    <I>Wed, 26 Nov 2003 22:05:23 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000166.html">[Open Office] Re: Patch for defect 49914...
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#167">[ date ]</a>
+              <a href="thread.html#167">[ thread ]</a>
+              <a href="subject.html#167">[ subject ]</a>
+              <a href="author.html#167">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Amit,
+
+On Sat, 2003-11-22 at 03:15, Amit Shrivastava wrote:
+&gt;<i> I have made the changes so that it loops till the MaxRows present, see
+</I>&gt;<i> the patch attached. 
+</I>
+	So - I imagine it now sensitizes dependant on whether any rows/columns
+are hidden in the whole spreadsheet - however this was not my desire.
+Ultimately 'show' should sensitize if there are any hidden items inside
+the selection :-)
+
+	Thus we need to walk the selection examining it; the code that does the
+hide/show in the first place can be found here:
+
+	sc/source/ui/view/cellsh3.cxx /FID_ROW_SHOW/
+which calls
+	sc/source/ui/view/viewfunc.cxx (SetMarkedWidthOrHeight)
+
+	which seems to do something horribly inefficient with things like:
+
+	USHORT* pRanges = new USHORT[MAXROW+1];
+
+	but I guess we can't fix everything all at once.
+
+&gt;<i> I have compiled the evolution-data-server and busy with the bonobo and
+</I>&gt;<i> ORbit components :-).
+</I>
+	Great :-) of course; evolution-data-server is still under fairly active
+development (albeit ~feature frozen &amp; working well), so it's prolly
+worth tracking HEAD if you are finding bugs / problems - ditto for
+libbonobo/ORBit2 I think. Also, it's important to keep
+bonobo-activation-server (b-a-s) in version sync with it's library
+otherwise bad things happen ;-) [ if you install ORBit2 &amp;  libbonobo to
+your system install things ~should be ok - modulo bugs ].
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000166.html">[Open Office] Re: Patch for defect 49914...
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#167">[ date ]</a>
+              <a href="thread.html#167">[ thread ]</a>
+              <a href="subject.html#167">[ subject ]</a>
+              <a href="author.html#167">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

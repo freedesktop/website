@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] sd-save-image-context-menu-m112.diff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20sd-save-image-context-menu-m112.diff&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001034.html">
+   <LINK REL="Next"  HREF="001032.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] sd-save-image-context-menu-m112.diff</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20sd-save-image-context-menu-m112.diff&In-Reply-To="
+       TITLE="[Open Office] sd-save-image-context-menu-m112.diff">kendy at suse.cz
+       </A><BR>
+    <I>Fri Jun 24 07:49:54 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001034.html">[Open Office] 680m-112 error: &quot;ulfex: Command not found&quot;
+</A></li>
+        <LI>Next message: <A HREF="001032.html">[Open Office] ANNOUNCE: ooo-build-1.9.110
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1031">[ date ]</a>
+              <a href="thread.html#1031">[ thread ]</a>
+              <a href="subject.html#1031">[ subject ]</a>
+              <a href="author.html#1031">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bero,
+
+Please be more careful when updating to new milestones next time ;-)
+
+All that was necessary to do with sd-save-image-context-menu-m92.diff was
+this fix:
+
+--- patches/src680/sd-save-image-context-menu-m92.diff
++++ patches/src680/sd-save-image-context-menu-m92.diff
+@@ -196,7 +196,7 @@
+                case SID_DRAW_FONTWORK:
+                case SID_DRAW_FONTWORK_VERTICAL:
+                {
+-@@ -1306,5 +1341,89 @@ SdPage* DrawViewShell::CreateOrDuplicate
++@@ -1306,4 +1341,88 @@ SdPage* DrawViewShell::CreateOrDuplicate
+      return pNewPage;
+  }
+
+Instead, you provided a new -m112 version of the patch that completely 
+discarded 2 hunks which were still necessary:
+
+---- sd/source/ui/view/drviewsj.cxx     2004-10-15 16:06:30.000000000 +0530
+-+++ sd/source/ui/view/drviewsj.cxx     2004-12-22 14:11:09.000000000 +0530
+-@@ -193,7 +193,8 @@ void DrawViewShell::GetMenuStateSel( Sfx
+-                       SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_BEFORE_OBJ ) ||
+-                       SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_BEHIND_OBJ ) ||
+-                       SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_REVERSE_ORDER ) ||
+--                      SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_ORIGINAL_SIZE ) )
+-+                      SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_ORIGINAL_SIZE ) ||
+-+                      SFX_ITEM_AVAILABLE == rSet.GetItemState( SID_SAVE_GRAPHIC ) )
+-               {
+-                       const SdrObject* pObj = rMarkList.GetMark(0)-&gt;GetObj();
+-                       UINT32 nInv = pObj-&gt;GetObjInventor();
+-@@ -211,6 +212,11 @@ void DrawViewShell::GetMenuStateSel( Sfx
+-                                       rSet.DisableItem(SID_ORIGINAL_SIZE);
+-             }
+-
+-+                        if( !( pObj-&gt;ISA( SdrGrafObj ) ) )
+-+                      {
+-+                              rSet.DisableItem( SID_SAVE_GRAPHIC );
+-+                      }
+-+
+-                       // Wenn es sich um kein Gruppenobjekt oder 3D-Objekt handelt
+-                       // wird &quot;Gruppe betreten&quot; disabled
+-                       if( !( ( pObj-&gt;ISA( SdrObjGroup ) &amp;&amp; nInv == SdrInventor ) ||
++++ ++ sd/source/ui/view/drviewsj.cxx     2004-12-22 14:11:09.000000000 +0530
+
+I'm going to remove both -m92 and -m112, and add
+sd-save-image-context-menu.diff with just the above-mentioned fix.
+
+(Also, would be great to use -mXYZ suffixes for old versions of the patch,
+and keep the newest stuff without a suffix; but the original file was already
+with &quot;-m92&quot;, so... ;-) )
+
+Regards,
+Jan
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001034.html">[Open Office] 680m-112 error: &quot;ulfex: Command not found&quot;
+</A></li>
+	<LI>Next message: <A HREF="001032.html">[Open Office] ANNOUNCE: ooo-build-1.9.110
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1031">[ date ]</a>
+              <a href="thread.html#1031">[ thread ]</a>
+              <a href="subject.html#1031">[ subject ]</a>
+              <a href="author.html#1031">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Build error ooo-build-1.1.60 / OOO-1.1.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-June/index.html" >
+   <LINK REL="made" HREF="mailto:j%40bitron.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000420.html">
+   <LINK REL="Next"  HREF="000422.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Build error ooo-build-1.1.60 / OOO-1.1.2
+   </H1>
+    <B>Jürg Billeter
+    </B> 
+    <A HREF="mailto:j%40bitron.ch"
+       TITLE="[Open Office] Build error ooo-build-1.1.60 / OOO-1.1.2">j@bitron.ch
+       </A><BR>
+    <I>Tue, 29 Jun 2004 21:53:23 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000420.html">[Open Office] ANNOUNCE: ooo-build-1.1.60
+</A></li>
+        <LI> Next message: <A HREF="000422.html">[Open Office] Build error ooo-build-1.1.60 / OOO-1.1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#421">[ date ]</a>
+              <a href="thread.html#421">[ thread ]</a>
+              <a href="subject.html#421">[ subject ]</a>
+              <a href="author.html#421">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+
+Building ooo-build-1.1.60 / OOO-1.1.2 - using the same instructions as
+the working combination ooo-build-1.1.59 / OOO-1.1.1 - leads to an error
+on my system (see below).
+
+Is this a known issue, any hint how to avoid this?
+
+JÃ¼rg
+
+
+My system: Pentium 4, Linux 2.6.7, glibc 2.3.3 (NPTL), gcc 3.3.4,
+fontconfig 2.2.2. If you need more details, just ask.
+
+
+Extracts from the build log:
+-----------------------------
+Using configure options from the environment
+Setup:
+ Tag:        'OOO_1_1_2'
+ Flags:      ''
+ Suffix:     ''
+ Dir:        '/usr/src/ooo-build-1.1.60/build'
+ DestDir:    ''
+ Path:      
+'/usr/src/ooo-build-1.1.60/build/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin:/stage2/bin:/stage2/sbin:/usr/src/ooo-build-1.1.60/bin'
+ Prefix:     '/usr'
+ Mandir:           '/usr/share/man'
+ Sysconf:    '/etc'
+ OOInBase:   '/usr/lib/ooo-1.1'
+ OOInstall:  '/usr/lib/ooo-1.1'
+ OODestDir:  ''
+ Config:     '--with-lang=ENUS,GERM --enable-libart --enable-libsn
+--enable-crashdump=no --without-fonts --disable-rpath --with-system-zlib
+--enable-fontconfig --with-system-freetype --with-system-db
+--disable-mozilla --with-db-version=4.2 --with-system-curl
+--disable-java '
+ OOo-Bonobo: ''
+ Icons:      'ooo-icons-OOO_1_1-9'
+Build environment:
+ARCHITECTURE=unxlngi4.pro
+BASH=/bin/sh
+BASH_VERSINFO=([0]=&quot;2&quot; [1]=&quot;05b&quot; [2]=&quot;0&quot; [3]=&quot;1&quot; [4]=&quot;release&quot;
+[5]=&quot;i686-pc-linux-gnu&quot;)
+BASH_VERSION='2.05b.0(1)-release'
+BINSUFFIX=
+BINUTILS_PATCH=/usr/src/ooo-build-1.1.60/patches/ld-2.13.2.1.diff
+BINUTILS_TARBALL=binutils-2.13.2.1.tar.bz2
+BINUTILS_UNTAR_OPTIONS=jxf
+BINUTILS_VER=binutils-2.13.2.1
+BUILDDIR=/usr/src/ooo-build-1.1.60/build
+BUILD_MAGIC=645
+BUILD_NCPUS=1
+BUILD_WIN32=
+CCACHE_ALLOWED=
+CCACHE_DIR=/usr/src/ooo-build-1.1.60/build/.ccache
+CONFIGURE_OPTIONS='--with-lang=ENUS,GERM --enable-libart --enable-libsn
+--enable-crashdump=no --without-fonts --disable-rpath --with-system-zlib
+--enable-fontconfig --with-system-freetype --with-system-db
+--disable-mozilla --with-db-version=4.2 --with-system-curl
+--disable-java '
+CVSTAG=OOO_1_1_2
+DBGINST_SRC=/dbghinst.EXE
+DIRSTACK=()
+DISPLAY=:0.0
+DISTRO=Ximian
+EDITOR=vi
+ENABLE_BONOBO=
+ENABLE_JAVA=no
+EUID=0
+GCC_TARBALL=gcc-3.2.2.tar.bz2
+GCC_UNTAR_OPTIONS=jxf
+GCC_VER=gcc-3.2.2
+GNOME_LIBCONFIG_PATH=/usr/lib
+GROUPS=()
+GS_OPTIONS=-sPAPERSIZE=a4
+HISTIGNORE='&amp;amp;:[bf]g:exit'
+HISTSIZE=5000
+HOME=/root
+HOSTNAME=juerg-p4
+HOSTTYPE=i686
+IFS='
+'
+INPUTRC=/etc/inputrc
+JDK_HOME=
+LANGS=ENUS,GERM
+LD_LIBRARY_PATH=/usr/src/ooo-build-1.1.60/build/lib:/lib:/usr/lib:/usr/X11R6/lib
+LD_PRELOAD=/usr/lib/upkg-watch.so
+LESS=-iM
+LOGNAME=root
+LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:<i>*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=
+</I>=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:<i>*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.p=
+</I>bm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
+MACHTYPE=i686-pc-linux-gnu
+MAIL=/var/mail/root
+MAKEFLAGS=
+MAKELEVEL=1
+MANDIR=/usr/share/man
+MANDIRBASE=/usr/share/man
+MFLAGS=
+OOBUILDDIR=/usr/src/ooo-build-1.1.60/build/OOO_1_1_2
+OODESTDIR=
+OOINSTBASE=/usr/lib/ooo-1.1
+OOINSTDIR=/usr/lib/ooo-1.1
+OOOINSTALLDIRNAME=ooo-1.1
+OOO_BUILD_EXTENSION='(build 60)'
+OOO_ICONS_TARBALL=ooo-icons-OOO_1_1-9.tar.gz
+OOO_ICONS_UNTAR_OPTIONS=xzf
+OOO_ICONS_VER=ooo-icons-OOO_1_1-9
+OOO_SCALED_ICONS_TARBALL=ooo-scaled-icons.tar.gz
+OOO_SCALED_ICONS_UNTAR_OPTIONS=xzf
+OOO_SCALED_ICONS_VER=ooo-scaled-icons
+OOO_TARBALL=OOO_1_1_2.tar.bz2
+OOO_UNTAR_OPTIONS=jxf
+OOO_WIDGET_SETS=original
+OPTERR=1
+OPTIND=1
+OSTYPE=linux-gnu
+PATH=/usr/src/ooo-build-1.1.60/build/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin:/stage2/bin:/stage2/sbin:/usr/src/ooo-build-1.1.60/bin
+PIPESTATUS=([0]=&quot;0&quot;)
+PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/X11R6/lib/pkgconfig
+POSIXLY_CORRECT=y
+PPID=9460
+PREFIX=/usr
+PREFIXBASE=/usr
+PS4='+ '
+PWD=/usr/src/ooo-build-1.1.60/bin
+SHELL=/bin/sh
+SHELLOPTS=braceexpand:hashall:interactive-comments:posix
+SHLVL=3
+SRCDIR=
+SYSCONFBASE=/etc
+SYSCONFDIR=/etc
+SYSTEM_GCC=true
+TCSH=/bin/tcsh
+TERM=linux
+TOOLSDIR=/usr/src/ooo-build-1.1.60
+UID=0
+UNICOWS_SRC=/unicows.exe
+USER=root
+VENDORNAME=Ximian
+VERSION=1.1.1
+WITH_SRC=/usr/src/ooo-build-1.1.60/build
+------------------
+[...] 40 min / 6.9 MB log
+------------------
+Making: ../unxlngi4.pro/lib/libpsp645li.so
+gcc -c -fPIC -o ../unxlngi4.pro/slo/psp_dflt_version.o -DUNX 
+-I../unxlngi4.pro/inc
+/usr/src/ooo-build-1.1.60/build/OOO_1_1_2/solenv/src/version.c
+gcc -O2 -Bsymbolic -z combreloc -z defs -shared -Wl,-O1
+-Wl,--version-script ../unxlngi4.pro/misc/libpsp_linux_psp645li.map
+-L../unxlngi4.pro/lib -L../lib
+-L/usr/src/ooo-build-1.1.60/build/OOO_1_1_2/solenv/unxlngi4/lib
+-L/usr/src/ooo-build-1.1.60/build/OOO_1_1_2/solver/645/unxlngi4.pro/lib
+-L/usr/src/ooo-build-1.1.60/build/OOO_1_1_2/solenv/unxlngi4/lib
+-LNO_JAVA_HOME/lib -LNO_JAVA_HOME/jre/lib/i386
+-LNO_JAVA_HOME/jre/lib/i386/client
+-LNO_JAVA_HOME/jre/lib/i386/native_threads -L/usr/X11R6/lib
+../unxlngi4.pro/slo/psp_dflt_version.o
+../unxlngi4.pro/slo/psp_dflt_description.o -o
+../unxlngi4.pro/lib/libpsp645li.so ../unxlngi4.pro/slo/fontmanager.o
+../unxlngi4.pro/slo/fontcache.o ../unxlngi4.pro/slo/parseAFM.o
+../unxlngi4.pro/slo/ppdparser.o ../unxlngi4.pro/slo/strhelper.o
+../unxlngi4.pro/slo/helper.o ../unxlngi4.pro/slo/printerinfomanager.o
+../unxlngi4.pro/slo/jobdata.o ..
+/unxlngi4.pro/slo/list.o ../unxlngi4.pro/slo/sft.o
+../unxlngi4.pro/slo/xlat.o ../unxlngi4.pro/slo/ttcr.o
+../unxlngi4.pro/slo/gsub.o ../unxlngi4.pro/slo/printerjob.o
+../unxlngi4.pro/slo/text_gfx.o ../unxlngi4.pro/slo/psputil.o
+../unxlngi4.pro/slo/common_gfx.o ../unxlngi4.pro/slo/glyphset.o
+../unxlngi4.pro/slo/bitmap_gfx.o -lutl645li
+-ltl645li -lsal -lX11 -ldl -lpthread -lm -Wl,-Bdynamic -lstlport_gcc
+-lstdc++
+rm -f ../unxlngi4.pro/lib/check_libpsp645li.so
+mv ../unxlngi4.pro/lib/libpsp645li.so
+../unxlngi4.pro/lib/check_libpsp645li.so
+/usr/src/ooo-build-1.1.60/build/OOO_1_1_2/solenv/bin/checkdll.sh
+-L../unxlngi4.pro/lib -L../lib
+-L/usr/src/ooo-build-1.1.60/build/OOO_1_1_2/solenv/unxlngi4/lib
+-L/usr/src/ooo-build-1.1.60/build/OOO_1_1_2/solver/645/unxlngi4.pro/lib
+-L/usr/src/ooo-build-1.1.60/build/OOO_1_1_2/solenv/unxlngi4/lib
+-LNO_JAVA_HOME/lib -LNO_JAVA_HOME/jre/lib/i386
+-LNO_JAVA_HOME/jre/lib/i386/client
+-LNO_JAVA_HOME/jre/lib/i386/native_threads -L/usr/X11R6/lib
+../unxlngi4.pro/lib/check_libpsp645li.so
+Checking DLL ../unxlngi4.pro/lib/check_libpsp645li.so ...: ERROR:
+../unxlngi4.pro/lib/check_libpsp645li.so: undefined symbol:
+FcInitLoadConfigAndFonts
+dmake:  Error code 1, while making '../unxlngi4.pro/lib/libpsp645li.so'
+---* TG_SLO.MK *---
+
+ERROR: Error 65280 occurred while making
+/usr/src/ooo-build-1.1.60/build/OOO_1_1_2/psprint/util
+make: *** [stamp/build] Error 1
+*** Error: DISPLAY=&quot;:0.0&quot; make
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000420.html">[Open Office] ANNOUNCE: ooo-build-1.1.60
+</A></li>
+	<LI> Next message: <A HREF="000422.html">[Open Office] Build error ooo-build-1.1.60 / OOO-1.1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#421">[ date ]</a>
+              <a href="thread.html#421">[ thread ]</a>
+              <a href="subject.html#421">[ subject ]</a>
+              <a href="author.html#421">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

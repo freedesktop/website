@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Building OOo on debian.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000006.html">
+   <LINK REL="Next"  HREF="000008.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Building OOo on debian.
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Building OOo on debian.">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>09 Aug 2003 11:38:40 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000006.html">[Open Office] Building OOo on debian.
+</A></li>
+        <LI> Next message: <A HREF="000008.html">[Open Office] Building OOo on debian.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Sa, 2003-08-09 um 08.39 schrieb Michael Meeks:
+&gt;<i> On Sat, 2003-08-09 at 00:58, jorge o. castro wrote:
+</I>&gt;<i> &gt; I've been trying to build Ximianized OOo on Debian Sid.
+</I>&gt;<i> 
+</I>&gt;<i> 	I believe Martin is doing a very similar thing; so - it's prolly best
+</I>&gt;<i> if you talk to him; Martin - are you on this list yet ?
+</I>
+Yes, already subscribed
+
+&gt;<i> &gt; From what I've been able to gather it requires both libgnomecups1.0-dev
+</I>&gt;<i> &gt; and libcupsys2-dev. When they are installed libgnomevfs2-dev is removed,
+</I>&gt;<i> &gt; which is also required. Installing libgnomevfs2-dev then removes the
+</I>&gt;<i> &gt; cups packages.
+</I>
+Every now and then Debian unstable is Debian broken... This time it
+looks like libcupsys2-dev requires libgnutls5-dev and libgnomevfs2-dev
+requires libgnutls7-dev.
+
+( <A HREF="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=203059">http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=203059</A> )
+
+You could wait for libcupsys to be updated or fetch older libgnomevfs2
+packages from testing (2.2.5-2) (I don't know if you have to downgrade
+other gnome packages to install them).
+
+I can send a patch for the official Debian OOo packaging scripts and
+some instructions on how to build Ximianized packages, if you want that,
+jorge.
+
+HTH
+	Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000006.html">[Open Office] Building OOo on debian.
+</A></li>
+	<LI> Next message: <A HREF="000008.html">[Open Office] Building OOo on debian.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

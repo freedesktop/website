@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] gcj and openoffice 1.9.X workspace
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000610.html">
+   <LINK REL="Next"  HREF="000612.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] gcj and openoffice 1.9.X workspace
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] gcj and openoffice 1.9.X workspace">halls@debian.org
+       </A><BR>
+    <I>Thu, 02 Dec 2004 12:27:40 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000610.html">[Open Office] gcj and openoffice 1.9.X workspace
+</A></li>
+        <LI> Next message: <A HREF="000612.html">[Open Office] gcj and openoffice 1.9.X workspace
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#611">[ date ]</a>
+              <a href="thread.html#611">[ thread ]</a>
+              <a href="subject.html#611">[ subject ]</a>
+              <a href="author.html#611">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Caolan, thanks for your update.  Can you include
+<A HREF="mailto:jdk@tools.openoffice.org">jdk@tools.openoffice.org</A> for announcements like this - that is where all
+the JDK maintainers are.  Are you subscribed?
+
+Thanks
+Chris
+
+On Thu, 2004-12-02 at 12:24 +0000, Caolan McNamara wrote:
+&gt;<i> I've created a child workspace (gcj1) for gij/gcj and openoffice. I'm
+</I>&gt;<i> been able to get helpcontent2 and configmgr built with gcj so I'm fairly
+</I>&gt;<i> happy with that as its the major hurdle. Some other modules don't fully
+</I>&gt;<i> build with gcj, generally because of use of sun java sun.net.* classes
+</I>&gt;<i> which don't exist in gcj along with some other classes which gcj doesn't
+</I>&gt;<i> have yet, so I'm currently simply finding and conditionally not building
+</I>&gt;<i> the troublemakers when using gcj like --without-java does for all java
+</I>&gt;<i> stuff.
+</I>&gt;<i> 
+</I>&gt;<i> My suggested config_office changes for configure turn 
+</I>&gt;<i> --enable-java / --disable-java into --with-java / --without-java and 
+</I>&gt;<i> then additionally to force building with gij/gcj use --with-java=gij
+</I>&gt;<i> 
+</I>&gt;<i> So to play with the build grab SRC680_m63 and the gcj workspace tag is
+</I>&gt;<i> cws_src680_gcj1.  Add --with-java=gij to your configure line.
+</I>&gt;<i> 
+</I>&gt;<i> C.
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000610.html">[Open Office] gcj and openoffice 1.9.X workspace
+</A></li>
+	<LI> Next message: <A HREF="000612.html">[Open Office] gcj and openoffice 1.9.X workspace
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#611">[ date ]</a>
+              <a href="thread.html#611">[ thread ]</a>
+              <a href="subject.html#611">[ subject ]</a>
+              <a href="author.html#611">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

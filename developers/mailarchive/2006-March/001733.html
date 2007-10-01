@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] error under FC5: bin/ooinstall failed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20error%20under%20FC5%3A%20bin/ooinstall%20failed&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001732.html">
+   <LINK REL="Next"  HREF="001734.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] error under FC5: bin/ooinstall failed</H1>
+    <B>Giuseppe Castagno</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20error%20under%20FC5%3A%20bin/ooinstall%20failed&In-Reply-To="
+       TITLE="[Open Office] error under FC5: bin/ooinstall failed">giuseppe.castagno at gmail.com
+       </A><BR>
+    <I>Wed Mar 29 10:43:33 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001732.html">[Open Office] [PATCH] experimental system STLport5 support
+</A></li>
+        <LI>Next message: <A HREF="001734.html">[Open Office] error under FC5: bin/ooinstall failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1733">[ date ]</a>
+              <a href="thread.html#1733">[ thread ]</a>
+              <a href="subject.html#1733">[ subject ]</a>
+              <a href="author.html#1733">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+under FC5, I compiled the src680-m160 tag successfully.
+
+While installing with:
+
+bin/ooistall -l /opt/OOi-m160
+
+I got the error (only last relevant lines reported):
+
+**************************************************
+ERROR: Saved logfile:
+/media/usb-li/home/beppe/ooo-b.m160/build/src680-m160/instsetoo_native/util/OpenOffice//logging/en-US/log_SRC680__en-US.log
+**************************************************
+... analyzing script:
+/media/usb-li/home/beppe/ooo-b.m160/build/src680-m160/solver/680/unxlngi6.pro/bin/setup_osl.ins
+...
+... analyzing directories ...
+... analyzing files ...
+... analyzing scpactions ...
+... analyzing shortcuts ...
+... analyzing profile ...
+... analyzing profileitems ...
+... analyzing modules ...
+------------------------------------
+... languages en-US ...
+... analyzing files ...
+ERROR: The following files could not be found:
+ERROR: File not found: libeggtray680DLLSUFFIX.so
+ERROR: File not found: libvbaobj680DLLSUFFIX.uno.so
+ERROR: File not found: vbaevents680DLLSUFFIX.uno.so
+... cleaning the output tree ...
+Wed Mar 29 17:12:43 2006 (00:04 min.)
+Failed to install:  at bin/ooinstall line 127.
+
+Examining file solver/680/unxlngi6.pro/bin/setup_osl.ins I found the
+line, but the library libeggtray680DLLSUFFIX.so shouldn't it be
+libeggtray680li.so ?
+In my build tree the library exists at:
+solver/680/unxlngi6.pro/lib/libeggtray680li.so
+
+The ooo-build tree was checked out yesterday, the top lines of ChangeLog are:
+
+2006-03-28  Jody Goldberg &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">jody at gnome.org</A>&gt;
+
+	* patches/src680/apply:
+	* patches/src680/sc-xls-pivot-optimization.diff : Optimization to
+
+Any suggestion ?
+
+TIA
+--
+Regards,
+Giuseppe Castagno
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001732.html">[Open Office] [PATCH] experimental system STLport5 support
+</A></li>
+	<LI>Next message: <A HREF="001734.html">[Open Office] error under FC5: bin/ooinstall failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1733">[ date ]</a>
+              <a href="thread.html#1733">[ thread ]</a>
+              <a href="subject.html#1733">[ subject ]</a>
+              <a href="author.html#1733">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] problem with beanshell
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20problem%20with%20beanshell&In-Reply-To=200510201834.46641.ismail%40uludag.org.tr">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001205.html">
+   <LINK REL="Next"  HREF="001207.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] problem with beanshell</H1>
+    <B>Lupine</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20problem%20with%20beanshell&In-Reply-To=200510201834.46641.ismail%40uludag.org.tr"
+       TITLE="[Open Office] problem with beanshell">thelupine at softhome.net
+       </A><BR>
+    <I>Thu Oct 20 11:52:36 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001205.html">[Open Office] problem with beanshell
+</A></li>
+        <LI>Next message: <A HREF="001207.html">[Open Office] problem with beanshell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1206">[ date ]</a>
+              <a href="thread.html#1206">[ thread ]</a>
+              <a href="subject.html#1206">[ subject ]</a>
+              <a href="author.html#1206">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 2005-10-20 at 18:34 +0300, &#304;smail D&#246;nmez wrote:
+&gt;<i> On Thursday 20 October 2005 17:47, Lupine wrote:
+</I>&gt;<i> &gt; file:
+</I>&gt;<i> &gt; /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/
+</I>&gt;<i> &gt;unxlngi6.pro/misc/build/BeanShell/classes/bsh/Variable.class class file has
+</I>&gt;<i> &gt; wrong version 49.0, should be 48.0
+</I>&gt;<i> &gt; Please remove or make sure it appears in the correct subdirectory of the
+</I>&gt;<i> 
+</I>&gt;<i> Remove /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/classes/bsh/Variable.class 
+</I>&gt;<i> and run make again. Looks like make clean doesn't clean built class files.
+</I>
+
+Thanks, it gave another error on another class, so I just removed:
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/
+unxlngi6.pro/misc/build/BeanShell/classes/bsh/*.class 
+
+...and then ran make again, it's already gotten past the beanshell part,
+and moving on.  Hopefully it &quot;makes&quot; it all the way through, been
+waiting for 2.0 for a while now :-)
+
+Thanks so much for all the help!
+-DB
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001205.html">[Open Office] problem with beanshell
+</A></li>
+	<LI>Next message: <A HREF="001207.html">[Open Office] problem with beanshell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1206">[ date ]</a>
+              <a href="thread.html#1206">[ thread ]</a>
+              <a href="subject.html#1206">[ subject ]</a>
+              <a href="author.html#1206">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

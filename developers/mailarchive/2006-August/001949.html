@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Obsolete patches / closed issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Obsolete%20patches%20/%20closed%20issues&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001952.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Obsolete patches / closed issues</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Obsolete%20patches%20/%20closed%20issues&In-Reply-To="
+       TITLE="[Open Office] Obsolete patches / closed issues">kendy at suse.cz
+       </A><BR>
+    <I>Thu Aug  3 05:35:16 EDT 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001952.html">[Open Office] Obsolete patches / closed issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1949">[ date ]</a>
+              <a href="thread.html#1949">[ thread ]</a>
+              <a href="subject.html#1949">[ subject ]</a>
+              <a href="author.html#1949">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I went through the list of the issues we cover in ooo-build, and I found out 
+that there's a number of patches for which we do have an issue in IssueZilla, 
+but it is already closed - this way it'll never get out of our patchset ;-)
+
+I tried to fix the situation, but there's too much patches there to fix it 
+myself; so I created a script 'show-issues' (under bin/) that lists the 
+issues according to the maintainers.  (It excludes patches from 
+FixesNotForUpstream and Defaults section.)
+
+Please - have a look at the list of your issues.  For the duplicates, update 
+the issue number in the apply file so that it points to the original issue, 
+not the duplicate.  For the 'closed fixed' issues, check that we still need 
+the patch - if yes, create a new issue for it, if no, just bin the patch...  
+For the new/started issues that weren't updated for a longer time, ping the 
+upstream maintainer ;-)  Thank you! 
+
+And - here's the current output of the show-issues:
+
+aprosky: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=56697">http://www.openoffice.org/issues/buglist.cgi?issue_id=56697</A>
+
+brosenk: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=64918+44695+64968+58474+58474+64920+64921+30380+61278+64917">http://www.openoffice.org/issues/buglist.cgi?issue_id=64918+44695+64968+58474+58474+64920+64921+30380+61278+64917</A>
+
+davidf: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=58741">http://www.openoffice.org/issues/buglist.cgi?issue_id=58741</A>
+
+hmth: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=58474+58474+67323+63770+65974+65977+65979+59985+62422+63770+30380">http://www.openoffice.org/issues/buglist.cgi?issue_id=58474+58474+67323+63770+65974+65977+65979+59985+62422+63770+30380</A>
+
+jholesov: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=67787+67873+67891+68004+65325+67740+60696+60696+60696+60696+60696+60696+66439+67243+65325+64717+66666+50857+65491+66204+66426+59411">http://www.openoffice.org/issues/buglist.cgi?issue_id=67787+67873+67891+68004+65325+67740+60696+60696+60696+60696+60696+60696+66439+67243+65325+64717+66666+50857+65491+66204+66426+59411</A>
+
+jianhua: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=64886">http://www.openoffice.org/issues/buglist.cgi?issue_id=64886</A>
+
+jody: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=45245+35578+35581+33851+23658+23658+37388+21923+44982+47442+63686+20857+45843">http://www.openoffice.org/issues/buglist.cgi?issue_id=45245+35578+35581+33851+23658+23658+37388+21923+44982+47442+63686+20857+45843</A>
+
+kyoshida: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=8808">http://www.openoffice.org/issues/buglist.cgi?issue_id=8808</A>
+
+martink: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=63081+63732+56619">http://www.openoffice.org/issues/buglist.cgi?issue_id=63081+63732+56619</A>
+
+michael: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=47923+54275+56783+57679+58119+49590+53682+68079+14036+63846+68073+23353+23353+23353+43504+62664+66510+50726+57872+57872+57872+60696+35579+38108+56202+67271+47644+47233+15512+22961+63426+67337+35579+15509+15509+35555+51002+63263+63263+34264+66680+66679+66680+66680">http://www.openoffice.org/issues/buglist.cgi?issue_id=47923+54275+56783+57679+58119+49590+53682+68079+14036+63846+68073+23353+23353+23353+43504+62664+66510+50726+57872+57872+57872+60696+35579+38108+56202+67271+47644+47233+15512+22961+63426+67337+35579+15509+15509+35555+51002+63263+63263+34264+66680+66679+66680+66680</A>
+
+mikeleib: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=64621+57961+53055">http://www.openoffice.org/issues/buglist.cgi?issue_id=64621+57961+53055</A>
+
+mklose: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=64888+64895+19976+54603">http://www.openoffice.org/issues/buglist.cgi?issue_id=64888+64895+19976+54603</A>
+
+muthusub: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=47811+47724+20496+3687+32269+47724">http://www.openoffice.org/issues/buglist.cgi?issue_id=47811+47724+20496+3687+32269+47724</A>
+
+ndevaiah: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=50842+57949+57950">http://www.openoffice.org/issues/buglist.cgi?issue_id=50842+57949+57950</A>
+
+noelp: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=63576+63576+63576+63576+37347">http://www.openoffice.org/issues/buglist.cgi?issue_id=63576+63576+63576+63576+37347</A>
+
+noelpwer: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=56633+65330+66055+66752+59082+66550+11215">http://www.openoffice.org/issues/buglist.cgi?issue_id=56633+65330+66055+66752+59082+66550+11215</A>
+
+pmladek: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=49351+49385+54121+49381+62858+64578+64577+66693+66473+48814+46226+62715+53261+58976+58977+58979+58984">http://www.openoffice.org/issues/buglist.cgi?issue_id=49351+49385+54121+49381+62858+64578+64577+66693+66473+48814+46226+62715+53261+58976+58977+58979+58984</A>
+
+rengelha: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=66140+58474+54479+63732+63732">http://www.openoffice.org/issues/buglist.cgi?issue_id=66140+58474+54479+63732+63732</A>
+
+rodo: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=65519+63156+23609+65589+65683">http://www.openoffice.org/issues/buglist.cgi?issue_id=65519+63156+23609+65589+65683</A>
+
+strba: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=33654">http://www.openoffice.org/issues/buglist.cgi?issue_id=33654</A>
+
+thbpp4: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=64798+67433">http://www.openoffice.org/issues/buglist.cgi?issue_id=64798+67433</A>
+
+tml: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=63805+6885+65209">http://www.openoffice.org/issues/buglist.cgi?issue_id=63805+6885+65209</A>
+
+vmiklos: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=65026">http://www.openoffice.org/issues/buglist.cgi?issue_id=65026</A>
+
+Without owner: 
+<A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=63159+64802+64801+64134+30380">http://www.openoffice.org/issues/buglist.cgi?issue_id=63159+64802+64801+64134+30380</A>
+
+Regards,
+Jan
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001952.html">[Open Office] Obsolete patches / closed issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1949">[ date ]</a>
+              <a href="thread.html#1949">[ thread ]</a>
+              <a href="subject.html#1949">[ subject ]</a>
+              <a href="author.html#1949">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

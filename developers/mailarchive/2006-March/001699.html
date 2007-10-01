@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] 2.0.2 testing results
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%202.0.2%20testing%20results&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001711.html">
+   <LINK REL="Next"  HREF="001700.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] 2.0.2 testing results</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%202.0.2%20testing%20results&In-Reply-To="
+       TITLE="[Open Office] 2.0.2 testing results">bero at arklinux.org
+       </A><BR>
+    <I>Sat Mar 11 21:38:30 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001711.html">[Open Office] Re: opens___.ttf vs. OpenSymbol
+</A></li>
+        <LI>Next message: <A HREF="001700.html">[Open Office] 2.0.2 testing results
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1699">[ date ]</a>
+              <a href="thread.html#1699">[ thread ]</a>
+              <a href="subject.html#1699">[ subject ]</a>
+              <a href="author.html#1699">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+I've had a couple of testers give 2.0.2 a hard test today -- overall it went 
+pretty well, but they did find a couple of problems (some are probably gcj 
+related, some others might be local stuff).
+
+1. The &quot;Wizards&quot; stuff in oowriter's file menu doesn't work (gcj?)
+2. The package splits are a bit odd in some cases. Shouldn't the
+   dictionaries go to the language packs instead of core?
+3. The included media player doesn't work. Picking a sound from the gallery
+   does nothing, opening it manually and trying to open any file results in
+   &quot;The format of the selected file is not supported.&quot;
+4. I can't reproduce this one myself, but one tester (who generally isn't
+   a crackpot) reported the Gallery feature doesn't include any OpenClipart
+   stuff, even though it was built with OpenClipart enabled.
+   Strangely enough, deleting gengal.rdb fixed it for him?!
+   The same user mentioned it would be nice to add the system icons
+   (KDE/Gnome/...) to the Gallery -- sounds like a good idea to me too.
+5. On a default install, Evolution is listed as a standard data source
+   (even though it's not installed), but KDE AddressBook isn't.
+   (While at it, neither are Mozilla and Thunderbird - may make sense to
+   add those too).
+   I'm not very familiar with the way OOO's database access works;
+   does the attached fix (for the KDE AddressBook part) look right? If so,
+   what's the best way to add it, given it has to add a binary file (kab.odb)?
+6. ooimpress crashes with signal 11 when exiting. Not critical because the
+   user wanted to exit anyway, but not very nice either.
+
+Has anyone run into any of those before w/ a quick fix, or should I just throw 
+them at issuezilla?
+
+
+Other than these points, the feedback on this release has been overwhelmingly 
+positive -- great work everyone.
+
+Regards,
+bero
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: kab.odb
+Type: application/vnd.sun.xml.base
+Size: 1778 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060312/53eb593d/kab.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060312/53eb593d/kab.bin</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ooo-add-kab-datasource.diff
+Type: text/x-diff
+Size: 2555 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060312/53eb593d/ooo-add-kab-datasource.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060312/53eb593d/ooo-add-kab-datasource.bin</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001711.html">[Open Office] Re: opens___.ttf vs. OpenSymbol
+</A></li>
+	<LI>Next message: <A HREF="001700.html">[Open Office] 2.0.2 testing results
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1699">[ date ]</a>
+              <a href="thread.html#1699">[ thread ]</a>
+              <a href="subject.html#1699">[ subject ]</a>
+              <a href="author.html#1699">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

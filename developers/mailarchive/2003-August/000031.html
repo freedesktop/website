@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] other compile problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000029.html">
+   <LINK REL="Next"  HREF="000033.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] other compile problems
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] other compile problems">michael@ximian.com
+       </A><BR>
+    <I>Tue, 26 Aug 2003 09:49:20 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000029.html">[Open Office] other compile problems
+</A></li>
+        <LI> Next message: <A HREF="000033.html">[Open Office] other compile problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#31">[ date ]</a>
+              <a href="thread.html#31">[ thread ]</a>
+              <a href="subject.html#31">[ subject ]</a>
+              <a href="author.html#31">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Nick,
+
+On Sat, 2003-08-23 at 18:04, Nick Hudson wrote:
+&gt;<i> Ok I got past the part of my last few emails but now it is stopping at a
+</I>&gt;<i> diffrent point that I will port later in the email.  Another thing I
+</I>&gt;<i> found useful while compiling gcc if you add these flags to the compile
+</I>&gt;<i> it will compile faster and will not compile java which you do not need.
+</I>&gt;<i> 
+</I>&gt;<i> --enable-static --disable-shared --enable-languages=c++
+</I>
+	That's great. I'll add that to build-ooo - although, I'm hoping to be
+able to use the system gcc more reliably; I've not tried using the
+--with-system-gcc flag to openoffice configure in HEAD, although it'd be
+nice to enable that by default if it works well on stock systems.
+
+	I originally always build gcc to get libstdc++ of the version expected
+by the UDK pack (now the ODK) - it'd be great if that worked on stock
+systems out of the box now / that could be fixed.
+
+&gt;<i> I was
+</I>&gt;<i> using the cvs version of the scrips but I went back using the released
+</I>&gt;<i> version 1.1.35.  Either one I get the same error at the same point
+</I>&gt;<i> everytime I compile it.  Here is the error
+</I>
+	I'd stick with CVS HEAD - there are a lot of fixes there; hopefully
+we'll do a new release shortly.
+
+&gt;<i> echo &quot;Solar-Version: 645m13s2(Build:8662)&quot; &gt;&gt;
+</I>&gt;<i> ../../../../../../unxlngi4.pro/class/META-INF/MANIFEST.MF
+</I>&gt;<i> cd ../../../../../../unxlngi4.pro/class &amp;&amp; zip -u -r officebean.jar 
+</I>&gt;<i> META-INF/MANIFEST.MF  com/sun/star/beans
+</I>&gt;<i> updating: META-INF/MANIFEST.MF (deflated 10%)
+</I>&gt;<i> -------------
+</I>&gt;<i> /usr/src/ooo-build-1.1.35/build/RC3_030729/odk/examples/OLE
+</I>&gt;<i> dmake:  Error --
+</I>&gt;<i> `../../unxlngi4.pro/bin/odk645/examples/OLE/delphi/InsertTables/Project1.dpr' not found, and can't be made
+</I>&gt;<i> ---* RULES.MK *---
+</I>
+	Very odd. Project1.dpr should be in the RC3_030729 tar.gz, and I
+believe the makefile.mk there just tries to copy it into the solver
+straight; are you certain you have enough free disk space ? and/or any
+idea how it could have disappeared ? the OLE/makefile.mk seems to
+suggest that there is nothing complex happening there.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000029.html">[Open Office] other compile problems
+</A></li>
+	<LI> Next message: <A HREF="000033.html">[Open Office] other compile problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#31">[ date ]</a>
+              <a href="thread.html#31">[ thread ]</a>
+              <a href="subject.html#31">[ subject ]</a>
+              <a href="author.html#31">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

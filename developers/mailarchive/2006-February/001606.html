@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%0A%09own%20distro%20tag&In-Reply-To=43F50CFF.9000707%40arcor.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001604.html">
+   <LINK REL="Next"  HREF="001617.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag</H1>
+    <B>Andreas Radke</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%0A%09own%20distro%20tag&In-Reply-To=43F50CFF.9000707%40arcor.de"
+       TITLE="[Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag">a.radke at arcor.de
+       </A><BR>
+    <I>Thu Feb 16 23:25:39 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001604.html">[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag
+</A></li>
+        <LI>Next message: <A HREF="001617.html">[Open Office] oob680.1.1 - new issues and qustion getting our
+	own	distro tag
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1606">[ date ]</a>
+              <a href="thread.html#1606">[ thread ]</a>
+              <a href="subject.html#1606">[ subject ]</a>
+              <a href="author.html#1606">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've run into another problem with a patch. Don't know why it would
+applied yesterday. But now I get this:
+
+disable-neon.diff: testing...( sed 's/^\(@.*\)\r$/\1/' | patch -l -p0 
+-d
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1
+--dry-run ) &lt;
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/patches/src680/./disable-neon.diff
+patching file config_office/configure.in
+Hunk #1 succeeded at 282 (offset -24 lines).
+Hunk #2 succeeded at 3332 (offset -101 lines).
+Hunk #3 succeeded at 3439 (offset -23 lines).
+patching file config_office/set_soenv.in
+Hunk #1 succeeded at 1805 (offset -1 lines).
+can't find file to patch at input line 50
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|<i>--- neon/makefile.mk.orig      2006-01-16 09:00:00.000000000 +0100
+</I>|<i>+++ neon/makefile.mk   2006-01-16 09:02:28.000000000 +0100
+</I>--------------------------
+File to patch:
+Skip this patch? [y]
+Skipping patch.
+1 out of 1 hunk ignored
+patching file scp2/source/ooo/file_library_ooo.scp
+Hunk #1 succeeded at 2070 (offset 5 lines).
+patching file scp2/source/ooo/makefile.mk
+Hunk #1 succeeded at 152 with fuzz 2 (offset -24 lines).
+patching file ucb/source/ucp/webdav/makefile.mk
+Hunk #1 succeeded at 81 (offset 4 lines).
+Testing patch disable-neon.diff failed. at
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/patches/apply.pl
+line 54.
+make: *** [stamp/patch.apply] Error 1
+==&gt; ERROR: Build Failed.  Aborting...
+
+
+Don't know what of my little changes to the PKGBUILD has raised up this
+again.
+
+Andreas Radke
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001604.html">[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag
+</A></li>
+	<LI>Next message: <A HREF="001617.html">[Open Office] oob680.1.1 - new issues and qustion getting our
+	own	distro tag
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1606">[ date ]</a>
+              <a href="thread.html#1606">[ thread ]</a>
+              <a href="subject.html#1606">[ subject ]</a>
+              <a href="author.html#1606">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

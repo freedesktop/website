@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Build problems with 2.0.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build%20problems%20with%202.0.1&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001425.html">
+   <LINK REL="Next"  HREF="001431.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Build problems with 2.0.1</H1>
+    <B>J&#252;rg Billeter</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build%20problems%20with%202.0.1&In-Reply-To="
+       TITLE="[Open Office] Build problems with 2.0.1">j at bitron.ch
+       </A><BR>
+    <I>Sun Dec 25 04:57:29 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001425.html">[Open Office] Trouble building 2.0.1 branch with gcj 4.1-svn
+</A></li>
+        <LI>Next message: <A HREF="001431.html">[Open Office] Build problems with 2.0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1430">[ date ]</a>
+              <a href="thread.html#1430">[ thread ]</a>
+              <a href="subject.html#1430">[ subject ]</a>
+              <a href="author.html#1430">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+got some issues trying to build ooo-build-2.0.1.
+
+[*] The two problems mentioned in
+<A HREF="../2005-November/001313.html">http://lists.ximian.com/pipermail/openoffice/2005-November/001313.html</A>
+still occur. Modifying / removing the jar files works fine. First I've
+tried to apply the gcj-no-broken-jaxp.diff, workspace.jaxpapi.diff,
+gcj-no-com.sun.xml.diff patches from ArkOnly but that didn't work
+(patching failed)
+
+[*] The patch ww8scan.diff i#53055 breaks the build when using
+--without-stlport4 with the following message:
+
+/usr/src/ooo-build-2.0.1/build/ooa680-m1/sw/source/filter/ww8/ww8scan.cxx:145: error: specialization of 'template&lt;class _Key&gt; struct __gnu_cxx::hash' in different namespace
+/usr/lib/gcc/i686-pc-linux-gnu/4.0.3/../../../../include/c
+++/4.0.3/ext/hash_fun.h:71: error:   from definition of 'template&lt;class
+_Key&gt; struct __gnu_cxx::hash'
+dmake:  Error code 1, while making
+'../../../unxlngi6.pro/slo/ww8scan.obj'
+
+It looks like the hash template class is in the __gnu_cxx namespace, so
+I assume it shouldn't be specialized from outside of the compiler, or is
+it a bug in the standard libraries of gcc?
+
+Build without the patch hasn't finished yet.
+
+
+Toolchain: gcc 4.0-20051006 (with backports for awt-buffer-strategy and
+javax.xml) on x86
+
+Applied Patches: LinuxCommon, NotDebian
+
+Config: --disable-binfilter --disable-crashdump --disable-epm
+--enable-crashdump=no --enable-openldap --with-build-version=&quot;Build
+2.0.1&quot; --with-lang=&quot;en-US de&quot; --without-fonts --without-gpc
+--with-system-freetype --with-system-gcc --with-system-jpeg
+--with-system-libxml --with-system-mozilla --with-system-python
+--with-system-zlib --enable-evolution2 --enable-cairo=yes --enable-libsn
+--with-firefox --disable-odk --disable-qadevooo --disable-fontooo
+--enable-xsltproc --without-myspell-dicts --without-nas
+--with-system-expat --with-system-libwpd --with-system-curl
+--with-system-sndfile --with-system-neon --without-stlport4
+--with-java=gij --with-system-xmlsec --enable-gtk
+--with-images='industrial hicontrast' --with-system-stdlibs
+'--prefix=/usr' '--mandir=/usr/share/man' '--infodir=/usr/share/info'
+'--sysconfdir=/etc' '--libexecdir=/usr/sbin' '--disable-kde'
+'--disable-dependency-tracking' '--without-binsuffix'
+'--with-distro=paldo' '--with-vendor=paldo' '--with-lang=en-US de'
+'--with-num-cpus=2' '--with-system-cairo' 'LDFLAGS=-Wl,-O1'
+
+Regards,
+
+J&#252;rg
+-- 
+J&#252;rg Billeter &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">j at bitron.ch</A>&gt;
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001425.html">[Open Office] Trouble building 2.0.1 branch with gcj 4.1-svn
+</A></li>
+	<LI>Next message: <A HREF="001431.html">[Open Office] Build problems with 2.0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1430">[ date ]</a>
+              <a href="thread.html#1430">[ thread ]</a>
+              <a href="subject.html#1430">[ subject ]</a>
+              <a href="author.html#1430">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

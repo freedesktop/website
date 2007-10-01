@@ -1,0 +1,471 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: apply.pl &amp; 'download' up-streaming ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20apply.pl%20%26%20%27download%27%20up-streaming%20...&In-Reply-To=4418184D.6030806%40sun.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001714.html">
+   <LINK REL="Next"  HREF="001716.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: apply.pl &amp; 'download' up-streaming ...</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20apply.pl%20%26%20%27download%27%20up-streaming%20...&In-Reply-To=4418184D.6030806%40sun.com"
+       TITLE="[Open Office] Re: apply.pl &amp; 'download' up-streaming ...">pmladek at suse.cz
+       </A><BR>
+    <I>Wed Mar 15 12:45:52 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001714.html">[Open Office] Re: New PDF features
+</A></li>
+        <LI>Next message: <A HREF="001716.html">[Open Office] Re: [tools-dev] Re: apply.pl &amp; 'download'
+	up-streaming ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1715">[ date ]</a>
+              <a href="thread.html#1715">[ thread ]</a>
+              <a href="subject.html#1715">[ subject ]</a>
+              <a href="author.html#1715">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 15 March 2006 14:36, Martin Hollmichel wrote:
+&gt;<i> Hi Petr,
+</I>&gt;<i>
+</I>&gt;<i> some common comments first: we really need more people involved than
+</I>&gt;<i> here on the cc list are addressed, we should really use
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">dev at tools.openoffice.org</A> for these efforts.
+</I>
+I agree. I added also the ooo-build-related mailing list to CC :-)
+
+&gt;<i> I'm fine with creating own webpages on the site and the wiki for this
+</I>&gt;<i> but I'm usually a bit reluctant to create new projects and/or mailing
+</I>&gt;<i> lists because it creates just administrative overhead without benefits.
+</I>&gt;<i> I think the tools project is an adequate starting point, and we can
+</I>&gt;<i> create new pages or if really needed, new mailing list quite fast.
+</I>
+I am fine with it. The tools project looks like the right place.
+
+I am going to wait for some more feedback now ;-)
+
+
+&gt;<i> Petr Mladek wrote:
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; first, I am sorry for the delay.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Wow, this looks like an attempt to push the whole ooo-build framework
+</I>&gt;<i> &gt; upstream :-) Is this what you meant?
+</I>&gt;<i>
+</I>&gt;<i> yes, this it the picture we have, take the best of both world together
+</I>&gt;<i> into the main repository.
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>&gt;<i>
+</I>&gt;<i> &gt; I wrote a small intro.txt, see the attachments. It tries to describe the
+</I>&gt;<i> &gt; current function of ooo-build. It helped me to sort the thinks and I hope
+</I>&gt;<i> &gt; it would be useful for you as well.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Let me summarize our objectives. Please, correct me if I am wrong :-)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 1. In each case, we should clean up ooo-build and push most of the hacks
+</I>&gt;<i> &gt; upstream.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I would differ two areas:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; a) hacks from scripts - They should be put into the upstream tools, such
+</I>&gt;<i> &gt; as config_office/configure, make_installer.pl. It seems that I am
+</I>&gt;<i> &gt; responsible for this area :-)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; b) patches against the upstream sources - This is another task in fact.
+</I>&gt;<i> &gt; Michael has already started a great initiative to improve the current
+</I>&gt;<i> &gt; state...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I think that we need not to discuss this objective at this point. Michael
+</I>&gt;<i> &gt; already localized many parts of ooo-build that should go upstream. I'll
+</I>&gt;<i> &gt; continue and will do my best to do it step by step...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 2. We should split the ooo-build framework (scripts, documentation) from
+</I>&gt;<i> &gt; the things that are specific for the current ooo-build community
+</I>&gt;<i> &gt; (configure options, patches, distro specific hacks)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I think that the framework would be an OOo community project at
+</I>&gt;<i> &gt; <A HREF="http://projects.openoffice.org.">http://projects.openoffice.org.</A> It would be similar to the QA test tool.
+</I>&gt;<i> &gt; So, it should have its own pages, mailing list, cvs module, etc.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I expect that the current ooo-build community would still want to share
+</I>&gt;<i> &gt; the patches, configuration, new features that are in development phase,
+</I>&gt;<i> &gt; etc. somewhere else.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; This objective is not so clear and we should disccuss it here.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Here are my ideas about splitting ooo-build framework:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; You should read the attached intro.txt if you are not familiar with
+</I>&gt;<i> &gt; ooo-build :-)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The basic idea is that the framework should be universal. It needs to be
+</I>&gt;<i> &gt; maintained. Though, the normal developer/packager should not need to
+</I>&gt;<i> &gt; modify it to get a custom build. The normal developer should just put
+</I>&gt;<i> &gt; there his/her own addons (patches, files) and do the build by: configure,
+</I>&gt;<i> &gt; (download), make, make install.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; IMHO, this requirement is quite important. It would discourage developers
+</I>&gt;<i> &gt; to use the framework if they have to commit patches against it as well.
+</I>&gt;<i> &gt; It would be too schizophrenic, too many cvs, ... :-)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; What the custom builds usually requires? I found these areas in the
+</I>&gt;<i> &gt; current ooo-build:
+</I>&gt;<i> &gt; - configure, download, unpack, install additional sources
+</I>&gt;<i> &gt; - define configuration of the upstream sources
+</I>&gt;<i> &gt; - apply additional patches
+</I>&gt;<i> &gt; - do some hacks before the build is started
+</I>&gt;<i> &gt; - do some post install hacks
+</I>&gt;<i> &gt; - re-arrange filelists
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; So, I think that the best approach would be to make the framework
+</I>&gt;<i> &gt; modular.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Most of the areas are already solved this way in ooo-build. For example,
+</I>&gt;<i> &gt; package-ooo calls standalone scripts ooinstall, install-dictionaries,
+</I>&gt;<i> &gt; generate-bash-completion. We only need to define how the
+</I>&gt;<i> &gt; additional/external modules would be processed, ...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The same modular approach would be usable also for build-ooo...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Note that also download, unpack, ... can be easily modularized.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The most annoying problem is the configure script. IMHO, if the framework
+</I>&gt;<i> &gt; is a standalone module, it needs his own configure. It should set what
+</I>&gt;<i> &gt; sources needs to be download, what patches should be applied, etc. I
+</I>&gt;<i> &gt; would need to be modular as well, so the user can add checks for his own
+</I>&gt;<i> &gt; features. The configure modules could be solvable by a smart autogen.sh
+</I>&gt;<i> &gt; script. Well, it looks a bit hackish but...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; In fact, I would imagine that this framework can replace the module
+</I>&gt;<i> &gt; config_office one day. If we do it well and the framework is really
+</I>&gt;<i> &gt; stable and extensible by external modules. Though, it would need quite a
+</I>&gt;<i> &gt; lot of real word testing, fixing, so I would prefere to develop it
+</I>&gt;<i> &gt; without the slow CWS-game :-)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; What do you thing?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Introduction into ooo-build
+</I>&gt;<i> &gt; ===========================
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ooo-build provides an &quot;easy&quot; way for building and developing custom
+</I>&gt;<i> &gt; builds of OpenOffice.org. It allows cooperation and work sharing of more
+</I>&gt;<i> &gt; vendors.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ooo-build supports building OOo the standard way: configure, make, make
+</I>&gt;<i> &gt; install. It is able to apply lots of additional patches, hacks and fixes
+</I>&gt;<i> &gt; withing the build and installation process. One release of ooo-build can
+</I>&gt;<i> &gt; support more versions of OOo sources and more vendors. All the patches,
+</I>&gt;<i> &gt; hacks, etc. can be effectively reused and shared. Finally, the are some
+</I>&gt;<i> &gt; more scripts that are useful for developing OOo.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Example build using ooo-build
+</I>&gt;<i> &gt; -----------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; # get ooo-build, for example a released one from
+</I>&gt;<i> &gt; # <A HREF="http://go-ooo.org/packages/OOO680/">http://go-ooo.org/packages/OOO680/</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; tar -xzf ooo-build-&lt;version&gt;.tar.gz
+</I>&gt;<i> &gt; cd ooo-build-&lt;version&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ./configure \
+</I>&gt;<i> &gt;     --with-distro=SUSE \
+</I>&gt;<i> &gt;     --with-vendor=Novell \
+</I>&gt;<i> &gt;     --prefix=/usr \
+</I>&gt;<i> &gt;     --with-installed-ooo-dirname=ooo-2.0
+</I>&gt;<i> &gt;     --enable-binfilter
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ./download	# this is one non-standard helper command, we added it because
+</I>&gt;<i> &gt; 		# there are many sources to be downloaded.
+</I>&gt;<i> &gt; 		# First, the OOo sources are split into more tarballs.
+</I>&gt;<i> &gt; 		# In addition, ooo-build is able to use some more extra
+</I>&gt;<i> &gt; 		# sources to enable features that have not been accepted
+</I>&gt;<i> &gt; 		# by the upstream yet
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; make
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; make install
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Configuration
+</I>&gt;<i> &gt; -------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ooo-build has it's own configure script that has the following functions:
+</I>&gt;<i> &gt;     - select vendor and distro for which the custom build is being done
+</I>&gt;<i> &gt;     - select the right version of OOo sources
+</I>&gt;<i> &gt;     - set some custom setting that is not supported by upstream, such as:
+</I>&gt;<i> &gt; 	--prefix
+</I>&gt;<i> &gt; 	--with-installed-ooo-dirname
+</I>&gt;<i> &gt; 	--with-binsuffix
+</I>&gt;<i> &gt; 	--with-icecream-max-jobs
+</I>&gt;<i> &gt;     - enable/disable some optional features that are not yet configurable
+</I>&gt;<i> &gt; by upstream, for example:
+</I>&gt;<i> &gt;         --enable-access (access import pieces via mdbtools)
+</I>&gt;<i> &gt; 	--with-openclipart (extra galleries from OpenClipArt)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The configure script generates the following files from the *.in
+</I>&gt;<i> &gt; templates: - download
+</I>&gt;<i> &gt;     - bin/setup
+</I>&gt;<i> &gt;     - distro-configs/*.conf
+</I>&gt;<i> &gt;     - scratch/place
+</I>&gt;<i> &gt;     - intltools*
+</I>&gt;<i> &gt;     - and lots Makefiles all over the ooo-build sources
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The tool download will be described later, see below.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The file bin/setup is a simple shell script that sets and exports some
+</I>&gt;<i> &gt; shell variables. Many other ooo-build tools source this script to read
+</I>&gt;<i> &gt; the setting.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The config files distro-configs/*.conf include config switches that are
+</I>&gt;<i> &gt; passed to the OOo native configure script during the build phase.
+</I>&gt;<i> &gt; distro-configs/Common.conf includes some common options, shared
+</I>&gt;<i> &gt; by all distributions. distro-configs/&lt;vendor&gt;.conf includes vendor
+</I>&gt;<i> &gt; specific options. There is one for each vendor.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The script scratch/place helps to develop huge fixes for OOo via the copy
+</I>&gt;<i> &gt; of source files rather than by patches.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; intltools are three scripts that help us to update translations of some
+</I>&gt;<i> &gt; additional files. They are actually used only to update some desktop
+</I>&gt;<i> &gt; files.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Downloading of ooo-build sources
+</I>&gt;<i> &gt; -------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The released versions of ooo-build and almost all the additional sources
+</I>&gt;<i> &gt; can be download from <A HREF="http://go-ooo.org/packages/.">http://go-ooo.org/packages/.</A> Note that ooo-build
+</I>&gt;<i> &gt; currently uses its own repacked OOo sources that are split into more
+</I>&gt;<i> &gt; tarballs: binfilter, core, lang, sdk_oo, and system.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; There is the script &quot;download&quot; that is able to download all the necessary
+</I>&gt;<i> &gt; sources. It is generated by ooo-build/configure, see above.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; It currently downloads:
+</I>&gt;<i> &gt;     - the split OOo source tarballs
+</I>&gt;<i> &gt;     - two dll files for mono stuff
+</I>&gt;<i> &gt;     - extras
+</I>&gt;<i> &gt;     - mdbtools source tarball
+</I>&gt;<i> &gt;     - hacked xt sources for build wit gcj
+</I>&gt;<i> &gt;     - etc.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Unpacking, preparing sources
+</I>&gt;<i> &gt; ----------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; There are some preliminary actions that are done when &quot;make&quot; is called.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 1. bin/unpack is called. It is a simple shell script that unpacks all
+</I>&gt;<i> &gt;    the necessary tarballs into ooo-build/build directory or even into the
+</I>&gt;<i> &gt;    unpacked OOo source tree
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 2. Thereafter &quot;make&quot; installs some extra artwork, like vendor specific
+</I>&gt;<i> &gt; bitmaps for splash screen.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 3. Then the script bin/build-tools is called. It is able to build a
+</I>&gt;<i> &gt; special version of gcc. It was used in the past to test build with
+</I>&gt;<i> &gt; gcc-3.4.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 4. Then patches/apply.pl is called. It applies all the selected patches,
+</I>&gt;<i> &gt; see below for more details
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 5. Finally, bin/transform is called. This shell script currently calls
+</I>&gt;<i> &gt; two scripts that update the default lists of fonts:
+</I>&gt;<i> &gt;     * bin/font-munge
+</I>&gt;<i> &gt;     * bin/help-font-munge
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; All these steps are reversible. It is very helpful, for example, for
+</I>&gt;<i> &gt; creating and testing incremental patches.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Something more about patches
+</I>&gt;<i> &gt; - - - - - - - - - - - - - - -
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; We currently have more than 500 patches. They are sorted into various
+</I>&gt;<i> &gt; directories below ooo-build/patch. Then there is a so-called apply file
+</I>&gt;<i> &gt; in ooo-build/patches/src680/. This file sorts patches into some more
+</I>&gt;<i> &gt; groups, for example:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; [ QuickStarter ]
+</I>&gt;<i> &gt; # An improved built-in quick-starter applet / systray thing. i#57872
+</I>&gt;<i> &gt; speed-quickstart.diff
+</I>&gt;<i> &gt; # An improved built-in quick-starter applet / systray thing. i#57872
+</I>&gt;<i> &gt; speed-quickstart-eggtray.diff
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Some patches could depend on the OOo source version, for example:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; [ TemporaryHacks &lt; src680-m153 ]
+</I>&gt;<i> &gt; # LD_LIBRARY_PATH should not end with a &quot;:&quot; N#118188, #55733
+</I>&gt;<i> &gt; ld-library-path.diff
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The apply file also allows to define groups of groups, for example:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; LinuxCommon : Common, BuildBitsLinuxOnly, LinuxOnly, SystemBits,
+</I>&gt;<i> &gt; CWSBackports, G QPro, Lwp, cairocanvas, VBAObjects, msaccess, \
+</I>&gt;<i> &gt;               Safe64bit, FPickers, Mono, AddressBooks, QuickStarter,
+</I>&gt;<i> &gt; Shrink
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Finally, it defines what groups should applied for which distro, for
+</I>&gt;<i> &gt; example:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; SUSE      : NovellBase, BerkeleyDB43
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; This approach helps us to share work with more distributions. The
+</I>&gt;<i> &gt; version-dependant patches are necessary because we do not want to force
+</I>&gt;<i> &gt; everyone to use the same OOo source snapshot at the same time. One
+</I>&gt;<i> &gt; snapshot is always set (in configure) as the default one but...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Building
+</I>&gt;<i> &gt; --------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The command &quot;make&quot; calls bin/build-ooo after the sources are unpacked,
+</I>&gt;<i> &gt; patched, and hacked.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The main tasks of the script build-ooo are:
+</I>&gt;<i> &gt;     - run the OOo internal configure, see below* for more details
+</I>&gt;<i> &gt;     - source the generated *set.sh
+</I>&gt;<i> &gt;     - bootstrap OOo build
+</I>&gt;<i> &gt;     - build the module transex3 and update translations from extra GSI
+</I>&gt;<i> &gt; sources if any available
+</I>&gt;<i> &gt;     - finish build
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; In addition, there are some other build hacks and fixes, for example:
+</I>&gt;<i> &gt;     - export LANG=&quot;C&quot;; export LD_ASSUME_KERNEL=2.2.5 to avoid problems
+</I>&gt;<i> &gt; with Java on some platforms
+</I>&gt;<i> &gt;     - set extra flags for dmake to allow parallel build with icecream
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; * The options for the OOo internal configure are read from bin/setup. It
+</I>&gt;<i> &gt;   combines options that are passed to the ooo-build/configure, and
+</I>&gt;<i> &gt; options defined in ooo-build/distro-configs/*.conf
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Installation
+</I>&gt;<i> &gt; ------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The command &quot;make install&quot; calls bin/package-ooo. This script has the
+</I>&gt;<i> &gt; following tasks:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     - install OOo
+</I>&gt;<i> &gt;     - install extra wrappers into /usr/bin
+</I>&gt;<i> &gt;     - install man pages
+</I>&gt;<i> &gt;     - install vendor specific desktop files and icons
+</I>&gt;<i> &gt;     - install extra dictionaries
+</I>&gt;<i> &gt;     - install script for bash completion
+</I>&gt;<i> &gt;     - build openclipart galleries
+</I>&gt;<i> &gt;     - remove copies of the English help and rather create symlinks
+</I>&gt;<i> &gt;     - hacks file lists:
+</I>&gt;<i> &gt; 	- rearrange subpackages
+</I>&gt;<i> &gt; 	- add some RPM specific tags, such as %config, %dir
+</I>&gt;<i> &gt; 	- remove RPM specific destdir
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Some of the tasks are vendor specific, so there are many tests, such as:
+</I>&gt;<i> &gt;     if test &quot;z$VENDORNAME&quot; != &quot;zNovell&quot; ; then
+</I>&gt;<i> &gt; 	...
+</I>&gt;<i> &gt;     fi
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Some of the functionality is put into standalone scripts, for example:
+</I>&gt;<i> &gt;     - bin/ooinstall
+</I>&gt;<i> &gt;     - bin/build-galleries
+</I>&gt;<i> &gt;     - bin/install-dictionaries
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Misc stuff
+</I>&gt;<i> &gt; ----------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Everything above was necessary to build and install the custom build of
+</I>&gt;<i> &gt; OOo.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; In addition there are some scripts that are helpful for developers, such
+</I>&gt;<i> &gt; as: - bin/tunnel, bin/cws-commit-patch, bin/cws-extract, which are very
+</I>&gt;<i> &gt; helpful for upstreaming patches and working with OOo cvs/CWS.
+</I>&gt;<i> &gt;     - bin/oosmoketest, bin/ootestapi, bin/ootesttool, bin/test-ooo,
+</I>&gt;<i> &gt;       bin/test-ooo-analyze, which might be useful for testing the custom
+</I>&gt;<i> &gt; build. These are quite new, so it is still a work in progress.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The directory ooo-build/scratch is used for developing huge fixes or
+</I>&gt;<i> &gt; features. It allows to keep the current state in cvs via files instead of
+</I>&gt;<i> &gt; patches. It is better because these kind of changes are usually developed
+</I>&gt;<i> &gt; a longer time by more developers, ...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The directory ooo-build/stamp is used by makefile. It helps to define
+</I>&gt;<i> &gt; dependency between the various makefile targets.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Finally, there are directories for some extra sources:
+</I>&gt;<i> &gt;     - ooo-build/desktop
+</I>&gt;<i> &gt;     - ooo-build/doc
+</I>&gt;<i> &gt;     - ooo-build/fonts
+</I>&gt;<i> &gt;     - ooo-build/man
+</I>&gt;<i> &gt;     - ooo-build/src
+</I>
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001714.html">[Open Office] Re: New PDF features
+</A></li>
+	<LI>Next message: <A HREF="001716.html">[Open Office] Re: [tools-dev] Re: apply.pl &amp; 'download'
+	up-streaming ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1715">[ date ]</a>
+              <a href="thread.html#1715">[ thread ]</a>
+              <a href="subject.html#1715">[ subject ]</a>
+              <a href="author.html#1715">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] branching ooo-build ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000447.html">
+   <LINK REL="Next"  HREF="000451.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] branching ooo-build ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] branching ooo-build ...">michael@ximian.com
+       </A><BR>
+    <I>Tue, 13 Jul 2004 17:37:02 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000447.html">[Open Office] Latest changes in the ooo-wrapper
+</A></li>
+        <LI> Next message: <A HREF="000451.html">[Open Office] branching ooo-build ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#449">[ date ]</a>
+              <a href="thread.html#449">[ thread ]</a>
+              <a href="subject.html#449">[ subject ]</a>
+              <a href="author.html#449">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi guys,
+
+	In light of the VCL plug stuff landing; I'd very much like to propose
+branching ooo-build, leaving the HEAD stuff to use VCL Plug, and letting
+anyone who is interested continue working on / releasing the non-VCL-
+Plug stuff.
+
+	I'm planning on doing this on a 'scream now or it gets done' type basis
+- so; please do ;-)
+
+	I propose a branch name of: ooo-build-1-1, and a switch to 1.1.3
+versions on HEAD or somesuch.
+
+	Here's why VCL plug is a good thing:
+
+		+ includes m45 psprint (CUPS integration etc.)
+		+ includes pugabble, dlopened NWF backends instead
+		  of evil hard-linkage of KDE / gtk+ to the core
+		  toolkit.
+		+ includes gtk+ file selector integration
+		+ includes gtk+ top-level window integration
+		+ [ easy to back-port Win32 NWF stuff ;-]
+
+	Here's why VCL plug is a bad thing:
+		+ 80,000 lines of patch, vs 10,000 nativewidget-*
+		+ much of the patch irrelevant 'REMOTE_APPSERVER'
+		  type removal / cleanup
+		+ patch overlaps with some system-*, fontconfig* bits
+		+ not completely finished
+
+	So - I clearly want to fix the patch overlap issues pleasantly, and
+finish this all up; preferably without having to maintain parallel
+patches; 'NotVCLPLug' sections in apply etc. I think with a much more
+integrated, and sane code-base we can pull out some of the more whacky /
+duff patches that have built up and make ooo-build more comprehensible /
+cool.
+
+	Thoughts ? throttling ? :-)
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000447.html">[Open Office] Latest changes in the ooo-wrapper
+</A></li>
+	<LI> Next message: <A HREF="000451.html">[Open Office] branching ooo-build ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#449">[ date ]</a>
+              <a href="thread.html#449">[ thread ]</a>
+              <a href="subject.html#449">[ subject ]</a>
+              <a href="author.html#449">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

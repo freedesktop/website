@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Building Problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000092.html">
+   <LINK REL="Next"  HREF="000094.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Building Problems
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] Building Problems">dan@bigw.org
+       </A><BR>
+    <I>Thu, 9 Oct 2003 20:45:12 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000092.html">[Open Office] Building Problems
+</A></li>
+        <LI> Next message: <A HREF="000094.html">[Open Office] Building Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#93">[ date ]</a>
+              <a href="thread.html#93">[ thread ]</a>
+              <a href="subject.html#93">[ subject ]</a>
+              <a href="author.html#93">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+There is an incompatibility between Bison 1.85 and gcc 3.2.3.  You'll need
+to upgrade to a later release of Bison (or pull from CVS) to correct this.
+
+Dan
+
+On Thu, 9 Oct 2003 <A HREF="mailto:gers4302@kettering.edu">gers4302@kettering.edu</A> wrote:
+
+&gt;<i> I've tried building for RC3 and RC4 with their corresponding build
+</I>&gt;<i> packages and I've recieved the following error in both:
+</I>&gt;<i>=20
+</I>&gt;<i> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+</I>&gt;<i> Building project idlc
+</I>&gt;<i> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+</I>&gt;<i> /root/ooo-build-1.1.39/build/OOO_1_1_RC3/idlc/source/preproc
+</I>&gt;<i> -------------
+</I>&gt;<i> /root/ooo-build-1.1.39/build/OOO_1_1_RC3/idlc/source
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> Making: ../unxlngi4.pro/obj/parser.obj
+</I>&gt;<i> g++ -fmessage-length=3D0 -c -I.  -I. -I../inc -I../inc -I../unx/inc
+</I>&gt;<i> -I../unxlngi4.pro/inc -I.
+</I>&gt;<i> -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solver/645/unxlngi4.pro/inc/st=
+</I>l -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solver/645/unxlngi4.pro/inc/ex=
+ternal -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solver/645/unxlngi4.pro/i=
+nc -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solenv/unxlngi4/inc -I/root/o=
+oo-build-1.1.39/build/OOO_1_1_RC3/solenv/inc -I/root/ooo-build-1.1.39/build=
+/OOO_1_1_RC3/res -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solver/645/unxl=
+ngi4.pro/inc/stl -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solenv/inc/Xp31=
+ -I/root/ooo-build-1.1.39/build/jdk/include -I/root/ooo-build-1.1.39/build/=
+jdk/include/linux -I/root/ooo-build-1.1.39/build/jdk/include/native_threads=
+/include -I/usr/X11R6/include     -I. -I../res -I. -O1   -pipe -mcpu=3Dpent=
+iumpro -fno-for-scope -fpermissive -fno-rtti -include preinclude.h -fexcept=
+ions -fno-enforce-eh-specs    -DLINUX -DUNX -DVCL -DGCC -DC300 -DINTEL -DCV=
+ER=3DC300 -D_USE_NAMESPACE -DGLIBC=3D2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW=
+_SOLAR -D_USE_NAMESPACE=3D1 -DSTLPORT_VERSION=3D400 -D__DMAKE -DUNIX -DCPPU=
+_ENV=3Dgcc3 -DSUPD=3D645 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVE=
+L=3D0 -DOPTIMIZE -DEXCEPTIONS_ON -DCUI -DSOLAR_JAVA -DSRX645  -DMULTITHREAD=
+  -DMULTITHREAD   -o ../unxlngi4.pro/obj/parser.o ../unxlngi4.pro/misc/pars=
+er.cxx
+&gt;<i> ../unxlngi4.pro/misc/parser.cxx: In function `int yyparse()':
+</I>&gt;<i> ../unxlngi4.pro/misc/parser.cxx:4740: parse error before `goto'
+</I>&gt;<i> dmake:  Error code 1, while making '../unxlngi4.pro/obj/parser.obj'
+</I>&gt;<i> ---* TG_SLO.MK *---
+</I>&gt;<i> =20
+</I>&gt;<i> ERROR: Error 65280 occurred while making
+</I>&gt;<i> /root/ooo-build-1.1.39/build/OOO_1_1_RC3/idlc/source
+</I>&gt;<i> dmake:  Error code 1, while making 'build_all'
+</I>&gt;<i> ---* TG_SLO.MK *---
+</I>&gt;<i> make[1]: *** [all] Error 1
+</I>&gt;<i> make[1]: Leaving directory `/root/ooo-build-1.1.39/bin'
+</I>&gt;<i> make: *** [all-recursive] Error 1
+</I>&gt;<i>=20
+</I>&gt;<i> Looking for ideas...
+</I>&gt;<i>=20
+</I>&gt;<i> Thanks
+</I>&gt;<i>=20
+</I>&gt;<i> Stephen Gerstacker
+</I>&gt;<i>=20
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>&gt;<i>=20
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000092.html">[Open Office] Building Problems
+</A></li>
+	<LI> Next message: <A HREF="000094.html">[Open Office] Building Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#93">[ date ]</a>
+              <a href="thread.html#93">[ thread ]</a>
+              <a href="subject.html#93">[ subject ]</a>
+              <a href="author.html#93">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

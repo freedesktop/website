@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Quick SVN guide (was: Re: [Openoffice-dev] Status	Tue-02-Jan-07)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Quick%20SVN%20guide%20%28was%3A%20Re%3A%20%5BOpenoffice-dev%5D%20Status%0A%09Tue-02-Jan-07%29&In-Reply-To=200701030941.32882.kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002182.html">
+   <LINK REL="Next"  HREF="002183.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Quick SVN guide (was: Re: [Openoffice-dev] Status	Tue-02-Jan-07)</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Quick%20SVN%20guide%20%28was%3A%20Re%3A%20%5BOpenoffice-dev%5D%20Status%0A%09Tue-02-Jan-07%29&In-Reply-To=200701030941.32882.kendy%40suse.cz"
+       TITLE="[Open Office] Quick SVN guide (was: Re: [Openoffice-dev] Status	Tue-02-Jan-07)">pmladek at suse.cz
+       </A><BR>
+    <I>Wed Jan  3 04:57:20 EST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002182.html">[Open Office] rpl2 config
+</A></li>
+        <LI>Next message: <A HREF="002183.html">[Open Office] Quick SVN guide (was: Re: [Openoffice-dev] Status	Tue-02-Jan-07)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2181">[ date ]</a>
+              <a href="thread.html#2181">[ thread ]</a>
+              <a href="subject.html#2181">[ subject ]</a>
+              <a href="author.html#2181">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 03 January 2007 09:41, Jan Holesovsky wrote:
+&gt;<i> When KDE did the migration, they collected quite a nice (and short) guide
+</I>&gt;<i> for those who used to work with CVS:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://developer.kde.org/documentation/tutorials/subversion/#checkout">http://developer.kde.org/documentation/tutorials/subversion/#checkout</A>
+</I>&gt;<i>
+</I>&gt;<i> Maybe it could be of some value ;-)
+</I>
+I think that you already know it but...
+
+The GNOME svn stuff can be found at <A HREF="http://svn.gnome.org/">http://svn.gnome.org/</A>
+The ooo-build stuff is browsable at <A HREF="http://svn.gnome.org/svn/ooo-build/">http://svn.gnome.org/svn/ooo-build/</A>
+	cvs HEAD -&gt; svn trunk subdir
+	cvs branches -&gt; svn branches subdir
+	cvs tags -&gt; svn tags subdir
+
+
+The write access is done via the svn+ssh protocol:
+
+trunk (HEAD):
+cvs co 'svn+<A HREF="ssh://(yourlogin">ssh://(yourlogin</A>)@svn.gnome.org/svn/ooo-build/trunk' ooo-build
+
+2-0-4 branch:
+cvs co 'svn+<A HREF="ssh://(yourlogin">ssh://(yourlogin</A>)@svn.gnome.org/svn/ooo-build/branches/ooo-build-2-0-4' ooo-build
+
+
+The read-only access is doable using the svn protocol:
+
+trunk (HEAD):
+svn co <A HREF="svn://svn.gnome.org/svn/ooo-build/">svn://svn.gnome.org/svn/ooo-build/</A> ooo-build
+
+2-0-4 branch:
+svn co <A HREF="svn://svn.gnome.org/svn/ooo-build/trunk/branches/ooo-build-2-0-4">svn://svn.gnome.org/svn/ooo-build/trunk/branches/ooo-build-2-0-4</A> ooo-build
+
+
+Note that I used 'svn.gnome.org' instead of 'svn-test.gnome.org'.
+They have the same IP adderess, ...
+
+
+	HTH,
+		Petr
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002182.html">[Open Office] rpl2 config
+</A></li>
+	<LI>Next message: <A HREF="002183.html">[Open Office] Quick SVN guide (was: Re: [Openoffice-dev] Status	Tue-02-Jan-07)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2181">[ date ]</a>
+              <a href="thread.html#2181">[ thread ]</a>
+              <a href="subject.html#2181">[ subject ]</a>
+              <a href="author.html#2181">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] building HEAD/m74 - tweak ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:michael.meeks%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000738.html">
+   <LINK REL="Next"  HREF="000739.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] building HEAD/m74 - tweak ...
+   </H1>
+    <B>michael meeks
+    </B> 
+    <A HREF="mailto:michael.meeks%40novell.com"
+       TITLE="[Open Office] building HEAD/m74 - tweak ...">michael.meeks@novell.com
+       </A><BR>
+    <I>Wed, 02 Feb 2005 10:58:18 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000738.html">[Open Office] Status 24 Jan- 1Feb
+</A></li>
+        <LI> Next message: <A HREF="000739.html">[Open Office] Status (Tuesday and Wednesday )
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#758">[ date ]</a>
+              <a href="thread.html#758">[ thread ]</a>
+              <a href="subject.html#758">[ subject ]</a>
+              <a href="author.html#758">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there,
+
+	So - I just fixed a nasty help-&gt;About branding issue in HEAD.
+
+	If you do an incremental build things will break;
+
+	do:
+
+		./autogen.sh
+			[ re-configure to include Makefile.shared 
+			  changes in the real Makefile ].
+
+	then:
+
+		rm stamp/artwork.install
+		make artwork.install.
+
+	Then life should be back to normal.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000738.html">[Open Office] Status 24 Jan- 1Feb
+</A></li>
+	<LI> Next message: <A HREF="000739.html">[Open Office] Status (Tuesday and Wednesday )
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#758">[ date ]</a>
+              <a href="thread.html#758">[ thread ]</a>
+              <a href="subject.html#758">[ subject ]</a>
+              <a href="author.html#758">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

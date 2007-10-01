@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Patch for defect 49914...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000151.html">
+   <LINK REL="Next"  HREF="000152.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Patch for defect 49914...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Patch for defect 49914...">michael@ximian.com
+       </A><BR>
+    <I>Mon, 17 Nov 2003 13:42:59 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000151.html">[Open Office] Patch for defect 49914...
+</A></li>
+        <LI> Next message: <A HREF="000152.html">[Open Office] Patch for defect 49914...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Anil,
+
+On Sat, 2003-11-15 at 13:38, Anil Anil wrote:
+&gt;<i> This patch contains the changes made to classes ImageButton, and Image,
+</I>&gt;<i> along with images.src and svids.hrc.
+</I>
+	Right - this is very good overall, as always I'll comment on the patch
+though initially:
+
+&gt;<i> This patch does not have any of the ImageButton occurrences in any of
+</I>&gt;<i> the .src files reverted back to Symbol.
+</I>
+	Right; that's just a matter of binning our patch to do that from apply:
+pretty simple to do.
+
+&gt;<i> Please let me know if this requires any changes or is ok to commit...
+</I>
+	It helps if you include the patch in-line so I can comment on it more
+easily :-)
+
++  static const USHORT SYMBOL_TO_IMAGE_TABLE[];
+
+	static const here, but missing a 'static' in the actual declaration -
+perhaps not a problem but good to have it.
+ 
+--- inc/svids.hrc	27 Mar 2003 17:57:34 -0000	1.8
++++ inc/svids.hrc	15 Nov 2003 12:30:51 -0000
+@@ -151,5 +151,15 @@
+ #define SV_SHORTCUT_TODOCUMENT              10606
+ #define SV_SHORTCUT_MENUBAR                 10607
+ 
++#define IMG_BASE			1080
++#define L_IMG_ARROW_UP			(IMG_BASE + 0)
++#define S_IMG_ARROW_UP			(IMG_BASE + 1)
++#define L_IMG_ARROW_DOWN		(IMG_BASE + 2)
++#define S_IMG_ARROW_DOWN		(IMG_BASE + 3)
++#define L_IMG_ARROW_LEFT		(IMG_BASE + 4)
++#define S_IMG_ARROW_LEFT		(IMG_BASE + 5)
++#define L_IMG_ARROW_RIGHT		(IMG_BASE + 6)
++#define S_IMG_ARROW_RIGHT		(IMG_BASE + 7)
+
+	Ok - this is one way to do this;
+
+	My feeling is a cleaner way is to use two ImageLists one for small and
+one for large images; if you grok .src files you may see some places
+where these are used eg. LXR for IID_SCENARIOS.
+
++++ source/control/button.cxx
+
+	This all looks great.
+ 
++const USHORT Image::SYMBOL_TO_IMAGE_TABLE[] = 
++  {
+
+	Expandable as this is - I think it'd be nicer to have 2 tables; one for
+small / one for large - so we don't have to have these comments all over
+:<i>-) [ over-commenting is a real problem ].
+</I>
+	Also, I think it'd be nice to calculate the size of the tables (and
+aggressively shrink them to avoid lots of NULL lines) using sizeof ie.
+this is bad news:
+
++  if (nSymbolId &gt; 37)
++    return NULL;
+
+	if (nSybolId &gt;= sizeof (table) /  sizeof (table[0]))
+		return NULL;
+
+	which is more robust to changes.
+
+	Otherwise the lookup logic looks nice - I like the solution, it's more
+elegant than doing this in DecoView I think.
+
++Image S_IMG_ARROW_DOWN
++{
++      ImageBitmap = Bitmap { File = &quot;sc10151.bmp&quot; ; };
++      MaskColor = Color { Red = 0xFFFF ; Green = 0x0000 ; Blue = 0xFFFF
+; };
++};
+
+	A pair of ImageLists here would potentially be much shorter :-) also,
+it'd be nice to use the names of the icons instead of the numeric
+versions; eg. SID_OUTLINE_DOWN/LEFT/UP/RIGHT etc. so it's more readable.
+
+	Anyhow - does that all make sense ? sorry if it's somewhat unusual to
+get public code critique this way, it does cut both ways :-) This was a
+great effort for a first foray anyway so ...
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000151.html">[Open Office] Patch for defect 49914...
+</A></li>
+	<LI> Next message: <A HREF="000152.html">[Open Office] Patch for defect 49914...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

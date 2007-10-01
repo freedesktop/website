@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: GNOME CVS: ooo-build brosenk
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20GNOME%20CVS%3A%20ooo-build%20brosenk&In-Reply-To=200603021522.09595.rene%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001670.html">
+   <LINK REL="Next"  HREF="001672.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: GNOME CVS: ooo-build brosenk</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20GNOME%20CVS%3A%20ooo-build%20brosenk&In-Reply-To=200603021522.09595.rene%40debian.org"
+       TITLE="[Open Office] Re: GNOME CVS: ooo-build brosenk">bero at arklinux.org
+       </A><BR>
+    <I>Thu Mar  2 09:37:52 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001670.html">[Open Office] Re: GNOME CVS: ooo-build brosenk
+</A></li>
+        <LI>Next message: <A HREF="001672.html">[Open Office] CUPS &amp; ooob680-m5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1671">[ date ]</a>
+              <a href="thread.html#1671">[ thread ]</a>
+              <a href="subject.html#1671">[ subject ]</a>
+              <a href="author.html#1671">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday, 2. March 2006 15:22, Rene Engelhard wrote:
+&gt;<i> &gt; Make it compile again -- hope it doesn't break for others
+</I>&gt;<i>
+</I>&gt;<i> It does.
+</I>
+This is a bit odd, any insights into why you're getting this:
+
+&gt;<i> java.lang.ClassNotFoundException:
+</I>&gt;<i> org.apache.xerces.dom.DOMXSImplementationSourceImpl
+</I>
+This has been part of Xerces for a rather long time, and if you didn't have 
+Xerces you'd run into different trouble...
+Maybe we just need to make sure Xerces is in the classpath? Does the bit that 
+adds xercesImpl.jar to the classpath act up for you? Or is your Xerces older 
+than DOMXSImplementationSourceImpl?
+
+&gt;<i> If you need additional/different stuff, why don't you make a extra/a
+</I>&gt;<i> modified patch for you?
+</I>
+This is what I'll do for now, but I'd of course prefer a solution that works 
+for everyone for 2 reasons -- first of all, other patches 
+(xt-precompile.diff) modify the same makefile.mk, so we'll have to split all 
+of them for one, if we don't get this sorted out. Second, I want ooo-build to 
+work on as many platforms as possible without having to add patches or copy 
+around distro specific patches, and that can't work if the build process 
+makes faulty assumptions. (Apparently both of us are making faulty 
+assumptions that are mutually incompatible -- we need to find some way to fix 
+this).
+
+The patch without the -D bits is definitely broken because it assumes the 
+default jaxp implementation to be Xerces (the code being executed doesn't 
+work with other JAXP implementations -- see the various reports of 
+NullPointerExceptions from HelpLinker, I'm not the only one getting them), 
+but does nothing at all to indicate to jaxp.xml.parsers.* that it should be 
+picking Xerces over whatever the default is.
+
+Regards,
+bero
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001670.html">[Open Office] Re: GNOME CVS: ooo-build brosenk
+</A></li>
+	<LI>Next message: <A HREF="001672.html">[Open Office] CUPS &amp; ooob680-m5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1671">[ date ]</a>
+              <a href="thread.html#1671">[ thread ]</a>
+              <a href="subject.html#1671">[ subject ]</a>
+              <a href="author.html#1671">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

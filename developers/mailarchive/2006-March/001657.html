@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Warm Startup Time of 2. oob680-m5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Warm%20Startup%20Time%20of%202.%20oob680-m5&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001658.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Warm Startup Time of 2. oob680-m5</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Warm%20Startup%20Time%20of%202.%20oob680-m5&In-Reply-To="
+       TITLE="[Open Office] Warm Startup Time of 2. oob680-m5">ghibo at mandriva.com
+       </A><BR>
+    <I>Wed Mar  1 06:51:49 EST 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001658.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1657">[ date ]</a>
+              <a href="thread.html#1657">[ thread ]</a>
+              <a href="subject.html#1657">[ subject ]</a>
+              <a href="author.html#1657">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi.
+
+I tried to build OOB680-m5 using ooo-build head CVS.
+What is strange is that despite it uses oooqstart (which is
+now the new default tag) instead of the perl ooowrapper,
+the starting time is increased.
+
+For instance under 2.0.1 we could have a warm starting
+(warm start time = time it takes OOo to start the 2nd or 3rd time,
+i.e. after it's already cached in the VM) time of (obtained using export 
+RTL_LOGFILE=mylogfile.txt before calling ooffice):
+
+opening log file 1141058072.717124 seconds past January 1st 1970
+corresponding to 1 ms after timer start
+Process id is 5755
+000001 1 | : PERFORMANCE - enter Main()
+002311 1 | : PERFORMANCE - enter Application::Execute()
+002311 1 { PERFORMANCE - DesktopOpenClients_Impl()
+002314 1 } PERFORMANCE - DesktopOpenClients_Impl()
+
+while under 2.0.2 we get:
+
+opening log file 1141213168.708846 seconds past January 1st 1970
+corresponding to 1 ms after timer start
+Process id is 18304
+000002 1 | : PERFORMANCE - enter Main()
+001678 1 | : PERFORMANCE - enter Application::Execute()
+001679 1 { PERFORMANCE - DesktopOpenClients_Impl()
+001687 1 { PERFORMANCE - Desktop::loadComponentFromURL()
+002938 1 } PERFORMANCE - Desktop::loadComponentFromURL()
+002957 1 } PERFORMANCE - DesktopOpenClients_Impl()
+
+As you can see the first time DesktopOpenClients_Impl()
+takes 1.679 seconds in 2.02m5 and 2.311 seconds in 2.0.1
+(so it takes 0.632 seconds fewer, and thus 2.0.2 apperently
+it's faster), but then it seems spending more than 1.2seconds into
+Desktop::loadComponentFromURL(). What is happening during this
+stage?
+
+Bye
+Giuseppe.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001658.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1657">[ date ]</a>
+              <a href="thread.html#1657">[ thread ]</a>
+              <a href="subject.html#1657">[ subject ]</a>
+              <a href="author.html#1657">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

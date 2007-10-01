@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Internal quickstarter
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To=1141656517.20926.128.camel%40linux.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001680.html">
+   <LINK REL="Next"  HREF="001695.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Internal quickstarter</H1>
+    <B>Jan Uhlir</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To=1141656517.20926.128.camel%40linux.site"
+       TITLE="[Open Office] Internal quickstarter">espinosa_cz at centrum.cz
+       </A><BR>
+    <I>Thu Mar  9 12:40:45 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001680.html">[Open Office] Internal quickstarter
+</A></li>
+        <LI>Next message: <A HREF="001695.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1693">[ date ]</a>
+              <a href="thread.html#1693">[ thread ]</a>
+              <a href="subject.html#1693">[ subject ]</a>
+              <a href="author.html#1693">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> &gt; 3 times slower than the guy who posted starting below 1
+</I>&gt;<i> &gt; seconds, i.e 0.7s.
+</I>&gt;<i> 
+</I>&gt;<i> 	As I said - it will be *no* faster for the 1st start, if someone else
+</I>&gt;<i> says it is they are confused :-)
+</I>
+You are right Michael, repeated test showed that time  command prints
+result slightly before ooo window is really shown, so some subprocess
+is measured, not the whole lot.
+
+So I took and old fashioned approach - a simple stop watch - and this 
+gives times rougly oscilating from 2 - 3s. Not bad times anyway!
+
+Also Xorg configuration can have a big inpact.
+I had to set &quot;RenderAccel&quot; to &quot;false&quot; in driver section, because long lasting
+Radeon driver bug (reported bug) occasionaly corrupting fonts. 
+This slowered OOo startup by another 1s.
+So I'm currently on 3-4s even when using preload + ooqstarter technique.
+Consider preloading doesn't work reliably - preloaded instance is closed
+with the last closed visible window - that's worse :(
+
+So is there any recommended way how to measure startup speed?
+
+I was thinking about ooo macro triggered on startup (handled in command l
+ine) sending 'finish' finish flag by touching a special file.
+One file touched right before launching ooo and the second by the 
+macro in ooo. And difference in timestaps of those two files could mean 
+a &quot;meaningful&quot; startup time.
+
+Jan
+the-guy-with-unbelievable-startup-times :)
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001680.html">[Open Office] Internal quickstarter
+</A></li>
+	<LI>Next message: <A HREF="001695.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1693">[ date ]</a>
+              <a href="thread.html#1693">[ thread ]</a>
+              <a href="subject.html#1693">[ subject ]</a>
+              <a href="author.html#1693">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

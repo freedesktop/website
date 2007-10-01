@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Cairo patch for FreeBSD
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Cairo%20patch%20for%20FreeBSD&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001275.html">
+   <LINK REL="Next"  HREF="001259.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Cairo patch for FreeBSD</H1>
+    <B>NAKATA Maho</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Cairo%20patch%20for%20FreeBSD&In-Reply-To="
+       TITLE="[Open Office] Cairo patch for FreeBSD">chat95 at mac.com
+       </A><BR>
+    <I>Wed Nov  2 00:08:52 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001275.html">[Open Office] ooo-build-2.0.0.1 on FreeBSD
+</A></li>
+        <LI>Next message: <A HREF="001259.html">[Open Office] ooo-build HEAD / src680-m137 build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1258">[ date ]</a>
+              <a href="thread.html#1258">[ thread ]</a>
+              <a href="subject.html#1258">[ subject ]</a>
+              <a href="author.html#1258">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+with this patch, cairo correctly delivers necessary shared libs.
+(against ooo-build 2.0.1)
+otherwise, FreeBSD makes libcairo.so.4. ltmain.sh is the problem.
+
+BTW: does cairo canvas will be integrated into upstream?
+
+% diff -u /dev/null cairo/cairo-1.0.2.patch
+--- /dev/null   Wed Nov  2 14:06:01 2005
++++ cairo/cairo-1.0.2.patch     Wed Nov  2 14:01:33 2005
+@@ -0,0 +1,31 @@
++*** misc/cairo-1.0.2/ltmain.sh 2004-08-26 08:00:15.000000000 +0200
++--- misc/build/cairo-1.0.2/ltmain.sh   2005-05-09 19:55:51.745319024 +0200
++***************
++*** 2994,3006 ****
++         ;;
++
++       freebsd-aout)
++!        major=&quot;.$current&quot;
++!        versuffix=&quot;.$current.$revision&quot;;
++         ;;
++
++       freebsd-elf)
++!        major=&quot;.$current&quot;
++!        versuffix=&quot;.$current&quot;;
++         ;;
++
++       irix | nonstopux)
++--- 2994,3006 ----
++         ;;
++
++       freebsd-aout)
++!        major=.`expr $current - $age`
++!        versuffix=&quot;$major.$age.$revision&quot;
++         ;;
++
++       freebsd-elf)
++!        major=.`expr $current - $age`
++!        versuffix=&quot;$major.$age.$revision&quot;
++         ;;
++
++       irix | nonstopux)
+% diff -u cairo/makefile.mk.org cairo/makefile.mk
+--- cairo/makefile.mk.org       Wed Nov  2 14:03:55 2005
++++ cairo/makefile.mk   Wed Nov  2 14:00:02 2005
+@@ -81,6 +81,7 @@
+
+ TARFILE_NAME=cairo-1.0.2
+
++PATCH_FILE_NAME=$(TARFILE_NAME).patch
+ CONFIGURE_DIR=
+
+ CONFIGURE_ACTION=./configure
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001275.html">[Open Office] ooo-build-2.0.0.1 on FreeBSD
+</A></li>
+	<LI>Next message: <A HREF="001259.html">[Open Office] ooo-build HEAD / src680-m137 build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1258">[ date ]</a>
+              <a href="thread.html#1258">[ thread ]</a>
+              <a href="subject.html#1258">[ subject ]</a>
+              <a href="author.html#1258">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

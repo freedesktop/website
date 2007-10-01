@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ImageMagick dependancy
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000087.html">
+   <LINK REL="Next"  HREF="000091.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ImageMagick dependancy
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] ImageMagick dependancy">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Wed, 08 Oct 2003 15:30:24 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000087.html">[Open Office] ImageMagick dependancy
+</A></li>
+        <LI> Next message: <A HREF="000091.html">[Open Office] ImageMagick dependancy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#88">[ date ]</a>
+              <a href="thread.html#88">[ thread ]</a>
+              <a href="subject.html#88">[ subject ]</a>
+              <a href="author.html#88">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Norman,
+
+Am Mi, den 08.10.2003 schrieb Norman Jonas um 15:06:
+&gt;<i> I would like to ask which parts of ooo-build depend on ImageMagick and
+</I>&gt;<i> if it is possible to get rid of that dependancy ?
+</I>
+The original 26x24px toolbar icons have to be converted to 24x24px to be
+used together with the new icons. ooo-build/bin/scale-icons does that
+using convert from ImageMagick. Some . You'd have to hack out all of the
+new-icons patches/build system scripts to do a build without
+ImageMagick.
+
+HTH
+	Martin
+
+&gt;<i>  I hope I do not bother
+</I>&gt;<i> you with my personal interest question.
+</I>&gt;<i> 
+</I>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000087.html">[Open Office] ImageMagick dependancy
+</A></li>
+	<LI> Next message: <A HREF="000091.html">[Open Office] ImageMagick dependancy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#88">[ date ]</a>
+              <a href="thread.html#88">[ thread ]</a>
+              <a href="subject.html#88">[ subject ]</a>
+              <a href="author.html#88">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

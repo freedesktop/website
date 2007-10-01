@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] JRE register fails when building 2.0.4 on Mandriva 2007 x86_64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%20building%202.0.4%20on%0A%20Mandriva%202007%20x86_64&In-Reply-To=000EEE1E-50FE-4228-B694-CAED8C07EE4E%40amarooas.com.au">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002084.html">
+   <LINK REL="Next"  HREF="002089.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] JRE register fails when building 2.0.4 on Mandriva 2007 x86_64</H1>
+    <B>Atle Nissestad</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%20building%202.0.4%20on%0A%20Mandriva%202007%20x86_64&In-Reply-To=000EEE1E-50FE-4228-B694-CAED8C07EE4E%40amarooas.com.au"
+       TITLE="[Open Office] JRE register fails when building 2.0.4 on Mandriva 2007 x86_64">atle.nissestad at norbit.no
+       </A><BR>
+    <I>Wed Oct 25 18:22:24 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002084.html">[Open Office] JRE register fails when building 2.0.4 on Mandriva 2007 x86_64
+</A></li>
+        <LI>Next message: <A HREF="002089.html">[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2088">[ date ]</a>
+              <a href="thread.html#2088">[ thread ]</a>
+              <a href="subject.html#2088">[ subject ]</a>
+              <a href="author.html#2088">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> On 20/10/2006, at 6:43 AM, Atle Nissestad wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> [Java framework] Executing: <A HREF="file:///usr/bin/gij-4.1.1.">file:///usr/bin/gij-4.1.1.</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Could I be missing a library or something, that causes gij to report
+</I>&gt;&gt;<i> insufficient properties to javaldx ?
+</I>&gt;<i>
+</I>Seems that I have managed to find the cause of the error:
+
+The java framework searches for the run-time library, libgcj.so.7, in
+/usr/lib instead of /usr/lib64. If I do some ugly hacks in
+/jvmfwk/plugins/sunmajor/pluginlib/gnujre.cxx to provide the correct
+library path, building bridgetest completes sucessfully. But ... What is
+the proper way to tell the java framework which library path(s) to use ?
+Or should the libraries have been provided by java-gcj-compat (the
+Jvmfwk is also searching for
+/usr/lib/jvm/java-1.4.2-gcj-1.4.2.0/jre/libgcj.so.7) ?
+
+Atle
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002084.html">[Open Office] JRE register fails when building 2.0.4 on Mandriva 2007 x86_64
+</A></li>
+	<LI>Next message: <A HREF="002089.html">[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2088">[ date ]</a>
+              <a href="thread.html#2088">[ thread ]</a>
+              <a href="subject.html#2088">[ subject ]</a>
+              <a href="author.html#2088">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

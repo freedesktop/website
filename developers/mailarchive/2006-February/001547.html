@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Some fixes to ooo-build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Some%20fixes%20to%20ooo-build&In-Reply-To=20060201114825.8e69f1f7.h.mth%40web.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001546.html">
+   <LINK REL="Next"  HREF="001548.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Some fixes to ooo-build</H1>
+    <B>Martin Kretzschmar</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Some%20fixes%20to%20ooo-build&In-Reply-To=20060201114825.8e69f1f7.h.mth%40web.de"
+       TITLE="[Open Office] Some fixes to ooo-build">m_kretzschmar at gmx.net
+       </A><BR>
+    <I>Wed Feb  1 07:07:09 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001546.html">[Open Office] Some fixes to ooo-build
+</A></li>
+        <LI>Next message: <A HREF="001548.html">[Open Office] Some fixes to ooo-build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1547">[ date ]</a>
+              <a href="thread.html#1547">[ thread ]</a>
+              <a href="subject.html#1547">[ subject ]</a>
+              <a href="author.html#1547">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+
+On 2/1/06, Hanno Meyer-Thurow &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">h.mth at web.de</A>&gt; wrote:
+&gt;<i> Hi list!
+</I>&gt;<i> I have three fixes to ooo-build. Before I commit them I would like you
+</I>&gt;<i> to have a look at them. If there is any problem.
+</I>
+
+buildfix-mdbtools.diff:
+ +		    Sequence&lt; Any &gt; row( sql-&gt;num_columns );
+ +	  		for (j=0;j&lt;sql-&gt;num_columns;j++) {
+ +				sqlcol = (MdbSQLColumn*) g_ptr_array_index(sql-&gt;columns,j);
+-+				sTemp = rtl::OString (sql-&gt;bound_values[j]);
+++				sTemp = rtl::OString (static_cast&lt;char *&gt;(sql-&gt;bound_values[j]));
+ +				row[j] &lt;&lt;= rtl::OStringToOUString(sTemp, RTL_TEXTENCODING_UTF8);
+ +				//fprintf(stdout, &quot;%s%s&quot;, sql-&gt;bound_values[j], &quot;|&quot;);
+ +			}
+
+Nothing against your patch, but wouldn't it be better to convert
+directly from char* to OUString and eliminate sTemp completely?
+
+Regards,
+
+Martin
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001546.html">[Open Office] Some fixes to ooo-build
+</A></li>
+	<LI>Next message: <A HREF="001548.html">[Open Office] Some fixes to ooo-build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1547">[ date ]</a>
+              <a href="thread.html#1547">[ thread ]</a>
+              <a href="subject.html#1547">[ subject ]</a>
+              <a href="author.html#1547">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

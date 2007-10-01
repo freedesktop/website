@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] patch for sun jdk1.5 enum keyword problem, base
+	on src680-m136
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20patch%20for%20sun%20jdk1.5%20enum%20keyword%20problem%2C%20base%0A%09on%20src680-m136&In-Reply-To=571ACEFD467F7749BC50E0A98C17CDD8086774A8%40pdsmsx403">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001278.html">
+   <LINK REL="Next"  HREF="001282.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] patch for sun jdk1.5 enum keyword problem, base
+	on src680-m136</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20patch%20for%20sun%20jdk1.5%20enum%20keyword%20problem%2C%20base%0A%09on%20src680-m136&In-Reply-To=571ACEFD467F7749BC50E0A98C17CDD8086774A8%40pdsmsx403"
+       TITLE="[Open Office] patch for sun jdk1.5 enum keyword problem, base
+	on src680-m136">h.mth at web.de
+       </A><BR>
+    <I>Tue Nov  8 08:00:09 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001278.html">[Open Office] patch for sun jdk1.5 enum keyword problem,
+	base on src680-m136
+</A></li>
+        <LI>Next message: <A HREF="001282.html">[Open Office] UISort filter order
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1279">[ date ]</a>
+              <a href="thread.html#1279">[ thread ]</a>
+              <a href="subject.html#1279">[ subject ]</a>
+              <a href="author.html#1279">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 8 Nov 2005 16:19:53 +0800
+&quot;Lin, Weichuan&quot; &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">weichuan.lin at intel.com</A>&gt; wrote:
+
+Hi Lin,
+the xalan functions are no more used. Instead of adding xalan.jar to classpath
+you may comment the imports of xalan.
+
+Hanno
+
+&gt;<i> Sorry, I forgot that another patch is needed to add classpath for
+</I>&gt;<i> importing the packages in xalan.jar
+</I>&gt;<i> 
+</I>&gt;<i> ---
+</I>&gt;<i> ooo-build-src680.137.0.orig/build/src680-m136/xmerge/source/xmerge/build
+</I>&gt;<i> .xml	2005-11-08 16:07:05.000000000 +0800
+</I>&gt;<i> +++
+</I>&gt;<i> ooo-build-src680.137.0/build/src680-m136/xmerge/source/xmerge/build.xml
+</I>&gt;<i> 2005-11-08 15:56:54.000000000 +0800
+</I>&gt;<i> @@ -59,6 +59,7 @@
+</I>&gt;<i>          
+</I>&gt;<i>      &lt;path id=&quot;classpath&quot;&gt;
+</I>&gt;<i>          &lt;pathelement location=&quot;${solar.jar}/parser.jar&quot;/&gt;
+</I>&gt;<i> +        &lt;pathelement location=&quot;${solar.jar}/xalan.jar&quot;/&gt;
+</I>&gt;<i>          &lt;pathelement location=&quot;${solar.jar}/jaxp.jar&quot;/&gt;
+</I>&gt;<i>          &lt;pathelement location=&quot;${solar.jar}/xerces.jar&quot;/&gt;    
+</I>&gt;<i>          &lt;pathelement location=&quot;${solar.jar}/unoil.jar&quot;/&gt;
+</I></PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001278.html">[Open Office] patch for sun jdk1.5 enum keyword problem,
+	base on src680-m136
+</A></li>
+	<LI>Next message: <A HREF="001282.html">[Open Office] UISort filter order
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1279">[ date ]</a>
+              <a href="thread.html#1279">[ thread ]</a>
+              <a href="subject.html#1279">[ subject ]</a>
+              <a href="author.html#1279">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Galleries do not work in OOo-2.0.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Galleries%20do%20not%20work%20in%20OOo-2.0.1&In-Reply-To=43C02D6B.20800%40mandriva.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001463.html">
+   <LINK REL="Next"  HREF="001465.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Galleries do not work in OOo-2.0.1</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Galleries%20do%20not%20work%20in%20OOo-2.0.1&In-Reply-To=43C02D6B.20800%40mandriva.com"
+       TITLE="[Open Office] Re: Galleries do not work in OOo-2.0.1">h.mth at web.de
+       </A><BR>
+    <I>Sat Jan  7 17:56:26 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001463.html">[Open Office] Re: Galleries do not work in OOo-2.0.1
+</A></li>
+        <LI>Next message: <A HREF="001465.html">[Open Office] Re: Galleries do not work in OOo-2.0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1464">[ date ]</a>
+              <a href="thread.html#1464">[ thread ]</a>
+              <a href="subject.html#1464">[ subject ]</a>
+              <a href="author.html#1464">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, 07 Jan 2006 22:06:51 +0100
+Giuseppe Ghib&#242; &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">ghibo at mandriva.com</A>&gt; wrote:
+
+&gt;<i> The same patch applied to 2.0.1 causes gengal to produce only
+</I>&gt;<i> broken sg70 to sg74 galleries..., so it don't work on 2.0.1.
+</I>
+Your diff misses '++nLastFileNumber'.
+To increase the variable nLastFileNumber.
+
++			nLastFileNumber = nLastFileNumber + 1;
+
+should be
+
++			nLastFileNumber = ++nLastFileNumber;
+
+
+Regards,
+Hanno
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001463.html">[Open Office] Re: Galleries do not work in OOo-2.0.1
+</A></li>
+	<LI>Next message: <A HREF="001465.html">[Open Office] Re: Galleries do not work in OOo-2.0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1464">[ date ]</a>
+              <a href="thread.html#1464">[ thread ]</a>
+              <a href="subject.html#1464">[ subject ]</a>
+              <a href="author.html#1464">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

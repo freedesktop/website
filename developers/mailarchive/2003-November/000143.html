@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regarding Issue No. 49916
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:samit%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000142.html">
+   <LINK REL="Next"  HREF="000144.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regarding Issue No. 49916
+   </H1>
+    <B>Amit Shrivastava
+    </B> 
+    <A HREF="mailto:samit%40novell.com"
+       TITLE="[Open Office] Regarding Issue No. 49916">samit@novell.com
+       </A><BR>
+    <I>Tue, 11 Nov 2003 05:13:54 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000142.html">[Open Office] Re: [Fwd: Re: ttc font collections ...]
+</A></li>
+        <LI> Next message: <A HREF="000144.html">[Open Office] Regarding Issue No. 49916
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#143">[ date ]</a>
+              <a href="thread.html#143">[ thread ]</a>
+              <a href="subject.html#143">[ subject ]</a>
+              <a href="author.html#143">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Michael,
+
+The problem seems to be in swmn.hrc , here in MenuItems &quot;Field
+Shadings&quot; and &quot;Fields&quot;  following needs to be added:
+
+_MenuItemFlags = MIB_CHECKABLE
+Checkable = TRUE;
+
+after adding these the icons are not rendered i.e if check is not
+present its stays blank, but this behaviour doesnt seem to be consistent
+with other MenuItems. I mean in some places the checkable options are
+specified in .src/.hrc in some places it is not. Who decides that the a
+MenuItem is checkable/radiocheck etc is this decision taken in as
+resource ( by specifying in .src/.hrc files ) or done in code ? 
+
+I am still half way into my previous project, may be tommorrow or day
+after tommorrow , I will be able to completely start OpenOffice work. 
+
+Thnks &amp; regards
+Amit 
+
+
+&gt;&gt;&gt;<i> Michael Meeks &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt; 11/07/03 12:25AM &gt;&gt;&gt;
+</I>Hi Amit,
+
+On Thu, 2003-11-06 at 12:19, Amit Shrivastava wrote:
+&gt;<i> I have just joined the lists and am looking the Issue 49916. This
+</I>seems
+&gt;<i> to be problem in the way the pData-&gt;nBits of a MenuItem is handled.
+</I>I
+&gt;<i> traced based on the strings, swmn.src is the UI Descrptor file for
+</I>this
+&gt;<i> Menu. 
+</I>&gt;<i> 
+</I>&gt;<i> But I could'nt get a clue as to how the nBits are initialized, thus
+</I>I
+&gt;<i> am stuck in the path:
+</I>
+	Right; so the bits should be read / initialized based on data
+from the
+resource file. The resource seems to be read in
+vcl/source/window/menu.cxx (Menu::InsertItem(constResId*)), and looks
+like it uses 'nStatus' to set 'nBits' but not so sure.
+
+	Possibly we need to add a new keyword to the resource compiler
+(code in
+the 'rsc/' toplevel) to handle this, then annotate the src files that
+are compiled by 'rsc' into the resource files we read. Possibly we're
+just missing some annotation in the .src that sets nStatus
+(RSC_MENUITEM_STATUS) -&gt;nBits correctly.
+
+	Hope that helps,
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+_______________________________________________
+Openoffice mailing list
+<A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A> 
+<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000142.html">[Open Office] Re: [Fwd: Re: ttc font collections ...]
+</A></li>
+	<LI> Next message: <A HREF="000144.html">[Open Office] Regarding Issue No. 49916
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#143">[ date ]</a>
+              <a href="thread.html#143">[ thread ]</a>
+              <a href="subject.html#143">[ subject ]</a>
+              <a href="author.html#143">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

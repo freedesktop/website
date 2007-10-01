@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build --with-vendor configure switch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20--with-vendor%20configure%20switch&In-Reply-To=200606211142.56730.kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001858.html">
+   <LINK REL="Next"  HREF="001864.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build --with-vendor configure switch</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20--with-vendor%20configure%20switch&In-Reply-To=200606211142.56730.kendy%40suse.cz"
+       TITLE="[Open Office] ooo-build --with-vendor configure switch">pmladek at suse.cz
+       </A><BR>
+    <I>Wed Jun 21 09:23:29 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001858.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+        <LI>Next message: <A HREF="001864.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1862">[ date ]</a>
+              <a href="thread.html#1862">[ thread ]</a>
+              <a href="subject.html#1862">[ subject ]</a>
+              <a href="author.html#1862">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 21 June 2006 11:42, Jan Holesovsky wrote:
+&gt;<i> Hello,
+</I>&gt;<i>
+</I>&gt;<i> suka found out that the new branding thing gets broken when you specify
+</I>&gt;<i> --with-vendor to ooo-build's configure - that's because the ooo-build's
+</I>&gt;<i> configure switches are propagated to config_office/configure.
+</I>&gt;<i>
+</I>&gt;<i> Now - how to fix it the best way ;-)  I'd like to get rid of the
+</I>&gt;<i> ooo-build's --with-vendor switch.  It sets a VENDORNAME variable which
+</I>&gt;<i> seems just to do nearly the same thing as --with-distro - installs stuff
+</I>&gt;<i> according to the distro.  I propose to change the VENDORNAME occurrences to
+</I>&gt;<i> use the DISTRO instead.
+</I>&gt;<i>
+</I>&gt;<i> Distro maintainers, do you agree with the proposed change, please? ;-)
+</I>
+Hmm, the problem is that many ooo-build hacks are vendor specific. Most 
+vendors use more than one distro.
+
+One solution would be to make some rules for the distro tags. For example we 
+could use
+
+--with-distro=&lt;GENERIC_NAME&gt;-&lt;ID&gt;
+
+GENERICNAME would be Ark, Debian, ..., SUSE, ...
+ID would be 64, 10.0, 10.1, ...
+
+Then we could extract the GENERIC_NAME into an variable.
+
+
+Another solution would be to introduce another configure switch, i.e. 
+--with-vendor-id=&lt;SHORT_VENDOR_NAME&gt;
+
+I would prefere the first solution :-)
+
+Best Regards,
+Petr
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001858.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+	<LI>Next message: <A HREF="001864.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1862">[ date ]</a>
+              <a href="thread.html#1862">[ thread ]</a>
+              <a href="subject.html#1862">[ subject ]</a>
+              <a href="author.html#1862">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

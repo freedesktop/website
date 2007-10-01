@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] compiling ooo-build-1.1.50
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-February/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000289.html">
+   <LINK REL="Next"  HREF="000286.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] compiling ooo-build-1.1.50
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] compiling ooo-build-1.1.50">halls@debian.org
+       </A><BR>
+    <I>Fri, 06 Feb 2004 15:51:42 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000289.html">[Open Office] compiling ooo-build-1.1.50
+</A></li>
+        <LI> Next message: <A HREF="000286.html">[Open Office] Re: Regarding addressbook integration with OOo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#290">[ date ]</a>
+              <a href="thread.html#290">[ thread ]</a>
+              <a href="subject.html#290">[ subject ]</a>
+              <a href="author.html#290">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2004-02-06 at 11:40, Michael Meeks wrote:
+&gt;<i> &gt; -L/opt/java/j2sdk1.4.2_03/jre/lib/i386/native_threads -L/usr/X11R6/lib 
+</I>&gt;<i> &gt; ../unxlngi4.pro/lib/check_libpsp645li.so
+</I>&gt;<i> &gt; Checking DLL ../unxlngi4.pro/lib/check_libpsp645li.so ...: ERROR: 
+</I>&gt;<i> &gt; ../unxlngi4.pro/lib/check_libpsp645li.so: undefined symbol: 
+</I>&gt;<i> &gt; _ZNK9jvmaccess8JavaInfo21getRuntimeLibLocationEv
+</I>&gt;<i> &gt; dmake:  Error code 1, while making '../unxlngi4.pro/lib/libpsp645li.so'
+</I>&gt;<i> &gt; ---* TG_SLO.MK *---
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; ERROR: Error 65280 occurred while making 
+</I>&gt;<i> &gt; /usr/src/ooo-build-1.1.50/build/OOO_1_1_0/psprint/util
+</I>&gt;<i> 
+</I>&gt;<i> 	It's rather odd that psp is linking to all that stuff; no idea why it's
+</I>&gt;<i> using Java bits - seems strange to me. It looks like some nasty symbol
+</I>&gt;<i> mangling problem - it's not possible that you compiled the jdk yourself
+</I>&gt;<i> with the system C++ compiler, but you're now using the included 3.2 gcc
+</I>&gt;<i> build ? if so  --with-system-gcc may help you (though you need to make
+</I>&gt;<i> clean first I guess).
+</I>
+Sorry, looks like the response I wrote to Ben never got to the list.  I
+meant to write that this was a formatting problem with the patch itself
+that meant only part of it got applied, and I already fixed it in
+ooo-build CVS, revision 1.2 of
+patches/OOO_1_1_0/psprint-handle-no-solar-java.diff.
+
+Chris
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000289.html">[Open Office] compiling ooo-build-1.1.50
+</A></li>
+	<LI> Next message: <A HREF="000286.html">[Open Office] Re: Regarding addressbook integration with OOo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#290">[ date ]</a>
+              <a href="thread.html#290">[ thread ]</a>
+              <a href="subject.html#290">[ subject ]</a>
+              <a href="author.html#290">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

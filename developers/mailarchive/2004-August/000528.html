@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Bad patch to default resources
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:arekm%40pld-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000525.html">
+   <LINK REL="Next"  HREF="000524.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Bad patch to default resources
+   </H1>
+    <B>Arkadiusz Miskiewicz
+    </B> 
+    <A HREF="mailto:arekm%40pld-linux.org"
+       TITLE="[Open Office] Re: Bad patch to default resources">arekm@pld-linux.org
+       </A><BR>
+    <I>Tue, 31 Aug 2004 02:14:09 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000525.html">[Open Office] Re: Bad patch to default resources
+</A></li>
+        <LI> Next message: <A HREF="000524.html">[Open Office] 1-2-1 with OOo last week
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#528">[ date ]</a>
+              <a href="thread.html#528">[ thread ]</a>
+              <a href="subject.html#528">[ subject ]</a>
+              <a href="author.html#528">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 30 of August 2004 10:06, Michael Meeks wrote:
+
+&gt;<i>  Also - it may be better to work a bit harder here; there some other
+</I>&gt;<i> variables we can use to try to get a better view of what desktop we're
+</I>&gt;<i> running; in particular:
+</I>
+Commited version:
+
+=2D-- ooo-wrapper.in      15 Jul 2004 02:24:03 -0000      1.30
++++ ooo-wrapper.in      31 Aug 2004 00:11:11 -0000      1.32
+@@ -422,10 +422,29 @@
+
+ # select the preferred icons set by the running windowmanager
+ unless (defined $icons_set) {
+=2D    $icons_set=3D&quot;kde&quot; if (-d &quot;$SystemInstallDir/program/resource.kde&quot; &amp;&amp;
+=2D                         &quot;$ENV{WINDOWMANAGER}&quot; =3D~ &quot;.*kde\$&quot;);
+=2D    $icons_set=3D&quot;gnome&quot; if (-d &quot;$SystemInstallDir/program/resource.gnom=
+e&quot; &amp;&amp;
+=2D                         &quot;$ENV{WINDOWMANAGER}&quot; =3D~ &quot;.*gnome\$&quot;);
++    if ((exists $ENV{GNOME_DESKTOP_SESSION_ID}) &amp;&amp; (-d &quot;$SystemInstallDir/=
+program/resource.gnome&quot;)) {
++        $icons_set=3D&quot;gnome&quot;;
++    } elsif ((exists $ENV{KDE_FULL_SESSION}) &amp;&amp; (-d &quot;$SystemInstallDir/pro=
+gram/resource.kde&quot;)) {
++       $icons_set=3D&quot;kde&quot;;
++    }
++
++    if (not defined $icons_set) {
++        if ((exists $ENV{WINDOWMANAGER}) &amp;&amp; (-d &quot;$SystemInstallDir/program=
+/resource.kde&quot;) &amp;&amp;
++            (&quot;$ENV{WINDOWMANAGER}&quot; =3D~ &quot;.*kde\$&quot;)) {
++                $icons_set=3D&quot;kde&quot;;
++        } elsif ((exists $ENV{WINDOWMANAGER}) &amp;&amp; (-d &quot;$SystemInstallDir/pr=
+ogram/resource.gnome&quot;) &amp;&amp;
++            (&quot;$ENV{WINDOWMANAGER}&quot; =3D~ &quot;.*gnome\$&quot;)) {
++                $icons_set=3D&quot;kde&quot;;
++        } elsif (-d &quot;$SystemInstallDir/program/resource.default&quot;) {
++            $icons_set=3D&quot;default&quot;;
++        } elsif (-d &quot;$SystemInstallDir/program/resource.kde&quot;) {
++            $icons_set=3D&quot;kde&quot;;
++        } elsif (-d &quot;$SystemInstallDir/program/resource.gnome&quot;) {
++            $icons_set=3D&quot;gnome&quot;;
++        } else {
++            $icons_set=3D&quot;default&quot;;
++        }
++    }
+ }
+
+ if (defined $icons_set) {
+
+&gt;<i>  Regards,
+</I>&gt;<i>   Michael.
+</I>
+=2D-=20
+Arkadiusz Mi=B6kiewicz                    PLD/Linux Team
+<A HREF="http://www.t17.ds.pwr.wroc.pl/~misiek/">http://www.t17.ds.pwr.wroc.pl/~misiek/</A>  <A HREF="http://ftp.pld-linux.org/">http://ftp.pld-linux.org/</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000525.html">[Open Office] Re: Bad patch to default resources
+</A></li>
+	<LI> Next message: <A HREF="000524.html">[Open Office] 1-2-1 with OOo last week
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#528">[ date ]</a>
+              <a href="thread.html#528">[ thread ]</a>
+              <a href="subject.html#528">[ subject ]</a>
+              <a href="author.html#528">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

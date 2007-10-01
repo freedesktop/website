@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-src680.143.0 debug build error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-src680.143.0%20debug%20build%20error&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001421.html">
+   <LINK REL="Next"  HREF="001418.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-src680.143.0 debug build error</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-src680.143.0%20debug%20build%20error&In-Reply-To="
+       TITLE="[Open Office] ooo-build-src680.143.0 debug build error">h.mth at web.de
+       </A><BR>
+    <I>Sun Dec 18 06:55:42 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001421.html">[Open Office] Re: [fix] gcj-no-com.sun.xml.diff
+</A></li>
+        <LI>Next message: <A HREF="001418.html">[Open Office] ooo-build-src680.143.0 debug build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1417">[ date ]</a>
+              <a href="thread.html#1417">[ thread ]</a>
+              <a href="subject.html#1417">[ subject ]</a>
+              <a href="author.html#1417">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi list!
+I got an error to build a debug version of ooo-build-src680.143.0.
+(Btw, that file does not differ to vanilla SRC680_m146 one.)
+
+I use GCC 4.1.0-20051216.
+
+Making: ../../unxlngi6/slo/valuemembernode.obj
+g++ -Wreturn-type -fmessage-length=0 -c -I.  -I. -I../inc -I../../source/inc/inc -I../../inc -I../../unx/inc -I../../unxlngi6/inc -I. -I/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/solver/680/unxlngi6/inc/stl -I/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/solver/680/unxlngi6/inc/external -I/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/solver/680/unxlngi6/inc -I/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/solenv/unxlngi6/inc -I/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/solenv/inc -I/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/res -I/usr/stlport -I/usr/include/stlport -I/usr/include/stlport -I/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/solenv/inc/Xp31 -I/usr/include -I/usr/X11R6/include     -I. -I../../res -I.     -pipe -O0 -pipe -g -g -g -Wno-ctor-dtor-privacy -fvisibility-inlines-hidden -g -fexceptions -fno-enforce-eh-specs   -fpic -DLINUX -DUNX -DVCL -DGCC -DC341 -DINTEL -DGXX_INCLUDE_PATH=/usr/lib/gcc/i686-pc-linux-gnu/4.1.0-beta20051216/include/g++-v4 -DCVER=C341 -D_USE_NAMESPACE -DNPTL -DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1 -DSTLPORT_VERSION=400 -DHAVE_GCC_VISIBILITY_FEATURE -D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DSUPD=680 -DDBG_UTIL -DOSL_DEBUG_LEVEL=1 -DOPTIMIZE -DEXCEPTIONS_ON -DCUI -DSOLAR_JAVA -DSRC680   -DSHAREDLIB -D_DLL_  -DMULTITHREAD  -o ../../unxlngi6/slo/valuemembernode.o /var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/configmgr/source/treemgr/valuemembernode.cxx
+/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/configmgr/source/treemgr/valuemembernode.cxx: In member function &#187;bool configmgr::configuration::ValueMemberNode::isValid() const&#171;:
+/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/configmgr/source/treemgr/valuemembernode.cxx:143: Fehler: no match f&#252;r &#187;operator==&#171; in &#187;((const configmgr::configuration::ValueMemberNode*)this)-&gt;configmgr::configuration::ValueMemberNode::m_xDeferredOperation. rtl::Reference&lt;reference_type&gt;::operator-&gt; [with reference_type = configmgr::configuration::ValueMemberNode::DeferredImpl]()-&gt;configmgr::configuration::ValueMemberNode::DeferredImpl::getOriginalNodeAddress() == ((const configmgr::configuration::ValueMemberNode*)this)-&gt;configmgr::configuration::ValueMemberNode::m_aNodeRef. configmgr::data::ValueNodeAccess::address()&#171;
+/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/configmgr/source/treemgr/valuemembernode.cxx: In member function &#187;void configmgr::configuration::ValueMemberNode::DeferredImpl::setValue(const configmgr::configuration::UnoAny&amp;, const configmgr::data::ValueNodeAccess&amp;)&#171;:
+/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/configmgr/source/treemgr/valuemembernode.cxx:251: Fehler: no match f&#252;r &#187;operator==&#171; in &#187;((const configmgr::data::ValueNodeAccess*)_aOriginalNode)-&gt;configmgr::data::ValueNodeAccess::address() == ((configmgr::configuration::ValueMemberNode::DeferredImpl*)this)-&gt;configmgr::configuration::ValueMemberNode::DeferredImpl::m_aValueRef&#171;
+/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/configmgr/source/treemgr/valuemembernode.cxx: In member function &#187;void configmgr::configuration::ValueMemberNode::DeferredImpl::setValueToDefault(const configmgr::data::ValueNodeAccess&amp;)&#171;:
+/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/configmgr/source/treemgr/valuemembernode.cxx:262: Fehler: no match f&#252;r &#187;operator==&#171; in &#187;((const configmgr::data::ValueNodeAccess*)_aOriginalNode)-&gt;configmgr::data::ValueNodeAccess::address() == ((configmgr::configuration::ValueMemberNode::DeferredImpl*)this)-&gt;configmgr::configuration::ValueMemberNode::DeferredImpl::m_aValueRef&#171;
+dmake:  Error code 1, while making '../../unxlngi6/slo/valuemembernode.obj'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making /var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/configmgr/source/treemgr
+
+
+Anyone any ideas? TIA.
+
+
+Regards,
+Hanno
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001421.html">[Open Office] Re: [fix] gcj-no-com.sun.xml.diff
+</A></li>
+	<LI>Next message: <A HREF="001418.html">[Open Office] ooo-build-src680.143.0 debug build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1417">[ date ]</a>
+              <a href="thread.html#1417">[ thread ]</a>
+              <a href="subject.html#1417">[ subject ]</a>
+              <a href="author.html#1417">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

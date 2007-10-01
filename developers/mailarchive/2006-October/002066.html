@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ood-m5 build failure.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ood-m5%20build%20failure.&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002068.html">
+   <LINK REL="Next"  HREF="002069.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ood-m5 build failure.</H1>
+    <B>Jian Hua Jiao</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ood-m5%20build%20failure.&In-Reply-To="
+       TITLE="[Open Office] ood-m5 build failure.">jjiao at novell.com
+       </A><BR>
+    <I>Tue Oct 17 00:09:32 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002068.html">[Open Office] HEAD to m187?
+</A></li>
+        <LI>Next message: <A HREF="002069.html">[Open Office] Trying to use uno binding for mono - OpenOffice.org
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2066">[ date ]</a>
+              <a href="thread.html#2066">[ thread ]</a>
+              <a href="subject.html#2066">[ subject ]</a>
+              <a href="author.html#2066">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+SLED 10
+
+../unxlngi6.pro/slo/appbas.o: In function `SfxApplication::GetBasic_Impl() const':
+appbas.cxx:(.text+0x13c): undefined reference to `GetAppBasicManager()'
+../unxlngi6.pro/slo/appbas.o: In function `MakeVariable(StarBASIC*, SbxObject*, char const*, unsigned long, SbxDataType, SbxClassType)':
+appbas.cxx:(.text+0x6be): undefined reference to `SbxVariable::GetBroadcaster()'
+../unxlngi6.pro/slo/appbas.o: In function `SfxApplication::GetBasicManager()':
+appbas.cxx:(.text+0x70f): undefined reference to `GetAppBasicManager()'
+appbas.cxx:(.text+0x931): undefined reference to `SetAppBasicManager(BasicManager*)'
+appbas.cxx:(.text+0xbc4): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+appbas.cxx:(.text+0xe2f): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+appbas.cxx:(.text+0xee0): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+appbas.cxx:(.text+0xfe6): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+../unxlngi6.pro/slo/appquit.o: In function `SfxApplication::Deinitialize()':
+appquit.cxx:(.text+0x2d): undefined reference to `GetAppBasicManager()'
+appquit.cxx:(.text+0xec): undefined reference to `SetAppBasicManager(BasicManager*)'
+../unxlngi6.pro/slo/appuno.o: In function `SfxMacroLoader::loadMacro(rtl::OUString const&amp;, com::sun::star::uno::Any&amp;, SfxObjectShell*)':
+appuno.cxx:(.text+0x1a56): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+appuno.cxx:(.text+0x1ac3): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+appuno.cxx:(.text+0x1c3a): undefined reference to `sbxToUnoValue(SbxVariable*)'
+../unxlngi6.pro/slo/objxtor.o: In function `SfxObjectShell::InitBasicManager_Impl(com::sun::star::uno::Reference&lt;com::sun::star::embed::XStorage&gt; const&amp;, String const*)':
+objxtor.cxx:(.text+0xf05): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+objxtor.cxx:(.text+0xfdb): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+objxtor.cxx:(.text+0x10b1): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+../unxlngi6.pro/slo/objxtor.o: In function `SfxObjectShell::SetWorkingDocument(SfxObjectShell*)':
+objxtor.cxx:(.text+0x2a23): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+objxtor.cxx:(.text+0x2a8e): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+../unxlngi6.pro/slo/objmisc.o:objmisc.cxx:(.text+0x61f): more undefined references to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)' follow../unxlngi6.pro/slo/objmisc.o: In function `(anonymous namespace)::lcl_translateBasic2Uno(SbxVariableRef const&amp;, void*)':
+objmisc.cxx:(.text+0x6b9): undefined reference to `sbxToUnoValue(SbxVariable*)'
+../unxlngi6.pro/slo/objmisc.o: In function `SfxObjectShell::CallScript(String const&amp;, String const&amp;, com::sun::star::uno::Reference&lt;com::sun::star::uno::XInterface&gt;&amp;, void*, void*)':
+objmisc.cxx:(.text+0x2b5f): undefined reference to `SbxVariable::SbxVariable()'
+../unxlngi6.pro/slo/objmisc.o: In function `SfxObjectShell::CallStarBasicScript(String const&amp;, String const&amp;, void*, void*)':
+objmisc.cxx:(.text+0x2cb1): undefined reference to `SbxVariable::SbxVariable()'
+../unxlngi6.pro/slo/sfxbasemodel.o: In function `implGetStarBasicAccess(SfxObjectShell*)':
+sfxbasemodel.cxx:(.text+0xcc6): undefined reference to `getStarBasicAccess(BasicManager*)'
+../unxlngi6.pro/slo/sfxbasemodel.o: In function `SfxBaseModel::dispose()':
+sfxbasemodel.cxx:(.text+0x98af): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+../unxlngi6.pro/slo/macrconf.o: In function `SfxMacroConfig::Call(SbxObject*, String const&amp;, BasicManager*, SbxArray*, SbxValue*)':
+macrconf.cxx:(.text+0x133c): undefined reference to `SbxVariable::SetParameters(SbxArray*)'
+../unxlngi6.ro(BasicManager*, String const&amp;, SbxArray*, SbxValue*)':
+macrconf.cxx:(.text+0x13ee): undefined reference to `SbxVariable::SetParameters(SbxArray*)'
+../unxlngi6.pro/slo/macrconf.o: In function `SfxMacroConfig::ExecuteMacro(SfxObjectShell*, SvxMacro const*, String const&amp;) const':
+macrconf.cxx:(.text+0x20b0): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+macrconf.cxx:(.text+0x2117): undefined reference to `GetSbUnoObject(String const&amp;, com::sun::star::uno::Any const&amp;)'
+collect2: ld returned 1 exit status
+dmake:  Error code 1, while making '../unxlngi6.pro/lib/libsfx680li.so'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making /home/hua/OOo/ooo-build/build/ood680-m5/sfx2/util
+dmake:  Error code 1, while making 'build_instsetoo_native'
+'---* *---'
+
+
+Thanks &amp; Regards
+  Jiao Jianhua
+
+
+&#28966;&#24314;&#21326; Jiao Jianhua
+PRC Beijing Linux R&amp;D Engineer
+Tel: +8610 6533 9226
+Mobile: (86)13511005450
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002068.html">[Open Office] HEAD to m187?
+</A></li>
+	<LI>Next message: <A HREF="002069.html">[Open Office] Trying to use uno binding for mono - OpenOffice.org
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2066">[ date ]</a>
+              <a href="thread.html#2066">[ thread ]</a>
+              <a href="subject.html#2066">[ subject ]</a>
+              <a href="author.html#2066">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

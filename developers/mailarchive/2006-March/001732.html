@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] [PATCH] experimental system STLport5 support
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5BPATCH%5D%20experimental%20system%20STLport5%20support&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001730.html">
+   <LINK REL="Next"  HREF="001733.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] [PATCH] experimental system STLport5 support</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5BPATCH%5D%20experimental%20system%20STLport5%20support&In-Reply-To="
+       TITLE="[Open Office] [PATCH] experimental system STLport5 support">h.mth at web.de
+       </A><BR>
+    <I>Tue Mar 28 17:06:41 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001730.html">[Open Office] Building ucb, webdav with neon 0.25 does not
+	link with expat
+</A></li>
+        <LI>Next message: <A HREF="001733.html">[Open Office] error under FC5: bin/ooinstall failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1732">[ date ]</a>
+              <a href="thread.html#1732">[ thread ]</a>
+              <a href="subject.html#1732">[ subject ]</a>
+              <a href="author.html#1732">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi list!
+Last week I upgraded STLport to version 5.0.2 on my testbox.
+I tested how far I could build OOo2 with it. I used ooo-build HEAD from
+20060326 and SRC680_m161. This is the result.
+
+The main causes of errors were:
+	* iterator &lt;-&gt; const_iterator: Sometimes it wants a const_iterator
+	where there is an iterator and vice versa.
+	* ... function (...) const: Such a function does not accept iterator's.
+	Only const_iterator's.
+	* As of STLport5 one cannot compare maps anymore. I did something
+	to make it compile but do not ask me about that. ;)
+
+The last one occurs only twice luckily. One with some programming
+knowledge may have a look at it, please. Following files have that:
+	vcl/source/gdi/jobset.cxx
+	xmloff/source/core/nmspmap.cxx
+
+Well, these patches need some review. However, for the brave...
+
+You may apply these:
+	ooo-stlport5-config.diff
+	ooo-stlport5-STLPORT_VER.diff
+	ooo-stlport5.diff
+
+If you build ure/uretest/ this hack is needed:
+(Does not seem to happen on normal build.)
+	ooo-stlport5-uretest.diff
+
+I had an undefined reference to boost::throw_exception using system
+boost. No idea if it is related to STLport5 usage. However... ugly hack.
+	ooo-stlport5-boost.diff
+
+
+Thanks for your help in advance!
+
+Regards,
+Hanno
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ooo-stlport5-config.diff
+Type: text/x-patch
+Size: 17217 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060329/bb556e7e/ooo-stlport5-config-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060329/bb556e7e/ooo-stlport5-config-0001.bin</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ooo-stlport5-STLPORT_VER.diff
+Type: text/x-patch
+Size: 11846 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060329/bb556e7e/ooo-stlport5-STLPORT_VER-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060329/bb556e7e/ooo-stlport5-STLPORT_VER-0001.bin</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ooo-stlport5.diff
+Type: text/x-patch
+Size: 15025 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060329/bb556e7e/ooo-stlport5-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060329/bb556e7e/ooo-stlport5-0001.bin</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ooo-stlport5-uretest.diff
+Type: text/x-patch
+Size: 1195 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060329/bb556e7e/ooo-stlport5-uretest-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060329/bb556e7e/ooo-stlport5-uretest-0001.bin</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ooo-stlport5-boost.diff
+Type: text/x-patch
+Size: 457 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060329/bb556e7e/ooo-stlport5-boost-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060329/bb556e7e/ooo-stlport5-boost-0001.bin</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001730.html">[Open Office] Building ucb, webdav with neon 0.25 does not
+	link with expat
+</A></li>
+	<LI>Next message: <A HREF="001733.html">[Open Office] error under FC5: bin/ooinstall failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1732">[ date ]</a>
+              <a href="thread.html#1732">[ thread ]</a>
+              <a href="subject.html#1732">[ subject ]</a>
+              <a href="author.html#1732">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

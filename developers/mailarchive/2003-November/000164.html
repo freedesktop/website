@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Patch for defect 49914...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:OO%40WorldWartWeb.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000162.html">
+   <LINK REL="Next"  HREF="000169.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Patch for defect 49914...
+   </H1>
+    <B>Jörg Wartenberg
+    </B> 
+    <A HREF="mailto:OO%40WorldWartWeb.com"
+       TITLE="[Open Office] Patch for defect 49914...">OO@WorldWartWeb.com
+       </A><BR>
+    <I>Mon, 24 Nov 2003 19:45:02 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000162.html">[Open Office] Patch for defect 49914...
+</A></li>
+        <LI> Next message: <A HREF="000169.html">[Open Office] Patch for defect 49914...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#164">[ date ]</a>
+              <a href="thread.html#164">[ thread ]</a>
+              <a href="subject.html#164">[ subject ]</a>
+              <a href="author.html#164">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Anil,
+
+&gt;<i>Michael,
+</I>&gt;<i>
+</I>&gt;<i>This patch makes the Imagelist at build time, and extracts the required
+</I>&gt;<i>images from the Image list. 
+</I>&gt;<i>
+</I>&gt;<i>There's a slight difference in this solution and the one that you had
+</I>&gt;<i>suggested. The Imagelist (compound bmp) file is not getting generated in
+</I>&gt;<i>source/src. Its getting generated in unxlngi4.pro/res/49/ and other
+</I>&gt;<i>corresponding language folders. The reason being the code in
+</I>&gt;<i>solenv/inc/target.mk (lines 2202 - 2221) that generates the Imagelist
+</I>&gt;<i>bmp. This is not flexible enough to tweak to generate language
+</I>&gt;<i>independant bmps. Other alternative would be to write a new task in
+</I>&gt;<i>vcl/source/src/makefile.mk and link it up with some task that is going
+</I>&gt;<i>to be executed. I thought the currently proposed solution to be cleaner
+</I>&gt;<i>and better suited for future in case there are any symbols that need to
+</I>&gt;<i>be replaced with language dependant images.
+</I>&gt;<i>
+</I>There are language dependant images, the most visible are the Buttons 
+for Bold, Italic and Underlined. For example, in the german version of 
+OOo/SO they are F for 'fett', K for 'kursiv' and U für 'unterstrichen'
+
+Regards Jörg
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000162.html">[Open Office] Patch for defect 49914...
+</A></li>
+	<LI> Next message: <A HREF="000169.html">[Open Office] Patch for defect 49914...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#164">[ date ]</a>
+              <a href="thread.html#164">[ thread ]</a>
+              <a href="subject.html#164">[ subject ]</a>
+              <a href="author.html#164">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

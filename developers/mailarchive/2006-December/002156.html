@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] syntax error in patches/src680/apply?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20syntax%20error%20in%20patches/src680/apply%3F&In-Reply-To=200612042235.46766.atle.nissestad%40norbit.no">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002155.html">
+   <LINK REL="Next"  HREF="002158.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] syntax error in patches/src680/apply?</H1>
+    <B>Atle Nissestad</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20syntax%20error%20in%20patches/src680/apply%3F&In-Reply-To=200612042235.46766.atle.nissestad%40norbit.no"
+       TITLE="[Open Office] syntax error in patches/src680/apply?">atle.nissestad at norbit.no
+       </A><BR>
+    <I>Mon Dec  4 16:46:28 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002155.html">[Open Office] syntax error in patches/src680/apply?
+</A></li>
+        <LI>Next message: <A HREF="002158.html">[Open Office] syntax error in patches/src680/apply?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2156">[ date ]</a>
+              <a href="thread.html#2156">[ thread ]</a>
+              <a href="subject.html#2156">[ subject ]</a>
+              <a href="author.html#2156">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 04 December 2006 22:35, Atle Nissestad wrote:
+&gt;<i> On Monday 04 December 2006 20:28, Jonathan Smith wrote:
+</I>&gt;<i> &gt; When building with head ooo-build, I get the following error:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Execute with  for distro(s) 'rpl2 Localize'
+</I>&gt;<i> &gt; Old patch version - pruning LFs
+</I>&gt;<i> &gt; PATCHPATH =&gt;
+</I>&gt;<i> &gt; .:../evo2:../vba:../mono:../64bit:../cairo:../scsolver:../gstreamer
+</I>&gt;<i> &gt; OLDEST_SUPPORTED =&gt; ooe680-m2
+</I>&gt;<i> &gt; Syntax error at
+</I>&gt;<i> &gt; /tmp/conary/builds/openoffice.org/ooo-build/patches/src680/apply, line
+</I>&gt;<i> &gt; 1792 make: *** [stamp/patch.apply] Error 2
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Poking around in that file, the following commit seems relevent:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; revision 1.1456
+</I>&gt;<i> &gt; date: 2006/12/04 11:08:16;  author: rengelhard;  state: Exp;  lines: +3
+</I>&gt;<i> &gt; -0 2006-12-03  Rene Engelhard  &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rene at debian.org</A>&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;          * patches/src680/apply,
+</I>&gt;<i> &gt;            patches/src680/ooo64508.vcl.honourfontconfighinting.patch,
+</I>&gt;<i> &gt;            patches/src680/ooo59127.vcl.honourcairofont.patch: import from
+</I>&gt;<i> &gt;            Fedora, add to FedoraFixes
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I don't know the ins and outs of the format of the file, but that area
+</I>&gt;<i> &gt; looks ok to me. Perhaps someone else wouldn't mind taking a look?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; -smithj
+</I>&gt;<i>
+</I>&gt;<i> Same error for me too with todays ooo-build and ooe680-m6. The problem
+</I>&gt;<i> seems to be that ooo59127.vcl.honourcairofont.patch and
+</I>&gt;<i> ooo64508.vcl.honourfontconfighinting.patch should have had the
+</I>&gt;<i> extension .diff instead of .patch.
+</I>&gt;<i> Limitation of the apply.pl script I guess.
+</I>&gt;<i>
+</I>&gt;<i> - Atle
+</I>
+And... these patches are generated with the OO top-directory included in the 
+diff-path, and will not apply as apply.pl uses 'patch -p0'
+
+- Atle
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002155.html">[Open Office] syntax error in patches/src680/apply?
+</A></li>
+	<LI>Next message: <A HREF="002158.html">[Open Office] syntax error in patches/src680/apply?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2156">[ date ]</a>
+              <a href="thread.html#2156">[ thread ]</a>
+              <a href="subject.html#2156">[ subject ]</a>
+              <a href="author.html#2156">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

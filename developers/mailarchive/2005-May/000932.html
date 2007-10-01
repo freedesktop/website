@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] [PATCH] Save As and file name with dots fix
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:robert%40vojta.name">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000946.html">
+   <LINK REL="Next"  HREF="000933.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] [PATCH] Save As and file name with dots fix
+   </H1>
+    <B>Robert Vojta
+    </B> 
+    <A HREF="mailto:robert%40vojta.name"
+       TITLE="[Open Office] [PATCH] Save As and file name with dots fix">robert@vojta.name
+       </A><BR>
+    <I>Fri, 06 May 2005 12:11:22 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000946.html">[Open Office] Re: --enable-debug ...
+</A></li>
+        <LI> Next message: <A HREF="000933.html">[Open Office] [PATCH] Save As and file name with dots fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#932">[ date ]</a>
+              <a href="thread.html#932">[ thread ]</a>
+              <a href="subject.html#932">[ subject ]</a>
+              <a href="author.html#932">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-S7wr5EeU9oJTe1EAPl7e
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+Hallo,
+
+  when you have a filename with more than one dot, Save As dialog
+behaves badly (truncates filename). This can be fixed in more than one
+ways (from the end users point of view). I asked 'ft' which one is the
+best, but I didn't received an answer till today. So I made decision
+based on the Gnome &amp; MS Office fpicker behaviour.
+
+  Following patch simply removes the logic of the automatic file name
+extensions -&gt; the file name isn't modified in any way when you're
+changing export filter -&gt; the generic file picker behaves in the same
+way as the Gnome &amp; MS Office fpickers.
+
+  More info about this Issue is here:
+
+  <A HREF="http://qa.openoffice.org/issues/show_bug.cgi?id=35830">http://qa.openoffice.org/issues/show_bug.cgi?id=35830</A>
+
+  Feel free to use it in ooo-build or throw it away ...
+
+Regards,
+Robert
+
+-- 
+Robert Vojta
+<A HREF="http://blog.vojta.name/">http://blog.vojta.name/</A>
+
+--=-S7wr5EeU9oJTe1EAPl7e
+Content-Disposition: attachment; filename=fpicker-generic-autoextension.diff
+Content-Type: text/x-patch; name=fpicker-generic-autoextension.diff; charset=UTF-8
+Content-Transfer-Encoding: base64
+
+SW5kZXg6IGlvZGxnLmN4eA0KPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PQ0KUkNTIGZpbGU6IC9jdnMvZ3NsL2ZwaWNrZXIv
+c291cmNlL29mZmljZS9pb2RsZy5jeHgsdg0KcmV0cmlldmluZyByZXZpc2lvbiAxLjINCmRpZmYg
+LXUgLXAgLXUgLXIxLjIgaW9kbGcuY3h4DQotLS0gaW9kbGcuY3h4CTEzIEFwciAyMDA1IDA4OjU0
+OjExIC0wMDAwCTEuMg0KKysrIGlvZGxnLmN4eAk2IE1heSAyMDA1IDEwOjA1OjE5IC0wMDAwDQpA
+QCAtMzYyLDYzICszNjIsNiBAQCBuYW1lc3BhY2UNCiAJCX0NCiAJfQ0KIA0KLSAgICAvLy0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0NCi0Jdm9pZCBsY2xfYXV0b1VwZGF0ZUZpbGVFeHRlbnNpb24oIFN2dEZpbGVE
+aWFsb2cqIF9wRGlhbG9nICkNCi0Jew0KLQkJLy8gaWYgYXV0byBleHRlbnNpb24gaXMgZW5hYmxl
+ZCAuLi4uDQotCQlpZiAoIF9wRGlhbG9nLT5pc0F1dG9FeHRlbnNpb25FbmFibGVkKCkgKQ0KLQkJ
+ew0KLQkJCS8vIGF1dG9tYXRpY2FsbHkgc3dpdGNoIHRvIHRoZSBleHRlbnNpb24gb2YgdGhlICht
+YXliZSBqdXN0IG5ld2x5IHNlbGVjdGVkKSBleHRlbnNpb24NCi0JCQlTdHJpbmcgYU5ld0ZpbGUg
+PSBfcERpYWxvZy0+Z2V0Q3VycmVudEZpbGVUZXh0KCApOw0KLQkJCVN0cmluZyBhRXh0ID0gR2V0
+RnN5c0V4dGVuc2lvbl9JbXBsKCBhTmV3RmlsZSApOw0KLQ0KLQkJCS8vIGJ1dCBvbmx5IGlmIHRo
+ZXJlIGFscmVhZHkgaXMgYW4gZXh0ZW5zaW9uDQotCQkJaWYgKCBhRXh0LkxlbigpICkNCi0JCQl7
+DQotCQkJCS8vIGNoZWNrIGlmIGl0IGlzIGEgcmVhbCBmaWxlIGV4dGVuc2lvbiwgYW5kIG5vdCBv
+bmx5IHRoZSAicG9zdC1kb3QiIHBhcnQgaW4NCi0JCQkJLy8gYSBkaXJlY3RvcnkgbmFtZQ0KLQkJ
+CQkvLyAyOC4wMy4yMDAyIC0gOTgzMzcgLSBmc0BvcGVub2ZmaWNlLm9yZw0KLQkJCQlzYWxfQm9v
+bCBiUmVhbEV4dGVuc2lvbnMgPSBzYWxfVHJ1ZTsNCi0JCQkJaWYgKCBTVFJJTkdfTk9URk9VTkQg
+IT0gYUV4dC5TZWFyY2goICcvJyApICkNCi0JCQkJCWJSZWFsRXh0ZW5zaW9ucyA9IHNhbF9GYWxz
+ZTsNCi0JCQkJZWxzZSBpZiAoIFNUUklOR19OT1RGT1VORCAhPSBhRXh0LlNlYXJjaCggJ1xcJyAp
+ICkNCi0JCQkJCWJSZWFsRXh0ZW5zaW9ucyA9IHNhbF9GYWxzZTsNCi0JCQkJZWxzZQ0KLQkJCQl7
+DQotCQkJCQkvLyBubyBlYXN5IHdheSB0byB0ZWxsLCBiZWNhdXNlIHRoZSBwYXJ0IGNvbnRhaW5p
+bmcgdGhlIGRvdCBhbHJlYWR5IGlzIHRoZSBsYXN0DQotCQkJCQkvLyBzZWdtZW50IG9mIHRoZSBj
+b21wbGV0ZSBmaWxlIG5hbWUNCi0JCQkJCS8vIFNvIHdlIGhhdmUgdG8gY2hlY2sgaWYgdGhlIGZp
+bGUgbmFtZSBkZW5vdGVzIGEgZm9sZGVyIG9yIGEgZmlsZS4NCi0JCQkJCS8vIEZvciBwZXJmb3Jt
+YW5jZSByZWFzb25zLCB3ZSBkbyB0aGlzIGZvciBmaWxlIHVybHMgb25seQ0KLQkJCQkJSU5ldFVS
+TE9iamVjdCBhVVJMKCBhTmV3RmlsZSApOw0KLQkJCQkJaWYgKCBJTkVUX1BST1RfTk9UX1ZBTElE
+ID09IGFVUkwuR2V0UHJvdG9jb2woKSApDQotCQkJCQl7DQotCQkJCQkJU3RyaW5nIHNVUkw7DQot
+CQkJCQkJaWYgKCA6OnV0bDo6TG9jYWxGaWxlSGVscGVyOjpDb252ZXJ0UGh5c2ljYWxOYW1lVG9V
+UkwoIGFOZXdGaWxlLCBzVVJMICkgKQ0KLQkJCQkJCQlhVVJMID0gSU5ldFVSTE9iamVjdCggc1VS
+TCApOw0KLQkJCQkJfQ0KLQkJCQkJaWYgKCBJTkVUX1BST1RfRklMRSA9PSBhVVJMLkdldFByb3Rv
+Y29sKCkgKQ0KLQkJCQkJew0KLQkJCQkJCS8vICM5NzE0OCMgJiAjMTAyMjA0IyAtLS0tLQ0KLQkJ
+CQkJCXRyeQ0KLQkJCQkJCXsNCi0JCQkJCQkJYlJlYWxFeHRlbnNpb25zID0gIV9wRGlhbG9nLT5D
+b250ZW50SXNGb2xkZXIoIGFVUkwuR2V0TWFpblVSTCggSU5ldFVSTE9iamVjdDo6Tk9fREVDT0RF
+ICkgKTsNCi0JCQkJCQl9DQotCQkJCQkJY2F0Y2goIDo6Y29tOjpzdW46OnN0YXI6OnVubzo6RXhj
+ZXB0aW9uJiApDQotCQkJCQkJew0KLQkJCQkJCQlEQkdfV0FSTklORyggIkV4Y2VwdGlvbiBpbiBs
+Y2xfYXV0b1VwZGF0ZUZpbGVFeHRlbnNpb24iICk7DQotCQkJCQkJfQ0KLQkJCQkJfQ0KLQkJCQl9
+DQotDQotCQkJCWlmICggYlJlYWxFeHRlbnNpb25zICkNCi0JCQkJew0KLQkJCQkJU2V0RnN5c0V4
+dGVuc2lvbl9JbXBsKCBhTmV3RmlsZSwgX3BEaWFsb2ctPkdldERlZmF1bHRFeHQoKSApOw0KLQkJ
+CQkJX3BEaWFsb2ctPnNldEN1cnJlbnRGaWxlVGV4dCggYU5ld0ZpbGUgKTsNCi0JCQkJfQ0KLQkJ
+CX0NCi0JCX0NCi0JfQ0KLQ0KIAkvLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCiAJc2FsX0Jvb2wgbGNsX2dl
+dEhvbWVEaXJlY3RvcnkoIGNvbnN0IFN0cmluZyYgX3JGb3JVUkwsIFN0cmluZyYgLyogW291dF0g
+Ki8gX3JIb21lRGlyICkNCiAJew0KQEAgLTE1NDcsOSArMTQ5MCw2IEBAIElNUExfU1RBVElDX0xJ
+TksoIFN2dEZpbGVEaWFsb2csIEZpbHRlclMNCiAJCQlpZiAoIG5TZXBQb3MgIT0gU1RSSU5HX05P
+VEZPVU5EICkNCiAJCQkJcFRoaXMtPkVyYXNlRGVmYXVsdEV4dCggblNlcFBvcyApOw0KIA0KLQkJ
+CS8vIHVwZGF0ZSB0aGUgZXh0ZW5zaW9uIG9mIHRoZSBjdXJyZW50IGZpbGUgaWYgbmVjZXNzYXJ5
+DQotCQkJbGNsX2F1dG9VcGRhdGVGaWxlRXh0ZW5zaW9uKCBwVGhpcyApOw0KLQ0KIAkJCS8vIHdl
+bm4gZGVyIEJlbnV0emVyIHNjaG5lbGwgZHVyY2ggZGllIEZpbHRlcmJveA0KIAkJCS8vIHRyYXZl
+bHQsIG5pY2h0IHNvZm9ydCBGaWx0ZXJuDQogCQkJaWYgKCBwVGhpcy0+X3BJbXAtPklzRmlsdGVy
+TGlzdFRyYXZlbFNlbGVjdCgpICkNCkBAIC0xODQ3LDkgKzE3ODcsNiBAQCBJTVBMX0xJTksoIFN2
+dEZpbGVEaWFsb2csIEF1dG9FeHRlbnNpb25IDQogCQlfcEZpbGVOb3RpZmllci0+bm90aWZ5KCBD
+VFJMX1NUQVRFX0NIQU5HRUQsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDSEVD
+S0JPWF9BVVRPRVhURU5TSU9OICk7DQogDQotCS8vIHVwZGF0ZSB0aGUgZXh0ZW5zaW9uIG9mIHRo
+ZSBjdXJyZW50IGZpbGUgaWYgbmVjZXNzYXJ5DQotCWxjbF9hdXRvVXBkYXRlRmlsZUV4dGVuc2lv
+biggdGhpcyApOw0KLQ0KICAgICByZXR1cm4gMDsNCiB9DQogDQo=
+
+
+--=-S7wr5EeU9oJTe1EAPl7e--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000946.html">[Open Office] Re: --enable-debug ...
+</A></li>
+	<LI> Next message: <A HREF="000933.html">[Open Office] [PATCH] Save As and file name with dots fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#932">[ date ]</a>
+              <a href="thread.html#932">[ thread ]</a>
+              <a href="subject.html#932">[ subject ]</a>
+              <a href="author.html#932">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

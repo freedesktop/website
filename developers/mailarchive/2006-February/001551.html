@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] reworked system java patches
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20reworked%20system%20java%20patches&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001550.html">
+   <LINK REL="Next"  HREF="001552.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] reworked system java patches</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20reworked%20system%20java%20patches&In-Reply-To="
+       TITLE="[Open Office] reworked system java patches">h.mth at web.de
+       </A><BR>
+    <I>Fri Feb  3 12:37:24 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001550.html">[Open Office] Re: Advanced Font Properties
+	Question(Freetype+Fontconfig)
+</A></li>
+        <LI>Next message: <A HREF="001552.html">[Open Office] reworked system java patches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1551">[ date ]</a>
+              <a href="thread.html#1551">[ thread ]</a>
+              <a href="subject.html#1551">[ subject ]</a>
+              <a href="author.html#1551">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all!
+I reworked some system java patches and am going to include them
+in new SystemJavaBits section.
+
+I worked on these patches:
+workspace.systemjava.patch from iz#52974
+system-xt.diff,
+xmlsearch-plain-xt.diff,
+xt-precompile.diff from ooo-build
+
+My aim is to obsolete these distro specific patches which are in
+ooo-build right now. So that all can use the SystemJavaBits section
+to get use of their system java resources.
+
+You can build with:
+system beanshell (tested)
+system hsqldb (untested)
+system xalan (tested)
+system xerces (tested)
+system xml-apis (tested)
+system xt (tested)
+
+One question is left:
+1. Is it ok to build xt-xmlsearch.jar in XmlSearch module?
+
+I leave it there for now because I do not want to create a new xt
+module like it is done in system-xt.diff.
+
+
+You may have a look at my patches which are attached.
+If anyone tests and reports back with results I am glad.
+
+I may also mention that I added or changes some parts
+after test-build started. They should not be problematic, though.
+And this is only for review. I will rebuilt OOo with my patches
+this weekend. If I get a successful build I add the
+SystemJavaBits section.
+
+
+Regards,
+Hanno
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001550.html">[Open Office] Re: Advanced Font Properties
+	Question(Freetype+Fontconfig)
+</A></li>
+	<LI>Next message: <A HREF="001552.html">[Open Office] reworked system java patches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1551">[ date ]</a>
+              <a href="thread.html#1551">[ thread ]</a>
+              <a href="subject.html#1551">[ subject ]</a>
+              <a href="author.html#1551">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Mon-Tue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:sshreyas%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000829.html">
+   <LINK REL="Next"  HREF="000850.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Mon-Tue
+   </H1>
+    <B>Shreyas Srinivasan
+    </B> 
+    <A HREF="mailto:sshreyas%40novell.com"
+       TITLE="[Open Office] Status Mon-Tue">sshreyas@novell.com
+       </A><BR>
+    <I>Tue, 08 Mar 2005 21:47:30 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000829.html">[Open Office] Status Mon-Tue
+</A></li>
+        <LI> Next message: <A HREF="000850.html">[Open Office] gnome &amp; debian problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#830">[ date ]</a>
+              <a href="thread.html#830">[ thread ]</a>
+              <a href="subject.html#830">[ subject ]</a>
+              <a href="author.html#830">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hey,
+
+* Started looking into Bug 66822 on b.i.n.c. That is trying to remove
+the old Star formats from the list of filters. This looked the obvious
+solution but for some reason refuses to work.
+
+filter/source/config/fragments/fcfg_impress.mk
+
+Added a .IF &quot;$(WITH_BINFILTER)&quot; != &quot;NO&quot;
+
+to the makefile so that the Star Writer formats are built only if
+binfilter module is present. 
+                                                                                                                             
+Well, this i thought would fix it but then got some vague error while
+launching Save As dialog readind &quot; I/O error&quot;. Looks like some problem
+with loading the various File format names. Will apply the patch to a
+clean build and check tomm. 
+
+* triggered off new m79 builds to replace the deeply tainted old ones.
+
+* poked at 66809 and 71105 on b.i.n.c . Did not look enough to make 
+in roads.
+
+
+Cheers
+Shreyas
+
+		&quot; I am the jack of all trades and master to my dog&quot;
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000829.html">[Open Office] Status Mon-Tue
+</A></li>
+	<LI> Next message: <A HREF="000850.html">[Open Office] gnome &amp; debian problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#830">[ date ]</a>
+              <a href="thread.html#830">[ thread ]</a>
+              <a href="subject.html#830">[ subject ]</a>
+              <a href="author.html#830">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

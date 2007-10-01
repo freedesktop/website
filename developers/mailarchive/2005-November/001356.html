@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20error%20in%0A%09solver/680/unxlngi6.pro/inc/comphelper/property.hxx&In-Reply-To=20051130.100338.55726897.chat95%40mac.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001353.html">
+   <LINK REL="Next"  HREF="001346.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20error%20in%0A%09solver/680/unxlngi6.pro/inc/comphelper/property.hxx&In-Reply-To=20051130.100338.55726897.chat95%40mac.com"
+       TITLE="[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx">pmladek at suse.cz
+       </A><BR>
+    <I>Wed Nov 30 04:44:21 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001353.html">[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx
+</A></li>
+        <LI>Next message: <A HREF="001346.html">[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1356">[ date ]</a>
+              <a href="thread.html#1356">[ thread ]</a>
+              <a href="subject.html#1356">[ subject ]</a>
+              <a href="author.html#1356">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 30 November 2005 02:03, NAKATA Maho wrote:
+&gt;<i> &gt; I would like to get your patches but I do not use ooo-build.
+</I>&gt;<i> &gt; Is there any way I can get those patches?
+</I>&gt;<i>
+</I>&gt;<i> Yes, I'm also very interested in this. Since we FreeBSD people doesn't
+</I>&gt;<i> have a released Java; so we must use GNU/Linux version for bootstrapping.
+</I>&gt;<i> of course we need sources as well. To download the source we must accept
+</I>&gt;<i> SCSL which many people don't want to accept. I know gcc-4.0.2 compiles
+</I>&gt;<i> OOo for GNU/Linux but it doesn't for FBSD; AWT somehow doesn't work just
+</I>&gt;<i> dumped cores. I tried many snapshots, and recently AWT peer via GTK
+</I>&gt;<i> works for me. (afaik after September or something; but builds were broken
+</I>&gt;<i> due to regressions or changes in gcc).
+</I>&gt;<i> Currently gcc41 becomes solid but failed where you pointed out at
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">dev at porting.</A> Well we can use ooo-build, but for FreeBSD, it requires
+</I>&gt;<i> porting. I alywas commit to FBSD specific patches to ports cvs repo, but
+</I>&gt;<i> not for ooo-build. maintaining both are very hard.
+</I>&gt;<i>
+</I>&gt;<i> This is the reason why I'm very very interested in your patch, so
+</I>&gt;<i> could you please send me as well?
+</I>
+The current patches are attached. See the apply file for some more details.
+Nakata already mentioned a problem, which is being discussed on  
+<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">dev at porting.openoffice.org.</A> The subject is &quot;Any.hxx and gcc-4.1&quot;. The 
+discussion starts here: 
+<A HREF="http://porting.openoffice.org/servlets/ReadMsg?list=dev&amp;msgNo=16627.">http://porting.openoffice.org/servlets/ReadMsg?list=dev&amp;msgNo=16627.</A>
+The actual solution is in the patch cws-sb41.diff.
+
+Note that the patches does not fix the entire sources. I do not build some 
+external projects because I use system libraries instead. I also disabled 
+binfilter (import filters for the old StarOffice binary file formats). It is 
+a huge and old module. I plan to fix it later.
+
+I use the following configure options:
+--disable-binfilter --disable-crashdump --disable-epm --enable-crashdump=no 
+--enable-openldap --with-build-version=Build src680.140.0 --with-lang=en-US 
+af ar be-BY bg ca cs cy da de el en-GB es et fi fr gu-IN hu hr it ja ko nb nl 
+nn pa-IN pl pt pt-BR ru sk sl sv tr vi xh zh-TW zh-CN zu --without-fonts 
+--without-gpc --with-system-freetype --with-system-gcc --with-system-jpeg 
+--with-system-libxml --with-system-mozilla --with-system-python 
+--with-system-zlib --enable-evolution2 --enable-cairo=yes --enable-gnome-vfs 
+--with-ant-home=/usr --with-jdk-home=/usr/lib/jvm/java 
+--without-myspell-dicts --with-system-curl --with-system-expat 
+--with-system-neon --with-system-odbc-headers --with-system-sndfile 
+--enable-libsn --enable-lockdown --disable-odk --enable-gtk --enable-kde 
+--with-images=industrial crystal hicontrast --with-system-stdlibs 
+--with-gcc-speedup=icecream --with-icecream-max-jobs=10 --prefix=/usr 
+--mandir=/usr/share/man --sysconfdir=/etc 
+--with-docdir=/usr/share/doc/packages/OpenOffice_org --with-vendor=Novell 
+--with-distro=SUSE --with-tag=src680-m140 --with-lang=en-US af ar be-BY bg ca 
+cs cy da de el en-GB es et fi fr gu-IN hu hr it ja ko nb nl nn pa-IN pl pt 
+pt-BR ru sk sl sv tr vi xh zh-TW zh-CN zu --with-java=yes 
+--with-jdk-home=/usr/lib/jvm/java --with-openclipart=/usr/share/openclipart 
+--disable-strip --disable-post-install-scripts 
+--with-installed-ooo-dirname=ooo-2.0 --with-binsuffix=no --with-xulrunner 
+--with-system-cairo --enable-mono --enable-access --enable-hunspell
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: gcc-4.1-fixes.tar.bz2
+Type: application/x-tbz
+Size: 18111 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051130/023a0849/gcc-4.1-fixes.tar-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20051130/023a0849/gcc-4.1-fixes.tar-0001.bin</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001353.html">[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx
+</A></li>
+	<LI>Next message: <A HREF="001346.html">[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1356">[ date ]</a>
+              <a href="thread.html#1356">[ thread ]</a>
+              <a href="subject.html#1356">[ subject ]</a>
+              <a href="author.html#1356">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] 32-bit OOo crashes - non-implemented umask ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%2032-bit%20OOo%20crashes%20-%20non-implemented%20umask%20%3F&In-Reply-To=200609211219.44212.pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001993.html">
+   <LINK REL="Next"  HREF="001995.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] 32-bit OOo crashes - non-implemented umask ?</H1>
+    <B>Caolan McNamara</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%2032-bit%20OOo%20crashes%20-%20non-implemented%20umask%20%3F&In-Reply-To=200609211219.44212.pmladek%40suse.cz"
+       TITLE="[Open Office] 32-bit OOo crashes - non-implemented umask ?">caolanm at redhat.com
+       </A><BR>
+    <I>Wed Sep 20 18:11:22 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001993.html">[Open Office] 32-bit OOo crashes - non-implemented umask ?
+</A></li>
+        <LI>Next message: <A HREF="001995.html">[Open Office] Localization docs update &amp; new idea
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1994">[ date ]</a>
+              <a href="thread.html#1994">[ thread ]</a>
+              <a href="subject.html#1994">[ subject ]</a>
+              <a href="author.html#1994">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 2006-09-21 at 12:19 +0200, Petr Mladek wrote:
+&gt;<i> Hello,
+</I>&gt;<i> 
+</I>&gt;<i> the non-implemented umask was printed by 64-bit strace on 32-bit OOo, so it 
+</I>&gt;<i> was unusable.
+</I>&gt;<i> 
+</I>&gt;<i> More interesting is the following piece from the backtrace (see also the full 
+</I>&gt;<i> attached log):
+</I>
+I got this bloody crash yesterday when our gcc was bumped a revision.
+Changing the default -Os of unxlngi6.mk in solenv to -O2 works around
+it. Alternative -Os -mpreferred-stack-boundary=2 might also fix this.
+
+Apparently the &quot;old&quot; -Os is equivalent to the new 
+-Os -mpreferred-stack-boundary=2. Now I have no idea why this change has
+broken OOo, and I blame gcc myself, but haven't the energy to prove it.
+
+The actual afflicted file should be fsstorage.cxx in
+svtools/source/fsstor/fsstorage.cxx so if you recompile just that one
+file with -O2 (or with -Os -mpreferred-stack-boundary=2) and stick the
+fsstorage.uno.so into your OOo it should start. If so, then you have the
+same problem as me.
+
+C.
+
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001993.html">[Open Office] 32-bit OOo crashes - non-implemented umask ?
+</A></li>
+	<LI>Next message: <A HREF="001995.html">[Open Office] Localization docs update &amp; new idea
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1994">[ date ]</a>
+              <a href="thread.html#1994">[ thread ]</a>
+              <a href="subject.html#1994">[ subject ]</a>
+              <a href="author.html#1994">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

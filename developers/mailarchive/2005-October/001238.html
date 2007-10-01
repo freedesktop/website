@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ANNOUNCE: ooo-build-2.0.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ANNOUNCE%3A%20ooo-build-2.0.0&In-Reply-To=200510241944.27018.pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001237.html">
+   <LINK REL="Next"  HREF="001201.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ANNOUNCE: ooo-build-2.0.0</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ANNOUNCE%3A%20ooo-build-2.0.0&In-Reply-To=200510241944.27018.pmladek%40suse.cz"
+       TITLE="[Open Office] ANNOUNCE: ooo-build-2.0.0">ghibo at mandriva.com
+       </A><BR>
+    <I>Mon Oct 24 16:12:58 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001237.html">[Open Office] ANNOUNCE: ooo-build-2.0.0
+</A></li>
+        <LI>Next message: <A HREF="001201.html">[Open Office] problem with beanshell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1238">[ date ]</a>
+              <a href="thread.html#1238">[ thread ]</a>
+              <a href="subject.html#1238">[ subject ]</a>
+              <a href="author.html#1238">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Petr Mladek wrote:
+
+&gt;<i> On Monday 24 October 2005 17:35, Arkadiusz Miskiewicz wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>On Monday 24 of October 2005 17:25, michael meeks wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>On Fri, 2005-10-21 at 17:53 +0200, Arkadiusz Miskiewicz wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>`/home/users/arekm/rpm/BUILD/ooo-build-2.0.0/build/ooo680-m3/instsetoo_
+</I>&gt;&gt;&gt;&gt;<i>na
+</I>&gt;&gt;&gt;&gt;<i>tive/util/OpenOffice/install/en-US_af_ar_bn_be-BY_bg_ca_cs_cy_da_de_el_
+</I>&gt;&gt;&gt;&gt;<i>en-
+</I>&gt;&gt;&gt;&gt;<i>GB_eo_es_et_eu_fi_fr_ga_gl_gu-IN_he_hi-IN_hr_hu_it_ja_km_kn-IN_ko_lo_lt
+</I>&gt;&gt;&gt;&gt;<i>_ms
+</I>&gt;&gt;&gt;&gt;<i>_ne_nb_nl_nn_nr_ns_pa-IN_pl_pt_pt-BR_ru_rw_sk_sl_sh-YU_sr-CS_ss_st_sv_s
+</I>&gt;&gt;&gt;&gt;<i>w-T Z_ta-IN_th_tn_tr_ts_ve_vi_xh_zh-CN_zh-TW_zu_download_inprogress':
+</I>&gt;&gt;&gt;&gt;<i>File name too long
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>	Not that I'm aware of - are you specifying all languages manually ? -
+</I>&gt;&gt;&gt;<i>possibly using 'all' or somesuch is better; no clue though - Petr can
+</I>&gt;&gt;&gt;<i>perhaps help.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I'm using         --with-lang=ALL.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Full log here:
+</I>&gt;&gt;<i><A HREF="http://ep09.pld-linux.org/~arekm/ooo-1-log.txt.bz2">http://ep09.pld-linux.org/~arekm/ooo-1-log.txt.bz2</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> I have already heard about this problem. File systems do not support file 
+</I>&gt;<i> names longer than xxx bytes (I think that xxx is 256 on many file systems). 
+</I>&gt;<i> The problem is that OOo produces one very long file name during installation 
+</I>&gt;<i> when --with-lang=ALL is used.
+</I>&gt;<i> 
+</I>&gt;<i> I did a fast look into the sources but I did not find a simple fix. I think 
+</I>&gt;<i> that there is no reason to use such a long file name for a log file and it 
+</I>&gt;<i> should be fixed.
+</I>&gt;<i> 
+</I>&gt;<i> As a workaround you can either remove some localizations from the list in 
+</I>&gt;<i> OOO_2_0_0/solenv/inc/postset.mk (it was enought to remove 2-3 localizations 
+</I>&gt;<i> three weeks ago) or you could use --with-lang=&quot;list of really required 
+</I>&gt;<i> localizations&quot;
+</I>&gt;<i> 
+</I>&gt;<i> Note that many localizations are not finished and are not useful now anyway. 
+</I>&gt;<i> We currently use:
+</I>&gt;<i> --with-lang=&quot;en-US af ar be-BY bg ca cs cy da de el en-GB es et fi fr gu-IN hu 
+</I>&gt;<i> hr it ja ko nb nl nn pa-IN pl pt pt-BR ru sk sl sv tr vi xh zh-TW zh-CN zu&quot;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+This is currently bug #54730 in <A HREF="http://www.openoffice.org/issues/show_bug.cgi?id=54730">http://www.openoffice.org/issues/show_bug.cgi?id=54730</A>
+
+I've just completed a patch which resolves it. I'll commit tomorrow in the ooo-build-2.0 patch 
+tree as well as in the 54730 bug.
+
+Bye.
+Giuseppe.
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001237.html">[Open Office] ANNOUNCE: ooo-build-2.0.0
+</A></li>
+	<LI>Next message: <A HREF="001201.html">[Open Office] problem with beanshell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1238">[ date ]</a>
+              <a href="thread.html#1238">[ thread ]</a>
+              <a href="subject.html#1238">[ subject ]</a>
+              <a href="author.html#1238">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

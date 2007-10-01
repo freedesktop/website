@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] src-pack / up-stream etc. ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20src-pack%20/%20up-stream%20etc.%20...&In-Reply-To=1132656261.6080.20.camel%40linux.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001300.html">
+   <LINK REL="Next"  HREF="001302.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] src-pack / up-stream etc. ...</H1>
+    <B>Martin Kretzschmar</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20src-pack%20/%20up-stream%20etc.%20...&In-Reply-To=1132656261.6080.20.camel%40linux.site"
+       TITLE="[Open Office] src-pack / up-stream etc. ...">m_kretzschmar at gmx.net
+       </A><BR>
+    <I>Tue Nov 22 06:43:55 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001300.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+        <LI>Next message: <A HREF="001302.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1301">[ date ]</a>
+              <a href="thread.html#1301">[ thread ]</a>
+              <a href="subject.html#1301">[ subject ]</a>
+              <a href="author.html#1301">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A few comment from a different Martin ;-)
+
+michael meeks schrieb:
+&gt;<i> 	It splits the OO.o source checkout into several pieces, with the net
+</I>&gt;<i> effect that developers typically only need to download something half
+</I>&gt;<i> the size.
+</I>&gt;<i> 
+</I>&gt;<i> 	With my latest set of tweaks we have:
+</I>&gt;<i> 
+</I>&gt;<i> 	-core:     ~114m
+</I>&gt;<i> 	-lang:      ~52m
+</I>&gt;<i> 	-sdk_oo:    ~29m
+</I>
+If you package -sdk_oo separately, odk should go into this tarball, too. 
+Only sdk_oo depends on odk.
+
+&gt;<i> 	-system:    ~22m
+</I>&gt;<i> 	-binfilter: ~18m
+</I>
+&gt;<i> 	Rene - since you're a major driver of the -system patch sets etc. it'd
+</I>&gt;<i> be great to poke at <A HREF="http://go-oo.org/ooo-build/doc/code-sizes.txt">http://go-oo.org/ooo-build/doc/code-sizes.txt</A> which
+</I>&gt;<i> shows the remaining worst-offenders.
+</I>&gt;<i> 
+</I>&gt;<i> 	boost, icu, berkeleydb, xalan, stlport
+</I>&gt;<i> 
+</I>&gt;<i> 	We should prolly work on trying to migrate them to the -system package,
+</I>&gt;<i> as/when systems are prevalant with the right versions installed on them.
+</I>&gt;<i> [ it seems not even Debian is using --system-icu or --system-boost ].
+</I>
+Debian is using system-icu (if the right version is available) and 
+system-boost. And system-db, system-hsqldb, system-xmlsec (if the right 
+version is available), system-curl, ... . And there are hacks to use 
+system stlport and system xalan.
+
+Regards,
+Martin
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001300.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+	<LI>Next message: <A HREF="001302.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1301">[ date ]</a>
+              <a href="thread.html#1301">[ thread ]</a>
+              <a href="subject.html#1301">[ subject ]</a>
+              <a href="author.html#1301">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

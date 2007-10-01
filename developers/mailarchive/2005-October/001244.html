@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] installation path
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20installation%20path&In-Reply-To=200510251733.11198.thorsten_kolb%40urz.uni-hd.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001243.html">
+   <LINK REL="Next"  HREF="001294.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] installation path</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20installation%20path&In-Reply-To=200510251733.11198.thorsten_kolb%40urz.uni-hd.de"
+       TITLE="[Open Office] installation path">pmladek at suse.cz
+       </A><BR>
+    <I>Tue Oct 25 14:12:53 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001243.html">[Open Office] installation path
+</A></li>
+        <LI>Next message: <A HREF="001294.html">[Open Office] installation path
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1244">[ date ]</a>
+              <a href="thread.html#1244">[ thread ]</a>
+              <a href="subject.html#1244">[ subject ]</a>
+              <a href="author.html#1244">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday 25 October 2005 17:33, thorsten kolb wrote:
+&gt;<i> Hallo,
+</I>&gt;<i>
+</I>&gt;<i> how can I install openoffice (builded with ooo-build-2-0) in an special
+</I>&gt;<i> path? I want to have it just in /opt/openoffice and not in an seperated lib
+</I>&gt;<i> directory!
+</I>
+We currently use the path /ust/lib/ooo-2.0 by default.
+The path is defined in ooo-build/bin/setup.in as
+OOINSTBASE=@prefix@/lib/@OOOINSTALLDIRNAME@
+
+You can change @prefix@ by the configure switch --prefix=your_prefix
+You can change @OOOINSTALLDIRNAME@ by the configure swith 
+--with-installed-ooo-dirname=your_dir_name
+
+Hmm, the right fix would be to change ooo-build/bin/setup.in to define:
+OOINSTBASE=@libdir@/@OOOINSTALLDIRNAME@
+
+Then you could define your preferred path by:
+./configure --libdir=/opt --with-installed-ooo-dirname=openoffice
+
+Could you try it and tell us if it works, please?
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001243.html">[Open Office] installation path
+</A></li>
+	<LI>Next message: <A HREF="001294.html">[Open Office] installation path
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1244">[ date ]</a>
+              <a href="thread.html#1244">[ thread ]</a>
+              <a href="subject.html#1244">[ subject ]</a>
+              <a href="author.html#1244">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

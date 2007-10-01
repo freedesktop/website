@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-2.0.0.1 on FreeBSD
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-2.0.0.1%20on%20FreeBSD&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001255.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-2.0.0.1 on FreeBSD</H1>
+    <B>NAKATA Maho</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-2.0.0.1%20on%20FreeBSD&In-Reply-To="
+       TITLE="[Open Office] ooo-build-2.0.0.1 on FreeBSD">chat95 at mac.com
+       </A><BR>
+    <I>Tue Nov  1 02:40:47 EST 2005</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001255.html">[Open Office] ooo-build-2.0.0.1 on FreeBSD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1254">[ date ]</a>
+              <a href="thread.html#1254">[ thread ]</a>
+              <a href="subject.html#1254">[ subject ]</a>
+              <a href="author.html#1254">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi list,
+I (somehow) interested in ooo-build and tried at FreeBSD.
+however, currently in vain. several fixes for me...
+
+o FreeBSD's native patch is different, and gpatch is GNU's patch
+here is dirty patch.
+--- patches/apply.pl    Tue Nov  1 00:07:02 2005
++++ patches/apply.pl    Tue Nov  1 00:07:32 2005
+@@ -473,7 +473,7 @@
+     my $ver_line;
+     my $is_old = 1;
+
+-    open ($Patch, &quot;patch --version|&quot;) || die &quot;Can't run patch: $!&quot;;
++    open ($Patch, &quot;gpatch --version|&quot;) || die &quot;Can't run patch: $!&quot;;
+     $ver_line = &lt;$Patch&gt;;
+     $ver_line =~ m/\s+(\d+)\.(\d+)\.(\d+)/ || die &quot;Can't get patch version\n&quot;;
+     if ($1 &gt;= 2 &amp;&amp; $2 &gt;= 5 &amp;&amp; $3 &gt;= 9) {
+@@ -597,7 +597,7 @@
+     $applied_patches = $dest_dir.'/applied_patches';
+
+     $opts = join ' ', @arguments;
+-    $base_cmd = &quot;patch -l -p0 $opts -d $dest_dir&quot;;
++    $base_cmd = &quot;gpatch -l -p0 $opts -d $dest_dir&quot;;
+     if (is_old_patch_version()) {
+        $base_cmd = 'sed \'s/^\(@.*\)\r$/\1/\' | ' . $base_cmd;
+     }
+
+o add definition for FreeBSD. Well it is quite same as GNU/Linux :)
+
+--- patches/OOO_2_0/apply       Wed Oct 26 01:22:45 2005
++++ patches/OOO_2_0/apply       Tue Nov  1 00:09:31 2005
+@@ -55,6 +55,8 @@
+ Gentoo64: GentooBase, 64bit
+ # Win32
+ Win32 : Win32Common, NovellOnly, NovellOnlyWin32
++# FreeBSD
++FreeBSD : LinuxCommon
+
+ # -------- [ Tag [ &gt;= &lt;tag&gt; etc. ], ] patch sets --------
+
+@@ -480,7 +482,7 @@
+ # Fix missing __cxa_guard_acquire/__cxa_guard_release - #34676 (for FC3)
+ sal-cxa-guard.diff
+ # do not pack any potential .orig files with ppds
+-psprint_config-no-orig.diff
++#psprint_config-no-orig.diff
+ # Fix ODK Java bits
+ odk-java-wizpanel.diff
+ # add possibility to set ARCH_FLAGS when building libnas
+
+o psprint_config-no-orig.diff contains ^M and doesn't apply cleanly.
+
+o build broken at binfilter project
+
+In file included from /work/ports/editors/openoffice.org-2.0/work/OOo_2.0.0rc3_src/binfilter/bf_sfx2/source/appl/sfx2_appmisc.cxx:122:
+../inc/tbxconf.hxx:55: error: `SfxSymbolSet' does not name a type
+dmake:  Error code 1, while making '../../../unxfbsd.pro/slo/sfx2_appmisc.obj'
+'---* tg_merge.mk *---'
+dmake:  Error code 255, while making 'do_it_exceptions'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making /work/ports/editors/openoffice.org-2.0/work/OOo_2.0.0rc3_src/binfilter/bf_sfx2/source/appl
+dmake:  Error code 1, while making 'build_instsetoo_native'
+'---* tg_merge.mk *---'
+*** Error code 255
+
+I think we need icons-cleanup-binfilter.diff as well(?)
+
+anyway, how do I fix it?
+-- NAKATA, Maho (<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">maho at FreeBSD.org</A>)
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001255.html">[Open Office] ooo-build-2.0.0.1 on FreeBSD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1254">[ date ]</a>
+              <a href="thread.html#1254">[ thread ]</a>
+              <a href="subject.html#1254">[ subject ]</a>
+              <a href="author.html#1254">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

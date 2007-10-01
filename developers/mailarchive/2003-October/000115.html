@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] opensymbol font nasties ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000114.html">
+   <LINK REL="Next"  HREF="000116.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] opensymbol font nasties ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] opensymbol font nasties ...">michael@ximian.com
+       </A><BR>
+    <I>Tue, 28 Oct 2003 16:56:35 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000114.html">[Open Office] Re: Patches in diff format...
+</A></li>
+        <LI> Next message: <A HREF="000116.html">[Open Office] OpenSymbol font nasties ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#115">[ date ]</a>
+              <a href="thread.html#115">[ thread ]</a>
+              <a href="subject.html#115">[ subject ]</a>
+              <a href="author.html#115">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there,
+
+	After doing some interesting debugging of the symbol mapping code in
+VCL, it seems that in the final evaluation the reason saving /
+re-loading a file in word format fails to give correctly rendered
+bullets (indeed many symbols are completely lost) is that:
+
+	vcl/source/gdi/fontcvt.cxx's aAdobeSymbolTab is mapping a load of the
+symbols (particularly bullets) into the 0xe1XX range - and a cursory
+glance in pfaedit at extras/source/truetype/symbol/opens___.ttf shows
+that these are simply missing in both HEAD and OpenOffice_1_1 branches.
+
+	Of course - with the corresponding StarSymbol font installed the
+problem disappears; this is particularly annoying, since it seems the
+characters at offset 0xe1XX are in fact simply a re-arranged version of
+a whole set of characters that already exist in both OpenSymbol and
+StarSymbol at different offsets.
+
+Q1:	Is there any reason for this duplication in the font? are there
+perhaps different metrics or somesuch ? or is this just to make the
+mapping table slightly easier to understand ?
+
+Q2:	What is the plan / strategy here ? I can spend hours cutting and
+pasting symbols around inside opens___.ttf to match a similar layout in
+the latest starsymbol font - but is this a fruitful use of my time ?
+should we instead adjust the mapping table, eg. using OpenS#2663 instead
+of StarS#e11e (eg.) or is there some more clever strategy.
+
+	Since this is a particularly nasty show-stopper bug for Ximian shipping
+our 1.1.0 based packages, I'm really interested in doing something about
+this fast - early advice would presumably save me/you a lot of time
+later.
+
+	OTOH - it's possible that I've badly misunderstood almost everything;
+fontcvt.cxx (ImplRecodeString) method is called with
+pConversion-&gt;mpCvtTab == &amp;aAdobeSymbolTab for this case where
+ImplGetRecodeData was called with 'symbol', 'opensymbol' for
+rOrgFontName, rMapFontName.
+
+	Many thanks,
+
+		Michael.
+
+On Tue, 2003-10-28 at 13:43, Caolan McNamara wrote:
+&gt;<i> &gt; &gt; Now *cough*, you should compare wrtw8num.cxx from 1.1.1 and current head
+</I>&gt;<i> &gt; &gt; and take the diff which in SubstituteBullet turns 
+</I>&gt;<i> &gt; ...
+</I>&gt;<i> &gt; &gt; +	rNumStr = cChar | 0xF000;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Adding that to your version *might* help.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 	Well ;-) it made things different, I now get nice boxes instead of
+</I>&gt;<i> &gt; characters; and indeed we're doing some re-coding action: my churning
+</I>&gt;<i> &gt; debug says fontcvt's RecodeString does: recode 0xf0b7 to 0xe12c - which
+</I>&gt;<i> &gt; is fun I suppose :-) unfortunately, that is a non-existent character in
+</I>&gt;<i> &gt; the font [ and makes little sense to me ]. Anyhow - investigations
+</I>&gt;<i> &gt; continue.
+</I>&gt;<i> 
+</I>&gt;<i> Good good, that sounds better, sounds like stuff is working as expected
+</I>&gt;<i> now. Next you should have a look at StarSymbol/OpenSymbol, my StarSymbol
+</I>&gt;<i> has a glyph at 0xE12C which is a small private unicode area bullet
+</I>&gt;<i> hauntingly similar to the bullet at 0xB7 in Symbol. Perhaps there are
+</I>&gt;<i> issues with using OpenSymbol ? Is there no 0xE12C in that font, or
+</I>&gt;<i> whatever font is actually being used to render the bullet ?, that would
+</I>&gt;<i> (to me) describe what you have at this stage.
+</I>
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000114.html">[Open Office] Re: Patches in diff format...
+</A></li>
+	<LI> Next message: <A HREF="000116.html">[Open Office] OpenSymbol font nasties ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#115">[ date ]</a>
+              <a href="thread.html#115">[ thread ]</a>
+              <a href="subject.html#115">[ subject ]</a>
+              <a href="author.html#115">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

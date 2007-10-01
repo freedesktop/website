@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] JRE register component still broken
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20component%20still%20broken&In-Reply-To=200606230919.03692.kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001870.html">
+   <LINK REL="Next"  HREF="001874.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] JRE register component still broken</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20component%20still%20broken&In-Reply-To=200606230919.03692.kendy%40suse.cz"
+       TITLE="[Open Office] JRE register component still broken">ghibo at mandriva.com
+       </A><BR>
+    <I>Fri Jun 23 11:12:45 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001870.html">[Open Office] JRE register component still broken
+</A></li>
+        <LI>Next message: <A HREF="001874.html">[Open Office] JRE register component still broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1873">[ date ]</a>
+              <a href="thread.html#1873">[ thread ]</a>
+              <a href="subject.html#1873">[ subject ]</a>
+              <a href="author.html#1873">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jan Holesovsky ha scritto:
+&gt;<i> On Friday 23 June 2006 00:12, Andreas Radke wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>For a long time the build on Arch64 - archlinux x86_64 port the build
+</I>&gt;&gt;<i>breaks like this:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>OOC680_m6
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> [...]
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i>[Java framework] The JRE specified by the bootstrap variable
+</I>&gt;&gt;<i>UNO_JAVA_JFW_JREHOME  or  UNO_JAVA_JFW_ENV_JREHOME  could not be
+</I>&gt;&gt;<i>recognized. Check the values and make sure that you use a plug-in library
+</I>&gt;&gt;<i>that can recognize that JRE.javaldx failed! register component
+</I>&gt;&gt;<i>'javaloader.uno.so' in registry '../../unxlngx6.pro/lib/uno_services.rdb'
+</I>&gt;&gt;<i>succesful! register component 'javavm.uno.so' in registry
+</I>&gt;&gt;<i>'../../unxlngx6.pro/lib/uno_services.rdb' succesful! regcomp -register  -br
+</I>&gt;&gt;<i>../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb -r
+</I>&gt;&gt;<i>../../unxlngx6.pro/lib/uno_services.rdb -c \
+</I>&gt;&gt;<i><A HREF="file:///var/abs/local/openoffice/src/ooo_OOC680_m6_src/testtools/source/bri">file:///var/abs/local/openoffice/src/ooo_OOC680_m6_src/testtools/source/bri</A>
+</I>&gt;&gt;<i>dgetest/../../unxlngx6.pro/class/testComponent.jar \       
+</I>&gt;&gt;<i>-env:URE_INTERNAL_JAVA_DIR=<A HREF="file:///var/abs/local/openoffice/src/ooo_OOC680_">file:///var/abs/local/openoffice/src/ooo_OOC680_</A>
+</I>&gt;&gt;<i>m6_src/solver/680/unxlngx6.pro/bin [Java framework] The JRE specified by the
+</I>&gt;&gt;<i>bootstrap variable UNO_JAVA_JFW_JREHOME  or  UNO_JAVA_JFW_ENV_JREHOME 
+</I>&gt;&gt;<i>could not be recognized. Check the values and make sure that you use a
+</I>&gt;&gt;<i>plug-in library that can recognize that JRE.javaldx failed! using loader
+</I>&gt;&gt;<i>com.sun.star.loader.Java2
+</I>&gt;&gt;<i>[Java framework] The JRE specified by the bootstrap variable
+</I>&gt;&gt;<i>UNO_JAVA_JFW_JREHOME  or  UNO_JAVA_JFW_ENV_JREHOME  could not be
+</I>&gt;&gt;<i>recognized. Check the values and make sure that you use a plug-in library
+</I>&gt;&gt;<i>that can recognize that JRE.register component
+</I>&gt;&gt;<i>'<A HREF="file:///var/abs/local/openoffice/src/ooo_OOC680_m6_src/testtools/source/br">file:///var/abs/local/openoffice/src/ooo_OOC680_m6_src/testtools/source/br</A>
+</I>&gt;&gt;<i>idgetest/../../unxlngx6.pro/class/testComponent.jar' in registry
+</I>&gt;&gt;<i>'../../unxlngx6.pro/lib/uno_services.rdb' failed! error (RuntimeException):
+</I>&gt;&gt;<i>[JavaVirtualMachine]:An unexpected error occurred while starting Java!
+</I>&gt;&gt;<i>dmake:  Error code 1, while making
+</I>&gt;&gt;<i>'../../unxlngx6.pro/lib/uno_services.rdb' dmake: 
+</I>&gt;&gt;<i>'../../unxlngx6.pro/lib/uno_services.rdb' removed.
+</I>&gt;&gt;<i>'---* tg_merge.mk *---'
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> This happens to me when I have both Sun &amp; gcj java installed.  What does
+</I>&gt;<i> 
+</I>&gt;<i>   java -version
+</I>&gt;<i> 
+</I>&gt;<i> say?
+</I>&gt;<i> 
+</I>&gt;<i> java version &quot;1.4.2&quot;
+</I>&gt;<i> gij (GNU libgcj) version 4.1.0 (SUSE Linux)
+</I>&gt;<i> Copyright (C) 2006 Free Software Foundation, Inc.
+</I>&gt;<i> This is free software; see the source for copying conditions.  There is NO
+</I>&gt;<i> warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+</I>&gt;<i> 
+</I>&gt;<i> is the recommended choice ;-)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i>I've trried
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>--with-java=no
+</I>&gt;&gt;<i>--with-java=gij
+</I>&gt;&gt;<i>--with-jdk-home=/opt/java /  --with-java-home=/opt/java --with-java
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>We are using gcc4.1.1/jre 1.5.0.6(7 also tested)/glibc2.4
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> So, you have the combination of Sun Java &amp; gcj/gij, right?  I'd try to 
+</I>&gt;<i> uninstall the Sun Java...
+</I>&gt;<i> 
+</I>&gt;<i> Regards,
+</I>&gt;<i> Jan
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">Openoffice at lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>
+So to resume what are the version of Java which compiles
+correctly and completely OOo 2.0.3m6 under X86-64?
+
+[ ] Sun JDK 1.4.2_12 [doesn't exists for X86-64 only for X86-32]
+[ ] Sun JDK 1.5.0_07 ?
+[ ] Sun JDK 1.6beta ?
+[ ] gcj/gij 4.0.X ?
+[ ] gcj/gij 4.1.1 ?
+[ ] other?
+
+Bye
+Giuseppe.
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001870.html">[Open Office] JRE register component still broken
+</A></li>
+	<LI>Next message: <A HREF="001874.html">[Open Office] JRE register component still broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1873">[ date ]</a>
+              <a href="thread.html#1873">[ thread ]</a>
+              <a href="subject.html#1873">[ subject ]</a>
+              <a href="author.html#1873">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

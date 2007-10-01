@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Friday
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000866.html">
+   <LINK REL="Next"  HREF="000868.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Friday
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Status Friday">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Mon, 21 Mar 2005 10:10:25 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000866.html">[Open Office] Status Wed, Thu
+</A></li>
+        <LI> Next message: <A HREF="000868.html">[Open Office] Status Monday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#867">[ date ]</a>
+              <a href="thread.html#867">[ thread ]</a>
+              <a href="subject.html#867">[ subject ]</a>
+              <a href="author.html#867">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+On Friday I installed a new mono snapshot. Had to change some extern
+(P/Invoke) function declarations because of some new runtime checks in
+mono.
+
+Then rewrote the wrapper for rtl_uStrings to be more consistent with the
+other wrappers for uno structs. Fixed all the string leaks in functions
+where the cli_uno bridge relied on automatic destruction of C++
+OUStrings which I had ported to simple rtl_uStrings.
+
+Regards,
+
+Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000866.html">[Open Office] Status Wed, Thu
+</A></li>
+	<LI> Next message: <A HREF="000868.html">[Open Office] Status Monday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#867">[ date ]</a>
+              <a href="thread.html#867">[ thread ]</a>
+              <a href="subject.html#867">[ subject ]</a>
+              <a href="author.html#867">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

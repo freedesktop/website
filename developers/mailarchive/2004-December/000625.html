@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Ximian's 1.3.7 GCC 3.4 patches - update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000624.html">
+   <LINK REL="Next"  HREF="000628.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Ximian's 1.3.7 GCC 3.4 patches - update
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: Ximian's 1.3.7 GCC 3.4 patches - update">michael@ximian.com
+       </A><BR>
+    <I>Thu, 09 Dec 2004 11:58:13 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000624.html">[Open Office] ooo-build-1.3.7: build error in vcl/util
+</A></li>
+        <LI> Next message: <A HREF="000628.html">[Open Office] Re: Ximian's 1.3.7 GCC 3.4 patches - update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#625">[ date ]</a>
+              <a href="thread.html#625">[ thread ]</a>
+              <a href="subject.html#625">[ subject ]</a>
+              <a href="author.html#625">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Hanno,
+
+On Thu, 2004-12-02 at 17:16 +0100, Hanno Meyer-Thurow wrote:
+&gt;<i> the diff for psprint/source/helper/ppdparser.cxx from gcc34-main.diff
+</I>&gt;<i> has to be dropped. Update diff attached.
+</I>
+	So - I don't have that in my 1.3.7 - and it's not in ooo-build-1-3 I
+think Bero killed it.
+
+	Is there any chance you can test vs. the latest ooo-build-1-3 branch ?
+then we can go around this loop more rapidly &amp; reliably &amp; get that
+working really nicely for you.
+
+&gt;<i> Please apply the gcc34 main diff always.
+</I>&gt;<i> The gcc34 nptl diff only if the system uses a NPTL'ed glibc.
+</I>
+	So - that needs to be detected somehow at runtime I think; although, I
+guess recent systems without NPTL are pretty rare these days I think.
+
+&gt;<i> Is there anyone responsible for JAVA stuff in Ximian's OOo? With
+</I>&gt;<i> configure switch '--enable-java' it breaks in psprint. Or is
+</I>&gt;<i> that known/wanted... ?
+</I>
+	Um; no idea - mostly we build without Java stuff until we release it,
+but we've not been doing releases from the ooo-build-1-3 branch in
+recent months.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000624.html">[Open Office] ooo-build-1.3.7: build error in vcl/util
+</A></li>
+	<LI> Next message: <A HREF="000628.html">[Open Office] Re: Ximian's 1.3.7 GCC 3.4 patches - update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#625">[ date ]</a>
+              <a href="thread.html#625">[ thread ]</a>
+              <a href="subject.html#625">[ subject ]</a>
+              <a href="author.html#625">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] kdefilepicker sigpipe in oob680-m5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20kdefilepicker%20sigpipe%20in%20oob680-m5&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001657.html">
+   <LINK REL="Next"  HREF="001659.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] kdefilepicker sigpipe in oob680-m5</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20kdefilepicker%20sigpipe%20in%20oob680-m5&In-Reply-To="
+       TITLE="[Open Office] kdefilepicker sigpipe in oob680-m5">ghibo at mandriva.com
+       </A><BR>
+    <I>Wed Mar  1 07:16:39 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001657.html">[Open Office] Warm Startup Time of 2. oob680-m5
+</A></li>
+        <LI>Next message: <A HREF="001659.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1658">[ date ]</a>
+              <a href="thread.html#1658">[ thread ]</a>
+              <a href="subject.html#1658">[ subject ]</a>
+              <a href="author.html#1658">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I tried to build oob680-m4 and m5 using 20060127 ooo-build cvs,
+but the resulting binaries have problem with the KDE
+filepicker (note that this is not yet related to the problems
+with accented character in filenames):
+
+As soon as I try to open a document, the filepicker opens correctly
+(but it doesn't arrive to load the document) but then hangs just after, and then 
+it will result in a process:
+
+ghibo    18513 18502  0 12:54 pts/6    00:00:00 [kdefilepicker] &lt;defunct&gt;
+
+which means that problably its parent has been ended (note that I don't
+get segfaults or coredumpts). The same problem doesn't happen
+under GNOME filepicker (forcing OOO_FORCE_DESKTOP=gnome) or
+standard OOo dialogs. Running soffice.bin under gdb it
+ends with &quot;Program received signal SIGPIPE, Broken pipe.&quot;
+(I wasn't able to get the backtrace).
+
+What is also strange is that if I open one KDE file
+requester with CTRL-O and then without selecting any file,
+I press again CTRL-O several times, it opens another KDE file requester
+and another and another and so on.
+
+Any hints? Jan?
+
+Thanks
+Bye
+Giuseppe.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001657.html">[Open Office] Warm Startup Time of 2. oob680-m5
+</A></li>
+	<LI>Next message: <A HREF="001659.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1658">[ date ]</a>
+              <a href="thread.html#1658">[ thread ]</a>
+              <a href="subject.html#1658">[ subject ]</a>
+              <a href="author.html#1658">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

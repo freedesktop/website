@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] JRE register component still broken
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20component%20still%20broken&In-Reply-To=20060624010758.GB14816%40amarooas.com.au">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001886.html">
+   <LINK REL="Next"  HREF="001889.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] JRE register component still broken</H1>
+    <B>Andreas Radke</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20component%20still%20broken&In-Reply-To=20060624010758.GB14816%40amarooas.com.au"
+       TITLE="[Open Office] JRE register component still broken">a.radke at arcor.de
+       </A><BR>
+    <I>Sat Jun 24 02:35:26 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001886.html">[Open Office] JRE register component still broken
+</A></li>
+        <LI>Next message: <A HREF="001889.html">[Open Office] JRE register component still broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1887">[ date ]</a>
+              <a href="thread.html#1887">[ thread ]</a>
+              <a href="subject.html#1887">[ subject ]</a>
+              <a href="author.html#1887">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Again: I'm the maintainer of Arch64 - the archlinux x86_64 port.
+
+[<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">andyrtr at workstation64</A> javatest]$ gcj -v
+Es werden eingebaute Spezifikationen verwendet.
+Lesen der Spezifikationen
+von /usr/lib/gcc/x86_64-unknown-linux-gnu/4.1.1/../../../libgcj.spec
+Spezifikation wird von lib nach liborig umbenannt Ziel:
+x86_64-unknown-linux-gnu Konfiguriert mit: ../gcc-4.1.1/configure
+--prefix=/usr --enable-shared --enable-languages=java
+--enable-threads=posix --enable-__cxa_atexit --enable-java-awt=gtk
+--libdir=/usr/lib --disable-multilib Thread-Modell: posix gcc-Version
+4.1.1
+
+[<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">andyrtr at workstation64</A> javatest]$ gij -version
+java version &quot;1.4.2&quot;
+gij (GNU libgcj) version 4.1.1
+
+Copyright (C) 2006 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is
+NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE. [<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">andyrtr at workstation64</A> javatest]$
+
+
+
+Am Sat, 24 Jun 2006 11:07:58 +1000
+schrieb jim &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">jim at amarooas.com.au</A>&gt;:
+
+&gt;<i> On Fri, Jun 23, 2006 at 07:44:48PM +0200, Andreas Radke wrote:
+</I>&gt;<i> &gt; when i remove j2re and j2sdk from the system &quot;javadoc&quot; from j2sdk is
+</I>&gt;<i> &gt; missing:
+</I>&gt;<i> 
+</I>&gt;<i> It may be enough for you to make a symbolic link such that 
+</I>&gt;<i> 
+</I>&gt;<i> javadoc -&gt; /usr/bin/gjdoc
+</I>&gt;<i> 
+</I>&gt;<i> If you use java-gcj-compat as suggested by VMiklos, it does almost
+</I>&gt;<i> the same thing: /usr/bin/javadoc -&gt; /etc/alternatives/javadoc
+</I>&gt;<i> /etc/alternatives/javadoc -&gt; /usr/bin/gjdoc
+</I>
+We still have no such packages. We only have the included the wrapper
+from Debian. Shouldn't it be possible to build without those extra
+packages? I haven't seen any other package that needs such
+compatibility stuff.
+
+&gt;<i> 
+</I>&gt;<i> &gt; It's strange that you recommend to remove sun java. apache-ant
+</I>&gt;<i> &gt; depends on it. So I see no way to build it without j2re/j2sdk
+</I>&gt;<i> &gt; packages.
+</I>&gt;<i> 
+</I>&gt;<i> It must be possible because I build vanilla OOo on GNU/Linux SPARC
+</I>&gt;<i> with apache-ant-1.6.5 using only gcc/gcj which is built from vanilla
+</I>&gt;<i> gcc sources at gcc.gnu.org. This needs the patches in
+</I>&gt;<i> cws_src680_maho1 to remove some hard-coded java commands.
+</I>
+Our apache-ant is built with j2sdk.
+
+&gt;<i> &gt; class GetJVMInfo
+</I>&gt;<i> &gt; {
+</I>&gt;<i> &gt;   public static void main(String [] args)
+</I>&gt;<i> &gt;    {
+</I>&gt;<i> &gt;     System.out.println(&quot;java.version=
+</I>&gt;<i> &gt; &quot;+System.getProperty(&quot;java.version&quot;));
+</I>&gt;<i> &gt; System.out.println(&quot;java.vendor=
+</I>&gt;<i> &gt; &quot;+System.getProperty(&quot;java.vendor&quot;));
+</I>&gt;<i> &gt; System.out.println(&quot;java.home=
+</I>&gt;<i> &gt; &quot;+System.getProperty(&quot;java.home&quot;)); } }
+</I>&gt;<i> &gt; 
+</I>
+[<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">andyrtr at workstation64</A> javatest]$ gij GetJVMInfo.
+Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: GetJVMInfo.
+   at gnu.java.lang.MainThread.run(libgcj.so.7)
+Caused by: java.lang.ClassNotFoundException: GetJVMInfo.
+   at java.lang.Class.forName(libgcj.so.7)
+   at gnu.java.lang.MainThread.run(libgcj.so.7)
+[<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">andyrtr at workstation64</A> javatest]$
+
+Bad. Isn't it?
+
+Andy
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001886.html">[Open Office] JRE register component still broken
+</A></li>
+	<LI>Next message: <A HREF="001889.html">[Open Office] JRE register component still broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1887">[ date ]</a>
+              <a href="thread.html#1887">[ thread ]</a>
+              <a href="subject.html#1887">[ subject ]</a>
+              <a href="author.html#1887">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

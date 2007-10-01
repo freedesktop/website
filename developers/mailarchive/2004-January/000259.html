@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Can't compile salgdi3.cxx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:khirano%40transwift.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000258.html">
+   <LINK REL="Next"  HREF="000260.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Can't compile salgdi3.cxx
+   </H1>
+    <B>Hirano Kazunari
+    </B> 
+    <A HREF="mailto:khirano%40transwift.net"
+       TITLE="[Open Office] Can't compile salgdi3.cxx">khirano@transwift.net
+       </A><BR>
+    <I>Sun, 25 Jan 2004 22:25:14 +0900</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000258.html">[Open Office] ANNOUNCE: ooo-build-1.1.50
+</A></li>
+        <LI> Next message: <A HREF="000260.html">[Open Office] Can't compile salgdi3.cxx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Using the recent ooo-build I could build up OOO_1_1_0 with &quot;configure 
+--with-distro=RHFedoraOnly&quot; but its menu icons have got some color trouble.
+Now I am building it with &quot;configure --with-distro=RHFedora&quot; and 
+stopping at salgdi3.cxx.
+
+Making: ../../../unxlngi4.pro/slo/salgdi3.obj
+ccache g++ -fmessage-length=0 -c -I.  -I. -I../inc -I../../../inc 
+-I../../../unx/inc -I../../../unxlngi4.pro/inc -I. 
+-I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solver/645/unxlngi4.pro/inc/stl 
+-I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solver/645/unxlngi4.pro/inc/external 
+-I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solver/645/unxlngi4.pro/inc 
+-I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solenv/unxlngi4/inc 
+-I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solenv/inc 
+-I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/res 
+-I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solver/645/unxlngi4.pro/inc/stl 
+-I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solenv/inc/Xp31 
+-I/home/khirano/j2sdk_nb/j2sdk1.4.2/include 
+-I/home/khirano/j2sdk_nb/j2sdk1.4.2/include/linux 
+-I/home/khirano/j2sdk_nb/j2sdk1.4.2/include/native_threads/include 
+-I/usr/X11R6/include     -I. -I../../../res -I. -O1   -pipe 
+-mcpu=pentiumpro -fno-for-scope -fpermissive -fno-rtti -include 
+preinclude.h -fno-exceptions   -fpic -DLINUX -DUNX -DVCL -DGCC -DC300 
+-DINTEL -DCVER=C300 -D_USE_NAMESPACE -DGLIBC=2 -DX86 -D_PTHREADS 
+-D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1 -DSTLPORT_VERSION=400 
+-D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DSUPD=645 -DPRODUCT -DNDEBUG 
+-DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DEXCEPTIONS_OFF -DCUI 
+-DSOLAR_JAVA -DSRX645 -DUSE_BUILTIN_RASTERIZER -DENABLE_CTL -DSHAREDLIB 
+-D_DLL_  -DMULTITHREAD   -o ../../../unxlngi4.pro/slo/salgdi3.o 
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/salgdi3.cxx
+In file included from gcach_xpeer.hxx:65,
+                 from 
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/salgdi3.cxx:80:
+../../../inc/glyphcache.hxx:95: 警告: specializing `struct 
+_STL::hash&lt;ImplFontSelectData&gt;' in different namespace
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solver/645/unxlngi4.pro/inc/stl/stl/_hash_fun.h:40: 
+警告:   from definition of `template&lt;class _Key&gt; struct _STL::hash'
+../../../inc/glyphcache.hxx:121: 警告: friend declaration requires 
+class-key, i.e. `friend struct ServerFont'
+../../../inc/glyphcache.hxx:241: 警告: friend declaration requires 
+class-key, i.e. `friend class GlyphCache'
+../../../inc/glyphcache.hxx:242: 警告: friend declaration requires 
+class-key, i.e. `friend struct ServerFontLayout'
+In file included from ../../../inc/outdev.hxx:429,
+                 from ../../../inc/salgdi.hxx:82,
+                 from 
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/salgdi3.cxx:96:
+../../../inc/outdev.imp:64: 警告: class `OutputDevice' is implicitly 
+friends with itself
+../../../inc/outdev.imp:65: 警告: `VirtualDevice' is already a friend of 
+`OutputDevice'
+../../../inc/outdev.imp:73: 警告: `vcl::PDFWriterImpl' is already a 
+friend of `OutputDevice'
+In file included from 
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/salgdi3.cxx:145:
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/xlfd_extd.hxx:96: 
+警告: friend declaration requires class-key, i.e. `friend struct 
+VirtualXlfd'
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/xlfd_extd.hxx:97: 
+警告: friend declaration requires class-key, i.e. `friend struct 
+XlfdStorage'
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/salgdi3.cxx: 
+member function 内の `void SalGraphicsData::DrawServerAAFontString(const 
+ServerFontLayout&amp;)':
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/salgdi3.cxx:891: 
+警告: initialization to non-pointer type `Picture' from NULL
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/salgdi3.cxx:891: 
+警告: argument to non-pointer type `long unsigned int' from NULL
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/salgdi3.cxx: 
+member function 内の `void SalGraphics::GetDevFontSubstList(OutputDevice*)':
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/salgdi3.cxx:1844: 
+error: 文法エラー before `&amp;' token
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/salgdi3.cxx:1845: 
+error: `rInfo' undeclared (first use this function)
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/salgdi3.cxx:1845: 
+error: (Each undeclared identifier is reported only once for each 
+function it appears in.)
+dmake:  Error code 1, while making '../../../unxlngi4.pro/slo/salgdi3.obj'
+---* TG_SLO.MK *---
+ 
+ERROR: Error 65280 occurred while making 
+/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi
+dmake:  Error code 1, while making 'build_all'
+---* TG_SLO.MK *---
+[<A HREF="mailto:khirano@localhost">khirano@localhost</A> OOO_1_1_0]$
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000258.html">[Open Office] ANNOUNCE: ooo-build-1.1.50
+</A></li>
+	<LI> Next message: <A HREF="000260.html">[Open Office] Can't compile salgdi3.cxx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

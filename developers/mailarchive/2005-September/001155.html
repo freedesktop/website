@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OO2 Build Failure
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20OO2%20Build%20Failure&In-Reply-To=43321ED6.1080908%40linspireinc.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001154.html">
+   <LINK REL="Next"  HREF="001157.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OO2 Build Failure</H1>
+    <B>Jayant B M</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20OO2%20Build%20Failure&In-Reply-To=43321ED6.1080908%40linspireinc.com"
+       TITLE="[Open Office] OO2 Build Failure">mjayant at novell.com
+       </A><BR>
+    <I>Thu Sep 22 00:48:20 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001154.html">[Open Office] OO2 Build Failure
+</A></li>
+        <LI>Next message: <A HREF="001157.html">[Open Office] OO2 Build Failure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1155">[ date ]</a>
+              <a href="thread.html#1155">[ thread ]</a>
+              <a href="subject.html#1155">[ subject ]</a>
+              <a href="author.html#1155">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Brian,
+
+Great job :)
+Java 1.5 introduces second constructor ;)
+have a look
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/security/CodeSource.html">http://java.sun.com/j2se/1.5.0/docs/api/java/security/CodeSource.html</A>
+
+Since the second parameter is not used but still for the oldtimes sake
+(Java 1.4.x days) and safety, you can typecast the second parameter to 
+&quot;Certificate[] &quot;
+
+Regards,
+Jayant M
+
+On Wed, 2005-09-21 at 20:02 -0700, Brian Thomason wrote:
+&gt;<i> Hey guys,
+</I>&gt;<i> 
+</I>&gt;<i> I'm attempting to adapt the Debian/Ubuntu packages to our Linspire 
+</I>&gt;<i> build, but am building it with a non-free java instead. (j2sdk1.5 from sun)
+</I>&gt;<i> 
+</I>&gt;<i> However, Rhino (I'm not even entirely sure what that is) is failing to 
+</I>&gt;<i> build.  I have attached the error, which appears easily fixed by someone 
+</I>&gt;<i> who actually knows what they're doing with Java/OO2 (certainly not myself).
+</I>&gt;<i> 
+</I>&gt;<i> Thanks guys,
+</I>&gt;<i> 
+</I>&gt;<i> Brian
+</I>&gt;<i> plain text document attachment (oo2build.log)
+</I>&gt;<i> compile:
+</I>&gt;<i>     [javac] Compiling 3 source files to /builds/openoffice2/openoffice.org2-1.9.125/ooo-build/build/src680-m125/rhino/unxlngi4.pro/misc/build/rhino1_5R4/build/classes
+</I>&gt;<i>     [javac] /builds/openoffice2/openoffice.org2-1.9.125/ooo-build/build/src680-m125/rhino/unxlngi4.pro/misc/build/rhino1_5R4/toolsrc/org/mozilla/javascript/tools/shell/JavaPolicySecurity.java:127: reference to CodeSource is ambiguous, both method CodeSource(java.net.URL,java.security.cert.Certificate[]) in java.security.CodeSource and method CodeSource(java.net.URL,java.security.CodeSigner[]) in java.security.CodeSource match
+</I>&gt;<i>     [javac]         new java.security.CodeSource(null, null);
+</I>&gt;<i>     [javac]         ^
+</I>&gt;<i>     [javac] /builds/openoffice2/openoffice.org2-1.9.125/ooo-build/build/src680-m125/rhino/unxlngi4.pro/misc/build/rhino1_5R4/toolsrc/org/mozilla/javascript/tools/shell/JavaPolicySecurity.java:170: reference to CodeSource is ambiguous, both method CodeSource(java.net.URL,java.security.cert.Certificate[]) in java.security.CodeSource and method CodeSource(java.net.URL,java.security.CodeSigner[]) in java.security.CodeSource match
+</I>&gt;<i>     [javac]         CodeSource cs = new java.security.CodeSource(url, null);
+</I>&gt;<i>     [javac]                         ^
+</I>&gt;<i>     [javac] Note: Some input files use unchecked or unsafe operations.
+</I>&gt;<i>     [javac] Note: Recompile with -Xlint:unchecked for details.
+</I>&gt;<i>     [javac] 2 errors
+</I>&gt;<i> 
+</I>&gt;<i> BUILD FAILED
+</I>&gt;<i> /builds/openoffice2/openoffice.org2-1.9.125/ooo-build/build/src680-m125/rhino/unxlngi4.pro/misc/build/rhino1_5R4/build.xml:57: The following error occurred while executing this line:
+</I>&gt;<i> /builds/openoffice2/openoffice.org2-1.9.125/ooo-build/build/src680-m125/rhino/unxlngi4.pro/misc/build/rhino1_5R4/toolsrc/build.xml:68: Compile failed; see the compiler error output for details.
+</I>&gt;<i> 
+</I>&gt;<i> Total time: 9 seconds
+</I>
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001154.html">[Open Office] OO2 Build Failure
+</A></li>
+	<LI>Next message: <A HREF="001157.html">[Open Office] OO2 Build Failure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1155">[ date ]</a>
+              <a href="thread.html#1155">[ thread ]</a>
+              <a href="subject.html#1155">[ subject ]</a>
+              <a href="author.html#1155">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

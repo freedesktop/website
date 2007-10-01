@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] missing sdk_oo.zip
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20missing%20sdk_oo.zip&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001531.html">
+   <LINK REL="Next"  HREF="001536.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] missing sdk_oo.zip</H1>
+    <B>Jan Uhlir</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20missing%20sdk_oo.zip&In-Reply-To="
+       TITLE="[Open Office] missing sdk_oo.zip">espinosa_cz at centrum.cz
+       </A><BR>
+    <I>Thu Jan 26 19:18:57 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001531.html">[Open Office] Templates
+</A></li>
+        <LI>Next message: <A HREF="001536.html">[Open Office] missing sdk_oo.zip
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1532">[ date ]</a>
+              <a href="thread.html#1532">[ thread ]</a>
+              <a href="subject.html#1532">[ subject ]</a>
+              <a href="author.html#1532">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Missing sdk_oo.zip (and other files) when building instsetoo_native. This seems to be solved m140, 
+<A HREF="http://www.openoffice.org/issues/show_bug.cgi?id=57713">http://www.openoffice.org/issues/show_bug.cgi?id=57713</A>
+we have now m150 and this problem seems to be still present.
+
+It's not a show-stopper, instalable RPM were created for me, I'm simply curious. Enyone else had this build problem?
+
+Strange, I even use '--disable-odk' configuration option but it still tries to build SDK! Why?
+SDK != ODK?
+
+My full configure command:
+./configure --with-lang=en-US --with-dict=ENUS,ENGB,CSCZ --enable-libart --enable-crashdump=no --enable-fontconfig --without-fonts --with-system-curl --with-system-zlib --with-system-freetype --with-system-xrender  --enable-mozilla --enable-gtk  --enable-kde --with-jdk-home=${JAVA_HOME} --with-ant-home=${ANT_HOME} --with-gcc-speedup=ccache --disable-odk --disable-fontooo --disable-qadevooo --enable-xsltproc --with-system-python --with-system-mozilla  --with-system-libxslt --with-package-format='rpm' --with-gcc-speedup=ccache --with-internal-gcc --enable-cairo --enable-epm 
+
+Error log:
+
+
+***********************************************************
+Successful packaging process!
+***********************************************************
+... creating log file log_SRC680__en-US.log
+Thu Jan 26 04:16:24 2006 (06:14 min.)
+/usr/bin/perl -w /home/espinosa/src/edge/ooo-build-src680.150.1/build/src680-m150/solenv/bin/make_installer.pl -f ../util/openoffice.lst -l  en-US -p OpenOffice_SDK -packagelist ../inc_sdkoo/unix/packagelist.txt -u ../unxlngi6.pro -buildid 8995 -msitemplate ../unxlngi6.pro/misc/sdkoo/msi_templates -msilanguage ../unxlngi6.pro/misc/win_ulffiles  -dontstrip -format rpm
+... checking environment variables ...
+
+########################################################
+make_installer.pl, version 1.0
+Product list file: ../util/openoffice.lst
+Taking setup script from solver
+Unpackpath: /home/espinosa/src/edge/ooo-build-src680.150.1/build/src680-m150/instsetoo_native/util/../unxlngi6.pro
+Compiler: unxlngi6
+Product: OpenOffice_SDK
+BuildID: 8995
+Build: SRC680
+No minor set
+Product version
+Using default installpath
+Package format: rpm
+Package list file: ../inc_sdkoo/unix/packagelist.txt
+msi templatepath: /home/espinosa/src/edge/ooo-build-src680.150.1/build/src680-m150/instsetoo_native/util/../unxlngi6.pro/misc/sdkoo/msi_templates
+msi template path will be ignored for non Windows builds!
+msi languagepath: /home/espinosa/src/edge/ooo-build-src680.150.1/build/src680-m150/instsetoo_native/util/../unxlngi6.pro/misc/win_ulffiles
+msi language path will be ignored for non Windows builds!
+Calling epm
+No file stripping
+Unzip ARCHIVE files
+services.rdb can be created
+Languages:
+        en-US
+########################################################
+... checking required files ...
+...... searching zip ...
+        Found: /usr/bin/zip
+...... searching unzip ...
+        Found: /usr/bin/unzip
+... analyzing ../util/openoffice.lst ...
+... analyzing script: /home/espinosa/src/edge/ooo-build-src680.150.1/build/src680-m150/solver/680/unxlngi6.pro/bin/sdkoo.ins ...
+... analyzing directories ...
+... analyzing files ...
+... analyzing scpactions ...
+... analyzing shortcuts ...
+... analyzing profile ...
+... analyzing profileitems ...
+... analyzing modules ...
+------------------------------------
+... languages en-US ...
+
+**************************************************
+ERROR: ERROR: Missing files
+in function: remove_Files_Without_Sourcedirectory
+**************************************************
+
+**************************************************
+ERROR: Saved logfile: /home/espinosa/src/edge/ooo-build-src680.150.1/build/src680-m150/instsetoo_native/unxlngi6.pro/OpenOffice_SDK/rpm/logging/en-US/log_SRC680__en-US.log
+**************************************************
+... analyzing files ...
+ERROR: The following files could not be found:
+ERROR: File not found: sdk_oo.zip
+ERROR: File not found: odkexamples.zip
+ERROR: File not found: odkidl.zip
+ERROR: File not found: odkcommon.zip
+... cleaning the output tree ...
+Thu Jan 26 04:16:29 2006 (00:01 min.)
+dmake:  Error code 255, while making 'sdkoo_en-US.rpm'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making /home/espinosa/src/edge/ooo-build-src680.150.1/build/src680-m150/instsetoo_native/util
+make: *** [stamp/build] Error 1
+
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001531.html">[Open Office] Templates
+</A></li>
+	<LI>Next message: <A HREF="001536.html">[Open Office] missing sdk_oo.zip
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1532">[ date ]</a>
+              <a href="thread.html#1532">[ thread ]</a>
+              <a href="subject.html#1532">[ subject ]</a>
+              <a href="author.html#1532">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

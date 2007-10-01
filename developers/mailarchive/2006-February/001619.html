@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Internal quickstarter - ooqstart - question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter%20-%20ooqstart%20-%20question&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001618.html">
+   <LINK REL="Next"  HREF="001627.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Internal quickstarter - ooqstart - question</H1>
+    <B>Jan Uhlir</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter%20-%20ooqstart%20-%20question&In-Reply-To="
+       TITLE="[Open Office] Internal quickstarter - ooqstart - question">espinosa_cz at centrum.cz
+       </A><BR>
+    <I>Sun Feb 19 09:48:13 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001618.html">[Open Office] Internal quickstarter &amp;#8211; ooqstart &amp;#8211;
+	question
+</A></li>
+        <LI>Next message: <A HREF="001627.html">[Open Office] Internal quickstarter - ooqstart - question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1619">[ date ]</a>
+              <a href="thread.html#1619">[ thread ]</a>
+              <a href="subject.html#1619">[ subject ]</a>
+              <a href="author.html#1619">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I build openoffice.org m151 with 
+--enable-quickstarter --enable-gtk --enable-kde
+
+I can see  option 'Load OpenOffice.org during system startup' in 'Options - OpenOffice.org - Memory'
+but the selection is not stored for a common user. When Options dialog is opened again, checker is 
+gone, not selected again. For root it is possible to store it, but has no obvious effect, OOo is not 
+started as  'ps ax' revealed.
+
+I discovered in programs dir ooqstart executable and library libqstart_gtk680li.so
+There is even  ooqstart desktop file! But when I tried to launch  ooqstart manually:
+# ooqstart
+
+** ERROR **: Missing default argument in OOO_EXTRA_ARG
+aborting...
+Aborted
+
+
+I had some positive experience with quicksater in milestone 143 it speed up start significantly, but 
+for m151 am currently testing seems to be broken.
+
+I have not found virtually any closer documentation about this interesting feature, under which 
+conditions is expected to work or how to launch it manually. I'm running KDE on my desktop and 
+SAL_USE_VCLPLUGIN=gen, can I still benefit from  GTK based quick starter?
+How this 'load during system startup' functionality is technically done?
+Should I put 'ooqstart.desktop' to '~/.kde/Autostart'?
+Should I trigger ooffice with some argument to make it aware of already running qstarted OOo?
+
+There is also external project oooqs2 - <A HREF="http://segfaultskde.berlios.de/index.php?content=oooqs2">http://segfaultskde.berlios.de/index.php?content=oooqs2</A>
+Are you aware of this project?
+
+So there is the internal quickstarter (ooqstart) - GTK based - and the external quickstarter oooqs2 - KDE 
+based. I suppose the internal one would be more efficient then the external one. Am I right?
+
+The runtime option -quickstart is said to be unsupported for OOo2. Is that true for ooo-build patched 
+releases too?
+
+Can some clear this issue for me and others curious users? 
+Many Thanks
+Espinosa
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001618.html">[Open Office] Internal quickstarter &amp;#8211; ooqstart &amp;#8211;
+	question
+</A></li>
+	<LI>Next message: <A HREF="001627.html">[Open Office] Internal quickstarter - ooqstart - question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1619">[ date ]</a>
+              <a href="thread.html#1619">[ thread ]</a>
+              <a href="subject.html#1619">[ subject ]</a>
+              <a href="author.html#1619">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

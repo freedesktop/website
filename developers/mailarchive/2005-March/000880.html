@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Error compiling
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:oskar_santillana%40yahoo.es">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000879.html">
+   <LINK REL="Next"  HREF="000881.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Error compiling
+   </H1>
+    <B>Oscar Santillana Ortega
+    </B> 
+    <A HREF="mailto:oskar_santillana%40yahoo.es"
+       TITLE="[Open Office] Error compiling">oskar_santillana@yahoo.es
+       </A><BR>
+    <I>Wed, 30 Mar 2005 10:22:11 +0200 (CEST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000879.html">[Open Office] Status Thursday, Tuesday
+</A></li>
+        <LI> Next message: <A HREF="000881.html">[Open Office] Error compiling
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#880">[ date ]</a>
+              <a href="thread.html#880">[ thread ]</a>
+              <a href="subject.html#880">[ subject ]</a>
+              <a href="author.html#880">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm trying to compile the version of openoffice ximian
+1.3.7 in VLOS 1.1 but I've got the following error
+after a long build:
+
+Making Imagelists:
+-----------------
+bmp ../../unxlngi4.pro/srs/appl.srs
+../../unxlngi4.pro/res/49 deut 49 -I ../../win/res -I
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/res
+-f ../../unxlngi4.pro/misc/appl_img49.don
+CREATING ImageList for language: deut [
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/sfx2/win/res;
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/res;
+ ]
+Successfully generated ImageList
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/sfx2/unxlngi4.pro/res/49/sc_out.bmp
+
+CREATING ImageList for language: deut [
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/sfx2/win/res;
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/res;
+ ]
+ERROR: Different dimensions in file: lc06309.bmp
+ERROR: Different dimensions in file: lc06308.bmp
+ERROR: Different dimensions in file: lc06304.bmp
+ERROR: Different dimensions in file: lc06331.bmp
+ERROR: Different dimensions in file: lc06332.bmp
+ERROR: Different dimensions in file: lc06333.bmp
+ERROR: Different dimensions in file: lc06334.bmp
+ERROR: Different dimensions in file: lc06335.bmp
+ERROR: Different dimensions in file: lc06336.bmp
+ERROR: Different dimensions in file: lc06337.bmp
+ERROR: Different dimensions in file: lc06338.bmp
+ERROR: Different dimensions in file: lc06350.bmp
+ERROR: Different dimensions in file: lc06351.bmp
+ERROR: Different dimensions in file: lc06352.bmp
+ERROR: Different dimensions in file: lc06353.bmp
+ERROR: Different dimensions in file: lc06354.bmp
+ERROR: Different dimensions in file: lc05646.bmp
+ERROR: Different dimensions in file: lc05647.bmp
+ERROR: Different dimensions in file: lc05648.bmp
+ERROR: Different dimensions in file: lc05649.bmp
+ERROR: Different dimensions in file: lc05650.bmp
+ERROR: Different dimensions in file: lc05651.bmp
+ERROR: Different dimensions in file: lc06355.bmp
+ERROR: Different dimensions in file: lc06356.bmp
+ERROR: Different dimensions in file: lc06357.bmp
+Successfully generated ImageList
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/sfx2/unxlngi4.pro/res/49/lc_out.bmp
+
+
+(bug-buddy:27931): Gtk-WARNING **: cannot open
+display:
+
+
+Fatal exception: Signal 6
+Stack:
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solver/645/unxlngi4.pro/lib/libsal.so.3[0xa7abbad9]
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solver/645/unxlngi4.pro/lib/libsal.so.3[0xa7abbc65]
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solver/645/unxlngi4.pro/lib/libsal.so.3[0xa7abbcf8]
+[0xffffe420]
+bmp(_ZN6BmpApp5StartERKN4_STL6vectorI6StringNS0_9allocatorIS2_EEEE+0x23c)[0x804b60c]
+bmp(main+0xe2)[0x804b7f2]
+/lib/libc.so.6(__libc_start_main+0xee)[0xa77c2f6e]
+bmp(__gxx_personality_v0+0x271)[0x804ab61]
+Abort
+dmake:  Error code 134, while making
+'../../unxlngi4.pro/misc/appl_img49.don'
+---* TG_SLO.MK *---
+
+ERROR: Error 65280 occurred while making
+/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/sfx2/source/appl
+
+
+Has anyone any idea?
+
+Thanks in advance
+
+Oscar
+
+
+		
+______________________________________________ 
+Renovamos el Correo Yahoo!: ¡250 MB GRATIS! 
+Nuevos servicios, más seguridad 
+<A HREF="http://correo.yahoo.es">http://correo.yahoo.es</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000879.html">[Open Office] Status Thursday, Tuesday
+</A></li>
+	<LI> Next message: <A HREF="000881.html">[Open Office] Error compiling
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#880">[ date ]</a>
+              <a href="thread.html#880">[ thread ]</a>
+              <a href="subject.html#880">[ subject ]</a>
+              <a href="author.html#880">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

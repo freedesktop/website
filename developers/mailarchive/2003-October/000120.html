@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Make OpenOffice.org without JDK on own child
+ workspace
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000119.html">
+   <LINK REL="Next"  HREF="000121.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Make OpenOffice.org without JDK on own child
+ workspace
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] Re: Make OpenOffice.org without JDK on own child
+ workspace">halls@debian.org
+       </A><BR>
+    <I>Thu, 30 Oct 2003 17:38:39 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000119.html">[Open Office] Re: Make OpenOffice.org without JDK on own child
+ workspace
+</A></li>
+        <LI> Next message: <A HREF="000121.html">[Open Office] Re: Make OpenOffice.org without JDK on own child
+ workspace
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#120">[ date ]</a>
+              <a href="thread.html#120">[ thread ]</a>
+              <a href="subject.html#120">[ subject ]</a>
+              <a href="author.html#120">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 2003-10-30 at 18:15, Michael Meeks wrote:
+&gt;<i> 	The patches are in fact not that safe in the current setup - since the
+</I>&gt;<i> Sun build system will not have SOLARJAVA set - thus we have to re-hash
+</I>&gt;<i> all these patches so they 'fail-safe' such that when misc. new env-vars
+</I>&gt;<i> that will not be set in the Sun build system are used, we tolerate / go
+</I>&gt;<i> the right branch if they are not set. eg.
+</I>
+It's all ok - the arch makefile (unxlngi4.pro etc.) used to define
+SOLAR_JAVA like this:
+
+SOLAR_JAVA=true
+
+The patch alters it to:
+
+SOLAR_JAVA=*true
+
+i.e. if there is no env var, set it to true, otherwise use the envvar.
+
+So we are sure there will be a SOLAR_JAVA set to something.
+
+Chris
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000119.html">[Open Office] Re: Make OpenOffice.org without JDK on own child
+ workspace
+</A></li>
+	<LI> Next message: <A HREF="000121.html">[Open Office] Re: Make OpenOffice.org without JDK on own child
+ workspace
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#120">[ date ]</a>
+              <a href="thread.html#120">[ thread ]</a>
+              <a href="subject.html#120">[ subject ]</a>
+              <a href="author.html#120">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

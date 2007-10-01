@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] scsolver build failsure on windows (was: Fwd: Your
+	interesting stuffs :o) )
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20scsolver%20build%20failsure%20on%20windows%20%28was%3A%20Fwd%3A%20Your%0A%09interesting%20stuffs%20%3Ao%29%20%29&In-Reply-To=1139919430.32283.16.camel%40linux.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001581.html">
+   <LINK REL="Next"  HREF="001596.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] scsolver build failsure on windows (was: Fwd: Your
+	interesting stuffs :o) )</H1>
+    <B>Kohei Yoshida</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20scsolver%20build%20failsure%20on%20windows%20%28was%3A%20Fwd%3A%20Your%0A%09interesting%20stuffs%20%3Ao%29%20%29&In-Reply-To=1139919430.32283.16.camel%40linux.site"
+       TITLE="[Open Office] scsolver build failsure on windows (was: Fwd: Your
+	interesting stuffs :o) )">kohei.yoshida at gmail.com
+       </A><BR>
+    <I>Tue Feb 14 10:16:27 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001581.html">[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+</A></li>
+        <LI>Next message: <A HREF="001596.html">[Open Office] scsolver build failsure on windows (was: Fwd: Your
+	interesting stuffs :o) )
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1586">[ date ]</a>
+              <a href="thread.html#1586">[ thread ]</a>
+              <a href="subject.html#1586">[ subject ]</a>
+              <a href="author.html#1586">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 2/14/06, michael meeks &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> On Tue, 2006-02-14 at 13:42 +0200, Tor Lillqvist wrote:
+</I>&gt;<i> &gt; Unfortunately it seems that they aren't... What gets created by
+</I>&gt;<i> &gt; patches/scsolver/scsolver-*.diff looks older than what's in
+</I>&gt;<i> &gt; scratch/scsolver.
+</I>&gt;<i>
+</I>&gt;<i>         Hokay - then we need to work out what changed &amp; when - and re-run
+</I>&gt;<i> 'ooo-build/bin/gen' over the source to re-generate &amp; update the patches.
+</I>
+Not a major change in the main code: just added a facility to compile
+a separate UNO package from the same source tree.  All changes went
+into scsolver/workben.
+
+Though one change I did yesterday may be of importance: it prevents
+nested two-phase search, which was done in reponse to one user
+reporting a case of infinite loop during initial search, thus freezing
+the whole OO.o.  After the change I put in yesterday, the solver
+properly fails with a dialog when it detects a nested two-phase
+initial search, instead of going into an infinite nested two-phase
+(this should never happen in theory).
+
+
+--Kohei
+
+--
+Kohei Yoshida
+OpenOffice.org Calc Hacker
+<A HREF="http://kohei.us/ooo/">http://kohei.us/ooo/</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001581.html">[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+</A></li>
+	<LI>Next message: <A HREF="001596.html">[Open Office] scsolver build failsure on windows (was: Fwd: Your
+	interesting stuffs :o) )
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1586">[ date ]</a>
+              <a href="thread.html#1586">[ thread ]</a>
+              <a href="subject.html#1586">[ subject ]</a>
+              <a href="author.html#1586">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Problems building OO.o
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:nhudson%40lunar-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000003.html">
+   <LINK REL="Next"  HREF="000002.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Problems building OO.o
+   </H1>
+    <B>Nick Hudson
+    </B> 
+    <A HREF="mailto:nhudson%40lunar-linux.org"
+       TITLE="[Open Office] Problems building OO.o">nhudson@lunar-linux.org
+       </A><BR>
+    <I>Fri, 08 Aug 2003 12:29:38 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000003.html">[Open Office] Problems building OO.o
+</A></li>
+        <LI> Next message: <A HREF="000002.html">[Open Office] ANNOUNCE: ooo-build-1.1.35
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4">[ date ]</a>
+              <a href="thread.html#4">[ thread ]</a>
+              <a href="subject.html#4">[ subject ]</a>
+              <a href="author.html#4">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-OUtQbKGhkD0XwlQZKajQ
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Michael,
+
+
+On Fri, 2003-08-08 at 12:04, Michael Meeks wrote:
+&gt;<i> Hi Nick,
+</I>&gt;<i>=20
+</I>&gt;<i> On Fri, 2003-08-08 at 13:11, Nick Hudson wrote:
+</I>&gt;<i> &gt; 	I was wondering if maybe someone could tell me why I keep generating
+</I>&gt;<i> &gt; what looks to be bison errors.  I have created a few patches for the
+</I>&gt;<i> &gt; errors but they keep coming up in diffrent spots but its always the sam=
+</I>e
+&gt;<i> &gt; kind of error.  Here is the url for the patches:
+</I>&gt;<i>=20
+</I>&gt;<i> 	:-)
+</I>&gt;<i>=20
+</I>&gt;<i> &gt; <A HREF="http://www.lunar-linux.org/~nhudson/patches/ooo-fix1.patch">http://www.lunar-linux.org/~nhudson/patches/ooo-fix1.patch</A>
+</I>&gt;<i> &gt; <A HREF="http://www.lunar-linux.org/~nhudson/patches/ooo-fix2.patch">http://www.lunar-linux.org/~nhudson/patches/ooo-fix2.patch</A>
+</I>&gt;<i> &gt; <A HREF="http://www.lunar-linux.org/~nhudson/patches/ooo-fix3.patch">http://www.lunar-linux.org/~nhudson/patches/ooo-fix3.patch</A>
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; Now the only problem with this it looks to me is that you cannot apply
+</I>&gt;<i> &gt; the patches until after you get the error that comes up.  Its always in
+</I>&gt;<i> &gt; the same kind of directory.  For example:
+</I>&gt;<i>=20
+</I>&gt;<i> 	This is of course very odd; I suspect then that (somehow) your bison is
+</I>&gt;<i> out of step with your gcc; can you tell me:
+</I>&gt;<i>=20
+</I>&gt;<i> 	* what system you're using
+</I>Its a Athlon-xp 1800 running Lunar-Linux
+
+
+&gt;<i> 	* what version of gcc you're using
+</I>On my system I am using gcc 3.2.3, but I am using  the gcc 3.2.2 verion
+that comes with the building tools.
+
+&gt;<i> 	* what version of bison you have
+</I>Bison 1.875 of course built with gcc 3.2.3
+
+&gt;<i>=20
+</I>&gt;<i> &gt; Is it a bison problem or is it something else.?  I am
+</I>&gt;<i> &gt; using the openoffice build script from gnome cvs.
+</I>&gt;<i>=20
+</I>&gt;<i> 	I think part of the problem may be that we have to build our own
+</I>&gt;<i> compiler for RedHat 7.3 builds - since gcc-3.2+ is necessary for a sane
+</I>&gt;<i> system ABI. Can you try hacking build-ooo to remove the code that builds
+</I>&gt;<i> / installs binutils and gcc - and removing those directories from your
+</I>&gt;<i> build/ directory ? [ bin/ include/ etc. ], and seeing if that does the
+</I>&gt;<i> trick - if so we should add a --with-system-compiler switch to configure
+</I>&gt;<i> that disables that build.
+</I>
+I will try hacking the build-ooo script to see if I can get it to build
+with the system versions of binutils and gcc being that my system has
+newer versions than the ones supplied with the build script.  I will let
+you know how that goes.
+
+
+&gt;<i>=20
+</I>&gt;<i> 	Thanks for trying out 'openoffice',
+</I>Thanks for making it better :)
+
+
+Thanks
+
+Nick
+
+&gt;<i>=20
+</I>&gt;<i> 	Regards,
+</I>&gt;<i>=20
+</I>&gt;<i> 		Michael.
+</I>
+--=-OUtQbKGhkD0XwlQZKajQ
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.2 (GNU/Linux)
+
+iD8DBQA/M94BG5D1jWCZpTwRAqUoAJ9SXouB/H4/qvPPcu5uayMJ2fhzTQCfQuau
+slX6sQN9OmfIPQbCzBvMMsM=
+=1YhB
+-----END PGP SIGNATURE-----
+
+--=-OUtQbKGhkD0XwlQZKajQ--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000003.html">[Open Office] Problems building OO.o
+</A></li>
+	<LI> Next message: <A HREF="000002.html">[Open Office] ANNOUNCE: ooo-build-1.1.35
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4">[ date ]</a>
+              <a href="thread.html#4">[ thread ]</a>
+              <a href="subject.html#4">[ subject ]</a>
+              <a href="author.html#4">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

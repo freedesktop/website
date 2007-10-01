@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Advanced Font
+	Properties	Question(Freetype+Fontconfig)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Advanced%20Font%0A%09Properties%09Question%28Freetype%2BFontconfig%29&In-Reply-To=200601261820.732%40centrum.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001530.html">
+   <LINK REL="Next"  HREF="001520.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Advanced Font
+	Properties	Question(Freetype+Fontconfig)</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Advanced%20Font%0A%09Properties%09Question%28Freetype%2BFontconfig%29&In-Reply-To=200601261820.732%40centrum.cz"
+       TITLE="[Open Office] Re: Advanced Font
+	Properties	Question(Freetype+Fontconfig)">ghibo at mandriva.com
+       </A><BR>
+    <I>Fri Jan 27 05:22:20 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001530.html">[Open Office] Re: Advanced Font Properties
+	Question(Freetype+Fontconfig)
+</A></li>
+        <LI>Next message: <A HREF="001520.html">[Open Office] Java related build failure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1537">[ date ]</a>
+              <a href="thread.html#1537">[ thread ]</a>
+              <a href="subject.html#1537">[ subject ]</a>
+              <a href="author.html#1537">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jan Uhlir wrote:
+
+&gt;<i> Hi Michael and others,
+</I>&gt;<i> For me it's seems to be easier to implement advanced font properties for VLC for now.
+</I>&gt;<i> At least check - hinting, autohinting, antialiasing, bitmap - properties from fontconfig and try to apply them to OOo glyphs.
+</I>
+Indeed IMHO what we need is a common policy for font name aliasing (either in importing
+and export), which to me appear a little bit confused. For instance in the past,the OOo 1.1.X, 
+it was honouring the fonts.dir files, so if one was providing a fonts.dir file with entries for 
+different font names mapping to other Type1 fonts (with a different /FontName) that fonts could 
+be part of the font recognized by OOo.
+Right now in OOo 2.0 this behaviour seems to be lost, so when importing
+files with font used from other OS, the name mapping is often ugly (basically
+it fallback to Vera or DejaVu), or it's only available for viewing but not for composing. I 
+explain with an example: in the past if I was using a fonts.dir file (in a font path reachable 
+by OOo), with entries like:
+
+019003l.pfb -URW-Helvetica-medium-r-normal--0-0-0-0-p-0-iso8859-1
+
+then the Helvetica font was available in the Font menu of OOo, and one
+could compose text using that &quot;Helvetica&quot; font exactly like as if it was real &quot;Helvetica&quot;
+font. This was useful when exporting files to other OS which might have the
+Adobe proprietary fonts.
+Now what was needed, is that just the file &quot;019003l.pfb&quot; (Type1 font)
+and 019003l.afm (font metric file) were existing in the same fontpath of fonts.dir.
+Note that the 019003l.pfb is indeed the font URW &quot;Nimbus Sans L Regular&quot;,
+but due to the above fonts.dir entry, OOo was showing it in the font menus also as
+&quot;Helvetica&quot; nevertheless the internal PostScript &quot;/FontName&quot;
+was &quot;NimbusSansL-Regu&quot;.
+
+Right now the URW free family font might be a good replacement for all the Adobe Standard
+35 fonts, but in OOo 2.0 this behaviour seems changed and it's no longer possible to use
+URW for providing the whole replacement for the Adobe Standard 35 fontset.
+
+Bye
+Giuseppe.
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001530.html">[Open Office] Re: Advanced Font Properties
+	Question(Freetype+Fontconfig)
+</A></li>
+	<LI>Next message: <A HREF="001520.html">[Open Office] Java related build failure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1537">[ date ]</a>
+              <a href="thread.html#1537">[ thread ]</a>
+              <a href="subject.html#1537">[ subject ]</a>
+              <a href="author.html#1537">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] unxlngi4.pro vs unxlngi6.pro
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20unxlngi4.pro%20vs%20unxlngi6.pro&In-Reply-To=200510211555.00934.ismail%40uludag.org.tr">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001216.html">
+   <LINK REL="Next"  HREF="001221.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] unxlngi4.pro vs unxlngi6.pro</H1>
+    <B>&#304;smail D&#246;nmez</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20unxlngi4.pro%20vs%20unxlngi6.pro&In-Reply-To=200510211555.00934.ismail%40uludag.org.tr"
+       TITLE="[Open Office] unxlngi4.pro vs unxlngi6.pro">ismail at uludag.org.tr
+       </A><BR>
+    <I>Fri Oct 21 09:01:08 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001216.html">[Open Office] unxlngi4.pro vs unxlngi6.pro
+</A></li>
+        <LI>Next message: <A HREF="001221.html">[Open Office] unxlngi4.pro vs unxlngi6.pro
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1217">[ date ]</a>
+              <a href="thread.html#1217">[ thread ]</a>
+              <a href="subject.html#1217">[ subject ]</a>
+              <a href="author.html#1217">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 21 October 2005 15:55, &#304;smail D&#246;nmez wrote:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> Anyone knows in what circumstances build process creates unxlngi6.pro
+</I>&gt;<i> directories vs unxlngi4.pro ones?
+</I>
+Answering to my own question I see this in configure:
+
+ARCHITECTURE=&quot;unxlngi4&quot;
+if test &quot;z$with_arch&quot; != &quot;z&quot;; then
+    if test &quot;z$with_arch&quot; = &quot;zppc&quot;; then
+        ARCHITECTURE=&quot;unxlngppc&quot;
+    fi
+    if test &quot;z$with_arch&quot; = &quot;zsparc&quot;; then
+        ARCHITECTURE=&quot;unxlngs&quot;
+    fi
+fi
+
+So its always unxlngi4 if you use ooo-build on x86. Am I correct?
+
+Regards,
+ismail
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001216.html">[Open Office] unxlngi4.pro vs unxlngi6.pro
+</A></li>
+	<LI>Next message: <A HREF="001221.html">[Open Office] unxlngi4.pro vs unxlngi6.pro
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1217">[ date ]</a>
+              <a href="thread.html#1217">[ thread ]</a>
+              <a href="subject.html#1217">[ subject ]</a>
+              <a href="author.html#1217">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

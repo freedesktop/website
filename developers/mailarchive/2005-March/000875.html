@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Building GSI files for 1.1.3/1.1.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:m%40klose.in-berlin.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000888.html">
+   <LINK REL="Next"  HREF="000871.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Building GSI files for 1.1.3/1.1.4
+   </H1>
+    <B>Matthias Klose
+    </B> 
+    <A HREF="mailto:m%40klose.in-berlin.de"
+       TITLE="[Open Office] Building GSI files for 1.1.3/1.1.4">m@klose.in-berlin.de
+       </A><BR>
+    <I>Wed, 23 Mar 2005 17:48:29 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000888.html">[Open Office] --enable-openldap in Common?
+</A></li>
+        <LI> Next message: <A HREF="000871.html">[Open Office] Status Wednesday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#875">[ date ]</a>
+              <a href="thread.html#875">[ thread ]</a>
+              <a href="subject.html#875">[ subject ]</a>
+              <a href="author.html#875">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>[sent this to <A HREF="mailto:dev@l10n.openoffice.org">dev@l10n.openoffice.org</A> as well]
+
+
+if I correctly understand, for merging new translations back, you have
+to have the GSI file present. I'm currently trying to build the GSI
+files, but it looks like only a part of the messages is extracted,
+compared to the pregenerated GSI files found at ftp.linux.cz.
+Building from the Debian deb-src package 1.1.3-7 (1.1.4 has the same
+results).
+
+For example, extracting the danish strings using
+
+$ localize -e -i en-US -l 01,45=01 -f danish.sdf
+[...]
+$ wc danish.sdf
+  10518  168863 1825930 danish.sdf
+$ awk '{print $1}' danish.sdf | uniq -c
+     88 crashrep
+    110 filter
+   8738 officecfg
+    294 readlicense_oo
+   1092 scp
+     40 setup2
+     70 shell
+     86 sysui
+
+Looking at GSI_danish.txt taken from Pavel's site
+
+$ awk '{print $1}' GSI_danish.txt | uniq -c
+    384 basctl
+    258 basic
+     88 crashrep
+   1270 dbaccess
+    106 desktop
+    996 extensions
+    268 filter
+     32 forms
+     56 framework
+     98 goodies
+    284 officecfg
+    892 offmgr
+    374 padmin
+    294 readlicense_oo
+   7382 sc
+   1576 scaddins
+   1226 sch
+   1092 scp
+   3112 sd
+   1366 setup2
+   2088 sfx2
+     70 shell
+    362 so3
+   1024 starmath
+   1230 svtools
+   8678 svx
+   6922 sw
+     86 sysui
+      2 toolkit
+    182 uui
+    140 vcl
+   1102 wizards
+      2
+
+Any hints what I'm doing wrong? The build is one with Java disabled.
+
+  Matthias
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000888.html">[Open Office] --enable-openldap in Common?
+</A></li>
+	<LI> Next message: <A HREF="000871.html">[Open Office] Status Wednesday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#875">[ date ]</a>
+              <a href="thread.html#875">[ thread ]</a>
+              <a href="subject.html#875">[ subject ]</a>
+              <a href="author.html#875">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

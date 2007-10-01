@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] &quot;javaloader error - no mapping from java to C++&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%22javaloader%20error%20-%20no%20mapping%20from%20java%20to%20C%2B%2B%22&In-Reply-To=1120823153.8030.4.camel%40juerg-p4.bitron.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001051.html">
+   <LINK REL="Next"  HREF="001052.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] &quot;javaloader error - no mapping from java to C++&quot;</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%22javaloader%20error%20-%20no%20mapping%20from%20java%20to%20C%2B%2B%22&In-Reply-To=1120823153.8030.4.camel%40juerg-p4.bitron.ch"
+       TITLE="[Open Office] &quot;javaloader error - no mapping from java to C++&quot;">bero at arklinux.org
+       </A><BR>
+    <I>Fri Jul  8 12:53:11 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001051.html">[Open Office] &quot;javaloader error - no mapping from java to C++&quot;
+</A></li>
+        <LI>Next message: <A HREF="001052.html">[Open Office] &quot;javaloader error - no mapping from java to C++&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1049">[ date ]</a>
+              <a href="thread.html#1049">[ thread ]</a>
+              <a href="subject.html#1049">[ subject ]</a>
+              <a href="author.html#1049">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 08 July 2005 13:45, J&#252;rg Billeter wrote:
+&gt;<i> JavaCanvas.java:178: error: Can't find method 'createBufferStrategy(I)' in
+</I>&gt;<i> type 'java.awt.Frame'.
+</I>&gt;<i>                dummyFrame.frame.createBufferStrategy(2);
+</I>&gt;<i>                                ^
+</I>&gt;<i> JavaCanvas.java:179: error: Can't find method 'getBufferStrategy()' in type
+</I>&gt;<i> 'java.awt.Frame'.
+</I>
+This is caused by gcc 4.0.x not implementing AWT buffer strategies.
+This is implemented in gcc HEAD though, and it's quite easy to backport.
+
+Try applying the attached patch to your gcc.
+
+LLaP
+bero
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: gcc-4.0.1-cvs-backports.patch.bz2
+Type: application/x-bzip2
+Size: 61023 bytes
+Desc: not available
+Url : <A HREF="http://galactus.ximian.com/pipermail/openoffice/attachments/20050708/e3cd4226/gcc-4.0.1-cvs-backports.patch-0001.bz2">http://galactus.ximian.com/pipermail/openoffice/attachments/20050708/e3cd4226/gcc-4.0.1-cvs-backports.patch-0001.bz2</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001051.html">[Open Office] &quot;javaloader error - no mapping from java to C++&quot;
+</A></li>
+	<LI>Next message: <A HREF="001052.html">[Open Office] &quot;javaloader error - no mapping from java to C++&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1049">[ date ]</a>
+              <a href="thread.html#1049">[ thread ]</a>
+              <a href="subject.html#1049">[ subject ]</a>
+              <a href="author.html#1049">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

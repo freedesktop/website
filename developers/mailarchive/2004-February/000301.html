@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Trying to compile CVS build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-February/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000300.html">
+   <LINK REL="Next"  HREF="000303.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Trying to compile CVS build
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] Trying to compile CVS build">dan@bigw.org
+       </A><BR>
+    <I>Mon, 16 Feb 2004 08:56:03 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000300.html">[Open Office] Trying to compile CVS build
+</A></li>
+        <LI> Next message: <A HREF="000303.html">[Open Office] Trying to compile CVS build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#301">[ date ]</a>
+              <a href="thread.html#301">[ thread ]</a>
+              <a href="subject.html#301">[ subject ]</a>
+              <a href="author.html#301">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Daniel,
+
+If you look above the stop point that you pasted in here, you'll see a
+line with something like:
+
+dmake:  Error code x, while making 'xxxxx'
+
+That's the real failure point, it says that i18npool has failed to
+build.  Can you post that section of the log?
+
+FWIW, I also got an error doing a 2-process build in desktop, but have not
+investigated yet.
+
+Dan
+
+On Mon, 16 Feb 2004, Daniel Bray wrote:
+
+&gt;<i> Please let me know if this is NOT the correct list.  I saw no other
+</I>&gt;<i> &quot;support&quot; list, so I assmued this was the only one.
+</I>&gt;<i> 
+</I>&gt;<i> System is:
+</I>&gt;<i> Linux From Scratch 5
+</I>&gt;<i> IBM A22p Laptop
+</I>&gt;<i> Gnome 2.4.1 (built from tarballs from ftp.gnome.org)
+</I>&gt;<i> Using ooo-build from CVS
+</I>&gt;<i> 
+</I>&gt;<i> Configured as:
+</I>&gt;<i> ../configure --prefix=/opt/OpenOffice --enable-bonobo --enable-java
+</I>&gt;<i> --with-system-gcc 
+</I>&gt;<i> --with-jdk-home=/opt/java --with-installed-ooo-dirname=/opt/OpenOffice 
+</I>&gt;<i> 
+</I>&gt;<i> Building openoffice
+</I>&gt;<i>         tag:                OOO_1_1_0
+</I>&gt;<i>         src:                ./src
+</I>&gt;<i>         build dir:         
+</I>&gt;<i> /usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0
+</I>&gt;<i>         distro:             Ximian
+</I>&gt;<i>         system gcc:         yes
+</I>&gt;<i>         ooo-bonobo:         yes
+</I>&gt;<i>         java:               yes
+</I>&gt;<i>         ooo-install-dir:    /opt/OpenOffice
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Here's the ouput:
+</I>&gt;<i> 
+</I>&gt;<i> Making:
+</I>&gt;<i> ......
+</I>&gt;<i>  ../../unxlngi4.pro/misc/databasegeneral.dpz
+</I>&gt;<i> dmake  -f makefile.mk  make_zip_deps=true ZIPALLTARGET -u
+</I>&gt;<i> echo # &gt; ../../unxlngi4.pro/misc/databasegeneral.database.database.dpzz
+</I>&gt;<i> zipdep.pl -u -j ../../unxlngi4.pro/bin/database.zip &quot;*&quot; &quot;-x&quot;
+</I>&gt;<i> &quot;makefile.*&quot; &quot;*.dbf&quot; &quot;*.dbt&quot; -x &quot;*CVS*&quot; &gt;&gt;
+</I>&gt;<i> ../../unxlngi4.pro/misc/databasegeneral.database.database.dpzz
+</I>&gt;<i> zipdep -- version: 1.12
+</I>&gt;<i> Multi Platform Enabled Edition
+</I>&gt;<i> echo # &gt;
+</I>&gt;<i> ../../unxlngi4.pro/misc/databasegeneral.database.databasebiblio.dpzz
+</I>&gt;<i> zipdep.pl -u -j ../../unxlngi4.pro/bin/databasebiblio.zip &quot;biblio.dbf&quot;
+</I>&gt;<i> -x &quot;*CVS*&quot; &gt;&gt;
+</I>&gt;<i> ../../unxlngi4.pro/misc/databasegeneral.database.databasebiblio.dpzz
+</I>&gt;<i> zipdep -- version: 1.12
+</I>&gt;<i> Multi Platform Enabled Edition
+</I>&gt;<i> cat ../../unxlngi4.pro/misc/databasegeneral.database.*.dpzz | grep -v
+</I>&gt;<i> &quot;CVS&quot; &gt;&gt; ../../unxlngi4.pro/misc/databasegeneral.dpz
+</I>&gt;<i> echo zipdep_langs=49 01 39 34 33 31 45 46 03 81 86 88 07 48 30 90 82 37
+</I>&gt;<i> 35 42 43 &gt;&gt; ../../unxlngi4.pro/misc/databasegeneral.dpz
+</I>&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/extras/source/templates/layout/lang
+</I>&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/extras/source/templates/wizard/agenda/lang
+</I>&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/extras/source/palettes/lang
+</I>&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/extras/source/wordbook/lang
+</I>&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/extras/source/gallery/gallery_sound
+</I>&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/extras/source/templates/wizard/memo/lang
+</I>&gt;<i> -------------
+</I>&gt;<i> deliver -- version: 1.50.8.1
+</I>&gt;<i> Statistics:
+</I>&gt;<i> Files copied: 0
+</I>&gt;<i> Files unchanged/not matching: 276
+</I>&gt;<i>  
+</I>&gt;<i> 1 module(s):
+</I>&gt;<i>         i18npool
+</I>&gt;<i> need(s) to be rebuilt
+</I>&gt;<i>  
+</I>&gt;<i> Reason(s):
+</I>&gt;<i>  
+</I>&gt;<i> ERROR: error 65280 occurred while making
+</I>&gt;<i> /usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/i18npool/source/breakiterator/data
+</I>&gt;<i>  
+</I>&gt;<i> Attention: if you build and deliver the above module(s) you may
+</I>&gt;<i> prolongue your build from module i18n_simple
+</I>&gt;<i>  
+</I>&gt;<i> make[1]: *** [all] Error 1
+</I>&gt;<i> make[1]: Leaving directory
+</I>&gt;<i> `/usr/src/sources/OpenOffice/openofficeCVS/bin'
+</I>&gt;<i> make: *** [all-recursive] Error 1
+</I>&gt;<i> 
+</I>&gt;<i> Thanks, 
+</I>&gt;<i> DB
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000300.html">[Open Office] Trying to compile CVS build
+</A></li>
+	<LI> Next message: <A HREF="000303.html">[Open Office] Trying to compile CVS build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#301">[ date ]</a>
+              <a href="thread.html#301">[ thread ]</a>
+              <a href="subject.html#301">[ subject ]</a>
+              <a href="author.html#301">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

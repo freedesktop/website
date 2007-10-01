@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Gentoo / OO.o package ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-November/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000584.html">
+   <LINK REL="Next"  HREF="000587.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Gentoo / OO.o package ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: Gentoo / OO.o package ...">michael@ximian.com
+       </A><BR>
+    <I>Tue, 16 Nov 2004 13:07:38 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000584.html">[Open Office] OOo-Ximian with GCC-3.4.x - ucb module help
+ needed
+</A></li>
+        <LI> Next message: <A HREF="000587.html">[Open Office] Re: Gentoo / OO.o package ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#586">[ date ]</a>
+              <a href="thread.html#586">[ thread ]</a>
+              <a href="subject.html#586">[ subject ]</a>
+              <a href="author.html#586">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Hanno,
+
+On Mon, 2004-11-15 at 13:52 +0100, Hanno Meyer-Thurow wrote:
+&gt;<i> My tarball is ~100kb, a bash-script ( Gentoo package ) and
+</I>&gt;<i> the patches for OOo 1.1.3 and for Ximian. C'est ca. :)
+</I>
+	Ah ! - ok, I downloaded it and started to have a poke:
+
+	* Why are you not pushing this back to us as patches ? *
+		+ there seems to be some good stuff in there
+
+	eg. I just added the Gentoo targets to patches/OOO_1_1_3/apply, you
+should be able to configure with --distro=Gentoo to make it work nicely
+there.
+
+&gt;<i> No, the Mandrake OOo maintainer missed the cpputype.cxx diff to inject.
+</I>&gt;<i> There were also other glitches in his patchset that i dropped. I talked
+</I>&gt;<i> with him by the time i collected my GCC 3.4.x patchset. I sent him that
+</I>&gt;<i> patchset and he got OOo compiled but had Mandrake ( RPM SPEC ) related
+</I>&gt;<i> installation issues because of connectivity problem ( missing mozilla
+</I>&gt;<i> libraries ). He is working on it or whatever. No contact anymore
+</I>&gt;<i> because my work is done.
+</I>
+	So - some other questions;
+
+	* Why do you need so much code in penoffice-ximian-1.4.ebuild ?
+		+ the package is setup for 'make' 'make install', 
+		  package
+		+ can you not re-use eg. bin/unpack, or some of the 
+		  Makefile.shared rules; eg. 'make patch.apply' ?
+	
+	* Why add patches to the gentoo package but not ooo-build ?
+
+	I've added your gcc34 patches; and created a GentooOnly section that
+includes those patches. It'd be great to get your work in there, so
+other distros can re-use / test / bug-fix &amp; we share the packaging
+burden - that's the philosophy behind it at least. How can we help you
+do that ?
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000584.html">[Open Office] OOo-Ximian with GCC-3.4.x - ucb module help
+ needed
+</A></li>
+	<LI> Next message: <A HREF="000587.html">[Open Office] Re: Gentoo / OO.o package ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#586">[ date ]</a>
+              <a href="thread.html#586">[ thread ]</a>
+              <a href="subject.html#586">[ subject ]</a>
+              <a href="author.html#586">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

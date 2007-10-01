@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Change of policy in the apply file?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000951.html">
+   <LINK REL="Next"  HREF="000952.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Change of policy in the apply file?
+   </H1>
+    <B>Jan Holesovsky
+    </B> 
+    <A HREF="mailto:kendy%40suse.cz"
+       TITLE="[Open Office] Change of policy in the apply file?">kendy@suse.cz
+       </A><BR>
+    <I>Wed, 11 May 2005 14:47:00 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000951.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+        <LI> Next message: <A HREF="000952.html">[Open Office] Change of policy in the apply file?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#949">[ date ]</a>
+              <a href="thread.html#949">[ thread ]</a>
+              <a href="subject.html#949">[ subject ]</a>
+              <a href="author.html#949">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've seen a change of policy regarding the naming of the patches that need 
+fixing in the new milestones. I had the feeling that the newest patches are 
+without the milestone suffix, the older ones get -mXX.diff when the patch has 
+to be updated for the new milestone, so that we still can track the changes 
+in the CVS easily. But now I see e.g.:
+
+[ TemporaryHacks &lt; src680-m102 ]
+# temporary hack to avoid the warning about missing return values in gcc4
+warning-return-values-stlport.diff
+
+[ TemporaryHacks &gt;= src680-m102 ]
+# temporary hack to avoid the warning about missing return values in gcc4
+warning-return-values-stlport-for-m102.diff
+
+Here warning-return-values-stlport-for-m102.diff is the newest patch, tracking 
+of the changes will be more difficult when the &lt; src680-m102 vanishes.
+
+So, do we really want this?
+
+Bye,
+Jan
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000951.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+	<LI> Next message: <A HREF="000952.html">[Open Office] Change of policy in the apply file?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#949">[ date ]</a>
+              <a href="thread.html#949">[ thread ]</a>
+              <a href="subject.html#949">[ subject ]</a>
+              <a href="author.html#949">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

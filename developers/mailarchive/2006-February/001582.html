@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] oob680 (towards-2.0.2) support
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680%20%28towards-2.0.2%29%20support&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001623.html">
+   <LINK REL="Next"  HREF="001587.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] oob680 (towards-2.0.2) support</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680%20%28towards-2.0.2%29%20support&In-Reply-To="
+       TITLE="[Open Office] oob680 (towards-2.0.2) support">kendy at suse.cz
+       </A><BR>
+    <I>Tue Feb 14 07:35:22 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001623.html">[Open Office] Still getting NullPointerExceptions
+	from	HelpLinker...
+</A></li>
+        <LI>Next message: <A HREF="001587.html">[Open Office] oob680 (towards-2.0.2) support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1582">[ date ]</a>
+              <a href="thread.html#1582">[ thread ]</a>
+              <a href="subject.html#1582">[ subject ]</a>
+              <a href="author.html#1582">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I removed everything older than m156 from the apply file &amp; added support for 
+oob680-m1.  Patches apply for both, you just have to choose the master 
+workspace by specifying --with-tag=src680-m156 or --with-tag=oob680-m1.  I 
+guess we'll branch at some stage, but for now - let's focus on 2.0.2, please.
+
+Side note: It is possible to specify more MWSes in the apply file now, like 
+the following:
+
+[ TheSection &lt; src680-m156 &gt;= oob680-m3 ] will apply just for src680-m1 to 
+src680-m155, and for oob680-m3 and higher.
+
+[ TheSection &lt; src680-m156 ] will apply for all oob680 milestones, keep it in 
+mind in case you wanted to add support for e.g. m157 - but please do not do 
+that now ;-)
+
+Thank you,
+Jan
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001623.html">[Open Office] Still getting NullPointerExceptions
+	from	HelpLinker...
+</A></li>
+	<LI>Next message: <A HREF="001587.html">[Open Office] oob680 (towards-2.0.2) support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1582">[ date ]</a>
+              <a href="thread.html#1582">[ thread ]</a>
+              <a href="subject.html#1582">[ subject ]</a>
+              <a href="author.html#1582">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

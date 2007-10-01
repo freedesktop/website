@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] JRE register component still broken
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20component%20still%20broken&In-Reply-To=20060623194448.360e4890%40workstation64.home">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001882.html">
+   <LINK REL="Next"  HREF="001886.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] JRE register component still broken</H1>
+    <B>VMiklos</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20component%20still%20broken&In-Reply-To=20060623194448.360e4890%40workstation64.home"
+       TITLE="[Open Office] JRE register component still broken">vmiklos at frugalware.org
+       </A><BR>
+    <I>Fri Jun 23 14:40:51 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001882.html">[Open Office] JRE register component still broken
+</A></li>
+        <LI>Next message: <A HREF="001886.html">[Open Office] JRE register component still broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1883">[ date ]</a>
+              <a href="thread.html#1883">[ thread ]</a>
+              <a href="subject.html#1883">[ subject ]</a>
+              <a href="author.html#1883">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, Jun 23, 2006 at 07:44:48PM +0200, Andreas Radke &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">a.radke at arcor.de</A>&gt; wrote:
+&gt;<i> with 	  --with-java=gij 
+</I>&gt;<i> 
+</I>&gt;<i> and enabled both recommended patches disable-regcomp-java.diff and 
+</I>&gt;<i> 64bit-jdk-server-paths.diff it still fails at the same point
+</I>&gt;<i> 
+</I>&gt;<i> when i remove j2re and j2sdk from the system &quot;javadoc&quot; from j2sdk is
+</I>&gt;<i> missing:
+</I>&gt;<i> 
+</I>&gt;<i> checking whether to build with Java support... yes
+</I>&gt;<i> Use of uninitialized value in substitution (s///) at ./oowintool line
+</I>&gt;<i> 66. Use of uninitialized value in substitution (s///) at ./oowintool
+</I>&gt;<i> line 66. checking for gij... /usr/bin/gij
+</I>&gt;<i> checking the installed JDK... checked (gcj)
+</I>&gt;<i> checking for gcj... /usr/bin/gcj
+</I>&gt;<i> checking for javadoc... no
+</I>&gt;<i> configure: error:  not found set with_jdk_home
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> It's strange that you recommend to remove sun java. apache-ant depends
+</I>&gt;<i> on it. So I see no way to build it without j2re/j2sdk packages.
+</I>
+you need java-gcj-compat :)
+
+that will create all the necessary gjdoc -&gt; javadoc and other symlinks
+
+udv / greetings,
+VMiklos
+
+-- 
+Developer of Frugalware Linux, to make things frugal - <A HREF="http://frugalware.org">http://frugalware.org</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001882.html">[Open Office] JRE register component still broken
+</A></li>
+	<LI>Next message: <A HREF="001886.html">[Open Office] JRE register component still broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1883">[ date ]</a>
+              <a href="thread.html#1883">[ thread ]</a>
+              <a href="subject.html#1883">[ subject ]</a>
+              <a href="author.html#1883">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] [Fwd: Re: OOo opens several windows when opening
+ a single document]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-May/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000393.html">
+   <LINK REL="Next"  HREF="000395.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] [Fwd: Re: OOo opens several windows when opening
+ a single document]
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] [Fwd: Re: OOo opens several windows when opening
+ a single document]">halls@debian.org
+       </A><BR>
+    <I>Tue, 18 May 2004 19:51:03 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000393.html">[Open Office] [Fwd: Re: OOo opens several windows when opening a single document]
+</A></li>
+        <LI> Next message: <A HREF="000395.html">[Open Office] [Fwd: Re: OOo opens several windows when opening a single document]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#394">[ date ]</a>
+              <a href="thread.html#394">[ thread ]</a>
+              <a href="subject.html#394">[ subject ]</a>
+              <a href="author.html#394">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 2004-05-18 at 19:14, Rene Engelhard wrote:
+&gt;<i> The trick is to remove the -writer etc. from the command line when
+</I>&gt;<i> a file is specified.
+</I>[...]
+
+&gt;<i> Now to get it ported to the Debian wrapper... :)
+</I>
+I had ignored that change by Michael because we already do this:
+
+if [ $# = 0 ]; then
+  case `basename $0` in
+[...]
+    oowriter${VER}) set -- -writer;;
+[...]
+  esac
+fi
+
+We only add '-writer' if there are no arguments passed on the command
+line.
+
+Chris
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000393.html">[Open Office] [Fwd: Re: OOo opens several windows when opening a single document]
+</A></li>
+	<LI> Next message: <A HREF="000395.html">[Open Office] [Fwd: Re: OOo opens several windows when opening a single document]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#394">[ date ]</a>
+              <a href="thread.html#394">[ thread ]</a>
+              <a href="subject.html#394">[ subject ]</a>
+              <a href="author.html#394">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

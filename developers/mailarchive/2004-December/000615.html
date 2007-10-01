@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OO.org 1.1.3 compilation failed using gcc-3.4.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:j%40bitron.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000613.html">
+   <LINK REL="Next"  HREF="000616.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OO.org 1.1.3 compilation failed using gcc-3.4.3
+   </H1>
+    <B>J�rg Billeter
+    </B> 
+    <A HREF="mailto:j%40bitron.ch"
+       TITLE="[Open Office] OO.org 1.1.3 compilation failed using gcc-3.4.3">j@bitron.ch
+       </A><BR>
+    <I>Thu, 02 Dec 2004 21:31:36 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000613.html">[Open Office] OO.org 1.1.3 compilation failed using gcc-3.4.3
+</A></li>
+        <LI> Next message: <A HREF="000616.html">[Open Office] OO.org 1.1.3 compilation failed using gcc-3.4.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#615">[ date ]</a>
+              <a href="thread.html#615">[ thread ]</a>
+              <a href="subject.html#615">[ subject ]</a>
+              <a href="author.html#615">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Don, 2004-12-02 at 17:45 -0200, Gustavo Pichorim Boiko wrote:
+&gt;<i> I'm trying to compile OOO_1_1_3 using gcc-3.4.3 but it is failing when 
+</I>&gt;<i> compiling stlport, with this error:
+</I>&gt;<i> ../stlport/stl/_alloc.h:416: error: non-template `rebind' used as templat=
+</I>e
+&gt;<i> 
+</I>&gt;<i> This is a known stlport problem 
+</I>&gt;<i> ( <A HREF="http://www.stlport.com/dcforum/DCForumID6/1687.html">http://www.stlport.com/dcforum/DCForumID6/1687.html</A> ) but I want to kno=
+</I>w if 
+&gt;<i> there's someone working to get it to compile.
+</I>
+gentoo's openoffice ebuild updates stlport in the source tree of OOo
+1.1.3 to circumvent the gcc 3.4 build problem. You can find ebuild and
+patches in
+<A HREF="http://darkstar.ist.utl.pt/gentoo/portage/app-office/openoffice-ximian/">http://darkstar.ist.utl.pt/gentoo/portage/app-office/openoffice-ximian/</A>
+or any other gentoo mirror.
+
+With this applied, the stlport within openoffice builds fine, but
+afterwards I've got caught by other problems, see my other post.
+
+HTH
+
+Jürg
+
+-- 
+Jürg Billeter &lt;<A HREF="mailto:j@bitron.ch">j@bitron.ch</A>&gt;
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000613.html">[Open Office] OO.org 1.1.3 compilation failed using gcc-3.4.3
+</A></li>
+	<LI> Next message: <A HREF="000616.html">[Open Office] OO.org 1.1.3 compilation failed using gcc-3.4.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#615">[ date ]</a>
+              <a href="thread.html#615">[ thread ]</a>
+              <a href="subject.html#615">[ subject ]</a>
+              <a href="author.html#615">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

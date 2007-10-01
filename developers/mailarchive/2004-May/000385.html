@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] parallel build goes into endless loop
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-May/index.html" >
+   <LINK REL="made" HREF="mailto:arekm%40pld-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000384.html">
+   <LINK REL="Next"  HREF="000386.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] parallel build goes into endless loop
+   </H1>
+    <B>Arkadiusz Miskiewicz
+    </B> 
+    <A HREF="mailto:arekm%40pld-linux.org"
+       TITLE="[Open Office] parallel build goes into endless loop">arekm@pld-linux.org
+       </A><BR>
+    <I>Thu, 6 May 2004 22:41:34 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000384.html">[Open Office] CVS module rename ...
+</A></li>
+        <LI> Next message: <A HREF="000386.html">[Open Office] parallel build goes into endless loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#385">[ date ]</a>
+              <a href="thread.html#385">[ thread ]</a>
+              <a href="subject.html#385">[ subject ]</a>
+              <a href="author.html#385">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I'm trying to get parallel build working (ooo-build 1.1.55) with ccache and=
+ distcc but it goes
+into endless loop:
+
+       |             |-sshd(20129)---zsh(20130,misiek)---screen(20163)---sc=
+reen(20164)-+-zsh(20165)---rpmbuild(7639)---sh(1
+2106)---make(15468)---sh(15469)---sh(16053)---make(16054)---build-ooo(16055=
+)---perl(11794)
+
+misiek   11794  0.1  0.7  5644 4180 pts/89   S+   20:15   0:12 perl /mnt/st=
+orage1/misiek/rpm/BUILD/ooo-build-1.1.55/build/OOO_1_1_1/solenv/bin/build.p=
+l --all -P20 --dlv_switch link
+
+perl goes into that loop, it does:
+
+11794 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) =3D 0
+11794 nanosleep({1, 0}, {1, 0})         =3D 0
+11794 time([1083875218])                =3D 1083875218
+11794 waitpid(-1, 0xbfffc778, WNOHANG)  =3D -1 ECHILD (No child processes)
+11794 waitpid(-1, 0xbfffc778, WNOHANG)  =3D -1 ECHILD (No child processes)
+11794 waitpid(-1, 0xbfffc778, WNOHANG)  =3D -1 ECHILD (No child processes)
+11794 time([1083875218])                =3D 1083875218
+11794 rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) =3D 0
+11794 rt_sigaction(SIGCHLD, NULL, {SIG_DFL}, 8) =3D 0
+11794 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) =3D 0
+11794 nanosleep({1, 0}, {1, 0})         =3D 0
+11794 time([1083875219])                =3D 1083875219
+11794 waitpid(-1, 0xbfffc778, WNOHANG)  =3D -1 ECHILD (No child processes)
+11794 waitpid(-1, 0xbfffc778, WNOHANG)  =3D -1 ECHILD (No child processes)
+11794 waitpid(-1, 0xbfffc778, WNOHANG)  =3D -1 ECHILD (No child processes)
+11794 time([1083875219])                =3D 1083875219
+11794 rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) =3D 0
+11794 rt_sigaction(SIGCHLD, NULL, {SIG_DFL}, 8) =3D 0
+11794 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) =3D 0
+11794 nanosleep({1, 0}, {1, 0})         =3D 0
+11794 time([1083875220])                =3D 1083875220
+11794 waitpid(-1, 0xbfffc778, WNOHANG)  =3D -1 ECHILD (No child processes)
+11794 waitpid(-1, 0xbfffc778, WNOHANG)  =3D -1 ECHILD (No child processes)
+11794 waitpid(-1, 0xbfffc778, WNOHANG)  =3D -1 ECHILD (No child processes)
+11794 time([1083875220])                =3D 1083875220
+11794 rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) =3D 0
+11794 rt_sigaction(SIGCHLD, NULL, {SIG_DFL}, 8) =3D 0
+11794 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) =3D 0
+11794 nanosleep({1, 0}, {1, 0})         =3D 0
+11794 time([1083875221])                =3D 1083875221
+11794 waitpid(-1, 0xbfffc778, WNOHANG)  =3D -1 ECHILD (No child processes)
+11794 waitpid(-1, 0xbfffc778, WNOHANG)  =3D -1 ECHILD (No child processes)
+11794 waitpid(-1, 0xbfffc778, WNOHANG)  =3D -1 ECHILD (No child processes)
+11794 time([1083875221])                =3D 1083875221
+11794 rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) =3D 0
+11794 rt_sigaction(SIGCHLD, NULL, {SIG_DFL}, 8) =3D 0
+11794 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) =3D 0
+11794 nanosleep({1, 0},
+
+#
+# child handler (clears (or stores info about) the terminated child)
+#
+sub handle_dead_children {
+    my $pid =3D 0;
+    if (($pid =3D waitpid( -1, &amp;WNOHANG)) &gt; 0) {
+                &amp;store_error($pid, $?) if ($?);
+                &amp;clear_from_child($pid);
+    };
+        while(&amp;children_number() &gt;=3D $QuantityToBuild) {
+        sleep 1;
+        &amp;handle_dead_children;
+    };
+};
+
+children_number miscallculated somehow? Won't it be better to leave
+handle_dead_children() if waitpid returns -1 + errno=3D=3DECHILD?
+
+=2D-=20
+Arkadiusz Mi=B6kiewicz     CS at FoE, Wroclaw University of Technology
+arekm.pld-linux.org, 1024/3DB19BBD, JID: arekm.jabber.org, PLD/Linux
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000384.html">[Open Office] CVS module rename ...
+</A></li>
+	<LI> Next message: <A HREF="000386.html">[Open Office] parallel build goes into endless loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#385">[ date ]</a>
+              <a href="thread.html#385">[ thread ]</a>
+              <a href="subject.html#385">[ subject ]</a>
+              <a href="author.html#385">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

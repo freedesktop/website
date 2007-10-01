@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] build stopped at readlicense_oo
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000226.html">
+   <LINK REL="Next"  HREF="000227.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] build stopped at readlicense_oo
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] build stopped at readlicense_oo">michael@ximian.com
+       </A><BR>
+    <I>Sat, 17 Jan 2004 12:19:03 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000226.html">[Open Office] build stopped at readlicense_oo
+</A></li>
+        <LI> Next message: <A HREF="000227.html">[Open Office] OOo text layout
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#233">[ date ]</a>
+              <a href="thread.html#233">[ thread ]</a>
+              <a href="subject.html#233">[ subject ]</a>
+              <a href="author.html#233">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Hirano,
+
+On Tue, 2004-01-13 at 11:26, Hirano Kazunari wrote:
+&gt;<i> Building ooo_1_1_0 with ooo-build-1.1.49.2 stopped at:
+</I>
+	Ah !...
+
+&gt;<i> file=../../unxlngi4.pro/misc/49/readme49.html
+</I>&gt;<i> java: ???????????H^???????(sorry but garbage characters --khirano)
+</I>&gt;<i> dmake: Error code 1, while making '../../unxlngi4.pro/misc/49/readme49.html'
+</I>
+	Right - when we added the 'remove java' patch - I killed both of the
+workarounds that I'd added for this. Then of course, Dan added java
+support back but (presumably) didn't know about them.
+
+	There are at least 2 bugs:
+
+	edit bin/build-ooo and bin the comments on the LANG=C and
+LD_ASSUME_KERNEL bits - that should give you a decent build with Java -
+that'll be in the next release.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000226.html">[Open Office] build stopped at readlicense_oo
+</A></li>
+	<LI> Next message: <A HREF="000227.html">[Open Office] OOo text layout
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#233">[ date ]</a>
+              <a href="thread.html#233">[ thread ]</a>
+              <a href="subject.html#233">[ subject ]</a>
+              <a href="author.html#233">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

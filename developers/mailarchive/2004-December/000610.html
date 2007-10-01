@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] gcj and openoffice 1.9.X workspace
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:caolanm%40redhat.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000619.html">
+   <LINK REL="Next"  HREF="000611.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] gcj and openoffice 1.9.X workspace
+   </H1>
+    <B>Caolan McNamara
+    </B> 
+    <A HREF="mailto:caolanm%40redhat.com"
+       TITLE="[Open Office] gcj and openoffice 1.9.X workspace">caolanm@redhat.com
+       </A><BR>
+    <I>Thu, 02 Dec 2004 12:24:51 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000619.html">[Open Office] Ximian OOo 1.3.7 compile error on module psprint
+</A></li>
+        <LI> Next message: <A HREF="000611.html">[Open Office] gcj and openoffice 1.9.X workspace
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#610">[ date ]</a>
+              <a href="thread.html#610">[ thread ]</a>
+              <a href="subject.html#610">[ subject ]</a>
+              <a href="author.html#610">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've created a child workspace (gcj1) for gij/gcj and openoffice. I'm
+been able to get helpcontent2 and configmgr built with gcj so I'm fairly
+happy with that as its the major hurdle. Some other modules don't fully
+build with gcj, generally because of use of sun java sun.net.* classes
+which don't exist in gcj along with some other classes which gcj doesn't
+have yet, so I'm currently simply finding and conditionally not building
+the troublemakers when using gcj like --without-java does for all java
+stuff.
+
+My suggested config_office changes for configure turn 
+--enable-java / --disable-java into --with-java / --without-java and 
+then additionally to force building with gij/gcj use --with-java=gij
+
+So to play with the build grab SRC680_m63 and the gcj workspace tag is
+cws_src680_gcj1.  Add --with-java=gij to your configure line.
+
+C.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000619.html">[Open Office] Ximian OOo 1.3.7 compile error on module psprint
+</A></li>
+	<LI> Next message: <A HREF="000611.html">[Open Office] gcj and openoffice 1.9.X workspace
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#610">[ date ]</a>
+              <a href="thread.html#610">[ thread ]</a>
+              <a href="subject.html#610">[ subject ]</a>
+              <a href="author.html#610">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

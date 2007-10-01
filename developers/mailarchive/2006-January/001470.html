@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] CWS for non-Domain Developer
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20CWS%20for%20non-Domain%20Developer&In-Reply-To=43B5C645.3050205%40scytek.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001468.html">
+   <LINK REL="Next"  HREF="001471.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] CWS for non-Domain Developer</H1>
+    <B>David Fraser</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20CWS%20for%20non-Domain%20Developer&In-Reply-To=43B5C645.3050205%40scytek.de"
+       TITLE="[Open Office] CWS for non-Domain Developer">davidf at sjsoft.com
+       </A><BR>
+    <I>Mon Jan  9 03:55:08 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001468.html">[Open Office] Re: Build error in cli_ure with m142
+</A></li>
+        <LI>Next message: <A HREF="001471.html">[Open Office] CWS for non-Domain Developer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1470">[ date ]</a>
+              <a href="thread.html#1470">[ thread ]</a>
+              <a href="subject.html#1470">[ subject ]</a>
+              <a href="author.html#1470">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Volker Quetschke wrote:
+&gt;<i> David Fraser wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I'm trying to find out what's involved in certain CWSs. Using EIS I can
+</I>&gt;&gt;<i> see the issues attached to a CWS but not what actual files have been
+</I>&gt;&gt;<i> changed and the changes made.
+</I>&gt;&gt;<i> So what I'd really like to do is get a patch that corresponds to all the
+</I>&gt;&gt;<i> changes made in that CWS.
+</I>&gt;&gt;<i> The cws tools (and the ooo-build enhancement cws-extract) should be able
+</I>&gt;&gt;<i> to do that.
+</I>&gt;&gt;<i>     
+</I>&gt;<i> You can use Bonsai. &lt;<A HREF="http://go-oo.org/bonsai/cvsqueryform.cgi">http://go-oo.org/bonsai/cvsqueryform.cgi</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> And once you know which modules are touched (cwsquery can help
+</I>&gt;<i> you with this task) you can also use cvs to get the actual patch.
+</I>&gt;<i> For example:
+</I>&gt;<i>
+</I>&gt;<i> $ cvs diff -u -rCWS_SRC680_VQ25_ANCHOR -rcws_src680_vq25 config_office
+</I>&gt;<i>   
+</I>Right, thats great, I'll try apply this knowledge...
+So by just putting the cws branch name into bonsai and querying all 
+changes since the beginning of time, I should get some useful info.
+In practice however, I get a long wait and then a blank page :-)
+Also cwsquery just says &quot;Warning: web service unavailable. Trying backup 
+server. ERROR: Connection to EIS database failed.&quot;
+I'm not sure if this is because I'm not allowed to log in or because the 
+web service is bad.
+But it all underlines the fact that having some static files generated 
+nightly or so would be a nice way around having to use tools that are 
+sometimes unreliable :-)
+&gt;&gt;<i> However, because I'm not a Domain Developer and don't have a OOo CVS
+</I>&gt;&gt;<i> account, I can't access the EIS SOAP service that lets you do that.
+</I>&gt;&gt;<i> So two proposals:
+</I>&gt;&gt;<i> 1) It would be nice to access the EIS SOAP service without a CVS write
+</I>&gt;&gt;<i> account
+</I>&gt;&gt;<i> 2) In the mean time, it would be nice if either EIS or some other web
+</I>&gt;&gt;<i> site provided such patches. They need not be generated dynamically, a
+</I>&gt;&gt;<i> nightly run of cws-extract would be great and they could offer static
+</I>&gt;&gt;<i> links to the patches.
+</I>&gt;&gt;<i>     
+</I>&gt;<i> Looks like you are looking for the Bonsai page ;)
+</I>&gt;<i>   
+</I>Thanks Volker
+David
+
+</PRE>
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001468.html">[Open Office] Re: Build error in cli_ure with m142
+</A></li>
+	<LI>Next message: <A HREF="001471.html">[Open Office] CWS for non-Domain Developer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1470">[ date ]</a>
+              <a href="thread.html#1470">[ thread ]</a>
+              <a href="subject.html#1470">[ subject ]</a>
+              <a href="author.html#1470">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

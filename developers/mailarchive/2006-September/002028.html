@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] fontconfig patches from FC
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20fontconfig%20patches%20from%20FC&In-Reply-To=1159531438.16322.19.camel%40echelon.vojta">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002027.html">
+   <LINK REL="Next"  HREF="002029.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] fontconfig patches from FC</H1>
+    <B>Caolan McNamara</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20fontconfig%20patches%20from%20FC&In-Reply-To=1159531438.16322.19.camel%40echelon.vojta"
+       TITLE="[Open Office] fontconfig patches from FC">caolanm at redhat.com
+       </A><BR>
+    <I>Fri Sep 29 08:35:35 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002027.html">[Open Office] fontconfig patches from FC
+</A></li>
+        <LI>Next message: <A HREF="002029.html">[Open Office] fontconfig patches from FC
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2028">[ date ]</a>
+              <a href="thread.html#2028">[ thread ]</a>
+              <a href="subject.html#2028">[ subject ]</a>
+              <a href="author.html#2028">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2006-09-29 at 14:03 +0200, Robert Vojta wrote:
+&gt;<i> On Fri, 2006-09-29 at 11:42 +0200, Robert Vojta wrote:
+</I>&gt;<i> 
+</I>&gt;<i> Hallo Matthias,
+</I>&gt;<i> 
+</I>&gt;<i> &gt; when I apply your latest fontconfig-* patches (from FC), ooo-build fails
+</I>&gt;<i> &gt; to build for Windows somewhere in vcl. AFAIK it was something to do with
+</I>&gt;<i> &gt; 'std::abs', but I can't remember, haven't access to my home machine logs
+</I>&gt;<i> &gt; now. I'll send you more details tomorrow ...
+</I>&gt;<i> 
+</I>&gt;<i>   as tml wrote on IRC, it's enough to change ...
+</I>&gt;<i> 
+</I>&gt;<i>   if ((n+1 &lt; nLevel) &amp;&amp; (std::abs(nCharPos[n] - nOrigCharPos)))
+</I>
+
+Might be I actually meant...
+
+if ((n+1 &lt; nLevel) &amp;&amp; (abs(nCharPos[n] - nOrigCharPos) == 1))
+
+&gt;<i> 
+</I>&gt;<i>   ... to ...
+</I>&gt;<i> 
+</I>&gt;<i>   if ((n+1 &lt; nLevel) &amp;&amp; ((nCharPos[n] - nOrigCharPos) != 0))
+</I>&gt;<i> 
+</I>&gt;<i>   Hmm, but I think that there is another mistake in this patch too. Look
+</I>&gt;<i> at following conditions. The 1st and 2nd are same.
+</I>&gt;<i> 
+</I>&gt;<i> +     if (nOrigCharPos &lt; nCharPos[n])   &lt;---!!!!!
+</I>&gt;<i> +     {
+</I>&gt;<i> +         if (nCharPos[n+1] &gt; nOrigCharPos &amp;&amp; (nCharPos[n+1] &lt; nCharPos[n]))
+</I>&gt;<i> +            break;
+</I>&gt;<i> +     }
+</I>&gt;<i> +     else if (nOrigCharPos &lt; nCharPos[n]) &lt;---!!!!!!
+</I>&gt;<i> +     {
+</I>&gt;<i> +         if (nCharPos[n+1] &gt; nCharPos[n] &amp;&amp; (nCharPos[n+1] &lt; nOrigCharPos))
+</I>&gt;<i> +             break;
+</I>&gt;<i> +     }
+</I>&gt;<i> 
+</I>
+This should be probably be nOrigCharPos &gt; nCharPos[n] for the 2nd one
+
+&gt;<i>   And the next thing from tml is, how can nOrigCharPos differ from
+</I>&gt;<i> nCharPos[n] when nOrigCharPos is defined as int nOrigCharPos = nCharPos[n]?
+</I>&gt;<i> 
+</I>
+an intermediate line is...
+
+ nValid[n] = mpLayouts[n]-&gt;GetNextGlyphs( 1, &amp;nDummy, aPos,
+                nStartNew[n], &amp;nGlyphAdv[n], &amp;nCharPos[n] );
+
+which changes the value of nCharPos[n]
+
+C.
+
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002027.html">[Open Office] fontconfig patches from FC
+</A></li>
+	<LI>Next message: <A HREF="002029.html">[Open Office] fontconfig patches from FC
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2028">[ date ]</a>
+              <a href="thread.html#2028">[ thread ]</a>
+              <a href="subject.html#2028">[ subject ]</a>
+              <a href="author.html#2028">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

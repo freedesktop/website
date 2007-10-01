@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Still getting NullPointerExceptions from
+	HelpLinker...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Still%20getting%20NullPointerExceptions%20from%0A%09HelpLinker...&In-Reply-To=200602131525.07004.bero%40arklinux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001574.html">
+   <LINK REL="Next"  HREF="001593.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Still getting NullPointerExceptions from
+	HelpLinker...</H1>
+    <B>Caolan McNamara</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Still%20getting%20NullPointerExceptions%20from%0A%09HelpLinker...&In-Reply-To=200602131525.07004.bero%40arklinux.org"
+       TITLE="[Open Office] Still getting NullPointerExceptions from
+	HelpLinker...">caolanm at redhat.com
+       </A><BR>
+    <I>Mon Feb 13 09:54:51 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001574.html">[Open Office] Still getting NullPointerExceptions from HelpLinker...
+</A></li>
+        <LI>Next message: <A HREF="001593.html">[Open Office] Still getting NullPointerExceptions from
+	HelpLinker...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1575">[ date ]</a>
+              <a href="thread.html#1575">[ thread ]</a>
+              <a href="subject.html#1575">[ subject ]</a>
+              <a href="author.html#1575">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 2006-02-13 at 15:25 +0100, Bernhard Rosenkraenzer wrote:
+&gt;<i> Hi,
+</I>&gt;<i> I'm still getting NullPointerException crashes from HelpLinker after patching 
+</I>&gt;<i> gcc with <A HREF="http://gcc.gnu.org/bugzilla/show_bug.cgi?id=25426">http://gcc.gnu.org/bugzilla/show_bug.cgi?id=25426</A>
+</I>&gt;<i> 
+</I>&gt;<i> HelpLinker @/tmp/mkDRzUsM
+</I>&gt;<i> java.lang.NullPointerException
+</I>&gt;<i>    at com.jclark.xsl.sax.XMLProcessorImpl.load (libxt.jar.so)
+</I>&gt;<i>    at com.jclark.xsl.sax.XSLProcessorImpl.loadStylesheet (libxt.jar.so)
+</I>&gt;<i>    at com.sun.star.help.HelpIndexer$ParseStuff.&lt;init&gt; (HelpLinker)
+</I>&gt;<i>    at com.sun.star.help.HelpCompiler.getSourceDocument (HelpLinker)
+</I>&gt;<i>    at com.sun.star.help.HelpCompiler.compile (HelpLinker)
+</I>&gt;<i>    at com.sun.star.help.HelpLinker.link (HelpLinker)
+</I>&gt;<i>    at com.sun.star.help.HelpLinker.main (HelpLinker)
+</I>&gt;<i> dmake:  Error code 1, while making '../../unxlngi6.pro/bin/sbasic_en-US.zip'
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>&gt;<i> 
+</I>&gt;<i> I tried using ecj rather than gcj -C to bytecompile the java files to make 
+</I>&gt;<i> sure it's not the gcj private/public bug, but that refuses to build the 
+</I>&gt;<i> included Xt (works nicely on system xt though) because it doesn't overload a 
+</I>&gt;<i> number of abstract methods.
+</I>
+You can use gdb here to find the stacktrace btw. Get the contents of the
+@/tmp/mk... file and...
+
+gdb HelpLinker
+(gdb) handle SIGPWR nostop noprint
+(gdb) handle SIGXCPU nostop noprint
+(gdb) handle SIG33 nostop noprint
+(gdb) run *contents*
+
+Always a possibility is gcc#19870#, you can find a (rather silly)
+hackaround for that in the redhat spec where I sed out java
+privates/protecteds into publics.
+
+C.
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001574.html">[Open Office] Still getting NullPointerExceptions from HelpLinker...
+</A></li>
+	<LI>Next message: <A HREF="001593.html">[Open Office] Still getting NullPointerExceptions from
+	HelpLinker...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1575">[ date ]</a>
+              <a href="thread.html#1575">[ thread ]</a>
+              <a href="subject.html#1575">[ subject ]</a>
+              <a href="author.html#1575">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

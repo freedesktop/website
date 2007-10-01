@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] build is failing on epptso.obj
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20build%20is%20failing%20on%20epptso.obj&In-Reply-To=1129881895.22481.8.camel%40advaita.blr.novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001215.html">
+   <LINK REL="Next"  HREF="001216.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] build is failing on epptso.obj</H1>
+    <B>Lupine</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20build%20is%20failing%20on%20epptso.obj&In-Reply-To=1129881895.22481.8.camel%40advaita.blr.novell.com"
+       TITLE="[Open Office] build is failing on epptso.obj">thelupine at softhome.net
+       </A><BR>
+    <I>Fri Oct 21 09:21:51 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001215.html">[Open Office] build is failing on epptso.obj
+</A></li>
+        <LI>Next message: <A HREF="001216.html">[Open Office] unxlngi4.pro vs unxlngi6.pro
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1219">[ date ]</a>
+              <a href="thread.html#1219">[ thread ]</a>
+              <a href="subject.html#1219">[ subject ]</a>
+              <a href="author.html#1219">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2005-10-21 at 13:34 +0530, Raul Siddhartha wrote:
+&gt;<i> There was a patch in there that was being patched wrongly [at a wrong
+</I>&gt;<i> location] at times.
+</I>&gt;<i> 
+</I>&gt;<i> Try patching it with the patch attached with:
+</I>&gt;<i> 
+</I>&gt;<i> cd /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/
+</I>&gt;<i> patch -p0 &lt; /path/to/patch-epptso.diff
+</I>&gt;<i> 
+</I>&gt;<i> and check if it fixes it for you ? I'll get it fixed in CVS.
+</I>&gt;<i> 
+</I>
+After applying that patch, re-ran make, sat and waited for a bit, I got
+this message:
+
+-------------------------------
+Build succeeded ...!
+touch stamp/build
+-------------------------------
+
+Now that's a beautiful thing!
+
+<A HREF="http://home.cfl.rr.com/lupslinux/BLFS-OpenOffice2-0.jpg">http://home.cfl.rr.com/lupslinux/BLFS-OpenOffice2-0.jpg</A>
+...and that's even better looking :-)
+
+
+Thank you very much!
+-Lup
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001215.html">[Open Office] build is failing on epptso.obj
+</A></li>
+	<LI>Next message: <A HREF="001216.html">[Open Office] unxlngi4.pro vs unxlngi6.pro
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1219">[ date ]</a>
+              <a href="thread.html#1219">[ thread ]</a>
+              <a href="subject.html#1219">[ subject ]</a>
+              <a href="author.html#1219">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

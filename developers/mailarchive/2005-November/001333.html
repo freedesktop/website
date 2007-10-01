@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Generic desktop adapter (proposal &amp; prototype)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Generic%20desktop%20adapter%20%28proposal%20%26%20prototype%29&In-Reply-To=438B20DA.5070504%40scheinwelt.at">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001332.html">
+   <LINK REL="Next"  HREF="001334.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Generic desktop adapter (proposal &amp; prototype)</H1>
+    <B>&#201;ric Bischoff</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Generic%20desktop%20adapter%20%28proposal%20%26%20prototype%29&In-Reply-To=438B20DA.5070504%40scheinwelt.at"
+       TITLE="[Open Office] Generic desktop adapter (proposal &amp; prototype)">ebischoff at nerim.net
+       </A><BR>
+    <I>Mon Nov 28 11:40:34 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001332.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+        <LI>Next message: <A HREF="001334.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1333">[ date ]</a>
+              <a href="thread.html#1333">[ thread ]</a>
+              <a href="subject.html#1333">[ subject ]</a>
+              <a href="author.html#1333">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Le Lundi 28 Novembre 2005 16:23, nf2 a &#233;crit&#160;:
+&gt;<i> I guess 95% of desktop users don't care about theming. They just want to
+</I>&gt;<i> get their work done and don't even realize such differences. Regarding
+</I>&gt;<i> addressbooks and drag and drop i just don't know if the desktop adapter
+</I>&gt;<i> can help here. I have no experience with those issues, but maybe you can
+</I>&gt;<i> give me some hints.
+</I>
+For the address book, yes, since I am writing the KDE address book driver for 
+OpenOffice.org.
+
+Contemporary desktop environments like GNOME or KDE are much more than a 
+window manager :
+- they provide transparent, network-aware file access
+- they have a consistent look and feel. I don't think myself this is a minor 
+issue. Multiplication of look and feel and libraries under Linux means 
+freedom of choice, but also a huge mess for the end user, and a waste of 
+system ressources.
+- they enable dragging and dropping of files between applications : think 
+about dragging a picture from your desktop onto your OpenOffice.org letter, 
+or a file from Firefox onto your desktop
+- they make application share common ressources, like the address book 
+addresses, but also many user settings like your name, your network provider, 
+and so on
+- they provide a centralized configuration mechanism, eventually a 
+configuration cache
+- they provide an integrated help system
+- they maintain a list of mimetypes and/or file extensions
+- they provide icons and localization of the desktop items
+- they have a sound layer
+- they support scripting protocols
+- they offer inter application communication
+- they permit to embed graphical components between applications
+- etc
+
+In short, they _share_ many, many resources between their own applications. 
+What they do not do is sharing them with third party applications.
+
+&gt;<i> The desktop adapter is designed to be modular, 
+</I>&gt;<i> therefore providing addressbook interfaces should be possible...
+</I>
+I think it should be part of the picture, yes.
+
+&gt;<i> &gt;I suppose that kendy will be able to describe the topic better than I can.
+</I>&gt;<i>
+</I>&gt;<i> Is he on this list?
+</I>
+He is the one who coordinates the KDE / OpenOffice.org integration efforts. 
+There's a good overview of this project at
+
+	<A HREF="http://kde.openoffice.org">http://kde.openoffice.org</A>
+
+I think your idea is basically good. I just regret it did not come much 
+before... :-/ A lot of work has already be done in the integration area, but 
+project by project...
+
+From a practical point of view, projects like openoffice have already their 
+own environment abstraction layers, which permit them to run for example 
+under Windows. If a desktop adapter library arises, it will add yet another 
+software layer.
+
+Another solution would be to tackle the problems one by one. One library for 
+the transparent network file I/O for example, another library for the access 
+to the user settings, etc.
+
+Just thinking aloud...
+
+-- 
+Marre des virus, vers, spywares, adwares et plantages ?
+Passez &#224; Linux !
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001332.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+	<LI>Next message: <A HREF="001334.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1333">[ date ]</a>
+              <a href="thread.html#1333">[ thread ]</a>
+              <a href="subject.html#1333">[ subject ]</a>
+              <a href="author.html#1333">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

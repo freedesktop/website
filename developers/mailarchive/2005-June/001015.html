@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] m108 build error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m108%20build%20error&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001017.html">
+   <LINK REL="Next"  HREF="001019.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] m108 build error</H1>
+    <B>Brian Thomason</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m108%20build%20error&In-Reply-To="
+       TITLE="[Open Office] m108 build error">brian.thomason at linspireinc.com
+       </A><BR>
+    <I>Tue Jun 14 22:29:30 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001017.html">[Open Office] More on the fpicker troubles
+</A></li>
+        <LI>Next message: <A HREF="001019.html">[Open Office] m108 build failure with Sun JDK 1.4.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1015">[ date ]</a>
+              <a href="thread.html#1015">[ thread ]</a>
+              <a href="subject.html#1015">[ subject ]</a>
+              <a href="author.html#1015">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Create files in subtree index
+
+...........................rm
+../../unxlngi6.pro/bin/odk680/docs/cpp/ref//cpp.css
+tr -d &quot;\015&quot; &lt; ../../docs/cpp/ref/cpp.css &gt;
+../../unxlngi6.pro/bin/odk680/docs/cpp/ref//cpp.css
+/source/oo2-new/ooo-build-1.9.108/build/src680-m108/odk/pack/checkbin
+/usr/bin/perl ../../util/check.pl ../../unxlngi6.pro/bin/odk680 linux
+&quot;&quot; ../../unxlngi6.pro/misc/checkbin.txt
+Check for linux
+check binaries: ++++++++++++++
+check packaging files: ++++++++++++++++++++++++++
+check config files:
+check setting files:
+check cpp docu:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+check java docu:
+check examples:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ERROR
+dmake:  Error code 1, while making '../../unxlngi6.pro/misc/checkbin.txt'
+'---* RULES.MK *---'
+
+ERROR: Error 65280 occurred while making
+/source/oo2-new/ooo-build-1.9.108/build/src680-m108/odk/pack/checkbin
+make: *** [stamp/build] Error 1
+
+After this fails, manually changing to &quot;/source/oo2-new/ooo-build-1.9.108/build/src680-m108/odk/pack/checkbin&quot; and executing dmake works just fine.  manually running the command 
+&quot;/usr/bin/perl ../../util/check.pl ../../unxlngi6.pro/bin/odk680 linux&quot; works as well.
+
+Any ideas what could be causing this?  Using gcc 3.4. (Currently building again now in a clean env with 3.3 to see if that will solve the problem)
+
+-Brian
+
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001017.html">[Open Office] More on the fpicker troubles
+</A></li>
+	<LI>Next message: <A HREF="001019.html">[Open Office] m108 build failure with Sun JDK 1.4.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1015">[ date ]</a>
+              <a href="thread.html#1015">[ thread ]</a>
+              <a href="subject.html#1015">[ subject ]</a>
+              <a href="author.html#1015">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

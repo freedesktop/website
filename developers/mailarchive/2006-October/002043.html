@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Build broken with system-icu
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build%20broken%20with%20system-icu&In-Reply-To=1160689675.24941.7.camel%40g-two">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002042.html">
+   <LINK REL="Next"  HREF="002044.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Build broken with system-icu</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build%20broken%20with%20system-icu&In-Reply-To=1160689675.24941.7.camel%40g-two"
+       TITLE="[Open Office] Build broken with system-icu">pmladek at suse.cz
+       </A><BR>
+    <I>Fri Oct 13 05:46:14 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002042.html">[Open Office] Build broken with system-icu
+</A></li>
+        <LI>Next message: <A HREF="002044.html">[Open Office] Build broken with system-icu
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2043">[ date ]</a>
+              <a href="thread.html#2043">[ thread ]</a>
+              <a href="subject.html#2043">[ subject ]</a>
+              <a href="author.html#2043">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 12 October 2006 23:47, Andreas Proschofsky wrote:
+&gt;<i> Hi everyone,
+</I>&gt;<i>
+</I>&gt;<i> The current system-icu-patch  breaks the build. I get this with
+</I>&gt;<i> ooo-build-2.0.4 and icu-3.4.1, ood680-m4 worked fine. Anyone knows whats
+</I>&gt;<i> going on?
+</I>
+Could you please try the attached patch?
+
+It was a bug, definitely. I wonder if this fix is enough.
+
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SUSE LINUX, s. r. o.                        e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Lihovarsk&#225; 1060/12                          tel: +420 284 028 952
+190 00 Prague 9                             fax: +420 284 028 951
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: breakiterator_unicode.cxx.diff
+Type: text/x-diff
+Size: 498 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20061013/151d0329/attachment.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20061013/151d0329/attachment.bin</A> 
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002042.html">[Open Office] Build broken with system-icu
+</A></li>
+	<LI>Next message: <A HREF="002044.html">[Open Office] Build broken with system-icu
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2043">[ date ]</a>
+              <a href="thread.html#2043">[ thread ]</a>
+              <a href="subject.html#2043">[ subject ]</a>
+              <a href="author.html#2043">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Bad patch to default resources
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:arekm%40pld-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000521.html">
+   <LINK REL="Next"  HREF="000525.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Bad patch to default resources
+   </H1>
+    <B>Arkadiusz Miskiewicz
+    </B> 
+    <A HREF="mailto:arekm%40pld-linux.org"
+       TITLE="[Open Office] Re: Bad patch to default resources">arekm@pld-linux.org
+       </A><BR>
+    <I>Sun, 29 Aug 2004 14:03:47 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000521.html">[Open Office] writerperfect / ooo-build
+</A></li>
+        <LI> Next message: <A HREF="000525.html">[Open Office] Re: Bad patch to default resources
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#523">[ date ]</a>
+              <a href="thread.html#523">[ thread ]</a>
+              <a href="subject.html#523">[ subject ]</a>
+              <a href="author.html#523">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sunday 29 of August 2004 00:22, Artur Flinta wrote:
+&gt;<i> Hi!
+</I>&gt;<i>
+</I>&gt;<i> After succesfull building OO 1.1.2 with ooo-build 1.3.2 and with gnome
+</I>&gt;<i> and kde support I've noticed that OO won't start cause it can't find
+</I>&gt;<i> iso* resource files. After doing small strace, I discovered that oocalc
+</I>&gt;<i> (oowriter, whatever) is looking for iso* files in
+</I>&gt;<i> openoffice/program/resource instead of
+</I>&gt;<i> openoffice/program/resource.default which is a symlink to resource.gnome
+</I>&gt;<i> or resource.kde. After renaming resource.default to resource everything
+</I>&gt;<i> seems to be fine :) Please fix this path in sources, or change install
+</I>&gt;<i> section and description in confgure.in that it will point to resource
+</I>&gt;<i> instaed of resource.default
+</I>
+Something like this?
+
+Index: bin/ooo-wrapper.in
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+RCS file: /cvs/gnome/ooo-build/bin/ooo-wrapper.in,v
+retrieving revision 1.30
+diff -u -u -r1.30 ooo-wrapper.in
+=2D-- bin/ooo-wrapper.in  15 Jul 2004 02:24:03 -0000      1.30
++++ bin/ooo-wrapper.in  29 Aug 2004 12:02:01 -0000
+@@ -422,10 +422,27 @@
+
+ # select the preferred icons set by the running windowmanager
+ unless (defined $icons_set) {
+=2D    $icons_set=3D&quot;kde&quot; if (-d &quot;$SystemInstallDir/program/resource.kde&quot; &amp;&amp;
+=2D                         &quot;$ENV{WINDOWMANAGER}&quot; =3D~ &quot;.*kde\$&quot;);
+=2D    $icons_set=3D&quot;gnome&quot; if (-d &quot;$SystemInstallDir/program/resource.gnom=
+e&quot; &amp;&amp;
+=2D                         &quot;$ENV{WINDOWMANAGER}&quot; =3D~ &quot;.*gnome\$&quot;);
++    if (exists $ENV{WINDOWMANAGER}) {
++        if (-d &quot;$SystemInstallDir/program/resource.kde&quot; &amp;&amp;
++            &quot;$ENV{WINDOWMANAGER}&quot; =3D~ &quot;.*kde\$&quot;) {
++                $icons_set=3D&quot;kde&quot;;
++        } elsif (-d &quot;$SystemInstallDir/program/resource.gnome&quot; &amp;&amp;
++            &quot;$ENV{WINDOWMANAGER}&quot; =3D~ &quot;.*gnome\$&quot;) {
++                $icons_set=3D&quot;gnome&quot;;
++        }
++    }
++
++    if (not defined $icons_set) {
++        if (-d &quot;$SystemInstallDir/program/resource.default&quot;) {
++            $icons_set=3D&quot;default&quot;;
++        } elsif (-d &quot;$SystemInstallDir/program/resource.kde&quot;) {
++            $icons_set=3D&quot;kde&quot;;
++        } elsif (-d &quot;$SystemInstallDir/program/resource.gnome&quot;) {
++            $icons_set=3D&quot;gnome&quot;;
++        } else {
++            $icons_set=3D&quot;default&quot;;
++        }
++    }
+ }
+
+ if (defined $icons_set) {
+
+&gt;<i>  Artur
+</I>
+=2D-=20
+Arkadiusz Mi=B6kiewicz     CS at FoE, Wroclaw University of Technology
+arekm.pld-linux.org, 1024/3DB19BBD, JID: arekm.jabber.org, PLD/Linux
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000521.html">[Open Office] writerperfect / ooo-build
+</A></li>
+	<LI> Next message: <A HREF="000525.html">[Open Office] Re: Bad patch to default resources
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#523">[ date ]</a>
+              <a href="thread.html#523">[ thread ]</a>
+              <a href="subject.html#523">[ subject ]</a>
+              <a href="author.html#523">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

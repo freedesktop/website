@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] evolution / LDAP / Exchange / Groupwise integration ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000154.html">
+   <LINK REL="Next"  HREF="000156.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] evolution / LDAP / Exchange / Groupwise integration ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] evolution / LDAP / Exchange / Groupwise integration ...">michael@ximian.com
+       </A><BR>
+    <I>Mon, 17 Nov 2003 15:38:13 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000154.html">[Open Office] gtk+ file selector integration ...
+</A></li>
+        <LI> Next message: <A HREF="000156.html">[Open Office] tbxcust ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#155">[ date ]</a>
+              <a href="thread.html#155">[ thread ]</a>
+              <a href="subject.html#155">[ subject ]</a>
+              <a href="author.html#155">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Amit,
+
+	The major task I'd like you to be working on is quite a large one.
+Essentially - the background is this:
+
+	* Existing OO.o LDAP integration uses a nastily hacked, and 
+	  un-sustainable chunk of Mozilla code included in a nasty
+	  fashion into the tree. We cannot ship this.
+
+	* LDAP integration is however crucial, and it would be great to
+	  be able to grok Exchange / Groupwise / iPlanet / 
+	  OpenGroupwise.org etc. contacts via. Evolution.
+
+	* Currently there is a nasty 'fork a helper' hack that will 
+	  extract local contact data from evolution-1.4 however this
+	  is inelegant, slow etc.
+
+	* So: the task is:
+		+ checkout evolution-data-server from Gnome CVS
+		+ build it / get it working nicely ( you'll most
+		  likely need HEAD libbonobo / ORBit2 too ).
+		+ dig at the TestGtkIntegration code (OOO_1_1_0/apply)
+		  particularly the glib-integration.diff in order to
+		  get CORBA message processing working nicely.
+		+ play with the MailMerge feature :-)
+		+ research &amp; understand and document the salient points
+		  of how the existing backend works:
+			+ cf. connectivity/source/drivers/evoab*
+			+ cf. the other database backends eg.
+		+ Integrate with the new addressbook APIs in the best
+		  way possible.
+		+ Ensure that the default contacts setup provided is
+		  the evolution backend &amp; it's associated providers.
+
+	Anyhow - that's a suitably large task, and will throw up some nice
+complexities I think. Chris Toshok can help you with any problems with
+the Addressbook APIs (I think), and Frank can help out if you get
+desperately stuck with the connectivity code I imagine - but he's a busy
+man so don't badger him :-)
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000154.html">[Open Office] gtk+ file selector integration ...
+</A></li>
+	<LI> Next message: <A HREF="000156.html">[Open Office] tbxcust ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#155">[ date ]</a>
+              <a href="thread.html#155">[ thread ]</a>
+              <a href="subject.html#155">[ subject ]</a>
+              <a href="author.html#155">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

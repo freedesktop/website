@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] toolbar pdf export button options...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:mailing%40mail.conecta.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000144.html">
+   <LINK REL="Next"  HREF="000148.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] toolbar pdf export button options...
+   </H1>
+    <B>Carlo Daffara
+    </B> 
+    <A HREF="mailto:mailing%40mail.conecta.it"
+       TITLE="[Open Office] toolbar pdf export button options...">mailing@mail.conecta.it
+       </A><BR>
+    <I>Wed, 12 Nov 2003 09:17:35 +0100 (CET)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000144.html">[Open Office] Regarding Issue No. 49916
+</A></li>
+        <LI> Next message: <A HREF="000148.html">[Open Office] toolbar pdf export button options...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#147">[ date ]</a>
+              <a href="thread.html#147">[ thread ]</a>
+              <a href="subject.html#147">[ subject ]</a>
+              <a href="author.html#147">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear all,
+we finally got through our first build of OOo 1.1; with all bells and
+whistles. Some comments:
+
+* Interface fonts get too big; we had to revert a patch in
+gui-font-scale.diff, in salgdi.cxx, and remove the part
+
+-        if ( rDPIY &lt; 96 )
+-        {
+-            rDPIX = Divide( rDPIX * 96, rDPIY );
+-            rDPIY = 96;
+-        }
+-
+
+To get reasonable sizes. I seem to remember that there was already a
+discussion about it a while ago; I believe that Xft or X11 report 72 as
+DPI, and without the above patch the font face is 30% larger.
+
+* The pdf export button in the toolbar does the export with the screen
+resolution for images by default. Can I suggest to set it to &quot;press&quot;? It
+seems more logical; eventually, do anybody know where the default is set?
+
+* Also: what is the license for the icons created by Ximian? We would like
+to distribute our build of OOo with your icons; of course giving due
+credit and the url to get patches and files.
+Cheers
+
+						Carlo Daffara
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000144.html">[Open Office] Regarding Issue No. 49916
+</A></li>
+	<LI> Next message: <A HREF="000148.html">[Open Office] toolbar pdf export button options...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#147">[ date ]</a>
+              <a href="thread.html#147">[ thread ]</a>
+              <a href="subject.html#147">[ subject ]</a>
+              <a href="author.html#147">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

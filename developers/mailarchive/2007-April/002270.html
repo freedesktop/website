@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] no suitable windowing system found, exiting.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20no%20suitable%20windowing%20system%20found%2C%20exiting.&In-Reply-To=200704241538.52234.pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002268.html">
+   <LINK REL="Next"  HREF="002271.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] no suitable windowing system found, exiting.</H1>
+    <B>KamiH&#237;r</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20no%20suitable%20windowing%20system%20found%2C%20exiting.&In-Reply-To=200704241538.52234.pmladek%40suse.cz"
+       TITLE="[Open Office] no suitable windowing system found, exiting.">kamihir at freemail.hu
+       </A><BR>
+    <I>Tue Apr 24 15:45:41 EDT 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002268.html">[Open Office] no suitable windowing system found, exiting.
+</A></li>
+        <LI>Next message: <A HREF="002271.html">[Open Office] no suitable windowing system found, exiting.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2270">[ date ]</a>
+              <a href="thread.html#2270">[ thread ]</a>
+              <a href="subject.html#2270">[ subject ]</a>
+              <a href="author.html#2270">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>  Ciao!
+
+Petr Mladek &#237;rta:
+&gt;<i> On Monday 23 April 2007 15:28, Kami wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hello!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  I have build an sightly moded vanilla OpenOffice.org 2.2 patched with some
+</I>&gt;&gt;<i> ooo-build's patches and some other smaller patches. I build on Ubuntu Linux
+</I>&gt;&gt;<i> latest (7.0.4) and the compiled binary works well on it. But other system
+</I>&gt;&gt;<i> has a problem with it. I tried it on Slackware and Fedora C6 an I got &quot;no
+</I>&gt;&gt;<i> suitable windowing system found, exiting.&quot; error messages. This is also
+</I>&gt;&gt;<i> applies when I run it as root. I did and strace log that I attached to this
+</I>&gt;&gt;<i> letter. Could you be so kind to help me out the possible root cause of
+</I>&gt;&gt;<i> problem and with the possible solutions?
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> You will have a higher chance to build an universal OOo packages if you do it 
+</I>&gt;<i> on a rather old system.
+</I>Which version of which distrib should be best? I really interested in 
+universal OOo packages that utilize the latest innovations of OOo like 
+GNOME VFS, Quick Starter... As I wrote I used Ubuntu 7.04 (my main 
+machine) should I force older version of glibc/Xfree, or I have to build 
+another build machine based on older distribs like Debain 3.1r6 (or 4?) 
+or other? Are there detailed information about them most compatible 
+versions? tools.openoffice.org? or at the wiki?
+
+Rail's hint:
+&quot;Can you rerun with the following command:
+strace -o /tmp/strace.txt -fF /path/to/soffice -writer
+
+you need -f and -F to follow forks and threads.
+
+I think the error comes from modular X.org which comes with dynamic
+libxau (which was static before). Search for &quot;libxau&quot; or &quot;xau&quot; in strace
+output.
+
+I had such problem before. Switching to elder X.org/XFree solved &quot;no
+suitable windowing system&quot; for me. My build machine runs Debian Sarge
+which comes with XFree 4.3. Unfortunately it breaks some other optional
+things like GTK+ file picker, GNOME VFS, Quick Starter (which also GTK+
+program), KDE file picker...
+&quot;
+and
+&quot;
+Probably Linux from scratch with old glibc, old XFree and new
+KDE/GNOME/GTK+ stuff. BTW, you can try --enable-static-gtk to link GTK
+stuff static.
+&quot;
+ &gt;From Jim:
+&quot;Same on GNU/Linux SPARC, OOF680_m14 and not modified.
+
+I build on debian and a user reports this problem on an older debian 
+system using kde.
+
+Searching google suggests a variety of problems and fixes but I cannot 
+see a consistent pattern or anything that works for my user. The message 
+comes from here:
+<A HREF="http://www.go-oo.org/lxr/source/gsl/vcl/unx/source/plugadapt/salplug.cxx#473">http://www.go-oo.org/lxr/source/gsl/vcl/unx/source/plugadapt/salplug.cxx#473</A> 
+
+
+If you rebuild vcl with debug=t and drop the new lib into the installed 
+OOo there will be some messages that might give a clue what goes wrong.
+&quot;
+
+and Kay from Sun:
+&quot;
+this error happens in case the to be used VCL plugin (KDE, GTK or plain 
+X11) can not be loaded / instantiated. To break up the problem further, 
+you may want to try to specify the to be used plugin explicitly in the 
+environment:
+
+ setenv SAL_USE_VCLPLUGIN &quot;kde&quot;
+
+or
+
+ setenv SAL_USE_VCLPLUGIN &quot;gtk&quot;
+
+or
+
+ setenv SAL_USE_VCLPLUGIN &quot;gen&quot;
+
+
+At least &quot;gen&quot; should work always.
+
+Please have a look at
+
+<A HREF="http://wiki.services.openoffice.org/wiki/Environment_Variables">http://wiki.services.openoffice.org/wiki/Environment_Variables</A>
+
+for other env. variables.
+&quot;
+&gt;<i>  Also do not forget to disable all the system stuff 
+</I>&gt;<i> (try config_office/configure --help and check for --without-system-XXX).
+</I>&gt;<i>   
+</I>Is this working this way? I see just --with-system=XXX options not 
+--without-system-XXX. What is the default? I expect the without system 
+configuration...
+
+
+&gt;<i> Note that distributions usually include compat packages with older libraries 
+</I>&gt;<i> but not to the contrary.
+</I>&gt;<i>
+</I>&gt;<i> You might also try the O3 Build CD, see 
+</I>&gt;<i> <A HREF="http://wiki.services.openoffice.org/wiki/O3-build.">http://wiki.services.openoffice.org/wiki/O3-build.</A> It is based on the build 
+</I>&gt;<i> environment used by Sun. I tested only the first version and had some 
+</I>&gt;<i> problems with it. I am not sure if it is already usable...
+</I>&gt;<i>   
+</I>I didn't tty it before, but interesting attempt. I had a good machine 
+based on debian, but that virtual machine has gone. The new VMWare 
+machine identied Debian 4 and Ubuntu 7.04 as old system with anicient 
+GLIBC (Pavel do you remember?) So I prepared my desktop machine as builder.
+&gt;<i> Also Pavel Janik does universal builds, so he might help you.
+</I>&gt;<i>   
+</I>I hope he has ideas about my problem. I observed his build machine, 
+scipts, settings, etc. and he uses same configure settings - If I am 
+right. My configure is here:
+<A HREF="http://ooop.svn.sourceforge.net/viewvc/ooop/trunk/config_office/">http://ooop.svn.sourceforge.net/viewvc/ooop/trunk/config_office/</A>
+
+It seems Windows versions works perfectly. Thank you guys for your work...
+
+
+
+Thank you in advance,
+KAMI
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070424/5f393723/attachment.html">http://lists.ximian.com/pipermail/openoffice/attachments/20070424/5f393723/attachment.html</A> 
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002268.html">[Open Office] no suitable windowing system found, exiting.
+</A></li>
+	<LI>Next message: <A HREF="002271.html">[Open Office] no suitable windowing system found, exiting.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2270">[ date ]</a>
+              <a href="thread.html#2270">[ thread ]</a>
+              <a href="subject.html#2270">[ subject ]</a>
+              <a href="author.html#2270">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

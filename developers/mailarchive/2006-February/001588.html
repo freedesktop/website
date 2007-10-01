@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20scsolver%20build%20failsure%20on%20windows%20%28was%3A%20Fwd%3A%0A%09Your%20interesting%20stuffs%20%3Ao%29%20%29&In-Reply-To=1139925640.684.49.camel%40pettson">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001584.html">
+   <LINK REL="Next"  HREF="001590.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20scsolver%20build%20failsure%20on%20windows%20%28was%3A%20Fwd%3A%0A%09Your%20interesting%20stuffs%20%3Ao%29%20%29&In-Reply-To=1139925640.684.49.camel%40pettson"
+       TITLE="[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )">michael.meeks at novell.com
+       </A><BR>
+    <I>Tue Feb 14 12:10:59 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001584.html">[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+</A></li>
+        <LI>Next message: <A HREF="001590.html">[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1588">[ date ]</a>
+              <a href="thread.html#1588">[ thread ]</a>
+              <a href="subject.html#1588">[ subject ]</a>
+              <a href="author.html#1588">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Tor,
+
+On Tue, 2006-02-14 at 16:00 +0200, Tor Lillqvist wrote:
+&gt;<i> Attached you will find two diffs, to the scsolver code and to
+</I>&gt;<i> the ublas header files in boost. With these patches, scsolver
+</I>&gt;<i> builds for me with MSVC7.1. Whether it works on Win32 I have no idea...
+</I>
+	So - the 1st patch looks great to me lets get that committed (assuming
+Kohei doesn't scream ;-) interesting to know that the SAL_CALLs are
+actually useful ;-) /me makes mental note to add a few more in his code.
+
+&gt;<i> As to the boost patch, some hack is needed so it is applied before boost
+</I>&gt;<i> gets built and its headers copied to the solver directory.
+</I>
+	Sure - this diff needs to get appended to boost-1.30.2.patch in boost/
+and then re-diffed, then added to ooo-build.
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001584.html">[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+</A></li>
+	<LI>Next message: <A HREF="001590.html">[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1588">[ date ]</a>
+              <a href="thread.html#1588">[ thread ]</a>
+              <a href="subject.html#1588">[ subject ]</a>
+              <a href="author.html#1588">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

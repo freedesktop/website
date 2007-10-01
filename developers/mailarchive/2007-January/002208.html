@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Problem with system STLPort5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Problem%20with%20system%20STLPort5&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002207.html">
+   <LINK REL="Next"  HREF="002209.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Problem with system STLPort5</H1>
+    <B>Ismail D&#246;nmez</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Problem%20with%20system%20STLPort5&In-Reply-To="
+       TITLE="[Open Office] Problem with system STLPort5">ismail at pardus.org.tr
+       </A><BR>
+    <I>Sat Jan 27 04:54:03 EST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002207.html">[Open Office] Problem with ooo-build trunk and gcc 4.2.0
+</A></li>
+        <LI>Next message: <A HREF="002209.html">[Open Office] Problem with system STLPort5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2208">[ date ]</a>
+              <a href="thread.html#2208">[ thread ]</a>
+              <a href="subject.html#2208">[ subject ]</a>
+              <a href="author.html#2208">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+Looks like building with system STLPort5 is still rough atm, I applied the 
+following patches for Pardus :
+
+dont-copy-and-install-stlport.diff, STLport5
+
+It builds fine but make install errors out with :
+
+########################################################
+... checking required files ...
+...... searching zip ...
+        Found: /usr/bin/zip
+...... searching unzip ...
+        Found: /usr/bin/unzip
+... analyzing openoffice.lst ...
+rmdir: /home/cartman/ooo-build/build/OOE680_m6/instsetoo_native/util/OpenOffice//logging/: 
+Dizin bo&#351; de&#287;il
+... reading include pathes ...
+... analyzing 
+script: /home/cartman/ooo-build/build/OOE680_m6/solver/680/unxlngi6.pro/bin/setup_osl.ins ...
+... analyzing directories ...
+... analyzing files ...
+... analyzing scpactions ...
+... analyzing shortcuts ...
+... analyzing profile ...
+... analyzing profileitems ...
+... analyzing modules ...
+------------------------------------
+... languages en-US ...
+... analyzing files ...
+ERROR: The following files could not be found:
+ERROR: File not found: libstlport_gcc.so
+... cleaning the output tree ...
+
+**************************************************
+ERROR: ERROR: Missing files
+in function: remove_Files_Without_Sourcedirectory
+**************************************************
+
+Any ideas?
+
+Regards,
+ismail
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002207.html">[Open Office] Problem with ooo-build trunk and gcc 4.2.0
+</A></li>
+	<LI>Next message: <A HREF="002209.html">[Open Office] Problem with system STLPort5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2208">[ date ]</a>
+              <a href="thread.html#2208">[ thread ]</a>
+              <a href="subject.html#2208">[ subject ]</a>
+              <a href="author.html#2208">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

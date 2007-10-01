@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Bug 162979 - Hang on .sxi import
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Bug%20162979%20-%20Hang%20on%20.sxi%20import&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001785.html">
+   <LINK REL="Next"  HREF="001787.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Bug 162979 - Hang on .sxi import</H1>
+    <B>Jian Hua Jiao</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Bug%20162979%20-%20Hang%20on%20.sxi%20import&In-Reply-To="
+       TITLE="[Open Office] Bug 162979 - Hang on .sxi import">jjiao at novell.com
+       </A><BR>
+    <I>Tue Apr 25 00:08:28 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001785.html">[Open Office] [PATCH] libxau linking failure
+</A></li>
+        <LI>Next message: <A HREF="001787.html">[Open Office] cws-commit-patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1786">[ date ]</a>
+              <a href="thread.html#1786">[ thread ]</a>
+              <a href="subject.html#1786">[ subject ]</a>
+              <a href="author.html#1786">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Patch for Bug 162979 - Hang on .sxi import
+loop-layout-layact.diff patch for enhence the fault tolerent 
+loop-layput-swfrm.diff patch for header and footer detect and deal the
+condition.
+
+please test
+
+Jiao Jianhua
+
+-------------- next part --------------
+--- layact.cxx.m163	2006-04-24 21:48:57.000000000 +0800
++++ layact.cxx	2006-04-25 03:21:52.000000000 +0800
+@@ -2266,6 +2266,7 @@
+                      ( !bBrowse &amp;&amp; pPage-&gt;IsInvalidLayout() ) ||
+                      // OD 07.05.2003 #109435# - consider interrupt formatting
+                      ( IS_FLYS &amp;&amp; IS_INVAFLY &amp;&amp; !mbFormatCntntOnInterrupt )
++                     &amp;&amp; pCntnt-&gt;GetNextCntntFrm()
+                    )
+ 					return FALSE;
+ 			}
+-------------- next part --------------
+--- wsfrm.cxx.m163	2006-04-25 03:09:50.000000000 +0800
++++ wsfrm.cxx	2006-04-25 11:34:49.000000000 +0800
+@@ -517,6 +517,18 @@
+ 			return;
+ 
+ 		SwRootFrm *pRoot = (SwRootFrm*)pPage-&gt;GetUpper();
++        const SwFrm* pFrm = FindFooterOrHeader();
++        if ( IsHeaderFrm() || IsFooterFrm() )
++        {
++            if ( pFrm-&gt;GetDrawObjs() )
++                pPage-&gt;InvalidateCntnt();
++            if ( this == pFrm )
++            {
++		        pRoot-&gt;SetIdleFlags();
++                return;
++            }
++        }
++
+ 		const SwFlyFrm *pFly = FindFlyFrm();
+ 		if ( IsCntntFrm() )
+ 		{
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001785.html">[Open Office] [PATCH] libxau linking failure
+</A></li>
+	<LI>Next message: <A HREF="001787.html">[Open Office] cws-commit-patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1786">[ date ]</a>
+              <a href="thread.html#1786">[ thread ]</a>
+              <a href="subject.html#1786">[ subject ]</a>
+              <a href="author.html#1786">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

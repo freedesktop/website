@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] LDAP configuration fixes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20LDAP%20configuration%20fixes&In-Reply-To=20060330154451.d51dd72e.h.mth%40web.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001751.html">
+   <LINK REL="Next"  HREF="001752.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] LDAP configuration fixes</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20LDAP%20configuration%20fixes&In-Reply-To=20060330154451.d51dd72e.h.mth%40web.de"
+       TITLE="[Open Office] LDAP configuration fixes">h.mth at web.de
+       </A><BR>
+    <I>Thu Apr  6 05:11:52 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001751.html">[Open Office] m162 and -system tarball problem
+</A></li>
+        <LI>Next message: <A HREF="001752.html">[Open Office] [PATCH] update Frugalware bits
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1750">[ date ]</a>
+              <a href="thread.html#1750">[ thread ]</a>
+              <a href="subject.html#1750">[ subject ]</a>
+              <a href="author.html#1750">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 30 Mar 2006 15:44:51 +0200
+Hanno Meyer-Thurow &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">h.mth at web.de</A>&gt; wrote:
+
+&gt;<i> Hi list!
+</I>
+I am going to move config_office-ldap.diff to BuildBits now.
+
+It defaults to build LDAP connectivity via Mozilla's LDAP.
+
+To disable it, use:
+	--disable-ldap
+	--disable-mozilla does it as well
+
+To use OpenLDAP, use:
+	--with-openldap
+
+--with-openldap is set in distro-configs/Common.conf.in.
+You may stop using the hacks in ooo-build.
+
+
+Regards,
+Hanno
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001751.html">[Open Office] m162 and -system tarball problem
+</A></li>
+	<LI>Next message: <A HREF="001752.html">[Open Office] [PATCH] update Frugalware bits
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1750">[ date ]</a>
+              <a href="thread.html#1750">[ thread ]</a>
+              <a href="subject.html#1750">[ subject ]</a>
+              <a href="author.html#1750">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

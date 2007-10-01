@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] making in freebsd 4.11 failed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20making%20in%20freebsd%204.11%20failed&In-Reply-To=200511031834.55158.tempo%40kgs.ru">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001266.html">
+   <LINK REL="Next"  HREF="001271.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] making in freebsd 4.11 failed</H1>
+    <B>NAKATA Maho</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20making%20in%20freebsd%204.11%20failed&In-Reply-To=200511031834.55158.tempo%40kgs.ru"
+       TITLE="[Open Office] making in freebsd 4.11 failed">chat95 at mac.com
+       </A><BR>
+    <I>Thu Nov  3 17:11:12 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001266.html">[Open Office] making in freebsd 4.11 failed
+</A></li>
+        <LI>Next message: <A HREF="001271.html">[Open Office] making in freebsd 4.11 failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1269">[ date ]</a>
+              <a href="thread.html#1269">[ thread ]</a>
+              <a href="subject.html#1269">[ subject ]</a>
+              <a href="author.html#1269">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>In Message-ID: &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">200511031834.55158.tempo at kgs.ru</A>&gt; 
+&quot;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">tempo at kgs.ru</A>&quot; &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">tempo at kgs.ru</A>&gt; wrote:
+
+Please test first at FreeBSD 5.4-RELEASE; I'm not tried 2.0 for 4.11 yet.
+BTW: what Java do you use?
+I think you are using GNU/Linux version...
+
+&gt;<i> /usr/ports/editors/openoffice.org-2.0/work/OOo_2.0.0rc3_src/testtools/source/bridgetest
+</I>&gt;<i> -------------
+</I>&gt;<i> mkdir ../../unxfbsd.pro/lib/
+</I>&gt;<i> mkdir: ../../unxfbsd.pro/lib/: File exists
+</I>&gt;<i> cd ../../unxfbsd.pro/lib &amp;&amp; regcomp -register -br uno_types.rdb -r 
+</I>&gt;<i> uno_services.rdb\
+</I>&gt;<i>         -c acceptor.uno.so \
+</I>&gt;<i>         -c bridgefac.uno.so \
+</I>&gt;<i>         -c connector.uno.so \
+</I>&gt;<i>         -c remotebridge.uno.so \
+</I>&gt;<i>         -c uuresolver.uno.so \
+</I>&gt;<i>         -c bridgetest.uno.so \
+</I>&gt;<i>         -c cppobj.uno.so \
+</I>&gt;<i>         -c uriproc.uno.so
+</I>&gt;<i> [Java framework] Error in function getLibraryLocation (fwkutil.cxx).javaldx 
+</I>&gt;<i> failed!
+</I>&gt;<i> register component 'acceptor.uno.so' in registry 'uno_services.rdb' succesful!
+</I>&gt;<i> register component 'bridgefac.uno.so' in registry 'uno_services.rdb' 
+</I>&gt;<i> succesful!
+</I>&gt;<i> register component 'connector.uno.so' in registry 'uno_services.rdb' 
+</I>&gt;<i> succesful!
+</I>&gt;<i> register component 'remotebridge.uno.so' in registry 'uno_services.rdb' 
+</I>&gt;<i> succesful!
+</I>&gt;<i> register component 'uuresolver.uno.so' in registry 'uno_services.rdb' 
+</I>&gt;<i> succesful!
+</I>&gt;<i> register component 'bridgetest.uno.so' in registry 'uno_services.rdb' 
+</I>&gt;<i> succesful!
+</I>&gt;<i> register component 'cppobj.uno.so' in registry 'uno_services.rdb' succesful!
+</I>&gt;<i> register component 'uriproc.uno.so' in registry 'uno_services.rdb' succesful!
+</I>&gt;<i> regcomp -register -br ../../unxfbsd.pro/lib/uno_types.rdb 
+</I>&gt;<i> -r ../../unxfbsd.pro/lib/uno_services.rdb \
+</I>&gt;<i>         -c javaloader.uno.so -c javavm.uno.so
+</I>&gt;<i> [Java framework] Error in function getLibraryLocation (fwkutil.cxx).javaldx 
+</I>&gt;<i> failed!
+</I>&gt;<i> register component 'javaloader.uno.so' in registry 
+</I>&gt;<i> '../../unxfbsd.pro/lib/uno_services.rdb' succesful!
+</I>&gt;<i> register component 'javavm.uno.so' in registry 
+</I>&gt;<i> '../../unxfbsd.pro/lib/uno_services.rdb' succesful!
+</I>&gt;<i> regcomp -register  -br ../../unxfbsd.pro/misc/bridgetest/bootstrap.rdb 
+</I>&gt;<i> -r ../../unxfbsd.pro/lib/uno_services.rdb -c \
+</I>&gt;<i>         
+</I>&gt;<i> <A HREF="file:///usr/ports/editors/openoffice.org-2.0/work/OOo_2.0.0rc3_src/testtools/source/bridgetest/../../unxfbsd.pro/class/testComponent.jar">file:///usr/ports/editors/openoffice.org-2.0/work/OOo_2.0.0rc3_src/testtools/source/bridgetest/../../unxfbsd.pro/class/testComponent.jar</A> 
+</I>&gt;<i> \
+</I>&gt;<i>         
+</I>&gt;<i> -env:URE_INTERNAL_JAVA_DIR=<A HREF="file:///usr/ports/editors/openoffice.org-2.0/work/OOo_2.0.0rc3_src/solver/680/unxfbsd.pro/bin">file:///usr/ports/editors/openoffice.org-2.0/work/OOo_2.0.0rc3_src/solver/680/unxfbsd.pro/bin</A>
+</I>&gt;<i> [Java framework] Error in function getLibraryLocation (fwkutil.cxx).javaldx 
+</I>&gt;<i> failed!
+</I>&gt;<i> using loader com.sun.star.loader.Java2
+</I>&gt;<i> [Java framework] Error in function getLibraryLocation (fwkutil.cxx).register 
+</I>&gt;<i> component 
+</I>&gt;<i> '<A HREF="file:///usr/ports/editors/openoffice.org-2.0/work/OOo_2.0.0rc3_src/testtools/source/bridgetest/../../unxfbsd.pro/class/testComponent.jar'">file:///usr/ports/editors/openoffice.org-2.0/work/OOo_2.0.0rc3_src/testtools/source/bridgetest/../../unxfbsd.pro/class/testComponent.jar'</A> 
+</I>&gt;<i> in registry '../../unxfbsd.pro/lib/uno_services.rdb' failed!
+</I>&gt;<i> error (RuntimeException): [JavaVirtualMachine]:An unexpected error occurred 
+</I>&gt;<i> while starting Java!
+</I>&gt;<i> dmake:  Error code 1, while making '../../unxfbsd.pro/lib/uno_services.rdb'
+</I>&gt;<i> dmake:  '../../unxfbsd.pro/lib/uno_services.rdb' removed.
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>&gt;<i> 
+</I>&gt;<i> ERROR: Error 65280 occurred while 
+</I>&gt;<i> making /usr/ports/editors/openoffice.org-2.0/work/OOo_2.0.0rc3_src/testtools/source/bridgetest
+</I>&gt;<i> dmake:  Error code 1, while making 'build_instsetoo_native'
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>&gt;<i> *** Error code 255
+</I>&gt;<i> 
+</I>&gt;<i> Stop in /usr/ports/editors/openoffice.org-2.0.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">Openoffice at lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>&gt;<i> 
+</I></PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001266.html">[Open Office] making in freebsd 4.11 failed
+</A></li>
+	<LI>Next message: <A HREF="001271.html">[Open Office] making in freebsd 4.11 failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1269">[ date ]</a>
+              <a href="thread.html#1269">[ thread ]</a>
+              <a href="subject.html#1269">[ subject ]</a>
+              <a href="author.html#1269">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

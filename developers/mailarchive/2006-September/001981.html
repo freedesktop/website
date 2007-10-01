@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Please apply following patch for your gstreamer-avmedia-source-gstreamer.diff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Please%20apply%20following%20patch%20for%20your%0A%20gstreamer-avmedia-source-gstreamer.diff&In-Reply-To=200608301316.17772.pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001983.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Please apply following patch for your gstreamer-avmedia-source-gstreamer.diff</H1>
+    <B>NAKATA Maho</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Please%20apply%20following%20patch%20for%20your%0A%20gstreamer-avmedia-source-gstreamer.diff&In-Reply-To=200608301316.17772.pmladek%40suse.cz"
+       TITLE="[Open Office] Please apply following patch for your gstreamer-avmedia-source-gstreamer.diff">chat95 at mac.com
+       </A><BR>
+    <I>Sun Sep  3 16:39:57 EDT 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001983.html">[Open Office] Please apply following patch for	your	gstreamer-avmedia-source-gstreamer.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1981">[ date ]</a>
+              <a href="thread.html#1981">[ thread ]</a>
+              <a href="subject.html#1981">[ subject ]</a>
+              <a href="author.html#1981">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Radek Doulik 
+
+I tried your gstremer in ooo-build for FreeBSD, and unfortunately there is a build issue.
+
+* pow10 is only implemeted for GNU/Linux(it seems it requires #define _GNU_SOURCE ?) 
+* IMHO using pow(10.0,x) is portable.
+* If you don't mind please apply the following patch!
+
+following patch will solve this problem:
+
+--- patches/gstreamer/gstreamer-avmedia-source-gstreamer.diff~  Fri Sep  1 03:11:26 2006
++++ patches/gstreamer/gstreamer-avmedia-source-gstreamer.diff   Sun Sep  3 20:57:30 2006
+@@ -1162,7 +1162,7 @@
+ +void SAL_CALL Player::setVolumeDB( sal_Int16 nVolumeDB )
+ +    throw (uno::RuntimeException)
+ +{
+-+    mnUnmutedVolume = pow10 ( nVolumeDB / 20.0 );
+++    mnUnmutedVolume = pow ( 10.0, nVolumeDB / 20.0 );
+ +
+ +    OSL_TRACE( &quot;set volume: %d gst volume: %lf&quot;, nVolumeDB, mnUnmutedVolume );
+ +
+
+thanks,
+-- NAKATA, Maho (<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">maho at FreeBSD.org</A>)
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001983.html">[Open Office] Please apply following patch for	your	gstreamer-avmedia-source-gstreamer.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1981">[ date ]</a>
+              <a href="thread.html#1981">[ thread ]</a>
+              <a href="subject.html#1981">[ subject ]</a>
+              <a href="author.html#1981">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

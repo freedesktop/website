@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Error in libevoab2.so SDBC driver
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-November/index.html" >
+   <LINK REL="made" HREF="mailto:%3D%3FISO-8859-2%3FQ%3F%3D22Pec%3DF9ch_Va%3DB9ek%3D22%3F%3D%20%3Cpecuch%40software602.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+   
+   <LINK REL="Next"  HREF="000560.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Error in libevoab2.so SDBC driver
+   </H1>
+    <B>"Pecůch Vašek"
+    </B> 
+    <A HREF="mailto:%3D%3FISO-8859-2%3FQ%3F%3D22Pec%3DF9ch_Va%3DB9ek%3D22%3F%3D%20%3Cpecuch%40software602.cz%3E"
+       TITLE="[Open Office] Error in libevoab2.so SDBC driver">"Pecůch Vašek" <pecuch@software602.cz>
+       </A><BR>
+    <I>Mon, 1 Nov 2004 17:07:18 +0100</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="000560.html">[Open Office] Error in libevoab2.so SDBC driver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#559">[ date ]</a>
+              <a href="thread.html#559">[ thread ]</a>
+              <a href="subject.html#559">[ subject ]</a>
+              <a href="author.html#559">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+there is error in libevo2.so SDBC driver. Driver effectively disables other drivers to make a connection. This is caused by OEvoabDriver::acceptsURL() method which always returns sal_True even for URLs which are / have to be handled by other drivers.
+
+Resolution of this bug is to modify acceptsURL() method to return sal_True only for URLs which belong to Evolution driver (as it's required by SDBC specification).
+
+Some SDBC drivers aren't affected by this bug (for example dbase driver) however these drivers are probably asked for URL acceptance by DriverManager before libevoab2 driver. PostgreSQL driver (<A HREF="http://dba.openoffice.=">http://dba.openoffice.=</A>
+org/drivers/postgresql/index.html) is affected by this error.
+
+I have seen this behaviour on SuSE 9.2.
+
+Regards,
+
+  Vaclav Pecuch
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="000560.html">[Open Office] Error in libevoab2.so SDBC driver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#559">[ date ]</a>
+              <a href="thread.html#559">[ thread ]</a>
+              <a href="subject.html#559">[ subject ]</a>
+              <a href="author.html#559">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%20own%0A%09distro%20tag&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001608.html">
+   <LINK REL="Next"  HREF="001606.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag</H1>
+    <B>Andreas Radke</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%20own%0A%09distro%20tag&In-Reply-To="
+       TITLE="[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag">a.radke at arcor.de
+       </A><BR>
+    <I>Thu Feb 16 18:38:39 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001608.html">[Open Office] stale patches ...
+</A></li>
+        <LI>Next message: <A HREF="001606.html">[Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1604">[ date ]</a>
+              <a href="thread.html#1604">[ thread ]</a>
+              <a href="subject.html#1604">[ subject ]</a>
+              <a href="author.html#1604">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all. I'm trying to get OOo build from sources for Arch64 the 64bit
+archlinux port. Because archlinux itself still build its package from
+the binary rpm but we want to switch to a source build one I want to ask
+if we can get our own section for patches and config like [archlinux]
+and [archlinux64].
+
+So I have few questions and issues.
+
+    *      First I want to ask if there's a summary about all available
+configure options. For now I go with a mix from several other distributions.
+
+    *      Next I want to ask how to choose, where to put a configure
+option. Is there a difference between configure switches while buildtime
+and those put into /distro-configs/foo.conf.in ?
+
+So far I got OOo build on 32bit but 64bit still fails. Several patches
+make some trouble here:
+
+    *      FIRST ONE:
+
+xmlhelp-port-to-db-4.3.diff: testing...( sed 's/^\(@.*\)\r$/\1/' | patch
+-l -p0  -d
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.0/build/oob680-m1
+--dry-run ) &lt;
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.0/patches/src680/./xmlhelp-port-to-db-4.3.diff
+patching file xmlhelp/source/com/sun/star/help/StringDbt.java
+...
+patching file xmlhelp/source/com/sun/star/help/HelpIndexer.java
+Hunk #1 succeeded at 125 (offset -26 lines).
+Hunk #3 succeeded at 205 with fuzz 1 (offset -26 lines).
+Hunk #5 succeeded at 440 with fuzz 1 (offset 9 lines).
+Hunk #6 FAILED at 454.
+Hunk #7 FAILED at 478.
+Hunk #8 succeeded at 443 (offset -35 lines).
+2 out of 8 hunks FAILED -- saving rejects to file
+xmlhelp/source/com/sun/star/help/HelpIndexer.java.rej
+....
+Testing patch xmlhelp-port-to-db-4.3.diff failed. at
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.0/patches/apply.pl
+line 54.
+make: *** [stamp/patch.apply] Error 1
+==&gt; ERROR: Build Failed.  Aborting...
+
+real    2m49.785s
+user    1m34.602s
+sys     0m24.854s
+[<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">andyrtr at workstation64</A> openoffice.org-RC]$
+
+
+Outcommending that patch with a simple sed command in the apply file
+brings me to the
+
+    * SECOND issue
+
+
+cws-ooo64bit02.2005-04-19.diff: testing...( sed 's/^\(@.*\)\r$/\1/' |
+patch -l -p0  -d
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.0/build/oob680-m1
+--dry-run ) &lt;
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.0/patches/src680/../64bit/cws-ooo64bit02.2005-04-19.diff
+...
+patching file xmloff/source/style/impastp4.cxx
+Hunk #1 succeeded at 109 (offset -26 lines).
+Hunk #3 succeeded at 196 (offset -26 lines).
+Hunk #5 succeeded at 303 (offset 1 line).
+Hunk #6 FAILED at 330.
+Hunk #7 succeeded at 344 (offset -27 lines).
+1 out of 7 hunks FAILED -- saving rejects to file
+xmloff/source/style/impastp4.cxx.rej
+...
+Testing patch cws-ooo64bit02.2005-04-19.diff failed. at
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.0/patches/apply.pl
+line 54.
+make: *** [stamp/patch.apply] Error 1
+==&gt; ERROR: Build Failed.  Aborting...
+
+Outcommending that patch with a simple sed command in the apply file
+brings me to the
+
+    * THIRD issue
+
+
+fix-64bit-sw-filter-ww8.diff: testing...( sed 's/^\(@.*\)\r$/\1/' |
+patch -l -p0  -d
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.0/build/oob680-m1
+--dry-run ) &lt;
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.0/patches/src680/../64bit/fix-64bit-sw-filter-ww8.diff
+patching file sw/source/filter/ww8/dump/ww8scan.cxx
+...
+patching file sw/source/filter/ww8/ww8scan.hxx
+Hunk #1 FAILED at 268.
+Hunk #2 succeeded at 533 (offset -18 lines).
+Hunk #4 succeeded at 825 (offset -18 lines).
+1 out of 4 hunks FAILED -- saving rejects to file
+sw/source/filter/ww8/ww8scan.hxx.rej
+patching file sw/source/filter/ww8/ww8struc.hxx
+Hunk #1 succeeded at 129 (offset 21 lines).
+Testing patch fix-64bit-sw-filter-ww8.diff failed. at
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.0/patches/apply.pl
+line 54.
+==&gt; ERROR: Build Failed.  Aborting...
+make: *** [stamp/patch.apply] Error 1
+
+Outcommending that patch with a simple sed command in the apply file
+brings me to the
+
+    * FORTH issue
+
+=============
+Building project hsqldb
+=============
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/hsqldb
+dmake: Executing shell macro: date +%d%m%Y
+dmake: 
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/solenv/inc/minor.mk: 
+line 4:  Warning: -- Macro `LAST_MINOR' redefined after use
+dmake:  makefile.mk:  line 74:  Warning: -- Macro `ANT_BUILDFILE'
+redefined after use
+-------------
+mkdir ./unxlngx6.pro/misc/build/hsqldb/
+mkdir: cannot create directory `./unxlngx6.pro/misc/build/hsqldb/': File
+exists
+cd ./unxlngx6.pro/misc/build/hsqldb/ &amp;&amp;
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/external/common/apache-ant-1.6.1/bin/ant
+-Dbuild.label=&quot;build-680m1(Build:9006)&quot; -f build/build.xml jar  &amp;&amp; touch
+so_built_so_hsqldb
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/external/common/apache-ant-1.6.1/bin/ant:
+Command not found.
+dmake:  Error code 1, while making
+'./unxlngx6.pro/misc/build/so_built_so_hsqldb'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/hsqldb
+make: *** [stamp/build] Error 1
+==&gt; ERROR: Build Failed.  Aborting...
+
+[<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">andyrtr at workstation64</A> openoffice.org-RC]$ ls -1l
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/external/common/
+insgesamt 916
+drwxr-xr-x  2 andyrtr users    176 2006-02-13 14:52 CVS
+-rw-r--r--  1 andyrtr users     94 2003-10-27 16:50 README.jaxp
+-rw-r--r--  1 andyrtr users     94 2003-10-27 16:50 README.xt
+-rw-r--r--  1 andyrtr users   5618 2000-10-10 14:28 jaxp.jar
+-rw-r--r--  1 andyrtr users 136133 2000-10-10 14:28 parser.jar
+-rw-r--r--  1 andyrtr users 423047 2001-01-23 12:33 xt.jar
+-rw-r--r--  1 andyrtr users 352905 2000-10-10 14:28 xt19991105.jar
+
+There's no folder at all!
+
+[<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">andyrtr at workstation64</A> openoffice.org-RC]$ ls -l /usr/bin/ant
+-rwxr-xr-x  1 root root 8837 2005-12-30 17:33 /usr/bin/ant
+
+I build with &quot;--with-ant=/usr&quot;
+
+
+
+I hope you can help me getting this issues solved.
+
+Andreas Radke
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060217/63d0c0c5/attachment.html">http://lists.ximian.com/pipermail/openoffice/attachments/20060217/63d0c0c5/attachment.html</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001608.html">[Open Office] stale patches ...
+</A></li>
+	<LI>Next message: <A HREF="001606.html">[Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1604">[ date ]</a>
+              <a href="thread.html#1604">[ thread ]</a>
+              <a href="subject.html#1604">[ subject ]</a>
+              <a href="author.html#1604">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

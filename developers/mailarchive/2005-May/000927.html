@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.3.10 + win32 berkley build error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:rsiddhartha%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000926.html">
+   <LINK REL="Next"  HREF="000928.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.3.10 + win32 berkley build error
+   </H1>
+    <B>Raul Siddhartha
+    </B> 
+    <A HREF="mailto:rsiddhartha%40novell.com"
+       TITLE="[Open Office] ooo-build-1.3.10 + win32 berkley build error">rsiddhartha@novell.com
+       </A><BR>
+    <I>Tue, 03 May 2005 04:27:48 -0600</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000926.html">[Open Office] ooo-build-1.3.10 + win32 berkley build error
+</A></li>
+        <LI> Next message: <A HREF="000928.html">Re[2]: [Open Office] ooo-build-1.3.10 + win32 berkley build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#927">[ date ]</a>
+              <a href="thread.html#927">[ thread ]</a>
+              <a href="subject.html#927">[ subject ]</a>
+              <a href="author.html#927">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a MIME message. If you are reading this text, you may want to 
+consider changing to a mail reader or gateway that understands how to 
+properly handle MIME multipart messages.
+
+--=__Part3B180334.0__=
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+Hi Ruslan,
+
+The problem I had seen there was that there was a variable &quot;$(OUTDIR)&quot;
+in the db_java project file that devenv could not migrate/convert to
+&quot;Release&quot; in the newer project file that it tries to. The patch attached
+is what I had used to get over it, please check if it is the same
+issue.
+
+Regards,
+Raul
+
+--=__Part3B180334.0__=
+Content-Type: text/plain; name=&quot;berkeleydb-dsp-fix.diff&quot;
+Content-Transfer-Encoding: 8bit
+Content-Disposition: attachment; filename=&quot;berkeleydb-dsp-fix.diff&quot;
+
+--- misc/build/db-4.2.52.NC/build_win32/db_java.dsp.bak	2005-02-21 16:08:49.984375000 +0530
++++ misc/build/db-4.2.52.NC/build_win32/db_java.dsp	2005-02-21 16:18:30.328125000 +0530
+@@ -62,7 +62,7 @@
+ &quot;force_compilation.txt&quot; : $(SOURCE) &quot;$(INTDIR)&quot; &quot;$(OUTDIR)&quot;
+ 	echo compiling Berkeley DB classes 
+ 	mkdir &quot;$(OUTDIR)\classes&quot;
+-	javac -g -d &quot;$(OUTDIR)\classes&quot; -classpath &quot;$(OUTDIR)/classes&quot; ..\java\src\com\sleepycat\db\*.java ..\java\src\com\sleepycat\db\$(OUTDIR)\*.java ..\java\src\com\sleepycat\bdb\bind\*.java ..\java\src\com\sleepycat\bdb\bind\serial\*.java ..\java\src\com\sleepycat\bdb\bind\tuple\*.java ..\java\src\com\sleepycat\bdb\*.java ..\java\src\com\sleepycat\bdb\collection\*.java ..\java\src\com\sleepycat\bdb\factory\*.java ..\java\src\com\sleepycat\bdb\util\*.java
++	javac -g -d &quot;$(OUTDIR)\classes&quot; -classpath &quot;$(OUTDIR)/classes&quot; ..\java\src\com\sleepycat\db\*.java ..\java\src\com\sleepycat\db\Release\*.java ..\java\src\com\sleepycat\bdb\bind\*.java ..\java\src\com\sleepycat\bdb\bind\serial\*.java ..\java\src\com\sleepycat\bdb\bind\tuple\*.java ..\java\src\com\sleepycat\bdb\*.java ..\java\src\com\sleepycat\bdb\collection\*.java ..\java\src\com\sleepycat\bdb\factory\*.java ..\java\src\com\sleepycat\bdb\util\*.java
+ 	echo compiling examples 
+ 	mkdir &quot;$(OUTDIR)\classes.ex&quot;
+ 	javac -g -d &quot;$(OUTDIR)\classes.ex&quot; -classpath &quot;$(OUTDIR)\classes;$(OUTDIR)\classes.ex&quot; ..\examples_java\src\com\sleepycat\examples\db\*.java ..\examples_java\src\com\sleepycat\examples\bdb\access\*.java ..\examples_java\src\com\sleepycat\examples\bdb\helloworld\*.java ..\examples_java\src\com\sleepycat\examples\bdb\shipment\basic\*.java ..\examples_java\src\com\sleepycat\examples\bdb\shipment\entity\*.java ..\examples_java\src\com\sleepycat\examples\bdb\shipment\tuple\*.java ..\examples_java\src\com\sleepycat\examples\bdb\shipment\sentity\*.java ..\examples_java\src\com\sleepycat\examples\bdb\shipment\marshal\*.java ..\examples_java\src\com\sleepycat\examples\bdb\shipment\factory\*.java
+
+--=__Part3B180334.0__=--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000926.html">[Open Office] ooo-build-1.3.10 + win32 berkley build error
+</A></li>
+	<LI> Next message: <A HREF="000928.html">Re[2]: [Open Office] ooo-build-1.3.10 + win32 berkley build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#927">[ date ]</a>
+              <a href="thread.html#927">[ thread ]</a>
+              <a href="subject.html#927">[ subject ]</a>
+              <a href="author.html#927">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

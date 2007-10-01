@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Generic desktop adapter (proposal &amp; prototype)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Generic%20desktop%20adapter%20%28proposal%20%26%20prototype%29&In-Reply-To=200511291814.56291.kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001364.html">
+   <LINK REL="Next"  HREF="001363.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Generic desktop adapter (proposal &amp; prototype)</H1>
+    <B>nf2</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Generic%20desktop%20adapter%20%28proposal%20%26%20prototype%29&In-Reply-To=200511291814.56291.kendy%40suse.cz"
+       TITLE="[Open Office] Generic desktop adapter (proposal &amp; prototype)">nf2 at scheinwelt.at
+       </A><BR>
+    <I>Wed Nov 30 16:04:36 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001364.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+        <LI>Next message: <A HREF="001363.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1362">[ date ]</a>
+              <a href="thread.html#1362">[ thread ]</a>
+              <a href="subject.html#1362">[ subject ]</a>
+              <a href="author.html#1362">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jan Holesovsky wrote:
+
+&gt;<i>Hi Norbert,
+</I>&gt;<i>
+</I>&gt;<i>On Monday 28 November 2005 14:40, nf2 wrote:
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>Perhaps this is interesting for you. I would like to get some
+</I>&gt;&gt;<i>feedback from people which have practical experience with integrating
+</I>&gt;&gt;<i>3rd party applications like openoffice.org into desktop environments.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>The aim of the &quot;Generic dasktop adapter&quot; is to provide a standardized
+</I>&gt;&gt;<i>interface between applications and desktops (for filechoosers and VFS).
+</I>&gt;&gt;<i>The concept is simple: Applications load the appropriate desktop-adapter
+</I>&gt;&gt;<i>with dlopen(), depending on the desktop they are running in:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     * libdadapt-kde-1.0.so
+</I>&gt;&gt;<i>     * libdadapt-gnome-1.0.so
+</I>&gt;&gt;<i>     * libdadapt-xyz-1.0.so
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Basically, it is the same what OOo does for its desktop integration, so in 
+</I>&gt;<i>fact, this is a solved issue ;-)  But I understand what you mean by your 
+</I>&gt;<i>proposal in general.
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>I see. Perhaps OpenOffice.org is a bad &quot;use case&quot; for the &quot;Generic 
+Desktop Adapter.&quot;, because it is such an imporant application that 
+desktop bindings are beeing developed and mantained. Plus it has a 
+toolkit and a component architecture which makes such bindings possible 
+(Which is not true for the average Gtk+ or Qt application.)
+
+But still... Linux has a big &quot;there is no standardized desktop API&quot; 
+problem. Especially for applications which are not that popular. I think 
+it should be possible to write an application for Linux/Unix, without 
+targeting a certain desktop.
+
+&gt;<i>OpenOffice.org does the desktop integration through so-called 'vclplugs' for 
+</I>&gt;<i>the theming of widgets, or through its component architecture (UNO) for the 
+</I>&gt;<i>Gnome/KDE file dialogs, or address books.  But the principle is the same, 
+</I>&gt;<i>dlopening appropriate .so's according to the desktop it runs in.  OOo does 
+</I>&gt;<i>not need a common (Gtk+ + Qt) main loop for this, it uses just the features 
+</I>&gt;<i>that are currently available.
+</I>&gt;<i>
+</I>&gt;<i>The main problem I see with your approach is that you will have to support 
+</I>&gt;<i>each and every feature the target application uses.  E.g. in case of OOo, 
+</I>&gt;<i>file dialog is not just two simple calls like ShowTheFileDialog() and 
+</I>&gt;<i>GiveMeTheSelectedFiles(); OOo has to have full control over the dialog, like 
+</I>&gt;<i>adding new widgets there, modifying content of them according to the selected 
+</I>&gt;<i>files, and more.  I believe other applications will have other special wishes 
+</I>&gt;<i>and needs, so my opinion is that this would be a maintainance nightmare.
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>There might be workarounds for that:
+
+1) The application just pops up a second dialog after the file-dialog 
+(like Gimp does it for the jpeg/png compression settings)
+
+2) The application pops up it's own dialog showing the special widgets 
+(preview, additional options,...). This dialog has a &quot;choose file&quot; 
+button, which opens the file-chooser provided by the generic desktop 
+adapter.
+
+3) Nicer: The Generic Desktop Adapter provides the file-chooser as 
+XEmbed widget (working like KParts. Dmitry M. Shatrovs GParts demo shows 
+that such things are possible).
+
+Or, perhaps an &quot;adavanced&quot; file-dialog can be served by the 
+desktop-adapter, which covers most of the &quot;special&quot; wishes. By using 
+modules, named interfaces and LVariants as communication media, it's 
+quite easy to extend the functionality of the desktop-adapter without 
+breaking compatibilty.
+
+The file-dialog requirements of Openoffice don't seem that sophisticated 
+and it might be possible to standardize them and make them available to 
+other applications too. It seems it's just
+
+* choosing from a list of filters or filter groups
+* a document version selector, which could be fed by a callback.
+* a &quot;read only&quot; checkbox
+* a preview area, which could also be implemented by picking up a pixmap 
+with a callback.
+
+Norbert
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001364.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+	<LI>Next message: <A HREF="001363.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1362">[ date ]</a>
+              <a href="thread.html#1362">[ thread ]</a>
+              <a href="subject.html#1362">[ subject ]</a>
+              <a href="author.html#1362">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

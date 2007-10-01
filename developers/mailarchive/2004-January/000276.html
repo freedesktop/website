@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Fix for row/hide sensitization
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:samit%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000267.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Fix for row/hide sensitization
+   </H1>
+    <B>Amit Shrivastava
+    </B> 
+    <A HREF="mailto:samit%40novell.com"
+       TITLE="[Open Office] Fix for row/hide sensitization">samit@novell.com
+       </A><BR>
+    <I>Fri, 30 Jan 2004 08:33:32 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000267.html">[Open Office] Print to PDF
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#276">[ date ]</a>
+              <a href="thread.html#276">[ thread ]</a>
+              <a href="subject.html#276">[ subject ]</a>
+              <a href="author.html#276">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a MIME message. If you are reading this text, you may want to 
+consider changing to a mail reader or gateway that understands how to 
+properly handle MIME multipart messages.
+
+--=__Part1736405C.0__=
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+Hi Michael/Haggai,
+
+I have attached the patch with the fix, it was set multimark, which was
+not required. I was in the confusion that if multiple area is selected
+for hide/show selection the code is needed for that kind of scenario?
+Its not I have veirfied it. 
+
+
+Sorry for the unwanted defect.
+
+regards
+Amit 
+
+--=__Part1736405C.0__=
+Content-Type: application/octet-stream; name=&quot;sc-cursor-move-fix.diff&quot;
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=&quot;sc-cursor-move-fix.diff&quot;
+
+SW5kZXg6IHNjL3NvdXJjZS91aS92aWV3L3ZpZXdmdW5jLmN4eA0KPT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQ0KUkNTIGZp
+bGU6IC9jdnMvc2Mvc2Mvc291cmNlL3VpL3ZpZXcvdmlld2Z1bmMuY3h4LHYNCnJldHJpZXZpbmcg
+cmV2aXNpb24gMS4xOQ0KZGlmZiAtdSAtcCAtdSAtcjEuMTkgdmlld2Z1bmMuY3h4DQotLS0gc2Mv
+c291cmNlL3VpL3ZpZXcvdmlld2Z1bmMuY3h4CTggQXByIDIwMDMgMTY6MzQ6NTYgLTAwMDAJMS4x
+OQ0KKysrIHNjL3NvdXJjZS91aS92aWV3L3ZpZXdmdW5jLmN4eAkzMCBKYW4gMjAwNCAxNToyMzox
+OSAtMDAwMA0KQEAgLTIxMTQsNiArMjExNCwzOCBAQCB2b2lkIFNjVmlld0Z1bmM6OlNldE1hcmtl
+ZFdpZHRoT3JIZWlnaHQoDQogCXJNYXJrLk1hcmtUb1NpbXBsZSgpOw0KIH0NCiANCitCT09MIFNj
+Vmlld0Z1bmM6OkdldFJvd0NvbEhpZGRlbihCT09MIGNvbCkNCit7DQorCVNjRG9jdW1lbnQqIHBE
+b2MgPSBHZXRWaWV3RGF0YSgpLT5HZXREb2N1bWVudCgpOw0KKwlTY01hcmtEYXRhJiByTWFyayA9
+IEdldFZpZXdEYXRhKCktPkdldE1hcmtEYXRhKCk7DQorCVVTSE9SVCBuQ29sID0gMCxuUm93ID0g
+MCxuVGFiID0gMCwgblJhbmdlQ250ID0gMDsNCisJVVNIT1JUKiBwUmFuZ2VzID0gbmV3IFVTSE9S
+VFtNQVhST1crMV07DQorCUJPT0wgaGlkZGVuID0gRkFMU0U7DQorDQorCWlmICggY29sICkNCisJ
+CW5SYW5nZUNudCA9IHJNYXJrLkdldE1hcmtDb2x1bW5SYW5nZXMoIHBSYW5nZXMgKTsgDQorCWVs
+c2UNCisJCW5SYW5nZUNudCA9IHJNYXJrLkdldE1hcmtSb3dSYW5nZXMoIHBSYW5nZXMgKTsJCQ0K
+Kw0KKwljb25zdCBVU0hPUlQqIHBUYWJSYW5nZXMgPSBwUmFuZ2VzOw0KKw0KKwlmb3IgKCBVU0hP
+UlQgblJhbmdlTm89MDsgblJhbmdlTm88blJhbmdlQ250OyBuUmFuZ2VObysrICkNCisJew0KKwkJ
+VVNIT1JUIG5TdGFydE5vID0gKihwVGFiUmFuZ2VzKyspOw0KKwkJVVNIT1JUIG5FbmRObyA9ICoo
+cFRhYlJhbmdlcysrKTsNCisJCWlmICggY29sICkNCisJCQloaWRkZW4gPSBwRG9jLT5Jc0NvbEhp
+ZGRlbihuU3RhcnRObyxuRW5kTm8sblRhYik7DQorCQllbHNlDQorCQkJaGlkZGVuID0gcERvYy0+
+SXNSb3dIaWRkZW4oblN0YXJ0Tm8sbkVuZE5vLG5UYWIpOw0KKwkJLyogRXZlbiBpZiBhIHNpbmds
+ZSBjb2wvcm93IGlzIGhpZGRlbiBzZXQgdGhlIHZhciBhbmQgYnJlYWsgKi8NCisJCWlmICggaGlk
+ZGVuID09IFRSVUUgKSANCisJCQlicmVhazsNCisJfQ0KKw0KKwlkZWxldGVbXSBwUmFuZ2VzOw0K
+KwlyZXR1cm4gaGlkZGVuOw0KK30NCisNCiB2b2lkIFNjVmlld0Z1bmM6Ok1vZGlmeUNlbGxTaXpl
+KCBTY0RpcmVjdGlvbiBlRGlyLCBCT09MIGJPcHRpbWFsICkNCiB7DQogCS8vIQlTY2hyaXR0d2Vp
+dGVuIGVpbnN0ZWxsYmFyDQo=
+
+--=__Part1736405C.0__=--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000267.html">[Open Office] Print to PDF
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#276">[ date ]</a>
+              <a href="thread.html#276">[ thread ]</a>
+              <a href="subject.html#276">[ subject ]</a>
+              <a href="author.html#276">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

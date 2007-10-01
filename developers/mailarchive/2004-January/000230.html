@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Bug 52734
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000245.html">
+   <LINK REL="Next"  HREF="000249.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Bug 52734
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: Bug 52734">michael@ximian.com
+       </A><BR>
+    <I>Mon, 19 Jan 2004 19:13:35 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000245.html">[Open Office] test =?UTF-8?B?5bmz6YeOIHRlc3Q=?=
+</A></li>
+        <LI> Next message: <A HREF="000249.html">[Open Office] Re: Bug 52734
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#230">[ date ]</a>
+              <a href="thread.html#230">[ thread ]</a>
+              <a href="subject.html#230">[ subject ]</a>
+              <a href="author.html#230">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Rafael,
+
+On Sat, 2004-01-17 at 14:54, Rafa³ 'rmrmg' Roszak wrote:
+&gt;<i> &gt; I've added a check for zlib.h in configure.in - I'm assuming this
+</I>&gt;<i> 
+</I>&gt;<i> Where  can  I find fixed configure.in (i don't see new build in
+</I>&gt;<i> <A HREF="http://ooo.ximian.com/packages/latest/">http://ooo.ximian.com/packages/latest/</A>) ?
+</I>
+	Well; it's in CVS; cf. <A HREF="http://ooo.ximian.com/ooo-build.html,">http://ooo.ximian.com/ooo-build.html,</A>
+however - the check can't solve the problem - it only refuses to
+configure if you don't have zlib installed [ the root cause of your
+problem I think ].
+
+&gt;<i> I compiled zlib from source so I think I don't need zlib-devel.
+</I>
+	You almost certainly screwed up where you installed it then; I'm
+guessing it's in /usr/local/ or somewhere instead of the system include
+path; try re-configuring/making/installing with --prefix=/usr.
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000245.html">[Open Office] test =?UTF-8?B?5bmz6YeOIHRlc3Q=?=
+</A></li>
+	<LI> Next message: <A HREF="000249.html">[Open Office] Re: Bug 52734
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#230">[ date ]</a>
+              <a href="thread.html#230">[ thread ]</a>
+              <a href="subject.html#230">[ subject ]</a>
+              <a href="author.html#230">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

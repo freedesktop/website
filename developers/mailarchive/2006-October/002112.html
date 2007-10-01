@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regcomp segfaults when registering java components
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=45470063.8040809%40norbit.no">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002111.html">
+   <LINK REL="Next"  HREF="002114.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regcomp segfaults when registering java components</H1>
+    <B>VMiklos</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=45470063.8040809%40norbit.no"
+       TITLE="[Open Office] Regcomp segfaults when registering java components">vmiklos at frugalware.org
+       </A><BR>
+    <I>Tue Oct 31 04:44:32 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002111.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+        <LI>Next message: <A HREF="002114.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2112">[ date ]</a>
+              <a href="thread.html#2112">[ thread ]</a>
+              <a href="subject.html#2112">[ subject ]</a>
+              <a href="author.html#2112">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Oct 31, 2006 at 08:50:59AM +0100, Atle Nissestad &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">atle.nissestad at norbit.no</A>&gt; wrote:
+&gt;<i> Yepp, that was the bug I was refering to, and I used your patch to be
+</I>&gt;<i> able to finish the installation (the reported issue is without the patch
+</I>&gt;<i> of course ..). Did you by the way rebuild more than cpputools with debug
+</I>&gt;<i> enabled ?
+</I>
+no, i havn't built anything with debug-enabled iirc. here is what Rene
+said on irc about the issue:
+
+15:41 &lt; vmiklos&gt; _rene_: do you remember the java component registration
+issue? now in m188 the problem is the same with the python components.
+yes, i can disable them, but in case you have a more proper solution, i
+would be interested in it ;-)
+16:13 &lt;@_rene_&gt; vmiklos: works for me in the meanwhile. also on amd64
+16:14 &lt; vmiklos&gt; _rene_: hm. and what did you changed? :) or it just
+started to work after updating to a new milestone?
+16:15 &lt;@_rene_&gt; it worked also in the 2.0.4 series. Some gcj chanegs and
+some jvmfwk changes (see the Java-related patches).
+16:16 &lt;@_rene_&gt; for the gij changes, ask doko. I am really not sure
+anymore. I just know it started to work...
+
+so i suspect this is a gcj bug, you may try to build on from a snapshot.
+i'm waiting for the next stable gcc release..
+
+udv / greetings,
+VMiklos
+
+-- 
+Developer of Frugalware Linux, to make things frugal - <A HREF="http://frugalware.org">http://frugalware.org</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002111.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+	<LI>Next message: <A HREF="002114.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2112">[ date ]</a>
+              <a href="thread.html#2112">[ thread ]</a>
+              <a href="subject.html#2112">[ subject ]</a>
+              <a href="author.html#2112">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

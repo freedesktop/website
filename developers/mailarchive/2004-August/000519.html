@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] build/running  problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000518.html">
+   <LINK REL="Next"  HREF="000520.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] build/running  problem
+   </H1>
+    <B>Petr Mladek
+    </B> 
+    <A HREF="mailto:pmladek%40suse.cz"
+       TITLE="[Open Office] build/running  problem">pmladek@suse.cz
+       </A><BR>
+    <I>Fri, 27 Aug 2004 11:44:46 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000518.html">[Open Office] build/running  problem
+</A></li>
+        <LI> Next message: <A HREF="000520.html">[Open Office] ANNOUNCE: ooo-build-1.3.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#519">[ date ]</a>
+              <a href="thread.html#519">[ thread ]</a>
+              <a href="subject.html#519">[ subject ]</a>
+              <a href="author.html#519">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 27 August 2004 11:22, jayant M wrote:
+&gt;<i> Hi
+</I>&gt;<i>
+</I>&gt;<i> On Fri, 2004-08-27 at 10:17 +0200, Petr Mladek wrote:
+</I>&gt;<i> &gt; On Friday 27 August 2004 08:06, Jayant Balraj Madavi wrote:
+</I>&gt;<i> &gt; &gt; hi
+</I>&gt;<i> &gt; &gt;   Now this could be problem
+</I>&gt;<i> &gt; &gt; I do NOT have
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; /usr/lib/ooo-1.1/program/resource.gnome
+</I>&gt;<i> &gt; &gt; /usr/lib/ooo-1.1/program/resource.kde
+</I>&gt;<i> &gt; &gt; /usr/lib/ooo-1.1/program/resource.deafult
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; where could be the problem ?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; One more thing
+</I>&gt;<i> &gt; &gt;  iso645??.res  [these files are present in the build area and not in
+</I>&gt;<i> &gt; &gt; /usr/lib/ooo-1.1]
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; problem ?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Yes, it's the problem, this should not happen.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Did you get any other *.res files installed at least?
+</I>&gt;<i>
+</I>&gt;<i> yes there were lot of *.res files in .../ooo1.1/program/resources
+</I>&gt;<i> directory
+</I>
+You can solve it by copying ooo*.res to iso*.res. Just substitute ooo -&gt; iso 
+in the file name. I hope that at least the ooo*.res is there.
+
+I wonder why it is not done by the ooo-build.
+
+&gt;<i> &gt; I'll look at it the following week.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Could you tell me which version, cvs snapshot of ooo-build did you use?
+</I>&gt;<i> &gt; It should be enough if you tell me the latest change in the Changelog.
+</I>&gt;<i>
+</I>&gt;<i> ops redid the whole system! any way does not make much difference b'se
+</I>&gt;<i> every thing was fresh.
+</I>&gt;<i> the sources were taken from gnome CVS
+</I>
+Which is the latest entry in ooo-build/ChangeLog?
+
+&gt;<i> &gt; Did you use some your own patches?
+</I>&gt;<i>
+</I>&gt;<i> nope! what ever patches that comes by default is automatically applied
+</I>&gt;<i>
+</I>&gt;<i> &gt; Could you tell me which configure switches did you use?
+</I>&gt;<i>
+</I>&gt;<i> No switches except --with-tag=OOO_1_1_2
+</I>&gt;<i>
+</I>&gt;<i> ok, I am able to replicate the problem, if i #mv resource.gnome
+</I>&gt;<i> I get the same pop-up error dialog
+</I>
+OK, I'll check it the following week.
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="mailto:pmladek@suse.cz">pmladek@suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000518.html">[Open Office] build/running  problem
+</A></li>
+	<LI> Next message: <A HREF="000520.html">[Open Office] ANNOUNCE: ooo-build-1.3.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#519">[ date ]</a>
+              <a href="thread.html#519">[ thread ]</a>
+              <a href="subject.html#519">[ subject ]</a>
+              <a href="author.html#519">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

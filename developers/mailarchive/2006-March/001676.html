@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Internal quickstarter
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To=1141405848.20926.43.camel%40linux.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001675.html">
+   <LINK REL="Next"  HREF="001677.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Internal quickstarter</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To=1141405848.20926.43.camel%40linux.site"
+       TITLE="[Open Office] Internal quickstarter">ghibo at mandriva.com
+       </A><BR>
+    <I>Fri Mar  3 13:36:26 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001675.html">[Open Office] Internal quickstarter
+</A></li>
+        <LI>Next message: <A HREF="001677.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1676">[ date ]</a>
+              <a href="thread.html#1676">[ thread ]</a>
+              <a href="subject.html#1676">[ subject ]</a>
+              <a href="author.html#1676">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>michael meeks wrote:
+
+&gt;<i> On Thu, 2006-03-02 at 12:00 +0100, Giuseppe Ghib&#242; wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Apart this I do not see any speedup:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 	a) splash starts far faster - on a cold start this could 
+</I>&gt;<i> 	   be 20 secs to splash screen in the past :-)
+</I>&gt;<i> 
+</I>&gt;<i> 	b) 2nd start is far faster too [ ie. when OO.o is already
+</I>&gt;<i> 	   running ).
+</I>
+but need to be leaved opened OOo in the background? and how?
+
+&gt;<i> 
+</I>&gt;<i> 	c) if you don't like it / don't understand something you 
+</I>&gt;<i> 	   can always either turn it off, or just read the code.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i>real 3.16
+</I>&gt;&gt;<i>user 0.03
+</I>&gt;&gt;<i>sys 0.00
+</I>
+It's the point b) which I'm not able to achieve, so I was wondering
+what's wrong in my setup.
+Anyway also the ooo-wrapper will call ooqstart.
+
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 	Since we fork 'soffice' at the end of the day in both cases, this will
+</I>&gt;<i> show no improvement.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Also, how would be possible to customize things now what oooqstart
+</I>&gt;&gt;<i>has replaced the ooo-wrapper? For instance how one can add things like this,
+</I>&gt;&gt;<i>for instance to customize the widget, which before mcould be easy to add to the 
+</I>&gt;&gt;<i>wrapper?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 	Sure -we can carry on shovelling crud into the wrapper - but this
+</I>&gt;<i> doesn't help performance either :-)
+</I>&gt;<i> 
+</I>&gt;<i> 	Instead we really should implement this stuff in the core itself.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+yes, but I need to find how/some help. I'll post maybe something
+other, as I've also a few other things I was planning
+to add in the wrapper which maybe should go in the core as you said.
+
+&gt;&gt;<i>        open(OOOW, &quot;$ENV{HOME}/.ooo-widget&quot;);
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 	You need a new (Mdv specific?) patch to the vcl plugin code to do this
+</I>&gt;<i> for you; shouldn't be hard.
+</I>&gt;<i> 
+</I>&gt;<i> 	HTH,
+</I>&gt;<i> 
+</I>&gt;<i> 		Michael.
+</I>&gt;<i> 
+</I>
+
+Dear Michael I'm not against ooqstart. I've not said it's bad, but
+I would like only learn about it, e.g. what is its right &quot;behaviour&quot;
+and the right &quot;performance improvement&quot; achieved/achievable or for instance how 
+to customize the progress bar on it, also find why other people obtain
+a huge improvement, like starting below 1 seconds (0.7s) on a notebook
+while to me it's 3 times slower with a faster CPU and RAID disks (i.e.
+whether I've something wrong in my setup, or people not measured
+it correctly, etc.)
+
+Indeed I'm also pretty confused also between ooqstart
+and oooqs and oooqs2..., so every clarification you can tell us
+about it on the ML would be appreciated very much I think.
+
+Thanks.
+Bye
+Giuseppe.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001675.html">[Open Office] Internal quickstarter
+</A></li>
+	<LI>Next message: <A HREF="001677.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1676">[ date ]</a>
+              <a href="thread.html#1676">[ thread ]</a>
+              <a href="subject.html#1676">[ subject ]</a>
+              <a href="author.html#1676">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

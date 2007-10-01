@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] src-pack / up-stream etc. ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20src-pack%20/%20up-stream%20etc.%20...&In-Reply-To=4383047B.6020405%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001301.html">
+   <LINK REL="Next"  HREF="001303.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] src-pack / up-stream etc. ...</H1>
+    <B>Caolan McNamara</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20src-pack%20/%20up-stream%20etc.%20...&In-Reply-To=4383047B.6020405%40gmx.net"
+       TITLE="[Open Office] src-pack / up-stream etc. ...">caolanm at redhat.com
+       </A><BR>
+    <I>Tue Nov 22 06:55:01 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001301.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+        <LI>Next message: <A HREF="001303.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1302">[ date ]</a>
+              <a href="thread.html#1302">[ thread ]</a>
+              <a href="subject.html#1302">[ subject ]</a>
+              <a href="author.html#1302">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 2005-11-22 at 12:43 +0100, Martin Kretzschmar wrote:
+&gt;<i> A few comment from a different Martin ;-)
+</I>&gt;<i> And there are hacks to use system stlport and system xalan.
+</I>
+--without-stlport4 will use system stl if you have gcc, but it will
+break with visibility at runtime, see gcc#19664#
+
+export
+XML_CLASSPATH=/usr/share/java/xalan-j2.jar:/usr/share/java/xerces-j2.jar
+export SYSTEM_XALAN=&quot;YES&quot;
+export BUILD_TYPE=`echo $BUILD_TYPE | sed -e &quot;s/XALAN//&quot;`
+
+and a system xalan build will sort of happen. Milage may vary.
+
+C.
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001301.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+	<LI>Next message: <A HREF="001303.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1302">[ date ]</a>
+              <a href="thread.html#1302">[ thread ]</a>
+              <a href="subject.html#1302">[ subject ]</a>
+              <a href="author.html#1302">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

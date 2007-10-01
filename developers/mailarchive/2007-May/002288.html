@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] crash reporter,	what are the various distro's strategies ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20crash%20reporter%2C%0A%09what%20are%20the%20various%20distro%27s%20strategies%20%3F&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002287.html">
+   <LINK REL="Next"  HREF="002289.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] crash reporter,	what are the various distro's strategies ?</H1>
+    <B>Caolan McNamara</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20crash%20reporter%2C%0A%09what%20are%20the%20various%20distro%27s%20strategies%20%3F&In-Reply-To="
+       TITLE="[Open Office] crash reporter,	what are the various distro's strategies ?">caolanm at redhat.com
+       </A><BR>
+    <I>Fri May 18 07:24:47 EDT 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002287.html">[Open Office] action required or vba will break your build
+</A></li>
+        <LI>Next message: <A HREF="002289.html">[Open Office] [dev] crash reporter,	what are the various distro's strategies	?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2288">[ date ]</a>
+              <a href="thread.html#2288">[ thread ]</a>
+              <a href="subject.html#2288">[ subject ]</a>
+              <a href="author.html#2288">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>So when OOo crashes, what are the strategies that distros employ here if
+any ?
+
+For RH we don't build the crashreporter (as it's basically unusable info
+for Sun), but we do configure to enable using it, and replace it in the
+install set with a simple replacement that tests for the set of common
+problems that historically caused crashes, e.g. nvidia drivers, a11y
+enabled, selinux settings and insane local library butchering, and
+prompts the unfortunate user to log the supplied text to the RH
+bugzilla, and we map the stack back to source with
+<A HREF="http://people.redhat.com/caolanm/ooocvs/ooomapstack">http://people.redhat.com/caolanm/ooocvs/ooomapstack</A> after throwing out
+the nvidia driver using reports
+
+At some stage in the past the ooobuild OOo would spawn off the gnome
+gnome bug-buddy, but that's no longer the case is it ?
+
+So do other distros have various solutions here, or just simply crash
+out and/or dump core ?
+
+What I'm thinking about aiming at is a shared cross-distro crash
+repository where we can auto submit the distro OOo crashes, and the
+distros can plug in their various stack mappers, with quick and dirty
+gnomebugzilla-alike tooling to merge the duped backtraces together.
+
+C.
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002287.html">[Open Office] action required or vba will break your build
+</A></li>
+	<LI>Next message: <A HREF="002289.html">[Open Office] [dev] crash reporter,	what are the various distro's strategies	?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2288">[ date ]</a>
+              <a href="thread.html#2288">[ thread ]</a>
+              <a href="subject.html#2288">[ subject ]</a>
+              <a href="author.html#2288">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

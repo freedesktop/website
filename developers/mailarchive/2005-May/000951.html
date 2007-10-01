@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ERROR: Source for autotextshare_af.zip not found!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:arekm%40pld-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000950.html">
+   <LINK REL="Next"  HREF="000949.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ERROR: Source for autotextshare_af.zip not found!
+   </H1>
+    <B>Arkadiusz Miskiewicz
+    </B> 
+    <A HREF="mailto:arekm%40pld-linux.org"
+       TITLE="[Open Office] ERROR: Source for autotextshare_af.zip not found!">arekm@pld-linux.org
+       </A><BR>
+    <I>Thu, 12 May 2005 09:32:48 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000950.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+        <LI> Next message: <A HREF="000949.html">[Open Office] Change of policy in the apply file?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#951">[ date ]</a>
+              <a href="thread.html#951">[ thread ]</a>
+              <a href="subject.html#951">[ subject ]</a>
+              <a href="author.html#951">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday 10 of May 2005 18:02, Petr Mladek wrote:
+&gt;<i> On Tuesday 10 May 2005 11:04, Arkadiusz Miskiewicz wrote:
+</I>&gt;<i> &gt; Has anyone saw this? ooobuild few commits after 1.9.100 release.
+</I>&gt;<i>
+</I>&gt;<i> It helps to
+</I>&gt;<i> 	export DEFAULT_TO_ENGLISH_FOR_PACKING=3D1
+</I>&gt;<i> before
+</I>&gt;<i> 	make
+</I>&gt;<i>
+</I>&gt;<i> I wonder why the make_installer.pl and the epm is called even during the
+</I>&gt;<i> build phase now.
+</I>Works, thanks.
+
+But there is new problem. This time at installation time:
+
+Build: SRC680
+No minor set
+Product version
+Installpath: /usr/lib/openoffice.org
+Package format: native
+Package list file: ../inc_openoffice/unix/packagelist.txt
+Addon-Package list file: ../inc_openoffice/unix/packagelist_language.txt
+Not calling epm
+Unzip ARCHIVE files
+services.rdb can be created
+Languages:
+        ALL
+########################################################
+=2E.. checking required files ...
+=2E..... searching zip ...
+        Found: /usr/bin/zip
+=2E..... searching unzip ...
+        Found: /usr/bin/unzip
+=2E.. analyzing openoffice.lst ...
+=2E.. analyzing=20
+script: /home/users/arekm/rpm/BUILD/ooo-build-1.9.100/build/src680-m100/sol=
+ver/680/unxlngi4.pro/bin/setup_osl
+=2Eins ...
+=2E.. analyzing directories ...
+=2E.. analyzing files ...
+=2E.. analyzing scpactions ...
+=2E.. analyzing shortcuts ...
+=2E.. analyzing profile ...
+=2E.. analyzing profileitems ...
+=2E.. analyzing modules ...
+=2D-----------------------------------
+=2E.. languages ALL ...
+
+**************************************************
+ERROR: ERROR: HostName not defined for gid_Dir_User_Autotext_Language for=20
+specified language.
+in function: checking_directories_with_corrupt_hostname
+**************************************************
+
+**************************************************
+ERROR: Saved=20
+logfile: /home/users/arekm/rpm/BUILD/ooo-build-1.9.100/build/src680-m100/in=
+stsetoo_native/util/OpenOffice/logg
+ing/ALL/log_SRC680__ALL.log
+**************************************************
+=2E.. cleaning the output tree ...
+Wed May 11 12:22:35 2005 (00:01 min.)
+=46ailed to install:  at ./ooinstall line 113.
+make: *** [install] Error 1
+
+
+=2D-=20
+Arkadiusz Mi=B6kiewicz                    PLD/Linux Team
+<A HREF="http://www.t17.ds.pwr.wroc.pl/~misiek/">http://www.t17.ds.pwr.wroc.pl/~misiek/</A>  <A HREF="http://ftp.pld-linux.org/">http://ftp.pld-linux.org/</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000950.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+	<LI> Next message: <A HREF="000949.html">[Open Office] Change of policy in the apply file?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#951">[ date ]</a>
+              <a href="thread.html#951">[ thread ]</a>
+              <a href="subject.html#951">[ subject ]</a>
+              <a href="author.html#951">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

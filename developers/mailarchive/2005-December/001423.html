@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Trouble building 2.0.1 branch with gcj 4.1-svn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Trouble%20building%202.0.1%20branch%20with%20gcj%204.1-svn&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001426.html">
+   <LINK REL="Next"  HREF="001424.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Trouble building 2.0.1 branch with gcj 4.1-svn</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Trouble%20building%202.0.1%20branch%20with%20gcj%204.1-svn&In-Reply-To="
+       TITLE="[Open Office] Trouble building 2.0.1 branch with gcj 4.1-svn">bero at arklinux.org
+       </A><BR>
+    <I>Wed Dec 21 08:05:59 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001426.html">[Open Office] Help me to fix this problem
+</A></li>
+        <LI>Next message: <A HREF="001424.html">[Open Office] Trouble building 2.0.1 branch with gcj 4.1-svn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1423">[ date ]</a>
+              <a href="thread.html#1423">[ thread ]</a>
+              <a href="subject.html#1423">[ subject ]</a>
+              <a href="author.html#1423">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+does anyone understand how the jvmfwk stuff works?
+
+I'm getting this when building 2.0.1 with gcj 4.1-svn while building 
+testtools:
+
+[Java framework] The JRE specified by the bootstrap variable 
+UNO_JAVA_JFW_JREHOME or UNO_JAVA_JFW_ENV_JREHOME could not be recognized. 
+Check the values and make sure that you use a plug-in library that can 
+recognize that JRE.register component 
+'<A HREF="file:///usr/src/ark/BUILD/ooo-build-2.0.1/build/OOO_2_0_1/testtools/source/bridgetest/../../unxlngi6.pro/class/testComponent.jar'">file:///usr/src/ark/BUILD/ooo-build-2.0.1/build/OOO_2_0_1/testtools/source/bridgetest/../../unxlngi6.pro/class/testComponent.jar'</A> 
+in registry '../../unxlngi6.pro/lib/uno_services.rdb' failed!
+error (RuntimeException): [JavaVirtualMachine]:An unexpected error occurred 
+while starting Java!
+
+Adding a couple of debug statements in jvmfwk/source/framework.cxx shows that 
+in jfw_getJavaInfoByPath(), library.sVendor.getStr() seems to be 1 character 
+only (in the loop, it's going through S, I, B, F and B again -- seems to be 
+the 1st character of the vendor name of each supported JVM; shouldn't it be 
+the full name?). Is this intentional?
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001426.html">[Open Office] Help me to fix this problem
+</A></li>
+	<LI>Next message: <A HREF="001424.html">[Open Office] Trouble building 2.0.1 branch with gcj 4.1-svn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1423">[ date ]</a>
+              <a href="thread.html#1423">[ thread ]</a>
+              <a href="subject.html#1423">[ subject ]</a>
+              <a href="author.html#1423">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

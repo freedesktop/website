@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] experimental patch - port xmlhelp to db-4.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20experimental%20patch%20-%20port%20xmlhelp%20to%20db-4.4&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001447.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] experimental patch - port xmlhelp to db-4.4</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20experimental%20patch%20-%20port%20xmlhelp%20to%20db-4.4&In-Reply-To="
+       TITLE="[Open Office] experimental patch - port xmlhelp to db-4.4">h.mth at web.de
+       </A><BR>
+    <I>Tue Jan  3 05:19:29 EST 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001447.html">[Open Office] building ooo-build from cvs head
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1446">[ date ]</a>
+              <a href="thread.html#1446">[ thread ]</a>
+              <a href="subject.html#1446">[ subject ]</a>
+              <a href="author.html#1446">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Miklos,
+hi list,
+
+I fixed my segfault and solved the issues of 'Help' with db-4.4.
+There were still issues with db-4.3? May be this helps.
+
+	xmlhelp/source/cxxhelp/provider/db.hxx,
+	xmlhelp/source/cxxhelp/provider/db.cxx, added some functions
+	to cache temporary database environment and its logging.
+
+	xmlhelp/source/cxxhelp/provider/urlparameter.cxx, allocate
+	memory for key/data pair.
+
+	xmlhelp/source/cxxhelp/provider/databases.cxx, add
+	in-memory transactional database envirnoment for database
+	open calls. Add memory (re-)allocation for key/data pairs.
+
+Why transactional?
+Because there is no other way to access Help-&gt;Index Tab for me.
+It is empty otherwise.
+
+Why do I cache the database environment to memory?
+Because I do not want to write temporary .db and .log files
+to the harddrive which do not get deleted after use. And where
+the heck should I point dbhome (path to temporary files) to?
+And who cleans out that waste afterwards?
+
+One really ugly thing!
+To hardwire the cache-size for the database environment (1MB)
+and logging (512KB). At least I have no issues with given sizes.
+
+
+Any help to this issue is appreciated!
+Thanks in advance!
+
+
+Regards,
+Hanno
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ooo-db-4.4.diff
+Type: text/x-patch
+Size: 6887 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060103/fce15d75/ooo-db-4.4.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060103/fce15d75/ooo-db-4.4.bin</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001447.html">[Open Office] building ooo-build from cvs head
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1446">[ date ]</a>
+              <a href="thread.html#1446">[ thread ]</a>
+              <a href="subject.html#1446">[ subject ]</a>
+              <a href="author.html#1446">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

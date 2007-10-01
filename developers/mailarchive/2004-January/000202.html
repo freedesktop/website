@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] patch creation ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000201.html">
+   <LINK REL="Next"  HREF="000203.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] patch creation ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] patch creation ...">michael@ximian.com
+       </A><BR>
+    <I>Tue, 06 Jan 2004 14:28:01 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000201.html">[Open Office] Regarding issue no. 49919
+</A></li>
+        <LI> Next message: <A HREF="000203.html">[Open Office] ANNOUNCE: ooo-build-1.1.48
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#202">[ date ]</a>
+              <a href="thread.html#202">[ thread ]</a>
+              <a href="subject.html#202">[ subject ]</a>
+              <a href="author.html#202">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi guys,
+
+	Just a quick reminder; if you havn't read
+<A HREF="http://ooo.ximian.com/ooo-build.html.">http://ooo.ximian.com/ooo-build.html.</A> Particularly for patch creation
+we've had a number of blunders recently.
+
+	Firstly - for the common case; small diffs : you should use
+openoffice/bin/re-root on your tree - then you can simply do 'cvs diff
+-u' in a given directory. NB. the path needs to be from the toplevel, so
+it's best to do:
+
+	cd OOO_1_1_0 # (eg.)
+	export CVSROOT=`cat moz/CVS/Root` # if not set
+	cvs diff -u vcl/source/foo/baa.c | tee -a the-patch-file.
+
+	the tee -a lets you see the diff as it scrolls past, and appends to the
+file.
+
+	Now - for completely new files it is necessary to do:
+
+	diff --new-file -u /dev/null vcl/source/foo/newbaa.c | tee ...
+
+	This will create a unified diff that creates that file.
+
+	Problems (and tedium) arises from people doing copies, and manual
+diffs.
+
+	Lastly - when you're editing a .diff - it's important to realise that
+what may appear to be a blank line is in fact a crucial part of the
+diff.
+
+	Thus be _very_ careful when manually concatenating diffs. Since a
+unified diff is highly tolerant of random whitespace, if in doubt add a
+few newlines between sections :-)
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000201.html">[Open Office] Regarding issue no. 49919
+</A></li>
+	<LI> Next message: <A HREF="000203.html">[Open Office] ANNOUNCE: ooo-build-1.1.48
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#202">[ date ]</a>
+              <a href="thread.html#202">[ thread ]</a>
+              <a href="subject.html#202">[ subject ]</a>
+              <a href="author.html#202">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

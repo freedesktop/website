@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regarding issue no. 49919
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:samit%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000158.html">
+   <LINK REL="Next"  HREF="000160.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regarding issue no. 49919
+   </H1>
+    <B>Amit Shrivastava
+    </B> 
+    <A HREF="mailto:samit%40novell.com"
+       TITLE="[Open Office] Regarding issue no. 49919">samit@novell.com
+       </A><BR>
+    <I>Sat, 22 Nov 2003 04:15:00 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000158.html">[Open Office] Regarding issue no. 49919
+</A></li>
+        <LI> Next message: <A HREF="000160.html">[Open Office] bug bounties
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a MIME message. If you are reading this text, you may want to 
+consider changing to a mail reader or gateway that understands how to 
+properly handle MIME multipart messages.
+
+--=__Part89D70424.0__=
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+Hi Michael,
+
+I have made the changes so that it loops till the MaxRows present, see
+the patch attached. 
+It works fine. As i was going through the code I found function
+sc/inc/GetHiddenRowCount but it 
+doesnt work when we hide a single row !. So I didnt used it.  
+
+I have compiled the evolution-data-server and busy with the bonobo and
+ORbit components :-).
+
+regards
+Amit 
+
+
+&gt;&gt;&gt;<i> Michael Meeks &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt; 11/20/03 6:50:16 PM &gt;&gt;&gt;
+</I>Hi Amit,
+
+On Wed, 2003-11-19 at 03:51, Amit Shrivastava wrote:
+&gt;<i> How is ur trip going ?
+</I>
+	Well so far (for me).
+
+&gt;<i> I was able to fix the issue no: 49919 the issue was, i  am attaching
+</I>my
+&gt;<i> local diff ( Sorry some problem in my cvs ) this has one problems,
+</I>i.e
+&gt;<i> the sensitization part as the whole tab doesnt have sensitization
+</I>part
+&gt;<i> even the paste/paste details items also, so first these must be
+</I>added.
+&gt;<i> If require i will be able to investigate it furthur tommorrow.
+</I>
+	Ok; the patch looks fine so far (assuming it's reversed), I was
+anticipating that we'd check between the selection bounds not for all
+the sheet rows; 0 -&gt; MAXROWS is potentially a huge number of
+iterations
+of the same function, is there not a more efficient range based
+solution
+somewhere ?
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+_______________________________________________
+Openoffice mailing list
+<A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A> 
+<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+
+--=__Part89D70424.0__=
+Content-Type: application/octet-stream; name=&quot;sc-show-hide-rows_1.diff&quot;
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=&quot;sc-show-hide-rows_1.diff&quot;
+
+LS0tIHNjL3NvdXJjZS91aS92aWV3L2NlbGxzaC5jeHgub3JpZwkyMDAzLTExLTIyIDE1OjM5OjI1
+LjAwMDAwMDAwMCArMDUzMA0KKysrIHNjL3NvdXJjZS91aS92aWV3L2NlbGxzaC5jeHgJMjAwMy0x
+MS0yMiAxNTo0MjoyMC4wMDAwMDAwMDAgKzA1MzANCkBAIC03NzUsNyArNzc1LDYgQEANCiAJCQkJ
+YnJlYWs7DQogDQogCQkJY2FzZSBGSURfUk9XX0hJREU6DQotCQkJY2FzZSBGSURfUk9XX1NIT1c6
+DQogCQkJY2FzZSBGSURfQ09MX0hJREU6DQogCQkJY2FzZSBGSURfQ09MX1NIT1c6DQogCQkJY2Fz
+ZSBGSURfQ09MX09QVF9XSURUSDoNCkBAIC03ODUsNiArNzg0LDEzIEBADQogCQkJCQlyU2V0LkRp
+c2FibGVJdGVtKCBuV2hpY2ggKTsNCiAJCQkJYnJlYWs7DQogDQorCQkJY2FzZSBGSURfUk9XX1NI
+T1c6DQorCQkJICAgICAgICBpZiAoIHBEb2MtPklzVGFiUHJvdGVjdGVkKG5UYWIpIHx8IHBEb2NT
+aC0+SXNSZWFkT25seSgpIHx8IA0KKwkJCQkgICAgICFwRG9jLT5Jc1Jvd0hpZGRlbigwLHBEb2Mt
+PkdldFNyY01heFJvdygpLG5UYWIpICkNCisJCQkJICAgICAgICByU2V0LkRpc2FibGVJdGVtKCBu
+V2hpY2ggKTsNCisNCisJCQkJYnJlYWs7DQorDQogLyoJWmVsbHNjaHV0eiBiZWkgc2VsZWt0aWVy
+dGVuIFplbGxlbiB3aXJkIGJlaSBhbmRlcmVuIEZ1bmt0aW9uZW4gYXVjaCBuaWNodCBhYmdlZnJh
+Z3QuLi4NCiAJCQljYXNlIFNJRF9ERUxFVEU6DQogCQkJCXsNCi0tLSBzYy9pbmMvZG9jdW1lbnQu
+aHh4Lm9yaWcJMjAwMy0xMS0yMiAxNTozNTo0MS4wMDAwMDAwMDAgKzA1MzANCisrKyBzYy9pbmMv
+ZG9jdW1lbnQuaHh4CTIwMDMtMTEtMjIgMTU6MzE6NTMuMDAwMDAwMDAwICswNTMwDQpAQCAtNjU1
+LDYgKzY1NSw3IEBADQogCXZvaWQJCQlDbGVhckRyYXdQYWdlKFVTSE9SVCBuVGFiKTsNCiAJdm9p
+ZAkJCVNldFZpc2libGUoIFVTSE9SVCBuVGFiLCBCT09MIGJWaXNpYmxlICk7DQogCUJPT0wJCQlJ
+c1Zpc2libGUoIFVTSE9SVCBuVGFiICkgY29uc3Q7DQorICAgICAgICBCT09MICAgICAgICAgICAg
+ICAgICAgICBJc1Jvd0hpZGRlbihVU0hPUlQgblN0YXJ0Um93LCBVU0hPUlQgbkVuZFJvdywgVVNI
+T1JUIG5UYWIpIGNvbnN0Ow0KIAl2b2lkCQkJU2V0U2NlbmFyaW8oIFVTSE9SVCBuVGFiLCBCT09M
+IGJGbGFnICk7DQogCUJPT0wJCQlJc1NjZW5hcmlvKCBVU0hPUlQgblRhYiApIGNvbnN0Ow0KIAl2
+b2lkCQkJR2V0U2NlbmFyaW9EYXRhKCBVU0hPUlQgblRhYiwgU3RyaW5nJiByQ29tbWVudCwNCi0t
+LSBzYy9zb3VyY2UvY29yZS9kYXRhL2RvY3VtZW50LmN4eC5vcmlnCTIwMDMtMTEtMjIgMTU6MzU6
+MDguMDAwMDAwMDAwICswNTMwDQorKysgc2Mvc291cmNlL2NvcmUvZGF0YS9kb2N1bWVudC5jeHgJ
+MjAwMy0xMS0yMiAxNTozMzoyMS4wMDAwMDAwMDAgKzA1MzANCkBAIC00NzUsNiArNDc1LDE3IEBA
+DQogCXJldHVybiBGQUxTRTsNCiB9DQogDQorQk9PTCBTY0RvY3VtZW50OjpJc1Jvd0hpZGRlbihV
+U0hPUlQgblN0YXJ0Um93LCBVU0hPUlQgbkVuZFJvdywgVVNIT1JUIG5UYWIpIGNvbnN0DQorew0K
+KyAgICAgICAgQk9PTAlySGlkZGVuID0gRkFMU0U7DQorICAgICAgICBmb3IoVVNIT1JUIGk9blN0
+YXJ0Um93OyBpPG5FbmRSb3c7IGkrKykNCisJICB7DQorCSAgICAgIGlmICggUm93SGlkZGVuKGks
+blRhYikgKQ0KKwkJICBySGlkZGVuID0gVFJVRTsNCisJICB9DQorCXJldHVybiBySGlkZGVuOw0K
+K30NCisNCiAvKiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQogCWJlbnV0enRlbiBCZXJlaWNoIHN1Y2hl
+bjoNCiANCg==
+
+--=__Part89D70424.0__=--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000158.html">[Open Office] Regarding issue no. 49919
+</A></li>
+	<LI> Next message: <A HREF="000160.html">[Open Office] bug bounties
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

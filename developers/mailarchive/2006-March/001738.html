@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Issue and developer informations in apply
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Issue%20and%20developer%20informations%20in%20apply&In-Reply-To=1143661703.6072.15.camel%40pettson">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001739.html">
+   <LINK REL="Next"  HREF="001741.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Issue and developer informations in apply</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Issue%20and%20developer%20informations%20in%20apply&In-Reply-To=1143661703.6072.15.camel%40pettson"
+       TITLE="[Open Office] Issue and developer informations in apply">pmladek at suse.cz
+       </A><BR>
+    <I>Thu Mar 30 04:33:55 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001739.html">[Open Office] Issue and developer informations in apply
+</A></li>
+        <LI>Next message: <A HREF="001741.html">[Open Office] Issue and developer informations in apply
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1738">[ date ]</a>
+              <a href="thread.html#1738">[ thread ]</a>
+              <a href="subject.html#1738">[ subject ]</a>
+              <a href="author.html#1738">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 29 March 2006 21:48, Tor Lillqvist wrote:
+&gt;<i> Is it BTW correct that Win32Common occurs both as a leaf (section header
+</I>&gt;<i> in [ brackets ]), and as a node with dependencies in the apply file?
+</I>&gt;<i> This seems a bit odd. Would it be cleaner to remove the line that says
+</I>&gt;<i>
+</I>&gt;<i> Win32Common : Common, NotDebian
+</I>&gt;<i>
+</I>&gt;<i> and instead add Common and NotDebian to the dependency lines where
+</I>&gt;<i> Win32Common is mentioned?
+</I>
+Good point!
+
+It looks odd and should be fixed. In fact, it seems that:
+
+Win32Common: is analogic to LinuxCommon
+[ Win32Common ] is analogic to [ LinuxOnly ]
+
+
+What about to do the following changes?:
+
+- Win32Common : Common, NotDebian
++ Win32Common : Common, Win32Only, NotDebian
+
+- [ Win32Common ]
++ [ Win32Only ]
+
+
+Tor, could you please fix it, anyway you like?
+
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001739.html">[Open Office] Issue and developer informations in apply
+</A></li>
+	<LI>Next message: <A HREF="001741.html">[Open Office] Issue and developer informations in apply
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1738">[ date ]</a>
+              <a href="thread.html#1738">[ thread ]</a>
+              <a href="subject.html#1738">[ subject ]</a>
+              <a href="author.html#1738">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

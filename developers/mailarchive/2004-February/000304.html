@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Trying to compile CVS build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-February/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000303.html">
+   <LINK REL="Next"  HREF="000302.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Trying to compile CVS build
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] Trying to compile CVS build">dan@bigw.org
+       </A><BR>
+    <I>Tue, 17 Feb 2004 11:05:52 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000303.html">[Open Office] Trying to compile CVS build
+</A></li>
+        <LI> Next message: <A HREF="000302.html">[Open Office] pdf writer: where is it
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#304">[ date ]</a>
+              <a href="thread.html#304">[ thread ]</a>
+              <a href="subject.html#304">[ subject ]</a>
+              <a href="author.html#304">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Ok, what you'll want to do is to get the ICE.  Try this:
+
+1) In your OOo source, add &quot;-save-temps&quot; to the CFLAGS line in
+solver/inc/unxlngi4.mk
+2) go to your OOo source dir, type &quot;sh LinuxIntelEnv.sh&quot; for bash, or
+&quot;source LinuxIntelEnv.set&quot; for tcsh
+3) go into i18npool, type &quot;build.pl -P1&quot;
+4) Send mail to me with:
+    a) The build log from this run including the g++ command
+    b) the output of &quot;gcc -v&quot;
+    c) Any &quot;*.ii&quot; and &quot;*.s&quot; files you might find in i18npool/
+        (use 'find . -name &quot;*.ii&quot;' to find them, the .s shoudl be there
+too)
+
+Dan
+
+On Tue, 17 Feb 2004, Daniel Bray wrote:
+
+&gt;<i> On Mon, 2004-02-16 at 09:56, Dan Williams wrote:
+</I>&gt;<i> &gt; Daniel,
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; If you look above the stop point that you pasted in here, you'll see a
+</I>&gt;<i> &gt; line with something like:
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; dmake:  Error code x, while making 'xxxxx'
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; That's the real failure point, it says that i18npool has failed to
+</I>&gt;<i> &gt; build.  Can you post that section of the log?
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; FWIW, I also got an error doing a 2-process build in desktop, but have =
+</I>not
+&gt;<i> &gt; investigated yet.
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; Dan
+</I>&gt;<i> &gt;=20
+</I>&gt;<i>=20
+</I>&gt;<i> Thanks for the tip.  There's my problem:
+</I>&gt;<i>=20
+</I>&gt;<i> -------------------------------------------------------------------------=
+</I>----------
+&gt;<i> Building project i18npool
+</I>&gt;<i> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/un=
+</I>otypes
+&gt;<i> cppumaker @/tmp/mki0dpnV
+</I>&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/se=
+</I>arch
+&gt;<i> --- EXCEPTIONSFILES ---
+</I>&gt;<i> `../../unxlngi4.pro/slo/textsearch.obj' is up to date
+</I>&gt;<i> --- EXCEPTIONSFILES OVER ---
+</I>&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/br=
+</I>eakiterator
+&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/ca=
+</I>lendar
+&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/re=
+</I>gisterservices
+&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/nu=
+</I>mberformatcode
+&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/in=
+</I>dexentry
+&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/co=
+</I>llator
+&gt;<i> -------------
+</I>&gt;<i> Running processes: 1
+</I>&gt;<i> /usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/br=
+</I>eakiterator/data
+&gt;<i> ------------------------------
+</I>&gt;<i> Making: ../../../unxlngi4.pro/slo/dict_zh.obj
+</I>&gt;<i> g++ -fmessage-length=3D0 -c -I.  -I. -I../inc -I../../../inc
+</I>&gt;<i> -I../../../unx/inc -I../../../unxlngi4.pro/inc -I.
+</I>&gt;<i> -I/usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/solver/645/unxln=
+</I>gi4.pro/inc/stl -I/usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/so=
+lver/645/unxlngi4.pro/inc/external -I/usr/src/sources/OpenOffice/openoffice=
+/build/OOO_1_1_0/solver/645/unxlngi4.pro/inc -I/usr/src/sources/OpenOffice/=
+openoffice/build/OOO_1_1_0/solenv/unxlngi4/inc -I/usr/src/sources/OpenOffic=
+e/openoffice/build/OOO_1_1_0/solenv/inc -I/usr/src/sources/OpenOffice/openo=
+ffice/build/OOO_1_1_0/res -I/usr/src/sources/OpenOffice/openoffice/build/OO=
+O_1_1_0/solver/645/unxlngi4.pro/inc/stl -I/usr/src/sources/OpenOffice/openo=
+ffice/build/OOO_1_1_0/solenv/inc/Xp31 -I/opt/java/include -I/opt/java/inclu=
+de/linux -I/opt/java/include/native_threads/include -I/usr/X11R6/include   =
+  -I. -I../../../res -I. -O1   -pipe -mcpu=3Dpentiumpro -fno-for-scope -fpe=
+rmissive -fno-rtti -include preinclude.h -fno-exceptions   -fpic -DLINUX -D=
+UNX -DVCL -DGCC -DC300 -DINTEL -DCVER=3DC300 -D_USE_NAMESPACE -DGLIBC=3D2 -=
+DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=3D1 -DSTLPORT_VE=
+RSION=3D400 -D__DMAKE -DUNIX -DCPPU_ENV=3Dgcc3 -DSUPD=3D645 -DPRODUCT -DNDE=
+BUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=3D0 -DOPTIMIZE -DEXCEPTIONS_OFF -DCUI =
+-DSOLAR_JAVA -DSRX645  -DSHAREDLIB -D_DLL_  -DMULTITHREAD   -o ../../../unx=
+lngi4.pro/slo/dict_zh.o ../../../unxlngi4.pro/misc/dict_zh.cxx
+&gt;<i> g++: Internal error: Killed (program cc1plus)
+</I>&gt;<i> Please submit a full bug report.
+</I>&gt;<i> See &lt;URL:<A HREF="http://gcc.gnu.org/bugs.html">http://gcc.gnu.org/bugs.html</A>&gt; for instructions.
+</I>&gt;<i> dmake:  Error code 1, while making
+</I>&gt;<i> '../../../unxlngi4.pro/slo/dict_zh.obj'
+</I>&gt;<i> ---* TG_SLO.MK *---
+</I>&gt;<i> -------------------------------------------------------------------------=
+</I>----------
+&gt;<i>=20
+</I>&gt;<i> looks like I have a gcc issue.  It's even telling me to submit a &quot;full
+</I>&gt;<i> bug report.&quot;  Guess I should go that route...or maybe first try to
+</I>&gt;<i> compile the latest gcc again.  Suggestions?
+</I>&gt;<i>=20
+</I>&gt;<i> Thanks again,=20
+</I>&gt;<i> DB
+</I>&gt;<i>=20
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>&gt;<i>=20
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000303.html">[Open Office] Trying to compile CVS build
+</A></li>
+	<LI> Next message: <A HREF="000302.html">[Open Office] pdf writer: where is it
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#304">[ date ]</a>
+              <a href="thread.html#304">[ thread ]</a>
+              <a href="subject.html#304">[ subject ]</a>
+              <a href="author.html#304">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] [PATCH] kill bashizm in ooo-build/bin/build-galleries
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5BPATCH%5D%20kill%20bashizm%20in%20ooo-build/bin/build-galleries&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001926.html">
+   <LINK REL="Next"  HREF="001936.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] [PATCH] kill bashizm in ooo-build/bin/build-galleries</H1>
+    <B>Adam Go&#322;&#281;biowski</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5BPATCH%5D%20kill%20bashizm%20in%20ooo-build/bin/build-galleries&In-Reply-To="
+       TITLE="[Open Office] [PATCH] kill bashizm in ooo-build/bin/build-galleries">adamg at pld-linux.org
+       </A><BR>
+    <I>Sun Jul  9 10:26:23 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001926.html">[Open Office] SuSE 7.3
+</A></li>
+        <LI>Next message: <A HREF="001936.html">[Open Office] [PATCH] kill bashizm in	ooo-build/bin/build-galleries
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1929">[ date ]</a>
+              <a href="thread.html#1929">[ thread ]</a>
+              <a href="subject.html#1929">[ subject ]</a>
+              <a href="author.html#1929">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Here's a small patch that kills bashizm in bin/build-galleries - 
+for systems where /bin/sh != bash. Please apply.
+
+Thanks,
+-- 
+ <A HREF="http://www.mysza.eu.org/">http://www.mysza.eu.org/</A> | Everybody needs someone sure, someone true,
+   PLD Linux developer    | Everybody needs some solid rock, I know I do.
+-------------- next part --------------
+--- ooo-build-2.0.2.orig/bin/build-galleries	2006-03-13 00:17:29.000000000 +0100
++++ ooo-build-2.0.2/bin/build-galleries	2006-03-13 00:21:47.000000000 +0100
+@@ -123,7 +123,7 @@
+ 	if [ ! -f /tmp/.X$XDISPLAY-lock ]; then
+ 		echo &quot;    trying display :$XDISPLAY ...&quot;
+ 		sleep 2s
+-		$XVFB -ac :$XDISPLAY &gt;&amp; /dev/null &amp;
++		$XVFB -ac :$XDISPLAY &amp;
+ 		trap &quot;kill $! &gt; /dev/null 2&gt;&amp;1 || true&quot; EXIT
+ 		# let server to start
+ 		sleep 10s 
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001926.html">[Open Office] SuSE 7.3
+</A></li>
+	<LI>Next message: <A HREF="001936.html">[Open Office] [PATCH] kill bashizm in	ooo-build/bin/build-galleries
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1929">[ date ]</a>
+              <a href="thread.html#1929">[ thread ]</a>
+              <a href="subject.html#1929">[ subject ]</a>
+              <a href="author.html#1929">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

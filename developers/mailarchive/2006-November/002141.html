@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Calc Solver updates
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Calc%20Solver%20updates&In-Reply-To=200611232149.19088.ismail%40pardus.org.tr">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002140.html">
+   <LINK REL="Next"  HREF="002142.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Calc Solver updates</H1>
+    <B>Kohei Yoshida</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Calc%20Solver%20updates&In-Reply-To=200611232149.19088.ismail%40pardus.org.tr"
+       TITLE="[Open Office] Calc Solver updates">kohei.yoshida at gmail.com
+       </A><BR>
+    <I>Thu Nov 23 17:21:22 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002140.html">[Open Office] Calc Solver updates
+</A></li>
+        <LI>Next message: <A HREF="002142.html">[Open Office] Calc Solver updates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2141">[ date ]</a>
+              <a href="thread.html#2141">[ thread ]</a>
+              <a href="subject.html#2141">[ subject ]</a>
+              <a href="author.html#2141">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 11/23/06, Ismail Donmez &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">ismail at pardus.org.tr</A>&gt; wrote:
+&gt;<i> 22 Kas 2006 &#199;ar 06:14 tarihinde, Kohei Yoshida &#351;unlar&#305; yazm&#305;&#351;t&#305;:
+</I>&gt;<i> &gt; Hey list,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I just decided to post some update here since I just finished
+</I>&gt;<i> &gt; committing fair amount of changes to the scsolver module that
+</I>&gt;<i> &gt; addresses some important issues.
+</I>&gt;<i>
+</I>&gt;<i> Hi I am getting the following compile error with gcc-3.4
+</I>&gt;<i>
+</I>&gt;<i>  ../../unxlngi6.pro/slo/solvemodel.o /var/tmp/pisi/openoffice-2.0.4.7-36/work/ooo-build-2.0.4.7/build/OOO_2_0_4/scsolver/source/ui/solvemodel.cxx
+</I>&gt;<i> /var/tmp/pisi/openoffice-2.0.4.7-36/work/ooo-build-2.0.4.7/build/OOO_2_0_4/scsolver/source/ui/solvemodel.cxx:69:
+</I>&gt;<i> error: multiple storage classes in declaration of `cell_address_t'
+</I>&gt;<i> dmake:  Error code 1, while making '../../unxlngi6.pro/slo/solvemodel.obj'
+</I>
+Not really sure why the build fails as I can build fine using gcc 4.1.0.
+
+But this declaration below
+
+static typedef struct {
+	short sheet;
+	long  column;
+	long  row;
+} cell_address_t;
+
+at line 69 of scsolver/source/ui/solvemodel.cxx apparently breaks your
+build.  Can you remove the word &quot;static&quot; from the above typedef
+declaration and see if it builds?
+
+Thanks,
+Kohei
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002140.html">[Open Office] Calc Solver updates
+</A></li>
+	<LI>Next message: <A HREF="002142.html">[Open Office] Calc Solver updates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2141">[ date ]</a>
+              <a href="thread.html#2141">[ thread ]</a>
+              <a href="subject.html#2141">[ subject ]</a>
+              <a href="author.html#2141">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

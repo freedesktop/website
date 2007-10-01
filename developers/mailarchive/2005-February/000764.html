@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Disabling CUPS printer queue updates
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000763.html">
+   <LINK REL="Next"  HREF="000766.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Disabling CUPS printer queue updates
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] Disabling CUPS printer queue updates">halls@debian.org
+       </A><BR>
+    <I>Wed, 9 Feb 2005 10:05:01 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000763.html">[Open Office] Status report
+</A></li>
+        <LI> Next message: <A HREF="000766.html">[Open Office] Disabling CUPS printer queue updates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#764">[ date ]</a>
+              <a href="thread.html#764">[ thread ]</a>
+              <a href="subject.html#764">[ subject ]</a>
+              <a href="author.html#764">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi folks
+
+I have been looking at several bugs in 1.1.3 that ended up arising from the 
+CUPS backport.  People have reported odd behaviour in various places, for 
+example:
+
+Stop CUPS server, start impress, new document, format-&gt;character, change tab, 
+OOo crashes
+
+or
+
+Stop CUPS server, start impress, new doc, type some text, select 1 word, click 
+on font colour toolbar icon, selection changes to whole word
+
+I managed to trace this odd behaviour to bugs in the event handlers for 
+SALEVENT_PRINTERCHANGED.  For example, the font dialog in impress never 
+updates a pointer to the FontList that is deleted when the printer changes.  
+The bugs are being brought to the surface because the CUPS hander is saying 
+the printer queues have changed every time it is asked (such as when OOo gets 
+a list of fonts) and those events are being triggered more often than would 
+normally be expected.
+
+It looks like the 2.0 codebase has had most of these bugs flushed out but I 
+think 1.1.x is not stable enough to let this continue.  Therefore I am going 
+to commit a patch to turn off dynamic queue updates, meaning OOo must be 
+restarted to see new CUPS queues.
+
+If anyone has the time to fix all the problems, I can collect &amp; provide a list 
+of the symptoms people have reported.
+
+Thanks
+Chris
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000763.html">[Open Office] Status report
+</A></li>
+	<LI> Next message: <A HREF="000766.html">[Open Office] Disabling CUPS printer queue updates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#764">[ date ]</a>
+              <a href="thread.html#764">[ thread ]</a>
+              <a href="subject.html#764">[ subject ]</a>
+              <a href="author.html#764">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

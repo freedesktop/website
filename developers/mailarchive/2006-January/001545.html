@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Respect MSGID_BUGS_ADDRESS for PO files
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Respect%20MSGID_BUGS_ADDRESS%20for%20PO%20files&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001544.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Respect MSGID_BUGS_ADDRESS for PO files</H1>
+    <B>Dwayne Bailey</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Respect%20MSGID_BUGS_ADDRESS%20for%20PO%20files&In-Reply-To="
+       TITLE="[Open Office] Respect MSGID_BUGS_ADDRESS for PO files">dwayne at translate.org.za
+       </A><BR>
+    <I>Tue Jan 31 08:35:02 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001544.html">[Open Office] Integration of some workspaces
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1545">[ date ]</a>
+              <a href="thread.html#1545">[ thread ]</a>
+              <a href="subject.html#1545">[ subject ]</a>
+              <a href="author.html#1545">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Currently our PO files do not allow translators to give us feedback
+about bad English strings.  The msgid-bug-address feature of Gettext
+allows them to easily find out where to send corrections or ask
+questions.
+
+This patch adds that ability.
+
+1) intltoolize --copy --force --automake
+2) apply the attached patch (GNOME bug at
+<A HREF="http://bugzilla.gnome.org/show_bug.cgi?id=329346">http://bugzilla.gnome.org/show_bug.cgi?id=329346</A> )
+
+Now we're ready
+
+1) ./autogen.sh
+2) cd po
+3) ../intltool-update --pot
+
+This email list is now in the bug msgid bug address in the POT file.
+
+-- 
+Dwayne Bailey
+Translate.org.za
+
++27-12-460-1095 (w)
++27-83-443-7114 (cell)
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: intltool-msgid_bugs_address.diff
+Type: text/x-patch
+Size: 3145 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060131/7cbb89a1/intltool-msgid_bugs_address.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060131/7cbb89a1/intltool-msgid_bugs_address.bin</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001544.html">[Open Office] Integration of some workspaces
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1545">[ date ]</a>
+              <a href="thread.html#1545">[ thread ]</a>
+              <a href="subject.html#1545">[ subject ]</a>
+              <a href="author.html#1545">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,350 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Patch for defect 49914...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:banil%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000153.html">
+   <LINK REL="Next"  HREF="000154.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Patch for defect 49914...
+   </H1>
+    <B>Anil Anil
+    </B> 
+    <A HREF="mailto:banil%40novell.com"
+       TITLE="[Open Office] Patch for defect 49914...">banil@novell.com
+       </A><BR>
+    <I>Sun, 16 Nov 2003 20:50:15 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000153.html">[Open Office] Patch for defect 49914...
+</A></li>
+        <LI> Next message: <A HREF="000154.html">[Open Office] gtk+ file selector integration ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#152">[ date ]</a>
+              <a href="thread.html#152">[ thread ]</a>
+              <a href="subject.html#152">[ subject ]</a>
+              <a href="author.html#152">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Michael,
+
+Resending with patch in body of mail... Sorry about previous mail...:-)
+This patch contains the changes made to classes ImageButton, and Image,
+along with images.src and svids.hrc.
+
+This patch does not have any of the ImageButton occurrences in any of
+the .src files reverted back to Symbol.
+
+Please let me know if this requires any changes or is ok to commit...
+
+Regards
+-Anil
+-----------------------------------------------------------------
+
+Index: inc/image.hxx
+===================================================================
+RCS file: /cvs/gsl/vcl/inc/image.hxx,v
+retrieving revision 1.4
+diff -u -r1.4 image.hxx
+--- inc/image.hxx       22 Aug 2002 13:54:48 -0000      1.4
++++ inc/image.hxx       15 Nov 2003 12:30:50 -0000
+@@ -111,6 +111,7 @@
+                                                                        
+       
+ private:
+        ImplImage*              mpImplData;
++  static const USHORT SYMBOL_TO_IMAGE_TABLE[];
+                                                                        
+       
+ public:
+                                        Image();
+@@ -140,6 +141,7 @@
+        BOOL                    operator!=( const Image&amp; rImage ) const
+{ return !(Image::operator==( rImage )); }
+                                                                        
+       
+     void            ClearCaches();
++  static USHORT GetImageIdForSymbol(const USHORT nSymbolId, const Size
+objSize);
+ };
+                                                                        
+       
+ inline BOOL Image::operator!() const
+Index: inc/svids.hrc
+===================================================================
+RCS file: /cvs/gsl/vcl/inc/svids.hrc,v
+retrieving revision 1.8
+diff -u -r1.8 svids.hrc
+--- inc/svids.hrc       27 Mar 2003 17:57:34 -0000      1.8
++++ inc/svids.hrc       15 Nov 2003 12:30:51 -0000
+@@ -151,5 +151,15 @@
+ #define SV_SHORTCUT_TODOCUMENT              10606
+ #define SV_SHORTCUT_MENUBAR                 10607
+                                                                        
+       
++#define IMG_BASE                       1080
++#define L_IMG_ARROW_UP                 (IMG_BASE + 0)
++#define S_IMG_ARROW_UP                 (IMG_BASE + 1)
++#define L_IMG_ARROW_DOWN               (IMG_BASE + 2)
++#define S_IMG_ARROW_DOWN               (IMG_BASE + 3)
++#define L_IMG_ARROW_LEFT               (IMG_BASE + 4)
++#define S_IMG_ARROW_LEFT               (IMG_BASE + 5)
++#define L_IMG_ARROW_RIGHT              (IMG_BASE + 6)
++#define S_IMG_ARROW_RIGHT              (IMG_BASE + 7)
++
+ #define SV_FUNIT_STRINGS                    10700
+ #endif // _SV_SVIDS_HRC
+Index: source/control/button.cxx
+===================================================================
+RCS file: /cvs/gsl/vcl/source/control/button.cxx,v
+retrieving revision 1.21
+diff -u -r1.21 button.cxx
+--- source/control/button.cxx   17 Apr 2003 17:55:28 -0000      1.21
++++ source/control/button.cxx   15 Nov 2003 12:30:52 -0000
+@@ -3303,7 +3318,19 @@
+     }
+                                                                        
+         
+     if ( RSC_IMAGEBUTTON_SYMBOL &amp; nObjMask )
+-        SetSymbol( (SymbolType)ReadShortRes() );
++    {
++       SymbolType s = (SymbolType)ReadShortRes();
++       USHORT nImageId = Image::GetImageIdForSymbol(s, GetSizePixel());
++       if (nImageId != NULL)
++       {
++         SetImage(Image(ResId(nImageId, ImplGetResMgr())));
++       }
++       else
++       {
++               SetSymbol(s);
++       }
++
++    }
+                                                                        
+         
+     if ( RSC_IMAGEBUTTON_STATE &amp; nObjMask )
+         SetState( (TriState)ReadShortRes() );
+Index: source/gdi/image.cxx
+===================================================================
+RCS file: /cvs/gsl/vcl/source/gdi/image.cxx,v
+retrieving revision 1.8
+diff -u -r1.8 image.cxx
+--- source/gdi/image.cxx        27 Mar 2003 17:57:57 -0000      1.8
++++ source/gdi/image.cxx        15 Nov 2003 12:30:52 -0000
+@@ -92,6 +92,9 @@
+ #ifndef _SV_IMAGE_HXX
+ #include &lt;image.hxx&gt;
+ #endif
++#ifndef _SV_SVIDS_HRC
++#include &lt;svids.hrc&gt;
++#endif
+ #undef private
+                                                                        
+         
+ //
+=======================================================================
+@@ -196,6 +215,104 @@
+                                                                        
+         
+ //
+=======================================================================
+                                                                        
+         
++const USHORT Image::SYMBOL_TO_IMAGE_TABLE[] =
++  {
++    NULL, // 0 Large
++    NULL, // 0 Small
++    NULL, // 1 Large
++    NULL, // 1 Small
++    L_IMG_ARROW_UP, // 2 Large
++    S_IMG_ARROW_UP, // 2 Small
++    L_IMG_ARROW_DOWN, // 3 Large
++    S_IMG_ARROW_DOWN, // 3 Small
++    L_IMG_ARROW_LEFT, // 4 Large
++    S_IMG_ARROW_LEFT, // 4 Small
++    L_IMG_ARROW_RIGHT, // 5 Large
++    S_IMG_ARROW_RIGHT, // 5 Small
++    NULL, // 6 Large
++    NULL, // 6 Small
++    NULL, // 7 Large
++    NULL, // 7 Small
++    NULL, // 8 Large
++    NULL, // 8 Small
++    NULL, // 9 Large
++    NULL, // 9 Small
++    NULL, // 10 Large
++    NULL, // 10 Small
++    NULL, // 11 Large
++    NULL, // 11 Small
++    NULL, // 12 Large
++    NULL, // 12 Small
++    NULL, // 13 Large
++    NULL, // 13 Small
++    NULL, // 14 Large
++    NULL, // 14 Small
++    NULL, // 15 Large
++    NULL, // 15 Small
++    NULL, // 16 Large
++    NULL, // 16 Small
++    NULL, // 17 Large
++    NULL, // 17 Small
++    NULL, // 18 Large
++    NULL, // 18 Small
++    NULL, // 19 Large
++    NULL, // 19 Small
++    NULL, // 20 Large
++    NULL, // 20 Small
++    NULL, // 21 Large
++    NULL, // 21 Small
++    NULL, // 22 Large
++    NULL, // 22 Small
++    NULL, // 23 Large
++    NULL, // 23 Small
++    NULL, // 24 Large
++    NULL, // 24 Small
++    NULL, // 25 Large
++    NULL, // 25 Small
++    NULL, // 26 Large
++    NULL, // 26 Small
++    NULL, // 27 Large
++    NULL, // 27 Small
++    NULL, // 28 Large
++    NULL, // 28 Small
++    NULL, // 29 Large
++    NULL, // 29 Small
++    NULL, // 30 Large
++    NULL, // 30 Small
++    NULL, // 31 Large
++    NULL, // 31 Small
++    NULL, // 32 Large
++    NULL, // 32 Small
++    NULL, // 33 Large
++    NULL, // 33 Small
++    NULL, // 34 Large
++    NULL, // 34 Small
++    NULL, // 35 Large
++    NULL, // 35 Small
++    NULL, // 36 Large
++    NULL, // 36 Small
++    NULL, // 37 Large
++    NULL  // 37 Small
++  };
++
++USHORT Image::GetImageIdForSymbol(const USHORT nSymbolId, const Size
+objSize)
++{
++  if (nSymbolId &gt; 37)
++    return NULL;
++
++  long lHeight = objSize.getHeight();
++  long lWidth = objSize.getWidth();
++  long lMin = lHeight &lt; lWidth ? lHeight : lWidth;
++
++  if (lMin &lt; 16)
++    return NULL;
++
++  BOOL bLarge = (lMin &gt;= 24);
++  return (SYMBOL_TO_IMAGE_TABLE[2 * nSymbolId + (bLarge ? 0 : 1)]);
++}
++
++//
+-----------------------------------------------------------------------
++
+ Image::Image()
+ {
+        DBG_CTOR( Image, NULL );
+Index: source/src/images.src
+===================================================================
+RCS file: /cvs/gsl/vcl/source/src/images.src,v
+retrieving revision 1.2
+diff -u -r1.2 images.src
+--- source/src/images.src       1 Oct 2002 16:23:24 -0000       1.2
++++ source/src/images.src       15 Nov 2003 12:30:53 -0000
+@@ -177,3 +177,51 @@
+        File = &quot;splvarw.bmp&quot;;
+ };
+                                                                        
+         
++
++Image L_IMG_ARROW_UP
++{
++      ImageBitmap = Bitmap { File = &quot;lc10150.bmp&quot; ; };
++      MaskColor = Color { Red = 0xFFFF ; Green = 0x0000 ; Blue = 0xFFFF
+; };
++};
++
++Image S_IMG_ARROW_UP
++{
++      ImageBitmap = Bitmap { File = &quot;sc10150.bmp&quot; ; };
++      MaskColor = Color { Red = 0xFFFF ; Green = 0x0000 ; Blue = 0xFFFF
+; };
++};
++
++Image L_IMG_ARROW_DOWN
++{
++      ImageBitmap = Bitmap { File = &quot;lc10151.bmp&quot; ; };
++      MaskColor = Color { Red = 0xFFFF ; Green = 0x0000 ; Blue = 0xFFFF
+; };
++};
++
++Image S_IMG_ARROW_DOWN
++{
++      ImageBitmap = Bitmap { File = &quot;sc10151.bmp&quot; ; };
++      MaskColor = Color { Red = 0xFFFF ; Green = 0x0000 ; Blue = 0xFFFF
+; };
++};
++
++Image L_IMG_ARROW_LEFT
++{
++      ImageBitmap = Bitmap { File = &quot;lc10152.bmp&quot; ; };
++      MaskColor = Color { Red = 0xFFFF ; Green = 0x0000 ; Blue = 0xFFFF
+; };
++};
++
++Image S_IMG_ARROW_LEFT
++{
++      ImageBitmap = Bitmap { File = &quot;sc10152.bmp&quot; ; };
++      MaskColor = Color { Red = 0xFFFF ; Green = 0x0000 ; Blue = 0xFFFF
+; };
++};
++
++Image L_IMG_ARROW_RIGHT
++{
++      ImageBitmap = Bitmap { File = &quot;lc10153.bmp&quot; ; };
++      MaskColor = Color { Red = 0xFFFF ; Green = 0x0000 ; Blue = 0xFFFF
+; };
++};
++
++Image S_IMG_ARROW_RIGHT
++{
++      ImageBitmap = Bitmap { File = &quot;sc10153.bmp&quot; ; };
++      MaskColor = Color { Red = 0xFFFF ; Green = 0x0000 ; Blue = 0xFFFF
+; };
++};
+-----------------------------------------------------------------
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000153.html">[Open Office] Patch for defect 49914...
+</A></li>
+	<LI> Next message: <A HREF="000154.html">[Open Office] gtk+ file selector integration ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#152">[ date ]</a>
+              <a href="thread.html#152">[ thread ]</a>
+              <a href="subject.html#152">[ subject ]</a>
+              <a href="author.html#152">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

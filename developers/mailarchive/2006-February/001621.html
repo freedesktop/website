@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] oob680.1.1 - new issues and qustion getting our own	distro tag
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%0A%09%3D%3Fiso-8859-6%3Fq%3Fown%3D09distro%3F%3D%20tag&In-Reply-To=43F6BD97.40609%40arcor.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001617.html">
+   <LINK REL="Next"  HREF="001622.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] oob680.1.1 - new issues and qustion getting our own	distro tag</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%0A%09%3D%3Fiso-8859-6%3Fq%3Fown%3D09distro%3F%3D%20tag&In-Reply-To=43F6BD97.40609%40arcor.de"
+       TITLE="[Open Office] oob680.1.1 - new issues and qustion getting our own	distro tag">bero at arklinux.org
+       </A><BR>
+    <I>Sun Feb 19 09:57:15 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001617.html">[Open Office] oob680.1.1 - new issues and qustion getting our
+	own	distro tag
+</A></li>
+        <LI>Next message: <A HREF="001622.html">[Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1621">[ date ]</a>
+              <a href="thread.html#1621">[ thread ]</a>
+              <a href="subject.html#1621">[ subject ]</a>
+              <a href="author.html#1621">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Saturday, 18. February 2006 07:24, Andreas Radke wrote:
+&gt;<i> &gt; /var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-
+</I>&gt;<i> &gt;m1/external/common/apache-ant-1.6.1/bin/ant: Command not found.
+</I>&gt;<i>
+</I>&gt;<i> Any idea what's wrong here? How can I get it compiled?
+</I>
+The problem here is that you're building --without-java, but it's trying to 
+build the (Java based) hsqldb nevertheless.
+
+Untested patch attached; let me know if it works.
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: config_office-hsqldb-no-java.diff
+Type: text/x-diff
+Size: 451 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060219/06e66943/config_office-hsqldb-no-java.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060219/06e66943/config_office-hsqldb-no-java.bin</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001617.html">[Open Office] oob680.1.1 - new issues and qustion getting our
+	own	distro tag
+</A></li>
+	<LI>Next message: <A HREF="001622.html">[Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1621">[ date ]</a>
+              <a href="thread.html#1621">[ thread ]</a>
+              <a href="subject.html#1621">[ subject ]</a>
+              <a href="author.html#1621">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

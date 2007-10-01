@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: build.lst/build.pl spec document? (fwd)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000368.html">
+   <LINK REL="Next"  HREF="000374.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: build.lst/build.pl spec document? (fwd)
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] Re: build.lst/build.pl spec document? (fwd)">dan@bigw.org
+       </A><BR>
+    <I>Tue, 13 Apr 2004 14:26:05 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000368.html">[Open Office] Re: Regarding making patches...
+</A></li>
+        <LI> Next message: <A HREF="000374.html">[Open Office] looking through ooo-build patches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#369">[ date ]</a>
+              <a href="thread.html#369">[ thread ]</a>
+              <a href="subject.html#369">[ subject ]</a>
+              <a href="author.html#369">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Reply about the build.lst extensions I was thinking of...
+
+Dan
+
+---------- Forwarded message ----------
+Date: Tue, 13 Apr 2004 14:21:31 +0200
+From: &quot;[ISO-8859-1] R=FCdiger Timm&quot; &lt;<A HREF="mailto:Ruediger.Timm@Sun.COM">Ruediger.Timm@Sun.COM</A>&gt;
+To: Dan Williams &lt;<A HREF="mailto:dan@bigw.org">dan@bigw.org</A>&gt;
+Subject: Re: build.lst/build.pl spec document?
+
+Dan Williams wrote:
+&gt;<i> Hi,
+</I>&gt;<i>=20
+</I>&gt;<i> A while ago on the <A HREF="mailto:dev@porting">dev@porting</A> list possibly, I remeber a specification
+</I>&gt;<i> document being circulated that talked about a new format for build.lst
+</I>&gt;<i> files that would be more flexible.  Do you remeber who was in charge of
+</I>&gt;<i> that document and how far the effort got?
+</I>&gt;<i>=20
+</I>&gt;<i> Thanks!
+</I>&gt;<i> Dan
+</I>&gt;<i>=20
+</I>
+Hi Dan,
+
+I'm not shure about what you are talking about.
+   Most probably you mean what I would describe as 'product=20
+dependencies': extending module dependencies in build.lst files by=20
+introducing suffixes. By this you could specify
+=09my_module : sal OOo:some_OOo_only_module SO:some_sun_internal_module NUL=
+L
+  to describe dependencies valid for special products only. This change=20
+AFAIK was hosted either by Vladimir ( <A HREF="mailto:vg@openoffice.org">vg@openoffice.org</A> ) or Ause=20
+(<A HREF="mailto:hjs@openoffice.org">hjs@openoffice.org</A>). Implementing all necessary tooling changes has=20
+been finished recently, and I already heard about a first use case=20
+coming up soon.
+   Quite some time ago there was a proposal for a much deeper change. It=20
+has been discussed to change the build.lst format to xml in order to be=20
+able to cover some more sophisticated features. See=20
+<A HREF="http://www.openoffice.org/servlets/ReadMsg?list=3Ddev&msgId=3D342583">http://www.openoffice.org/servlets/ReadMsg?list=3Ddev&amp;msgId=3D342583</A> .=20
+Allthough this proposal is not (yet) dead, it is somewhat stalled. A=20
+style definition exists, but no implementaion work has been done yet.
+
+R=FCdiger
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000368.html">[Open Office] Re: Regarding making patches...
+</A></li>
+	<LI> Next message: <A HREF="000374.html">[Open Office] looking through ooo-build patches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#369">[ date ]</a>
+              <a href="thread.html#369">[ thread ]</a>
+              <a href="subject.html#369">[ subject ]</a>
+              <a href="author.html#369">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

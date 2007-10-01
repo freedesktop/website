@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Generic desktop adapter (proposal &amp; prototype)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Generic%20desktop%20adapter%20%28proposal%20%26%20prototype%29&In-Reply-To=200511291814.56291.kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001350.html">
+   <LINK REL="Next"  HREF="001358.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Generic desktop adapter (proposal &amp; prototype)</H1>
+    <B>&#201;ric Bischoff</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Generic%20desktop%20adapter%20%28proposal%20%26%20prototype%29&In-Reply-To=200511291814.56291.kendy%40suse.cz"
+       TITLE="[Open Office] Generic desktop adapter (proposal &amp; prototype)">ebischoff at nerim.net
+       </A><BR>
+    <I>Tue Nov 29 13:26:36 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001350.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+        <LI>Next message: <A HREF="001358.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1352">[ date ]</a>
+              <a href="thread.html#1352">[ thread ]</a>
+              <a href="subject.html#1352">[ subject ]</a>
+              <a href="author.html#1352">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Le Mardi 29 Novembre 2005 18:14, Jan Holesovsky a &#233;crit&#160;:
+&gt;<i> I think that the interesting thing here would be doing it vice-versa.  For
+</I>&gt;<i> example, merge the functionality of gnome-vfs and KIO so that the current
+</I>&gt;<i> gnome-vfs or KIO would be just wrappers for the 'merged VFS'.  This would
+</I>&gt;<i> make the maintainance easier - two teams would be interested in fixing
+</I>&gt;<i> bugs ;-) -, the really desktop independent applications could use the
+</I>&gt;<i> 'merged VFS' directly, and the KDE/Gnome application programmers would
+</I>&gt;<i> still have the API they are used to.  But no idea whether it is technically
+</I>&gt;<i> possible at all ;-)
+</I>&gt;<i>
+</I>&gt;<i> What do you think, would you be interested in looking into this?
+</I>
+Kendy,
+
+Correct me if I am wrong, but what you propose is nothing less than merging 
+the kio and the vfs ?
+
+If true : wow. While this seems highly desirable, this might be a programmer's 
+nightmare. For example, KDE uses Qt's signals and slots to do asynchronous 
+I/O while Gnome uses callbacks (if I am not wrong). And there is a lot, lot 
+of existing code.
+
+That would be an exciting project, but much ahead of us OpenOffice.org 
+developpers (*). And highly &quot;political&quot;, of course.
+
+
+(*) I am also a KDE developper, but only of two small apps.
+
+-- 
+Marre des virus, vers, spywares, adwares et plantages ?
+Passez &#224; Linux !
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001350.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+	<LI>Next message: <A HREF="001358.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1352">[ date ]</a>
+              <a href="thread.html#1352">[ thread ]</a>
+              <a href="subject.html#1352">[ subject ]</a>
+              <a href="author.html#1352">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

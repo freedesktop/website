@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] newbie: custom splashscreen
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:davidf%40sjsoft.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000476.html">
+   <LINK REL="Next"  HREF="000483.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] newbie: custom splashscreen
+   </H1>
+    <B>David Fraser
+    </B> 
+    <A HREF="mailto:davidf%40sjsoft.com"
+       TITLE="[Open Office] newbie: custom splashscreen">davidf@sjsoft.com
+       </A><BR>
+    <I>Sat, 14 Aug 2004 13:06:00 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000476.html">[Open Office] newbie: custom splashscreen
+</A></li>
+        <LI> Next message: <A HREF="000483.html">[Open Office] newbie: custom splashscreen
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#477">[ date ]</a>
+              <a href="thread.html#477">[ thread ]</a>
+              <a href="subject.html#477">[ subject ]</a>
+              <a href="author.html#477">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ruslan wrote:
+
+&gt;<i>Hello.
+</I>&gt;<i>
+</I>&gt;<i>Could somebody help me and point to how insert my custom splashscreen
+</I>&gt;<i>into OO? What do i need to change and where in OO source(i'm buildling
+</I>&gt;<i>with ooo-build-1.1.61) to use my splashscreen?
+</I>&gt;<i>
+</I>&gt;<i>Thanks in advance.
+</I>&gt;<i>
+</I>&gt;<i>Best regards,
+</I>&gt;<i>Ruslan
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>These are my cryptic notes on the subject which should get you going.
+Hope they make some sense
+
+David
+
+splash screen
+  offmgr/res/
+    openabout.bmp - help/about
+    openintro.bmp - intro screen
+
+productname
+  # this seems also to contain the name of the bitmaps used in about/splash
+  offmgr/source/offapp/intro
+    ooo.src
+  # default install path takes whole application name so override it in 
+config.scp
+  # this seems also to contain the name of the bitmap used in 
+installation (oo_product.bmp)
+  scp/source/office/config.scp
+  * to include the bitmap, also need to change scp/source/office/files.scp
+
+license is in instset2/util/openoffice.lst
+
+installation background in readlicense_oo/source/cinema
+  oo_product.bmp
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000476.html">[Open Office] newbie: custom splashscreen
+</A></li>
+	<LI> Next message: <A HREF="000483.html">[Open Office] newbie: custom splashscreen
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#477">[ date ]</a>
+              <a href="thread.html#477">[ thread ]</a>
+              <a href="subject.html#477">[ subject ]</a>
+              <a href="author.html#477">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

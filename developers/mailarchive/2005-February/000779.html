@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.9.78: build error in project shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:caolanm%40redhat.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000777.html">
+   <LINK REL="Next"  HREF="000780.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.9.78: build error in project shell
+   </H1>
+    <B>Caolan McNamara
+    </B> 
+    <A HREF="mailto:caolanm%40redhat.com"
+       TITLE="[Open Office] ooo-build-1.9.78: build error in project shell">caolanm@redhat.com
+       </A><BR>
+    <I>Fri, 11 Feb 2005 12:34:40 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000777.html">[Open Office] ooo-build-1.9.78: build error in project shell
+</A></li>
+        <LI> Next message: <A HREF="000780.html">[Open Office] Status this week
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#779">[ date ]</a>
+              <a href="thread.html#779">[ thread ]</a>
+              <a href="subject.html#779">[ subject ]</a>
+              <a href="author.html#779">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2005-02-11 at 13:10 +0100, Jürg Billeter wrote:
+&gt;<i> Hi
+</I>&gt;<i> 
+</I>&gt;<i> Trying to compile ooo-build-1.9.78 results on my system in a build error
+</I>&gt;<i> in project shell due to an undefined reference to g_type_init, i.e. it
+</I>&gt;<i> seems that -lgobject-2.0 is missing.
+</I>&gt;<i> 
+</I>&gt;<i> This happens using gcc 3.4.3 and a gnome 2.9.91 installation.
+</I>
+Yeah, I saw it as well, I changed the entry in the makefile.mk in that
+dir
+from
+PKGCONFIG_MODULES=gconf-2.0
+to 
+PKGCONFIG_MODULES=gconf-2.0, gobject-2.0
+to continue
+
+C.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000777.html">[Open Office] ooo-build-1.9.78: build error in project shell
+</A></li>
+	<LI> Next message: <A HREF="000780.html">[Open Office] Status this week
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#779">[ date ]</a>
+              <a href="thread.html#779">[ thread ]</a>
+              <a href="subject.html#779">[ subject ]</a>
+              <a href="author.html#779">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

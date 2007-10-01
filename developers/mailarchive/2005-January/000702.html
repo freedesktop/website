@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build 1.9.70: build errors in pyuno and
+ connectivity (evo2)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:caolanm%40redhat.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000701.html">
+   <LINK REL="Next"  HREF="000703.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build 1.9.70: build errors in pyuno and
+ connectivity (evo2)
+   </H1>
+    <B>Caolan McNamara
+    </B> 
+    <A HREF="mailto:caolanm%40redhat.com"
+       TITLE="[Open Office] ooo-build 1.9.70: build errors in pyuno and
+ connectivity (evo2)">caolanm@redhat.com
+       </A><BR>
+    <I>Thu, 20 Jan 2005 08:49:02 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000701.html">[Open Office] ooo-build 1.9.70: build errors in pyuno and connectivity (evo2)
+</A></li>
+        <LI> Next message: <A HREF="000703.html">[Open Office] ooo-build 1.9.70: build errors in pyuno and
+ connectivity (evo2)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#702">[ date ]</a>
+              <a href="thread.html#702">[ thread ]</a>
+              <a href="subject.html#702">[ subject ]</a>
+              <a href="author.html#702">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, 2005-01-19 at 22:59 +0100, Jürg Billeter wrote:
+&gt;<i> I'm currently trying to build 1.9.70 on a Linux x86 machine with gcc 3.4
+</I>&gt;<i> and want to report some problems I've noticed. My build configuration is
+</I>&gt;<i> pretty much like the default one besides having disabled java and kde
+</I>&gt;<i> widgets.
+</I>&gt;<i> 
+</I>&gt;<i> * pyuno/source/loader: the build breaks with undefined references to
+</I>&gt;<i> python::Runtime::Runtime among others. Should perhaps in makefile.mk
+</I>&gt;<i> the .ENDIF line below PYUNOLIB=... be moved above the .IF &quot;$(GUI)&quot; line
+</I>&gt;<i> so that the PYUNOLIB variable gets defined when using system-python,
+</I>&gt;<i> too? (not yet tested)
+</I>
+Yes, I've this done in workspace systempython currently in &quot;ready for
+qa&quot; state for OOo2 head.
+
+&gt;<i> * pyuno/source/loader: after circumventing the above problem, the build
+</I>&gt;<i> breaks when trying to register reflection.uno with the error
+</I>&gt;<i> terminate called after throwing an instance of
+</I>&gt;<i> 'com::sun::star::registry::InvalidValueException'
+</I>&gt;<i> Don't know whether this problem has the same origin as the one above,
+</I>&gt;<i> doesn't look like.
+</I>
+Haven't seen that yet, i'm building a with-system-python with gcc 3.4
+today, so if it shows up for me and is related to system-python I'll fix
+it in the above workspace.
+
+C.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000701.html">[Open Office] ooo-build 1.9.70: build errors in pyuno and connectivity (evo2)
+</A></li>
+	<LI> Next message: <A HREF="000703.html">[Open Office] ooo-build 1.9.70: build errors in pyuno and
+ connectivity (evo2)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#702">[ date ]</a>
+              <a href="thread.html#702">[ thread ]</a>
+              <a href="subject.html#702">[ subject ]</a>
+              <a href="author.html#702">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.9.90: build error in project shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:rene%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000914.html">
+   <LINK REL="Next"  HREF="000912.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.9.90: build error in project shell
+   </H1>
+    <B>Rene Engelhard
+    </B> 
+    <A HREF="mailto:rene%40debian.org"
+       TITLE="[Open Office] ooo-build-1.9.90: build error in project shell">rene@debian.org
+       </A><BR>
+    <I>Wed, 20 Apr 2005 15:52:03 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000914.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+        <LI> Next message: <A HREF="000912.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#911">[ date ]</a>
+              <a href="thread.html#911">[ thread ]</a>
+              <a href="subject.html#911">[ subject ]</a>
+              <a href="author.html#911">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Am Mittwoch, 20. April 2005 13:07 schrieb michael meeks:
+&gt;<i> &gt; The backward compatibility may be a problem but as I've built GNOME 2.10
+</I>&gt;<i> &gt; without any issues from scratch, this doesn't seem to appear very often.
+</I>&gt;<i> &gt; BTW: There is a pkgconfig compile-time option to disable the new
+</I>&gt;<i> &gt; behavior.
+</I>&gt;<i>
+</I>&gt;<i> 	OK - so I understand the issue now :-) your patch looks fine in which
+</I>&gt;<i> case; I'll get it commited to ooo-build &amp; file it up-stream for you :-)
+</I>
+Linux' ld is able to figure out these weak references itself. There's no ne=
+ed=20
+for adding every -l *unless* you use -z,defs as argument to ld (which is th=
+e=20
+case here).
+
+I personally think the proper fix is not to use -z,defs...
+
+Regards,
+
+Rene
+=2D-=20
+ .''`.  Ren=E9 Engelhard -- Debian GNU/Linux Developer
+ : :' : <A HREF="http://www.debian.org">http://www.debian.org</A> | <A HREF="http://people.debian.org/~rene/">http://people.debian.org/~rene/</A>
+ `. `'  <A HREF="mailto:rene@debian.org">rene@debian.org</A> | GnuPG-Key ID: 248AEB73
+   `-   Fingerprint: 41FA F208 28D4 7CA5 19BB  7AD9 F859 90B0 248A EB73
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000914.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+	<LI> Next message: <A HREF="000912.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#911">[ date ]</a>
+              <a href="thread.html#911">[ thread ]</a>
+              <a href="subject.html#911">[ subject ]</a>
+              <a href="author.html#911">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

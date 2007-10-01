@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Problems building OO.o
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-September/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000057.html">
+   <LINK REL="Next"  HREF="000059.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Problems building OO.o
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Problems building OO.o">michael@ximian.com
+       </A><BR>
+    <I>Fri, 12 Sep 2003 21:11:36 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000057.html">[Open Office] Problems building OO.o
+</A></li>
+        <LI> Next message: <A HREF="000059.html">[Open Office] Problems building OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#58">[ date ]</a>
+              <a href="thread.html#58">[ thread ]</a>
+              <a href="subject.html#58">[ subject ]</a>
+              <a href="author.html#58">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Patryk,
+
+On Fri, 2003-09-12 at 20:51, Patryk Lesiewicz wrote:
+&gt;<i> open some documents on samba share, Nautilus says: &lt;&quot;StarOffice can't
+</I>&gt;<i> open &quot;cennik_2003_09_02_16.xls&quot; because &quot;StarOffice&quot; can't access files
+</I>&gt;<i> at &quot;smb&quot; locations.&gt;. And I know that it can. I can open samba shares
+</I>&gt;<i> from OpenOffice, and I wonder how Nautilus figures out whether the
+</I>&gt;<i> aplication uses the gnome_vfs or not.
+</I>&gt;<i> But I thing It's not the question for this list, so thank you for help.
+</I>
+	This is how our packaging works; we rather rely on the gnome-mime-data
+package to describe OO.o has being able to handle all URIs. If you poke
+at the XD2 gnome-mime-data patches, you'll see how we do that, I forget
+the details.
+
+	It'd be great to have a patch to move that into our package-ooo script
+and split it out of gnome-mime-data to save other people pain.
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000057.html">[Open Office] Problems building OO.o
+</A></li>
+	<LI> Next message: <A HREF="000059.html">[Open Office] Problems building OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#58">[ date ]</a>
+              <a href="thread.html#58">[ thread ]</a>
+              <a href="subject.html#58">[ subject ]</a>
+              <a href="author.html#58">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

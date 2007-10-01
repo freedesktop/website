@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Make OpenOffice.org without JDK on own child
+ workspace
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000118.html">
+   <LINK REL="Next"  HREF="000120.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Make OpenOffice.org without JDK on own child
+ workspace
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: Make OpenOffice.org without JDK on own child
+ workspace">michael@ximian.com
+       </A><BR>
+    <I>Thu, 30 Oct 2003 17:15:03 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000118.html">[Open Office] Re: Make OpenOffice.org without JDK on own child workspace
+</A></li>
+        <LI> Next message: <A HREF="000120.html">[Open Office] Re: Make OpenOffice.org without JDK on own child
+ workspace
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#119">[ date ]</a>
+              <a href="thread.html#119">[ thread ]</a>
+              <a href="subject.html#119">[ subject ]</a>
+              <a href="author.html#119">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Kevin,
+
+On Thu, 2003-10-30 at 15:08, Chris Halls wrote:
+&gt;<i> [Added <A HREF="mailto:openoffice@lists.ximian.com">openoffice@lists.ximian.com</A> to the CC list, as the main mailing
+</I>&gt;<i> list for the patchset]
+</I>
+	It's nice to be included in this sort of discussion; for sure.
+
+&gt;<i> On Thu, 2003-10-30 at 15:31, Kevin Hendricks wrote:
+</I>&gt;<i> &gt; I looked again at the patches and they look very very safe to me since 
+</I>&gt;<i> &gt; they will not break anything is SOLARJAVA is set afaict.
+</I>
+	The plan so far; as decided on IRC is to merge them into the
+cws_srx645_ooo111fix1 branch ASAP. Dan is working on the Java ones, and
+I'll look at some of the other system-foo bits.
+
+	The patches are in fact not that safe in the current setup - since the
+Sun build system will not have SOLARJAVA set - thus we have to re-hash
+all these patches so they 'fail-safe' such that when misc. new env-vars
+that will not be set in the Sun build system are used, we tolerate / go
+the right branch if they are not set. eg.
+
++.IF &quot;$(SOLAR_JAVA)&quot;!=&quot;&quot;
++
+ SLOFILES= \
+ 	$(SLO)$/jni_info.obj		\
+ 	$(SLO)$/jni_data.obj		\
+@@ -99,6 +101,8 @@
+ .ENDIF
+ .ENDIF
+ 
++.ENDIF # &quot;$(SOLAR_JAVA)&quot;!=&quot;&quot;
++
+
+	is precisely wrong ;-) it has to be:
+
+.IF &quot;$(SOLAR_JAVA)&quot; != &quot;YES&quot;
+
+	or somesuch to be safe.
+
+	Anyhow, Dan and I will re-hash this lot and get them in. Really
+up-streaming is a matter of a little interest being shown by up-stream
+people and some pain-reduction on the cws front. Anyhow - hopefully if
+there is some sensible branch to commit to that we know of, we can get
+some of this stuff merged up; the config stuff is by the most painful /
+colliding bit we have to work with.
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000118.html">[Open Office] Re: Make OpenOffice.org without JDK on own child workspace
+</A></li>
+	<LI> Next message: <A HREF="000120.html">[Open Office] Re: Make OpenOffice.org without JDK on own child
+ workspace
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#119">[ date ]</a>
+              <a href="thread.html#119">[ thread ]</a>
+              <a href="subject.html#119">[ subject ]</a>
+              <a href="author.html#119">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

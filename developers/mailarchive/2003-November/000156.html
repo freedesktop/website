@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] tbxcust ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000155.html">
+   <LINK REL="Next"  HREF="000157.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] tbxcust ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] tbxcust ...">michael@ximian.com
+       </A><BR>
+    <I>Mon, 17 Nov 2003 15:49:20 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000155.html">[Open Office] evolution / LDAP / Exchange / Groupwise integration ...
+</A></li>
+        <LI> Next message: <A HREF="000157.html">[Open Office] Regarding issue no. 49919
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#156">[ date ]</a>
+              <a href="thread.html#156">[ thread ]</a>
+              <a href="subject.html#156">[ subject ]</a>
+              <a href="author.html#156">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Anil,
+
+	The alpha issue is - that we have to have the alpha separate from the
+BitmapColor that is used to transfer alpha around the place - since
+Windows relies on that being the size it is now for various nasty
+memcopy operations - so we can't change it.
+
+	In the past people have assumed they could copy an 8bit - paletized
+image around containing a magic color that can be  mapped to a 1 bit
+alpha mask right before render. With a separate 8bit alpha channel this
+assumption gets badly broken :-) Thus we have to retro-fit all code with
+that assumption to use a BitmapEx instead of a Bitmap - since this
+contains the Alpha mask, and to construct that nicely from the resource
+otherwise we loose alpha, the default alpha is 0 - and we end up with a
+beautiful icon, at 0 alpha == invisible ;-) [ or something worse if the
+icon happened to be paletized beforehand - a pink outlined mess eg. ;-]
+
+	Anyhow, hope that helps.
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000155.html">[Open Office] evolution / LDAP / Exchange / Groupwise integration ...
+</A></li>
+	<LI> Next message: <A HREF="000157.html">[Open Office] Regarding issue no. 49919
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#156">[ date ]</a>
+              <a href="thread.html#156">[ thread ]</a>
+              <a href="subject.html#156">[ subject ]</a>
+              <a href="author.html#156">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

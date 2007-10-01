@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] New macro variable in solenv/inc/libs.mk
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20New%20macro%20variable%20in%20solenv/inc/libs.mk&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001839.html">
+   <LINK REL="Next"  HREF="001846.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] New macro variable in solenv/inc/libs.mk</H1>
+    <B>Kohei Yoshida</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20New%20macro%20variable%20in%20solenv/inc/libs.mk&In-Reply-To="
+       TITLE="[Open Office] New macro variable in solenv/inc/libs.mk">kohei.yoshida at gmail.com
+       </A><BR>
+    <I>Thu Jun  8 00:24:35 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001839.html">[Open Office] Latest solver - building on Windows
+</A></li>
+        <LI>Next message: <A HREF="001846.html">[Open Office] New macro variable in solenv/inc/libs.mk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1840">[ date ]</a>
+              <a href="thread.html#1840">[ thread ]</a>
+              <a href="subject.html#1840">[ subject ]</a>
+              <a href="author.html#1840">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi *,
+
+As part of my ongoing work to integrate lpsolve into ooo-build, I need
+to have a new variable in solenv/inc/libs.mk for a linker flag for
+liblpsolve55.so.
+
+The patch is attached.
+
+I would think that normally this patch should go into patches/src680,
+but I don't know the namiing convention that we follow and/or if this
+patch should possibly get combined with another one if there is
+already a similar patch to add a new linker flag.
+
+Help is appreciated.
+
+Kohei
+
+-- 
+Kohei Yoshida, OpenOffice.org Calc Hacker
+&lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">kohei at openoffice.org</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: solenv_inc_libs_mk.diff
+Type: text/x-patch
+Size: 434 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060608/00f4e5ae/solenv_inc_libs_mk.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060608/00f4e5ae/solenv_inc_libs_mk.bin</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001839.html">[Open Office] Latest solver - building on Windows
+</A></li>
+	<LI>Next message: <A HREF="001846.html">[Open Office] New macro variable in solenv/inc/libs.mk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1840">[ date ]</a>
+              <a href="thread.html#1840">[ thread ]</a>
+              <a href="subject.html#1840">[ subject ]</a>
+              <a href="author.html#1840">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

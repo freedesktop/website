@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build and JCAs/issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000428.html">
+   <LINK REL="Next"  HREF="000435.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build and JCAs/issues
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] ooo-build and JCAs/issues">halls@debian.org
+       </A><BR>
+    <I>Mon, 05 Jul 2004 09:53:35 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000428.html">[Open Office] ooo-build and JCAs/issues
+</A></li>
+        <LI> Next message: <A HREF="000435.html">[Open Office] ooo-build and JCAs/issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#431">[ date ]</a>
+              <a href="thread.html#431">[ thread ]</a>
+              <a href="subject.html#431">[ subject ]</a>
+              <a href="author.html#431">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin, thanks for taking the initiative on this :)
+
+On Fri, 2004-07-02 at 16:43, Martin Hollmichel wrote:
+&gt;<i> &gt;yes, see patches/OO_1_1_1/apply
+</I>&gt;<i> &gt;Every patch should have an issue, makes everybody's life easier
+</I>&gt;<i> &gt;
+</I>&gt;<i> Ok, the answer is for some of them, not for all :(
+</I>&gt;<i> 
+</I>&gt;<i> also, if I look on some of the patches, not all of them are applyable, 
+</I>&gt;<i> looking on the at the ???only sections of the apply files. Or can we 
+</I>&gt;<i> take the list of issues in the apply files as the list of outstanding 
+</I>&gt;<i> patches for OOo.
+</I>
+I think the list of issues in the apply file is a very good starting
+point to go from as the list of outstanding patches.  The non-numbered
+patches fall into a few groups:
+
+ - Not suitable for all arches / OSes
+
+ - Only make sense on a particular distro/subset of distros 
+   (Those in XXXXOnly sections)
+
+ - Experimental in nature, with known bugs or not fully tested.  It
+   might help to mark them as such, or create an issue anyway.
+
+ - Highly experimental patches :) Generally, those in unused sections
+   towards the bottom of the apply file.
+
+ - Patches which haven't had issues filed for them yet, but could be
+   included upstream.   Actually, although Michael doesn't like the
+   issue filing process, he's probably created issues for more of his
+   patches than I have *blush*.  I still have to create issues for
+   several of my patches.
+
+&gt;<i> I really would like to fight 1.5 in 
+</I>&gt;<i> <A HREF="http://ooo.ximian.com/ooo-build.html,">http://ooo.ximian.com/ooo-build.html,</A> but it is difficult to track them all.
+</I>
+Is there some way we can mark issues to help track them?  Maybe
+something as simple as adding
+
+  ooo-build patch: [location of patch in ooo-build]
+
+To the issue description text, so we can search for 'ooo-build' in the
+issue query?
+
+&gt;<i> BTW, I assume all of the mentioned authors already do have commit access ?
+</I>
+To upstream OOo?  I'm not sure.
+
+&gt;<i> wrt to 5.4 of the above document, I just can offer again something like 
+</I>&gt;<i> a tools/contrib/ooo-build or whatever similar is needed.
+</I>
+I think Michael's reluctance was due to the very long time  needed to
+get everything set up for a new user, i.e. send JCA, wait a long time
+for JCA to be processed, create issue with ssh key, wait a long time for
+ssh tunnel key to be added.  Do you see any way that the delays could be
+reduced in the future?
+
+Chris
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000428.html">[Open Office] ooo-build and JCAs/issues
+</A></li>
+	<LI> Next message: <A HREF="000435.html">[Open Office] ooo-build and JCAs/issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#431">[ date ]</a>
+              <a href="thread.html#431">[ thread ]</a>
+              <a href="subject.html#431">[ subject ]</a>
+              <a href="author.html#431">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

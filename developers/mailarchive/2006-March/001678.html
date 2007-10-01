@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Internal quickstarter
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To=44088CAA.3050904%40mandriva.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001677.html">
+   <LINK REL="Next"  HREF="001679.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Internal quickstarter</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To=44088CAA.3050904%40mandriva.com"
+       TITLE="[Open Office] Internal quickstarter">michael.meeks at novell.com
+       </A><BR>
+    <I>Mon Mar  6 07:59:51 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001677.html">[Open Office] Internal quickstarter
+</A></li>
+        <LI>Next message: <A HREF="001679.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1678">[ date ]</a>
+              <a href="thread.html#1678">[ thread ]</a>
+              <a href="subject.html#1678">[ subject ]</a>
+              <a href="author.html#1678">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there,
+
+On Fri, 2006-03-03 at 19:36 +0100, Giuseppe Ghib&#242; wrote:
+&gt;<i> &gt; 	b) 2nd start is far faster too [ ie. when OO.o is already
+</I>&gt;<i> &gt; 	   running ).
+</I>&gt;<i> 
+</I>&gt;<i> but need to be leaved opened OOo in the background? and how?
+</I>
+	Open a document in OO.o, minimise the window; now try.
+
+&gt;<i> It's the point b) which I'm not able to achieve, so I was wondering
+</I>&gt;<i> what's wrong in my setup.
+</I>
+	For a start you're using 'time' to time an inter-process interaction to
+a factory from a short lived child; either way the time numbers will be
+at best be misleading.
+
+&gt;<i> &gt; 	Instead we really should implement this stuff in the core itself.
+</I>&gt;<i>
+</I>&gt;<i> yes, but I need to find how/some help. I'll post maybe something
+</I>&gt;<i> other, as I've also a few other things I was planning
+</I>&gt;<i> to add in the wrapper which maybe should go in the core as you said.
+</I>
+	You don't *need* to get help here; this is a Mdv specific feature; you
+get to maintain it yourself - the way we left to not hurt you is to use
+the older / non-quickstarter wrapper.
+
+&gt;<i> or for instance how to customize the progress bar on it, also
+</I>&gt;<i> find why other people obtain a huge improvement, like starting
+</I>&gt;<i> below 1 seconds (0.7s) on a notebook
+</I>
+	Initial start time is not affected. Ultimately *you* need to do the
+*basic* research necessary to answer these questions. ie. read the
+patch, run an strace, see what happens, consider what could be
+happening; think, consider, contemplate, ponder etc.
+
+&gt;<i> while to me it's 3 times slower with a faster CPU and RAID
+</I>&gt;<i> disks (i.e. whether I've something wrong in my setup, or
+</I>&gt;<i> people not measured it correctly, etc.)
+</I>
+	That sounds amazing indeed. 3x slower ? 3x slower than what ? than an
+un-patched warm run of soffice.bin ? or 'soffice' or ... ?
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001677.html">[Open Office] Internal quickstarter
+</A></li>
+	<LI>Next message: <A HREF="001679.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1678">[ date ]</a>
+              <a href="thread.html#1678">[ thread ]</a>
+              <a href="subject.html#1678">[ subject ]</a>
+              <a href="author.html#1678">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

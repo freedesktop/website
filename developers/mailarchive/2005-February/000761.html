@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Monday, Tuesday
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000757.html">
+   <LINK REL="Next"  HREF="000763.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Monday, Tuesday
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Status Monday, Tuesday">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Tue, 08 Feb 2005 19:18:34 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000757.html">[Open Office] Status today
+</A></li>
+        <LI> Next message: <A HREF="000763.html">[Open Office] Status report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#761">[ date ]</a>
+              <a href="thread.html#761">[ thread ]</a>
+              <a href="subject.html#761">[ subject ]</a>
+              <a href="author.html#761">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I started looking at CLI-UNO and how to make it usable on Linux with
+Mono. Yesterday I read lots of English, today C++ and C#:
+
+The &quot;English&quot; was:
+
+<A HREF="http://api.openoffice.org/docs/DevelopersGuide/ProfUNO/ProfUNO.html">http://api.openoffice.org/docs/DevelopersGuide/ProfUNO/ProfUNO.html</A> to
+refresh my UNO
+
+<A HREF="http://udk.openoffice.org/common/man/bridge.html">http://udk.openoffice.org/common/man/bridge.html</A> to understand what a
+&quot;Bridge&quot; is
+
+<A HREF="http://api.openoffice.org/docs/DevelopersGuide/AdvancedUNO/AdvancedUNO.html">http://api.openoffice.org/docs/DevelopersGuide/AdvancedUNO/AdvancedUNO.html</A>
+and <A HREF="http://udk.openoffice.org/cpp/man/cpp_bridges.html">http://udk.openoffice.org/cpp/man/cpp_bridges.html</A> with an annotated
+and simplified C++-Bridge
+
+The C++ and C# is here
+<A HREF="http://go-oo.org/bonsai/rview.cgi?cvsroot=/var/cvsup&dir=udk/cli_ure&module=OpenOffice">http://go-oo.org/bonsai/rview.cgi?cvsroot=/var/cvsup&amp;dir=udk/cli_ure&amp;module=OpenOffice</A>
+(read most of this) and from here
+<A HREF="http://go-oo.org/bonsai/rview.cgi?cvsroot=/var/cvsup&dir=udk/bridges/source/cli_uno&module=OpenOffice">http://go-oo.org/bonsai/rview.cgi?cvsroot=/var/cvsup&amp;dir=udk/bridges/source/cli_uno&amp;module=OpenOffice</A>
+(read only cli_bridge.cxx so far)
+
+Along the way, I discovered that core UNO has a C interface, but the OOo
+developers generally prefer C++ and many useful helper functions are
+available only from C++. Added more notes to mono.txt
+<A HREF="http://cvs.gnome.org/viewcvs/ooo-build/doc/mono.txt?view=markup">http://cvs.gnome.org/viewcvs/ooo-build/doc/mono.txt?view=markup</A> and
+tried to find the places where managed-unmanaged transitions take place
+in the C++ code.
+
+In the background I tried to build src680-m76 to have a hacking tree. No
+luck yet.
+
+Regards,
+
+Martin
+
+PS: Miguel, Michael said I should Cc you. Daniel, google said that
+you're interested in OpenOffice.org/Mono ;-)
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000757.html">[Open Office] Status today
+</A></li>
+	<LI> Next message: <A HREF="000763.html">[Open Office] Status report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#761">[ date ]</a>
+              <a href="thread.html#761">[ thread ]</a>
+              <a href="subject.html#761">[ subject ]</a>
+              <a href="author.html#761">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] m143 doesn't build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m143%20doesn%27t%20build&In-Reply-To=20051204123820.GA25599%40rene-engelhard.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001387.html">
+   <LINK REL="Next"  HREF="001389.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] m143 doesn't build</H1>
+    <B>Giuseppe Castagno</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m143%20doesn%27t%20build&In-Reply-To=20051204123820.GA25599%40rene-engelhard.de"
+       TITLE="[Open Office] m143 doesn't build">giuseppe.castagno at gmail.com
+       </A><BR>
+    <I>Sun Dec  4 08:42:27 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001387.html">[Open Office] m143 doesn't build
+</A></li>
+        <LI>Next message: <A HREF="001389.html">[Open Office] m143 doesn't build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1388">[ date ]</a>
+              <a href="thread.html#1388">[ thread ]</a>
+              <a href="subject.html#1388">[ subject ]</a>
+              <a href="author.html#1388">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 12/4/05, Rene Engelhard &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rene at debian.org</A>&gt; wrote:
+&gt;<i> Ismail Donmez wrote:
+</I>&gt;<i> &gt; error: no matching function for call to
+</I>&gt;<i> &gt; `icu_2_6::RuleBasedCollator::RuleBasedCollator(const sal_uInt8*&amp;, int,
+</I>&gt;<i> &gt; icu_2_6::RuleBasedCollator*&amp;, UErrorCode&amp;)'
+</I>&gt;<i> &gt; /home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/external/unicode/tblcoll.h:712:
+</I>&gt;<i> &gt; note: candidates are: icu_2_6::RuleBasedCollator::RuleBasedCollator(const
+</I>&gt;<i> [ snip ]
+</I>&gt;<i>
+</I>&gt;<i> Damn. As I updated the system-icu patch I forgot to readd the #ifdef for
+</I>&gt;<i> internal icu...
+</I>&gt;<i>
+</I>&gt;<i> &gt; Any ideas?
+</I>&gt;<i>
+</I>&gt;<i> Yes. system-icu is the problem, if you don't build with system-icu
+</I>&gt;<i> (which it looks like you do) you can comment out that patch as a
+</I>&gt;<i> temporary workaround.
+</I>
+I stumbled on the same problem, on FC4 tring to compile m143, I
+commented out the system-icu patch (I had the same error log of
+Ismail, and don't use the system-icu) but I got this while applying
+the patches (full build from scratch):
+
+copy hebrew-culmus.diff -&gt;
+/media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/build/src680-m143/applied_patches/242-hebrew-culmus.diff
+
+no-sans-serif-default.diff: testing...( sed 's/^\(@.*\)\r$/\1/' |
+patch -l -p0  -d
+/media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/build/src680-m143
+--dry-run ) &lt; /media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/patches/src680/./no-sans-serif-default.diff
+patching file officecfg/registry/data/org/openoffice/VCL.xcu
+( sed 's/^\(@.*\)\r$/\1/' | patch -l -p0  -d
+/media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/build/src680-m143
+&gt;<i> /dev/null) &lt; /media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/patches/src680/./no-sans-serif-default.diff
+</I>done.
+copy no-sans-serif-default.diff -&gt;
+/media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/build/src680-m143/applied_patches/243-no-sans-serif-default.diff
+
+system-xmlsec.diff: testing...( sed 's/^\(@.*\)\r$/\1/' | patch -l -p0
+ -d /media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/build/src680-m143
+--dry-run ) &lt; /media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/patches/src680/./system-xmlsec.diff
+patching file config_office/configure.in
+Hunk #1 succeeded at 272 (offset 24 lines).
+Hunk #2 succeeded at 2528 (offset 110 lines).
+Hunk #3 succeeded at 3140 (offset 54 lines).
+patching file config_office/set_soenv.in
+Hunk #1 succeeded at 1791 (offset 36 lines).
+patching file scp2/source/ooo/file_library_ooo.scp
+Hunk #1 succeeded at 2310 (offset 114 lines).
+Hunk #2 succeeded at 2233 with fuzz 1.
+patching file scp2/source/ooo/makefile.mk
+Hunk #1 FAILED at 158.
+1 out of 1 hunk FAILED -- saving rejects to file scp2/source/ooo/makefile.mk.rej
+patching file scp2/source/ooo/shortcut_ooo.scp
+Hunk #1 succeeded at 425 (offset -22 lines).
+Hunk #2 succeeded at 492 (offset 8 lines).
+patching file xmlsecurity/source/xmlsec/makefile.mk
+Hunk #1 succeeded at 51 (offset -27 lines).
+patching file xmlsecurity/source/xmlsec/nss/makefile.mk
+Hunk #1 succeeded at 62 (offset -27 lines).
+patching file xmlsecurity/source/xmlsec/nss/securityenvironment_nssimpl.cxx
+Hunk #1 succeeded at 63 (offset -26 lines).
+patching file xmlsecurity/source/xmlsec/nss/systemxmlsec.hxx
+patching file xmlsecurity/source/xmlsec/nss/systemxmlsec.cxx
+patching file xmlsecurity/util/makefile.mk
+Testing patch system-xmlsec.diff failed. at
+/media/usb-li/home/beppe/ooo-build/from-CVS/ooo-build.m143/patches/apply.pl
+line 54.
+make: *** [stamp/patch.apply] Error 1
+
+
+Regards,
+Giuseppe Castagno
+
+&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i>
+</I>&gt;<i> Rene
+</I>&gt;<i>
+</I> [snip...]
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001387.html">[Open Office] m143 doesn't build
+</A></li>
+	<LI>Next message: <A HREF="001389.html">[Open Office] m143 doesn't build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1388">[ date ]</a>
+              <a href="thread.html#1388">[ thread ]</a>
+              <a href="subject.html#1388">[ subject ]</a>
+              <a href="author.html#1388">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

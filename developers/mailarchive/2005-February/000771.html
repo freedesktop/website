@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Ark/Debian configure options ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:michael.meeks%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000754.html">
+   <LINK REL="Next"  HREF="000783.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Ark/Debian configure options ...
+   </H1>
+    <B>michael meeks
+    </B> 
+    <A HREF="mailto:michael.meeks%40novell.com"
+       TITLE="[Open Office] Re: Ark/Debian configure options ...">michael.meeks@novell.com
+       </A><BR>
+    <I>Thu, 10 Feb 2005 11:29:30 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000754.html">[Open Office] Re: Ark/Debian configure options ...
+</A></li>
+        <LI> Next message: <A HREF="000783.html">[Open Office] Re: Ark/Debian configure options ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#771">[ date ]</a>
+              <a href="thread.html#771">[ thread ]</a>
+              <a href="subject.html#771">[ subject ]</a>
+              <a href="author.html#771">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bernhard,
+
+On Mon, 2005-02-07 at 18:41 +0100, Bernhard Rosenkraenzer wrote:
+&gt;<i> That was based on the configure output from config_office -- if --without-gpc 
+</I>&gt;<i> is used, it screams that some features won't be available, if --enable-libart 
+</I>&gt;<i> is used, it doesn't scream.
+</I>
+	Oh - that's just lying, I've added a patch to fix that.
+
+&gt;<i> I don't know how accurate configure's reporting is -- if the scream is 
+</I>&gt;<i> outdated or applies with --enable-libart too, then I definitely don't have a 
+</I>&gt;<i> problem switching to --without-gpc.
+</I>
+	Great I've done that for you.
+
+&gt;<i> &gt; 	Ark: you don't build with libstartup-notification ? why not ?
+</I>&gt;<i> 
+</I>&gt;<i> &quot;No new packages during the freeze&quot; thing.
+</I>
+	Fair enough.
+
+&gt;<i> An option here would be to remove all --{en,dis}able-libsn stuff from the 
+</I>&gt;<i> configs and just autodetect it in config_office/configure.in by default -- 
+</I>&gt;<i> that would allow common configs [everything omitted] while not breaking 
+</I>&gt;<i> systems that don't have libsn.
+</I>
+	I guess we could have a patch for that; indeed we really should be
+trying to use more system-autodetection stuff at least by default in our
+builds.
+
+&gt;<i> &gt; 	Debian/Ark - we added the --enable-gnome-vfs option to configure OO.o's
+</I>&gt;<i>
+</I>&gt;<i> This is a definite no for Ark. Being KDE only, we don't have gnome-vfs in our 
+</I>&gt;<i> base installation, and we don't have all the stuff it depends on 
+</I>
+	Fair enough.
+
+&gt;<i> &gt; NonArkCommon: Evo2
+</I>&gt;<i>
+</I>&gt;<i> Sure, as long as it doesn't require evo stuff at runtime or compile time.
+</I>&gt;<i> This is the same as with gnome-vfs, we don't want to bloat the dependency list 
+</I>&gt;<i> (our default mail/PIM suite is Kontact).
+</I>
+	It requires only glib2 (gobject) to compile - you'd prolly be
+hard-pressed to get that off your CD though - a number of apps use it -
+do you have it ?
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000754.html">[Open Office] Re: Ark/Debian configure options ...
+</A></li>
+	<LI> Next message: <A HREF="000783.html">[Open Office] Re: Ark/Debian configure options ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#771">[ date ]</a>
+              <a href="thread.html#771">[ thread ]</a>
+              <a href="subject.html#771">[ subject ]</a>
+              <a href="author.html#771">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

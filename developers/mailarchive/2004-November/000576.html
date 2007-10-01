@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: OpenOffice.org 1.1.3 and ooo-build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-November/index.html" >
+   <LINK REL="made" HREF="mailto:rene%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000575.html">
+   <LINK REL="Next"  HREF="000588.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: OpenOffice.org 1.1.3 and ooo-build
+   </H1>
+    <B>Rene Engelhard
+    </B> 
+    <A HREF="mailto:rene%40debian.org"
+       TITLE="[Open Office] Re: OpenOffice.org 1.1.3 and ooo-build">rene@debian.org
+       </A><BR>
+    <I>Fri, 12 Nov 2004 14:07:17 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000575.html">[Open Office] Re: OpenOffice.org 1.1.3 and ooo-build
+</A></li>
+        <LI> Next message: <A HREF="000588.html">[Open Office] Re: OpenOffice.org 1.1.3 and ooo-build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#576">[ date ]</a>
+              <a href="thread.html#576">[ thread ]</a>
+              <a href="subject.html#576">[ subject ]</a>
+              <a href="author.html#576">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Am Mittwoch, 10. November 2004 18:18 schrieb Vedran Ljubovi=C4=87:
+&gt;<i> The problems were:
+</I>&gt;<i>
+</I>&gt;<i> - using build 1.3.5.5
+</I>&gt;<i> There were problems with applying patches in directory vclplug, almost no=
+</I>ne
+&gt;<i> of them apply. If we ignore these messages, build fails somewhere in
+</I>&gt;<i> directory vclplug.
+</I>
+Those versions were based on cws_srx645_ooo113fix, a CVS checkout of an ear=
+ly=20
+1.1.3 state. 1.3.6 should be buildable with 1.1.3 final.
+
+&gt;<i> - using build 1-3-1.3.5-20041025
+</I>&gt;<i> Compile fails while building gtk filepicker, apparently it requires Gtk
+</I>&gt;<i> 2.6. We are now setting up a Debian box with GNOME 2.8 / Gtk 2.6.
+</I>
+zero:/# dpkg -l libgtk2.0-dev
+Desired=3DUnknown/Install/Remove/Purge/Hold
+|<i> Status=3DNot/Installed/Config-files/Unpacked/Failed-config/Half-installed
+</I>|<i>/ Err?=3D(none)/Hold/Reinst-required/X=3Dboth-problems (Status,Err:=20
+</I>uppercase=3Dbad)
+||<i>/ Name           Version        Description
+</I>+++-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D-=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+ii  libgtk2.0-dev  2.4.13-1       Development files for the GTK+ library
+
+Builds fine with 2.4.x here... (using up to date ooo-build-1-3 branch, aka.=
+=20
+the newly released 1.3.6)
+
+Could you try with this?
+
+Regards,
+
+Rene
+=2D-=20
+ .''`.  Ren=C3=A9 Engelhard -- Debian GNU/Linux Developer
+ : :' : <A HREF="http://www.debian.org">http://www.debian.org</A> | <A HREF="http://people.debian.org/~rene/">http://people.debian.org/~rene/</A>
+ `. `'  <A HREF="mailto:rene@debian.org">rene@debian.org</A> | GnuPG-Key ID: 248AEB73
+   `-   Fingerprint: 41FA F208 28D4 7CA5 19BB  7AD9 F859 90B0 248A EB73
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000575.html">[Open Office] Re: OpenOffice.org 1.1.3 and ooo-build
+</A></li>
+	<LI> Next message: <A HREF="000588.html">[Open Office] Re: OpenOffice.org 1.1.3 and ooo-build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#576">[ date ]</a>
+              <a href="thread.html#576">[ thread ]</a>
+              <a href="subject.html#576">[ subject ]</a>
+              <a href="author.html#576">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

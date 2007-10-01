@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] another issue of gcj-no-com.sun.xml.diff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20another%20issue%20of%20gcj-no-com.sun.xml.diff&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001411.html">
+   <LINK REL="Next"  HREF="001414.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] another issue of gcj-no-com.sun.xml.diff</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20another%20issue%20of%20gcj-no-com.sun.xml.diff&In-Reply-To="
+       TITLE="[Open Office] another issue of gcj-no-com.sun.xml.diff">h.mth at web.de
+       </A><BR>
+    <I>Mon Dec 12 03:49:52 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001411.html">[Open Office] typo in gcj-no-com.sun.xml.diff
+</A></li>
+        <LI>Next message: <A HREF="001414.html">[Open Office] Where to file issues about the GUI icons of the OOo
+	by Ximian?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1412">[ date ]</a>
+              <a href="thread.html#1412">[ thread ]</a>
+              <a href="subject.html#1412">[ subject ]</a>
+              <a href="author.html#1412">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bernhard,
+here is another diff (attached) which should fix:
+
+-------------
+/var/tmp/portage/openoffice-680.143.1/work/ooo-build-src680.140.1/build/src680-m143/officecfg/regist
+ry/schema/org/openoffice
+dmake: Executing shell macro: date +%d%m%Y
+-------------
+-------------+ validating and stripping schema files
+mkdir -p ../../../../unxlngi6.pro/misc/registry/schema/org/openoffice/
+java -classpath :../../../../unxlngi6.pro/class/cfgimport.jar -Djavax.xml.parsers.SAXParserFactory=org.apache.xerces.jaxp.SAXParserFactoryImpl org.openoffice.configuration.Inspector LDAP.xcs
+Exception in thread &quot;main&quot; javax.xml.parsers.FactoryConfigurationError: Provider org.apache.xerces.jaxp.SAXParserFactoryImpl could not be instantiated: java.lang.NullPointerException
+        at javax.xml.parsers.SAXParserFactory.newInstance(SAXParserFactory.java:113)
+        at org.openoffice.configuration.Inspector.main(Inspector.java:144)
+dmake:  Error code 1, while making '../../../../unxlngi6.pro/misc/registry/schema/org/openoffice/LDAP.xcs'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making /var/tmp/portage/openoffice-680.143.1/work/ooo-build-src680
+.140.1/build/src680-m143/officecfg/registry/schema/org/openoffice
+make: *** [stamp/build] Error 1
+
+
+Btw, this is being tested with sun jdk 1.5.
+
+
+Regards,
+Hanno
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ooo-bero.diff
+Type: text/x-patch
+Size: 1379 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051212/525136b1/ooo-bero.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20051212/525136b1/ooo-bero.bin</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001411.html">[Open Office] typo in gcj-no-com.sun.xml.diff
+</A></li>
+	<LI>Next message: <A HREF="001414.html">[Open Office] Where to file issues about the GUI icons of the OOo
+	by Ximian?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1412">[ date ]</a>
+              <a href="thread.html#1412">[ thread ]</a>
+              <a href="subject.html#1412">[ subject ]</a>
+              <a href="author.html#1412">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

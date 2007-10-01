@@ -1,0 +1,1014 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] no suitable windowing system found, exiting.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20no%20suitable%20windowing%20system%20found%2C%20exiting.&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002265.html">
+   <LINK REL="Next"  HREF="002266.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] no suitable windowing system found, exiting.</H1>
+    <B>Kami</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20no%20suitable%20windowing%20system%20found%2C%20exiting.&In-Reply-To="
+       TITLE="[Open Office] no suitable windowing system found, exiting.">kamihir at freemail.hu
+       </A><BR>
+    <I>Mon Apr 23 09:28:51 EDT 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002265.html">[Open Office] Problems with go-ooo builds
+</A></li>
+        <LI>Next message: <A HREF="002266.html">[Open Office] no suitable windowing system found, exiting.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2264">[ date ]</a>
+              <a href="thread.html#2264">[ thread ]</a>
+              <a href="subject.html#2264">[ subject ]</a>
+              <a href="author.html#2264">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello!
+
+ 
+ 
+
+ I have build an sightly moded vanilla OpenOffice.org 2.2 patched with some ooo-build's patches and some other smaller patches. I build on Ubuntu Linux latest (7.0.4) and the compiled binary works well on it. But other system has a problem with it. I tried it on Slackware and Fedora C6 an I got &quot;no suitable windowing system found, exiting.&quot; error messages. This is also applies when I run it as root. I did and strace log that I attached to this letter. Could you be so kind to help me out the possible root cause of problem and with the possible solutions?  
+
+ 
+ 
+
+ Thank you in advance!
+
+ 
+ 
+
+ 
+ 
+
+ KAMI
+
+
+
+&quot;Diszlexi&#225;s a gyermekem?&quot; - 25 k&#233;rd&#233;ses gyorsteszt (H&#225;l&#225;s lesz ut&#225;na, b&#225;rmi is az eredm&#233;ny!)
+<A HREF="http://ad.adverticum.net/b/cl,1,6022,133103,204265/click.prm">http://ad.adverticum.net/b/cl,1,6022,133103,204265/click.prm</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070423/724889a8/attachment-0001.html">http://lists.ximian.com/pipermail/openoffice/attachments/20070423/724889a8/attachment-0001.html</A> 
+-------------- next part --------------
+execve(&quot;/opt/openoffice.org2.2/program/soffice&quot;, [&quot;/opt/openoffice.org2.2/program/s&quot;...], [/* 48 vars */]) = 0
+brk(0)                                  = 0x80fc000
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7fce000
+access(&quot;/etc/ld.so.preload&quot;, R_OK)      = -1 ENOENT (No such file or directory)
+open(&quot;/etc/ld.so.cache&quot;, O_RDONLY)      = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=122758, ...}) = 0
+mmap2(NULL, 122758, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb7fb0000
+close(3)                                = 0
+open(&quot;/lib/libtermcap.so.2&quot;, O_RDONLY)  = 3
+read(3, &quot;\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\260\v\227&quot;..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0755, st_size=13276, ...}) = 0
+mmap2(0x7970000, 14760, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7970000
+mmap2(0x7973000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2) = 0x7973000
+close(3)                                = 0
+open(&quot;/lib/libdl.so.2&quot;, O_RDONLY)       = 3
+read(3, &quot;\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0000K\315&quot;..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0755, st_size=16528, ...}) = 0
+mmap2(0xcd4000, 12408, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xcd4000
+mmap2(0xcd6000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1) = 0xcd6000
+close(3)                                = 0
+open(&quot;/lib/libc.so.6&quot;, O_RDONLY)        = 3
+read(3, &quot;\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0p \270\000&quot;..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0755, st_size=1577052, ...}) = 0
+mmap2(0xb6c000, 1295780, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb6c000
+mmap2(0xca3000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x137) = 0xca3000
+mmap2(0xca6000, 9636, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xca6000
+close(3)                                = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7faf000
+set_thread_area({entry_number:-1 -&gt; 6, base_addr:0xb7faf8d0, limit:1048575, seg_32bit:1, contents:0, read_exec_only:0, limit_in_pages:1, seg_not_present:0, useable:1}) = 0
+mprotect(0xcd6000, 4096, PROT_READ)     = 0
+mprotect(0xca3000, 8192, PROT_READ)     = 0
+mprotect(0x1b6000, 4096, PROT_READ)     = 0
+munmap(0xb7fb0000, 122758)              = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+open(&quot;/dev/tty&quot;, O_RDWR|O_NONBLOCK|O_LARGEFILE) = 3
+close(3)                                = 0
+brk(0)                                  = 0x80fc000
+brk(0x811d000)                          = 0x811d000
+open(&quot;/usr/lib/locale/locale-archive&quot;, O_RDONLY|O_LARGEFILE) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=55561408, ...}) = 0
+mmap2(NULL, 2097152, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb7daf000
+mmap2(NULL, 249856, PROT_READ, MAP_PRIVATE, 3, 0x2da2) = 0xb7d72000
+close(3)                                = 0
+getuid32()                              = 500
+getgid32()                              = 500
+geteuid32()                             = 500
+getegid32()                             = 500
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+time(NULL)                              = 1177333148
+open(&quot;/proc/meminfo&quot;, O_RDONLY)         = 3
+fstat64(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7d71000
+read(3, &quot;MemTotal:      2070404 kB\nMemFre&quot;..., 1024) = 823
+close(3)                                = 0
+munmap(0xb7d71000, 4096)                = 0
+rt_sigaction(SIGCHLD, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGCHLD, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGQUIT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGQUIT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigaction(SIGQUIT, {SIG_IGN}, {SIG_DFL}, 8) = 0
+uname({sys=&quot;Linux&quot;, node=&quot;skynet-x2&quot;, ...}) = 0
+stat64(&quot;/home/igor&quot;, {st_mode=S_IFDIR|0700, st_size=4096, ...}) = 0
+stat64(&quot;.&quot;, {st_mode=S_IFDIR|0700, st_size=4096, ...}) = 0
+getpid()                                = 7987
+getppid()                               = 7986
+getpgrp()                               = 7986
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+open(&quot;/opt/openoffice.org2.2/program/soffice&quot;, O_RDONLY|O_LARGEFILE) = 3
+ioctl(3, SNDCTL_TMR_TIMEBASE or TCGETS, 0xbfc8c838) = -1 ENOTTY (Inappropriate ioctl for device)
+_llseek(3, 0, [0], SEEK_CUR)            = 0
+read(3, &quot;#!/bin/sh\n#*********************&quot;..., 80) = 80
+_llseek(3, 0, [0], SEEK_SET)            = 0
+getrlimit(RLIMIT_NOFILE, {rlim_cur=1024, rlim_max=1024}) = 0
+dup2(3, 255)                            = 255
+close(3)                                = 0
+fcntl64(255, F_SETFD, FD_CLOEXEC)       = 0
+fcntl64(255, F_GETFL)                   = 0x8000 (flags O_RDONLY|O_LARGEFILE)
+fstat64(255, {st_mode=S_IFREG|0555, st_size=6864, ...}) = 0
+_llseek(255, 0, [0], SEEK_CUR)          = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;#!/bin/sh\n#*********************&quot;..., 6864) = 6864
+open(&quot;/usr/lib/gconv/gconv-modules.cache&quot;, O_RDONLY) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=25460, ...}) = 0
+mmap2(NULL, 25460, PROT_READ, MAP_SHARED, 3, 0) = 0xb7d6b000
+close(3)                                = 0
+open(&quot;/usr/lib/gconv/ISO8859-2.so&quot;, O_RDONLY) = 3
+read(3, &quot;\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\320\3\0&quot;..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0755, st_size=9528, ...}) = 0
+mmap2(NULL, 12308, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb7d67000
+mmap2(0xb7d69000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1) = 0xb7d69000
+close(3)                                = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+pipe([3, 4])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -5162, [1702], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7faf918) = 7992
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 7992
+waitpid(-1, 0xbfc8bf58, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(4)                                = 0
+read(3, &quot;Linux\n&quot;, 128)                 = 6
+read(3, &quot;&quot;, 128)                        = 0
+close(3)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\n# the following test is needed &quot;..., 6864) = 5162
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+pipe([3, 4])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -4978, [1886], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7faf918) = 7993
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(4)                                = 0
+read(3, &quot;i686\n&quot;, 128)                  = 5
+read(3, &quot;&quot;, 128)                        = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 7993
+waitpid(-1, 0xbfc8bf48, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+close(3)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\n# set -x\n\n# resolve installatio&quot;..., 6864) = 4978
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+pipe([3, 4])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -4919, [1945], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7faf918) = 7994
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(4)                                = 0
+read(3, &quot;/home/igor\n&quot;, 128)            = 11
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 7994
+waitpid(-1, 0xbfc8c028, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+read(3, &quot;&quot;, 128)                        = 0
+close(3)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;if [ -h \&quot;$0\&quot; ] ; then\n\tsd_basena&quot;..., 6864) = 4919
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+lstat64(&quot;/opt/openoffice.org2.2/program/soffice&quot;, {st_mode=S_IFREG|0555, st_size=6864, ...}) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+pipe([3, 4])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -4720, [2144], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7faf918) = 7996
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 7996
+waitpid(-1, 0xbfc8bd98, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(4)                                = 0
+read(3, &quot;/opt/openoffice.org2.2/program\n&quot;, 128) = 31
+read(3, &quot;&quot;, 128)                        = 0
+close(3)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+stat64(&quot;/opt&quot;, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64(&quot;/opt/openoffice.org2.2&quot;, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64(&quot;/opt/openoffice.org2.2/program&quot;, {st_mode=S_IFDIR|0755, st_size=36864, ...}) = 0
+chdir(&quot;/opt/openoffice.org2.2/program&quot;) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\nsd_prog=\&quot;`pwd`\&quot;\n\ncd ..\nsd_binar&quot;..., 6864) = 4720
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+pipe([3, 4])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -4703, [2161], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7faf918) = 7998
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 7998
+waitpid(-1, 0xbfc8be78, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(4)                                = 0
+read(3, &quot;/opt/openoffice.org2.2/program\n&quot;, 128) = 31
+read(3, &quot;&quot;, 128)                        = 0
+close(3)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\ncd ..\nsd_binary=`basename \&quot;$0\&quot;`&quot;..., 6864) = 4703
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+stat64(&quot;/opt&quot;, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64(&quot;/opt/openoffice.org2.2&quot;, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64(&quot;/opt/openoffice.org2.2/program&quot;, {st_mode=S_IFDIR|0755, st_size=36864, ...}) = 0
+stat64(&quot;/opt/openoffice.org2.2/program&quot;, {st_mode=S_IFDIR|0755, st_size=36864, ...}) = 0
+chdir(&quot;/opt/openoffice.org2.2&quot;)         = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+pipe([3, 4])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -4664, [2200], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7faf918) = 7999
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 7999
+waitpid(-1, 0xbfc8bf58, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(4)                                = 0
+read(3, &quot;soffice\n&quot;, 128)               = 8
+read(3, &quot;&quot;, 128)                        = 0
+close(3)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;sd_inst=\&quot;`pwd`\&quot;\n\n# change back d&quot;..., 6864) = 4664
+pipe([3, 4])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -4648, [2216], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7faf918) = 8000
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 8000
+waitpid(-1, 0xbfc8be78, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(4)                                = 0
+read(3, &quot;/opt/openoffice.org2.2\n&quot;, 128) = 23
+read(3, &quot;&quot;, 128)                        = 0
+close(3)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\n# change back directory\ncd \&quot;$sd&quot;..., 6864) = 4648
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+stat64(&quot;/home&quot;, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64(&quot;/home/igor&quot;, {st_mode=S_IFDIR|0700, st_size=4096, ...}) = 0
+chdir(&quot;/home/igor&quot;)                     = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+access(&quot;/opt/openoffice.org2.2/program/sopatchlevel.sh&quot;, X_OK) = -1 ENOENT (No such file or directory)
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+stat64(&quot;/usr/lib/libnss3.so&quot;, {st_mode=S_IFREG|0755, st_size=533664, ...}) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+access(&quot;/opt/openoffice.org2.2/program/javaldx&quot;, X_OK) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+pipe([3, 4])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -1259, [5605], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7faf918) = 8002
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(4)                                = 0
+read(3, &quot;/usr/java/jre1.6.0_01/lib/i386/c&quot;..., 128) = 115
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 8002
+waitpid(-1, 0xbfc8bd68, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+read(3, &quot;&quot;, 128)                        = 0
+close(3)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\n# misc. environment variables\nO&quot;..., 6864) = 1259
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [INT CHLD], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [INT CHLD], NULL, 8) = 0
+_llseek(255, -333, [6531], SEEK_CUR)    = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7faf918) = 8009
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 8009
+waitpid(-1, 0xbfc8c258, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\n# set path so that other apps c&quot;..., 6864) = 333
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -122, [6742], SEEK_CUR)    = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7faf918) = 8017
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [CHLD], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [CHLD], NULL, 8) = 0
+no suitable windowing system found, exiting.
+rt_sigprocmask(SIG_BLOCK, [CHLD], [CHLD], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [CHLD], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [CHLD], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [CHLD], NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 1}], WNOHANG) = 8017
+waitpid(-1, 0xbfc8c028, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;trap \'kill -9 $!\' TERM\nwait $!\n\n&quot;..., 6864) = 122
+rt_sigaction(SIGTERM, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGTERM, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGTERM, {SIG_IGN}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGTERM, {0x808a0d0, [], 0}, {SIG_IGN}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+exit_group(0)                           = ?
+Process 7987 detached
+-------------- next part --------------
+execve(&quot;/opt/openoffice.org2.2/program/soffice&quot;, [&quot;/opt/openoffice.org2.2/program/s&quot;...], [/* 31 vars */]) = 0
+brk(0)                                  = 0x80fc000
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7fcf000
+access(&quot;/etc/ld.so.preload&quot;, R_OK)      = -1 ENOENT (No such file or directory)
+open(&quot;/etc/ld.so.cache&quot;, O_RDONLY)      = 4
+fstat64(4, {st_mode=S_IFREG|0644, st_size=122758, ...}) = 0
+mmap2(NULL, 122758, PROT_READ, MAP_PRIVATE, 4, 0) = 0xb7fb1000
+close(4)                                = 0
+open(&quot;/lib/libtermcap.so.2&quot;, O_RDONLY)  = 4
+read(4, &quot;\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\260\v\227&quot;..., 512) = 512
+fstat64(4, {st_mode=S_IFREG|0755, st_size=13276, ...}) = 0
+mmap2(0x7970000, 14760, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x7970000
+mmap2(0x7973000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x2) = 0x7973000
+close(4)                                = 0
+open(&quot;/lib/libdl.so.2&quot;, O_RDONLY)       = 4
+read(4, &quot;\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0000K\315&quot;..., 512) = 512
+fstat64(4, {st_mode=S_IFREG|0755, st_size=16528, ...}) = 0
+mmap2(0xcd4000, 12408, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0xcd4000
+mmap2(0xcd6000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x1) = 0xcd6000
+close(4)                                = 0
+open(&quot;/lib/libc.so.6&quot;, O_RDONLY)        = 4
+read(4, &quot;\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0p \270\000&quot;..., 512) = 512
+fstat64(4, {st_mode=S_IFREG|0755, st_size=1577052, ...}) = 0
+mmap2(0xb6c000, 1295780, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0xb6c000
+mmap2(0xca3000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x137) = 0xca3000
+mmap2(0xca6000, 9636, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xca6000
+close(4)                                = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7fb0000
+set_thread_area({entry_number:-1 -&gt; 6, base_addr:0xb7fb08d0, limit:1048575, seg_32bit:1, contents:0, read_exec_only:0, limit_in_pages:1, seg_not_present:0, useable:1}) = 0
+mprotect(0xcd6000, 4096, PROT_READ)     = 0
+mprotect(0xca3000, 8192, PROT_READ)     = 0
+mprotect(0x1b6000, 4096, PROT_READ)     = 0
+munmap(0xb7fb1000, 122758)              = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+open(&quot;/dev/tty&quot;, O_RDWR|O_NONBLOCK|O_LARGEFILE) = 4
+close(4)                                = 0
+brk(0)                                  = 0x80fc000
+brk(0x811d000)                          = 0x811d000
+open(&quot;/usr/lib/locale/locale-archive&quot;, O_RDONLY|O_LARGEFILE) = 4
+fstat64(4, {st_mode=S_IFREG|0644, st_size=55561408, ...}) = 0
+mmap2(NULL, 2097152, PROT_READ, MAP_PRIVATE, 4, 0) = 0xb7db0000
+mmap2(NULL, 249856, PROT_READ, MAP_PRIVATE, 4, 0x2da2) = 0xb7d73000
+close(4)                                = 0
+getuid32()                              = 0
+getgid32()                              = 0
+geteuid32()                             = 0
+getegid32()                             = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+time(NULL)                              = 1177333068
+open(&quot;/proc/meminfo&quot;, O_RDONLY)         = 4
+fstat64(4, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7d72000
+read(4, &quot;MemTotal:      2070404 kB\nMemFre&quot;..., 1024) = 823
+close(4)                                = 0
+munmap(0xb7d72000, 4096)                = 0
+rt_sigaction(SIGCHLD, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGCHLD, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGQUIT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGQUIT, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigaction(SIGQUIT, {SIG_IGN}, {SIG_DFL}, 8) = 0
+uname({sys=&quot;Linux&quot;, node=&quot;skynet-x2&quot;, ...}) = 0
+stat64(&quot;/&quot;, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64(&quot;.&quot;, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+getpid()                                = 20581
+getppid()                               = 20568
+getpgrp()                               = 20568
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+open(&quot;/opt/openoffice.org2.2/program/soffice&quot;, O_RDONLY|O_LARGEFILE) = 4
+ioctl(4, SNDCTL_TMR_TIMEBASE or TCGETS, 0xbfc8f318) = -1 ENOTTY (Inappropriate ioctl for device)
+_llseek(4, 0, [0], SEEK_CUR)            = 0
+read(4, &quot;#!/bin/sh\n#*********************&quot;..., 80) = 80
+_llseek(4, 0, [0], SEEK_SET)            = 0
+getrlimit(RLIMIT_NOFILE, {rlim_cur=1024, rlim_max=1024}) = 0
+dup2(4, 255)                            = 255
+close(4)                                = 0
+fcntl64(255, F_SETFD, FD_CLOEXEC)       = 0
+fcntl64(255, F_GETFL)                   = 0x8000 (flags O_RDONLY|O_LARGEFILE)
+fstat64(255, {st_mode=S_IFREG|0555, st_size=6864, ...}) = 0
+_llseek(255, 0, [0], SEEK_CUR)          = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;#!/bin/sh\n#*********************&quot;..., 6864) = 6864
+open(&quot;/usr/lib/gconv/gconv-modules.cache&quot;, O_RDONLY) = 4
+fstat64(4, {st_mode=S_IFREG|0644, st_size=25460, ...}) = 0
+mmap2(NULL, 25460, PROT_READ, MAP_SHARED, 4, 0) = 0xb7d6c000
+close(4)                                = 0
+open(&quot;/usr/lib/gconv/ISO8859-2.so&quot;, O_RDONLY) = 4
+read(4, &quot;\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\320\3\0&quot;..., 512) = 512
+fstat64(4, {st_mode=S_IFREG|0755, st_size=9528, ...}) = 0
+mmap2(NULL, 12308, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0xb7d68000
+mmap2(0xb7d6a000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x1) = 0xb7d6a000
+close(4)                                = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+pipe([4, 6])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -5162, [1702], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7fb0918) = 20584
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(6)                                = 0
+read(4, &quot;Linux\n&quot;, 128)                 = 6
+read(4, &quot;&quot;, 128)                        = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 20584
+waitpid(-1, 0xbfc8ebe8, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+close(4)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\n# the following test is needed &quot;..., 6864) = 5162
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+pipe([4, 6])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -4978, [1886], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7fb0918) = 20586
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 20586
+waitpid(-1, 0xbfc8e878, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(6)                                = 0
+read(4, &quot;i686\n&quot;, 128)                  = 5
+read(4, &quot;&quot;, 128)                        = 0
+close(4)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\n# set -x\n\n# resolve installatio&quot;..., 6864) = 4978
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+pipe([4, 6])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -4919, [1945], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7fb0918) = 20588
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 20588
+waitpid(-1, 0xbfc8e958, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(6)                                = 0
+read(4, &quot;/\n&quot;, 128)                     = 2
+read(4, &quot;&quot;, 128)                        = 0
+close(4)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;if [ -h \&quot;$0\&quot; ] ; then\n\tsd_basena&quot;..., 6864) = 4919
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+lstat64(&quot;/opt/openoffice.org2.2/program/soffice&quot;, {st_mode=S_IFREG|0555, st_size=6864, ...}) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+pipe([4, 6])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -4720, [2144], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7fb0918) = 20590
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 20590
+waitpid(-1, 0xbfc8e878, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(6)                                = 0
+read(4, &quot;/opt/openoffice.org2.2/program\n&quot;, 128) = 31
+read(4, &quot;&quot;, 128)                        = 0
+close(4)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+stat64(&quot;/opt&quot;, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64(&quot;/opt/openoffice.org2.2&quot;, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64(&quot;/opt/openoffice.org2.2/program&quot;, {st_mode=S_IFDIR|0755, st_size=36864, ...}) = 0
+chdir(&quot;/opt/openoffice.org2.2/program&quot;) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\nsd_prog=\&quot;`pwd`\&quot;\n\ncd ..\nsd_binar&quot;..., 6864) = 4720
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+pipe([4, 6])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -4703, [2161], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7fb0918) = 20592
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 20592
+waitpid(-1, 0xbfc8e958, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(6)                                = 0
+read(4, &quot;/opt/openoffice.org2.2/program\n&quot;, 128) = 31
+read(4, &quot;&quot;, 128)                        = 0
+close(4)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\ncd ..\nsd_binary=`basename \&quot;$0\&quot;`&quot;..., 6864) = 4703
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+stat64(&quot;/opt&quot;, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64(&quot;/opt/openoffice.org2.2&quot;, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64(&quot;/opt/openoffice.org2.2/program&quot;, {st_mode=S_IFDIR|0755, st_size=36864, ...}) = 0
+stat64(&quot;/opt/openoffice.org2.2/program&quot;, {st_mode=S_IFDIR|0755, st_size=36864, ...}) = 0
+chdir(&quot;/opt/openoffice.org2.2&quot;)         = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+pipe([4, 6])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -4664, [2200], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7fb0918) = 20593
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 20593
+waitpid(-1, 0xbfc8ea38, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(6)                                = 0
+read(4, &quot;soffice\n&quot;, 128)               = 8
+read(4, &quot;&quot;, 128)                        = 0
+close(4)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;sd_inst=\&quot;`pwd`\&quot;\n\n# change back d&quot;..., 6864) = 4664
+pipe([4, 6])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -4648, [2216], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7fb0918) = 20594
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(6)                                = 0
+read(4, &quot;/opt/openoffice.org2.2\n&quot;, 128) = 23
+read(4, &quot;&quot;, 128)                        = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 20594
+waitpid(-1, 0xbfc8eb08, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+close(4)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\n# change back directory\ncd \&quot;$sd&quot;..., 6864) = 4648
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+chdir(&quot;/&quot;)                              = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+access(&quot;/opt/openoffice.org2.2/program/sopatchlevel.sh&quot;, X_OK) = -1 ENOENT (No such file or directory)
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+stat64(&quot;/usr/lib/libnss3.so&quot;, {st_mode=S_IFREG|0755, st_size=533664, ...}) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+access(&quot;/opt/openoffice.org2.2/program/javaldx&quot;, X_OK) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+pipe([4, 6])                            = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -1259, [5605], SEEK_CUR)   = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7fb0918) = 20597
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGCHLD, {0x8079d00, [], 0}, {0x8079d00, [], 0}, 8) = 0
+close(6)                                = 0
+read(4, &quot;/usr/java/jre1.6.0_01/lib/i386/c&quot;..., 128) = 115
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], WNOHANG) = 20597
+waitpid(-1, 0xbfc8e848, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+read(4, &quot;&quot;, 128)                        = 0
+close(4)                                = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\n# misc. environment variables\nO&quot;..., 6864) = 1259
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [INT CHLD], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [INT CHLD], NULL, 8) = 0
+_llseek(255, -333, [6531], SEEK_CUR)    = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7fb0918) = 20607
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+waitpid(-1, [{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0}], 0) = 20607
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, 0xbfc8edb8, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;\n# set path so that other apps c&quot;..., 6864) = 333
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, [INT CHLD], [], 8) = 0
+_llseek(255, -122, [6742], SEEK_CUR)    = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb7fb0918) = 20651
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [CHLD], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [CHLD], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [CHLD], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [CHLD], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [CHLD], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [CHLD], NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+read(255, &quot;trap \'kill -9 $!\' TERM\nwait $!\n\n&quot;..., 6864) = 122
+rt_sigaction(SIGTERM, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGTERM, {SIG_DFL}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGTERM, {SIG_IGN}, {SIG_DFL}, 8) = 0
+rt_sigaction(SIGTERM, {0x808a0d0, [], 0}, {SIG_IGN}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigaction(SIGINT, {0x807a8c0, [], 0}, {SIG_DFL}, 8) = 0
+waitpid(-1, no suitable windowing system found, exiting.
+[{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 1}], 0) = 20651
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+waitpid(-1, 0xbfc8eaa8, WNOHANG)        = -1 ECHILD (No child processes)
+sigreturn()                             = ? (mask now [])
+rt_sigaction(SIGINT, {SIG_DFL}, {0x807a8c0, [], 0}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_BLOCK, NULL, [], 8)  = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+exit_group(0)                           = ?
+Process 20581 detached
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002265.html">[Open Office] Problems with go-ooo builds
+</A></li>
+	<LI>Next message: <A HREF="002266.html">[Open Office] no suitable windowing system found, exiting.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2264">[ date ]</a>
+              <a href="thread.html#2264">[ thread ]</a>
+              <a href="subject.html#2264">[ subject ]</a>
+              <a href="author.html#2264">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: mono_proxy.cxx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20mono_proxy.cxx&In-Reply-To=22662.1134039902%40www78.gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001408.html">
+   <LINK REL="Next"  HREF="001410.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: mono_proxy.cxx</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20mono_proxy.cxx&In-Reply-To=22662.1134039902%40www78.gmx.net"
+       TITLE="[Open Office] Re: mono_proxy.cxx">michael.meeks at novell.com
+       </A><BR>
+    <I>Thu Dec  8 06:11:20 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001408.html">[Open Office] Re: mono_proxy.cxx
+</A></li>
+        <LI>Next message: <A HREF="001410.html">[Open Office] typo in gcj-no-com.sun.xml.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1409">[ date ]</a>
+              <a href="thread.html#1409">[ thread ]</a>
+              <a href="subject.html#1409">[ subject ]</a>
+              <a href="author.html#1409">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 2005-12-08 at 12:05 +0100, Martin Kretzschmar wrote:
+&gt;<i> So, the documentation &lt;<A HREF="http://udk.openoffice.org/cpp/man/cpp_bridges.html">http://udk.openoffice.org/cpp/man/cpp_bridges.html</A>&gt;
+</I>&gt;<i> says that it's an inout parameter. And the implementation of
+</I>&gt;<i> registerProxyInterface (cppu/source/uno/lbenv.cxx) treats it like that. It
+</I>&gt;<i> never stores the ppInterface parameter (which is &amp;proxy), but always uses
+</I>&gt;<i> *ppInterface, and possibly assigns a different proxy to *ppInterface (after
+</I>&gt;<i> freeing/unrefing the old value). Still nervous?
+</I>
+	Nah - that's fine :-) of course - potentially then we need an unref
+here somewhere ?
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001408.html">[Open Office] Re: mono_proxy.cxx
+</A></li>
+	<LI>Next message: <A HREF="001410.html">[Open Office] typo in gcj-no-com.sun.xml.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1409">[ date ]</a>
+              <a href="thread.html#1409">[ thread ]</a>
+              <a href="subject.html#1409">[ subject ]</a>
+              <a href="author.html#1409">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] build is failing on epptso.obj
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20build%20is%20failing%20on%20epptso.obj&In-Reply-To=1129852709.27988.54.camel%40localhost">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001214.html">
+   <LINK REL="Next"  HREF="001219.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] build is failing on epptso.obj</H1>
+    <B>Raul Siddhartha</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20build%20is%20failing%20on%20epptso.obj&In-Reply-To=1129852709.27988.54.camel%40localhost"
+       TITLE="[Open Office] build is failing on epptso.obj">rsiddhartha at novell.com
+       </A><BR>
+    <I>Fri Oct 21 04:04:55 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001214.html">[Open Office] build is failing on epptso.obj
+</A></li>
+        <LI>Next message: <A HREF="001219.html">[Open Office] build is failing on epptso.obj
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1215">[ date ]</a>
+              <a href="thread.html#1215">[ thread ]</a>
+              <a href="subject.html#1215">[ subject ]</a>
+              <a href="author.html#1215">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+
+On Thu, 2005-10-20 at 19:58 -0400, Lupine wrote:
+&gt;<i> /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/sd/source/filter/eppt/epptso.cxx: In member function `sal_Bool PPTWriter::ImplGetStyleSheets()':
+</I>&gt;<i> /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/sd/source/filter/eppt/epptso.cxx:1508: error: `xPropSet' undeclared (first use this function)
+</I>&gt;<i> /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/sd/source/filter/eppt/epptso.cxx:1508: error: (Each undeclared identifier is reported only once for each function it appears in.)
+</I>&gt;<i> dmake:  Error code 1, while making
+</I>&gt;<i> '../../../unxlngi6.pro/slo/epptso.obj'
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>&gt;<i> dmake:  Error code 255, while making 'do_it_noopt'
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>&gt;<i> 
+</I>&gt;<i> ERROR: Error 65280 occurred while
+</I>&gt;<i> making /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/sd/source/filter/eppt
+</I>&gt;<i> make: *** [stamp/build] Error 1
+</I>&gt;<i> ---------------------------------------
+</I>
+There was a patch in there that was being patched wrongly [at a wrong
+location] at times.
+
+Try patching it with the patch attached with:
+
+cd /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/
+patch -p0 &lt; /path/to/patch-epptso.diff
+
+and check if it fixes it for you ? I'll get it fixed in CVS.
+
+Regards,
+Raul
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: patch-epptso.diff
+Type: text/x-patch
+Size: 538 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051021/56a80dbe/patch-epptso.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20051021/56a80dbe/patch-epptso.bin</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001214.html">[Open Office] build is failing on epptso.obj
+</A></li>
+	<LI>Next message: <A HREF="001219.html">[Open Office] build is failing on epptso.obj
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1215">[ date ]</a>
+              <a href="thread.html#1215">[ thread ]</a>
+              <a href="subject.html#1215">[ subject ]</a>
+              <a href="author.html#1215">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

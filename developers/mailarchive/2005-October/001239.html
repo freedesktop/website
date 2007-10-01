@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Another error trying to build ooo-build-2.0.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Another%20error%20trying%20to%20build%20ooo-build-2.0.0&In-Reply-To=1130123871.7886.29.camel%40localhost">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001232.html">
+   <LINK REL="Next"  HREF="001240.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Another error trying to build ooo-build-2.0.0</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Another%20error%20trying%20to%20build%20ooo-build-2.0.0&In-Reply-To=1130123871.7886.29.camel%40localhost"
+       TITLE="[Open Office] Another error trying to build ooo-build-2.0.0">ghibo at mandriva.com
+       </A><BR>
+    <I>Mon Oct 24 17:29:12 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001232.html">[Open Office] Another error trying to build ooo-build-2.0.0
+</A></li>
+        <LI>Next message: <A HREF="001240.html">[Open Office] Another error trying to build ooo-build-2.0.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1239">[ date ]</a>
+              <a href="thread.html#1239">[ thread ]</a>
+              <a href="subject.html#1239">[ subject ]</a>
+              <a href="author.html#1239">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Robin Cook wrote:
+
+&gt;<i> Okay got the cli_types problem fixed but now I am getting this mdbtools
+</I>&gt;<i> error.
+</I>&gt;<i> I have the mdbtools-0.6pre1 package installed.  Any suggestions what
+</I>&gt;<i> might be causing this?
+</I>&gt;<i> 
+</I>&gt;<i> Thanks
+</I>&gt;<i> 
+</I>&gt;<i> Making: ../../../unxlngi6.pro/lib/libmdbimpl680li.so
+</I>&gt;<i> g++ -Wl,-z,combreloc -Wl,-z,defs -Wl,-rpath,'$ORIGIN' -shared
+</I>&gt;<i> -L../../../unxlngi6.pro/lib -L../lib
+</I>&gt;<i> -L/usr/src/ooo-build-2.0.0/build/ooo680-m3/solenv/unxlngi6/lib
+</I>&gt;<i> -L/usr/src/ooo-build-2.0.0/build/ooo680-m3/solver/680/unxlngi6.pro/lib
+</I>&gt;<i> -L/usr/src/ooo-build-2.0.0/build/ooo680-m3/solenv/unxlngi6/lib
+</I>&gt;<i> -LNO_JAVA_HOME/lib -LNO_JAVA_HOME/jre/lib/i386
+</I>&gt;<i> -LNO_JAVA_HOME/jre/lib/i386/client
+</I>&gt;<i> -LNO_JAVA_HOME/jre/lib/i386/native_threads -L/usr/X11R6/lib
+</I>&gt;<i> -L/usr/lib/firefox-1.0.7 ../../../unxlngi6.pro/slo/mdb_wrapper.o ../../../unxlngi6.pro/slo/mdb_connection.o ../../../unxlngi6.pro/slo/mdb_statement.o ../../../unxlngi6.pro/slo/mdb_resultset.o ../../../unxlngi6.pro/slo/mdb_preparedstatement.o ../../../unxlngi6.pro/slo/mdb_resultsetmetadata.o ../../../unxlngi6.pro/slo/mdb_databasemetadata.o ../../../unxlngi6.pro/slo/mdb_sequenceresultset.o ../../../unxlngi6.pro/slo/mdb_baseresultset.o ../../../unxlngi6.pro/slo/mdbimpl_dflt_version.o ../../../unxlngi6.pro/slo/mdbimpl_dflt_description.o -o ../../../unxlngi6.pro/lib/libmdbimpl680li.so -luno_cppu -luno_cppuhelpergcc3 -luno_sal -luno_salhelpergcc3 -lvos3gcc3 -ldbtools680li -lglib-2.0 -lmdbsql -lmdb -ldl -lpthread -lm -Wl,-Bdynamic -lstlport_gcc
+</I>&gt;<i> ../../../unxlngi6.pro/slo/mdb_wrapper.o: In function
+</I>&gt;<i> `mdb_ExecuteQuery(MdbHandle*, rtl::OString const&amp;,
+</I>&gt;<i> _STL::vector&lt;com::sun::star::uno::Sequence&lt;com::sun::star::uno::Any&gt;,
+</I>&gt;<i> mdb_sdbc_driver::Allocator&lt;com::sun::star::uno::Sequence&lt;com::sun::star::uno::Any&gt; &gt; &gt;&amp;, com::sun::star::uno::Sequence&lt;rtl::OUString&gt;&amp;)':
+</I>&gt;<i> mdb_wrapper.cxx:(.text+0xba): undefined reference to `mdb_sql_run_query'
+</I>&gt;<i> collect2: ld returned 1 exit status
+</I>&gt;<i> dmake:  Error code 1, while making
+</I>&gt;<i> '../../../unxlngi6.pro/lib/libmdbimpl680li.so'
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>&gt;<i> 
+</I>&gt;<i> ERROR: Error 65280 occurred while
+</I>&gt;<i> making /usr/src/ooo-build-2.0.0/build/ooo680-m3/connectivity/source/drivers/mdb
+</I>&gt;<i> make: *** [stamp/build] Error 1
+</I>
+Maybe missed the mono sqlite libraries, which should come from the mono
+devel tool installed: e.g.:
+
+/usr/lib/mono/1.0/Mono.Data.SqliteClient.dll
+/usr/lib/mono/1.0/Mono.Data.SqliteClient.dll.config
+/usr/lib/mono/1.0/Mono.Data.SqliteClient.dll.mdb
+/usr/lib/mono/2.0/Mono.Data.SqliteClient.dll
+/usr/lib/mono/gac/Mono.Data.SqliteClient
+
+etc.
+?
+
+Bye
+Giuseppe.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001232.html">[Open Office] Another error trying to build ooo-build-2.0.0
+</A></li>
+	<LI>Next message: <A HREF="001240.html">[Open Office] Another error trying to build ooo-build-2.0.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1239">[ date ]</a>
+              <a href="thread.html#1239">[ thread ]</a>
+              <a href="subject.html#1239">[ subject ]</a>
+              <a href="author.html#1239">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

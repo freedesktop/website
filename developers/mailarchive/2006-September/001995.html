@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Localization docs update &amp; new idea
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Localization%20docs%20update%20%26%20new%20idea&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001994.html">
+   <LINK REL="Next"  HREF="002017.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Localization docs update &amp; new idea</H1>
+    <B>Robert Vojta</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Localization%20docs%20update%20%26%20new%20idea&In-Reply-To="
+       TITLE="[Open Office] Localization docs update &amp; new idea">robert at vojta.name
+       </A><BR>
+    <I>Thu Sep 21 14:12:05 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001994.html">[Open Office] 32-bit OOo crashes - non-implemented umask ?
+</A></li>
+        <LI>Next message: <A HREF="002017.html">[Open Office] Localization docs update &amp; new idea
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1995">[ date ]</a>
+              <a href="thread.html#1995">[ thread ]</a>
+              <a href="subject.html#1995">[ subject ]</a>
+              <a href="author.html#1995">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Peter,
+
+I just followed your advices about GSI files and it works perfectly.
+But I found one case where it doesn't work. Let's assume you have
+distro-configs/ABC and you know, that you'll always build with
+three languages only (en-US, cs, sk). So, you put these languages
+in distro-configs/ABC and you start ./autogen.sh --with-distro=ABC
+(without --with-lang, because they are in distro-configs/ABC). And now,
+the GSI localization part doesn't work, because $OOO_LANGS_LIST
+variable contains &quot;en-US&quot; only. Do you think it is worth to fix this,
+invest time?
+
+Next thing is, that I updated doc/extra-localizations.txt file.
+Your advices are included.
+
+And now, an idea how to translate new ooo-build features. I was
+thinking about this issue for a while. This idea came to my mind.
+
+1) For translators
+
+There should be string freeze before new release of ooo-builds.
+After the string freeze, POT file will be regenerated.
+
+Translators can grab them, translate PO files (based on POT file)
+and give them back.
+
+POT file will be generated from all patches, scratches.
+
+This is easy way for translators and easy way for ooo-build
+maintainers.
+
+2) Auto merging during build
+
+Today's GSI file handling functions should be enhanced in this
+way.
+
+  o enhance stamp/build.extra.translations - add timestamp of GSI
+    files and PO files
+
+  o check for new GSI / PO files, their timestamps, and translate
+    ooo-build build tree when new / updated file arrives
+
+Any comments? Enhancements? It's just an idea which should be
+finished. Do you agree with this? If yes, I'll implement this
+idea into ooo-build.
+
+Best regards,
+Robert
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001994.html">[Open Office] 32-bit OOo crashes - non-implemented umask ?
+</A></li>
+	<LI>Next message: <A HREF="002017.html">[Open Office] Localization docs update &amp; new idea
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1995">[ date ]</a>
+              <a href="thread.html#1995">[ thread ]</a>
+              <a href="subject.html#1995">[ subject ]</a>
+              <a href="author.html#1995">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

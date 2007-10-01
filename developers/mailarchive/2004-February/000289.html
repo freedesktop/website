@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] compiling ooo-build-1.1.50
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-February/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000284.html">
+   <LINK REL="Next"  HREF="000290.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] compiling ooo-build-1.1.50
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] compiling ooo-build-1.1.50">michael@ximian.com
+       </A><BR>
+    <I>Fri, 06 Feb 2004 10:40:12 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000284.html">[Open Office] compiling ooo-build-1.1.50
+</A></li>
+        <LI> Next message: <A HREF="000290.html">[Open Office] compiling ooo-build-1.1.50
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#289">[ date ]</a>
+              <a href="thread.html#289">[ thread ]</a>
+              <a href="subject.html#289">[ subject ]</a>
+              <a href="author.html#289">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ben,
+
+On Mon, 2004-02-02 at 23:29 +0000, Ben Van Mechelen wrote:
+&gt;<i> I get this error while trying to compile openoffice using
+</I>&gt;<i> ooo-build-1.1.50. I configured it as follows:
+</I>&gt;<i> 
+</I>&gt;<i>   ./configure --enable-bonobo --enable-java 
+</I>&gt;<i> --with-jdk-home=/opt/java/j2sdk1.4.2_03 --prefix=/usr
+</I>
+	Ah - ok; so - the 'enable-java' path is not used as much as it might be
+(certainly I never build that way) however - I believe Dan does and it's
+rumoured to work.
+
+&gt;<i> -L/opt/java/j2sdk1.4.2_03/jre/lib/i386/native_threads -L/usr/X11R6/lib 
+</I>&gt;<i> ../unxlngi4.pro/lib/check_libpsp645li.so
+</I>&gt;<i> Checking DLL ../unxlngi4.pro/lib/check_libpsp645li.so ...: ERROR: 
+</I>&gt;<i> ../unxlngi4.pro/lib/check_libpsp645li.so: undefined symbol: 
+</I>&gt;<i> _ZNK9jvmaccess8JavaInfo21getRuntimeLibLocationEv
+</I>&gt;<i> dmake:  Error code 1, while making '../unxlngi4.pro/lib/libpsp645li.so'
+</I>&gt;<i> ---* TG_SLO.MK *---
+</I>&gt;<i> 
+</I>&gt;<i> ERROR: Error 65280 occurred while making 
+</I>&gt;<i> /usr/src/ooo-build-1.1.50/build/OOO_1_1_0/psprint/util
+</I>
+	It's rather odd that psp is linking to all that stuff; no idea why it's
+using Java bits - seems strange to me. It looks like some nasty symbol
+mangling problem - it's not possible that you compiled the jdk yourself
+with the system C++ compiler, but you're now using the included 3.2 gcc
+build ? if so  --with-system-gcc may help you (though you need to make
+clean first I guess).
+
+	Then again - it would make no sense for the jdk to export a C++ ABI I
+guess. Can you try grepping libraries in the solver for the
+'getRuntimeLibLocation' symbol to see if you can find what defines it ?
+(then an objdump -T foo.so might help)
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000284.html">[Open Office] compiling ooo-build-1.1.50
+</A></li>
+	<LI> Next message: <A HREF="000290.html">[Open Office] compiling ooo-build-1.1.50
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#289">[ date ]</a>
+              <a href="thread.html#289">[ thread ]</a>
+              <a href="subject.html#289">[ subject ]</a>
+              <a href="author.html#289">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

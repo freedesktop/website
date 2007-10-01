@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Building ucb, webdav with neon 0.25 does not
+	link with expat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Building%20ucb%2C%20webdav%20with%20neon%200.25%20does%20not%0A%09link%20with%20expat&In-Reply-To=200603271518.10542.kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001727.html">
+   <LINK REL="Next"  HREF="001729.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Building ucb, webdav with neon 0.25 does not
+	link with expat</H1>
+    <B>Alberto Escudero Pascual</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Building%20ucb%2C%20webdav%20with%20neon%200.25%20does%20not%0A%09link%20with%20expat&In-Reply-To=200603271518.10542.kendy%40suse.cz"
+       TITLE="[Open Office] Building ucb, webdav with neon 0.25 does not
+	link with expat">aep at it46.se
+       </A><BR>
+    <I>Mon Mar 27 09:33:34 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001727.html">[Open Office] Building ucb,
+	webdav with neon 0.25 does not link with expat
+</A></li>
+        <LI>Next message: <A HREF="001729.html">[Open Office] Building ucb, webdav with neon 0.25 does not
+	link with expat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1728">[ date ]</a>
+              <a href="thread.html#1728">[ thread ]</a>
+              <a href="subject.html#1728">[ subject ]</a>
+              <a href="author.html#1728">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Jan,
+
+The error takes place when making libucpdav1.so, libneon calls
+XML_ParserFree that is part of expat (XML parser). I am using
+--with-system-neon 
+
+I simple fix is to edit the makefile.mk 
+
+ooo:/home/mbuild/ooo-build-2.0.2.2/build/OOO_2_0_2 # diff -u
+ucb/source/ucp/webdav/makefile.mk.orig ucb/source/ucp/webdav/makefile.mk
+--- ucb/source/ucp/webdav/makefile.mk.orig      2006-03-27
+17:30:22.000000000 +0200
++++ ucb/source/ucp/webdav/makefile.mk   2006-03-27 17:18:35.000000000
++0200
+@@ -132,6 +132,9 @@
+ .IF &quot;$(OS)&quot;==&quot;SOLARIS&quot;
+ SHL1STDLIBS+= -lnsl -lsocket
+ .ENDIF # SOLARIS
++.IF &quot;$(OS)&quot;==&quot;LINUX&quot;
++SHL1STDLIBS+= -lexpat
++.ENDIF
+
+ SHL1DEF=$(MISC)$/$(SHL1TARGET).def
+ SHL1LIBS=$(LIB1TARGET)
+
+
+But i am not sure that this is the &quot;nice&quot; way to it.
+
+Alberto
+---
+
+[building ucb/source/ucp/webdav using system neon 0.25.5]
+------------------------------
+Making: ../../../unxlngi6.pro/lib/libucpdav1.so
+ccache g++ -Wl,-z,combreloc -Wl,-z,defs -Wl,-rpath,'$ORIGIN'
+-Wl,-Bdirect -Wl,-zdynsort -shared -Wl,-O1
+-Wl,--version-script ../../../unxlngi6.pro/misc/exports_ucpdav1.map
+-L../../../unxlngi6.pro/lib -L../lib
+-L/home/mbuild/ooo-build-2.0.2.2/build/OOO_2_0_2/solenv/unxlngi6/lib
+-L/home/mbuild/ooo-build-2.0.2.2/build/OOO_2_0_2/solver/680/unxlngi6.pro/lib -L/home/mbuild/ooo-build-2.0.2.2/build/OOO_2_0_2/solenv/unxlngi6/lib -L/home/mbuild/java/j2sdk1.4.2/lib -L/home/mbuild/java/j2sdk1.4.2/jre/lib/i386 -L/home/mbuild/java/j2sdk1.4.2/jre/lib/i386/client -L/home/mbuild/java/j2sdk1.4.2/jre/lib/i386/native_threads -L/usr/X11R6/lib -L/usr/local/lib/xulrunner-1.8.0.1 ../../../unxlngi6.pro/slo/ucpdav1_version.o ../../../unxlngi6.pro/slo/ucpdav1_description.o -o ../../../unxlngi6.pro/lib/libucpdav1.so ../../../unxlngi6.pro/slo/webdavservices.o ../../../unxlngi6.pro/slo/webdavprovider.o ../../../unxlngi6.pro/slo/webdavcontent.o ../../../unxlngi6.pro/slo/webdavcontentcaps.o ../../../unxlngi6.pro/slo/webdavresultset.o ../../../unxlngi6.pro/slo/webdavdatasupplier.o ../../../unxlngi6.pro/slo/ContentProperties.o ../../../unxlngi6.pro/slo/DAVProperties.o ../../../unxlngi6.pro/slo/DAVSessionFactory.o ../../../unxlngi6.pro/slo/DAVResourceAccess.o ../../../unxlngi6.pro/slo/DAVResourceAccessThread.o ../../../unxlngi6.pro/slo/NeonUri.o ../../../unxlngi6.pro/slo/NeonInputStream.o ../../../unxlngi6.pro/slo/NeonPropFindRequest.o ../../../unxlngi6.pro/slo/NeonHeadRequest.o ../../../unxlngi6.pro/slo/NeonSession.o ../../../unxlngi6.pro/slo/DateTimeHelper.o ../../../unxlngi6.pro/slo/LinkSequence.o ../../../unxlngi6.pro/slo/LockSequence.o ../../../unxlngi6.pro/slo/LockEntrySequence.o ../../../unxlngi6.pro/slo/UCBDeadPropertyValue.o -luno_cppuhelpergcc3 -luno_cppu -luno_sal -luno_salhelpergcc3 -lvos3gcc3 -lucbhelper3gcc3 -lneon -lxml2 -lz -lm -ldl -lpthread -lm -Wl,-Bdynamic -lstlport_gcc
+/usr/local/lib/libneon.a(ne_xml.o): In function
+`ne_xml_destroy':/home/mbuild/neon-0.25.5/src/ne_xml.c:582: undefined
+reference to `XML_ParserFree'
+/usr/local/lib/libneon.a(ne_xml.o): In function
+`ne_xml_parse':/home/mbuild/neon-0.25.5/src/ne_xml.c:530: undefined
+reference to `XML_Parse'
+:<i>/home/mbuild/neon-0.25.5/src/ne_xml.c:533: undefined reference to
+</I>`XML_GetErrorCode'
+:<i>/home/mbuild/neon-0.25.5/src/ne_xml.c:533: undefined reference to
+</I>`XML_ErrorString'
+:<i>/home/mbuild/neon-0.25.5/src/ne_xml.c:533: undefined reference to
+</I>`XML_GetCurrentLineNumber'
+/usr/local/lib/libneon.a(ne_xml.o): In function
+`ne_xml_create':/home/mbuild/neon-0.25.5/src/ne_xml.c:438: undefined
+reference to `XML_ParserCreate'
+:<i>/home/mbuild/neon-0.25.5/src/ne_xml.c:442: undefined reference to
+</I>`XML_SetElementHandler'
+:<i>/home/mbuild/neon-0.25.5/src/ne_xml.c:443: undefined reference to
+</I>`XML_SetCharacterDataHandler'
+:<i>/home/mbuild/neon-0.25.5/src/ne_xml.c:444: undefined reference to
+</I>`XML_SetUserData'
+:<i>/home/mbuild/neon-0.25.5/src/ne_xml.c:445: undefined reference to
+</I>`XML_SetXmlDeclHandler'
+/usr/local/lib/libneon.a(ne_xml.o): In function
+`ne_xml_currentline':/home/mbuild/neon-0.25.5/src/ne_xml.c:196:
+undefined reference to `XML_GetCurrentLineNumber'
+collect2: ld returned 1 exit status
+dmake:  Error code 1, while making
+'../../../unxlngi6.pro/lib/libucpdav1.so'
+'---* tg_merge.mk *---'
+
+
+---------
+
+
+On Mon, 2006-03-27 at 15:18 +0200, Jan Holesovsky wrote:
+&gt;<i> Hi Alberto,
+</I>&gt;<i> 
+</I>&gt;<i> On Monday 27 March 2006 11:06, Alberto Escudero Pascual wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I am build-ooo (2.0.2.2), Suse 10.1 Beta8
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; --with-system-neon
+</I>&gt;<i> &gt; --with-system-expat
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; using neon-0.25.5
+</I>&gt;<i> &gt; using expat-2.0.0
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; When building ucb, webdav it seems that g++ does not call to (-lexpat).
+</I>&gt;<i> &gt; What is the best place to report this?
+</I>&gt;<i> 
+</I>&gt;<i> Can you please paste a bit longer log?  This seems to be too short to be able 
+</I>&gt;<i> to see what's wrong...
+</I>&gt;<i> 
+</I>&gt;<i> Regards,
+</I>&gt;<i> Jan
+</I>&gt;<i> 
+</I>&gt;<i> &gt; ccache g++ -Wl,-z,combreloc -Wl,-z,defs -Wl,-rpath,'$ORIGIN'
+</I>&gt;<i> &gt; -Wl,-Bdirect -Wl,-zdynsort -shared -Wl,-O1
+</I>&gt;<i> &gt; -Wl,--version-script ../../../unxlngi6.pro/misc/exports_ucpdav1.map
+</I>&gt;<i> &gt; -L../../../unxlngi6.pro/lib -L../lib
+</I>&gt;<i> &gt; -L/home/mbuild/ooo-build-2.0.2.2/build/OOO_2_0_2/solenv/unxlngi6/lib
+</I>&gt;<i> &gt; -L/home/mbuild/ooo-build-2.0.2.2/build/OOO_2_0_2/solver/680/unxlngi6.pro/li
+</I>&gt;<i> &gt;b -L/home/mbuild/ooo-build-2.0.2.2/build/OOO_2_0_2/solenv/unxlngi6/lib
+</I>&gt;<i> &gt; -L/home/mbuild/java/j2sdk1.4.2/lib
+</I>&gt;<i> &gt; -L/home/mbuild/java/j2sdk1.4.2/jre/lib/i386
+</I>&gt;<i> &gt; -L/home/mbuild/java/j2sdk1.4.2/jre/lib/i386/client
+</I>&gt;<i> &gt; -L/home/mbuild/java/j2sdk1.4.2/jre/lib/i386/native_threads -L/usr/X11R6/lib
+</I>&gt;<i> &gt; -L/usr/local/lib/xulrunner-1.8.0.1
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/ucpdav1_version.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/ucpdav1_description.o -o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/lib/libucpdav1.so
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/webdavservices.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/webdavprovider.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/webdavcontent.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/webdavcontentcaps.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/webdavresultset.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/webdavdatasupplier.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/ContentProperties.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/DAVProperties.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/DAVSessionFactory.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/DAVResourceAccess.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/DAVResourceAccessThread.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/NeonUri.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/NeonInputStream.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/NeonPropFindRequest.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/NeonHeadRequest.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/NeonSession.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/DateTimeHelper.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/LinkSequence.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/LockSequence.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/LockEntrySequence.o
+</I>&gt;<i> &gt; ../../../unxlngi6.pro/slo/UCBDeadPropertyValue.o -luno_cppuhelpergcc3
+</I>&gt;<i> &gt; -luno_cppu -luno_sal -luno_salhelpergcc3 -lvos3gcc3 -lucbhelper3gcc3 -lneon
+</I>&gt;<i> &gt; -lxml2 -lz -lm -ldl -lpthread -lm -Wl,-Bdynamic -lstlport_gcc * -lexpat
+</I>&gt;<i> &gt; *m*i*s*s*i*n*g****
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Openoffice mailing list
+</I>&gt;<i> &gt; <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">Openoffice at lists.ximian.com</A>
+</I>&gt;<i> &gt; <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>&gt;<i> 
+</I>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001727.html">[Open Office] Building ucb,
+	webdav with neon 0.25 does not link with expat
+</A></li>
+	<LI>Next message: <A HREF="001729.html">[Open Office] Building ucb, webdav with neon 0.25 does not
+	link with expat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1728">[ date ]</a>
+              <a href="thread.html#1728">[ thread ]</a>
+              <a href="subject.html#1728">[ subject ]</a>
+              <a href="author.html#1728">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

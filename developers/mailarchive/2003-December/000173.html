@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: A proposal for units in GTK+
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-December/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000174.html">
+   <LINK REL="Next"  HREF="000179.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: A proposal for units in GTK+
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: A proposal for units in GTK+">michael@ximian.com
+       </A><BR>
+    <I>Tue, 02 Dec 2003 01:04:30 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000174.html">[Open Office] Re: Hello -- OOo Integration
+</A></li>
+        <LI> Next message: <A HREF="000179.html">[Open Office] CD details ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#173">[ date ]</a>
+              <a href="thread.html#173">[ thread ]</a>
+              <a href="subject.html#173">[ subject ]</a>
+              <a href="author.html#173">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Keith,
+
+On Thu, 2003-02-20 at 08:11, Keith Packard wrote:
+&gt;<i> I've done some thinking along these lines and thought I'd chime in with my 
+</I>&gt;<i> misinformed opinions.
+</I>
+	Ha; so - not as misinformed as mine.
+
+	So - all this stuff about angular eye slicing, virtual inches,
+foot-pounds etc. is well beyond me; however in OO.o there are some
+people that think when you are at 100% zoom - in the ideal world you
+should be able to hold your printout up to the (flat etc.) screen and
+see the perfect parity between the printed and on-screen page [ if your
+monitor isn't lying about it's DPI ].
+
+	It seems to me with an angular perspective, that instead you have to
+press the sheet of paper to some virtual plane between yourself and the
+display (or beyond) - is that so ?
+
+	And/or is it a reasonable thing to want this behavior ? and if so -
+would it be sensible to have a &quot;believe the monitor really&quot; setting in
+the Gnome font settings 'Font rendering details' dialog ?
+
+	Either way - I'm well in favour of the status quo in our OO.o - just
+using the XGetDefault and falling back to the DPI, but others are
+thinking differently; insight appreciated.
+
+	Thanks,
+
+		Michael.
+
+(rudely quoting lots of noise for Chris (and the OO.o list's sake)):
+&gt;<i> There are two separate issues which this discussion has conflated.  The 
+</I>&gt;<i> first is how wide to make various objects on the screen and the second is 
+</I>&gt;<i> how big to make the text.  I argue that they should be treated 
+</I>&gt;<i> as independent configuration options.
+</I>&gt;<i> 
+</I>&gt;<i> The perceived resolution of the screen (it's &quot;dpi&quot;) is a factor of the 
+</I>&gt;<i> physical size of the pixels and the distance between the eye and the 
+</I>&gt;<i> display surface.  In essence, &quot;inches&quot; on the screen aren't a linear 
+</I>&gt;<i> measure, but rather an angular one, make an image 10 times bigger and move 
+</I>&gt;<i> it 10 times further away and objects need to stay the same pixel size 
+</I>&gt;<i> while getting 10 times larger to be perceived as the same size.
+</I>&gt;<i> 
+</I>&gt;<i> So, distances along the screen should be measured by angle instead of by 
+</I>&gt;<i> linear dimension.  This makes measurements on billboard displays make some 
+</I>&gt;<i> sense in relation to how large to present various objects.  The obvious 
+</I>&gt;<i> question now is what units do we use.  I suggest that we call them 
+</I>&gt;<i> &quot;inches&quot; and understand that we're talking about the length of an arc with 
+</I>&gt;<i> radius of 18 inches or so -- the nominal distance from the eye to a 
+</I>&gt;<i> typical PC screen.  This retains the &quot;dpi&quot; notion of resolution, but 
+</I>&gt;<i> decouples that from the physical monitor resolution and lets us reason 
+</I>&gt;<i> about how to compute better dpi values for different environments.
+</I>&gt;<i> 
+</I>&gt;<i> Linus argued persuasively that all PC screens are the &quot;same&quot; angular size;
+</I>&gt;<i> the size which the user can comfortably fit in their field of view without
+</I>&gt;<i> undo eye or head movement.  If this was indeed the case, we could actually 
+</I>&gt;<i> compute dots-per-&quot;inch&quot; by dividing the pixel size of the monitor by a 
+</I>&gt;<i> constant (&quot;inches&quot; per FOV).  
+</I>&gt;<i> 
+</I>&gt;<i> I argued that this computation would need to be adjusted based on the
+</I>&gt;<i> context of the display -- a handheld device will occupy less of the
+</I>&gt;<i> practical FOV than a desktop machine; the screen cannot be brought closer
+</I>&gt;<i> than arms length because of the need to handle the device for input.
+</I>&gt;<i> Similarly, projector environments have a wide range of FOV occupancy and
+</I>&gt;<i> user interfaces for them will have to present information in a way that is
+</I>&gt;<i> usable at a wide range of apparent sizes.
+</I>&gt;<i> 
+</I>&gt;<i> In any case, I'm getting side tracked by related issues.  Back to the task 
+</I>&gt;<i> at hand.
+</I>&gt;<i> 
+</I>&gt;<i> Now that the DPI value is not fixed by the physical display device, I 
+</I>&gt;<i> suggest that we can adjust the scale factor of the entire UI by changing 
+</I>&gt;<i> this value.  Want to make the whole system twice as tall?  Double the DPI.
+</I>&gt;<i> I don't think we would present DPI to the user, just a knob that adjusts 
+</I>&gt;<i> the size of the presentation.  This knob is related to setting the current 
+</I>&gt;<i> screen size and should probably be presented in that configuration UI.
+</I>&gt;<i> 
+</I>&gt;<i> The separate issue is how large to make text -- this is not connected with 
+</I>&gt;<i> the above discussion as the desired size of text in dialogs depends on the 
+</I>&gt;<i> font selected, the language in use and a bunch of other user preferences.  
+</I>&gt;<i> One obvious example is when using Han characters -- you want a large font 
+</I>&gt;<i> and yet you don't want the rest of the dialog spacing to increase.  So,
+</I>&gt;<i> I think we should have a control which sets the base size of font elements 
+</I>&gt;<i> in the UI and let the user frob the knob to suit as a part of selecting 
+</I>&gt;<i> the UI fonts.  I suspect that most users would feel comfortable selecting 
+</I>&gt;<i> font sizes in points.  The above setting gives us a conversion from points 
+</I>&gt;<i> to pixels which will cause the selected point size to be additionally 
+</I>&gt;<i> scaled by the preferred value for &quot;dpi&quot;.
+</I>&gt;<i> 
+</I>&gt;<i> &quot;dpi&quot; should be configured to a default value automatically.  For PC 
+</I>&gt;<i> displays, we can use Linus's rule above until we find something better.  
+</I>&gt;<i> For handheld displays, I suspect we'll have to use a combination of the 
+</I>&gt;<i> physical and pixel sizes along with a standard arm's length distance to 
+</I>&gt;<i> compute logical DPI.  We can guess with projectors, but I suspect users 
+</I>&gt;<i> will need to grab the knob to fix things.
+</I>&gt;<i> 
+</I>&gt;<i> Xinerama has an effect on all of this as well; as Xinerama is really just 
+</I>&gt;<i> a kludge for &quot;real&quot; multi-screen setups, it's clear we should treat 
+</I>&gt;<i> Xinerama as a collection of separate screens rather than one large screen. 
+</I>&gt;<i> This means we should apply Linus's rule to a single physical screen rather 
+</I>&gt;<i> than the union of them in logical form.
+</I>&gt;<i> 
+</I>&gt;<i> -keith
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> gtk-devel-list mailing list
+</I>&gt;<i> <A HREF="mailto:gtk-devel-list@gnome.org">gtk-devel-list@gnome.org</A>
+</I>&gt;<i> <A HREF="http://mail.gnome.org/mailman/listinfo/gtk-devel-list">http://mail.gnome.org/mailman/listinfo/gtk-devel-list</A>
+</I>-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000174.html">[Open Office] Re: Hello -- OOo Integration
+</A></li>
+	<LI> Next message: <A HREF="000179.html">[Open Office] CD details ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#173">[ date ]</a>
+              <a href="thread.html#173">[ thread ]</a>
+              <a href="subject.html#173">[ subject ]</a>
+              <a href="author.html#173">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

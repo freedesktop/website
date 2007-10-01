@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Print to PDF
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000266.html">
+   <LINK REL="Next"  HREF="000269.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Print to PDF
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] Print to PDF">dan@bigw.org
+       </A><BR>
+    <I>Tue, 27 Jan 2004 22:14:05 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000266.html">[Open Office] Print to PDF
+</A></li>
+        <LI> Next message: <A HREF="000269.html">[Open Office] Print to PDF
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#268">[ date ]</a>
+              <a href="thread.html#268">[ thread ]</a>
+              <a href="subject.html#268">[ subject ]</a>
+              <a href="author.html#268">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Carlos,
+
+Ximian's OOo does not use psprint, and therefore the settings in
+psprint.conf have no effect.  Historically, psprint has provided two
+things:  printer configuration, and font addition.
+
+Printer Config:  its now done completely by CUPS. You do not need psprint
+at all.  If you have added a printer via your OS (in Fedora its in the
+menus, used to be redhat-config-printer, now its system-config-printer),
+it will be available to OOo.  Therefore, psprint is not needed for
+printers.
+
+Font Addition:  its now done completely by Fontconfig.  If you add fonts
+to the standard directories, like /usr/share/fonts, they will be
+available to OOo.  Therefore, there is no need for psprint/spadmin for
+managaging fonts.
+
+Print to PDF:  now, you should use File-&gt;Export to PDF.  PDF export is
+built into OOo and you no longer need to do anything in psprint.conf to
+get it.
+
+So, you see the 3 main uses for psprint/spadmin are available by more
+integrated means.  It really makes no sense to have 2 different ways to
+configure printers and fonts each, one in the system and one in OOo.
+
+Dan
+
+On Tue, 27 Jan 2004, Carlos Alberto wrote:
+
+&gt;<i> Hi you guys,
+</I>&gt;<i>=20
+</I>&gt;<i> It seems that OOo 1.1.0 don't read the psprint.conf=20
+</I>&gt;<i> file anymore, and as spadmin is not in my &quot;program&quot;
+</I>&gt;<i> directory anymore I pressume it will not be supported
+</I>&gt;<i> as it depends on java in some way,
+</I>&gt;<i>=20
+</I>&gt;<i> So if I don't have a printer, and everytime I press
+</I>&gt;<i> &quot;Print&quot; I want OOo to create a PDF file; sometime ago
+</I>&gt;<i> I used that file (psprint.conf), but now that
+</I>&gt;<i> configuration is not loaded anymore. What can I do?.
+</I>&gt;<i>=20
+</I>&gt;<i> I'm using a Fedora machine, and an OOo 1.1.0 compiled
+</I>&gt;<i> from Ximian sources at ooo.ximian.com
+</I>&gt;<i>=20
+</I>&gt;<i> MY PSPRINT.CONF
+</I>&gt;<i>=20
+</I>&gt;<i> (located in /usr/local/lib/ooo-1.1.0/share/psprint/)
+</I>&gt;<i> (and also in /root/OpenOffice-1.1.0/share/psprint/)
+</I>&gt;<i> [__Global_Printer_Defaults__]
+</I>&gt;<i> ; Copies: the default number of copies produced
+</I>&gt;<i> ;         if key is absent the default is 1
+</I>&gt;<i> ; Copies=3D1
+</I>&gt;<i> =20
+</I>&gt;<i> ; Orientation: the default orientation of pages
+</I>&gt;<i> ;         possible Values: Portrait, Landscape
+</I>&gt;<i> ;         if key is absent the default is Portrait
+</I>&gt;<i> ; Orientation=3DPortrait
+</I>&gt;<i> =20
+</I>&gt;<i> ; Scale: the default scaling of output in percent
+</I>&gt;<i> ;         if key is absent the default is 100
+</I>&gt;<i> ; Scale=3D100
+</I>&gt;<i> =20
+</I>&gt;<i> ; MarginAdjust: the default adjustment to driver
+</I>&gt;<i> margins in 1/100 mm
+</I>&gt;<i> ;         MarginAdjust contains corrections for the
+</I>&gt;<i> driver defined margins
+</I>&gt;<i> ;         the values are comma separated
+</I>&gt;<i> ;         the order is: left,right,top,bottom
+</I>&gt;<i> ;         if key is absent the default is 0,0,0,0
+</I>&gt;<i> ; MarginAdjust=3D0,0,0,0
+</I>&gt;<i> =20
+</I>&gt;<i> ; ColorDepth: the default colordepth of the device in
+</I>&gt;<i> bits
+</I>&gt;<i> ;         possible values: 1, 8, 24
+</I>&gt;<i> ;         if key is absent the default is 24
+</I>&gt;<i> ; ColorDepth=3D24
+</I>&gt;<i> =20
+</I>&gt;<i> ; ColorDevice: the default setting wether the device
+</I>&gt;<i> is color capable
+</I>&gt;<i> ;         possible values: 0: driver setting, -1: grey
+</I>&gt;<i> scale, 1: color
+</I>&gt;<i> ;         if key is absent the default is 0
+</I>&gt;<i> ; ColorDepth=3D0
+</I>&gt;<i> =20
+</I>&gt;<i> ; PSLevel: the default setting of the PostScript level
+</I>&gt;<i> of the output
+</I>&gt;<i> ;         possible values: 0: driver setting, 1: level
+</I>&gt;<i> 1, 2: level2
+</I>&gt;<i> ;         if key is absent the default is 0
+</I>&gt;<i> ; PSLevel=3D0
+</I>&gt;<i> =20
+</I>&gt;<i> ; PPD_PageSize: the default page size to use. If a
+</I>&gt;<i> specific printer does
+</I>&gt;<i> ;         not support this page size its default is
+</I>&gt;<i> used instead.
+</I>&gt;<i> ;         possible values: A0, A1, A2, A3, A4, A5, A6,
+</I>&gt;<i> B4, B5, B6,
+</I>&gt;<i> ;                          Legal, Letter, Executive,
+</I>&gt;<i> Statement, Tabloid,
+</I>&gt;<i> ;                          Ledger, AnsiC, AnsiD,
+</I>&gt;<i> ARCHA, ARCHB, ARCHC,
+</I>&gt;<i> ;                          ARCHD, ARCHE, EnvMonarch,
+</I>&gt;<i> EnvC4, EnvC5, EnvC6,
+</I>&gt;<i> ;                          Env10, EnvC65, Folio
+</I>&gt;<i> ;         if key is absent the default value is driver
+</I>&gt;<i> specific
+</I>&gt;<i> PPD_PageSize=3DA4
+</I>&gt;<i> =20
+</I>&gt;<i> ; Note: the following two key types are in the global
+</I>&gt;<i> section to provide
+</I>&gt;<i> ;         defaults for newly added printers.
+</I>&gt;<i> ; PerformFontSubstitution: wether to replace
+</I>&gt;<i> downloadable fonts
+</I>&gt;<i> ;         with resident fonts or not
+</I>&gt;<i> PerformFontSubstitution=3Dtrue
+</I>&gt;<i> =20
+</I>&gt;<i> ; SubstFont_&lt;downloadable font&gt;: the resident font to
+</I>&gt;<i> replace
+</I>&gt;<i> ;         &lt;downloadable font&gt; if
+</I>&gt;<i> PerformFontSubstitution is true
+</I>&gt;<i> SubstFont_Helmet=3DHelvetica
+</I>&gt;<i> SubstFont_Albany=3DHelvetica
+</I>&gt;<i> SubstFont_Courier New=3DCourier
+</I>&gt;<i> SubstFont_Arial=3DHelvetica
+</I>&gt;<i> SubstFont_Times New Roman=3DTimes
+</I>&gt;<i> SubstFont_Thorndale=3DTimes
+</I>&gt;<i> SubstFont_Timmons=3DTimes
+</I>&gt;<i> SubstFont_Cumberland=3DCourier
+</I>&gt;<i> =20
+</I>&gt;<i> [Generic Virtual Printer]
+</I>&gt;<i> Printer=3DSGENPRT/Generic Virtual Printer
+</I>&gt;<i> DefaultPrinter=3D1
+</I>&gt;<i> Location=3D
+</I>&gt;<i> Comment=3D
+</I>&gt;<i> Command=3D/usr/bin/gs -q -dNOPAUSE -sDEVICE=3Dpdfwrite
+</I>&gt;<i> -sOutputFile=3D&quot;/tmp/myFile.pdf&quot; -
+</I>&gt;<i> Features=3Dpdf=3D/tmp
+</I>&gt;<i> Copies=3D1
+</I>&gt;<i> Scale=3D0
+</I>&gt;<i> Orientation=3DPortrait
+</I>&gt;<i> PSLevel=3D0
+</I>&gt;<i> ColorDevice=3D0
+</I>&gt;<i> ColorDepth=3D24
+</I>&gt;<i> MarginAdjust=3D0,0,0,0
+</I>&gt;<i> PPD_PageSize=3DA4
+</I>&gt;<i> PerformFontSubstitution=3Dtrue
+</I>&gt;<i> SubstFont_Arial=3DHelvetica
+</I>&gt;<i> SubstFont_Times New Roman=3DTimes
+</I>&gt;<i> SubstFont_Cumberland=3DCourier
+</I>&gt;<i> SubstFont_Timmons=3DTimes
+</I>&gt;<i> SubstFont_Helmet=3DHelvetica
+</I>&gt;<i> SubstFont_Thorndale=3DTimes
+</I>&gt;<i> SubstFont_Albany=3DHelvetica
+</I>&gt;<i> SubstFont_Courier New=3DCourier
+</I>&gt;<i>=20
+</I>&gt;<i>=20
+</I>&gt;<i> =3D=3D=3D=3D=3D
+</I>&gt;<i> Atte.Carlos Alberto Vences S=E1nchez0172112393Metepec, M=<A HREF="mailto:E9xicoxneon79@ne">E9xicoxneon79@ne</A>=
+</I>tscape.net
+&gt;<i>=20
+</I>&gt;<i> __________________________________
+</I>&gt;<i> Do you Yahoo!?
+</I>&gt;<i> Yahoo! SiteBuilder - Free web site building tool. Try it!
+</I>&gt;<i> <A HREF="http://webhosting.yahoo.com/ps/sb/">http://webhosting.yahoo.com/ps/sb/</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>&gt;<i>=20
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000266.html">[Open Office] Print to PDF
+</A></li>
+	<LI> Next message: <A HREF="000269.html">[Open Office] Print to PDF
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#268">[ date ]</a>
+              <a href="thread.html#268">[ thread ]</a>
+              <a href="subject.html#268">[ subject ]</a>
+              <a href="author.html#268">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

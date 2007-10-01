@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Trying to compile CVS build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-February/index.html" >
+   <LINK REL="made" HREF="mailto:dbray%40cfl.rr.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000301.html">
+   <LINK REL="Next"  HREF="000304.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Trying to compile CVS build
+   </H1>
+    <B>Daniel Bray
+    </B> 
+    <A HREF="mailto:dbray%40cfl.rr.com"
+       TITLE="[Open Office] Trying to compile CVS build">dbray@cfl.rr.com
+       </A><BR>
+    <I>Tue, 17 Feb 2004 11:25:41 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000301.html">[Open Office] Trying to compile CVS build
+</A></li>
+        <LI> Next message: <A HREF="000304.html">[Open Office] Trying to compile CVS build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#303">[ date ]</a>
+              <a href="thread.html#303">[ thread ]</a>
+              <a href="subject.html#303">[ subject ]</a>
+              <a href="author.html#303">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 2004-02-16 at 09:56, Dan Williams wrote:
+&gt;<i> Daniel,
+</I>&gt;<i>=20
+</I>&gt;<i> If you look above the stop point that you pasted in here, you'll see a
+</I>&gt;<i> line with something like:
+</I>&gt;<i>=20
+</I>&gt;<i> dmake:  Error code x, while making 'xxxxx'
+</I>&gt;<i>=20
+</I>&gt;<i> That's the real failure point, it says that i18npool has failed to
+</I>&gt;<i> build.  Can you post that section of the log?
+</I>&gt;<i>=20
+</I>&gt;<i> FWIW, I also got an error doing a 2-process build in desktop, but have no=
+</I>t
+&gt;<i> investigated yet.
+</I>&gt;<i>=20
+</I>&gt;<i> Dan
+</I>&gt;<i>=20
+</I>
+Thanks for the tip.  There's my problem:
+
+---------------------------------------------------------------------------=
+--------
+Building project i18npool
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+Running processes: 1
+/usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/unot=
+ypes
+cppumaker @/tmp/mki0dpnV
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/sear=
+ch
+--- EXCEPTIONSFILES ---
+`../../unxlngi4.pro/slo/textsearch.obj' is up to date
+--- EXCEPTIONSFILES OVER ---
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/brea=
+kiterator
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/cale=
+ndar
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/regi=
+sterservices
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/numb=
+erformatcode
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/inde=
+xentry
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/coll=
+ator
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/i18npool/source/brea=
+kiterator/data
+------------------------------
+Making: ../../../unxlngi4.pro/slo/dict_zh.obj
+g++ -fmessage-length=3D0 -c -I.  -I. -I../inc -I../../../inc
+-I../../../unx/inc -I../../../unxlngi4.pro/inc -I.
+-I/usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/solver/645/unxlngi=
+4.pro/inc/stl -I/usr/src/sources/OpenOffice/openoffice/build/OOO_1_1_0/solv=
+er/645/unxlngi4.pro/inc/external -I/usr/src/sources/OpenOffice/openoffice/b=
+uild/OOO_1_1_0/solver/645/unxlngi4.pro/inc -I/usr/src/sources/OpenOffice/op=
+enoffice/build/OOO_1_1_0/solenv/unxlngi4/inc -I/usr/src/sources/OpenOffice/=
+openoffice/build/OOO_1_1_0/solenv/inc -I/usr/src/sources/OpenOffice/openoff=
+ice/build/OOO_1_1_0/res -I/usr/src/sources/OpenOffice/openoffice/build/OOO_=
+1_1_0/solver/645/unxlngi4.pro/inc/stl -I/usr/src/sources/OpenOffice/openoff=
+ice/build/OOO_1_1_0/solenv/inc/Xp31 -I/opt/java/include -I/opt/java/include=
+/linux -I/opt/java/include/native_threads/include -I/usr/X11R6/include     =
+-I. -I../../../res -I. -O1   -pipe -mcpu=3Dpentiumpro -fno-for-scope -fperm=
+issive -fno-rtti -include preinclude.h -fno-exceptions   -fpic -DLINUX -DUN=
+X -DVCL -DGCC -DC300 -DINTEL -DCVER=3DC300 -D_USE_NAMESPACE -DGLIBC=3D2 -DX=
+86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=3D1 -DSTLPORT_VERS=
+ION=3D400 -D__DMAKE -DUNIX -DCPPU_ENV=3Dgcc3 -DSUPD=3D645 -DPRODUCT -DNDEBU=
+G -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=3D0 -DOPTIMIZE -DEXCEPTIONS_OFF -DCUI -D=
+SOLAR_JAVA -DSRX645  -DSHAREDLIB -D_DLL_  -DMULTITHREAD   -o ../../../unxln=
+gi4.pro/slo/dict_zh.o ../../../unxlngi4.pro/misc/dict_zh.cxx
+g++: Internal error: Killed (program cc1plus)
+Please submit a full bug report.
+See &lt;URL:<A HREF="http://gcc.gnu.org/bugs.html">http://gcc.gnu.org/bugs.html</A>&gt; for instructions.
+dmake:  Error code 1, while making
+'../../../unxlngi4.pro/slo/dict_zh.obj'
+---* TG_SLO.MK *---
+---------------------------------------------------------------------------=
+--------
+
+looks like I have a gcc issue.  It's even telling me to submit a &quot;full
+bug report.&quot;  Guess I should go that route...or maybe first try to
+compile the latest gcc again.  Suggestions?
+
+Thanks again,=20
+DB
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000301.html">[Open Office] Trying to compile CVS build
+</A></li>
+	<LI> Next message: <A HREF="000304.html">[Open Office] Trying to compile CVS build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#303">[ date ]</a>
+              <a href="thread.html#303">[ thread ]</a>
+              <a href="subject.html#303">[ subject ]</a>
+              <a href="author.html#303">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

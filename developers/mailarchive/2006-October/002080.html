@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] JRE register fails when building 2.0.4 on Mandriva 2007 x86_64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%20building%202.0.4%20on%0A%20Mandriva%202007%20x86_64&In-Reply-To=8DCDD429-FD77-4894-B084-4AE48415D73C%40amarooas.com.au">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002073.html">
+   <LINK REL="Next"  HREF="002082.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] JRE register fails when building 2.0.4 on Mandriva 2007 x86_64</H1>
+    <B>Atle Nissestad</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%20building%202.0.4%20on%0A%20Mandriva%202007%20x86_64&In-Reply-To=8DCDD429-FD77-4894-B084-4AE48415D73C%40amarooas.com.au"
+       TITLE="[Open Office] JRE register fails when building 2.0.4 on Mandriva 2007 x86_64">atle.nissestad at norbit.no
+       </A><BR>
+    <I>Thu Oct 19 16:06:54 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002073.html">[Open Office] JRE register fails when building 2.0.4 on	Mandriva 2007 x86_64
+</A></li>
+        <LI>Next message: <A HREF="002082.html">[Open Office] JRE register fails when building 2.0.4 on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2080">[ date ]</a>
+              <a href="thread.html#2080">[ thread ]</a>
+              <a href="subject.html#2080">[ subject ]</a>
+              <a href="author.html#2080">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jim Watson wrote:
+&gt;<i>
+</I>&gt;<i> On 19/10/2006, at 9:13 PM, Atle Nissestad wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> [Java framework] The JRE specified by the bootstrap variable
+</I>&gt;&gt;<i> UNO_JAVA_JFW_JREHOME  or  UNO_JAVA_JFW_ENV_JREHOME  could not be
+</I>&gt;&gt;<i> recognized. Check the values and make sure that you use a plug-in
+</I>&gt;&gt;<i> library that can recognize that JRE.javaldx failed!
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> maybe some clues here?
+</I>&gt;<i> <A HREF="http://www.openoffice.org/issues/show_bug.cgi?id=42476">http://www.openoffice.org/issues/show_bug.cgi?id=42476</A>
+</I>&gt;<i>
+</I>&gt;<i> jim
+</I>&gt;<i>
+</I>&gt;<i>
+</I>It seems that the problem in the issue above is that the java executable
+fails. In my case the java exe seems to run OK, as the build log below
+shows:
+
+[Java framework] The JRE specified by the bootstrap variable
+UNO_JAVA_JFW_JREHOME  or  UNO_JAVA_JFW_ENV_JREHOME  could not be
+recognized. Check the values and make sure that you use a plug-in
+library that can recognize that JRE.javaldx failed!
+[Java framework] Using configuration file
+<A HREF="file:///home/src/rpm/BUILD/ooo-build/build/OOO_2_0_4/solver/680/unxlngx6.pro/lib/jvmfwk3rc">file:///home/src/rpm/BUILD/ooo-build/build/OOO_2_0_4/solver/680/unxlngx6.pro/lib/jvmfwk3rc</A>
+[Java framework] Using bootstrap parameter UNO_JAVA_JFW_JREHOME =
+<A HREF="file:///usr/lib/jvm/java-gcj.">file:///usr/lib/jvm/java-gcj.</A>
+[Java framework] Using bootstrap parameter UNO_JAVA_JFW_VENDOR_SETTINGS
+=
+<A HREF="file:///home/src/rpm/BUILD/ooo-build/build/OOO_2_0_4/solver/680/unxlngx6.pro/lib/javavendors.xml.">file:///home/src/rpm/BUILD/ooo-build/build/OOO_2_0_4/solver/680/unxlngx6.pro/lib/javavendors.xml.</A>
+[Java framework] sunjavaplugin: Testing class SunVersion succeeded.[Java
+framework] sunjavaplugin: Using configuration file
+<A HREF="file:///home/src/rpm/BUILD/ooo-build/build/OOO_2_0_4/solver/680/unxlngx6.pro/lib/sunjavapluginrc">file:///home/src/rpm/BUILD/ooo-build/build/OOO_2_0_4/solver/680/unxlngx6.pro/lib/sunjavapluginrc</A>
+[Java framework] Executing: <A HREF="file:///usr/bin/gij-4.1.1.">file:///usr/bin/gij-4.1.1.</A>
+[Java framework] Java executed successfully.
+[Java framework]  Java wrote to stderr:&quot;  &quot;.
+
+[Java framework] Executing: <A HREF="file:///usr/bin/gij-4.1.1.">file:///usr/bin/gij-4.1.1.</A>
+[Java framework] Java executed successfully.
+[Java framework]  Java wrote to stderr:&quot;  &quot;.
+
+[Java framework] Executing: <A HREF="file:///usr/bin/gij-4.1.1.">file:///usr/bin/gij-4.1.1.</A>
+[Java framework] Java executed successfully.
+[Java framework]  Java wrote to stderr:&quot;  &quot;.
+
+[Java framework] Executing: <A HREF="file:///usr/bin/gij-4.1.1.">file:///usr/bin/gij-4.1.1.</A>
+[Java framework] Java executed successfully.
+[Java framework]  Java wrote to stderr:&quot;  &quot;.
+
+[Java framework] Executing: <A HREF="file:///usr/bin/gij-4.1.1.">file:///usr/bin/gij-4.1.1.</A>
+[Java framework] Java executed successfully.
+[Java framework]  Java wrote to stderr:&quot;  &quot;.
+[Java framework] The JRE specified by the bootstrap variable
+UNO_JAVA_JFW_JREHOME  or  UNO_JAVA_JFW_ENV_JREHOME  could not be
+recognized. Check the values and make sure that you use a plug-in
+library that can recognize that JRE.register component
+'<A HREF="file:///home/src/rpm/BUILD/ooo-build/build/OOO_2_0_4/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar'">file:///home/src/rpm/BUILD/ooo-build/build/OOO_2_0_4/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar'</A>
+in registry '../../unxlngx6.pro/lib/uno_services.rdb' failed!
+error (RuntimeException): [JavaVirtualMachine]:An unexpected error
+occurred while starting Java!
+using loader com.sun.star.loader.Java2
+dmake:  Error code 1, while making '../../unxlngx6.pro/lib/uno_services.rdb'
+dmake:  '../../unxlngx6.pro/lib/uno_services.rdb' removed.
+'---* tg_merge.mk *---'
+
+Could I be missing a library or something, that causes gij to report
+insufficient properties to javaldx ?
+
+Atle
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002073.html">[Open Office] JRE register fails when building 2.0.4 on	Mandriva 2007 x86_64
+</A></li>
+	<LI>Next message: <A HREF="002082.html">[Open Office] JRE register fails when building 2.0.4 on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2080">[ date ]</a>
+              <a href="thread.html#2080">[ thread ]</a>
+              <a href="subject.html#2080">[ subject ]</a>
+              <a href="author.html#2080">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Calc Solver updates
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Calc%20Solver%20updates&In-Reply-To=8c0175c60611231421o29561e93id8b08cadd4979f42%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002141.html">
+   <LINK REL="Next"  HREF="002143.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Calc Solver updates</H1>
+    <B>Ismail Donmez</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Calc%20Solver%20updates&In-Reply-To=8c0175c60611231421o29561e93id8b08cadd4979f42%40mail.gmail.com"
+       TITLE="[Open Office] Calc Solver updates">ismail at pardus.org.tr
+       </A><BR>
+    <I>Fri Nov 24 03:15:30 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002141.html">[Open Office] Calc Solver updates
+</A></li>
+        <LI>Next message: <A HREF="002143.html">[Open Office] ooe680 build times
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2142">[ date ]</a>
+              <a href="thread.html#2142">[ thread ]</a>
+              <a href="subject.html#2142">[ subject ]</a>
+              <a href="author.html#2142">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>24 Kas 2006 Cum 00:21 tarihinde &#351;unlar&#305; yazm&#305;&#351;t&#305;n&#305;z:
+&gt;<i> On 11/23/06, Ismail Donmez &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">ismail at pardus.org.tr</A>&gt; wrote:
+</I>&gt;<i> &gt; 22 Kas 2006 &#199;ar 06:14 tarihinde, Kohei Yoshida &#351;unlar&#305; yazm&#305;&#351;t&#305;:
+</I>&gt;<i> &gt; &gt; Hey list,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; I just decided to post some update here since I just finished
+</I>&gt;<i> &gt; &gt; committing fair amount of changes to the scsolver module that
+</I>&gt;<i> &gt; &gt; addresses some important issues.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Hi I am getting the following compile error with gcc-3.4
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;  ../../unxlngi6.pro/slo/solvemodel.o
+</I>&gt;<i> &gt; /var/tmp/pisi/openoffice-2.0.4.7-36/work/ooo-build-2.0.4.7/build/OOO_2_0_
+</I>&gt;<i> &gt;4/scsolver/source/ui/solvemodel.cxx
+</I>&gt;<i> &gt; /var/tmp/pisi/openoffice-2.0.4.7-36/work/ooo-build-2.0.4.7/build/OOO_2_0_
+</I>&gt;<i> &gt;4/scsolver/source/ui/solvemodel.cxx:69: error: multiple storage classes in
+</I>&gt;<i> &gt; declaration of `cell_address_t' dmake:  Error code 1, while making
+</I>&gt;<i> &gt; '../../unxlngi6.pro/slo/solvemodel.obj'
+</I>&gt;<i>
+</I>&gt;<i> Not really sure why the build fails as I can build fine using gcc 4.1.0.
+</I>&gt;<i>
+</I>&gt;<i> But this declaration below
+</I>&gt;<i>
+</I>&gt;<i> static typedef struct {
+</I>&gt;<i> 	short sheet;
+</I>&gt;<i> 	long  column;
+</I>&gt;<i> 	long  row;
+</I>&gt;<i> } cell_address_t;
+</I>&gt;<i>
+</I>&gt;<i> at line 69 of scsolver/source/ui/solvemodel.cxx apparently breaks your
+</I>&gt;<i> build.  Can you remove the word &quot;static&quot; from the above typedef
+</I>
+Yep that builds fine.
+
+Regards,
+ismail
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002141.html">[Open Office] Calc Solver updates
+</A></li>
+	<LI>Next message: <A HREF="002143.html">[Open Office] ooe680 build times
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2142">[ date ]</a>
+              <a href="thread.html#2142">[ thread ]</a>
+              <a href="subject.html#2142">[ subject ]</a>
+              <a href="author.html#2142">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Ximian OOo 1.3.7 compile error on module psprint
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:h.mth%40web.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000607.html">
+   <LINK REL="Next"  HREF="000609.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Ximian OOo 1.3.7 compile error on module psprint
+   </H1>
+    <B>Hanno Meyer-Thurow
+    </B> 
+    <A HREF="mailto:h.mth%40web.de"
+       TITLE="[Open Office] Ximian OOo 1.3.7 compile error on module psprint">h.mth@web.de
+       </A><BR>
+    <I>Thu, 2 Dec 2004 12:48:00 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000607.html">[Open Office] Ximian OOo 1.3.7 compile error on module psprint
+</A></li>
+        <LI> Next message: <A HREF="000609.html">[Open Office] Ximian OOo 1.3.7 compile error on module
+ psprint
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#608">[ date ]</a>
+              <a href="thread.html#608">[ thread ]</a>
+              <a href="subject.html#608">[ subject ]</a>
+              <a href="author.html#608">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 2 Dec 2004 21:14:59 +1000
+<A HREF="mailto:jim@amarooas.com.au">jim@amarooas.com.au</A> wrote:
+
+&gt;<i> This type of message suggests a building dependency problem. Check if that
+</I>&gt;<i> module jvmfwk been built and delivered yet? Try to build and deliver that
+</I>&gt;<i> module jvmfwk then you might re-start the build from where it stopped. 
+</I>&gt;<i> 
+</I>&gt;<i> Watch the jvmfwk log for any errors. Sometimes the build may fail with some java
+</I>&gt;<i> crashes but does not stop.
+</I>&gt;<i> 
+</I>&gt;<i> jim
+</I>
+If it was that easy. There is no module jvmfwk in Ximian's OOo 1.3.x. Tried to fetch that module from OOo 1.1.x line but not found. Fetched from 680m62. Had to compile module libxml2 for that first. Then compiled jvmfwk but broke because of unresolved symbol xmlFree. in ooo-build-1.3.7 is a m46-to-m62 patch for backports. that patch updates that helper.cxx of psprint to use jvmfwk instead of lvmaccess stuff which is in OOo 1.1 line. That breaks it.
+
+Anyone got ooo-build-1.3.7 built yet?
+
+
+Hanno
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000607.html">[Open Office] Ximian OOo 1.3.7 compile error on module psprint
+</A></li>
+	<LI> Next message: <A HREF="000609.html">[Open Office] Ximian OOo 1.3.7 compile error on module
+ psprint
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#608">[ date ]</a>
+              <a href="thread.html#608">[ thread ]</a>
+              <a href="subject.html#608">[ subject ]</a>
+              <a href="author.html#608">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

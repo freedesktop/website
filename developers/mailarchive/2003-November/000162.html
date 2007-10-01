@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Patch for defect 49914...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:banil%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000161.html">
+   <LINK REL="Next"  HREF="000164.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Patch for defect 49914...
+   </H1>
+    <B>Anil Anil
+    </B> 
+    <A HREF="mailto:banil%40novell.com"
+       TITLE="[Open Office] Patch for defect 49914...">banil@novell.com
+       </A><BR>
+    <I>Mon, 24 Nov 2003 00:50:28 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000161.html">[Open Office] bug bounties
+</A></li>
+        <LI> Next message: <A HREF="000164.html">[Open Office] Patch for defect 49914...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#162">[ date ]</a>
+              <a href="thread.html#162">[ thread ]</a>
+              <a href="subject.html#162">[ subject ]</a>
+              <a href="author.html#162">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Michael,
+
+This patch makes the Imagelist at build time, and extracts the required
+images from the Image list. 
+
+There's a slight difference in this solution and the one that you had
+suggested. The Imagelist (compound bmp) file is not getting generated in
+source/src. Its getting generated in unxlngi4.pro/res/49/ and other
+corresponding language folders. The reason being the code in
+solenv/inc/target.mk (lines 2202 - 2221) that generates the Imagelist
+bmp. This is not flexible enough to tweak to generate language
+independant bmps. Other alternative would be to write a new task in
+vcl/source/src/makefile.mk and link it up with some task that is going
+to be executed. I thought the currently proposed solution to be cleaner
+and better suited for future in case there are any symbols that need to
+be replaced with language dependant images.
+
+Regards
+-Anil
+---------------------------------------------------------
+source/control/button.cxx.orig      2003-11-18 12:10:56.000000000 +0530
++++ source/control/button.cxx   2003-11-24 11:37:28.000000000 +0530
+@@ -3318,7 +3318,20 @@
+     }
+                                                                        
+       
+     if ( RSC_IMAGEBUTTON_SYMBOL &amp; nObjMask )
+-        SetSymbol( (SymbolType)ReadShortRes() );
++    {
++       SymbolType s = (SymbolType)ReadShortRes();
++
++       Image objImage;
++
++       if ( Image::GetImageForSymbol(s, GetSizePixel(), objImage) )
++       {
++         SetImage(objImage);
++       }
++       else
++       {
++         SetSymbol(s);
++       }
++    }
+                                                                        
+       
+     if ( RSC_IMAGEBUTTON_STATE &amp; nObjMask )
+         SetState( (TriState)ReadShortRes() );
+--- source/gdi/image.cxx.orig   2003-11-18 12:10:42.000000000 +0530
++++ source/gdi/image.cxx        2003-11-24 10:21:33.000000000 +0530
+@@ -70,6 +70,13 @@
+ #include &lt;tools/stream.hxx&gt;
+ #endif
+                                                                        
+       
++#ifndef _SV_SVIDS_HRC
++#include &lt;svids.hrc&gt;
++#endif
++#ifndef _SV_SVDATA_HXX
++#include &lt;svdata.hxx&gt;
++#endif
++
+ #ifndef _SV_RC_H
+ #include &lt;rc.h&gt;
+ #endif
+@@ -94,6 +101,11 @@
+ #endif
+ #undef private
+                                                                        
+       
++
++#ifndef _SVX_SVXIDS_HRC
++#include &lt;svx/svxids.hrc&gt;
++#endif
++
+ //
+=======================================================================
+                                                                        
+       
+ DBG_NAME( Image );
+@@ -212,6 +224,37 @@
+                                                                        
+       
+ //
+=======================================================================
+                                                                        
+       
++static const USHORT Image::SYMBOL_TO_IMAGE_TABLE[] =
++  {
++    NULL,
++    NULL,
++    SID_OUTLINE_UP,
++    SID_OUTLINE_DOWN,
++    SID_OUTLINE_LEFT,
++    SID_OUTLINE_RIGHT
++  };
++
++static const int Image::TABLE_ENTRY_SIZE =
+sizeof(Image::SYMBOL_TO_IMAGE_TABLE) /
+sizeof(Image::SYMBOL_TO_IMAGE_TABLE[0]);
++
++static BOOL Image::GetImageForSymbol(const USHORT nSymbolId, const Size
+objSize, Image&amp; objImage)
++{
++  if (nSymbolId &gt;= TABLE_ENTRY_SIZE)
++    return FALSE;
++
++  long lHeight = objSize.getHeight();
++  long lWidth = objSize.getWidth();
++  long lMin = lHeight &lt; lWidth ? lHeight : lWidth;
++
++  if (lMin &lt; 16)
++    return FALSE;
++
++  objImage = ImageList(ResId(lMin &gt;= 24 ? IL_SYM_TO_IMAGES_L :
+IL_SYM_TO_IMAGES_S,
+ImplGetResMgr())).GetImage(SYMBOL_TO_IMAGE_TABLE[nSymbolId]);
++
++    return TRUE;
++}
++
++//
+-----------------------------------------------------------------------
++
+ Image::Image()
+ {
+        DBG_CTOR( Image, NULL );
+--- inc/image.hxx.orig  2003-11-24 12:45:41.000000000 +0530
++++ inc/image.hxx       2003-11-24 10:21:05.000000000 +0530
+@@ -111,6 +111,8 @@
+                                                                        
+       
+ private:
+        ImplImage*              mpImplData;
++  static const USHORT SYMBOL_TO_IMAGE_TABLE[];
++  static const int TABLE_ENTRY_SIZE;
+                                                                        
+       
+ public:
+                                        Image();
+@@ -140,6 +142,7 @@
+        BOOL                    operator!=( const Image&amp; rImage ) const
+{ return !(Image::operator==( rImage )); }
+                                                                        
+       
+     void            ClearCaches();
++  static BOOL GetImageForSymbol(const USHORT nSymbolId, const Size
+objSize, Image&amp; objImage);
+ };
+                                                                        
+       
+ inline BOOL Image::operator!() const
+--- inc/svids.hrc.orig  2003-11-24 12:45:49.000000000 +0530
++++ inc/svids.hrc       2003-11-21 13:19:42.000000000 +0530
+@@ -151,5 +151,7 @@
+ #define SV_SHORTCUT_TODOCUMENT              10606
+ #define SV_SHORTCUT_MENUBAR                 10607
+                                                                        
+       
++#define IL_SYM_TO_IMAGES_L     1090
++#define IL_SYM_TO_IMAGES_S     1095
+ #define SV_FUNIT_STRINGS                    10700
+ #endif // _SV_SVIDS_HRC
+--- source/src/images.src.orig  2003-11-18 12:12:15.000000000 +0530
++++ source/src/images.src       2003-11-21 17:22:01.000000000 +0530
+@@ -64,6 +64,9 @@
+ #ifndef _SV_SVIDS_HRC
+ #include &lt;svids.hrc&gt;
+ #endif
++#ifndef _SVX_SVXIDS_HRC
++#include &lt;svx/svxids.hrc&gt;
++#endif
+                                                                        
+       
+ //
+=======================================================================
+                                                                        
+       
+@@ -177,3 +180,27 @@
+        File = &quot;splvarw.bmp&quot;;
+ };
+                                                                        
+       
++#define IMG_IDLIST \
++       IdList =                           \
++       {                                          \
++               SID_OUTLINE_UP;             \
++               SID_OUTLINE_DOWN;           \
++               SID_OUTLINE_LEFT;           \
++               SID_OUTLINE_RIGHT;          \
++       };                                         \
++       IdCount = { 4 ; };
++
++ImageList IL_SYM_TO_IMAGES_L
++{
++      ImageBitmap = Bitmap { File = &quot;lc_imgs.bmp&quot; ; };
++      MaskColor = Color { Red = 0xFFFF ; Green = 0x0000 ; Blue = 0xFFFF
+; };
++       IMG_IDLIST
++};
++
++ImageList IL_SYM_TO_IMAGES_S
++{
++      ImageBitmap = Bitmap { File = &quot;sc_imgs.bmp&quot; ; };
++      MaskColor = Color { Red = 0xFFFF ; Green = 0x0000 ; Blue = 0xFFFF
+; };
++       IMG_IDLIST
++};
++
+--- source/src/makefile.mk.orig 2002-10-25 17:15:39.000000000 +0530
++++ source/src/makefile.mk      2003-11-24 08:31:59.000000000 +0530
+@@ -72,6 +72,7 @@
+ .INCLUDE :     settings.mk
+ .INCLUDE :     sv.mk
+                                                                        
+       
++IMGLST_SRS=$(SRS)$/svsrc.srs
+ # --- Files --------------------------------------------------------
+                                                                        
+       
+ SRCFILES=                      images.src                      \
+                                                                        
+       
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000161.html">[Open Office] bug bounties
+</A></li>
+	<LI> Next message: <A HREF="000164.html">[Open Office] Patch for defect 49914...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#162">[ date ]</a>
+              <a href="thread.html#162">[ thread ]</a>
+              <a href="subject.html#162">[ subject ]</a>
+              <a href="author.html#162">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

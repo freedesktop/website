@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] [fix] gcj-no-com.sun.xml.diff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5Bfix%5D%20gcj-no-com.sun.xml.diff&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001415.html">
+   <LINK REL="Next"  HREF="001421.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] [fix] gcj-no-com.sun.xml.diff</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5Bfix%5D%20gcj-no-com.sun.xml.diff&In-Reply-To="
+       TITLE="[Open Office] [fix] gcj-no-com.sun.xml.diff">h.mth at web.de
+       </A><BR>
+    <I>Sun Dec 18 06:48:59 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001415.html">[Open Office] ooo-build-2-0-1 branch
+</A></li>
+        <LI>Next message: <A HREF="001421.html">[Open Office] Re: [fix] gcj-no-com.sun.xml.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1416">[ date ]</a>
+              <a href="thread.html#1416">[ thread ]</a>
+              <a href="subject.html#1416">[ subject ]</a>
+              <a href="author.html#1416">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bernhard,
+the attached diff will fix gcj-no-com.sun.xml.diff so that I can build OOo2
+with gcj4 and sun jdk 1.5. But it fails to build with sun jdk 1.4.2.09.
+
+java  -cp .:../../unxlngi6.pro/class:/opt/sun-jdk-1.4.2.09/jre/lib/rt.jar:.:/var/tmp/portage/openoffice-680.143.0
+/work/ooo-build-src680.143.0/build/src680-m143/solver/680/unxlngi6.pro/bin/xercesImpl.jar:/var/tmp
+/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/solver/680/unxlngi6.pro/bin
+/xt.jar:/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/solver/680
+/unxlngi6.pro/bin/unoil.jar:/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143
+/solver/680/unxlngi6.pro/bin/ridl.jar:/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build
+/src680-m143/solver/680/unxlngi6.pro/bin/jurt.jar:/var/tmp/portage/openoffice-680.143.0/work
+/ooo-build-src680.143.0/build/src680-m143/solver/680/unxlngi6.pro/bin/jut.jar:/var/tmp/portage
+/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143/solver/680/unxlngi6.pro/bin
+/xmlsearch.jar:/var/tmp/portage/openoffice-680.143.0/work/ooo-build-src680.143.0/build/src680-m143
+/solver/680/unxlngi6.pro/bin/xmlhelp.jar:/usr/lib/db-4.2.jar com.sun.star.help.HelpLinker @/var/tmp/portage/openoffice-680.143.0/temp/mkv2ytxj
+Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: org/w3c/dom/ranges/DocumentRange
+        at java.lang.ClassLoader.defineClass0(Native Method)
+        at java.lang.ClassLoader.defineClass(ClassLoader.java:539)
+        at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:123)
+        at java.net.URLClassLoader.defineClass(URLClassLoader.java:251)
+        at java.net.URLClassLoader.access$100(URLClassLoader.java:55)
+        at java.net.URLClassLoader$1.run(URLClassLoader.java:194)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at java.net.URLClassLoader.findClass(URLClassLoader.java:187)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:289)
+        at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:274)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:235)
+        at java.lang.ClassLoader.loadClassInternal(ClassLoader.java:302)
+        at java.lang.ClassLoader.defineClass0(Native Method)
+        at java.lang.ClassLoader.defineClass(ClassLoader.java:539)
+        at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:12
+3)
+        at java.net.URLClassLoader.defineClass(URLClassLoader.java:251)
+        at java.net.URLClassLoader.access$100(URLClassLoader.java:55)
+        at java.net.URLClassLoader$1.run(URLClassLoader.java:194)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at java.net.URLClassLoader.findClass(URLClassLoader.java:187)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:289)
+        at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:274)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:235)
+        at java.lang.ClassLoader.loadClassInternal(ClassLoader.java:302)
+        at org.apache.xerces.jaxp.DocumentBuilderImpl.&lt;init&gt;(Unknown Source)
+        at org.apache.xerces.jaxp.DocumentBuilderFactoryImpl.newDocumentBuilUnknown Source)
+        at com.sun.star.help.HelpCompiler.compile(HelpCompiler.java:451)
+        at com.sun.star.help.HelpLinker.link(HelpLinker.java:450)
+        at com.sun.star.help.HelpLinker.main(HelpLinker.java:228)
+dmake:  Error code 1, while making '../../unxlngi6.pro/bin/sbasic_en-US.zip'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making /var/tmp/portage/openoffice-680.143ork/ooo-build-src680.143.0/build/src680-m143/helpcontent2/util/sbasic
+
+
+Regards,
+Hanno
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ooo-gcj-no-bla.diff
+Type: text/x-patch
+Size: 5179 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051218/672c193e/ooo-gcj-no-bla.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20051218/672c193e/ooo-gcj-no-bla.bin</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001415.html">[Open Office] ooo-build-2-0-1 branch
+</A></li>
+	<LI>Next message: <A HREF="001421.html">[Open Office] Re: [fix] gcj-no-com.sun.xml.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1416">[ date ]</a>
+              <a href="thread.html#1416">[ thread ]</a>
+              <a href="subject.html#1416">[ subject ]</a>
+              <a href="author.html#1416">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

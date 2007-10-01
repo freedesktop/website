@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status of -m82
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:michael.meeks%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000827.html">
+   <LINK REL="Next"  HREF="000829.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status of -m82
+   </H1>
+    <B>michael meeks
+    </B> 
+    <A HREF="mailto:michael.meeks%40novell.com"
+       TITLE="[Open Office] Status of -m82">michael.meeks@novell.com
+       </A><BR>
+    <I>Tue, 08 Mar 2005 09:49:01 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000827.html">[Open Office] Status of -m82
+</A></li>
+        <LI> Next message: <A HREF="000829.html">[Open Office] Status Mon-Tue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#828">[ date ]</a>
+              <a href="thread.html#828">[ thread ]</a>
+              <a href="subject.html#828">[ subject ]</a>
+              <a href="author.html#828">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 2005-03-08 at 02:33 +0100, Bernhard Rosenkraenzer wrote:
+&gt;<i> This might watch an earlier warning from dmake:
+</I>&gt;<i> 
+</I>&gt;<i> WARNING! Project(s):
+</I>&gt;<i> dictionaries
+</I>&gt;<i>
+</I>&gt;<i> not found and couldn't be built. Maybe you should correct build lists.
+</I>
+	So - we should have a conditional dependency on dictionaries; ie. if
+you do grep dictionaries */prj/build.lst, you should see:
+DICTIONARIES:dictionaries.
+
+	Since they are really not that useful for packaging, and are 11Mb
+(tar.gz) small, we strip them out of our -core source archive; they are
+in the -system tar.bz2.
+
+&gt;<i> Am I overlooking something, or is this stuff missing from our tarball?
+</I>
+	It's missing :-)
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000827.html">[Open Office] Status of -m82
+</A></li>
+	<LI> Next message: <A HREF="000829.html">[Open Office] Status Mon-Tue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#828">[ date ]</a>
+              <a href="thread.html#828">[ thread ]</a>
+              <a href="subject.html#828">[ subject ]</a>
+              <a href="author.html#828">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

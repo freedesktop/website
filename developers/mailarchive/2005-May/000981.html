@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] &quot;save as&quot; does not work in m100 and m104
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%22save%20as%22%20does%20not%20work%20in%20m100%20and%20m104&In-Reply-To=200505261544.37722.Thorsten_Kolb%40urz.uni-heidelberg.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000980.html">
+   <LINK REL="Next"  HREF="000982.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] &quot;save as&quot; does not work in m100 and m104</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%22save%20as%22%20does%20not%20work%20in%20m100%20and%20m104&In-Reply-To=200505261544.37722.Thorsten_Kolb%40urz.uni-heidelberg.de"
+       TITLE="[Open Office] &quot;save as&quot; does not work in m100 and m104">kendy at suse.cz
+       </A><BR>
+    <I>Thu May 26 09:54:40 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000980.html">[Open Office] &quot;save as&quot; does not work in m100 and m104
+</A></li>
+        <LI>Next message: <A HREF="000982.html">[Open Office] &quot;save as&quot; does not work in m100 and m104
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#981">[ date ]</a>
+              <a href="thread.html#981">[ thread ]</a>
+              <a href="subject.html#981">[ subject ]</a>
+              <a href="author.html#981">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 26 May 2005 15:44, Thorsten Kolb wrote:
+&gt;<i> Ok, I found the patch, thanks!
+</I>&gt;<i>
+</I>&gt;<i> Is it possible to rebuild the filepicker specific parts only, or do I  have
+</I>&gt;<i> to make a complete build?
+</I>
+Yes, it's possible to rebuild just the fpicker specific part:
+
+(modify the apply file and add the patch)
+make patch.apply
+cd build/src680-m104/fpicker
+build
+cp unxlngi4.pro/lib/*.so unxlngi4.pro/bin/kdefilepicker /your/ooo/installation/program
+
+But; can you please check the &quot;Filter:&quot; combo box in the Save As dialog?
+Does it contain &quot; (.odt)&quot; or &quot;OpenDocument Text (.odt)&quot; as the name
+of the filter?
+
+Thank you,
+Jan
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000980.html">[Open Office] &quot;save as&quot; does not work in m100 and m104
+</A></li>
+	<LI>Next message: <A HREF="000982.html">[Open Office] &quot;save as&quot; does not work in m100 and m104
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#981">[ date ]</a>
+              <a href="thread.html#981">[ thread ]</a>
+              <a href="subject.html#981">[ subject ]</a>
+              <a href="author.html#981">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

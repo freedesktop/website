@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build HEAD / src680-m137 build error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20HEAD%20/%20src680-m137%20build%20error&In-Reply-To=1131001473.4369b68168185%40webmail.netspeed.com.au">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001263.html">
+   <LINK REL="Next"  HREF="001262.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build HEAD / src680-m137 build error</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20HEAD%20/%20src680-m137%20build%20error&In-Reply-To=1131001473.4369b68168185%40webmail.netspeed.com.au"
+       TITLE="[Open Office] ooo-build HEAD / src680-m137 build error">h.mth at web.de
+       </A><BR>
+    <I>Thu Nov  3 05:25:53 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001263.html">[Open Office] ooo-build HEAD / src680-m137 build error
+</A></li>
+        <LI>Next message: <A HREF="001262.html">[Open Office] ooo-build HEAD / src680-m137 build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1264">[ date ]</a>
+              <a href="thread.html#1264">[ thread ]</a>
+              <a href="subject.html#1264">[ subject ]</a>
+              <a href="author.html#1264">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu,  3 Nov 2005 18:04:33 +1100
+<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">jim at amarooas.com.au</A> wrote:
+
+Hi Jim!
+Firstly, please do not add my email address separately.
+I am subscribed to the ml here. ;)
+
+Secondly, wrt the first breakage. You should not add xalan.jar.
+You may have a closer look at that java file. The Xalan functions are commented.
+Instead are functions used from other jars.
+
+Hanno
+
+
+PS build finished without other errors.
+
+&gt;<i> Quoting Hanno Meyer-Thurow &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">h.mth at web.de</A>&gt;:
+</I>&gt;<i> &gt; &gt; Hi list!
+</I>&gt;<i> &gt; &gt; I try to build OpenOffice.org with ooo-build HEAD and src680-m137 source.
+</I>&gt;<i> &gt; &gt; I use GCJ 4.0.2 to build the Java code. On module xmerge it breaks:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Fixed second breakage by adding GCJ's libgcj.jar to the classpath of
+</I>&gt;<i> &gt; 'xmerge/source/xmerge/build.xml'.
+</I>&gt;<i> 
+</I>&gt;<i> thanks for the tip, that works for me too,
+</I>&gt;<i> 
+</I>&gt;<i> in my case that jar is /usr/local/share/java/libgcj-4.0.3.jar 
+</I>&gt;<i> 
+</I>&gt;<i> jim
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001263.html">[Open Office] ooo-build HEAD / src680-m137 build error
+</A></li>
+	<LI>Next message: <A HREF="001262.html">[Open Office] ooo-build HEAD / src680-m137 build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1264">[ date ]</a>
+              <a href="thread.html#1264">[ thread ]</a>
+              <a href="subject.html#1264">[ subject ]</a>
+              <a href="author.html#1264">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

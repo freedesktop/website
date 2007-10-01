@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Monday
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000823.html">
+   <LINK REL="Next"  HREF="000825.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Monday
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Status Monday">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Mon, 07 Mar 2005 19:16:45 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000823.html">[Open Office] Status Wednesday-Friday
+</A></li>
+        <LI> Next message: <A HREF="000825.html">[Open Office] ANNOUNCE: ooo-build-1.9.79.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#824">[ date ]</a>
+              <a href="thread.html#824">[ thread ]</a>
+              <a href="subject.html#824">[ subject ]</a>
+              <a href="author.html#824">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I had backported the toolbar handle fix from fwkpostbeta03 on the
+weekend because it made the office more demoable ;) Committed that this
+morning.
+
+Later cleaned up the xim-fixes*.diffs, leaving only the part that might
+still be missing after vcl36, and moved it to patches/test.
+
+Back in mono-land, I took Rene's patch, made it apply, and made it do
+what I want. With a copy of cli_types.dll from a Windows install set
+everything except climaker/, unotypes/ (which uses climaker to generate
+cli_types.dll) and native/ compiles without problems with mono. Then I
+integrated my bootstrap/ directory (port of native/) into the build and
+started writing the glue code that is still missing. 
+
+Regards,
+
+Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000823.html">[Open Office] Status Wednesday-Friday
+</A></li>
+	<LI> Next message: <A HREF="000825.html">[Open Office] ANNOUNCE: ooo-build-1.9.79.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#824">[ date ]</a>
+              <a href="thread.html#824">[ thread ]</a>
+              <a href="subject.html#824">[ subject ]</a>
+              <a href="author.html#824">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

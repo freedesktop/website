@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regarding Issue No. 49916
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000143.html">
+   <LINK REL="Next"  HREF="000147.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regarding Issue No. 49916
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Regarding Issue No. 49916">michael@ximian.com
+       </A><BR>
+    <I>Tue, 11 Nov 2003 16:37:14 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000143.html">[Open Office] Regarding Issue No. 49916
+</A></li>
+        <LI> Next message: <A HREF="000147.html">[Open Office] toolbar pdf export button options...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#144">[ date ]</a>
+              <a href="thread.html#144">[ thread ]</a>
+              <a href="subject.html#144">[ subject ]</a>
+              <a href="author.html#144">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Amit,
+
+On Tue, 2003-11-11 at 12:13, Amit Shrivastava wrote:
+&gt;<i> The problem seems to be in swmn.hrc , here in MenuItems &quot;Field
+</I>&gt;<i> Shadings&quot; and &quot;Fields&quot;  following needs to be added:
+</I>&gt;<i> 
+</I>&gt;<i> _MenuItemFlags = MIB_CHECKABLE
+</I>&gt;<i> Checkable = TRUE;
+</I>
+	Ah - right.
+
+&gt;<i> after adding these the icons are not rendered i.e if check is not
+</I>&gt;<i> present its stays blank, but this behaviour doesnt seem to be consistent
+</I>&gt;<i> with other MenuItems. I mean in some places the checkable options are
+</I>&gt;<i> specified in .src/.hrc in some places it is not. Who decides that the a
+</I>&gt;<i> MenuItem is checkable/radiocheck etc is this decision taken in as
+</I>&gt;<i> resource ( by specifying in .src/.hrc files ) or done in code ? 
+</I>
+	The code is the authoritative place - we really need to annotate all
+the items that are check items but the .src/.hrc is not in sync with the
+code. This is a somewhat tedious task ( but luckily quite easily bounded
+) - we just need to walk through clicking all the available menu items,
+working out which are toggles and clobbering them.
+
+&gt;<i> I am still half way into my previous project, may be tommorrow or day
+</I>&gt;<i> after tommorrow , I will be able to completely start OpenOffice work. 
+</I>
+	Great - thanks; for the big picture, this is so that we can up-stream
+this change and Philipp can commit the patch that shrinks / re-lays out
+the menus to make them far prettier up-stream [ the fix that we have
+already ].
+
+	Looking forward to having you full-time, and getting something serious
+for you to get your teeth into :-)
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000143.html">[Open Office] Regarding Issue No. 49916
+</A></li>
+	<LI> Next message: <A HREF="000147.html">[Open Office] toolbar pdf export button options...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#144">[ date ]</a>
+              <a href="thread.html#144">[ thread ]</a>
+              <a href="subject.html#144">[ subject ]</a>
+              <a href="author.html#144">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

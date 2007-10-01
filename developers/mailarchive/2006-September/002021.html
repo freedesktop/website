@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Localization tools used for GNOME packages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Localization%20tools%20used%20for%20GNOME%20packages&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002020.html">
+   <LINK REL="Next"  HREF="002023.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Localization tools used for GNOME packages</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Localization%20tools%20used%20for%20GNOME%20packages&In-Reply-To="
+       TITLE="[Open Office] Localization tools used for GNOME packages">pmladek at suse.cz
+       </A><BR>
+    <I>Wed Sep 27 15:18:16 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002020.html">[Open Office] VBA patches
+</A></li>
+        <LI>Next message: <A HREF="002023.html">[Open Office] Localization tools used for GNOME packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2021">[ date ]</a>
+              <a href="thread.html#2021">[ thread ]</a>
+              <a href="subject.html#2021">[ subject ]</a>
+              <a href="author.html#2021">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Vojta,
+
+I have asked Standa Brabec (our GNOME package maintainer) how they solve the 
+extra strings translation in GNOME. Standa has created some powerful scripts 
+for this purpose, see the attached files.
+
+I think that you can take some inspiration in them.
+
+I am not sure if I understand it correctly. I think that it works the 
+following way:
+
+1. extract strings from non-patched sources (gnome-patch-translation-prepare)
+2. apply patches
+3. update strings from already existing extra .po files (from previous 
+translation round); extract the strings again; search for differences against 
+the non-patched sources (gnome-patch-translation-update).
+
+The updating from already existing .po files is a nice idea because you need 
+to find fuzzy strings during this step. 
+
+4. Send the new .po files with fuzzy and non-translated strings to 
+translators.
+
+5. Get the translated .po files, ...
+
+
+The steps 1.-3. are done using the tools in the RPM page 
+gnome-patch-translation.
+
+The steps 4.-5. are done using the tools in gnome-patch-translation.tar.gz 
+(taken from <A HREF="https://svn.suse.de/svn/lcn/trunk/gnome-patch-translation">https://svn.suse.de/svn/lcn/trunk/gnome-patch-translation</A>). I am 
+not sure. I think that they are necessary only to maintain strings from many 
+packages, so we could probably ignore them.
+
+
+Well, I think that we could use similar workflow. I would only make it 
+optional because we cannot extract strings during normal build (too time 
+demanding). We also need to extract the strings another way, ... I know that 
+Pavel Janik has some tools to transform GSI files into .po file and back.
+
+
+I hope that this helps.
+
+Best Regards,
+Petr
+
+
+
+
+
+
+
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SUSE LINUX, s. r. o.                        e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Lihovarsk&#225; 1060/12                          tel: +420 284 028 952
+190 00 Prague 9                             fax: +420 284 028 951
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: gnome-patch-translation.rpm
+Type: application/x-rpm
+Size: 286288 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060927/8aa21451/attachment-0002.rpm">http://lists.ximian.com/pipermail/openoffice/attachments/20060927/8aa21451/attachment-0002.rpm</A> 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: gnome-patch-translation.tar.gz
+Type: application/x-tgz
+Size: 3402 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060927/8aa21451/attachment-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060927/8aa21451/attachment-0001.bin</A> 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: gnome-patch-translation.spm
+Type: application/x-rpm
+Size: 669473 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060927/8aa21451/attachment-0003.rpm">http://lists.ximian.com/pipermail/openoffice/attachments/20060927/8aa21451/attachment-0003.rpm</A> 
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002020.html">[Open Office] VBA patches
+</A></li>
+	<LI>Next message: <A HREF="002023.html">[Open Office] Localization tools used for GNOME packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2021">[ date ]</a>
+              <a href="thread.html#2021">[ thread ]</a>
+              <a href="subject.html#2021">[ subject ]</a>
+              <a href="author.html#2021">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000127.html">
+   <LINK REL="Next"  HREF="000132.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg">michael@ximian.com
+       </A><BR>
+    <I>Thu, 06 Nov 2003 18:46:35 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000127.html">[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+</A></li>
+        <LI> Next message: <A HREF="000132.html">[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#130">[ date ]</a>
+              <a href="thread.html#130">[ thread ]</a>
+              <a href="subject.html#130">[ subject ]</a>
+              <a href="author.html#130">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Carlos,
+
+On Tue, 2003-11-04 at 18:36, Carlos Alberto wrote:
+&gt;<i> yes, in fact I re-compiled every branch patched, but
+</I>&gt;<i> there was no effect
+</I>
+	Interesting; so you have done a 'make' and a sudo 'make install' and
+done a killall -9 soffice.bin and re-run it and you get no joy ?
+
+	Did you read the new docs on using 'linkoo' in the hackers-guide, and
+going round a simple development loop ? that's prolly well worth doing.
+
+&gt;<i> I bypassed QUITAPP menu item with:
+</I>
+	It's prolly better to hack the .src file just to remove the item - then
+the user can add it back I guess if they like the pain :-) The trick is
+finding the right .src file.
+
+	I recommend that everyone does something like this:
+
+	find -name '*.?rc' -exec cat {} \; &gt; srcs
+
+	Then you can edit 'srcs' and very quickly grep for exact sub-strings; I
+guess we should really setup a web-tool to do that nicely a-la LXR but
+only for the UI, it's most useful. Having found the relevant SID for it,
+LXR text search for it and ... bingo :-)
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000127.html">[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+</A></li>
+	<LI> Next message: <A HREF="000132.html">[Open Office] Re: Openoffice digest, Vol 1 #45 - 1 msg
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#130">[ date ]</a>
+              <a href="thread.html#130">[ thread ]</a>
+              <a href="subject.html#130">[ subject ]</a>
+              <a href="author.html#130">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

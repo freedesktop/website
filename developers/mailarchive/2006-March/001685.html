@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-wrapper.in
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-wrapper.in&In-Reply-To=440D3621.7000300%40mandriva.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001684.html">
+   <LINK REL="Next"  HREF="001686.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-wrapper.in</H1>
+    <B>Matthias Klose</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-wrapper.in&In-Reply-To=440D3621.7000300%40mandriva.com"
+       TITLE="[Open Office] ooo-wrapper.in">doko at ubuntu.com
+       </A><BR>
+    <I>Tue Mar  7 08:41:05 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001684.html">[Open Office] ooo-wrapper.in
+</A></li>
+        <LI>Next message: <A HREF="001686.html">[Open Office] patches &amp; up-stream issues ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1685">[ date ]</a>
+              <a href="thread.html#1685">[ thread ]</a>
+              <a href="subject.html#1685">[ subject ]</a>
+              <a href="author.html#1685">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Giuseppe Ghib&#242; wrote:
+&gt;<i> I've seen recently the wrapper is changed to don't use
+</I>&gt;<i> ooqstart if no argument is passed using:
+</I>&gt;<i> 
+</I>&gt;<i> if ($Binary eq &quot;ooqstart&quot; &amp;&amp; $ENV{OOO_EXTRA_ARG} eq &quot;&quot;) {
+</I>&gt;<i>     $Binary = &quot;soffice&quot;;
+</I>&gt;<i> }
+</I>&gt;<i> 
+</I>&gt;<i> but wouldn't be better to provide a default OOO_EXTRA_ARG='' in
+</I>&gt;<i> this case, so that ooqstart anyway used? Sort of:
+</I>
+when OOO_EXTRA_ARG='' is passed to ooqstart, then the writer is started,
+not the &quot;empty&quot; application, so it's not the exact thing.
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001684.html">[Open Office] ooo-wrapper.in
+</A></li>
+	<LI>Next message: <A HREF="001686.html">[Open Office] patches &amp; up-stream issues ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1685">[ date ]</a>
+              <a href="thread.html#1685">[ thread ]</a>
+              <a href="subject.html#1685">[ subject ]</a>
+              <a href="author.html#1685">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

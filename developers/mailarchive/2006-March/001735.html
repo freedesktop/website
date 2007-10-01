@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Issue and developer informations in apply
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Issue%20and%20developer%20informations%20in%20apply&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001734.html">
+   <LINK REL="Next"  HREF="001736.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Issue and developer informations in apply</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Issue%20and%20developer%20informations%20in%20apply&In-Reply-To="
+       TITLE="[Open Office] Issue and developer informations in apply">pmladek at suse.cz
+       </A><BR>
+    <I>Wed Mar 29 13:33:09 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001734.html">[Open Office] error under FC5: bin/ooinstall failed
+</A></li>
+        <LI>Next message: <A HREF="001736.html">[Open Office] Issue and developer informations in apply
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1735">[ date ]</a>
+              <a href="thread.html#1735">[ thread ]</a>
+              <a href="subject.html#1735">[ subject ]</a>
+              <a href="author.html#1735">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I think that most of you already have registered the recent changes in 
+ooo-build/patches/src680/apply, ooo-build HEAD. I added the information about  
+developers and issue numbers for each patch. I am sorry if it broke any of 
+your commits.
+
+
+Why was it need?
+
+The issue info will give us better overview about the upstreaming progress. 
+The goal is to have assigned an issue number for each patch.
+
+The doveloper name defines who is responsible for what patch.
+
+You can print a statistic by the following command:
+
+	./apply.pl `pwd`/src680 --statistic-no-issue
+
+I have attached the current one.
+
+
+
+New apply file syntax:
+
+The patch entry can looks like:
+
+	wizards-crasher-fix.diff, i#43665, rsiddhar
+
+The developer name is the cvs login name.
+
+You can define more bug numbers. The format is xxx#12345, where xxx is a 
+shortcat of the bugzilla, and 12345 is the bug number. For example:
+
+	wizards-crasher-fix.diff, i#43665, n#10512, rh#12345, rsiddhar
+
+Note that i#12345 is the most important information and you should always fill 
+it!!!
+
+
+You can also define one default user or issue number for a section, so you 
+need not duplicate the information for each patch. You still can oweride the 
+default value in a selected patch entry.
+
+Example 1:
+
+[ DebianBaseOnly ]                                                              
+SectionOwner =&gt; rengelha                                                        
+                                                                                
+odk-remove-non-free.diff                                                        
+sdk-remove-non-free.diff                                                        
+sensible-ooomua.diff                                                            
+gcj-32bit-runtime-path.diff, michael                                            
+community-splash.diff                                                           
+no-fontooo-wizard.diff                                                          
+
+
+Example 2:
+
+[ BFBuildBits ]                                                                 
+SectionOwner =&gt; pmladek                                                         
+SectionIssue =&gt; i#63245
+                                                                                
+# fixes warnings about problematic return values                                
+warning-return-values-binfilter.diff                                            
+# fixes warnings about that a variable is used uninitialized                      
+warning-uninitialized-variables-binfilter.diff                                  
+
+
+The values defined by SectionOwner and SectionIssue are valid until another 
+section starts.
+
+
+Hint: You could use the command ./apply.pl `pwd`/src680 --statistic-no-issue 
+to check if your apply file has correct syntax. It is quite fast 
+check, ... :-)
+
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+-------------- next part --------------
+Number of patches without assigned an issue number per developer
+================================================================
+gghibo(7/7): MandrivaOnly(6/6), MandrivaOnlyUnix(1/1)
+---
+tml(4/4): NovellOnlyWin32(3/3), Win32Common(1/1)
+---
+shilpas(3/3): Misc(3/3)
+---
+mikeleib(3/3): TemporaryHacks(3/3)
+---
+noelpwer(311/316): VBAObjects(307/307), QuickStarter(1/1), VBAUntested(1/1), Fixes(2/5)
+---
+mnicel(34/37): msaccess(33/33), Fixes(1/3)
+---
+rengelha(24/27): DebianBaseOnly(11/11), DebianBaseNoHelpContent(2/2), GCJ(2/2), GCJExperimental(2/2), BuildBits(2/2), Misc(1/1), UbuntuOnly(1/1), SystemBits(2/3), DebianOnly(1/2)
+---
+rodo(11/13): cairocanvas(6/6), SlideSorterDemo(5/5)
+---
+martink(25/30): Mono(20/20), TemporaryHacks(3/3), BuildBits(1/1), Fixes(1/3)
+---
+brosenk(16/22): BuildBits(6/6), GCJ(1/1), SystemJavaBits(1/1), VBAObjects(1/1), ArkOnly(7/9)
+---
+michael(115/160): CalcSolver(63/63), VBAObjects(7/7), Sound(6/6), UbuntuOnly(4/4), SystemBits(2/2), NovellOnlyUnix(2/2), Mono(2/2), FrugalwareOnly(1/1), QiLinuxOnly(1/1), DebianBaseOnly(1/1), Frugalware64Only(1/1), SDFPatches(1/1), GentooOnly(1/1), AddressBooks(1/1), NotDebian(1/1), DroplineGNOMEOnly(1/1), NovellOnlyWin32(1/1), NovellSplash(1/1), RedhatOnly(1/1), Egg(1/1), Lockdown(1/1), NovellOnly(1/1), Defaults(7/14), VBABits(1/2), VCL(1/2), Icons(1/2), TemporaryHacks(3/9), Leaks(1/3)
+---
+aprosky(5/7): GentooOnly(4/4), BuildBits(1/1)
+---
+shres(13/19): NovellOnlyUnix(3/3), BuildBits(2/2), Defaults(1/1), Misc(3/4), Fixes(4/8)
+---
+davidf(4/6): translate-org-za-common(1/1), translate-org-za-splash(1/1), BuildBits(1/2), Win32Common(1/2)
+---
+mklose(2/3): UbuntuOnly(2/2)
+---
+rsiddhar(6/10): VCL(1/1), Win32Common(1/1), Fpickers(1/1), Fixes(2/4), Lockdown(1/3)
+---
+mjayant(4/7): AddressBooks(2/2), BuildBits(1/1), Misc(1/4)
+---
+jholesov(32/58): Fpickers(9/9), QuickStarter(5/5), GCJExperimental(1/1), LinuxOnly(1/1), NovellOnlyUnix(1/1), BerkeleyDB43(1/1), Icons(1/1), Mono(1/1), 64bitPatches(8/9), 64bitSolaris(2/4), BuildBits(1/3), TemporaryHacks(1/6)
+---
+arekm(1/2): PLDOnly(1/1)
+---
+pmladek(16/35): BFBuildBits(2/2), AddressBooks(1/1), VCL(1/1), LinuxOnly(1/1), GentooOnly(1/1), Fixes(4/11), BuildBits(6/17)
+---
+hmth(6/14): GentooOnly(4/4), GentooExperimental(2/8)
+---
+sragavan(4/12): Fixes(4/11)
+---
+ndevaiah(1/4): SystemBits(1/1)
+---
+muthusub(1/10): CalcFixes(1/10)
+---
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001734.html">[Open Office] error under FC5: bin/ooinstall failed
+</A></li>
+	<LI>Next message: <A HREF="001736.html">[Open Office] Issue and developer informations in apply
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1735">[ date ]</a>
+              <a href="thread.html#1735">[ thread ]</a>
+              <a href="subject.html#1735">[ subject ]</a>
+              <a href="author.html#1735">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

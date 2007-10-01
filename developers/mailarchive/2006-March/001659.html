@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] kdefilepicker sigpipe in oob680-m5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20kdefilepicker%20sigpipe%20in%20oob680-m5&In-Reply-To=440590A7.1050909%40mandriva.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001658.html">
+   <LINK REL="Next"  HREF="001660.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] kdefilepicker sigpipe in oob680-m5</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20kdefilepicker%20sigpipe%20in%20oob680-m5&In-Reply-To=440590A7.1050909%40mandriva.com"
+       TITLE="[Open Office] kdefilepicker sigpipe in oob680-m5">kendy at suse.cz
+       </A><BR>
+    <I>Wed Mar  1 07:40:08 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001658.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+        <LI>Next message: <A HREF="001660.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1659">[ date ]</a>
+              <a href="thread.html#1659">[ thread ]</a>
+              <a href="subject.html#1659">[ subject ]</a>
+              <a href="author.html#1659">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Giuseppe,
+
+On Wednesday 01 March 2006 13:16, Giuseppe Ghib&#242; wrote:
+
+&gt;<i> I tried to build oob680-m4 and m5 using 20060127 ooo-build cvs,
+</I>&gt;<i> but the resulting binaries have problem with the KDE
+</I>&gt;<i> filepicker (note that this is not yet related to the problems
+</I>&gt;<i> with accented character in filenames):
+</I>&gt;<i>
+</I>&gt;<i> As soon as I try to open a document, the filepicker opens correctly
+</I>&gt;<i> (but it doesn't arrive to load the document) but then hangs just after, and
+</I>&gt;<i> then it will result in a process:
+</I>&gt;<i>
+</I>&gt;<i> ghibo    18513 18502  0 12:54 pts/6    00:00:00 [kdefilepicker] &lt;defunct&gt;
+</I>&gt;<i>
+</I>&gt;<i> which means that problably its parent has been ended (note that I don't
+</I>&gt;<i> get segfaults or coredumpts). The same problem doesn't happen
+</I>&gt;<i> under GNOME filepicker (forcing OOO_FORCE_DESKTOP=gnome) or
+</I>&gt;<i> standard OOo dialogs. Running soffice.bin under gdb it
+</I>&gt;<i> ends with &quot;Program received signal SIGPIPE, Broken pipe.&quot;
+</I>&gt;<i> (I wasn't able to get the backtrace).
+</I>
+No idea :-(  There was no change recently (= for oob-m*) in the kdefilepicker 
+code, and it works for me fine.  Didn't you have some change in your KDE?  
+What happens if you run &lt;ooo_installation&gt;/program/kdefilepicker, type 'exec'  
+and press Enter?  Do you get the file picker?
+
+&gt;<i> What is also strange is that if I open one KDE file
+</I>&gt;<i> requester with CTRL-O and then without selecting any file,
+</I>&gt;<i> I press again CTRL-O several times, it opens another KDE file requester
+</I>&gt;<i> and another and another and so on.
+</I>
+This was always there.  Unfortunately, it's not that simple to do window from 
+external application modal :-(
+
+Regards,
+Jan
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001658.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+	<LI>Next message: <A HREF="001660.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1659">[ date ]</a>
+              <a href="thread.html#1659">[ thread ]</a>
+              <a href="subject.html#1659">[ subject ]</a>
+              <a href="author.html#1659">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

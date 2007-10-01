@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OpenOffice and Mono
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20OpenOffice%20and%20Mono&In-Reply-To=42B748C2.8030200%40verizon.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001027.html">
+   <LINK REL="Next"  HREF="001029.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OpenOffice and Mono</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20OpenOffice%20and%20Mono&In-Reply-To=42B748C2.8030200%40verizon.net"
+       TITLE="[Open Office] OpenOffice and Mono">michael.meeks at novell.com
+       </A><BR>
+    <I>Tue Jun 21 09:09:34 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001027.html">[Open Office] OpenOffice and Mono
+</A></li>
+        <LI>Next message: <A HREF="001029.html">[Open Office] 680m-112 error: &quot;ulfex: Command not found&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1028">[ date ]</a>
+              <a href="thread.html#1028">[ thread ]</a>
+              <a href="subject.html#1028">[ subject ]</a>
+              <a href="author.html#1028">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Daniel,
+
+On Mon, 2005-06-20 at 18:52 -0400, Daniel Morgan wrote:
+&gt;<i> What do I need to do to try out Open Office with Mono interop?
+</I>
+	It's pretty simple in fact.
+
+	Grab HEAD mono/mcs from svn, build &amp; install.
+
+	Unfortunately to get anything to actually run you need to also apply
+the patch on this bug:
+
+	<A HREF="http://bugzilla.ximian.com/show_bug.cgi?id=75119">http://bugzilla.ximian.com/show_bug.cgi?id=75119</A>
+
+	I keep hoping something like that will go up-stream ;-)
+
+	With that mono installed &amp; in your path/ld_library path just configure
+ooo-build with --enable-mono &amp; the rest should &quot;just work&quot;.
+
+	Of course, up-stream mono has a habit of breaking wrt. some of the
+things we try to do, however - it worked quite recently ;-)
+
+	If in doubt read ooo-build/doc/mono.txt - which will show you how to
+build / run the samples.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001027.html">[Open Office] OpenOffice and Mono
+</A></li>
+	<LI>Next message: <A HREF="001029.html">[Open Office] 680m-112 error: &quot;ulfex: Command not found&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1028">[ date ]</a>
+              <a href="thread.html#1028">[ thread ]</a>
+              <a href="subject.html#1028">[ subject ]</a>
+              <a href="author.html#1028">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

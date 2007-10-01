@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooe680-m2 -- 2 more patches need porting
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooe680-m2%20--%202%20more%20patches%20need%20porting&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002122.html">
+   <LINK REL="Next"  HREF="002124.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooe680-m2 -- 2 more patches need porting</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooe680-m2%20--%202%20more%20patches%20need%20porting&In-Reply-To="
+       TITLE="[Open Office] ooe680-m2 -- 2 more patches need porting">bero at arklinux.org
+       </A><BR>
+    <I>Sun Nov  5 11:40:12 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002122.html">[Open Office] GNOME CVS: ooo-build brosenk
+</A></li>
+        <LI>Next message: <A HREF="002124.html">[Open Office] ooe680-m2 -- 2 more patches need porting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2123">[ date ]</a>
+              <a href="thread.html#2123">[ thread ]</a>
+              <a href="subject.html#2123">[ subject ]</a>
+              <a href="author.html#2123">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+I've patched ooo-build to deal with ooe680-m2, all the patches apply now in 
+the Ark config.
+
+I've had to temporarily disable 2 patches:
+
+i18npool-chinese-char-dic.diff (doesn't apply, doesn't seem to be merged, but 
+it's impossible for someone with very limited knowledge of Chinese to figure 
+out what should be in)
+
+xmlhelp-port-to-db-4.4.diff (looks like a rather huge change in the Db API got 
+in just before ooe680 - adjusting the patch will take some time (and 
+preferrably better knowledge of the way OOo deals with db than mine)).
+
+I'm running a build now and will fix build issues as they show up.
+
+-- 
+Get your own Linux distribution -- <A HREF="http://www.yold.org/">http://www.yold.org/</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002122.html">[Open Office] GNOME CVS: ooo-build brosenk
+</A></li>
+	<LI>Next message: <A HREF="002124.html">[Open Office] ooe680-m2 -- 2 more patches need porting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2123">[ date ]</a>
+              <a href="thread.html#2123">[ thread ]</a>
+              <a href="subject.html#2123">[ subject ]</a>
+              <a href="author.html#2123">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

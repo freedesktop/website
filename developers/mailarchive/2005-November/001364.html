@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Generic desktop adapter (proposal &amp; prototype)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Generic%20desktop%20adapter%20%28proposal%20%26%20prototype%29&In-Reply-To=1133356474.10607.264.camel%40linux.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001361.html">
+   <LINK REL="Next"  HREF="001362.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Generic desktop adapter (proposal &amp; prototype)</H1>
+    <B>nf2</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Generic%20desktop%20adapter%20%28proposal%20%26%20prototype%29&In-Reply-To=1133356474.10607.264.camel%40linux.site"
+       TITLE="[Open Office] Generic desktop adapter (proposal &amp; prototype)">nf2 at scheinwelt.at
+       </A><BR>
+    <I>Wed Nov 30 18:39:51 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001361.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+        <LI>Next message: <A HREF="001362.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1364">[ date ]</a>
+              <a href="thread.html#1364">[ thread ]</a>
+              <a href="subject.html#1364">[ subject ]</a>
+              <a href="author.html#1364">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>michael meeks wrote:
+
+&gt;<i>On Tue, 2005-11-29 at 19:26 +0100, &#201;ric Bischoff wrote:
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>Correct me if I am wrong, but what you propose is nothing less than merging 
+</I>&gt;&gt;<i>the kio and the vfs ?
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>	Right :-) in fact this is not such a difficult task IMHO.
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>If true : wow. While this seems highly desirable, this might be a programmer's 
+</I>&gt;&gt;<i>nightmare. For example, KDE uses Qt's signals and slots to do asynchronous 
+</I>&gt;&gt;<i>I/O while Gnome uses callbacks (if I am not wrong). And there is a lot, lot 
+</I>&gt;&gt;<i>of existing code.
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>	Sure - that's easy enough to sort out; eg. the Gnome VFS is not only
+</I>&gt;<i>thread safe but provides async callbacks that could easily be mapped to
+</I>&gt;<i>signals / slots.
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>That would be an exciting project, but much ahead of us OpenOffice.org 
+</I>&gt;&gt;<i>developpers (*). And highly &quot;political&quot;, of course.
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>	I guess; I imagine even if the result was something that looked like
+</I>&gt;<i>gnome-vfs + a Qt wrapper for it - it would be necessary to re-write
+</I>&gt;<i>completely from scratch, duplicating all the common functionality
+</I>&gt;<i>provided by glib to remove that dependency: the joys of compromise ;-) -
+</I>&gt;<i>of course, in the end this tends towards a situation way less efficient
+</I>&gt;<i>than just linking glib everywhere - since D/BUS already duplicates a
+</I>&gt;<i>bunch of that code itself - duplicating it again in every shared project
+</I>&gt;<i>tends to lead to the very bloat &amp; madness people want to avoid but ...
+</I>&gt;<i>c'est la vie ;-)
+</I>&gt;<i>
+</I>&gt;<i>	Either way the more interesting problems a shared vfs solves are
+</I>&gt;<i>standardisation, consistent URI parsing/mangling across the system, more
+</I>&gt;<i>re-use in other projects (eg. OO.o), shared maintainership etc.
+</I>&gt;<i>
+</I>&gt;<i>	IMHO it's an excellent idea to create a new shared VFS - with a feature
+</I>&gt;<i>super-set of what exists but - generating rational compromise in Free
+</I>&gt;<i>software communities is excessively difficult often :-)
+</I>&gt;<i>
+</I>&gt;<i>	My 2 cents,
+</I>&gt;<i>
+</I>&gt;<i>		Michael.
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Yes. I also agree that a shared-VFS would be the best solution. The 
+generic desktop adapter is thought to be a more realistic short term 
+solution (for the next years) - and perhaps as an interface for other 
+desktop features which can't or shouldn't be moved to common infrastructure.
+
+There has been lots of discussion about D-VFS on the xdg list, but the 
+spec on fd.org is too superficial, also because neither the Gnome nor 
+the KDE developers want to dive into the details of the opposite sides 
+VFS implementation. Just discussing and specifying doesn't seem to work 
+for this particular problem. I got the impression that D-VFS is dead.
+
+The problem with D-VFS is who's gonna start coding it (I could try, but 
+i can't afford doing such a huge thing as a hobby project ;-)).
+
+I have played with that VFS stuff a bit (i tried to write a KIO-&gt;Gnome 
+VFS bridge once - called gvfs-kio), coded a very lightweight IPC library 
+called TVariant and wrote down my thoughts on that topic...
+
+<A HREF="http://www.scheinwelt.at/~norbertf/common-vfs/concept/">http://www.scheinwelt.at/~norbertf/common-vfs/concept/</A>
+<A HREF="http://www.scheinwelt.at/~norbertf/common-vfs/dvfs/concept.html">http://www.scheinwelt.at/~norbertf/common-vfs/dvfs/concept.html</A>
+
+Norbert
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001361.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+	<LI>Next message: <A HREF="001362.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1364">[ date ]</a>
+              <a href="thread.html#1364">[ thread ]</a>
+              <a href="subject.html#1364">[ subject ]</a>
+              <a href="author.html#1364">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] 2.0.2 testing results
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%202.0.2%20testing%20results&In-Reply-To=200603120338.30719.bero%40arklinux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001770.html">
+   <LINK REL="Next"  HREF="001773.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] 2.0.2 testing results</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%202.0.2%20testing%20results&In-Reply-To=200603120338.30719.bero%40arklinux.org"
+       TITLE="[Open Office] 2.0.2 testing results">pmladek at suse.cz
+       </A><BR>
+    <I>Wed Apr 19 14:00:41 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001770.html">[Open Office] location of 64bit version of libgcj.so
+</A></li>
+        <LI>Next message: <A HREF="001773.html">[Open Office] writer crashed by using LANG=zh_CN.UTF-8 at
+	start time
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1772">[ date ]</a>
+              <a href="thread.html#1772">[ thread ]</a>
+              <a href="subject.html#1772">[ subject ]</a>
+              <a href="author.html#1772">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I know that I am a bit late but ...
+
+Kendy, there is one question for you, close the end of the mail.
+
+On Sunday 12 March 2006 03:38, Bernhard Rosenkraenzer wrote:
+&gt;<i> Hi,
+</I>&gt;<i> I've had a couple of testers give 2.0.2 a hard test today -- overall it
+</I>&gt;<i> went pretty well, but they did find a couple of problems (some are probably
+</I>&gt;<i> gcj related, some others might be local stuff).
+</I>&gt;<i>
+</I>&gt;<i> 1. The &quot;Wizards&quot; stuff in oowriter's file menu doesn't work (gcj?)
+</I>
+It started to work with recent gcj. At least, I expect that it was caused by 
+gcj. There many problems caused by 
+<A HREF="http://gcc.gnu.org/bugzilla/show_bug.cgi?id=13212">http://gcc.gnu.org/bugzilla/show_bug.cgi?id=13212</A>
+
+I hope that the fix is in gcc-4.1 now. If not I could ask our gcc developers 
+where they found the fix that we currently use.
+
+&gt;<i> 2. The package splits are a bit odd in some cases. Shouldn't the
+</I>&gt;<i>    dictionaries go to the language packs instead of core?
+</I>
+We (Novell) pack myspell-dictionaries in extra packages (one per language). 
+Though, we put the hyphen and thesaurus dictionaries into the main OOo 
+package. They are relatively small. The user could write documents in more 
+languages even if it uses single UI localization.
+
+&gt;<i> 3. The included media player doesn't work. Picking a sound from the gallery
+</I>&gt;<i>    does nothing, opening it manually and trying to open any file results in
+</I>&gt;<i>    &quot;The format of the selected file is not supported.&quot;
+</I>
+I have tested it about a year ago. Unfortunately, a Java extension, with a 
+strange license, is necessary:
+
+Here are the necessary steps to make it
+work:
+
+1. download JMF from:
+   <A HREF="http://java.sun.com/products/java-media/jmf/2.1.1/download.html">http://java.sun.com/products/java-media/jmf/2.1.1/download.html</A>
+
+   The cross-platform version is able to play simple formats, such as .wav,
+.mov
+   The Linux specific version is necessary for more complicated formats, such
+as 
+   .mpg
+
+2. install/unpack JMF anywhere.
+
+3. start ooffice
+
+4. add jmf.jar to the classpath by:
+   Tools/Options.../OpenOffice.org/Java/Class Path.../Add Archive...
+
+5. quit OOo
+
+6. start oowriter
+
+  You must set LD_LIBRARY_PATH=/path/to/JMF-*/lib to enable also the Linux
+  native modules (necessary for .mpg).
+
+7. try to replay movies or sounds by Tools/Media Player
+
+I hope that it is still valid.
+
+&gt;<i> 4. I can't reproduce this one myself, but one tester (who generally isn't
+</I>&gt;<i>    a crackpot) reported the Gallery feature doesn't include any OpenClipart
+</I>&gt;<i>    stuff, even though it was built with OpenClipart enabled.
+</I>&gt;<i>    Strangely enough, deleting gengal.rdb fixed it for him?!
+</I>&gt;<i>    The same user mentioned it would be nice to add the system icons
+</I>&gt;<i>    (KDE/Gnome/...) to the Gallery -- sounds like a good idea to me too.
+</I>
+I cannot reproduce it as well.
+
+&gt;<i> 5. On a default install, Evolution is listed as a standard data source
+</I>&gt;<i>    (even though it's not installed), but KDE AddressBook isn't.
+</I>&gt;<i>    (While at it, neither are Mozilla and Thunderbird - may make sense to
+</I>&gt;<i>    add those too).
+</I>&gt;<i>    I'm not very familiar with the way OOO's database access works;
+</I>&gt;<i>    does the attached fix (for the KDE AddressBook part) look right? If so,
+</I>&gt;<i>    what's the best way to add it, given it has to add a binary file
+</I>&gt;<i> (kab.odb)? 
+</I>
+I looks like a good idea. I think that it is worth to report it into bugzilla. 
+Could you please do it?
+
+Kendy, who could review the proposed KDE AddressBook fixes?
+
+&gt;<i> 6. ooimpress crashes with signal 11 when exiting. Not critical 
+</I>&gt;<i> because the user wanted to exit anyway, but not very nice either.
+</I>
+I am not able to reproduce it with the recent package (ooo-build-2.0.2.7).
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001770.html">[Open Office] location of 64bit version of libgcj.so
+</A></li>
+	<LI>Next message: <A HREF="001773.html">[Open Office] writer crashed by using LANG=zh_CN.UTF-8 at
+	start time
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1772">[ date ]</a>
+              <a href="thread.html#1772">[ thread ]</a>
+              <a href="subject.html#1772">[ subject ]</a>
+              <a href="author.html#1772">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

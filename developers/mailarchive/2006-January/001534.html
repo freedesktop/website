@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] java.lang.NullPointerException from HelpLinker
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20java.lang.NullPointerException%20from%20HelpLinker&In-Reply-To=200601260448.31502.bero%40arklinux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001521.html">
+   <LINK REL="Next"  HREF="001524.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] java.lang.NullPointerException from HelpLinker</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20java.lang.NullPointerException%20from%20HelpLinker&In-Reply-To=200601260448.31502.bero%40arklinux.org"
+       TITLE="[Open Office] java.lang.NullPointerException from HelpLinker">ghibo at mandriva.com
+       </A><BR>
+    <I>Fri Jan 27 03:27:14 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001521.html">[Open Office] java.lang.NullPointerException from HelpLinker
+</A></li>
+        <LI>Next message: <A HREF="001524.html">[Open Office] DroplineGNOME splash diff correction
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1534">[ date ]</a>
+              <a href="thread.html#1534">[ thread ]</a>
+              <a href="subject.html#1534">[ subject ]</a>
+              <a href="author.html#1534">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bernhard Rosenkraenzer wrote:
+
+&gt;<i> Does this happen for anyone else, or is it triggered by my &quot;use precompiled 
+</I>&gt;<i> system stuff&quot; hack?
+</I>&gt;<i> 
+</I>&gt;<i> HepLinker @/tmp/mkJxY4Es
+</I>&gt;<i> java.lang.NullPointerException
+</I>&gt;<i>    at com.jclark.xsl.sax.XMLProcessorImpl.load (libxt.jar.so)
+</I>&gt;<i>    at com.jclark.xsl.sax.XSLProcessorImpl.loadStylesheet (libxt.jar.so)
+</I>&gt;<i>    at com.sun.star.help.HelpIndexer$ParseStuff.&lt;init&gt; (HelpLinker)
+</I>&gt;<i>    at com.sun.star.help.HelpCompiler.getSourceDocument (HelpLinker)
+</I>&gt;<i>    at com.sun.star.help.HelpCompiler.compile (HelpLinker)
+</I>&gt;<i>    at com.sun.star.help.HelpLinker.link (HelpLinker)
+</I>&gt;<i>    at com.sun.star.help.HelpLinker.main (HepLinker)
+</I>&gt;<i> make:  Error code 1, while making '../../unxlngi6.pro/basic/sbasic_en-US.zip'
+</I>&gt;<i> 
+</I>&gt;<i> (m152, gcj 4.1)
+</I>&gt;<i> 
+</I>&gt;<i> LLaP
+</I>&gt;<i> bero
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">Openoffice at lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>
+Dear Bero, I get almost the same:
+
+java -Xms256m -Xmx256m 
+-Djava.library.path=/home/ghibo/rpm/BUILD/ooo-build/build/src680-m151/solver/680/unxlngi6.pro/lib 
+-cp 
+.:../../unxlngi6.pro/class:/usr/lib/jdk-1.4.2_09/jre/lib/rt.jar:.:/home/ghibo/rpm/BUILD/ooo-build/build/src680-m151/solver/680/unxlngi6.pro/bin/jaxp.jar:/home/ghibo/rpm/BUILD/ooo-build/build/src680-m151/solver/680/unxlngi6.pro/bin/parser.jar:/home/ghibo/rpm/BUILD/ooo-build/build/src680-m151/solver/680/unxlngi6.pro/bin/xt.jar:/home/ghibo/rpm/BUILD/ooo-build/build/src680-m151/solver/680/unxlngi6.pro/bin/unoil.jar:/home/ghibo/rpm/BUILD/ooo-build/build/src680-m151/solver/680/unxlngi6.pro/bin/ridl.jar:/home/ghibo/rpm/BUILD/ooo-build/build/src680-m151/solver/680/unxlngi6.pro/bin/jurt.jar:/home/ghibo/rpm/BUILD/ooo-build/build/src680-m151/solver/680/unxlngi6.pro/bin/jut.jar:/home/ghibo/rpm/BUILD/ooo-build/build/src680-m151/solver/680/unxlngi6.pro/bin/xmlsearch.jar:/home/ghibo/rpm/BUILD/ooo-build/build/src680-m151/solver/680/unxlngi6.pro/bin/xmlhelp.jar:/home/ghibo/rpm/BUILD/ooo-build/build/src680-m151/solver/680/unxlngi6.pro/bin/db.jar 
+com.sun.star.help.HelpLinker @/home/ghibo/tmp/mkLAXKEB
+java.lang.NullPointerException
+    at com.jclark.xsl.sax.XMLProcessorImpl.load (XMLProcessorImpl.java:630)
+    at com.jclark.xsl.sax.XSLProcessorImpl.loadStylesheet (XSLProcessorImpl.java:101)
+    at com.sun.star.help.HelpIndexer$ParseStuff.&lt;init&gt; (HelpIndexer.java:565)
+    at com.sun.star.help.HelpCompiler.getSourceDocument (HelpCompiler.java:388)
+    at com.sun.star.help.HelpCompiler.compile (HelpCompiler.java:191)
+    at com.sun.star.help.HelpLinker.link (HelpLinker.java:434)
+    at com.sun.star.help.HelpLinker.main (HelpLinker.java:228)
+dmake:  Error code 1, while making '../../unxlngi6.pro/bin/sbasic_en-US.zip'
+'---* tg_merge.mk *---'
+
+under m151, gcc 4.0.3-20051103 + sun jdk 1.4.2_09, ooo-build cvs 20060123.
+
+Bye
+Giuseppe
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001521.html">[Open Office] java.lang.NullPointerException from HelpLinker
+</A></li>
+	<LI>Next message: <A HREF="001524.html">[Open Office] DroplineGNOME splash diff correction
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1534">[ date ]</a>
+              <a href="thread.html#1534">[ thread ]</a>
+              <a href="subject.html#1534">[ subject ]</a>
+              <a href="author.html#1534">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

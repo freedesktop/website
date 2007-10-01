@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] misc. build issues ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000377.html">
+   <LINK REL="Next"  HREF="000378.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] misc. build issues ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] misc. build issues ...">michael@ximian.com
+       </A><BR>
+    <I>Wed, 21 Apr 2004 14:46:32 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000377.html">[Open Office] looking through ooo-build patches
+</A></li>
+        <LI> Next message: <A HREF="000378.html">[Open Office] hungarian-help.diff conflicts with norwegian-translation.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#375">[ date ]</a>
+              <a href="thread.html#375">[ thread ]</a>
+              <a href="subject.html#375">[ subject ]</a>
+              <a href="author.html#375">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi guys,
+
+	So - I just spent an entertaining time unwinding a number of
+not-altogether obvious issues :-) eventually VNC saved the day again -
+since some of these are perhaps common problems I thought I'd write them
+up:
+
+* Using 'root'
+	+ use the root account as little as possible
+	+ use 'sudo' as little as possible
+
+	If you find you are logged in as the root account; immediately log-out;
+this is what 'sudo' is for ( setup /etc/sudoers to add the line:
+
+	%wheel  ALL=(ALL)       NOPASSWD: ALL
+
+	Then edit /etc/group to add yourself the wheel group:
+
+wheel:x:10:&lt;add your name here&gt;
+
+	+ Having setup sudo - Do not use it if at all possible -
+
+* Using 'sudo'
+	+ Do not do use 'sudo' if you can at all help it
+	+ 'sudo ./soffice.bin' appears to run soffice.bin as root,
+	  _But_ critically it drops your LD_LIBRARY_PATH before it
+	  runs anything. A minute's thought shows you that allowing
+	  the user to run random SUID programs with a new 
+	  LD_LIBRARY_PATH would be a huge security hole.
+		+ most soffice.bin execution requires a custom 
+		  LD_LIBRARY_PATH
+
+* How to avoid using root or sudo
+	+ Change the ownership of directories / installs to be
+	  owned by you: ie.
+		sudo chown -R &lt;my-username&gt; &lt;directory&gt;
+	   		(the '-R' implies a recusive change)
+	+ If you have installed soffice as root, you may need to
+	  copy across ~root/.sversionrc to your home directory,
+	  NB. make sure you chown it.
+
+
+	Another problem we saw was of soffice.bin zombifying itself; while
+holding an flock on the services.rdb - meaning that we couldn't
+subsequently register the file-chooser service [ with some cryptic
+error ]; a move / copy of that would work fine.
+
+	Anyhow - the take-home message - don't run anything as root; you'll
+sooner or later either a) delete your file-system / trash your machine,
+b) fall foul of some gross security hole, or c) fall foul of some subtle
+security feature. Instead do everything as a normal user.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000377.html">[Open Office] looking through ooo-build patches
+</A></li>
+	<LI> Next message: <A HREF="000378.html">[Open Office] hungarian-help.diff conflicts with norwegian-translation.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#375">[ date ]</a>
+              <a href="thread.html#375">[ thread ]</a>
+              <a href="subject.html#375">[ subject ]</a>
+              <a href="author.html#375">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

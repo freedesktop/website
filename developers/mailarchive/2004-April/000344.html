@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOo 1.1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:rmrmg%40wp.pl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+   <LINK REL="Previous"  HREF="000340.html">
+   <LINK REL="Next"  HREF="000345.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOo 1.1.1
+   </H1>
+    <B>Rafał 'rmrmg' Roszak
+    </B> 
+    <A HREF="mailto:rmrmg%40wp.pl"
+       TITLE="[Open Office] OOo 1.1.1">rmrmg@wp.pl
+       </A><BR>
+    <I>Sun, 4 Apr 2004 23:35:34 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000340.html">[Open Office] OOo 1.1.1
+</A></li>
+        <LI> Next message: <A HREF="000345.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#344">[ date ]</a>
+              <a href="thread.html#344">[ thread ]</a>
+              <a href="subject.html#344">[ subject ]</a>
+              <a href="author.html#344">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>begin  Michael Meeks &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt; quote:
+
+&gt;<i> Hi Rafael,
+</I>&gt;<i> 
+</I>&gt;<i> On Wed, 2004-03-31 at 21:14 +0200, Rafał 'rmrmg' Roszak wrote:
+</I>&gt;<i> &gt; 1) download script can't download ooo-scaled-icons
+</I>&gt;<i> 
+</I>&gt;<i> 	This was a series of errors in my packaging; can you grab the
+</I>&gt;<i> 	new
+</I>&gt;<i> ooo-build-1.1.52 that was up-loaded shortly afterwards from the site -
+</I>&gt;<i> and check the md5sum ? [ nasty to keep the same version but ... ].
+</I>
+md5sum ../ooo-build-1.1.52.tar.gz 
+008d9f13076bc78fdb4e7720d6591bc8 
+
+all work fine i but i still have the first problem:
+
+=============
+Building project virgule
+=============
+/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.52/build/OOO_1_1_
+1/virgule/source/unx mkout -- version: 1.3
+makedepend: warning:  /usr/include/gnu/stubs.h:  non-portable whitespace
+encountered at line 7------------------------------
+Making: ../../unxlngi4.pro/misc/ooovirg.dpc
+Making : Dependencies
+touch ../../unxlngi4.pro/misc/ooovirg.dpc
+------------------------------
+Making: ../../unxlngi4.pro/obj/ooovirgx.obj
+gcc -fmessage-length=0 -c -I.  -I. -I../inc -I../../inc -I../../unx/inc
+-I../../unxlngi4.pro/inc -I.
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.52/build/OOO_1_
+1_1/solver/645/unxlngi4.pro/inc/dont_use_stl
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.52/build/OOO_1_
+1_1/solver/645/unxlngi4.pro/inc/external
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.52/build/OOO_1_
+1_1/solver/645/unxlngi4.pro/inc
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.52/build/OOO_1_
+1_1/solenv/unxlngi4/inc
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.52/build/OOO_1_
+1_1/solenv/inc
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.52/build/OOO_1_
+1_1/res
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.52/build/OOO_1_
+1_1/solver/645/unxlngi4.pro/inc/dont_use_stl
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.52/build/OOO_1_
+1_1/solenv/inc/Xp31 -INO_JAVA_HOME/include -INO_JAVA_HOME/include/linux
+-INO_JAVA_HOME/include/native_threads/include -I/usr/X11R6/include    
+-I. -I../../res -I. -O1   -pipe mcpu=athlon-xp   -DLINUX -DUNX -DVCL
+-DGCC -DC300 -DINTEL
+-DGXX_INCLUDE_PATH=/notslack/compiled/OpenOffice/oooximian/ooo-build-1.
+1.52/build/include/c++/3.2.2 -DCVER=C300 -D_USE_NAMESPACE -DGLIBC=2
+-DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1
+-DSTLPORT_VERSION=400 -D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DSUPD=645
+-DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE
+-DEXCEPTIONS_OFF -DGUI -DSRX645  -DMULTITHREAD   -o
+../../unxlngi4.pro/obj/ooovirgx.o ooovirgx.c gcc: cannot specify -o with
+-c or -S and multiple compilations dmake:  Error code 1, while making
+'../../unxlngi4.pro/obj/ooovirgx.obj'---* TG_SLO.MK *---
+
+ERROR: Error 65280 occurred while making
+/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.52/build/OOO_1_1_
+1/virgule/source/unx make[1]: *** [all] Błąd 1
+make[1]: Leaving directory
+`/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.52/bin' make: ***
+[all-recursive] Błąd 1
+
+
+-- 
+. JID: rmrmg(at)jabberpl(dot)org |   RMRMG   .
+.           gg: #2311504         | signature .
+.   mail: rmrmg(at)wp(dot)pl     |  version  .
+.  registered Linux user 261525  |   0.0.3   .
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000340.html">[Open Office] OOo 1.1.1
+</A></li>
+	<LI> Next message: <A HREF="000345.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#344">[ date ]</a>
+              <a href="thread.html#344">[ thread ]</a>
+              <a href="subject.html#344">[ subject ]</a>
+              <a href="author.html#344">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

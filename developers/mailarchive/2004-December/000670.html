@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] how to package without epm (OOo 1.9)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000669.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] how to package without epm (OOo 1.9)
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] how to package without epm (OOo 1.9)">michael@ximian.com
+       </A><BR>
+    <I>Mon, 27 Dec 2004 21:21:23 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000669.html">[Open Office] how to package without epm (OOo 1.9)
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#670">[ date ]</a>
+              <a href="thread.html#670">[ thread ]</a>
+              <a href="subject.html#670">[ subject ]</a>
+              <a href="author.html#670">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Hanno,
+
+On Fri, 2004-12-24 at 14:41 +0100, Hanno Meyer-Thurow wrote:
+&gt;<i> Anyone may explain me how to package the compiled source not using
+</I>&gt;<i> epm? Thanks a lot!
+</I>
+	For an RPM based system, you need to read bin/package-ooo - at some
+stage it moves the RPM generated files splits, and builds a few file
+lists in $OOBUILDDIR AFAIR.
+
+	Ultimately - we can't use EPM packaging in the SuSE or RH builds, so -
+we just use the result of 'make install' in the toplevel; to do that you
+prolly want to configure ooo-build with --disable-postinstall-scripts to
+stop some user-mode install scripts running. Also, post-install you want
+to do them in your package; check-out what that flag does in
+bin/package-ooo to see what to do.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000669.html">[Open Office] how to package without epm (OOo 1.9)
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#670">[ date ]</a>
+              <a href="thread.html#670">[ thread ]</a>
+              <a href="subject.html#670">[ subject ]</a>
+              <a href="author.html#670">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

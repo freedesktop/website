@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Ximian OOo 1.3.7 compile error on module psprint
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000609.html">
+   <LINK REL="Next"  HREF="000619.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Ximian OOo 1.3.7 compile error on module psprint
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Ximian OOo 1.3.7 compile error on module psprint">michael@ximian.com
+       </A><BR>
+    <I>Fri, 03 Dec 2004 14:01:16 +0530</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000609.html">[Open Office] Ximian OOo 1.3.7 compile error on module
+ psprint
+</A></li>
+        <LI> Next message: <A HREF="000619.html">[Open Office] Ximian OOo 1.3.7 compile error on module psprint
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#618">[ date ]</a>
+              <a href="thread.html#618">[ thread ]</a>
+              <a href="subject.html#618">[ subject ]</a>
+              <a href="author.html#618">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>So,
+
+	This looks like a cock-up in the back-port of some more psprint fixes
+from HEAD; you don't want to get jvmfwk from HEAD :-) we just need to
+fix the recent patch there;
+
+	Any ideas Chris ? :-)
+
+<A HREF="mailto:michael@linux">michael@linux</A>:/opt/OpenOffice/DEVEL/ooo-build/patches/vclplug&gt; grep
+'jvmfwk' *
+psprint-m46-backport.diff:+pp   psprint :       tools unotools cpputools
+jvmaccess print_header jvmfwk NULL
+psprint-m46-to-m62.diff:-pp     psprint :       tools unotools cpputools
+jvmaccess print_header jvmfwk NULL
+psprint-m46-to-m62.diff:+pp     psprint :       tools unotools cpputools
+jvmaccess SO:print_header jvmfwk NULL
+psprint-m46-to-m62.diff:+#include &lt;jvmfwk/framework.h&gt;
+
+	Regards,
+
+		Michael
+
+On Thu, 2004-12-02 at 04:52 -0700, Jayant Balraj Madavi wrote:
+&gt;<i> am guessing ..try disabling JAVA and build again
+</I>&gt;<i> 
+</I>&gt;<i> -Jayant
+</I>&gt;<i> &gt;&gt;&gt; Hanno Meyer-Thurow &lt;<A HREF="mailto:h.mth@web.de">h.mth@web.de</A>&gt; 12/02/04 2:15 PM &gt;&gt;&gt;
+</I>&gt;<i> Here it is:
+</I>&gt;<i> 
+</I>&gt;<i> Making: ../../unxlngi4.pro/slo/helper.obj
+</I>&gt;<i> g++ -fmessage-length=0 -c -I.  -I. -I../inc -I../../inc -I../../unx/inc
+</I>&gt;<i> -I../../unxlngi4.pro/inc -I.
+</I>&gt;<i> -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solver/645/unxlngi4.pro/inc/stl
+</I>&gt;<i> -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solver/645/unxlngi4.pro/inc/external
+</I>&gt;<i> -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solver/645/unxlngi4.pro/inc
+</I>&gt;<i> -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solenv/unxlngi4/inc
+</I>&gt;<i> -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solenv/inc
+</I>&gt;<i> -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/res
+</I>&gt;<i> -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solver/645/unxlngi4.pro/inc/stl
+</I>&gt;<i> -I/var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/solenv/inc/Xp31
+</I>&gt;<i> -I/opt/blackdown-jdk-1.4.2.01/include
+</I>&gt;<i> -I/opt/blackdown-jdk-1.4.2.01/include/linux
+</I>&gt;<i> -I/opt/blackdown-jdk-1.4.2.01/include/native_threads/include
+</I>&gt;<i> -I/usr/X11R6/include     -I. -I../../res -I. -O1   -pipe -O2 -mtune=pe
+</I>&gt;<i>  ntium4 -march=pentium4 -pipe -fforce-addr -fforce-mem
+</I>&gt;<i> -momit-leaf-frame-pointer -fomit-frame-pointer -fweb -ftracer
+</I>&gt;<i> -frename-registers -fvisibility-inlines-hidden -fno-for-scope
+</I>&gt;<i> -fpermissive -fno-rtti -include preinclude.h -fexceptions
+</I>&gt;<i> -fno-enforce-eh-specs   -fpic -DLINUX -DUNX -DVCL -DGCC -DC300 -DINTEL
+</I>&gt;<i> -DGXX_INCLUDE_PATH=/usr/lib/gcc/i686-pc-linux-gnu/3.4.3/include/g++-v3
+</I>&gt;<i> -DCVER=C300 -D_USE_NAMESPACE -DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT
+</I>&gt;<i> -DNEW_SOLAR -D_USE_NAMESPACE=1 -DSTLPORT_VERSION=400 -D__DMAKE -DUNIX
+</I>&gt;<i> -DCPPU_ENV=gcc3 -DSUPD=645 -DPRODUCT -DNDEBUG -DPRODUCT_FULL
+</I>&gt;<i> -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DEXCEPTIONS_ON -DCUI -DSOLAR_JAVA
+</I>&gt;<i> -DSRX645   -DSHAREDLIB -D_DLL_  -DMULTITHREAD   -o
+</I>&gt;<i> ../../unxlngi4.pro/slo/helper.o
+</I>&gt;<i> /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx
+</I>&gt;<i> 
+</I>&gt;<i> /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:76:30:
+</I>&gt;<i> jvmfwk/framework.h: Datei oder Verzeichnis nicht gefunden &lt;&lt;&lt; file not
+</I>&gt;<i> found
+</I>&gt;<i> 
+</I>&gt;<i> /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:
+</I>&gt;<i> In function `const rtl::OUString&amp; psp::getFontPath()':
+</I>&gt;<i> /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:252:
+</I>&gt;<i> Fehler: `JavaInfo' undeclared (first use this function)
+</I>&gt;<i> /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:252:
+</I>&gt;<i> Fehler: (Each undeclared identifier is reported only once for each
+</I>&gt;<i> function it appears in.)
+</I>&gt;<i> /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:252:
+</I>&gt;<i> Fehler: `pInfo' undeclared (first use this function)
+</I>&gt;<i> /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:253:
+</I>&gt;<i> Fehler: `javaFrameworkError' undeclared (first use this function)
+</I>&gt;<i> /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:253:
+</I>&gt;<i> Fehler: expected `;' vor &quot;jerr&quot;
+</I>&gt;<i> /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:254:
+</I>&gt;<i> Fehler: `jerr' undeclared (first use this function)
+</I>&gt;<i> /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:254:
+</I>&gt;<i> Fehler: `JFW_E_NONE' undeclared (first use this function)
+</I>&gt;<i> /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper/helper.cxx:260:
+</I>&gt;<i> Fehler: `jfw_freeJavaInfo' undeclared (first use this function)
+</I>&gt;<i> dmake:  Error code 1, while making '../../unxlngi4.pro/slo/helper.obj'
+</I>&gt;<i> ---* TG_SLO.MK *---
+</I>&gt;<i> 
+</I>&gt;<i> ERROR: Error 65280 occurred while making
+</I>&gt;<i> /var/tmp/portage/openoffice-ximian-1.3.7/work/OOo_1.1.3_src/psprint/source/helper
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Anyone any ideas? Thanks for help! :)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Sincerely,
+</I>&gt;<i> Hanno Meyer-Thurow
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A> 
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000609.html">[Open Office] Ximian OOo 1.3.7 compile error on module
+ psprint
+</A></li>
+	<LI> Next message: <A HREF="000619.html">[Open Office] Ximian OOo 1.3.7 compile error on module psprint
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#618">[ date ]</a>
+              <a href="thread.html#618">[ thread ]</a>
+              <a href="subject.html#618">[ subject ]</a>
+              <a href="author.html#618">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

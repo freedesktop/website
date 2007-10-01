@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] writerperfect / integration &amp; accounts ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:martin.hollmichel%40sun.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000469.html">
+   <LINK REL="Next"  HREF="000468.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] writerperfect / integration &amp; accounts ...
+   </H1>
+    <B>Martin Hollmichel
+    </B> 
+    <A HREF="mailto:martin.hollmichel%40sun.com"
+       TITLE="[Open Office] writerperfect / integration &amp; accounts ...">martin.hollmichel@sun.com
+       </A><BR>
+    <I>Tue, 03 Aug 2004 10:21:44 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000469.html">[Open Office] writerperfect / integration &amp; accounts ...
+</A></li>
+        <LI> Next message: <A HREF="000468.html">[Open Office] writerperfect / integration &amp; accounts ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#467">[ date ]</a>
+              <a href="thread.html#467">[ thread ]</a>
+              <a href="subject.html#467">[ subject ]</a>
+              <a href="author.html#467">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Michael,
+
+Michael Meeks wrote:
+
+&gt;<i>Hi Martin,
+</I>&gt;<i>
+</I>&gt;<i>	I've recently been doing some work with Will to integrate / re-work the
+</I>&gt;<i>writerperfect module (a nice, Free software word-perfect importer) and
+</I>&gt;<i>core-library (libwpd) into OO.o.
+</I>&gt;<i>
+</I>&gt;<i>	The current fruit of my effort is at:
+</I>&gt;<i>
+</I>&gt;<i>	<A HREF="http://ooo.ximian.com/ooo-build/patches/wpd/">http://ooo.ximian.com/ooo-build/patches/wpd/</A>
+</I>&gt;<i>
+</I>&gt;<i>	in patch form; this creates a quite typical 'libwpd' module for an
+</I>&gt;<i>external library [ however we need a HEAD release of libwpd 0.8.x to
+</I>&gt;<i>make this build (not yet available) - which includes a sensible
+</I>&gt;<i>makefile.mk ]. Comments welcome.
+</I>&gt;<i>
+</I>&gt;<i>	We also then create a 'writerperfect' module; that incorporates the
+</I>&gt;<i>existing writerperfect filter in patch form; and an XInputStream -&gt;
+</I>&gt;<i>SvStream -&gt; SvStorage (OLE2) -&gt; XInputStream type thing that [when fully
+</I>&gt;<i>tested / understood ] should let the thing work nicely.
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>sounds great !!,
+
+&gt;<i>	So; three requests really of you:
+</I>&gt;<i>
+</I>&gt;<i>	a) some degree of review for obvious sillies / naming issues
+</I>&gt;<i>	   etc. much appreciated
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>nothing obvious I see at the first glance,
+
+&gt;<i>	b) a new CWS of modules 'officecfg', 'scp', 'config_office',
+</I>&gt;<i>	   [new] 'libwpd', 'writerperfect' against 680 branch is
+</I>&gt;<i>	   prolly OK [ we can deal with the back-porting pain I
+</I>&gt;<i>	   suppose ].
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>I would like you to open that CWS yourself (see 
+<A HREF="http://www.openoffice.org/servlets/ReadMsg?list=dev&msgNo=11438">http://www.openoffice.org/servlets/ReadMsg?list=dev&amp;msgNo=11438</A>) but I 
+you want me to support you, I also will do that ;).
+
+&gt;<i>	c) ssh / full commit access to those modules for Will and
+</I>&gt;<i>	   Marc who are the brains behind libwpd.
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>yes, of course. and to repeat it once more: with child workspaces I 
+grant commit access to all modules :)
+
+&gt;<i>	Will / Marc - as I recall you were happy to sign the JCA / assign
+</I>&gt;<i>rights to Sun over the writerperfect code; is that (still) correct ?
+</I>&gt;<i>Martin: I'm assuming it's ok to stick with LGPL for the
+</I>&gt;<i>libwpd/download/libwpd-0.8.x.tar.gz ? [ all the wrapper pieces there are
+</I>&gt;<i>mine and a JCA/SISSL/LGPL submission ]
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>I would be more happy to have that also under JCA/SISSL/LGPL submission, 
+this makes things more easy and saves me review time but under the 
+assumption that libwpd is linked as shared library I think LGPL is also ok.
+
+&gt;<i>	Thanks,
+</I>&gt;<i>
+</I>&gt;<i>		Michael.
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>I thank you,
+
+Martin
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000469.html">[Open Office] writerperfect / integration &amp; accounts ...
+</A></li>
+	<LI> Next message: <A HREF="000468.html">[Open Office] writerperfect / integration &amp; accounts ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#467">[ date ]</a>
+              <a href="thread.html#467">[ thread ]</a>
+              <a href="subject.html#467">[ subject ]</a>
+              <a href="author.html#467">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

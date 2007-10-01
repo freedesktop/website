@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOO_1_1_0.tar.bz2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:khirano%40transwift.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000236.html">
+   <LINK REL="Next"  HREF="000208.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOO_1_1_0.tar.bz2
+   </H1>
+    <B>Hirano Kazunari
+    </B> 
+    <A HREF="mailto:khirano%40transwift.net"
+       TITLE="[Open Office] OOO_1_1_0.tar.bz2">khirano@transwift.net
+       </A><BR>
+    <I>Sun, 18 Jan 2004 15:25:56 +0900</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000236.html">[Open Office] OOO_1_1_0.tar.bz2
+</A></li>
+        <LI> Next message: <A HREF="000208.html">[Open Office] ooo-icons-OOO_1_1-7.tar.gz
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#242">[ date ]</a>
+              <a href="thread.html#242">[ thread ]</a>
+              <a href="subject.html#242">[ subject ]</a>
+              <a href="author.html#242">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Michael,
+
+Michael Meeks wrote:
+
+&gt;&gt;<i>what license do you apply to your ooo-build-1.1.4x.x.tar.gz?
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>	A good question; I'll update COPYING in CVS; it's the same as OO.o
+</I>&gt;<i>up-stream, all under the JCA: so LGPL/SISSL.
+</I>&gt;<i>
+</I>I see. Very Good!
+
+Now I will show you what I did:
+
+1) Configure:
+
+--with-system-gcc
+--enable-bonobo
+--enable-java
+--with-jdk-home=/home/khirano/j2sdk_nb/j2sdk1.4.2
+--with-distro=RHFedoraOnly
+
+&quot;make&quot; stopped at external ;)
+
+2)libstdc++.so.5 &amp; libgcc_s.so.1
+/usr/lib/libstdc++.so.5
+/lib/libgcc_s.so.1
+copy these two files to /solver/645/unxlngi4.pro/lib
+
+3) apply a patch to compile with jdk1.4.2
+<A HREF="http://www.openoffice.org/issues/show_bug.cgi?id=16626">http://www.openoffice.org/issues/show_bug.cgi?id=16626</A>
+
+4) ja_config.sh:
+move to /build/OOO_1_1_0
+execute ja_config.sh below.
+-----------------------------
+#!/bin/sh
+
+SRC_ROOT=`pwd`
+TEMP_DIR=${SRC_ROOT}/temp
+
+GPC_LOCATE=<A HREF="ftp://ftp.cs.man.ac.uk/pub/toby/gpc">ftp://ftp.cs.man.ac.uk/pub/toby/gpc</A>
+GPC_ARCHIVE=gpc231.zip
+HELPCONTENT_LOCATE=<A HREF="http://ftp.services.openoffice.org/pub/OpenOffice.org/contrib/helpcontent/">http://ftp.services.openoffice.org/pub/OpenOffice.org/contrib/helpcontent/</A>
+HELPCONTENT_ARCHIVE=helpcontent_81_unix.tgz
+
+# =================================================
+# create a tempolary directory
+# =================================================
+mkdir -p ${TEMP_DIR}
+
+# =================================================
+# Download gpc and extract to ${SRC_ROOT}/external/gpc
+# =================================================
+if [ ! -f ${TEMP_DIR}/${GPC_ARCHIVE} ]; then
+wget ${GPC_LOCATE}/${GPC_ARCHIVE} -O ${TEMP_DIR}/${GPC_ARCHIVE}
+fi
+
+unzip -o -d ${TEMP_DIR} ${TEMP_DIR}/${GPC_ARCHIVE}
+
+cp -v -f ${TEMP_DIR}/gpc231/gpc.c ${SRC_ROOT}/external/gpc
+cp -v -f ${TEMP_DIR}/gpc231/gpc.h ${SRC_ROOT}/external/gpc
+
+
+# ==================================================
+# Download Japanese Help content and extract to ${SRC_ROOT}/helpcontent/unx
+# ==================================================
+if [ ! -f ${TEMP_DIR}/${HELPCONTENT_ARCHIVE} ]; then
+wget ${HELPCONTENT_LOCATE}/${HELPCONTENT_ARCHIVE} -O 
+${TEMP_DIR}/${HELPCONTENT_ARCHIVE}
+fi
+
+cd ${TEMP_DIR}
+tar zxvf ${HELPCONTENT_ARCHIVE}
+cd ${SRC_ROOT}
+
+mkdir -p ${SRC_ROOT}/helpcontent/unx/common/japanese
+unzip -o -d ${SRC_ROOT}/helpcontent/unx/common/japanese 
+${TEMP_DIR}/shared81.zip
+
+mkdir -p ${SRC_ROOT}/helpcontent/unx/swriter/japanese
+unzip -o -d ${SRC_ROOT}/helpcontent/unx/swriter/japanese 
+${TEMP_DIR}/swriter81.zip
+
+mkdir -p ${SRC_ROOT}/helpcontent/unx/scalc/japanese
+unzip -o -d ${SRC_ROOT}/helpcontent/unx/scalc/japanese 
+${TEMP_DIR}/scalc81.zip
+
+mkdir -p ${SRC_ROOT}/helpcontent/unx/schart/japanese
+unzip -o -d ${SRC_ROOT}/helpcontent/unx/schart/japanese 
+${TEMP_DIR}/schart81.zip
+
+mkdir -p ${SRC_ROOT}/helpcontent/unx/sbasic/japanese
+unzip -o -d ${SRC_ROOT}/helpcontent/unx/sbasic/japanese 
+${TEMP_DIR}/sbasic81.zip
+
+mkdir -p ${SRC_ROOT}/helpcontent/unx/smath/japanese
+unzip -o -d ${SRC_ROOT}/helpcontent/unx/smath/japanese 
+${TEMP_DIR}/smath81.zip
+
+mkdir -p ${SRC_ROOT}/helpcontent/unx/simpress/japanese
+unzip -o -d ${SRC_ROOT}/helpcontent/unx/simpress/japanese 
+${TEMP_DIR}/simpress81.zip
+
+mkdir -p ${SRC_ROOT}/helpcontent/unx/sdraw/japanese
+unzip -o -d ${SRC_ROOT}/helpcontent/unx/sdraw/japanese 
+${TEMP_DIR}/sdraw81.zip
+
+# configure
+# ==================================================
+cd ${SRC_ROOT}/config_office
+
+./configure --with-lang=JAPN --with-dict=ALL 
+--with-jdk-home=/home/khirano/j2sdk_nb/j2sdk1.4.2 
+--with-ant-home=/home/khirano/apache-ant-1.6.0
+
+# ==================================================
+# Set enviroment values and bootstrap
+# ==================================================
+cd ${SRC_ROOT}
+
+# Optional: use ccache to shorten compilation time
+sed -e 's/=\&quot;gcc/=\&quot;ccache gcc/' -e 's/=\&quot;c++/=\&quot;ccache c++/' -e 
+'s/=\&quot;g++/=\&quot;ccache g++/' LinuxIntelEnv.Set.sh &gt; 
+${TEMP_DIR}/LinuxIntelEnv.Set.sh
+cp -v -f ${TEMP_DIR}/LinuxIntelEnv.Set.sh ${SRC_ROOT}/LinuxIntelEnv.Set.sh
+
+# ==================================================
+# Fixed Japanese original issues
+# For the detail, see issue #10718
+# ==================================================
+cd ${SRC_ROOT}/extras/source/wordbook/lang
+mkdir -p japanese
+cp -v -f english_us/soffice.dic japanese
+
+cd ${SRC_ROOT}/extras/source/templates/wizard/report/lang/
+mkdir -p japanese
+cp -v -f english_us/* japanese
+
+# ==================================================
+# Output the preparation finished
+# ==================================================
+echo 'The preparation completed.'
+echo 'Please type dmake'
+---------------------------------
+
+5) dmake
+source LinuxIntelEnv.Set.sh
+./bootstrap
+dmake
+
+Then I got ooo installation set for 49 and 81.
+
+Thanks
+khirano
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000236.html">[Open Office] OOO_1_1_0.tar.bz2
+</A></li>
+	<LI> Next message: <A HREF="000208.html">[Open Office] ooo-icons-OOO_1_1-7.tar.gz
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#242">[ date ]</a>
+              <a href="thread.html#242">[ thread ]</a>
+              <a href="subject.html#242">[ subject ]</a>
+              <a href="author.html#242">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

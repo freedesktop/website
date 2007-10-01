@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-HEAD-2.1.133-20051019 module filter and gcj
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-HEAD-2.1.133-20051019%20module%20filter%20and%20gcj&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001222.html">
+   <LINK REL="Next"  HREF="001228.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-HEAD-2.1.133-20051019 module filter and gcj</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-HEAD-2.1.133-20051019%20module%20filter%20and%20gcj&In-Reply-To="
+       TITLE="[Open Office] ooo-build-HEAD-2.1.133-20051019 module filter and gcj">h.mth at web.de
+       </A><BR>
+    <I>Fri Oct 21 11:54:05 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001222.html">[Open Office] unxlngi4.pro vs unxlngi6.pro
+</A></li>
+        <LI>Next message: <A HREF="001228.html">[Open Office] cannot compile the file
+	sd/source/filter/eppt/epptso.cxx width gcc 4.0.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1224">[ date ]</a>
+              <a href="thread.html#1224">[ thread ]</a>
+              <a href="subject.html#1224">[ subject ]</a>
+              <a href="author.html#1224">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi list!
+To get module filter build with gcj i need attached diff.
+
+System specs:
+ Gentoo Linux
+ gcc-3.4.4
+ gcj-4.0.2
+ ooo-build-HEAD-2.1.133-20051019
+
+
+Error
+===================================================================
+Building language packages Filter for filters
+===================================================================
+mkdir -p ../../../unxlngi6.pro/misc/filters/ui/langpacks/en-US/org/openoffice/TypeDetection/
+/opt/java-1.4.2-gcj/4.0.2/bin/java -Dgnu.gcj.precompiled.db.path=/var/tmp/portage/openoffice-2.1.133/work/src680-m133/solver/680/unxlngi6.pro/lib/openoffice.org.gcjdb org.apache.xalan.xslt.Process -XSL langfilter.xsl -IN ../../../unxlngi6.pro/misc/filters/ui/merge/filter_ui.xcu -PARAM lang en-US &gt; ../../../unxlngi6.pro/misc/filters/ui/langpacks/en-US/org/openoffice/TypeDetection/Filter.xcu
+Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: org.apache.xalan.xslt.Process
+   at gnu.java.lang.MainThread.run() (/usr/lib/gcc-lib/i686-pc-linux-gnu/4.0.2/libgcj.so.6.0.0)
+Caused by: java.lang.ClassNotFoundException: org.apache.xalan.xslt.Process not found in gnu.gcj.runtime.SystemClassLoader{urls=[file:./,file:./], parent=gnu.gcj.runtime.ExtensionClassLoader{urls=[], parent=null}}
+   at java.net.URLClassLoader.findClass(java.lang.String) (/usr/lib/gcc-lib/i686-pc-linux-gnu/4.0.2/libgcj.so.6.0.0)
+   at java.lang.ClassLoader.loadClass(java.lang.String, boolean) (/usr/lib/gcc-lib/i686-pc-linux-gnu/4.0.2/libgcj.so.6.0.0)
+   at java.lang.ClassLoader.loadClass(java.lang.String) (/usr/lib/gcc-lib/i686-pc-linux-gnu/4.0.2/libgcj.so.6.0.0)
+   at java.lang.Class.forName(java.lang.String, boolean, java.lang.ClassLoader) (/usr/lib/gcc-lib/i686-pc-linux-gnu/4.0.2/libgcj.so.6.0.0)
+   at gnu.java.lang.MainThread.run() (/usr/lib/gcc-lib/i686-pc-linux-gnu/4.0.2/libgcj.so.6.0.0)
+dmake:  Error code 1, while making '../../../unxlngi6.pro/misc/filters/ui/langpacks/en-US/org/openoffice/TypeDetection/Filter.xcu'
+dmake:  '../../../unxlngi6.pro/misc/filters/ui/langpacks/en-US/org/openoffice/TypeDetection/Filter.xcu' removed.
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making /var/tmp/portage/openoffice-2.1.133/work/src680-m133/filter/source/config/fragments
+
+
+After
+===================================================================
+Building language packages Filter for filters
+===================================================================
+mkdir -p ../../../unxlngi6.pro/misc/filters/ui/langpacks/en-US/org/openoffice/TypeDetection/
+/opt/java-1.4.2-gcj/4.0.2/bin/java -Dgnu.gcj.precompiled.db.path=/var/tmp/portage/openoffice-2.1.133/work/src680-m133/solver/680/unxlngi6.pro/lib/openoffice.org.gcjdb -classpath .:/var/tmp/portage/openoffice-2.1.133/work/src680-m133/solver/680/unxlngi6.pro/bin/xalan.jar org.apache.xalan.xslt.Process -XSL langfilter.xsl -IN ../../../unxlngi6.pro/misc/filters/ui/merge/filter_ui.xcu -PARAM lang en-US &gt; ../../../unxlngi6.pro/misc/filters/ui/langpacks/en-US/org/openoffice/TypeDetection/Filter.xcu
+Warning: Could not get charToByteConverterClass!
+===================================================================
+Building language packages Filter for filters
+===================================================================
+
+
+Regards,
+Hanno Meyer-Thurow
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: filter-gcj-xalan-classpath.patch
+Type: text/x-patch
+Size: 599 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051021/4c3accfa/filter-gcj-xalan-classpath.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20051021/4c3accfa/filter-gcj-xalan-classpath.bin</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001222.html">[Open Office] unxlngi4.pro vs unxlngi6.pro
+</A></li>
+	<LI>Next message: <A HREF="001228.html">[Open Office] cannot compile the file
+	sd/source/filter/eppt/epptso.cxx width gcc 4.0.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1224">[ date ]</a>
+              <a href="thread.html#1224">[ thread ]</a>
+              <a href="subject.html#1224">[ subject ]</a>
+              <a href="author.html#1224">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

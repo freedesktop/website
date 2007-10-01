@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] --with-lang=ALL breakage
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:bero%40arklinux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000855.html">
+   <LINK REL="Next"  HREF="000857.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] --with-lang=ALL breakage
+   </H1>
+    <B>Bernhard Rosenkraenzer
+    </B> 
+    <A HREF="mailto:bero%40arklinux.org"
+       TITLE="[Open Office] --with-lang=ALL breakage">bero@arklinux.org
+       </A><BR>
+    <I>Tue, 15 Mar 2005 16:41:58 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000855.html">[Open Office] Status Mon, tue
+</A></li>
+        <LI> Next message: <A HREF="000857.html">[Open Office] --with-lang=ALL breakage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#856">[ date ]</a>
+              <a href="thread.html#856">[ thread ]</a>
+              <a href="subject.html#856">[ subject ]</a>
+              <a href="author.html#856">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Verified in -m82 and -m86... If anyone is more familiar with OOo's i18n system 
+(or perl for that matter) than myself, please take a look
+
+... languages tw ...
+... creating language pack: tw !
+... cleaning the output tree ...
+... removing 
+directory /usr/src/ark/BUILD/ooo-build-HEAD/build/src680-m86/instsetoo_native/util/OpenOffice/zipfiles/de_en-US_es_fr_it_ja_ko_sv_tw_zh-CN ...
+... removing 
+directory /usr/src/ark/BUILD/ooo-build-HEAD/build/src680-m86/instsetoo_native/util/OpenOffice/services.rdb/de_en-US_es_fr_it_ja_ko_sv_tw_zh-CN ...
+... removing 
+directory /usr/src/ark/BUILD/ooo-build-HEAD/build/src680-m86/instsetoo_native/util/OpenOffice/stripped/de_en-US_es_fr_it_ja_ko_sv_tw_zh-CN ...
+
+***************************************************************
+ERROR: HostName not defined for gid_Dir_User_Autotext_Language for specified 
+language.
+in function: checking_directories_with_corrupt_hostname
+Saved 
+logfile: /usr/src/ark/BUILD/ooo-build-HEAD/build/src680-m86/instsetoo_native/util/OpenOffice/logging/de_en-US_es_fr_it_ja_ko_sv_tw_zh-CN/log_SRC680__de_en-US_es_fr_it_ja_ko_sv_tw_zh-CN.log
+***************************************************************
+Tue Mar 15 07:45:53 2005 (04:16 min.)
+Failed to install:  at ./ooinstall line 110.
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000855.html">[Open Office] Status Mon, tue
+</A></li>
+	<LI> Next message: <A HREF="000857.html">[Open Office] --with-lang=ALL breakage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#856">[ date ]</a>
+              <a href="thread.html#856">[ thread ]</a>
+              <a href="subject.html#856">[ subject ]</a>
+              <a href="author.html#856">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

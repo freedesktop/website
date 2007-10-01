@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] [Fwd: --with-distro=NovellWin32 -	small	corrections]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5BFwd%3A%20--with-distro%3DNovellWin32%20-%0A%09small%09corrections%5D&In-Reply-To=1153476314.12603.21.camel%40t60p.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001941.html">
+   <LINK REL="Next"  HREF="001942.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] [Fwd: --with-distro=NovellWin32 -	small	corrections]</H1>
+    <B>Tor Lillqvist</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5BFwd%3A%20--with-distro%3DNovellWin32%20-%0A%09small%09corrections%5D&In-Reply-To=1153476314.12603.21.camel%40t60p.site"
+       TITLE="[Open Office] [Fwd: --with-distro=NovellWin32 -	small	corrections]">tml at novell.com
+       </A><BR>
+    <I>Mon Jul 24 12:29:33 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001941.html">[Open Office] patch sc-save-password-minlength.diff updated	to	m177
+</A></li>
+        <LI>Next message: <A HREF="001942.html">[Open Office] patch sc-save-password-minlength.diff updated to	m177
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1940">[ date ]</a>
+              <a href="thread.html#1940">[ thread ]</a>
+              <a href="subject.html#1940">[ subject ]</a>
+              <a href="author.html#1940">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>fr 2006-07-21 klockan 11:05 +0100 skrev Michael Meeks:
+
+&gt;<i> &gt;   two small corrections (attached) for NovellWin32 build only.
+</I>
+(A patch to intros-scp2.diff and system-lpsolve-config_office.diff)
+
+But these two diff files are used on all platforms, so this is not the
+right way to fix the problem. The right way is presumably to move some
+other diff(s), that these diffs assume have been applied, to a set that
+is applied on all platforms, even if they as such aren't needed on
+Win32.
+
+
+&gt;<i> &gt; Why there
+</I>&gt;<i> &gt; is '--enable-check-only' used for Windows builds?
+</I>
+It's related to attempts to avoid having to run ./bootstrap manually.
+I'm not sure what the current state of that is, just came back from
+vacation, and working on making ooo-build-2-0-3 build on Win32 (and I
+indeed have came across the problems with intros-scp2.diff and
+system-lpsolve-config_office.diff). Quite possibly the
+--enable-check-only can be removed.
+
+--tml
+
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001941.html">[Open Office] patch sc-save-password-minlength.diff updated	to	m177
+</A></li>
+	<LI>Next message: <A HREF="001942.html">[Open Office] patch sc-save-password-minlength.diff updated to	m177
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1940">[ date ]</a>
+              <a href="thread.html#1940">[ thread ]</a>
+              <a href="subject.html#1940">[ subject ]</a>
+              <a href="author.html#1940">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

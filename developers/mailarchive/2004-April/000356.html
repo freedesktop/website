@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOo 1.1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000354.html">
+   <LINK REL="Next"  HREF="000366.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOo 1.1.1
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] OOo 1.1.1">dan@bigw.org
+       </A><BR>
+    <I>Thu, 8 Apr 2004 23:29:38 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000354.html">[Open Office] OOo 1.1.1
+</A></li>
+        <LI> Next message: <A HREF="000366.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#356">[ date ]</a>
+              <a href="thread.html#356">[ thread ]</a>
+              <a href="subject.html#356">[ subject ]</a>
+              <a href="author.html#356">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+There are a couple of problems with the deliver.pl script, none of 
+which are insurmountable.  First, there are completely different 
+codepaths for multiprocess builds and single-process builds (ie for 
+-Px).  That makes it a bit hard to do one solution.  The second is that 
+unless we include a full parsing engine in deliver.pl, we are limited 
+to one conditional, which doesn't really scale well to ooo-build (but 
+would be fine for my little project).
+
+The advantage of this method over what I understand Chris' to be 
+(correct me if I'm wrong) is that my method would allow for conditional 
+building of directories _inside_ modules too, not just the whole module 
+itself.  I'll keep hacking away and see what I get.  It might be 
+sufficient to simply have a list of conditionals and assume that they 
+can be OR-ed.
+
+Dan
+
+On Apr 8, 2004, at 2:17 PM, Chris Halls wrote:
+
+&gt;<i> On Thu, 2004-04-08 at 19:29, Rene Engelhard wrote:
+</I>&gt;&gt;<i> I know Chris is/was working on a SKIP_PROJECTS=&quot;&quot; which (imho) would 
+</I>&gt;&gt;<i> be
+</I>&gt;&gt;<i> a much saner way than just removing the deps from the modules using
+</I>&gt;&gt;<i> them... I don't know the status of this and don't know at which branch
+</I>&gt;&gt;<i> that was targetted? Chris?
+</I>&gt;<i>
+</I>&gt;<i> I saw this in Dan's blog and assumed he had already his own
+</I>&gt;<i> implementation:
+</I>&gt;<i>
+</I>&gt;<i>         Spent some time today hacking on build.pl to enable conditional
+</I>&gt;<i>         building of modules. There was some noise a while ago about a
+</I>&gt;<i>         new build.lst format that would enable this in a flexible 
+</I>&gt;<i> manner
+</I>&gt;<i>         (ie build this directory on this arch but not others) but I
+</I>&gt;<i>         can't seem to recall what came out of that besides a
+</I>&gt;<i>         specification document.
+</I>&gt;<i>
+</I>&gt;<i>         The reason I'm doing this is so that I can specify what modules
+</I>&gt;<i>         don't need to get built for &quot;core&quot; office, avoiding modifying
+</I>&gt;<i>         every .mk file in that module. That would be a pain.
+</I>&gt;<i>
+</I>&gt;<i> Dan? :)
+</I>&gt;<i>
+</I>&gt;<i> Chris
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000354.html">[Open Office] OOo 1.1.1
+</A></li>
+	<LI> Next message: <A HREF="000366.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#356">[ date ]</a>
+              <a href="thread.html#356">[ thread ]</a>
+              <a href="subject.html#356">[ subject ]</a>
+              <a href="author.html#356">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

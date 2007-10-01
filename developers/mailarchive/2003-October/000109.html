@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> PATCH Re: [Open Office] Where does the standard symbol font come
+ from?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:wlach%40nit.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000085.html">
+   <LINK REL="Next"  HREF="000110.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>PATCH Re: [Open Office] Where does the standard symbol font come
+ from?
+   </H1>
+    <B>William Lachance
+    </B> 
+    <A HREF="mailto:wlach%40nit.ca"
+       TITLE="PATCH Re: [Open Office] Where does the standard symbol font come
+ from?">wlach@nit.ca
+       </A><BR>
+    <I>Thu, 16 Oct 2003 12:44:12 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000085.html">[Open Office] Where does the standard symbol font come from?
+</A></li>
+        <LI> Next message: <A HREF="000110.html">PATCH Re: [Open Office] Where does the standard symbol font
+ come from?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#109">[ date ]</a>
+              <a href="thread.html#109">[ thread ]</a>
+              <a href="subject.html#109">[ subject ]</a>
+              <a href="author.html#109">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-sktNGzenzxcmPCeuyHkP
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+I did a bit of debugging last weekend and created a patch that seems to
+fix the problem (Ximian bug #49212). It turns out that Ximian OOo was
+trying to render stuff with the &quot;Symbol&quot; font w/o remapping to the
+unicode that was expected when using &quot;Standard Symbols L&quot;. 
+
+So I created a mapping function in fontcvt.cxx (basically a reverse of
+what happens when you convert standard symbols l -&gt; symbol), which seems
+to fix the problem. I did have to make it so the mapping function is
+applied regardless of what the unicode character is (instead of
+reserving it for characters 0xF020 &lt;= c &lt;= 0xF0FF), which may or may not
+be really bad. I didn't encounter any problems in my limited testing.
+
+I'm still confused about where the private unicode codepage (0xF0..)
+stuff is coming from (it does appear in standard OOo, but not in Ximian
+OOo). I'd like to see exactly what standard OOo is doing in this case
+(e.g.: why exactly does it perform fine without this patch?), but lack
+the time to do so just now.
+-- 
+William Lachance &lt;<A HREF="mailto:wlach@nit.ca">wlach@nit.ca</A>&gt;
+Network Integration Technologies
+
+--=-sktNGzenzxcmPCeuyHkP
+Content-Disposition: attachment; filename=fontcvt.patch
+Content-Type: text/plain; name=fontcvt.patch; charset=
+Content-Transfer-Encoding: 7bit
+
+--- fontcvt.cxx	2002-06-10 07:06:06.000000000 -0400
++++ fontcvt.cxx	2003-10-15 15:04:39.000000000 -0400
+@@ -1408,6 +1408,16 @@
+ 
+ // -----------------------------------------------------------------------
+ 
++static sal_Unicode ImplSymbolsToStandardSymbolsL( sal_Unicode c )
++{
++    for (int i=0; i&lt;sizeof(aSymbolExtraTab2)/sizeof(ExtraTable); i++) 
++    {
++       if ( aSymbolExtraTab2[i].cMS == c)
++ 	   return aSymbolExtraTab2[i].cStar;
++    }
++    return 0;
++}
++ 
+ void ImplRecodeString( const ImplCvtChar* pConversion, String&amp; rStr,
+            xub_StrLen nIndex, xub_StrLen nLen )
+ {
+@@ -1418,8 +1428,7 @@
+     for(; nIndex &lt; nLastIndex; ++nIndex )
+     {
+         sal_Unicode c = rStr.GetChar( nIndex );
+-        if( (c &gt;= 0xF020) &amp;&amp; (c &lt;= 0xF0FF) )
+-            rStr.SetChar( nIndex, ImplRecodeChar( pConversion, c ) );
++        rStr.SetChar( nIndex, ImplRecodeChar( pConversion, c ) );
+     }
+ }
+ 
+@@ -1452,6 +1461,7 @@
+ 
+ static ImplCvtChar aImplStarSymbolCvt = { NULL, &quot;StarBats&quot;, ImplStarSymbolToStarBats };
+ static ImplCvtChar aImplDingBatsCvt   = { aMonotypeSortsTab, &quot;StarSymbol&quot;, NULL };
++static ImplCvtChar aImplStandardSymbolsLCvt = { NULL, &quot;Standard Symbols L&quot;, ImplSymbolsToStandardSymbolsL };
+ 
+ // -----------------------------------------------------------------------
+ 
+@@ -1483,6 +1493,10 @@
+         if( aOrgName.EqualsAscii( &quot;starsymbol&quot; ) )      pCvt = &amp;aImplStarSymbolCvt;
+         else if( aOrgName.EqualsAscii( &quot;opensymbol&quot; ) ) pCvt = &amp;aImplStarSymbolCvt;
+     }
++    else if ( aMapName.EqualsAscii( &quot;standardsymbolsl&quot; ) &amp;&amp; aOrgName.EqualsAscii( &quot;symbol&quot; ))
++    {
++	    pCvt = &amp;aImplStandardSymbolsLCvt;
++    }
+ 
+     return pCvt;
+ }
+
+--=-sktNGzenzxcmPCeuyHkP--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000085.html">[Open Office] Where does the standard symbol font come from?
+</A></li>
+	<LI> Next message: <A HREF="000110.html">PATCH Re: [Open Office] Where does the standard symbol font
+ come from?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#109">[ date ]</a>
+              <a href="thread.html#109">[ thread ]</a>
+              <a href="subject.html#109">[ subject ]</a>
+              <a href="author.html#109">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>
