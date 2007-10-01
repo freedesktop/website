@@ -6,7 +6,7 @@ $content = <<<EOT
 Choose the version of OpenOffice that matches your computer's operating system.
 <dl>
 <dt><a href="http://download.go-oo.org/">Source Code</a></dt>
-<dd><a href="http://download.go-oo.org/OOG680/ooo-build-2.3.0.1.tar.gz">ooo-build-2.3.0.1</a> or
+<dd><a href="http://download.go-oo.org/OOG680/ooo-build-2.3.0.3.tar.gz">ooo-build-2.3.0.3</a> or
 <a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/">svn view</a> or:
 <pre>\$ svn checkout http://svn.gnome.org/svn/ooo-build/trunk ooo-build</pre>
 </dd>
