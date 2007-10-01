@@ -9,6 +9,7 @@ function print_page($title, $context, $heading, $content)
 			"users" => array("/users/", "Users"),
 			"mgp" => array("/users/mgp/", "MagicPoint", "users"),			
 			"developers" => array("/developers/", "Developers"),
+			"mailarchive" => array("/developers/mailarchive", "Mail archive", "developers"),
 			"about" => array("/about/", "About") 
 			);
 	
