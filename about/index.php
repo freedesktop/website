@@ -10,17 +10,28 @@ $content = <<<EOT
 <p align="center">
 <img src="/img/go-oo-team.png"></a>
 </p>
-<p align="center">
-    From top left: Andreas, Bernhard, David, Dhananjay, Federico, Fong
-</p><p align="center">
-    Fridrich, Giuseppe, Hubert, Jakub, Jan, Jiao
-</p><p align="center">
-    Jody, Kai, Kohei, Martin, Matthias, Michael
-</p><p align="center">
-    Mike, Noel, Petr, Radek, Rene, Tor
-</p><p align="center">
-    Volker, Yin, ZhangYun.
-</p>
+EOT;
+$people = file($_SERVER['argv'][1]."/src/easter/people.txt");
+$names = array();
+foreach($people as $i)
+{
+	if(!strlen(trim($i)) or substr($i, 0, 1) == "#")
+		continue;
+	$names[] = preg_replace("/^([^: ]+):* .*/", '$1', trim($i));
+}
+sort($names);
+$limit = 6;
+for($i=0;$i<count($names);$i+=$limit)
+{
+	$content .= "<p style=\"text-align: center; height: 78px;\">\n";
+	if($i==0)
+		$content .= "From top left: ";
+	$content .= join(", ", array_slice($names, $i, $limit));
+	if(count($names)<$i+$limit)
+		$content .= ".";
+	$content .= "\n</p>\n";
+}
+$content .= <<<EOT
 <p>If you believe you should be on this page, but are missing please
 ping me <i>michael dot meeks at</i><i> novell.com</i></p>
 EOT;
