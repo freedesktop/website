@@ -1,0 +1,59 @@
+--- cvsquery.cgi	Wed Sep 25 04:20:59 2002
++++ cvsquerynew.cgi	Wed Dec  4 03:54:37 2002
+@@ -1,4 +1,5 @@
+ #!/usr/bin/perl -w
++#
+ # -*- Mode: perl; indent-tabs-mode: nil -*-
+ #
+ # The contents of this file are subject to the Netscape Public
+@@ -68,11 +69,15 @@
+ my $sm_font_tag = "<font face='Arial,Helvetica' size=-2>";
+ 
+ my $generateBackoutCVSCommands = 0;
++my $generateUpdateCVSCommands = 0;
+ if (defined $::FORM{'generateBackoutCVSCommands'}) {
+     $generateBackoutCVSCommands = 1;
+ }
++elsif (defined $::FORM{'generateUpdateCVSCommands'}) {
++    $generateUpdateCVSCommands = 1;
++}
+ 
+-if (!$generateBackoutCVSCommands) {
++if (!$generateBackoutCVSCommands && !$generateUpdateCVSCommands) {
+     print "Content-type: text/html
+ 
+ ";
+@@ -224,6 +229,7 @@
+ <br><a href=mailto:$s>Mail everyone on this page</a>
+ <NOBR>($pCount people)</NOBR>
+ <br><a href=cvsquery.cgi?$ENV{QUERY_STRING}&generateBackoutCVSCommands=1>Show commands which could be used to back out these changes</a>
++<br><a href=cvsquerynew.cgi?$ENV{QUERY_STRING}&generateUpdateCVSCommands=1>Show commands to update to these versions</a>
+ ";
+ 
+ if (defined $::FORM{'generateBackoutCVSCommands'}) {
+@@ -244,6 +250,25 @@
+     }
+     exit;
+ }
++elsif (defined $::FORM{'generateUpdateCVSCommands'}) {
++    print "Content-type: text/plain
++
++# This page can be saved as a shell script and executed.  It should be
++# run at the top of your CVS work area.  It will update your workarea to
++# the versions selected by your query
++
++";
++    foreach my $ci (reverse @{$result}) {
++        if ($ci->[$::CI_REV] eq "") {
++            print "echo 'Changes made to $ci->[$::CI_DIR]/$ci->[$::CI_FILE] need to be updated by hand'\n";
++            next;
++        }
++        print "cvs update -r$ci->[$::CI_REV] $ci->[$::CI_DIR]/$ci->[$::CI_FILE]\n";
++    }
++    exit;
++}
++
++
+ 
+ 
+ PutsHeader($t, "CVS Checkins", "$menu");

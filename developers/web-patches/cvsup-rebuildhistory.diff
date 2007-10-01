@@ -1,0 +1,197 @@
+--- /home/ooo/mozilla/webtools/bonsai/rebuildcvshistory.cgi	2004-09-18 01:02:17.000000000 -0400
++++ ./rebuildcvshistory.cgi	2005-01-25 10:57:11.922237888 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bonsaitools/bin/perl -w
++#!/usr/bin/perl -w
+ #
+ # The contents of this file are subject to the Netscape Public
+ # License Version 1.1 (the "License"); you may not use this file
+@@ -19,6 +19,8 @@
+ #
+ # Contributor(s): 
+ 
++push @INC, $ENV{BONSAIPATH};
++
+ use strict;
+ 
+ # Shut up misguided -w warnings about "used only once".  "use vars" just
+@@ -38,13 +40,14 @@
+      my ($filename) = @_;
+      my $rlog = Param('rlogcommand') . " " . shell_escape($filename) . " |";
+      my $doingtags = 0;
++     my $stat = 'C';
+      my $filehead = dirname($filename);
+      my (%branchname, $filerealname, $filetail, $line, $trimmed);
+      my ($tag, $version, $branchid, $dirid, $fileid, $indesc, $desc);
+      my ($author, $revision, $datestr, $date, $pluscount, $minuscount);
+      my ($branch);
+ 
+-     print "$filename\n";
++     print "Bonsai upd: $filename\n";
+ 
+      die "Unable to run rlog command '$rlog': $!\n" 
+           unless (open(RLOG_PROC, "$rlog"));
+@@ -111,8 +114,9 @@
+                                    $datestr =~ s!^(\d{4})/(\d+/\d+)!$2/$1!;
+                                    $date = str2time($datestr, "GMT");
+                                    if ($date >= $::StartFrom) {
+-                                        AddToDatabase("C|$date|$author|$::Repository|$filehead|$filetail|$revision||$branch|+$pluscount|-$minuscount", $desc);
+-                                   }
++					print " $stat, $branch, $filehead, $author, $date, $::Repository\n";
++                                        AddToDatabase("$stat|$date|$author|$::Repository|$filehead|$filetail|$revision||$branch|+$pluscount|-$minuscount", $desc);
++				   } 
+                               }
+                               $indesc = 0;
+                          } else {
+@@ -126,6 +130,7 @@
+                          if ($line =~ /^revision ([0-9.]*)$/) {
+                               $pluscount = ($minuscount = 0);
+                               $date = ($indesc = 0);
++			      $stat = 'C';
+                               $datestr = ($desc = ($branch = ($author = "")));
+                               $revision = $1;
+ 
+@@ -141,10 +146,18 @@
+                               $line =~ s!^author: ([^;]*);\s+!!;
+                               $author = $1;
+ 
++			      if ($line =~ /state: dead;/) {
++				  $stat = 'R';
++			      } else {
++				  $stat = 'C';
++			      }
++
+                               if ($line =~ /lines: \+(\d+) -(\d+)/) {
+                                    $pluscount = $1;
+                                    $minuscount = $2;
+-                              }
++			      } else {
++				   $stat = 'A';
++			      }
+                          }
+ 
+                          elsif ($line =~ /^branches: [0-9 .;]*$/) {
+@@ -203,6 +216,14 @@
+ 
+ 
+ $| = 1;
++my $update = 0;
++my $TIMESTAMP_PATH = '/var/lxr/batch-timestamp';
++# max time from ooo cvs -> me refreshing [?]
++# also, max broken clock-skew on users' machine [?]
++my $DODGY_SAFETY_FACTOR = 3600 * 24 * 8;
++my $a;
++my $mtime;
++my $cvsup_upd = 0;
+ 
+ if ($#ARGV == 4) {
+      $::TreeID                   = $ARGV[0];
+@@ -210,6 +231,27 @@
+      $::FORM{'firstfile'}        = $ARGV[2];
+      $::FORM{'subdir'}           = $ARGV[3];
+      $::FORM{'modules'}          = $ARGV[4];
++     $::StartFrom   = ParseTimeAndCheck(FormData('startfrom'));
++} elsif ($#ARGV == 0) {
++     $::TreeID                   = $ARGV[0];
++
++# Coupled to cvsup via this ...     
++     $mtime = 0;
++     ($a,$a,$a,$a,$a,$a,$a,$a,
++      $a,$mtime,$a,$a,$a)
++	 = stat($TIMESTAMP_PATH);
++     if ($mtime) {
++	 $::StartFrom = $mtime - $DODGY_SAFETY_FACTOR;
++     } else {
++     	die "No timestamp on $TIMESTAMP_PATH!";
++     }
++     print ("Updating from stamp ". gmtime ($mtime));
++     
++     $::FORM{'firstfile'}        = '';
++     $::FORM{'subdir'}           = '';
++     $::FORM{'modules'}          = '';
++
++     $cvsup_upd = 1;
+ } else {
+      print "Content-type: text/html
+ 
+@@ -219,9 +261,9 @@
+ <title>Rebuilding CVS history database... please be patient...</title>
+ <body>
+ <pre>\n";
++	$::StartFrom   = ParseTimeAndCheck(FormData('startfrom'));
+ }
+ 
+-$::StartFrom   = ParseTimeAndCheck(FormData('startfrom'));
+ $::FirstFile   = trim(FormData('firstfile'));
+ $::SubDir      = trim(FormData('subdir'));
+ $::Modules     = '';
+@@ -253,24 +295,51 @@
+ my $StartingDir;
+ ($StartingDir = "$::Repository/$::SubDir") =~ s!/.?$!! if $::SubDir;
+ 
+-
+-print "Doing directories: @Dirs ...\n";
+-foreach my $Dir (@Dirs) {
+-     my $dir = "$::Repository/$Dir";
+-
+-     unless (grep $Dir, @::LegalDirs) {
+-          print "$Dir: is invalid, skipping...\n";
+-     }
+-
+-     if (-f $dir) {
+-          ProcessOneFile($dir);
+-     } elsif (-d $dir) {
+-          ProcessDirectory($dir);
+-     } elsif (!-r $dir) {
+-          print "$Dir: not readable, skipping...\n";
+-     } else {
+-          print "$Dir: not a file or directory, skipping...\n";
+-     }
++if ($cvsup_upd) {
++    # CVSup prints before synching ...
++    my $delay_line='';
++    while (<STDIN>) {
++	my $line;
++	my $attic;
++	my $basename;
++	my $fname;
++	
++	$line = $_;
++
++	if ($delay_line) {
++		ProcessOneFile($delay_line);
++		$delay_line='';
++	}
++
++	if ($line =~ /\-\> Attic/) {
++	    $attic = "/Attic";
++	} else {
++	    $attic = '';
++	}
++	if ($line =~ /^ (Edit|Create) (.*\,v)/) {
++	    $basename = $fname = $2;
++	    $basename =~ s|/([^/]*)$||;
++	    $fname = $1;
++	    $delay_line = "$::Repository/$basename$attic/$fname";
++	}
++    }
++} else {
++    print "Doing directories: @Dirs ...\n";
++    foreach my $Dir (@Dirs) {
++	my $dir = "$::Repository/$Dir";
++	my $attic;
++	
++	unless (grep $Dir, @::LegalDirs) {
++	    print "$Dir: is invalid, skipping...\n";
++	
++        } elsif (-f $dir) {
++	    ProcessOneFile($dir);
++	} elsif (-d $dir) {
++	    ProcessDirectory($dir);
++	} else {
++	    print "$Dir: not a file or directory, skipping...\n";
++	}
++    }
+ }
+ 
+ exit 0;
