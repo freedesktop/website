@@ -10,6 +10,7 @@ ALL_TARGETS = index.html \
 	users/index.html \
 	users/mgp/index.html \
 	developers/index.html \
+	developers/mailarchive/index.html \
 	about/index.html \
 	img/go-oo-team.png
 
