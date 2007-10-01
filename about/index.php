@@ -4,9 +4,6 @@ require("../template.php");
 $content = <<<EOT
 <p>Go-oo has been contributed to by many people, past and present.</p>
 <br>     
-<!-- FIXME: we should generate this from the same code that generates the
-     easter egg and do it more intelligently: row by row or something.
-     Also segregate into current and historic developers -->
 <p align="center">
 <img src="/img/go-oo-team.png"></a>
 </p>

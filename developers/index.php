@@ -82,7 +82,8 @@ $content = <<<EOT
                 <li><a href="tutorials/">Hackers Tutorials</a></li>
                 <li><a href="cws.html">Hackers CWS howto</a> &amp; <a href="cws-quickhowto-ja.html">Japanese</a></li>
                 <li><a href="http://wiki.services.openoffice.org/wiki/Ooo-build">About ooo-build</a></li>
-                <li><a href="/users/faq/">Users' FAQ</a></li>
+                <li><a href="http://wiki.services.openoffice.org/wiki/Environment_Variables">Tweaking setting
+		at runtime.</a></li>
                 <li><a href="http://wiki.services.openoffice.org/wiki/DomainDeveloper">Who is Whom?</a></li>
                 <li><a href="http://eis.services.openoffice.org/EIS2/servlet/GuestLogon">EIS</a></li>
                 <li><a href="http://wiki.services.openoffice.org/wiki/Tinderbox_Setup">Tinderbox setup</a></li>

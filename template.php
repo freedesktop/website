@@ -6,6 +6,8 @@ function print_page($title, $context, $heading, $content)
 			"download" => array("/download/", "Download"),
 			"discover" => array("/discover/", "Discover"),
 			"comingsoon" => array("/discover/comingsoon/", "Coming Soon", "discover"),
+			"users" => array("/users/", "Users"),
+			"mgp" => array("/users/mgp/", "MagicPoint", "users"),			
 			"developers" => array("/developers/", "Developers"),
 			"about" => array("/about/", "About") 
 			);
@@ -19,7 +21,7 @@ function print_page($title, $context, $heading, $content)
 	}
 
 	$state = array ( "container", "container", 
-	       "container", "container",
+	       "container", "container", "container",
 	       "container" ); 
 	// this is ugly. define the states / id differently
 	if($id == "summary") {
@@ -31,11 +33,14 @@ function print_page($title, $context, $heading, $content)
 	else if($id == "discover") {
 	     $state[2] = "selected";
 	}
-	else if($id == "developers") {
+	else if($id == "users") {
 	     $state[3] = "selected";
 	}
-	else if($id == "about") {
+	else if($id == "developers") {
 	     $state[4] = "selected";
+	}
+	else if($id == "about") {
+	     $state[5] = "selected";
 	}
 
 ?>
@@ -69,8 +74,9 @@ function print_page($title, $context, $heading, $content)
                     <li class="tabs-<?php print $state[0]; ?>"><a href="/">Summary</a></li>
                     <li class="tabs-<?php print $state[1]; ?>"><a href="/download/">Download</a></li>
                     <li class="tabs-<?php print $state[2]; ?>"><a href="/discover/">Discover</a></li>
-                    <li class="tabs-<?php print $state[3]; ?>"><a href="/developers/">Developers</a></li>
-                    <li class="tabs-<?php print $state[4]; ?>"><a href="/about/">About</a></li>
+                    <li class="tabs-<?php print $state[3]; ?>"><a href="/users/">Users</a></li>
+                    <li class="tabs-<?php print $state[4]; ?>"><a href="/developers/">Developers</a></li>
+                    <li class="tabs-<?php print $state[5]; ?>"><a href="/about/">About</a></li>
                 </ul>
 		<div id="hnav">
 		        <?php
@@ -87,7 +93,7 @@ function print_page($title, $context, $heading, $content)
 
                 <div class="container">
                     <div id="splash">
-                        <h3><?php print $heading; ?></h3>
+                        <h2><?php print $heading; ?></h2>
 			<?php print $content . "\n"; ?>
                     </div>
                 </div>
