@@ -2,16 +2,25 @@
 
 function print_page($title, $context, $heading, $content)
 {
+        // hnave values are as follow
+        //  - the URL path (relative if possible)
+        //  - the label as used in tabs and the navigation
+        //  - (optional) the id of the tab it is under, this is for subsections
 	$hnav = array( "summary" => array("/", "Summary"),
 			"download" => array("/download/", "Download"),
 			"discover" => array("/discover/", "Discover"),
-			"comingsoon" => array("/discover/comingsoon/", "Coming Soon", "discover"),
+			"comingsoon" => array("/discover/comingsoon/", 
+                                              "Coming Soon", "discover"),
 			"users" => array("/users/", "Users"),
-			"mgp" => array("/users/mgp/", "MagicPoint", "users"),			
+			"mgp" => array("/users/mgp/", "MagicPoint", "users"),
 			"developers" => array("/developers/", "Developers"),
-			"mailarchive" => array("/developers/mailarchive", "Mail archive", "developers"),
+			"mailarchive" => array("/developers/mailarchive", 
+                                               "Mail archive", "developers"),
 			"about" => array("/about/", "About") 
 			);
+        // tabs state. the all have the "container" value
+	// and the current one MUST have the "selected" value
+	// this is all dependent on ths CSS used.
 	$tabs = array ( "summary" => "container", 
 	       	       	 "download" => "container", 
 	       		 "discover" => "container", 
@@ -26,7 +35,7 @@ function print_page($title, $context, $heading, $content)
 	else {
 		$id = $context[0];
 	}
-
+	// the current tab is selected
 	$tabs[$id] = "selected";
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
