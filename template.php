@@ -12,6 +12,12 @@ function print_page($title, $context, $heading, $content)
 			"mailarchive" => array("/developers/mailarchive", "Mail archive", "developers"),
 			"about" => array("/about/", "About") 
 			);
+	$tabs = array ( "summary" => "container", 
+	       	       	 "download" => "container", 
+	       		 "discover" => "container", 
+			 "users" => "container", 
+			 "developers" => "container",
+	       		 "about" => "container" ); 
 	
 	$link = $hnav[$context[0]];
 	if( isset($link[2]) ) {
@@ -21,29 +27,7 @@ function print_page($title, $context, $heading, $content)
 		$id = $context[0];
 	}
 
-	$state = array ( "container", "container", 
-	       "container", "container", "container",
-	       "container" ); 
-	// this is ugly. define the states / id differently
-	if($id == "summary") {
-	     $state[0] = "selected";
-	}
-	else if($id == "download") {
-	     $state[1] = "selected";
-	}
-	else if($id == "discover") {
-	     $state[2] = "selected";
-	}
-	else if($id == "users") {
-	     $state[3] = "selected";
-	}
-	else if($id == "developers") {
-	     $state[4] = "selected";
-	}
-	else if($id == "about") {
-	     $state[5] = "selected";
-	}
-
+	$tabs[$id] = "selected";
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -72,12 +56,14 @@ function print_page($title, $context, $heading, $content)
             </div>
             <div id="container">
                 <ul id="nav">
-                    <li class="tabs-<?php print $state[0]; ?>"><a href="/">Summary</a></li>
-                    <li class="tabs-<?php print $state[1]; ?>"><a href="/download/">Download</a></li>
-                    <li class="tabs-<?php print $state[2]; ?>"><a href="/discover/">Discover</a></li>
-                    <li class="tabs-<?php print $state[3]; ?>"><a href="/users/">Users</a></li>
-                    <li class="tabs-<?php print $state[4]; ?>"><a href="/developers/">Developers</a></li>
-                    <li class="tabs-<?php print $state[5]; ?>"><a href="/about/">About</a></li>
+		<?php
+			foreach($tabs as $key => $value)
+			{
+				$link = $hnav[$key];
+				echo "<li class=\"tabs-$value\"><a href=\"$link[0]\">$link[1]</a></li>\n";
+
+			}
+		?>
                 </ul>
 		<div id="hnav">
 		        <?php
