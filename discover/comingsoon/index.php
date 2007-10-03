@@ -9,7 +9,7 @@ of OpenOffice.org</p>
 
 <h4>Enhanced field support</h4>
 
-<p>OpenOffice.org Writer has a lot of shortcommings when it comes to
+<p>OpenOffice.org Writer has a lot of shortcomings when it comes to
 fields.  Florian Reuter is working on enhancing the field support in
 Writer.  Here are the issues currently being worked on:</p>
 <ul>
