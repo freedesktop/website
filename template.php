@@ -11,8 +11,6 @@ function print_page($title, $context, $heading, $content)
 			"discover" => array("/discover/", "Discover"),
 			"comingsoon" => array("/discover/comingsoon/", 
                                               "Coming Soon", "discover"),
-			"users" => array("/users/", "Users"),
-			"mgp" => array("/users/mgp/", "MagicPoint", "users"),
 			"developers" => array("/developers/", "Developers"),
 			"mailarchive" => array("/developers/mailarchive", 
                                                "Mail archive", "developers"),
@@ -24,7 +22,6 @@ function print_page($title, $context, $heading, $content)
 	$tabs = array ( "summary" => "container", 
 	       	       	 "download" => "container", 
 	       		 "discover" => "container", 
-			 "users" => "container", 
 			 "developers" => "container",
 	       		 "about" => "container" ); 
 	
