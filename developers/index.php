@@ -102,8 +102,9 @@ $content = <<<EOT
 	
 	<p>There is a mailing for ooo-build development. 
 	<a href="http://lists.go-oo.org/listinfo.cgi/dev-go-oo.org">More info</a> on
-	how to subscribe or to read the archive. There is also the old mailing list 
-	<a href="mailarchive/">archive</a>.</p>
+	how to <a href="http://lists.go-oo.org/listinfo.cgi/dev-go-oo.org">subscribe</a> or to 
+	read the <a href="http://lists.go-oo.org/pipermail/dev-go-oo.org/">archive</a>. 
+	There is also the <a href="mailarchive/">old mailing list archive</a>.</p>
 
 	<h5>Tinderbox Build Status</h5>
         <p>Find an overview over the last tinderbox build results 
