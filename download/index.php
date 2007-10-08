@@ -11,15 +11,15 @@ Choose the version of OpenOffice that matches your computer's operating system.
 <pre>\$ svn checkout http://svn.gnome.org/svn/ooo-build/trunk ooo-build</pre>
 </dd>
 <dt>Windows ( mirrors:
-be: <a href="ftp://ftp.skynet.be/pub/ftp.suse.com/projects/go-oo/2.3.0-3">ftp</a>
-<a href="ftp://ftp.belnet.be/mirror/ftp.suse.com/projects/go-oo/2.3.0-3">ftp</a>,
-de: <a href="ftp://ftp.hs.uni-hamburg.de/pub/mirrors/suse/projects/go-oo/2.3.0-3">ftp</a>
-<a href="ftp://ftp.tu-chemnitz.de/pub/linux/suse/projects/go-oo/2.3.0-3">ftp</a>,
-it: <a href="ftp://ftp.uniroma2.it/Linux/suse/pub/projects/go-oo/2.3.0-3">ftp</a>,
-jp: <a href="ftp://ftp.riken.jp/Linux/suse/projects/go-oo/2.3.0-3">ftp</a>
-<a href="http://ftp.kddilabs.jp/Linux/packages/SuSE/projects/go-oo/2.3.0-3">http</a>,
-us: <a href="ftp://ftp.suse.com/pub/projects/go-oo/2.3.0-3">ftp</a>
-<a href="ftp://suse.mirrors.tds.net/pub/projects/go-oo/2.3.0-3">ftp</a>
+be: <a href="ftp://ftp.skynet.be/pub/ftp.suse.com/projects/go-oo">ftp</a>
+<a href="ftp://ftp.belnet.be/mirror/ftp.suse.com/projects/go-oo">ftp</a>,
+de: <a href="ftp://ftp.hs.uni-hamburg.de/pub/mirrors/suse/projects/go-oo">ftp</a>
+<a href="ftp://ftp.tu-chemnitz.de/pub/linux/suse/projects/go-oo">ftp</a>,
+it: <a href="ftp://ftp.uniroma2.it/Linux/suse/pub/projects/go-oo">ftp</a>,
+jp: <a href="ftp://ftp.riken.jp/Linux/suse/projects/go-oo">ftp</a>
+<a href="http://ftp.kddilabs.jp/Linux/packages/SuSE/projects/go-oo">http</a>,
+us: <a href="ftp://ftp.suse.com/pub/projects/go-oo">ftp</a>
+<a href="ftp://suse.mirrors.tds.net/pub/projects/go-oo">ftp</a>
 )
 </dt>
 <dd>Simply download the en_us file, and your native lang-pack, and install them
