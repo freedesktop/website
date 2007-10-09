@@ -93,19 +93,6 @@ which supplement the WordPerfect importer also available in Go-oo
 <a href="go-t602.png"><img src="go-t602-thumb.png" /></a>
 </td>
 
-<td>
-<h4>Improved EMF rendering</h4>
-<p>Go-oo renders EMF+ content, giving a far better view of embedded drawings.
-</p>
-<table>
-<tr><th>Before</th>
-<th>After</th></tr>
-<tr><td><a href="oo-emf.png"><img src="oo-emf-thumb.png" /></a></td>
-<td><a href="go-emf.png"><img src="go-emf-thumb.png"
-/></a></td></tr>
-</table>
-</td>
-
 </tr>
 
 </table>
