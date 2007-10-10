@@ -58,12 +58,15 @@ To build and install it just type as root <pre># emerge openoffice</pre></dd>
 <dt>Ubuntu</dt>
 <dd>Ubuntu provides OpenOffice.org in their repositories. 
 To install it just type as root <pre># apt-get install openoffice.org</pre></dd>
+<dt>PLD</dt>
+<dd>PLD provides OpenOffice.org in their repository. To install it just
+type as root:
+<pre># poldek -uGv openoffice.org-APP</pre>
+ where APP can be one of base, calc, draw, writer</dd>
 <dt>Mandriva</dt>
 <dd></dd>
 <dd></dd>
 <dt>Ark</dt>
-<dd></dd>
-<dt>PLD</dt>
 <dd></dd>
 <dt>RPath</dt>
 <dd></dd>
