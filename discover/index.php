@@ -32,7 +32,7 @@ regular build of OpenOffice.org</p>
 <p>Go-oo has a linear optimization solver to optimize a cell value based
 on arbitrary constraints, built into Calc.</p>
 <a href="go-calc-solver.png">
-<img src="go-calc-solver-thumb.png" alt="go-oo solver screenshot /></a>
+<img src="go-calc-solver-thumb.png" alt="go-oo solver screenshot" /></a>
 </td>
 
 <td>
