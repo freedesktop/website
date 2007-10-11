@@ -2,7 +2,7 @@
 require("template.php");
 
 $content = <<<EOT
-	 <p id="tagline">
+	 <div id="tagline">
 	 <p>With word processing, spreadsheets,
          presentations, and everything else needed
          for creating and editing documents,
@@ -16,7 +16,8 @@ $content = <<<EOT
          to give a foretaste of new features in development
          and includes functionality not yet accepted up-stream.
      </p>
-     <a href="/download/">Download OpenOffice.org</a>
+     <p><a href="/download/">Download OpenOffice.org</a></p>
+     </div>
 EOT;
 
 print_page("Go-OO!", array("summary"),
