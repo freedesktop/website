@@ -3,7 +3,6 @@ require("../template.php");
 
 $content = <<<EOT
 <p>Go-oo has been contributed to by many people, past and present.</p>
-<br>     
 <p style="text-align: center;">
 <img src="/img/go-oo-team.png" alt="mugshots of the team" />
 </p>
