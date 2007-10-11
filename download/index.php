@@ -10,6 +10,7 @@ Choose the version of OpenOffice that matches your computer's operating system.
 <a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/">svn view</a> or:
 <pre>\$ svn checkout http://svn.gnome.org/svn/ooo-build/trunk ooo-build</pre>
 </dd>
+
 <dt>Windows ( mirrors:
 be: <a href="ftp://ftp.skynet.be/pub/ftp.suse.com/projects/go-oo">ftp</a>
 <a href="ftp://ftp.belnet.be/mirror/ftp.suse.com/projects/go-oo">ftp</a>,
@@ -24,7 +25,7 @@ us: <a href="ftp://ftp.suse.com/pub/projects/go-oo">ftp</a>
 </dt>
 <dd>Simply download the en_us file, and your native lang-pack, and install them
 one by one.</dd>
-<br>
+
 <dt>OpenSUSE</dt>
 <dd>Stable: 
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/SLED_10/">SLED10</a>, 
@@ -41,39 +42,50 @@ has been split into more individual packages here so make sure you get all of th
 <pre># zypper sa http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_10.2
 # zypper --non-interactive in OpenOffice_org-gnome OpenOffice_org-writer OpenOffice_org-calc ...</pre>
 </dd>
+
 <dt>Debian</dt>
 <dd>Debian provides OpenOffice.org in their repositories. 
 To install it just type as root <pre># apt-get install openoffice.org</pre></dd>
+
 <dt>DroplineGNOME</dt>
 <dd>DroplineGNOME provide pre-builds packages for OpenOffice.org:<ul>
 <li><a href="http://trovao.droplinegnome.org/extras/2.18/openoffice/">i686 builds</a></li>
 <li><a href="http://saxa.droplinegnome.org/ooo/">x86_64 builds</a></li>
 </ul></dd>
+
 <dt>Frugalware</dt>
 <dd>Frugalware provides OpenOffice.org in their repositories. To install it just type as root 
 <pre># pacman-g2 -S openoffice.org</pre></dd>
+
 <dt>Gentoo</dt>
 <dd>Gentoo provides OpenOffice.org in their repositories. 
 To build and install it just type as root <pre># emerge openoffice</pre></dd>
+
 <dt>Ubuntu</dt>
 <dd>Ubuntu provides OpenOffice.org in their repositories. 
 To install it just type as root <pre># apt-get install openoffice.org</pre></dd>
+
 <dt>PLD</dt>
 <dd>PLD provides OpenOffice.org in their repository. To install it just
 type as root:
 <pre># poldek -uGv openoffice.org-APP</pre>
  where APP can be one of base, calc, draw, writer</dd>
+
 <dt>Mandriva</dt>
 <dd></dd>
-<dd></dd>
+
 <dt>Ark</dt>
 <dd></dd>
+
 <dt>RPath</dt>
 <dd></dd>
+
 <dt>Pardus</dt>
 <dd></dd>
+
 <dt>QiLinux</dt>
 <dd></dd>
+
 </dl>
 
 EOT;
