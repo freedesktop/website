@@ -1,0 +1,40 @@
+TODO:
+	"Sun is willing to put it's corporate brand on the
+	 work of others; why should we not put a neutral
+	 brand on our services (everywhere)".
+
+	* New tag-line at the top of the page:
+		+ "Better, Faster, Freer"
+
+	* Add the banner / logo / tag-line to:
+		+ planet.go-oo.org
+		+ lxr.go-oo.org
+		+ bonsai.go-oo.org
+
+		+ tinderbox.go-oo.org (as a #2nd phase)
+
+	* New front-page with bullets:
+		+ Better
+			+ better interoperability
+			+ better functionality
+		+ Faster
+			+ faster startup
+			+ faster code integration
+		+ Freer
+			+ freer licensing
+			+ freer politics
+
+		* Screenshot / picture of go-oo, that is a link
+		  to the download page.
+
+		* interpolated down "go-oo" mini-logo for the tabs.
+
+	* Discover page:
+		+ re-vamp
+			+ add 3 screenshots of OpenXML import & samples.
+			+ add SVG import screenshot & sample file.
+
+	* Download page
+		+ add NeoOffice as a parter & clean up distro list.
+
+
