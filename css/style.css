@@ -198,5 +198,7 @@ p {
 
 .discover-tile {
     float: left;
-    padding: 10;
+    padding: 15pt;
+    text-align: left;
+    align: left;
 }
