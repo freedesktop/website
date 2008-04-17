@@ -4,12 +4,20 @@
  
 <head>
 <title><TMPL_VAR name></title>
+<style type="text/css">
+  @import url(http://go-oo.org/css/blueprint/print.css) print;
+  @import url(http://go-oo.org/css/blueprint/screen.css) screen;
+  @import url(http://go-oo.org/css/tabs.css);
+  @import url(http://go-oo.org/css/style.css);
+</style>
 <link rel="stylesheet" href="http://planet.go-oo.org/planet.css" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="Planet OpenOffice.org - Developer News" href="http://planet.go-oo.org/rss20.xml">
 </head>
 
-<body style=" font-family: verdana">
-<div class="title"> <TMPL_VAR name></div>
+<body style="font-family: verdana; background-color: white;">
+<div id="header"><h1><a href="http://go-oo.org">Go-OO</a></h1></div>
+<ul id="nav"><li class="tabs-selected"><a href="/"><TMPL_VAR name></a></li></ul>
+<div id="tagline"><a href="http://go-oo.org">Better, Faster, Freer</a></div>
 
 <div id="content">
 	<div id="blogarea">
@@ -41,7 +49,7 @@
 	</div>
 </div>
 
-<div id="sidebar">
+<div id="rsidebar">
 <p class="section">Subscriptions</p>
 <ul>
 <TMPL_LOOP Channels>
