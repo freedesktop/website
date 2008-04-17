@@ -107,6 +107,7 @@ body {
 
 #tagline a:hover {
     background: #fdcc84;
+    text-decoration: underline;
 }
 
 #container {
