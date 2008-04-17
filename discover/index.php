@@ -11,7 +11,7 @@ regular build of OpenOffice.org</p>
 <hr>
 
 <div class="discover-tile">
-<h4>VBA support</h4>
+<h4 id="vba-support">VBA support</h4>
 <p>Go-oo provide VBA macros support for OpenOffice.org.</p>
 <p><a href="go-excel-vba.png">
 <img src="go-excel-vba-thumb.png" alt="go-oo screenshot for VBA"/></a></p>
@@ -31,7 +31,7 @@ See Tools -&gt; Options -&gt; Memory to enable.</p>
 </div>
 
 <div class="discover-tile">
-<h4>Calc solver</h4>
+<h4 id="calc-solver">Calc solver</h4>
 <p>Go-oo has a linear optimization solver<br>
 that can optimize a cell value based on<br>
 arbitrary constraints, built into Calc.</p>
@@ -40,7 +40,7 @@ arbitrary constraints, built into Calc.</p>
 </div>
 
 <div class="discover-tile">
-<h4>GStreamer integration</h4>
+<h4 id="gstreamer">GStreamer integration</h4>
 <p>Go-oo supports multimedia content using<br>
 the <a href="http://gstreamer.org/">GStreamer</a> multimedia framework.
 </p>
@@ -55,7 +55,7 @@ alt="go-oo and gstreamer screenshot" /></a></td></tr>
 </div>
 
 <div class="discover-tile">
-<h4>Text Grid rendering</h4>
+<h4 id="chinese-rendering">Text Grid rendering</h4>
 <p>Go-oo renders Chinese much more pleasantly, using a familiar text grid<br>
 (<a href="textgrid.doc">Download sample</a>).
 </p>
@@ -70,14 +70,14 @@ alt="go-oo textgrid screenshot" /></a></td></tr>
 </div>
 
 <div class="discover-tile">
-<h4>MS-Works import</h4>
+<h4 id="ms-works-import">MS-Works import</h4>
 <p>Go-oo supports MS-Works files<br>
 (<a href="msworks.wps" type="application/vnd.ms-works">download sample file</a>).</p>
 <a href="go-msworks.png"><img src="go-msworks-thumb.png" alt="go-oo MS-Works support screenshot" /></a>
 </div>
 
 <div class="discover-tile">
-<h4>WordPerfect Graphics import</h4>
+<h4 id="wp-graphics-import">WordPerfect Graphics import</h4>
 <p>Go-oo imports graphics in the WPG format coming from WordPerfect<br>
 which supplement the WordPerfect importer also available in Go-oo<br>
 (<a href="wpg-support.wpg" type="image/wpg">download sample file</a>).</p>
@@ -93,7 +93,7 @@ alt="go-oo WPG support screenshot" /></a>
 </div>
 
 <div class="discover-tile">
-<h4>Improved EMF rendering</h4>
+<h4 id="emf-rendering">Improved EMF rendering</h4>
 <p>Go-oo renders EMF+ content, giving a far better view of embedded drawings.
 </p>
 <table>

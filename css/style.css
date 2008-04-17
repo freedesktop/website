@@ -6,6 +6,12 @@ body {
     background-color: #333;
 }
 
+#download {
+    font-size: 200%;
+    width: 100%;
+    text-align: center;
+}
+
 #wrap {
     background: #fff url(../img/bg-content.png) repeat-y left;
     border: 1px solid #555;
