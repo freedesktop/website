@@ -72,6 +72,9 @@ function print_page($title, $context, $heading, $content)
 			}
 		?>
                 </ul>
+                <div id="tagline">
+                        <a href="http://www.go-oo.org">Better, Faster, Freer</a>
+                </div>
 		<div id="hnav">
 		        <?php
 			$count = count($context);

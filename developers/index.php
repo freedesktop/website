@@ -20,31 +20,31 @@ $content = <<<EOT
                 <form method="get" action="http://lxr.go-oo.org/ident">
                     <label>
                         <a href="http://lxr.go-oo.org/ident">Identifier</a>
-                        <input type="text" name="i" value="" size="12">
+                        <input type="text" name="i" value="" size="12" />
                     </label>
-                    <input type="submit" value="Find" class="hide">
+                    <input type="submit" value="Find" class="hide" />
                 </form>
                 <form method="get" action="http://lxr.go-oo.org/search">
                     <label>
                         <a href="http://lxr.go-oo.org/search">Text</a> 
-                        <input type="text" name="string" value="" size="12"> 
+                        <input type="text" name="string" value="" size="12" />
                     </label>
-                    <input type="submit" value="Find" class="hide">
+                    <input type="submit" value="Find" class="hide" />
                 </form>
                 <form method="get" action="http://lxr.go-oo.org/find">
                     <label>
                         <a href="http://lxr.go-oo.org/find">File</a> 
-                        <input type="text" name="string" value="" size="8"> 
+                        <input type="text" name="string" value="" size="8" />
                     </label>
-                    <input type="submit" value="Find" class="hide">
+                    <input type="submit" value="Find" class="hide" />
                 </form>
                 </dd>
                 <dt>Bugzilla</dt>
                 <dd>
                 <form method="get" action="http://www.openoffice.org/issues/show_bug.cgi">
                     <a href="http://www.openoffice.org/issues/query.cgi">OO.o Issue</a> <a href="http://qa.openoffice.org/issue_handling/submission_gateway.html#code_module">New</a> 
-                    <input name="id" size="6"> 
-                    <input type="submit" value="Find" class="hide">
+                    <input name="id" size="6" />
+                    <input type="submit" value="Find" class="hide" />
                 </form>
                 </dd>
             </dl>
@@ -139,12 +139,13 @@ $content = <<<EOT
 
         <hr />
         <form action="http://babelfish.altavista.com/tr" method="post" name="frmTrText">
-            <input name="doit" value="done" type="hidden"> 
-            <input name="intl" value="1" type="hidden"> <b>Translate a short German comment: [ thanks to <a href="http://babelfish.altavista.com">BabelFish</a> ]</b><br>
-            <input name="tt" value="urltext" type="hidden"> 
-            <textarea rows="2" wrap="virtual" cols="42" style="width: 400px;" name="trtext"></textarea><br>
-            <input name="lp" value="de_en" type="hidden"> 
-            <input value="Translate" type="submit">
+            <input name="doit" value="done" type="hidden" />
+            <input name="intl" value="1" type="hidden" />
+	    <b>Translate a short German comment: [ thanks to <a href="http://babelfish.altavista.com">BabelFish</a> ]</b><br />
+            <input name="tt" value="urltext" type="hidden" />
+            <textarea rows="2" wrap="virtual" cols="42" style="width: 400px;" name="trtext"></textarea><br />
+            <input name="lp" value="de_en" type="hidden" />
+            <input value="Translate" type="submit" />
         </form>
 	</div>
 EOT;

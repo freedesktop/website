@@ -3,7 +3,7 @@
 PHP ?= php
 
 # set path to the ooo-build checkout here.
-OOO_BUILD ?= ~/svn/ooo-build
+OOO_BUILD ?= $(shell cd ../../ooo-build && pwd)
 
 %.html: %.php $(PWD)/template.php
 	@echo "Processing $<"

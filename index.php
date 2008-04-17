@@ -2,20 +2,24 @@
 require("template.php");
 
 $content = <<<EOT
-	 <div id="tagline">
-	 <p>With word processing, spreadsheets,
-         presentations, and everything else needed
-         for creating and editing documents,
-         OpenOffice.org has the tools it takes to
-         create, edit, and share work.  It's open
-         source and cross-platform, so it's free
-         and works on your computer.
-     </p>
-     <p>
-         The go-oo version of OpenOffice.org is designed
-         to give a foretaste of new features in development
-         and includes functionality not yet accepted up-stream.
-     </p>
+    <h3>Better</h3>
+    <ul>
+        <li>Better interoperability</li>
+        <li>Better functionality</li>
+    </ul>
+
+    <h3>Faster</h3>
+    <ul>
+        <li>Faster startup</li>
+        <li>Faster code integration</li>
+    </ul>
+
+    <h3>Freer</h3>
+    <ul>
+        <li>Freer licensing</li>
+        <li>Freer politics</li>
+    </ul>
+    <div>
      <p><a href="/download/">Download OpenOffice.org</a></p>
      </div>
 EOT;
