@@ -195,3 +195,8 @@ p {
     valign: top;
     bgcolor: "#d0e0f0";
 }
+
+.discover-tile {
+    float: left;
+    padding: 10;
+}
