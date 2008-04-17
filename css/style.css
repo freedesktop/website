@@ -87,15 +87,15 @@ body {
         }
 
 #tagline {
-    text-align: right;
+    text-align: left;
     position: absolute;
-    float: right;
-    right: 2em;
-    top: 100px;
-    margin-top: -2em;
+    float: left;
+    left: 130px;
+    top: 115px;
+    margin-top: -100px;
     padding: 0;
 
-    font-size: 120%;
+    font-size: 200%;
     font-style: italic;
     color: #a40000;
 }
