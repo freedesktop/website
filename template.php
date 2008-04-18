@@ -1,17 +1,21 @@
 <?php
 
-function print_page($title, $context, $heading, $content)
+function print_page($title, $context, $heading, $content, $subtabs = array())
 {
         // hnave values are as follow
         //  - the URL path (relative if possible)
         //  - the label as used in tabs and the navigation
         //  - (optional) the id of the tab it is under, this is for subsections
-	$hnav = array( "summary" => array("/", "Summary"),
+	$hnav = array( "summary" => array("/", "Home"),
+			"home" => array("/", "Home"),
 			"download" => array("/download/", "Download"),
 			"discover" => array("/discover/", "Discover"),
 			"comingsoon" => array("/discover/comingsoon/", 
                                               "Coming Soon", "discover"),
+			"planet" => array("http://planet.go-oo.org/", "Planet"),
 			"developers" => array("/developers/", "Developers"),
+			"users" => array("/users/", "Users"),
+			"mgp" => array("/users/mgp", "Magicpoint"),
 			"mailarchive" => array("/developers/mailarchive", 
                                                "Mail archive", "developers"),
 			"about" => array("/about/", "About") 
@@ -22,15 +26,16 @@ function print_page($title, $context, $heading, $content)
 	$tabs = array ( "summary" => "container", 
 	       	       	 "download" => "container", 
 	       		 "discover" => "container", 
+	       		 "planet" => "container", 
 			 "developers" => "container",
 	       		 "about" => "container" ); 
 	
-	$link = $hnav[$context[0]];
-	if( isset($link[2]) ) {
-		$id = $link[2];
-	}
-	else {
-		$id = $context[0];
+	$id = "summary";
+	foreach ($context as $c) {
+		if (array_key_exists ($c, $tabs)) {
+			$id = $c;
+			break;
+		}
 	}
 	// the current tab is selected
 	$tabs[$id] = "selected";
@@ -63,7 +68,7 @@ function print_page($title, $context, $heading, $content)
             </div>
             <div id="container">
                 <ul id="nav">
-		<?php
+<?php
 			foreach($tabs as $key => $value)
 			{
 				$link = $hnav[$key];
@@ -75,18 +80,21 @@ function print_page($title, $context, $heading, $content)
                 <div id="tagline">
                         <a href="http://www.go-oo.org">Better, Faster, Freer</a>
                 </div>
-		<div id="hnav">
-		        <?php
+		<ul id="hnav">
+<?php
+			foreach($subtabs as $key => $value) {
+				echo "<li><a href=\"$value\">$key</a></li>\n";
+			}
 			$count = count($context);
 			for( $i = $count - 1; $i > 0; $i--) {
 				$link = $hnav[$context[$i]];
-				echo "<a href=\"$link[0]\">$link[1]</a> &lt;&lt; ";
+				echo "<li><a href=\"$link[0]\">$link[1]</a></li>\n";
 			}
 			$link = $hnav[$context[0]];
-			echo "<span class=\"current\">$link[1]</span>";
+			echo "<li><span class=\"current\">$link[1]</span></li>";
 			?>
 
-		</div>
+		</ul>
 
                 <div class="container">
                     <div id="splash">

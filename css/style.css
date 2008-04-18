@@ -22,13 +22,45 @@ body {
 }
 
 #hnav {
-    text-indent: 2em;
-    font-size: 90%;
+    position: absolute;
+    left: 115px;
+    top: 100px;
+    margin: 0;
+    padding: .25em;
+    background-color: #1a1a1a;
+    height: 25px;
 }
+    #hnav li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: inline;
+    }
 
-#hnav .current {
-    font-weight: bold;
-}
+        #hnav li a, #hnav li span {
+            margin-left: 0;
+            font-size: 120%;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+        #hnav li a {
+            color: white;
+            text-decoration: none;
+        }
+        #hnav li a:hover {
+            text-decoration: underline;
+            color: black;
+            background: white;
+        }
+
+        #hnav li span.current {
+            background-color: white;
+            border: solid #1a1a1a;
+            font-weight: bold;
+            padding-left: .5em;
+            padding-right: .5em;
+            margin-right: 0;
+        }
 
 #container .container {
     width: 90%;

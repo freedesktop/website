@@ -28,6 +28,8 @@ $content = <<<EOT
           <a href="/discover/#emf-rendering">EMF Rendering</a>,
           <a href="/discover/#gstreamer">GStreamer integration</a>
         </li>
+        <li>Better platform integration: native file dialogs
+				</li>
     </ul>
 
     <h2>Faster</h3>

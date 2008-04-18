@@ -15,7 +15,7 @@ require("../template.php");
 $content = <<<EOT
         <div id="dev-tools">
             <dl>
-                <dt>LXR</dt>
+                <dt><a href="http://lxr.go-oo.org">LXR</a></dt>
                 <dd>
                 <form method="get" action="http://lxr.go-oo.org/ident">
                     <label>
@@ -150,9 +150,15 @@ $content = <<<EOT
 	</div>
 EOT;
 
-print_page("Go-OO! - Developers", array("developers", "summary"),
+print_page("Go-OO! - Developers", 
+   array("developers", "summary"),
    "Developers",
-   $content
+   $content,
+   array (
+      "Bonsai" => "http://bonsai.go-oo.org/cvsqueryform.cgi",
+      "LXR" => "http://lxr.go-oo.org",
+      "Tinderbox" => "http://tinderbox.go-oo.org/",
+   )
 );
 
 ?>
