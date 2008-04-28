@@ -24,7 +24,7 @@ regular build of OpenOffice.org</p>
 </div>
 
 <div class="discover-tile">
-<h4>Unix systray quick-starter</h4>
+<h4 id="quickstarter">Unix systray quick-starter</h4>
 <p>Go-oo can run in the background for a lightning second start.<br>
 See Tools -&gt; Options -&gt; Memory to enable.</p>
 <img src="go-quickstart.png" alt="built in quick-starter" />
