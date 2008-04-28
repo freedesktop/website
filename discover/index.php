@@ -11,6 +11,14 @@ regular build of OpenOffice.org</p>
 <hr>
 
 <div class="discover-tile">
+<h4 id="svg-support">SVG support</h4>
+<p>Go-oo provide a built-in SVG import filter.<br>
+(<a href="tiger.svg" type="image/svg+xml">sample</a>).</p>
+<p><a href="go-svg.png">
+<img src="go-svg-thumb.png" alt="screenshot of SVG import"/></a></p>
+</div>
+
+<div class="discover-tile">
 <h4 id="vba-support">VBA support</h4>
 <p>Go-oo provide VBA macros support for OpenOffice.org.</p>
 <p><a href="go-excel-vba.png">
@@ -25,8 +33,8 @@ regular build of OpenOffice.org</p>
 
 <div class="discover-tile">
 <h4 id="quickstarter">Unix systray quick-starter</h4>
-<p>Go-oo can run in the background for a lightning second start.<br>
-See Tools -&gt; Options -&gt; Memory to enable.</p>
+<p>Go-oo can run in the background for a lightning second<br>
+start. See Tools -&gt; Options -&gt; Memory to enable.</p>
 <img src="go-quickstart.png" alt="built in quick-starter" />
 </div>
 

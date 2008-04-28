@@ -52,8 +52,13 @@ $content = <<<EOT
 
     <h3>Freer licensing</h3>
     <p>
-	For the code to live, grow and improve, we need the ...
-	Licensing / JCA etc.
+	For the code to live, grow and improve, and to encourage participation - we
+	need licensing that encourages: ie. copy-left. Simultaneously it is a travesty
+	... IBM - CDDL is ok for them - Sun, abuse of position etc. ...
+	<a href="http://council.openoffice.org/files/documents/126/4135/OOoAdvisoryBoard_01Nov2007_MeetingNotes_v4.pdf">
+	</a>
+	Sun - patent double talk (?)
+	Thus our work is wherever possible dual-licensed under LGPLv3 &amp; CDDL.
     </p>
 
     <h3>Freer politics</h3>
