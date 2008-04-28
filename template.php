@@ -80,21 +80,16 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
                 <div id="tagline">
                         <a href="http://www.go-oo.org">Better, Faster, Freer</a>
                 </div>
-		<ul id="hnav">
 <?php
+		if (count ($subtabs) > 0) {
+			echo "<ul id=\"hnav\">\n";
+
 			foreach($subtabs as $key => $value) {
 				echo "<li><a href=\"$value\">$key</a></li>\n";
 			}
-			$count = count($context);
-			for( $i = $count - 1; $i > 0; $i--) {
-				$link = $hnav[$context[$i]];
-				echo "<li><a href=\"$link[0]\">$link[1]</a></li>\n";
-			}
-			$link = $hnav[$context[0]];
-			echo "<li><span class=\"current\">$link[1]</span></li>";
-			?>
-
-		</ul>
+			echo "</ul>\n";
+		}
+?>
 
                 <div class="container">
                     <div id="splash">
