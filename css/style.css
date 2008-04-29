@@ -1,15 +1,20 @@
 body          { font-size: 87.5%;  }  /* IE6 */
 html > body   { font-size: 14px; }
 
+h3 {
+	clear: none;
+}
+
 body {
     margin: 0;
     background-color: #333;
 }
 
 #download {
-    font-size: 200%;
-    width: 100%;
+    font-size: 300%;
+    float: right;
     text-align: center;
+    padding: 0.25em;
 }
 
 #wrap {

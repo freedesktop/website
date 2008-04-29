@@ -2,6 +2,9 @@
 require("template.php");
 
 $content = <<<EOT
+	<div id="download">
+		<a href="/download/">Download OpenOffice.org</a>
+	</div>
     <h3>Better interoperability</h3>
     <p>
 	Go-oo has built in OpenXML import filters, it will import your
@@ -81,9 +84,6 @@ $content = <<<EOT
 	that's really excellent, but this is not our focus: there are no formal
 	roles in development to reflect this valuable work.
     </p>
-    <div>
-         <p><a href="/download/">Download OpenOffice.org</a></p>
-    </div>
 EOT;
 
 print_page("Go-OO!", array("summary"),
