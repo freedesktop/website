@@ -121,9 +121,8 @@ EOT;
 
 
 print_page("Go-OO! - Discover", array("discover", "summary"),
-   "Discover OpenOffice.org",
+   "Discover Go-OO!",
    $content
    );
 
 ?>
-

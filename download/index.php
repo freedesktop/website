@@ -92,7 +92,7 @@ EOT;
 
 
 print_page("Go-OO! - Download", array("download", "summary"),
-		   "Download OpenOffice.org",
+		   "Download Go-OO!",
 		   $content 
 		   );
 

@@ -102,7 +102,7 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 
             <div id="sidebar">
                 <div class="text">
-                    openoffice.org<br />
+                    open office<br />
                     development
                 </div>
             </div>

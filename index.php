@@ -3,7 +3,7 @@ require("template.php");
 
 $content = <<<EOT
 	<div id="download">
-		<a href="/download/">Download OpenOffice.org</a>
+		<a href="/download/">Download</a>
 	</div>
     <h3>Better interoperability</h3>
     <p>
@@ -87,7 +87,7 @@ $content = <<<EOT
 EOT;
 
 print_page("Go-OO!", array("summary"),
-		   "Your OpenOffice.org",
+		   "Your Office Suite",
 		   $content);
 
 ?>
