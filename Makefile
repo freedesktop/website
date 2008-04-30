@@ -6,7 +6,6 @@ include include.mk
 ALL_TARGETS = index.html \
 	download/index.html \
 	discover/index.html \
-	discover/comingsoon/index.html \
 	users/index.html \
 	users/mgp/index.html \
 	developers/index.html \
