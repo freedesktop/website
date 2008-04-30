@@ -3,10 +3,8 @@ require("../template.php");
 
 
 $content = <<<EOT
-<p>Here you'll discover what Go-oo has to offer in addition to the 
-regular build of OpenOffice.org</p>
-
-<p>Not without mentioning what is <a href="comingsoon/">coming soon</a>.</p>
+<p>Here you can see, at a glance, what Go-oo has to offer in addition to the 
+features you expect in up-stream OpenOffice.org</p>
 
 <hr>
 
