@@ -16,7 +16,7 @@ foreach($people as $i)
 	$names[] = preg_replace("/^([^: ]+):* .*/", '$1', trim($i));
 }
 sort($names);
-$limit = 6;
+$limit = 7;
 for($i=0;$i<count($names);$i+=$limit)
 {
 	$content .= "<p style=\"text-align: center; height: 78px;\">\n";
