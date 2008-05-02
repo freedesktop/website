@@ -125,7 +125,6 @@ body {
         }
 
         #nav li.tabs-selected a {
-            cursor: default;
             color: #222;
             background-color: #fff;
         }
