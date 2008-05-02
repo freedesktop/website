@@ -59,11 +59,14 @@ $content = <<<EOT
 	For the code to live, grow and improve, to encourage participation, and
 	compete with the other office suite - we need sensible licensing: ie.
 	weak copy-left. While in general we think LGPLv3 is a great &amp; sufficient
-	license for our code, <a
+	license for our code, others eg. <a
+	href="http://wiki.services.openoffice.org/wiki/ESC_minutes#Inclusion_of_non-Sun-owned_components">
+	Sun</a> &amp; <a
 	href="http://council.openoffice.org/files/documents/126/4135/OOoAdvisoryBoard_01Nov2007_MeetingNotes_v4.pdf">
-	others</a> (eg. IBM) prefer the CDDL (a weak copy-left license
-	akin to Mozilla's). Luckily dual licensing under the LGPLv3 / CDDL solves
-	this problem - and we recommend this for the majority of our code.
+	IBM</a> appear reluctant to include LGPL code into their products, and prefer
+	other licenses such as the CDDL (a weak copy-left derived from Mozilla's MPL).
+	Luckily dual licensing under the LGPLv3 / CDDL can help - and we recommend
+	this for the majority of our code.
     </p>
     <p>
 	We believe that copyright assignment to a single corporate entity opens
