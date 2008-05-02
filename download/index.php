@@ -7,28 +7,30 @@ $content = <<<EOT
 <hr>
 
 <h3><a href="http://go-oo.mirrorbrain.org/stable/win32/">Windows</a></h3>
-<dd>Simply download the 
-<dd>
-<a href="http://go-oo.mirrorbrain.org/stable/win32/2.4/GoOo-en-US-2.4.0-17.exe">en_us</a>
-us file, and your
+<p>Simply download the 
+<a href="http://go-oo.mirrorbrain.org/stable/win32/2.4/GoOo-en-US-2.4.0-17.exe">GoOo-en-US-<i>version</i>.exe</a>
+file, and your
 <a href="http://go-oo.mirrorbrain.org/stable/win32/2.4/">native lang-pack</a>, and
-install them one by one.</dd>
-<dd></dd>
-<br>
+install them one by one.
+</p>
 
 <h3><a href="http://go-oo.mirrorbrain.org/stable/linux-x86/">Universal Linux</a></h3>
-<dd><a href="http://go-oo.mirrorbrain.org/stable/linux-x86/2.4">Packages</a> available here,
-also <code><a href="http://go-oo.mirrorbrain.org/stable/linux-x86/2.4">http://go-oo.mirrorbrain.org/stable/linux-x86/2.4</a></code>
-is a YUM repository, you can add as an installation source.
-<dd></dd>
-<br>
+<p><a href="http://go-oo.mirrorbrain.org/stable/linux-x86/">Packages</a> 
+available here, also 
+<a href="http://go-oo.mirrorbrain.org/stable/linux-x86/">http://go-oo.mirrorbrain.org/stable/linux-x86/</a>
+is a YUM repository, which you can add as an installation source.
+</p>
 
 <h3><a href="http://download.go-oo.org/">Source Code</a></h3>
 
-<dd>Download: <a href="http://download.go-oo.org/OOH680/ooo-build-2.4.0.8.tar.gz">ooo-build-2.4.0.8</a>
-<dd>Browse: <a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/">trunk</a> or <a href="http://svn.gnome.org/viewcvs/ooo-build/branches/ooo-build-2-4">ooo-build-2-4 branch</a></dd>
-<dd>Check out: <pre>\$ svn checkout http://svn.gnome.org/svn/ooo-build/trunk ooo-build</pre></dd>
-<dl>
+<p>Download: <a href="http://download.go-oo.org/OOH680/ooo-build-2.4.0.8.tar.gz">ooo-build-2.4.0.8</a>
+<br />
+Browse: <a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/">trunk</a> or the
+<a href="http://svn.gnome.org/viewcvs/ooo-build/branches/ooo-build-2-4">ooo-build-2-4 branch</a>
+<br />
+To check out:
+<pre>\$ svn checkout http://svn.gnome.org/svn/ooo-build/trunk ooo-build</pre>
+</p>
 
 <hr>
 
