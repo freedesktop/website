@@ -2,7 +2,7 @@ body          { font-size: 87.5%;  }  /* IE6 */
 html > body   { font-size: 14px; }
 
 h3 {
-	clear: none;
+    clear: left;
 }
 
 body {
