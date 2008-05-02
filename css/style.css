@@ -46,6 +46,12 @@ body {
             padding-left: 1em;
             padding-right: 1em;
         }
+        #hnav li.tabs-selected a {
+            color: black;
+            background: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
         #hnav li a {
             color: white;
             text-decoration: none;
