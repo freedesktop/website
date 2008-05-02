@@ -64,7 +64,9 @@ Go-OO! version.</dd>
 
 <h3>OxygenOffice</h3>
 <dd>The <a href="http://ooop.wiki.sourceforge.net/">OxygenOffice</a> variant is
-built on top of Go-OO!.</dd>
+built on top of Go-OO!. Available from <a
+href="http://sourceforge.net/project/showfiles.php?group_id=170021">
+sourceforge</a></dd>
 <dl>
 
 <h3>DroplineGNOME</h3>
