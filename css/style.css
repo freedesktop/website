@@ -245,8 +245,9 @@ p {
 
 .discover-tile {
     float: left;
-    padding: 15pt;
+    padding: 2em;
     text-align: left;
     align: left;
     height: 25em;
 }
+
