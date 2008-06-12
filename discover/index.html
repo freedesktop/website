@@ -42,68 +42,71 @@ features you expect in up-stream OpenOffice.org</p>
 
 <div class="discover-tile">
 <h4 id="docx-support">OpenXML / DOCX support</h4>
-<p>Go-oo provide a built-in <code>.docx</code> import filter.<br>
-(<a href="go-oox.docx">sample</a>).</p>
+<p>Go-oo provide a built-in <code>.docx</code><br>
+import filter. (<a href="go-oox.docx">sample</a>).</p>
 <p><a href="go-oox-docx.png">
 <img src="go-oox-docx-thumb.png" alt="screenshot of XLSX import"/></a></p>
 </div>
 
 <div class="discover-tile">
 <h4 id="xlsx-support">OpenXML / XLSX support</h4>
-<p>Go-oo provide a built-in <code>.xlsx</code> import filter.<br>
-(<a href="go-oox.xlsx">sample</a>).</p>
+<p>Go-oo provide a built-in <code>.xlsx</code><br>
+mport filter. (<a href="go-oox.xlsx">sample</a>).</p>
 <p><a href="go-oox-xlsx.png">
 <img src="go-oox-xlsx-thumb.png" alt="screenshot of XLSX import"/></a></p>
 </div>
 
 <div class="discover-tile">
 <h4 id="docx-support">OpenXML / PPTX support</h4>
-<p>Go-oo provide a built-in <code>.pptx</code> import filter.<br>
-(<a href="go-oox.pptx">sample</a>).</p>
+<p>Go-oo provide a built-in <code>.pptx</code><br>
+mport filter. (<a href="go-oox.pptx">sample</a>).</p>
 <p><a href="go-oox-pptx.png">
 <img src="go-oox-pptx-thumb.png" alt="screenshot of PPTX import"/></a></p>
 </div>
 
 <div class="discover-tile">
-<h4 id="svg-support">SVG support</h4>
-<p>Go-oo provide a built-in SVG import filter.<br>
-(<a href="tiger.svg" type="image/svg+xml">sample</a>).</p>
-<p><a href="go-svg.png">
-<img src="go-svg-thumb.png" alt="screenshot of SVG import"/></a></p>
-</div>
-
-<div class="discover-tile">
-<h4 id="vba-support">VBA support</h4>
-<p>Go-oo provide VBA macros support for OpenOffice.org.<br>
-(<a href="go-vba-hypo.xls">sample doc</a>)</p>
-<p><a href="go-excel-vba.png">
-<img src="go-excel-vba-thumb.png" alt="go-oo screenshot for VBA"/></a></p>
-</div>
-
-<div class="discover-tile">
 <h4 id="fields-support">Rich fields support</h4>
-<p>Go-oo provides a powerful &amp; interoperable fields<br>
-implementation with 
+<p>Go-oo provides a powerful and<br>
+interoperable fields implementation<br>
+with
 <a href="http://qa.openoffice.org/issues/show_bug.cgi?id=7644">nesting</a>,
-<a href="http://qa.openoffice.org/issues/show_bug.cgi?id=33737">in-place</a> editing<br>,
+<a href="http://qa.openoffice.org/issues/show_bug.cgi?id=33737">in-place editing</a>,<br>
 <a href="http://qa.openoffice.org/issues/show_bug.cgi?id=29508">multiple fonts</a> &amp;
-<a href="http://qa.openoffice.org/issues/show_bug.cgi?id=69332">nested conditionals</a>
-(<a href="go-fields.doc">sample doc</a>)</p>
+<a href="http://qa.openoffice.org/issues/show_bug.cgi?id=69332">nested conditionals</a>.<br>
+(<a href="go-fields.doc">sample doc</a>)<br></p>
 <p><a href="go-fields.png">
 <img src="go-fields-thumb.png" alt="go-oo screenshot showing powerful fields import"/></a></p>
 </div>
 
 <div class="discover-tile">
 <h4>Startup performance</h4>
-<p>Go-oo starts faster: (go-oo 2.1 vs. Sun/OO.o 2.3)</p>
+<p>Go-oo starts faster:<br>
+go-oo 2.1 vs. Sun/OO.o 2.3</p>
 <img src="startup.png" alt="startup comparison chart" />
 </div>
 
 <div class="discover-tile">
 <h4 id="quickstarter">Unix systray quick-starter</h4>
-<p>Go-oo can run in the background for a lightning second<br>
-start. See Tools -&gt; Options -&gt; Memory to enable.</p>
+<p>Go-oo can run in the background<br>
+for a lightning second start. (Set via<br>
+Tools &rarr; Options &rarr; Memory)</p>
 <img src="go-quickstart.png" alt="built in quick-starter" />
+</div>
+
+<div class="discover-tile">
+<h4 id="excel-interop">Improved Excel interoperability</h4>
+<p>Go-oo has improved interoperability with Excel, <br>
+such as the ability to implicitly convert strings to <br>
+numbers as context demands 
+(<a href="xl-interop.xls">sample</a>; 
+<a href="xl-interop.jpg">reference</a>)</p>
+<table>
+<th>Before</th><th>After</th></tr>
+<tr><td><a href="oo-interop.png"><img 
+  src="oo-interop-thumb.png" alt="OpenOffice.org and Calc functions" /></a></td>
+<td><a href="go-interop.png"><img
+  src="go-interop-thumb.png" alt="Go-oo and Calc functions" /></a></td></tr>
+</table>
 </div>
 
 <div class="discover-tile">
@@ -131,9 +134,30 @@ alt="go-oo and gstreamer screenshot" /></a></td></tr>
 </div>
 
 <div class="discover-tile">
+<h4 id="mono-integration">Mono integration</h4>
+<p>Go-oo allows UNO automation with<br>
+<a href="http://www.mono-project.com">Mono</a>,
+permitting automation from<br>
+many languages such as <a href="http://www.mono-project.com/CSharp">C#</a>,
+<a href="http://boo.codehaus.org">Boo</a>,<br>
+and more! (<a href="http://wiki.services.openoffice.org/wiki/Mono_Integration">instructions</a>;
+<a href="http://svn.gnome.org/svn/ooo-build/trunk/test/mono/">source</a>)</p>
+<p><a href="mono-sample.png">
+<img src="mono-sample-thumb.png" alt="Screenshot of Automation with Mono"/></a></p>
+</div>
+
+<div class="discover-tile">
+<h4 id="vba-support">VBA support</h4>
+<p>Go-oo provides VBA macro support <br>
+for OpenOffice.org (<a href="go-vba-hypo.xls">sample doc</a>).</p>
+<p><a href="go-excel-vba.png">
+<img src="go-excel-vba-thumb.png" alt="go-oo screenshot for VBA"/></a></p>
+</div>
+
+<div class="discover-tile">
 <h4 id="chinese-rendering">Text Grid rendering</h4>
-<p>Go-oo renders Chinese much more pleasantly, using a familiar text grid<br>
-(<a href="textgrid.doc">Download sample</a>).
+<p>Go-oo renders Chinese much more pleasantly, using a<br>
+familiar text grid. (<a href="textgrid.doc">sample</a>)
 </p>
 <table>
 <p></p><th>Before</th>
@@ -154,9 +178,11 @@ alt="go-oo textgrid screenshot" /></a></td></tr>
 
 <div class="discover-tile">
 <h4 id="wp-graphics-import">WordPerfect Graphics import</h4>
-<p>Go-oo imports graphics in the WPG format coming from WordPerfect<br>
-which supplement the WordPerfect importer also available in Go-oo<br>
-(<a href="wpg-support.wpg" type="image/wpg">download sample file</a>).</p>
+<p>Go-oo imports graphics in the<br>
+WordPerfect WPG format<br>
+which supplements Go-oo's<br>
+WordPerfect importer.<br>
+(<a href="wpg-support.wpg" type="image/wpg">sample</a>)</p>
 <a href="go-wpg-support.png"><img src="go-wpg-support-thumb.png" 
 alt="go-oo WPG support screenshot" /></a>
 </div>
@@ -170,8 +196,8 @@ alt="go-oo WPG support screenshot" /></a>
 
 <div class="discover-tile">
 <h4 id="emf-rendering">Improved EMF rendering</h4>
-<p>Go-oo renders EMF+ content, giving a far better view of embedded drawings.
-</p>
+<p>Go-oo renders EMF+ content, giving a far better <br>
+view of embedded drawings.</p>
 <table>
 <p></p><th>Before</th>
 <th>After</th></tr>
@@ -181,21 +207,15 @@ alt="ooo EMF support screenshot" /></a></td>
 alt="go-oo EMF support screenshot" /></a></td></tr>
 </table>
 </div>
-<!-- uncomment when patch patches/dev300/xmloff_dis26300_conformance.diff activated...
+
 <div class="discover-tile">
-<h4 id="better-dis26300-support">Better ISO/IEC 26300 (ODF) support.</h4>
-<p>Go-oo has improved support for ISO/IEC 26300 (ODF). Try youself: <a href="https://bugzilla.novell.com/attachment.cgi?id=219419">test.odt</a>.</p>
-</p>
-<table>
-<p></p><th>Before</th>
-<th>After</th></tr>
-<tr><td><a href="dis26300-conformance-before.png"><img src="dis26300-conformance-before-thumb.png" 
-alt="ooo DIS 26300 support screenshot" /></a></td>
-<td><a href="dis26300-conformance-after.png"><img src="dis26300-conformance-after-thumb.png"
-alt="go-oo DIS 26300 support screenshot" /></a></td></tr>
-</table>
+<h4 id="svg-support">SVG support</h4>
+<p>Go-oo provides a built-in <br>
+SVG import filter. (<a href="tiger.svg" type="image/svg+xml">sample</a>).</p>
+<p><a href="go-svg.png">
+<img src="go-svg-thumb.png" alt="screenshot of SVG import"/></a></p>
 </div>
--->
+
 <hr>
 <p>Of course, there are many other fixes and features included, too numerous to mention.</p>
 
