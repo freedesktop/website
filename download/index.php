@@ -8,9 +8,9 @@ $content = <<<EOT
 
 <h3><a href="http://go-oo.mirrorbrain.org/stable/win32/">Windows</a></h3>
 <p>Simply download the 
-<a href="http://go-oo.mirrorbrain.org/stable/win32/2.4/GoOo-en-US-2.4.0-17.exe">GoOo-en-US-<i>version</i>.exe</a>
+<a href="http://go-oo.mirrorbrain.org/stable/win32/2.4.1/GoOo-en-US-2.4.1-5.exe">GoOo-en-US-<i>version</i>.exe</a>
 file, and your
-<a href="http://go-oo.mirrorbrain.org/stable/win32/2.4/">native lang-pack</a>, and
+<a href="http://go-oo.mirrorbrain.org/stable/win32/2.4.1/">native lang-pack</a>, and
 install them one by one.
 </p>
 
@@ -18,15 +18,16 @@ install them one by one.
 <p><a href="http://go-oo.mirrorbrain.org/stable/linux-i586/">Packages</a> 
 available here, also 
 <a href="http://go-oo.mirrorbrain.org/stable/linux-i586/">http://go-oo.mirrorbrain.org/stable/linux-i586/</a>
-is a YUM repository, which you can add as an installation source.
+is a YUM repository, which you can add as an installation source into your favourite package manager simply by
+installing <a href="http://go-oo.mirrorbrain.org/stable/linux-i586/GoOo-release-0.0.3-0.noarch.rpm">this package</a>.
 </p>
 
 <h3><a href="http://download.go-oo.org/">Source Code</a></h3>
 
-<p>Download: <a href="http://download.go-oo.org/OOH680/ooo-build-2.4.0.8.tar.gz">ooo-build-2.4.0.8</a>
+<p>Download: <a href="http://download.go-oo.org/OOH680/ooo-build-2.4.1.5.tar.gz">ooo-build-2.4.1.5</a>
 <br />
 Browse: <a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/">trunk</a> or the
-<a href="http://svn.gnome.org/viewcvs/ooo-build/branches/ooo-build-2-4">ooo-build-2-4 branch</a>
+<a href="http://svn.gnome.org/viewcvs/ooo-build/branches/ooo-build-2-4-1">ooo-build-2-4-1 branch</a>
 <br />
 To check out:
 <pre>\$ svn checkout http://svn.gnome.org/svn/ooo-build/trunk ooo-build</pre>
