@@ -60,7 +60,8 @@ $content = <<<EOT
                 <li><a href="http://lxr.go-oo.org/">LXR</a></li>
                 <li><a href="http://bonsai.go-oo.org/cvsqueryform.cgi">Bonsai</a></li>
                 <li><a href="http://tinderbox.go-oo.org/">Tinderbox</a></li>
-            </ul>
+		<li><a href="http://embed.mibbit.com/?server=irc.freenode.net&channel=%23go-oo&noServerTab=false" target="blank">#go-oo IRC Chat</a></li>
+	    </ul>
             </dd>
             <dt>Hacker Guides</dt> 
             <dd>
@@ -89,6 +90,7 @@ $content = <<<EOT
                 <li><a href="http://wiki.services.openoffice.org/wiki/Tinderbox_Setup">Tinderbox setup</a></li>
                 <li>ooo-build <a href="http://download.go-oo.org/">source</a> &amp; <a href="ooo-build/patches">patches</a></li>
                 <li><a href="/users/mgp/">MagicPoint users</a></li>
+		<li><a href="http://docs.go-oo.org/index.html">source code documentation</a></li>
             </ul>
             </dd>
 	    </div>
