@@ -60,8 +60,8 @@ $content = <<<EOT
                 <li><a href="http://lxr.go-oo.org/">LXR</a></li>
                 <li><a href="http://bonsai.go-oo.org/cvsqueryform.cgi">Bonsai</a></li>
                 <li><a href="http://tinderbox.go-oo.org/">Tinderbox</a></li>
-		<li><a href="http://embed.mibbit.com/?server=irc.freenode.net&channel=%23go-oo&noServerTab=false" target="blank">#go-oo IRC Chat</a></li>
-	    </ul>
+                <li><a href="http://embed.mibbit.com/?server=irc.freenode.net&channel=%23go-oo&noServerTab=false" target="blank">#go-oo IRC Chat</a></li>
+            </ul>
             </dd>
             <dt>Hacker Guides</dt> 
             <dd>
@@ -160,6 +160,10 @@ print_page("Go-OO! - Developers",
       "Bonsai" => "http://bonsai.go-oo.org/cvsqueryform.cgi",
       "LXR" => "http://lxr.go-oo.org",
       "Tinderbox" => "http://tinderbox.go-oo.org/",
+      "#go-oo IRC Channel" => array (
+           "href" => "http://embed.mibbit.com/?server=irc.freenode.net&channel=%23go-oo&noServerTab=false",
+           "target" => "blank"
+      ),
    )
 );
 
