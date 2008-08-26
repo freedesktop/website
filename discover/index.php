@@ -4,7 +4,8 @@ require("../template.php");
 
 $content = <<<EOT
 <p>Here you can see, at a glance, what Go-oo has to offer in addition to the 
-features you expect in up-stream OpenOffice.org</p>
+features you expect in up-stream OpenOffice.org.
+Subscribe to the <a href="http://lists.go-oo.org/listinfo.cgi/announce-go-oo.org">announcement list</a> for news about Go-oo!</p>
 
 <hr>
 
