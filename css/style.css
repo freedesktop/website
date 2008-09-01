@@ -161,7 +161,10 @@ body {
     padding: 0 0 2em 115px;
     width: 90%;
 }
-
+    #container .container a {
+      color: #06c;
+    }
+    
 .tabs-container {
     margin: 2em auto;
     width: 90%;
@@ -251,3 +254,8 @@ p {
     height: 25em;
 }
 
+/* CSS for OO-Image at Home */
+#home_oo_image {
+  margin-bottom: 0;
+}
+/* /CSS for OO-Image at Home */

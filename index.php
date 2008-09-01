@@ -2,7 +2,10 @@
 require("template.php");
 
 $content = <<<EOT
+
 	<div id="download">
+		<a href="/download/">
+	  <img id="home_oo_image" src="img/thumb_go-oox-pptx.png" /><br />
 		<a href="/download/">Download</a>
 	</div>
     <h3>Better interoperability</h3>
