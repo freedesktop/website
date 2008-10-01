@@ -20,21 +20,21 @@ $content = <<<EOT
                 <form method="get" action="http://lxr.go-oo.org/ident">
                     <label>
                         <a href="http://lxr.go-oo.org/ident">Identifier</a>
-                        <input type="text" name="i" value="" size="12" />
+                        <input type="text" name="i" value="" size="10" />
                     </label>
                     <input type="submit" value="Find" class="hide" />
                 </form>
                 <form method="get" action="http://lxr.go-oo.org/search">
                     <label>
                         <a href="http://lxr.go-oo.org/search">Text</a> 
-                        <input type="text" name="string" value="" size="12" />
+                        <input type="text" name="string" value="" size="10" />
                     </label>
                     <input type="submit" value="Find" class="hide" />
                 </form>
                 <form method="get" action="http://lxr.go-oo.org/find">
                     <label>
                         <a href="http://lxr.go-oo.org/find">File</a> 
-                        <input type="text" name="string" value="" size="8" />
+                        <input type="text" name="string" value="" size="10" />
                     </label>
                     <input type="submit" value="Find" class="hide" />
                 </form>
@@ -43,64 +43,62 @@ $content = <<<EOT
                 <dd>
                 <form method="get" action="http://www.openoffice.org/issues/show_bug.cgi">
                     <a href="http://www.openoffice.org/issues/query.cgi">OO.o Issue</a> <a href="http://qa.openoffice.org/issue_handling/submission_gateway.html#code_module">New</a> 
-                    <input name="id" size="6" />
+                    <input name="id" size="8" />
+                    <input type="submit" value="Find" class="hide" />
+                </form>
+                <form method="get" action="https://bugzilla.novell.com/show_bug.cgi">
+                    <a href="https://bugzilla.novell.com/query.cgi">BNC Issue</a> <a href="https://bugzilla.novell.com/enter_bug.cgi">New</a> 
+                    <input name="id" size="8" />
                     <input type="submit" value="Find" class="hide" />
                 </form>
                 </dd>
+                <dt>Development Tools</dt>
+                <dd>
+                    <ul>
+                        <li><a href="http://lxr.go-oo.org/">LXR</a></li>
+                        <li><a href="http://bonsai.go-oo.org/cvsqueryform.cgi">Bonsai</a></li>
+                        <li><a href="http://tinderbox.go-oo.org/">Tinderbox</a></li>
+                        <li><a href="http://embed.mibbit.com/?server=irc.freenode.net&channel=%23go-oo&noServerTab=false" target="blank">#go-oo IRC Chat</a></li>
+                    </ul>
+                </dd>
+                <dt>Hacker Guides</dt> 
+                <dd>
+                    <ul>
+                        <li><a href="hackers-guide.html">English</a></li>
+                        <li><a href="hackers-guide-ja.html">Japanese</a> 1.1</li>
+                        <li><a href="hackers-guide-de.html">German</a> 1.1</li>
+                        <li><a href="http://babelfish.altavista.com/tr?doit=done&amp;url=http://go-oo.org/hackers-guide.html&amp;lp=?" target="new">Other</a></li>
+                        <li><a href="old-guides.html">Old</a></li>
+                    </ul>
+                </dd>
+                <dt>Resources</dt>
+                <dd>
+                    <ul>
+                        <li><b><a href="http://wiki.services.openoffice.org/wiki/">Wiki</a></b></li>
+                        <li><a href="http://planet.go-oo.org/">Planet OO.o</a> &amp; <a href="http://planet.go-oo.org/rss20.xml">(rss)</a></li>
+                        <li><a href="tutorials/">Hackers Tutorials</a></li>
+                        <li><a href="cws.html">Hackers CWS howto</a> &amp; <a href="cws-quickhowto-ja.html">Japanese</a></li>
+                        <li><a href="http://wiki.services.openoffice.org/wiki/Ooo-build">About ooo-build</a></li>
+                        <li><a href="http://wiki.services.openoffice.org/wiki/Environment_Variables">Tweaking setting at runtime.</a></li>
+                        <li><a href="http://wiki.services.openoffice.org/wiki/DomainDeveloper">Who is Whom?</a></li>
+                        <li><a href="http://eis.services.openoffice.org/EIS2/servlet/GuestLogon">EIS</a></li>
+                        <li><a href="http://wiki.services.openoffice.org/wiki/Tinderbox_Setup">Tinderbox setup</a></li>
+                        <li>ooo-build <a href="http://download.go-oo.org/">source</a> &amp; <a href="ooo-build/patches">patches</a></li>
+                        <li><a href="/users/mgp/">MagicPoint users</a></li>
+                <li><a href="http://docs.go-oo.org/index.html">source code documentation</a></li>
+                    </ul>
+                </dd>
             </dl>
         </div>
-        <hr />
-	<div id="quicklinks">
-        <h4>Quick links</h4>
-        <dl>
-	<div class="leftcol">
-            <dt>Development Tools</dt>
-            <dd>
-            <ul>
-                <li><a href="http://lxr.go-oo.org/">LXR</a></li>
-                <li><a href="http://bonsai.go-oo.org/cvsqueryform.cgi">Bonsai</a></li>
-                <li><a href="http://tinderbox.go-oo.org/">Tinderbox</a></li>
-                <li><a href="http://embed.mibbit.com/?server=irc.freenode.net&channel=%23go-oo&noServerTab=false" target="blank">#go-oo IRC Chat</a></li>
-            </ul>
-            </dd>
-            <dt>Hacker Guides</dt> 
-            <dd>
-            <ul>
-                <li><a href="hackers-guide.html">English</a></li>
-                <li><a href="hackers-guide-ja.html">Japanese</a> 1.1</li>
-                <li><a href="hackers-guide-de.html">German</a> 1.1</li>
-                <li><a href="http://babelfish.altavista.com/tr?doit=done&amp;url=http://go-oo.org/hackers-guide.html&amp;lp=?" target="new">Other</a></li>
-                <li><a href="old-guides.html">Old</a></li>
-            </ul>
-            </dd>
-	</div>
-	<div class="rightcol">
-            <dt>Resources</dt>
-            <dd>
-            <ul>
-                <li><b><a href="http://wiki.services.openoffice.org/wiki/">Wiki</a></b></li>
-                <li><a href="http://planet.go-oo.org/">Planet OO.o</a> &amp; <a href="http://planet.go-oo.org/rss20.xml">(rss)</a></li>
-                <li><a href="tutorials/">Hackers Tutorials</a></li>
-                <li><a href="cws.html">Hackers CWS howto</a> &amp; <a href="cws-quickhowto-ja.html">Japanese</a></li>
-                <li><a href="http://wiki.services.openoffice.org/wiki/Ooo-build">About ooo-build</a></li>
-                <li><a href="http://wiki.services.openoffice.org/wiki/Environment_Variables">Tweaking setting
-		at runtime.</a></li>
-                <li><a href="http://wiki.services.openoffice.org/wiki/DomainDeveloper">Who is Whom?</a></li>
-                <li><a href="http://eis.services.openoffice.org/EIS2/servlet/GuestLogon">EIS</a></li>
-                <li><a href="http://wiki.services.openoffice.org/wiki/Tinderbox_Setup">Tinderbox setup</a></li>
-                <li>ooo-build <a href="http://download.go-oo.org/">source</a> &amp; <a href="ooo-build/patches">patches</a></li>
-                <li><a href="/users/mgp/">MagicPoint users</a></li>
-		<li><a href="http://docs.go-oo.org/index.html">source code documentation</a></li>
-            </ul>
-            </dd>
-	    </div>
-        </dl>
-	</div>
-
-	<hr />
-
 	<div>
-	<h5>Mailing List</h5>
+	<h4 id="irc">IRC</h4>
+        <p>We have a channel #go-oo on irc.freenode.net, where you can discuss development 
+	issues with hackers.</p>
+        <p>To contact anyone wrt. go-oo see the ooo-build 
+	<a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/AUTHORS?view=markup">maintainers</a> 
+	or contact <i>mmeeks T novell com</i></p>
+
+	<h4>Mailing List</h4>
 	
 	<p>There is a mailing for ooo-build development. 
 	<a href="http://lists.go-oo.org/listinfo.cgi/dev-go-oo.org">More info</a> on
@@ -108,7 +106,54 @@ $content = <<<EOT
 	read the <a href="http://lists.go-oo.org/pipermail/dev-go-oo.org/">archive</a>. 
 	There is also the <a href="mailarchive/">old mailing list archive</a>.</p>
 
-	<h5>Tinderbox Build Status</h5>
+	<h4>Tarballs</h4>
+        <p>You can download <a href="http://download.go-oo.org/">packages of OO.o here</a>. 
+	These are tested to ensure clean builds.</p>
+        
+    <h4>Translate a short German comment: [ thanks to <a href="http://babelfish.altavista.com">BabelFish</a> ]</h4>
+    <form action="http://babelfish.altavista.com/tr" method="post" name="frmTrText">
+        <input name="doit" value="done" type="hidden" />
+        <input name="intl" value="1" type="hidden" />
+        <input name="tt" value="urltext" type="hidden" />
+        <textarea rows="2" wrap="virtual" cols="42" style="width: 30em;" name="trtext"></textarea><br />
+        <input name="lp" value="de_en" type="hidden" />
+        <input value="Translate" type="submit" />
+    </form>
+
+	<h4>Source</h4>
+    <p>ooo-build sources are stored in 
+    <a href="http://developer.gnome.org/tools/svn.html">Subversion</a>.
+    To check out the latest version of ooo-build:</p>
+
+    <div class="pre">
+        svn co http://svn.gnome.org/svn/ooo-build/trunk ooo-build
+    </div>
+
+    <p>Registered developers should use the following command to enable writing
+    to the repository:</p>
+
+    <div class="pre">
+        svn co svn+ssh://<i>login@</i>svn.gnome.org/svn/ooo-build/trunk ooo-build
+    </div>
+
+    <p>Once the source has been checked out, ooo-build can be built in 
+    very nearly the usual manner:</p>
+    <div class="pre">
+        cd ooo-build<br />
+        ./autogen.sh --with-distro=<i>DISTRO</i><br />
+        ./download<br />
+        make
+    </div>
+
+    <p>where <i>DISTRO</i> is the basename of a file in the 
+    <a href="http://svn.gnome.org/viewvc/ooo-build/trunk/distro-configs/">distro-configs</a>
+    directory, such as <i>Debian</i>, <i>SUSE</i>, or <i>Ubuntu</i>.</p>
+
+    <p>See the 
+    <a href="http://wiki.services.openoffice.org/wiki/Ooo-build">Wiki</a> for
+    more information.</p>
+
+	<h4>Tinderbox Build Status</h4>
         <p>Find an overview over the last tinderbox build results 
 	<a href="http://go-oo.org/tinderbox/all_trees.express.html">here</a>.</p>
         <p>A list of the currently open tinderbox branches (CWSs and MWSs) can be 
@@ -120,35 +165,14 @@ $content = <<<EOT
 	<a href="http://wiki.services.openoffice.org/wiki/Tinderbox_Setup">Tinderbox 
 	setup guide</a>.</p>
         
-	<h5>Changes in ooo-build</h5>
+	<h4>Changes in ooo-build</h4>
         <p>Use <a href="http://cia.vc/stats/project/gnome/ooo-build">CIA</a> to look up 
 	the latest changes in ooo-build cvs.</p>
         
-	<h5>Tarballs</h5>
-        <p>You can download <a href="http://download.go-oo.org/">packages of OO.o here</a>. 
-	These are tested to ensure clean builds.</p>
-        
-	<h5>Local web tools</h5>
+	<h4>Local web tools</h4>
         <p>Our patches to sync bonsai via cvsup, and a description of how to make LXR work 
 	on RH 8.0+ can be found <a href="web-patches/">here</a>.</p>
         
-	<h5 id="irc">IRC</h5>
-        <p>We have a channel #go-oo on irc.freenode.net, where you can discuss development 
-	issues with hackers.</p>
-        <p>To contact anyone wrt. go-oo see the ooo-build 
-	<a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/AUTHORS?view=markup">maintainers</a> 
-	or contact <i>mmeeks T novell com</i></p>
-
-        <hr />
-        <form action="http://babelfish.altavista.com/tr" method="post" name="frmTrText">
-            <input name="doit" value="done" type="hidden" />
-            <input name="intl" value="1" type="hidden" />
-	    <b>Translate a short German comment: [ thanks to <a href="http://babelfish.altavista.com">BabelFish</a> ]</b><br />
-            <input name="tt" value="urltext" type="hidden" />
-            <textarea rows="2" wrap="virtual" cols="42" style="width: 400px;" name="trtext"></textarea><br />
-            <input name="lp" value="de_en" type="hidden" />
-            <input value="Translate" type="submit" />
-        </form>
 	</div>
 EOT;
 

@@ -1,13 +1,34 @@
 body          { font-size: 87.5%;  }  /* IE6 */
 html > body   { font-size: 14px; }
 
-h3 {
+h3, h4, h5 {
     clear: left;
+}
+
+h4 {
+    margin-top: 1em;
 }
 
 body {
     margin: 0;
     background-color: #333;
+}
+
+div.pre {
+    margin:0;
+    padding:0;
+    border:0;
+    font-weight:inherit;
+    font-style:inherit;
+    font-size:100%;
+    font-family:inherit;
+    vertical-align:baseline;
+    font-family:Corbel,Verdana,"Bitstream Vera Sans",sans-serif;
+    margin-bottom:18px;
+    background:#eee;
+    border:1px solid #ddd;
+    padding:16px;
+    width: 30em;
 }
 
 #download {
@@ -190,6 +211,11 @@ p {
 
 #dev-tools {
     position: relative;
+    float: right;
+    width: 15em;
+    margin-left: 0.5em;
+    padding-left: 1em;
+    border-left: thin solid #ccc;
     overflow: hidden;
 }
     #dev-tools dl {}
@@ -202,8 +228,8 @@ p {
         }
             #dev-tools dd form {
                 display: block;
-                width: 50%;
-                float: left;
+                width: 100%;
+                text-align: right;
             }
 
     #dev-tools label a {
