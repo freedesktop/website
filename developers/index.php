@@ -58,6 +58,10 @@ $content = <<<EOT
                         <li><a href="http://lxr.go-oo.org/">LXR</a></li>
                         <li><a href="http://bonsai.go-oo.org/cvsqueryform.cgi">Bonsai</a></li>
                         <li><a href="http://tinderbox.go-oo.org/">Tinderbox</a></li>
+                        <li>
+                          <a href="http://buildbot.go-oo.org">Buildbot</a>
+                          (<a href="http://wiki.services.openoffice.org/wiki/Buildbot">More information</a>)
+                        </li>
                         <li><a href="http://embed.mibbit.com/?server=irc.freenode.net&channel=%23go-oo&noServerTab=false" target="blank">#go-oo IRC Chat</a></li>
                     </ul>
                 </dd>
@@ -184,6 +188,7 @@ print_page("Go-OO! - Developers",
       "Bonsai" => "http://bonsai.go-oo.org/cvsqueryform.cgi",
       "LXR" => "http://lxr.go-oo.org",
       "Tinderbox" => "http://tinderbox.go-oo.org/",
+      "Buildbot" => "http://tinderbox.go-oo.org/",
       "#go-oo IRC Channel" => array (
            "href" => "http://embed.mibbit.com/?server=irc.freenode.net&channel=%23go-oo&noServerTab=false",
            "target" => "blank"
