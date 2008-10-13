@@ -56,6 +56,7 @@ $content = <<<EOT
                 <dd>
                     <ul>
                         <li><a href="http://lxr.go-oo.org/">LXR</a></li>
+                        <li><a href="http://pumbaa.ooodev.org:59145/source/">OpenGrok</a> (expreimental)</li>
                         <li><a href="http://bonsai.go-oo.org/cvsqueryform.cgi">Bonsai</a></li>
                         <li><a href="http://tinderbox.go-oo.org/">Tinderbox</a></li>
                         <li>
@@ -187,6 +188,7 @@ print_page("Go-OO! - Developers",
    array (
       "Bonsai" => "http://bonsai.go-oo.org/cvsqueryform.cgi",
       "LXR" => "http://lxr.go-oo.org",
+      "OpenGrok" => "http://pumbaa.ooodev.org:59145/source/",
       "Tinderbox" => "http://tinderbox.go-oo.org/",
       "Buildbot" => "http://buildbot.go-oo.org",
       "#go-oo IRC Channel" => array (
