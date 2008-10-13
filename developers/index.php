@@ -56,7 +56,7 @@ $content = <<<EOT
                 <dd>
                     <ul>
                         <li><a href="http://lxr.go-oo.org/">LXR</a></li>
-                        <li><a href="http://pumbaa.ooodev.org:59145/source/">OpenGrok</a> (expreimental)</li>
+                        <li><a href="http://pumbaa.ooodev.org:59145/source/">OpenGrok</a> (experimental)</li>
                         <li><a href="http://bonsai.go-oo.org/cvsqueryform.cgi">Bonsai</a></li>
                         <li><a href="http://tinderbox.go-oo.org/">Tinderbox</a></li>
                         <li>
