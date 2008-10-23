@@ -10,30 +10,6 @@ Subscribe to the <a href="http://lists.go-oo.org/listinfo.cgi/announce-go-oo.org
 <hr>
 
 <div class="discover-tile" style="width: 15em;">
-<h4 id="docx-support">OpenXML / DOCX support</h4>
-<p>Go-oo provides a built-in <code>.docx</code>
-import filter. (<a href="go-oox.docx">sample</a>).</p>
-<a href="go-oox-docx.png">
-<img src="go-oox-docx-thumb.png" alt="screenshot of XLSX import"/></a>
-</div>
-
-<div class="discover-tile" style="width: 15em;">
-<h4 id="xlsx-support">OpenXML / XLSX support</h4>
-<p>Go-oo provides a built-in <code>.xlsx</code>
-import filter. (<a href="go-oox.xlsx">sample</a>).</p>
-<a href="go-oox-xlsx.png">
-<img src="go-oox-xlsx-thumb.png" alt="screenshot of XLSX import"/></a>
-</div>
-
-<div class="discover-tile" style="width: 15em;">
-<h4 id="docx-support">OpenXML / PPTX support</h4>
-<p>Go-oo provides a built-in <code>.pptx</code>
-import filter. (<a href="go-oox.pptx">sample</a>).</p>
-<a href="go-oox-pptx.png">
-<img src="go-oox-pptx-thumb.png" alt="screenshot of PPTX import"/></a>
-</div>
-
-<div class="discover-tile" style="width: 15em;">
 <h4 id="svg-support">SVG support</h4>
 <p>Go-oo provides a built-in 
 SVG import filter. (<a href="tiger.svg" type="image/svg+xml">sample</a>)</p>
@@ -109,6 +85,19 @@ for OpenOffice.org (<a href="go-vba-hypo.xls">sample</a>).</p>
 <img src="go-excel-vba-thumb.png" alt="go-oo screenshot for VBA"/></a>
 </div>
 
+<div class="discover-tile" style="width: 15em;">
+<h4 id="mono-integration">Mono integration</h4>
+<p>Go-oo allows UNO automation with
+<a href="http://www.mono-project.com">Mono</a>,
+permitting automation from
+many languages such as <a href="http://www.mono-project.com/CSharp">C#</a>,
+<a href="http://boo.codehaus.org">Boo</a>,
+and more! (<a href="http://wiki.services.openoffice.org/wiki/Mono_Integration">instructions</a>;
+<a href="http://svn.gnome.org/svn/ooo-build/trunk/test/mono/">source</a>)</p>
+<a href="mono-sample.png">
+<img src="mono-sample-thumb.png" alt="Screenshot of Automation with Mono"/></a>
+</div>
+
 <div class="discover-tile" style="width: 34em;">
 <h4 id="gstreamer">GStreamer integration</h4>
 <p>Go-oo on Linux supports multimedia content using
@@ -122,19 +111,6 @@ alt="ooo and gstreamer screenshot" /></a></td>
 <td><a href="go-gstreamer.png"><img src="go-gstreamer-thumb.png"
 alt="go-oo and gstreamer screenshot" /></a></td></tr>
 </table>
-</div>
-
-<div class="discover-tile" style="width: 15em;">
-<h4 id="mono-integration">Mono integration</h4>
-<p>Go-oo allows UNO automation with
-<a href="http://www.mono-project.com">Mono</a>,
-permitting automation from
-many languages such as <a href="http://www.mono-project.com/CSharp">C#</a>,
-<a href="http://boo.codehaus.org">Boo</a>,
-and more! (<a href="http://wiki.services.openoffice.org/wiki/Mono_Integration">instructions</a>;
-<a href="http://svn.gnome.org/svn/ooo-build/trunk/test/mono/">source</a>)</p>
-<a href="mono-sample.png">
-<img src="mono-sample-thumb.png" alt="Screenshot of Automation with Mono"/></a>
 </div>
 
 <div class="discover-tile" style="width: 34em;">
@@ -152,13 +128,6 @@ alt="go-oo textgrid screenshot" /></a></td></tr>
 </table>
 </div>
 
-<div class="discover-tile" style="width: 15em;">
-<h4 id="ms-works-import">MS-Works import</h4>
-<p>Go-oo supports MS-Works files.
-(<a href="msworks.wps" type="application/vnd.ms-works">sample</a>)</p>
-<a href="go-msworks.png"><img src="go-msworks-thumb.png" alt="go-oo MS-Works support screenshot" /></a>
-</div>
-
 <div class="discover-tile" style="width: 33em;">
 <h4 id="emf-rendering">Improved EMF rendering</h4>
 <p>Go-oo renders EMF+ content, giving a far better
@@ -173,6 +142,13 @@ alt="go-oo EMF support screenshot" /></a></td></tr>
 </table>
 </div>
 
+<div class="discover-tile" style="width: 15em;">
+<h4 id="ms-works-import">MS-Works import</h4>
+<p>Go-oo supports MS-Works files.
+(<a href="msworks.wps" type="application/vnd.ms-works">sample</a>)</p>
+<a href="go-msworks.png"><img src="go-msworks-thumb.png" alt="go-oo MS-Works support screenshot" /></a>
+</div>
+
 <div class="discover-tile" style="width: 17em;">
 <h4 id="wp-graphics-import">WordPerfect Graphics import</h4>
 <p>Go-oo imports graphics in the
@@ -182,13 +158,6 @@ WordPerfect importer.
 (<a href="wpg-support.wpg" type="image/wpg">sample</a>)</p>
 <a href="go-wpg-support.png"><img src="go-wpg-support-thumb.png" 
 alt="go-oo WPG support screenshot" /></a>
-</div>
-
-<div class="discover-tile" style="width: 13em;">
-<h4>T602 import</h4>
-<p>Go-oo supports T602 files.
-(<a href="cti_lasr.602" type="application/x-t602">sample</a>)</p>
-<a href="go-t602.png"><img src="go-t602-thumb.png" alt="go-oo T602 support screenshot" /></a>
 </div>
 
 <hr>
