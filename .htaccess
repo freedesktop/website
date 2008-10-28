@@ -17,7 +17,7 @@ Redirect /tstnvl http://download.go-oo.org/tstnvl
     Order allow,deny
     Deny from all
 </Files>
-<Files ~ "^.svn">
+<Directory ~ "^.svn">
     Order allow,deny
     Deny from all
-</Files>
+</Directory>
