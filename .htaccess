@@ -5,6 +5,10 @@ Redirect /tinderbox http://tinderbox.go-oo.org
 Redirect /lxr http://lxr.go-oo.org
 Redirect /red-carpet http://download.go-oo.org/red-carpet
 Redirect /tstnvl http://download.go-oo.org/tstnvl
+<Files ~ ".*\.php$">
+    Order deny,allow
+    Deny from all
+</Files>
 <Files ~ "include.mk">
     Order allow,deny
     Deny from all
