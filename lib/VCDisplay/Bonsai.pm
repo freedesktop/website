@@ -164,10 +164,10 @@ sub prepare_bonsai_args {
     ($args{'mindate'} && $args{'maxdate'}) && 
     ($args{'mindate'} > $args{'maxdate'}) && 
         (die (
-              "Bonsai mindate is GREATER then maxdate.\n".
-              "Bonsai requires that mindate be an earlier time then maxdate.\n".
-              "mindate: $args{'mindate'}: ".time2bonsai($args{'mindate'})."\n".
-              "maxdate: $args{'maxdate'}: ".time2bonsai($args{'maxdate'})."\n".
+              "$tree - Bonsai mindate is GREATER then maxdate.\n".
+              "$tree - Bonsai requires that mindate be an earlier time then maxdate.\n".
+              "$tree - mindate: $args{'mindate'}: ".time2bonsai($args{'mindate'})."\n".
+              "$tree - maxdate: $args{'maxdate'}: ".time2bonsai($args{'maxdate'})."\n".
               ""));
 
     # Convert times to a human readable date for the convenience of

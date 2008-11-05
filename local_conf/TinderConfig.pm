@@ -211,7 +211,8 @@ $PopUpImpl = (
            # version control systems
 
 #	   'TinderDB::VC_CVS',
-	   'TinderDB::VC_Bonsai',
+	   #svnbackup 'TinderDB::VC_Bonsai',
+	   'TinderDB::VC_SVN',
 #	   'TinderDB::VC_PVCSDimensions',
 #         'TinderDB::VC_Perforce',
 
@@ -354,8 +355,8 @@ $ADD_TEXT_BROWSER_STRINGS = 0;
 # 'None'.
 
 $VCDisplayImpl = (
-		  #'VCDisplay::None',
-		  'VCDisplay::Bonsai',
+		  'VCDisplay::None',
+		  #svnbackup 'VCDisplay::Bonsai',
 		  #'VCDisplay::ViewCVS',
 		  #'VCDisplay::Perforce_P4DB',
 		 );
@@ -425,7 +426,7 @@ $BT_URL	= 'http://www.openoffice.org/issues';
 # The name of the bug tracking system as it should appear on the
 # column heading.
 
-$BT_NAME = "Issuezilla";
+$BT_NAME = "IssueZilla";
 
 # The default number of hours shown on the status page
 

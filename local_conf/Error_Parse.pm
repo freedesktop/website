@@ -213,7 +213,7 @@ sub line_type {
                      ($line =~ m#^find.*/usr/lib/debug: No such file or directory$#) ||
                      ($line =~ m/^Warning: Can.t check separators used in FormatCode due to LC_CTYPE ref=.(es_ES|zh_TW|zh_CN)./) ||
                       #07-02-07
-                     ($line =~ m/^xmlrole.c: In function ‘error’:/) ||
+                     ($line =~ m/^xmlrole.c: In function 'error'/) ||
                      ($line =~ m#^find:.*openoffice.org-freedesktop-menus.*/usr/lib: No such file or directory#) ||
                      ($line =~ m/^This version of java does not support the classic compiler; upgrading to modern/) ||
 
@@ -249,6 +249,13 @@ sub line_type {
 		     ($line =~ m/The serializable class [^ ]* does not declare a static final serialVersionUID/) || # ...field of type long (line is wrapped a couple of times...
 		     ($line =~ m/class [^ ]* extends (Exception|Error)/) ||
 
+		     ($line =~ m/dmake:  Warning: -- Found file corresponding to virtual target \[[^\]]*\]./) ||
+
+		     #08-01-03
+		     ($line =~ m/checking for --hash-style=both linker support ... not found/) ||
+		     ($line =~ m/configure: WARNING: Internal freetype2 does not support emboldening./) ||
+		     ($line =~ m#/o3/lx_ia32/glibc-pc-linux-gnu/include/stdlib.h:486: warning: ISO C90 does not support 'long long'#) ||
+		     ($line =~ m#^\s*import com.sun.star.uno.Exception;#) ||
                      0);
       
       if ($ignore) {

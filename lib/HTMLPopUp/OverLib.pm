@@ -53,7 +53,7 @@ use lib '/var/tinderbox/local_conf',
 
 use FileStructure;
 use Utils;
-
+use TreeData;
 
 $VERSION = '0.09';
 
@@ -1575,8 +1575,8 @@ sub page_header {
   
   my ($label, $cws) = ($args{'title'} =~ /(.*)\W(\w+)\W*$/);
   my $heading = $args{'title'};
-  
-  $heading = "$label <a href=\"http://eis.services.openoffice.org/EIS2/cws.ShowCWS?Path=SRC680/$cws\">$cws</a>" unless ($cws =~ /^[A-Z]/);
+  my $codeline = TreeData::get_tree_codeline($cws); 
+  $heading = "$label <a href=\"http://eis.services.openoffice.org/EIS2/cws.ShowCWS?Path=$codeline/$cws\">$cws</a>" unless ($cws =~ /^[A-Z]/);
 
   my ($html_time) = $main::LOCALTIME;
   $html_time =~ s/:[^:]+$//;

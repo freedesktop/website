@@ -388,7 +388,7 @@ sub cache_cmd {
     return @{ $CMD_CACHE{$key} };
 
   # We need to run the command
-
+  
   my ($pid) = open(CMD, "-|");
   
   # did we fork a new process?

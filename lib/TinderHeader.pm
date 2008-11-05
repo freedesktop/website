@@ -165,7 +165,8 @@ sub gettree_header {
       die("TinderHeader::gettree_header(): ".
           "Header implementation: $impl, not defined.");
   }
-
+  
+  return $TreeData::VC_TREE{$tree}{'cwsstate'} if ($impl eq 'TreeState');
   if ($NAMES2OBJS{$impl}) {
     my $obj = $NAMES2OBJS{$impl};
     $out = $obj->gettree_header($tree);

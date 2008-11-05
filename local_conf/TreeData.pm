@@ -215,10 +215,15 @@ $VERSION = '#tinder_version#';
 #                  },
 
 
+            #svnbackup 'HEAD' =>  {
+            #svnbackup        root => '/home/ooweb/cvsup',
+            #svnbackup        module => 'all',
+            #svnbackup        branch => 'HEAD',
+            #svnbackup       },
             'HEAD' =>  {
-                   root => '/home/ooweb/cvsup',
-                   module => 'OpenOffice',
-                   branch => 'HEAD',
+                   root => 'svn://svn.services.openoffice.org/ooo/trunk',
+                   module => 'all',
+                   branch => 'trunk',
                   },
            );
 
@@ -245,9 +250,17 @@ sub addTreesFromFile($)
     my $FileName = shift;
 
     my $group = 'new'; #default group
-    $group = 'ready_for_QA' if ($FileName =~ /qa/ or $FileName =~ /master/);
-    $group = 'approved' if ($FileName =~ /approved/);
-    $group = 'nominated' if ($FileName =~ /nominated/);
+    my $cwsstate = 'Open'; #default state
+    if ($FileName =~ /qa/ or $FileName =~ /master/) {
+	    $group = 'ready_for_QA';
+	    $cwsstate = 'Closed';
+    } elsif ($FileName =~ /approved/) {
+	    $group = 'approved';
+	    $cwsstate = 'Restricted';
+    } elsif ($FileName =~ /nominated/) {
+	    $group = 'nominated';
+	    $cwsstate = 'Metered';
+    }
 
     my $OtherTrees;
     if (open ($OtherTrees, $FileName)) {
@@ -255,14 +268,33 @@ sub addTreesFromFile($)
                 /^\#/ && next;
                 my $tree;
 		my $master;
+		my $codeline;
 		my $branch;
+		my $svnurl = 'svn://svn.services.openoffice.org/ooo';
     		($tree, $master, $branch) = split(" : ");
 		chomp($tree);
 #               $tree =~ s/\s*:.*//g;
 #               print STDERR "Add tree '$tree' from file $FileName\n";
 		next if $tree eq "";
-                $VC_TREE{$tree} = { root => '/home/ooweb/cvsup',
-                                    module => 'OpenOffice', 
+		if ($tree =~ /^[A-Z]+/) {
+			$svnurl=$svnurl."/tags/".$tree;
+		} else {
+			$svnurl=$svnurl."/cws/".$tree;
+		}
+		# untaint the svnurl
+		if ($svnurl =~ m%^(svn://svn.services.openoffice.org/ooo/(tags|cws)/([-\w]+))$% ) {
+			$svnurl=$1;
+		} else {
+			die "Bad data in '$svnurl'"; 	# log this somewhere
+		}
+		
+		$codeline = $master;
+		$codeline =~ s/_.*//;
+                #svnbackup $VC_TREE{$tree} = { root => '/home/ooweb/cvsup',
+                $VC_TREE{$tree} = { root => $svnurl,
+                                    module => 'all', 
+                                    codeline => $codeline, 
+                                    cwsstate => $cwsstate, 
                                     branch => $branch };
                 # add the tree to the treegroup (creates seperate summaries)
                 $VC_TREE_GROUPS{$group}{$tree} = 1;
@@ -462,7 +494,14 @@ sub get_all_sorted_tree_states {
   return @tree_states;
 }
 
+# mainly for generating links to EIS page
+sub get_tree_codeline {
+  my ($tree) = @_;
 
+  my $codeline = $VC_TREE{$tree}{'codeline'};
+
+  return $codeline;
+}
 
 sub tree_exists {
   my ($tree) = @_;

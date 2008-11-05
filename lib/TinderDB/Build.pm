@@ -240,7 +240,9 @@ sub latest_status {
   my (@build_names) = build_names($tree);
 
   # get the version-control-data (last change-times) from Bonsai-Info 
-  my ($last_tree_data, $second2last_tree_data, $last_vc_data) = TinderDB::VC_Bonsai::find_last_data($tree);
+  #my ($last_tree_data, $second2last_tree_data, $last_vc_data) = TinderDB::VC_Bonsai::find_last_data($tree);
+  # get the version-control-data (last change-times) from SVN-Info 
+  my ($last_tree_data, $second2last_tree_data, $last_vc_data) = TinderDB::VC_SVN::find_last_data($tree);
 
   foreach $buildname (@build_names) {
     # get the starttime of the last build (to compare it with
@@ -848,7 +850,8 @@ sub status_table_header {
     my $latest_starttime = $current_starttime; # for "dirty" status...
     
     # get the version-control-data (last change-times) from Bonsai-Info 
-    my ($last_tree_data, $second2last_tree_data, $last_vc_data) = TinderDB::VC_Bonsai::find_last_data($tree);
+    #my ($last_tree_data, $second2last_tree_data, $last_vc_data) = TinderDB::VC_Bonsai::find_last_data($tree);
+    my ($last_tree_data, $second2last_tree_data, $last_vc_data) = TinderDB::VC_SVN::find_last_data($tree);
 
     my $txt ='';    
     my $num_lines;
