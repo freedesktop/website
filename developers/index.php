@@ -15,26 +15,26 @@ require("../template.php");
 $content = <<<EOT
         <div id="dev-tools">
             <dl>
-                <dt><a href="http://lxr.go-oo.org">LXR</a></dt>
+                <dt><a href="http://svn.services.openoffice.org/opengrok/">OpenGrok</a> (replaces LXR)</dt>
                 <dd>
-                <form method="get" action="http://lxr.go-oo.org/ident">
+                <form method="get" action="http://svn.services.openoffice.org/opengrok/search">
                     <label>
-                        <a href="http://lxr.go-oo.org/ident">Identifier</a>
-                        <input type="text" name="i" value="" size="10" />
+                        Identifier
+                        <input type="text" name="refs" value="" size="10" />
                     </label>
                     <input type="submit" value="Find" class="hide" />
                 </form>
-                <form method="get" action="http://lxr.go-oo.org/search">
+                <form method="get" action="http://svn.services.openoffice.org/opengrok/search">
                     <label>
-                        <a href="http://lxr.go-oo.org/search">Text</a> 
-                        <input type="text" name="string" value="" size="10" />
+                        Text 
+                        <input type="text" name="q" value="" size="10" />
                     </label>
                     <input type="submit" value="Find" class="hide" />
                 </form>
-                <form method="get" action="http://lxr.go-oo.org/find">
+                <form method="get" action="http://svn.services.openoffice.org/opengrok/search">
                     <label>
-                        <a href="http://lxr.go-oo.org/find">File</a> 
-                        <input type="text" name="string" value="" size="10" />
+                        File 
+                        <input type="text" name="path" value="" size="10" />
                     </label>
                     <input type="submit" value="Find" class="hide" />
                 </form>
@@ -55,8 +55,7 @@ $content = <<<EOT
                 <dt>Development Tools</dt>
                 <dd>
                     <ul>
-                        <li><a href="http://lxr.go-oo.org/">LXR</a></li>
-                        <li><a href="http://pumbaa.ooodev.org:59145/source/">OpenGrok</a> (experimental)</li>
+                        <li><a href="http://svn.services.openoffice.org/opengrok/">OpenGrok</a> (replaces LXR)</li>
                         <li><a href="http://bonsai.go-oo.org/cvsqueryform.cgi">Bonsai</a></li>
                         <li><a href="http://tinderbox.go-oo.org/">Tinderbox</a></li>
                         <li>
@@ -187,8 +186,7 @@ print_page("Go-OO! - Developers",
    $content,
    array (
       "Bonsai" => "http://bonsai.go-oo.org/cvsqueryform.cgi",
-      "LXR" => "http://lxr.go-oo.org",
-      "OpenGrok" => "http://pumbaa.ooodev.org:59145/source/",
+      "OpenGrok" => "http://svn.services.openoffice.org/opengrok/",
       "Tinderbox" => "http://tinderbox.go-oo.org/",
       "Buildbot" => "http://buildbot.go-oo.org",
       "#go-oo IRC Channel" => array (
