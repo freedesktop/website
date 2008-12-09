@@ -44,7 +44,7 @@ To check out:
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/openSUSE_10.3/">10.3</a>
 <a href="http://software.opensuse.org/ymp/OpenOffice.org:STABLE/openSUSE_10.3/OpenSUSE_org.ymp">
 <img src="opensuse-1click.png" title="1-click install" alt="1-click install" border="0" />
-</a>
+</a>,
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/openSUSE_11.0/">11.0</a>
 <a href="http://software.opensuse.org/ymp/OpenOffice.org:STABLE/openSUSE_11.0/OpenSUSE_org.ymp">
 <img src="opensuse-1click.png" title="1-click install" alt="1-click install" />
@@ -108,11 +108,11 @@ case you get to keep both bits.</dd>
 <a href="http://go-oo.mirrorbrain.org/unstable/linux-i586/">Universal Linux</a></dd>
 <dd>SUSE:
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/SLED_10/">SLED10</a>, 
-<a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_10.2/">10.2</a>
+<a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_10.2/">10.2</a>,
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_10.3/">10.3</a>
 <a href="http://software.opensuse.org/ymp/OpenOffice.org:UNSTABLE/openSUSE_10.3/OpenSUSE_org.ymp">
 <img src="opensuse-1click.png" title="1-click install" alt="1-click install" width="101"
-border="0" height="26"/></a>
+border="0" height="26"/></a>,
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_11.0/">11.0</a>
 <a href="http://software.opensuse.org/ymp/OpenOffice.org:UNSTABLE/openSUSE_11.0/OpenSUSE_org.ymp">
 <img src="opensuse-1click.png" title="1-click install" alt="1-click install" width="101"
