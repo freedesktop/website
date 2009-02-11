@@ -8,9 +8,9 @@ $content = <<<EOT
 
 <h3><a href="http://go-oo.mirrorbrain.org/stable/win32/">Windows</a></h3>
 <p>Simply download the 
-<a href="http://go-oo.mirrorbrain.org/stable/win32/3.0/GoOo-3.0-19.exe">GoOo-en-US-<i>version</i>.exe</a>
+<a href="http://go-oo.mirrorbrain.org/stable/win32/3.0.1/GoOo-3.0.1-4.exe">GoOo-en-US-<i>version</i>.exe</a>
 file, and your
-<a href="http://go-oo.mirrorbrain.org/stable/win32/3.0/">native lang-pack</a>, and
+<a href="http://go-oo.mirrorbrain.org/stable/win32/3.0.1/">native lang-pack</a>, and
 install them one by one.
 </p>
 
@@ -24,10 +24,10 @@ installing <a href="http://go-oo.mirrorbrain.org/stable/linux-i586/GoOo-release-
 
 <h3><a href="http://download.go-oo.org/">Source Code</a></h3>
 
-<p>Download: <a href="http://download.go-oo.org/OOO300/ooo-build-3.0.0.3.6.tar.gz">ooo-build-3.0.0.3.6</a>
+<p>Download: <a href="http://download.go-oo.org/OOO300/ooo-build-3.0.1.2.tar.gz">ooo-build-3.0.1.2</a>
 <br />
 Browse: <a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/">trunk</a> or the
-<a href="http://svn.gnome.org/viewcvs/ooo-build/branches/ooo-build-3-0">ooo-build-3-0 branch</a>
+<a href="http://svn.gnome.org/viewcvs/ooo-build/branches/ooo-build-3-0-1">ooo-build-3-0-1 branch</a>
 <br />
 To check out:
 <pre>\$ svn checkout http://svn.gnome.org/svn/ooo-build/trunk ooo-build</pre>
@@ -52,12 +52,12 @@ To check out:
 </dd>
 
 <h3>Debian</h3>
-<dd>Debian provides OpenOffice.org in their repositories. 
+<dd>Debian provides Go-OO in their repositories. 
 To install it just type as root <pre># apt-get install openoffice.org</pre></dd>
 <dl>
 
 <h3>Ubuntu</h3>
-<dd>Ubuntu provides OpenOffice.org in their repositories. 
+<dd>Ubuntu provides Go-OO in their repositories. 
 To install it just type as root <pre># apt-get install openoffice.org</pre></dd>
 <dl>
 
