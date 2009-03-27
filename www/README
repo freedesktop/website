@@ -1,4 +1,0 @@
-This directory is synced to http://ooo.ximian.com/
-every minute ...
-
-bug.html is re-built from bug.tmpl using bin/build-issues
