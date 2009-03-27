@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] build from scratch of m166 breaks
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-May/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20build%20from%20scratch%20of%20m166%20breaks&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001802.html">
+   <LINK REL="Next"  HREF="001804.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] build from scratch of m166 breaks</H1>
+    <B>Giuseppe Castagno</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20build%20from%20scratch%20of%20m166%20breaks&In-Reply-To="
+       TITLE="[Open Office] build from scratch of m166 breaks">giuseppe.castagno at gmail.com
+       </A><BR>
+    <I>Fri May  5 16:54:15 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001802.html">[Open Office] Patch to Chinese font alternatives
+</A></li>
+        <LI>Next message: <A HREF="001804.html">[Open Office] build from scratch of m166 breaks
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1803">[ date ]</a>
+              <a href="thread.html#1803">[ thread ]</a>
+              <a href="subject.html#1803">[ subject ]</a>
+              <a href="author.html#1803">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+I tried to build m166 tag from scratch, it stopped at:
+
+Making: ../../unxlngi6.pro/lib/libunoxml680li.so
+g++ -Wl,-z,combreloc -Wl,-z,defs -Wl,-rpath,'$ORIGIN' -Wl,-zdynsort
+-shared -Wl,-O1 -Wl,--version-script
+../../unxlngi6.pro/misc/exports_unoxml680li.map
+-L../../unxlngi6.pro/lib -L../lib
+-L/media/usb-li/home/beppe/ooo-b.m166/build/src680-m166/solenv/unxlngi6/lib
+-L/media/usb-li/home/beppe/ooo-b.m166/build/src680-m166/solver/680/unxlngi6.pro/lib
+-L/media/usb-li/home/beppe/ooo-b.m166/build/src680-m166/solenv/unxlngi6/lib
+-L/usr/java/jdk1.5.0_06/lib -L/usr/java/jdk1.5.0_06/jre/lib/i386
+-L/usr/java/jdk1.5.0_06/jre/lib/i386/client
+-L/usr/java/jdk1.5.0_06/jre/lib/i386/native_threads -L/usr/lib
+-L/usr/lib/mozilla-1.7.13 ../../unxlngi6.pro/slo/services.o
+../../unxlngi6.pro/slo/unoxml_dflt_version.o
+../../unxlngi6.pro/slo/unoxml_dflt_description.o -o
+../../unxlngi6.pro/lib/libunoxml680li.so ../../unxlngi6.pro/slo/attr.o
+../../unxlngi6.pro/slo/cdatasection.o
+../../unxlngi6.pro/slo/characterdata.o
+../../unxlngi6.pro/slo/comment.o ../../unxlngi6.pro/slo/document.o
+../../unxlngi6.pro/slo/documentbuilder.o
+../../unxlngi6.pro/slo/documentfragment.o
+../../unxlngi6.pro/slo/documenttype.o ../../unxlngi6.pro/slo/element.o
+../../unxlngi6.pro/slo/entity.o
+../../unxlngi6.pro/slo/entityreference.o ../../unxlngi6.pro/slo/node.o
+../../unxlngi6.pro/slo/notation.o
+../../unxlngi6.pro/slo/processinginstruction.o
+../../unxlngi6.pro/slo/text.o
+../../unxlngi6.pro/slo/domimplementation.o
+../../unxlngi6.pro/slo/elementlist.o
+../../unxlngi6.pro/slo/childlist.o
+../../unxlngi6.pro/slo/notationsmap.o
+../../unxlngi6.pro/slo/entitiesmap.o
+../../unxlngi6.pro/slo/attributesmap.o
+../../unxlngi6.pro/slo/saxbuilder.o
+../../unxlngi6.pro/slo/xpathobject.o ../../unxlngi6.pro/slo/nodelist.o
+../../unxlngi6.pro/slo/xpathapi.o ../../unxlngi6.pro/slo/event.o
+../../unxlngi6.pro/slo/eventdispatcher.o
+../../unxlngi6.pro/slo/mutationevent.o
+../../unxlngi6.pro/slo/uievent.o ../../unxlngi6.pro/slo/mouseevent.o
+../../unxlngi6.pro/slo/testlistener.o -lxml2 -lz -lm -ltl680li
+-lcomphelp4gcc3 -luno_cppuhelpergcc3 -luno_cppu -luno_sal -ldl
+-lpthread -lm -Wl,-Bdynamic -lstlport_gcc
+/usr/bin/ld: cannot find -ltl680li
+collect2: ld returned 1 exit status
+dmake:  Error code 1, while making '../../unxlngi6.pro/lib/libunoxml680li.so'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making
+/media/usb-li/home/beppe/ooo-b.m166/build/src680-m166/unoxml/source/service
+make: *** [stamp/build] Error 1
+
+I'm not a build sequence expert, but in the last tag I build from
+scratch (m163) the module unoxml was build after tools in which
+libtl680li lives, may be the module build order is not right ?
+
+my system is FC5, topmost lines of my ooo-build/ChangeLog read:
+
+2006-05-05  Jan Holesovsky  &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">kendy at suse.cz</A>&gt;
+
+	* patches/src680/framework-layered-accelerators.diff: Updated
+	  according to comments in the issue.
+
+--
+Kind regards,
+Giuseppe Castagno
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001802.html">[Open Office] Patch to Chinese font alternatives
+</A></li>
+	<LI>Next message: <A HREF="001804.html">[Open Office] build from scratch of m166 breaks
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1803">[ date ]</a>
+              <a href="thread.html#1803">[ thread ]</a>
+              <a href="subject.html#1803">[ subject ]</a>
+              <a href="author.html#1803">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

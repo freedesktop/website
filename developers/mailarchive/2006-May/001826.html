@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] 64bit Sun JDK 1.5.0.06 - JNI exception
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-May/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%2064bit%20Sun%20JDK%201.5.0.06%20-%20JNI%20exception&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001825.html">
+   <LINK REL="Next"  HREF="001827.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] 64bit Sun JDK 1.5.0.06 - JNI exception</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%2064bit%20Sun%20JDK%201.5.0.06%20-%20JNI%20exception&In-Reply-To="
+       TITLE="[Open Office] 64bit Sun JDK 1.5.0.06 - JNI exception">h.mth at web.de
+       </A><BR>
+    <I>Tue May 23 16:58:23 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001825.html">[Open Office] [PATCH] enable java for Frugalware in 2.0.2
+</A></li>
+        <LI>Next message: <A HREF="001827.html">[Open Office] 64bit Sun JDK 1.5.0.06 - JNI exception
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1826">[ date ]</a>
+              <a href="thread.html#1826">[ thread ]</a>
+              <a href="subject.html#1826">[ subject ]</a>
+              <a href="author.html#1826">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi list,
+I found some users that tested ooc680-m2 with Sun JDK 1.5 on amd64.
+I traced it to this piece returning NULL and therefor throwing the 'JNI exception'.
+To be exact the CallObjectMethodA function returns NULL.
+
+# grep -n -A 3 -B 1 CallObjectMethodA stoc/source/javavm/javavm.cxx 
+1773-    jclass class_UnoClassLoader = static_cast&lt; jclass &gt;(
+1774:        environment-&gt;CallObjectMethodA(cl1, method_loadClass, args));
+1775-    if (class_UnoClassLoader == 0) {
+1776-        handleJniException(environment);
+1777-    }
+
+May that be a bug in 64bit Sun JDK 1.5?
+Well, I have no idea. :)
+
+
+Regards,
+Hanno
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001825.html">[Open Office] [PATCH] enable java for Frugalware in 2.0.2
+</A></li>
+	<LI>Next message: <A HREF="001827.html">[Open Office] 64bit Sun JDK 1.5.0.06 - JNI exception
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1826">[ date ]</a>
+              <a href="thread.html#1826">[ thread ]</a>
+              <a href="subject.html#1826">[ subject ]</a>
+              <a href="author.html#1826">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

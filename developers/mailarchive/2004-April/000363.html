@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Evolution address book
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000358.html">
+   <LINK REL="Next"  HREF="000361.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Evolution address book
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Evolution address book">michael@ximian.com
+       </A><BR>
+    <I>Tue, 13 Apr 2004 10:01:42 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000358.html">[Open Office] Evolution address book
+</A></li>
+        <LI> Next message: <A HREF="000361.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#363">[ date ]</a>
+              <a href="thread.html#363">[ thread ]</a>
+              <a href="subject.html#363">[ subject ]</a>
+              <a href="author.html#363">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Carl,
+
+On Thu, 2004-04-08 at 21:16 -0700, Carl Parrish wrote:
+&gt;<i> I've set evolution as a datasource works great I can get the name of my 
+</I>&gt;<i> contacts and their address. But not their Spouses name or Dept or the 
+</I>&gt;<i> Catalog they are listed under.
+</I>
+	Ok - this I guess is just a bad field mapping somewhere;
+
+	The code is in connectivity/source/drivers/evolution - and we are
+currently working on a 1.5.x version outside the code-base (Amit is
+hacking on it) - it's prolly best if you fix the 1.5.x version though
+since it's easy.
+
+	The way I understand that it works is it forks:
+
+	evolution-addressbook-export
+
+	and then parses the input as text sub-classing the text-file import
+code in there :-) inelegant, but simple / fast to implement.
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000358.html">[Open Office] Evolution address book
+</A></li>
+	<LI> Next message: <A HREF="000361.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#363">[ date ]</a>
+              <a href="thread.html#363">[ thread ]</a>
+              <a href="subject.html#363">[ subject ]</a>
+              <a href="author.html#363">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

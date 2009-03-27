@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.3.7: build error in vcl/util
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:j%40bitron.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000617.html">
+   <LINK REL="Next"  HREF="000626.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.3.7: build error in vcl/util
+   </H1>
+    <B>J�rg Billeter
+    </B> 
+    <A HREF="mailto:j%40bitron.ch"
+       TITLE="[Open Office] ooo-build-1.3.7: build error in vcl/util">j@bitron.ch
+       </A><BR>
+    <I>Fri, 03 Dec 2004 23:42:55 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000617.html">[Open Office] ooo-build-1.3.7: build error in vcl/util
+</A></li>
+        <LI> Next message: <A HREF="000626.html">[Open Office] ooo-build-1.3.7: build error in vcl/util
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#623">[ date ]</a>
+              <a href="thread.html#623">[ thread ]</a>
+              <a href="subject.html#623">[ subject ]</a>
+              <a href="author.html#623">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Don, 2004-12-02 at 22:57 +0100, Hanno Meyer-Thurow wrote:
+&gt;<i> On Thu, 02 Dec 2004 21:26:00 +0100
+</I>&gt;<i> Jürg Billeter &lt;<A HREF="mailto:j@bitron.ch">j@bitron.ch</A>&gt; wrote:
+</I>&gt;<i> 
+</I>&gt;<i> This is known.
+</I>&gt;<i> As I know is this a binutils-2.15 feature of '-z defs'. In gcc34.main.dif=
+</I>f should be a diff for vcl/util/makefile.mk to strip that flag. At least here i got a XOOo 1.3.7 but with '--disable-java' because some backports break module psprint then. :(
+
+Thanks for the hint. It seems that this part of the patch is missing in
+ooo-build's version. Finally I could successfully build OOo 1.1.3 with
+gcc 3.4.
+
+But I've found an other problem: while the 1.3.6 build correctly
+displayed my cups printers, the just built 1.3.7 only falls back to a
+&quot;Generic Printer&quot;. I assume that the new threaded method of retrieving
+cups printing destinations is the culprit. Do others have the same
+problem, is there a fix / workaround? (couldn't find anything relevant
+in issuezilla)
+
+Regards,
+
+Jürg
+
+-- 
+Jürg Billeter &lt;<A HREF="mailto:j@bitron.ch">j@bitron.ch</A>&gt;
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000617.html">[Open Office] ooo-build-1.3.7: build error in vcl/util
+</A></li>
+	<LI> Next message: <A HREF="000626.html">[Open Office] ooo-build-1.3.7: build error in vcl/util
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#623">[ date ]</a>
+              <a href="thread.html#623">[ thread ]</a>
+              <a href="subject.html#623">[ subject ]</a>
+              <a href="author.html#623">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

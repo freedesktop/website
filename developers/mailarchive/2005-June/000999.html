@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build on Fedora --with-lang=ALL: HostName error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20on%20Fedora%20--with-lang%3DALL%3A%20HostName%20error&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000995.html">
+   <LINK REL="Next"  HREF="001000.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build on Fedora --with-lang=ALL: HostName error</H1>
+    <B>David Fraser</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20on%20Fedora%20--with-lang%3DALL%3A%20HostName%20error&In-Reply-To="
+       TITLE="[Open Office] ooo-build on Fedora --with-lang=ALL: HostName error">davidf at sjsoft.com
+       </A><BR>
+    <I>Thu Jun  9 10:23:49 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000995.html">[Open Office] [PATCH] updated pkgconfig 0.17 fixes
+</A></li>
+        <LI>Next message: <A HREF="001000.html">[Open Office] ooo-build on Fedora --with-lang=ALL: HostName error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#999">[ date ]</a>
+              <a href="thread.html#999">[ thread ]</a>
+              <a href="subject.html#999">[ subject ]</a>
+              <a href="author.html#999">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+
+I've come back to building OOo again after months of absence...
+I setup ooo-build on Fedora Core 3 using the following configure parameters:
+--enable-java --with-jdk-home=/usr/java/j2sdk1.4.2/ 
+--with-ant-home=/usr/local/apache-ant-1.6.2/ --with-icons=gnome,kde 
+--with-gcc-speedup=ccache --with-binsuffix=1.9df --with-lang=ALL
+
+I then built successfully (apart from the flex glitch mentioned below) 
+and tried to install.
+
+The first time I tried to run bin/ooinstall from a different user than 
+the one that had built in the first place.
+This then gobbled up 1500MB of memory :-( with many messages about ... 
+cleaning the output tree ...
+
+So I learnt my lesson and ran as the original user, which gave the 
+following error message:
+***************************************************************
+ERROR: HostName not defined for gid_Dir_User_Autotext_Language for 
+specified language.
+in function: checking_directories_with_corrupt_hostname
+***************************************************************
+
+gid_Dir_User_Autotext_Language seems to be defined in 
+solver/680/unxlngi6.pro/bin/setup_osl.ins, I've included it below.
+
+Any ideas on what to check?
+
+Also I wonder if anyone else is building OOo on Fedora using ooo-build 
+as I had a problem with flex that I had months ago when first using 
+ooo-build - I included a patch then that fixed it but it fell out along 
+the way, so I have a new shiny one now. But if no-one else is doing 
+Fedora I should maybe switch to whatever they are doing...
+
+David
+
+Directory gid_Dir_User_Autotext_Language
+        ParentID = gid_Dir_User_Autotext;
+        HostName (en-US) = &quot;en-US&quot;;
+        HostName (af) = &quot;af&quot;;
+        HostName (ar) = &quot;ar&quot;;
+        HostName (bg) = &quot;bg&quot;;
+        HostName (ca) = &quot;ca&quot;;
+        HostName (cs) = &quot;cs&quot;;
+        HostName (cy) = &quot;cy&quot;;
+        HostName (da) = &quot;da&quot;;
+        HostName (de) = &quot;de&quot;;
+        HostName (el) = &quot;el&quot;;
+        HostName (en-GB) = &quot;en-GB&quot;;
+        HostName (eo) = &quot;eo&quot;;
+        HostName (es) = &quot;es&quot;;
+        HostName (et) = &quot;et&quot;;
+        HostName (eu) = &quot;eu&quot;;
+        HostName (fi) = &quot;fi&quot;;
+        HostName (fr) = &quot;fr&quot;;
+        HostName (gl) = &quot;gl&quot;;
+        HostName (he) = &quot;he&quot;;
+        HostName (hi-IN) = &quot;hi-IN&quot;;
+        HostName (hr) = &quot;hr&quot;;
+        HostName (hu) = &quot;hu&quot;;
+        HostName (it) = &quot;it&quot;;
+        HostName (ja) = &quot;ja&quot;;
+        HostName (km) = &quot;km&quot;;
+        HostName (kn-IN) = &quot;kn-IN&quot;;
+        HostName (ko) = &quot;ko&quot;;
+        HostName (lt) = &quot;lt&quot;;
+        HostName (ms) = &quot;ms&quot;;
+        HostName (nb) = &quot;nb&quot;;
+        HostName (nl) = &quot;nl&quot;;
+        HostName (nn) = &quot;nn&quot;;
+        HostName (ns) = &quot;ns&quot;;
+        HostName (pl) = &quot;pl&quot;;
+        HostName (pt) = &quot;pt&quot;;
+        HostName (pt-BR) = &quot;pt-BR&quot;;
+        HostName (ru) = &quot;ru&quot;;
+        HostName (sk) = &quot;sk&quot;;
+        HostName (sl) = &quot;sl&quot;;
+        HostName (sv) = &quot;sv&quot;;
+        HostName (th) = &quot;th&quot;;
+        HostName (tn) = &quot;tn&quot;;
+        HostName (tr) = &quot;tr&quot;;
+        HostName (xh) = &quot;xh&quot;;
+        HostName (zh-CN) = &quot;zh-CN&quot;;
+        HostName (zh-TW) = &quot;zh-TW&quot;;
+        HostName (zu) = &quot;zu&quot;;
+End
+
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000995.html">[Open Office] [PATCH] updated pkgconfig 0.17 fixes
+</A></li>
+	<LI>Next message: <A HREF="001000.html">[Open Office] ooo-build on Fedora --with-lang=ALL: HostName error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#999">[ date ]</a>
+              <a href="thread.html#999">[ thread ]</a>
+              <a href="subject.html#999">[ subject ]</a>
+              <a href="author.html#999">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

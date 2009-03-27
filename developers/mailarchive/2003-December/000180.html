@@ -1,0 +1,721 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regarding Bug # 50765
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-December/index.html" >
+   <LINK REL="made" HREF="mailto:banil%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000179.html">
+   <LINK REL="Next"  HREF="000181.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regarding Bug # 50765
+   </H1>
+    <B>Anil Anil
+    </B> 
+    <A HREF="mailto:banil%40novell.com"
+       TITLE="[Open Office] Regarding Bug # 50765">banil@novell.com
+       </A><BR>
+    <I>Sun, 07 Dec 2003 06:23:33 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000179.html">[Open Office] CD details ...
+</A></li>
+        <LI> Next message: <A HREF="000181.html">[Open Office] Re: Regarding Bug # 50765
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#180">[ date ]</a>
+              <a href="thread.html#180">[ thread ]</a>
+              <a href="subject.html#180">[ subject ]</a>
+              <a href="author.html#180">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Michael,
+
+First part of this bug (moving away from glib) is achieved through the
+following patch.
+
+Regarding the second part of the bug (interactive handling of new file
+save), I have observed that in the snapshot 680 from openoffice.org
+site, this particular bug does not exist. In case this is still required
+to be fixed, I can work on that.
+
+Patch for &quot;glib independency&quot; starts from here...
+-----------------------------------------------------
+--- svtools/source/config/recent-files.cxx.orig	2003-12-04
+16:40:42.000000000 +0530
++++ svtools/source/config/recent-files.cxx	2003-12-07
+18:29:56.000000000 +0530
+@@ -3,11 +3,29 @@
+ #include &lt;time.h&gt;
+ #include &lt;unistd.h&gt;
+ #include &lt;sys/file.h&gt;
+-#include &lt;glib.h&gt;
++//#include &lt;glib.h&gt;
+ #include &lt;tools/string.hxx&gt;
+ #include &quot;expat/xmlparse.h&quot;
+ #include &quot;recent-files.hxx&quot;
+ 
++#include &lt;rtl/ustring.hxx&gt;
++#include &lt;osl/security.hxx&gt;
++#ifndef _OSL_THREAD_H_
++#include &lt;osl/thread.h&gt;
++#endif
++
++#ifndef _CONFIG_HXX
++#include &lt;tools/config.hxx&gt;
++#endif
++
++
++#include &lt;list&gt;
++#include &lt;functional&gt;
++
++using namespace osl;
++using namespace rtl;
++using namespace ::std;
++
+ namespace svt {
+ 
+ /*
+@@ -58,13 +76,30 @@
+ #define TAG_GROUPS		&quot;Groups&quot;
+ #define TAG_GROUP		&quot;Group&quot;
+ 
++  typedef list&lt;OString&gt; StringList;
+ /* Recent item as parsed from the file */
+-struct Item {
++class Item {
++public:
+ 	char *uri;
+ 	char *mimeType;
+ 	time_t timestamp;
+-	gboolean isPrivate;
+-	GSList *groups;
++	bool isPrivate;
++  StringList groups;
++
++  Item()
++  {
++	uri = NULL;
++	mimeType = NULL;
++	timestamp = -1;
++	isPrivate = false;
++  }
++  ~Item()
++  {
++	free (uri);
++	free (mimeType);
++	if (!(groups.empty()))
++	  groups.clear();
++  }
+ };
+ 
+ /* Parser state */
+@@ -82,33 +117,50 @@
+ 	STATE_ERROR		/* Bad XML */
+ };
+ 
++  typedef list&lt;Item*&gt; ItemList;
++
+ /* XML parsing context */
+ struct ParseContext {
+-	GSList *items;
++    ItemList items;
+ 
+ 	State state;
+ };
+ 
+ /* Computes the name of the ~/.recent-files file */
+-static char *
++static OString
+ getRecentFilename (void)
+ {
+-	return g_strdup_printf (&quot;%s/&quot; RECENT_FILE_NAME, g_get_home_dir
+());
++    OUString ustrHomeDir;
++    oslSecurity aSec = osl_getCurrentSecurity();
++    osl_getHomeDir( aSec, &amp;ustrHomeDir.pData );
++    osl_freeSecurityHandle( aSec );
++    OString strHomeUrl, strHomeDir;
++
++    static OString strFileUrlPrefix(&quot;<A HREF="file://"">file://&quot;</A>);
++    if (ustrHomeDir.convertToString(&amp;strHomeUrl,
+osl_getThreadTextEncoding(), OUSTRING_TO_OSTRING_CVTFLAGS))
++      {
++	if (strHomeUrl.indexOf(strFileUrlPrefix) == 0)
++	{
++	  strHomeDir = strHomeUrl.copy(strFileUrlPrefix.getLength());
++	}
++      }
++
++    return strHomeDir.concat(&quot;/&quot;).concat(RECENT_FILE_NAME);
+ }
+ 
+ /* Returns whether a string is null or empty */
+-static gboolean
++static bool
+ stringIsEmpty (const char *s)
+ {
+ 	return (s == NULL || strlen (s) == 0);
+ }
+ 
+-/* Frees the contents of str, if any, and g_strdup()s the newStr into
+it */
++/* Frees the contents of str, if any, and strdup()s the newStr into it
+*/
+ static void
+ replaceString (char **str, const char *newStr, int newStrLen)
+ {
+-	g_free (*str);
+-	*str = g_strndup (newStr, newStrLen);
++	free (*str);
++	*str = strndup (newStr, newStrLen);
+ }
+ 
+ /* Creates a new item in the context as a result of entering a
+RecentItem element */
+@@ -117,37 +169,22 @@
+ {
+ 	Item *item;
+ 
+-	item = g_new (Item, 1);
+-
+-	item-&gt;uri = NULL;
+-	item-&gt;mimeType = NULL;
+-	item-&gt;timestamp = -1;
+-	item-&gt;isPrivate = FALSE;
+-	item-&gt;groups = NULL;
+-
+-	context-&gt;items = g_slist_prepend (context-&gt;items, item);
++	item = new Item();
++	context-&gt;items.push_front(item);
+ }
+ 
+ /* Frees an Item */
++/*
+ static void
+ freeItem (Item *item)
+ {
+-	GSList *l;
+ 
+-	g_free (item-&gt;uri);
+-	g_free (item-&gt;mimeType);
+-
+-	for (l = item-&gt;groups; l; l = l-&gt;next) {
+-		char *group;
+-
+-		group = l-&gt;data;
+-		g_free (group);
+-	}
+-	g_slist_free (item-&gt;groups);
++	free (item-&gt;uri);
++	free (item-&gt;mimeType);
+ 
+ 	g_free (item);
+ }
+-
++*/
+ /* Terminates a RecentItem element by ensuring that the basic
+properties of the
+  * current are fulfilled.  If the URI is empty, removes the item from
+the
+  * context.
+@@ -156,14 +193,13 @@
+ endRecentItem (ParseContext *context)
+ {
+ 	Item *item;
+-	GSList *listItem;
+ 
+-	g_assert (context-&gt;items != NULL);
+-	item = context-&gt;items-&gt;data;
++	assert (!(context-&gt;items.empty()));
++	item = *(context-&gt;items.begin());
+ 
+ 	if (stringIsEmpty (item-&gt;uri)) {
+-		freeItem (item);
+-		context-&gt;items = g_slist_delete_link (context-&gt;items,
+context-&gt;items);
++	  delete item;
++	  context-&gt;items.pop_front();
+ 		return;
+ 	}
+ 
+@@ -180,10 +216,10 @@
+ {
+ 	Item *item;
+ 
+-	g_assert (context-&gt;items != NULL);
+-	item = context-&gt;items-&gt;data;
++	assert (!(context-&gt;items.empty()));
++	item = *(context-&gt;items.begin());
+ 
+-	item-&gt;isPrivate = TRUE;
++	item-&gt;isPrivate = true;
+ }
+ 
+ /* Start element handler for the parser */
+@@ -247,7 +283,7 @@
+ 		break;
+ 
+ 	default:
+-		g_assert_not_reached ();
++	  assert(0);
+ 	}
+ }
+ 
+@@ -325,7 +361,7 @@
+ 		break;
+ 
+ 	default:
+-		g_assert_not_reached ();
++	  assert(0);
+ 	}
+ }
+ 
+@@ -336,30 +372,35 @@
+ 	char *dup;
+ 	long t;
+ 
+-	dup = g_strndup (s, len);
++	dup = strndup (s, len);
+ 	if (sscanf (dup, &quot;%ld&quot;, &amp;t) != 1)
+ 		item-&gt;timestamp = -1;
+ 	else
+ 		item-&gt;timestamp = t;
+ 
+-	g_free (dup);
++	free (dup);
+ }
+ 
++// binary predicate object type
++class CompareWithLength : binary_function&lt;OString, OString, bool&gt;
++{
++public: 
++  bool operator()(const OString&amp; str1, const OString&amp; str2) const
++  {
++    return (0 == str2.compareTo(str1, str2.getLength()));
++  }
++};
++
+ /* Adds a group to an item */
+ static void
+ addGroup (Item *item, const char *s, int len)
+ {
+-	GSList *l;
+-
+-	for (l = item-&gt;groups; l; l = l-&gt;next) {
+-		const char *group;
+ 
+-		group = l-&gt;data;
+-		if (strncmp (group, s, len) == 0)
+-			return;
+-	}
++	StringList::iterator i = find_if(item-&gt;groups.begin(),
+item-&gt;groups.end(), bind2nd(CompareWithLength(), OString(s,len)));
++	if (i != item-&gt;groups.end())
++	  return;
+ 
+-	item-&gt;groups = g_slist_prepend (item-&gt;groups, g_strndup (s,
+len));
++	item-&gt;groups.push_front(OString(s, len));
+ }
+ 
+ /* Handler for character data between tags */
+@@ -370,7 +411,7 @@
+ 	Item *item;
+ 
+ 	context = data;
+-	item = context-&gt;items ? context-&gt;items-&gt;data : NULL;
++	item = !(context-&gt;items.empty()) ? *(context-&gt;items.begin()) :
+NULL;
+ 
+ 	switch (context-&gt;state) {
+ 	case STATE_URI:
+@@ -400,7 +441,7 @@
+ 		break;
+ 
+ 	default:
+-		g_assert_not_reached ();
++	  assert(0);
+ 	}
+ }
+ 
+@@ -421,62 +462,52 @@
+ 	return parser;
+ }
+ 
+-/* Compares items by timestamps so as to sort them in DECREASING order
+*/
+-static gint
+-compareTimestampsCb (gconstpointer a, gconstpointer b, gpointer data)
++/* Binary predicate class - Compares items by timestamps so as to sort
+them in DECREASING order */
++class CompareTimestamps : binary_function&lt;Item*, Item*, bool&gt;
+ {
+-	Item *ia, *ib;
++public: 
++  bool operator()(const Item* pItem1, const Item* pItem2) const
++  {
+ 	time_t ta, tb;
+ 
+-	ia = a;
+-	ta = ia-&gt;timestamp;
++	ta = pItem1-&gt;timestamp;
+ 
+-	ib = b;
+-	tb = ib-&gt;timestamp;
++	tb = pItem2-&gt;timestamp;
+ 
+-	return (ta &lt; tb) ? 1 : (ta &gt; tb) ? -1 : 0;
+-}
++	return (ta &gt; tb);
++  }
++};
+ 
+ /* Returns whether an item has a certain group */
+-static gboolean
++static bool
+ hasGroup (Item *item, const char *group)
+ {
+-	GSList *l;
+-
+-	for (l = item-&gt;groups; l; l = l-&gt;next) {
+-		const char *g;
+-
+-		g = l-&gt;data;
+-		if (strcmp (g, group) == 0)
+-			return TRUE;
+-	}
+-
+-	return FALSE;
++	StringList::iterator i = find(item-&gt;groups.begin(),
+item-&gt;groups.end(), OString(group));
++	return (i != item-&gt;groups.end());
+ }
+ 
+ /* Removes the oldest items from the context */
+ static void
+ trimOldItems (ParseContext *context)
+ {
+-	GSList *l, *next;
+ 	int i;
+ 
+ 	i = 0;
+-	l = context-&gt;items;
++	ItemList::iterator l = context-&gt;items.begin();
++	ItemList::iterator next;
+ 
+-	while (l) {
++	while (l != context-&gt;items.end()) {
+ 		Item *item;
+ 
+-		item = l-&gt;data;
+-		next = l-&gt;next;
++		item = *l;
++		next = (++l)--;
+ 
+ 		if (hasGroup (item, GROUP_OPENOFFICE_ORG)) {
+ 			i++;
+ 
+ 			if (i &gt; MAX_ITEMS) {
+-				freeItem (item);
+-				context-&gt;items = g_slist_remove_link
+(context-&gt;items, l);
+-				g_slist_free_1 (l);
++			  delete item;
++			  context-&gt;items.erase(l);
+ 			}
+ 		}
+ 
+@@ -491,17 +522,16 @@
+ 	XML_Parser parser;
+ 	char buf[BUFFER_SIZE];
+ 
+-	context-&gt;items = NULL;
+ 	context-&gt;state = STATE_BEGIN;
+ 
+ 	parser = createParser (context);
+ 
+ 	if (!parser)
+-		return FALSE;
++		return;
+ 
+ 	while (1) {
+ 		int len;
+-		gboolean eof;
++		int eof;
+ 
+ 		len = fread (buf, 1, sizeof (buf), file);
+ 		if (ferror (file))
+@@ -518,12 +548,12 @@
+ 			break;
+ 	}
+ 
+-	if (context-&gt;items)
++	if (!(context-&gt;items.empty()))
+ 		endRecentItem (context); /* Finish it off for if we
+terminated prematurely on error */
+ 
+ 	XML_ParserFree (parser);
+ 
+-	context-&gt;items = g_slist_sort (context-&gt;items,
+compareTimestampsCb);
++	context-&gt;items.sort(CompareTimestamps());
+ 	trimOldItems (context);
+ }
+ 
+@@ -531,32 +561,29 @@
+ static void
+ freeContext(ParseContext *context)
+ {
+-	GSList *l;
+-
+-	for (l = context-&gt;items; l; l = l-&gt;next) {
++	for (ItemList::iterator l = context-&gt;items.begin(); l !=
+context-&gt;items.end(); l++) {
+ 		Item *item;
+ 
+-		item = l-&gt;data;
+-		freeItem (item);
++		item = *l;
++		delete item;
+ 	}
+ 
+-	g_slist_free (context-&gt;items);
++	context-&gt;items.clear();
+ }
+ 
+ /* Converts our items into exported structures */
+ static void
+ convertItems (ParseContext *context, RecentFileItem **items, int
+*nItems)
+ {
+-	GSList *l;
+ 	int i;
+ 
+ 	/* Count items with the OpenOffice.org group */
+ 
+ 	*nItems = 0;
+-	for (l = context-&gt;items; l; l = l-&gt;next) {
++	for (ItemList::iterator l = context-&gt;items.begin(); l !=
+context-&gt;items.end(); l++) {
+ 		Item *item;
+ 
+-		item = l-&gt;data;
++		item = *l;
+ 		if (hasGroup (item, GROUP_OPENOFFICE_ORG))
+ 			(*nItems)++;
+ 	}
+@@ -566,14 +593,14 @@
+ 
+ 	/* Add only the items we want */
+ 
+-	*items = g_new (RecentFileItem, *nItems);
++	*items = malloc (sizeof(RecentFileItem) * *nItems);
+ 
+ 	i = 0;
+ 
+-	for (l = context-&gt;items; l; l = l-&gt;next) {
++	for (l = context-&gt;items.begin(); l != context-&gt;items.end(); l++)
+{
+ 		Item *item;
+ 
+-		item = l-&gt;data;
++		item = *l;
+ 
+ 		if (hasGroup (item, GROUP_OPENOFFICE_ORG)) {
+ 			RecentFileItem *rfi;
+@@ -593,18 +620,18 @@
+ }
+ 
+ /* Opens ~/.recent-files and locks it.  If something fails, returns
+NULL. */
++
+ static FILE *
+ openAndLock (void)
+ {
+ 	char *filename;
+ 	FILE *file;
+ 	int fd;
+-	ParseContext context;
++	//	ParseContext context;
+ 
+-	filename = getRecentFilename ();
++	filename = getRecentFilename ().getStr();
+ 
+ 	file = fopen (filename, &quot;r+&quot;);
+-	g_free (filename);
+ 
+ 	if (!file)
+ 		return NULL;
+@@ -629,7 +656,6 @@
+ 	fclose (file);
+ }
+ 
+-
+ /**
+  * recentFilesGetList:
+  * @items: Return value; pointer to an array of items.  Should be freed
+with recentFilesFree().
+@@ -662,17 +688,15 @@
+ static void
+ writeXml (FILE *file, ParseContext *context)
+ {
+-	GSList *l;
+ 
+ 	fputs (&quot;&lt;?xml version=\&quot;1.0\&quot;?&gt;\n&quot;
+ 	       &quot;&lt;&quot; TAG_RECENT_FILES &quot;&gt;\n&quot;,
+ 	       file);
+ 
+-	for (l = context-&gt;items; l; l = l-&gt;next) {
++	for (ItemList::iterator l = context-&gt;items.begin(); l !=
+context-&gt;items.end(); l++) {
+ 		Item *item;
+-		GSList *gl;
+ 
+-		item = l-&gt;data;
++		item = *l;
+ 
+ 		fputs (&quot;  &lt;&quot; TAG_RECENT_ITEM &quot;&gt;\n&quot;, file);
+ 		fprintf (file,
+@@ -686,10 +710,11 @@
+ 			 (long) item-&gt;timestamp,
+ 			 item-&gt;isPrivate ? &quot;    &lt;&quot; TAG_PRIVATE &quot;/&gt;\n&quot; :
+&quot;&quot;);
+ 
+-		for (gl = item-&gt;groups; gl; gl = gl-&gt;next) {
++		StringList::iterator gl;
++		for (gl = item-&gt;groups.begin(); gl !=
+item-&gt;groups.end(); gl++) {
+ 			const char *group;
+ 
+-			group = gl-&gt;data;
++			group = (*gl).getStr();
+ 			fprintf (file,
+ 				 &quot;      &lt;&quot; TAG_GROUP &quot;&gt;%s&lt;/&quot; TAG_GROUP
+&quot;&gt;\n&quot;,
+ 				 group);
+@@ -720,7 +745,7 @@
+ 		rtl_uString_release (items[i].mimeType);
+ 	}
+ 
+-	g_free (items);
++	free (items);
+ }
+ 
+ /**
+@@ -735,8 +760,7 @@
+ {
+ 	FILE *file;
+ 	ParseContext context;
+-	GSList *l;
+-	gboolean alreadyExists;
++	bool alreadyExists;
+ 	int fd;
+ 	rtl_String *uriString;
+ 	rtl_String *mimeTypeString;
+@@ -747,22 +771,22 @@
+ 
+ 	parse (file, &amp;context);
+ 
+-	alreadyExists = FALSE;
++	alreadyExists = false;
+ 
+ 	uriString = NULL;
+ 	mimeTypeString = NULL;
+ 	rtl_uString2String (&amp;uriString, uri-&gt;buffer, uri-&gt;length,
+RTL_TEXTENCODING_UTF8, 0);
+ 	rtl_uString2String (&amp;mimeTypeString, mimeType-&gt;buffer,
+mimeType-&gt;length, RTL_TEXTENCODING_UTF8, 0);
+ 
+-	for (l = context.items; l; l = l-&gt;next) {
++	for (ItemList::iterator l = context.items.begin(); l !=
+context.items.end(); l++) {
+ 		Item *item;
+ 
+-		item = l-&gt;data;
++		item = *l;
+ 		if (strcmp (item-&gt;uri, uriString-&gt;buffer) == 0) {
+-			g_free (item-&gt;mimeType);
+-			item-&gt;mimeType = g_strdup
+(mimeTypeString-&gt;buffer);
++			free (item-&gt;mimeType);
++			item-&gt;mimeType = strdup
+(mimeTypeString-&gt;buffer);
+ 			item-&gt;timestamp = time (NULL);
+-			alreadyExists = TRUE;
++			alreadyExists = true;
+ 			break;
+ 		}
+ 	}
+@@ -770,14 +794,14 @@
+ 	if (!alreadyExists) {
+ 		Item *item;
+ 
+-		item = g_new (Item, 1);
+-		item-&gt;uri = g_strdup (uriString-&gt;buffer);
+-		item-&gt;mimeType = g_strdup (mimeTypeString-&gt;buffer);
++		item = new Item();
++		item-&gt;uri = strdup (uriString-&gt;buffer);
++		item-&gt;mimeType = strdup (mimeTypeString-&gt;buffer);
+ 		item-&gt;timestamp = time (NULL);
+-		item-&gt;isPrivate = FALSE;
+-		item-&gt;groups = g_slist_prepend (NULL, g_strdup
+(GROUP_OPENOFFICE_ORG));
++		item-&gt;isPrivate = false;
++		item-&gt;groups.push_front(GROUP_OPENOFFICE_ORG);
+ 
+-		context.items = g_slist_prepend (context.items, item);
++		context.items.push_front(item);
+ 	}
+ 
+ 	rtl_string_release (uriString);
+--- svtools/source/config/makefile.mk.orig	2003-12-07
+18:35:03.000000000 +0530
++++ svtools/source/config/makefile.mk	2003-12-07 16:41:52.000000000
++0530
+@@ -112,7 +112,7 @@
+ 
+ .IF &quot;$(GUI)&quot;==&quot;UNX&quot;
+ CFLAGS+=-Wall
+-CFLAGS+=`pkg-config --cflags glib-2.0`
++#CFLAGS+=`pkg-config --cflags glib-2.0`
+ .ENDIF
+ 
+ EXCEPTIONSFILES = \
+--- svtools/util/makefile.mk.orig	2003-12-07 18:34:32.000000000
++0530
++++ svtools/util/makefile.mk	2003-12-07 16:43:09.000000000 +0530
+@@ -241,7 +241,8 @@
+ 		$(SALLIB)
+ 
+ .IF &quot;$(GUI)&quot;==&quot;UNX&quot;
+-SHL2STDLIBS+= $(EXPATASCII3RDLIB) `pkg-config --libs glib-2.0`
++#SHL2STDLIBS+= $(EXPATASCII3RDLIB) `pkg-config --libs glib-2.0`
++SHL2STDLIBS+= $(EXPATASCII3RDLIB)
+ .ENDIF
+ 
+ .IF &quot;$(GUI)&quot;==&quot;WNT&quot;
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000179.html">[Open Office] CD details ...
+</A></li>
+	<LI> Next message: <A HREF="000181.html">[Open Office] Re: Regarding Bug # 50765
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#180">[ date ]</a>
+              <a href="thread.html#180">[ thread ]</a>
+              <a href="subject.html#180">[ subject ]</a>
+              <a href="author.html#180">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

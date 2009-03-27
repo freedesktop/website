@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] unused patches in HEAD ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20unused%20patches%20in%20HEAD%20...&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001845.html">
+   <LINK REL="Next"  HREF="001851.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] unused patches in HEAD ...</H1>
+    <B>Michael Meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20unused%20patches%20in%20HEAD%20...&In-Reply-To="
+       TITLE="[Open Office] unused patches in HEAD ...">michael.meeks at novell.com
+       </A><BR>
+    <I>Fri Jun 16 16:51:07 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001845.html">[Open Office] Announcing temporary changes
+</A></li>
+        <LI>Next message: <A HREF="001851.html">[Open Office] unused patches in HEAD ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1847">[ date ]</a>
+              <a href="thread.html#1847">[ thread ]</a>
+              <a href="subject.html#1847">[ subject ]</a>
+              <a href="author.html#1847">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>So,
+
+	Poking at HEAD ooo-build, after over-long focus on ooo-build-2-0-2 I
+see that (again) some not-very-careful patch re-work has resulted in an
+accumulation of cruft in ooo-build; that worries me.
+
+	I've just cleaned some of it up; I'd like some review / removal of
+these pieced ( based on the --find-unused output ):
+
+_rene_:
+	sparc-bridges-use-g++-3.4.diff
+jody:
+	sc-paste-insert-rows.diff
+jan:
+	parallel-dmake-dont-remove.diff - i#16752 necessary ?
+	framework-layered-accelerators.diff
+	msaccess-db-create-dialog-fix.diff - disabled ?
+	64bit/events-intptr.diff
+	64bit/intptr-basic.diff
+jianhua:
+	plus-minus-sw-navigator.diff - why disabled ?
+davidf:
+	dejavu-fonts.diff - remove ?
+
+noelp: ( all in vba/ )
+	sc-source-ui-inc-viewfunc-hxx.diff
+	extensions-source-propctrlr-makefile-mk.diff
+	vba-basic-collection.diff
+	sc-source-ui-vba-service-cxx.diff
+	vba-sc-docuno-hook-m161.diff
+	vba-runtime-vba-enabled.diff
+	vba-basic-multidim-uno-arraywrap.diff
+	sc-inc-docuno-hxx-visibility.diff
+	extensions-source-propctrlr-formcontroller-cxx.diff
+	sc-source-ui-inc-tabview-hxx.diff
+	vba-optionbasesupport-m162.diff
+	sc-inc-document-gcc4-visibility.diff
+	gcc4-vba-pastespecial-visibility.diff
+	vba-optionbasesupport.diff
+
+long term disabled (removed):
+	sw-default-bullet.diff
+
+patches I removed as obsolete:
+	buildfix-ucb-without-stlport4
+	buildfix-svx-without-stlport4, lwp-parse, lwp-detect,
+	lwp-build, filebug-support, default-vba-compatible,
+	fix-calctyping-core, nsplugin-MOZILLA_FIVE_HOME,
+	gui-slidesort-backspace, fix-64bit-xmloff-units,
+	mono-build-m166
+
+
+	Thanks guys, I was going to prepare some more patch statistics, vs.
+2.0.3 but it'd be good to nail this lot first.
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001845.html">[Open Office] Announcing temporary changes
+</A></li>
+	<LI>Next message: <A HREF="001851.html">[Open Office] unused patches in HEAD ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1847">[ date ]</a>
+              <a href="thread.html#1847">[ thread ]</a>
+              <a href="subject.html#1847">[ subject ]</a>
+              <a href="author.html#1847">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

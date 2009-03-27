@@ -1,0 +1,6 @@
+--- dummy.orig	2005-01-11 14:51:34.476887091 +0530
++++ dummy	2005-01-11 14:51:22.898771001 +0530
+@@ -1,2 +1,3 @@
+ dummy
++dummier // the hack of this century :-)
+ dummiest

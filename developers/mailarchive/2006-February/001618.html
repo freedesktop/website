@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Internal quickstarter &amp;#8211; ooqstart &amp;#8211;
+	question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter%20%26%238211%3B%20ooqstart%20%26%238211%3B%0A%09question&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001612.html">
+   <LINK REL="Next"  HREF="001619.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Internal quickstarter &amp;#8211; ooqstart &amp;#8211;
+	question</H1>
+    <B>Jan Uhlir</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter%20%26%238211%3B%20ooqstart%20%26%238211%3B%0A%09question&In-Reply-To="
+       TITLE="[Open Office] Internal quickstarter &amp;#8211; ooqstart &amp;#8211;
+	question">espinosa_cz at centrum.cz
+       </A><BR>
+    <I>Sun Feb 19 09:38:27 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001612.html">[Open Office] &quot;make install&quot; fails with current CVS
+</A></li>
+        <LI>Next message: <A HREF="001619.html">[Open Office] Internal quickstarter - ooqstart - question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1618">[ date ]</a>
+              <a href="thread.html#1618">[ thread ]</a>
+              <a href="subject.html#1618">[ subject ]</a>
+              <a href="author.html#1618">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I build openoffice.org m151 with 
+--enable-quickstarter &amp;#8211;enable-gtk &amp;#8211;enable-kde
+
+I can see  option &amp;#8220;Load OpenOffice.org during system startup&amp;#8221; in &amp;#8220;Options &amp;#8211; OpenOffice.org - Memory&amp;#8221;
+but the selection is not stored for a common user. When Options dialog is opened again, checker is gone, 
+not selected again. For root it is possible to store it, but has no obvious effect, OOo is not started as  &amp;#8220;ps ax&amp;#8221; 
+revealed.
+
+I discovered in programs dir ooqstart executable and library libqstart_gtk680li.so
+There is even  ooqstart desktop file! But when I tried to launch  ooqstart manually:
+# ooqstart
+
+** ERROR **: Missing default argument in OOO_EXTRA_ARG
+aborting...
+Aborted
+
+
+I had some positive experience with quicksater in milestone 143 it speed up start significantly, but for m151 am 
+currently testing seems to be broken.
+
+I have not found virtually any closer documentation about this interesting feature, under which conditions is 
+expected to work or how to launch it manually. I'm running KDE on my desktop and 
+SAL_USE_VCLPLUGIN=gen, can I still benefit from  GTK based quick starter?
+How this &amp;#8220;load during system startup&amp;#8221; functionality is technically done?
+Should I put &amp;#8220;ooqstart.desktop&amp;#8221; to &amp;#8220;~/.kde/Autostart&amp;#8221;?
+Should I trigger ooffice with some argument to make it aware of already running qstarted OOo?
+
+There is also external project oooqs2 - <A HREF="http://segfaultskde.berlios.de/index.php?content=oooqs2">http://segfaultskde.berlios.de/index.php?content=oooqs2</A>
+Are you aware of this project?
+
+So there is the internal quickstarter (ooqstart) &amp;#8211; GTK based - and the external quickstarter oooqs2 &amp;#8211; KDE 
+based. I suppose the internal one would be more efficient then the external one. Am I right?
+
+The runtime option -quickstart is said to be unsupported for OOo2. Is that true for ooo-build patched releases 
+too?
+
+Can some clear this issue for me and others curious users? 
+Many Thanks
+Espinosa
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001612.html">[Open Office] &quot;make install&quot; fails with current CVS
+</A></li>
+	<LI>Next message: <A HREF="001619.html">[Open Office] Internal quickstarter - ooqstart - question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1618">[ date ]</a>
+              <a href="thread.html#1618">[ thread ]</a>
+              <a href="subject.html#1618">[ subject ]</a>
+              <a href="author.html#1618">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

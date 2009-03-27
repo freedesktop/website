@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Ark/Debian configure options ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:michael.meeks%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000750.html">
+   <LINK REL="Next"  HREF="000754.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Ark/Debian configure options ...
+   </H1>
+    <B>michael meeks
+    </B> 
+    <A HREF="mailto:michael.meeks%40novell.com"
+       TITLE="[Open Office] Ark/Debian configure options ...">michael.meeks@novell.com
+       </A><BR>
+    <I>Mon, 07 Feb 2005 15:03:51 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000750.html">[Open Office] Status 3,4 Feb
+</A></li>
+        <LI> Next message: <A HREF="000754.html">[Open Office] Re: Ark/Debian configure options ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#759">[ date ]</a>
+              <a href="thread.html#759">[ thread ]</a>
+              <a href="subject.html#759">[ subject ]</a>
+              <a href="author.html#759">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi dudie,
+
+	So - I just split all the common options out in ooo-build into
+Common.conf.in to save having so much rather opaque duplication of
+configuration settings.
+
+	Ark: you use --enable-libart instead of --without-gpc. I would
+recommend using --without-gpc which uses an internal clipper instead of
+GPC or an external libart. That is unless you know something I
+don't ? :-) [ it'd be nice to share that option too ]
+
+	Ark: you don't build with libstartup-notification ? why not ? it's a
+tiny library with no problematic dependencies that implements
+startup-notification [ ie. hour-glass cursor ] on startup, life will not
+be so nice for users without this; recommended.
+
+	Debian/Ark - we added the --enable-gnome-vfs option to configure OO.o's
+built-in Gnome-VFS support (which is now up-stream), it's prolly a good
+thing to turn on for eg. <A HREF="smb:///">smb:///</A> share browsing.
+
+	Finally, in patches/src680-m74/apply we have:
+
+NonArkCommon: Evo2
+
+	Which is rather ugly; I can understand the problems previously wrt.
+different Evo. versions &amp; all that - but now (thanks to Jayant) this
+code will compile without any evolution libraries / development packages
+present &amp; will detect at runtime if it's available. So - any chance of
+pruning that complexity back too ? :-)
+
+	Thanks guys,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000750.html">[Open Office] Status 3,4 Feb
+</A></li>
+	<LI> Next message: <A HREF="000754.html">[Open Office] Re: Ark/Debian configure options ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#759">[ date ]</a>
+              <a href="thread.html#759">[ thread ]</a>
+              <a href="subject.html#759">[ subject ]</a>
+              <a href="author.html#759">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

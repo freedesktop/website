@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOo text layout
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000235.html">
+   <LINK REL="Next"  HREF="000228.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOo text layout
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] OOo text layout">dan@bigw.org
+       </A><BR>
+    <I>Mon, 19 Jan 2004 15:55:40 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000235.html">[Open Office] OOo text layout
+</A></li>
+        <LI> Next message: <A HREF="000228.html">[Open Office] Re: Gtk+ plugin branch ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#239">[ date ]</a>
+              <a href="thread.html#239">[ thread ]</a>
+              <a href="subject.html#239">[ subject ]</a>
+              <a href="author.html#239">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+One Unix ICU is used, but only for some layouts, those that require
+complex text layout.  There are cases where a simple, non-ICU text
+layout system is used (derived from teh 1.0 series builds), but most stuff
+goes through ICU right now.  I would be that anything Indic would have to
+go through the ICU layout engine.
+
+Windows is completely different, and does _not_ use ICU.  Michael is
+correct, it uses the Uniscribe APIs from Microsoft, but again only for
+really complex stuff.  There is still code that does less-complex text
+layout that doesn't use Uniscribe and is essentially the older code from
+the 1.0 series builds.
+
+Dan
+
+On Sat, 17 Jan 2004, Michael Meeks wrote:
+
+&gt;<i> Hi Rama,
+</I>&gt;<i> 
+</I>&gt;<i> On Tue, 2004-01-13 at 23:38, Ramanan Selvaratnam wrote:
+</I>&gt;<i> &gt; I wish to understand how OOo renders complex text in the indic range.
+</I>&gt;<i> 
+</I>&gt;<i> 	Right - I don't understand this but I can give you a few pointers. As I
+</I>&gt;<i> understand it's different on Unix and Windows - on Unix we use ICE, but
+</I>&gt;<i> on win32 I believe we use uniscribe.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Where should I look to understand the mechanism for text layout?
+</I>&gt;<i> 
+</I>&gt;<i> 	I believe you want to see 'sallayout' and it's implentations in
+</I>&gt;<i> vcl/[unx/win]/source/gdi/sallayout.cxx or somesuch.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Tamil unicode fonts are experiencing a trauma due to non standard
+</I>&gt;<i> &gt; encoding history. My immediate task is to filter the good ones out.
+</I>&gt;<i> 
+</I>&gt;<i> 	Ah - if it's a font problem - the solution is perhaps easier; the font
+</I>&gt;<i> code is _highly_ complex; but it's possible you can fix the problem with
+</I>&gt;<i> a simple schema fix. The best way to prototype this is to edit a live
+</I>&gt;<i> install's file mine is:
+</I>&gt;<i> 
+</I>&gt;<i> 	/usr/lib/ooo-1.1.0/share/registry/data/org/openoffice/VCL.xcu 
+</I>&gt;<i> 
+</I>&gt;<i> 	And update the mappings to suit your paticular locale best. If you can
+</I>&gt;<i> do that, send in a patch and we can include it in ooo-build / help get
+</I>&gt;<i> it up-stream.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; (what is confusing is the conflicting reports I am getting from those
+</I>&gt;<i> &gt; using OOo in MS-Windows. My understandig was the text rendering and
+</I>&gt;<i> &gt; layout engine was ICU and it was cross platform)
+</I>&gt;<i> 
+</I>&gt;<i> 	No idea about that. Try asking on <A HREF="mailto:dev@gsl.openoffice.org.">dev@gsl.openoffice.org.</A>
+</I>&gt;<i> 
+</I>&gt;<i> 	HTH,
+</I>&gt;<i> 
+</I>&gt;<i> 		Michael.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> -- 
+</I>&gt;<i>  <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000235.html">[Open Office] OOo text layout
+</A></li>
+	<LI> Next message: <A HREF="000228.html">[Open Office] Re: Gtk+ plugin branch ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#239">[ date ]</a>
+              <a href="thread.html#239">[ thread ]</a>
+              <a href="subject.html#239">[ subject ]</a>
+              <a href="author.html#239">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

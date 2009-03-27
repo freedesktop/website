@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Trying to compile CVS build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-February/index.html" >
+   <LINK REL="made" HREF="mailto:dbray%40cfl.rr.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000299.html">
+   <LINK REL="Next"  HREF="000301.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Trying to compile CVS build
+   </H1>
+    <B>Daniel Bray
+    </B> 
+    <A HREF="mailto:dbray%40cfl.rr.com"
+       TITLE="[Open Office] Trying to compile CVS build">dbray@cfl.rr.com
+       </A><BR>
+    <I>Mon, 16 Feb 2004 08:25:13 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000299.html">[Open Office] [Fwd: Re: [Discuss] default theme for UserLinux]
+</A></li>
+        <LI> Next message: <A HREF="000301.html">[Open Office] Trying to compile CVS build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#300">[ date ]</a>
+              <a href="thread.html#300">[ thread ]</a>
+              <a href="subject.html#300">[ subject ]</a>
+              <a href="author.html#300">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Please let me know if this is NOT the correct list.  I saw no other
+&quot;support&quot; list, so I assmued this was the only one.
+
+System is:
+Linux From Scratch 5
+IBM A22p Laptop
+Gnome 2.4.1 (built from tarballs from ftp.gnome.org)
+Using ooo-build from CVS
+
+Configured as:
+../configure --prefix=/opt/OpenOffice --enable-bonobo --enable-java
+--with-system-gcc 
+--with-jdk-home=/opt/java --with-installed-ooo-dirname=/opt/OpenOffice 
+
+Building openoffice
+        tag:                OOO_1_1_0
+        src:                ./src
+        build dir:         
+/usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0
+        distro:             Ximian
+        system gcc:         yes
+        ooo-bonobo:         yes
+        java:               yes
+        ooo-install-dir:    /opt/OpenOffice
+
+
+Here's the ouput:
+
+Making:
+......
+ ../../unxlngi4.pro/misc/databasegeneral.dpz
+dmake  -f makefile.mk  make_zip_deps=true ZIPALLTARGET -u
+echo # &gt; ../../unxlngi4.pro/misc/databasegeneral.database.database.dpzz
+zipdep.pl -u -j ../../unxlngi4.pro/bin/database.zip &quot;*&quot; &quot;-x&quot;
+&quot;makefile.*&quot; &quot;*.dbf&quot; &quot;*.dbt&quot; -x &quot;*CVS*&quot; &gt;&gt;
+../../unxlngi4.pro/misc/databasegeneral.database.database.dpzz
+zipdep -- version: 1.12
+Multi Platform Enabled Edition
+echo # &gt;
+../../unxlngi4.pro/misc/databasegeneral.database.databasebiblio.dpzz
+zipdep.pl -u -j ../../unxlngi4.pro/bin/databasebiblio.zip &quot;biblio.dbf&quot;
+-x &quot;*CVS*&quot; &gt;&gt;
+../../unxlngi4.pro/misc/databasegeneral.database.databasebiblio.dpzz
+zipdep -- version: 1.12
+Multi Platform Enabled Edition
+cat ../../unxlngi4.pro/misc/databasegeneral.database.*.dpzz | grep -v
+&quot;CVS&quot; &gt;&gt; ../../unxlngi4.pro/misc/databasegeneral.dpz
+echo zipdep_langs=49 01 39 34 33 31 45 46 03 81 86 88 07 48 30 90 82 37
+35 42 43 &gt;&gt; ../../unxlngi4.pro/misc/databasegeneral.dpz
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/extras/source/templates/layout/lang
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/extras/source/templates/wizard/agenda/lang
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/extras/source/palettes/lang
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/extras/source/wordbook/lang
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/extras/source/gallery/gallery_sound
+-------------
+Running processes: 1
+/usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/extras/source/templates/wizard/memo/lang
+-------------
+deliver -- version: 1.50.8.1
+Statistics:
+Files copied: 0
+Files unchanged/not matching: 276
+ 
+1 module(s):
+        i18npool
+need(s) to be rebuilt
+ 
+Reason(s):
+ 
+ERROR: error 65280 occurred while making
+/usr/src/sources/OpenOffice/openofficeCVS/build/OOO_1_1_0/i18npool/source/breakiterator/data
+ 
+Attention: if you build and deliver the above module(s) you may
+prolongue your build from module i18n_simple
+ 
+make[1]: *** [all] Error 1
+make[1]: Leaving directory
+`/usr/src/sources/OpenOffice/openofficeCVS/bin'
+make: *** [all-recursive] Error 1
+
+Thanks, 
+DB
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000299.html">[Open Office] [Fwd: Re: [Discuss] default theme for UserLinux]
+</A></li>
+	<LI> Next message: <A HREF="000301.html">[Open Office] Trying to compile CVS build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#300">[ date ]</a>
+              <a href="thread.html#300">[ thread ]</a>
+              <a href="subject.html#300">[ subject ]</a>
+              <a href="author.html#300">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

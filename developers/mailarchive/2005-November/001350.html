@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Generic desktop adapter (proposal &amp; prototype)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Generic%20desktop%20adapter%20%28proposal%20%26%20prototype%29&In-Reply-To=438B08E7.30100%40scheinwelt.at">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001334.html">
+   <LINK REL="Next"  HREF="001352.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Generic desktop adapter (proposal &amp; prototype)</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Generic%20desktop%20adapter%20%28proposal%20%26%20prototype%29&In-Reply-To=438B08E7.30100%40scheinwelt.at"
+       TITLE="[Open Office] Generic desktop adapter (proposal &amp; prototype)">kendy at suse.cz
+       </A><BR>
+    <I>Tue Nov 29 12:14:55 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001334.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+        <LI>Next message: <A HREF="001352.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1350">[ date ]</a>
+              <a href="thread.html#1350">[ thread ]</a>
+              <a href="subject.html#1350">[ subject ]</a>
+              <a href="author.html#1350">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Norbert,
+
+On Monday 28 November 2005 14:40, nf2 wrote:
+
+&gt;<i> Perhaps this is interesting for you. I would like to get some
+</I>&gt;<i> feedback from people which have practical experience with integrating
+</I>&gt;<i> 3rd party applications like openoffice.org into desktop environments.
+</I>&gt;<i>
+</I>&gt;<i> The aim of the &quot;Generic dasktop adapter&quot; is to provide a standardized
+</I>&gt;<i> interface between applications and desktops (for filechoosers and VFS).
+</I>&gt;<i> The concept is simple: Applications load the appropriate desktop-adapter
+</I>&gt;<i> with dlopen(), depending on the desktop they are running in:
+</I>&gt;<i>
+</I>&gt;<i>      * libdadapt-kde-1.0.so
+</I>&gt;<i>      * libdadapt-gnome-1.0.so
+</I>&gt;<i>      * libdadapt-xyz-1.0.so
+</I>
+Basically, it is the same what OOo does for its desktop integration, so in 
+fact, this is a solved issue ;-)  But I understand what you mean by your 
+proposal in general.
+
+OpenOffice.org does the desktop integration through so-called 'vclplugs' for 
+the theming of widgets, or through its component architecture (UNO) for the 
+Gnome/KDE file dialogs, or address books.  But the principle is the same, 
+dlopening appropriate .so's according to the desktop it runs in.  OOo does 
+not need a common (Gtk+ + Qt) main loop for this, it uses just the features 
+that are currently available.
+
+The main problem I see with your approach is that you will have to support 
+each and every feature the target application uses.  E.g. in case of OOo, 
+file dialog is not just two simple calls like ShowTheFileDialog() and 
+GiveMeTheSelectedFiles(); OOo has to have full control over the dialog, like 
+adding new widgets there, modifying content of them according to the selected 
+files, and more.  I believe other applications will have other special wishes 
+and needs, so my opinion is that this would be a maintainance nightmare.
+
+I think that the interesting thing here would be doing it vice-versa.  For 
+example, merge the functionality of gnome-vfs and KIO so that the current 
+gnome-vfs or KIO would be just wrappers for the 'merged VFS'.  This would 
+make the maintainance easier - two teams would be interested in fixing 
+bugs ;-) -, the really desktop independent applications could use the 'merged 
+VFS' directly, and the KDE/Gnome application programmers would still have the 
+API they are used to.  But no idea whether it is technically possible at 
+all ;-)
+
+What do you think, would you be interested in looking into this?
+
+Regards,
+Jan
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001334.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+	<LI>Next message: <A HREF="001352.html">[Open Office] Generic desktop adapter (proposal &amp; prototype)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1350">[ date ]</a>
+              <a href="thread.html#1350">[ thread ]</a>
+              <a href="subject.html#1350">[ subject ]</a>
+              <a href="author.html#1350">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Regarding addressbook integration with OOo
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-February/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000290.html">
+   <LINK REL="Next"  HREF="000285.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Regarding addressbook integration with OOo
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: Regarding addressbook integration with OOo">michael@ximian.com
+       </A><BR>
+    <I>Wed, 04 Feb 2004 14:45:17 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000290.html">[Open Office] compiling ooo-build-1.1.50
+</A></li>
+        <LI> Next message: <A HREF="000285.html">[Open Office] Regarding addressbook integration with OOo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#286">[ date ]</a>
+              <a href="thread.html#286">[ thread ]</a>
+              <a href="subject.html#286">[ subject ]</a>
+              <a href="author.html#286">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Amit,
+
+On Wed, 2004-02-04 at 08:14 -0700, Amit Shrivastava wrote:
+&gt;<i> I just thought i will update you on the task,
+</I>
+	Great; thanks.
+
+&gt;<i> Statement.executeQuery -&gt; reads using LTable -&gt; reads from filestream
+</I>&gt;<i> &lt;- evo-api writes to filestream. 
+</I>
+	Heh ;-) not ideal; but if it's an easy 1st pass: fine.
+
+&gt;<i> Thus the communication mechanism is UCB Filestream. With some more
+</I>&gt;<i> tweaking dependency over command line tool can be completely removed.
+</I>
+	Excellent.
+
+&gt;<i>  I have added the uri parsing code as well, but it seems there is some
+</I>&gt;<i> problem in the evo-api itself and it doesnt bring data from the
+</I>&gt;<i> specified uri properly. I am into it now ;-)
+</I>
+	:-)
+
+&gt;<i> The above is a cumbersome but fast option, the other alternative is to
+</I>&gt;<i> completely rewrite the evoab driver code which as of now completely
+</I>&gt;<i> depends on File driver code base. This is quite a bit of task. As it
+</I>&gt;<i> will involve a good amount of coding.
+</I>
+	Right - it's always nice to have something that works fast that we can
+start testing / deploying now - even if it needs some degree of re-
+working later.
+
+&gt;<i> As of now what I am doing is going with the first option and trying to
+</I>&gt;<i> get the addressbook data of ldap,groupwise etc backend based on the uri,
+</I>&gt;<i> user and password.
+</I>
+	Well - I think we should use the ldap stuff as the test-bed; clearly we
+have to be able to cope with huge data-sets without fetching the whole
+record set from the server :-) [ eg. bigfoot is not going to be ideal
+for fetching all the records synchronously ] Is it possible that with
+the same -&gt; File flow we can parse the incoming SQL request and build an
+evolution query out of it ? NB. connectivity/source/drivers/mozab/
+MStatement.cxx (parseSql) has some code that we could re-use to do this
+[ is it in a sensible place for re-use ? ] - I guess since the Mozilla
+driver handles LDAP as well, they hit the same problem.
+
+&gt;<i> What are your suggestions ? 
+</I>
+	The file thing sounds good to start with - I'm looking forward to the
+patch,
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000290.html">[Open Office] compiling ooo-build-1.1.50
+</A></li>
+	<LI> Next message: <A HREF="000285.html">[Open Office] Regarding addressbook integration with OOo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#286">[ date ]</a>
+              <a href="thread.html#286">[ thread ]</a>
+              <a href="subject.html#286">[ subject ]</a>
+              <a href="author.html#286">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

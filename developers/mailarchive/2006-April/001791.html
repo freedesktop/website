@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] java registration problems on x86_64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20java%20registration%20problems%20on%20x86_64&In-Reply-To=20060429120511.GA29064%40genesis.frugalware.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001790.html">
+   <LINK REL="Next"  HREF="001792.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] java registration problems on x86_64</H1>
+    <B>jim</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20java%20registration%20problems%20on%20x86_64&In-Reply-To=20060429120511.GA29064%40genesis.frugalware.org"
+       TITLE="[Open Office] java registration problems on x86_64">jim at amarooas.com.au
+       </A><BR>
+    <I>Sat Apr 29 08:42:35 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001790.html">[Open Office] java registration problems on x86_64
+</A></li>
+        <LI>Next message: <A HREF="001792.html">[Open Office] java registration problems on x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1791">[ date ]</a>
+              <a href="thread.html#1791">[ thread ]</a>
+              <a href="subject.html#1791">[ subject ]</a>
+              <a href="author.html#1791">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, Apr 29, 2006 at 02:05:12PM +0200, VMiklos wrote:
+&gt;<i> hi
+</I>&gt;<i> 
+</I>&gt;<i> m164 on x86_64 fails to register java components here, regcomp segfaults
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="http://helicon.frugalware.org/~vmiklos/ooo/regcomp.log">http://helicon.frugalware.org/~vmiklos/ooo/regcomp.log</A>
+</I>&gt;<i> 
+</I>&gt;<i> the java part of the the logfile
+</I>&gt;<i> (en-US_de_es_fr_hu/log_SRC680__en-US_de_es_fr_hu.log) which is mentioned
+</I>&gt;<i> in regcomp.log:
+</I>&gt;<i> <A HREF="http://helicon.frugalware.org/~vmiklos/ooo/java_reg.log">http://helicon.frugalware.org/~vmiklos/ooo/java_reg.log</A>
+</I>&gt;<i> 
+</I>&gt;<i> here is gdb's trace of regcomp:
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="http://helicon.frugalware.org/~vmiklos/ooo/gdb.log">http://helicon.frugalware.org/~vmiklos/ooo/gdb.log</A>
+</I>&gt;<i> 
+</I>&gt;<i> at the moment the only workaround i've found is to disable the
+</I>&gt;<i> registration of java components in
+</I>&gt;<i> solenv/bin/modules/installer/servicesfile.pm, but of course that
+</I>&gt;<i> is not accepptable
+</I>&gt;<i> 
+</I>&gt;<i> any idea? :)
+</I>
+There is a patch here that was helpful with gcc4.1 on GNU/Linux SPARC but
+this problem is not seen with the latest gcc4.1.1 
+
+<A HREF="http://www.openoffice.org/servlets/ReadMsg?list=dev&amp;msgNo=15641">http://www.openoffice.org/servlets/ReadMsg?list=dev&amp;msgNo=15641</A>
+
+If you set $javamaxservices = 1 in globals.pm that may reveal which
+components fail.
+
+jim
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001790.html">[Open Office] java registration problems on x86_64
+</A></li>
+	<LI>Next message: <A HREF="001792.html">[Open Office] java registration problems on x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1791">[ date ]</a>
+              <a href="thread.html#1791">[ thread ]</a>
+              <a href="subject.html#1791">[ subject ]</a>
+              <a href="author.html#1791">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

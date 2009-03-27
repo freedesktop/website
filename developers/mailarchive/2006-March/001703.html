@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: opens___.ttf vs. OpenSymbol
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20opens___.ttf%20vs.%20OpenSymbol&In-Reply-To=5b8c5a2c0603111641g1b4bc088h31604a5b4355ab72%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001698.html">
+   <LINK REL="Next"  HREF="001711.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: opens___.ttf vs. OpenSymbol</H1>
+    <B>Radek Doul&#237;k</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20opens___.ttf%20vs.%20OpenSymbol&In-Reply-To=5b8c5a2c0603111641g1b4bc088h31604a5b4355ab72%40mail.gmail.com"
+       TITLE="[Open Office] Re: opens___.ttf vs. OpenSymbol">rodo at novell.com
+       </A><BR>
+    <I>Mon Mar 13 04:59:59 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001698.html">[Open Office] opens___.ttf vs. OpenSymbol
+</A></li>
+        <LI>Next message: <A HREF="001711.html">[Open Office] Re: opens___.ttf vs. OpenSymbol
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1703">[ date ]</a>
+              <a href="thread.html#1703">[ thread ]</a>
+              <a href="subject.html#1703">[ subject ]</a>
+              <a href="author.html#1703">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, 2006-03-12 at 01:41 +0100, Martin Kretzschmar wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> This bug
+</I>&gt;<i> 
+</I>&gt;<i>   <A HREF="https://launchpad.net/distros/ubuntu/+source/openoffice.org/+bug/33786">https://launchpad.net/distros/ubuntu/+source/openoffice.org/+bug/33786</A>
+</I>&gt;<i> 
+</I>&gt;<i> seems to happen because of a missing glyph (0x2212, between summation and
+</I>&gt;<i> minus/plus sign). This is missing in our opens___.ttf, but not in
+</I>&gt;<i> OpenSymbol.sfd.
+</I>&gt;<i> 
+</I>&gt;<i> How can I get the minus back into opens___.ttf or how do I generate the ttf from
+</I>&gt;<i> the sfd?
+</I>
+You can use fonforge (be sure to use cvs version) to generate ttf font
+from sfd source.
+
+I looked at the 0x2212 glyph and there was a problem with unicode value
+set to 0x00ad, so the generated ttf file was missing 0x2212 minussign
+glyph. Looks like someone added minussign to the font, but didn't set
+unicode value correctly.
+
+It is now fixed in cvs.
+
+Cheers
+Radek
+
+&gt;<i> Regards,
+</I>&gt;<i> 
+</I>&gt;<i> Martin
+</I>-- 
+Radek Doul&#237;k &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rodo at novell.com</A>&gt;
+Novell, Inc.
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001698.html">[Open Office] opens___.ttf vs. OpenSymbol
+</A></li>
+	<LI>Next message: <A HREF="001711.html">[Open Office] Re: opens___.ttf vs. OpenSymbol
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1703">[ date ]</a>
+              <a href="thread.html#1703">[ thread ]</a>
+              <a href="subject.html#1703">[ subject ]</a>
+              <a href="author.html#1703">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

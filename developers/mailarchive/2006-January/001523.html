@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] NOSIP: Patch file for Bug fix #635
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20NOSIP%3A%20Patch%20file%20for%20Bug%20fix%20%23635&In-Reply-To=1138188924.6020.41.camel%40linux.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001517.html">
+   <LINK REL="Next"  HREF="001512.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] NOSIP: Patch file for Bug fix #635</H1>
+    <B>Radek Doul&#237;k</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20NOSIP%3A%20Patch%20file%20for%20Bug%20fix%20%23635&In-Reply-To=1138188924.6020.41.camel%40linux.site"
+       TITLE="[Open Office] NOSIP: Patch file for Bug fix #635">rodo at novell.com
+       </A><BR>
+    <I>Thu Jan 26 04:41:36 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001517.html">[Open Office] NOSIP: Patch file for Bug fix #635
+</A></li>
+        <LI>Next message: <A HREF="001512.html">[Open Office] Evo. patches &amp; the recent milestones
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1523">[ date ]</a>
+              <a href="thread.html#1523">[ thread ]</a>
+              <a href="subject.html#1523">[ subject ]</a>
+              <a href="author.html#1523">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, 2006-01-25 at 11:35 +0000, michael meeks wrote:
+&gt;<i> Hi Santhosh,
+</I>&gt;<i> 
+</I>&gt;<i> On Mon, 2006-01-23 at 02:25 -0800, Santhosh Kumar R wrote:
+</I>&gt;<i> &gt; I fixed the bug #635 related to hiding the mouse pointer during the
+</I>&gt;<i> &gt; slideshow. The pointer is hidden until the user initiates the mouse
+</I>&gt;<i> &gt; move event after which it waits for 5000 msec. before auto hiding.
+</I>&gt;<i> 
+</I>&gt;<i> 	Wow - this is cool :-) This is the ideal sort of bug to work on -
+</I>&gt;<i> because while up-stream demand a spec. that covers all possible cases
+</I>&gt;<i> that anyone might want - we can provide something to our users that
+</I>&gt;<i> covers 95% of what people want, instead of the 25% at present.
+</I>&gt;<i> 
+</I>&gt;<i> 	I've re-worked the patch slightly and committed it: we don't hide the
+</I>&gt;<i> pointer in Paint, but from a timeout triggered from 'Show' (slightly
+</I>&gt;<i> trickier but ...). I also added a timer stop in the destructor (for both
+</I>&gt;<i> timers) as a defensive coding measure.
+</I>&gt;<i> 
+</I>&gt;<i> 	Radek - can you look over sd-slideshow-cursor-hide.diff too ? it's your
+</I>&gt;<i> module :-)
+</I>
+Yup, looks good to me.
+
+Cheers
+Radek
+
+&gt;<i> 	Srini - when these folk joined NOSIP they signed a JCA right ? can we
+</I>&gt;<i> get that FAXed to Sun ASAP ?
+</I>&gt;<i> 
+</I>&gt;<i> 	Thanks,
+</I>&gt;<i> 
+</I>&gt;<i> 		Michael.
+</I>&gt;<i> 
+</I>-- 
+Radek Doul&#237;k &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rodo at novell.com</A>&gt;
+Novell, Inc.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001517.html">[Open Office] NOSIP: Patch file for Bug fix #635
+</A></li>
+	<LI>Next message: <A HREF="001512.html">[Open Office] Evo. patches &amp; the recent milestones
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1523">[ date ]</a>
+              <a href="thread.html#1523">[ thread ]</a>
+              <a href="subject.html#1523">[ subject ]</a>
+              <a href="author.html#1523">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

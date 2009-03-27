@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Wednesday, Thursday
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000863.html">
+   <LINK REL="Next"  HREF="000865.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Wednesday, Thursday
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Status Wednesday, Thursday">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Thu, 17 Mar 2005 19:39:16 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000863.html">[Open Office] Status
+</A></li>
+        <LI> Next message: <A HREF="000865.html">[Open Office] Suggestion for names and comments in .desktop files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#864">[ date ]</a>
+              <a href="thread.html#864">[ thread ]</a>
+              <a href="subject.html#864">[ subject ]</a>
+              <a href="author.html#864">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I continued debugging the bridge. The last stack trace from Tuesday was
+not very helpful, a NullReferenceException in internal Mono code that
+processes return messages of remoting calls. Of course, my bug must have
+happened earlier, but where? Didn't succeed in fixing that bug
+yesterday. Started a build of m86 in the background.
+
+More debugging today. Used the fact that a well-placed Console.WriteLine
+could cause a crash in a different place, fixed that, and now the other
+problem is fixed as well. There were several occurrences where I had
+used typelib_TypeDescriptionReferences in a wrong way. The original code
+had used C++ wrappers for them and I had used the bare C versions and
+did not port the additional magic of the C++ wrappers.
+
+Now the ViewSample.cs program has visible effect, it starts oocalc,
+changes cell background colors, the grid color etc.
+
+Next problem: a sigsegv in GC_mark_from :-/. But only in gdb.
+
+Regards,
+
+Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000863.html">[Open Office] Status
+</A></li>
+	<LI> Next message: <A HREF="000865.html">[Open Office] Suggestion for names and comments in .desktop files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#864">[ date ]</a>
+              <a href="thread.html#864">[ thread ]</a>
+              <a href="subject.html#864">[ subject ]</a>
+              <a href="author.html#864">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

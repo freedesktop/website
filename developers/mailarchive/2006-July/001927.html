@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] small patch against speed-ooqstart-x11-only.diff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20small%20patch%20against%20speed-ooqstart-x11-only.diff&In-Reply-To=20060704.085150.78788239.chat95%40mac.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001915.html">
+   <LINK REL="Next"  HREF="001928.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] small patch against speed-ooqstart-x11-only.diff</H1>
+    <B>NAKATA Maho</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20small%20patch%20against%20speed-ooqstart-x11-only.diff&In-Reply-To=20060704.085150.78788239.chat95%40mac.com"
+       TITLE="[Open Office] small patch against speed-ooqstart-x11-only.diff">chat95 at mac.com
+       </A><BR>
+    <I>Fri Jul  7 21:40:52 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001915.html">[Open Office] small patch against speed-ooqstart-x11-only.diff
+</A></li>
+        <LI>Next message: <A HREF="001928.html">[Open Office] small patch against speed-ooqstart-x11-only.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1927">[ date ]</a>
+              <a href="thread.html#1927">[ thread ]</a>
+              <a href="subject.html#1927">[ subject ]</a>
+              <a href="author.html#1927">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear kendy,
+
+My patch is important for other platforms since
+including endian.h is not portable at all. OOo uses osl/endian.h
+instead to make it portable.
+
+According to <A HREF="http://www.rdesktop.org/archive/2001/msg00719.html,">http://www.rdesktop.org/archive/2001/msg00719.html,</A>
+
+&gt;<i> &quot;endian.h&quot; does not exist on (at least) these platforms:
+</I>&gt;<i> FreeBSD, NetBSD, OSF/Tru64, HP-UX 10, Solaris, A/UX, Ultrix and
+</I>&gt;<i> AIX. I've only seen that header on Linux and Irix.
+</I>
+could you please apply my patch?
+
+-- NAKATA, Maho (<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">maho at FreeBSD.org</A>)
+
+In Message-ID: &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">20060704.085150.78788239.chat95 at mac.com</A>&gt; 
+NAKATA Maho &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">chat95 at mac.com</A>&gt; wrote:
+
+&gt;<i> Dear kendy,
+</I>&gt;<i> 
+</I>&gt;<i> Could you please apply following patch for ooo-build?
+</I>&gt;<i> 1. endian.h doesn't exist for FreeBSD at least.
+</I>&gt;<i> 2. To avoid such porting issue, OOo itself has &quot;osl/endian.h&quot;.
+</I>&gt;<i> 3. in osl/endian.h, we use
+</I>&gt;<i> _BYTE_ORDER, _LITTLE_ENDIAN, and __BIG_ENDIAN rather than
+</I>&gt;<i> __BYTE_ORDER, __LITTLE_ENDIAN and __BIG_ENDIAN.
+</I>
+-- NAKATA, Maho (<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">maho at FreeBSD.org</A>)
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001915.html">[Open Office] small patch against speed-ooqstart-x11-only.diff
+</A></li>
+	<LI>Next message: <A HREF="001928.html">[Open Office] small patch against speed-ooqstart-x11-only.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1927">[ date ]</a>
+              <a href="thread.html#1927">[ thread ]</a>
+              <a href="subject.html#1927">[ subject ]</a>
+              <a href="author.html#1927">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

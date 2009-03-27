@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] More fpicker troubles
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20More%20fpicker%20troubles&In-Reply-To=200506090110.10787.bero%40arklinux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000996.html">
+   <LINK REL="Next"  HREF="000998.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] More fpicker troubles</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20More%20fpicker%20troubles&In-Reply-To=200506090110.10787.bero%40arklinux.org"
+       TITLE="[Open Office] More fpicker troubles">bero at arklinux.org
+       </A><BR>
+    <I>Wed Jun  8 19:28:29 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000996.html">[Open Office] More fpicker troubles
+</A></li>
+        <LI>Next message: <A HREF="000998.html">[Open Office] More fpicker troubles
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#997">[ date ]</a>
+              <a href="thread.html#997">[ thread ]</a>
+              <a href="subject.html#997">[ subject ]</a>
+              <a href="author.html#997">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 09 June 2005 01:10, Bernhard Rosenkraenzer wrote:
+&gt;<i> I'm starting a build with gcj now... (disabled it in the first place
+</I>&gt;<i> because some earlier version barfed with java==gcj... hope that was fixed
+</I>&gt;<i> since).
+</I>
+It wasn't (and now I remember why it barfed...).
+
+configure: error: Ant not found - Make sure it's in the path or use 
+--with-ant-home
+
+Unless I'm doing something wrong, it's impossible to get ant to work with gcj, 
+and OOo won't compile with gcj if ant isn't there.
+
+[In case someone who actually knows Java/Ant is watching: Trying to compile 
+ant 1.6.5 if gcj 3.4.x is the only available jdk results in hundreds of 
+deprecation warnings followed by
+src/main/org/apache/tools/ant/IntrospectionHelper.java:495: error: No 
+constructo
+r matching `(org.apache.tools.ant.IntrospectionHelper,java.lang.Object,void)' 
+fo
+und in class `org.apache.tools.ant.IntrospectionHelper$NestedCreator'.
+                   nc = new NestedCreator(null) {
+                                                 ^
+src/main/org/apache/tools/ant/IntrospectionHelper.java: In class 
+`org.apache.too
+ls.ant.IntrospectionHelper$1':
+src/main/org/apache/tools/ant/IntrospectionHelper.java: In constructor 
+`(org.apa
+che.tools.ant.IntrospectionHelper,java.lang.Object,void)':
+src/main/org/apache/tools/ant/IntrospectionHelper.java:495: error: Can't find 
+constructor `org.apache.tools.ant.IntrospectionHelper$1(V)' in type 
+`org.apache.tools.ant.IntrospectionHelper$1'.
+                   nc = new NestedCreator(null) {
+                            ^
+src/main/org/apache/tools/ant/IntrospectionHelper.java:508: error: No 
+constructor matching 
+`(org.apache.tools.ant.IntrospectionHelper,java.lang.Object,void)' found in 
+class `org.apache.tools.ant.IntrospectionHelper$NestedCreator'.
+                   nc = new NestedCreator(null) {
+                                                 ^
+src/main/org/apache/tools/ant/IntrospectionHelper.java: In class 
+`org.apache.tools.ant.IntrospectionHelper$2':
+src/main/org/apache/tools/ant/IntrospectionHelper.java: In constructor 
+`(org.apache.tools.ant.IntrospectionHelper,java.lang.Object,void)':
+src/main/org/apache/tools/ant/IntrospectionHelper.java:508: error: Can't find 
+constructor `org.apache.tools.ant.IntrospectionHelper$2(V)' in type 
+`org.apache.tools.ant.IntrospectionHelper$2'.
+                   nc = new NestedCreator(null) {
+                            ^
+src/main/org/apache/tools/ant/IntrospectionHelper.java:519: error: `return' 
+with value from constructor 
+`(org.apache.tools.ant.IntrospectionHelper,java.lang.Object,void)'.
+           return nc;
+           ^
+]
+
+
+LLaP
+bero
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000996.html">[Open Office] More fpicker troubles
+</A></li>
+	<LI>Next message: <A HREF="000998.html">[Open Office] More fpicker troubles
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#997">[ date ]</a>
+              <a href="thread.html#997">[ thread ]</a>
+              <a href="subject.html#997">[ subject ]</a>
+              <a href="author.html#997">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status recently
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:rsiddhartha%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000631.html">
+   <LINK REL="Next"  HREF="000633.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status recently
+   </H1>
+    <B>Raul Siddhartha
+    </B> 
+    <A HREF="mailto:rsiddhartha%40novell.com"
+       TITLE="[Open Office] Status recently">rsiddhartha@novell.com
+       </A><BR>
+    <I>Wed, 15 Dec 2004 16:56:18 +0530</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000631.html">[Open Office] Status 2004-12-14
+</A></li>
+        <LI> Next message: <A HREF="000633.html">[Open Office] Status Report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#632">[ date ]</a>
+              <a href="thread.html#632">[ thread ]</a>
+              <a href="subject.html#632">[ subject ]</a>
+              <a href="author.html#632">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+
+ - Upgraded to the .NET compiler and and fixed up issues for an
+unattended windows build
+ - In the process, got to figure out the packaging process in scp to add
+in files
+ - Tried to set up the Print Preview icon on the OOo common toolbar, but
+did not commit it in because the icon cannot be disabled in Impress
+where it is not valid. [patch sd-toolbar-print-preview.diff]
+ - Committed in a patch to use Ctrl-click for selection and Shift-click
+for range selection in Impress in the slide sorter view [patch sd-slide-
+sorter-selector.diff]
+ - Fixed up the RTL languages bug in the vclplug with Michael's help
+[patch vcl-gtk-rtl-fix.diff], and checked in with Chris' help
+
+Regards,
+Raul
+
+--
+
+sd-toolbar-print-preview.diff:
+
+--- cvs/ooo-build/patches/OOO_1_1/gui-new-icons.diff	2004-12-14 16:30:17.000000000 +0530
++++ gui-new-icons.diff	2004-12-14 12:40:21.000000000 +0530
+@@ -5,18 +5,19 @@
+ diff -u -p -u -r1.85 app.src
+ --- sfx2/source/appl/app.src	26 May 2003 08:28:00 -0000	1.85
+ +++ sfx2/source/appl/app.src	4 Jun 2003 10:03:31 -0000
+-@@ -3590,9 +3590,12 @@ ToolBox RID_ENVTOOLBOX
++@@ -3590,9 +3590,13 @@ ToolBox RID_ENVTOOLBOX
+  		SID_EXPLORER_SEARCHORIGINAL;\
+  		SID_EXPLORER_DETAILS;\
+  		SID_EXPLORER_ICONS;\
+ -    };\
+++		SID_PRINTPREVIEW;\
+ +		SID_HELPINDEX;\
+ +		SID_HELP_SUPPORTPAGE;\
+ +		SID_ABOUT;\
+ +	};\
+  	IdCount = {\
+ -        40;\
+-+        43;\
+++        44;\
+  	};
+  
+  #ifndef IMAGE_STDBTN_COLOR
+@@ -27,11 +28,12 @@
+ diff -u -p -u -r1.88 app.src
+ --- sw/source/ui/app/app.src	26 May 2003 08:14:25 -0000	1.88
+ +++ sw/source/ui/app/app.src	4 Jun 2003 10:04:39 -0000
+-@@ -325,11 +325,13 @@ String STR_PAGE_COUNT_MACRO
++@@ -325,11 +325,14 @@ String STR_PAGE_COUNT_MACRO
+  		FN_INSERT_CAPTION;\
+  		FN_INSERT_REF_FIELD;\
+          FN_INSERT_REGION;\
+ -										\
+++		SID_PRINTPREVIEW;\
+ +		SID_HELPINDEX;\
+ +		SID_HELP_SUPPORTPAGE;\
+ +		SID_ABOUT;\
+@@ -39,7 +41,7 @@
+  		};								\
+  	IdCount = { 						\
+ -        165;                            \
+-+        168;                            \
+++        169;                            \
+  	};
+  
+  
+@@ -75,10 +77,11 @@
+ diff -u -p -u -r1.20 app.src
+ --- sd/source/ui/app/app.src	26 May 2003 08:08:02 -0000	1.20
+ +++ sd/source/ui/app/app.src	4 Jun 2003 10:06:12 -0000
+-@@ -395,9 +395,16 @@
++@@ -395,9 +395,17 @@
+  			SID_HYPHENATION;\
+  			SID_THESAURUS;\
+  			SID_AUTOSPELL_CHECK;\
+++               SID_PRINTPREVIEW;\
+ +               SID_INSERT_FLD_DATE_FIX;\
+ +               SID_INSERT_FLD_TIME_FIX;\
+ +               SID_INSERT_FLD_AUTHOR;\
+@@ -89,7 +92,7 @@
+      };\
+      IdCount = {\
+ -        285;\
+-+        292;\
+++        293;\
+      };
+  
+  
+--- sfx2/source/appl/app.src	2004-10-27 12:57:53.000000000 +0530
++++ sfx2/source/appl/app.src	2004-12-13 15:44:59.634941576 +0530
+@@ -4833,6 +4833,10 @@
+ 		};
+ 		ToolBoxItem
+ 		{
++			Identifier = SID_PRINTPREVIEW ;
++		};
++		ToolBoxItem
++		{
+ 			Identifier = SID_PRINTDOCDIRECT ;
+ 		};
+ 		ToolBoxItem
+
+
+
+--
+
+sd-slide-sorter-selector.diff:
+
+--- sd/source/ui/func/fuslsel.cxx	2003-03-27 16:27:51.000000000 +0530
++++ sd/source/ui/func/fuslsel.cxx	2004-12-10 11:33:40.395794208 +0530
+@@ -165,9 +165,34 @@
+ 	{
+ 		bPageHit = TRUE;		 // Seite getroffen, merken fuer MouseMove
+ 
+-		if (rMEvt.IsShift())
++		if( rMEvt.IsMod1() ) 
+             pSlView-&gt;Select( ( pHitPage-&gt;GetPageNum() - 1 ) / 2, !pHitPage-&gt;IsSelected() );
+-		else if( !pHitPage-&gt;IsSelected() )
++		else if( rMEvt.IsShift() ) 
++		{
++		    USHORT nCurrentPage = ( pHitPage-&gt;GetPageNum() - 1 ) / 2;
++		    USHORT nPageRange;
++		    BOOL bFound = FALSE;
++		    for (nPageRange = 0; nPageRange &lt; nNoOfPages; nPageRange++)
++		    {
++			SdPage* pTestPage = pDoc-&gt;GetSdPage(nPageRange, PK_STANDARD);
++			if( pTestPage-&gt;IsSelected() )
++			{
++			    bFound = TRUE;
++			    break;
++			}
++		    }
++		    if( !bFound )
++			pSlView-&gt;Select( nCurrentPage, TRUE );
++		    else if( nCurrentPage != nPageRange )
++		    {
++			for (nPage =  ((nCurrentPage &gt; nPageRange) ? nPageRange   : nCurrentPage);
++			     nPage &lt;= ((nCurrentPage &gt; nPageRange) ? nCurrentPage : nPageRange); 
++			     nPage++)
++			    pSlView-&gt;Select( nPage, TRUE );
++		    }			
++		    
++		}
++		else
+ 		{
+     		// einfache Selektion, alle selektierten deselektieren, getroffene Seite selektieren
+             pSlView-&gt;SelectAll( FALSE );
+@@ -207,7 +232,7 @@
+ 	if( !pHitPage &amp;&amp; !bReturn )
+ 	{
+ 		// keine erweiterte Selektion: alle Seiten deselektieren
+-		if( !rMEvt.IsShift() )
++		if( !rMEvt.IsShift() &amp;&amp; !rMEvt.IsMod1() ) 
+             pSlView-&gt;SelectAll( FALSE );
+ 
+ 		bDragSelection = TRUE;
+
+
+--
+
+vcl-gtk-rtl-fix.diff:
+
+--- vcl/unx/gtk/window/gtkframe.cxx.bak	2004-11-24 11:28:39.000000000 +0530
++++ vcl/unx/gtk/window/gtkframe.cxx	2004-11-30 10:51:59.785225136 +0530
+@@ -75,6 +75,8 @@
+ #include &lt;dlfcn.h&gt;
+ #include &lt;soicon.hxx&gt;
+ 
++#include &lt;svapp.hxx&gt;
++
+ #ifndef _OSL_PROCESS_H_
+ #include &lt;osl/process.h&gt;
+ #endif
+@@ -648,6 +650,8 @@
+ #endif
+ 		if( m_pParent )
+ 		{
++		        if( Application::GetSettings().GetLayoutRTL() )
++			    nX = m_pParent-&gt;maGeometry.nWidth-maGeometry.nWidth-1-nX;
+ 			nX += m_pParent-&gt;maGeometry.nX;
+ 			nY += m_pParent-&gt;maGeometry.nY;
+ 		}
+@@ -1380,6 +1384,10 @@
+             gdk_display_pointer_ungrab( pThis-&gt;getGdkDisplay(), GDK_CURRENT_TIME );
+     }
+ 
++    // --- RTL --- (mirror mouse pos)
++    if( Application::GetSettings().GetLayoutRTL() )
++         aEvent.mnX = pThis-&gt;maGeometry.nWidth-1-aEvent.mnX;
++
+     GTK_YIELD_GRAB();
+ 
+ 	vcl::DeletionListener aDel( pThis );
+@@ -1426,6 +1434,10 @@
+     aEvent.mnCode			= GetModCode( pSEvent-&gt;state );
+     aEvent.mbHorz			= (pSEvent-&gt;direction == GDK_SCROLL_LEFT || pSEvent-&gt;direction == GDK_SCROLL_RIGHT);
+     
++    // --- RTL --- (mirror mouse pos)
++    if( Application::GetSettings().GetLayoutRTL() )
++         aEvent.mnX = pThis-&gt;maGeometry.nWidth-1-aEvent.mnX;
++
+     GTK_YIELD_GRAB();
+     pThis-&gt;CallCallback( SALEVENT_WHEELMOUSE, &amp;aEvent );
+     
+@@ -1442,6 +1454,10 @@
+     aEvent.mnCode	= GetModCode( pEvent-&gt;state );
+     aEvent.mnButton	= 0;
+ 
++    // --- RTL --- (mirror mouse pos)
++    if( Application::GetSettings().GetLayoutRTL() )
++         aEvent.mnX = pThis-&gt;maGeometry.nWidth-1-aEvent.mnX;
++
+     GTK_YIELD_GRAB();
+ 	vcl::DeletionListener aDel( pThis );
+ 
+@@ -1484,6 +1500,10 @@
+     aEvent.mnBoundWidth		= pEvent-&gt;area.width;
+     aEvent.mnBoundHeight	= pEvent-&gt;area.height;
+ 
++    // --- RTL --- (mirror mouse pos)
++    if( Application::GetSettings().GetLayoutRTL() )
++         aEvent.mnBoundX = pThis-&gt;maGeometry.nWidth-aEvent.mnBoundWidth-aEvent.mnBoundX;
++
+     GTK_YIELD_GRAB();
+     pThis-&gt;CallCallback( SALEVENT_PAINT, &amp;aEvent );
+     
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000631.html">[Open Office] Status 2004-12-14
+</A></li>
+	<LI> Next message: <A HREF="000633.html">[Open Office] Status Report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#632">[ date ]</a>
+              <a href="thread.html#632">[ thread ]</a>
+              <a href="subject.html#632">[ subject ]</a>
+              <a href="author.html#632">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

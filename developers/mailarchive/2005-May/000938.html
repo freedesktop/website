@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] [PATCH] Save As and file name with dots fix
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:michael.meeks%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000933.html">
+   <LINK REL="Next"  HREF="000942.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] [PATCH] Save As and file name with dots fix
+   </H1>
+    <B>michael meeks
+    </B> 
+    <A HREF="mailto:michael.meeks%40novell.com"
+       TITLE="[Open Office] [PATCH] Save As and file name with dots fix">michael.meeks@novell.com
+       </A><BR>
+    <I>Mon, 09 May 2005 10:31:27 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000933.html">[Open Office] [PATCH] Save As and file name with dots fix
+</A></li>
+        <LI> Next message: <A HREF="000942.html">[Open Office] [PATCH] Save As and file name with dots fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#938">[ date ]</a>
+              <a href="thread.html#938">[ thread ]</a>
+              <a href="subject.html#938">[ subject ]</a>
+              <a href="author.html#938">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Robert,
+
+On Fri, 2005-05-06 at 18:14 +0200, Robert Vojta wrote:
+&gt;<i>   this one is 'better', because it leaves the logic as it is, but fixes
+</I>&gt;<i> the problem only - extension is modified only and only if the file name
+</I>&gt;<i> part after the last dot is same as the filter extension. Otherwise the
+</I>&gt;<i> file name is leaved as it is.
+</I>
+	Patch looks nice - I guess the original bug is pretty silly - and yes,
+I'd love to have this in ooo-build.
+
+	2 questions:
+
+	a) Have you signed &amp; posted a JCA ?
+
+	b) could you change a couple of things for me :-)
+
+		* We now use '.Copy(2)' a lot - can we have a 
+		'getExtension' method in iodlgimp.hxx that does
+		the Copy(2) to make that more explicit &amp; expandible
+	
+		* should this:
+
++				if ( rFile.Copy( p1 - p0 + 1) == 
+					rLastFilterExt )
+
+		be a case insensitive match ? EqualsIgnoreCaseAscii or 
+		somesuch ?
+
+	Apart from that it looks great :-) will commit as/when you confirm
+JCA-ness.
+
+	What else are you interested in hacking on ? and/or be great to see you
+on irc.freenode.net #OpenOffice.org (ping michael_ :-)
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000933.html">[Open Office] [PATCH] Save As and file name with dots fix
+</A></li>
+	<LI> Next message: <A HREF="000942.html">[Open Office] [PATCH] Save As and file name with dots fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#938">[ date ]</a>
+              <a href="thread.html#938">[ thread ]</a>
+              <a href="subject.html#938">[ subject ]</a>
+              <a href="author.html#938">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

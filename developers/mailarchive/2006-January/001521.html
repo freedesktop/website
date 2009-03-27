@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] java.lang.NullPointerException from HelpLinker
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20java.lang.NullPointerException%20from%20HelpLinker&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001535.html">
+   <LINK REL="Next"  HREF="001534.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] java.lang.NullPointerException from HelpLinker</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20java.lang.NullPointerException%20from%20HelpLinker&In-Reply-To="
+       TITLE="[Open Office] java.lang.NullPointerException from HelpLinker">bero at arklinux.org
+       </A><BR>
+    <I>Wed Jan 25 22:48:31 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001535.html">[Open Office] Java related build failure
+</A></li>
+        <LI>Next message: <A HREF="001534.html">[Open Office] java.lang.NullPointerException from HelpLinker
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1521">[ date ]</a>
+              <a href="thread.html#1521">[ thread ]</a>
+              <a href="subject.html#1521">[ subject ]</a>
+              <a href="author.html#1521">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Does this happen for anyone else, or is it triggered by my &quot;use precompiled 
+system stuff&quot; hack?
+
+HepLinker @/tmp/mkJxY4Es
+java.lang.NullPointerException
+   at com.jclark.xsl.sax.XMLProcessorImpl.load (libxt.jar.so)
+   at com.jclark.xsl.sax.XSLProcessorImpl.loadStylesheet (libxt.jar.so)
+   at com.sun.star.help.HelpIndexer$ParseStuff.&lt;init&gt; (HelpLinker)
+   at com.sun.star.help.HelpCompiler.getSourceDocument (HelpLinker)
+   at com.sun.star.help.HelpCompiler.compile (HelpLinker)
+   at com.sun.star.help.HelpLinker.link (HelpLinker)
+   at com.sun.star.help.HelpLinker.main (HepLinker)
+make:  Error code 1, while making '../../unxlngi6.pro/basic/sbasic_en-US.zip'
+
+(m152, gcj 4.1)
+
+LLaP
+bero
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001535.html">[Open Office] Java related build failure
+</A></li>
+	<LI>Next message: <A HREF="001534.html">[Open Office] java.lang.NullPointerException from HelpLinker
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1521">[ date ]</a>
+              <a href="thread.html#1521">[ thread ]</a>
+              <a href="subject.html#1521">[ subject ]</a>
+              <a href="author.html#1521">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

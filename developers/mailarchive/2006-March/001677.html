@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Internal quickstarter
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To=44088CAA.3050904%40mandriva.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001676.html">
+   <LINK REL="Next"  HREF="001678.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Internal quickstarter</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To=44088CAA.3050904%40mandriva.com"
+       TITLE="[Open Office] Internal quickstarter">ghibo at mandriva.com
+       </A><BR>
+    <I>Sun Mar  5 14:04:23 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001676.html">[Open Office] Internal quickstarter
+</A></li>
+        <LI>Next message: <A HREF="001678.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1677">[ date ]</a>
+              <a href="thread.html#1677">[ thread ]</a>
+              <a href="subject.html#1677">[ subject ]</a>
+              <a href="author.html#1677">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I tried to build 2.0.2m5 using --disable-quickstart.
+As result instead of the BASH wrapper ooffice2.0:
+
+----------------------------------
+#!/bin/sh
+export OOO_EXTRA_ARG='$2'
+$OOINSTBASE/program/ooqstart &quot;\$@&quot;
+----------------------------------
+
+the perl one is used:
+
+----------------------------------------------
+#!/usr/bin/perl -w
+#
+# ooffice - Wrapper script for OpenOffice.org
+#
+
+# Define system installation directory
+my $SystemInstallDir = '/usr/lib/ooo-2.0';
+# Suffix for parallel installable versioning
+my $BinSuffix = '2.0';
+# ooo-build version
+my $OOO_BUILDVERSION = 'oob680.5.0';
+
+if ($SystemInstallDir =~ /^@/) {
+     $SystemInstallDir = '/usr/lib/ooo-2.0';
+     $BinSuffix = '';
+}
+
+my $Binary = 'soffice';
+if (-x &quot;$SystemInstallDir/program/ooqstart&quot;) {
+     $Binary = 'ooqstart';
+}
+....
+-----------------------------------------------
+
+and also the &lt;ooo-instdir&gt;/program/ooqstart is built anyway.
+Infact the perl wrapper will call oooqstart it if it's found.
+This might be good if one decide to package the
+&lt;ooo-instdir&gt;/program/ooqstart in a standalone sub
+package (so to have the &lt;ooo-instdir&gt;/program/soffice fallback)
+and behaviour can be tuned installing or not installing this subpackage
+(on the other hand IMHO the overhead of calling #!/bin/perl
+instead of #!/bin/bash should be minimal).
+
+What I also wonder is this. Does using --disable-quickstart
+ooo-build option, affects also the rest of OOo building
+(e.g. VCL, etc.) or just the choice
+of the wrapper? Because if it would affect only the wrapper, I
+would like to move these files:
+
+program/libqstart_gtk680li.so
+program/ooqstart
+share/xdg/qstart.desktop
+
+from common_list.txt to oooqstart_list.txt? Petr, it's OK if I apply this
+to package-ooo?
+
+--------------------------------------------------------------------
+Speaking of performance, I also retried ooqstart (but built
+using --disable-quickstart) on a slower machine (Celeron 1300)
+and here were the results:
+
+starting ooo with ooqstart (bash wrapper):
+000003 1 | : PERFORMANCE - enter Main()
+003305 1 | : PERFORMANCE - enter Application::Execute()
+003306 1 { PERFORMANCE - DesktopOpenClients_Impl()
+003321 1 { PERFORMANCE - Desktop::loadComponentFromURL()
+005500 1 } PERFORMANCE - Desktop::loadComponentFromURL()
+005531 1 } PERFORMANCE - DesktopOpenClients_Impl()
+
+starting ooo with perl wrapper (but it calls &lt;oooinstdir&gt;/program/soffice):
+
+000003 1 | : PERFORMANCE - enter Main()
+004040 1 | : PERFORMANCE - enter Application::Execute()
+004041 1 { PERFORMANCE - DesktopOpenClients_Impl()
+004046 1 } PERFORMANCE - DesktopOpenClients_Impl()
+
+So it seems the oooqstart one initially starts faster but then spent
+2 seconds on Desktop::loadComponentFromURL(), which make the ooqstart slower.
+What exactly is doing Desktop::loadComponentFromURL()?
+BTW, I also just found that to start OOo with ooqstart
+and leave it in the background, this command sequence should be used:
+
+ooffice2.0 -quickstart -nologo -nodefault
+
+and then
+
+oowriter2.0 would start in around 2.0 seconds (exporting RTL_LOGFILE=...
+has no effect when the second oowriter2.0 is called). But after oowriter2.0
+is closed also the first instance of the background
+ooffice2.0 -quickstart -nologo -nodefault is terminated too.
+
+Thanks.
+Bye.
+Giuseppe.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001676.html">[Open Office] Internal quickstarter
+</A></li>
+	<LI>Next message: <A HREF="001678.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1677">[ date ]</a>
+              <a href="thread.html#1677">[ thread ]</a>
+              <a href="subject.html#1677">[ subject ]</a>
+              <a href="author.html#1677">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

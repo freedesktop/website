@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] [PATCH] Set LC_ALL to C
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5BPATCH%5D%20Set%20LC_ALL%20to%20C&In-Reply-To=200706051927.12625.pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002299.html">
+   <LINK REL="Next"  HREF="002301.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] [PATCH] Set LC_ALL to C</H1>
+    <B>Ismail D&#246;nmez</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5BPATCH%5D%20Set%20LC_ALL%20to%20C&In-Reply-To=200706051927.12625.pmladek%40suse.cz"
+       TITLE="[Open Office] [PATCH] Set LC_ALL to C">ismail at pardus.org.tr
+       </A><BR>
+    <I>Tue Jun  5 13:41:50 EDT 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002299.html">[Open Office] [PATCH] Set LC_ALL to C
+</A></li>
+        <LI>Next message: <A HREF="002301.html">[Open Office] [PATCH] Set LC_ALL to C
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2300">[ date ]</a>
+              <a href="thread.html#2300">[ thread ]</a>
+              <a href="subject.html#2300">[ subject ]</a>
+              <a href="author.html#2300">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday 05 June 2007 20:27:12 Petr Mladek wrote:
+&gt;<i> On Tuesday 05 June 2007 19:05, Ismail D&#246;nmez wrote:
+</I>&gt;<i> &gt; On Tuesday 05 June 2007 20:03:30 Petr Mladek wrote:
+</I>&gt;<i> &gt; &gt; On Thursday 21 September 2006 20:17, Ismail Donmez wrote:
+</I>&gt;<i> &gt; &gt; &gt; Hi,
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; in bin/build-ooo script sets $LANG to C but this is not enough when
+</I>&gt;<i> &gt; &gt; &gt; $LC_ALL is set so it should set LC_ALL instead. Patch attached.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Heh, I sorted my TODOs and found this one unresolved =&gt; did the easy
+</I>&gt;<i> &gt; &gt; change in ooo-build trunk.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Thanks for patch and I am sorry for the delay ;-)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Wow been long, if you are interested I can send Pardus Linux integration
+</I>&gt;<i> &gt; patches once again ;-)
+</I>&gt;<i>
+</I>&gt;<i> Ah, I see. They were discussed but nobody committed them in the end :-(
+</I>&gt;<i> Do you have a current patches against trunk? Please, send me them and I'll
+</I>&gt;<i> do the commit.
+</I>
+Patches attached.
+
+- build-system-changes.patch : Build system changes to support Pardus as 
+distro
+
+- pardus-only-patches.patch : Pardus Only patches
+
+*.diff files are Pardus only patches
+*.bmp files are splash and about box pic for Pardus
+
+
+Thanks,
+ismail
+
+-- 
+Perfect is the enemy of good
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: OOo_1.1.2_officecfg_PrettyPrinting_enable.diff
+Type: text/x-diff
+Size: 454 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0007.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0007.bin</A> 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: pardus-default-ExternalMailer.diff
+Type: text/x-diff
+Size: 445 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0008.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0008.bin</A> 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: pardus-clipart.diff
+Type: text/x-diff
+Size: 486 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0009.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0009.bin</A> 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: openabout_pardus.bmp
+Type: image/x-bmp
+Size: 118682 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0010.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0010.bin</A> 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: openintro_pardus.bmp
+Type: image/x-bmp
+Size: 396056 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0011.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0011.bin</A> 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: pardus-only-patches.patch
+Type: text/x-diff
+Size: 926 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0012.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0012.bin</A> 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: build-system-changes.patch
+Type: text/x-diff
+Size: 2136 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0013.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0013.bin</A> 
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002299.html">[Open Office] [PATCH] Set LC_ALL to C
+</A></li>
+	<LI>Next message: <A HREF="002301.html">[Open Office] [PATCH] Set LC_ALL to C
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2300">[ date ]</a>
+              <a href="thread.html#2300">[ thread ]</a>
+              <a href="subject.html#2300">[ subject ]</a>
+              <a href="author.html#2300">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

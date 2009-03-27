@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Ximian/Debian/Mandrake and time wasting ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-September/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000063.html">
+   <LINK REL="Next"  HREF="000065.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Ximian/Debian/Mandrake and time wasting ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Ximian/Debian/Mandrake and time wasting ...">michael@ximian.com
+       </A><BR>
+    <I>Tue, 30 Sep 2003 14:39:51 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000063.html">[Open Office] Re: Openoffice digest, Vol 1 #23 - 1 msg
+</A></li>
+        <LI> Next message: <A HREF="000065.html">[Open Office] Question regarding localization
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Gwenole,
+
+	So - I was just looking at the ooo-build ChangeLog, and I notice that
+Martin K was adding back translated strings from patches you'd taken
+from us and updated.
+
+	This is really painful; looking further at your work I see that you are
+(naturally) taking a lot of Ximian/Debian patches - and there will (of
+course) only be (many) more over the (18month) lifetime of OO.o 1.1.
+
+	Have you decided not to work with us for some (unknown) strategic
+reason ? or would you consider working together with us ? we want to
+make life as easy as possible so that you can. We have a common
+patch-set, and an increasingly common build / runtime environment across
+Ximian's platforms; RH/SuSE, and Debian Chris are also building their
+packages from our set and working with us.
+
+	If you see eg. <A HREF="http://ooo.ximian.com/patches/OOO_1_1_0/apply">http://ooo.ximian.com/patches/OOO_1_1_0/apply</A> you can
+see how we currently sub-set the patches [ most of which we keep in
+common ]. This ensures a uniform build across platforms.
+
+	This is rather ruined by eg. if you don't like 'COMPATIBLE' as an
+environment variable and change it to OOO_USE_MS_FORMAT_FOO [ as you
+have done ] in one of your patches - we could share this cleanup instead
+of confusing our users by creating multiple incompatible /
+non-documented differences if we share the same set of patches in CVS.
+[ a good change though :-].
+
+	There are of course, multiple other benefits of working together - eg.
+our improved language adaption stuff [ using LANG instead of doing
+unsafe XML manipulations ], holding a flock while poking around at
+~/.sversionrc [ etc. etc. etc. ] - too many things to even write out.
+
+	It'd be _really good_ if you could commit to working with us; as a
+condition of this it's necessary that Mandrake sign the JCA[1], and work
+with us to up-stream all the changes responsibly. There is a sample
+.spec file using ooo-build in CVS as well - getting you CVS commit
+access is no problem; JCA notwithstanding.
+
+	My feeling is that we can avoid lots of really, really tedious build &amp;
+maintenance problems, better synchronize our patches and provide a much
+nicer experience for all our users if we work together. You can checkout
+ooo-build (including all our patches / icon fixing infrastructure etc.)
+from Gnome anoncvs module 'openoffice'.
+
+	Lets work together instead of duplicating (the most boring) tasks.
+
+	Regards,
+
+		Michael.
+
+[1] - Notably, SGI, Ximian, RedHat have signed the JCA so ...
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000063.html">[Open Office] Re: Openoffice digest, Vol 1 #23 - 1 msg
+</A></li>
+	<LI> Next message: <A HREF="000065.html">[Open Office] Question regarding localization
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

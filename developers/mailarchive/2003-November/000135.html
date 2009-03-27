@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regarding defect 49914...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:banil%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000134.html">
+   <LINK REL="Next"  HREF="000138.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regarding defect 49914...
+   </H1>
+    <B>Anil Anil
+    </B> 
+    <A HREF="mailto:banil%40novell.com"
+       TITLE="[Open Office] Regarding defect 49914...">banil@novell.com
+       </A><BR>
+    <I>Mon, 10 Nov 2003 04:14:22 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000134.html">[Open Office] Regarding defect 49914...
+</A></li>
+        <LI> Next message: <A HREF="000138.html">[Open Office] Regarding defect 49914...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#135">[ date ]</a>
+              <a href="thread.html#135">[ thread ]</a>
+              <a href="subject.html#135">[ subject ]</a>
+              <a href="author.html#135">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a MIME message. If you are reading this text, you may want to 
+consider changing to a mail reader or gateway that understands how to 
+properly handle MIME multipart messages.
+
+--=__Part95CB081E.0__=
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+Michael,
+
+Diff -u attached for button.cxx and envlop.src
+
+This is the change that I was proposing. Unfortunately this gives a
+blank image if I move the Image declaration in images.src. Works ok if
+Image is declared in envelop.src (but that's not the purpose). Need to
+make it work for images.src.
+
+The other approaches give junk image irrespective of Image declaration
+location.
+
+Regards
+-Anil
+
+Anil Bhatia,
+Sr. Software Engineer,
+Novell Software Development(I) Ltd.,
+Bangalore.
+Ph: 5731856-58, Extn:3111.
+Novell, Inc., The leading provider of Net services software.
+www.novell.com
+
+--=__Part95CB081E.0__=
+Content-Type: application/octet-stream; name=&quot;gui-symbol.diff&quot;
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=&quot;gui-symbol.diff&quot;
+
+SW5kZXg6IC9jdnMvZ3NsL3ZjbC9zb3VyY2UvY29udHJvbC9idXR0b24uY3h4Cj09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0K
+UkNTIGZpbGU6IC9jdnMvZ3NsL3ZjbC9zb3VyY2UvY29udHJvbC9idXR0b24uY3h4LHYKcmV0cmll
+dmluZyByZXZpc2lvbiAxLjIxCmRpZmYgLXUgLXIxLjIxIGJ1dHRvbi5jeHgKLS0tIGJ1dHRvbi5j
+eHgJMTcgQXByIDIwMDMgMTc6NTU6MjggLTAwMDAJMS4yMQorKysgYnV0dG9uLmN4eAkxMCBOb3Yg
+MjAwMyAwOTozOTozMCAtMDAwMApAQCAtMzMwMyw3ICszMzE4LDIwIEBACiAgICAgfQogCiAgICAg
+aWYgKCBSU0NfSU1BR0VCVVRUT05fU1lNQk9MICYgbk9iak1hc2sgKQotICAgICAgICBTZXRTeW1i
+b2woIChTeW1ib2xUeXBlKVJlYWRTaG9ydFJlcygpICk7CisgICAgeworICAgICAgLy8gICAgICAg
+IFNldFN5bWJvbCggKFN5bWJvbFR5cGUpUmVhZFNob3J0UmVzKCkgKTsKKworCVN5bWJvbFR5cGUg
+cyA9IChTeW1ib2xUeXBlKVJlYWRTaG9ydFJlcygpOworCWlmIChTWU1CT0xfQVJST1dfTEVGVCA9
+PSBzKQorCXsKKwkJU2V0SW1hZ2UoIEltYWdlKFJlc0lkKDEwODApICkpOworCX0KKwllbHNlCisJ
+eworCQlTZXRTeW1ib2wocyk7CisJfQorCisgICAgfQogCiAgICAgaWYgKCBSU0NfSU1BR0VCVVRU
+T05fU1RBVEUgJiBuT2JqTWFzayApCiAgICAgICAgIFNldFN0YXRlKCAoVHJpU3RhdGUpUmVhZFNo
+b3J0UmVzKCkgKTsK
+
+--=__Part95CB081E.0__=
+Content-Type: application/octet-stream; name=&quot;envlop-src.diff&quot;
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=&quot;envlop-src.diff&quot;
+
+SW5kZXg6IGVudmxvcC5zcmMKPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PQpSQ1MgZmlsZTogL2N2cy9zdy9zdy9zb3VyY2Uv
+dWkvZW52ZWxwL2VudmxvcC5zcmMsdgpyZXRyaWV2aW5nIHJldmlzaW9uIDEuMzIKZGlmZiAtdSAt
+cjEuMzIgZW52bG9wLnNyYwotLS0gZW52bG9wLnNyYwkxNyBKdWwgMjAwMyAxMTo1MzoyMCAtMDAw
+MAkxLjMyCisrKyBlbnZsb3Auc3JjCTEwIE5vdiAyMDAzIDExOjE3OjMzIC0wMDAwCkBAIC00MTMs
+OCArNDEzLDkgQEAKIAlJbWFnZUJ1dHRvbiBCVE5fSU5TRVJUCiAJewogICAgICAgICBQb3MgPSBN
+QVBfQVBQRk9OVCAoIDEzNyAsIDcxICkgOwotICAgICAgICBTaXplID0gTUFQX0FQUEZPTlQgKCAx
+OCAsIDEyICkgOwotCQlTWU1CT0wgPSBJTUFHRUJVVFRPTl9BUlJPV19MRUZUIDsKKyAgICAgICAg
+U2l6ZSA9IE1BUF9BUFBGT05UICggMTggLCAxNCApIDsKKwlTWU1CT0wgPSBJTUFHRUJVVFRPTl9B
+UlJPV19MRUZUIDsKKwogCQlUYWJTdG9wID0gVFJVRSA7CiAJfTsKIAlGaXhlZFRleHQgRlRfREJG
+SUVMRApAQCAtNTQ1LDEwICs1NDYsMTMgQEAKIAlUZXh0WyBoaW5kaSBdID0gIuCksuCkv+Ckq+Ck
+vuCkq+CkviI7CiAJVGV4dFsgc2xvdmFrIF0gPSAiT2LDoWxrYSI7CiB9OwotCi0KLQotCisKK0lt
+YWdlIDEwODAKK3sKKyAgICAgIEltYWdlQml0bWFwID0gQml0bWFwIHsgRmlsZSA9ICJsYzEwMTUy
+LmJtcCIgOyB9OworICAgICAgTWFza0NvbG9yID0gQ29sb3IgeyBSZWQgPSAweEZGRkYgOyBHcmVl
+biA9IDB4MDAwMCA7IEJsdWUgPSAweEZGRkYgOyB9OworfTsKKwogCiAKIAo=
+
+--=__Part95CB081E.0__=--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000134.html">[Open Office] Regarding defect 49914...
+</A></li>
+	<LI> Next message: <A HREF="000138.html">[Open Office] Regarding defect 49914...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#135">[ date ]</a>
+              <a href="thread.html#135">[ thread ]</a>
+              <a href="subject.html#135">[ subject ]</a>
+              <a href="author.html#135">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

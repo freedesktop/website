@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] src-pack / up-stream etc. ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20src-pack%20/%20up-stream%20etc.%20...&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001328.html">
+   <LINK REL="Next"  HREF="001300.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] src-pack / up-stream etc. ...</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20src-pack%20/%20up-stream%20etc.%20...&In-Reply-To="
+       TITLE="[Open Office] src-pack / up-stream etc. ...">michael.meeks at novell.com
+       </A><BR>
+    <I>Tue Nov 22 05:44:21 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001328.html">[Open Office] Where to file issues about the GUI icons of the OOo
+	by Ximian?
+</A></li>
+        <LI>Next message: <A HREF="001300.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1299">[ date ]</a>
+              <a href="thread.html#1299">[ thread ]</a>
+              <a href="subject.html#1299">[ subject ]</a>
+              <a href="author.html#1299">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin,
+
+	So - as you may know we have a 'src-pack' shell script:
+
+	<A HREF="http://go-oo.org/ooo-build/bin/src-pack">http://go-oo.org/ooo-build/bin/src-pack</A>
+
+	It splits the OO.o source checkout into several pieces, with the net
+effect that developers typically only need to download something half
+the size.
+
+	With my latest set of tweaks we have:
+
+	-core:     ~114m
+	-lang:      ~52m
+	-sdk_oo:    ~29m
+	-system:    ~22m
+	-binfilter: ~18m
+
+	Of course - ideally, in future, we could perhaps version such a split
+setup, and only release new -binfilter, -system, etc. packages when
+things actually changed there across milestones; but - for now, this is
+perhaps a good compromise.
+
+	So - my question is: can we host this on an 'approved' OO.o site, or
+alternatively - bless the go-oo.org milestone snapshots as something
+'official' ? [ perhaps with a DNS re-direct ? ].
+
+	Does it make sense to split up our official source archives in this way
+as an optional extra ?
+
+	Rene - since you're a major driver of the -system patch sets etc. it'd
+be great to poke at <A HREF="http://go-oo.org/ooo-build/doc/code-sizes.txt">http://go-oo.org/ooo-build/doc/code-sizes.txt</A> which
+shows the remaining worst-offenders.
+
+	boost, icu, berkeleydb, xalan, stlport
+
+	We should prolly work on trying to migrate them to the -system package,
+as/when systems are prevalant with the right versions installed on them.
+[ it seems not even Debian is using --system-icu or --system-boost ].
+
+	Martin - what do you think ?
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001328.html">[Open Office] Where to file issues about the GUI icons of the OOo
+	by Ximian?
+</A></li>
+	<LI>Next message: <A HREF="001300.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1299">[ date ]</a>
+              <a href="thread.html#1299">[ thread ]</a>
+              <a href="subject.html#1299">[ subject ]</a>
+              <a href="author.html#1299">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Mon-Wed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:rsiddhartha%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000834.html">
+   <LINK REL="Next"  HREF="000837.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Mon-Wed
+   </H1>
+    <B>Raul Siddhartha
+    </B> 
+    <A HREF="mailto:rsiddhartha%40novell.com"
+       TITLE="[Open Office] Status Mon-Wed">rsiddhartha@novell.com
+       </A><BR>
+    <I>Wed, 09 Mar 2005 18:50:59 +0530</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000834.html">[Open Office] Status MOn-tue
+</A></li>
+        <LI> Next message: <A HREF="000837.html">[Open Office] Status today
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#836">[ date ]</a>
+              <a href="thread.html#836">[ thread ]</a>
+              <a href="subject.html#836">[ subject ]</a>
+              <a href="author.html#836">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> - Had been working at an fpicker bug, finally managed to close on it
+after trying fixes in various locations, now in CVS as
+patches/src680/fpicker-euro-converter-fix.diff
+
+ - Have been looking at a crasher in wizards in a long chain of events:
+it crashes in a small little function which cycles up to the parent to
+see if accessibility is suppressed anywhere in between:
+
+BOOL Window::IsAccessibilityEventsSuppressed( BOOL bTraverseParentPath )
+{
+    if( !bTraverseParentPath )
+        return mpWindowImpl-&gt;mbSuppressAccessibilityEvents;
+    else
+    {
+        Window *pParent = this;
+        while ( pParent )
+        {
+            if( pParent-&gt;mpWindowImpl-&gt;mbSuppressAccessibilityEvents )
+                return TRUE;
+            else
+                pParent = pParent-&gt;mpWindowImpl-&gt;mpParent; // do not use GetParent() to find borderwindows that are frames
+        }
+        return FALSE;
+    }
+}
+
+which runs just fine from within VCL, but where accessibility is
+enabled, a new handler VCLXAccessibleComponent::WindowEventListener is
+added to the VCLEventHandlers, and one call from there zaps the
+function. Not sure if it is a race condition where the function tries to
+access a window that's closed, it appears as if it doesnt crash at
+times. Still looking into it.
+
+ - Committed a patch [patches/src680/splash-title.diff] from 1.1.3 by
+Dan Williams to change the splash screen title, not yet enabled in the
+apply file.
+
+ - Uncommented sd-save-image-context-menu.diff in the apply file, any
+problems there by any chance ?
+
+Regards,
+Raul
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000834.html">[Open Office] Status MOn-tue
+</A></li>
+	<LI> Next message: <A HREF="000837.html">[Open Office] Status today
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#836">[ date ]</a>
+              <a href="thread.html#836">[ thread ]</a>
+              <a href="subject.html#836">[ subject ]</a>
+              <a href="author.html#836">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

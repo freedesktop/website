@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] VBA work
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20VBA%20work&In-Reply-To=45E704BE.567B.005B.0%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="002229.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] VBA work</H1>
+    <B>Noel Power</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20VBA%20work&In-Reply-To=45E704BE.567B.005B.0%40novell.com"
+       TITLE="[Open Office] VBA work">noel.power at novell.com
+       </A><BR>
+    <I>Thu Mar  1 05:03:05 EST 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="002229.html">[Open Office] Problem with KDE file picker
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2228">[ date ]</a>
+              <a href="thread.html#2228">[ thread ]</a>
+              <a href="subject.html#2228">[ subject ]</a>
+              <a href="author.html#2228">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hi JianHua
+
+On Thu, 2007-03-01 at 08:52 +0000, Jian Hua Jiao wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> 	I have test the control components which are on sheets. When I switch the sheet, the current sheet will call SdrPageView::ClearPageWindows to clear the control components and others. So we can get the windows to set focus, visible or etc, but MSO. 
+</I>&gt;<i> 	To solve this problem at this time, we will lost some control when the sheet is invisible. or change the OOo's behavior like MSO. 
+</I>So, what you are saying is that we will loose the ability to set some
+attributes on a control that 'lives' on a sheet that is not curently
+selected.
+&gt;<i> And I think MSO's behavior is more suitable for Basic process. Noel, any suggestion?
+</I>So, it would appear that OO implementation is not helper for us then and
+seems to be tied too tightly to the drawing layer. You should imo be
+able to modify the state of the control e.g. its visibilty attribute
+( and surely that state is stored somewhere ) so that when the sheet
+does become the active sheet the control 'knows' is should be visible or
+have focus or whatever.  My suggestion is that we forget about this for
+the moment, rewriting how the controls act/interact with the drawing
+layer is something I would prefer to avoid ;-) 
+My main issue was the implementation was unusable right now because of a
+side affect of the above,
+&gt;<i> 	So ,I will remove the m_xWindowPeer variable from the ScVbaControl. And create a new help function for focus, visible etc..
+</I>yes, I would create a helper function to return the XWindow peer for the
+Control to be used by set/getVisble etc. and if someone tries to access
+that functionality on a control that on a non-visible sheet then this
+will throw. That should be sufficient thanks :-)
+&gt;<i> 	Should we CC the mail to or discuss the TAB behavior <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">dev at openoffice.org</A> ? 
+</I>As suggested I will cc this to <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">openoffice at lists.ximian.com</A> 
+perhaps a query to <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">dev at openoffice.org</A> might yield some interesting
+information
+&gt;<i> 
+</I>&gt;<i> Jianhua
+</I>Noel
+-- 
+Noel Power
+OpenOffice Developer 
+<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">noel.power at novell.com</A>  
+
+Novell, Inc. 
+Software for the Open Enterprise 
+www.novell.com/open 
+SUSE&#174; Linux Enterprise 10
+Your Linux is ready
+www.novell.com/linux 
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="002229.html">[Open Office] Problem with KDE file picker
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2228">[ date ]</a>
+              <a href="thread.html#2228">[ thread ]</a>
+              <a href="subject.html#2228">[ subject ]</a>
+              <a href="author.html#2228">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Localization docs update &amp; new idea
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Localization%20docs%20update%20%26%20new%20idea&In-Reply-To=4512D5F5.9000504%40vojta.name">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001995.html">
+   <LINK REL="Next"  HREF="002025.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Localization docs update &amp; new idea</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Localization%20docs%20update%20%26%20new%20idea&In-Reply-To=4512D5F5.9000504%40vojta.name"
+       TITLE="[Open Office] Localization docs update &amp; new idea">pmladek at suse.cz
+       </A><BR>
+    <I>Fri Sep 22 12:37:35 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001995.html">[Open Office] Localization docs update &amp; new idea
+</A></li>
+        <LI>Next message: <A HREF="002025.html">[Open Office] Localization docs update &amp; new idea
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2017">[ date ]</a>
+              <a href="thread.html#2017">[ thread ]</a>
+              <a href="subject.html#2017">[ subject ]</a>
+              <a href="author.html#2017">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 21 September 2006 20:12, Robert Vojta wrote:
+&gt;<i> Hallo Peter,
+</I>&gt;<i>
+</I>&gt;<i> I just followed your advices about GSI files and it works perfectly.
+</I>&gt;<i> But I found one case where it doesn't work. Let's assume you have
+</I>&gt;<i> distro-configs/ABC and you know, that you'll always build with
+</I>&gt;<i> three languages only (en-US, cs, sk). So, you put these languages
+</I>&gt;<i> in distro-configs/ABC and you start ./autogen.sh --with-distro=ABC
+</I>&gt;<i> (without --with-lang, because they are in distro-configs/ABC). And now,
+</I>&gt;<i> the GSI localization part doesn't work, because $OOO_LANGS_LIST
+</I>&gt;<i> variable contains &quot;en-US&quot; only. Do you think it is worth to fix this,
+</I>&gt;<i> invest time?
+</I>
+I see. It is doable. You would need to replace all occurences of 
+OOO_LANGS_LIST with the variable WITH_LANG, which is defined in the OOo 
+native profile (LinuxIntelEnv.Set.sh).
+
+The variable OOO_LANGS_LIST is used in setup.in, build-ooo, ooinstall, and 
+package-ooo. You can remove it from setup.in because it won't longer be used. 
+The variable WITH_LANG will be available in the other locations, because the 
+native profile is sourced there.
+
+The only problem is the you would need to transform &quot;ALL&quot; to the real list of 
+languages. I vote to do it in the config_office/*. Probably, the best place 
+would be config_office/set_soenv.in. I think that you can use the same hack 
+that is used in setup.in to generate OOO_LANGS_LIST.
+
+In fact, I would prefere to remove solenv/inc/postset.mk and put the list of 
+all languages into config_office/set_soenv.in. Though, it has to be dicussed 
+with Sun people. They do not use the config_office module at all, so...
+
+Note: We would like to merge ooo-build features into the upstream framework. 
+My idea is to merge the configure options and variables, add our extra 
+scripts into the config_office module. So, I think that the proposed solution 
+is a step forward, definitely.
+
+&gt;<i> Next thing is, that I updated doc/extra-localizations.txt file.
+</I>&gt;<i> Your advices are included.
+</I>
+Looks nice!
+
+&gt;<i> And now, an idea how to translate new ooo-build features. I was
+</I>&gt;<i> thinking about this issue for a while. This idea came to my mind.
+</I>&gt;<i>
+</I>&gt;<i> 1) For translators
+</I>&gt;<i>
+</I>&gt;<i> There should be string freeze before new release of ooo-builds.
+</I>&gt;<i> After the string freeze, POT file will be regenerated.
+</I>&gt;<i>
+</I>&gt;<i> Translators can grab them, translate PO files (based on POT file)
+</I>&gt;<i> and give them back.
+</I>&gt;<i>
+</I>&gt;<i> POT file will be generated from all patches, scratches.
+</I>&gt;<i>
+</I>&gt;<i> This is easy way for translators and easy way for ooo-build
+</I>&gt;<i> maintainers.
+</I>
+Sounds great. The only problem is how to extrac/merge the po files from/to 
+patches/sources.
+
+I see two ways:
+
+1. Create &quot;simple&quot; scripts that would work directly with patches
+	+ advantages
+		+ fast
+	+ disadvantages
+		+ I am a bit scared by syntax analyzer (diff of a source)
+
+2. Use the existing localize tool:
+	+ advantages
+		+ probably more save way
+		+ easier to maintain
+	+ disadvantages
+		+ you need to build the localize tool
+		+ it takes a while to extract/merge many localizations
+		+ the gsi file is quite a big
+
+Well, I prefere the second solution:
+	+ we will extract the strings only few times a year, so it does not matter if
+          it is slow.
+	+ We could create extra GSI files only with the ooo-build specific strings.
+          It will be very small, quickly applied, ... It would be a bit tricky
+          to locate the ooo-build specific strings. Though, it should not be
+          so hard and we should do it anyway.
+
+&gt;<i> 2) Auto merging during build
+</I>&gt;<i>
+</I>&gt;<i> Today's GSI file handling functions should be enhanced in this
+</I>&gt;<i> way.
+</I>&gt;<i>
+</I>&gt;<i>   o enhance stamp/build.extra.translations - add timestamp of GSI
+</I>&gt;<i>     files and PO files
+</I>&gt;<i>
+</I>&gt;<i>   o check for new GSI / PO files, their timestamps, and translate
+</I>&gt;<i>     ooo-build build tree when new / updated file arrives
+</I>
+This is exactly what I thought about.
+
+&gt;<i> Any comments? Enhancements? It's just an idea which should be
+</I>&gt;<i> finished. Do you agree with this? If yes, I'll implement this
+</I>&gt;<i> idea into ooo-build.
+</I>
+Sounds great. I am a volunteer for reviewing/testing your changes if you need 
+it.
+
+
+Best Regards,
+Petr
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001995.html">[Open Office] Localization docs update &amp; new idea
+</A></li>
+	<LI>Next message: <A HREF="002025.html">[Open Office] Localization docs update &amp; new idea
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2017">[ date ]</a>
+              <a href="thread.html#2017">[ thread ]</a>
+              <a href="subject.html#2017">[ subject ]</a>
+              <a href="author.html#2017">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

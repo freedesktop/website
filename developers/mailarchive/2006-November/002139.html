@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regcomp segfaults when registering java components
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=4558F50E.6060505%40norbit.no">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002129.html">
+   <LINK REL="Next"  HREF="002130.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regcomp segfaults when registering java components</H1>
+    <B>Atle Nissestad</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=4558F50E.6060505%40norbit.no"
+       TITLE="[Open Office] Regcomp segfaults when registering java components">atle.nissestad at norbit.no
+       </A><BR>
+    <I>Wed Nov 22 02:56:30 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002129.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+        <LI>Next message: <A HREF="002130.html">[Open Office] OOE680 vs. SRC680 confusion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2139">[ date ]</a>
+              <a href="thread.html#2139">[ thread ]</a>
+              <a href="subject.html#2139">[ subject ]</a>
+              <a href="author.html#2139">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Atle Nissestad wrote:
+
+&gt;<i> Jim Watson wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> On 31/10/2006, at 8:44 PM, VMiklos wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> so i suspect this is a gcj bug, you may try to build on from a  
+</I>&gt;&gt;&gt;<i> snapshot.
+</I>&gt;&gt;&gt;<i> i'm waiting for the next stable gcc release..
+</I>&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> I saw bugs like those on gnu linux/sparc, but did not see the problem  
+</I>&gt;&gt;<i> at all since building with gcc4.1.2 preview
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> jim
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i> I've had a go at this issue again, this time with a self-built gcc 4.1.2
+</I>&gt;<i> (preview 20061027) - and regcomp still segfaults. Argh..
+</I>&gt;<i> I have attached the gdb traces for gcc4.1.1 regcomp (gdb_gcc411.log) and
+</I>&gt;<i> gcc4.1.2 regcomp (gdb_gcc412.log), in case  someone who hath
+</I>&gt;<i> understanding (and is in touch with the force) could have a look at
+</I>&gt;<i> them. If it really is a compiler bug, I guess gcc 4.2 is the next option.
+</I>&gt;<i>
+</I>&gt;<i> Atle
+</I>&gt;<i>   
+</I>&gt;<i>
+</I>Problem solved.
+It indeed is a gcj bug, which has been around since 3.3.2:
+<A HREF="http://gcc.gnu.org/bugzilla/show_bug.cgi?id=13212">http://gcc.gnu.org/bugzilla/show_bug.cgi?id=13212</A>
+Using a gcc 4.1.2 preview, with the patch attached to this PR applied,
+solved the problem.
+
+Atle
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002129.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+	<LI>Next message: <A HREF="002130.html">[Open Office] OOE680 vs. SRC680 confusion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2139">[ date ]</a>
+              <a href="thread.html#2139">[ thread ]</a>
+              <a href="subject.html#2139">[ subject ]</a>
+              <a href="author.html#2139">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

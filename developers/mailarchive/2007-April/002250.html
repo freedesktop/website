@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Build error in configmgr
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build%20error%20in%20configmgr&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002249.html">
+   <LINK REL="Next"  HREF="002251.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Build error in configmgr</H1>
+    <B>J&#252;rg Billeter</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build%20error%20in%20configmgr&In-Reply-To="
+       TITLE="[Open Office] Build error in configmgr">j at bitron.ch
+       </A><BR>
+    <I>Sat Apr  7 07:37:56 EDT 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002249.html">[Open Office] [PATCH] don't unpack libwps when using	--with-system-libwps
+</A></li>
+        <LI>Next message: <A HREF="002251.html">[Open Office] Build error in configmgr
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2250">[ date ]</a>
+              <a href="thread.html#2250">[ thread ]</a>
+              <a href="subject.html#2250">[ subject ]</a>
+              <a href="author.html#2250">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I'm trying to build ooo-build SVN trunk with gcc 4.1.2 on Linux x86 and
+get the following error message in configmgr:
+
+/usr/src/ooo-build-20070406/build/OOF680_m14/configmgr/source/tree/subtree.hxx: In member function '__gnu_cxx::__normal_iterator&lt;configmgr::INode**, std::vector&lt;configmgr::INode*, std::allocator&lt;configmgr::INode*&gt; &gt; &gt; configmgr::ChildListSet::begin() const':
+/usr/src/ooo-build-20070406/build/OOF680_m14/configmgr/source/tree/subtree.hxx:60: error: invalid const_cast from type '__gnu_cxx::__normal_iterator&lt;configmgr::INode* const*, std::vector&lt;configmgr::INode*, std::allocator&lt;configmgr::INode*&gt; &gt; &gt;' to type 'configmgr::INode**'
+/usr/src/ooo-build-20070406/build/OOF680_m14/configmgr/source/tree/subtree.hxx: In member function '__gnu_cxx::__normal_iterator&lt;configmgr::INode**, std::vector&lt;configmgr::INode*, std::allocator&lt;configmgr::INode*&gt; &gt; &gt; configmgr::ChildListSet::end() const':
+/usr/src/ooo-build-20070406/build/OOF680_m14/configmgr/source/tree/subtree.hxx:61: error: invalid const_cast from type '__gnu_cxx::__normal_iterator&lt;configmgr::INode* const*, std::vector&lt;configmgr::INode*, std::allocator&lt;configmgr::INode*&gt; &gt; &gt;' to type 'configmgr::INode**'
+dmake:  Error code 1, while making '../../unxlngi6.pro/slo/treenodefactory.obj'
+
+Is this a known issue? I suspect that it's caused by building without
+STLport but that's just a guess.
+
+Thanks for any hints,
+
+J&#252;rg
+--
+
+Config:
+--enable-libsn
+--with-firefox
+--disable-odk
+--disable-qadevooo
+--disable-fontooo
+--enable-xsltproc
+--without-myspell-dicts
+--without-nas
+--with-system-expat
+--with-system-libwpd
+--with-system-libwps
+--with-system-curl
+--with-system-sndfile
+--with-system-neon
+--with-system-libxslt
+--without-stlport4
+--without-java
+--with-system-xmlsec
+--disable-mono
+--disable-access
+--disable-kde
+--without-binsuffix
+--with-system-cairo
+
+Patch sections applied: LinuxCommon, NotDebian
+
+Log excerpt:
+Making: ../../unxlngi6.pro/slo/cacheaccess.obj
+g++ -fmessage-length=0 -c -Os -fno-strict-aliasing
+-D_FILE_OFFSET_BITS=64 -I.  -I../../unxlngi6.pro/inc/treecache -I../inc
+-I../../source/inc -I../../inc/pch -I../../inc -I../../unx/inc
+-I../../unxlngi6.pro/inc -I.
+-I/usr/src/ooo-build-20070406/build/OOF680_m14/solver/680/unxlngi6.pro/inc/stl -I/usr/src/ooo-build-20070406/build/OOF680_m14/solver/680/unxlngi6.pro/inc/external -I/usr/src/ooo-build-20070406/build/OOF680_m14/solver/680/unxlngi6.pro/inc -I/usr/src/ooo-build-20070406/build/OOF680_m14/solenv/unxlngi6/inc -I/usr/src/ooo-build-20070406/build/OOF680_m14/solenv/inc -I/usr/src/ooo-build-20070406/build/OOF680_m14/res -I/usr/src/ooo-build-20070406/build/OOF680_m14/solver/680/unxlngi6.pro/inc/stl -I/usr/src/ooo-build-20070406/build/OOF680_m14/solenv/inc/Xp31 -INO_JAVA_HOME/include -INO_JAVA_HOME/include/linux -INO_JAVA_HOME/include/native_threads/include -I/usr/include     -I/usr/src/ooo-build-20070406/build/OOF680_m14/solver/680/unxlngi6.pro/inc/offuh -I. -I../../res -I. -pipe -mtune=pentiumpro -fvisibility-inlines-hidden -Wall -Wextra -Wendif-labels -Wshadow -Wno-ctor-dtor-privacy     -Wno-non-virtual-dtor   -fpic -DLINUX -DUNX -DVCL -DGCC -DC341 -DINTEL -DCVER=C341 -DNPTL -DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1 -DSTLPORT_VERSION=400 -DHAVE_GCC_VISIBILITY_FEATURE -D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DGXX_INCLUDE_PATH=/usr/lib/gcc/i686-pc-linux-gnu/4.1.2/../../../../include/c++/4.1.2 -DSUPD=680 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DGSTREAMER -DCUI -DOOF680=OOF680   -DSHAREDLIB -D_DLL_  -DMULTITHREAD -fexceptions -fno-enforce-eh-specs -DEXCEPTIONS_ON  -o ../../unxlngi6.pro/slo/cacheaccess.o /usr/src/ooo-build-20070406/build/OOF680_m14/configmgr/source/treecache/cacheaccess.cxx 
+
+System:
+Linux x86, gcc 4.1.2, glibc 2.5-20070218, binutils-2.17.50.0.9
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002249.html">[Open Office] [PATCH] don't unpack libwps when using	--with-system-libwps
+</A></li>
+	<LI>Next message: <A HREF="002251.html">[Open Office] Build error in configmgr
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2250">[ date ]</a>
+              <a href="thread.html#2250">[ thread ]</a>
+              <a href="subject.html#2250">[ subject ]</a>
+              <a href="author.html#2250">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

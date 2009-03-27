@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ERROR: Source for autotextshare_af.zip not found!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:michael.meeks%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000948.html">
+   <LINK REL="Next"  HREF="000951.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ERROR: Source for autotextshare_af.zip not found!
+   </H1>
+    <B>michael meeks
+    </B> 
+    <A HREF="mailto:michael.meeks%40novell.com"
+       TITLE="[Open Office] ERROR: Source for autotextshare_af.zip not found!">michael.meeks@novell.com
+       </A><BR>
+    <I>Wed, 11 May 2005 16:59:58 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000948.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+        <LI> Next message: <A HREF="000951.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#950">[ date ]</a>
+              <a href="thread.html#950">[ thread ]</a>
+              <a href="subject.html#950">[ subject ]</a>
+              <a href="author.html#950">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, 2005-05-11 at 11:45 +0200, Petr Mladek wrote:
+&gt;<i> &gt; .IF &quot;$(PKGFORMAT)&quot;!=&quot;&quot; &amp;&amp; &quot;$(EPM)&quot;==&quot;NO&quot; &amp;&amp; &quot;$(USE_PACKAGER)&quot;==&quot;&quot;
+</I>&gt;<i> &gt; ALLTAR : $(LOCALPYFILES)
+</I>&gt;<i> &gt; 	@echo &quot;No EPM: do no packaging at this stage&quot;
+</I>&gt;<i> 
+</I>&gt;<i> Ah, the problem is that the variable PKGFORMAT is set only if EPM is enabled. 
+</I>&gt;<i> The configure check for the PKGFORMAT is done only unless --disable-epm is 
+</I>&gt;<i> used now.
+</I>&gt;<i> 
+</I>&gt;<i> We should remove the &quot;$(PKGFORMAT)&quot;!=&quot;&quot; test. The test &quot;$(EPM)&quot;==&quot;NO&quot; should 
+</I>&gt;<i> be enough.
+</I>
+	Sounds good to me - if you're happy with that; lets get a patch filed
+up-stream :-)
+
+	Good stuff,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000948.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+	<LI> Next message: <A HREF="000951.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#950">[ date ]</a>
+              <a href="thread.html#950">[ thread ]</a>
+              <a href="subject.html#950">[ subject ]</a>
+              <a href="author.html#950">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

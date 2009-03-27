@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] kdefilepicker sigpipe in oob680-m5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20kdefilepicker%20sigpipe%20in%20oob680-m5&In-Reply-To=200603011340.09132.kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001659.html">
+   <LINK REL="Next"  HREF="001661.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] kdefilepicker sigpipe in oob680-m5</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20kdefilepicker%20sigpipe%20in%20oob680-m5&In-Reply-To=200603011340.09132.kendy%40suse.cz"
+       TITLE="[Open Office] kdefilepicker sigpipe in oob680-m5">ghibo at mandriva.com
+       </A><BR>
+    <I>Wed Mar  1 08:50:22 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001659.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+        <LI>Next message: <A HREF="001661.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1660">[ date ]</a>
+              <a href="thread.html#1660">[ thread ]</a>
+              <a href="subject.html#1660">[ subject ]</a>
+              <a href="author.html#1660">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jan Holesovsky wrote:
+&gt;<i> Hi Giuseppe,
+</I>&gt;<i> 
+</I>&gt;<i> On Wednesday 01 March 2006 13:16, Giuseppe Ghib&#242; wrote:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i>I tried to build oob680-m4 and m5 using 20060127 ooo-build cvs,
+</I>&gt;&gt;<i>but the resulting binaries have problem with the KDE
+</I>&gt;&gt;<i>filepicker (note that this is not yet related to the problems
+</I>&gt;&gt;<i>with accented character in filenames):
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>As soon as I try to open a document, the filepicker opens correctly
+</I>&gt;&gt;<i>(but it doesn't arrive to load the document) but then hangs just after, and
+</I>&gt;&gt;<i>then it will result in a process:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>ghibo    18513 18502  0 12:54 pts/6    00:00:00 [kdefilepicker] &lt;defunct&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>which means that problably its parent has been ended (note that I don't
+</I>&gt;&gt;<i>get segfaults or coredumpts). The same problem doesn't happen
+</I>&gt;&gt;<i>under GNOME filepicker (forcing OOO_FORCE_DESKTOP=gnome) or
+</I>&gt;&gt;<i>standard OOo dialogs. Running soffice.bin under gdb it
+</I>&gt;&gt;<i>ends with &quot;Program received signal SIGPIPE, Broken pipe.&quot;
+</I>&gt;&gt;<i>(I wasn't able to get the backtrace).
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> No idea :-(  There was no change recently (= for oob-m*) in the kdefilepicker 
+</I>&gt;<i> code, and it works for me fine.  Didn't you have some change in your KDE?  
+</I>
+I don't think there were changes to KDE recently.
+
+&gt;<i> What happens if you run &lt;ooo_installation&gt;/program/kdefilepicker, type 'exec'  
+</I>&gt;<i> and press Enter?  Do you get the file picker?
+</I>
+I get it but as soon as I select a file and click on OK, I get:
+
+fileSelectionChanged
+kdefilepicker: symbol lookup error: kdefilepicker: undefined symbol: 
+_ZN3KIO9NetAccess12mostLocalURLERK4KURLP7QWidget
+
+while on a working one I get:
+
+fileSelectionChanged
+accept
+quit
+
+Sound something related to lines:
+
+#if KDE_IS_VERSION(3,5,0)
+                         KURL qLocalSelectedURL = KIO::NetAccess::mostLocalURL( 
+selectedURL(), this );
+#else
+                         KURL qLocalSelectedURL( selectedURL() );
+#endif
+                         qSelectedURL = addExtension( qLocalSelectedURL.url() );
+
+lemme check which KDE version I build under...
+
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i>What is also strange is that if I open one KDE file
+</I>&gt;&gt;<i>requester with CTRL-O and then without selecting any file,
+</I>&gt;&gt;<i>I press again CTRL-O several times, it opens another KDE file requester
+</I>&gt;&gt;<i>and another and another and so on.
+</I>
+Ah, so the KDE filepicker is external and called trough a pipe,
+while the Gnome and/or standard one is internal? I had never noticed this.
+
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> This was always there.  Unfortunately, it's not that simple to do window from 
+</I>&gt;<i> external application modal :-(
+</I>
+OK.
+
+Bye.
+Giuseppe.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001659.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+	<LI>Next message: <A HREF="001661.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1660">[ date ]</a>
+              <a href="thread.html#1660">[ thread ]</a>
+              <a href="subject.html#1660">[ subject ]</a>
+              <a href="author.html#1660">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

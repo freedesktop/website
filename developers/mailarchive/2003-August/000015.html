@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Problems building OO.o
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000013.html">
+   <LINK REL="Next"  HREF="000014.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Problems building OO.o
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Problems building OO.o">michael@ximian.com
+       </A><BR>
+    <I>Mon, 11 Aug 2003 10:00:56 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000013.html">[Open Office] Problems building OO.o
+</A></li>
+        <LI> Next message: <A HREF="000014.html">[Open Office] Ximian patches integration in RC3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Nick,
+
+On Sun, 2003-08-10 at 05:37, Nick Hudson wrote:
+...
+&gt;<i> /usr/src/openoffice/build/gcc-3.2.2/install-sh -c gccbug
+</I>&gt;<i> /usr/src/openoffice/build/bin/`echo gccbug|sed 's,x,x,'`
+</I>&gt;<i> rm -rf
+</I>&gt;<i> /usr/src/openoffice/build/lib/gcc-lib/i686-pc-linux-gnu/3.2.2/include
+</I>&gt;<i> mkdir
+</I>&gt;<i> /usr/src/openoffice/build/lib/gcc-lib/i686-pc-linux-gnu/3.2.2/include
+</I>&gt;<i> chmod a+rx
+</I>&gt;<i> /usr/src/openoffice/build/lib/gcc-lib/i686-pc-linux-gnu/3.2.2/include
+</I>&gt;<i> (cd `pwd`/include ; \
+</I>&gt;<i>  tar -cf - .; exit 0) | (cd
+</I>&gt;<i> /usr/src/openoffice/build/lib/gcc-lib/i686-pc-linux-gnu/3.2.2/include;
+</I>&gt;<i> tar xpf - )
+</I>&gt;<i> tar: ./GL: Cannot change ownership to uid 0, gid 0: No such file or
+</I>&gt;<i> directory
+</I>&gt;<i> tar: ./linux: Cannot change ownership to uid 0, gid 0: No such file or
+</I>&gt;<i> directory
+</I>&gt;<i> tar: ./X11: Cannot change ownership to uid 0, gid 0: No such file or
+</I>&gt;<i> directory
+</I>
+	This just looks like a problem configuring the gcc that we ship as part
+of the build; why that should cause a problem I don't know - it's
+supposed to be highly portable. It looks like it's trying to do some tar
+operation to copy a load of files from A to B but not getting it right
+for some (unknown) reason.
+
+&gt;<i> But if I type make after that everything compiles and installes fine. 
+</I>&gt;<i> Basicly what I am trying to do it to get this into our distro, but our
+</I>&gt;<i> build scripts will error out when it comes to this error.  Any idea on
+</I>&gt;<i> why or what is causing this?
+</I>
+	Nope; no idea - when it does, go into that directory and try to unwind
+exactly what's going on; split up the tar/untar stages of the command: 
+
+&gt;<i> (cd `pwd`/include ; \
+</I>&gt;<i>  tar -cf - .; exit 0) | (cd
+</I>&gt;<i> /usr/src/openoffice/build/lib/gcc-lib/i686-pc-linux-gnu/3.2.2/include;
+</I>&gt;<i> tar xpf - )
+</I>
+	And see what gives.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000013.html">[Open Office] Problems building OO.o
+</A></li>
+	<LI> Next message: <A HREF="000014.html">[Open Office] Ximian patches integration in RC3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

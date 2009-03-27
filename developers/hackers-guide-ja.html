@@ -1,0 +1,1658 @@
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html lang="ja">
+  <head>
+    <meta lang="ja" http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Unofficial OpenOffice Hacker's guide</title>
+  </head>
+
+  <body>
+    <table>
+	<tr>
+	  <td><a href="hackers-guide.html">English</a></td>
+	  <td><b>Japanese</b></td>
+	  <td><a href="hackers-guide-de.html">German</a></td>
+	</tr>
+    </table>
+    <h1>非公認 OpenOffice ハッカーズガイド</h1>
+
+    <p>
+      OpenOffice.org (OO.o)をビルドしたり、ハックしたりするには
+      本当に長ーーい坂道を登ることが必要とされる。できることならこの
+      文章が学習曲線を多少立ち上げの角度を上げて、またより急激に
+      させて、あなたの助けとなる歩く杖でありたい。《訳注：この部分特に訂正を乞う》
+    </p>
+
+    <p>
+      この文章は時間を節約するために、あなたが現在使われてる妥当なバージョンのLinuxを使っていることを仮定している。真のハッカーは、<a
+      href="http://www.gnu.org">Free software</a>を使います、また非フリーな要素について読んでいる時間はありません。
+    </p>
+
+    <p>
+      我々の狙いは、少なくとも以下の質問に答えることです。
+    </p>
+
+    <ul>
+	<li>どうやってOO.oをビルドするのか?</li>
+	<li>どうやって、開発の輪に入っていけば良いのか?</li>
+	<li>どうやって、デバッグすれば良いのか?</li>
+	<li>どうやって、パッチを送れば良いのか?</li>
+    </ul>
+
+    <h2 id="section-0">0. 目次</h2>
+
+    <ul>
+	<li><a href="#section-1">1. OO.oを入手する</a></li>
+	<li><a href="#section-2">2. OO.oをビルドする</a></li>
+	<li><a href="#section-3">3. OO.oをイントールする</a></li>
+	<li><a href="#section-4">4. OO.oを実行する</a></li>
+	<li><a href="#section-5">5. OO.oをハックする</a></li>
+	<li><a href="#section-6">6. OO.oをデバッグする</a></li>
+	<li><a href="#section-7">7. パッチを配布するには</a></li>
+	<li><a href="#section-8">8. その他、TIPS</a></li>
+	<li><a href="#section-9">9. 有用なリンク集</a></li>
+	<li><a href="#section-10">10. IFAQ</a></li>
+	<li><a href="#section-12">11. 我々と一緒にやるには</a></li>
+    </ul>
+    <p>
+        この(一連の)作業の詳細については
+	<a href="detailed-build-guide.html">詳細ビルド・ガイド</a>で話し合いましょう。.
+	我々は、本当に一生懸命に働いて、単なる死すべき運命のプログラマーのための実行可能なプロセスを作りあげました。そして、その簡単な説明を以下に行います。
+    </p>
+
+    <h2 id="section-1">1. OO.oを入手する</h2>
+
+    <p>
+      複数の優れたパッチセットが存在する、たくさんの競合する
+      バージョンといくつかの選ばれたブランチのOO.oがあります。
+      私は、CVSスナップショットからのビルドを勧めます。それらは
+      ビルドできることが知られ、パッチセットが適用できることが知られて
+      います。さあ、ソースをこのように取得してみましょう：
+    </p>
+    <pre>
+    export CVSROOT=':pserver:anonymous@anoncvs.gnome.org:/cvs/gnome'
+    cvs login
+    cvs -z3 checkout -dP openoffice
+    </pre>
+    <p>
+      これらは、OO.oのビルドを行う一式のコピーをあなたの(コンピュータのハードディスクへ)落し込みます。もし、CVSがあなたを驚かせたのなら、最近のパッケージ化されたバージョンも<a href="packages">ここ</a>から取得できます。
+    </p>
+
+    <p>
+      <strong>注記:</strong> あなたは、OO.oをビルドするのに、余分なスペー
+      スとして4Gバイト以上の領域が必要だ。そして、ビルドするためのソース
+      コードをダウンロードするのに200Mバイト以上の領域が必要だ。
+    </p>
+
+    <h2 id="section-2">2. OO.oをビルドする</h2>
+
+    <h3 id="section-2.1">2.1. configure</h3>
+
+    <p>
+      ビルドの作業は、かなり複雑である。あなたは今コマンド(《訳注》コマンドライ
+      ン?)を選択するのだが、とはいえ(ビルドが複雑であることと、コマンドラインを
+      選択することが)は、本当の致命傷にはならない。
+    </p>
+    <pre>
+      ./autogen.sh # the CVS version
+      ./configure  # the packaged version
+    </pre>
+    <p>
+      これは、あなたがビルドしたいのは、スナップショット・ブランチである
+      という推測である。もし、あなたが別のアイディアとしては、
+      --with-tagオプション(例:<pre>--with-tag=OOO_1_0_3</pre>)をこれまで
+      のブランチと同じように使うことでしょう。
+    </p>
+
+    <h3 id="section-2.2">2.2 ダウンロード</h3>
+
+    <p>
+      あなたが自分のシステムをOO.oをビルドできるように全てのパッケージ
+      (mozillaや、最近のlibartなどなど)をアップグレードするまでには、あ
+      なたは(OO.oの)ソースをダウンロードすることができる所に、ほぼ来てい
+      る。それを行うには、configureを成功させた後に、単に
+      <pre>./download</pre>と入力して、待てば良い。
+    </p>
+
+    <h3 id="section-2.3">make</h3>
+
+    <p>
+      ここは、ちょっと面倒です。- <pre>make</pre>と入力して、忘れずに
+      Enterキーを押しましょう。完全なるログ出力が欲しいときには、
+      <pre>make 2>&1 | tee /tmp/log</pre>とやってみてはどう?
+    </p>
+
+    <h2 id="section-3">3. OO.oをインストールする</h2>
+
+    <p>
+      完璧にビルドした結果、
+      <pre>build/$TAG/instsetoo/unxlngi4.pro/01/normal/</pre>などの場所
+      でインストール用セットが完璧にzipで固められた《訳注:そうなの?》
+      状態になっています。あなたは、手動でセットアッププログラムを動かし
+      てインストールすることができます。<b>または</b><pre>sudo make
+      install</pre> を実行して あなたのためにシステムプレフィックス設定
+      された状態で、OO.oがインストールされます。
+    <p>
+
+    <p>
+      インストールされたら、単にOO.oを再実行することで、サブディレクトリ
+      のソースを再コンパイルした結果、イントールされたイメージから直接ビ
+      ルドツリーからリンクすることによりハックしているような気分を得るこ
+      とができる。これにより、ビルドとテストのサイクルがほんの数十秒で可
+      能になります。それを行うには、例:<pre>linkoo
+      /usr/lib/ooo-1.0.3 /opt/openoffice/build/RC3_030729</pre>
+      である
+    </p>
+
+    <h2 id="section-4">4. OO.oを実行する</h2>
+
+    <p>
+      linkooを実行するときにプレフィックスを付けたことに、不思議に思った
+      と思う；そして<pre>cd program; . ./ooenv</pre>を実行したことも。この
+      手順がシェルがOO.oを直接実行するための環境設定(セットアップ)になり
+      ます。その後、<pre>soffice.bin</pre>を実行します。これは、soffice
+      を実行したり、ラッパスクリプト経由で実行するよりも、<pre>gdb
+      soffice.bin</pre>のようにデバッガをアタッチするのが大変容易で、良
+      い方法です。
+    </p>
+    <p>
+      <strong>注:</strong> <pre>./soffice.bin</pre>は不可解な理由で完璧に
+      動作に失敗するは使わないでください。
+    </p>
+    <p>
+      <strong>注:</strong> あなたは、oooのラッパを噛ませたOO.oを走らせる
+      前に、~/.sversionrcのようなものをを最初に正しく設定するか、または
+      soffice.binを走らせて、GUI設定ツールを起動させます。これは、あなた
+      が始める前に一度だけ<pre>oowriter</pre>を実行しておくのです。
+    </p>
+
+    <h2 id="section-5">5. OO.oをハックする</h2>
+
+    <h3 id="section-5.0">5.0. 最初のハック</h3>
+
+    <p>
+      では - われわれは、OO.oをビルドして実行しました。そして、わたし
+      たちは、あなたのマシンの上でOO.oをハックすることが実際に可能である
+      、とわたしたち自身が証明することを望んでいます。では、新しいターミ
+      ナルの中で、以下のコマンドを実行してみてください:
+    </p>
+    <pre>
+      cd build/$TAG
+      . ./LinuxIntelEnv.Set.sh
+      cd vcl
+    </pre>
+    <p>
+      いま、vcl/source/window/toolbox.cxxの中をハックしています;
+      私は、例えば、ToolBox::PaintのImplDrawItemの前に<pre>if
+      (i%2)</pre>を追加してみて、保存します。
+    </p>
+    <p>
+      まだ vcl/の中にいますか? はい。それから、'build debug=true'と入力
+      して、文字列がスクロールして、止るのを待ちます。(5秒ぐらい?)。では、
+      <pre>soffice -writer</pre>を再実行します。あなたは、効果が出るのか
+      を注意しておかねばなりません。
+    </p>
+    <p>
+      <strong>注:</strong>毎日ハックしているあなたは、ソースツリーの中で'
+      build'を実行したいと思うでしょう。<strong>やってはいけません</strong>
+      <pre>openoffice/</pre>ディレクトリの一番上のレベルでmakeを実行する
+      ことは。あなたは、十中八九、自分が行った変更をゴミ箱行きにすること
+      になり、(あなたを)意気消沈させます。
+      これは、再配置するビルドを行う手助けとして <a
+      href="#section-10.4">ここ</a>を見て、どこか
+      <pre>build/OOO_1_1_0</pre>の他のコピー範囲外でありつづけるのは納得
+      できる。《訳注:ここも意味不明です。》
+    </p>
+    
+    <h3 id="section-5.1">5.1. すばらしいマニュアルを読む</h3>
+
+    <p>
+      C++の力を使うことにより、なお一層簡単に(または、暗黙的に)(よけいな
+      ことをして)自分から災いを招くような能力が得られます。参考<em>Holub,
+      Rules for C and C++ programming, McGraw-Hill, 95</em>《訳注:amazon
+      には原著の在庫はなかった。未訳?》
+    </p>
+
+    <p>
+      闘いに臨む最高の方法は、OpenOfficeコーディング・ガイドライン
+      <a href="http://tools.openoffice.org/CodingGuidelines.sxw">
+      ここ</a>を読むことであり、c'tor / d'torがコンストラクタ/デストラク
+      タの略であるとたやすく間違えてしまうことである。
+    </p>
+
+    <h3 id="section-5.2">5.2. パッチを送る</h3>
+
+    <p>
+      bugzilla《訳注:問題解決システム》の中にモジュールのパッチが存在す
+      ることはまれである。以下のように試して、作業してみるのが簡単である
+    </p>
+
+    <pre>
+cvs status &lt;somefile&gt; | head
+    </pre>
+
+    <p>
+      これにより'Repository Revision:'の行、パス、そして2つ目の部分がプ
+      ロジェクト名を表わします。
+    </p>
+
+    <h3 id="section-5.3">5.3 インストーラをハックする</h3>
+
+    <p>
+      インストーライメージは(実行可能な)テンポラリ・セットアップ・イメー
+      ジ<tt>/tmp/sv001.tmp</tt>を削除するときには、それを停止させておく
+      必要がある。そうするには、セットアップ/インストールに-
+      dontdeletetempオプションを付けて実行する。《訳注:ここも意味不明な
+      日本語になっている》
+    </p>
+
+    <h3 id="section-5.4">5.4. 別の部分をハックする</h3>
+
+    <p>
+      インストールが動作すると、ハックを追加する最も良い方法は、
+      <tt>program/lib<em>foo</em>641li.so</tt>にシンボリックリンクをあな
+      たがビルドしたバージョンに張ることです &mdash; ありそうなのは、
+      <tt><em>foo</em>/unxlngi4.pro/lib/</tt>ですが。その後、(オフィス)
+      スイートを実行すると、あなたの行った変更が入っているはずです。
+    </p>
+
+    <p>
+      例として、あなたが'sal'(System Abstraction Layerの略)をハックした
+      いとすると、あなたは、/opt/OOInstallからOOO_STABLE_1をインストール
+      したとすると、あなたはこのようにする必要がある。
+    </p>
+
+    <pre>
+cd /opt/OOInstall/program
+mkdir backup
+mv libsal.so.3.0.1 backup
+ln -s /opt/OpenOffice/OOO_STABLE_1/sal/unxlngi4.pro/lib/libsal.so.3.0.1 .
+    </pre>
+
+    <h3 id="section-5.5">5.5. D' make (man)を理解する</h3>
+
+    <p>
+      システムをビルドしている間、似たような他のシステムがあります。これ
+      は、また多分ちょっとだけ異なります。概略は、それぞれモジュールを
+      <i>ビルドしていたもの</i>であり、それから結果が<i>派生</i>した
+      <a href="http://www.openoffice.org/dev_docs/source/solver.html">
+      solver</a>である。おのおののモジュールは、solverの中のヘッダーに対
+      してビルドされる。なので、このような少し複雑なことになっている。
+      <ul>
+        <li>
+	  <i>ビルド</i> &mdash; このperlスクリプト
+	  <i>solenv/bin/build.pl</i>は、最初にビルドする必要がある全ての
+	  モジュールを確実に<a href="#section-5.5.2">prj/build.lst</a>が
+	  関連して使用されるようにする。ビルド後のun-windsな内部モジュー
+	  ルの依存関係、また、それぞれのモジュールがディレクトリの変更、
+	  dmake の組のビルド《訳注:ここも意味不明》
+	</li>
+	<li>
+          <i>deliver</i> &mdash; この perl スクリプト
+	  (<i>solenv/bin/deliver.pl</i>)は、ヘッダやライブラリなどなど<a
+	  href="#section-5.5.3">prj/d.lst</a>形式でsolverを使ってをイン
+	  ストールします。決定的なことは、deliverが、モジュールディレク
+	  トリの中にある solver と同じ場所にインストールされたいかなるファ
+	  イルの日付タイムスタンプを保証することです。この、(特にヘッダー
+	  は)他のモジュールの再ビルドの引き金を引く流れに依存関係がない
+	  ことを保証する。
+	  <i>deliver</i> &mdash; this perl script <i>solenv/bin/deliver.pl</i>
+	  installs headers, and libraries (etc.) into the solver, as
+	  informed by <a href="#section-5.5.3">prj/d.lst</a>. Crucially
+	  deliver ensures that the date stamp on any file that is
+	  installed to the solver is the same as that in the module's
+	  directory. This ensures, that (particularly for headers) that
+	  there is no dependency cascade triggering re-builds in other
+	  modules.
+	</li>
+      </ul>
+    </p>
+
+    <h4 id="section-5.5.1">5.5.1 標準的なディレクトリ</h3>
+
+    <p>
+      これらは、OO.oを作り上げるモジュールの中の標準的にある様々なディレ
+      クトリやファイルで、これらが、その中でより有益なものです。
+      There are various standard directories and files in most of the
+      modules that make up OO.o, here are some of the more useful:
+
+      <ul>
+        <li><b>prj</b>
+	  <ul>
+	    <li>
+
+	       <i>build.lst</i> &mdash; このディレクトリリストは、'^#'の
+	       コメントを許し、このリストの並び順は、重要ではない。<a
+	       href="#section-5.5.2">詳細</a>を見よ。これは<i>ビルド</i>
+	       作業が作成する。
+
+	       <i>build.lst</i> &mdash; this lists directories to be made,
+	       '^#' comments are allowed, the order of the list is
+	       immaterial see <a href="#section-5.5.2">detail</a>, it
+	       is dictates <i>build</i>'s operation.
+	    </li>
+	    <li>
+	       <i>d.lst</i> &mdash; これは<i>deliver</i>プロセスを記述す
+	       る。<a href="#section-5.5.3">詳細</a>を見よ
+
+	       <i>d.lst</i> &mdash; this file describes the <i>deliver</i>
+	       process, see <a href="#section-5.5.3">detail</a>.
+	    </li>
+	  </ul>
+	</li>
+	<li>
+	  <b>util</b> &mdash; 一般的なutilディレクトリは、GUIリソース・
+	  ファイルなどを作成したり、システム・ライブラリに依存関係を追加し
+	  たり、それぞれのサブ・モジュールをサブ・ライブラリをまとめて、一
+	  つの大きなライブラリにまとめる役目を負っている。
+	  全ての作業は、<i>makefile.mk</i>に記述されている。これは、たい
+	  てい、このプロジェクト《訳注:ビルド作業のプロジェクト》が作成
+	  する最後のディレクトリである。
+
+	  <b>util</b> &mdash; typically the util directory is charged with
+	  glueing together the sub-libraries for each sub-module into
+	  a single large library, adding system library dependencies,
+	  building GUI resource files etc. All the work is described in
+	  <i>makefile.mk</i>, this is usually the last directory to be
+	  built in a project.
+	</li>
+	<li>
+	  <b>inc</b> &mdash; 公開ヘッダは通常、'inc' ディレクトリに分離
+	  される。これらは、'deliver'フェーズに(<i>prj/d.lst</i>を使って)
+	  solverへインストールされます。
+
+	  <b>inc</b> &mdash; public headers are typically separated
+	  into an 'inc' directory, these will be installed into
+	  the solver by the 'deliver' phase (using <i>prj/d.lst</i>)
+	</li>
+      </ul>
+    </p>
+
+    <p>
+      これからもまた、興味深い(深くない)ファイルです:
+
+      There are also various file types that are (or are not)
+      interesting:
+      <ul>
+        <li>
+	  <b>makefile.rc</b> &mdash; これからはすべて、冗長であり、無視
+	  しても大丈夫です。
+
+	  <b>makefile.rc</b> &mdash; these are ~all redundant, and can
+	  safely be ignored.
+	</li>
+	<li>
+	  <b>makefile.mk</b> &mdash; これらは、ソースディレクトリ毎に使
+	  われる'dmake'ファイルとの(対照によって示される)差異である。
+
+	  <b>makefile.mk</b> &mdash; these in contrast are the 'dmake'
+	  files, that are used to build each source directory.
+	</li>
+      </ul>
+    </p>
+
+    <h4 id="section-5.5.2">5.5.2 build.lst</h4>
+
+    <p>
+      ちょっと見には、build.lst は、おっかないように見える:
+      On first view build.lst looks scary:
+      <pre>
+vc      vcl : nas freetype psprint rsc sot ucbhelper unotools sysui NULL
+vc      vcl                      usr1   -       all     vc_mkout NULL
+vc      vcl\source\unotypes      nmake  -       all     vc_unot NULL
+vc      vcl\source\glyphs        nmake  -       all     vc_glyphs vc_unot NULL
+      </pre>
+      そう。我々は、実際はパッと見ほど奇妙でない、ここで何が行なわれているのか
+      をやってみて、解明する必要がある。リストの最初は 'NULL'文字で終端
+      されている各行は、見当外れの便法により接頭辞がついている。
+
+      so we need to try and un-pack what's going on here, which is in fact not
+      as odd as it might seem at first glance. Firstly lists are terminated
+      by the 'NULL' string. Every line is prefixed by a shortcut which is
+      irrelevant.<p>
+
+      <ul>
+         <li>
+	   最初の有効行は、':'を含んでいます。これは、このプロジェクト
+	   (vcl)が他のモジュール'nas','freetype','psprint'などに依存して
+	   いる事実を記述している。これはプロジェクト間の依存関係です。
+
+	   First active line contains a ':', this describes the
+	   fact that this project (vcl) depends on these other modules
+	   'nas', 'freetype', 'psprint' etc. to be built first. This is
+	   for inter-project dependencies.
+	 </li>
+	 <li>
+	   その後の、'usr1'という冗長行 [ 楽しみのため? ]が、実際には、
+	   魔法の文字列である'nmake'を含んでいる後の部分が正しいのです。
+
+	   Then we have a redundant line 'usr1' [ for fun ? ], in fact
+	   only lines containing the magic string 'nmake' are valid after
+	   this.
+	 </li>
+	 <li>
+	   その次の行は、内部のプロジェクト・ディレクトリ記述します。こ
+	   んな風に:
+
+	   The next lines describe internal project directory dependencies
+	   and look like:
+	     <pre>
+[shortcut] [path to dir to build] nmake - [flags] [unique-name] [deps...] NULL
+vc           vcl\source\glyphs    nmake -   all     vc_glyphs   vc_unot   NULL
+	     </pre>
+	   <i>ショートカット(shortcut)</i> 使いません; <i>フラグ
+	   (flags)</i> どのプラットホームでビルドするかを決定します;通常
+	   は single char《訳注:wide char(日本などの多バイトを表わす)の
+	   反対の意味?》のプラットホーム・コードです:'dnpum' 'u'は、Unix
+	   です。より良いシステムは、より多くのいろんなものを生成する'
+	   all'フラグになります。<p>
+	   <i>unique-name</i> これは、マジック名で内部の依存関係を記述す
+	   る別の行で使われます。<i>deps...</i> このファイルがある、いか
+	   なる名前のディレクトリであっても、これは最初にビルドされねば
+	   なりません。
+
+	   <i>shortcut</i> is not used; <i>flags</i> determines which platforms
+	   this builds on; usually single char platform codes: 'dnpum' 'u' being
+	   Unix. The higher up the system, the more stuff is flagged 'all'.<p>
+	   <i>unique-name</i> this is a magic name, used by other lines to
+	   describe an internal dependency. <i>deps...</i> any number of names of
+	   other directories in this file, that must be built before this one.
+	 </li>
+      </ul>
+      そう、わたしたちは、<i>vcl\source\unotypes</i> (vc_unot) が
+      <i>vcl\source\glyphs</i> (vc_glyphs)よりも前にビルドされることを知っ
+      ています。リストの並び順は重要でないのと、単純な順序リストの代わり
+      に、わたしたちはより複雑な内部用依存関係(保持)システムを持っている
+      ということを理解することが<b>重要</b>です &mdash; この比較により多
+      くの他のmakeシステムとの対比になります。
+
+      So we see in the vcl case that <i>vcl\source\unotypes</i> (vc_unot) has
+      to be built before <i>vcl\source\glyphs</i> (vc_glyphs). It is
+      <b>important</b> to understand that the order of the list is ~immaterial,
+      and instead of a simple ordered list, we have a more complex internal
+      dependency system &mdash; this contrasts with most other make systems.
+    <p>
+      <a href="http://tools.openoffice.org/tools/build.html">ここ</a>に
+      も、またドキュメントがあります。
+
+
+      There is also documentation <a href="http://tools.openoffice.org/tools/build.html">
+      here</a> on it.
+    <p>
+
+    <h4 id="section-5.5.3">5.5.3 d.lst</h4>
+
+    <p>
+      build.lstは、build.lstを<i>inc/&lt;module&gt;/build.lst</i>へコ
+      ピーするような、いくつかのデフォルトのアクションを省略しており、
+      d.lstの文法は、build.lstよりも解りやすいです。<p>
+    <p>
+      The syntax of d.lst is more comprehensible than build.lst, it omits
+      some default actions, such as copying build.lst into
+      <i>inc/&lt;module&gt;/build.lst</i>.<p>
+      行の形式:
+      A line is of the form:
+      <pre>
+[action]: [arguments]
+mkdir:    %_DEST%\inc%_EXT%\external
+      </pre>
+      <pre>
+[action]: [arguments]
+mkdir:    %_DEST%\inc%_EXT%\external
+      </pre>
+      どこかでもし、'[action]:'を省略したら、その動作のデフォルトは 'コ
+      ピー' 動作です。
+      代表的な動作は <i>copy</i>, <i>mkdir</i>, <i>touch</i>,
+      <i>hedabu</i>,<i>dos</i> and <i>linklib</i>.<p>です。,
+      where if '[action]:' is omitted, it defaults to the 'copy' action.
+      Typical actions are <i>copy</i>, <i>mkdir</i>, <i>touch</i>, <i>hedabu</i>,
+      <i>dos</i> and <i>linklib</i>.<p>
+
+      where if '[action]:' is omitted, it defaults to the 'copy' action.
+      Typical actions are <i>copy</i>, <i>mkdir</i>, <i>touch</i>, <i>hedabu</i>,
+      <i>dos</i> and <i>linklib</i>.<p>
+
+      'hedabu'動作は特に興味深い, inasmuch は、見掛け上インストール時に
+      ヘッダーを見掛け上再整形して小さくする(または、コピー動作のように
+      ふるまう)
+      <p>
+      The 'hedabu' action is particularly interesting, inasmuch that it
+      cosmetically re-formats the header to shrink it on install (otherwise
+      it's much like the copy action).
+      <p>
+
+      動作中は, 様々なマクロ変数がこのように展開される:
+      <ul>
+        <li>%__SRC% &mdash; 配布ディレクトリ名 例えば、<i>unxlngi4.pro</i></li>
+	<li> %_DEST% &mdash; solverへの絶対パス 例えば、<i>/opt/OpenOffice/OOO_STABLE_1/solver/641/unxlngi4.pro</i>
+	</li>
+	<li>
+	  %_EXT% &mdash; (通常はない) way of having マイナー更新 例えば、
+	  641.1です。通常サブディレクトリのバージョン名として使われます。
+        </li>
+      </ul>
+      一般的なその他は、もし実際にあなたがルールを追加する必要があるとす
+      る(参考：暗黙のディレクトリコピー)と、それは下記のような形式になる
+      だろう。
+      <pre>
+..\%__SRC%\inc\sal\*.h %_DEST%\inc%_EXT%\sal\*.h
+      </pre>
+      注意せよ. 相対パスは、'proj/'ディレクトリへの相対(パス)です
+    </p>
+
+
+      During the action, various macro variables are expanded some of which are:
+      <ul>
+        <li>%__SRC% &mdash; distribution directory name eg. <i>unxlngi4.pro</i></li>
+	<li>
+	  %_DEST% &mdash; absolute path into solver eg.
+	  <i>/opt/OpenOffice/OOO_STABLE_1/solver/641/unxlngi4.pro</i>
+	</li>
+	<li>
+	  %_EXT% &mdash; (unusual) way of having minor updates eg. 641.1,
+	  typically used to version every base sub-directory.
+        </li>
+      </ul>
+      Typically then, if indeed you need to add a rule (cf. implicit
+      directory copies), it will be of the form:
+      <pre>
+..\%__SRC%\inc\sal\*.h %_DEST%\inc%_EXT%\sal\*.h
+      </pre>
+      NB. relative paths are relative to the 'prj/' directory.
+    </p>
+
+    <h3 id="section-5.6">5.6 ファースト イテレーション(繰り返し)</h3>
+   <h3 id="section-5.6">5.6 fast iteration</h3>
+ 
+    <p>
+      これらは、開発サイクルくりかえす、多数の方法です。最上の方法は、
+      <a href="section-3">linkoo</a>をつかって、
+      インストールセットから あなたのビルドツリーへライブラリをシンボリッ
+      クリンクを張ることです。そのあと、あなたは単にサブディレクトリを再
+      ビルドすることができます。例えば、<pre>vcl</pre>は、
+      <pre>build</pre>により実行され、soffice.binを再び実行します。
+    </p>
+    <p>
+      There are lots of ways to go round a devel iteration; the best
+      way is to use <a href="section-3">linkoo</a> to symlink the
+      libraries from the install set directly into your build tree.
+      Then you can simply re-build a sub-directory eg. <pre>vcl</pre>
+      by running <pre>build</pre> and re-run soffice.bin.
+    </p>
+
+    <h3 id="section-5.7">5.7 どうしたら、<code>char *</code>が使えますで
+      しょうか?</h3>
+    <h3 id="section-5.7">5.7 Can I get a <code>char *</code>, please?</h3>
+
+    <p>
+      やっと、かろうじて。  OO.o は少なくとも4つの文字列ラッパーがありま
+      す。
+    </p>
+    <p>
+      Just barely.  OO.o has at least four string wrappers:
+    </p>
+
+    <ul>
+      <li>
+	<p>
+	  <code>rtl_String</code> &mdash; sal/inc/rtl/string.h<br>
+	  "通常は" 文字列およびレファレンスカウンター.
+	  <code>rtlstring->buffer</code> は有用です。そのままで
+	  <code>rtlstring->length</code>.  この文字列は、すでに、特定の
+	  キャラクター集合に変換されています; 参照 sal/inc/rtl/textenc.h
+	  &mdash; 興味深いケースは、
+	  <code>RTL_TEXTENCODING_UTF8</code> と、ことによると
+	  <code>RTL_TEXTENCODING_ASCII_US</code>
+	  は、真のラッダイト運動家のためである。
+	  <code>rtlstring->buffer</code>は、あなたの最愛の<code>char *</code>
+	  <code>rtlstring->buffer</code> と同じように自由に扱えると感じ
+	  るでしょう。
+	</p>
+	<p>
+	  <code>rtl_String</code> &mdash; sal/inc/rtl/string.h<br>
+	  "Normal" string plus reference counting.
+	  <code>rtlstring->buffer</code> is useful, as is
+	  <code>rtlstring->length</code>.  This string has already
+	  been converted to a particular character set; see
+	  sal/inc/rtl/textenc.h &mdash; the only interesting cases are
+	  <code>RTL_TEXTENCODING_UTF8</code> and perhaps
+	  <code>RTL_TEXTENCODING_ASCII_US</code>
+	  for real luddites.  Feel free to treat
+	  <code>rtlstring->buffer</code> as your beloved <code>char *</code>.
+	</p>
+      </li>
+
+      <li>
+	<p>
+	  <code>OString</code> &mdash; sal/inc/rtl/string.hxx<br>
+	  は、単に rtl_String を <code>class</code>に ラッピングしていま
+	  す。あなたは、<code>ostring.pData</code>をrtl_String(パブリッ
+	  ク属性だ)を取得するに使うことができる。<code>OString</code> は、
+	  もしあなたが必要とするなら、妥当で使いやすいメソッドです。
+	</p>
+	<p>
+	  <code>OString</code> &mdash; sal/inc/rtl/string.hxx<br>
+	  Simply a rtl_String wrapped inside a <code>class</code>; you
+	  can use <code>ostring.pData</code> to get at the rtl_String
+	  (it's public).  <code>OString</code> has reasonably useful
+	  methods for if you need them.
+	</p>
+      </li>
+
+      <li>
+	<p>
+	  <code>rtl_uString</code> &mdash; sal/inc/rtl/ustring.h<br>
+	  "通常は" ユニコード文字列, rtl_Stringと同様で、参照カウンタも
+	  同様である。しかしながら、この型は、常にUCS-2エンコードである。
+	  思うにJavaの疑わしき選択への互換性のためのエンコードである
+	</p>
+	<p>
+	  <code>rtl_uString</code> &mdash; sal/inc/rtl/ustring.h<br>
+	  "Normal" Unicode string, similar to rtl_String, and
+	  refcounted as well.  However, this one always comes in UCS-2
+	  encoding, presumably to be compatible with Java's
+	  questionable choices.
+	</p>
+      </li>
+
+      <li>
+	<p>
+	  <code>OUString</code> &mdash; sal/inc/rtl/ustring.hxx<br> 
+	  rtl_uStringは、<code>class</code>の中にラップされている.
+	  これは、OO.oのコードの大部分がこの文字列をこの型に入れている。
+	</p>
+	<p>
+	  <code>OUString</code> &mdash; sal/inc/rtl/ustring.hxx<br> 
+	  An rtl_uString wrapped inside a <code>class</code>.  This is
+	  what most of the OO.o code uses to pass strings around.
+	</p>
+      </li>
+    </ul>
+
+    <p>
+      真の男は、UTF-8エンコード文字列を<code>char *</code>で扱う。
+      'printf'のような、<code>OUString</code>からchar *を導き出すことが
+      必要ないかなるシステムAPIは、下記のように使用する:
+    </p>
+    <p>
+      Since real men use <code>char *</code> strings encoded in UTF-8;
+      to use any system API such as 'printf' you need to extract a
+      char * from a <code>OUString</code> use this:
+    </p>
+
+    <pre>
+static char *
+gimme_utf8_please (const rtl::OUString &amp;oustring)
+{
+	rtl::OString ostring;
+
+	ostring = ::rtl::OUStringToOString (oustring, RTL_TEXTENCODING_UTF8);
+        return strdup (ostring.pData->buffer);
+}
+    </pre>
+
+    <p>
+      逆の場合:
+    </p>
+    <p>
+      And the reverse:
+    </p>
+
+    <pre>
+static rtl::OUString
+complicate_things_into_ucs2_please (const char *utf8_string)
+{
+	rtl::OString ostring;
+
+        ostring = rtl::OString (utf8_string);
+	return rtl::OStringToOUString (ostring, RTL_TEXTENCODING_UTF8);
+}
+    </pre>
+
+    <h4 id="section-5.7.1">5.7.1. 落とし穴</h4>
+    <h4 id="section-5.7.1">5.7.1. Pitfalls</h4>
+
+    <p>
+      <strong>重要</strong>  rtl_String や rtl_uString
+      APIは、かなり不細工だ.  新しい文字列を作成するこれらの機能は、あな
+      たが、下記のように、これら(rtl_Stringやrtl_uString)を呼出す前に文字
+      列にNULLを入れて、元の値を設定しなくては*ならない*;
+    </p>
+    <p>
+      <strong>Important</strong>  The rtl_String and rtl_uString
+      APIs are massively clunky.  For the functions that create new
+      strings, you <em>have</em> to set the original value of the
+      string to NULL before calling them, like this:
+    </p>
+
+    <pre>
+rtl_String *str;
+
+str = NULL; /* If you don't do this, your program will crash */
+rtl_string_newFromStr (&amp;str, "hello world");
+
+rtl_uString *ustr;
+ustr = NULL; /* Same as above */
+rtl_uString_newFromAscii (&amp;str, "hello Unicode world");
+    </pre>
+
+    <p>
+      これらの関数が、もしそれらがNULLでなければ文字列をrelease()する関
+      数の変種を最初に呼出す試みする。というのが理由である。&mdash;
+      メモリリークを避ける原則として、あなたは文字列を再設定した方が良い。
+      ;実際あなたの人生を難しくしている(単におおげさにいっているだけで、
+      ややこしくしているぐらいで良いか)
+    </p>
+    <p>
+      This is because those functions attempt to first call the
+      release() variants for the strings if they are not NULL &mdash;
+      in principle to avoid memory leaks should you try to re-assign
+      strings; in practice to make your life hard.
+    </p>
+
+    <h4 id="section-5.7.2">5.7.2. GDBから文字列を調べる</h4>
+    <h4 id="section-5.7.2">5.7.2. Examining strings from GDB</h4>
+
+    <p>
+      我々は既にOO.oが粗末な<code>char *</code>を使っていないことを見て
+      きた。もしあなたがコードを書くことは十分だと考えているなら、あなた
+      は、OO.oをデバッグしなければならなくなるまで待たなくてはならない。
+      文字列をどのように取りだすかがこの節です:
+    </p>
+    <p>
+      We have already seen that OO.o does not use humble <code>char *</code> 
+      strings.  If you thought this was painful enough when writing
+      code, wait until you have to debug it.  Here's how to get at
+      your strings:
+    </p>
+
+    <ul>
+      <li>rtl_String: その中を見よ</li>
+      <li>rtl_String: just poke at it</li>
+      <li>文字列: &mdash; 注, decl'は'UniString'マクロを使って、
+      tools/inc/string.hxxの読み手を混乱させます。
+      <i>FIXME: UniStringsのマクロをきちんと出力する</i>
+      あなたがたぶん望むように出力できるような形式に機械的に変換する:
+      <pre>
+fprintf (stderr, "String is '%s'\n",
+         (::rtl::OString (<i>MyString</i>.GetBuffer (),
+	                  <i>MyString</i>.Len(),
+			  RTL_TEXTENCODING_UTF8)).getStr());
+      </pre>
+      もちろん、stdio.hとrtl/string.hxxが欠けているならインクルードする
+      必要があります。
+      </li>
+      <li>String: &mdash; note, the decl' of this uses the macro
+          'UniString' to confuse readers of tools/inc/string.hxx,
+	  <i>FIXME: need a macro to dump UniStrings nicely</i>
+	  To convert programmatically to something you can print
+	  you probably want:
+      <pre>
+fprintf (stderr, "String is '%s'\n",
+         (::rtl::OString (<i>MyString</i>.GetBuffer (),
+	                  <i>MyString</i>.Len(),
+			  RTL_TEXTENCODING_UTF8)).getStr());
+      </pre>
+      of course, you also need to include stdio.h and rtl/string.hxx if
+they are missing.
+      </li>
+      <li>OString: <i>gdbのコマンドプロンプトでp str-&gt;pDataと入れよ</i></li>
+      <li>OString: <i>p str-&gt;pData</i></li>
+      <li>OUString, rtl_uString: あなたの~/.gdbinitに下記の記述が必要で
+	   す:
+      <pre>
+define prtls
+	set $poui = 0
+
+	echo Building '$arg0'... 
+	while $poui &lt; $arg0-&gt;length
+		set $pouc = $arg0->buffer [$poui++]
+		if $pouc &lt; 32 
+			printf "\\0%o", $pouc
+		else
+			if $pouc &lt;= 127
+				printf "%c", $pouc
+			else 
+				printf "\\0%o", $pouc
+			end 
+		end
+	end
+	echo \n
+end
+
+define pou
+	prtls $arg0-&gt;pData
+end
+      </pre>
+      注. 理解できない理由によりgdbは、2回目に単一の文字列を表示します
+      'rtl_uString *'のために<i>prtls</i> と'OUString *'のために pouを使
+      います。OUStringはあなたが望むように機械的に出力します:
+      <pre>
+::rtl::OString tmpStr = OUStringToOString (<i>MyOUString</i>, RTL_TEXTENCODING_UTF8);
+fprintf (stderr, "String is '%s'\n", tmpStr.getStr());
+      </pre>
+      </li>
+      <li>OUString, rtl_uString: you're going to need this in your
+      ~/.gdbinit:
+      <pre>
+define prtls
+	set $poui = 0
+
+	echo Building '$arg0'... 
+	while $poui &lt; $arg0-&gt;length
+		set $pouc = $arg0->buffer [$poui++]
+		if $pouc &lt; 32 
+			printf "\\0%o", $pouc
+		else
+			if $pouc &lt;= 127
+				printf "%c", $pouc
+			else 
+				printf "\\0%o", $pouc
+			end 
+		end
+	end
+	echo \n
+end
+
+define pou
+	prtls $arg0-&gt;pData
+end
+      </pre>
+      NB. for reasons unknown gdb will take ~seconds to print a single string.
+      Use <i>prtls</i> for 'rtl_uString *' and pou for 'OUString *'. To
+      programatically print a OUString you need:
+      <pre>
+::rtl::OString tmpStr = OUStringToOString (<i>MyOUString</i>, RTL_TEXTENCODING_UTF8);
+fprintf (stderr, "String is '%s'\n", tmpStr.getStr());
+      </pre>
+      </li>
+    </ul>
+
+    <h2 id="section-6">6. OO.oをデバッグする</h2>
+    <h2 id="section-6">6. Debugging OO.o</h2>
+
+    <p>
+      この節では、gdbはコンソールから使っていると仮定している。
+    </p>
+    <p>
+      This section assumes use of gdb, from the console.
+    </p>
+
+    <h3 id="section-6.1">6.1. デバッグシンボルを付けてビルドを行う</h3>
+    <h3 id="section-6.1">6.1. Building with debugging symbols</h3>
+
+    <p>
+      <tt>build debug=true</tt> コマンドをモジュール毎に行うことによって、
+      OO.oは、デバッグコードをモジュール毎に加える方法を含んでいる。
+      残念なことだが、この(方法)は、それに たっぷりのアサーション、大量
+      に発生しているワーニング、さまざまなその他のチェックが致命的なデバッ
+      グシンボルを含んでおり、プロジェクト全体を実行するには勧められない。
+    </p>
+    <p>
+      OO.o includes a way to add debugging code in per module, via
+      the <tt>build debug=true</tt> command in each module.
+      Unfortunately this is not recommended to run for the whole
+      project, and in addition to including vital debugging symbols
+      it also includes scads of assertions, churning warnings, and
+      various other checks.
+    </p>
+    <p>
+      このように、すべてにデバッグシンボルを付けることを望むなら、
+      幾つかのmakefileにデバッグシンボルを追加するように変更し、下記のパッ
+      チを適用します。[注.この作成したOOバイナリは~1ギガバイトより小さい。
+      フルビルドツリーなら~8ギガバイトである]
+    </p>
+    <p>
+      Thus if you want debugging symbols for everything, you have to
+      hack several makefiles to add debugging symbols, [ NB. this
+      makes the OO binaries ~1Gb small and the full build tree ~8Gb
+      so beware ], apply this patch:
+    </p>
+    <pre>
+--- solenv/inc/unxlngi4.mk
++++ solenv/inc/unxlngi4.mk
+@@ -92,18 +92,18 @@ cc=gcc
+ # do not use standard header search paths
+ # if installed elsewhere
+ .IF "$(BUILD_SOSL)"!=""
+-CFLAGS=
++CFLAGS=-g
+ .ENDIF
+ CFLAGS+=-fmessage-length=0 -c $(INCLUDE)
+ # flags for the C++ Compiler
+-CFLAGSCC= -pipe -mcpu=pentiumpro
++CFLAGSCC= -g -pipe -mcpu=pentiumpro
+ # Flags for enabling exception handling
+ CFLAGSEXCEPTIONS=-fexceptions -fno-enforce-eh-specs
+ # Flags for disabling exception handling
+ CFLAGS_NO_EXCEPTIONS=-fno-exceptions
+ 
+ # -fpermissive should be removed as soon as possible
+-CFLAGSCXX= -pipe -mcpu=pentiumpro -fno-for-scope -fpermissive -fno-rtti 
++CFLAGSCXX= -g -pipe -mcpu=pentiumpro -fno-for-scope -fpermissive -fno-rtti 
+ 
+ # HACK: enable Hamburg developers to build on glibc-2.2 machines but compile vs. glibc-2.1 headers
+ .IF "$(BUILD_SOSL)"==""
+    </pre>
+    <p>
+      もちろん、デバッグシンボルなしでは、gdbは使いずらい。ベースディレ
+      クトリにある上記のパッチを、/tmp/fooにカットアンドペーストしてパッ
+      チを適用する。
+    </p>
+    <p>
+      Of course, without debugging symbols gdb becomes even more
+      useless. To apply the patch cut and paste the above to /tmp/foo
+      and in the base directory:
+    </p>
+    <pre>
+patch -p0 < /tmp/foo
+    </pre>
+
+    <h3 id="section-6.2">6.2. ブレークポイントを設定する</h3>
+    <h3 id="section-6.2">6.2. Setting breakpoints</h3>
+
+    <p>
+      gdbで壊れ具合によって、もっともありそうなのが、動きそうにない(バイ
+      ナリを)実行する前にブレークポイントを設定することです。
+      このようなスキームが最善です。
+    </p>
+    <p>
+      Due to the general level of brokenness in gdb, it's most likely
+      that setting a breakpoint before running is unlikely to work;
+      thus the best scheme is to:
+    </p>
+
+    <pre>
+gdb ./soffice
+break main
+run # don't forget the arguments here
+# ... traps in main ...
+break osl_readFile
+continue
+    </pre>
+
+    <p>
+      もちろん、もし、コードが、巨大なOO.oのコードの大部分accountsは
+      dlopenedした後のライブラリに実装されて、それが動くとは思っていな
+      い。
+      このように、あなたは、コードがロードされて、ブレークポイントが設定
+      された場所で止まるのを捉える必要がある。osl_psz_loadModuleの中でパ
+      シッとブレークポイント止めて、やってみよう。
+    </p>
+    <p>
+      Of course, this is never going to work if the code is
+      implemented in a library that is dlopened later, which 
+      accounts for the vast majority of OO code. Thus, you need
+      to trap the code loading and then put the breakpoint in.
+      To do that whack a breakpoint in osl_psz_loadModule, and
+      suffer.
+    </p>
+
+    <p>
+      別の方法として、コードに実行させるとするなら、(ソースコードに)
+      #include &lt;signal.h&gtを追加するのが簡単です。; そして、
+      raise (SIGSTOP)を(止めたい場所に)置きます。; (ソース)コードのどこ
+      かデバッガ中でtrap out(停止用割こみを発生させる?)する。
+    </p>
+    <p>
+      Alternatively if you can instrument the code, it's pretty
+      easy to add #include &lt;signal.h&gt; and then put a
+      raise (SIGSTOP); somewhere in the code which will trap out
+      in the debugger.
+    </p>
+
+    <h3 id="section-6.3">6.3. 開始の始まり</h3>
+    <h3 id="section-6.3">6.3. Starting at the beginning</h3>
+
+    <p>
+      われわれは、vcl/source/app/svmain.cxx (SVMain)が呼んでいるsalラッ
+      パーのmain関数の最初にいます。それは、mainのpSVData->mpAppから呼び
+      だされます。しかし、pSVDataはローカルのインライン(変数?)です。
+      デバッグをするために、グローバル変数であるpImplSVDataを使います。
+      例えば
+      <pre>
+      p pImplSVData->maAppData
+      </pre>
+      これが典型的な 'main'メソッドです:
+      desktop/source/app/app.cxx (Main).
+    </p>
+    <p>
+      We start in 'main' with a sal wrapper, that calls
+      vcl/source/app/svmain.cxx (SVMain). It invokes Main on
+      pSVData->mpApp; but pSVData is an in-line local. To
+      debug this use the pImplSVData global variable. eg:
+      <pre>
+      p pImplSVData->maAppData
+      </pre>
+      This 'Main' method is typically:
+      desktop/source/app/app.cxx (Main).
+    </p>
+
+    <h3 id="section-6.4">6.4. 文字列を調べる</h3>
+    <h3 id="section-6.4">6.4. Examining strings</h3>
+
+    <p>
+      粗末な char *(gdbは、なにもしなくてもchar *を表示することができる)
+      は、gdbが理解できない無数の異なるクラスで、それ(char *?)は、ラッビッ
+      ングされているオブジェクト(指向)の世界では避けられている。さらに悪
+      いことに、文字列をプリントするのですら極端に難しい場合がほとんどで
+      す。-- この結果は、ucs-2エンコードで行くというぞっとするような決定
+      によります。これは、変りやすい、変りにくい文字クラスの両方に言えま
+      す。
+    </p>
+    <p>
+      The humble char * (that gdb can natively display) is eschewed
+      in the object world by wrapping it with innumerable different
+      classes that gdb doesn't understand.  Worse, in many cases it
+      is extremely difficult even to print the string &mdash; one consequence
+      of the appalling decision to go with ucs-2 encoding. There
+      are also both mutable and immutable string classes.
+    </p>
+
+    <p>
+      <a href="#section-5.7.2">5.7.2節</a>を読んで、OOoの中でどのように
+      文字列が動作しているかと、デバッグ用TIPSの知識を得てください。
+    </p>
+    <p>
+      Please read <a href="#section-5.7.2">section 5.7.2</a> to see
+      how strings work in OO.o and to get some debugging tips.
+    </p>
+
+    <h3 id="section-6.5">6.5 正しいビルドの順序を知る</h3>
+    <h3 id="section-6.5">6.5 Getting the build order right</h3>
+
+    <p>
+      ビルドのモジュール依存関係は、すっきりとしたビルドを行うために非常
+      に重要なことであるのは、明白である。モジュール中で、'build'と入力
+      すると、最初ビルドは、prj/build.listを調べます。たとえば、
+      neon/prj/build.lst:は
+      <pre>
+xh      neon  :  soltools external expat NULL
+      </pre>
+      'soltools', 'external' や 'expat' という限定詞は、満足にビルドされ、
+      neonがビルドできる前に望んだ結果が出なくてはならない。時々これらの
+      ルールが壊れて、しばらくの間人々に警告されない。
+    </p>
+    <p>
+      The build dependencies of the modules are clearly crucial to
+      getting a clean build. When you type 'build' in a module, first
+      build examines prj/build.list, eg. neon/prj/build.lst:
+      <pre>
+xh      neon  :  soltools external expat NULL
+      </pre>
+      this specifies that 'soltools', 'external' and 'expat' have to
+      be satisfactorily built and delivered before neon can be built.
+      Occasionally these rules get broken, and people don't notice for
+      a while.
+    </p>
+
+    <h3 id="section-6.6">6.6 gdbの中だけで落ちるんだけど</h3>
+    <h3 id="section-6.6">6.6 It crashes, but only in gdb</h3>
+
+    <p>
+      面白いことに &mdash; あなたが、インストールツリーの中で
+      desktop/unxlngi4.pro/bin/sofficeをsoffice.binにリンクを張ったとす
+      ると? 実行するだけなら、十分に動く。しかし、gdbがシンボリックリン
+      クを展開して、パス中の(実行)バイナリの捜索をできなくし、(gdbに)
+      argv[0]で与えられるような完全パスを渡します。これ(gdb)には、
+      /opt/OpenOffice/OOO_STABLE_1/desktop/unxlngi4.pro/binのようなプロ
+      グラムのベースパスが割当てられ、そこから探し始められます。(例
+      applicat.rdb) もちろん、いかなる設定情報も見つけられない時は、それ
+      は静かにどこかでクラッシュするか、元の問題から遠く離れた所にいます。
+    </p>
+    <p>
+      What fun &mdash; you symlinked desktop/unxlngi4.pro/bin/soffice to
+      soffice.bin in your install tree didn't you. That works fine
+      if you just run it, but it seems gdb unpacks the symlink and
+      passes a fully qualified path as argv[0], which defeats the
+      hunting for the binary in the path, so it assigns the program
+      base path as /opt/OpenOffice/OOO_STABLE_1/desktop/unxlngi4.pro/bin
+      and starts looking for (eg. applicat.rdb) in there. Of course
+      when it fails to find any setup information, it silently
+      crashes somewhere else yards away from the original problem.
+    </p>
+
+    <h3 id="section-6.7">6.7 クラッシュしたり、クラッシュしなかったりし
+      ます</h3>
+    <h3 id="section-6.7">6.7 It crashes, but doesn't crash</h3>
+
+    <p>
+      様々な理由により、人生が混乱するよりはシグナルハンドラが起動されま
+      す。それは、このように作られているのが一番です。
+<pre>
+--- sal/osl/unx/signal.c
++++ sal/osl/unx/signal.c
+@@ -188,6 +188,8 @@ static sal_Bool InitSignal()
+             bSetILLHandler = sal_True;
+        }
+ 
++       bSetSEGVHandler = bSetWINCHHandler = bSetILLHandler = bDoHardKill = sal_False;
++
+        SignalListMutex = osl_createMutex();
+ 
+        act.sa_handler = SignalHandlerFunction;
+
+</pre>
+      注. 後続のスペース
+    </p>
+    <p>
+      For various reasons signal handlers are trapped and life
+      can get rather confusing; thus it's best for builders to
+      apply something like this:
+<pre>
+--- sal/osl/unx/signal.c
++++ sal/osl/unx/signal.c
+@@ -188,6 +188,8 @@ static sal_Bool InitSignal()
+             bSetILLHandler = sal_True;
+        }
+ 
++       bSetSEGVHandler = bSetWINCHHandler = bSetILLHandler = bDoHardKill = sal_False;
++
+        SignalListMutex = osl_createMutex();
+ 
+        act.sa_handler = SignalHandlerFunction;
+
+</pre>
+      NB. trailing space.
+    </p>
+
+    <h3 id="section-6.8">6.8 トレースした結果からコードを見つけられない</h3>
+    <h3 id="section-6.8">6.8 I can't find the code from the trace</h3>
+
+    <p>
+      幾つかのメソッドは、コールバックとして使うことができる特別なリンケー
+      ジを持っていると記述されている。それらは、通常'LinkStab'というプレ
+      フィックスをつけている。
+      they can be used in callbacks; these typically have a prefix:
+      'LinkStub', so search for the latter part of the identifier in a
+      freetext search. eg.
+      <pre>
+      IMPL_LINK( Window, ImplHandlePaintHdl, void*, EMPTYARG )
+      </pre>
+      builds the 'LinkStubImplHandlePaintHdl' method.
+    </p>
+    <p>
+      Some methods, are described as having a special linkage, such that
+      they can be used in callbacks; these typically have a prefix:
+      'LinkStub', so search for the latter part of the identifier in a
+      freetext search. eg.
+      <pre>
+      IMPL_LINK( Window, ImplHandlePaintHdl, void*, EMPTYARG )
+      </pre>
+      builds the 'LinkStubImplHandlePaintHdl' method.
+    </p>
+
+    <h3 id="section-6.9">6.9 トレースで見たファイルだけを再コンパイルするには</h3>
+    
+    <p>
+    デバックオプションをつけないビルドでgdbを使うと、耐えられずに(例えば)
+    oowriterの全てを再コンパイルしたくなるでしょう。だから、私達はperlのヘルプ
+    アプリケーションを作りました。そのperlヘルプアプリケーションはスタックのな
+    かで興味のあるメソッドやクラスの名前をコピペすることによって、それらの文字
+    列を含むファイルだけをtouchすることができ、再コンパイルするのが容易になり
+    ます。以下は典型的なデバッグの流れです:
+    </p>
+    <pre>
+    gdb ./soffice.bin
+    ...
+    bt
+#0  0x40b4e0a1 in kill () from /lib/libc.so.6
+#1  0x409acfe6 in raise () from /lib/libpthread.so.0
+#2  0x447bcdbd in SfxMedium::DownLoad(Link const&) () from ./libsfx641li.so
+#3  0x447be151 in SfxMedium::SfxMedium(String const&, unsigned short, unsigned char, SfxFilter const*, SfxItemSet*) ()
+   from ./libsfx641li.so
+#4  0x448339d3 in getCppuType(com::sun::star::uno::Reference<com::sun::star::document::XImporter> const*) () from ./libsfx641li.so
+...
+    quit
+    cd base/OOO_STABLE_1/sfx2
+    ootouch SfxMedium
+    build debug=true
+    </pre>
+    <p>
+      こうして、SfxMediumを参照したりインプリメントしているなにもかもがtouchさ
+      れ、それによりデバッグシンボル付きで再ビルドします。
+    </p>
+
+    <h3 id="section-6.10">6.10 あるソースディレクトリにあるファイルのみを再ビ
+    ルドするには</h3>
+    
+    <p>
+      もし、カレントディレクトリにあるコードのみを再コンパイルしたいのならば、
+      killobj dmakeターゲットを使うことによってそのオブジェクトファイルを削除
+      することができます:
+    </p>
+    <pre>
+    dmake killobj
+    dmake
+    </pre>
+
+    <h3 id="section-6.11">6.11 いつもsal_XErrorHdlでクラッシュするんだけど...</h3>
+    
+    <p>
+      非同期なXエラー報告が原因です。
+      <pre>export SAL_SYNCHRONIZE=1</pre>
+      とすることによって、全てのXの通信を同期させ、そのエラーを起こしたメソッ
+      ドによりエラーを報告するようになるが、OOoの動作をぐんと遅くもさせます。
+    </p>
+
+    <h3 id="section-6.12">6.12 ワードファイルを読み込んだら黙って落ちるんだけ
+    ど...</h3>
+
+    <p>
+      Caolanの提案するには: ww8par.cxxのSwWW8ImplReader::LoadDocの最初と最後に
+      ブレイクポイントを置くことによって、できるかぎり重要なフィルタをドキュメ
+      ントが得ることを確認します。
+    </p>
+    <p>
+        熟練者はSwWWI8ImplReader::ReadPlainCharsにブレークポイントを置けば、読
+        み込まれたテキストの塊を見ることができます。あるいは、
+        SwWWI8ImplReader::AppendTxtNodeは挿入された各段落を見ることができます。
+    </p>
+
+    <h2 id="section-7">7. パッチを配布するには</h2>
+
+    <h3 id="section-7.1">7.1. Diffスタイル</h3>
+
+    <p>
+      常に'cvs -z3 diff -u'としてunified形式を使ってください。なぜならば、それ
+      が一番見やすく、しかも読んで適用するのに適切なdiffのタイプだからです。
+    </p>
+
+    <h3 id="section-7.2">7.2. うまく取り込んでもらうためには</h3>
+
+    <p>
+      手を動かす前に、どうやったらあなたのパッチをうまく取り込んでもらえるのか
+      ということを考えたり、開発者とそのことについて相談したりするのはよいこと
+      です。
+      そのうちのお薦めの方法は、<a
+      href="mailto:dev@openoffice.org">dev@openoffice.org</a>に投稿するか
+      <tt>irc.freenode.net</tt>の<tt>#OpenOffice.org</tt>チャンネルにIRCで潜ん
+      でいることです。IRCはとても使えないコミュニケーション媒体ですが、コミュ
+      ニケーションをしないよりはましでしょう。<a href="name-account.html">ここ
+      </a>を見れば、誰が誰だかがわかります。
+    </p>
+
+    <h3 id="section-7.3">7.3. ooo-buildパッチの作り方</h3>
+    <p>
+      私達のパッチインフラについてのより多くを知りたければ<a
+      href="ooo-build.html#section-2.2">ここ</a>を見てください。
+    </p>
+
+    <h2 id="section-8">8. その他、TIPS</h2>
+
+    <h3 id="section-8.1">8.1. CVSアカウントを取得する</h3>
+
+    <p>
+      Issueが報告される過程がどのようになっているのか見るには例えばissue #7270
+      を見てください。アカウントを取得したら、まず以下のようにしてセキュアCVS
+      サーバにトンネルを作る必要があります。
+    </p>    
+
+    <pre>
+ssh -f -2 -P -L 2401:localhost:2401 tunnel@openoffice.org sleep 1400 < /dev/null > /dev/null
+    </pre>
+
+    <p>
+      そしたら、トンネルの終端をローカルマシンにするために、CVSROOTをローカルマ
+      シンのところに変更しましょう。
+    </p>
+
+    <pre>
+:pserver:mmeeks@localhost:/cvs
+    </pre>
+
+    <p>
+      ログインすると、すぐにあなたのCVSの設定を新しいサーバに移さなければいけ
+      ないことに気づくでしょう。これをB/Wを無駄にせずにやるには:[遅いけど効果
+      的です]
+    </p>
+
+    <pre>
+echo ":pserver:&lt;account-name-here&gt;@localhost:/cvs" &gt; /tmp/Root
+find -name 'Root' -exec cp /tmp/Root {} \;
+find -name 'Repository' -exec perl -pi.bak -e 's/^oo\///' {} \;
+    </pre>
+
+  <h3 id="section-8.2">8.2 patchやdiffを使う</h3>
+
+  <p>
+    patchやdiffは素晴らしいツールです。しかし、人々はこれらのツールを混乱させ、
+    その解決が困難なデータを渡すことがよくあります。以下は、これらの混乱を解決
+    するためのいくつかのヒントです。
+  </p>
+
+  <ul>
+    <li>自信がなかったら、まず--dry-runオプションを付けてpatchコマンドを実行し
+       ましょう。これはpatchを作っているように見えますが、実際にpatchを作って
+       いるわけではありません。これは内部依存のパッチの組合せとともにインチキ
+       な結果を返すことがありますが、しかしそれを補ってあまり余る便利さがあり
+       ます。
+    <li>たいていの場合は"patch -p0"としてください。0はdiffが示すファイルパスの
+      先頭からいくつのスラッシュ(とその間にあるディレクトリ名)を取り除くかを表
+      します。
+    <li>途中でわけ分からなくなって、パッチの半分がすでに適用されてしまって、元
+      戻したいというときには、ファイルを消去してCVSでアップデートするか、-Rオ
+      プションを付けてパッチをあて直します。
+    <li>たまに、diffを空白の変更が沢山あるモジュール間で使うとパッチが読みづら
+      なります。diffで'-w'フラグを利用すればこの問題を読みやすくなります。
+  </ul>  
+
+  <h3 id="section-8.3">8.3 make clean</h3>
+
+  <p>
+    トップレベルディレクトリで<i>dmake clean</i>とするだけです。HEADにはclean
+    ターゲットがありませんが、dmake cleanがやっていることをやっていることの代
+    わりとして、以下のようにします。
+  </p>
+  
+<pre>
+find -name 'unxlngi4.pro' -exec rm -Rf {} \;
+</pre>
+
+  <h3 id="section-8.4">8.4 CVSの設定</h3>
+
+  <p>
+    バンド幅を効率よく利用するためには、適切なdiffをデフォルトで作るようにしま
+    しょう。~/.cvsrcに以下の記述を追加しましょう。
+  </p>
+<pre>
+cvs -z3 -q
+diff -upN 
+update -dP
+checkout -dP
+status -v 
+</pre>
+
+    <h3 id="section-8.5">8.5. ヘッダファイルを追加する</h3>
+
+    <p>
+      分かっているとは思いますが、OOoにヘッダファイルを追加するのは面倒です。
+      ヘッダファイルをexternal/に追加するには、ヘッダファイルを
+      external/prj/d.lstに追加しましょう。ビルドするときに
+      solver/641/unxlngi4.pro/inc/externalディレクトリにコピーされます。
+    </p>
+
+    <h3 id="section-8.6">8.6. Finding where to hack</h3>
+
+    <p>
+      Often there is some GUI element used near the thing you're
+      trying to locate / fix. So, find some sufficiently unusual
+      string and search for it in <a href="http://ooo.ximian.com/lxr">LXR</a>'s
+      <b>text</b> search; this should reveal an identifier related
+      to that string; eg. SID_AUTOFORMAT, or FN_NUM_BULLET_ON.
+      Having obtained that, do a new text search for that string,
+      and you'll find the usage [ or a chained define to something
+      else ]. For eg. menus/toolbar buttons the functionality is
+      usually in a case statement eg. case SID_AUTOFORMAT: ...
+    </p>
+<!--
+  <h3 id="section-8.X">8.X. Not failing at the first error</h3>
+
+  <p>
+    If you're leaving the computer for some time, and you know what
+    you're doing, it can be worthwhile doing a make that skips minor
+    build errors by using <pre>dmake -i</pre> ( similar to gmake -k ),
+    however this can result in an apparently successful but broken
+    build: not suitable for new builders.
+  </p>
+-->
+
+    <h2 id="section-9">9. 有用なリンク集</h2>
+
+    <h3 id="section-9.1">9.1. www.OpenOffice.org</h3>
+
+    <p>
+      初期のOpenOffice.orgという組織のほとんどがハッカー志向のものではありませ
+      んが、ちょっと探せば便利な<a
+      href="http://www.openoffice.org/documentation.html">ドキュメント</a>が沢
+      山あります。
+    </p>
+
+    <p>
+      OOoのニュースや、他には無い独特のOOoの情報を知りたければ<a
+      href="http://www.ooodocs.org">ooodocs.org</a>を見てください。
+    </p>
+
+    <p>
+      他には:
+
+      <a href="http://ooodi.sourceforge.net/">OOODI</a>はGtk+ディクショナリイン
+      ストーラーを制作しています。
+
+      <a href="http://ooextras.sourceforge.net">OOExtras</a>はテンプレートやマ
+      クロ、クリップアートを提供しています。
+
+      <a href="http://ooqstart.sourceforge.net">Quickstart applet</a>はGnome向
+      けですが、<a
+      href="http://segfaultskde.berlios.de/index.php?content=oooqs">KDE向け
+      </a>のもあります。
+
+      <a href="http://dict.progbits.com">Dictionaries &amp Docs</a>はKevin
+      Hendricksによる提供です。
+    <p>
+
+    <h3 id="section-9.2">9.2. Patch archives</h3>
+
+    <p>
+      OpenOffice.orgが沢山のリリースをしている一方で、異なるプロジェクト同士が
+      OOoに対して沢山のパッチ(しかもでかい奴)を投げます。幸いにも、かなりの割
+      合で折り返すことができるので、どのパッチもビルドするためにHEADには必要あ
+      りません。例えば、多くのものがOOO_STABLE_1に取り入れられました。それにも
+      かかわらず、これらのいくつかあるいは全てを利用することは必要です。
+    </p>
+
+    <ul>
+      <li>
+	<a href="http://ooo.ximian.com">Ximian</a>のパッチとビルドツールやスナップ
+    ショットは全て<a
+	href="http://ooo.ximian.com/packages">パッケージ</a>または<a
+    href="http://ooo.ximian.com/patches">パッチ</a>として利用可能です。
+      </li>
+      <li>
+	<a href="http://www.debian.org">Debian</a>の役に立つOOoの<a
+	href="http://www.linux-debian.de/openoffice/">ページ</a>にはパッチがありま
+    す。Debianの<a
+	href="http://cvs.debian.org/oo-deb/debian/?cvsroot=debian-openoffice">
+	CVS</a>も有用です。
+      </li>
+      <li>
+	<a href="http://www.linux-mandrake.com">Mandrake</a>のOOo<a
+        href="http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/SPECS/OpenOffice.org/">
+        パッチ集</a>。
+      </li>
+      <li>
+        <a href="http://www.freebsd.org/cgi/cvsweb.cgi/ports/editors/openoffice/#dirlist">
+	FreeBSD</a>のOOo portのパッチ。
+      </li>
+      <li>
+      Red Hat'sの(Mandrakeのに基づいた).specファイルも読む価値があり、Red Hat
+      の<a
+	href="http://rawhide.redhat.com/pub/redhat/linux/rawhide/SRPMS/SRPMS/openoffice-1.0.1-6.src.rpm">SRPM</a>にあります。
+      </li>
+      <li>
+        OOoをローカライズしたい人はPavel Janikによる<a
+        href="ftp://ftp.linux.cz/pub/linux/people/pavel_janik/OpenOffice.org_1.0.1_CZ/build-13/build/Patches">パッチ</a>を見て勉強しましょう。
+      </li>
+    </ul>
+
+    <h2 id="section-10">10. (めったにない) FAQ</h2>
+
+    <h3 id="section-10.1">10.1. どうして'mws_srx644'などといったブランチは奇数
+    番号をとらないのか？</h3>
+
+    <p>
+      週ごとにフリーズしsolverや開発環境がリリースされるため、この値は週ごとに
+      増え、発散します。しかし、最近幅広いリリースのための単体のビルドを作るプ
+      ロセスが困ったことに一週間以上かかるために英数字が混じったリリースタグが
+      うたれます。mwsはMaster Workspaceを意味します。
+    </p>
+
+    <h3 id="section-10.2">10.2. どうして<b>ビルド</b>するのにJavaがいるの?</h3>
+
+    <p>
+      どうしても、コンポーネントやいろんなサービスを登録するのに沢山のXMLファ
+      イルが必要になります。Javaを使えばこれらの操作が簡単に行えます。さらに、
+      Javaがマシンにインストールされていれば、OOoを実行するときにもうまい具合
+      にJavaが使われます。
+    </p>
+
+    <h3 id="section-10.3">10.3. なんで[t]cshは使えないの?</h3>
+
+    <p>
+      これは少しばかり不可解です。コマンドを標準出力にパイプする方法が端末から
+      入力するのとで、決定的に違います。
+    </p>
+
+    <pre>echo 'echo #define DLL_NAME "libsch641li.so" >./foo.hxx' | /bin/tcsh -s</pre>
+
+    <p>
+      は、同じものをシェルで打ったらうまくいくのに、失敗します。なんか変ですが、
+    </p>
+
+    <pre>tcsh -fc 'echo #define DLL_NAME "libsch641li.so" >./foo.hxx'</pre>
+
+    <p>
+      ならうまくいきます。<a
+      href="http://www.faqs.org/faqs/unix-faq/shell/csh-whynot/">csh</a>も参考
+      にしてください。
+    </p>
+
+    <h3 id="section-10.4">10.4. ビルドの場所を移動させたのだけれど、なんでうま
+    くいかないの ?</h3>
+
+    <p>
+      <pre>relocate /path/to/new/build/</pre>を実行させなければいけません。
+      他の面倒な方法として、再設定しなればいけないもの(LinuxIntelEnv.Setも新し
+      いパスが必要だし、シェルに再インポートしなければいけません。)があり、相
+      対パスで記述されていないので、
+      
+    </p>
+    <p>
+      The simple answer is: you need to run <pre>relocate /path/to/new/build</pre>;
+      another more complex answer is:
+    </p>
+    <p>
+      Well, <b>assuming</b> you have re-configured things (LinuxIntelEnv.Set will
+      need paths tweaking too &mdash; and re-importing to your shell) &mdash; then it's most 
+      likely down to the ubiquitous non-relative paths, coded in lots
+      of generated / built files, particularly '.dpc*' (dependency)
+      files. Try:
+      <pre>
+find -name '*.dpc*' -exec rm {} \;
+      </pre>
+    </p>
+    <p>
+      The stlport does some really <a href="#section-10.10">broken</a> things, so
+      you will also need to edit the 'stl_gcc.h' inside the solver/, and replace the
+      two path instances there (see inc/stl/config/stl_gcc.h).
+    </p>
+
+    <h3 id="section-10.5">10.5 CVSが'Fatal Error aborting. [acc] no such user'
+    というエラーを吐きます。どうして？</h3>
+
+    <p>
+      あなたのユーザ名が登録されていないことが考えられます。大抵はあなたの~
+      /.cvspassが失われて、すでにログアウトされているのが原因です。ログインし
+      なおして、同じコマンドを打ってみてください。
+    </p>
+
+    <h3 id="section-10.6">10.6 'unxlngi4.pro'の'.pro'は何を意味してるの?</h3>
+
+    <p>
+      <i>Pro</i>ductです。こんなん明らかでしょ。
+    </p>
+
+    <h3 id="section-10.7">10.7 OpenOffice.orgってどんな感じでできてるの?</h3>
+
+    <p>
+       さっきこんな図を見つけてきたので、貼っておきます。
+    </p>
+    <img src="layers.png" alt="Abstraction Layers">
+
+    <h3 id="section-10.8">10.8 どうやってOOoのスクリーンショットを撮るのですか?</h3>
+
+    <p>
+       OOoはX resoucesにとても変なことをします。このように古いスクリーンショッ
+       トをとるアプリケーションは正確なスクリーンショットを撮ることができませ
+       ん。しかし、ImageMagickのimportコマンドは使えます。
+       <pre>import foo.png</pre>
+       あるいは、
+       <pre>sleep 2; import ^window root foo.png</pre>
+       とコンソールで打ちます。
+       
+       (注)スクリーンを小さく見せたいのでなければ、ツールバーのアイコンをまず
+       大きくする必要があります。
+    </p>
+
+    <h3 id="section-10.9">10.9 I tried to build with gcc on a prefix with BUILD in it why does it break ?</h3>
+    <p>
+      This is due to some very serious crack smoking going on in stlport.
+      Essentially, there is some nasty header overriding, and they want to
+      be able to fallback to the previous header (with the same name) - thus
+      they have to hard-code the paths. To save doing that in lots of places,
+      they use a #define, the #define has macro expansion done on it. Thus
+      <b>if your gcc prefix contains an element which is a macro - you're stuffed</b>:
+    </p>
+    <p>
+      stlport config header: <pre>#define _STLP_NATIVE_INCLUDE_PATH \
+        /home/michael/ximian-desktop/ooo/BUILD/ooo/include/c++/3.2.2</pre>
+      stlport helpful macros:<pre># define _STLP_MAKE_HEADER(path, header) &lt;path/header&gt;
+# define _STLP_NATIVE_CPP_C_HEADER(header)  \
+        _STLP_MAKE_HEADER(_STLP_NATIVE_INCLUDE_PATH,header)</pre> and finally
+      stlport cunning native include: <pre>#include _STLP_NATIVE_CPP_C_HEADER(foo)</pre>
+    </p>
+    <p>
+      Net result:
+      <pre>
+      g++ ... -D<b>BUILD</b>=<b>7663</b> ...
+      ...
+from /home/michael/ximian-desktop/ooo/<b>BUILD</b>/ooo/OOO_1_0_2/xml2cmp/source/xcd/main.cxx:62:
+/home/michael/ximian-desktop/ooo/<b>BUILD</b>/ooo/OOO_1_0_2/solver/641/unxlngi4.pro/inc/stl/cstddef:35:46:
+/home/michael/ximian-desktop/ooo/<b>7663</b>/ooo/include/c++/3.2.2/cstddef: No such file or directory
+      </pre>
+    </p>
+
+    <h3 id="section-10.10">10.10 UNOコンポーネントのXML descriptionはなんのた
+    めにあるの ?</h3>
+    <p>
+      大したものではありません。インストールするときに意味がありますが、しかし
+      いまのところほとんど使われていません。
+    </p>
+
+    <h3 id="section-10.11">10.11 なんでこんなにコードが見づらいのか?</h3>
+
+    <p>
+      コードを書く人は変なエディタを使わなければいけません。タブストップは4文
+      字になっていると思われます。もちろん、タブ幅が8文字と思われるUnixのエディ
+      タで編集したファイルは見づらくなります。
+    </p>
+    <p>
+      もしたまたま
+      <a href="http://www.gnu.org/software/emacs/">本物のエディタ</a>を使って
+      いるのであれば、ピンク色の眼鏡を売ります。
+      <a
+      href="http://ooo.ximian.com/emacs.el">http://ooo.ximian.com/emacs.el</a>
+      を<tt>.emacs</tt>に貼りつけるか、あるいはこのファイルを<tt>(load
+      "/path/to/that/file.el")</tt>として読みこんでください。
+      <tt>my-openoffice-path-regexp</tt>を自分の環境に適合させるのを忘れないで
+      ください。
+    </p>
+    <p>
+      これにより、emacsはOOoのソースファイルには4文字幅のタブを使います。
+      (さらに、<tt>sdi</tt>、<tt>hrc</tt>、<tt>src</tt>ファイルに対する<em>C++
+      モード</em>にも同様に4文字幅のタブを使います。)
+    </p>
+
+    <h2 id="section-11">11. 私たちと一緒に作業しよう</h2>
+    <p>
+      <a href="ooo-build.html">About ooo-build</a>をみてください。
+    </p>
+
+  <hr>
+  <p>If you have more hacking tips, corrections, a grip of correct
+  spelling etc. please do mail <a href="http://www.gnome.org/~michael">me</a>,
+  at <a href="mailto:michael.meeks@novell.com">michael.meeks@novell.com</a>.</p>
+  《訳注：翻訳に関することは, yabuki [at] netfort.gr.jp へ。必ず応答できるとは限りませんが, 具体的な訂正意見は歓迎します.》
+  《訳注：翻訳は, Yukiharu YABUKI と Takashi Nakamoto が行いました.》
+  </body>
+</html>

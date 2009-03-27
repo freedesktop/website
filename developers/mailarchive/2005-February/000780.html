@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status this week
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:rsiddhartha%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000779.html">
+   <LINK REL="Next"  HREF="000781.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status this week
+   </H1>
+    <B>Raul Siddhartha
+    </B> 
+    <A HREF="mailto:rsiddhartha%40novell.com"
+       TITLE="[Open Office] Status this week">rsiddhartha@novell.com
+       </A><BR>
+    <I>Fri, 11 Feb 2005 06:09:12 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000779.html">[Open Office] ooo-build-1.9.78: build error in project shell
+</A></li>
+        <LI> Next message: <A HREF="000781.html">[Open Office] Status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#780">[ date ]</a>
+              <a href="thread.html#780">[ thread ]</a>
+              <a href="subject.html#780">[ subject ]</a>
+              <a href="author.html#780">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+
+- Been getting ooo-build m74 built on Windows - almost done, one last
+thing left to check [hopefully :-)] ...
+- Had been trying to get 1.1.4 built as well - that is somehow stuck
+badly with the MS .sln in berkeleydb refusing to build the db.jar which
+xmlhelp requires. Looking into what happened there, looks like the
+upgrade of the berkeleydb source has left the project configuration
+inconsistent with the makefile.mk.
+- Finally figured out how the accelerators, menus, toolbars and status
+bars can be modified in 2.0
+   - From the user settings in ~/.openoffice.org... finally back to
+svx. The user settings has the directory user/config/soffice.cfg which
+has the xml files with all the resources specified in it. The user
+settings are initially copied over from the installation directory. The
+installation is generated from the uiconfig.zip file in
+instsetoo_native. The uiconfig.zip is generated from the uiconfig/
+directory in the solver tree by the postprocess/ project. The xml files
+from the individual projects are delivered to the solver/ tree. [thanks
+to Shreyas and Srini as well!] phew!
+
+Regards,
+Raul
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000779.html">[Open Office] ooo-build-1.9.78: build error in project shell
+</A></li>
+	<LI> Next message: <A HREF="000781.html">[Open Office] Status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#780">[ date ]</a>
+              <a href="thread.html#780">[ thread ]</a>
+              <a href="subject.html#780">[ subject ]</a>
+              <a href="author.html#780">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

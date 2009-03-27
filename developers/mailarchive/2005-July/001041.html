@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] updating / re-autogen ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20updating%20/%20re-autogen%20...&In-Reply-To=1120510055.7990.121.camel%40linux.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001040.html">
+   <LINK REL="Next"  HREF="001042.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] updating / re-autogen ...</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20updating%20/%20re-autogen%20...&In-Reply-To=1120510055.7990.121.camel%40linux.site"
+       TITLE="[Open Office] updating / re-autogen ...">bero at arklinux.org
+       </A><BR>
+    <I>Mon Jul  4 18:29:09 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001040.html">[Open Office] updating / re-autogen ...
+</A></li>
+        <LI>Next message: <A HREF="001042.html">[Open Office] updating / re-autogen ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1041">[ date ]</a>
+              <a href="thread.html#1041">[ thread ]</a>
+              <a href="subject.html#1041">[ subject ]</a>
+              <a href="author.html#1041">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 04 July 2005 22:47, michael meeks wrote:
+&gt;<i> Hi guys,
+</I>&gt;<i>
+</I>&gt;<i> 	Just re-worked some of the Makefile.shared rules, if you update you'll
+</I>&gt;<i> need to re-autogen. This was to add a new (conditional) 'Localize' patch
+</I>&gt;<i> set, much like the 'Binfilter' one we added previously.
+</I>
+Breaks things for me (after re-autogen)...
+
+When I configure --with-distro=Ark, it barfs in:
+
+Execute with  for distro(s) 'Ark Localize'
+PATCHPATH =&gt; .:../evo2:../vba:../mono:../64bit
+PATCHPATH =&gt; .:../evo2:../vba:../mono:../64bit
+Error: you must use a terminal node for distro:
+    One of: Ark, Binfilter, Debian, Debian64, Mandriva, Mandriva64, NLD, 
+NLD64, PLD, PLD64, SUSE, Win32
+make: *** [stamp/patch.apply] Error 1
+
+LLaP
+bero
+</PRE>
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001040.html">[Open Office] updating / re-autogen ...
+</A></li>
+	<LI>Next message: <A HREF="001042.html">[Open Office] updating / re-autogen ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1041">[ date ]</a>
+              <a href="thread.html#1041">[ thread ]</a>
+              <a href="subject.html#1041">[ subject ]</a>
+              <a href="author.html#1041">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,144 @@
+From kyoshida at novell.com  Wed Jul 11 21:59:46 2007
+From: kyoshida at novell.com (Kohei Yoshida)
+Date: Wed, 11 Jul 2007 21:59:46 -0400
+Subject: [Open Office] OOXML patches from xmlfilter02 cws is in, but...
+Message-ID: <1184205586.2265.9.camel@kohei-hp.site>
+
+Hi there,
+
+Just so everybody knows, I've just committed a huge set of patches (284
+of them) into the trunk that are a port of the upstream xmlfilter02 CWS.
+They are in their own section [ OOXML ] in the apply file.
+
+But these patches are not enabled yet due to a conflict with some of the
+other patches, but I'm working on resolving the conflict as we speak.
+
+Just a heads-up.
+
+Kohei
+
+-- 
+Kohei Yoshida - OpenOffice.org Engineer - Novell, Inc.
+<kyoshida at novell.com>
+
+
+From kyoshida at novell.com  Fri Jul 13 13:01:30 2007
+From: kyoshida at novell.com (Kohei Yoshida)
+Date: Fri, 13 Jul 2007 13:01:30 -0400
+Subject: [Open Office] OOXML patches from xmlfilter02 cws is in, but...
+In-Reply-To: <1184205586.2265.9.camel@kohei-hp.site>
+References: <1184205586.2265.9.camel@kohei-hp.site>
+Message-ID: <1184346090.4792.6.camel@kohei-hp.site>
+
+On Wed, 2007-07-11 at 21:59 -0400, Kohei Yoshida wrote:
+> Hi there,
+> 
+> Just so everybody knows, I've just committed a huge set of patches (284
+> of them) into the trunk that are a port of the upstream xmlfilter02 CWS.
+> They are in their own section [ OOXML ] in the apply file.
+
+As an update, the [ OOXML ] section now contains patches from the
+writerfilter02 CWS as well.  All discovered patch conflicts have been
+resolved (knock on wood ;-).  I have personally tested this against the
+m220 source package (and several others have), but have not tested
+against any source packages older than m220.  src-m220 is the current
+default package.
+
+Currently, [ OOXML ] is enabled for NovellBase only.
+
+Just FYI.
+
+Kohei
+
+
+From vmiklos at frugalware.org  Sun Jul 22 18:48:16 2007
+From: vmiklos at frugalware.org (VMiklos)
+Date: Mon, 23 Jul 2007 00:48:16 +0200
+Subject: [Open Office] OOXML patches from xmlfilter02 cws is in, but...
+In-Reply-To: <1184346090.4792.6.camel@kohei-hp.site>
+References: <1184205586.2265.9.camel@kohei-hp.site>
+	<1184346090.4792.6.camel@kohei-hp.site>
+Message-ID: <20070722224816.GM31655@genesis.frugalware.org>
+
+Hello,
+
+Na Fri, Jul 13, 2007 at 01:01:30PM -0400, Kohei Yoshida <kyoshida at novell.com> pisal(a):
+> As an update, the [ OOXML ] section now contains patches from the
+> writerfilter02 CWS as well.  All discovered patch conflicts have been
+> resolved (knock on wood ;-).  I have personally tested this against the
+> m220 source package (and several others have), but have not tested
+> against any source packages older than m220.  src-m220 is the current
+> default package.
+
+is there any new dependency or build-time dependency? i mean just
+enabling that section is enough?
+
+thanks,
+- VMiklos
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: not available
+Url : http://lists.ximian.com/pipermail/openoffice/attachments/20070723/0c20cd2c/attachment.bin 
+
+From fridrich.strba at bluewin.ch  Mon Jul 23 07:41:04 2007
+From: fridrich.strba at bluewin.ch (Fridrich Strba)
+Date: Mon, 23 Jul 2007 13:41:04 +0200
+Subject: [Open Office] OOXML patches from xmlfilter02 cws is in, but...
+In-Reply-To: <20070722224816.GM31655@genesis.frugalware.org>
+References: <1184205586.2265.9.camel@kohei-hp.site>	<1184346090.4792.6.camel@kohei-hp.site>
+	<20070722224816.GM31655@genesis.frugalware.org>
+Message-ID: <46A493D0.6080309@bluewin.ch>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+VMiklos wrote:
+> is there any new dependency or build-time dependency? i mean just
+> enabling that section is enough?
+
+Jolvan, you will have to have gperf installed, but that is build-time
+dependency only and the configure will tell you about it loud enough :-)
+
+Fridrich
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+Comment: Using GnuPG with SUSE - http://enigmail.mozdev.org
+
+iD8DBQFGpJPQu9a1imXPdA8RAhXKAJ9IQ6/SM9F2fn2OMZy1gCwWismnbgCcCXDb
+u2fKBQeIIjEljJ+Q8VwlH0I=
+=mhYq
+-----END PGP SIGNATURE-----
+
+
+From fridrich.strba at bluewin.ch  Mon Jul 23 07:41:04 2007
+From: fridrich.strba at bluewin.ch (Fridrich Strba)
+Date: Mon, 23 Jul 2007 13:41:04 +0200
+Subject: [Open Office] OOXML patches from xmlfilter02 cws is in, but...
+In-Reply-To: <20070722224816.GM31655@genesis.frugalware.org>
+References: <1184205586.2265.9.camel@kohei-hp.site>	<1184346090.4792.6.camel@kohei-hp.site>
+	<20070722224816.GM31655@genesis.frugalware.org>
+Message-ID: <46A493D0.6080309@bluewin.ch>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+VMiklos wrote:
+> is there any new dependency or build-time dependency? i mean just
+> enabling that section is enough?
+
+Jolvan, you will have to have gperf installed, but that is build-time
+dependency only and the configure will tell you about it loud enough :-)
+
+Fridrich
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+Comment: Using GnuPG with SUSE - http://enigmail.mozdev.org
+
+iD8DBQFGpJPQu9a1imXPdA8RAhXKAJ9IQ6/SM9F2fn2OMZy1gCwWismnbgCcCXDb
+u2fKBQeIIjEljJ+Q8VwlH0I=
+=mhYq
+-----END PGP SIGNATURE-----
+

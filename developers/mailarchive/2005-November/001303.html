@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] src-pack / up-stream etc. ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20src-pack%20/%20up-stream%20etc.%20...&In-Reply-To=1132660502.10813.46.camel%40localhost.localdomain">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001302.html">
+   <LINK REL="Next"  HREF="001306.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] src-pack / up-stream etc. ...</H1>
+    <B>Martin Kretzschmar</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20src-pack%20/%20up-stream%20etc.%20...&In-Reply-To=1132660502.10813.46.camel%40localhost.localdomain"
+       TITLE="[Open Office] src-pack / up-stream etc. ...">m_kretzschmar at gmx.net
+       </A><BR>
+    <I>Tue Nov 22 07:32:03 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001302.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+        <LI>Next message: <A HREF="001306.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1303">[ date ]</a>
+              <a href="thread.html#1303">[ thread ]</a>
+              <a href="subject.html#1303">[ subject ]</a>
+              <a href="author.html#1303">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Caolan McNamara schrieb:
+&gt;<i> --without-stlport4 will use system stl if you have gcc, but it will
+</I>&gt;<i> break with visibility at runtime, see gcc#19664#
+</I>
+The Debian package doesn't use --without-stlport4/gcc's stl.
+
+It uses --with-stlport4=&lt;path to a tree that links to the headers from 
+debian's stlport package&gt;:
+
+# outside the ooo tree, but in debian's build tree
+mkdir -p stlport4;
+ln -sf /usr/include/stlport stlport4/stlport;
+ln -sf /usr/lib stlport4/lib
+
+and
+
+configure ... --with-stlport4=$(CURDIR)/stlport4 ...
+
+I hope I got it right. Maybe I should shut up and let Rene explain.
+
+&gt;<i> export
+</I>&gt;<i> XML_CLASSPATH=/usr/share/java/xalan-j2.jar:/usr/share/java/xerces-j2.jar
+</I>&gt;<i> export SYSTEM_XALAN=&quot;YES&quot;
+</I>&gt;<i> export BUILD_TYPE=`echo $BUILD_TYPE | sed -e &quot;s/XALAN//&quot;`
+</I>
+The hack in the Debian package is even less beautiful. 
+<A HREF="http://cvs.gnome.org/viewcvs/ooo-build/patches/src680/use-xalan-xerces-from-system.diff?view=markup">http://cvs.gnome.org/viewcvs/ooo-build/patches/src680/use-xalan-xerces-from-system.diff?view=markup</A>
+
+Martin
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001302.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+	<LI>Next message: <A HREF="001306.html">[Open Office] src-pack / up-stream etc. ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1303">[ date ]</a>
+              <a href="thread.html#1303">[ thread ]</a>
+              <a href="subject.html#1303">[ subject ]</a>
+              <a href="author.html#1303">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

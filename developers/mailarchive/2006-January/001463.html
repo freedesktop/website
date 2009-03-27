@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Galleries do not work in OOo-2.0.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Galleries%20do%20not%20work%20in%20OOo-2.0.1&In-Reply-To=43BCF199.5010504%40mandriva.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001505.html">
+   <LINK REL="Next"  HREF="001464.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Galleries do not work in OOo-2.0.1</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Galleries%20do%20not%20work%20in%20OOo-2.0.1&In-Reply-To=43BCF199.5010504%40mandriva.com"
+       TITLE="[Open Office] Re: Galleries do not work in OOo-2.0.1">ghibo at mandriva.com
+       </A><BR>
+    <I>Sat Jan  7 16:06:51 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001505.html">[Open Office] problem with arrows in presentations
+</A></li>
+        <LI>Next message: <A HREF="001464.html">[Open Office] Re: Galleries do not work in OOo-2.0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1463">[ date ]</a>
+              <a href="thread.html#1463">[ thread ]</a>
+              <a href="subject.html#1463">[ subject ]</a>
+              <a href="author.html#1463">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Giuseppe Ghib&#242; wrote:
+
+&gt;<i> Petr Mladek wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Hi,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Giuseppe found that there are some problems with galleries in 
+</I>&gt;&gt;<i> OOo-2.0.1. I reproduced the same problems with OOO_2_0_1 sources and 
+</I>&gt;&gt;<i> ooo-build-2.0.1.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The problems are:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 1. We use ooo-build/bin/build-galleries script to generate extra 
+</I>&gt;&gt;<i> galleries from OpenClipart. The gengal from OOo-2.0.1 puts all 
+</I>&gt;&gt;<i> galleries into a single file even when I create galleries with various 
+</I>&gt;&gt;<i> names (-name option)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 2. OOo-2.0.1 does not show the galleries. It shows empty box when I 
+</I>&gt;&gt;<i> select Tools/Gallery in the writer.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I do not see the problems with the upstream build, so the problem 
+</I>&gt;&gt;<i> probably is in ooo-build. It worked when I built src680-m143 with an 
+</I>&gt;&gt;<i> older version of ooo-build.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Do you have the same problem?
+</I>&gt;&gt;<i>
+</I>&gt;<i> 
+</I>&gt;<i> FYI, I did another attempt on m148 and yesterday evening
+</I>&gt;<i> ooo-build CVS from 2.0head. Same wrong galleries, but this time instead
+</I>&gt;<i> of obtaining only the files sg70.{sdg,sdv,thm} I obtain both
+</I>&gt;<i> sg70.{sdg,sdv,thm} and sg71.{sdg,sdv,thm}. But note that gengal processed
+</I>&gt;<i> galleries:
+</I>&gt;<i> 
+</I>
+...
+
+I was going a bit further after you said to look at gallery1.cxx. I applied
+this patch in attach on m148 build (with ooobuild 20050105) (with 4.0.1+patches), and I was able 
+to get galleries from sg70 to sg87 (except sg71 which fails to
+build sg71.sdg, but only sg71.sdv and sd71.thm), and the resulting
+binary (but you have to rebuild the whole svx module after the patch)
+seems able to open the new galleries.
+
+The same patch applied to 2.0.1 causes gengal to produce only
+broken sg70 to sg74 galleries..., so it don't work on 2.0.1.
+
+Note that the patch doesn't do anything particular, it's
+just rewrite the line in the source in a less &quot;obfuscated&quot; way,
+so probably could be either a compiler bug or still there is
+something to look to fix the gallery code (maybe some unitialized
+var?).
+
+Bye
+Giuseppe.
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: svx-gengal-galleries-fix.diff
+Type: text/x-patch
+Size: 802 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060107/ae83625b/svx-gengal-galleries-fix.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060107/ae83625b/svx-gengal-galleries-fix.bin</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001505.html">[Open Office] problem with arrows in presentations
+</A></li>
+	<LI>Next message: <A HREF="001464.html">[Open Office] Re: Galleries do not work in OOo-2.0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1463">[ date ]</a>
+              <a href="thread.html#1463">[ thread ]</a>
+              <a href="subject.html#1463">[ subject ]</a>
+              <a href="author.html#1463">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

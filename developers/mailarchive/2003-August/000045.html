@@ -1,0 +1,339 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOo Compile Succeded!!!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000044.html">
+   <LINK REL="Next"  HREF="000046.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOo Compile Succeded!!!
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] OOo Compile Succeded!!!">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Sun, 31 Aug 2003 22:49:25 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000044.html">[Open Office] OOo Compile Succeded!!!
+</A></li>
+        <LI> Next message: <A HREF="000046.html">[Open Office] OOo Compile Succeded!!!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-CLH9W932X5dbU4O7EAc5
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+Hi Carlos,
+
+Am So, 2003-08-31 um 02.46 schrieb Carlos Alberto:
+&gt;<i> Hi again, thanks Michael, I've just downloaded and
+</I>&gt;<i> compiled RC3_030729 and everything run perfectly.
+</I>
+Good. Now you can waste your time with compiling OOO_1_1_RC3 ;-)
+
+&gt;<i> 
+</I>&gt;<i> I would like to write this for those to attempt to
+</I>&gt;<i> build OOo on a RH9 machine.
+</I>&gt;<i> 
+</I>&gt;<i> Built on:
+</I>&gt;<i>    * Red Hat 9 (All development and libraries 
+</I>&gt;<i>      packages installed, even libart and gcc)
+</I>&gt;<i>    * Intel Pentium 4 1.5 Ghz
+</I>&gt;<i> 
+</I>&gt;<i> Dependencies:
+</I>&gt;<i>    * libart 2.3.13
+</I>&gt;<i>    * libgnomecups 0.1.4
+</I>&gt;<i> 
+</I>&gt;<i> Step by Step: 
+</I>&gt;<i> (As shown in Michael's
+</I>&gt;<i> <A HREF="http://ooo.ximian.com/hackers-guide.html">http://ooo.ximian.com/hackers-guide.html</A>)
+</I>&gt;<i>    1 export
+</I>&gt;<i> CVSROOT=':pserver:<A HREF="mailto:anonymous@anoncvs.gnome.org">anonymous@anoncvs.gnome.org</A>:/cvs/gnome'
+</I>&gt;<i>    2 cvs login
+</I>&gt;<i>     ^------ If you cannot connect then just give it a
+</I>&gt;<i> try several times :)
+</I>
+or try anoncvs1 or anoncvs2 or ... how many are there?
+
+&gt;<i>     When you are asked for a password just press enter
+</I>&gt;<i>    3 cvs -z3 checkout openoffice
+</I>&gt;<i> 
+</I>&gt;<i>    4 ./autogen.sh
+</I>&gt;<i> 
+</I>&gt;<i>    5 ./download &amp;&amp; make &amp;&amp; sudo make install
+</I>&gt;<i> 
+</I>
+&gt;<i>   And here is another question. When you run an
+</I>&gt;<i> application the first menu is usually called FILE and
+</I>&gt;<i> the last option is called EXIT. My question is how can
+</I>&gt;<i> I delete, remove or hide that menu option (EXIT) ?, so
+</I>&gt;<i> this way the user cannot kill the application by using
+</I>&gt;<i> this command. Can you give me a hand??
+</I>
+The attached patch removes the Quit menu item from all file
+menus. It moves Close to that position. (It doesn't disable the
+Ctrl-Q keybinding.)
+
+Some of the GNOME usability folks (or is it only Dave B?) think
+that the Quit menu item should go away. And it's probably confusing
+for OOo users to see their presentations go away when they Quit
+the word processor. So, should I add this patch to CVS?
+
+Regards,
+	Martin
+
+--=-CLH9W932X5dbU4O7EAc5
+Content-Disposition: attachment; filename=gui-menu-no-quit.diff
+Content-Type: text/x-patch; name=gui-menu-no-quit.diff; charset=iso-8859-1
+Content-Transfer-Encoding: 7bit
+
+Index: basctl/source/basicide/basidesh.src
+===================================================================
+RCS file: /cvs/script/basctl/source/basicide/basidesh.src,v
+retrieving revision 1.92
+diff -u -p -r1.92 basidesh.src
+--- basctl/source/basicide/basidesh.src	17 Jul 2003 14:05:16 -0000	1.92
++++ basctl/source/basicide/basidesh.src	31 Aug 2003 12:41:35 -0000
+@@ -3579,10 +3579,6 @@ Menu RID_BASICMENU
+ 					};
+ 					MenuItem
+ 					{
+-						ITEM_FILE_CLOSEDOC
+-					};
+-					MenuItem
+-					{
+ 						ITEM_FILE_SAVEDOC
+ 					};
+ 					MenuItem
+@@ -3615,7 +3611,7 @@ Menu RID_BASICMENU
+ 					};
+ 					MenuItem
+ 					{
+-						ITEM_FILE_QUITAPP
++						ITEM_FILE_CLOSEDOC
+ 					};
+ 				};
+ 			};
+Index: extensions/source/addressUI/menu.src
+===================================================================
+RCS file: /cvs/util/extensions/source/addressUI/menu.src,v
+retrieving revision 1.3
+diff -u -p -r1.3 menu.src
+--- extensions/source/addressUI/menu.src	25 Mar 2003 16:02:13 -0000	1.3
++++ extensions/source/addressUI/menu.src	31 Aug 2003 12:41:35 -0000
+@@ -103,10 +103,6 @@ Menu RID_MAIN_MENU
+ 		    {
+ 			Separator = TRUE ;
+ 		    };
+-		    MenuItem
+-		    {
+-			ITEM_FILE_CLOSEDOC
+-		    };
+ 					/*
+ 		    MenuItem
+ 		    {
+@@ -167,7 +163,7 @@ Menu RID_MAIN_MENU
+ 		    };
+ 		    MenuItem
+ 		    {
+-			ITEM_FILE_QUITAPP
++			ITEM_FILE_CLOSEDOC
+ 		    };
+ 		};
+ 	    };
+Index: offmgr/source/offapp/app/app.src
+===================================================================
+RCS file: /cvs/framework/offmgr/source/offapp/app/app.src,v
+retrieving revision 1.91
+diff -u -p -r1.91 app.src
+--- offmgr/source/offapp/app/app.src	17 Jul 2003 13:46:53 -0000	1.91
++++ offmgr/source/offapp/app/app.src	31 Aug 2003 12:41:36 -0000
+@@ -1223,10 +1226,6 @@ Menu RID_DEFAULTMENU
+ 					};
+ 					MenuItem
+ 					{
+-						ITEM_FILE_CLOSEDOC
+-					};
+-					MenuItem
+-					{
+ 						ITEM_FILE_SAVEDOC
+ 					};
+ 					MenuItem
+@@ -1272,7 +1271,7 @@ Menu RID_DEFAULTMENU
+ 					};
+ 					MenuItem
+ 					{
+-						ITEM_FILE_QUITAPP
++						ITEM_FILE_CLOSEDOC
+ 					};
+ 				};
+ 			};
+Index: sc/source/ui/src/menue.src
+===================================================================
+RCS file: /cvs/sc/sc/source/ui/src/menue.src,v
+retrieving revision 1.104
+diff -u -p -r1.104 menue.src
+--- sc/source/ui/src/menue.src	17 Jul 2003 12:56:00 -0000	1.104
++++ sc/source/ui/src/menue.src	31 Aug 2003 12:41:42 -0000
+@@ -4763,10 +4764,6 @@ Menu SCCFG_MENUBAR
+ 					 //------------------------------
+ 					MenuItem
+ 					{
+-						ITEM_FILE_CLOSEDOC
+-					};
+-					MenuItem
+-					{
+ 						ITEM_FILE_SAVEDOC
+ 					};
+ 					MenuItem
+@@ -4874,7 +4871,7 @@ Menu SCCFG_MENUBAR
+ 					 //------------------------------
+ 					MenuItem
+ 					{
+-						ITEM_FILE_QUITAPP
++						ITEM_FILE_CLOSEDOC
+ 					};
+ 				};
+ 			};
+Index: sch/source/ui/app/menu.src
+===================================================================
+RCS file: /cvs/graphics/sch/source/ui/app/menu.src,v
+retrieving revision 1.47
+diff -u -p -r1.47 menu.src
+--- sch/source/ui/app/menu.src	17 Jul 2003 11:37:32 -0000	1.47
++++ sch/source/ui/app/menu.src	31 Aug 2003 12:41:43 -0000
+@@ -313,10 +324,6 @@ Menu RID_MENU
+ 					};
+ 					MenuItem
+ 					{
+-						ITEM_FILE_CLOSEDOC
+-					};
+-					MenuItem
+-					{
+ 						ITEM_FILE_SAVEDOC
+ 					};
+ 					MenuItem
+@@ -365,7 +372,7 @@ Menu RID_MENU
+ 					};
+ 					MenuItem
+ 					{
+-						ITEM_FILE_QUITAPP
++						ITEM_FILE_CLOSEDOC
+ 					};
+ 				};
+ 			};
+Index: sd/source/ui/app/menu.src
+===================================================================
+RCS file: /cvs/graphics/sd/source/ui/app/menu.src,v
+retrieving revision 1.50
+diff -u -p -r1.50 menu.src
+--- sd/source/ui/app/menu.src	17 Jul 2003 12:39:44 -0000	1.50
++++ sd/source/ui/app/menu.src	31 Aug 2003 12:41:43 -0000
+@@ -85,7 +85,6 @@ Menu SD_MENU
+ 					MI ( ITEM_FILE_OPENDOC )
+ 					ITEM_FILE_AUTOPILOT
+ 					SEPARATOR
+-					MI ( ITEM_FILE_CLOSEDOC )
+ 					MI ( ITEM_FILE_SAVEDOC )
+ 					MI ( ITEM_FILE_SAVEASDOC )
+ 					MI ( ITEM_FILE_SAVEDOCS )
+@@ -102,7 +101,7 @@ Menu SD_MENU
+ 					MI ( ITEM_FILE_PRINTDOC )
+ 					MI ( ITEM_FILE_SETUPPRINTER )
+ 					SEPARATOR
+-					MI ( ITEM_FILE_QUITAPP )
++					MI ( ITEM_FILE_CLOSEDOC )
+ 				};
+ 			};
+ 		};
+Index: starmath/source/menu.src
+===================================================================
+RCS file: /cvs/sw/starmath/source/menu.src,v
+retrieving revision 1.49
+diff -u -p -r1.49 menu.src
+--- starmath/source/menu.src	17 Jul 2003 11:34:52 -0000	1.49
++++ starmath/source/menu.src	31 Aug 2003 12:41:44 -0000
+@@ -108,10 +108,6 @@ Menu RID_SMMENU
+ 					};
+ 					MenuItem
+ 					{
+-						ITEM_FILE_CLOSEDOC
+-					};
+-					MenuItem
+-					{
+ 						ITEM_FILE_SAVEDOC
+ 					};
+ 					MenuItem
+@@ -208,7 +204,7 @@ Menu RID_SMMENU
+ 					};
+ 					MenuItem
+ 					{
+-						ITEM_FILE_QUITAPP
++						ITEM_FILE_CLOSEDOC
+ 					};
+ 				};
+ 			};
+Index: sw/source/ui/inc/swmn.hrc
+===================================================================
+RCS file: /cvs/sw/sw/source/ui/inc/swmn.hrc,v
+retrieving revision 1.133
+diff -u -p -r1.133 swmn.hrc
+--- sw/source/ui/inc/swmn.hrc	17 Jul 2003 11:58:11 -0000	1.133
++++ sw/source/ui/inc/swmn.hrc	31 Aug 2003 12:41:52 -0000
+@@ -3892,10 +3892,12 @@ MenuItem _MN_FILE
+ 			};
+ 			ITEM_FILE_AUTOPILOT
+ 			SEPARATOR ;
++#ifdef MN_SW_PORTAL
+ 			MenuItem
+ 			{
+ 				ITEM_FILE_CLOSEDOC
+ 			};
++#endif
+ 			MenuItem
+ 			{
+ 				ITEM_FILE_SAVEDOC
+@@ -4339,7 +4341,7 @@ MenuItem _MN_FILE
+ #else
+ 			MenuItem
+ 			{
+-				ITEM_FILE_QUITAPP
++				ITEM_FILE_CLOSEDOC
+ 			};
+ #endif //MN_SW_PORTAL
+ 		};
+
+--=-CLH9W932X5dbU4O7EAc5--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000044.html">[Open Office] OOo Compile Succeded!!!
+</A></li>
+	<LI> Next message: <A HREF="000046.html">[Open Office] OOo Compile Succeded!!!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

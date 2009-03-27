@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Keep 2.0 prefix for OOo-2.1?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Keep%202.0%20prefix%20for%20OOo-2.1%3F&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002185.html">
+   <LINK REL="Next"  HREF="002192.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Keep 2.0 prefix for OOo-2.1?</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Keep%202.0%20prefix%20for%20OOo-2.1%3F&In-Reply-To="
+       TITLE="[Open Office] Keep 2.0 prefix for OOo-2.1?">pmladek at suse.cz
+       </A><BR>
+    <I>Fri Jan  5 09:05:36 EST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002185.html">[Open Office] DroplineGNOME64 patch 1
+</A></li>
+        <LI>Next message: <A HREF="002192.html">[Open Office] Keep 2.0 prefix for OOo-2.1?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2191">[ date ]</a>
+              <a href="thread.html#2191">[ thread ]</a>
+              <a href="subject.html#2191">[ subject ]</a>
+              <a href="author.html#2191">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+the upstream changed the install prefix for OOo-2.1:
+
+	/opt/openoffice.org2.0 -&gt; /opt/openoffice.org2.1
+
+It has already used the minor-version-independent prefix for the user 
+configuration:
+
+	~/.openoffice.org2
+
+
+We could do something similar in ooo-build:
+
+	/usr/lib/ooo-2.0 -&gt; /usr/lib/ooo2
+	/usr/share/ooo-2.0 -&gt; /usr/share/ooo2
+	/usr/include/ooo-2.0 -&gt; /usr/include/ooo2
+	/usr/lib/pkgconfig/mono-ooo-2.0.pc -&gt; /usr/lib/pkgconfig/mono-ooo2.pc
+	~/.ooo-2.0 -&gt; ~/.ooo2
+
+
+Though, I vote to keep the 2.0 paths because:
+
+1. If we switch to ~/.ooo2, users would &quot;lost&quot; their older setting.
+2. If we keep ~/.ooo-2.0 and change only other prefixes, it would be 
+inconsistent.
+3. We could add a symlink ~/.ooo2 -&gt; ~/.ooo-2.0 from the program/soffice 
+wrapper but I do not like this hack.
+4. The prefix change would be used to create FHS-compatible package (config 
+files below /etc, arch independent files below /usr/share, ...). This change 
+is not easy and I do not have time to work on it now. Note that it must be 
+done together with the prefix change because RPM does not allow to replace a 
+directory with a compat symlink.
+5. The wrappers ooffice, oowriter... are already version-independent. The 
+other paths are hidden to the normal users, so they are less important.
+
+
+What do you think?
+
+Does anybody complain if we keep the 2.0 paths as they are?
+
+
+Best Regards,
+Petr
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002185.html">[Open Office] DroplineGNOME64 patch 1
+</A></li>
+	<LI>Next message: <A HREF="002192.html">[Open Office] Keep 2.0 prefix for OOo-2.1?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2191">[ date ]</a>
+              <a href="thread.html#2191">[ thread ]</a>
+              <a href="subject.html#2191">[ subject ]</a>
+              <a href="author.html#2191">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

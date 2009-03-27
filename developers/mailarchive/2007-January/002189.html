@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Quick SVN guide
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Quick%20SVN%20guide&In-Reply-To=200701040957.40127.kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002188.html">
+   <LINK REL="Next"  HREF="002190.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Quick SVN guide</H1>
+    <B>Caio Tiago Oliveira</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Quick%20SVN%20guide&In-Reply-To=200701040957.40127.kendy%40suse.cz"
+       TITLE="[Open Office] Quick SVN guide">asrail1 at gmail.com
+       </A><BR>
+    <I>Thu Jan  4 10:23:04 EST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002188.html">[Open Office] Quick SVN guide (was: Re: [Openoffice-dev] Status	Tue-02-Jan-07)
+</A></li>
+        <LI>Next message: <A HREF="002190.html">[Open Office] Quick SVN guide (was: Re: [Openoffice-dev] Status	Tue-02-Jan-07)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2189">[ date ]</a>
+              <a href="thread.html#2189">[ thread ]</a>
+              <a href="subject.html#2189">[ subject ]</a>
+              <a href="author.html#2189">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jan Holesovsky, 04-01-2007 05:57:
+&gt;<i> Hi Kohei,
+</I>&gt;<i> 
+</I>&gt;<i> On Thursday 04 January 2007 02:33, Kohei Yoshida wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> I was able to do a full checkout by
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> svn co svn+<A HREF="ssh://(yourlogin">ssh://(yourlogin</A>)@svn.gnome.org/svn/ooo-build/trunk
+</I>&gt;&gt;<i> ooo-build
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> though for some odd reason I had to type my passphrase a few times 
+</I>&gt;&gt;<i> before the checkout actually started.
+</I>&gt;<i> 
+</I>&gt;<i> ssh-agent is your friend ;-)  Just do ssh-add, and type your
+</I>&gt;<i> passphrase, and you'll be always authenticated.  If ssh-agent is not
+</I>&gt;<i> running, do 'ssh-agent bash', and perform all the svn operations in
+</I>&gt;<i> that shell.
+</I>&gt;<i> 
+</I>
+You could use seahorse or another keyring manager and storing the
+passphrase, if your computer is secure enough (at home, for instance).
+You can block the first access with a password.
+
+A tip for users new to SVN:
+you can check what files would be updated with:
+svn status --update (svn st -u, for short)
+
+it's always useful to run:
+svn st (or svn st | egrep &quot;[^C]&quot;)
+to look for the conflicts after updating.
+
+If some file was in coflict, after resolving it use:
+svn resolved [file]
+
+
+For using tags, you can switch the directory, updating the changed files
+  and directories:
+svn switch [tag url]
+, in the base directory. You might just to switch a sub-directory where 
+you're working:
+svn switch [tag url/directory] [directory]
+, if in the base directory.
+
+
+An online book you can use as reference:
+<A HREF="http://svnbook.red-bean.com/">http://svnbook.red-bean.com/</A>
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002188.html">[Open Office] Quick SVN guide (was: Re: [Openoffice-dev] Status	Tue-02-Jan-07)
+</A></li>
+	<LI>Next message: <A HREF="002190.html">[Open Office] Quick SVN guide (was: Re: [Openoffice-dev] Status	Tue-02-Jan-07)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2189">[ date ]</a>
+              <a href="thread.html#2189">[ thread ]</a>
+              <a href="subject.html#2189">[ subject ]</a>
+              <a href="author.html#2189">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] error with patches
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-May/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20error%20with%20patches&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001835.html">
+   <LINK REL="Next"  HREF="001822.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] error with patches</H1>
+    <B>Hussam Al-Tayeb</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20error%20with%20patches&In-Reply-To="
+       TITLE="[Open Office] error with patches">ht990332 at gmail.com
+       </A><BR>
+    <I>Sat May 20 04:15:44 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001835.html">[Open Office] VBA and MONO patches on windows
+</A></li>
+        <LI>Next message: <A HREF="001822.html">[Open Office] &quot;all-am: Makefile $(SCRIPTS)&quot; line in ooo-build
+	Makefile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1821">[ date ]</a>
+              <a href="thread.html#1821">[ thread ]</a>
+              <a href="subject.html#1821">[ subject ]</a>
+              <a href="author.html#1821">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is the first time I attempt to compile Openoffice.org
+I downloaded and extracted ooo-build-2.0.2.11.tar.gz
+I did 
+./configure --prefix=/home/hussam/myoo2 --disable-gnome-vfs --with-system-fonts --with-system-neon --enable-kde --with-jdk-home=/opt/java 
+--with-java-home=/opt/java --with-distro=Ark --with-system-cairo --with-system-python --with-system-xrender-headers --with-system-curl 
+--with-lang=ALL --without-docdir --with-arch=&quot;x86&quot; --with-system-sane-header --disable-mono
+
+and ./download 
+
+then make but it gave an error
+patching file xmlhelp/source/com/sun/star/help/HelpIndexer.java
+Hunk #1 succeeded at 125 (offset -26 lines).
+Hunk #3 succeeded at 205 with fuzz 1 (offset -26 lines).
+Hunk #5 succeeded at 440 with fuzz 1 (offset 9 lines).
+Hunk #6 FAILED at 454.
+Hunk #7 FAILED at 478.
+Hunk #8 succeeded at 443 (offset -35 lines).
+2 out of 8 hunks FAILED -- saving rejects to file 
+xmlhelp/source/com/sun/star/help/HelpIndexer.java.rej
+patching file xmlhelp/source/com/sun/star/help/HelpURLParameter.java
+Hunk #1 succeeded at 230 (offset 35 lines).
+Hunk #3 succeeded at 319 (offset 35 lines).
+patching file xmlhelp/source/com/sun/star/help/HelpDatabases.java
+Hunk #1 succeeded at 260 (offset 35 lines).
+Hunk #3 succeeded at 554 (offset 35 lines).
+patching file xmlhelp/source/com/sun/star/help/HelpLinker.java
+Hunk #1 succeeded at 63 (offset -26 lines).
+Hunk #2 succeeded at 394 (offset -2 lines).
+Hunk #3 succeeded at 574 (offset -40 lines).
+Hunk #4 succeeded at 637 (offset -2 lines).
+Hunk #5 succeeded at 704 (offset -34 lines).
+Hunk #6 succeeded at 750 (offset -2 lines).
+Hunk #7 succeeded at 741 (offset -34 lines).
+Testing patch xmlhelp-port-to-db-4.3.diff failed. 
+at /home/hussam/packages/OOo202/ooo-build-2.0.2.11/patches/apply.pl line 54.
+make: *** [stamp/patch.apply] Error 1
+
+What should I do?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 191 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060520/e91b8e97/attachment-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060520/e91b8e97/attachment-0001.bin</A>
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001835.html">[Open Office] VBA and MONO patches on windows
+</A></li>
+	<LI>Next message: <A HREF="001822.html">[Open Office] &quot;all-am: Makefile $(SCRIPTS)&quot; line in ooo-build
+	Makefile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1821">[ date ]</a>
+              <a href="thread.html#1821">[ thread ]</a>
+              <a href="subject.html#1821">[ subject ]</a>
+              <a href="author.html#1821">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

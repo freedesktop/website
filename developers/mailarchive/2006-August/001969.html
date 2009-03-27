@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] up-streaming action ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20up-streaming%20action%20...&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001972.html">
+   <LINK REL="Next"  HREF="001974.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] up-streaming action ...</H1>
+    <B>Michael Meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20up-streaming%20action%20...&In-Reply-To="
+       TITLE="[Open Office] up-streaming action ...">michael.meeks at novell.com
+       </A><BR>
+    <I>Fri Aug 18 16:32:42 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001972.html">[Open Office] m181 problem with	/solver/680/unxlngx6.pro/xml/registry/component-update.dtd
+</A></li>
+        <LI>Next message: <A HREF="001974.html">[Open Office] sal / size-thread-stack.diff ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1969">[ date ]</a>
+              <a href="thread.html#1969">[ thread ]</a>
+              <a href="subject.html#1969">[ subject ]</a>
+              <a href="author.html#1969">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi guys,
+
+	So - we're doing -quite- well with our up-streaming, the total number
+of outstanding patches is shrinking release over release. At least:
+we're doing -really- well, except that up-stream are not doing anything
+active towards taking any of our VBA work, which bloats the total
+number.
+
+	Anyhow - it seems (to me) that there are still a lot of patches with no
+issue: here they are, sorted by percentages of un-filed issues:
+
+Summary
+================================================================
+Total patches: 774
+Total no issue: 491 (- 316 VBA) == 175 with no issue
+
+	So - 175 is about 150 too many I think ;-) here are the responsible
+people in order:
+
+Number of patches without assigned an issue number per developer
+================================================================
+gghibo(6/6): MandrivaOnly(4/4), FrugalwareOnly(1/1), MandrivaOnlyUnix(1/1)
+noelpwer(320/331): VBAObjects(316/316), TemporaryHacks(1/1), VCL(1/1), VBABits(1/2), Fixes(1/4)
+martink(27/31): Mono(22/22), TemporaryHacks(3/3), BuildBits(1/2), Fixes(1/3)
+rengelha(26/31): DebianBaseNoHelpContent(2/2), GCJ(2/2), Debian32Only(2/2), DebianOnly(2/2), SystemBits(1/1), Misc(1/1), UbuntuOnly(1/1), DebianBaseOnly(10/12), BuildBits(5/6)
+rodo(14/20): Fixes(5/5), GStreamer(4/4), Defaults(1/1), Misc(2/3), cairocanvas(2/4)
+aprosky(2/3): GentooOnly(2/2)
+tml(6/10): BuildBits(1/1), Win32Only(3/4), NovellOnlyWin32(2/4)
+jholesov(22/43): Fpickers(9/9), Icons(2/2), GCJWorkaround(2/2), LinuxOnly(1/1), BerkeleyDB43(1/1), BFBuildBits(1/1), Mono(1/1), BuildBits(3/4), TemporaryHacks(1/2), FixesNotForUpstream(1/3)
+brosenk(7/16): VBAObjects(1/1), ArkOnly(4/7), BuildBits(2/4)
+michael(31/83): NovellOnlyUnix(3/3), Lockdown(3/3), AddressBooks(3/3), SystemBits(2/2), BuildBits(2/2), UbuntuOnly(1/1), Egg(1/1), NovellOnly(1/1), Defaults(7/10), NotDebian(1/2), Fixes(5/14), Misc(1/4), TemporaryHacks(1/6)
+pmladek(13/36): BFBuildBits(2/2), Misc(1/1), DebianBaseOnly(1/1), LinuxOnly(1/1), NovellOnlyUnix(1/1), GentooOnly(1/1), Fixes(4/14), BuildBits(2/13)
+jody(8/23): CalcFixes(8/22)
+mklose(2/6): UbuntuOnly(2/3)
+hmth(4/15): GentooOnly(1/1), GentooExperimental(3/6)
+dkeskar(1/4): SystemBits(1/1)
+
+	So - fixing action appreciated :-)
+
+	Also - to help track down those pesky bugs that got closed up-stream
+(in error) or without fixing the problem, Kendy's show-issues script
+output is invaluable:
+
+aprosky: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=56697">http://www.openoffice.org/issues/buglist.cgi?issue_id=56697</A>
+arekm: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=66982+67976">http://www.openoffice.org/issues/buglist.cgi?issue_id=66982+67976</A>
+brosenk: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=44695+64968+58474+58474+64920+64921+30380+61278+64917">http://www.openoffice.org/issues/buglist.cgi?issue_id=44695+64968+58474+58474+64920+64921+30380+61278+64917</A>
+davidf: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=58741">http://www.openoffice.org/issues/buglist.cgi?issue_id=58741</A>
+dkeskar: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=50842+57949+57950">http://www.openoffice.org/issues/buglist.cgi?issue_id=50842+57949+57950</A>
+hmth: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=58474+58474+63770+65974+65977+65979+59985+62422+67323+63770+30380">http://www.openoffice.org/issues/buglist.cgi?issue_id=58474+58474+63770+65974+65977+65979+59985+62422+67323+63770+30380</A>
+jholesov: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=68299+65325+67740+60696+66439+67243+65325+64717+66666+50857+65491+66426+59411">http://www.openoffice.org/issues/buglist.cgi?issue_id=68299+65325+67740+60696+66439+67243+65325+64717+66666+50857+65491+66426+59411</A>
+jianhua: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=64886+65520+65520">http://www.openoffice.org/issues/buglist.cgi?issue_id=64886+65520+65520</A>
+jody: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=45245+35578+35581+33851+23658+23658+37388+21923+44982+47442+63686+26565+20857+45843">http://www.openoffice.org/issues/buglist.cgi?issue_id=45245+35578+35581+33851+23658+23658+37388+21923+44982+47442+63686+26565+20857+45843</A>
+kyoshida: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=8808">http://www.openoffice.org/issues/buglist.cgi?issue_id=8808</A>
+martink: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=63081+63732+56619">http://www.openoffice.org/issues/buglist.cgi?issue_id=63081+63732+56619</A>
+michael: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=68220+54275+56783+57679+58119+49590+68079+63846+23353+23353+23353+43504+62664+49510+57872+57872+57872+68657+68657+35579+38108+56202+67271+47644+68672+47233+63927+63927+15512+22961+49629+14036+35579+15509+15509+35555+68219+63263+63263+68283+34264+66680+66679+66680+66680">http://www.openoffice.org/issues/buglist.cgi?issue_id=68220+54275+56783+57679+58119+49590+68079+63846+23353+23353+23353+43504+62664+49510+57872+57872+57872+68657+68657+35579+38108+56202+67271+47644+68672+47233+63927+63927+15512+22961+49629+14036+35579+15509+15509+35555+68219+63263+63263+68283+34264+66680+66679+66680+66680</A>
+michael/jholesov: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=60696+60696+60696+60696">http://www.openoffice.org/issues/buglist.cgi?issue_id=60696+60696+60696+60696</A>
+mikeleib: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=57961+53055">http://www.openoffice.org/issues/buglist.cgi?issue_id=57961+53055</A>
+mklose: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=54603+64888+64895+19976">http://www.openoffice.org/issues/buglist.cgi?issue_id=54603+64888+64895+19976</A>
+muthusub: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=47811+47724+20496+3687+32269+47724">http://www.openoffice.org/issues/buglist.cgi?issue_id=47811+47724+20496+3687+32269+47724</A>
+noelpwer: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=56633+65330+66752+59082+66550+63576+63576+63576+63576+11215+37347">http://www.openoffice.org/issues/buglist.cgi?issue_id=56633+65330+66752+59082+66550+63576+63576+63576+63576+11215+37347</A>
+pmladek: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=68295+49351+49385+54121+49381+62858+64578+64577+66693+68616+66473+48814+46226+62715+64802+64801+68668+53261+58976+58977+58979+58984">http://www.openoffice.org/issues/buglist.cgi?issue_id=68295+49351+49385+54121+49381+62858+64578+64577+66693+68616+66473+48814+46226+62715+64802+64801+68668+53261+58976+58977+58979+58984</A>
+rengelha: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=66140+58474+54479+63732+63732+30380">http://www.openoffice.org/issues/buglist.cgi?issue_id=66140+58474+54479+63732+63732+30380</A>
+rodo: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=63159+63156+23609+65589+65683">http://www.openoffice.org/issues/buglist.cgi?issue_id=63159+63156+23609+65589+65683</A>
+strba: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=33654">http://www.openoffice.org/issues/buglist.cgi?issue_id=33654</A>
+tml: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=63805+6885+68590+65209">http://www.openoffice.org/issues/buglist.cgi?issue_id=63805+6885+68590+65209</A>
+vmiklos: <A HREF="http://www.openoffice.org/issues/buglist.cgi?issue_id=65026+64134">http://www.openoffice.org/issues/buglist.cgi?issue_id=65026+64134</A>
+
+	Thanks guys - I'm really hoping we make some real progress on the
+number of outstanding patches for 2.0.4 and 2.1.
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001972.html">[Open Office] m181 problem with	/solver/680/unxlngx6.pro/xml/registry/component-update.dtd
+</A></li>
+	<LI>Next message: <A HREF="001974.html">[Open Office] sal / size-thread-stack.diff ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1969">[ date ]</a>
+              <a href="thread.html#1969">[ thread ]</a>
+              <a href="subject.html#1969">[ subject ]</a>
+              <a href="author.html#1969">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

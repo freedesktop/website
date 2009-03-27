@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000489.html">
+   <LINK REL="Next"  HREF="000491.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] ooo-build">michael@ximian.com
+       </A><BR>
+    <I>Thu, 19 Aug 2004 11:48:57 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000489.html">[Open Office] ooo-build
+</A></li>
+        <LI> Next message: <A HREF="000491.html">[porting-dev] Re: [Open Office] Introducing JDK dependency?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#490">[ date ]</a>
+              <a href="thread.html#490">[ thread ]</a>
+              <a href="subject.html#490">[ subject ]</a>
+              <a href="author.html#490">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ruslan,
+
+On Thu, 2004-08-19 at 00:26 +0300, Ruslan wrote:
+&gt;<i> Is it possible to continue build(using ooo-build) from the place, where
+</I>&gt;<i> error occured(after fixing) and not from the very beginning?
+</I>&gt;<i> As i was told on #openoffice.org i need to run  build --all:&lt;project&gt;
+</I>&gt;<i> from 'instsetoo', where project is the name of the project where i got
+</I>&gt;<i> error. What steps are needed to make this with ooo-build?
+</I>
+	Yes; with a recent ooo-build; such as 1.3.0 you can easily do that
+[ you should be using that on Win32 too - certainly ]. Just type 'make'
+again at the toplevel.
+
+	It re-does some work, such as re-configuring, and random parts of the
+build seem to insist on re-building gratuitously; but it does do an
+incremental build.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000489.html">[Open Office] ooo-build
+</A></li>
+	<LI> Next message: <A HREF="000491.html">[porting-dev] Re: [Open Office] Introducing JDK dependency?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#490">[ date ]</a>
+              <a href="thread.html#490">[ thread ]</a>
+              <a href="subject.html#490">[ subject ]</a>
+              <a href="author.html#490">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

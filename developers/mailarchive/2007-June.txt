@@ -1,0 +1,1232 @@
+From pmladek at suse.cz  Fri Jun  1 13:46:47 2007
+From: pmladek at suse.cz (Petr Mladek)
+Date: Fri, 1 Jun 2007 19:46:47 +0200
+Subject: [Open Office] Updated to lp_solve_5.5.0.10_source.tar.gz
+Message-ID: <200706011946.47434.pmladek@suse.cz>
+
+Hi,
+
+Kohei pointed out that the currently used lp_solve_5.5 sources were quite old. 
+I have updated ooo-build trunk to use the latest version 5.5.0.10.
+
+You have to put the new tarball in ooo-build/src. It should be enough to run 
+ooo-build/download. You can also get it at
+
+	http://go-oo.org/packages/SRC680/lp_solve_5.5.0.10_source.tar.gz
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SUSE LINUX, s. r. o.                        e-mail: pmladek at suse.cz
+Lihovarsk? 1060/12                          tel: +420 284 028 952
+190 00 Prague 9                             fax: +420 284 028 951
+Czech Republic                              http://www.suse.cz/
+
+From hfiguiere at novell.com  Mon Jun  4 14:11:51 2007
+From: hfiguiere at novell.com (Hubert Figuiere)
+Date: Mon, 04 Jun 2007 14:11:51 -0400
+Subject: [Open Office] OOo Status digest issue #5 - June 4th 2007
+Message-ID: <1180980711.17087.95.camel@stewie.figuiere.net>
+
+This is the weekly status digest of what the Novell
+OpenOffice team is up to. It will relate changes made to OpenOffice
+(ooo-build or upstream) and list important work in progress.
+
+Week May-28 to June-3 2007:
+
+- Jody Goldberg left the team Friday. He shall be missed.
+
+- Petr updated ooo-build trunk to use the latest version 5.5.0.10 of
+lp_solve. You have to put the new tarball in ooo-build/src. It should be
+enough to run ooo-build/download. You can also get it at
+        http://go-oo.org/packages/SRC680/lp_solve_5.5.0.10_source.tar.gz
+
+- Started migrating go-oo.org to a new ISP. Should be better in the
+future.
+
+- created --enable-separate-helpcontent configure switch that suppresses
+helpcontent2 build & creates help.ins installation file so that we can
+build & install helpcontent2 later as noarch for oo-build
+
+- more XRange work http://wiki.services.openoffice.org/wiki/Range_Object
+Should be complete now.
+
+- Michael Meeks interview on TuxDeluxe: http://tuxdeluxe.org/node/184
+
+
+
+Still In progress:
+
+- evaluating the use of git as a version control system for OpenOffice.
+Main obstacle: windows.
+- OpenXML import / export (Excel and PowerPoint) in the xmlfilter02 CWS:
+the PPTX importer now import text with basic styling. On the Excel side,
+AutoFilter import is going forward.
+- OpenXML (Word) in the writerfilter2 CWS: styles and header/footer are
+the current task.
+- More VBA support (npower7 and npower8 CWS)
+- SoC mentored by Michael for the new GUI layout code.
+- SoC mentored by Jan (kendy) for the SVG import.
+
+
+From pmladek at suse.cz  Tue Jun  5 13:03:30 2007
+From: pmladek at suse.cz (Petr Mladek)
+Date: Tue, 5 Jun 2007 19:03:30 +0200
+Subject: [Open Office] [PATCH] Set LC_ALL to C
+In-Reply-To: <200609212117.56417.ismail@pardus.org.tr>
+References: <200609212117.56417.ismail@pardus.org.tr>
+Message-ID: <200706051903.30620.pmladek@suse.cz>
+
+On Thursday 21 September 2006 20:17, Ismail Donmez wrote:
+> Hi,
+>
+> in bin/build-ooo script sets $LANG to C but this is not enough when $LC_ALL
+> is set so it should set LC_ALL instead. Patch attached.
+
+Heh, I sorted my TODOs and found this one unresolved => did the easy change in 
+ooo-build trunk.
+
+Thanks for patch and I am sorry for the delay ;-)
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SUSE LINUX, s. r. o.                        e-mail: pmladek at suse.cz
+Lihovarsk? 1060/12                          tel: +420 284 028 952
+190 00 Prague 9                             fax: +420 284 028 951
+Czech Republic                              http://www.suse.cz/
+
+From ismail at pardus.org.tr  Tue Jun  5 13:05:17 2007
+From: ismail at pardus.org.tr (Ismail =?iso-8859-15?q?D=F6nmez?=)
+Date: Tue, 5 Jun 2007 20:05:17 +0300
+Subject: [Open Office] [PATCH] Set LC_ALL to C
+In-Reply-To: <200706051903.30620.pmladek@suse.cz>
+References: <200609212117.56417.ismail@pardus.org.tr>
+	<200706051903.30620.pmladek@suse.cz>
+Message-ID: <200706052005.22178.ismail@pardus.org.tr>
+
+On Tuesday 05 June 2007 20:03:30 Petr Mladek wrote:
+> On Thursday 21 September 2006 20:17, Ismail Donmez wrote:
+> > Hi,
+> >
+> > in bin/build-ooo script sets $LANG to C but this is not enough when
+> > $LC_ALL is set so it should set LC_ALL instead. Patch attached.
+>
+> Heh, I sorted my TODOs and found this one unresolved => did the easy change
+> in ooo-build trunk.
+>
+> Thanks for patch and I am sorry for the delay ;-)
+
+Wow been long, if you are interested I can send Pardus Linux integration 
+patches once again ;-)
+
+Regards,
+ismail
+
+-- 
+Perfect is the enemy of good
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 827 bytes
+Desc: This is a digitally signed message part.
+Url : http://lists.ximian.com/pipermail/openoffice/attachments/20070605/323df4af/attachment.bin 
+
+From pmladek at suse.cz  Tue Jun  5 13:27:12 2007
+From: pmladek at suse.cz (Petr Mladek)
+Date: Tue, 5 Jun 2007 19:27:12 +0200
+Subject: [Open Office] [PATCH] Set LC_ALL to C
+In-Reply-To: <200706052005.22178.ismail@pardus.org.tr>
+References: <200609212117.56417.ismail@pardus.org.tr>
+	<200706051903.30620.pmladek@suse.cz>
+	<200706052005.22178.ismail@pardus.org.tr>
+Message-ID: <200706051927.12625.pmladek@suse.cz>
+
+On Tuesday 05 June 2007 19:05, Ismail D?nmez wrote:
+> On Tuesday 05 June 2007 20:03:30 Petr Mladek wrote:
+> > On Thursday 21 September 2006 20:17, Ismail Donmez wrote:
+> > > Hi,
+> > >
+> > > in bin/build-ooo script sets $LANG to C but this is not enough when
+> > > $LC_ALL is set so it should set LC_ALL instead. Patch attached.
+> >
+> > Heh, I sorted my TODOs and found this one unresolved => did the easy
+> > change in ooo-build trunk.
+> >
+> > Thanks for patch and I am sorry for the delay ;-)
+>
+> Wow been long, if you are interested I can send Pardus Linux integration
+> patches once again ;-)
+
+Ah, I see. They were discussed but nobody committed them in the end :-(
+Do you have a current patches against trunk? Please, send me them and I'll do 
+the commit.
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SUSE LINUX, s. r. o.                        e-mail: pmladek at suse.cz
+Lihovarsk? 1060/12                          tel: +420 284 028 952
+190 00 Prague 9                             fax: +420 284 028 951
+Czech Republic                              http://www.suse.cz/
+
+From ismail at pardus.org.tr  Tue Jun  5 13:41:50 2007
+From: ismail at pardus.org.tr (Ismail =?iso-8859-15?q?D=F6nmez?=)
+Date: Tue, 5 Jun 2007 20:41:50 +0300
+Subject: [Open Office] [PATCH] Set LC_ALL to C
+In-Reply-To: <200706051927.12625.pmladek@suse.cz>
+References: <200609212117.56417.ismail@pardus.org.tr>
+	<200706052005.22178.ismail@pardus.org.tr>
+	<200706051927.12625.pmladek@suse.cz>
+Message-ID: <200706052041.50852.ismail@pardus.org.tr>
+
+On Tuesday 05 June 2007 20:27:12 Petr Mladek wrote:
+> On Tuesday 05 June 2007 19:05, Ismail D?nmez wrote:
+> > On Tuesday 05 June 2007 20:03:30 Petr Mladek wrote:
+> > > On Thursday 21 September 2006 20:17, Ismail Donmez wrote:
+> > > > Hi,
+> > > >
+> > > > in bin/build-ooo script sets $LANG to C but this is not enough when
+> > > > $LC_ALL is set so it should set LC_ALL instead. Patch attached.
+> > >
+> > > Heh, I sorted my TODOs and found this one unresolved => did the easy
+> > > change in ooo-build trunk.
+> > >
+> > > Thanks for patch and I am sorry for the delay ;-)
+> >
+> > Wow been long, if you are interested I can send Pardus Linux integration
+> > patches once again ;-)
+>
+> Ah, I see. They were discussed but nobody committed them in the end :-(
+> Do you have a current patches against trunk? Please, send me them and I'll
+> do the commit.
+
+Patches attached.
+
+- build-system-changes.patch : Build system changes to support Pardus as 
+distro
+
+- pardus-only-patches.patch : Pardus Only patches
+
+*.diff files are Pardus only patches
+*.bmp files are splash and about box pic for Pardus
+
+
+Thanks,
+ismail
+
+-- 
+Perfect is the enemy of good
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: OOo_1.1.2_officecfg_PrettyPrinting_enable.diff
+Type: text/x-diff
+Size: 454 bytes
+Desc: not available
+Url : http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0007.bin 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: pardus-default-ExternalMailer.diff
+Type: text/x-diff
+Size: 445 bytes
+Desc: not available
+Url : http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0008.bin 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: pardus-clipart.diff
+Type: text/x-diff
+Size: 486 bytes
+Desc: not available
+Url : http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0009.bin 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: openabout_pardus.bmp
+Type: image/x-bmp
+Size: 118682 bytes
+Desc: not available
+Url : http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0010.bin 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: openintro_pardus.bmp
+Type: image/x-bmp
+Size: 396056 bytes
+Desc: not available
+Url : http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0011.bin 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: pardus-only-patches.patch
+Type: text/x-diff
+Size: 926 bytes
+Desc: not available
+Url : http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0012.bin 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: build-system-changes.patch
+Type: text/x-diff
+Size: 2136 bytes
+Desc: not available
+Url : http://lists.ximian.com/pipermail/openoffice/attachments/20070605/3296a970/attachment-0013.bin 
+
+From pmladek at suse.cz  Tue Jun  5 14:30:32 2007
+From: pmladek at suse.cz (Petr Mladek)
+Date: Tue, 5 Jun 2007 20:30:32 +0200
+Subject: [Open Office] [PATCH] Set LC_ALL to C
+In-Reply-To: <200706052041.50852.ismail@pardus.org.tr>
+References: <200609212117.56417.ismail@pardus.org.tr>
+	<200706051927.12625.pmladek@suse.cz>
+	<200706052041.50852.ismail@pardus.org.tr>
+Message-ID: <200706052030.33024.pmladek@suse.cz>
+
+On Tuesday 05 June 2007 19:41, Ismail D?nmez wrote:
+> Patches attached.
+>
+> - build-system-changes.patch : Build system changes to support Pardus as
+> distro
+>
+> - pardus-only-patches.patch : Pardus Only patches
+>
+> *.diff files are Pardus only patches
+> *.bmp files are splash and about box pic for Pardus
+
+Committed to trunk.
+
+I hope that you are fine with my comments in the ChangeLog ;-) We need to do 
+some commits under your name. Then you would get write access to the GNOME 
+svn...
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SUSE LINUX, s. r. o.                        e-mail: pmladek at suse.cz
+Lihovarsk? 1060/12                          tel: +420 284 028 952
+190 00 Prague 9                             fax: +420 284 028 951
+Czech Republic                              http://www.suse.cz/
+
+From ismail at pardus.org.tr  Tue Jun  5 14:43:04 2007
+From: ismail at pardus.org.tr (Ismail =?iso-8859-15?q?D=F6nmez?=)
+Date: Tue, 5 Jun 2007 21:43:04 +0300
+Subject: [Open Office] [PATCH] Set LC_ALL to C
+In-Reply-To: <200706052030.33024.pmladek@suse.cz>
+References: <200609212117.56417.ismail@pardus.org.tr>
+	<200706052041.50852.ismail@pardus.org.tr>
+	<200706052030.33024.pmladek@suse.cz>
+Message-ID: <200706052143.10289.ismail@pardus.org.tr>
+
+On Tuesday 05 June 2007 21:30:32 Petr Mladek wrote:
+> On Tuesday 05 June 2007 19:41, Ismail D?nmez wrote:
+> > Patches attached.
+> >
+> > - build-system-changes.patch : Build system changes to support Pardus as
+> > distro
+> >
+> > - pardus-only-patches.patch : Pardus Only patches
+> >
+> > *.diff files are Pardus only patches
+> > *.bmp files are splash and about box pic for Pardus
+>
+> Committed to trunk.
+>
+> I hope that you are fine with my comments in the ChangeLog ;-) We need to
+> do some commits under your name. Then you would get write access to the
+> GNOME svn...
+
+Thats great thanks! Looking forward to work closer with you guys.
+
+Regards,
+ismail
+
+-- 
+Perfect is the enemy of good
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 827 bytes
+Desc: This is a digitally signed message part.
+Url : http://lists.ximian.com/pipermail/openoffice/attachments/20070605/b6107d78/attachment.bin 
+
+From ismail at pardus.org.tr  Thu Jun  7 19:50:39 2007
+From: ismail at pardus.org.tr (Ismail =?utf-8?q?D=C3=B6nmez?=)
+Date: Fri, 8 Jun 2007 02:50:39 +0300
+Subject: [Open Office] Disabled icons looks ugly
+Message-ID: <200706080250.44093.ismail@pardus.org.tr>
+
+Hi all,
+
+Looks like a regression from 2.1, I built from ooo-build 2.2 branch and 
+disabled icons (Save icon for example) look very ugly now, see the 
+screenshot. Did anyone experience a similar problem?
+
+Regards,
+ismail
+
+-- 
+Perfect is the enemy of good
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ugly.png
+Type: image/png
+Size: 29682 bytes
+Desc: not available
+Url : http://lists.ximian.com/pipermail/openoffice/attachments/20070608/539341c5/attachment-0001.png 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 827 bytes
+Desc: This is a digitally signed message part.
+Url : http://lists.ximian.com/pipermail/openoffice/attachments/20070608/539341c5/attachment-0001.bin 
+
+From rail at openoffice.org  Fri Jun  8 01:41:18 2007
+From: rail at openoffice.org (Rail Aliev)
+Date: Fri, 8 Jun 2007 09:41:18 +0400
+Subject: [Open Office] Disabled icons looks ugly
+In-Reply-To: <200706080250.44093.ismail@pardus.org.tr>
+References: <200706080250.44093.ismail@pardus.org.tr>
+Message-ID: <200706080941.18501.rail@openoffice.org>
+
+On Friday 08 June 2007 03:50:39 Ismail D?nmez wrote:
+> Hi all,
+>
+> Looks like a regression from 2.1, I built from ooo-build 2.2 branch and
+> disabled icons (Save icon for example) look very ugly now, see the
+> screenshot. Did anyone experience a similar problem?
+
+Is [ Icons ] section and especially gui-insensitive.diff enabled in your 
+build?
+See http://www.openoffice.org/issues/show_bug.cgi?id=35555 for additional 
+information about this patch.
+
+-- 
+Best regards,
+Rail Aliev
+
+Tomorrow, this will be part of the unchangeable past but fortunately,
+it can still be changed today.
+
+From ismail at pardus.org.tr  Fri Jun  8 08:30:17 2007
+From: ismail at pardus.org.tr (Ismail =?utf-8?q?D=C3=B6nmez?=)
+Date: Fri, 8 Jun 2007 15:30:17 +0300
+Subject: [Open Office] Disabled icons looks ugly
+In-Reply-To: <200706080941.18501.rail@openoffice.org>
+References: <200706080250.44093.ismail@pardus.org.tr>
+	<200706080941.18501.rail@openoffice.org>
+Message-ID: <200706081530.17995.ismail@pardus.org.tr>
+
+Hi Rail,
+On Friday 08 June 2007 08:41:18 Rail Aliev wrote:
+> On Friday 08 June 2007 03:50:39 Ismail D?nmez wrote:
+> > Hi all,
+> >
+> > Looks like a regression from 2.1, I built from ooo-build 2.2 branch and
+> > disabled icons (Save icon for example) look very ugly now, see the
+> > screenshot. Did anyone experience a similar problem?
+>
+> Is [ Icons ] section and especially gui-insensitive.diff enabled in your
+> build?
+> See http://www.openoffice.org/issues/show_bug.cgi?id=35555 for additional
+> information about this patch.
+
+Icons is in Common section so its included via LinuxCommon, or I got something 
+wrong. I guess you can't reproduce this?
+
+Regards,
+ismail
+
+-- 
+Perfect is the enemy of good
+
+From pmladek at suse.cz  Fri Jun  8 09:47:50 2007
+From: pmladek at suse.cz (Petr Mladek)
+Date: Fri, 8 Jun 2007 15:47:50 +0200
+Subject: [Open Office] Disabled icons looks ugly
+In-Reply-To: <200706081530.17995.ismail@pardus.org.tr>
+References: <200706080250.44093.ismail@pardus.org.tr>
+	<200706080941.18501.rail@openoffice.org>
+	<200706081530.17995.ismail@pardus.org.tr>
+Message-ID: <200706081547.50630.pmladek@suse.cz>
+
+On Friday 08 June 2007 14:30, Ismail D?nmez wrote:
+> Hi Rail,
+>
+> On Friday 08 June 2007 08:41:18 Rail Aliev wrote:
+> > On Friday 08 June 2007 03:50:39 Ismail D?nmez wrote:
+> > > Hi all,
+> > >
+> > > Looks like a regression from 2.1, I built from ooo-build 2.2 branch and
+> > > disabled icons (Save icon for example) look very ugly now, see the
+> > > screenshot. Did anyone experience a similar problem?
+> >
+> > Is [ Icons ] section and especially gui-insensitive.diff enabled in your
+> > build?
+> > See http://www.openoffice.org/issues/show_bug.cgi?id=35555 for additional
+> > information about this patch.
+>
+> Icons is in Common section so its included via LinuxCommon, or I got
+> something wrong. I guess you can't reproduce this?
+
+Hmm, I see the problem as well. Kendy told me that he would found time to look 
+at it the following week.
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SUSE LINUX, s. r. o.                        e-mail: pmladek at suse.cz
+Lihovarsk? 1060/12                          tel: +420 284 028 952
+190 00 Prague 9                             fax: +420 284 028 951
+Czech Republic                              http://www.suse.cz/
+
+From rail at openoffice.org  Sat Jun  9 11:19:12 2007
+From: rail at openoffice.org (Rail Aliev)
+Date: Sat, 9 Jun 2007 19:19:12 +0400
+Subject: [Open Office] Crash in ooo-build-2-2
+Message-ID: <200706091919.12563.rail@openoffice.org>
+
+Hi.
+
+Can somebody backport (copy :) ) sfx2-pre-and-postprocess-crash-fix.diff from 
+trunk to ooo-build-2-2 branch? See i#71939 for more information.
+
+
+-- 
+Best regards,
+Rail Aliev
+
+From rene at debian.org  Mon Jun 11 04:55:52 2007
+From: rene at debian.org (Rene Engelhard)
+Date: Mon, 11 Jun 2007 10:55:52 +0200
+Subject: [Open Office] Crash in ooo-build-2-2
+In-Reply-To: <200706091919.12563.rail@openoffice.org>
+References: <200706091919.12563.rail@openoffice.org>
+Message-ID: <20070611085552.GA16184@rene-engelhard.de>
+
+Rail Aliev wrote:
+> Can somebody backport (copy :) ) sfx2-pre-and-postprocess-crash-fix.diff from 
+> trunk to ooo-build-2-2 branch? See i#71939 for more information.
+
+done.
+
+Gr??e/Regards,
+
+Ren?
+-- 
+ .''`.  Ren? Engelhard -- Debian GNU/Linux Developer
+ : :' : http://www.debian.org | http://people.debian.org/~rene/
+ `. `'  rene at debian.org | GnuPG-Key ID: 248AEB73
+   `-   Fingerprint: 41FA F208 28D4 7CA5 19BB  7AD9 F859 90B0 248A EB73
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: Digital signature
+Url : http://lists.ximian.com/pipermail/openoffice/attachments/20070611/e38a42f5/attachment.bin 
+
+From hfiguiere at novell.com  Mon Jun 11 11:00:53 2007
+From: hfiguiere at novell.com (Hubert Figuiere)
+Date: Mon, 11 Jun 2007 11:00:53 -0400
+Subject: [Open Office] OOo Status digest issue #6 - June 11th 2007
+Message-ID: <1181574053.17087.226.camel@stewie.figuiere.net>
+
+This is the weekly status digest of what the Novell
+OpenOffice team is up to. It will relate changes made to OpenOffice
+(ooo-build or upstream) and list important work in progress.
+
+Week June-4 to June-10 2007:
+
+- CJK features (see http://wiki.services.openoffice.org/wiki/CJK_Group)
+
+- more EMF+ import
+
+- created a cws-namespacefixes.diff (contains FastParser) extract for SoC
+
+- qatesttool work
+
+- released ooo-build-2.2.0.2 and ooo-build-2.1.16 (SuSE packages)
+
+- wpg import: added support for importing of bitmap data inside WPG files
+
+- lxr migration suspended for now.
+
+
+Still In progress:
+
+- evaluating the use of git as a version control system for OpenOffice.
+Main obstacle: windows.
+- OpenXML import / export (Excel and PowerPoint) in the xmlfilter02 CWS:
+the PPTX importer now import text with basic styling. 
+- OpenXML (Word) in the writerfilter2 CWS.
+- More VBA support (npower7 and npower8 CWS)
+- SoC mentored by Michael for the new GUI layout code.
+- SoC mentored by Jan (kendy) for the SVG import.
+
+
+From chat95 at mac.com  Tue Jun 12 01:17:49 2007
+From: chat95 at mac.com (Maho NAKATA)
+Date: Tue, 12 Jun 2007 14:17:49 +0900 (JST)
+Subject: [Open Office] OOo Status digest issue #6 - June 11th 2007
+In-Reply-To: <1181574053.17087.226.camel@stewie.figuiere.net>
+References: <1181574053.17087.226.camel@stewie.figuiere.net>
+Message-ID: <20070612.141749.78705780.chat95@mac.com>
+
+From: Hubert Figuiere <hfiguiere at novell.com>
+Subject: [Open Office] OOo Status digest issue #6 - June 11th 2007
+Date: Mon, 11 Jun 2007 11:00:53 -0400
+
+> - qatesttool work
+I'd like to ask the developer what are done on qatesttool.
+as I'm the qa project lead.
+
+Thanks,
+-- Nakata Maho (maho at FreeBSD.org)
+
+From kendy at suse.cz  Tue Jun 12 12:29:00 2007
+From: kendy at suse.cz (Jan Holesovsky)
+Date: Tue, 12 Jun 2007 18:29:00 +0200
+Subject: [Open Office] OOo Status digest issue #6 - June 11th 2007
+In-Reply-To: <20070612.141749.78705780.chat95@mac.com>
+References: <1181574053.17087.226.camel@stewie.figuiere.net>
+	<20070612.141749.78705780.chat95@mac.com>
+Message-ID: <200706121829.00244.kendy@suse.cz>
+
+Hi Maho,
+
+On Tuesday 12 June 2007 07:17, Maho NAKATA wrote:
+> From: Hubert Figuiere <hfiguiere at novell.com>
+> Subject: [Open Office] OOo Status digest issue #6 - June 11th 2007
+> Date: Mon, 11 Jun 2007 11:00:53 -0400
+>
+> > - qatesttool work
+>
+> I'd like to ask the developer what are done on qatesttool.
+> as I'm the qa project lead.
+
+It was not really a work on qatesttool, but a work based on qatesttool 
+results ;-)  qatesttool uncovered a 64bit problem here, and I fixed that:
+
+http://www.openoffice.org/issues/show_bug.cgi?id=78198
+
+Regards,
+Jan
+
+From hfiguiere at novell.com  Tue Jun 12 18:33:41 2007
+From: hfiguiere at novell.com (Hubert Figuiere)
+Date: Tue, 12 Jun 2007 18:33:41 -0400
+Subject: [Open Office] OOo Status digest issue #6 - June 11th 2007
+In-Reply-To: <200706121829.00244.kendy@suse.cz>
+References: <1181574053.17087.226.camel@stewie.figuiere.net>
+	<20070612.141749.78705780.chat95@mac.com>
+	<200706121829.00244.kendy@suse.cz>
+Message-ID: <1181687621.25835.19.camel@stewie.figuiere.net>
+
+On Tue, 2007-06-12 at 18:29 +0200, Jan Holesovsky wrote:
+> It was not really a work on qatesttool, but a work based on
+> qatesttool 
+> results ;-)  qatesttool uncovered a 64bit problem here, and I fixed
+> that:
+> 
+> http://www.openoffice.org/issues/show_bug.cgi?id=78198
+> 
+
+Which lead to the question:
+
+Shouldn't we really change the container instead?
+
+I know it is work, but typically this is the kind of bad type cast that
+should be avoided as much as possible.
+
+
+Hub
+
+
+From kendy at suse.cz  Tue Jun 12 18:43:13 2007
+From: kendy at suse.cz (Jan Holesovsky)
+Date: Wed, 13 Jun 2007 00:43:13 +0200
+Subject: [Open Office] OOo Status digest issue #6 - June 11th 2007
+In-Reply-To: <1181687621.25835.19.camel@stewie.figuiere.net>
+References: <1181574053.17087.226.camel@stewie.figuiere.net>
+	<200706121829.00244.kendy@suse.cz>
+	<1181687621.25835.19.camel@stewie.figuiere.net>
+Message-ID: <200706130043.13307.kendy@suse.cz>
+
+Hi Hub
+
+On Wednesday 13 June 2007 00:33, Hubert Figuiere wrote:
+> On Tue, 2007-06-12 at 18:29 +0200, Jan Holesovsky wrote:
+> > It was not really a work on qatesttool, but a work based on
+> > qatesttool
+> > results ;-)  qatesttool uncovered a 64bit problem here, and I fixed
+> > that:
+> >
+> > http://www.openoffice.org/issues/show_bug.cgi?id=78198
+>
+> Which lead to the question:
+>
+> Shouldn't we really change the container instead?
+>
+> I know it is work, but typically this is the kind of bad type cast that
+> should be avoided as much as possible.
+
+Well, generally there's nothing bad with having the possibility to be able to 
+count to ULONG_MAX; it is just a bit too much in 64bit case ;-), and that's 
+why I thought we could change Container - on 32bit, 32bit ULONG_MAX is 
+sufficient as well.
+
+OTOH - ULONG is OK there as long as it is used consistently, and that is fixed 
+by the patch, so - I don't think it is worth the effort ;-)
+
+Regards,
+Jan
+
+From kendy at suse.cz  Thu Jun 14 06:01:20 2007
+From: kendy at suse.cz (Jan Holesovsky)
+Date: Thu, 14 Jun 2007 12:01:20 +0200
+Subject: [Open Office] Tip to speed up a developer build
+Message-ID: <200706141201.20807.kendy@suse.cz>
+
+Hi,
+
+If you are developping a feature, and do not care about the help at all, 
+configure with --enable-separate-helpcontent.  As a sideeffect it disables 
+the helpcontent2, and thus speeds the entire build up by considerable 
+time ;-) [even in the English-only case].
+
+Regards,
+Jan
+
+From fridrich.strba at bluewin.ch  Fri Jun 15 03:56:58 2007
+From: fridrich.strba at bluewin.ch (Fridrich Strba)
+Date: Fri, 15 Jun 2007 09:56:58 +0200
+Subject: [Open Office] Some little information about typedetection
+Message-ID: <4672464A.4090303@bluewin.ch>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hello, good people!
+
+I have an information concerning OOo type detection that, although being
+in the DeveloperGuide, might be useful to be summarized in human
+language for some of us.
+
+There is one service doing the "deep" type detection inside OOo:
+com.sun.star.document.ExtendedTypeDetection.
+
+A component that supports it must have a
+rtl::OUString SAL_CALL detect( com::sun::star::uno::Sequence<
+com::sun::star::beans::PropertyValue >& Descriptor ) throw(
+com::sun::star::uno::RuntimeException )
+method implemented. This method should take the MediaDescriptor
+<http://api.openoffice.org/docs/common/ref/com/sun/star/document/MediaDescriptor.html>
+and output the type-name if the document was detected and an empty
+::rtl::OUString, if not. It should also add any collected information
+about the document into the MediaDescriptor (From experience, OOo will
+not crash if it does not :-) ).
+The type-name returning by this method should correspond to the
+corresponding oor:name given in the
+filter/source/config/fragments/types/*.xcu corresponding to the detected
+type.
+
+This component will be considered:
+1) for confirming the "flat" type detection results. "Flat" type
+detection is a type detection based on document extension and/or
+mime-type. For a component to be called for this type of detection, it
+has to be declared as <DetectService> in the same xcu file and is fired
+for <Extension>s and/or <MediaType>s mentioned in the same xcu file.
+This assures that a filter capable to handle a format will not have to
+handle a garbage that accidentally is declared with wrong mime-type
+and/or has a wrong extension.
+2) if this the type's <DetectService> does not confirm the result of
+"flat" detection, the detect method of all components' supporting the
+com.sun.star.document.ExtendedTypeDetection will be called, component
+after component, until there is one that detects it.
+The filter that will be used is the component mentioned as
+<FilterService> of the filter node
+(filter/source/config/fragments/filters/*.xcu) that is <PreferedFilter>
+for the detected type.
+
+If none of the components recognizes the document, one will be presented
+with the filter-selection dialogue or with the encoded-text dialogue (in
+some cases, because the writer filter is over-keen).
+
+Ok, this is some technical information that I deemed good to keep
+somewhere where Google crawler can find it. Everything is documented in
+the DeveloperGuide, but it is >1000 pages, so...
+
+Cheers
+
+Fridrich
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+Comment: Using GnuPG with SUSE - http://enigmail.mozdev.org
+
+iD8DBQFGckZKu9a1imXPdA8RAh2NAJ93Uql+I+r8rBtUSTRzq9yMmKxbAgCghexK
+VxH/g6jzhmxUlXtVQWEVQr0=
+=Hame
+-----END PGP SIGNATURE-----
+
+
+From kendy at suse.cz  Mon Jun 18 04:45:40 2007
+From: kendy at suse.cz (Jan Holesovsky)
+Date: Mon, 18 Jun 2007 10:45:40 +0200
+Subject: [Open Office] Update to m216
+Message-ID: <200706181045.40172.kendy@suse.cz>
+
+Hi,
+
+I am starting an update to m216 & I plan to remove support for everything 
+older than that.  I'll commit in several hours, so you still have time to 
+stop me if necessary ;-)
+
+Regards,
+Jan
+
+From hfiguiere at novell.com  Mon Jun 18 10:12:45 2007
+From: hfiguiere at novell.com (Hubert Figuiere)
+Date: Mon, 18 Jun 2007 10:12:45 -0400
+Subject: [Open Office] Update to m216
+In-Reply-To: <200706181045.40172.kendy@suse.cz>
+References: <200706181045.40172.kendy@suse.cz>
+Message-ID: <1182175965.25835.75.camel@stewie.figuiere.net>
+
+On Mon, 2007-06-18 at 10:45 +0200, Jan Holesovsky wrote:
+> Hi,
+> 
+> I am starting an update to m216 & I plan to remove support for everything 
+> older than that.  I'll commit in several hours, so you still have time to 
+> stop me if necessary ;-)
+
+
+Does m216 work and build on 64-bits?
+
+I tried m215 and it still didn't.
+
+Hub
+
+
+From kendy at suse.cz  Mon Jun 18 10:43:08 2007
+From: kendy at suse.cz (Jan Holesovsky)
+Date: Mon, 18 Jun 2007 16:43:08 +0200
+Subject: [Open Office] Update to m216
+In-Reply-To: <1182175965.25835.75.camel@stewie.figuiere.net>
+References: <200706181045.40172.kendy@suse.cz>
+	<1182175965.25835.75.camel@stewie.figuiere.net>
+Message-ID: <200706181643.09125.kendy@suse.cz>
+
+Hi Hub,
+
+On Monday 18 June 2007 16:12, Hubert Figuiere wrote:
+
+> > I am starting an update to m216 & I plan to remove support for everything
+> > older than that.  I'll commit in several hours, so you still have time to
+> > stop me if necessary ;-)
+>
+> Does m216 work and build on 64-bits?
+>
+> I tried m215 and it still didn't.
+
+No idea yet...  I make the build fixes as they are needed; and so far I got to 
+removing the obsolete stuff only; will finish it tomorrow, so don't hold your 
+breath :-)
+
+Regards,
+Jan
+
+From hfiguiere at novell.com  Mon Jun 18 11:24:33 2007
+From: hfiguiere at novell.com (Hubert Figuiere)
+Date: Mon, 18 Jun 2007 11:24:33 -0400
+Subject: [Open Office] Update to m216
+In-Reply-To: <200706181643.09125.kendy@suse.cz>
+References: <200706181045.40172.kendy@suse.cz>
+	<1182175965.25835.75.camel@stewie.figuiere.net>
+	<200706181643.09125.kendy@suse.cz>
+Message-ID: <1182180273.25835.78.camel@stewie.figuiere.net>
+
+On Mon, 2007-06-18 at 16:43 +0200, Jan Holesovsky wrote:
+> 
+> No idea yet...  I make the build fixes as they are needed; and so far
+> I got to 
+> removing the obsolete stuff only; will finish it tomorrow, so don't
+> hold your 
+> breath :-) 
+
+#i77422 is still an issue. The patches attached in the bug still fail.
+
+
+
+Hub
+
+
+From hfiguiere at novell.com  Mon Jun 18 13:21:44 2007
+From: hfiguiere at novell.com (Hubert Figuiere)
+Date: Mon, 18 Jun 2007 13:21:44 -0400
+Subject: [Open Office] OOo Status digest issue #7 - June 18th 2007
+Message-ID: <1182187304.25835.83.camel@stewie.figuiere.net>
+
+This is the weekly status digest of what the Novell
+OpenOffice team is up to. It will relate changes made to OpenOffice
+(ooo-build or upstream) and list important work in progress.
+
+Week June-11 to June-17 2007:
+
+- various 64bits fixes (upstream CWS sixtyfour12)
+
+- Released OO 2.1 for Windows on http://download.novell.com/
+
+- Fixed a problem with the wpg importer/ It resulted in a
+locale-dependency in OdgExporter.cxx. Same in libwpd and libwps. Likely
+to be a release libwpd-0.8.10
+
+- Fixed gnome-screensaver crasher
+
+- Added a new VBA interface 'XNames' to implement the Workbook.Names
+property in VBA
+
+- More EMF+ work
+
+
+
+Still In progress:
+
+- evaluating the use of git as a version control system for OpenOffice.
+Main obstacle: windows.
+- OpenXML import / export (Excel and PowerPoint) in the xmlfilter02 CWS:
+the PPTX importer now import text. 
+- OpenXML (Word) in the writerfilter2 CWS.
+- More VBA support
+- SoC mentored by Michael for the new GUI layout code.
+- SoC mentored by Jan (kendy) for the SVG import.
+
+
+From jjiao at novell.com  Mon Jun 18 22:11:45 2007
+From: jjiao at novell.com (Jian Hua Jiao)
+Date: Mon, 18 Jun 2007 20:11:45 -0600
+Subject: [Open Office] OOo Status digest issue #7 - June 18th 2007
+In-Reply-To: <1182187304.25835.83.camel@stewie.figuiere.net>
+References: <1182187304.25835.83.camel@stewie.figuiere.net>
+Message-ID: <4677ABE1.567B.005B.0@novell.com>
+
+
+Hi,
+
+> 
+> -  Added a new VBA interface 'XNames' to implement the Workbook.Names
+> property in VBA
+> 
+ where does the interface, I can not find it in ooo-build.
+
+Jiao Jiaohua
+
+
+From chat95 at mac.com  Thu Jun 21 20:31:29 2007
+From: chat95 at mac.com (Maho NAKATA)
+Date: Fri, 22 Jun 2007 09:31:29 +0900 (JST)
+Subject: [Open Office] VBA part build failure..on FreeBSD
+Message-ID: <20070622.093129.67876357.chat95@mac.com>
+
+Hello Noel,
+
+Build has been failed for ooo-build-2.2.0.2.tar.gz with FreeBSD 6.2 + patches 
+like following:
+
+ccache g++-ooo -fmessage-length=0 -c -Os -fno-strict-aliasing
+   -D_FILE_OFFSET_BITS=no -I.  -I../../../unxfbsdi.pro/inc/vbaobj -I../inc -I../../../inc/pch -I../../../inc -I../../../unx/inc -I../../../unxfbsdi.pro/inc -I. -I/work/ports/editors/ooo-build/work/OOF680_m18/solver/680/unxfbsdi.pro/inc/stl -I/work/ports/editors/ooo-build/work/OOF680_m18/solver/680/unxfbsdi.pro/inc/external -I/work/ports/editors/ooo-build/work/OOF680_m18/solver/680/unxfbsdi.pro/inc -I/work/ports/editors/ooo-build/work/OOF680_m18/solenv/unxfbsdi/inc -I/work/ports/editors/ooo-build/work/OOF680_m18/solenv/inc -I/work/ports/editors/ooo-build/work/OOF680_m18/res -I/work/ports/editors/ooo-build/work/OOF680_m18/solver/680/unxfbsdi.pro/inc/stl -I/work/ports/editors/ooo-build/work/OOF680_m18/solenv/inc/Xp31 -I/usr/local/diablo-jdk1.5.0/include
+ -I/usr/local/diablo-jdk1.5.0/include/freebsd -I/usr/local/diablo-jdk1.5.0/include/bsd -I/usr/local/diablo-jdk1.5.0/include/linux -I/usr/local/diablo-jdk1.5.0/include/native_threads/include -I/usr/local/include -I/usr/local/include
+     -I/work/ports/editors/ooo-build/work/OOF680_m18/solver/680/unxfbsdi.pro/inc/offuh -I. -I../../../res -I. -pipe -mtune=pentiumpro -fvisibility-inlines-hidden -g1 -Wall -Wextra -Wendif-labels -Wshadow -Wno-ctor-dtor-privacy     -Wno-non-virtual-dtor   -fpic -DFREEBSD -DUNX -DVCL -DGCC -DC341 -DINTEL -DCVER=C341 -DX86  -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1 -DSTLPORT_VERSION=450 -DHAVE_GCC_VISIBILITY_FEATURE -D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DGXX_INCLUDE_PATH=/usr/local/gcc-ooo/i386-portbld-freebsd6.2/3.4.1/include/c++
+ -DSUPD=680 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DGSTREAMER -DCUI -DSOLAR_JAVA -DOOF680=OOF680   -DSHAREDLIB -D_DLL_  -DMULTITHREAD -fexceptions -fno-enforce-eh-specs -DEXCEPTIONS_ON  -o ../../../unxfbsdi.pro/slo/vbaaxis.o /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx 
+
+/work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:50:68: macro "MIN" requires 2 arguments, but only 1 given
+/work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:51:68: macro "MAX" requires 2 arguments, but only 1 given
+dmake:  Error code 1, while making '../../../unxfbsdi.pro/slo/vbaaxis.obj'
+'---* tg_merge.mk *---'
+
+----------
+actually following part is the essential:
+
+/work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:50:68: macro "MIN" requires 2 arguments, but only 1 given
+/work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:51:68: macro "MAX" requires 2 arguments, but only 1 given
+
+Is it related to
+http://gcc.gnu.org/bugzilla/show_bug.cgi?id=29989
+?
+
+Any suggestion is really appreciated. I'm using
+% gcc-ooo -v
+Reading specs from /usr/local/gcc-ooo/i386-portbld-freebsd6.2/3.4.1/lib/gcc/i386-portbld-freebsd6.2/3.4.1/specs
+Configured with: ./..//gcc-3.4.1/configure --disable-nls --with-system-zlib --with-libiconv-prefix=/usr/local --program-suffix=-ooo --libdir=/usr/local/gcc-ooo/i386-portbld-freebsd6.2/3.4.1/lib --libexecdir=/usr/local/gcc-ooo/i386-portbld-freebsd6.2/3.4.1/libexec --with-gxx-include-dir=/usr/local/gcc-ooo/i386-portbld-freebsd6.2/3.4.1/include/c++/ --disable-shared --prefix=/usr/local i386-portbld-freebsd6.2
+Thread model: posix
+gcc version 3.4.1 [FreeBSD]
+
+actually gcc-3.4.1+enum fix+visibility patch.
+
+Thanks,
+-- Nakata Maho (maho at FreeBSD.org)
+
+From rail at openoffice.org  Fri Jun 22 04:34:36 2007
+From: rail at openoffice.org (Rail Aliev)
+Date: Fri, 22 Jun 2007 12:34:36 +0400
+Subject: [Open Office] VBA part build failure..on FreeBSD
+In-Reply-To: <20070622.093129.67876357.chat95@mac.com>
+References: <20070622.093129.67876357.chat95@mac.com>
+Message-ID: <200706221234.36896.rail@openoffice.org>
+
+On Friday 22 June 2007 04:31:29 Maho NAKATA wrote:
+> /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:
+>50:68: macro "MIN" requires 2 arguments, but only 1 given
+> /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:
+>51:68: macro "MAX" requires 2 arguments, but only 1 given
+
+This helped me. Maybe it is a dirty hack but it worked. :)
+FreeBSD 6.2 RELEASE.
+
+--- sc/source/ui/vba/vbaaxis.cxx.orig   2007-05-26 23:43:22.000000000 +0400
++++ sc/source/ui/vba/vbaaxis.cxx    2007-05-26 23:43:49.000000000 +0400
+@@ -39,6 +39,8 @@
+ #include <org/openoffice/excel/XlScaleType.hpp>
+ #include "vbaaxistitle.hxx"
+ #include "vbachart.hxx"
++#undef MIN
++#undef MAX
+ using namespace ::com::sun::star;
+ using namespace ::org::openoffice;
+ using namespace ::org::openoffice::excel::XlAxisCrosses;
+
+
+-- 
+Best regards,
+Rail Aliev
+
+Be different: conform.
+
+From noel.power at novell.com  Fri Jun 22 04:36:46 2007
+From: noel.power at novell.com (Noel Power)
+Date: Fri, 22 Jun 2007 09:36:46 +0100
+Subject: [Open Office] VBA part build failure..on FreeBSD
+In-Reply-To: <20070622.093129.67876357.chat95@mac.com>
+References: <20070622.093129.67876357.chat95@mac.com>
+Message-ID: <1182501406.28951.277.camel@trouble2.site>
+
+Hi Maho
+On Fri, 2007-06-22 at 09:31 +0900, Maho NAKATA wrote:
+
+> ----------
+> actually following part is the essential:
+> 
+> /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:50:68: macro "MIN" requires 2 arguments, but only 1 given
+> /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:51:68: macro "MAX" requires 2 arguments, but only 1 given
+hmmm, it would the compiler/included files combination results in
+macro(s) MIN and MAX ( from where I wonder? )  conflicting with the
+local definitions, I would change MIN & MAX to something like MIN_VAL &
+MAX_VAL ( and also change the value, "AutoOrigin" which is clearly ...
+wrong ) I presume this is some variant of ooo-build ? let me know if
+this fixes it for you, then I will fix it here ( /me has too many
+different branches ooo-build, cws versions etc. to track )
+> 
+> Is it related to
+> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=29989
+> ?
+no idea :-) but looks like it might have something to do with it
+
+Noel
+
+
+-- 
+Noel Power
+OpenOffice Developer 
+Novell Ireland Software Limited
+Corrig Court, Corrig Road
+Sandyford Business Estate, Sandyford
+Dublin 18
+noel.power at novell.com  
+
+Novell, Inc. 
+Software for the Open Enterprise 
+www.novell.com/open 
+SUSE? Linux Enterprise 10
+Your Linux is ready
+www.novell.com/linux 
+
+Registered No: 223694
+
+
+From kamihir at freemail.hu  Fri Jun 22 07:04:20 2007
+From: kamihir at freemail.hu (=?ISO-8859-2?Q?KamiH=EDr?=)
+Date: Fri, 22 Jun 2007 13:04:20 +0200
+Subject: [Open Office] Caption related ask - Hungarian community builds
+Message-ID: <467BACB4.4080301@freemail.hu>
+
+Sziasztok! Hi!
+
+Can you be so kind to check out this issue?
+http://www.openoffice.org/issues/show_bug.cgi?id=61007
+This is the one of our issue why we have to build own Hungarian 
+OpenOffice.org builds - FSF.hu builds. Can you help us to correct this 
+issue? It is very important issue to us. A patch is attacvhed, but it 
+have to make compatible with other languages.
+
+Other patches, arent so critical, but a review might comes well. You can 
+check them here:
+http://hu.openoffice.org/source/browse/hu/src/2.2.1/Patches/
+
+I alo have some more issues. I know you are ovestsressed by issues, but 
+can you please check and resolve these:
+72222 <http://qa.openoffice.org/issues/show_bug.cgi?id=72222> 
+DEFECT 	P3 	All 	cl 	STARTE 	
+	gallery with external files doesn't work if we install it as
+
+I am really interested in this one, because the current situation makes 
+galleries with extarnal images unusable.
+71705 <http://qa.openoffice.org/issues/show_bug.cgi?id=71705> 
+ENHANC 	P3 	All 	requirements 	UNCONF 	
+	Provide a way to use localization in gallery extensions
+
+
+
+
+Best regards,
+KAMI
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: http://lists.ximian.com/pipermail/openoffice/attachments/20070622/33e3df4b/attachment.html 
+
+From hfiguiere at novell.com  Fri Jun 22 12:01:13 2007
+From: hfiguiere at novell.com (Hubert Figuiere)
+Date: Fri, 22 Jun 2007 12:01:13 -0400
+Subject: [Open Office] VBA part build failure..on FreeBSD
+In-Reply-To: <1182501406.28951.277.camel@trouble2.site>
+References: <20070622.093129.67876357.chat95@mac.com>
+	<1182501406.28951.277.camel@trouble2.site>
+Message-ID: <1182528073.25835.157.camel@stewie.figuiere.net>
+
+On Fri, 2007-06-22 at 09:36 +0100, Noel Power wrote:
+> > ----------
+> > actually following part is the essential:
+> > 
+> > /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:50:68: macro "MIN" requires 2 arguments, but only 1 given
+> > /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:51:68: macro "MAX" requires 2 arguments, but only 1 given
+> hmmm, it would the compiler/included files combination results in
+> macro(s) MIN and MAX ( from where I wonder? )  conflicting with the
+> local definitions, I would change MIN & MAX to something like MIN_VAL
+> &
+> MAX_VAL ( and also change the value, "AutoOrigin" which is clearly ...
+> wrong ) I presume this is some variant of ooo-build ? let me know if
+> this fixes it for you, then I will fix it here ( /me has too many
+> different branches ooo-build, cws versions etc. to track ) 
+
+Lot of includes define MIN and MAX as macro to return the minimum or
+maximum of the 2 parameters.
+
+So yeah it would be better to use something for values.
+
+And also recommend using std::min and std::max instead of the macros.
+
+
+Hub
+
+
+From chat95 at mac.com  Sun Jun 24 20:50:34 2007
+From: chat95 at mac.com (Maho NAKATA)
+Date: Mon, 25 Jun 2007 09:50:34 +0900 (JST)
+Subject: [Open Office] VBA part build failure..on FreeBSD
+In-Reply-To: <200706221234.36896.rail@openoffice.org>
+References: <20070622.093129.67876357.chat95@mac.com>
+	<200706221234.36896.rail@openoffice.org>
+Message-ID: <20070625.095034.71083356.chat95@mac.com>
+
+Hello Rail and Noel
+
+From: Rail Aliev <rail at openoffice.org>
+Subject: Re: [Open Office] VBA part build failure..on FreeBSD
+Date: Fri, 22 Jun 2007 12:34:36 +0400
+
+> On Friday 22 June 2007 04:31:29 Maho NAKATA wrote:
+> > /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:
+> >50:68: macro "MIN" requires 2 arguments, but only 1 given
+> > /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:
+> >51:68: macro "MAX" requires 2 arguments, but only 1 given
+> 
+> This helped me. Maybe it is a dirty hack but it worked. :)
+> FreeBSD 6.2 RELEASE.
+
+> --- sc/source/ui/vba/vbaaxis.cxx.orig   2007-05-26 23:43:22.000000000 +0400
+> +++ sc/source/ui/vba/vbaaxis.cxx    2007-05-26 23:43:49.000000000 +0400
+> @@ -39,6 +39,8 @@
+>  #include <org/openoffice/excel/XlScaleType.hpp>
+>  #include "vbaaxistitle.hxx"
+>  #include "vbachart.hxx"
+> +#undef MIN
+> +#undef MAX
+>  using namespace ::com::sun::star;
+>  using namespace ::org::openoffice;
+>  using namespace ::org::openoffice::excel::XlAxisCrosses;
+
+I'm not sure what this means :( but it worked for me. So I update
+ooo-build port of FreeBSD...
+http://www.freebsd.org/cgi/cvsweb.cgi/ports/editors/ooo-build/
+thanks,
+-- Nakata Maho (maho at FreeBSD.org)
+
+
+
+From kendy at suse.cz  Mon Jun 25 05:57:06 2007
+From: kendy at suse.cz (Jan Holesovsky)
+Date: Mon, 25 Jun 2007 11:57:06 +0200
+Subject: [Open Office] Update to m216
+In-Reply-To: <200706181045.40172.kendy@suse.cz>
+References: <200706181045.40172.kendy@suse.cz>
+Message-ID: <200706251157.07192.kendy@suse.cz>
+
+Hi,
+
+On Monday 18 June 2007 10:45, Jan Holesovsky wrote:
+
+> I am starting an update to m216 & I plan to remove support for everything
+> older than that.  I'll commit in several hours, so you still have time to
+> stop me if necessary ;-)
+
+Haha, several hours! ;-)  This update was a tougher one unfortunately... now 
+committed.  x86-64 build crashes immediately after startup, see 
+http://www.openoffice.org/issues/show_bug.cgi?id=78284
+
+Regards,
+Jan
+
+From h.mth at web.de  Wed Jun 27 11:49:16 2007
+From: h.mth at web.de (Hanno Meyer-Thurow)
+Date: Wed, 27 Jun 2007 17:49:16 +0200
+Subject: [Open Office] OpenOffice.org 680m216 and STLport 5.1.x
+Message-ID: <20070627174916.ea00e404.h.mth@web.de>
+
+Hi list!
+FYI, I have to patch STLport-5.1.3 to get around a build
+breaker in chart2 module.
+
+Around line 1200 in /usr/include/stlport/stl/_valarray.h
+I have to make 'slice_array(const slice_array&);' public
+to proceed the build.
+
+
+Regards,
+Hanno
+

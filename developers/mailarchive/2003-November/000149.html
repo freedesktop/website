@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] toolbar pdf export button options...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000148.html">
+   <LINK REL="Next"  HREF="000150.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] toolbar pdf export button options...
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] toolbar pdf export button options...">halls@debian.org
+       </A><BR>
+    <I>Wed, 12 Nov 2003 12:20:45 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000148.html">[Open Office] toolbar pdf export button options...
+</A></li>
+        <LI> Next message: <A HREF="000150.html">[Open Office] toolbar pdf export button options...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#149">[ date ]</a>
+              <a href="thread.html#149">[ thread ]</a>
+              <a href="subject.html#149">[ subject ]</a>
+              <a href="author.html#149">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, 2003-11-12 at 12:58, Michael Meeks wrote:
+&gt;<i> 	Ok - we need to debug this - since the above patch is a horrific hack (
+</I>&gt;<i> as you can see :-). Can you tell me:
+</I>&gt;<i> 
+</I>&gt;<i> 	a) what environment you're running under
+</I>&gt;<i> 		+ if Gnome - there should be a DPI setting in the font 
+</I>&gt;<i> 		  preferences that should be consistent across the 
+</I>&gt;<i> 		  desktop
+</I>&gt;<i> 		+ is your font size synched with the desktop font size?
+</I>&gt;<i> 	b) What xrdb -query | grep Xft says for you
+</I>&gt;<i> 	c) What xdpyinfo claims your DPI setting is (quite prolly this 
+</I>&gt;<i> 	   is wrong &amp; needs tweaking).
+</I>
+	d) what size and resolution is your display, i.e. what is the 	  
+physical DPI of your display?
+	e) If you don't have a Gnome or KDE desktop, what version of
+	   gui-font-default-size.diff did you use, i.e. what is the 	   number
+in this line in vcl/source/app/settings.cxx line 592:
+
+    Font aStdFont( FAMILY_SWISS, Size( 0, 9 ) );
+
+I'm interested in this too, since I've been tweaking all this trying to
+get it to work for all environments
+
+If it was '12', try reducing it to 9 and try again.  You will need to
+run 'dmake' in vcl/source/app and then vcl/util, and then copy
+vcl/unxlngi4.pro/lib/libvcl645li.so to your installation directory, (or
+use bin/linkoo).
+
+Thanks,
+Chris
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000148.html">[Open Office] toolbar pdf export button options...
+</A></li>
+	<LI> Next message: <A HREF="000150.html">[Open Office] toolbar pdf export button options...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#149">[ date ]</a>
+              <a href="thread.html#149">[ thread ]</a>
+              <a href="subject.html#149">[ subject ]</a>
+              <a href="author.html#149">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

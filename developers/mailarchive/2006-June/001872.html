@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] JRE register component still broken
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20component%20still%20broken&In-Reply-To=20060623123937.e99cf909.h.mth%40web.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001871.html">
+   <LINK REL="Next"  HREF="001876.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] JRE register component still broken</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20component%20still%20broken&In-Reply-To=20060623123937.e99cf909.h.mth%40web.de"
+       TITLE="[Open Office] JRE register component still broken">ghibo at mandriva.com
+       </A><BR>
+    <I>Fri Jun 23 11:01:51 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001871.html">[Open Office] JRE register component still broken
+</A></li>
+        <LI>Next message: <A HREF="001876.html">[Open Office] JRE register component still broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1872">[ date ]</a>
+              <a href="thread.html#1872">[ thread ]</a>
+              <a href="subject.html#1872">[ subject ]</a>
+              <a href="author.html#1872">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hanno Meyer-Thurow ha scritto:
+&gt;<i> On Fri, 23 Jun 2006 00:12:28 +0200
+</I>&gt;<i> Andreas Radke &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">a.radke at arcor.de</A>&gt; wrote:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i>I've trried 
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>--with-java=no
+</I>&gt;&gt;<i>--with-java=gij
+</I>&gt;&gt;<i>--with-jdk-home=/opt/java /  --with-java-home=/opt/java --with-java
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>We are using gcc4.1.1/jre 1.5.0.6(7 also tested)/glibc2.4
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Any idea? I've seen this error a few times but don't know how to fix it.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Sun JDK 1.6 beta2 b65 and newer build OOo for x86_64.
+</I>&gt;<i> 
+</I>&gt;<i> You need this patch:
+</I>&gt;<i> <A HREF="http://go-oo.org/patches/64bit/64bit-jdk-server-paths.diff">http://go-oo.org/patches/64bit/64bit-jdk-server-paths.diff</A>
+</I>&gt;<i> 
+</I>&gt;<i> Some tweaks are needed to use '-source' and '-target' for javac.
+</I>&gt;<i> I guess you do not want to build 1.6 bytecode.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> This should do for Sun JDK:
+</I>&gt;<i> 	--with-java --with-jdk-home=/path/to/jdk
+</I>&gt;<i> 
+</I>&gt;<i> For GCJ:
+</I>&gt;<i> 	--with-java=gij --with-jdk-home=/path/to/jdk
+</I>
+How much are the request of memory with gcj? I've seen
+while compiling ooo's xalan that jc1 process was requesting
+more than 2.5GB of RAM to compile...
+
+Bye
+Giuseppe.
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001871.html">[Open Office] JRE register component still broken
+</A></li>
+	<LI>Next message: <A HREF="001876.html">[Open Office] JRE register component still broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1872">[ date ]</a>
+              <a href="thread.html#1872">[ thread ]</a>
+              <a href="subject.html#1872">[ subject ]</a>
+              <a href="author.html#1872">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

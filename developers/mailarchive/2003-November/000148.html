@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] toolbar pdf export button options...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000147.html">
+   <LINK REL="Next"  HREF="000149.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] toolbar pdf export button options...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] toolbar pdf export button options...">michael@ximian.com
+       </A><BR>
+    <I>Wed, 12 Nov 2003 11:58:56 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000147.html">[Open Office] toolbar pdf export button options...
+</A></li>
+        <LI> Next message: <A HREF="000149.html">[Open Office] toolbar pdf export button options...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#148">[ date ]</a>
+              <a href="thread.html#148">[ thread ]</a>
+              <a href="subject.html#148">[ subject ]</a>
+              <a href="author.html#148">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Carlo,
+
+On Wed, 2003-11-12 at 08:17, Carlo Daffara wrote:
+&gt;<i> * Interface fonts get too big; we had to revert a patch in
+</I>&gt;<i> gui-font-scale.diff, in salgdi.cxx, and remove the part
+</I>&gt;<i> 
+</I>&gt;<i> -        if ( rDPIY &lt; 96 )
+</I>&gt;<i> -        {
+</I>&gt;<i> -            rDPIX = Divide( rDPIX * 96, rDPIY );
+</I>&gt;<i> -            rDPIY = 96;
+</I>&gt;<i> -        }
+</I>&gt;<i> -
+</I>&gt;<i>
+</I>&gt;<i> To get reasonable sizes. I seem to remember that there was already a
+</I>&gt;<i> discussion about it a while ago; I believe that Xft or X11 report 72 as
+</I>&gt;<i> DPI, and without the above patch the font face is 30% larger.
+</I>
+	Ok - we need to debug this - since the above patch is a horrific hack (
+as you can see :-). Can you tell me:
+
+	a) what environment you're running under
+		+ if Gnome - there should be a DPI setting in the font 
+		  preferences that should be consistent across the 
+		  desktop
+		+ is your font size synched with the desktop font size?
+	b) What xrdb -query | grep Xft says for you
+	c) What xdpyinfo claims your DPI setting is (quite prolly this 
+	   is wrong &amp; needs tweaking).
+
+	Here (with Gnome) it integrates ~perfectly with my desktop syncing font
+size, if it doesn't for you we need to investigate it very carefully.
+
+&gt;<i> * The pdf export button in the toolbar does the export with the screen
+</I>&gt;<i> resolution for images by default. Can I suggest to set it to &quot;press&quot;? It
+</I>&gt;<i> seems more logical; eventually, do anybody know where the default is set?
+</I>
+	Where is the option to set that ? I had a dig in the code to locate it
+(PDFWriter constructor parameter -&gt; PDFExport::Export's rFilterData
+'CompressMode' property) it looks like it ends up loaded from
+Office.Common/Filter/PDF/Export (
+officecfg/registry/schema/org/openoffice/Office/Common.xcs - where
+indeed it defaults to '1' - which is 'Print' mode. cf.
+filter/source/pdf/impdialog.cxx &amp; pdfexport.cxx to verify.
+
+	Print seems a reasonable default to me - are you sure it defaults to
+'Screen' - or is that just what you used last ?
+
+&gt;<i> * Also: what is the license for the icons created by Ximian? We would like
+</I>&gt;<i> to distribute our build of OOo with your icons; of course giving due
+</I>&gt;<i> credit and the url to get patches and files.
+</I>
+	The license is LGPL / SISSL assigned under the JCA, copyright is Ximian
+of course :-) attributions gratefully received.
+
+	If you have your own 'distribution' and want to sub-set our patches;
+it's pretty easy to do; see patches/OOO_1_1_0/apply to see how Debian,
+Ximian and 3 versions of RH play together.
+
+	Finally I guess - if you're going to work with OO.o - it's best to sign
+the JCA up-front see <A HREF="http://www.openoffice.org/contributing.html">http://www.openoffice.org/contributing.html</A>
+
+	Best Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000147.html">[Open Office] toolbar pdf export button options...
+</A></li>
+	<LI> Next message: <A HREF="000149.html">[Open Office] toolbar pdf export button options...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#148">[ date ]</a>
+              <a href="thread.html#148">[ thread ]</a>
+              <a href="subject.html#148">[ subject ]</a>
+              <a href="author.html#148">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

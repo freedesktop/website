@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Ark/Debian configure options ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:bero%40arklinux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000759.html">
+   <LINK REL="Next"  HREF="000771.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Ark/Debian configure options ...
+   </H1>
+    <B>Bernhard Rosenkraenzer
+    </B> 
+    <A HREF="mailto:bero%40arklinux.org"
+       TITLE="[Open Office] Re: Ark/Debian configure options ...">bero@arklinux.org
+       </A><BR>
+    <I>Mon, 7 Feb 2005 18:41:37 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000759.html">[Open Office] Ark/Debian configure options ...
+</A></li>
+        <LI> Next message: <A HREF="000771.html">[Open Office] Re: Ark/Debian configure options ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#754">[ date ]</a>
+              <a href="thread.html#754">[ thread ]</a>
+              <a href="subject.html#754">[ subject ]</a>
+              <a href="author.html#754">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> 	Ark: you use --enable-libart instead of --without-gpc. I would
+</I>&gt;<i> recommend using --without-gpc which uses an internal clipper instead of
+</I>&gt;<i> GPC or an external libart. That is unless you know something I
+</I>&gt;<i> don't ? :-) [ it'd be nice to share that option too ]
+</I>
+That was based on the configure output from config_office -- if --without-gpc 
+is used, it screams that some features won't be available, if --enable-libart 
+is used, it doesn't scream.
+
+I don't know how accurate configure's reporting is -- if the scream is 
+outdated or applies with --enable-libart too, then I definitely don't have a 
+problem switching to --without-gpc.
+
+&gt;<i> 	Ark: you don't build with libstartup-notification ? why not ?
+</I>
+&quot;No new packages during the freeze&quot; thing. We don't include 
+libstartup-notification ATM and don't want to add a new package before the 
+next release unless absolutely necessary.
+Given that libstartup-notification doesn't provide any important functionality 
+(KDE does a pretty good job at detecting it based on window opening -- we do 
+get the wanted functionality in OOo even without libstartup-notification), 
+this is hardly important enough to add a new package during the freeze.
+
+An option here would be to remove all --{en,dis}able-libsn stuff from the 
+configs and just autodetect it in config_office/configure.in by default -- 
+that would allow common configs [everything omitted] while not breaking 
+systems that don't have libsn.
+
+&gt;<i> 	Debian/Ark - we added the --enable-gnome-vfs option to configure OO.o's
+</I>&gt;<i> built-in Gnome-VFS support (which is now up-stream), it's prolly a good
+</I>&gt;<i> thing to turn on for eg. <A HREF="smb:///">smb:///</A> share browsing.
+</I>
+This is a definite no for Ark. Being KDE only, we don't have gnome-vfs in our 
+base installation, and we don't have all the stuff it depends on 
+(libORBit-2.so.0, libORBitCosNaming-2.so.0, libbonobo-2.so.0, 
+libbonobo-activation.so.4, libgconf-2.so.4) in the base installation either.
+
+Our long term plan is to add KIO support which should give us the same 
+features without bloating the base install by several MBs. We use a 1 
+CD-setup for our base install, and we don't like the idea of switching to 
+multi-CD - so every MB counts.
+
+&gt;<i> NonArkCommon: Evo2
+</I>&gt;<i>
+</I>&gt;<i> 	Which is rather ugly; I can understand the problems previously wrt.
+</I>&gt;<i> different Evo. versions &amp; all that - but now (thanks to Jayant) this
+</I>&gt;<i> code will compile without any evolution libraries / development packages
+</I>&gt;<i> present &amp; will detect at runtime if it's available. So - any chance of
+</I>&gt;<i> pruning that complexity back too ? :-)
+</I>
+Sure, as long as it doesn't require evo stuff at runtime or compile time.
+This is the same as with gnome-vfs, we don't want to bloat the dependency list 
+(our default mail/PIM suite is Kontact).
+
+LLaP
+bero
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000759.html">[Open Office] Ark/Debian configure options ...
+</A></li>
+	<LI> Next message: <A HREF="000771.html">[Open Office] Re: Ark/Debian configure options ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#754">[ date ]</a>
+              <a href="thread.html#754">[ thread ]</a>
+              <a href="subject.html#754">[ subject ]</a>
+              <a href="author.html#754">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

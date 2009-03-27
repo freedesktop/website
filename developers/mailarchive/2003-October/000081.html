@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Where does the standard symbol font come from?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:ghibo%40mandrakesoft.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000082.html">
+   <LINK REL="Next"  HREF="000084.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Where does the standard symbol font come from?
+   </H1>
+    <B>Giuseppe Ghibò
+    </B> 
+    <A HREF="mailto:ghibo%40mandrakesoft.com"
+       TITLE="[Open Office] Where does the standard symbol font come from?">ghibo@mandrakesoft.com
+       </A><BR>
+    <I>Mon, 06 Oct 2003 09:57:44 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000082.html">[Open Office] O.O.o - Mozilla-Firebird
+</A></li>
+        <LI> Next message: <A HREF="000084.html">[Open Office] The --with-system-gcc configure switch doesn't
+ work
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#81">[ date ]</a>
+              <a href="thread.html#81">[ thread ]</a>
+              <a href="subject.html#81">[ subject ]</a>
+              <a href="author.html#81">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> It seems that in standard OOo, there's a font called &quot;Standard Symbols&quot;,
+</I>&gt;<i> which is mapped to correspond to a private unicode codespace (F0xx). I
+</I>&gt;<i> _think_ what's going on is that standard OpenOffice.org is mapping the
+</I>&gt;<i> character C2B7 (given the font &quot;Symbols&quot;) to this font w/ the unicode
+</I>&gt;<i> number F0B7. Hence perfect bullets every time. Is this correct?
+</I>&gt;<i>
+</I>&gt;<i> If so, my next question would be: where does this font come from? I
+</I>&gt;<i> can't find it anywhere in the OpenOffice.org distribution (I see the
+</I>&gt;<i> OpenSymbols font, but that seems to be used for something else). There's
+</I>&gt;<i> a Type1 font on my system in /usr/share/fonts/default/Type1 called &quot;URW
+</I>&gt;<i> Standard Symbols&quot;, which seems to be exactly identical, except for the
+</I>&gt;<i> fact that it has different unicode mappings.
+</I>
+There isn't &quot;Standard Symbols&quot; in OOo. The only font coming with it
+is &quot;OpenSymbol&quot; and is a TrueType font.
+
+Note that another Symbol font is called &quot;Symbol&quot; (note &quot;Symbol&quot; and not &quot;Symbols&quot;)
+and is available from from Windows (symbol.ttf, in true type) or from Adobe Acrobat
+Reader (Symbol or sy_____.pfb|pfa in Type1). And generally should be added
+manually to OOo.
+
+The fonts you are talking about is probably the font called
+&quot;Standard Symbols L&quot; (this is the family name) and comes from
+the URW fonts which are generally provided with ghostscript and
+is also available to X11 and thus to OOo. Such font isn't
+UNICODE encoded itself, and is a Type1 fonts. It has glyphs reencoded
+in a vector with position from 0 to 255, so probably the Unicode re-encoding
+is performed interally by OOo according to glyph names.
+
+Speaking of such &quot;Standard Symbols L&quot; font, I also found a problem in using such font
+when printing, see the bug issue #20595 on OOo IssueZilla.
+
+Note also that using Symbol font is different than using &quot;Standard Symbols L&quot;
+font, as unless one add a specific &quot;Symbol -&gt; Standard Symbols L&quot; font replacement
+(and I don't see it), the Symbol font is considered
+&quot;resident&quot; when printing, as it's part of the Adobe Standard 35 PostScript font set,
+while for any other font, it's downloaded/dumped in the PostScript file itself.
+
+Bye.
+Giuseppe.
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000082.html">[Open Office] O.O.o - Mozilla-Firebird
+</A></li>
+	<LI> Next message: <A HREF="000084.html">[Open Office] The --with-system-gcc configure switch doesn't
+ work
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#81">[ date ]</a>
+              <a href="thread.html#81">[ thread ]</a>
+              <a href="subject.html#81">[ subject ]</a>
+              <a href="author.html#81">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

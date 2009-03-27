@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ERROR: Source for autotextshare_af.zip not found!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000944.html">
+   <LINK REL="Next"  HREF="000947.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ERROR: Source for autotextshare_af.zip not found!
+   </H1>
+    <B>Petr Mladek
+    </B> 
+    <A HREF="mailto:pmladek%40suse.cz"
+       TITLE="[Open Office] ERROR: Source for autotextshare_af.zip not found!">pmladek@suse.cz
+       </A><BR>
+    <I>Tue, 10 May 2005 18:02:54 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000944.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+        <LI> Next message: <A HREF="000947.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#945">[ date ]</a>
+              <a href="thread.html#945">[ thread ]</a>
+              <a href="subject.html#945">[ subject ]</a>
+              <a href="author.html#945">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday 10 May 2005 11:04, Arkadiusz Miskiewicz wrote:
+&gt;<i> Has anyone saw this? ooobuild few commits after 1.9.100 release.
+</I>
+It helps to
+	export DEFAULT_TO_ENGLISH_FOR_PACKING=1
+before
+	make
+
+I wonder why the make_installer.pl and the epm is called even during the build 
+phase now.
+
+
+&gt;<i> ERROR: Source for autotextshare_af.zip not found!
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Languages:
+</I>&gt;<i>         af
+</I>&gt;<i> ########################################################
+</I>&gt;<i> ... checking required files ...
+</I>&gt;<i> ...... searching zip ...
+</I>&gt;<i>         Found: /usr/bin/zip
+</I>&gt;<i> ...... searching unzip ...
+</I>&gt;<i>         Found: /usr/bin/unzip
+</I>&gt;<i> ... analyzing ../util/openoffice.lst ...
+</I>&gt;<i> ... analyzing
+</I>&gt;<i> script:
+</I>&gt;<i> /home/users/arekm/rpm/BUILD/ooo-build-1.9.100/build/src680-m100/solver/680/
+</I>&gt;<i>unxlngi4.pro/bin/setup_osl .ins ...
+</I>&gt;<i> ... analyzing directories ...
+</I>&gt;<i> ... analyzing files ...
+</I>&gt;<i> ... analyzing scpactions ...
+</I>&gt;<i> ... analyzing shortcuts ...
+</I>&gt;<i> ... analyzing profile ...
+</I>&gt;<i> ... analyzing profileitems ...
+</I>&gt;<i> ... analyzing modules ...
+</I>&gt;<i> ------------------------------------
+</I>&gt;<i> ... languages af ...
+</I>&gt;<i>
+</I>&gt;<i> **************************************************
+</I>&gt;<i> ERROR: ERROR: Missing files
+</I>&gt;<i> in function: remove_Files_Without_Sourcedirectory
+</I>&gt;<i> **************************************************
+</I>&gt;<i>
+</I>&gt;<i> **************************************************
+</I>&gt;<i> ERROR: Saved
+</I>&gt;<i> logfile:
+</I>&gt;<i> /home/users/arekm/rpm/BUILD/ooo-build-1.9.100/build/src680-m100/instsetoo_n
+</I>&gt;<i>ative/unxlngi4.pro/OpenOff ice/logging/af/log_SRC680__af.log
+</I>&gt;<i> **************************************************
+</I>&gt;<i> ... analyzing files ...
+</I>&gt;<i> ERROR: The following files could not be found:
+</I>&gt;<i> ERROR: File not found: autotextshare_af.zip
+</I>&gt;<i> ERROR: File not found: palettes_af.zip
+</I>&gt;<i> ERROR: File not found: tpllayoutimpr_af.zip
+</I>&gt;<i> ERROR: File not found: tplpresntimpr_af.zip
+</I>&gt;<i> ERROR: File not found: tplwizdesktop_af.zip
+</I>&gt;<i> ERROR: File not found: tplwizfax_af.zip
+</I>&gt;<i> ERROR: File not found: tplwizagenda_af.zip
+</I>&gt;<i> ERROR: File not found: tplwizmemo_af.zip
+</I>&gt;<i> ERROR: File not found: tplwizreport_af.zip
+</I>&gt;<i> ERROR: File not found: tplwizstyles_af.zip
+</I>&gt;<i> ERROR: File not found: wordbook_af.zip
+</I>&gt;<i> ... cleaning the output tree ...
+</I>&gt;<i> Tue May 10 00:44:36 2005 (00:02 min.)
+</I>&gt;<i> dmake:  Error code 255, while making 'openoffice_af'
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>&gt;<i>
+</I>&gt;<i> ERROR: Error 65280 occurred while
+</I>&gt;<i> making
+</I>&gt;<i> /home/users/arekm/rpm/BUILD/ooo-build-1.9.100/build/src680-m100/instsetoo_n
+</I>&gt;<i>ative/u til
+</I>
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="mailto:pmladek@suse.cz">pmladek@suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000944.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+	<LI> Next message: <A HREF="000947.html">[Open Office] ERROR: Source for autotextshare_af.zip not found!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#945">[ date ]</a>
+              <a href="thread.html#945">[ thread ]</a>
+              <a href="subject.html#945">[ subject ]</a>
+              <a href="author.html#945">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

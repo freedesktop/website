@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] 2.0.2 testing results
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%202.0.2%20testing%20results&In-Reply-To=200603120338.30719.bero%40arklinux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001702.html">
+   <LINK REL="Next"  HREF="001705.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] 2.0.2 testing results</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%202.0.2%20testing%20results&In-Reply-To=200603120338.30719.bero%40arklinux.org"
+       TITLE="[Open Office] 2.0.2 testing results">ghibo at mandriva.com
+       </A><BR>
+    <I>Mon Mar 13 05:00:44 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001702.html">[Open Office] 2.0.2 testing results
+</A></li>
+        <LI>Next message: <A HREF="001705.html">[Open Office] Fonts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1704">[ date ]</a>
+              <a href="thread.html#1704">[ thread ]</a>
+              <a href="subject.html#1704">[ subject ]</a>
+              <a href="author.html#1704">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bernhard Rosenkraenzer wrote:
+
+&gt;<i> Hi,
+</I>&gt;<i> I've had a couple of testers give 2.0.2 a hard test today -- overall it went 
+</I>&gt;<i> pretty well, but they did find a couple of problems (some are probably gcj 
+</I>&gt;<i> related, some others might be local stuff).
+</I>&gt;<i> 
+</I>&gt;<i> 1. The &quot;Wizards&quot; stuff in oowriter's file menu doesn't work (gcj?)
+</I>
+Works for me with jdk 1.4.2_09. BTW, what is the procedure that
+OOo does when seeking for Java in menu Tools/Options/Java? Because I've
+seen that if OOo 2.0.2 i586/32bit is installed under a
+x86-64 system where it's installed both java32 (e.g. the sun
+jre) and java64 bits (e.g. the blackdown jre), it waits a lot
+of time before recognizing a valid java.
+
+&gt;<i> 2. The package splits are a bit odd in some cases. Shouldn't the
+</I>&gt;<i>    dictionaries go to the language packs instead of core?
+</I>
+IMHO this is a problem if doing that because one might still
+want to hyphen or use dictionary for a language which is not installed.
+For instance one might have installed the italian language pack
+but wants to hyphenate or check dictionary of a french document in french.
+
+Currently the dictionaries list is listed
+&lt;oooinst&gt;/share/dict/ooo/dictionary.lst, and this file should be
+upgraded for every dictionary|hyphenation pattern|thesaurus
+added, so one have to play for instance with %post scripts or %triggers in case of dictionaries
+into language pack files.
+
+IMHO this should be changed at OOo source level, i.e. the dictionaries|hyphenation|etc.
+should be taken either from &lt;oooinst&gt;/share/dict/ooo/dictionary.lst PLUS all the contents
+of the files listed in &lt;oooinst&gt;/share/dict/ooo/dictionary.lst.d/*. This would be a lot
+easier for point of view of adding and removing dictionary packages.
+
+&gt;<i> 3. The included media player doesn't work. Picking a sound from the gallery
+</I>&gt;<i>    does nothing, opening it manually and trying to open any file results in
+</I>&gt;<i>    &quot;The format of the selected file is not supported.&quot;
+</I>
+I didn't knew there was an internal media player. How to activate it?
+
+&gt;<i> 4. I can't reproduce this one myself, but one tester (who generally isn't
+</I>&gt;<i>    a crackpot) reported the Gallery feature doesn't include any OpenClipart
+</I>&gt;<i>    stuff, even though it was built with OpenClipart enabled.
+</I>&gt;<i>    Strangely enough, deleting gengal.rdb fixed it for him?!
+</I>&gt;<i>    The same user mentioned it would be nice to add the system icons
+</I>&gt;<i>    (KDE/Gnome/...) to the Gallery -- sounds like a good idea to me too.
+</I>
+I see the openclipart gallery available to my installation.
+
+&gt;<i> 5. On a default install, Evolution is listed as a standard data source
+</I>&gt;<i>    (even though it's not installed), but KDE AddressBook isn't.
+</I>&gt;<i>    (While at it, neither are Mozilla and Thunderbird - may make sense to
+</I>&gt;<i>    add those too).
+</I>&gt;<i>    I'm not very familiar with the way OOO's database access works;
+</I>&gt;<i>    does the attached fix (for the KDE AddressBook part) look right? If so,
+</I>&gt;<i>    what's the best way to add it, given it has to add a binary file (kab.odb)?
+</I>
+There is still one bug. If you go into menu:
+Tools/Option/Internet/eMail and you click on the requester button (at
+least under KDE), OOo crashes with error:
+
+terminate called after throwing an instance of 
+'com::sun::star::ucb::InteractiveNetworkGeneralException'
+
+Bye
+Giuseppe
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001702.html">[Open Office] 2.0.2 testing results
+</A></li>
+	<LI>Next message: <A HREF="001705.html">[Open Office] Fonts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1704">[ date ]</a>
+              <a href="thread.html#1704">[ thread ]</a>
+              <a href="subject.html#1704">[ subject ]</a>
+              <a href="author.html#1704">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

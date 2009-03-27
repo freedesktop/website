@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] JRE register component still broken
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20component%20still%20broken&In-Reply-To=20060624083526.6b9a4771%40workstation64.home">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001887.html">
+   <LINK REL="Next"  HREF="001898.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] JRE register component still broken</H1>
+    <B>jim</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20component%20still%20broken&In-Reply-To=20060624083526.6b9a4771%40workstation64.home"
+       TITLE="[Open Office] JRE register component still broken">jim at amarooas.com.au
+       </A><BR>
+    <I>Sat Jun 24 04:43:31 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001887.html">[Open Office] JRE register component still broken
+</A></li>
+        <LI>Next message: <A HREF="001898.html">[Open Office] JRE register component still broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1889">[ date ]</a>
+              <a href="thread.html#1889">[ thread ]</a>
+              <a href="subject.html#1889">[ subject ]</a>
+              <a href="author.html#1889">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, Jun 24, 2006 at 08:35:26AM +0200, Andreas Radke wrote:
+&gt;<i> Again: I'm the maintainer of Arch64 - the archlinux x86_64 port.
+</I>&gt;<i> 
+</I>&gt;<i> [<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">andyrtr at workstation64</A> javatest]$ gcj -v
+</I>&gt;<i> Es werden eingebaute Spezifikationen verwendet.
+</I>&gt;<i> Lesen der Spezifikationen
+</I>&gt;<i> von /usr/lib/gcc/x86_64-unknown-linux-gnu/4.1.1/../../../libgcj.spec
+</I>&gt;<i> Spezifikation wird von lib nach liborig umbenannt Ziel:
+</I>&gt;<i> x86_64-unknown-linux-gnu Konfiguriert mit: ../gcc-4.1.1/configure
+</I>&gt;<i> --prefix=/usr --enable-shared --enable-languages=java
+</I>&gt;<i> --enable-threads=posix --enable-__cxa_atexit --enable-java-awt=gtk
+</I>&gt;<i> --libdir=/usr/lib --disable-multilib Thread-Modell: posix gcc-Version
+</I>&gt;<i> 4.1.1
+</I>&gt;<i> 
+</I>&gt;<i> [<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">andyrtr at workstation64</A> javatest]$ gij -version
+</I>&gt;<i> java version &quot;1.4.2&quot;
+</I>&gt;<i> gij (GNU libgcj) version 4.1.1
+</I>&gt;<i> 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; If you use java-gcj-compat as suggested by VMiklos, it does almost
+</I>&gt;<i> &gt; the same thing: /usr/bin/javadoc -&gt; /etc/alternatives/javadoc
+</I>&gt;<i> &gt; /etc/alternatives/javadoc -&gt; /usr/bin/gjdoc
+</I>&gt;<i> 
+</I>&gt;<i> We still have no such packages. We only have the included the wrapper
+</I>&gt;<i> from Debian. Shouldn't it be possible to build without those extra
+</I>&gt;<i> packages? I haven't seen any other package that needs such
+</I>&gt;<i> compatibility stuff.
+</I>
+The GCC provides gcj, gij, fastjar, gjdoc. But most distributions provide
+javac, java, jar, javadoc. Debian does this with the java-gcj-compat
+package. IMHO this adds another layer of indirection that makes it harder to
+do any development, and everyone uses something different. I find it easier
+to use only the vanilla GCC tools. When the vanilla is built successfully,
+then you can change it for distribution. If you like to try this, it should be
+possible based on the versions you have described above.
+
+This is how I build with &quot;pure&quot; gcj on GNU/Linux SPARC from the vanilla
+upstream sources:
+(a) symlink /usr/local/bin/javadoc -&gt; /usr/local/4.1/bin/gjdoc
+(b) apply patches from cws_src680_maho1
+(c) cd config_office; autoconf
+(d) export CC=&quot;/usr/local/4.1/bin/gcc -m32&quot;
+(e) export CXX=&quot;/usr/local/4.1/bin/g++ -m32&quot;
+(f) export PATH=/usr/local/4.1/bin:$PATH
+(g) ./configure --with-java=gij \
+ --with-jdk-home=/usr/local/4.1 \
+ --with-ant-home=/usr/local/apache-ant-1.6.5 \
+ --enable-build-mozilla
+
+No patches are needed except maho1 which fixes the configure and removes
+some hard-coded java commands in berkeleydb and qadevOOo. Step (a) is needed
+for ant to use the built-in javadoc command in xmerge. Step (f) is needed
+for ant to work, so the cws needs some refinment.
+
+&gt;<i> 
+</I>&gt;<i> [<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">andyrtr at workstation64</A> javatest]$ gij GetJVMInfo.
+</I>&gt;<i> Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: GetJVMInfo.
+</I>&gt;<i>    at gnu.java.lang.MainThread.run(libgcj.so.7)
+</I>&gt;<i> Caused by: java.lang.ClassNotFoundException: GetJVMInfo.
+</I>&gt;<i>    at java.lang.Class.forName(libgcj.so.7)
+</I>&gt;<i>    at gnu.java.lang.MainThread.run(libgcj.so.7)
+</I>&gt;<i> [<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">andyrtr at workstation64</A> javatest]$
+</I>&gt;<i> 
+</I>&gt;<i> Bad. Isn't it?
+</I>
+Thats not bad, I get the same here. Try it without the trailing dot &quot;.&quot;
+
+$ gij GetJVMInfo
+
+
+jim
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001887.html">[Open Office] JRE register component still broken
+</A></li>
+	<LI>Next message: <A HREF="001898.html">[Open Office] JRE register component still broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1889">[ date ]</a>
+              <a href="thread.html#1889">[ thread ]</a>
+              <a href="subject.html#1889">[ subject ]</a>
+              <a href="author.html#1889">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

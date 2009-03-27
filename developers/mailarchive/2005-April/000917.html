@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] cannot see the changes i made
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:daniel.naber%40t-online.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000921.html">
+   <LINK REL="Next"  HREF="000918.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] cannot see the changes i made
+   </H1>
+    <B>Daniel Naber
+    </B> 
+    <A HREF="mailto:daniel.naber%40t-online.de"
+       TITLE="[Open Office] cannot see the changes i made">daniel.naber@t-online.de
+       </A><BR>
+    <I>Sun, 24 Apr 2005 13:33:59 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000921.html">[Open Office] Can ximian-ooo-2.0-pre be compiled with JDK_1.5?
+</A></li>
+        <LI> Next message: <A HREF="000918.html">[Open Office] cannot see the changes i made
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#917">[ date ]</a>
+              <a href="thread.html#917">[ thread ]</a>
+              <a href="subject.html#917">[ subject ]</a>
+              <a href="author.html#917">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I successfully compiled m79, following the steps in the hacker's guide. 
+Although &quot;make install&quot; doesn't succeed (&quot;Adding missing links to the 
+English help. Failed to generate package file lists&quot;) I can use the 
+installation.
+
+However, making a change in the source, rebuilding with &quot;build debug=true&quot; 
+and calling solver/680/unxlngi4.pro/bin/soffice.bin leads to an immediate 
+crash. If I again &quot;make install&quot; the version that gets installed doesn't 
+contain my changes (which is a change to the thesaurus, thesdlg.cxx). What 
+am I doing wrong?
+
+The crash backtrace looks like this:
+
+Using host libthread_db library &quot;/lib/tls/libthread_db.so.1&quot;.
+0xffffe410 in ?? ()
+#0  0xffffe410 in ?? ()
+#1  0x00000001 in ?? ()
+#2  0x00000000 in ?? ()
+#3  0xbfffb7c8 in ?? ()
+#4  0x416f619b in waitpid () from /lib/tls/libc.so.6
+(...)
+
+Regards
+ Daniel
+
+-- 
+<A HREF="http://www.danielnaber.de">http://www.danielnaber.de</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000921.html">[Open Office] Can ximian-ooo-2.0-pre be compiled with JDK_1.5?
+</A></li>
+	<LI> Next message: <A HREF="000918.html">[Open Office] cannot see the changes i made
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#917">[ date ]</a>
+              <a href="thread.html#917">[ thread ]</a>
+              <a href="subject.html#917">[ subject ]</a>
+              <a href="author.html#917">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

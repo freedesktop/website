@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Internal quickstarter - ooqstart - question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter%20-%20ooqstart%20-%20question&In-Reply-To=200602191548.8647%40centrum.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001619.html">
+   <LINK REL="Next"  HREF="001620.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Internal quickstarter - ooqstart - question</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter%20-%20ooqstart%20-%20question&In-Reply-To=200602191548.8647%40centrum.cz"
+       TITLE="[Open Office] Internal quickstarter - ooqstart - question">michael.meeks at novell.com
+       </A><BR>
+    <I>Mon Feb 20 15:47:11 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001619.html">[Open Office] Internal quickstarter - ooqstart - question
+</A></li>
+        <LI>Next message: <A HREF="001620.html">[Open Office] regcomp crashes during make install
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1627">[ date ]</a>
+              <a href="thread.html#1627">[ thread ]</a>
+              <a href="subject.html#1627">[ subject ]</a>
+              <a href="author.html#1627">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Jan,
+
+On Sun, 2006-02-19 at 15:48 +0100, Jan Uhlir wrote:
+&gt;<i> I can see  option 'Load OpenOffice.org during system startup' in
+</I>&gt;<i> 'Options - OpenOffice.org - Memory' but the selection is not
+</I>&gt;<i> stored for a common user. When Options dialog is opened again,
+</I>&gt;<i> checker is gone, not selected again. For root it is possible to
+</I>&gt;<i> store it, but has no obvious effect, OOo is not started
+</I>&gt;<i> as  'ps ax' revealed.
+</I>
+	Ok - that is GNOME only; prolly we should improve the detection of
+whether we should show that option or not.
+
+&gt;<i> I discovered in programs dir ooqstart executable and library
+</I>&gt;<i> libqstart_gtk680li.so There is even  ooqstart desktop file!
+</I>&gt;<i> But when I tried to launch  ooqstart manually: # ooqstart
+</I>
+	Ah - so this is another 'quick-starter' ;-) the 1st works by sitting
+around all the time; the 2nd is just a much more efficient factory
+worker - that is faster in both KDE &amp; GNOME.
+
+&gt;<i> ** ERROR **: Missing default argument in OOO_EXTRA_ARG
+</I>
+	Don't run it directly - run it via 'oowrapper' - which should call that
+with the right environment,
+
+&gt;<i> I had some positive experience with quicksater in milestone
+</I>&gt;<i> 143 it speed up start significantly, but for m151 am currently
+</I>&gt;<i> testing seems to be broken.
+</I>
+	Nah ;-) you're just running the wrong thing.
+
+&gt;<i> How this 'load during system startup' functionality is technically done?
+</I>&gt;<i> Should I put 'ooqstart.desktop' to '~/.kde/Autostart'?
+</I>
+	No - there is some pre-existing KDE quick-starter which you should
+prolly use instead; I forget the details - we ship such a thing with
+OpenSUSE I believe; best to use that I guess.
+
+&gt;<i> So there is the internal quickstarter (ooqstart) - GTK based -
+</I>&gt;<i> and the external quickstarter oooqs2 - KDE based. I suppose the
+</I>&gt;<i> internal one would be more efficient then the external one. Am
+</I>&gt;<i> I right?
+</I>
+	Sure - I guess so; by a bit. What is amazing to me though, is that it
+*seems* [random user-feeling starts] that the quick-starter is slower to
+start than the ooqstart launch loading a file on double-click: which is
+odd [/end random user-feeling ;-]
+
+&gt;<i> The runtime option -quickstart is said to be unsupported for
+</I>&gt;<i> OOo2. Is that true for ooo-build patched releases too?
+</I>
+	Yes I believe so; the whole session/lifecycle stuff wrt. the
+-quickstart stuff is really broken for OO.o itself.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001619.html">[Open Office] Internal quickstarter - ooqstart - question
+</A></li>
+	<LI>Next message: <A HREF="001620.html">[Open Office] regcomp crashes during make install
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1627">[ date ]</a>
+              <a href="thread.html#1627">[ thread ]</a>
+              <a href="subject.html#1627">[ subject ]</a>
+              <a href="author.html#1627">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

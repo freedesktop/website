@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Problem with Widgetsets
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000445.html">
+   <LINK REL="Next"  HREF="000448.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Problem with Widgetsets
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] Problem with Widgetsets">dan@bigw.org
+       </A><BR>
+    <I>Fri, 9 Jul 2004 11:58:17 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000445.html">[Open Office] Problem with Widgetsets
+</A></li>
+        <LI> Next message: <A HREF="000448.html">[Open Office] Problem with Widgetsets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#446">[ date ]</a>
+              <a href="thread.html#446">[ thread ]</a>
+              <a href="subject.html#446">[ subject ]</a>
+              <a href="author.html#446">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+you'll need to look at ooo-wrapper.in and package-ooo.  Unfortunately,
+there is no way yet at runtime to change widget sets, since you have to
+know the architecture of your platform, but also be root to relink the
+widget set library to the normal OOo vcl library.  That's not a problem in
+a personal install in any case.
+
+Make sure you:
+
+1) have &lt;ooo-install-dir&gt;/program/widgetsets/*/libvcl645*.so
+2) have a widgetset activated.  see where your
+&lt;ooo-install-dir&gt;/program/libvcl645*.so points too, make sure its pointing
+to a widgetset-specific library from &lt;ooo-install-dir&gt;/program/widgetsets
+
+If you don't have (1), go copy them from your
+ooo-build/build/OOO_1_1_*/vcl/unxlngi4.pro* directories.
+
+Dan
+
+On Fri, 9 Jul 2004, =?iso-8859-1?Q? Michi=20M=FCller ?= wrote:
+
+&gt;<i> Hi, I'm playing with ooo-build for some time now and I've learned
+</I>&gt;<i> quite a bit about OpenOffice from it. Only thing that bugs me right
+</I>&gt;<i> now is the fact that I still can't get the &quot;native&quot; widget sets
+</I>&gt;<i> do display properly...
+</I>&gt;<i>
+</I>&gt;<i> When I do the build with &quot;--with-widgetsets=gtk&quot;, OpenOffice displays
+</I>&gt;<i> the colors from the gtk theme but doesn't draw gtk-like widgets,
+</I>&gt;<i> everything is still the old-default windowsish look. Last version I
+</I>&gt;<i> tried this way was 1.1.61. What am I doing wrong? Anything special I
+</I>&gt;<i> have to do in order to get widgets draw the way they are supposed to
+</I>&gt;<i> look like? Also, if I build with &quot;--with-widgetsets=gtk,kde,default&quot;,
+</I>&gt;<i> how can I change the widget set?
+</I>&gt;<i>
+</I>&gt;<i> Thx,
+</I>&gt;<i>   Michi
+</I>&gt;<i> _______________________________________________________
+</I>&gt;<i> WEB.DE Video-Mail - Sagen Sie mehr mit bewegten Bildern
+</I>&gt;<i> Informationen unter: <A HREF="http://freemail.web.de/?mc=021199">http://freemail.web.de/?mc=021199</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>&gt;<i>
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000445.html">[Open Office] Problem with Widgetsets
+</A></li>
+	<LI> Next message: <A HREF="000448.html">[Open Office] Problem with Widgetsets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#446">[ date ]</a>
+              <a href="thread.html#446">[ thread ]</a>
+              <a href="subject.html#446">[ subject ]</a>
+              <a href="author.html#446">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

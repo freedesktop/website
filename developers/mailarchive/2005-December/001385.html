@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] m143 doesn't build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m143%20doesn%27t%20build&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001384.html">
+   <LINK REL="Next"  HREF="001386.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] m143 doesn't build</H1>
+    <B>Ismail Donmez</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m143%20doesn%27t%20build&In-Reply-To="
+       TITLE="[Open Office] m143 doesn't build">ismail at uludag.org.tr
+       </A><BR>
+    <I>Sun Dec  4 07:31:36 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001384.html">[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx
+</A></li>
+        <LI>Next message: <A HREF="001386.html">[Open Office] m143 doesn't build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1385">[ date ]</a>
+              <a href="thread.html#1385">[ thread ]</a>
+              <a href="subject.html#1385">[ subject ]</a>
+              <a href="author.html#1385">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+When trying to compile m143 I got :
+
+Making: ../../unxlngi6.pro/slo/collator_unicode.obj
+g++ -Wreturn-type -fmessage-length=0 -c -I.  -I. -I../inc -I../../inc -I../../unx/inc -I../../unxlngi6.pro/inc -I. -I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/stl -I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/external -I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc -I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solenv/unxlngi6/inc -I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solenv/inc -I/home/cartman/OpenOffice/ooo-build/build/src680-m143/res -I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/stl -I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solenv/inc/Xp31 -I/opt/blackdown-jdk-1.4.2.02/include -I/opt/blackdown-jdk-1.4.2.02/include/linux -I/opt/blackdown-jdk-1.4.2.02/include/native_threads/include -I/usr/include     -I. -I../../res -I. -Os -fno-strict-aliasing -Wuninitialized   -fvisibility=hidden -pipe -mtune=pentiumpro -Wno-ctor-dtor-privacy -fvisibility-inlines-hidden -fexceptions -fno-enforce-eh-specs   -fpic -DLINUX -DUNX -DVCL -DGCC -DC341 -DINTEL -DGXX_INCLUDE_PATH=/usr/lib/gcc/i686-pc-linux-gnu/3.4.5/include/g++-v3 -DCVER=C341 -D_USE_NAMESPACE -DNPTL -DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1 -DSTLPORT_VERSION=400 -DHAVE_GCC_VISIBILITY_FEATURE -D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DSUPD=680 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DEXCEPTIONS_ON -DCUI -DSOLAR_JAVA -DSRC680   -DSHAREDLIB -D_DLL_  -DMULTITHREAD  -o ../../unxlngi6.pro/slo/collator_unicode.o /home/cartman/OpenOffice/ooo-build/build/src680-m143/i18npool/source/collator/collator_unicode.cxx
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/i18npool/source/collator/collator_unicode.cxx: 
+In member function `virtual sal_Int32 
+com::sun::star::i18n::Collator_Unicode::loadCollatorAlgorithm(const 
+rtl::OUString&amp;, const com::sun::star::lang::Locale&amp;, sal_Int32)':
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/i18npool/source/collator/collator_unicode.cxx:87: 
+error: no matching function for call to 
+`icu_2_6::RuleBasedCollator::RuleBasedCollator(const sal_uInt8*&amp;, int, 
+icu_2_6::RuleBasedCollator*&amp;, UErrorCode&amp;)'
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/external/unicode/tblcoll.h:712: 
+note: candidates are: icu_2_6::RuleBasedCollator::RuleBasedCollator(const 
+icu_2_6::Locale&amp;, UErrorCode&amp;)
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/external/unicode/tblcoll.h:700: 
+note:                 
+icu_2_6::RuleBasedCollator::RuleBasedCollator(UCollator*, 
+icu_2_6::UnicodeString*)
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/external/unicode/tblcoll.h:693: 
+note:                 icu_2_6::RuleBasedCollator::RuleBasedCollator()
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/external/unicode/tblcoll.h:174: 
+note:                 icu_2_6::RuleBasedCollator::RuleBasedCollator(const 
+icu_2_6::RuleBasedCollator&amp;)
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/external/unicode/tblcoll.h:166: 
+note:                 icu_2_6::RuleBasedCollator::RuleBasedCollator(const 
+icu_2_6::UnicodeString&amp;, icu_2_6::Collator::ECollationStrength, 
+UColAttributeValue, UErrorCode&amp;)
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/external/unicode/tblcoll.h:150: 
+note:                 icu_2_6::RuleBasedCollator::RuleBasedCollator(const 
+icu_2_6::UnicodeString&amp;, UColAttributeValue, UErrorCode&amp;)
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/external/unicode/tblcoll.h:136: 
+note:                 icu_2_6::RuleBasedCollator::RuleBasedCollator(const 
+icu_2_6::UnicodeString&amp;, icu_2_6::Collator::ECollationStrength, UErrorCode&amp;)
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/external/unicode/tblcoll.h:122: 
+note:                 icu_2_6::RuleBasedCollator::RuleBasedCollator(const 
+uint8_t*, UErrorCode&amp;)
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/external/unicode/tblcoll.h:120: 
+note:                 icu_2_6::RuleBasedCollator::RuleBasedCollator(const 
+icu_2_6::UnicodeString&amp;, UErrorCode&amp;)
+dmake:  Error code 1, while 
+making '../../unxlngi6.pro/slo/collator_unicode.obj'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while 
+making /home/cartman/OpenOffice/ooo-build/build/src680-m143/i18npool/source/collator
+make: *** [stamp/build] Error 1
+
+
+Any ideas?
+
+Regards,
+ismail
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001384.html">[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx
+</A></li>
+	<LI>Next message: <A HREF="001386.html">[Open Office] m143 doesn't build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1385">[ date ]</a>
+              <a href="thread.html#1385">[ thread ]</a>
+              <a href="subject.html#1385">[ subject ]</a>
+              <a href="author.html#1385">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

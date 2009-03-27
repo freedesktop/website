@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] .desktop.in files untranslatable
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20.desktop.in%20files%20untranslatable&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001499.html">
+   <LINK REL="Next"  HREF="001501.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] .desktop.in files untranslatable</H1>
+    <B>Dwayne Bailey</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20.desktop.in%20files%20untranslatable&In-Reply-To="
+       TITLE="[Open Office] .desktop.in files untranslatable">dwayne at translate.org.za
+       </A><BR>
+    <I>Thu Jan 19 18:03:48 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001499.html">[Open Office] evo2 address book, version 2 and wizard
+</A></li>
+        <LI>Next message: <A HREF="001501.html">[Open Office] .desktop.in files untranslatable
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1500">[ date ]</a>
+              <a href="thread.html#1500">[ thread ]</a>
+              <a href="subject.html#1500">[ subject ]</a>
+              <a href="author.html#1500">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>In the recent change to the .desktop.in files in desktop/ in HEAD the
+Name, GenericName and Comment entries where not marked as translatable.
+
+In the following patch I have removed the translations from
+the .desktop.in files, marked the correct items as translatable.  I've
+also added a Makefile rule to remove the generated .desktop files during
+a make clean.
+
+-- 
+Dwayne Bailey
+Translate.org.za
+
++27-12-460-1095 (w)
++27-83-443-7114 (cell)
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: desktop-file-localisation.diff
+Type: text/x-patch
+Size: 58412 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060120/ee931f1d/desktop-file-localisation-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060120/ee931f1d/desktop-file-localisation-0001.bin</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001499.html">[Open Office] evo2 address book, version 2 and wizard
+</A></li>
+	<LI>Next message: <A HREF="001501.html">[Open Office] .desktop.in files untranslatable
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1500">[ date ]</a>
+              <a href="thread.html#1500">[ thread ]</a>
+              <a href="subject.html#1500">[ subject ]</a>
+              <a href="author.html#1500">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

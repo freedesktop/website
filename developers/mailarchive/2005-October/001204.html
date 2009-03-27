@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] problem with beanshell
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20problem%20with%20beanshell&In-Reply-To=200510201706.18886.ismail%40uludag.org.tr">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001203.html">
+   <LINK REL="Next"  HREF="001205.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] problem with beanshell</H1>
+    <B>Lupine</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20problem%20with%20beanshell&In-Reply-To=200510201706.18886.ismail%40uludag.org.tr"
+       TITLE="[Open Office] problem with beanshell">thelupine at softhome.net
+       </A><BR>
+    <I>Thu Oct 20 10:47:05 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001203.html">[Open Office] problem with beanshell
+</A></li>
+        <LI>Next message: <A HREF="001205.html">[Open Office] problem with beanshell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1204">[ date ]</a>
+              <a href="thread.html#1204">[ thread ]</a>
+              <a href="subject.html#1204">[ subject ]</a>
+              <a href="author.html#1204">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 2005-10-20 at 17:06 +0300, &#304;smail D&#246;nmez wrote:
+&gt;<i> &gt; Java: java -version
+</I>&gt;<i> &gt; java version &quot;1.5.0_04&quot;
+</I>&gt;<i>                          ^^^^^^^^^^
+</I>&gt;<i> 
+</I>&gt;<i> Try with Java SDK 1.4.x . Looks like OpenOffice.org doesn't support 1.5 yet.
+</I>
+
+
+On Thu, 2005-10-20 at 16:05 +0200, Jan Holesovsky wrote: 
+&gt;<i> 
+</I>&gt;<i> Java 1.5 is not supported yet, AFAIK.  There is a 'morejava' CWS up-stream, 
+</I>&gt;<i> but it hasn't been integrated yet :-(  Please re-try with 1.4.2, or try to 
+</I>&gt;<i> extract the CWS using 'ooo-build/bin/cws-extract' &amp; add it to your 'apply' 
+</I>&gt;<i> file.  I am sorry, I am unable to test it myself ATM...
+</I>
+
+
+Thanks for the tips, but it looks like I'm still having a problem.  I
+installed:
+
+java -version
+java version &quot;1.4.2_09&quot;
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.4.2_09-b05)
+
+...and though the error has changed, I'm still getting an error:
+
+=============
+Building project beanshell
+=============
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell
+-------------
+mkdir ./unxlngi6.pro/misc/build/BeanShell/
+mkdir: cannot create directory `./unxlngi6.pro/misc/build/BeanShell/':
+File exists
+cd ./unxlngi6.pro/misc/build/BeanShell/ &amp;&amp; dmake    &amp;&amp; touch
+so_built_ooo_beanshell
+-------------
+/usr/share/ant/bin/ant -Dprj=../../../.. -Dprjname=ooo_beanshell
+-Ddebug=off -Doptimize=on  -Dtarget=jarall -Dsolar.update=on
+-Dout=../../../../unxlngi6.pro -Dinpath=unxlngi6.pro -Dproext=&quot;.pro&quot;
+-Dsolar.bin=/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/solver/680/unxlngi6.pro/bin -Dsolar.jar=/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/solver/680/unxlngi6.pro/bin -Dsolar.doc=/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/solver/680/unxlngi6.pro/doc  -Dcommon.jar=/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/solver/680/common.pro/bin -Dcommon.doc=/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/solver/680/common.pro/doc  -f build.xml  -emacs
+Buildfile: build.xml
+
+checkjjt:
+
+jjtree:
+
+checkjj:
+
+javacc:
+
+builddir:
+
+compile:
+Compiling 74 source files
+to /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/classes
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/ClassGeneratorUtil.java:110: cannot access bsh.Variable
+bad class
+file: /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/classes/bsh/Variable.class
+class file has wrong version 49.0, should be 48.0
+Please remove or make sure it appears in the correct subdirectory of the
+classpath.
+        Variable [] vars;
+        ^
+1 error
+
+BUILD FAILED
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/build.xml:176: Compile failed; see the compiler error output for details.
+
+Total time: 2 seconds
+dmake:  Error code 1, while making 'ANTBUILD'
+'---* tg_merge.mk *---'
+dmake:  Error code 255, while making
+'./unxlngi6.pro/misc/build/so_built_ooo_beanshell'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while
+making /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell
+make: *** [stamp/build] Error 1
+
+----------------------------------------------------------
+
+
+All I did was download the older Java, installed it while removing 1.5
+and just re-ran &quot;make clean &amp;&amp; make&quot;.  Should I start completely over,
+or is there some other issue going on here?
+
+Thanks,
+-Lup
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001203.html">[Open Office] problem with beanshell
+</A></li>
+	<LI>Next message: <A HREF="001205.html">[Open Office] problem with beanshell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1204">[ date ]</a>
+              <a href="thread.html#1204">[ thread ]</a>
+              <a href="subject.html#1204">[ subject ]</a>
+              <a href="author.html#1204">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] parallel building fails...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20parallel%20building%20fails...&In-Reply-To=1139481992.3457.17.camel%40localhost.localdomain">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001568.html">
+   <LINK REL="Next"  HREF="001572.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] parallel building fails...</H1>
+    <B>Noel Power</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20parallel%20building%20fails...&In-Reply-To=1139481992.3457.17.camel%40localhost.localdomain"
+       TITLE="[Open Office] parallel building fails...">npower at openoffice.org
+       </A><BR>
+    <I>Fri Feb 10 07:02:53 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001568.html">[Open Office] parallel building fails...
+</A></li>
+        <LI>Next message: <A HREF="001572.html">[Open Office] parallel building fails...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1569">[ date ]</a>
+              <a href="thread.html#1569">[ thread ]</a>
+              <a href="subject.html#1569">[ subject ]</a>
+              <a href="author.html#1569">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Giuseppe,
+
+Caolan McNamara wrote:
+&gt;<i> On Thu, 2006-02-09 at 11:28 +0100, Giuseppe Ghib&#242; wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Caolan McNamara wrote:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Searching backwards there aren't errors AFAIK (full log is 45MB), and vbaobj.lib
+</I>&gt;&gt;<i>is anyway built (I've the file into ./build/src680-m155/sc/unxlngi6.pro/slb/vbaobj.lib), but 
+</I>&gt;&gt;<i>later the point where there is
+</I>&gt;&gt;<i>Checking DLL ../unxlngi6.pro/lib/check_libswui680li.so ...dmake... =&gt; Error,
+</I>&gt;&gt;<i>so IMHO it's a missed dependency (maybe in the VBA patchset)
+</I>&gt;&gt;<i>from libswui680li.so to vbaobj.lib.
+</I>&gt;&gt;<i>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> I doubt it. I'd still say the problem is in sc. I'd search for vbaobj in
+</I>&gt;<i> the log and see what order of usage it gets used in, or cd sc/util ;
+</I>&gt;<i> rm ../unxlngi6.pro/slb/vbaobj.lib; export MAXPROCESS=10 ; dmake and see
+</I>&gt;<i> if that reproduces it
+</I>&gt;<i> 
+</I>&gt;<i> C.
+</I>&gt;<i> 
+</I>
+Of course Caolan is correct :-) and there is indeed a missing 
+dependency. Since m154 qpro is disabled ( there was a dependency line 
+for vba in sc/prj/build.lst ) in that patch set ( they were in the same 
+patch because qpro &amp; vba were patching the same line ) Anyway it appears 
+that when the conditional patches for &gt;= m154 were generated this line 
+was missed.
+
+I didn't realise you were talking about multiproc builds ( somehow my 
+mind just assumed icecream ) so in fact I was able to reproduce this 
+here and play with it. I was able to make it fail consistently quite 
+easily in the end
+
+cd sc/unxlngi6.pro/slb/vbaobj.lib
+rm unoobj.lib  vbaobj.lib  lotus.lib
+build -P 6 ( or higher, 6 fails every time for me )
+
+so update from head should fix the problem now. Sorry 'bout all the 
+trouble :-(
+
+Noel
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001568.html">[Open Office] parallel building fails...
+</A></li>
+	<LI>Next message: <A HREF="001572.html">[Open Office] parallel building fails...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1569">[ date ]</a>
+              <a href="thread.html#1569">[ thread ]</a>
+              <a href="subject.html#1569">[ subject ]</a>
+              <a href="author.html#1569">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] [PATCH] ooo-build-2-0-4: Fix parallel build in scp2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5BPATCH%5D%20ooo-build-2-0-4%3A%20Fix%20parallel%20build%20in%20scp2&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002047.html">
+   <LINK REL="Next"  HREF="002061.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] [PATCH] ooo-build-2-0-4: Fix parallel build in scp2</H1>
+    <B>J&#252;rg Billeter</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5BPATCH%5D%20ooo-build-2-0-4%3A%20Fix%20parallel%20build%20in%20scp2&In-Reply-To="
+       TITLE="[Open Office] [PATCH] ooo-build-2-0-4: Fix parallel build in scp2">j at bitron.ch
+       </A><BR>
+    <I>Fri Oct 13 10:20:22 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002047.html">[Open Office] Build broken with system-icu
+</A></li>
+        <LI>Next message: <A HREF="002061.html">[Open Office] [PATCH] ooo-build-2-0-4: Fix parallel build	in	scp2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2046">[ date ]</a>
+              <a href="thread.html#2046">[ thread ]</a>
+              <a href="subject.html#2046">[ subject ]</a>
+              <a href="author.html#2046">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Got a build error when building with --with-num-cpus=2 in scp2, see
+below for error message. The problem seems to be that cp_update depends
+on cp_langmacros but this dependency is missing from build.lst. Attached
+patch should fix that, I haven't tested it on a clean build yet, though.
+
+Ok to commit?
+
+J&#252;rg
+
+=============
+Building project scp2
+=============
+/usr/src/ooo-build-2.0.4/build/OOO_2_0_4/scp2/macros
+Running processes: 1
+/usr/src/ooo-build-2.0.4/build/OOO_2_0_4/scp2/source/onlineupdate
+Running processes: 2
+mkout -- version: 1.7
+mkout -- version: 1.7
+dmake:  makefile.mk:  line 51:  Warning: -- Macro `CUSTOM_IMAGE_SETS'
+redefined after use
+-------------
+------------------------------
+Making: ../unxlngi6.pro/inc/langmacros.inc
+mv ../unxlngi6.pro/inc/langmacros.inc ../unxlngi6.pro/inc/langmacros.inc.tmp &gt;&amp; /dev/null
+------------------------------
+/usr/bin/perl macro.pl -o ../unxlngi6.pro/inc/langmacros.inc.tmp &amp;&amp;
+mv ../unxlngi6.pro/inc/langmacros.inc.tmp ../unxlngi6.pro/inc/langmacros.inc
+Making: ../../unxlngi6.pro/par/osl/file_onlineupdate.par
+cpp.lcc -+ -P -DLINUX -DUNX -DVCL -DGCC -DC341 -DINTEL -DCVER=C341
+-DNPTL -DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR
+-D_USE_NAMESPACE=1 -DSTLPORT_VERSION=400 -DHAVE_GCC_VISIBILITY_FEATURE
+-D__DMAKE -DUNIX -DCPPU_ENV=gcc3
+-DGXX_INCLUDE_PATH=/usr/lib/gcc/i686-pc-linux-gnu/4.1.1/../../../../include/c++/4.1.1 -DSUPD=680 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DEXCEPTIONS_OFF -DGSTREAMER -DCUI -DOOD680=OOD680   -DWITHOUT_FONTOOO -DWITHOUT_FONTS -DUDK_MAJOR=3 -DOFFICEUPD=680 -Ugcc3 -DCOMID=gcc3 -DCOMNAME=gcc3 -D_gcc3 -DCCNUMVER=000400010001 -DSHORTSTDCPP3=6 -DDLLPOSTFIX=li -I. -I../../inc -I../inc -I../../unx/inc -I../../unxlngi6.pro/inc -I. -I/usr/src/ooo-build-2.0.4/build/OOO_2_0_4/solver/680/unxlngi6.pro/inc/stl -I/usr/src/ooo-build-2.0.4/build/OOO_2_0_4/solver/680/unxlngi6.pro/inc/external -I/usr/src/ooo-build-2.0.4/build/OOO_2_0_4/solver/680/unxlngi6.pro/inc -I/usr/src/ooo-build-2.0.4/build/OOO_2_0_4/solenv/unxlngi6/inc -I/usr/src/ooo-build-2.0.4/build/OOO_2_0_4/solenv/inc -I/usr/src/ooo-build-2.0.4/build/OOO_2_0_4/res -I/usr/src/ooo-build-2.0.4/build/OOO_2_0_4/solver/680/unxlngi6.pro/inc/stl -I/usr/src/ooo-build-2.0.4/build/OOO_2_0_4/solenv/inc/Xp31 -INO_JAVA_HOME/include -INO_JAVA_HOME/include/linux -INO_JAVA_HOME/include/native_threads/include -I/usr/include     file_onlineupdate.scp &gt; ../../unxlngi6.pro/misc/osl/file_onlineupdate.pre
+cpp version 17.8.1999
+cpp: ../../inc/macros.inc:402 file_onlineupdate.scp:36 Could not find
+include file &lt;langmacros.inc&gt;
+dmake:  Error code 1, while making
+'../../unxlngi6.pro/par/osl/file_onlineupdate.par'
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ooo-build-scp2-parallel-build-1.diff
+Type: text/x-patch
+Size: 2386 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20061013/28d72dad/attachment-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20061013/28d72dad/attachment-0001.bin</A> 
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002047.html">[Open Office] Build broken with system-icu
+</A></li>
+	<LI>Next message: <A HREF="002061.html">[Open Office] [PATCH] ooo-build-2-0-4: Fix parallel build	in	scp2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2046">[ date ]</a>
+              <a href="thread.html#2046">[ thread ]</a>
+              <a href="subject.html#2046">[ subject ]</a>
+              <a href="author.html#2046">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

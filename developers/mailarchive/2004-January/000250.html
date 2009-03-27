@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Bug 52734
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000249.html">
+   <LINK REL="Next"  HREF="000254.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Bug 52734
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: Bug 52734">michael@ximian.com
+       </A><BR>
+    <I>Wed, 21 Jan 2004 22:36:23 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000249.html">[Open Office] Re: Bug 52734
+</A></li>
+        <LI> Next message: <A HREF="000254.html">[Open Office] Re: Bug 52734
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#250">[ date ]</a>
+              <a href="thread.html#250">[ thread ]</a>
+              <a href="subject.html#250">[ subject ]</a>
+              <a href="author.html#250">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Rafal,
+
+On Tue, 2004-01-20 at 16:49, Rafa³ 'rmrmg' Roszak wrote:
+&gt;<i> begin  Michael Meeks &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt; quote:
+</I>&gt;<i> &gt; 	You almost certainly screwed up where you installed it then; I'm
+</I>&gt;<i> &gt; guessing it's in /usr/local/ or somewhere instead of the system
+</I>&gt;<i> 
+</I>&gt;<i> Nope.
+</I>
+	How interesting - then our fix is no good :-) so - I guess you need to
+do a hand build:
+
+	cd openoffice/build/OOO_1_1_0
+	. ./LinuxIntelEnv.Set.sh
+	cd &lt;directory-where-it-failed&gt;
+	dmake
+	...
+
+	It shoudl fail; then can you cut/paste the previous compile line; strip
+the '-c' flag; add the -E flag and have a look at the pre-processed
+output [ if using -o may go to the object filename ;-].
+
+	That should tell us what zlib.h is being included and what code is
+actually getting to the compiler; if that proves impenetrable, a link to
+it on-line somewhere may help us.
+
+	Thanks muchly,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000249.html">[Open Office] Re: Bug 52734
+</A></li>
+	<LI> Next message: <A HREF="000254.html">[Open Office] Re: Bug 52734
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#250">[ date ]</a>
+              <a href="thread.html#250">[ thread ]</a>
+              <a href="subject.html#250">[ subject ]</a>
+              <a href="author.html#250">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

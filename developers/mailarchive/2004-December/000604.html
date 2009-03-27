@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] module vcl - checkdll check_libvclplug_kde645li.so fails
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000603.html">
+   <LINK REL="Next"  HREF="000605.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] module vcl - checkdll check_libvclplug_kde645li.so fails
+   </H1>
+    <B>Jan Holesovsky
+    </B> 
+    <A HREF="mailto:kendy%40suse.cz"
+       TITLE="[Open Office] module vcl - checkdll check_libvclplug_kde645li.so fails">kendy@suse.cz
+       </A><BR>
+    <I>Wed, 1 Dec 2004 16:52:15 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000603.html">[Open Office] module vcl - checkdll
+ check_libvclplug_kde645li.so fails
+</A></li>
+        <LI> Next message: <A HREF="000605.html">[Open Office] module vcl - checkdll
+ check_libvclplug_kde645li.so fails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#604">[ date ]</a>
+              <a href="thread.html#604">[ thread ]</a>
+              <a href="subject.html#604">[ subject ]</a>
+              <a href="author.html#604">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 01 December 2004 15:14, Hanno Meyer-Thurow wrote:
+
+&gt;<i> as i read on OOo IRC chan there is a fix for this in cws_src680_vcl32. i
+</I>&gt;<i> try that first, changing WIDGETSET_KDE_LIBS  to KDE_LIBS in two vcl
+</I>&gt;<i> makefile.mk files. But thanks for help! :)
+</I>
+Oh, this will not help. vcl32 is for 680 (pre-2.0, HEAD in ooo-build), but you 
+are building 645 (1.1.x, ooo-build-1-3) according to your error message, 
+where WIDGETSET_KDE_LIBS is the correct name.
+
+(The bug fixed in vcl32 comes from integration of rodarvus01 and vcl28 at 
+nearly the same time, where WIDGETSET_* was renamed to * in rodarvus01, but 
+in vcl28 I still used WIDGETSET_* and it was in the process of integration 
+already when I noticed the rename.)
+
+Bye,
+Jan
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000603.html">[Open Office] module vcl - checkdll
+ check_libvclplug_kde645li.so fails
+</A></li>
+	<LI> Next message: <A HREF="000605.html">[Open Office] module vcl - checkdll
+ check_libvclplug_kde645li.so fails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#604">[ date ]</a>
+              <a href="thread.html#604">[ thread ]</a>
+              <a href="subject.html#604">[ subject ]</a>
+              <a href="author.html#604">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

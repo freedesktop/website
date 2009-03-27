@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Build without java broken
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build%20without%20java%20broken&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001674.html">
+   <LINK REL="Next"  HREF="001683.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Build without java broken</H1>
+    <B>Andreas Proschofsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build%20without%20java%20broken&In-Reply-To="
+       TITLE="[Open Office] Build without java broken">suka at gentoo.org
+       </A><BR>
+    <I>Tue Mar  7 02:22:31 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001674.html">[Open Office] CUPS &amp; ooob680-m5
+</A></li>
+        <LI>Next message: <A HREF="001683.html">[Open Office] Build without java broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1681">[ date ]</a>
+              <a href="thread.html#1681">[ thread ]</a>
+              <a href="subject.html#1681">[ subject ]</a>
+              <a href="author.html#1681">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This didn't happen with 2.0.1, someone has a pointer what is causing
+this (or even better, a fix ;) ). sandbox looks for javac even if we
+build without java:
+
+=============
+Building project sandbox
+=============
+/var/tmp/portage/openoffice-2.0.2_rc4/work/ooo-build-oob680.5.0/build/oob680-m5/sandbox/com/sun/star/lib/sandbox
+mkout -- version: 1.6
+/var/tmp/portage/openoffice-2.0.2_rc4/work/ooo-build-oob680.5.0/build/oob680-m5/sandbox/com/sun/star/lib/sandboxdmake:
+Executing shell macro: +echo $(IDLPACKAGE) | $(SED) 's/\\/\//g'
+Making dpj...
+javac -classpath
+&quot;.:../../../../../unxlngi6.pro/class:NO_JAVA_HOME/jre/lib/rt.jar:.&quot; -d
+../../../../../unxlngi6.pro/class  AudioProxy.java                             
+      Cachable.java                                       ClassContext.java    
+                        ClassContextImpl.java                          
+ClassContextProxy.java        CodeSource.java                                 
+Disposable.java                                 ExecutionContext.java          
+          Holder.java                                        
+ImageProducerProxy.java   JarEntry.java                                    
+JarInputStream.java                         Permission.java       
+PermissionCollection.java                    ProtectionDomain.java             
+             Resource.java    ResourceImpl.java                               
+ResourceProxy.java                              ResourceViewer.java            
+          SandboxMessageHandler.java                  SandboxThreadGroup.java  
+                  SandboxSecurity.java                     
+SandboxSecurityException.java           WeakRef.java    WeakTable.java         
+                                 WeakEntry.java                                
+         XImage.java
+javac: Command not found.
+dmake:  Error code 1, while making
+'../../../../../unxlngi6.pro/misc/lib_sandbox_dummy.java'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making
+/var/tmp/portage/openoffice-2.0.2_rc4/work/ooo-build-oob680.5.0/build/oob680-m5/sandbox/com/sun/star/lib/sandbox
+make: *** [stamp/build] Error 1
+
+bye Andreas
+
+-- 
+Andreas Proschofsky
+Gentoo Developer / OpenOffice.org
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 191 bytes
+Desc: This is a digitally signed message part
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060307/0f4b6b63/attachment.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060307/0f4b6b63/attachment.bin</A>
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001674.html">[Open Office] CUPS &amp; ooob680-m5
+</A></li>
+	<LI>Next message: <A HREF="001683.html">[Open Office] Build without java broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1681">[ date ]</a>
+              <a href="thread.html#1681">[ thread ]</a>
+              <a href="subject.html#1681">[ subject ]</a>
+              <a href="author.html#1681">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,438 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regarding issue no. 49919
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:samit%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000200.html">
+   <LINK REL="Next"  HREF="000202.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regarding issue no. 49919
+   </H1>
+    <B>Amit Shrivastava
+    </B> 
+    <A HREF="mailto:samit%40novell.com"
+       TITLE="[Open Office] Regarding issue no. 49919">samit@novell.com
+       </A><BR>
+    <I>Tue, 06 Jan 2004 00:34:28 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000200.html">[Open Office] new ooo-build release ...
+</A></li>
+        <LI> Next message: <A HREF="000202.html">[Open Office] patch creation ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a MIME message. If you are reading this text, you may want to 
+consider changing to a mail reader or gateway that understands how to 
+properly handle MIME multipart messages.
+
+--=__PartDC821414.0__=
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+Hi Michael,
+
+Happy New Year !!!
+
+&gt;<i>	So - I imagine it now sensitizes dependant on whether any
+</I>rows/columns
+&gt;<i>are hidden in the whole spreadsheet - however this was not my desire.
+</I>&gt;<i>Ultimately 'show' should sensitize if there are any hidden items
+</I>inside
+&gt;<i>the selection :-)
+</I>
+Yep I think i got the fix see the patch below:
+
+******************************************************************************************************
+--- sc/inc/document.hxx.orig	2003-11-22 15:35:41.000000000 +0530
++++ sc/inc/document.hxx	2004-01-06 11:58:36.000000000 +0530
+@@ -494,6 +494,7 @@
+ 
+ 
+ 	inline BOOL 		RowHidden( USHORT nRow, USHORT nTab
+);		// FillInfo
++        BOOL                    ColHidden( USHORT nCol, USHORT nTab );
+         // FillInfo
+ 
+ public:
+ 	long			GetCellCount() const;		// alle
+Zellen
+@@ -655,6 +656,8 @@
+ 	void			ClearDrawPage(USHORT nTab);
+ 	void			SetVisible( USHORT nTab, BOOL bVisible
+);
+ 	BOOL			IsVisible( USHORT nTab ) const;
++        BOOL                    IsRowHidden(USHORT nStartRow, USHORT
+nEndRow, USHORT nTab) const;
++        BOOL                    IsColHidden(USHORT nStartCol, USHORT
+nEndCol, USHORT nTab) const;
+ 	void			SetScenario( USHORT nTab, BOOL bFlag );
+ 	BOOL			IsScenario( USHORT nTab ) const;
+ 	void			GetScenarioData( USHORT nTab, String&amp;
+rComment,
+--- sc/source/core/data/document.cxx.orig	2003-11-22
+15:35:08.000000000 +0530
++++ sc/source/core/data/document.cxx	2004-01-06 10:31:01.000000000
++0530
+@@ -475,6 +475,28 @@
+ 	return FALSE;
+ }
+ 
++BOOL ScDocument::IsRowHidden(USHORT nStartRow, USHORT nEndRow, USHORT
+nTab) const
++{
++        BOOL	rHidden = FALSE;
++        for(USHORT i=nStartRow; i&lt;=nEndRow; i++)
++	  {
++	      if ( RowHidden(i,nTab) )
++		  rHidden = TRUE;
++	  }
++	return rHidden;
++}
++
++BOOL ScDocument::IsColHidden(USHORT nStartCol, USHORT nEndCol, USHORT
+nTab) const
++{
++        BOOL	cHidden = FALSE;
++        for(USHORT i=nStartCol; i&lt;=nEndCol; i++)
++	  {
++	    if (  ColHidden(i,nTab) )
++		  cHidden = TRUE;
++	  }
++	return cHidden;
++}
++
+ /*
+----------------------------------------------------------------------------
+ 	benutzten Bereich suchen:
+ 
+--- sc/source/core/data/fillinfo.cxx.orig	2004-01-06
+12:08:13.000000000 +0530
++++ sc/source/core/data/fillinfo.cxx	2004-01-06 11:33:06.000000000
++0530
+@@ -184,12 +184,16 @@
+ 	rEndY = rStartY + pMerge-&gt;GetRowMerge() - 1;
+ }
+ 
++BOOL ScDocument::ColHidden( USHORT nCol, USHORT nTab )
++{
++	return ( pTab[nTab]-&gt;pColFlags[nCol] &amp; CR_HIDDEN ) != 0;
++}
++
+ inline BOOL ScDocument::RowHidden( USHORT nRow, USHORT nTab )
+ {
+ 	return ( pTab[nTab]-&gt;pRowFlags[nRow] &amp; CR_HIDDEN ) != 0;
+ }
+ 
+-
+ #define CELLINFO(x,y) pRowInfo[nArrY+y].pCellInfo[nArrX+x]
+ 
+ USHORT ScDocument::FillInfo( RowInfo* pRowInfo, USHORT nX1, USHORT
+nY1, USHORT nX2, USHORT nY2,
+--- sc/source/ui/inc/viewfunc.hxx.orig	2004-01-06 12:11:23.000000000
++0530
++++ sc/source/ui/inc/viewfunc.hxx	2004-01-05 14:50:37.000000000
++0530
+@@ -243,6 +243,7 @@
+
+										ScMarkData*
+pMarkData = NULL );
+ 	void			SetMarkedWidthOrHeight( BOOL bWidth,
+ScSizeMode eMode, USHORT nSizeTwips,
+
+										BOOL
+bRecord = TRUE, BOOL bPaint = TRUE );
++	BOOL                    GetRowColHidden(BOOL col);
+ 	void			ShowMarkedColumns( BOOL bShow, BOOL
+bRecord = TRUE );
+ 	void			ShowMarkedRows( BOOL bShow, BOOL bRecord
+= TRUE );
+ 
+--- sc/source/ui/view/viewfunc.cxx.orig	2004-01-06
+12:09:10.000000000 +0530
++++ sc/source/ui/view/viewfunc.cxx	2004-01-06 10:00:06.000000000
++0530
+@@ -2114,6 +2114,64 @@
+ 	rMark.MarkToSimple();
+ }
+ 
++BOOL ScViewFunc::GetRowColHidden(BOOL col)
++{
++	ScDocument* pDoc = GetViewData()-&gt;GetDocument();
++	ScMarkData&amp; rMark = GetViewData()-&gt;GetMarkData();
++	USHORT nCol = 0,nRow = 0,nTab = 0;
++
++
++	rMark.MarkToMulti();
++	if (!rMark.IsMultiMarked())
++	{
++		nCol = GetViewData()-&gt;GetCurX();
++		nRow = GetViewData()-&gt;GetCurY();
++		nTab = GetViewData()-&gt;GetTabNo();
++		DoneBlockMode();
++		InitOwnBlockMode();
++		rMark.SetMultiMarkArea( ScRange( nCol,nRow,nTab ), TRUE
+);
++	}
++
++	USHORT* pRanges = new USHORT[MAXROW+1];
++	USHORT nRangeCnt = 0;
++	BOOL hidden = FALSE;
++
++	if ( col )
++	{
++		nRangeCnt = rMark.GetMarkColumnRanges( pRanges ); 
++		const USHORT* pTabRanges = pRanges;
++		
++		for (USHORT nRangeNo=0; nRangeNo&lt;nRangeCnt; nRangeNo++)
++		{
++			USHORT nStartNo = *(pTabRanges++);
++			USHORT nEndNo = *(pTabRanges++);
++			hidden =
+pDoc-&gt;IsColHidden(nStartNo,nEndNo,nTab);
++			/* Even if a single col is hidden set the var
+and break */
++			if ( hidden == TRUE ) 
++				break;
++		}
++
++	}
++	else
++	{
++		nRangeCnt = rMark.GetMarkRowRanges( pRanges );
++		const USHORT* pTabRanges = pRanges;
++		
++		for (USHORT nRangeNo=0; nRangeNo&lt;nRangeCnt; nRangeNo++)
++		{
++			USHORT nStartNo = *(pTabRanges++);
++			USHORT nEndNo = *(pTabRanges++);
++			hidden =
+pDoc-&gt;IsRowHidden(nStartNo,nEndNo,nTab);
++			/* Even if a single row is hidden set the var
+and break*/
++			if ( hidden == TRUE )
++				break;
++		}
++	}
++
++	delete[] pRanges;
++	return hidden;
++}
++
+ void ScViewFunc::ModifyCellSize( ScDirection eDir, BOOL bOptimal )
+ {
+ 	//!	Schrittweiten einstellbar
+--- sc/source/ui/view/cellsh.cxx.orig	2003-11-22 15:39:25.000000000
++0530
++++ sc/source/ui/view/cellsh.cxx	2004-01-05 14:57:27.000000000
++0530
+@@ -775,9 +775,7 @@
+ 				break;
+ 
+ 			case FID_ROW_HIDE:
+-			case FID_ROW_SHOW:
+ 			case FID_COL_HIDE:
+-			case FID_COL_SHOW:
+ 			case FID_COL_OPT_WIDTH:
+ 			case FID_ROW_OPT_HEIGHT:
+ 			case FID_DELETE_CELL:
+@@ -785,6 +783,19 @@
+ 					rSet.DisableItem( nWhich );
+ 				break;
+ 
++			case FID_ROW_SHOW:
++			        {
++					if ( pDoc-&gt;IsTabProtected(nTab)
+||<i> pDocSh-&gt;IsReadOnly() || !pTabViewShell-&gt;GetRowColHidden(FALSE) ) 
+</I>+						rSet.DisableItem( nWhich
+);
++				}
++				break;
++			case FID_COL_SHOW:
++			        {
++					if ( pDoc-&gt;IsTabProtected(nTab)
+||<i> pDocSh-&gt;IsReadOnly() || !pTabViewShell-&gt;GetRowColHidden(TRUE) ) 
+</I>+						rSet.DisableItem( nWhich
+);
++				}
++				break;
++
+
+******************************************************************************************************
+
+&gt;<i>	Thus we need to walk the selection examining it; the code that
+</I>does the
+&gt;<i>hide/show in the first place can be found here:
+</I>
+&gt;<i>	sc/source/ui/view/cellsh3.cxx /FID_ROW_SHOW/
+</I>&gt;<i>which calls
+</I>&gt;<i>	sc/source/ui/view/viewfunc.cxx (SetMarkedWidthOrHeight)
+</I>&gt;<i>
+</I>&gt;<i>	which seems to do something horribly inefficient with things
+</I>like:
+&gt;<i>
+</I>&gt;<i>	USHORT* pRanges = new USHORT[MAXROW+1];
+</I>&gt;<i>
+</I>&gt;<i>	but I guess we can't fix everything all at once.
+</I>
+This code actually execute the command after selection, selection
+processing part is in cellsh.cxx ( GetState ), where we need to get the
+current marked regions and verify for both hidden rows and cols. I am
+attaching the patch file as well.
+
+In the above patch ColHidden should be inline but it seems the compiler
+does optimization and ColHidden doesnt come in object file if its not
+refernce and build fails. The 
+
+USHORT* pRanges = new USHORT[MAXROW+1]; 
+
+is again used, we have to amend these insufficient code as separate
+tasks as it has been used in lot other places. The fix works even 
+incase of multiple selected regions both in rows and cols. 
+
+
+As i wasnt present in the meeting yesterday, i will update with tasks
+status separately.
+
+regards,
+Amit 
+
+
+
+--=__PartDC821414.0__=
+Content-Type: application/octet-stream; name=&quot;sc-show-hide-rows-cols.diff&quot;
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=&quot;sc-show-hide-rows-cols.diff&quot;
+
+LS0tIHNjL2luYy9kb2N1bWVudC5oeHgub3JpZwkyMDAzLTExLTIyIDE1OjM1OjQxLjAwMDAwMDAw
+MCArMDUzMA0KKysrIHNjL2luYy9kb2N1bWVudC5oeHgJMjAwNC0wMS0wNiAxMTo1ODozNi4wMDAw
+MDAwMDAgKzA1MzANCkBAIC00OTQsNiArNDk0LDcgQEANCiANCiANCiAJaW5saW5lIEJPT0wgCQlS
+b3dIaWRkZW4oIFVTSE9SVCBuUm93LCBVU0hPUlQgblRhYiApOwkJLy8gRmlsbEluZm8NCisgICAg
+ICAgIEJPT0wgICAgICAgICAgICAgICAgICAgIENvbEhpZGRlbiggVVNIT1JUIG5Db2wsIFVTSE9S
+VCBuVGFiICk7ICAgICAgICAgIC8vIEZpbGxJbmZvDQogDQogcHVibGljOg0KIAlsb25nCQkJR2V0
+Q2VsbENvdW50KCkgY29uc3Q7CQkvLyBhbGxlIFplbGxlbg0KQEAgLTY1NSw2ICs2NTYsOCBAQA0K
+IAl2b2lkCQkJQ2xlYXJEcmF3UGFnZShVU0hPUlQgblRhYik7DQogCXZvaWQJCQlTZXRWaXNpYmxl
+KCBVU0hPUlQgblRhYiwgQk9PTCBiVmlzaWJsZSApOw0KIAlCT09MCQkJSXNWaXNpYmxlKCBVU0hP
+UlQgblRhYiApIGNvbnN0Ow0KKyAgICAgICAgQk9PTCAgICAgICAgICAgICAgICAgICAgSXNSb3dI
+aWRkZW4oVVNIT1JUIG5TdGFydFJvdywgVVNIT1JUIG5FbmRSb3csIFVTSE9SVCBuVGFiKSBjb25z
+dDsNCisgICAgICAgIEJPT0wgICAgICAgICAgICAgICAgICAgIElzQ29sSGlkZGVuKFVTSE9SVCBu
+U3RhcnRDb2wsIFVTSE9SVCBuRW5kQ29sLCBVU0hPUlQgblRhYikgY29uc3Q7DQogCXZvaWQJCQlT
+ZXRTY2VuYXJpbyggVVNIT1JUIG5UYWIsIEJPT0wgYkZsYWcgKTsNCiAJQk9PTAkJCUlzU2NlbmFy
+aW8oIFVTSE9SVCBuVGFiICkgY29uc3Q7DQogCXZvaWQJCQlHZXRTY2VuYXJpb0RhdGEoIFVTSE9S
+VCBuVGFiLCBTdHJpbmcmIHJDb21tZW50LA0KLS0tIHNjL3NvdXJjZS9jb3JlL2RhdGEvZG9jdW1l
+bnQuY3h4Lm9yaWcJMjAwMy0xMS0yMiAxNTozNTowOC4wMDAwMDAwMDAgKzA1MzANCisrKyBzYy9z
+b3VyY2UvY29yZS9kYXRhL2RvY3VtZW50LmN4eAkyMDA0LTAxLTA2IDEwOjMxOjAxLjAwMDAwMDAw
+MCArMDUzMA0KQEAgLTQ3NSw2ICs0NzUsMjggQEANCiAJcmV0dXJuIEZBTFNFOw0KIH0NCiANCitC
+T09MIFNjRG9jdW1lbnQ6OklzUm93SGlkZGVuKFVTSE9SVCBuU3RhcnRSb3csIFVTSE9SVCBuRW5k
+Um93LCBVU0hPUlQgblRhYikgY29uc3QNCit7DQorICAgICAgICBCT09MCXJIaWRkZW4gPSBGQUxT
+RTsNCisgICAgICAgIGZvcihVU0hPUlQgaT1uU3RhcnRSb3c7IGk8PW5FbmRSb3c7IGkrKykNCisJ
+ICB7DQorCSAgICAgIGlmICggUm93SGlkZGVuKGksblRhYikgKQ0KKwkJICBySGlkZGVuID0gVFJV
+RTsNCisJICB9DQorCXJldHVybiBySGlkZGVuOw0KK30NCisNCitCT09MIFNjRG9jdW1lbnQ6Oklz
+Q29sSGlkZGVuKFVTSE9SVCBuU3RhcnRDb2wsIFVTSE9SVCBuRW5kQ29sLCBVU0hPUlQgblRhYikg
+Y29uc3QNCit7DQorICAgICAgICBCT09MCWNIaWRkZW4gPSBGQUxTRTsNCisgICAgICAgIGZvcihV
+U0hPUlQgaT1uU3RhcnRDb2w7IGk8PW5FbmRDb2w7IGkrKykNCisJICB7DQorCSAgICBpZiAoICBD
+b2xIaWRkZW4oaSxuVGFiKSApDQorCQkgIGNIaWRkZW4gPSBUUlVFOw0KKwkgIH0NCisJcmV0dXJu
+IGNIaWRkZW47DQorfQ0KKw0KIC8qIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCiAJYmVudXR6dGVuIEJl
+cmVpY2ggc3VjaGVuOg0KIA0KLS0tIHNjL3NvdXJjZS9jb3JlL2RhdGEvZmlsbGluZm8uY3h4Lm9y
+aWcJMjAwNC0wMS0wNiAxMjowODoxMy4wMDAwMDAwMDAgKzA1MzANCisrKyBzYy9zb3VyY2UvY29y
+ZS9kYXRhL2ZpbGxpbmZvLmN4eAkyMDA0LTAxLTA2IDExOjMzOjA2LjAwMDAwMDAwMCArMDUzMA0K
+QEAgLTE4NCwxMiArMTg0LDE2IEBADQogCXJFbmRZID0gclN0YXJ0WSArIHBNZXJnZS0+R2V0Um93
+TWVyZ2UoKSAtIDE7DQogfQ0KIA0KK0JPT0wgU2NEb2N1bWVudDo6Q29sSGlkZGVuKCBVU0hPUlQg
+bkNvbCwgVVNIT1JUIG5UYWIgKQ0KK3sNCisJcmV0dXJuICggcFRhYltuVGFiXS0+cENvbEZsYWdz
+W25Db2xdICYgQ1JfSElEREVOICkgIT0gMDsNCit9DQorDQogaW5saW5lIEJPT0wgU2NEb2N1bWVu
+dDo6Um93SGlkZGVuKCBVU0hPUlQgblJvdywgVVNIT1JUIG5UYWIgKQ0KIHsNCiAJcmV0dXJuICgg
+cFRhYltuVGFiXS0+cFJvd0ZsYWdzW25Sb3ddICYgQ1JfSElEREVOICkgIT0gMDsNCiB9DQogDQot
+DQogI2RlZmluZSBDRUxMSU5GTyh4LHkpIHBSb3dJbmZvW25BcnJZK3ldLnBDZWxsSW5mb1tuQXJy
+WCt4XQ0KIA0KIFVTSE9SVCBTY0RvY3VtZW50OjpGaWxsSW5mbyggUm93SW5mbyogcFJvd0luZm8s
+IFVTSE9SVCBuWDEsIFVTSE9SVCBuWTEsIFVTSE9SVCBuWDIsIFVTSE9SVCBuWTIsDQotLS0gc2Mv
+c291cmNlL3VpL2luYy92aWV3ZnVuYy5oeHgub3JpZwkyMDA0LTAxLTA2IDEyOjExOjIzLjAwMDAw
+MDAwMCArMDUzMA0KKysrIHNjL3NvdXJjZS91aS9pbmMvdmlld2Z1bmMuaHh4CTIwMDQtMDEtMDUg
+MTQ6NTA6MzcuMDAwMDAwMDAwICswNTMwDQpAQCAtMjQzLDYgKzI0Myw3IEBADQogCQkJCQkJCQkJ
+CVNjTWFya0RhdGEqIHBNYXJrRGF0YSA9IE5VTEwgKTsNCiAJdm9pZAkJCVNldE1hcmtlZFdpZHRo
+T3JIZWlnaHQoIEJPT0wgYldpZHRoLCBTY1NpemVNb2RlIGVNb2RlLCBVU0hPUlQgblNpemVUd2lw
+cywNCiAJCQkJCQkJCQkJQk9PTCBiUmVjb3JkID0gVFJVRSwgQk9PTCBiUGFpbnQgPSBUUlVFICk7
+DQorCUJPT0wgICAgICAgICAgICAgICAgICAgIEdldFJvd0NvbEhpZGRlbihCT09MIGNvbCk7DQog
+CXZvaWQJCQlTaG93TWFya2VkQ29sdW1ucyggQk9PTCBiU2hvdywgQk9PTCBiUmVjb3JkID0gVFJV
+RSApOw0KIAl2b2lkCQkJU2hvd01hcmtlZFJvd3MoIEJPT0wgYlNob3csIEJPT0wgYlJlY29yZCA9
+IFRSVUUgKTsNCiANCi0tLSBzYy9zb3VyY2UvdWkvdmlldy92aWV3ZnVuYy5jeHgub3JpZwkyMDA0
+LTAxLTA2IDEyOjA5OjEwLjAwMDAwMDAwMCArMDUzMA0KKysrIHNjL3NvdXJjZS91aS92aWV3L3Zp
+ZXdmdW5jLmN4eAkyMDA0LTAxLTA2IDEwOjAwOjA2LjAwMDAwMDAwMCArMDUzMA0KQEAgLTIxMTQs
+NiArMjExNCw2NCBAQA0KIAlyTWFyay5NYXJrVG9TaW1wbGUoKTsNCiB9DQogDQorQk9PTCBTY1Zp
+ZXdGdW5jOjpHZXRSb3dDb2xIaWRkZW4oQk9PTCBjb2wpDQorew0KKwlTY0RvY3VtZW50KiBwRG9j
+ID0gR2V0Vmlld0RhdGEoKS0+R2V0RG9jdW1lbnQoKTsNCisJU2NNYXJrRGF0YSYgck1hcmsgPSBH
+ZXRWaWV3RGF0YSgpLT5HZXRNYXJrRGF0YSgpOw0KKwlVU0hPUlQgbkNvbCA9IDAsblJvdyA9IDAs
+blRhYiA9IDA7DQorDQorDQorCXJNYXJrLk1hcmtUb011bHRpKCk7DQorCWlmICghck1hcmsuSXNN
+dWx0aU1hcmtlZCgpKQ0KKwl7DQorCQluQ29sID0gR2V0Vmlld0RhdGEoKS0+R2V0Q3VyWCgpOw0K
+KwkJblJvdyA9IEdldFZpZXdEYXRhKCktPkdldEN1clkoKTsNCisJCW5UYWIgPSBHZXRWaWV3RGF0
+YSgpLT5HZXRUYWJObygpOw0KKwkJRG9uZUJsb2NrTW9kZSgpOw0KKwkJSW5pdE93bkJsb2NrTW9k
+ZSgpOw0KKwkJck1hcmsuU2V0TXVsdGlNYXJrQXJlYSggU2NSYW5nZSggbkNvbCxuUm93LG5UYWIg
+KSwgVFJVRSApOw0KKwl9DQorDQorCVVTSE9SVCogcFJhbmdlcyA9IG5ldyBVU0hPUlRbTUFYUk9X
+KzFdOw0KKwlVU0hPUlQgblJhbmdlQ250ID0gMDsNCisJQk9PTCBoaWRkZW4gPSBGQUxTRTsNCisN
+CisJaWYgKCBjb2wgKQ0KKwl7DQorCQluUmFuZ2VDbnQgPSByTWFyay5HZXRNYXJrQ29sdW1uUmFu
+Z2VzKCBwUmFuZ2VzICk7IA0KKwkJY29uc3QgVVNIT1JUKiBwVGFiUmFuZ2VzID0gcFJhbmdlczsN
+CisJCQ0KKwkJZm9yIChVU0hPUlQgblJhbmdlTm89MDsgblJhbmdlTm88blJhbmdlQ250OyBuUmFu
+Z2VObysrKQ0KKwkJew0KKwkJCVVTSE9SVCBuU3RhcnRObyA9ICoocFRhYlJhbmdlcysrKTsNCisJ
+CQlVU0hPUlQgbkVuZE5vID0gKihwVGFiUmFuZ2VzKyspOw0KKwkJCWhpZGRlbiA9IHBEb2MtPklz
+Q29sSGlkZGVuKG5TdGFydE5vLG5FbmRObyxuVGFiKTsNCisJCQkvKiBFdmVuIGlmIGEgc2luZ2xl
+IGNvbCBpcyBoaWRkZW4gc2V0IHRoZSB2YXIgYW5kIGJyZWFrICovDQorCQkJaWYgKCBoaWRkZW4g
+PT0gVFJVRSApIA0KKwkJCQlicmVhazsNCisJCX0NCisNCisJfQ0KKwllbHNlDQorCXsNCisJCW5S
+YW5nZUNudCA9IHJNYXJrLkdldE1hcmtSb3dSYW5nZXMoIHBSYW5nZXMgKTsNCisJCWNvbnN0IFVT
+SE9SVCogcFRhYlJhbmdlcyA9IHBSYW5nZXM7DQorCQkNCisJCWZvciAoVVNIT1JUIG5SYW5nZU5v
+PTA7IG5SYW5nZU5vPG5SYW5nZUNudDsgblJhbmdlTm8rKykNCisJCXsNCisJCQlVU0hPUlQgblN0
+YXJ0Tm8gPSAqKHBUYWJSYW5nZXMrKyk7DQorCQkJVVNIT1JUIG5FbmRObyA9ICoocFRhYlJhbmdl
+cysrKTsNCisJCQloaWRkZW4gPSBwRG9jLT5Jc1Jvd0hpZGRlbihuU3RhcnRObyxuRW5kTm8sblRh
+Yik7DQorCQkJLyogRXZlbiBpZiBhIHNpbmdsZSByb3cgaXMgaGlkZGVuIHNldCB0aGUgdmFyIGFu
+ZCBicmVhayovDQorCQkJaWYgKCBoaWRkZW4gPT0gVFJVRSApDQorCQkJCWJyZWFrOw0KKwkJfQ0K
+Kwl9DQorDQorCWRlbGV0ZVtdIHBSYW5nZXM7DQorCXJldHVybiBoaWRkZW47DQorfQ0KKw0KIHZv
+aWQgU2NWaWV3RnVuYzo6TW9kaWZ5Q2VsbFNpemUoIFNjRGlyZWN0aW9uIGVEaXIsIEJPT0wgYk9w
+dGltYWwgKQ0KIHsNCiAJLy8hCVNjaHJpdHR3ZWl0ZW4gZWluc3RlbGxiYXINCi0tLSBzYy9zb3Vy
+Y2UvdWkvdmlldy9jZWxsc2guY3h4Lm9yaWcJMjAwMy0xMS0yMiAxNTozOToyNS4wMDAwMDAwMDAg
+KzA1MzANCisrKyBzYy9zb3VyY2UvdWkvdmlldy9jZWxsc2guY3h4CTIwMDQtMDEtMDUgMTQ6NTc6
+MjcuMDAwMDAwMDAwICswNTMwDQpAQCAtNzc1LDkgKzc3NSw3IEBADQogCQkJCWJyZWFrOw0KIA0K
+IAkJCWNhc2UgRklEX1JPV19ISURFOg0KLQkJCWNhc2UgRklEX1JPV19TSE9XOg0KIAkJCWNhc2Ug
+RklEX0NPTF9ISURFOg0KLQkJCWNhc2UgRklEX0NPTF9TSE9XOg0KIAkJCWNhc2UgRklEX0NPTF9P
+UFRfV0lEVEg6DQogCQkJY2FzZSBGSURfUk9XX09QVF9IRUlHSFQ6DQogCQkJY2FzZSBGSURfREVM
+RVRFX0NFTEw6DQpAQCAtNzg1LDYgKzc4MywxOSBAQA0KIAkJCQkJclNldC5EaXNhYmxlSXRlbSgg
+bldoaWNoICk7DQogCQkJCWJyZWFrOw0KIA0KKwkJCWNhc2UgRklEX1JPV19TSE9XOg0KKwkJCSAg
+ICAgICAgew0KKwkJCQkJaWYgKCBwRG9jLT5Jc1RhYlByb3RlY3RlZChuVGFiKSB8fCBwRG9jU2gt
+PklzUmVhZE9ubHkoKSB8fCAhcFRhYlZpZXdTaGVsbC0+R2V0Um93Q29sSGlkZGVuKEZBTFNFKSAp
+IA0KKwkJCQkJCXJTZXQuRGlzYWJsZUl0ZW0oIG5XaGljaCApOw0KKwkJCQl9DQorCQkJCWJyZWFr
+Ow0KKwkJCWNhc2UgRklEX0NPTF9TSE9XOg0KKwkJCSAgICAgICAgew0KKwkJCQkJaWYgKCBwRG9j
+LT5Jc1RhYlByb3RlY3RlZChuVGFiKSB8fCBwRG9jU2gtPklzUmVhZE9ubHkoKSB8fCAhcFRhYlZp
+ZXdTaGVsbC0+R2V0Um93Q29sSGlkZGVuKFRSVUUpICkgDQorCQkJCQkJclNldC5EaXNhYmxlSXRl
+bSggbldoaWNoICk7DQorCQkJCX0NCisJCQkJYnJlYWs7DQorDQogLyoJWmVsbHNjaHV0eiBiZWkg
+c2VsZWt0aWVydGVuIFplbGxlbiB3aXJkIGJlaSBhbmRlcmVuIEZ1bmt0aW9uZW4gYXVjaCBuaWNo
+dCBhYmdlZnJhZ3QuLi4NCiAJCQljYXNlIFNJRF9ERUxFVEU6DQogCQkJCXsNCg==
+
+--=__PartDC821414.0__=--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000200.html">[Open Office] new ooo-build release ...
+</A></li>
+	<LI> Next message: <A HREF="000202.html">[Open Office] patch creation ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

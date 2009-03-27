@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] The dreaded HelpLinker NullPointerException and how
+	to fix it
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20The%20dreaded%20HelpLinker%20NullPointerException%20and%20how%0A%09to%20fix%20it&In-Reply-To=20060227235443.GB30943%40rene-engelhard.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001655.html">
+   <LINK REL="Next"  HREF="001651.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] The dreaded HelpLinker NullPointerException and how
+	to fix it</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20The%20dreaded%20HelpLinker%20NullPointerException%20and%20how%0A%09to%20fix%20it&In-Reply-To=20060227235443.GB30943%40rene-engelhard.de"
+       TITLE="[Open Office] The dreaded HelpLinker NullPointerException and how
+	to fix it">bero at arklinux.org
+       </A><BR>
+    <I>Tue Feb 28 16:06:35 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001655.html">[Open Office] The dreaded HelpLinker NullPointerException and how
+	to fix it
+</A></li>
+        <LI>Next message: <A HREF="001651.html">[Open Office] DroplineGNOME splash fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1656">[ date ]</a>
+              <a href="thread.html#1656">[ thread ]</a>
+              <a href="subject.html#1656">[ subject ]</a>
+              <a href="author.html#1656">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday, 28. February 2006 00:54, Rene Engelhard wrote:
+&gt;<i> &gt; The parser is set before in
+</I>&gt;<i> &gt; xmlhelp/source/com/sun/star/help/HelpIndexer.java's ParseStuff
+</I>&gt;<i> &gt; constructor without checking for a null value -- so the obvious fix is:
+</I>&gt;<i>
+</I>&gt;<i> This doesn't work for me. Disabled again.
+</I>
+Reverting the -Djavax.xml.datatype.DatatypeFactory=..... bits breaks the build 
+for me and Guiseppe and probably a couple of others (I'd guess it breaks for 
+anyone whose default jaxp implementation isn't xerces), and I don't see how 
+that part can break anything.
+
+Are you sure it's necessary to revert all of this, or are the SYSTEM_DB parts 
+the bits that don't work for you?
+
+We need to find a proper solution for this... If the -D... bits are causing 
+problems, I need to know why. If it's the SYSTEM_DB bits, they should 
+probably move to a different patch (config_office-system-db-4.3.diff comes to 
+mind -- but that probably shouldn't depend on GcjExperimental bits).
+
+Regards,
+bero
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001655.html">[Open Office] The dreaded HelpLinker NullPointerException and how
+	to fix it
+</A></li>
+	<LI>Next message: <A HREF="001651.html">[Open Office] DroplineGNOME splash fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1656">[ date ]</a>
+              <a href="thread.html#1656">[ thread ]</a>
+              <a href="subject.html#1656">[ subject ]</a>
+              <a href="author.html#1656">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

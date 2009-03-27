@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Internal quickstarter
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001626.html">
+   <LINK REL="Next"  HREF="001629.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Internal quickstarter</H1>
+    <B>Jan Uhlir</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Internal%20quickstarter&In-Reply-To="
+       TITLE="[Open Office] Internal quickstarter">espinosa_cz at centrum.cz
+       </A><BR>
+    <I>Tue Feb 21 06:32:55 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001626.html">[Open Office] Crashes with gcj/gij
+</A></li>
+        <LI>Next message: <A HREF="001629.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1628">[ date ]</a>
+              <a href="thread.html#1628">[ thread ]</a>
+              <a href="subject.html#1628">[ subject ]</a>
+              <a href="author.html#1628">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks Michael,
+you for your reply it was very helpful.
+
+&gt;<i> On Sun, 2006-02-19 at 15:48 +0100, Jan Uhlir wrote:
+</I>&gt;<i> &gt; I can see  option 'Load OpenOffice.org during system startup' in
+</I>&gt;<i> &gt; 'Options - OpenOffice.org - Memory' but the selection is not
+</I>&gt;<i> &gt; stored for a common user. When Options dialog is opened again,
+</I>&gt;<i> &gt; checker is gone, not selected again. For root it is possible to
+</I>&gt;<i> &gt; store it, but has no obvious effect, OOo is not started
+</I>&gt;<i> &gt; as  'ps ax' revealed.
+</I>&gt;<i> 
+</I>&gt;<i> Ok - that is GNOME only; 
+</I>
+Why!? Is there a technical reason?
+Or 'political' Gnome-related? It would be sad.
+In previous milestone it worked for me fine even under KDE, so why 'remove' working functionality.
+
+&gt;<i> prolly we should improve the detection of
+</I>&gt;<i> whether we should show that option or not.
+</I>
+Wold be better to enable it under KDE and other desktops too ;-)
+
+&gt;<i> 
+</I>&gt;<i> &gt; I discovered in programs dir ooqstart executable and library
+</I>&gt;<i> &gt; libqstart_gtk680li.so There is even  ooqstart desktop file!
+</I>&gt;<i> &gt; But when I tried to launch  ooqstart manually: # ooqstart
+</I>&gt;<i> 
+</I>&gt;<i> 	Ah - so this is another 'quick-starter' ;-) the 1st works by sitting
+</I>&gt;<i> around all the time; the 2nd is just a much more efficient factory
+</I>&gt;<i> worker - that is faster in both KDE &amp; GNOME.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; ** ERROR **: Missing default argument in OOO_EXTRA_ARG
+</I>&gt;<i> 
+</I>&gt;<i> 	Don't run it directly - run it via 'oowrapper' - which should call that
+</I>&gt;<i> with the right environment,
+</I>
+I got it! I was already using it since oowriter executable is basically a simple two-line shell script calling ooqstarter with '-writer' attribute. That's all the magic :-)
+
+&gt;<i> 
+</I>&gt;<i> &gt; I had some positive experience with quicksater in milestone
+</I>&gt;<i> &gt; 143 it speed up start significantly, but for m151 am currently
+</I>&gt;<i> &gt; testing seems to be broken.
+</I>&gt;<i> 
+</I>&gt;<i> 	Nah ;-) you're just running the wrong thing.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; How this 'load during system startup' functionality is technically done?
+</I>&gt;<i> &gt; Should I put 'ooqstart.desktop' to '~/.kde/Autostart'?
+</I>&gt;<i> 
+</I>&gt;<i> No - there is some pre-existing KDE quick-starter which you should
+</I>&gt;<i> prolly use instead; I forget the details - we ship such a thing with
+</I>&gt;<i> OpenSUSE I believe; best to use that I guess.
+</I>
+OK, I can check this. Is it in separate RPM or a part of OOo (Ooo-kde-integration)?
+But I really don't mind to run GTK applet on my KDE desktop. I'm not KDE/Qt fanatic at any sence.
+
+&gt;<i> 
+</I>&gt;<i> &gt; So there is the internal quickstarter (ooqstart) - GTK based -
+</I>&gt;<i> &gt; and the external quickstarter oooqs2 - KDE based. I suppose the
+</I>&gt;<i> &gt; internal one would be more efficient then the external one. Am
+</I>&gt;<i> &gt; I right?
+</I>&gt;<i> 
+</I>&gt;<i> Sure - I guess so; by a bit. What is amazing to me though, is that it
+</I>&gt;<i> *seems* [random user-feeling starts] that the quick-starter is slower to
+</I>&gt;<i> start than the ooqstart launch loading a file on double-click: which is
+</I>&gt;<i> odd [/end random user-feeling ;-]
+</I>
+Well, my experience was slightly different. There was a perceivable difference plus no splash, window quickly open in right size etc. Nothing like 200% boost, but every percent counts :)
+
+&gt;<i> 
+</I>&gt;<i> &gt; The runtime option -quickstart is said to be unsupported for
+</I>&gt;<i> &gt; OOo2. Is that true for ooo-build patched releases too?
+</I>&gt;<i> 
+</I>&gt;<i> Yes I believe so; the whole session/lifecycle stuff wrt. the
+</I>&gt;<i> -quickstart stuff is really broken for OO.o itself.
+</I>
+What about the Windows quickstarter?  It works for m fine too?
+Why this feature is possible on Windows for a long time and so problematic in Linux?
+
+Looking forward to the reply
+Jan 
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001626.html">[Open Office] Crashes with gcj/gij
+</A></li>
+	<LI>Next message: <A HREF="001629.html">[Open Office] Internal quickstarter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1628">[ date ]</a>
+              <a href="thread.html#1628">[ thread ]</a>
+              <a href="subject.html#1628">[ subject ]</a>
+              <a href="author.html#1628">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] stupid? tools/inc/solar.h question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:bero%40arklinux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000743.html">
+   <LINK REL="Next"  HREF="000745.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] stupid? tools/inc/solar.h question
+   </H1>
+    <B>Bernhard Rosenkraenzer
+    </B> 
+    <A HREF="mailto:bero%40arklinux.org"
+       TITLE="[Open Office] stupid? tools/inc/solar.h question">bero@arklinux.org
+       </A><BR>
+    <I>Sat, 5 Feb 2005 19:30:22 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000743.html">[Open Office] stupid? tools/inc/solar.h question
+</A></li>
+        <LI> Next message: <A HREF="000745.html">[Open Office] stupid? tools/inc/solar.h question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#744">[ date ]</a>
+              <a href="thread.html#744">[ thread ]</a>
+              <a href="subject.html#744">[ subject ]</a>
+              <a href="author.html#744">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Saturday 05 February 2005 17:55, Dan Williams wrote:
+&gt;<i> &gt; template &lt;class T&gt; inline T Min(T a, T b) { return (a&lt;b?a:b); }
+</I>&gt;<i>
+</I>&gt;<i> Remember though, that solar.h gets included in files that are not C++
+</I>&gt;<i> compiled, but use the straight C compiler.  So you cannot use C++
+</I>&gt;<i> constructs like template or class in this file.  You may only use them in
+</I>&gt;<i> files that are *.hxx&quot; or such.
+</I>
+True, but not applicable here: This whole thing is in #ifdef __cplusplus 
+anyway, because C compilers barf on
+
+int Min(int a, int b) { something }
+char Min(char a, char b) { something }
+
+as well -- C doesn't allow function distinction through the arguments only -- 
+it's just replacing C++ specific code with C++ specific code.
+
+LLaP
+bero
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000743.html">[Open Office] stupid? tools/inc/solar.h question
+</A></li>
+	<LI> Next message: <A HREF="000745.html">[Open Office] stupid? tools/inc/solar.h question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#744">[ date ]</a>
+              <a href="thread.html#744">[ thread ]</a>
+              <a href="subject.html#744">[ subject ]</a>
+              <a href="author.html#744">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] CVS module rename ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-May/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000383.html">
+   <LINK REL="Next"  HREF="000385.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] CVS module rename ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] CVS module rename ...">michael@ximian.com
+       </A><BR>
+    <I>Thu, 06 May 2004 11:22:58 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000383.html">[Open Office] ANNOUNCE: ooo-build-1.1.55
+</A></li>
+        <LI> Next message: <A HREF="000385.html">[Open Office] parallel build goes into endless loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#384">[ date ]</a>
+              <a href="thread.html#384">[ thread ]</a>
+              <a href="subject.html#384">[ subject ]</a>
+              <a href="author.html#384">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi guys,
+
+	So - after the ooo-build-1.1.55 release, I decided it's an increasingly
+lunatic thing to have an 'openoffice' module in CVS, that can't be
+easily refered to / distinguished from up-stream OO.o and well, it makes
+me cringe :-)
+
+	So - I did some cvs surgery and renamed the module to 'ooo-build'. What
+does this mean:
+
+	* when you cvs update in openoffice you will see:
+
+		MODULE_RENAMED_TO_OOO_BUILD
+
+		Do not commit stuff to 'openoffice'.
+
+	* checkout ooo-build instead:
+
+		export CVSROOT=`cat openoffice/CVS/Root`
+		cvs -z3 checkout ooo-build
+
+	* transfer any work / changes across:
+
+		cvs diff -u openoffice | tee /tmp/ooo.diff
+		cd ooo-build
+		patch -p1 &lt; /tmp/ooo.diff
+
+	* transfer any src/build stuff over:
+
+		mv openoffice/build/* ooo-build/build
+		mv openoffice/src/* ooo-build/src
+
+	I've updated the web-site, and relevant bits; hopefully the new name
+should reduce confusion wrt. the package name, our role / scope, and
+help me sleep better at night.
+
+	Apologies for the brief pain period;
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000383.html">[Open Office] ANNOUNCE: ooo-build-1.1.55
+</A></li>
+	<LI> Next message: <A HREF="000385.html">[Open Office] parallel build goes into endless loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#384">[ date ]</a>
+              <a href="thread.html#384">[ thread ]</a>
+              <a href="subject.html#384">[ subject ]</a>
+              <a href="author.html#384">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

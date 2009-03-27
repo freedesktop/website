@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooe680-m2 -- 2 more patches need porting
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooe680-m2%20--%202%20more%20patches%20need%20porting&In-Reply-To=200611051740.12606.bero%40arklinux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002123.html">
+   <LINK REL="Next"  HREF="002125.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooe680-m2 -- 2 more patches need porting</H1>
+    <B>Tor Lillqvist</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooe680-m2%20--%202%20more%20patches%20need%20porting&In-Reply-To=200611051740.12606.bero%40arklinux.org"
+       TITLE="[Open Office] ooe680-m2 -- 2 more patches need porting">tml at novell.com
+       </A><BR>
+    <I>Sun Nov  5 16:00:29 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002123.html">[Open Office] ooe680-m2 -- 2 more patches need porting
+</A></li>
+        <LI>Next message: <A HREF="002125.html">[Open Office] ooe680-m2 -- 2 more patches need porting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2124">[ date ]</a>
+              <a href="thread.html#2124">[ thread ]</a>
+              <a href="subject.html#2124">[ subject ]</a>
+              <a href="author.html#2124">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>At least for me (who am working on a src680-m188 milestone, which the
+apply file claims is still supported) the patches are now all screwed
+up. It tries to apply both the -m1 and non-m1 ones. Apparently if you
+are building a src680-m* style milestone, the ooo-build mechanism has no
+way of knowing how the oo?680-m* milestones compare in age to this, so
+all the tests for ooe680-m? in the apply file succeed. Great fun.
+Apparently I need to manually comment out all the post-ooe680-m1 patches
+from the apply file? Or wait, I guess the correct thing is to have two
+separate tests for both style tags, like the:
+
+[ TemporaryHacks &lt; src680-m190 &lt; ooe680-m1 ]
+ 
+that is already in the apply file?
+
+--tml
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002123.html">[Open Office] ooe680-m2 -- 2 more patches need porting
+</A></li>
+	<LI>Next message: <A HREF="002125.html">[Open Office] ooe680-m2 -- 2 more patches need porting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2124">[ date ]</a>
+              <a href="thread.html#2124">[ thread ]</a>
+              <a href="subject.html#2124">[ subject ]</a>
+              <a href="author.html#2124">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

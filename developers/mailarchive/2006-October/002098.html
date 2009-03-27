@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%20building%0A%202.0.4%09on%09Mandriva%202007%20x86_64&In-Reply-To=1161854825.3392.12.camel%40soulcrusher.caolan.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002097.html">
+   <LINK REL="Next"  HREF="002099.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64</H1>
+    <B>Atle Nissestad</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%20building%0A%202.0.4%09on%09Mandriva%202007%20x86_64&In-Reply-To=1161854825.3392.12.camel%40soulcrusher.caolan.org"
+       TITLE="[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64">atle.nissestad at norbit.no
+       </A><BR>
+    <I>Thu Oct 26 06:01:15 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002097.html">[Open Office] findhome Re: JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+        <LI>Next message: <A HREF="002099.html">[Open Office] JRE register fails when	building	2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2098">[ date ]</a>
+              <a href="thread.html#2098">[ thread ]</a>
+              <a href="subject.html#2098">[ subject ]</a>
+              <a href="author.html#2098">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Caolan McNamara wrote:
+
+&gt;<i> So then we're looking for libgcj.so...
+</I>&gt;<i>
+</I>&gt;<i> If you save this as findhome.java
+</I>&gt;<i>
+</I>&gt;<i> class findhome
+</I>&gt;<i> {
+</I>&gt;<i>         public static void main(String args[])
+</I>&gt;<i>         {
+</I>&gt;<i>                 System.out.println(System.getProperty(&quot;java.home&quot;));
+</I>&gt;<i>
+</I>&gt;<i> System.out.println(System.getProperty(&quot;gnu.classpath.home.url&quot;));
+</I>&gt;<i>         }
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> gcj -C findhome.java
+</I>&gt;<i> gij findhome
+</I>&gt;<i>
+</I>&gt;<i> what does it say ?
+</I>&gt;<i>   
+</I>I'm at work now, and do not have access to my build computer. I'll try
+this when I  come home tonight.
+&gt;<i> e.g. mine (on i386) is 
+</I>&gt;<i> /usr/lib/jvm/java-1.4.2-gcj-1.4.2.0/jre
+</I>&gt;<i> <A HREF="file:///usr/lib">file:///usr/lib</A>
+</I>&gt;<i>
+</I>&gt;<i> while on x86_64 it says...
+</I>&gt;<i> /usr/lib/jvm/java-1.4.2-gcj-1.4.2.0/jre
+</I>&gt;<i> <A HREF="file:///usr/lib64">file:///usr/lib64</A>
+</I>&gt;<i>
+</I>&gt;<i> Now the first line is java.home and the second is gnu.classpath.home.url
+</I>&gt;<i> and in jvmfwk/plugins/sunmajor/pluginlib/gnujre.cxx we assign java.home
+</I>&gt;<i> as m_sJavaHome and the other as m_sHome. We try m_sHome first and search
+</I>&gt;<i> for libjvm.so and the other various libgcj.sos, and then we search under
+</I>&gt;<i> m_sJavaHome.
+</I>&gt;<i>
+</I>&gt;<i> If for some reason we have *no* m_sJavaHome value, we set it to a
+</I>&gt;<i> default of /usr/lib. Depending on what you get as the results above it
+</I>&gt;<i> might be the case that we might need to change... 
+</I>&gt;<i>
+</I>&gt;<i> if (!m_sJavaHome.getLength())
+</I>&gt;<i>     m_sJavaHome = &quot;<A HREF="file:///usr/lib&quot;;">file:///usr/lib&quot;;</A>
+</I>&gt;<i>
+</I>&gt;<i> to
+</I>&gt;<i>
+</I>&gt;<i> if (!m_sJavaHome.getLength())
+</I>&gt;<i> #ifdef X86_64
+</I>&gt;<i>     m_sJavaHome = &quot;<A HREF="file:///usr/lib64&quot;;">file:///usr/lib64&quot;;</A>
+</I>&gt;<i> #else
+</I>&gt;<i>     m_sJavaHome = &quot;<A HREF="file:///usr/lib&quot;;">file:///usr/lib&quot;;</A>
+</I>&gt;<i> #endif
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Yepp, but for me m_sJavaHome was set, so my ugly hack ended up like this:
+
+#ifndef X86_64
+if (!m_sJavaHome.getLength())
+    m_sJavaHome = &quot;<A HREF="file:///usr/lib&quot;;">file:///usr/lib&quot;;</A>
+#else
+    m_sJavaHome = &quot;<A HREF="file:///usr/lib64&quot;;">file:///usr/lib64&quot;;</A>
+#endif
+
+This apparently caused both /usr/lib and /usr/lib64 to be used as lib
+search path.
+
+&gt;<i> but then we might fall afoul of gcj's on x86_64 where there isn't a
+</I>&gt;<i> java.home set, but libgcj.so has been put into /usr/lib in which case we
+</I>&gt;<i> might need an additional
+</I>&gt;<i>
+</I>&gt;<i> #ifdef X86_64
+</I>&gt;<i>     if (!bRt)
+</I>&gt;<i>     {
+</I>&gt;<i>         m_sHome = &quot;<A HREF="file:///usr/lib64&quot;;">file:///usr/lib64&quot;;</A>
+</I>&gt;<i>         for(i_path ip = libpaths.begin(); ip != libpaths.end(); ip++)
+</I>&gt;<i>         {
+</I>&gt;<i>             //Construct an absolute path to the possible runtime
+</I>&gt;<i>             OUString usRt= m_sHome + *ip;
+</I>&gt;<i>             DirectoryItem item;
+</I>&gt;<i>             if(DirectoryItem::get(usRt, item) == File::E_None)
+</I>&gt;<i>             {
+</I>&gt;<i>                 //found runtime lib
+</I>&gt;<i>                 m_sRuntimeLibrary = usRt;
+</I>&gt;<i>                 bRt = true;
+</I>&gt;<i>                 break;
+</I>&gt;<i>             }
+</I>&gt;<i>         }
+</I>&gt;<i>     }
+</I>&gt;<i> #endif
+</I>&gt;<i>
+</I>&gt;<i> after the existing last 
+</I>&gt;<i> if (!bRt) ...
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Ok, maybe that's the way to go. Thanks for the explanation (code hacking
+is not my strong side ..).
+
+Atle
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002097.html">[Open Office] findhome Re: JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+	<LI>Next message: <A HREF="002099.html">[Open Office] JRE register fails when	building	2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2098">[ date ]</a>
+              <a href="thread.html#2098">[ thread ]</a>
+              <a href="subject.html#2098">[ subject ]</a>
+              <a href="author.html#2098">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

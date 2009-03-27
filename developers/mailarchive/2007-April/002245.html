@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] fix sc-dp-gridlayout.diff to work with older versions	of patch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20fix%20sc-dp-gridlayout.diff%20to%20work%20with%20older%20versions%0A%09of%20patch&In-Reply-To=4613AE04020000100000AFE9%40sinclair.provo.novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002244.html">
+   <LINK REL="Next"  HREF="002246.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] fix sc-dp-gridlayout.diff to work with older versions	of patch</H1>
+    <B>Jonathan Smith</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20fix%20sc-dp-gridlayout.diff%20to%20work%20with%20older%20versions%0A%09of%20patch&In-Reply-To=4613AE04020000100000AFE9%40sinclair.provo.novell.com"
+       TITLE="[Open Office] fix sc-dp-gridlayout.diff to work with older versions	of patch">smithj at rpath.com
+       </A><BR>
+    <I>Fri Apr  6 15:50:12 EDT 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002244.html">[Open Office] PATCH: update rpl2 distro configs
+</A></li>
+        <LI>Next message: <A HREF="002246.html">[Open Office] PATCH: update rpl2 distro configs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2245">[ date ]</a>
+              <a href="thread.html#2245">[ thread ]</a>
+              <a href="subject.html#2245">[ subject ]</a>
+              <a href="author.html#2245">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>When using vanilla patch-2.5.4, sc-dp-gridlayout.diff will not apply. This issue 
+has been fixed in an alpha release (2.5.9), of patch, but said release has 
+problems of its own. The issue is that the second hunk to be applied to 
+sc/source/filter/excel/xipivot.cxx is applied at a line after the third hunk is 
+supposed to be applied. In reality, *both* hunks were simply shifted down, but 
+older versions of patch don't understand this and throw an error saying the 
+hunks are out of order. To fix this issue: replace '@@ -1333,6 +1339,12 @@' with 
+  '@@ -1533,6 +1539,12 @@' in patches/src680/sc-dp-gridlayout.diff.
+
+-smithj
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002244.html">[Open Office] PATCH: update rpl2 distro configs
+</A></li>
+	<LI>Next message: <A HREF="002246.html">[Open Office] PATCH: update rpl2 distro configs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2245">[ date ]</a>
+              <a href="thread.html#2245">[ thread ]</a>
+              <a href="subject.html#2245">[ subject ]</a>
+              <a href="author.html#2245">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

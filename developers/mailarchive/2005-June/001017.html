@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] More on the fpicker troubles
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20More%20on%20the%20fpicker%20troubles&In-Reply-To=1118823430.14830.136.camel%40linux.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001016.html">
+   <LINK REL="Next"  HREF="001015.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] More on the fpicker troubles</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20More%20on%20the%20fpicker%20troubles&In-Reply-To=1118823430.14830.136.camel%40linux.site"
+       TITLE="[Open Office] More on the fpicker troubles">pmladek at suse.cz
+       </A><BR>
+    <I>Wed Jun 15 06:01:57 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001016.html">[Open Office] More on the fpicker troubles
+</A></li>
+        <LI>Next message: <A HREF="001015.html">[Open Office] m108 build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1017">[ date ]</a>
+              <a href="thread.html#1017">[ thread ]</a>
+              <a href="subject.html#1017">[ subject ]</a>
+              <a href="author.html#1017">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 15 June 2005 10:17, michael meeks wrote:
+&gt;<i> Hi there,
+</I>&gt;<i>
+</I>&gt;<i> On Tue, 2005-06-14 at 23:41 +0200, Bernhard Rosenkraenzer wrote:
+</I>&gt;<i> &gt; Agreed and done -- now my m109 is working as expected (the make install
+</I>&gt;<i> &gt; error a couple of days ago was triggered by dictionaries/ &quot;missing&quot;, it's
+</I>&gt;<i> &gt; part of the -system tarball. Should those dictionaries be installed as
+</I>&gt;<i> &gt; part of something else? If not, they should probably go to the core
+</I>&gt;<i> &gt; tarball...)
+</I>&gt;<i>
+</I>&gt;<i> 	Right - well; AFAIR we use the system myspell dictionaries instead of
+</I>&gt;<i> those; Petr is the expert here. Of course - if you grab/install the
+</I>&gt;<i> -system archive too AFAIR it should build for you.
+</I>
+We use system myspell dictionaries installed in /usr/share/myspell. They are 
+used by Mozilla Composer as well. We have a lot of myspell-&lt;lang&gt; packages 
+based on the sources from 
+<A HREF="http://lingucomponent.openoffice.org/spell_dic.html.">http://lingucomponent.openoffice.org/spell_dic.html.</A> There are much more 
+dictionaries than in the OOo sources.
+
+The script /usr/lib/ooo-2.0/install-dict is able to update symlinks 
+from /usr/share/myspell to /usr/lib/ooo-2.0/share/dict/ooo and 
+update /usr/lib/ooo-2.0/share/dict/ooo/dictionary.lst. So, I call this script 
+from triggers in the myspell-* packages after OOo is installed.
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001016.html">[Open Office] More on the fpicker troubles
+</A></li>
+	<LI>Next message: <A HREF="001015.html">[Open Office] m108 build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1017">[ date ]</a>
+              <a href="thread.html#1017">[ thread ]</a>
+              <a href="subject.html#1017">[ subject ]</a>
+              <a href="author.html#1017">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

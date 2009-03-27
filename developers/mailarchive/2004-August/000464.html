@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Mark config files in file lists
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000472.html">
+   <LINK REL="Next"  HREF="000465.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Mark config files in file lists
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] Mark config files in file lists">halls@debian.org
+       </A><BR>
+    <I>Mon, 02 Aug 2004 10:19:57 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000472.html">[Open Office] Re: writerperfect / integration &amp; accounts ...
+</A></li>
+        <LI> Next message: <A HREF="000465.html">[Open Office] Introducing JDK dependency?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#464">[ date ]</a>
+              <a href="thread.html#464">[ thread ]</a>
+              <a href="subject.html#464">[ subject ]</a>
+              <a href="author.html#464">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2004-07-30 at 11:40, Petr Mladek wrote:
+&gt;<i> On Thursday 29 July 2004 17:01, Arkadiusz Miskiewicz wrote:
+</I>&gt;<i> &gt; First of all configuration files should not live in /usr or any other
+</I>&gt;<i> &gt; directory beside /etc (at least that's what we do at PLD, keep
+</I>&gt;<i> &gt; configuration in /etc).
+</I>&gt;<i> 
+</I>&gt;<i> Fully agree.
+</I>
+And the same for Debian.  We already have symlinks for a few files:
+sofficerc, psprint.conf and dictionary.lst.
+
+&gt;<i> &gt; Maybe symlinks pointing from /usr/lib/..../somefile to
+</I>&gt;<i> &gt; -&gt; /etc/openoffice/conf/somefile and mark
+</I>&gt;<i> &gt; %config /etc/openoffice/conf/somefile?
+</I>&gt;<i> 
+</I>&gt;<i> Yes, it would be one hackish solution.
+</I>&gt;<i> 
+</I>&gt;<i> The problem would be with directories. I think it would be fine to link the 
+</I>&gt;<i> entire directories like share/config or share/registry from /etc but there is 
+</I>&gt;<i> problem with update. RPM does not support to replace a directory with a 
+</I>&gt;<i> symlink within an update.
+</I>
+Yes, we have the same problem.  The way to do this is to teach OOo to
+look in another directory for these files by modifying the scp scripts. 
+That way there is no need for symlinks.   Rene started looking at it but
+gave up because of a lack of time, I think.
+
+Chris
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000472.html">[Open Office] Re: writerperfect / integration &amp; accounts ...
+</A></li>
+	<LI> Next message: <A HREF="000465.html">[Open Office] Introducing JDK dependency?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#464">[ date ]</a>
+              <a href="thread.html#464">[ thread ]</a>
+              <a href="subject.html#464">[ subject ]</a>
+              <a href="author.html#464">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

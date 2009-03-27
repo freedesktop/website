@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: GNOME CVS: ooo-build brosenk
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20GNOME%20CVS%3A%20ooo-build%20brosenk&In-Reply-To=20060301224712.9F863165E46%40container.gnome.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001695.html">
+   <LINK REL="Next"  HREF="001671.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: GNOME CVS: ooo-build brosenk</H1>
+    <B>Rene Engelhard</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20GNOME%20CVS%3A%20ooo-build%20brosenk&In-Reply-To=20060301224712.9F863165E46%40container.gnome.org"
+       TITLE="[Open Office] Re: GNOME CVS: ooo-build brosenk">rene at debian.org
+       </A><BR>
+    <I>Thu Mar  2 09:22:08 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001695.html">[Open Office] Internal quickstarter
+</A></li>
+        <LI>Next message: <A HREF="001671.html">[Open Office] Re: GNOME CVS: ooo-build brosenk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1670">[ date ]</a>
+              <a href="thread.html#1670">[ thread ]</a>
+              <a href="subject.html#1670">[ subject ]</a>
+              <a href="author.html#1670">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Am Mittwoch 01 M&#228;rz 2006 23:47 schrieb Bernhard Rosenkranzer:
+&gt;<i> CVSROOT:	/cvs/gnome
+</I>&gt;<i> Module name:	ooo-build
+</I>&gt;<i> Changes by:	brosenk	06/03/01 17:47:12
+</I>&gt;<i>
+</I>&gt;<i> Modified files:
+</I>&gt;<i> 	.              : ChangeLog
+</I>&gt;<i> 	bin            : build-galleries
+</I>&gt;<i> 	patches/src680 : ark-experimental-gcj-use-ecj.diff
+</I>&gt;<i> 	                 ark-system-precompiled-java.diff
+</I>&gt;<i> 	                 gcj-HelpLinker-native.diff xt-precompile.diff
+</I>&gt;<i>
+</I>&gt;<i> Log message:
+</I>&gt;<i> Make it compile again -- hope it doesn't break for others
+</I>
+It does.
+
+elpLinker @/tmp/mk7G22BW
+Exception in thread &quot;main&quot; javax.xml.parsers.FactoryConfigurationError: 
+java.lang.ClassNotFoundException: 
+org.apache.xerces.dom.DOMXSImplementationSourceImpl not found in 
+gnu.gcj.runtime.SystemClassLoader{urls=[file:./], 
+parent=gnu.gcj.runtime.ExtensionClassLoader{urls=[], parent=null}}
+   at gnu.xml.dom.DomDocumentBuilderFactory.DomDocumentBuilderFactory() 
+(/usr/lib/libgcj.so.6.0.0)
+   at javax.xml.parsers.DocumentBuilderFactory.newInstance() 
+(/usr/lib/libgcj.so.6.0.0)
+   at com.sun.star.help.HelpCompiler.compile() (Unknown Source)
+   at com.sun.star.help.HelpLinker.link() (Unknown Source)
+   at com.sun.star.help.HelpLinker.main(java.lang.String[]) (Unknown Source)
+   at gnu.java.lang.MainThread.call_main() (/usr/lib/libgcj.so.6.0.0)
+   at gnu.java.lang.MainThread.run() (/usr/lib/libgcj.so.6.0.0)
+Caused by: java.lang.ClassNotFoundException: 
+org.apache.xerces.dom.DOMXSImplementationSourceImpl not found in 
+gnu.gcj.runtime.SystemClassLoader{urls=[file:./], 
+parent=gnu.gcj.runtime.ExtensionClassLoader{urls=[], parent=null}}
+   at java.net.URLClassLoader.findClass(java.lang.String) 
+(/usr/lib/libgcj.so.6.0.0)
+   at java.lang.ClassLoader.loadClass(java.lang.String, boolean) 
+(/usr/lib/libgcj.so.6.0.0)
+   at java.lang.ClassLoader.loadClass(java.lang.String) 
+(/usr/lib/libgcj.so.6.0.0)
+   at org.w3c.dom.bootstrap.DOMImplementationRegistry.newInstance() 
+(/usr/lib/libgcj.so.6.0.0)
+   at gnu.xml.dom.DomDocumentBuilderFactory.DomDocumentBuilderFactory() 
+(/usr/lib/libgcj.so.6.0.0)
+   ...6 more
+dmake:  Error code 1, while making '../../unxlngi6.pro/bin/sbasic_en-US.zip'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while 
+making /home/rene/openoffice.org-2.0.2/ooo-build/build/oob680-m5/helpcontent2/util/sbasic
+
+If you need additional/different stuff, why don't you make a extra/a modified 
+patch for you?
+
+*goes to revert the change again*
+
+Regards,
+
+Rene
+&gt;<i>
+</I>&gt;<i> URL :
+</I>&gt;<i> <A HREF="http://cvs.gnome.org/bonsai/cvsquery.cgi?branch=&amp;dir=ooo-build&amp;who=brosenk&amp;">http://cvs.gnome.org/bonsai/cvsquery.cgi?branch=&amp;dir=ooo-build&amp;who=brosenk&amp;</A>
+</I>&gt;<i>date=explicit&amp;mindate=2006-03-01%2017:46&amp;maxdate=2006-03-01%2017:48
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> cvs-commits-list mailing list
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">cvs-commits-list at gnome.org</A>
+</I>&gt;<i> <A HREF="http://mail.gnome.org/mailman/listinfo/cvs-commits-list">http://mail.gnome.org/mailman/listinfo/cvs-commits-list</A>
+</I>
+-- 
+ .''`.  Ren&#233; Engelhard -- Debian GNU/Linux Developer
+ : :' : <A HREF="http://www.debian.org">http://www.debian.org</A> | <A HREF="http://people.debian.org/~rene/">http://people.debian.org/~rene/</A>
+ `. `'  <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rene at debian.org</A> | GnuPG-Key ID: 248AEB73
+   `-   Fingerprint: 41FA F208 28D4 7CA5 19BB  7AD9 F859 90B0 248A EB73
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001695.html">[Open Office] Internal quickstarter
+</A></li>
+	<LI>Next message: <A HREF="001671.html">[Open Office] Re: GNOME CVS: ooo-build brosenk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1670">[ date ]</a>
+              <a href="thread.html#1670">[ thread ]</a>
+              <a href="subject.html#1670">[ subject ]</a>
+              <a href="author.html#1670">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

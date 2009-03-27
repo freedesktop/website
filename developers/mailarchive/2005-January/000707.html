@@ -1,0 +1,1936 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build 1.3.7/1.9.70 crashes with gnome file picker
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:j%40bitron.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000706.html">
+   <LINK REL="Next"  HREF="000708.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build 1.3.7/1.9.70 crashes with gnome file picker
+   </H1>
+    <B>Juerg Billeter
+    </B> 
+    <A HREF="mailto:j%40bitron.ch"
+       TITLE="[Open Office] ooo-build 1.3.7/1.9.70 crashes with gnome file picker">j@bitron.ch
+       </A><BR>
+    <I>Fri, 21 Jan 2005 09:12:14 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000706.html">[Open Office] Status ( Thursday )
+</A></li>
+        <LI> Next message: <A HREF="000708.html">[Open Office] ooo-build 1.3.7/1.9.70 crashes with gnome file picker
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#707">[ date ]</a>
+              <a href="thread.html#707">[ thread ]</a>
+              <a href="subject.html#707">[ subject ]</a>
+              <a href="author.html#707">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-bUHSbu94atPRh11DRBOk
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+I experience a similar crash with gnome's file picker as described in
+<A HREF="http://lists.ximian.com/archives/public/openoffice/2004-December/000646.htm=">http://lists.ximian.com/archives/public/openoffice/2004-December/000646.htm=</A>
+l
+It doesn't always happen and it happens with both, ooo-build 1.3.7 and
+1.9.70 - using gtk+ 2.6.1. I've attached the backtrace of the 1.9.70
+version using gtk+ debugging symbols.
+
+Regards,
+
+J=C3=BCrg
+
+--=20
+Juerg Billeter &lt;<A HREF="mailto:j@bitron.ch">j@bitron.ch</A>&gt;
+
+--=-bUHSbu94atPRh11DRBOk
+Content-Disposition: attachment; filename=ooo-build-1.9.70-fpicker.crash
+Content-Type: text/plain; name=ooo-build-1.9.70-fpicker.crash; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Backtrace was generated from '/usr/lib/ooo-1.9/program/soffice.bin'
+
+(no debugging symbols found)
+Using host libthread_db library &quot;/lib/libthread_db.so.1&quot;.
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+[Thread debugging using libthread_db enabled]
+[New Thread -1240525136 (LWP 12986)]
+[New Thread -1474585680 (LWP 13126)]
+[Thread debugging using libthread_db enabled]
+[New Thread -1240525136 (LWP 12986)]
+[New Thread -1474585680 (LWP 13126)]
+[Thread debugging using libthread_db enabled]
+[New Thread -1240525136 (LWP 12986)]
+[New Thread -1474585680 (LWP 13126)]
+[New Thread -1474319440 (LWP 13125)]
+[New Thread -1465926736 (LWP 13124)]
+[New Thread -1465660496 (LWP 13123)]
+[New Thread -1464480848 (LWP 13122)]
+[New Thread -1431434320 (LWP 13121)]
+[New Thread -1384289360 (LWP 13081)]
+[New Thread -1352668240 (LWP 13003)]
+[New Thread -1344123984 (LWP 13002)]
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+(no debugging symbols found)
+0xffffe410 in ?? ()
+#0  0xffffe410 in ?? ()
+#1  0xbfffc728 in ?? ()
+#2  0x00000002 in ?? ()
+#3  0x00000000 in ?? ()
+#4  0xb6af446e in __lll_mutex_lock_wait () from /lib/libpthread.so.0
+#5  0xb6af1129 in _L_mutex_lock_139 () from /lib/libpthread.so.0
+#6  0x00000008 in ?? ()
+#7  0xb711e860 in ?? () from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+#8  0xb60f16b0 in ?? ()
+#9  0x00000000 in ?? ()
+#10 0xbfffc728 in ?? ()
+#11 0xb711e860 in ?? () from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+#12 0xb60e2508 in ?? ()
+#13 0x08109808 in ?? ()
+#14 0xbfffc728 in ?? ()
+#15 0xb6f7aede in osl_acquireMutex ()
+   from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+#16 0xb71c2b14 in vos::OMutex::acquire ()
+   from /usr/lib/ooo-1.9/program/libvos3gcc3.so
+#17 0xb58dcce2 in SalYieldMutex::acquire ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gen680li.so
+#18 0xb5db007b in GtkHookedYieldMutex::acquire ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gtk680li.so
+#19 0xb5daffc6 in GtkHookedYieldMutex::ThreadsEnter ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gtk680li.so
+#20 0xb5db00e1 in GtkHookedYieldMutex::release ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gtk680li.so
+#21 0xb5a809d2 in gdk_event_check (source=3D0xb6af446e) at gdkevents-x11.c:=
+2191
+#22 0xb5932308 in IA__g_main_context_check (context=3D0x8109850,=20
+    max_priority=3D2147483647, fds=3D0x82f9b78, n_fds=3D135305224) at gmain=
+.c:2453
+#23 0xb5934a74 in g_main_context_iterate (context=3D0x8109850, block=3D1,=20
+    dispatch=3D1, self=3D0x80d41e8) at gmain.c:2575
+#24 0xb5934f49 in IA__g_main_context_iteration (context=3D0x8109850,=20
+    may_block=3D1) at gmain.c:2637
+#25 0xb5daf43a in GtkXLib::Yield ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gtk680li.so
+#26 0xb58dd1d5 in X11SalInstance::Yield ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gen680li.so
+#27 0xb7d71696 in Application::Yield ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+#28 0xae7a46fe in sfx2::FileDialogHelper_Impl::implDoExecute ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+#29 0xae7a4a34 in sfx2::FileDialogHelper_Impl::execute ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+#30 0xae7aa3f5 in sfx2::FileDialogHelper::Execute ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+#31 0xae7aafcf in sfx2::FileOpenDialog_Impl ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+#32 0xae59fa96 in SfxApplication::OpenDocExec_Impl ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+#33 0xae5a8028 in SfxStubSfxApplicationOpenDocExec_Impl ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+#34 0xae73b6c1 in SfxDispatcher::Call_Impl ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+#35 0xae73cea8 in SfxDispatcher::_Execute ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+#36 0xae74dc6f in SfxBindings::Execute_Impl ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+#37 0xae73457b in SfxDispatchController_Impl::dispatch ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+#38 0xae7324ab in SfxOfficeDispatch::dispatch ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+#39 0xadaf080f in component_getFactory ()
+   from /usr/lib/ooo-1.9/program/libfwk680li.so
+#40 0xadaefe18 in component_getFactory ()
+   from /usr/lib/ooo-1.9/program/libfwk680li.so
+#41 0xb7ee273f in Menu::Select () from /usr/lib/ooo-1.9/program/libvcl680li=
+.so
+#42 0xb7ee6524 in Menu::ImplCallSelect ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+#43 0xb7ee6506 in Menu::LinkStubImplCallSelect ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+#44 0xb7f3d88e in ImplHandleClose ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+#45 0xb7f3e412 in ImplWindowFrameProc ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+#46 0xb58d8ae6 in SalDisplay::DispatchInternalEvent ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gen680li.so
+#47 0xb5daf308 in GtkXLib::userEventFn ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gtk680li.so
+#48 0xb5936301 in g_idle_dispatch (source=3D0x823fa30,=20
+    callback=3D0xb6af9ff4 &lt;pthread_functions+532&gt;, user_data=3D0xfffffffc)
+    at gmain.c:3821
+#49 0xb5933107 in IA__g_main_context_dispatch (context=3D0x8109850)
+    at gmain.c:1947
+#50 0xb5934abe in g_main_context_iterate (context=3D0x8109850, block=3D1,=20
+    dispatch=3D1, self=3D0x80d41e8) at gmain.c:2578
+#51 0xb5934f49 in IA__g_main_context_iteration (context=3D0x8109850,=20
+    may_block=3D1) at gmain.c:2637
+#52 0xb5daf43a in GtkXLib::Yield ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gtk680li.so
+#53 0xb58dd1d5 in X11SalInstance::Yield ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gen680li.so
+#54 0xb7d71696 in Application::Yield ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+#55 0xb7d715ad in Application::Execute ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+#56 0x0807ad75 in desktop::Desktop::Main ()
+#57 0xb7d775de in SVMain () from /usr/lib/ooo-1.9/program/libvcl680li.so
+#58 0x080734e5 in sal_main ()
+#59 0x08073494 in main ()
+
+Thread 10 (Thread -1344123984 (LWP 13002)):
+#0  0xffffe410 in ?? ()
+No symbol table info available.
+#1  0xafe24328 in ?? ()
+No symbol table info available.
+#2  0x00000011 in ?? ()
+No symbol table info available.
+#3  0x00000000 in ?? ()
+No symbol table info available.
+#4  0xb6af200c in pthread_cond_timedwait@@GLIBC_2.3.2 ()
+   from /lib/libpthread.so.0
+No symbol table info available.
+#5  0xb6f782a9 in osl_waitCondition ()
+   from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#6  0xb71c26fd in vos::OCondition::wait ()
+   from /usr/lib/ooo-1.9/program/libvos3gcc3.so
+No symbol table info available.
+#7  0xb71c9e9e in vos::OTimerManager::run ()
+   from /usr/lib/ooo-1.9/program/libvos3gcc3.so
+No symbol table info available.
+#8  0xb71c79c2 in vos::_cpp_OThread_WorkerFunction ()
+   from /usr/lib/ooo-1.9/program/libvos3gcc3.so
+No symbol table info available.
+#9  0xb71c79a9 in _OThread_WorkerFunction ()
+   from /usr/lib/ooo-1.9/program/libvos3gcc3.so
+No symbol table info available.
+#10 0xb6f7b86c in osl_getTextEncodingFromLocale ()
+   from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#11 0xb6aef2df in start_thread () from /lib/libpthread.so.0
+No symbol table info available.
+
+Thread 9 (Thread -1352668240 (LWP 13003)):
+#0  0xffffe410 in ?? ()
+No symbol table info available.
+#1  0xaf5fd9e8 in ?? ()
+No symbol table info available.
+#2  0xb711e860 in ?? () from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#3  0xaf5fd9d0 in ?? ()
+No symbol table info available.
+#4  0xb6af4948 in accept () from /lib/libpthread.so.0
+No symbol table info available.
+#5  0xb6f85afb in osl_acceptPipe ()
+   from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#6  0xb71cd0eb in vos::OPipe::accept ()
+   from /usr/lib/ooo-1.9/program/libvos3gcc3.so
+No symbol table info available.
+#7  0x0808558d in desktop::OfficeIPCThread::run ()
+No symbol table info available.
+#8  0xb71c79c2 in vos::_cpp_OThread_WorkerFunction ()
+   from /usr/lib/ooo-1.9/program/libvos3gcc3.so
+No symbol table info available.
+#9  0xb71c79a9 in _OThread_WorkerFunction ()
+   from /usr/lib/ooo-1.9/program/libvos3gcc3.so
+No symbol table info available.
+#10 0xb6f7b86c in osl_getTextEncodingFromLocale ()
+   from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#11 0xb6aef2df in start_thread () from /lib/libpthread.so.0
+No symbol table info available.
+
+Thread 8 (Thread -1384289360 (LWP 13081)):
+#0  0xffffe410 in ?? ()
+No symbol table info available.
+#1  0xad7d6338 in ?? ()
+No symbol table info available.
+#2  0x000003e8 in ?? ()
+No symbol table info available.
+#3  0x00000001 in ?? ()
+No symbol table info available.
+#4  0xb68aa516 in poll () from /lib/libc.so.6
+No symbol table info available.
+#5  0xad7f549f in ?? () from /usr/lib/ooo-1.9/program/libdtransX11680li.so
+No symbol table info available.
+#6  0xad7f55d2 in ?? () from /usr/lib/ooo-1.9/program/libdtransX11680li.so
+No symbol table info available.
+#7  0xb6f7b86c in osl_getTextEncodingFromLocale ()
+   from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#8  0xb6aef2df in start_thread () from /lib/libpthread.so.0
+No symbol table info available.
+
+Thread 7 (Thread -1431434320 (LWP 13121)):
+#0  0xffffe410 in ?? ()
+No symbol table info available.
+#1  0xaaae0408 in ?? ()
+No symbol table info available.
+#2  0xffffffff in ?? ()
+No symbol table info available.
+#3  0x00000007 in ?? ()
+No symbol table info available.
+#4  0xb68aa516 in poll () from /lib/libc.so.6
+No symbol table info available.
+#5  0xb5934a4f in g_main_context_iterate (context=3D0x824fbc0, block=3D1,=20
+    dispatch=3D1, self=3D0x824f438) at gmain.c:2880
+	got_ownership =3D -4
+	max_priority =3D 2147483647
+	timeout =3D -1
+	some_ready =3D -1
+	nfds =3D 7
+	allocated_nfds =3D -1
+	fds =3D (GPollFD *) 0x825ef70
+	__PRETTY_FUNCTION__ =3D &quot;g_main_context_iterate&quot;
+#6  0xb5934dea in IA__g_main_loop_run (loop=3D0x824f8a0) at gmain.c:2782
+	got_ownership =3D -1230041140
+	self =3D (GThread *) 0x824f438
+	__PRETTY_FUNCTION__ =3D &quot;IA__g_main_loop_run&quot;
+#7  0xa90b76c0 in link_io_thread_fn () from /usr/lib/libORBit-2.so.0
+No symbol table info available.
+#8  0xb594ed49 in g_thread_create_proxy (data=3D0x824f438) at gthread.c:561
+	__PRETTY_FUNCTION__ =3D &quot;g_thread_create_proxy&quot;
+#9  0xb6aef2df in start_thread () from /lib/libpthread.so.0
+No symbol table info available.
+
+Thread 6 (Thread -1464480848 (LWP 13122)):
+#0  0xffffe410 in ?? ()
+No symbol table info available.
+#1  0xa8b5c3e8 in ?? ()
+No symbol table info available.
+#2  0x00000002 in ?? ()
+No symbol table info available.
+#3  0x00000000 in ?? ()
+No symbol table info available.
+#4  0xb6af446e in __lll_mutex_lock_wait () from /lib/libpthread.so.0
+No symbol table info available.
+#5  0xb6af111d in _L_mutex_lock_26 () from /lib/libpthread.so.0
+No symbol table info available.
+#6  0x00000000 in ?? ()
+No symbol table info available.
+#7  0xb5990ff8 in g_thread_equal_posix_impl (thread1=3D0xfffffffc,=20
+    thread2=3D0xfffffffc) at gthread-posix.c:410
+No locals.
+#8  0xa9190b60 in _gnome_vfs_async_job_map_lock ()
+    at gnome-vfs-async-job-map.c:165
+No locals.
+#9  0xa919f5c7 in thread_routine (data=3D0x1) at gnome-vfs-job-slave.c:71
+	job =3D (GnomeVFSJob *) 0xb6af446e
+	complete =3D 13122
+#10 0xa91b1a8d in thread_entry (cast_to_state=3D0x82d8618)
+    at gnome-vfs-thread-pool.c:186
+	__PRETTY_FUNCTION__ =3D &quot;thread_entry&quot;
+#11 0xb594ed49 in g_thread_create_proxy (data=3D0x82d8690) at gthread.c:561
+	__PRETTY_FUNCTION__ =3D &quot;g_thread_create_proxy&quot;
+#12 0xb6aef2df in start_thread () from /lib/libpthread.so.0
+No symbol table info available.
+
+Thread 5 (Thread -1465660496 (LWP 13123)):
+#0  0xffffe410 in ?? ()
+No symbol table info available.
+#1  0xa8a3c458 in ?? ()
+No symbol table info available.
+#2  0x00000001 in ?? ()
+No symbol table info available.
+#3  0x00000000 in ?? ()
+No symbol table info available.
+#4  0xb6af1d96 in pthread_cond_wait@@GLIBC_2.3.2 () from /lib/libpthread.so=
+.0
+No symbol table info available.
+#5  0xa91b1a50 in thread_entry (cast_to_state=3D0x82d1540)
+    at gnome-vfs-thread-pool.c:156
+	__PRETTY_FUNCTION__ =3D &quot;thread_entry&quot;
+#6  0xb594ed49 in g_thread_create_proxy (data=3D0x82d7ad8) at gthread.c:561
+	__PRETTY_FUNCTION__ =3D &quot;g_thread_create_proxy&quot;
+#7  0xb6aef2df in start_thread () from /lib/libpthread.so.0
+No symbol table info available.
+
+Thread 4 (Thread -1465926736 (LWP 13124)):
+#0  0xffffe410 in ?? ()
+No symbol table info available.
+#1  0x00000001 in ?? ()
+No symbol table info available.
+#2  0x00000000 in ?? ()
+No symbol table info available.
+#3  0xa89f90cc in ?? ()
+No symbol table info available.
+#4  0xb6875c0b in __waitpid_nocancel () from /lib/libc.so.6
+No symbol table info available.
+#5  0xb681e287 in do_system () from /lib/libc.so.6
+No symbol table info available.
+#6  0xb681e601 in system () from /lib/libc.so.6
+No symbol table info available.
+#7  0xb6af5a5b in system () from /lib/libpthread.so.0
+No symbol table info available.
+#8  0xb6f84ee9 in osl_releaseVolumeDeviceHandle ()
+   from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#9  0xb6f85198 in osl_releaseVolumeDeviceHandle ()
+   from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#10 &lt;signal handler called&gt;
+No symbol table info available.
+#11 0xffffe410 in ?? ()
+No symbol table info available.
+#12 0xa89f9de8 in ?? ()
+No symbol table info available.
+#13 0x00000006 in ?? ()
+No symbol table info available.
+#14 0x00003344 in ?? ()
+No symbol table info available.
+#15 0xb681115f in raise () from /lib/libc.so.6
+No symbol table info available.
+#16 0xb6916ff4 in ?? () from /lib/libc.so.6
+No symbol table info available.
+#17 0x00000000 in ?? ()
+No symbol table info available.
+#18 0xb6812bc9 in abort () from /lib/libc.so.6
+No symbol table info available.
+#19 0x00000000 in ?? ()
+No symbol table info available.
+#20 0x00000020 in ?? ()
+No symbol table info available.
+#21 0x00000000 in ?? ()
+No symbol table info available.
+#22 0x00000000 in ?? ()
+No symbol table info available.
+#23 0x00000000 in ?? ()
+No symbol table info available.
+#24 0x00000000 in ?? ()
+No symbol table info available.
+#25 0x00000000 in ?? ()
+No symbol table info available.
+#26 0x00000000 in ?? ()
+No symbol table info available.
+#27 0x00000000 in ?? ()
+No symbol table info available.
+#28 0x00000000 in ?? ()
+No symbol table info available.
+#29 0x00000000 in ?? ()
+No symbol table info available.
+#30 0x00000000 in ?? ()
+No symbol table info available.
+#31 0x00000000 in ?? ()
+No symbol table info available.
+#32 0x00000000 in ?? ()
+No symbol table info available.
+#33 0x00000000 in ?? ()
+No symbol table info available.
+#34 0x00000000 in ?? ()
+No symbol table info available.
+#35 0x00000000 in ?? ()
+No symbol table info available.
+#36 0x00000000 in ?? ()
+No symbol table info available.
+#37 0x00000000 in ?? ()
+No symbol table info available.
+#38 0x00000000 in ?? ()
+No symbol table info available.
+#39 0x00000000 in ?? ()
+No symbol table info available.
+#40 0x00000000 in ?? ()
+No symbol table info available.
+#41 0x00000000 in ?? ()
+No symbol table info available.
+#42 0x00000000 in ?? ()
+No symbol table info available.
+#43 0x00000000 in ?? ()
+No symbol table info available.
+#44 0x00000000 in ?? ()
+No symbol table info available.
+#45 0x00000000 in ?? ()
+No symbol table info available.
+#46 0x00000000 in ?? ()
+No symbol table info available.
+#47 0x00000000 in ?? ()
+No symbol table info available.
+#48 0x00000000 in ?? ()
+No symbol table info available.
+#49 0x00000000 in ?? ()
+No symbol table info available.
+#50 0x00000000 in ?? ()
+No symbol table info available.
+#51 0x00000000 in ?? ()
+No symbol table info available.
+#52 0x08181468 in ?? ()
+No symbol table info available.
+#53 0xb67ecfe8 in ?? () from /lib/libc.so.6
+No symbol table info available.
+#54 0xb691b000 in ?? ()
+No symbol table info available.
+#55 0x08181468 in ?? ()
+No symbol table info available.
+#56 0xb598e17c in ?? () from /usr/lib/libglib-2.0.so.0
+No symbol table info available.
+#57 0xa89f9978 in ?? ()
+No symbol table info available.
+#58 0x083145b0 in ?? ()
+No symbol table info available.
+#59 0x08181468 in ?? ()
+No symbol table info available.
+#60 0x00000000 in ?? ()
+No symbol table info available.
+#61 0xa89f9978 in ?? ()
+No symbol table info available.
+#62 0xb5cb865f in gtk_vbox_size_allocate (widget=3D0xa91c3104, allocation=
+=3D0x4)
+    at gtkvbox.c:261
+	child_requisition =3D {width =3D 137322349, height =3D 0}
+	child =3D (GtkBoxChild *) 0x6
+	children =3D (GList *) 0x8314480
+	child_allocation =3D {x =3D 137198360, y =3D 1234268148, width =3D 1,=20
+  height =3D -1248272004}
+	nvis_children =3D 0
+	nexpand_children =3D 137323152
+	child_height =3D -1457837668
+	height =3D -1465934376
+	extra =3D -1457725876
+	y =3D 137323152
+#63 0xb593bcc6 in IA__g_log (log_domain=3D0x0, log_level=3D0, format=3D0x0)
+    at gmessages.c:507
+No locals.
+#64 0xb593c051 in IA__g_assert_warning (log_domain=3D0x0, file=3D0x0, line=
+=3D0,=20
+    pretty_function=3D0xa91c408b &quot;gnome_vfs_cancellation_cancel&quot;,=20
+    expression=3D0xa91c4143 &quot;gnome_vfs_is_primary_thread()&quot;) at gmessages.c=
+:<i>542
+</I>No locals.
+#65 0xa9193d85 in gnome_vfs_cancellation_cancel (cancellation=3D0x82f6380)
+    at gnome-vfs-cancellation.c:133
+	daemon =3D 0x3
+	client =3D (GnomeVFSClient *) 0x0
+	client_call =3D (GnomeVFSClientCall *) 0xb594e4ab
+	__PRETTY_FUNCTION__ =3D &quot;gnome_vfs_cancellation_cancel&quot;
+#66 0xa91a05df in _gnome_vfs_job_module_cancel (job=3D0x0)
+    at gnome-vfs-job.c:1716
+	cancellation =3D (GnomeVFSCancellation *) 0x0
+#67 0xa9191428 in gnome_vfs_async_cancel (handle=3D0x3)
+    at gnome-vfs-async-ops.c:58
+	job =3D (GnomeVFSJob *) 0x817ee60
+#68 0xa91e5218 in gtk_file_folder_gnome_vfs_list_children (folder=3D0x0,=20
+    children=3D0xa89f9f28, error=3D0xa89f9fe8) at gtkfilesystemgnomevfs.c:5=
+48
+	folder_vfs =3D (GtkFileFolderGnomeVFS *) 0x826b558
+#69 0xb5b84208 in IA__gtk_file_folder_list_children (folder=3D0x826b558,=20
+    children=3D0xa89f9f58, error=3D0xa89f9fe8) at gtkfilesystem.c:865
+	__t =3D 0
+	__r =3D 0
+	result =3D 136754520
+	tmp_children =3D (GSList *) 0x0
+	__PRETTY_FUNCTION__ =3D &quot;IA__gtk_file_folder_list_children&quot;
+#70 0xb5b85270 in _gtk_file_system_model_new (file_system=3D0x824c458,=20
+    root_path=3D0x82f6128, max_depth=3D0, types=3DGTK_FILE_INFO_ALL,=20
+    error=3D0xa89f9fe8) at gtkfilesystemmodel.c:756
+	__t =3D 0
+	__r =3D 0
+	model =3D (GtkFileSystemModel *) 0x82d7f50
+	root_folder =3D (GtkFileFolder *) 0x826b558
+	roots =3D (GSList *) 0x80fd910
+	tmp_list =3D (GSList *) 0xa89f9fe8
+	__PRETTY_FUNCTION__ =3D &quot;_gtk_file_system_model_new&quot;
+#71 0xb5b75b1b in gtk_file_chooser_default_set_current_folder (
+    chooser=3D0x8244d58, path=3D0xc, error=3D0xa89f9fe8)
+    at gtkfilechooserdefault.c:4457
+	__PRETTY_FUNCTION__ =3D &quot;gtk_file_chooser_default_set_current_folder&quot;
+#72 0xb5b672b8 in _gtk_file_chooser_set_current_folder_path (
+    chooser=3D0x8244d58, path=3D0x8314430, error=3D0xa89f9fe8)
+    at gtkfilechooser.c:974
+	__t =3D 0
+	__r =3D 0
+	__PRETTY_FUNCTION__ =3D &quot;_gtk_file_chooser_set_current_folder_path&quot;
+#73 0xb5b70184 in change_folder_and_display_error (impl=3D0x8244d58, path=
+=3D0x6)
+    at gtkfilechooserdefault.c:946
+	error =3D (GError *) 0x0
+	result =3D 136596824
+#74 0xb5b73377 in gtk_file_chooser_default_map (widget=3D0x8244d58)
+    at gtkfilechooserdefault.c:4097
+No locals.
+#75 0xb59b6166 in IA__g_cclosure_marshal_VOID__VOID (closure=3D0x80fe6b8,=20
+    return_value=3D0x0, n_param_values=3D1, param_values=3D0x0,=20
+    invocation_hint=3D0xa89fa198, marshal_data=3D0xb5b73320) at gmarshal.c:=
+77
+	callback =3D 0x6
+	data1 =3D 0x8244d58
+	data2 =3D 0x0
+	__PRETTY_FUNCTION__ =3D &quot;IA__g_cclosure_marshal_VOID__VOID&quot;
+#76 0xb599fc99 in g_type_class_meta_marshal (closure=3D0x80fe6b8,=20
+    return_value=3D0x0, n_param_values=3D0, param_values=3D0xa89fa2c0,=20
+    invocation_hint=3D0x0, marshal_data=3D0x0) at gclosure.c:514
+	class =3D (GTypeClass *) 0x6
+	callback =3D 0x0
+#77 0xb599f99b in IA__g_closure_invoke (closure=3D0x80fe6b8, return_value=
+=3D0x0,=20
+    n_param_values=3D0, param_values=3D0x0, invocation_hint=3D0x0) at gclos=
+ure.c:437
+	marshal =3D 0xb599fc50 &lt;g_type_class_meta_marshal&gt;
+	marshal_data =3D 0x6c
+	in_marshal =3D 1
+	__PRETTY_FUNCTION__ =3D &quot;IA__g_closure_invoke&quot;
+#78 0xb59b4338 in signal_emit_unlocked_R (node=3D0x811e0e0, detail=3D0,=20
+    instance=3D0x8244d58, emission_return=3D0x0, instance_and_params=3D0xa8=
+9fa2c0)
+    at gsignal.c:2415
+	accumulator =3D (SignalAccumulator *) 0x0
+	emission =3D {next =3D 0xa89fa650, instance =3D 0x8244d58, ihint =3D {
+    signal_id =3D 9, detail =3D 0, run_type =3D G_SIGNAL_RUN_FIRST},=20
+  state =3D EMISSION_RUN, chain_type =3D 136591872}
+	handler_list =3D (Handler *) 0x0
+	return_accu =3D (GValue *) 0x0
+	accu =3D {g_type =3D 0, data =3D {{v_int =3D 0, v_uint =3D 0, v_long =3D 0=
+,=20
+      v_ulong =3D 0, v_int64 =3D 0, v_uint64 =3D 0, v_float =3D 0, v_double=
+ =3D 0,=20
+      v_pointer =3D 0x0}, {v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulong=
+ =3D 0,=20
+      v_int64 =3D 0, v_uint64 =3D 0, v_float =3D 0, v_double =3D 0, v_point=
+er =3D 0x0}}}
+	signal_id =3D 9
+	max_sequential_handler_number =3D 1410
+	return_value_altered =3D 0
+#79 0xb59b5a88 in IA__g_signal_emit_valist (instance=3D0x8244d58,=20
+    signal_id=3D3048682272, detail=3D0, var_args=3D0xa89fa44c &quot;\2008=C3=98=
+=C2=B5\2008=C3=98=C2=B5&quot;)
+    at gsignal.c:2244
+	return_value =3D {g_type =3D 0, data =3D {{v_int =3D -1465933128,=20
+      v_uint =3D 2829034168, v_long =3D -1465933128, v_ulong =3D 2829034168=
+,=20
+      v_int64 =3D 7124001464, v_uint64 =3D 7124001464, v_float =3D -1.77231=
+141e-14,=20
+      v_double =3D 3.5197243842851459e-314, v_pointer =3D 0xa89fa2b8}, {
+      v_int =3D -1248004544, v_uint =3D 3046962752, v_long =3D -1248004544,=
+=20
+      v_ulong =3D 3046962752, v_int64 =3D 586630619432023616,=20
+      v_uint64 =3D 586630619432023616, v_float =3D -1.16945739e-06,=20
+      v_double =3D 1.9052464934746535e-269, v_pointer =3D 0xb59cf640}}}
+	rtype =3D 0
+	instance_and_params =3D (GValue *) 0xa89fa2c0
+	stack_values =3D {{g_type =3D 136591872, data =3D {{v_int =3D 136596824,=20
+        v_uint =3D 136596824, v_long =3D 136596824, v_ulong =3D 136596824,=20
+        v_int64 =3D 136596824, v_uint64 =3D 136596824, v_float =3D 4.944287=
+2e-34,=20
+        v_double =3D 6.7487798069423086e-316, v_pointer =3D 0x8244d58}, {
+        v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulong =3D 0, v_int64 =3D=
+ 0,=20
+        v_uint64 =3D 0, v_float =3D 0, v_double =3D 0, v_pointer =3D 0x0}}}=
+, {
+    g_type =3D 1, data =3D {{v_int =3D -1465932808, v_uint =3D 2829034488,=20
+        v_long =3D -1465932808, v_ulong =3D 2829034488,=20
+        v_int64 =3D -5360608542562737160, v_uint64 =3D 13086135531146814456=
+,=20
+        v_float =3D -1.77236562e-14, v_double =3D -1.8236744118796273e-50,=20
+        v_pointer =3D 0xa89fa3f8}, {v_int =3D -1248003740, v_uint =3D 30469=
+63556,=20
+        v_long =3D -1248003740, v_ulong =3D 3046963556, v_int64 =3D 3046963=
+556,=20
+        v_uint64 =3D 3046963556, v_float =3D -1.1695488e-06,=20
+        v_double =3D 1.5054000171498812e-314, v_pointer =3D 0xb59cf964}}}, =
+{
+    g_type =3D 0, data =3D {{v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulo=
+ng =3D 0,=20
+        v_int64 =3D 0, v_uint64 =3D 0, v_float =3D 0, v_double =3D 0,=20
+        v_pointer =3D 0x0}, {v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulo=
+ng =3D 0,=20
+        v_int64 =3D 2680059592704, v_uint64 =3D 2680059592704, v_float =3D =
+0,=20
+        v_double =3D 1.3241253735623299e-311, v_pointer =3D 0x0}}}, {
+    g_type =3D 424, data =3D {{v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_u=
+long =3D 0,=20
+        v_int64 =3D 0, v_uint64 =3D 0, v_float =3D 0, v_double =3D 0,=20
+        v_pointer =3D 0x0}, {v_int =3D 624, v_uint =3D 624, v_long =3D 624,=
+=20
+        v_ulong =3D 624, v_int64 =3D 1821066134128, v_uint64 =3D 1821066134=
+128,=20
+        v_float =3D 8.74410242e-43, v_double =3D 8.9972621567757242e-312,=20
+        v_pointer =3D 0x270}}}, {g_type =3D 135263424, data =3D {{v_int =3D=
+ 0,=20
+        v_uint =3D 0, v_long =3D 0, v_ulong =3D 0, v_int64 =3D 581497030954=
+713088,=20
+        v_uint64 =3D 581497030954713088, v_float =3D 0,=20
+        v_double =3D 8.4670837005563966e-270, v_pointer =3D 0x0}, {
+        v_int =3D -1244120960, v_uint =3D 3050846336, v_long =3D -124412096=
+0,=20
+        v_ulong =3D 3050846336, v_int64 =3D 586626564986779776,=20
+        v_uint64 =3D 586626564986779776, v_float =3D -1.61096978e-06,=20
+        v_double =3D 1.9038832119878309e-269, v_pointer =3D 0xb5d83880}}}, =
+{
+    g_type =3D 2829035488, data =3D {{v_int =3D -1465932952, v_uint =3D 282=
+9034344,=20
+        v_long =3D -1465932952, v_ulong =3D 2829034344,=20
+        v_int64 =3D -5356743836500515992, v_uint64 =3D 13090000237209035624=
+,=20
+        v_float =3D -1.77234123e-14, v_double =3D -3.3440159672489823e-50,=20
+        v_pointer =3D 0xa89fa368}, {v_int =3D 136585584, v_uint =3D 1365855=
+84,=20
+        v_long =3D 136585584, v_ulong =3D 136585584,=20
+        v_int64 =3D -6296134258630844048, v_uint64 =3D 12150609815078707568=
+,=20
+        v_float =3D 4.93912604e-34, v_double =3D -5.138856435287929e-113,=20
+        v_pointer =3D 0x8242170}}}, {g_type =3D 2829034344, data =3D {{
+        v_int =3D -1248059562, v_uint =3D 3046907734, v_long =3D -124805956=
+2,=20
+        v_ulong =3D 3046907734, v_int64 =3D 3046907734, v_uint64 =3D 304690=
+7734,=20
+        v_float =3D -1.16320257e-06, v_double =3D 1.505372437417399e-314,=20
+        v_pointer =3D 0xb59c1f56}, {v_int =3D -1247100724, v_uint =3D 30478=
+66572,=20
+        v_long =3D -1247100724, v_ulong =3D 3047866572,=20
+        v_int64 =3D -6296133671604010804, v_uint64 =3D 12150610402105540812=
+,=20
+        v_float =3D -1.27220983e-06, v_double =3D -5.139195185675392e-113,=20
+        v_pointer =3D 0xb5aac0cc}}}, {g_type =3D 3047754939, data =3D {{
+        v_int =3D 136584640, v_uint =3D 136584640, v_long =3D 136584640,=20
+        v_ulong =3D 136584640, v_int64 =3D 137575538112, v_uint64 =3D 13757=
+5538112,=20
+        v_float =3D 4.93869258e-34, v_double =3D 6.7971347089262308e-313,=20
+        v_pointer =3D 0x8241dc0}, {v_int =3D 0, v_uint =3D 0, v_long =3D 0,=
+=20
+        v_ulong =3D 0, v_int64 =3D -5356743839329550336,=20
+        v_uint64 =3D 13090000234380001280, v_float =3D 0,=20
+        v_double =3D -3.3440146240846189e-50, v_pointer =3D 0x0}}}, {
+    g_type =3D 135390536, data =3D {{v_int =3D -1465932256, v_uint =3D 2829=
+035040,=20
+        v_long =3D -1465932256, v_ulong =3D 2829035040,=20
+        v_int64 =3D -6296133877981272544, v_uint64 =3D 12150610195728279072=
+,=20
+        v_float =3D -1.77245913e-14, v_double =3D -5.1390760933725894e-113,=
+=20
+        v_pointer =3D 0xa89fa620}, {v_int =3D -1248105725, v_uint =3D 30468=
+61571,=20
+        v_long =3D -1248105725, v_ulong =3D 3046861571,=20
+        v_int64 =3D 586626564982795011, v_uint64 =3D 586626564982795011,=20
+        v_float =3D -1.15795444e-06, v_double =3D 1.903883210647979e-269,=20
+        v_pointer =3D 0xb59b6b03}}}, {g_type =3D 3047866572, data =3D {{
+        v_int =3D -1465932808, v_uint =3D 2829034488, v_long =3D -146593280=
+8,=20
+        v_ulong =3D 2829034488, v_int64 =3D -5356736281653042184,=20
+        v_uint64 =3D 13090007792056509432, v_float =3D -1.77236562e-14,=20
+        v_double =3D -3.3476028455488036e-50, v_pointer =3D 0xa89fa3f8}, {
+        v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulong =3D 0,=20
+        v_int64 =3D 581496446839160832, v_uint64 =3D 581496446839160832,=20
+        v_float =3D 0, v_double =3D 8.4661016748159262e-270, v_pointer =3D =
+0x0}}}, {
+    g_type =3D 136584640, data =3D {{v_int =3D -1248004544, v_uint =3D 3046=
+962752,=20
+        v_long =3D -1248004544, v_ulong =3D 3046962752,=20
+        v_int64 =3D -6296131094624537024, v_uint64 =3D 12150612979085014592=
+,=20
+        v_float =3D -1.16945739e-06, v_double =3D -5.1406822604491348e-113,=
+=20
+        v_pointer =3D 0xb59cf640}, {v_int =3D 135390536, v_uint =3D 1353905=
+36,=20
+        v_long =3D 135390536, v_ulong =3D 135390536,=20
+        v_int64 =3D -6296133674516486840, v_uint64 =3D 12150610399193064776=
+,=20
+        v_float =3D 4.39038691e-34, v_double =3D -5.1391935049985817e-113,=20
+        v_pointer =3D 0x811e548}}}, {g_type =3D 3046892865, data =3D {{
+        v_int =3D 135390536, v_uint =3D 135390536, v_long =3D 135390536,=20
+        v_ulong =3D 135390536, v_int64 =3D 135390536, v_uint64 =3D 13539053=
+6,=20
+        v_float =3D 4.39038691e-34, v_double =3D 6.6891812609632541e-316,=20
+        v_pointer =3D 0x811e548}, {v_int =3D 2, v_uint =3D 2, v_long =3D 2,=
+=20
+        v_ulong =3D 2, v_int64 =3D -2259300286872944638,=20
+        v_uint64 =3D 16187443786836606978, v_float =3D 2.80259693e-45,=20
+        v_double =3D -3.6645948288020542e+157, v_pointer =3D 0x2}}}, {g_typ=
+e =3D 1,=20
+    data =3D {{v_int =3D -1244862992, v_uint =3D 3050104304, v_long =3D -12=
+44862992,=20
+        v_ulong =3D 3050104304, v_int64 =3D 7345071600, v_uint64 =3D 734507=
+1600,=20
+        v_float =3D -1.5266105e-06, v_double =3D 3.6289475438041981e-314,=20
+        v_pointer =3D 0xb5cce5f0}, {v_int =3D -1248074431, v_uint =3D 30468=
+92865,=20
+        v_long =3D -1248074431, v_ulong =3D 3046892865,=20
+        v_int64 =3D -5356256821351029439, v_uint64 =3D 13090487252358522177=
+,=20
+        v_float =3D -1.16151216e-06, v_double =3D -3.5752402345070273e-50,=20
+        v_pointer =3D 0xb59be541}}}, {g_type =3D 137440856, data =3D {{
+        v_int =3D -1465932824, v_uint =3D 2829034472, v_long =3D -146593282=
+4,=20
+        v_ulong =3D 2829034472, v_int64 =3D -2248498406934731800,=20
+        v_uint64 =3D 16198245666774819816, v_float =3D -1.77236291e-14,=20
+        v_double =3D -1.9035365113574115e+158, v_pointer =3D 0xa89fa3e8}, {
+        v_int =3D 2, v_uint =3D 2, v_long =3D 2, v_ulong =3D 2,=20
+        v_int64 =3D 580941021668442114, v_uint64 =3D 580941021668442114,=20
+        v_float =3D 2.80259693e-45, v_double =3D 7.5519223597679643e-270,=20
+        v_pointer =3D 0x2}}}, {g_type =3D 1, data =3D {{v_int =3D -12441209=
+60,=20
+        v_uint =3D 3050846336, v_long =3D -1244120960, v_ulong =3D 30508463=
+36,=20
+        v_int64 =3D 586678894868314240, v_uint64 =3D 586678894868314240,=20
+        v_float =3D -1.61096978e-06, v_double =3D 1.9214788026082606e-269,=20
+        v_pointer =3D 0xb5d83880}, {v_int =3D -1246496560, v_uint =3D 30484=
+70736,=20
+        v_long =3D -1246496560, v_ulong =3D 3048470736,=20
+        v_int64 =3D -6296133396725499696, v_uint64 =3D 12150610676984051920=
+,=20
+        v_float =3D -1.34089532e-06, v_double =3D -5.1393538073888639e-113,=
+=20
+        v_pointer =3D 0xb5b3f8d0}}}, {g_type =3D 3046858102, data =3D {{
+        v_int =3D 136596824, v_uint =3D 136596824, v_long =3D 136596824,=20
+        v_ulong =3D 136596824, v_int64 =3D 47381237080, v_uint64 =3D 473812=
+37080,=20
+        v_float =3D 4.9442872e-34, v_double =3D 2.3409441498687419e-313,=20
+        v_pointer =3D 0x8244d58}, {v_int =3D 0, v_uint =3D 0, v_long =3D 0,=
+=20
+        v_ulong =3D 0, v_int64 =3D -6296133313874624512,=20
+        v_uint64 =3D 12150610759834927104, v_float =3D 0,=20
+        v_double =3D -5.1394016174113038e-113, v_pointer =3D 0x0}}}}
+	free_me =3D (GValue *) 0x0
+	signal_return_type =3D 4
+	param_values =3D (GValue *) 0xa89fa2d4
+	i =3D 0
+	n_params =3D 0
+	__PRETTY_FUNCTION__ =3D &quot;IA__g_signal_emit_valist&quot;
+#80 0xb59b5d76 in IA__g_signal_emit (instance=3D0x0, signal_id=3D0, detail=
+=3D0)
+    at gsignal.c:2288
+No locals.
+#81 0xb5cc45d2 in IA__gtk_widget_map (widget=3D0x8244d58) at gtkwidget.c:21=
+90
+	__t =3D 0
+	__r =3D 0
+	__PRETTY_FUNCTION__ =3D &quot;IA__gtk_widget_map&quot;
+#82 0xb5b3f8fa in gtk_container_map_child (child=3D0x6, client_data=3D0x0)
+    at gtkcontainer.c:2387
+No locals.
+#83 0xb5aff2ad in gtk_box_forall (container=3D0x8243988, include_internals=
+=3D1,=20
+    callback=3D0xb5b3f8d0 &lt;gtk_container_map_child&gt;, callback_data=3D0x0)
+    at gtkbox.c:702
+	child =3D (GtkBoxChild *) 0x0
+	children =3D (GList *) 0x0
+	__PRETTY_FUNCTION__ =3D &quot;gtk_box_forall&quot;
+#84 0xb5b3dcf0 in IA__gtk_container_forall (container=3D0x8243988,=20
+    callback=3D0xb5b3f8d0 &lt;gtk_container_map_child&gt;, callback_data=3D0x0)
+    at gtkcontainer.c:1265
+	class =3D (GtkContainerClass *) 0x6
+	__PRETTY_FUNCTION__ =3D &quot;IA__gtk_container_forall&quot;
+#85 0xb5b3f939 in gtk_container_map (widget=3D0x8243988) at gtkcontainer.c:=
+2395
+No locals.
+#86 0xb59b6166 in IA__g_cclosure_marshal_VOID__VOID (closure=3D0x80fe6b8,=20
+    return_value=3D0x0, n_param_values=3D1, param_values=3D0x0,=20
+    invocation_hint=3D0xa89fa658, marshal_data=3D0xb5b3f900) at gmarshal.c:=
+77
+	callback =3D 0x6
+	data1 =3D 0x8243988
+	data2 =3D 0x0
+	__PRETTY_FUNCTION__ =3D &quot;IA__g_cclosure_marshal_VOID__VOID&quot;
+#87 0xb599fc99 in g_type_class_meta_marshal (closure=3D0x80fe6b8,=20
+    return_value=3D0x0, n_param_values=3D0, param_values=3D0xa89fa780,=20
+    invocation_hint=3D0x0, marshal_data=3D0x0) at gclosure.c:514
+	class =3D (GTypeClass *) 0x6
+	callback =3D 0x0
+#88 0xb599f99b in IA__g_closure_invoke (closure=3D0x80fe6b8, return_value=
+=3D0x0,=20
+    n_param_values=3D0, param_values=3D0x0, invocation_hint=3D0x0) at gclos=
+ure.c:437
+	marshal =3D 0xb599fc50 &lt;g_type_class_meta_marshal&gt;
+	marshal_data =3D 0x6c
+	in_marshal =3D 1
+	__PRETTY_FUNCTION__ =3D &quot;IA__g_closure_invoke&quot;
+#89 0xb59b4338 in signal_emit_unlocked_R (node=3D0x811e0e0, detail=3D0,=20
+    instance=3D0x8243988, emission_return=3D0x0, instance_and_params=3D0xa8=
+9fa780)
+    at gsignal.c:2415
+	accumulator =3D (SignalAccumulator *) 0x0
+	emission =3D {next =3D 0xa89faab0, instance =3D 0x8243988, ihint =3D {
+    signal_id =3D 9, detail =3D 0, run_type =3D G_SIGNAL_RUN_FIRST},=20
+  state =3D EMISSION_RUN, chain_type =3D 136589712}
+	handler_list =3D (Handler *) 0x0
+	return_accu =3D (GValue *) 0x0
+	accu =3D {g_type =3D 0, data =3D {{v_int =3D 0, v_uint =3D 0, v_long =3D 0=
+,=20
+      v_ulong =3D 0, v_int64 =3D 0, v_uint64 =3D 0, v_float =3D 0, v_double=
+ =3D 0,=20
+      v_pointer =3D 0x0}, {v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulong=
+ =3D 0,=20
+      v_int64 =3D 0, v_uint64 =3D 0, v_float =3D 0, v_double =3D 0, v_point=
+er =3D 0x0}}}
+	signal_id =3D 9
+	max_sequential_handler_number =3D 1410
+	return_value_altered =3D 0
+#90 0xb59b5a88 in IA__g_signal_emit_valist (instance=3D0x8243988,=20
+    signal_id=3D3048470784, detail=3D0,=20
+    var_args=3D0xa89fa90c &quot;V\037\234=C2=B5\2008=C3=98=C2=B5x\036$\b8=C2=A9\=
+237=C2=A8=C3=98=C3=97=C2=B6=C2=B5\2109$\b=C2=B8=C3=A6\017\bX=C2=A9\237=C2=
+=A8@=C3=B6\234=C2=B5=C2=B8=C3=A6\017\b=C3=80\035$\bX=C2=A9\237=C2=A8fa\233=
+=C2=B5=C3=80\035$\b=C2=A8=C2=BB\021\bx=C2=A9\237=C2=A8@=C3=B6\234=C2=B5=C3=
+=A0=C2=AB\237=C2=A8=C2=B8=C3=A6\017\b\210=C2=A9\237=C2=A8\231=C3=BC\231=C2=
+=B5=C2=B8=C3=A6\017\b&quot;) at gsignal.c:2244
+	return_value =3D {g_type =3D 32, data =3D {{v_int =3D 0, v_uint =3D 0,=20
+      v_long =3D 0, v_ulong =3D 0, v_int64 =3D -6296129998159872000,=20
+      v_uint64 =3D 12150614075549679616, v_float =3D 0,=20
+      v_double =3D -5.1413149876245925e-113, v_pointer =3D 0x0}, {
+      v_int =3D -1248074431, v_uint =3D 3046892865, v_long =3D -1248074431,=
+=20
+      v_ulong =3D 3046892865, v_int64 =3D 3046892865, v_uint64 =3D 30468928=
+65,=20
+      v_float =3D -1.16151216e-06, v_double =3D 1.505365091155311e-314,=20
+      v_pointer =3D 0xb59be541}}}
+	rtype =3D 0
+	instance_and_params =3D (GValue *) 0xa89fa780
+	stack_values =3D {{g_type =3D 136589712, data =3D {{v_int =3D 136591752,=20
+        v_uint =3D 136591752, v_long =3D 136591752, v_ulong =3D 136591752,=20
+        v_int64 =3D 136591752, v_uint64 =3D 136591752, v_float =3D 4.941958=
+25e-34,=20
+        v_double =3D 6.7485292168467379e-316, v_pointer =3D 0x8243988}, {
+        v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulong =3D 0, v_int64 =3D=
+ 0,=20
+        v_uint64 =3D 0, v_float =3D 0, v_double =3D 0, v_pointer =3D 0x0}}}=
+, {
+    g_type =3D 136584640, data =3D {{v_int =3D -1465931768, v_uint =3D 2829=
+035528,=20
+        v_long =3D -1465931768, v_ulong =3D 2829035528,=20
+        v_int64 =3D -5346843271163303928, v_uint64 =3D 13099900802546247688=
+,=20
+        v_float =3D -1.7725418e-14, v_double =3D -1.5072667500569549e-49,=20
+        v_pointer =3D 0xa89fa808}, {v_int =3D 136584640, v_uint =3D 1365846=
+40,=20
+        v_long =3D 136584640, v_ulong =3D 136584640, v_int64 =3D 6026612678=
+4,=20
+        v_uint64 =3D 60266126784, v_float =3D 4.93869258e-34,=20
+        v_double =3D 2.9775422851887407e-313, v_pointer =3D 0x8241dc0}}}, {
+    g_type =3D 0, data =3D {{v_int =3D -1465931808, v_uint =3D 2829035488,=20
+        v_long =3D -1465931808, v_ulong =3D 2829035488, v_int64 =3D 1141897=
+0080,=20
+        v_uint64 =3D 11418970080, v_float =3D -1.77253503e-14,=20
+        v_double =3D 5.6417208274170707e-314, v_pointer =3D 0xa89fa7e0}, {
+        v_int =3D 82, v_uint =3D 82, v_long =3D 82, v_ulong =3D 82,=20
+        v_int64 =3D 4294967378, v_uint64 =3D 4294967378,=20
+        v_float =3D 1.14906474e-43, v_double =3D 2.1219958314786553e-314,=20
+        v_pointer =3D 0x52}}}, {g_type =3D 3046427284, data =3D {{v_int =3D=
+ 560,=20
+        v_uint =3D 560, v_long =3D 560, v_ulong =3D 560, v_int64 =3D 560,=20
+        v_uint64 =3D 560, v_float =3D 7.8472714e-43,=20
+        v_double =3D 2.7667676167109806e-321, v_pointer =3D 0x230}, {v_int =
+=3D 0,=20
+        v_uint =3D 0, v_long =3D 0, v_ulong =3D 0, v_int64 =3D 0, v_uint64 =
+=3D 0,=20
+        v_float =3D 0, v_double =3D 0, v_pointer =3D 0x0}}}, {g_type =3D 0,=
+ data =3D {{
+        v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulong =3D 0,=20
+        v_int64 =3D 2680059592704, v_uint64 =3D 2680059592704, v_float =3D =
+0,=20
+        v_double =3D 1.3241253735623299e-311, v_pointer =3D 0x0}, {v_int =
+=3D 424,=20
+        v_uint =3D 424, v_long =3D 424, v_ulong =3D 424, v_int64 =3D 424,=20
+        v_uint64 =3D 424, v_float =3D 5.94150549e-43,=20
+        v_double =3D 2.0948383383668853e-321, v_pointer =3D 0x1a8}}}, {
+    g_type =3D 0, data =3D {{v_int =3D 624, v_uint =3D 624, v_long =3D 624,=
+=20
+        v_ulong =3D 624, v_int64 =3D 1821066134128, v_uint64 =3D 1821066134=
+128,=20
+        v_float =3D 8.74410242e-43, v_double =3D 8.9972621567757242e-312,=20
+        v_pointer =3D 0x270}, {v_int =3D 3, v_uint =3D 3, v_long =3D 3, v_u=
+long =3D 3,=20
+        v_int64 =3D 4294967299, v_uint64 =3D 4294967299,=20
+        v_float =3D 4.20389539e-45, v_double =3D 2.1219957924474693e-314,=20
+        v_pointer =3D 0x3}}}, {g_type =3D 1, data =3D {{v_int =3D -12441209=
+60,=20
+        v_uint =3D 3050846336, v_long =3D -1244120960, v_ulong =3D 30508463=
+36,=20
+        v_int64 =3D 586626564986779776, v_uint64 =3D 586626564986779776,=20
+        v_float =3D -1.61096978e-06, v_double =3D 1.9038832119878309e-269,=20
+        v_pointer =3D 0xb5d83880}, {v_int =3D 135784028, v_uint =3D 1357840=
+28,=20
+        v_long =3D 135784028, v_ulong =3D 135784028,=20
+        v_int64 =3D -6296128864152721828, v_uint64 =3D 12150615209556829788=
+,=20
+        v_float =3D 4.57106958e-34, v_double =3D -5.1419693791102147e-113,=20
+        v_pointer =3D 0x817e65c}}}, {g_type =3D 3048463144, data =3D {{
+        v_int =3D 136584640, v_uint =3D 136584640, v_long =3D 136584640,=20
+        v_ulong =3D 136584640, v_int64 =3D 586626716691340736,=20
+        v_uint64 =3D 586626716691340736, v_float =3D 4.93869258e-34,=20
+        v_double =3D 1.9039342216838522e-269, v_pointer =3D 0x8241dc0}, {
+        v_int =3D -1465931720, v_uint =3D 2829035576, v_long =3D -146593172=
+0,=20
+        v_ulong =3D 2829035576, v_int64 =3D -5343458832639088584,=20
+        v_uint64 =3D 13103285241070463032, v_float =3D -1.77254993e-14,=20
+        v_double =3D -2.5894506971767492e-49, v_pointer =3D 0xa89fa838}}}, =
+{
+    g_type =3D 3050846336, data =3D {{v_int =3D 624, v_uint =3D 624, v_long=
+ =3D 624,=20
+        v_ulong =3D 624, v_int64 =3D -6296127696057400720,=20
+        v_uint64 =3D 12150616377652150896, v_float =3D 8.74410242e-43,=20
+        v_double =3D -5.1426434415554225e-113, v_pointer =3D 0x270}, {
+        v_int =3D -1244854821, v_uint =3D 3050112475, v_long =3D -124485482=
+1,=20
+        v_ulong =3D 3050112475, v_int64 =3D 586626564986045915,=20
+        v_uint64 =3D 586626564986045915, v_float =3D -1.52753944e-06,=20
+        v_double =3D 1.9038832117410748e-269, v_pointer =3D 0xb5cd05db}}}, =
+{
+    g_type =3D 2829035744, data =3D {{v_int =3D 70, v_uint =3D 70, v_long =
+=3D 70,=20
+        v_ulong =3D 70, v_int64 =3D -5346667369311764410,=20
+        v_uint64 =3D 13100076704397787206, v_float =3D 9.80908925e-44,=20
+        v_double =3D -1.5406725090149164e-49, v_pointer =3D 0x46}, {
+        v_int =3D 136566992, v_uint =3D 136566992, v_long =3D 136566992,=20
+        v_ulong =3D 136566992, v_int64 =3D 136566992, v_uint64 =3D 13656699=
+2,=20
+        v_float =3D 4.93058901e-34, v_double =3D 6.747305910307635e-316,=20
+        v_pointer =3D 0x823d8d0}}}, {g_type =3D 0, data =3D {{v_int =3D -12=
+48074431,=20
+        v_uint =3D 3046892865, v_long =3D -1248074431, v_ulong =3D 30468928=
+65,=20
+        v_int64 =3D 583187739287741761, v_uint64 =3D 583187739287741761,=20
+        v_float =3D -1.16151216e-06, v_double =3D 1.1309533445730113e-269,=20
+        v_pointer =3D 0xb59be541}, {v_int =3D -1465931552, v_uint =3D 28290=
+35744,=20
+        v_long =3D -1465931552, v_ulong =3D 2829035744,=20
+        v_int64 =3D -6296128483502348064, v_uint64 =3D 12150615590207203552=
+,=20
+        v_float =3D -1.77257839e-14, v_double =3D -5.1421890376578281e-113,=
+=20
+        v_pointer =3D 0xa89fa8e0}}}, {g_type =3D 3771447964, data =3D {{v_i=
+nt =3D 2,=20
+        v_uint =3D 2, v_long =3D 2, v_ulong =3D 2, v_int64 =3D 2, v_uint64 =
+=3D 2,=20
+        v_float =3D 2.80259693e-45, v_double =3D 9.8813129168249309e-324,=20
+        v_pointer =3D 0x2}, {v_int =3D 1, v_uint =3D 1, v_long =3D 1, v_ulo=
+ng =3D 1,=20
+        v_int64 =3D -5343458835468124159, v_uint64 =3D 13103285238241427457=
+,=20
+        v_float =3D 1.40129846e-45, v_double =3D -2.5894496226447909e-49,=20
+        v_pointer =3D 0x1}}}, {g_type =3D 136585584, data =3D {{v_int =3D 1=
+36584640,=20
+        v_uint =3D 136584640, v_long =3D 136584640, v_ulong =3D 136584640,=20
+        v_int64 =3D -6296128383115584064, v_uint64 =3D 12150615690593967552=
+,=20
+        v_float =3D 4.93869258e-34, v_double =3D -5.1422469669606732e-113,=20
+        v_pointer =3D 0x8241dc0}, {v_int =3D -1248074431, v_uint =3D 304689=
+2865,=20
+        v_long =3D -1248074431, v_ulong =3D 3046892865,=20
+        v_int64 =3D 586630619431953729, v_uint64 =3D 586630619431953729,=20
+        v_float =3D -1.16151216e-06, v_double =3D 1.9052464934511545e-269,=20
+        v_pointer =3D 0xb59be541}}}, {g_type =3D 11, data =3D {{v_int =3D 0=
+,=20
+        v_uint =3D 0, v_long =3D 0, v_ulong =3D 0, v_int64 =3D -22484984097=
+63766272,=20
+        v_uint64 =3D 16198245663945785344, v_float =3D 0,=20
+        v_double =3D -1.9035358213937973e+158, v_pointer =3D 0x0}, {v_int =
+=3D 2,=20
+        v_uint =3D 2, v_long =3D 2, v_ulong =3D 2, v_int64 =3D 586630616385=
+060866,=20
+        v_uint64 =3D 586630616385060866, v_float =3D 2.80259693e-45,=20
+        v_double =3D 1.9052454689527626e-269, v_pointer =3D 0x2}}}, {g_type=
+ =3D 1,=20
+    data =3D {{v_int =3D -1244120960, v_uint =3D 3050846336, v_long =3D -12=
+44120960,=20
+        v_ulong =3D 3050846336, v_int64 =3D 586657110794188928,=20
+        v_uint64 =3D 586657110794188928, v_float =3D -1.61096978e-06,=20
+        v_double =3D 1.9141540459087514e-269, v_pointer =3D 0xb5d83880}, {
+        v_int =3D 136584640, v_uint =3D 136584640, v_long =3D 136584640,=20
+        v_ulong =3D 136584640, v_int64 =3D -6296128176957153856,=20
+        v_uint64 =3D 12150615896752397760, v_float =3D 4.93869258e-34,=20
+        v_double =3D -5.1423659329842973e-113, v_pointer =3D 0x8241dc0}}}, =
+{
+    g_type =3D 3046858102, data =3D {{v_int =3D 136591752, v_uint =3D 13659=
+1752,=20
+        v_long =3D 136591752, v_ulong =3D 136591752, v_int64 =3D 4738123200=
+8,=20
+        v_uint64 =3D 47381232008, v_float =3D 4.94195825e-34,=20
+        v_double =3D 2.3409438992786463e-313, v_pointer =3D 0x8243988}, {
+        v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulong =3D 0,=20
+        v_int64 =3D -6296128091194392576, v_uint64 =3D 12150615982515159040=
+,=20
+        v_float =3D 0, v_double =3D -5.1424154233431161e-113, v_pointer =3D=
+ 0x0}}}}
+	free_me =3D (GValue *) 0x0
+	signal_return_type =3D 4
+	param_values =3D (GValue *) 0xa89fa794
+	i =3D 0
+	n_params =3D 0
+	__PRETTY_FUNCTION__ =3D &quot;IA__g_signal_emit_valist&quot;
+#91 0xb59b5d76 in IA__g_signal_emit (instance=3D0x0, signal_id=3D0, detail=
+=3D0)
+    at gsignal.c:2288
+No locals.
+#92 0xb5cc45d2 in IA__gtk_widget_map (widget=3D0x8243988) at gtkwidget.c:21=
+90
+	__t =3D 0
+	__r =3D 0
+	__PRETTY_FUNCTION__ =3D &quot;IA__gtk_widget_map&quot;
+#93 0xb5b6d7d8 in gtk_file_chooser_dialog_map (widget=3D0x8241dc0)
+    at gtkfilechooserdialog.c:500
+	priv =3D (GtkFileChooserDialogPrivate *) 0x8241e78
+#94 0xb59b6166 in IA__g_cclosure_marshal_VOID__VOID (closure=3D0x80fe6b8,=20
+    return_value=3D0x0, n_param_values=3D1, param_values=3D0x0,=20
+    invocation_hint=3D0xa89faab8, marshal_data=3D0xb5b6d780) at gmarshal.c:=
+77
+	callback =3D 0x6
+	data1 =3D 0x8241dc0
+	data2 =3D 0x0
+	__PRETTY_FUNCTION__ =3D &quot;IA__g_cclosure_marshal_VOID__VOID&quot;
+#95 0xb599fc99 in g_type_class_meta_marshal (closure=3D0x80fe6b8,=20
+    return_value=3D0x0, n_param_values=3D0, param_values=3D0xa89fabe0,=20
+    invocation_hint=3D0x0, marshal_data=3D0x0) at gclosure.c:514
+	class =3D (GTypeClass *) 0x6
+	callback =3D 0x0
+#96 0xb599f99b in IA__g_closure_invoke (closure=3D0x80fe6b8, return_value=
+=3D0x0,=20
+    n_param_values=3D0, param_values=3D0x0, invocation_hint=3D0x0) at gclos=
+ure.c:437
+	marshal =3D 0xb599fc50 &lt;g_type_class_meta_marshal&gt;
+	marshal_data =3D 0x6c
+	in_marshal =3D 0
+	__PRETTY_FUNCTION__ =3D &quot;IA__g_closure_invoke&quot;
+#97 0xb59b4338 in signal_emit_unlocked_R (node=3D0x811e0e0, detail=3D0,=20
+    instance=3D0x8241dc0, emission_return=3D0x0, instance_and_params=3D0xa8=
+9fabe0)
+    at gsignal.c:2415
+	accumulator =3D (SignalAccumulator *) 0x0
+	emission =3D {next =3D 0xa89fafa0, instance =3D 0x8241dc0, ihint =3D {
+    signal_id =3D 9, detail =3D 0, run_type =3D G_SIGNAL_RUN_FIRST},=20
+  state =3D EMISSION_RUN, chain_type =3D 136565216}
+	handler_list =3D (Handler *) 0x0
+	return_accu =3D (GValue *) 0x0
+	accu =3D {g_type =3D 0, data =3D {{v_int =3D 0, v_uint =3D 0, v_long =3D 0=
+,=20
+      v_ulong =3D 0, v_int64 =3D 0, v_uint64 =3D 0, v_float =3D 0, v_double=
+ =3D 0,=20
+      v_pointer =3D 0x0}, {v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulong=
+ =3D 0,=20
+      v_int64 =3D 0, v_uint64 =3D 0, v_float =3D 0, v_double =3D 0, v_point=
+er =3D 0x0}}}
+	signal_id =3D 9
+	max_sequential_handler_number =3D 1410
+	return_value_altered =3D 0
+#98 0xb59b5a88 in IA__g_signal_emit_valist (instance=3D0x8241dc0,=20
+    signal_id=3D3048658816, detail=3D0,=20
+    var_args=3D0xa89fad6c &quot;\2008=C3=98=C2=B5\2008=C3=98=C2=B5=C3=80\035$\b(=
+=C2=AE\237=C2=A8t\t=C3=8D=C2=B5=C3=80\035$\b&quot;)
+    at gsignal.c:2244
+	return_value =3D {g_type =3D 0, data =3D {{v_int =3D 0, v_uint =3D 0,=20
+      v_long =3D 0, v_ulong =3D 0, v_int64 =3D 0, v_uint64 =3D 0, v_float =
+=3D 0,=20
+      v_double =3D 0, v_pointer =3D 0x0}, {v_int =3D 0, v_uint =3D 0, v_lon=
+g =3D 0,=20
+      v_ulong =3D 0, v_int64 =3D 586626561935933440,=20
+      v_uint64 =3D 586626561935933440, v_float =3D 0,=20
+      v_double =3D 1.9038821861601088e-269, v_pointer =3D 0x0}}}
+	rtype =3D 0
+	instance_and_params =3D (GValue *) 0xa89fabe0
+	stack_values =3D {{g_type =3D 136565216, data =3D {{v_int =3D 136584640,=20
+        v_uint =3D 136584640, v_long =3D 136584640, v_ulong =3D 136584640,=20
+        v_int64 =3D 136584640, v_uint64 =3D 136584640, v_float =3D 4.938692=
+58e-34,=20
+        v_double =3D 6.7481778373594156e-316, v_pointer =3D 0x8241dc0}, {
+        v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulong =3D 0, v_int64 =3D=
+ 0,=20
+        v_uint64 =3D 0, v_float =3D 0, v_double =3D 0, v_pointer =3D 0x0}}}=
+, {
+    g_type =3D 136584640, data =3D {{v_int =3D -1465930712, v_uint =3D 2829=
+036584,=20
+        v_long =3D -1465930712, v_ulong =3D 2829036584,=20
+        v_int64 =3D -5346626263645705176, v_uint64 =3D 13100117810063846440=
+,=20
+        v_float =3D -1.7727207e-14, v_double =3D -1.5484789417509171e-49,=20
+        v_pointer =3D 0xa89fac28}, {v_int =3D -1465930464, v_uint =3D 28290=
+36832,=20
+        v_long =3D -1465930464, v_ulong =3D 2829036832, v_int64 =3D 3034767=
+47552,=20
+        v_uint64 =3D 303476747552, v_float =3D -1.77276271e-14,=20
+        v_double =3D 1.4993743527707982e-312, v_pointer =3D 0xa89fad20}}}, =
+{
+    g_type =3D 624, data =3D {{v_int =3D -1244871383, v_uint =3D 3050095913=
+,=20
+        v_long =3D -1244871383, v_ulong =3D 3050095913,=20
+        v_int64 =3D -6296123758817262295, v_uint64 =3D 12150620314892289321=
+,=20
+        v_float =3D -1.52565656e-06, v_double =3D -5.1449154699311204e-113,=
+=20
+        v_pointer =3D 0xb5ccc529}, {v_int =3D -1465930552, v_uint =3D 28290=
+36744,=20
+        v_long =3D -1465930552, v_ulong =3D 2829036744, v_int64 =3D 2455255=
+362760,=20
+        v_uint64 =3D 2455255362760, v_float =3D -1.7727478e-14,=20
+        v_double =3D 1.2130573265072035e-311, v_pointer =3D 0xa89facc8}}}, =
+{
+    g_type =3D 3050846336, data =3D {{v_int =3D 0, v_uint =3D 0, v_long =3D=
+ 0,=20
+        v_ulong =3D 0, v_int64 =3D 586626561935933440,=20
+        v_uint64 =3D 586626561935933440, v_float =3D 0,=20
+        v_double =3D 1.9038821861601088e-269, v_pointer =3D 0x0}, {
+        v_int =3D -1465930376, v_uint =3D 2829036920, v_long =3D -146593037=
+6,=20
+        v_ulong =3D 2829036920, v_int64 =3D -5346624034557678216,=20
+        v_uint64 =3D 13100120039151873400, v_float =3D -1.77277762e-14,=20
+        v_double =3D -1.5489022708783424e-49, v_pointer =3D 0xa89fad78}}}, =
+{
+    g_type =3D 70, data =3D {{v_int =3D 624, v_uint =3D 624, v_long =3D 624=
+,=20
+        v_ulong =3D 624, v_int64 =3D 1821066134128, v_uint64 =3D 1821066134=
+128,=20
+        v_float =3D 8.74410242e-43, v_double =3D 8.9972621567757242e-312,=20
+        v_pointer =3D 0x270}, {v_int =3D -1465930548, v_uint =3D 2829036748=
+,=20
+        v_long =3D -1465930548, v_ulong =3D 2829036748,=20
+        v_int64 =3D -6296123776218190644, v_uint64 =3D 12150620297491360972=
+,=20
+        v_float =3D -1.77274848e-14, v_double =3D -5.1449054285311594e-113,=
+=20
+        v_pointer =3D 0xa89faccc}}}, {g_type =3D 1, data =3D {{v_int =3D -1=
+465930088,=20
+        v_uint =3D 2829037208, v_long =3D -1465930088, v_ulong =3D 28290372=
+08,=20
+        v_int64 =3D -5360591689111064936, v_uint64 =3D 13086152384598486680=
+,=20
+        v_float =3D -1.77282641e-14, v_double =3D -1.8276752391822146e-50,=20
+        v_pointer =3D 0xa89fae98}, {v_int =3D -1465930432, v_uint =3D 28290=
+36864,=20
+        v_long =3D -1465930432, v_ulong =3D 2829036864,=20
+        v_int64 =3D -6296123432620806848, v_uint64 =3D 12150620641088744768=
+,=20
+        v_float =3D -1.77276813e-14, v_double =3D -5.1451037052372666e-113,=
+=20
+        v_pointer =3D 0xa89fad40}}}, {g_type =3D 2829036748, data =3D {{
+        v_int =3D -1465930552, v_uint =3D 2829036744, v_long =3D -146593055=
+2,=20
+        v_ulong =3D 2829036744, v_int64 =3D -6296123398261068600,=20
+        v_uint64 =3D 12150620675448483016, v_float =3D -1.7727478e-14,=20
+        v_double =3D -5.1451235329078014e-113, v_pointer =3D 0xa89facc8}, {
+        v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulong =3D 0,=20
+        v_int64 =3D 580794683542732800, v_uint64 =3D 580794683542732800,=20
+        v_float =3D 0, v_double =3D 7.4289091942190297e-270, v_pointer =3D =
+0x0}}}, {
+    g_type =3D 2829036816, data =3D {{v_int =3D -1248002592, v_uint =3D 304=
+6964704,=20
+        v_long =3D -1248002592, v_ulong =3D 3046964704,=20
+        v_int64 =3D -5361283702613803552, v_uint64 =3D 13085460371095748064=
+,=20
+        v_float =3D -1.16967931e-06, v_double =3D -1.663398711776338e-50,=20
+        v_pointer =3D 0xb59cfde0}, {v_int =3D -1465930584, v_uint =3D 28290=
+36712,=20
+        v_long =3D -1465930584, v_ulong =3D 2829036712, v_int64 =3D 7124004=
+008,=20
+        v_uint64 =3D 7124004008, v_float =3D -1.77274238e-14,=20
+        v_double =3D 3.5197256411881489e-314, v_pointer =3D 0xa89faca8}}}, =
+{
+    g_type =3D 1, data =3D {{v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulo=
+ng =3D 0,=20
+        v_int64 =3D 0, v_uint64 =3D 0, v_float =3D 0, v_double =3D 0,=20
+        v_pointer =3D 0x0}, {v_int =3D -1248074431, v_uint =3D 3046892865,=20
+        v_long =3D -1248074431, v_ulong =3D 3046892865,=20
+        v_int64 =3D 583187361330619713, v_uint64 =3D 583187361330619713,=20
+        v_float =3D -1.16151216e-06, v_double =3D 1.1308898017309809e-269,=20
+        v_pointer =3D 0xb59be541}}}, {g_type =3D 0, data =3D {{v_int =3D -1=
+465930256,=20
+        v_uint =3D 2829037040, v_long =3D -1465930256, v_ulong =3D 28290370=
+40,=20
+        v_int64 =3D -5363229980146815504, v_uint64 =3D 13083514093562736112=
+,=20
+        v_float =3D -1.77279795e-14, v_double =3D -1.2013734576072069e-50,=20
+        v_pointer =3D 0xa89fadf0}, {v_int =3D 0, v_uint =3D 0, v_long =3D 0=
+,=20
+        v_ulong =3D 0, v_int64 =3D -5282986469034557440,=20
+        v_uint64 =3D 13163757604674994176, v_float =3D 0,=20
+        v_double =3D -2.7204201048731395e-45, v_pointer =3D 0x0}}}, {g_type=
+ =3D 1,=20
+    data =3D {{v_int =3D -1248004544, v_uint =3D 3046962752, v_long =3D -12=
+48004544,=20
+        v_ulong =3D 3046962752, v_int64 =3D 586626564982896192,=20
+        v_uint64 =3D 586626564982896192, v_float =3D -1.16945739e-06,=20
+        v_double =3D 1.9038832106820004e-269, v_pointer =3D 0xb59cf640}, {
+        v_int =3D -1248004544, v_uint =3D 3046962752, v_long =3D -124800454=
+4,=20
+        v_ulong =3D 3046962752, v_int64 =3D -6296123707280787904,=20
+        v_uint64 =3D 12150620366428763712, v_float =3D -1.16945739e-06,=20
+        v_double =3D -5.1449452096290009e-113, v_pointer =3D 0xb59cf640}}},=
+ {
+    g_type =3D 3046790996, data =3D {{v_int =3D 136584648, v_uint =3D 13658=
+4648,=20
+        v_long =3D 136584648, v_ulong =3D 136584648, v_int64 =3D 3437339683=
+28,=20
+        v_uint64 =3D 343733968328, v_float =3D 4.93869625e-34,=20
+        v_double =3D 1.698271450595479e-312, v_pointer =3D 0x8241dc8}, {
+        v_int =3D 424, v_uint =3D 424, v_long =3D 424, v_ulong =3D 424,=20
+        v_int64 =3D -5343458835468123736, v_uint64 =3D 13103285238241427880=
+,=20
+        v_float =3D 5.94150549e-43, v_double =3D -2.5894496226449515e-49,=20
+        v_pointer =3D 0x1a8}}}, {g_type =3D 1, data =3D {{v_int =3D 1365846=
+40,=20
+        v_uint =3D 136584640, v_long =3D 136584640, v_ulong =3D 136584640,=20
+        v_int64 =3D -6296123504032735808, v_uint64 =3D 12150620569676815808=
+,=20
+        v_float =3D 4.93869258e-34, v_double =3D -5.1450624961864452e-113,=20
+        v_pointer =3D 0x8241dc0}, {v_int =3D -1248074431, v_uint =3D 304689=
+2865,=20
+        v_long =3D -1248074431, v_ulong =3D 3046892865, v_int64 =3D 7341860=
+161,=20
+        v_uint64 =3D 7341860161, v_float =3D -1.16151216e-06,=20
+        v_double =3D 3.6273608821205833e-314, v_pointer =3D 0xb59be541}}}, =
+{
+    g_type =3D 136584640, data =3D {{v_int =3D -1465930488, v_uint =3D 2829=
+036808,=20
+        v_long =3D -1465930488, v_ulong =3D 2829036808,=20
+        v_int64 =3D -5363229980146815736, v_uint64 =3D 13083514093562735880=
+,=20
+        v_float =3D -1.77275864e-14, v_double =3D -1.2013734576071519e-50,=20
+        v_pointer =3D 0xa89fad08}, {v_int =3D 0, v_uint =3D 0, v_long =3D 0=
+,=20
+        v_ulong =3D 0, v_int64 =3D 60129542144, v_uint64 =3D 60129542144,=20
+        v_float =3D 0, v_double =3D 2.9707941073513812e-313, v_pointer =3D =
+0x0}}}, {
+    g_type =3D 1, data =3D {{v_int =3D -1248004544, v_uint =3D 3046962752,=20
+        v_long =3D -1248004544, v_ulong =3D 3046962752,=20
+        v_int64 =3D 586626564982896192, v_uint64 =3D 586626564982896192,=20
+        v_float =3D -1.16945739e-06, v_double =3D 1.9038832106820004e-269,=20
+        v_pointer =3D 0xb59cf640}, {v_int =3D -1248004544, v_uint =3D 30469=
+62752,=20
+        v_long =3D -1248004544, v_ulong =3D 3046962752,=20
+        v_int64 =3D -6296123363683404224, v_uint64 =3D 12150620710026147392=
+,=20
+        v_float =3D -1.16945739e-06, v_double =3D -5.1451434863350412e-113,=
+=20
+        v_pointer =3D 0xb59cf640}}}, {g_type =3D 3046790996, data =3D {{
+        v_int =3D 136584648, v_uint =3D 136584648, v_long =3D 136584648,=20
+        v_ulong =3D 136584648, v_int64 =3D 360913837512, v_uint64 =3D 36091=
+3837512,=20
+        v_float =3D 4.93869625e-34, v_double =3D 1.7831512822340899e-312,=20
+        v_pointer =3D 0x8241dc8}, {v_int =3D 1, v_uint =3D 1, v_long =3D 1,=
+=20
+        v_ulong =3D 1, v_int64 =3D -5343458835468124159,=20
+        v_uint64 =3D 13103285238241427457, v_float =3D 1.40129846e-45,=20
+        v_double =3D -2.5894496226447909e-49, v_pointer =3D 0x1}}}}
+	free_me =3D (GValue *) 0x0
+	signal_return_type =3D 4
+	param_values =3D (GValue *) 0xa89fabf4
+	i =3D 0
+	n_params =3D 0
+	__PRETTY_FUNCTION__ =3D &quot;IA__g_signal_emit_valist&quot;
+#99 0xb59b5d76 in IA__g_signal_emit (instance=3D0x0, signal_id=3D0, detail=
+=3D0)
+    at gsignal.c:2288
+No locals.
+#100 0xb5cc45d2 in IA__gtk_widget_map (widget=3D0x8241dc0) at gtkwidget.c:2=
+190
+	__t =3D 0
+	__r =3D 0
+	__PRETTY_FUNCTION__ =3D &quot;IA__gtk_widget_map&quot;
+#101 0xb5cd0974 in gtk_window_show (widget=3D0x8241dc0) at gtkwindow.c:3857
+	need_resize =3D 6
+#102 0xb59b6166 in IA__g_cclosure_marshal_VOID__VOID (closure=3D0x811de48,=20
+    return_value=3D0x0, n_param_values=3D1, param_values=3D0x0,=20
+    invocation_hint=3D0xa89fafa8, marshal_data=3D0xb5cd0920) at gmarshal.c:=
+77
+	callback =3D 0x6
+	data1 =3D 0x8241dc0
+	data2 =3D 0x0
+	__PRETTY_FUNCTION__ =3D &quot;IA__g_cclosure_marshal_VOID__VOID&quot;
+#103 0xb599fc99 in g_type_class_meta_marshal (closure=3D0x811de48,=20
+    return_value=3D0x0, n_param_values=3D0, param_values=3D0xa89fb0d0,=20
+    invocation_hint=3D0x0, marshal_data=3D0x0) at gclosure.c:514
+	class =3D (GTypeClass *) 0x6
+	callback =3D 0x0
+#104 0xb599f99b in IA__g_closure_invoke (closure=3D0x811de48, return_value=
+=3D0x0,=20
+    n_param_values=3D0, param_values=3D0x0, invocation_hint=3D0x0) at gclos=
+ure.c:437
+	marshal =3D 0xb599fc50 &lt;g_type_class_meta_marshal&gt;
+	marshal_data =3D 0x5c
+	in_marshal =3D 0
+	__PRETTY_FUNCTION__ =3D &quot;IA__g_closure_invoke&quot;
+#105 0xb59b4338 in signal_emit_unlocked_R (node=3D0x811def0, detail=3D0,=20
+    instance=3D0x8241dc0, emission_return=3D0x0, instance_and_params=3D0xa8=
+9fb0d0)
+    at gsignal.c:2415
+	accumulator =3D (SignalAccumulator *) 0x0
+	emission =3D {next =3D 0x0, instance =3D 0x8241dc0, ihint =3D {signal_id =
+=3D 7,=20
+    detail =3D 0, run_type =3D G_SIGNAL_RUN_FIRST}, state =3D EMISSION_RUN,=
+=20
+  chain_type =3D 136565216}
+	handler_list =3D (Handler *) 0x0
+	return_accu =3D (GValue *) 0x0
+	accu =3D {g_type =3D 0, data =3D {{v_int =3D 0, v_uint =3D 0, v_long =3D 0=
+,=20
+      v_ulong =3D 0, v_int64 =3D 0, v_uint64 =3D 0, v_float =3D 0, v_double=
+ =3D 0,=20
+      v_pointer =3D 0x0}, {v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulong=
+ =3D 0,=20
+      v_int64 =3D 0, v_uint64 =3D 0, v_float =3D 0, v_double =3D 0, v_point=
+er =3D 0x0}}}
+	signal_id =3D 7
+	max_sequential_handler_number =3D 1410
+	return_value_altered =3D 0
+#106 0xb59b5a88 in IA__g_signal_emit_valist (instance=3D0x8241dc0,=20
+    signal_id=3D3050113312, detail=3D0,=20
+    var_args=3D0xa89fb25c &quot;\2008=C3=98=C2=B5\2008=C3=98=C2=B5=C3=80\035$\b=
+=C3=98=C2=B2\237=C2=A8h=C3=BF=C2=B4=C2=B5=C3=80\035$\b\001&quot;)
+    at gsignal.c:2244
+	return_value =3D {g_type =3D 0, data =3D {{v_int =3D -1248754498,=20
+      v_uint =3D 3046212798, v_long =3D -1248754498, v_ulong =3D 3046212798=
+,=20
+      v_int64 =3D -5363436030985665346, v_uint64 =3D 13083308042723886270,=20
+      v_float =3D -1.08419749e-06, v_double =3D -1.1524592151229742e-50,=20
+      v_pointer =3D 0xb59184be}, {v_int =3D -1230034377, v_uint =3D 3064932=
+919,=20
+      v_long =3D -1230034377, v_ulong =3D 3064932919, v_int64 =3D 587180485=
+175,=20
+      v_uint64 =3D 587180485175, v_float =3D -5.22032087e-06,=20
+      v_double =3D 2.9010570563336287e-312, v_pointer =3D 0xb6af2a37}}}
+	rtype =3D 0
+	instance_and_params =3D (GValue *) 0xa89fb0d0
+	stack_values =3D {{g_type =3D 136565216, data =3D {{v_int =3D 136584640,=20
+        v_uint =3D 136584640, v_long =3D 136584640, v_ulong =3D 136584640,=20
+        v_int64 =3D 136584640, v_uint64 =3D 136584640, v_float =3D 4.938692=
+58e-34,=20
+        v_double =3D 6.7481778373594156e-316, v_pointer =3D 0x8241dc0}, {
+        v_int =3D 0, v_uint =3D 0, v_long =3D 0, v_ulong =3D 0, v_int64 =3D=
+ 0,=20
+        v_uint64 =3D 0, v_float =3D 0, v_double =3D 0, v_pointer =3D 0x0}}}=
+, {
+    g_type =3D 0, data =3D {{v_int =3D -1465929448, v_uint =3D 2829037848,=20
+        v_long =3D -1465929448, v_ulong =3D 2829037848,=20
+        v_int64 =3D -5362438516458409704, v_uint64 =3D 13084305557251141912=
+,=20
+        v_float =3D -1.77293483e-14, v_double =3D -1.3892583843963619e-50,=20
+        v_pointer =3D 0xa89fb118}, {v_int =3D 136635992, v_uint =3D 1366359=
+92,=20
+        v_long =3D 136635992, v_ulong =3D 136635992,=20
+        v_int64 =3D 590263402939868760, v_uint64 =3D 590263402939868760,=20
+        v_float =3D 4.96227226e-34, v_double =3D 3.2248801976389409e-269,=20
+        v_pointer =3D 0x824e658}}}, {g_type =3D 928, data =3D {{
+        v_int =3D -1248272004, v_uint =3D 3046695292, v_long =3D -124827200=
+4,=20
+        v_ulong =3D 3046695292, v_int64 =3D 587117479744561532,=20
+        v_uint64 =3D 587117479744561532, v_float =3D -1.13905071e-06,=20
+        v_double =3D 2.0689501843211487e-269, v_pointer =3D 0xb598e17c}, {
+        v_int =3D 135104144, v_uint =3D 135104144, v_long =3D 135104144,=20
+        v_ulong =3D 135104144, v_int64 =3D -6296118899829274992,=20
+        v_uint64 =3D 12150625173880276624, v_float =3D 4.25888215e-34,=20
+        v_double =3D -5.1477194031930483e-113, v_pointer =3D 0x80d8690}}}, =
+{
+    g_type =3D 3046271307, data =3D {{v_int =3D 136635992, v_uint =3D 13663=
+5992,=20
+        v_long =3D 136635992, v_ulong =3D 136635992,=20
+        v_int64 =3D 590263402939868760, v_uint64 =3D 590263402939868760,=20
+        v_float =3D 4.96227226e-34, v_double =3D 3.2248801976389409e-269,=20
+        v_pointer =3D 0x824e658}, {v_int =3D -1465929416, v_uint =3D 282903=
+7880,=20
+        v_long =3D -1465929416, v_ulong =3D 2829037880,=20
+        v_int64 =3D -5362483003729661640, v_uint64 =3D 13084261069979889976=
+,=20
+        v_float =3D -1.77294025e-14, v_double =3D -1.3786975869464431e-50,=20
+        v_pointer =3D 0xa89fb138}}}, {g_type =3D 137431408, data =3D {{v_in=
+t =3D 928,=20
+        v_uint =3D 928, v_long =3D 928, v_ulong =3D 928,=20
+        v_int64 =3D 590263402803233696, v_uint64 =3D 590263402803233696,=20
+        v_float =3D 1.30040497e-42, v_double =3D 3.2248801057535944e-269,=20
+        v_pointer =3D 0x3a0}, {v_int =3D -1248004544, v_uint =3D 3046962752=
+,=20
+        v_long =3D -1248004544, v_ulong =3D 3046962752, v_int64 =3D 7341930=
+048,=20
+        v_uint64 =3D 7341930048, v_float =3D -1.16945739e-06,=20
+        v_double =3D 3.6273954108863742e-314, v_pointer =3D 0xb59cf640}}}, =
+{
+    g_type =3D 2829038064, data =3D {{v_int =3D -1465929384, v_uint =3D 282=
+9037912,=20
+        v_long =3D -1465929384, v_ulong =3D 2829037912,=20
+        v_int64 =3D -5360588167237881512, v_uint64 =3D 13086155906471670104=
+,=20
+        v_float =3D -1.77294567e-14, v_double =3D -1.828511293817344e-50,=20
+        v_pointer =3D 0xa89fb158}, {v_int =3D 136584640, v_uint =3D 1365846=
+40,=20
+        v_long =3D 136584640, v_ulong =3D 136584640, v_int64 =3D 4431551936=
+,=20
+        v_uint64 =3D 4431551936, v_float =3D 4.93869258e-34,=20
+        v_double =3D 2.1894775693388665e-314, v_pointer =3D 0x8241dc0}}}, {
+    g_type =3D 928, data =3D {{v_int =3D -1465929360, v_uint =3D 2829037936=
+,=20
+        v_long =3D -1465929360, v_ulong =3D 2829037936, v_int64 =3D 2829037=
+936,=20
+        v_uint64 =3D 2829037936, v_float =3D -1.77294973e-14,=20
+        v_double =3D 1.3977304549592271e-314, v_pointer =3D 0xa89fb170}, {
+        v_int =3D -1465929232, v_uint =3D 2829038064, v_long =3D -146592923=
+2,=20
+        v_ulong =3D 2829038064, v_int64 =3D -6296118553537957392,=20
+        v_uint64 =3D 12150625520171594224, v_float =3D -1.77297142e-14,=20
+        v_double =3D -5.1479192344637311e-113, v_pointer =3D 0xa89fb1f0}}},=
+ {
+    g_type =3D 3046892865, data =3D {{v_int =3D 136584640, v_uint =3D 13658=
+4640,=20
+        v_long =3D 136584640, v_ulong =3D 136584640, v_int64 =3D 4431551936=
+,=20
+        v_uint64 =3D 4431551936, v_float =3D 4.93869258e-34,=20
+        v_double =3D 2.1894775693388665e-314, v_pointer =3D 0x8241dc0}, {
+        v_int =3D 928, v_uint =3D 928, v_long =3D 928, v_ulong =3D 928,=20
+        v_int64 =3D -2300734575111830624, v_uint64 =3D 16146009498597720992=
+,=20
+        v_float =3D 1.30040497e-42, v_double =3D -6.0833918578630913e+154,=20
+        v_pointer =3D 0x3a0}}}, {g_type =3D 0, data =3D {{v_int =3D 0, v_ui=
+nt =3D 0,=20
+        v_long =3D 0, v_ulong =3D 0, v_int64 =3D 4294967296, v_uint64 =3D 4=
+294967296,=20
+        v_float =3D 0, v_double =3D 2.1219957909652723e-314, v_pointer =3D =
+0x0}, {
+        v_int =3D -1248004544, v_uint =3D 3046962752, v_long =3D -124800454=
+4,=20
+        v_ulong =3D 3046962752, v_int64 =3D 586626564982896192,=20
+        v_uint64 =3D 586626564982896192, v_float =3D -1.16945739e-06,=20
+        v_double =3D 1.9038832106820004e-269, v_pointer =3D 0xb59cf640}}}, =
+{
+    g_type =3D 2829038064, data =3D {{v_int =3D -1465929304, v_uint =3D 282=
+9037992,=20
+        v_long =3D -1465929304, v_ulong =3D 2829037992,=20
+        v_int64 =3D -5360943309493653080, v_uint64 =3D 13085800764215898536=
+,=20
+        v_float =3D -1.77295922e-14, v_double =3D -1.7442043600908221e-50,=20
+        v_pointer =3D 0xa89fb1a8}, {v_int =3D 136584640, v_uint =3D 1365846=
+40,=20
+        v_long =3D 136584640, v_ulong =3D 136584640, v_int64 =3D 3437339683=
+20,=20
+        v_uint64 =3D 343733968320, v_float =3D 4.93869258e-34,=20
+        v_double =3D 1.6982714505559538e-312, v_pointer =3D 0x8241dc0}}}, {
+    g_type =3D 2829038064, data =3D {{v_int =3D -1248618193, v_uint =3D 304=
+6349103,=20
+        v_long =3D -1248618193, v_ulong =3D 3046349103,=20
+        v_int64 =3D -5360138698693043921, v_uint64 =3D 13086605375016507695=
+,=20
+        v_float =3D -1.09969358e-06, v_double =3D -1.9352102692446795e-50,=20
+        v_pointer =3D 0xb593992f}, {v_int =3D 0, v_uint =3D 0, v_long =3D 0=
+,=20
+        v_ulong =3D 0, v_int64 =3D -6296117731733274624,=20
+        v_uint64 =3D 12150626341976276992, v_float =3D 0,=20
+        v_double =3D -5.1483934660302307e-113, v_pointer =3D 0x0}}}, {
+    g_type =3D 3046776683, data =3D {{v_int =3D 136584640, v_uint =3D 13658=
+4640,=20
+        v_long =3D 136584640, v_ulong =3D 136584640, v_int64 =3D 4431551936=
+,=20
+        v_uint64 =3D 4431551936, v_float =3D 4.93869258e-34,=20
+        v_double =3D 2.1894775693388665e-314, v_pointer =3D 0x8241dc0}, {
+        v_int =3D -1465929232, v_uint =3D 2829038064, v_long =3D -146592923=
+2,=20
+        v_ulong =3D 2829038064, v_int64 =3D 2829038064, v_uint64 =3D 282903=
+8064,=20
+        v_float =3D -1.77297142e-14, v_double =3D 1.3977305181996298e-314,=20
+        v_pointer =3D 0xa89fb1f0}}}, {g_type =3D 3087013440, data =3D {{v_i=
+nt =3D 60,=20
+        v_uint =3D 60, v_long =3D 60, v_ulong =3D 60, v_int64 =3D 60, v_uin=
+t64 =3D 60,=20
+        v_float =3D 8.40779079e-44, v_double =3D 2.9643938750474793e-322,=20
+        v_pointer =3D 0x3c}, {v_int =3D 1, v_uint =3D 1, v_long =3D 1, v_ul=
+ong =3D 1,=20
+        v_int64 =3D 1, v_uint64 =3D 1, v_float =3D 1.40129846e-45,=20
+        v_double =3D 4.9406564584124654e-324, v_pointer =3D 0x1}}}, {g_type=
+ =3D 1,=20
+    data =3D {{v_int =3D -1230027391, v_uint =3D 3064939905, v_long =3D -12=
+30027391,=20
+        v_ulong =3D 3064939905, v_int64 =3D 586626599360611713,=20
+        v_uint64 =3D 586626599360611713, v_float =3D -5.22349774e-06,=20
+        v_double =3D 1.9038947699707096e-269, v_pointer =3D 0xb6af4581}, {
+        v_int =3D 1, v_uint =3D 1, v_long =3D 1, v_ulong =3D 1, v_int64 =3D=
+ 1,=20
+        v_uint64 =3D 1, v_float =3D 1.40129846e-45,=20
+        v_double =3D 4.9406564584124654e-324, v_pointer =3D 0x1}}}, {
+    g_type =3D 3046963436, data =3D {{v_int =3D 135407128, v_uint =3D 13540=
+7128,=20
+        v_long =3D 135407128, v_ulong =3D 135407128,=20
+        v_int64 =3D 581569186540693016, v_uint64 =3D 581569186540693016,=20
+        v_float =3D 4.39800558e-34, v_double =3D 8.5883929902634512e-270,=20
+        v_pointer =3D 0x8122618}, {v_int =3D -1465929144, v_uint =3D 282903=
+8152,=20
+        v_long =3D -1465929144, v_ulong =3D 2829038152,=20
+        v_int64 =3D -6296117728904236472, v_uint64 =3D 12150626344805315144=
+,=20
+        v_float =3D -1.77298633e-14, v_double =3D -5.1483950985582786e-113,=
+=20
+        v_pointer =3D 0xa89fb248}}}, {g_type =3D 3046892865, data =3D {{
+        v_int =3D -1207955072, v_uint =3D 3087012224, v_long =3D -120795507=
+2,=20
+        v_ulong =3D 3087012224, v_int64 =3D 3087012224, v_uint64 =3D 308701=
+2224,=20
+        v_float =3D -3.05338763e-05, v_double =3D 1.5251866881703828e-314,=20
+        v_pointer =3D 0xb8001180}, {v_int =3D -1457295116, v_uint =3D 28376=
+72180,=20
+        v_long =3D -1457295116, v_ulong =3D 2837672180,=20
+        v_int64 =3D -2305843006376021772, v_uint64 =3D 16140901067333529844=
+,=20
+        v_float =3D -3.62912418e-14, v_double =3D -2.6815632756131178e+154,=
+=20
+        v_pointer =3D 0xa92370f4}}}}
+	free_me =3D (GValue *) 0x0
+	signal_return_type =3D 4
+	param_values =3D (GValue *) 0xa89fb0e4
+	i =3D 0
+	n_params =3D 0
+	__PRETTY_FUNCTION__ =3D &quot;IA__g_signal_emit_valist&quot;
+#107 0xb59b5d76 in IA__g_signal_emit (instance=3D0x0, signal_id=3D0, detail=
+=3D0)
+    at gsignal.c:2288
+No locals.
+#108 0xb5cbd726 in IA__gtk_widget_show (widget=3D0x8241dc0) at gtkwidget.c:=
+1997
+No locals.
+#109 0xb5b4ff68 in IA__gtk_dialog_run (dialog=3D0x8241dc0) at gtkdialog.c:9=
+97
+	ri =3D {dialog =3D 0x0, response_id =3D -1, loop =3D 0x0, destroyed =3D 0}
+	was_modal =3D 0
+	response_handler =3D 2837482248
+	unmap_handler =3D 0
+	destroy_handler =3D 2829038272
+	delete_handler =3D 1
+	__PRETTY_FUNCTION__ =3D &quot;IA__gtk_dialog_run&quot;
+#110 0xa91fc7a3 in SalGtkFilePicker::execute ()
+   from /usr/lib/ooo-1.9/program/libfps_gnome.so
+No symbol table info available.
+#111 0xae7a3d90 in sfx2::PickerThread_Impl::run ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+No symbol table info available.
+#112 0xb71c79c2 in vos::_cpp_OThread_WorkerFunction ()
+   from /usr/lib/ooo-1.9/program/libvos3gcc3.so
+No symbol table info available.
+#113 0xb71c79a9 in _OThread_WorkerFunction ()
+   from /usr/lib/ooo-1.9/program/libvos3gcc3.so
+No symbol table info available.
+#114 0xb6f7b86c in osl_getTextEncodingFromLocale ()
+   from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#115 0xb6aef2df in start_thread () from /lib/libpthread.so.0
+No symbol table info available.
+
+Thread 3 (Thread -1474319440 (LWP 13125)):
+#0  0xffffe410 in ?? ()
+No symbol table info available.
+#1  0xa81fa3e8 in ?? ()
+No symbol table info available.
+#2  0x00000002 in ?? ()
+No symbol table info available.
+#3  0x00000000 in ?? ()
+No symbol table info available.
+#4  0xb6af446e in __lll_mutex_lock_wait () from /lib/libpthread.so.0
+No symbol table info available.
+#5  0xb6af111d in _L_mutex_lock_26 () from /lib/libpthread.so.0
+No symbol table info available.
+#6  0x00000000 in ?? ()
+No symbol table info available.
+#7  0xb5990ff8 in g_thread_equal_posix_impl (thread1=3D0xfffffffc,=20
+    thread2=3D0xfffffffc) at gthread-posix.c:410
+No locals.
+#8  0xa9190b60 in _gnome_vfs_async_job_map_lock ()
+    at gnome-vfs-async-job-map.c:165
+No locals.
+#9  0xa919f5c7 in thread_routine (data=3D0x3) at gnome-vfs-job-slave.c:71
+	job =3D (GnomeVFSJob *) 0xb6af446e
+	complete =3D 13125
+#10 0xa91b1a8d in thread_entry (cast_to_state=3D0x82f5ca8)
+    at gnome-vfs-thread-pool.c:186
+	__PRETTY_FUNCTION__ =3D &quot;thread_entry&quot;
+#11 0xb594ed49 in g_thread_create_proxy (data=3D0x82d1700) at gthread.c:561
+	__PRETTY_FUNCTION__ =3D &quot;g_thread_create_proxy&quot;
+#12 0xb6aef2df in start_thread () from /lib/libpthread.so.0
+No symbol table info available.
+
+Thread 2 (Thread -1474585680 (LWP 13126)):
+#0  0xffffe410 in ?? ()
+No symbol table info available.
+#1  0xa81b9298 in ?? ()
+No symbol table info available.
+#2  0x00000002 in ?? ()
+No symbol table info available.
+#3  0x00000000 in ?? ()
+No symbol table info available.
+#4  0xb6af446e in __lll_mutex_lock_wait () from /lib/libpthread.so.0
+No symbol table info available.
+#5  0xb6af1129 in _L_mutex_lock_139 () from /lib/libpthread.so.0
+No symbol table info available.
+#6  0x00000000 in ?? ()
+No symbol table info available.
+#7  0x00000001 in ?? ()
+No symbol table info available.
+#8  0x00000001 in ?? ()
+No symbol table info available.
+#9  0x00000000 in ?? ()
+No symbol table info available.
+#10 0xa91ea68c in ?? () from /usr/lib/ooo-1.9/program/libfps_gnome.so
+No symbol table info available.
+#11 0xb711e860 in ?? () from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#12 0xb60e2508 in ?? ()
+No symbol table info available.
+#13 0xa81b9330 in ?? ()
+No symbol table info available.
+#14 0xa81b9298 in ?? ()
+No symbol table info available.
+#15 0xb6f7aede in osl_acquireMutex ()
+   from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#16 0xb71c2b14 in vos::OMutex::acquire ()
+   from /usr/lib/ooo-1.9/program/libvos3gcc3.so
+No symbol table info available.
+#17 0xb58dcce2 in SalYieldMutex::acquire ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gen680li.so
+No symbol table info available.
+#18 0xb5db007b in GtkHookedYieldMutex::acquire ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gtk680li.so
+No symbol table info available.
+#19 0xae79dcf5 in sfx2::FileDialogHelper_Impl::controlStateChanged ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+No symbol table info available.
+#20 0xa92038ef in SalGtkFilePickerParamEventNotification::notifyEventListen=
+er
+    () from /usr/lib/ooo-1.9/program/libfps_gnome.so
+No symbol table info available.
+#21 0xa9203094 in SalGtkAsyncEventNotifier::run ()
+   from /usr/lib/ooo-1.9/program/libfps_gnome.so
+No symbol table info available.
+#22 0xb7968598 in threadFunc () from /usr/lib/ooo-1.9/program/libsvt680li.s=
+o
+No symbol table info available.
+#23 0xb6f7b86c in osl_getTextEncodingFromLocale ()
+   from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#24 0xb6aef2df in start_thread () from /lib/libpthread.so.0
+No symbol table info available.
+
+Thread 1 (Thread -1240525136 (LWP 12986)):
+#0  0xffffe410 in ?? ()
+No symbol table info available.
+#1  0xbfffc728 in ?? ()
+No symbol table info available.
+#2  0x00000002 in ?? ()
+No symbol table info available.
+#3  0x00000000 in ?? ()
+No symbol table info available.
+#4  0xb6af446e in __lll_mutex_lock_wait () from /lib/libpthread.so.0
+No symbol table info available.
+#5  0xb6af1129 in _L_mutex_lock_139 () from /lib/libpthread.so.0
+No symbol table info available.
+#6  0x00000008 in ?? ()
+No symbol table info available.
+#7  0xb711e860 in ?? () from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#8  0xb60f16b0 in ?? ()
+No symbol table info available.
+#9  0x00000000 in ?? ()
+No symbol table info available.
+#10 0xbfffc728 in ?? ()
+No symbol table info available.
+#11 0xb711e860 in ?? () from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#12 0xb60e2508 in ?? ()
+No symbol table info available.
+#13 0x08109808 in ?? ()
+No symbol table info available.
+#14 0xbfffc728 in ?? ()
+No symbol table info available.
+#15 0xb6f7aede in osl_acquireMutex ()
+   from /usr/lib/ooo-1.9/program/libuno_sal.so.3
+No symbol table info available.
+#16 0xb71c2b14 in vos::OMutex::acquire ()
+   from /usr/lib/ooo-1.9/program/libvos3gcc3.so
+No symbol table info available.
+#17 0xb58dcce2 in SalYieldMutex::acquire ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gen680li.so
+No symbol table info available.
+#18 0xb5db007b in GtkHookedYieldMutex::acquire ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gtk680li.so
+No symbol table info available.
+#19 0xb5daffc6 in GtkHookedYieldMutex::ThreadsEnter ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gtk680li.so
+No symbol table info available.
+#20 0xb5db00e1 in GtkHookedYieldMutex::release ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gtk680li.so
+No symbol table info available.
+#21 0xb5a809d2 in gdk_event_check (source=3D0xb6af446e) at gdkevents-x11.c:=
+2191
+	retval =3D 12986
+#22 0xb5932308 in IA__g_main_context_check (context=3D0x8109850,=20
+    max_priority=3D2147483647, fds=3D0x82f9b78, n_fds=3D135305224) at gmain=
+.c:2453
+	result =3D -1247278720
+	check =3D (gboolean (*)(GSource *)) 0xb5a80980 &lt;gdk_event_check&gt;
+	source =3D (GSource *) 0x8109808
+	pollrec =3D (GPollRec *) 0x0
+	n_ready =3D 0
+	i =3D -1247278720
+#23 0xb5934a74 in g_main_context_iterate (context=3D0x8109850, block=3D1,=20
+    dispatch=3D1, self=3D0x80d41e8) at gmain.c:2575
+	got_ownership =3D -4
+	max_priority =3D 2147483647
+	timeout =3D 29
+	some_ready =3D 29
+	nfds =3D 5
+	allocated_nfds =3D 29
+	fds =3D (GPollFD *) 0x82f9b78
+	__PRETTY_FUNCTION__ =3D &quot;g_main_context_iterate&quot;
+#24 0xb5934f49 in IA__g_main_context_iteration (context=3D0x8109850,=20
+    may_block=3D1) at gmain.c:2637
+	retval =3D -1
+#25 0xb5daf43a in GtkXLib::Yield ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gtk680li.so
+No symbol table info available.
+#26 0xb58dd1d5 in X11SalInstance::Yield ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gen680li.so
+No symbol table info available.
+#27 0xb7d71696 in Application::Yield ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+No symbol table info available.
+#28 0xae7a46fe in sfx2::FileDialogHelper_Impl::implDoExecute ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+No symbol table info available.
+#29 0xae7a4a34 in sfx2::FileDialogHelper_Impl::execute ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+No symbol table info available.
+#30 0xae7aa3f5 in sfx2::FileDialogHelper::Execute ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+No symbol table info available.
+#31 0xae7aafcf in sfx2::FileOpenDialog_Impl ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+No symbol table info available.
+#32 0xae59fa96 in SfxApplication::OpenDocExec_Impl ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+No symbol table info available.
+#33 0xae5a8028 in SfxStubSfxApplicationOpenDocExec_Impl ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+No symbol table info available.
+#34 0xae73b6c1 in SfxDispatcher::Call_Impl ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+No symbol table info available.
+#35 0xae73cea8 in SfxDispatcher::_Execute ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+No symbol table info available.
+#36 0xae74dc6f in SfxBindings::Execute_Impl ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+No symbol table info available.
+#37 0xae73457b in SfxDispatchController_Impl::dispatch ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+No symbol table info available.
+#38 0xae7324ab in SfxOfficeDispatch::dispatch ()
+   from /usr/lib/ooo-1.9/program/libsfx680li.so
+No symbol table info available.
+#39 0xadaf080f in component_getFactory ()
+   from /usr/lib/ooo-1.9/program/libfwk680li.so
+No symbol table info available.
+#40 0xadaefe18 in component_getFactory ()
+   from /usr/lib/ooo-1.9/program/libfwk680li.so
+No symbol table info available.
+#41 0xb7ee273f in Menu::Select () from /usr/lib/ooo-1.9/program/libvcl680li=
+.so
+No symbol table info available.
+#42 0xb7ee6524 in Menu::ImplCallSelect ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+No symbol table info available.
+#43 0xb7ee6506 in Menu::LinkStubImplCallSelect ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+No symbol table info available.
+#44 0xb7f3d88e in ImplHandleClose ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+No symbol table info available.
+#45 0xb7f3e412 in ImplWindowFrameProc ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+No symbol table info available.
+#46 0xb58d8ae6 in SalDisplay::DispatchInternalEvent ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gen680li.so
+No symbol table info available.
+#47 0xb5daf308 in GtkXLib::userEventFn ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gtk680li.so
+No symbol table info available.
+#48 0xb5936301 in g_idle_dispatch (source=3D0x823fa30,=20
+    callback=3D0xb6af9ff4 &lt;pthread_functions+532&gt;, user_data=3D0xfffffffc)
+    at gmain.c:3821
+No locals.
+#49 0xb5933107 in IA__g_main_context_dispatch (context=3D0x8109850)
+    at gmain.c:1947
+No locals.
+#50 0xb5934abe in g_main_context_iterate (context=3D0x8109850, block=3D1,=20
+    dispatch=3D1, self=3D0x80d41e8) at gmain.c:2578
+	got_ownership =3D -4
+	max_priority =3D -100
+	timeout =3D 0
+	some_ready =3D 1
+	nfds =3D 0
+	allocated_nfds =3D 1
+	fds =3D (GPollFD *) 0x81e7fd8
+	__PRETTY_FUNCTION__ =3D &quot;g_main_context_iterate&quot;
+#51 0xb5934f49 in IA__g_main_context_iteration (context=3D0x8109850,=20
+    may_block=3D1) at gmain.c:2637
+	retval =3D -1073744528
+#52 0xb5daf43a in GtkXLib::Yield ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gtk680li.so
+No symbol table info available.
+#53 0xb58dd1d5 in X11SalInstance::Yield ()
+   from /usr/lib/ooo-1.9/program/libvclplug_gen680li.so
+No symbol table info available.
+#54 0xb7d71696 in Application::Yield ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+No symbol table info available.
+#55 0xb7d715ad in Application::Execute ()
+   from /usr/lib/ooo-1.9/program/libvcl680li.so
+No symbol table info available.
+#56 0x0807ad75 in desktop::Desktop::Main ()
+No symbol table info available.
+#57 0xb7d775de in SVMain () from /usr/lib/ooo-1.9/program/libvcl680li.so
+No symbol table info available.
+#58 0x080734e5 in sal_main ()
+No symbol table info available.
+#59 0x08073494 in main ()
+No symbol table info available.
+#0  0xffffe410 in ?? ()
+
+--=-bUHSbu94atPRh11DRBOk--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000706.html">[Open Office] Status ( Thursday )
+</A></li>
+	<LI> Next message: <A HREF="000708.html">[Open Office] ooo-build 1.3.7/1.9.70 crashes with gnome file picker
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#707">[ date ]</a>
+              <a href="thread.html#707">[ thread ]</a>
+              <a href="subject.html#707">[ subject ]</a>
+              <a href="author.html#707">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

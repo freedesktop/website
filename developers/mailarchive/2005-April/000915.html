@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] configure.in change ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:michael.meeks%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000920.html">
+   <LINK REL="Next"  HREF="000916.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] configure.in change ...
+   </H1>
+    <B>michael meeks
+    </B> 
+    <A HREF="mailto:michael.meeks%40novell.com"
+       TITLE="[Open Office] configure.in change ...">michael.meeks@novell.com
+       </A><BR>
+    <I>Thu, 21 Apr 2005 21:46:50 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000920.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+        <LI> Next message: <A HREF="000916.html">[Open Office] configure.in change ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#915">[ date ]</a>
+              <a href="thread.html#915">[ thread ]</a>
+              <a href="subject.html#915">[ subject ]</a>
+              <a href="author.html#915">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-sd4nx6SMC7Hu3D2SkbTT
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+Hi guys,
+
+	I'd like to commit something like this in the next few days; the idea
+is that we propagate all our configure arguments on to the internal
+(up-stream) OO.o configure.
+
+	This has a number of rather obvious advantages :-) unfortunately, a few
+of our configure arguments overlap. eg. we now parse --with-langs
+ourself for internal use, and (hopefully) pass it on verbatim.
+
+	It seems to work (for me), as long as I use configure, rather
+than ./autogen.sh &lt;args&gt; - seems autogen.sh is corrupting them as they
+get passed on via @* - no idea why.
+
+	Anyhow - thoughts ? comments ? hopefully this'll help shrink our
+configure a little &amp; keep it lean in the longer term.
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+--=-sd4nx6SMC7Hu3D2SkbTT
+Content-Disposition: attachment; filename=config-changes.diff
+Content-Type: text/x-patch; name=config-changes.diff; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+
+? Copy_of_final_catalog_items_w_Tatoz.xls.bz2
+? doc/calc-errs.txt
+Index: ChangeLog
+===================================================================
+RCS file: /cvs/gnome/ooo-build/ChangeLog,v
+retrieving revision 1.2259
+diff -u -p -u -r1.2259 ChangeLog
+--- ChangeLog	21 Apr 2005 11:41:02 -0000	1.2259
++++ ChangeLog	21 Apr 2005 20:58:20 -0000
+@@ -1,5 +1,9 @@
+ 2005-04-21  Michael Meeks  &lt;<A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>&gt;
+ 
++	* configure.in: prune --enable-devel: doesn't do anything,
++	strip bonobo pieces for now.
++	bin --with-jdk-home - goes straight through.
++
+ 	* www/tinder-scripts/tinder-build: actually commit.
+ 
+ 	* patches/src680/cws-pj26.diff: extract from Pavel's work
+Index: autogen.sh
+===================================================================
+RCS file: /cvs/gnome/ooo-build/autogen.sh,v
+retrieving revision 1.15
+diff -u -p -u -r1.15 autogen.sh
+--- autogen.sh	28 Jan 2005 20:05:45 -0000	1.15
++++ autogen.sh	21 Apr 2005 20:58:20 -0000
+@@ -11,9 +11,6 @@ if test &quot;z$1&quot; == &quot;z--clean&quot;; then
+     exit 1;
+ fi
+ 
+-# (cd bonobo &amp;&amp; ./autogen.sh)
+-# echo &quot;NOT YET.&quot;
+-
+ aclocal $ACLOCAL_FLAGS
+ automake --gnu --add-missing --copy
+ # intltoolize --copy --force --automake
+Index: configure.in
+===================================================================
+RCS file: /cvs/gnome/ooo-build/configure.in,v
+retrieving revision 1.242
+diff -u -p -u -r1.242 configure.in
+--- configure.in	19 Apr 2005 16:04:19 -0000	1.242
++++ configure.in	21 Apr 2005 20:58:20 -0000
+@@ -18,6 +18,9 @@ dnl for strike versioning
+ OOO_BUILD_EXTENSION=&quot;(build $OOO_BUILDMICRO_VERSION$OOO_BUILDSTRIKE_VERSION)&quot;
+ AC_SUBST(OOO_BUILD_EXTENSION)
+ 
++PROPAGATED_ARGS=$ac_configure_args
++AC_SUBST(PROPAGATED_ARGS)
++
+ AC_ARG_WITH(tag,
+ [
+   --with-tag              define the tag to use, defaults to the latest
+@@ -60,40 +63,16 @@ AC_ARG_WITH(lang,
+ 				     --with-lang=ALL],
+ ,)
+ 
+-AC_ARG_ENABLE(devel,
+-[
+-  --enable-devel          build the latest bleeding edge untested bleeding
+-			  edge, un-buildable set of patches.],
+-,)
+-
+ AC_ARG_ENABLE(mono,
+ [  --enable-mono          Enables the compilation of the Mono bindings
+ ],,)
+ 
+-AC_ARG_ENABLE(bonobo,
+-[
+-  --enable-bonobo         build the ooo bonobo component.],
+-,)
+-
+ AC_ARG_WITH(ooo-builddir,
+ [
+   --with-ooo-builddir     define the directory where openoffice.org will be
+ 			  compiled, e.g. the root of an ooo cvs checkout.],
+ ,)
+ 
+-AC_ARG_ENABLE(java,
+-[
+-  --enable-java           build ooo with a Jdk &amp; Java support],
+-,)
+-
+-AC_ARG_WITH(jdk-home,
+-[
+-  --with-jdk-home         specify the path of your JDK.  If you enable Java
+-			  but do not specify the JDK path, $BUILD_DIR/jdk/bin
+-			  is assumed. If Java is disabled, this option has
+-			  no effect.],
+-,)
+-
+ AC_ARG_WITH(installed-ooo-dirname,
+ [
+   --with-installed-ooo-dirname
+@@ -192,6 +171,14 @@ AC_ARG_WITH(arch,
+                           Usage: --with-arch=(x86|ppc|sparc)],
+ ,)
+ 
++dnl
++dnl Items here only to make --help work nicely:
++dnl 
++AC_ARG_ENABLE(java,
++[
++  --enable-java           build ooo with a Jdk &amp; Java support],
++,)
++
+ 
+ AM_MAINTAINER_MODE
+ 
+@@ -218,12 +205,6 @@ if test ! -x &quot;$PKG_CONFIG&quot; ; then
+ fi
+ AC_SUBST(PKG_CONFIG)
+ 
+-if test &quot;z$enable_devel&quot; = &quot;z&quot;; then
+-   latest_flags=
+-else
+-   latest_flags=--devel
+-fi
+-
+ PKG_CHECK_MODULES( FOO_COMMON, 
+ 		   [ libxml-2.0 fontconfig &gt;= 1.0.1 ],
+ 		   have_common=true, have_common=false )
+@@ -239,28 +220,16 @@ if test &quot;z$with_win32&quot; = &quot;z&quot;; then
+     if test ! $have_common; then
+ 	AC_MSG_ERROR([Library requirements were not met])
+     fi
+-
+-    if test &quot;z$enable_bonobo&quot; = &quot;zyes&quot;; then
+-	ENABLE_BONOBO=&quot;yes&quot;
+-    else
+-	enable_bonobo=&quot;no&quot;
+-	ENABLE_BONOBO=&quot;&quot;
+-    fi
+     BUILD_WIN32=
+ else
+     if test &quot;z$with_distro&quot; = &quot;z&quot;; then
+ 	with_distro=&quot;Win32&quot;
+     fi
+ 
+-    enable_bonobo=&quot;no&quot;
+-    ENABLE_BONOBO=&quot;&quot;
+-
+     BUILD_WIN32=yes
+ fi
+ 
+-AC_SUBST(ENABLE_BONOBO)
+ AC_SUBST(BUILD_WIN32)
+-AM_CONDITIONAL(BONOBO, test &quot;z$ENABLE_BONOBO&quot; = &quot;zyes&quot;)
+ 
+ if test &quot;z$with_tag&quot; = &quot;z&quot;; then
+    with_tag=$DEFAULT_TAG
+@@ -361,21 +330,12 @@ if test &quot;z$with_distro&quot; = &quot;zArk&quot;; then
+     fi
+ fi
+ 
+-JDK_HOME=
+-if test &quot;z$enable_java&quot; != &quot;zno&quot;; then
+-   ENABLE_JAVA=yes
+-   if test &quot;z$with_jdk_home&quot; != &quot;z&quot;; then
+-      JDK_HOME=$with_jdk_home
+-   fi
+-else
++if test &quot;z$enable_java&quot; == &quot;zno&quot;; then
+    AC_PATH_PROG(XSLTPROC, xsltproc, no)
+    if test &quot;$XSLTPROC&quot; = &quot;no&quot;; then
+       AC_MSG_ERROR([xsltproc is required to build without java])
+    fi
+-   ENABLE_JAVA=no
+ fi
+-AC_SUBST(ENABLE_JAVA)
+-AC_SUBST(JDK_HOME)
+ 
+ AC_CHECK_HEADER(security/pam_appl.h, have_pam=true, have_pam=false)
+ AC_CHECK_HEADER(png.h, have_png=true, have_png=false)
+@@ -560,13 +520,6 @@ datestamp=`date '+%Y%m%d.%H%M'`;
+ SNAPSHOT_TAG=&quot;$datestamp.$TAG&quot;;
+ AC_SUBST(SNAPSHOT_TAG)
+ 
+-dnl
+-dnl Disable bonobo component for now
+-dnl
+-dnl if test &quot;z$enable_bonobo&quot; = &quot;zyes&quot;; then
+-dnl   AC_CONFIG_SUBDIRS(bonobo)
+-dnl fi
+-
+ if test &quot;z$with_installed_ooo_dirname&quot; != &quot;z&quot;; then
+    OOOINSTALLDIRNAME=$with_installed_ooo_dirname
+ else
+@@ -663,7 +616,6 @@ Building openoffice
+ 	icons:              ${WITH_ICONS:-default}
+ 	gcc to use:         $gcc_to_use
+ 	mono bindings:	    $mono_enabled
+-	ooo-bonobo:         $enable_bonobo
+ 	java:               $ENABLE_JAVA
+ 	ooo-install-dir:    $OOOINSTALLDIRNAME
+ 	force gcc33:        ${FORCE_GCC33:-no}
+Index: bin/build-ooo
+===================================================================
+RCS file: /cvs/gnome/ooo-build/bin/build-ooo,v
+retrieving revision 1.110
+diff -u -p -u -r1.110 build-ooo
+--- bin/build-ooo	23 Feb 2005 11:24:46 -0000	1.110
++++ bin/build-ooo	21 Apr 2005 20:58:20 -0000
+@@ -34,7 +34,7 @@ echo &quot;Env for configure:&quot;
+ set
+ echo &quot;Env for configure ends&quot;
+ 
+-eval ./configure &quot;$CONFIGURE_OPTIONS&quot; || exit 1;
++eval ./configure &quot;$CONFIGURE_OPTIONS&quot; &quot;$PROPAGATED_ARGS&quot; || exit 1;
+ 
+ # Unfortunately, on when forcing gcc33 on x86, RPM attempts to
+ # inject its %{optflags} everywhere.  Since gcc33 doesn't support
+Index: bin/setup.in
+===================================================================
+RCS file: /cvs/gnome/ooo-build/bin/setup.in,v
+retrieving revision 1.134
+diff -u -p -u -r1.134 setup.in
+--- bin/setup.in	6 Apr 2005 16:08:57 -0000	1.134
++++ bin/setup.in	21 Apr 2005 20:58:20 -0000
+@@ -35,6 +35,7 @@ OOO_BUILDVERSION='@OOO_BUILDVERSION@'
+ RUN_POST_INSTALL_SCRIPTS='@RUN_POST_INSTALL_SCRIPTS@'
+ TOOLSDIR='@TOOLSDIR@'
+ ENABLE_MONO='@ENABLE_MONO@'
++PROPAGATED_ARGS=&quot;@PROPAGATED_ARGS@&quot;
+ 
+ if test &quot;z$BUILD_WIN32&quot; != &quot;z&quot;; then
+     CONFIGURE_OPTIONS=&quot;--with-lang=\&quot;$OOO_LANGS\&quot; --with-use-shell=tcsh \
+@@ -82,9 +83,6 @@ if test &quot;z$ENABLE_MONO&quot; != &quot;z&quot;; then
+     CONFIGURE_OPTIONS=&quot;$CONFIGURE_OPTIONS --enable-mono&quot;
+ fi
+ 
+-ENABLE_BONOBO=@ENABLE_BONOBO@
+-ENABLE_JAVA=@ENABLE_JAVA@
+-JDK_HOME=@JDK_HOME@
+ # Misc. internal
+ TOOLSDIR='@TOOLSDIR@'
+ OOBUILDDIR='@OOBUILDDIR@'
+@@ -126,17 +124,6 @@ TCSH=/bin/tcsh
+ # setup paths
+ PATH=&quot;$BUILDDIR/bin:$PATH:$TOOLSDIR/bin&quot;
+ 
+-if test &quot;z$ENABLE_JAVA&quot; = &quot;zyes&quot;; then
+-   if test &quot;z$JDK_HOME&quot; != &quot;z&quot;; then
+-       CONFIGURE_OPTIONS=&quot;$CONFIGURE_OPTIONS --with-jdk-home=$JDK_HOME&quot;
+-       PATH=&quot;$JDK_HOME:$PATH&quot;
+-   else
+-       PATH=&quot;$BUILDDIR/jdk/bin:$PATH&quot;
+-   fi
+-else
+-    CONFIGURE_OPTIONS=&quot;$CONFIGURE_OPTIONS --without-java&quot;
+-fi
+-
+ CONFIGURE_OPTIONS=&quot;$CONFIGURE_OPTIONS $CONFIGURE_EXTRA_OPTIONS&quot;
+ 
+ LD_LIBRARY_PATH=&quot;$BUILDDIR/lib:/opt/mozilla/lib:$LD_LIBRARY_PATH&quot;
+@@ -222,7 +209,6 @@ export MANDIR MANDIRBASE DOCDIR DOCDIRBA
+ export OOINSTDIR OOINSTBASE OOOINSTALLDIRNAME
+ export OODESTDIR OOO_LANGS CONFIGURE_OPTIONS WITH_SRC
+ export DISTRO BINSUFFIX ARCHITECTURE BUILD_MAGIC
+-export ENABLE_BONODO BONOBODIR ENABLE_JAVA
+ export BUILD_WIN32 
+ export OOO_BUILD_EXTENSION
+ export FORCE_GCC33
+@@ -247,7 +233,6 @@ echo &quot; OOInBase:   '$OOINSTBASE'&quot;
+ echo &quot; OOInstall:  '$OOINSTDIR'&quot;
+ echo &quot; OODestDir:  '$OODESTDIR'&quot;
+ echo &quot; Config:     '$CONFIGURE_OPTIONS'&quot;
+-echo &quot; OOo-Bonobo: '$ENABLE_BONOBO'&quot;
+ echo &quot; Use gcc33:  '$FORCE_GCC33'&quot;
+ if test &quot;$ENABLE_CCACHE&quot; = &quot;yes&quot;; then
+     echo &quot; ccache:     yes, ccache directory is '$CCACHE_DIR'&quot;
+Index: www/hackers-guide.html
+===================================================================
+RCS file: /cvs/gnome/ooo-build/www/hackers-guide.html,v
+retrieving revision 1.57
+diff -u -p -u -r1.57 hackers-guide.html
+--- www/hackers-guide.html	18 Apr 2005 14:38:12 -0000	1.57
++++ www/hackers-guide.html	21 Apr 2005 20:58:22 -0000
+@@ -538,6 +538,10 @@ mkdir:    %_DEST%\inc%_EXT%\external
+       can be useful. To do just a plain build with debug symbols
+       though use &lt;code&gt;build debug=true dbg_build_only=true&lt;/code&gt;
+     &lt;/p&gt;
++    &lt;p&gt;
++      You can also configure OO.o with --enable-symbols to build
++      with symbolic generation.
++    &lt;/p&gt;
+ 
+     &lt;h3 id=&quot;section-6.2&quot;&gt;6.2. Starting at the beginning&lt;/h3&gt;
+ 
+
+--=-sd4nx6SMC7Hu3D2SkbTT--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000920.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+	<LI> Next message: <A HREF="000916.html">[Open Office] configure.in change ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#915">[ date ]</a>
+              <a href="thread.html#915">[ thread ]</a>
+              <a href="subject.html#915">[ subject ]</a>
+              <a href="author.html#915">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Hack build!</title>
+<meta name="generator" content="HTML::TextToHTML v2.43">
+</head>
+<body>
+
+<table width=100%>
+ <tr>
+  <td align="left">Hack build!</td>
+  <td align="right"><a href="help.html">Help!</a></td>
+ </tr> 
+</table>
+
+<hr>
+
+<p>ah! :-) Build svx, build sfx2, build sw, build sd ?!! Time out! What is this 
+build ?
+
+<p>Good question :-) So let's examine it in detail, let's first ask the guy
+directly first: Issuing 'which build' at the command line returns nothing :-) A
+second try with 'alias build' starts to explain what's happening:
+
+<p>alias build='perl /home/raul/ooo-build/build/src680-m65/solenv/bin/build.pl'
+
+<p>hmm... So how did we get this alias set at all ? From sourcing the
+LinuxIntelEnvSet.sh which does exactly what the name of the file says: It sets
+the environment for the Linux build of OOo on the Intel platform - so that
+helps to understand the other SolarisSparcEnvSet.sh as well.
+
+<p>Of what I understand, this file is the end result of the configure process of
+OOo which is then used for the build process throughout. You can look into the
+file itself to check what else is in it.
+
+<p>So build is the perl script which is in the top-level solenv project [probably
+a derivation from Solaris environment] which has most of the build tools in it.
+
+<p>And how does it work ? Let's learn it in the coolest way possible :-) Let's add
+a top-level project to OOo :-)
+
+<p>We shall with great imagination and creativity call our cool new top-level
+project as *drum-roll* 'helloworld'! So we start at the top of the build tree
+with a 'mkdir helloworld' and cd into it [So the path to our project now would
+typically be similar to '/home/raul/ooo-build/build/src680-m65/helloworld' and
+all further references to our project will simply be referred to in short as 
+helloworld/dir-name/file-name]
+
+<p>Now let's try to build our new project [already! with nothing in it :-)] by
+issuing 'build'. oops! In fact, of course, OOPS! :-)
+
+<pre>
+build -- version: 1.130
+
+ERROR: Found no project to build
+</pre>
+
+<p>hmm... That presents a problem indeed, we do have a project, don't we now ? :-)
+so let's see where this error is coming up in the first place and then we'll
+look into fixing them, so first we move into the solenv/ top-level project which
+as we had mentioned earlier has most of the build tools and where we suspect the
+source of this error lies as well.
+
+<p>And we go on to grep for the error message through the source with either of a:
+
+<pre>
+grep -rn "no project to build" *
+find solenv/ -exec grep -Hn "no project to build" {} \;
+</pre>
+
+<p>and lo! the source is bin/build.pl, so let's look in the source to see what the
+problem might be and we see that the build.pl script is looking for a build.lst
+file in the prj directory and fails otherwise. aha! :-) So we
+'touch prj/build.lst' and 'build' again.
+
+<pre>
+build -- version: 1.130
+</pre>
+
+<p>hmm... That's not interesting at all, so let's poke it more - our purpose is to
+actually make a library which we can eventually link to - so let's do just that
+and we take the shortest route to our goal. We look for someone else who
+does the same thing and do a similar thing. As the saying goes: "Good artists
+copy, great artists steal!" Amen! :-)
+
+<pre>
+--- /dev/null   2004-08-25 23:04:59.000000000 +0530
++++ XmlSearch/prj/build.lst     2003-03-19 18:18:40.000000000 +0530
+@@ -0,0 +1,2 @@
++xh     XmlSearch       :       external codemaker NULL
++xh XmlSearch\src\com\sun\xmlsearch     nmake - all xs NULL
+</pre>
+
+<p>So we get inspired from the XmlSearch/prj/build.lst and make up our very own
+impressive looking build.lst as well:
+
+<pre>
+--- /dev/null   2004-08-25 23:04:59.000000000 +0530
++++ helloworld/prj/build.lst    2004-12-23 23:59:37.000000000 +0530
+@@ -0,0 +1,2 @@
++hw     helloworld      :       NULL
++hw     helloworld\source               nmake   -       all     hw_src  NULL
+</pre>
+
+<p>It's a fairly simple file that is explained a little more in the Hacker's Guide
+as well. The first line indicates that it is not dependent on any of the other
+top-level projects and if it was - the line would be similar to the XmlSearch/
+file which indicates that it is dependent on the external/ and codemaker/
+projects, which is to say that those projects need to be built before this one
+can be built.
+
+<p>The second line goes on to indicate what is to be built in the present top-level
+project and in what order. Our simple line says that the helloworld/source
+directory will be what is built and since it is particularly simple, there are
+no other internal build order as might be required in a more complicated
+projects [fpicker, for instance].
+
+<p>And yay! we have already told our build.pl what needs to be done, so lets do
+the 'build' thing again:
+
+<pre>
+build -- version: 1.130
+
+ERROR: /home/raul/HEAD/ooo-build/build/src680-m65/helloworld/source not found!!
+</pre>
+
+<p>That's ok, we can fix that, we havent created the source directory where we
+intend to place the source that will be built into our library. So we
+'mkdir source' and 'build' again:
+
+<pre>
+build -- version: 1.130
+
+/home/raul/HEAD/ooo-build/build/src680-m65/helloworld/source
+mkout -- version: 1.3
+mkout: ERROR: can't determine module
+../unxlngi4.pro/inc/myworld.mk: No such file or directory.
+../unxlngi4.pro/misc/s_helloworld.dpcc: No such file or directory.
+dmake:  Error code 1, while making '../unxlngi4.pro/misc/s_helloworld.dpcc'
+'---* TG_SLO.MK *---'
+
+ERROR: Error 65280 occurred while making /home/raul/HEAD/ooo-build/build/src680-m65/helloworld/source
+</pre>
+
+<p>yeow! That sounded like an impressive sounding error! Back to square one, we go
+back to the solenv/ project and grep for the ERROR:
+
+<pre>
+grep "can't determine module" -rn *
+</pre>
+
+<p>We would suspect from the error that it is evidently from the mkout.pl and look
+in for clues, and we see that it is looking for a prj/d.lst which is definitely
+not in our project yet, so we do a 'touch prj/d.lst' and 'build' again:
+
+<pre>
+build -- version: 1.130
+
+/home/raul/HEAD/ooo-build/build/src680-m65/helloworld/source
+-----------------------------------------------
+Error: No makefile.mk found!
+-----------------------------------------------
+</pre>
+
+<p>Yo! We are halfway there, the build script has reached our source directory and
+would have built our project, if only there had been something to build :-) So
+let's fix that next :-)
+
+<hr>
+
+<table width=100%>
+ <tr>
+  <td align="left"><a href="helloworld-ooo-style.diff.txt">helloworld-ooo-style.diff</a></td>
+  <td align="right">Next: <a href="library.html">library</a></td>
+ </tr> 
+</table>
+
+</body>
+</html>

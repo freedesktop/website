@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] looking through ooo-build patches
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:caolanm%40redhat.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000369.html">
+   <LINK REL="Next"  HREF="000377.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] looking through ooo-build patches
+   </H1>
+    <B>Caolan McNamara
+    </B> 
+    <A HREF="mailto:caolanm%40redhat.com"
+       TITLE="[Open Office] looking through ooo-build patches">caolanm@redhat.com
+       </A><BR>
+    <I>Wed, 21 Apr 2004 04:11:54 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000369.html">[Open Office] Re: build.lst/build.pl spec document? (fwd)
+</A></li>
+        <LI> Next message: <A HREF="000377.html">[Open Office] looking through ooo-build patches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#374">[ date ]</a>
+              <a href="thread.html#374">[ thread ]</a>
+              <a href="subject.html#374">[ subject ]</a>
+              <a href="author.html#374">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm looking through the ooo-build patches, and I've commited a small few of the
+ww filter ones back to 112_fix and I see that a few more have made their way
+into that series. But there are a few chunks without associated issuezilla ids
+as far as I can see, i.e.
+
+build-optimized-link.diff, changes solenv/inc/unxlngi4.mk to add -O2 and
+-Bsymbolic to LINKFLAGS. Is there an OOo issuezill for that one ? (and do the
+changes make a discernible difference :-)?)
+
+There is already a -Wl,-O1 for linker flags in LINKFLAGSOPTIMIZE and -Bsymbolic
+should probably be added to DYNAMIC, not that it makes any real difference, but
+formats it in what I feel to be an more upstream acceptable patch.
+
+C.
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000369.html">[Open Office] Re: build.lst/build.pl spec document? (fwd)
+</A></li>
+	<LI> Next message: <A HREF="000377.html">[Open Office] looking through ooo-build patches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#374">[ date ]</a>
+              <a href="thread.html#374">[ thread ]</a>
+              <a href="subject.html#374">[ subject ]</a>
+              <a href="author.html#374">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

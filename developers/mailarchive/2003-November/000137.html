@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regarding defect 49914...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000133.html">
+   <LINK REL="Next"  HREF="000134.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regarding defect 49914...
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] Regarding defect 49914...">dan@bigw.org
+       </A><BR>
+    <I>Mon, 10 Nov 2003 06:18:01 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000133.html">[Open Office] Regarding defect 49914...
+</A></li>
+        <LI> Next message: <A HREF="000134.html">[Open Office] Regarding defect 49914...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#137">[ date ]</a>
+              <a href="thread.html#137">[ thread ]</a>
+              <a href="subject.html#137">[ subject ]</a>
+              <a href="author.html#137">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Anil,
+
+Unfortunately, there's little documentation on the VCL as it stands right
+now.  You may have to figure it out for yourself or ask questions on lists
+like this one and <A HREF="mailto:dev@gsl.openoffice.org.">dev@gsl.openoffice.org.</A>  For ResMgrs, yes, you need one
+first before you load anything from a resource on-disk.  This can be
+tricky if there's not one already available.
+
+Could you post a patch of the code that would be required in the
+consructors of PushButton, etc?  I might have more suggestions then.
+
+Dan
+
+On Mon, 10 Nov 2003, Anil Anil wrote:
+
+&gt;<i> Hi Michael,
+</I>&gt;<i> 
+</I>&gt;<i> Have tried the approach suggested earlier. 
+</I>&gt;<i> ------------------------------------------------------------
+</I>&gt;<i> BitmapEx aBmp(ResId( SV_RESID_FOO_BAA,
+</I>&gt;<i>               Resource::GetResManager());
+</I>&gt;<i>     pDev-&gt;DrawBitmapEx( Point( foo_X, baa_Y ), aBmp );
+</I>&gt;<i> 
+</I>&gt;<i>     or something similar, to be added in DecorationView::DrawSymbol
+</I>&gt;<i> ------------------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> This gives me some junk image. On digging it further, I fould that the
+</I>&gt;<i> size for the Bitmap that it gets from Resource Manager looks abnormal
+</I>&gt;<i> (4912, 16) instead of (32, 32) or similar. I guess that before calling
+</I>&gt;<i> Image/Bitmap Constructor, we need to call
+</I>&gt;<i> ImplInitResData() and ImplLoadRes(), the way its hapenning in PushButton
+</I>&gt;<i> c'tor. But these functions are available to children of Window classes.
+</I>&gt;<i> DecorationView is not a child of Window. Can still try to do that but
+</I>&gt;<i> have another point to discuss before that.
+</I>&gt;<i> 
+</I>&gt;<i> Tried this approach from multiple angles - Making a new Bitmap,
+</I>&gt;<i> BitmapEx, Image, etc...   But another different approach worked that is
+</I>&gt;<i> described later.
+</I>&gt;<i> 
+</I>&gt;<i> Another point - If this approach somehow works - BitmapEx, Bitmap or
+</I>&gt;<i> Image would get constructed in DecoView::DrawImage or a related method.
+</I>&gt;<i> I felt that there are 2 parts of drawing anything.
+</I>&gt;<i> 
+</I>&gt;<i> Part 1- Construct the image/symbol to be drawn in memory - All the
+</I>&gt;<i> constructors (Image or Bitmap etc.) get called.
+</I>&gt;<i> 
+</I>&gt;<i> Part 2 - Only the drawing on the screen (Output Device) takes place.
+</I>&gt;<i> This has to be as fast as possible. For Current DecoView - My
+</I>&gt;<i> understanding is that this will be called on a Draw/Paint of dialog,
+</I>&gt;<i> e.g. when a dialog is moved, or whenever a dialog is redrawn due to
+</I>&gt;<i> shifting focus from another app to this one, or changing desktops while
+</I>&gt;<i> dialog is displayed.
+</I>&gt;<i> 
+</I>&gt;<i> I felt that we should avoid calling Image or Bitmap c'tors in Part 2 as
+</I>&gt;<i> it will be slowed down.
+</I>&gt;<i> 
+</I>&gt;<i> Therefore I tried to fix this in the Image c'tor. (where Symbol handling
+</I>&gt;<i> is done). That seems to work (renders a proper image).
+</I>&gt;<i> 
+</I>&gt;<i> If we take this new approach we still need to fix at multiple places
+</I>&gt;<i> (for PushButton, MenuItems, etc.) .
+</I>&gt;<i> 
+</I>&gt;<i> If you are ok with this approach, please let me know. In case you want
+</I>&gt;<i> images to be rendered inside DecoView, I'll dig it up further. 
+</I>&gt;<i> 
+</I>&gt;<i> Btw, are there some general usage guidelines for VCL, something like API
+</I>&gt;<i> help...? Basically I am looking for some doc that tells about the APIs
+</I>&gt;<i> in VCL and the sequence in which they shd be called...
+</I>&gt;<i> 
+</I>&gt;<i> Regards
+</I>&gt;<i> -Anil
+</I>&gt;<i> 
+</I>&gt;<i> Anil Bhatia,
+</I>&gt;<i> Sr. Software Engineer,
+</I>&gt;<i> Novell Software Development(I) Ltd.,
+</I>&gt;<i> Bangalore.
+</I>&gt;<i> Ph: 5731856-58, Extn:3111.
+</I>&gt;<i> Novell, Inc., The leading provider of Net services software.
+</I>&gt;<i> www.novell.com
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000133.html">[Open Office] Regarding defect 49914...
+</A></li>
+	<LI> Next message: <A HREF="000134.html">[Open Office] Regarding defect 49914...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#137">[ date ]</a>
+              <a href="thread.html#137">[ thread ]</a>
+              <a href="subject.html#137">[ subject ]</a>
+              <a href="author.html#137">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

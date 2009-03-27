@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] New apply file format etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:michael.meeks%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000890.html">
+   <LINK REL="Next"  HREF="000893.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] New apply file format etc.
+   </H1>
+    <B>michael meeks
+    </B> 
+    <A HREF="mailto:michael.meeks%40novell.com"
+       TITLE="[Open Office] New apply file format etc.">michael.meeks@novell.com
+       </A><BR>
+    <I>Fri, 01 Apr 2005 14:28:53 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000890.html">[Open Office] Status Wednesday, Thursday
+</A></li>
+        <LI> Next message: <A HREF="000893.html">[Open Office] New apply file format etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#891">[ date ]</a>
+              <a href="thread.html#891">[ thread ]</a>
+              <a href="subject.html#891">[ subject ]</a>
+              <a href="author.html#891">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Well,
+
+	So - Petr &amp; I have implemented the discussed apply changes -
+re-organised the source, tried to unwind the brokenness to m89; kendy &amp;
+Petr are trying to fix m90.
+
+	What is of the greatest concern to me is the potential for regression
+here; a lot of patches got removed from m79; many patches got rather
+hap-hazardly forward ported &amp; just plonked into m8*. The apply file is
+riddled with unresolved FIXMEs.
+
+	For us to be confident that we havn't lost anything valuable, I think
+we're going to have to go back, diff vs. m79 and carefully look over
+every single patch that has been dropped / changed.
+
+	This is a huge chunk of effort. I don't want to have to do it again in
+2 milestones time.
+
+	Thus - I think it'd be by far the best if either:
+
+	a) we ensure that we have a regression-free &amp; complete pull-up
+	   to a given milestone before commencing work on the next 
+	   milestone - ie. no FIXMEs, careful review of which patches
+	   are no longer necessary, clear rational for removing them 
+	   etc. After the pull-up we do a check-point release / tag.
+
+	or
+
+	b) people who want to race ahead for whatever reason do their
+	   work on a branch &amp; we can review / adopt it as/when we move
+	   HEAD to the next branch.
+
+	I'd personally prefer a). We should (most likely) complete that work on
+the m90 branch - I'm trying to get m89 to build now - since some people
+on slow links who have suffered a lot of pain recently - happen to have
+that archive downloaded. Of course, the initial work getting m90 back
+into a sensible state may take a week or so - if so, we may jump to m92
+- this would be no tragedy though.
+
+	The new apply file lives in patches/src680/apply, the syntax extension
+should be obvious from reading it - it's like this:
+
+[ NovellOnly, RedHatOnly &lt; src680-m79 ]   or:
+[ NovellOnly, RedHatOnly &gt; src680-m79 &lt;= src680-m89 ]  etc.
+
+	Thanks,
+
+		Michael.
+
+PS. commit messages should have the relevant ChangeLog entry in them by
+convention.
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000890.html">[Open Office] Status Wednesday, Thursday
+</A></li>
+	<LI> Next message: <A HREF="000893.html">[Open Office] New apply file format etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#891">[ date ]</a>
+              <a href="thread.html#891">[ thread ]</a>
+              <a href="subject.html#891">[ subject ]</a>
+              <a href="author.html#891">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

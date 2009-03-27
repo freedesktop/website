@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] gui-symbol-replace breaks build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-December/index.html" >
+   <LINK REL="made" HREF="mailto:banil%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000198.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] gui-symbol-replace breaks build
+   </H1>
+    <B>Anil Anil
+    </B> 
+    <A HREF="mailto:banil%40novell.com"
+       TITLE="[Open Office] gui-symbol-replace breaks build">banil@novell.com
+       </A><BR>
+    <I>Tue, 30 Dec 2003 04:31:35 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000198.html">[Open Office] recent-files.diff broken?
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Chris, Rene,
+
+Sorry for not responding earlier as I was on vacation. 
+
+Chris: Thanks for getting the cause of the problem. No doubt this was
+not caught as I was building ony 'vcl' and not the entire OOo.
+
+Will work on this and let you know.
+
+Regards
+-Anil
+
+&gt;&gt;&gt;<i> Chris Halls &lt;<A HREF="mailto:halls@debian.org">halls@debian.org</A>&gt; 12/18/03 16:14 PM &gt;&gt;&gt;
+</I>Hi Anil,
+
+On Fri, 2003-12-12 at 14:23, Rene Engelhard wrote:
+&gt;<i> gui-symbol-replace.diff causes the OOo build to fail:
+</I>&gt;<i> 
+</I>&gt;<i> .../openoffice.org-1.1.0/vcl/source/gdi/image.cxx:106:26:
+</I>svx/svxids.hrc: Datei oder Verzeichnis nicht gefunden
+
+Uhhm
+
+<A HREF="http://tools.openoffice.org/project_dependencies.png">http://tools.openoffice.org/project_dependencies.png</A>
+
+Look at the dependency cycle
+--&gt; = 'depends on'
+
+svx --&gt; sfx2 --&gt; framework --&gt; svtools --&gt; toolkit --&gt; vcl
+
+Your patch 'gui-symbol-replace.diff' adds a dependency from vcl to svx. 
+You can't do that because you have a circular build dependency and it
+becomes impossible to build from scratch.
+
+Chris
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000198.html">[Open Office] recent-files.diff broken?
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

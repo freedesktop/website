@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] trivial patch of configmgr module
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20trivial%20patch%20of%20configmgr%20module&In-Reply-To=200601051409.13543.kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001461.html">
+   <LINK REL="Next"  HREF="001472.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] trivial patch of configmgr module</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20trivial%20patch%20of%20configmgr%20module&In-Reply-To=200601051409.13543.kendy%40suse.cz"
+       TITLE="[Open Office] trivial patch of configmgr module">kendy at suse.cz
+       </A><BR>
+    <I>Thu Jan  5 08:41:03 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001461.html">[Open Office] trivial patch of configmgr module
+</A></li>
+        <LI>Next message: <A HREF="001472.html">[Open Office] Re: trivial patch of configmgr module
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1462">[ date ]</a>
+              <a href="thread.html#1462">[ thread ]</a>
+              <a href="subject.html#1462">[ subject ]</a>
+              <a href="author.html#1462">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 05 January 2006 14:09, Jan Holesovsky wrote:
+
+&gt;<i> m136 is too old, it is not supported in ooo-build any more.  You should
+</I>&gt;<i> update to something more recent, probably m147; I haven't updated the 64bit
+</I>&gt;<i> patches for m148 yet.
+</I>
+Done now - but no idea whether it builds ATM.
+
+Please note that I switched from --without-java to --with-java=gij in 
+distro-configs/NLD64.conf.in to use GCJ during the build.  This is 
+experimental, and known not to work ;-) - would be great if you were able to 
+look at the issues it has :-)
+
+FWIW, I am using SUSE10 &amp; gcc, gcj, etc. from 10.1alpha now - to have the 
+gcj4.1 which already contains several GNU Classpath features missing in the 
+older version.  If you are interested, it is available here: 
+<A HREF="http://www.opensuse.org/Development_Version">http://www.opensuse.org/Development_Version</A> (search for the link 
+&quot;Installation Repository&quot;).
+
+Regards,
+Jan
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001461.html">[Open Office] trivial patch of configmgr module
+</A></li>
+	<LI>Next message: <A HREF="001472.html">[Open Office] Re: trivial patch of configmgr module
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1462">[ date ]</a>
+              <a href="thread.html#1462">[ thread ]</a>
+              <a href="subject.html#1462">[ subject ]</a>
+              <a href="author.html#1462">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

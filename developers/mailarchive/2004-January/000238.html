@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] recent-files issues ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000271.html">
+   <LINK REL="Next"  HREF="000231.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] recent-files issues ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] recent-files issues ...">michael@ximian.com
+       </A><BR>
+    <I>Mon, 19 Jan 2004 20:52:34 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000271.html">[Open Office] Re: Bug 52734
+</A></li>
+        <LI> Next message: <A HREF="000231.html">[Open Office] OOO_1_1_0.tar.bz2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#238">[ date ]</a>
+              <a href="thread.html#238">[ thread ]</a>
+              <a href="subject.html#238">[ subject ]</a>
+              <a href="author.html#238">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Anil,
+
+	So - I had a dig at the code; Martin reports that removing the 'free'
+of item-mimeType fixes it - however this code is nastily broken :-) [
+perhaps not entirely your fault but badly needs fixing ].
+
+	There are at least these bugs (just reading):
+
+	* recentFilesFree - free(items) - items can be NULL: bang.
+
+	* case STATE_MIME_TYPE - item-&gt;mimeType assigned to contents
+	  of temporary on-stack OString contents - horribly broken.
+
+	* recentFilesAddItem:
+		free (item-&gt;mimeType);
+		item-&gt;mimeType = strdup (mimeTypeString-&gt;buffer);
+
+		This is horribly broken (?!) - it seems to free a
+	member which is an OString, and then strdup to it clobbering
+	the internal rtl_uString pointer with not the correct
+	structure but a char pointer instead [ most odd ] - this is
+	the crasher.
+
+	* struct RecentFileItem - should not be a C struct with C
+	  RTL string pointers; but much nicer OStrings etc. Similarly
+	  the API should not be passing around rtl_uString *'s - they
+	  are a semantic nightmare. Indeed - why do we have 
+	  RecentFileItem and the nicer 'Item' class anyway ?
+
+	* I'd like to see every 'free' and 'strdup' gone in that code.
+
+	Can you drop everything, work on this and really hammer it hard - with
+/ without / with mangled ~/.recent-files; opening / closing / re-opening
+etc. files. We need to get a fix out smartly.
+
+	I find it very hard to believe that this sort of mess didn't show up in
+the compiler warnings. All new code should (ideally) compile cleanly
+with -Wall in the compile flags.
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000271.html">[Open Office] Re: Bug 52734
+</A></li>
+	<LI> Next message: <A HREF="000231.html">[Open Office] OOO_1_1_0.tar.bz2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#238">[ date ]</a>
+              <a href="thread.html#238">[ thread ]</a>
+              <a href="subject.html#238">[ subject ]</a>
+              <a href="author.html#238">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

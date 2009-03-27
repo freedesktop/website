@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.3.7: build error in vcl/util
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:j%40bitron.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000627.html">
+   <LINK REL="Next"  HREF="000620.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.3.7: build error in vcl/util
+   </H1>
+    <B>J�rg Billeter
+    </B> 
+    <A HREF="mailto:j%40bitron.ch"
+       TITLE="[Open Office] ooo-build-1.3.7: build error in vcl/util">j@bitron.ch
+       </A><BR>
+    <I>Thu, 09 Dec 2004 15:34:13 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000627.html">[Open Office] ooo-build-1.3.7: build error in vcl/util
+</A></li>
+        <LI> Next message: <A HREF="000620.html">[Open Office] Default font size
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#629">[ date ]</a>
+              <a href="thread.html#629">[ thread ]</a>
+              <a href="subject.html#629">[ subject ]</a>
+              <a href="author.html#629">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Don, 2004-12-09 at 12:00 +0000, Michael Meeks wrote:
+&gt;<i> On Fri, 2004-12-03 at 23:42 +0100, Jürg Billeter wrote:
+</I>&gt;<i> &gt; But I've found an other problem: while the 1.3.6 build correctly
+</I>&gt;<i> &gt; displayed my cups printers, the just built 1.3.7 only falls back to a
+</I>&gt;<i> &gt; &quot;Generic Printer&quot;. I assume that the new threaded method of retrieving
+</I>&gt;<i> &gt; cups printing destinations is the culprit. Do others have the same
+</I>&gt;<i> &gt; problem, is there a fix / workaround? (couldn't find anything relevant
+</I>&gt;<i> &gt; in issuezilla)
+</I>&gt;<i> 
+</I>&gt;<i> 	Jurg - are you using the latest ooo-build from cvs on the ooo-build-1-3
+</I>&gt;<i> branch ? that's prolly the best thing to be testing,
+</I>
+No, I've used 1.3.7 + some further gcc 3.4 fixes (partly from
+ooo-build-1-3 and the rest from Gentoo). But AFAICT the only commit in
+ooo-build-1-3 after 1.3.7 which touches the psprint module is the patch
+psprint-nojvmfwk.diff which doesn't seem related to my cups problems.
+
+Last night I did exactly the same build again except that I disabled the
+psprint-m46-to-m62.diff patch (+ tiny fixes to make it build again), so
+the psprint module was again in the same state as in 1.3.6 (there the
+psprint-m46-to-m53.diff was _NOT_ applied). This disabled the threaded
+cups query on startup and now my openoffice installation recognizes my
+cups printers again.
+
+Chris Halls wrote:
+&gt;<i> This isn't something I am aware of.  If it is a new bug, it should also
+</I>&gt;<i> happen with a recent vanilla 1.9.x build.  Joerg, can you reproduce this
+</I>&gt;<i> on a vanilla build?
+</I>
+I didn't yet manage to build 1.9.x (tried once ooo-build-1.7.1 but
+didn't invest more time as build errors occured). Is there a generic
+nptl-compatible build of 1.9.x available for download somewhere - last
+time I've tried the rpms of oo.o the binaries crashed upon start on my
+nptl system... Or is ooo-build HEAD now already buildable on most
+machines without investing much time to fix build errors?
+
+Some system specs:
+Linux 2.6.9
+glibc as of 2004-11-01, nptl only build
+gcc 3.4.3
+binutils 2.15.94.0.1
+cups 1.1.22
+
+If you need more infos or if I can test something, just ask.
+
+Thanks for your responses
+
+Jürg
+
+-- 
+Jürg Billeter &lt;<A HREF="mailto:j@bitron.ch">j@bitron.ch</A>&gt;
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000627.html">[Open Office] ooo-build-1.3.7: build error in vcl/util
+</A></li>
+	<LI> Next message: <A HREF="000620.html">[Open Office] Default font size
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#629">[ date ]</a>
+              <a href="thread.html#629">[ thread ]</a>
+              <a href="subject.html#629">[ subject ]</a>
+              <a href="author.html#629">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

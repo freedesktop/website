@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OO.o addressbook integration ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000051.html">
+   <LINK REL="Next"  HREF="000052.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OO.o addressbook integration ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] OO.o addressbook integration ...">michael@ximian.com
+       </A><BR>
+    <I>Mon, 11 Aug 2003 11:43:52 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000051.html">[Open Office] Re: Ximian patches integration in RC3
+</A></li>
+        <LI> Next message: <A HREF="000052.html">[Open Office] Re: [Evolution-hackers] OO.o addressbook integration ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#18">[ date ]</a>
+              <a href="thread.html#18">[ thread ]</a>
+              <a href="subject.html#18">[ subject ]</a>
+              <a href="author.html#18">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi guys,
+
+	I'm just fighting addressbook integration in OO.o - my problem is that
+in order to use LDAP data sources I have to link to mozilla.
+Unfortunately, the required mozilla is a heavily patched version that we
+can't possibly ship [ binning profile locking, mangling up some of the
+innards, etc. ] - [1].
+
+	So - what I'm hoping is, that Chris' new Addressbook API - will allow
+me to do:
+
+	a) get list of LDAP / Exchange / local contacts
+	b) execute LDAP style queries on the remote sources
+
+	All with the nice new thread-safe API. It's fairly possible to
+integrate the glib mainloop with OO.o - so, I'm hoping that I can then
+write a single, pleasant evolution plugin, and bin the reams of grim
+mozilla integration code permanently.
+
+	Does that fit with what we can do in the new version ? and/or can I get
+a list of all the Exchange/local/LDAP contacts - and can I get at them
+all using this new API ? and if not, where can I hack ? :-)
+
+	Thanks,
+
+		Michael.
+
+[1] - FWIW. the OO.o CVS includes 50Mb or so of zipped per-platform
+      binary of their own mozilla builds ;-(
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000051.html">[Open Office] Re: Ximian patches integration in RC3
+</A></li>
+	<LI> Next message: <A HREF="000052.html">[Open Office] Re: [Evolution-hackers] OO.o addressbook integration ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#18">[ date ]</a>
+              <a href="thread.html#18">[ thread ]</a>
+              <a href="subject.html#18">[ subject ]</a>
+              <a href="author.html#18">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

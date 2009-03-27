@@ -1,0 +1,92 @@
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html lang="en">
+  <head>
+    <meta lang="en" http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <title>OO.o frequently asked user questions</title>
+    <link rel="icon" href="http://www.ximian.com/favicon.png" type="image/png">
+  </head>
+
+  <body>
+      <h2>OO.o frequently asked user questions</h2>
+
+      <h1>This page is now mostly obsolete</h1>
+
+      <a href="http://wiki.services.openoffice.org/wiki/Environment_Variables">go here</a>
+      instead.
+
+      <h3>What environment variables can I tweak when things don't work</h3>
+      <p>
+        For those unfamiliar with Unix; these variables can be set before
+	running OO.o by doing <code>export <i>variable</i>=<i>value</i></code>
+	on the console. Make sure there is no existing OO.o running when
+	you re-run OO.o though.
+      </p>
+      <table summary="Variables and their definitions">
+        <tr>
+		<th>variable</th><th>values</th><th>behavior</th>
+	</tr>
+	<tr>
+		<td>GALLERY_ENABLE_ID_DIALOG</td><td><i>set</i></td>
+		<td>
+		   Enable a right click menu allowing the icons' ID to be
+		   set, assuming you have write access to the gallery theme.
+		</td>
+	</tr>
+	<tr>
+		<td>GALLERY_SHOW_HIDDEN_THEMES</td><td><i>set</i></td>
+		<td>
+		   Allows the gallery to show the private themes used for
+		   HtmlExportButtons and various special powerpoint shapes.
+		</td>
+	</tr>
+	<tr>
+		<td>GALLERY_SHOW_PRIVATE_TITLE</td><td><i>set</i></td>
+		<td>
+		   Adds a right click -&gt; 'Title' option for the gallery
+		   icons; NB. these must be writable by the user.
+		</td>
+	</tr>
+	<tr>
+		<td>SAL_DO_NOT_USE_INVERT50</td><td>true</td>
+		<td>
+		  If you are running XFree86 &lt; 4.2 and have an S3 Savage
+		  chip, you must use this, otherwise OOo will not work
+		  and the Xserver will eventually hang / lock the machine.
+		</td>
+	</tr>
+	<tr>
+		<td>SAL_ENABLE_GLX_XFREE4</td><td><i>set</i></td>
+		<td>
+		   If set, this enables the use of XFree4.0's GLX
+		   module which is considered to be badly buggy and is
+		   disabled by default; apparently this is mostly
+		   Matrox related however.
+		</td>
+	</tr>
+	<tr>
+		<td>SAL_HIGHPRIORITY_REPAINT</td><td><i>any</i></td>
+		<td>
+		  Apparently useful for taking screenshots.
+		</td>
+	</tr>
+	<tr>
+		<td>SAL_IGNOREXERRORS</td><td><i>any</i></td>
+		<td>
+		  Instructs the GUI to ignore any errors from the X
+		  server.
+		</td>
+	</tr>
+      </table>
+
+      <h3>X server crash with Matrox cards</h3>
+
+      <p>
+        If your X server is using the mga driver, you may find your X server
+	crashes.  If so, add this option to the mga 'Device' section of
+	/etc/X11/XFree86Config[-4]:
+      </p>
+	<pre>Option "XaaNoScreenToScreenColorExpandFill"</pre>
+
+  </body>
+</html>

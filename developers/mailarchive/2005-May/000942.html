@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] [PATCH] Save As and file name with dots fix
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:robert%40vojta.name">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000938.html">
+   <LINK REL="Next"  HREF="000943.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] [PATCH] Save As and file name with dots fix
+   </H1>
+    <B>Robert Vojta
+    </B> 
+    <A HREF="mailto:robert%40vojta.name"
+       TITLE="[Open Office] [PATCH] Save As and file name with dots fix">robert@vojta.name
+       </A><BR>
+    <I>Mon, 09 May 2005 18:24:21 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000938.html">[Open Office] [PATCH] Save As and file name with dots fix
+</A></li>
+        <LI> Next message: <A HREF="000943.html">[Open Office] [PATCH] Save As and file name with dots fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#942">[ date ]</a>
+              <a href="thread.html#942">[ thread ]</a>
+              <a href="subject.html#942">[ subject ]</a>
+              <a href="author.html#942">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-lwXmgiY2rZaH9r5TjQRt
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+michael meeks p=C3=AD=C5=A1e v Po 09. 05. 2005 v 10:31 +0100:
+
+Hi Michael,
+
+&gt;<i> 	a) Have you signed &amp; posted a JCA ?
+</I>
+  yes, I'm listed here:
+
+  <A HREF="http://www.openoffice.org/copyright/copyrightapproved.html#v">http://www.openoffice.org/copyright/copyrightapproved.html#v</A>
+
+&gt;<i> 	b) could you change a couple of things for me :-)
+</I>
+  Look at the attachment ...
+
+&gt;<i> 	What else are you interested in hacking on?
+</I>
+  I'm trying to find issues, where is the fix easy like this one and
+then I'm trying to fix them. Obviously, I'm doing this after my regular
+job and over week-ends ... Quite slow process, but the only one how to
+learn more about OO.o's source code with limited time resources. For
+now, I'm not able to handle medium / bigger issues, just small ones. If
+there is any area where I can help with the small amount of time which
+I've got, let me know ...
+
+&gt;<i> and/or be great to see you on irc.freenode.net #OpenOffice.org (ping
+</I>&gt;<i> michael_ :-)
+</I>
+  I'm there from time to time as rvojta ...
+
+Regards,
+Robert
+
+--=20
+Robert Vojta
+<A HREF="http://blog.vojta.name/">http://blog.vojta.name/</A>
+
+--=-lwXmgiY2rZaH9r5TjQRt
+Content-Disposition: attachment; filename=fpicker-generic-autoextension-c-2.diff
+Content-Type: text/x-patch; name=fpicker-generic-autoextension-c-2.diff; charset=UTF-8
+Content-Transfer-Encoding: base64
+
+SW5kZXg6IGlvZGxnLmN4eA0KPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PQ0KUkNTIGZpbGU6IC9jdnMvZ3NsL2ZwaWNrZXIv
+c291cmNlL29mZmljZS9pb2RsZy5jeHgsdg0KcmV0cmlldmluZyByZXZpc2lvbiAxLjINCmRpZmYg
+LXUgLXAgLXUgLXIxLjIgaW9kbGcuY3h4DQotLS0gaW9kbGcuY3h4CTEzIEFwciAyMDA1IDA4OjU0
+OjExIC0wMDAwCTEuMg0KKysrIGlvZGxnLmN4eAk5IE1heSAyMDA1IDE2OjE5OjM2IC0wMDAwDQpA
+QCAtMzA5LDE0ICszMDksMjIgQEAgbmFtZXNwYWNlDQogCX0NCiANCiAJLy8tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLQ0KLQlTdHJpbmcgR2V0RnN5c0V4dGVuc2lvbl9JbXBsKCBjb25zdCBTdHJpbmcmIHJG
+aWxlICkNCisJU3RyaW5nIEdldEZzeXNFeHRlbnNpb25fSW1wbCggY29uc3QgU3RyaW5nJiByRmls
+ZSwgY29uc3QgU3RyaW5nJiByTGFzdEZpbHRlckV4dCApDQogCXsNCiAJCWNvbnN0IHNhbF9Vbmlj
+b2RlKiBwMCA9IHJGaWxlLkdldEJ1ZmZlcigpOw0KIAkJY29uc3Qgc2FsX1VuaWNvZGUqIHAxID0g
+cDAgKyByRmlsZS5MZW4oKSAtIDE7DQogCQl3aGlsZSAoIHAxID49IHAwICYmICpwMSAhPSBzYWxf
+VW5pY29kZSggJy4nICkgKQ0KIAkJCXAxLS07DQogCQlpZiAoIHAxID49IHAwICkNCi0JCQlyZXR1
+cm4gU3RyaW5nKCByRmlsZS5Db3B5KCBwMSAtIHAwICsgMSApICk7DQorCQl7DQorCQkJaWYgKCBy
+TGFzdEZpbHRlckV4dC5MZW4oKSApDQorCQkJew0KKwkJCQlpZiAoIHJGaWxlLkNvcHkoIHAxIC0g
+cDAgKyAxKS5FcXVhbHNJZ25vcmVDYXNlQXNjaWkoIHJMYXN0RmlsdGVyRXh0ICkgKQ0KKwkJCQkJ
+cmV0dXJuIFN0cmluZyggckZpbGUuQ29weSggcDEgLSBwMCArIDEgKSApOw0KKwkJCX0NCisJCQll
+bHNlDQorCQkJCXJldHVybiBTdHJpbmcoIHJGaWxlLkNvcHkoIHAxIC0gcDAgKyAxICkgKTsNCisJ
+CX0NCiAJCXJldHVybiBTdHJpbmcoKTsNCiAJfQ0KIA0KQEAgLTM2MywxNCArMzcxLDE0IEBAIG5h
+bWVzcGFjZQ0KIAl9DQogDQogICAgIC8vLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KLQl2b2lkIGxjbF9hdXRv
+VXBkYXRlRmlsZUV4dGVuc2lvbiggU3Z0RmlsZURpYWxvZyogX3BEaWFsb2cgKQ0KKwl2b2lkIGxj
+bF9hdXRvVXBkYXRlRmlsZUV4dGVuc2lvbiggU3Z0RmlsZURpYWxvZyogX3BEaWFsb2csIGNvbnN0
+IFN0cmluZyYgX3JMYXN0RmlsdGVyRXh0ICkNCiAJew0KIAkJLy8gaWYgYXV0byBleHRlbnNpb24g
+aXMgZW5hYmxlZCAuLi4uDQogCQlpZiAoIF9wRGlhbG9nLT5pc0F1dG9FeHRlbnNpb25FbmFibGVk
+KCkgKQ0KIAkJew0KIAkJCS8vIGF1dG9tYXRpY2FsbHkgc3dpdGNoIHRvIHRoZSBleHRlbnNpb24g
+b2YgdGhlIChtYXliZSBqdXN0IG5ld2x5IHNlbGVjdGVkKSBleHRlbnNpb24NCiAJCQlTdHJpbmcg
+YU5ld0ZpbGUgPSBfcERpYWxvZy0+Z2V0Q3VycmVudEZpbGVUZXh0KCApOw0KLQkJCVN0cmluZyBh
+RXh0ID0gR2V0RnN5c0V4dGVuc2lvbl9JbXBsKCBhTmV3RmlsZSApOw0KKwkJCVN0cmluZyBhRXh0
+ID0gR2V0RnN5c0V4dGVuc2lvbl9JbXBsKCBhTmV3RmlsZSwgX3JMYXN0RmlsdGVyRXh0ICk7DQog
+DQogCQkJLy8gYnV0IG9ubHkgaWYgdGhlcmUgYWxyZWFkeSBpcyBhbiBleHRlbnNpb24NCiAJCQlp
+ZiAoIGFFeHQuTGVuKCkgKQ0KQEAgLTEwNzUsNyArMTA4Myw3IEBAIHNhbF9Cb29sIFN2dEZpbGVE
+aWFsb2c6OmNyZWF0ZU5ld1VzZXJGaWwNCiAJaWYgKCAhX2JBbGxvd1VzZXJEZWZFeHQgfHwgYlVz
+ZUN1ckZpbHRlckV4dCApDQogCXsNCiAJCWlmICggX3BJbXAtPkdldEN1ckZpbHRlciggKSApDQot
+CQkJU2V0RGVmYXVsdEV4dCggX3BJbXAtPkdldEN1ckZpbHRlciggKS0+R2V0VHlwZSgpLkNvcHko
+MikgKTsNCisJCQlTZXREZWZhdWx0RXh0KCBfcEltcC0+R2V0Q3VyRmlsdGVyKCApLT5HZXRFeHRl
+bnNpb24oKSApOw0KIAkJZWxzZQ0KIAkJCUVyYXNlRGVmYXVsdEV4dCgpOw0KIAl9DQpAQCAtMTUz
+NSwyMCArMTU0MywyMiBAQCBJTVBMX1NUQVRJQ19MSU5LKCBTdnRGaWxlRGlhbG9nLCBGaWx0ZXJT
+DQogCQkJCXx8CXBUaGlzLT5fcEltcC0+X3BVc2VyRmlsdGVyDQogCQkJCSkNCiAJCXsNCi0JCQkv
+LyBHZ2YuIEZpbHRlciBkZXMgQmVudXR6ZXJzIGVudGZlcm5lbi4NCisJCQkvLyBTdG9yZSB0aGUg
+b2xkIGZpbHRlciBmb3IgdGhlIGF1dG8gZXh0ZW5zaW9uIGhhbmRsaW5nDQorCQkJY29uc3QgU3Ry
+aW5nJiByTGFzdEZpbHRlckV4dCA9IHBUaGlzLT5fcEltcC0+R2V0Q3VyRmlsdGVyKCktPkdldEV4
+dGVuc2lvbigpOw0KIAkJCURFTEVURVooIHBUaGlzLT5fcEltcC0+X3BVc2VyRmlsdGVyICk7DQor
+CQkJDQorCQkJLy8gR2dmLiBGaWx0ZXIgZGVzIEJlbnV0emVycyBlbnRmZXJuZW4uDQogCQkJcFRo
+aXMtPl9wSW1wLT5TZXRDdXJGaWx0ZXIoIHBTZWxlY3RlZEZpbHRlciwgc1NlbGVjdGVkRmlsdGVy
+RGlzcGxheU5hbWUgKTsNCiANCiAJCQkvLyBHZ2YuIEVuZHVuZyBhbnplaWdlbi4NCi0JCQljb25z
+dCBTdHJpbmcmIHJUeXBlID0gcFNlbGVjdGVkRmlsdGVyLT5HZXRUeXBlKCk7DQotCQkJcFRoaXMt
+PlNldERlZmF1bHRFeHQoIHJUeXBlLkNvcHkoIDIgKSApOw0KKwkJCXBUaGlzLT5TZXREZWZhdWx0
+RXh0KCBwU2VsZWN0ZWRGaWx0ZXItPkdldEV4dGVuc2lvbigpICk7DQogCQkJVVNIT1JUIG5TZXBQ
+b3MgPSBwVGhpcy0+R2V0RGVmYXVsdEV4dCgpLlNlYXJjaCggRklMRURJQUxPR19ERUZfRVhUU0VQ
+ICk7DQogDQogCQkJaWYgKCBuU2VwUG9zICE9IFNUUklOR19OT1RGT1VORCApDQogCQkJCXBUaGlz
+LT5FcmFzZURlZmF1bHRFeHQoIG5TZXBQb3MgKTsNCiANCiAJCQkvLyB1cGRhdGUgdGhlIGV4dGVu
+c2lvbiBvZiB0aGUgY3VycmVudCBmaWxlIGlmIG5lY2Vzc2FyeQ0KLQkJCWxjbF9hdXRvVXBkYXRl
+RmlsZUV4dGVuc2lvbiggcFRoaXMgKTsNCisJCQlsY2xfYXV0b1VwZGF0ZUZpbGVFeHRlbnNpb24o
+IHBUaGlzLCByTGFzdEZpbHRlckV4dCApOw0KIA0KIAkJCS8vIHdlbm4gZGVyIEJlbnV0emVyIHNj
+aG5lbGwgZHVyY2ggZGllIEZpbHRlcmJveA0KIAkJCS8vIHRyYXZlbHQsIG5pY2h0IHNvZm9ydCBG
+aWx0ZXJuDQpAQCAtMTg0OCw3ICsxODU4LDcgQEAgSU1QTF9MSU5LKCBTdnRGaWxlRGlhbG9nLCBB
+dXRvRXh0ZW5zaW9uSA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQ0hFQ0tCT1hf
+QVVUT0VYVEVOU0lPTiApOw0KIA0KIAkvLyB1cGRhdGUgdGhlIGV4dGVuc2lvbiBvZiB0aGUgY3Vy
+cmVudCBmaWxlIGlmIG5lY2Vzc2FyeQ0KLQlsY2xfYXV0b1VwZGF0ZUZpbGVFeHRlbnNpb24oIHRo
+aXMgKTsNCisJbGNsX2F1dG9VcGRhdGVGaWxlRXh0ZW5zaW9uKCB0aGlzLCB0aGlzLT5fcEltcC0+
+R2V0Q3VyRmlsdGVyKCktPkdldEV4dGVuc2lvbigpICk7DQogDQogICAgIHJldHVybiAwOw0KIH0N
+CkBAIC0yMDk3LDggKzIxMDcsNyBAQCBzaG9ydCBTdnRGaWxlRGlhbG9nOjpFeGVjdXRlKCkNCiAN
+CiAJCS8vIEFuemVpZ2UgYW5wYXNzZW4uDQogCQlfcEltcC0+U2VsZWN0RmlsdGVyTGlzdEVudHJ5
+KCBfcEltcC0+R2V0Q3VyRmlsdGVyKCktPkdldE5hbWUoKSApOw0KLQkJU3RyaW5nIGFUeXBlKCBf
+cEltcC0+R2V0Q3VyRmlsdGVyKCktPkdldFR5cGUoKSApOw0KLQkJU2V0RGVmYXVsdEV4dCggYVR5
+cGUuQ29weSggMiApICk7DQorCQlTZXREZWZhdWx0RXh0KCBfcEltcC0+R2V0Q3VyRmlsdGVyKCkt
+PkdldEV4dGVuc2lvbigpICk7DQogCQlVU0hPUlQgblNlcFBvcyA9IEdldERlZmF1bHRFeHQoKS5T
+ZWFyY2goIEZJTEVESUFMT0dfREVGX0VYVFNFUCApOw0KIAkJaWYgKCBuU2VwUG9zICE9IFNUUklO
+R19OT1RGT1VORCApDQogCQkJRXJhc2VEZWZhdWx0RXh0KCBuU2VwUG9zICk7DQpJbmRleDogaW9k
+bGdpbXAuaHh4DQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09DQpSQ1MgZmlsZTogL2N2cy9nc2wvZnBpY2tlci9zb3VyY2Uv
+b2ZmaWNlL2lvZGxnaW1wLmh4eCx2DQpyZXRyaWV2aW5nIHJldmlzaW9uIDEuMg0KZGlmZiAtdSAt
+cCAtdSAtcjEuMiBpb2RsZ2ltcC5oeHgNCi0tLSBpb2RsZ2ltcC5oeHgJMTMgQXByIDIwMDUgMDg6
+NTU6MzggLTAwMDAJMS4yDQorKysgaW9kbGdpbXAuaHh4CTkgTWF5IDIwMDUgMTY6MTk6MzYgLTAw
+MDANCkBAIC0xMjUsNiArMTI1LDcgQEAgcHVibGljOg0KIA0KIAljb25zdCBTdHJpbmcmCQlHZXRO
+YW1lKCkgY29uc3QJCXsgcmV0dXJuIG1fYU5hbWU7IH0NCiAJY29uc3QgU3RyaW5nJgkJR2V0VHlw
+ZSgpIGNvbnN0CQl7IHJldHVybiBtX2FUeXBlOyB9DQorCWNvbnN0IFN0cmluZwkJR2V0RXh0ZW5z
+aW9uKCkgY29uc3QJeyByZXR1cm4gbV9hVHlwZS5Db3B5KCAyICk7IH0NCiANCiAJc2FsX0Jvb2wJ
+CQlpc0dyb3VwU2VwYXJhdG9yKCkgY29uc3QJeyByZXR1cm4gMCA9PSBtX2FUeXBlLkxlbigpOyB9
+DQogfTsNCj==
+
+
+--=-lwXmgiY2rZaH9r5TjQRt--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000938.html">[Open Office] [PATCH] Save As and file name with dots fix
+</A></li>
+	<LI> Next message: <A HREF="000943.html">[Open Office] [PATCH] Save As and file name with dots fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#942">[ date ]</a>
+              <a href="thread.html#942">[ thread ]</a>
+              <a href="subject.html#942">[ subject ]</a>
+              <a href="author.html#942">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

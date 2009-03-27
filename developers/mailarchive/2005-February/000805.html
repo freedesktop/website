@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] src680-m79 libxmlsec
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:rmrmg%40wp.pl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+   <LINK REL="Previous"  HREF="000804.html">
+   <LINK REL="Next"  HREF="000806.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] src680-m79 libxmlsec
+   </H1>
+    <B>Rafał 'rmrmg' Roszak
+    </B> 
+    <A HREF="mailto:rmrmg%40wp.pl"
+       TITLE="[Open Office] src680-m79 libxmlsec">rmrmg@wp.pl
+       </A><BR>
+    <I>Sat, 26 Feb 2005 20:22:46 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000804.html">[Open Office] Status Friday
+</A></li>
+        <LI> Next message: <A HREF="000806.html">[Open Office] src680-m79 libxmlsec
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#805">[ date ]</a>
+              <a href="thread.html#805">[ thread ]</a>
+              <a href="subject.html#805">[ subject ]</a>
+              <a href="author.html#805">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+
+During compilation OOo from cvs I had this problem:
+------------------------------
+Making: ../../../../../../unxlngi4.pro/obj/akmngr.obj
+gcc -Wuninitialized -fmessage-length=0 -c -I.  -I. -I../inc -I../../../../../../inc -I../../../../../../unx/inc -I../../../../../../unxlngi4.pro/inc -I. -I/notslack/compiled/OpenOffice/oooximian/cvs/OOo26/build/src680-m79/solver/680/unxlngi4.pro/inc/dont_use_stl -I/notslack/compiled/OpenOffice/oooximian/cvs/OOo26/build/src680-m79/solver/680/unxlngi4.pro/inc/external -I/notslack/compiled/OpenOffice/oooximian/cvs/OOo26/build/src680-m79/solver/680/unxlngi4.pro/inc -I/notslack/compiled/OpenOffice/oooximian/cvs/OOo26/build/src680-m79/solenv/unxlngi4/inc -I/notslack/compiled/OpenOffice/oooximian/cvs/OOo26/build/src680-m79/solenv/inc -I/notslack/compiled/OpenOffice/oooximian/cvs/OOo26/build/src680-m79/res -I/notslack/compiled/OpenOffice/oooximian/cvs/OOo26/build/src680-m79/solver/680/unxlngi4.pro/inc/dont_use_stl -I/notslack/compiled/OpenOffice/oooximian/cvs/OOo26/build/src680-m79/solenv/inc/Xp31 -INO_JAVA_HOME/include -INO_JAVA_HOME/include/linux -INO_JAVA_HOME/include/native_threads/include -I/usr/X11R6/include -I/notslack/compiled/OpenOffice/oooximian/cvs/OOo26/build/src680-m79/solver/680/unxlngi4.pro/inc/mozilla -I/notslack/compiled/OpenOffice/oooximian/cvs/OOo26/build/src680-m79/solver/680/unxlngi4.pro/inc/mozilla/nspr -I/notslack/compiled/OpenOffice/oooximian/cvs/OOo26/build/src680-m79/solver/680/unxlngi4.pro/inc/mozilla/nss     -I. -I../../../../../../res -I. -O1   -DHAVE_CONFIG_H -DPACKAGE=\&quot;xmlsec1\&quot; -DXMLSEC_NO_XSLT=1 -D_REENTRANT -DXMLSEC_NO_XKMS -I../../include -I../.. -DSYSTEM_LIBXML -I/usr/include/libxml2   -I/usr//include/mozilla-1.7.5/nss -I/usr//include/mozilla-1.7.5/nspr   -pipe -mcpu=pentiumpro  -DLINUX -DUNX -DVCL -DGCC -DC300 -DINTEL -DGXX_INCLUDE_PATH=/usr/include/c++/3.3.4 -DCVER=C300 -D_USE_NAMESPACE -DNPTL -DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1 -DSTLPORT_VERSION=400 -D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DSUPD=680 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DEXCEPTIONS_OFF -DCUI -DSRC680   -DMULTITHREAD   -o ../../../../../../unxlngi4.pro/obj/akmngr.o akmngr.c
+
+akmngr.c:13:22: pk11func.h: No such file or directory
+akmngr.c:14:18: cert.h: No such file or directory
+akmngr.c:15:19: keyhi.h: No such file or directory
+
+[....]
+ERROR: Error 65280 occurred while making /notslack/compiled/OpenOffice/oooximian/cvs/OOo26/build/src680-m79/libxmlsec
+make: *** [stamp/build] Error 1
+
+Any suggestion?
+
+br
+
+-- 
+. JID: rmrmg(at)jabberpl(dot)org | Wszystko jest trudne
+.   mail: rmrmg(at)wp(dot)pl     |   przy odpowiednim
+.  registered Linux user 261525  |  stopniu abstrakcji
+ _______     RMRMG signature version 0.0.5     ________
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000804.html">[Open Office] Status Friday
+</A></li>
+	<LI> Next message: <A HREF="000806.html">[Open Office] src680-m79 libxmlsec
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#805">[ date ]</a>
+              <a href="thread.html#805">[ thread ]</a>
+              <a href="subject.html#805">[ subject ]</a>
+              <a href="author.html#805">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

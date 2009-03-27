@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] location of 64bit version of libgcj.so
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20location%20of%2064bit%20version%20of%20libgcj.so&In-Reply-To=20060419.103354.48497164.chat95%40mac.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001768.html">
+   <LINK REL="Next"  HREF="001772.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] location of 64bit version of libgcj.so</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20location%20of%2064bit%20version%20of%20libgcj.so&In-Reply-To=20060419.103354.48497164.chat95%40mac.com"
+       TITLE="[Open Office] location of 64bit version of libgcj.so">kendy at suse.cz
+       </A><BR>
+    <I>Wed Apr 19 08:17:54 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001768.html">[Open Office] location of 64bit version of libgcj.so
+</A></li>
+        <LI>Next message: <A HREF="001772.html">[Open Office] 2.0.2 testing results
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1770">[ date ]</a>
+              <a href="thread.html#1770">[ thread ]</a>
+              <a href="subject.html#1770">[ subject ]</a>
+              <a href="author.html#1770">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Maho,
+
+On Wednesday 19 April 2006 03:33, NAKATA Maho wrote:
+
+&gt;<i> Unfortunately, current implementation of gnujre.cxx assumes
+</I>&gt;<i> gcj is java.home/bin and libgcj.so is java.home/lib or java.home/lib64,
+</I>&gt;<i> which is wrong. There are case that gcc is configured with --libdir.
+</I>&gt;<i>
+</I>&gt;<i> o could you please paste your output of gcc -v of AMD64 enviroment?
+</I>&gt;<i> so that I can check whether you configured your gcc with --libdir or not.
+</I>
+$ gcc -v
+Using built-in specs.
+Target: x86_64-suse-linux
+Configured with: ../configure --enable-threads=posix --prefix=/usr 
+--with-local-prefix=/usr/local --infodir=/usr/share/info 
+--mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 
+--enable-languages=c,c++,objc,fortran,java,ada --enable-checking=release 
+--with-gxx-include-dir=/usr/include/c++/4.1.0 --enable-ssp --disable-libssp 
+--enable-java-awt=gtk --disable-libjava-multilib --with-slibdir=/lib64 
+--with-system-zlib --enable-shared --enable-__cxa_atexit 
+--enable-libstdcxx-allocator=new --without-system-libunwind 
+--with-cpu=generic --host=x86_64-suse-linux
+Thread model: posix
+gcc version 4.1.0 20060123 (prerelease) (SUSE Linux)
+
+&gt;<i> o how do you think following newer patch?
+</I>&gt;<i> <A HREF="http://www.openoffice.org/nonav/issues/showattachment.cgi/35790/patch-i6444">http://www.openoffice.org/nonav/issues/showattachment.cgi/35790/patch-i6444</A>
+</I>&gt;<i>2
+</I>
+I added a comment to the issue.
+
+Regards,
+Jan
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001768.html">[Open Office] location of 64bit version of libgcj.so
+</A></li>
+	<LI>Next message: <A HREF="001772.html">[Open Office] 2.0.2 testing results
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1770">[ date ]</a>
+              <a href="thread.html#1770">[ thread ]</a>
+              <a href="subject.html#1770">[ subject ]</a>
+              <a href="author.html#1770">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] gcj and helpcontent2 issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20gcj%20and%20helpcontent2%20issues&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001372.html">
+   <LINK REL="Next"  HREF="001375.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] gcj and helpcontent2 issues</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20gcj%20and%20helpcontent2%20issues&In-Reply-To="
+       TITLE="[Open Office] gcj and helpcontent2 issues">h.mth at web.de
+       </A><BR>
+    <I>Fri Dec  2 05:41:31 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001372.html">[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx
+</A></li>
+        <LI>Next message: <A HREF="001375.html">[Open Office] gcj and helpcontent2 issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1374">[ date ]</a>
+              <a href="thread.html#1374">[ thread ]</a>
+              <a href="subject.html#1374">[ subject ]</a>
+              <a href="author.html#1374">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi list,
+this time I build SRC680_m142 with ooo-build, GCJ-4.1.0-20051125 without gcj-dbtool because
+this machine needs 2h30m to cache xalan.jar, for example.
+Centrino 1.6GHz, 512MB Ram.
+
+On module helpcontent2 it fails:
+
+/usr/bin/gij -Dgnu.gcj.precompiled.db.path=/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/lib/openoffice.org.gcjdb
+  -cp .:../../unxlngi6.pro/class:.:/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/jaxp.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/parser.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/xt.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/unoil.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/ridl.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/jurt.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/jut.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/xmlsearch.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/xmlhelp.jar:
+/usr/lib/db-4.2.jar com.sun.star.help.HelpLinker @/var/tmp/portage/openoffice-680.142.1/temp/mkELYo62
+Abort
+dmake:  Error code 134, while making '../../unxlngi6.pro/bin/sbasic_en-US.zip'
+'---* tg_merge.mk *---'
+
+It should not take '-Dgnu.gcj.precompiled.db.path=.../ooo-build/build/src680-m142/solver/680/unxlngi6.pro/lib/openoffice.org.gcjdb'
+having gcj-dbtool disabled, should it? I applied attached diff. It fails again:
+
+/usr/bin/gij  -cp .:../../unxlngi6.pro/class:.:/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/jaxp.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/parser.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/xt.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/unoil.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/ridl.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/jurt.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/jut.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/xmlsearch.jar:
+/var/tmp/portage/openoffice-680.142.1/work/ooo-build-src680.140.1/build/src680-m142/solver/680/unxlngi6.pro/bin/xmlhelp.jar:
+/usr/lib/db-4.2.jar com.sun.star.help.HelpLinker @/tmp/mkHw9ypv
+GC Warning: Repeated allocation of very large block (appr. size 1024000):
+        May lead to memory leak and poor performance.
+GC Warning: Repeated allocation of very large block (appr. size 1024000):
+        May lead to memory leak and poor performance.
+Killed
+dmake:  Error code 137, while making '../../unxlngi6.pro/bin/sbasic_en-US.zip'
+'---* tg_merge.mk *---'
+
+Is it good to make gcj-dbtool optional?
+I will try with gcj-dbtool enabled.
+Btw, were not these gcj-no-broken-jaxp.diff, gcj-no-com.sun.xml.diff, workspace.jaxpapi.diff
+to fix helpcontent2 with gcj? Or at least to improve?
+Are there plans to move them from ArkOnly to GCJ anytime soon?
+
+
+Regards,
+Hanno
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ooo-javacache.diff
+Type: text/x-patch
+Size: 655 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051202/d401e2ec/ooo-javacache.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20051202/d401e2ec/ooo-javacache.bin</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001372.html">[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx
+</A></li>
+	<LI>Next message: <A HREF="001375.html">[Open Office] gcj and helpcontent2 issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1374">[ date ]</a>
+              <a href="thread.html#1374">[ thread ]</a>
+              <a href="subject.html#1374">[ subject ]</a>
+              <a href="author.html#1374">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] PATCH: build.pl conditional module building
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000362.html">
+   <LINK REL="Next"  HREF="000376.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] PATCH: build.pl conditional module building
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] PATCH: build.pl conditional module building">michael@ximian.com
+       </A><BR>
+    <I>Tue, 13 Apr 2004 10:26:14 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000362.html">[Open Office] PATCH: build.pl conditional module building
+</A></li>
+        <LI> Next message: <A HREF="000376.html">[Open Office] PATCH: build.pl conditional module building
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#365">[ date ]</a>
+              <a href="thread.html#365">[ thread ]</a>
+              <a href="subject.html#365">[ subject ]</a>
+              <a href="author.html#365">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Dan,
+
+On Fri, 2004-04-09 at 01:18 -0400, Dan Williams wrote:
+&gt;<i> Diff against 1.1.1 attached.
+</I>
+	This looks great; I guess we should file it up-stream, and make sure it
+will in fact be accepted up-stream before we go too wild with it though;
+also - I would suggest expanding the syntax slightly (possibly) to be:
+
+moz  moz : solenv NULL #if(....)
+
+	so that the polarity of the conditional is obvious; (with some suitable
+delimiter I guess).
+
+	also instead of (or as well as) 'chomp' it's useful to use:
+s/\r\n//; since perl on win32 is flakey here.
+
+	also; I guess it's prolly worth tolerating more sloppy whitespace about
+the place eg.:
+
+	#if ( ! CONDITIONAL )
+	
+	This is prolly best done with regular expressions eg.
+
+	if ($condition =~ s/^\s*!\s*//) {
+	}
+
+	instead of the (more efficient) substr match [ plus changing
+GetModuleBuildConditionals to allow whitespace inside () ].
+
+	Also - I think you want to check for:
+
+	if (!defined $ENV{$condition})
+
+	otherwise it will spew warnings if the env. var is not set ( I think ).
+I'd also use the ++ operator instead of += 1; and nest the
+$ENV{$conditional} check to clarify the flow and avoid re-evaluation.
+
+	It's slightly amazing that build.pl is well up for frequently
+re-opening / parsing the same file :-) but I guess we should fit in with
+that.
+
+	Anyhow - modulo these trivial issues - this looks like a really nice
+direction - it'll be great to bin excessive, repeated makefile.mk
+patching - and the merge / patch conflicts we get there.
+
+	I wonder though (idly) [ as one who can't build the odk cross-platform,
+etc. ], whether conditionalizing dependant modules might work nicely eg.
+
+	instsetoo instsetoo : ... moz.if(MOZILLA_ENABLED) ... 
+				  odk.if(!WIN32) ...
+
+	and/or whether that might have a similar effect; but I guess those
+dependencies are perhaps duplicated in several other modules so I
+suppose this way is best.
+
+	Good stuff,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000362.html">[Open Office] PATCH: build.pl conditional module building
+</A></li>
+	<LI> Next message: <A HREF="000376.html">[Open Office] PATCH: build.pl conditional module building
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#365">[ date ]</a>
+              <a href="thread.html#365">[ thread ]</a>
+              <a href="subject.html#365">[ subject ]</a>
+              <a href="author.html#365">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] stupid? tools/inc/solar.h question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000742.html">
+   <LINK REL="Next"  HREF="000744.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] stupid? tools/inc/solar.h question
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] stupid? tools/inc/solar.h question">dan@bigw.org
+       </A><BR>
+    <I>Sat, 5 Feb 2005 10:55:51 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000742.html">[Open Office] stupid? tools/inc/solar.h question
+</A></li>
+        <LI> Next message: <A HREF="000744.html">[Open Office] stupid? tools/inc/solar.h question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#743">[ date ]</a>
+              <a href="thread.html#743">[ thread ]</a>
+              <a href="subject.html#743">[ subject ]</a>
+              <a href="author.html#743">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, 5 Feb 2005, Bernhard Rosenkraenzer wrote:
+&gt;<i> While fixing some more Min/Max ambiguities on 32 bit machines with 64 bit
+</I>&gt;<i> patches applied, I came across this in tools/inc/solar.h:
+</I>&gt;<i>
+</I>&gt;<i> inline int Min(int a, int b) { return (a&lt;b?a:b); }
+</I>&gt;<i> inline char Min(char a, char b) { return (a&lt;b?a:b); }
+</I>&gt;<i> inline BYTE Min(BYTE a, BYTE b) { return (a&lt;b?a:b); }
+</I>&gt;<i> [.... repeated for numerous other types ....]
+</I>&gt;<i>
+</I>&gt;<i> Is there any reason why we aren't doing the obvious?
+</I>&gt;<i>
+</I>&gt;<i> template &lt;class T&gt; inline T Min(T a, T b) { return (a&lt;b?a:b); }
+</I>
+Remember though, that solar.h gets included in files that are not C++
+compiled, but use the straight C compiler.  So you cannot use C++
+constructs like template or class in this file.  You may only use them in
+files that are *.hxx&quot; or such.
+
+Dan
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000742.html">[Open Office] stupid? tools/inc/solar.h question
+</A></li>
+	<LI> Next message: <A HREF="000744.html">[Open Office] stupid? tools/inc/solar.h question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#743">[ date ]</a>
+              <a href="thread.html#743">[ thread ]</a>
+              <a href="subject.html#743">[ subject ]</a>
+              <a href="author.html#743">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

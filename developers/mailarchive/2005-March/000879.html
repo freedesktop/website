@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Thursday, Tuesday
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000878.html">
+   <LINK REL="Next"  HREF="000880.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Thursday, Tuesday
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Status Thursday, Tuesday">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Wed, 30 Mar 2005 10:12:58 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000878.html">[Open Office] Status Tuesday
+</A></li>
+        <LI> Next message: <A HREF="000880.html">[Open Office] Error compiling
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#879">[ date ]</a>
+              <a href="thread.html#879">[ thread ]</a>
+              <a href="subject.html#879">[ subject ]</a>
+              <a href="author.html#879">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+on Thursday: added acquire and release implementations to the UNO proxy
+for Mono objects. Then asked Paolo Molaro (lupus) what might be wrong
+with my code that causes the segfault during GC. He thinks it's because
+I end up with two mono runtimes. One from /usr/bin/mono, one
+from /usr/lib/libmono.so (which the bridge links to). If I make the
+bridge buildable outside of a complete ooo build tree, he will help
+debug and find a workaround.
+
+Tuesday: autotoolized the bridge source. And made a new extras-2.tar.bz2
+to make beautiful impress html export possible again.
+
+Regards,
+
+Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000878.html">[Open Office] Status Tuesday
+</A></li>
+	<LI> Next message: <A HREF="000880.html">[Open Office] Error compiling
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#879">[ date ]</a>
+              <a href="thread.html#879">[ thread ]</a>
+              <a href="subject.html#879">[ subject ]</a>
+              <a href="author.html#879">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

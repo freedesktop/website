@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regarding issue no. 49919
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000157.html">
+   <LINK REL="Next"  HREF="000159.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regarding issue no. 49919
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Regarding issue no. 49919">michael@ximian.com
+       </A><BR>
+    <I>Thu, 20 Nov 2003 05:20:16 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000157.html">[Open Office] Regarding issue no. 49919
+</A></li>
+        <LI> Next message: <A HREF="000159.html">[Open Office] Regarding issue no. 49919
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#158">[ date ]</a>
+              <a href="thread.html#158">[ thread ]</a>
+              <a href="subject.html#158">[ subject ]</a>
+              <a href="author.html#158">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Amit,
+
+On Wed, 2003-11-19 at 03:51, Amit Shrivastava wrote:
+&gt;<i> How is ur trip going ?
+</I>
+	Well so far (for me).
+
+&gt;<i> I was able to fix the issue no: 49919 the issue was, i  am attaching my
+</I>&gt;<i> local diff ( Sorry some problem in my cvs ) this has one problems, i.e
+</I>&gt;<i> the sensitization part as the whole tab doesnt have sensitization part
+</I>&gt;<i> even the paste/paste details items also, so first these must be added.
+</I>&gt;<i> If require i will be able to investigate it furthur tommorrow.
+</I>
+	Ok; the patch looks fine so far (assuming it's reversed), I was
+anticipating that we'd check between the selection bounds not for all
+the sheet rows; 0 -&gt; MAXROWS is potentially a huge number of iterations
+of the same function, is there not a more efficient range based solution
+somewhere ?
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000157.html">[Open Office] Regarding issue no. 49919
+</A></li>
+	<LI> Next message: <A HREF="000159.html">[Open Office] Regarding issue no. 49919
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#158">[ date ]</a>
+              <a href="thread.html#158">[ thread ]</a>
+              <a href="subject.html#158">[ subject ]</a>
+              <a href="author.html#158">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] gui-symbol-replace breaks build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-December/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000183.html">
+   <LINK REL="Next"  HREF="000186.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] gui-symbol-replace breaks build
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] gui-symbol-replace breaks build">halls@debian.org
+       </A><BR>
+    <I>Thu, 18 Dec 2003 11:44:38 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000183.html">[Open Office] gui-symbol-replace breaks build
+</A></li>
+        <LI> Next message: <A HREF="000186.html">[Open Office] Dictionaries in build 47
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#192">[ date ]</a>
+              <a href="thread.html#192">[ thread ]</a>
+              <a href="subject.html#192">[ subject ]</a>
+              <a href="author.html#192">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Anil,
+
+On Fri, 2003-12-12 at 14:23, Rene Engelhard wrote:
+&gt;<i> gui-symbol-replace.diff causes the OOo build to fail:
+</I>&gt;<i> 
+</I>&gt;<i> .../openoffice.org-1.1.0/vcl/source/gdi/image.cxx:106:26: svx/svxids.hrc: Datei oder Verzeichnis nicht gefunden
+</I>
+Uhhm
+
+<A HREF="http://tools.openoffice.org/project_dependencies.png">http://tools.openoffice.org/project_dependencies.png</A>
+
+Look at the dependency cycle
+--&gt; = 'depends on'
+
+svx --&gt; sfx2 --&gt; framework --&gt; svtools --&gt; toolkit --&gt; vcl
+
+Your patch 'gui-symbol-replace.diff' adds a dependency from vcl to svx. 
+You can't do that because you have a circular build dependency and it
+becomes impossible to build from scratch.
+
+Chris
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000183.html">[Open Office] gui-symbol-replace breaks build
+</A></li>
+	<LI> Next message: <A HREF="000186.html">[Open Office] Dictionaries in build 47
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#192">[ date ]</a>
+              <a href="thread.html#192">[ thread ]</a>
+              <a href="subject.html#192">[ subject ]</a>
+              <a href="author.html#192">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

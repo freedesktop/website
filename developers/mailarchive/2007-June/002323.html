@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] VBA part build failure..on FreeBSD
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20VBA%20part%20build%20failure..on%20FreeBSD&In-Reply-To=20070622.093129.67876357.chat95%40mac.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002322.html">
+   <LINK REL="Next"  HREF="002327.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] VBA part build failure..on FreeBSD</H1>
+    <B>Rail Aliev</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20VBA%20part%20build%20failure..on%20FreeBSD&In-Reply-To=20070622.093129.67876357.chat95%40mac.com"
+       TITLE="[Open Office] VBA part build failure..on FreeBSD">rail at openoffice.org
+       </A><BR>
+    <I>Fri Jun 22 04:34:36 EDT 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002322.html">[Open Office] VBA part build failure..on FreeBSD
+</A></li>
+        <LI>Next message: <A HREF="002327.html">[Open Office] VBA part build failure..on FreeBSD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2323">[ date ]</a>
+              <a href="thread.html#2323">[ thread ]</a>
+              <a href="subject.html#2323">[ subject ]</a>
+              <a href="author.html#2323">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 22 June 2007 04:31:29 Maho NAKATA wrote:
+&gt;<i> /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:
+</I>&gt;<i>50:68: macro &quot;MIN&quot; requires 2 arguments, but only 1 given
+</I>&gt;<i> /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:
+</I>&gt;<i>51:68: macro &quot;MAX&quot; requires 2 arguments, but only 1 given
+</I>
+This helped me. Maybe it is a dirty hack but it worked. :)
+FreeBSD 6.2 RELEASE.
+
+--- sc/source/ui/vba/vbaaxis.cxx.orig   2007-05-26 23:43:22.000000000 +0400
++++ sc/source/ui/vba/vbaaxis.cxx    2007-05-26 23:43:49.000000000 +0400
+@@ -39,6 +39,8 @@
+ #include &lt;org/openoffice/excel/XlScaleType.hpp&gt;
+ #include &quot;vbaaxistitle.hxx&quot;
+ #include &quot;vbachart.hxx&quot;
++#undef MIN
++#undef MAX
+ using namespace ::com::sun::star;
+ using namespace ::org::openoffice;
+ using namespace ::org::openoffice::excel::XlAxisCrosses;
+
+
+-- 
+Best regards,
+Rail Aliev
+
+Be different: conform.
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002322.html">[Open Office] VBA part build failure..on FreeBSD
+</A></li>
+	<LI>Next message: <A HREF="002327.html">[Open Office] VBA part build failure..on FreeBSD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2323">[ date ]</a>
+              <a href="thread.html#2323">[ thread ]</a>
+              <a href="subject.html#2323">[ subject ]</a>
+              <a href="author.html#2323">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

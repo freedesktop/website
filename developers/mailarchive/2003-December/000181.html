@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Regarding Bug # 50765
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-December/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000180.html">
+   <LINK REL="Next"  HREF="000182.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Regarding Bug # 50765
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: Regarding Bug # 50765">michael@ximian.com
+       </A><BR>
+    <I>Mon, 08 Dec 2003 21:58:11 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000180.html">[Open Office] Regarding Bug # 50765
+</A></li>
+        <LI> Next message: <A HREF="000182.html">[Open Office] Italic Fonts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#181">[ date ]</a>
+              <a href="thread.html#181">[ thread ]</a>
+              <a href="subject.html#181">[ subject ]</a>
+              <a href="author.html#181">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Anil,
+
+On Sun, 2003-12-07 at 13:23, Anil Anil wrote:
+&gt;<i> First part of this bug (moving away from glib) is achieved through the
+</I>&gt;<i> following patch.
+</I>
+	Great; a few more comments on that - but you should commit this over
+the top of the diff in openoffice CVS currently.
+
+&gt;<i> Regarding the second part of the bug (interactive handling of new file
+</I>&gt;<i> save), I have observed that in the snapshot 680 from openoffice.org
+</I>&gt;<i> site, this particular bug does not exist. In case this is still required
+</I>&gt;<i> to be fixed, I can work on that.
+</I>
+	Up-stream 680 is not using the recent-files code (at all) - this is
+prolly why they don't have the problem; we have to fix it in our branch
+and then submit it up-stream; it's almost certainly caused by our
+changes.
+
+&gt;<i> +class Item {
+</I>&gt;<i> +public:
+</I>&gt;<i>  	char *uri;
+</I>&gt;<i>  	char *mimeType;
+</I>
+	We should use native OO.o strings for these: OUStrings for both should
+be sufficient I think; makes allocation lots easier and should bin some
+of the daft helpers we have there (?).
+
+&gt;<i> --- svtools/source/config/makefile.mk
+</I>&gt;<i> --- svtools/util/makefile.mk
+</I>
+	We should just bin the changes to these files in our patch I think; no
+point in adding old/stale stuff commented out up-stream.
+
+	Apart from that looks nice; when you've fixed that - can you commit to
+'openoffice' and file an IZ bug up-stream for this; and CC'
+<A HREF="mailto:mh@openoffice.org">mh@openoffice.org</A> on it; I should think he'll help to get it integrated
+/ send you to the right person. [ Oh, and you should update
+openoffice/TODO to reflect what you've done =]
+
+	Good work,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000180.html">[Open Office] Regarding Bug # 50765
+</A></li>
+	<LI> Next message: <A HREF="000182.html">[Open Office] Italic Fonts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#181">[ date ]</a>
+              <a href="thread.html#181">[ thread ]</a>
+              <a href="subject.html#181">[ subject ]</a>
+              <a href="author.html#181">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] syntax error in patches/src680/apply?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20syntax%20error%20in%20patches/src680/apply%3F&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002153.html">
+   <LINK REL="Next"  HREF="002155.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] syntax error in patches/src680/apply?</H1>
+    <B>Jonathan Smith</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20syntax%20error%20in%20patches/src680/apply%3F&In-Reply-To="
+       TITLE="[Open Office] syntax error in patches/src680/apply?">smithj at rpath.com
+       </A><BR>
+    <I>Mon Dec  4 14:28:21 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002153.html">[Open Office] changes to rpl2 distro-config
+</A></li>
+        <LI>Next message: <A HREF="002155.html">[Open Office] syntax error in patches/src680/apply?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2154">[ date ]</a>
+              <a href="thread.html#2154">[ thread ]</a>
+              <a href="subject.html#2154">[ subject ]</a>
+              <a href="author.html#2154">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>When building with head ooo-build, I get the following error:
+
+Execute with  for distro(s) 'rpl2 Localize'
+Old patch version - pruning LFs
+PATCHPATH =&gt; 
+.:../evo2:../vba:../mono:../64bit:../cairo:../scsolver:../gstreamer
+OLDEST_SUPPORTED =&gt; ooe680-m2
+Syntax error at 
+/tmp/conary/builds/openoffice.org/ooo-build/patches/src680/apply, line 1792
+make: *** [stamp/patch.apply] Error 2
+
+Poking around in that file, the following commit seems relevent:
+
+revision 1.1456
+date: 2006/12/04 11:08:16;  author: rengelhard;  state: Exp;  lines: +3 -0
+2006-12-03  Rene Engelhard  &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rene at debian.org</A>&gt;
+
+         * patches/src680/apply,
+           patches/src680/ooo64508.vcl.honourfontconfighinting.patch,
+           patches/src680/ooo59127.vcl.honourcairofont.patch: import from
+           Fedora, add to FedoraFixes
+
+I don't know the ins and outs of the format of the file, but that area 
+looks ok to me. Perhaps someone else wouldn't mind taking a look?
+
+-smithj
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002153.html">[Open Office] changes to rpl2 distro-config
+</A></li>
+	<LI>Next message: <A HREF="002155.html">[Open Office] syntax error in patches/src680/apply?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2154">[ date ]</a>
+              <a href="thread.html#2154">[ thread ]</a>
+              <a href="subject.html#2154">[ subject ]</a>
+              <a href="author.html#2154">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

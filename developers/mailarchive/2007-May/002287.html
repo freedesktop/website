@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] action required or vba will break your build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20action%20required%20or%20vba%20will%20break%20your%20build&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002286.html">
+   <LINK REL="Next"  HREF="002288.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] action required or vba will break your build</H1>
+    <B>Noel Power</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20action%20required%20or%20vba%20will%20break%20your%20build&In-Reply-To="
+       TITLE="[Open Office] action required or vba will break your build">noel.power at novell.com
+       </A><BR>
+    <I>Tue May 15 05:19:52 EDT 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002286.html">[Open Office] OOo Status digest issue #2 - May 14 2007
+</A></li>
+        <LI>Next message: <A HREF="002288.html">[Open Office] crash reporter,	what are the various distro's strategies ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2287">[ date ]</a>
+              <a href="thread.html#2287">[ thread ]</a>
+              <a href="subject.html#2287">[ subject ]</a>
+              <a href="author.html#2287">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+I have added some new changes to ooo-build ( trunk only ), if you update
+an existing ( m211 ) build the patch apply phase will break unless you
+do one of the following 
+
+either
+  a) rerun autogen.sh
+or
+  b) run the following commands manually..
+
+      ooo-build/bin/cvs-tags-normalize
+ooo-build/build//src680-m211/oovbaapi/org/openoffice/vba/*
+
+      ooo-build/bin/cvs-tags-normalize
+ooo-build/build//src680-m211/oovbaapi/org/openoffice/excel/*
+
+
+Noel
+-- 
+Noel Power
+OpenOffice Developer 
+Novell Ireland Software Limited
+Corrig Court, Corrig Road
+Sandyford Business Estate, Sandyford
+Dublin 18
+<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">noel.power at novell.com</A>  
+
+Novell, Inc. 
+Software for the Open Enterprise 
+www.novell.com/open 
+SUSE&#174; Linux Enterprise 10
+Your Linux is ready
+www.novell.com/linux 
+
+Registered No: 223694
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002286.html">[Open Office] OOo Status digest issue #2 - May 14 2007
+</A></li>
+	<LI>Next message: <A HREF="002288.html">[Open Office] crash reporter,	what are the various distro's strategies ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2287">[ date ]</a>
+              <a href="thread.html#2287">[ thread ]</a>
+              <a href="subject.html#2287">[ subject ]</a>
+              <a href="author.html#2287">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

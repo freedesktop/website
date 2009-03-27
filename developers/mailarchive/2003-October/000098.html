@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Other Build Problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:nhudson%40lunar-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000096.html">
+   <LINK REL="Next"  HREF="000100.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Other Build Problems
+   </H1>
+    <B>Nick Hudson
+    </B> 
+    <A HREF="mailto:nhudson%40lunar-linux.org"
+       TITLE="[Open Office] Other Build Problems">nhudson@lunar-linux.org
+       </A><BR>
+    <I>Fri, 10 Oct 2003 19:03:46 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000096.html">[Open Office] Other Build Problems
+</A></li>
+        <LI> Next message: <A HREF="000100.html">[Open Office] Other Build Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#98">[ date ]</a>
+              <a href="thread.html#98">[ thread ]</a>
+              <a href="subject.html#98">[ subject ]</a>
+              <a href="author.html#98">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-fbmgsbVaqE6Xqs5A1A5e
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Ok I just wanted to say I got OO.o to build and install though without
+bonobo support it works.  I had another bonobo error that I will try to
+look at again later and will post what I find.  Anyway its installed and
+working and looks great.  Thanks for all the help guys and good job
+hacking on OO.o its quite nice.
+
+I have a quick question though the --with-distro tag, what is the used
+for?  If I say --with-distro=3DLunar-Linux (my distro) the build fails
+with the mozilla error I posted a few days ago.  If I dont put anything
+it compiles fine. =20
+
+Now to make it work with our packaging scheme and I will include it with
+my distro... yay another 12 hours compile time ! :)
+
+Thanks
+
+Nick
+
+
+
+On Fri, 2003-10-10 at 07:49, Martin Kretzschmar wrote:
+&gt;<i> Hi Nick,
+</I>&gt;<i>=20
+</I>&gt;<i> Am Fr, den 10.10.2003 schrieb Nick Hudson um 14:20:
+</I>&gt;<i> &gt; Ok I have seemed to get past my mozilla problem and found another, any
+</I>&gt;<i> &gt; idea what this is?  Seems I am missing some header file called
+</I>&gt;<i> &gt; services.h for it to compile the bonobo stuff.
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; obo-control.o `test -f 'ooo-bonobo-control.cxx' || echo
+</I>&gt;<i> &gt; './'`ooo-bonobo-control.cxx
+</I>&gt;<i> &gt; ooo-bonobo-control.cxx:18:22: services.h: No such file or directory
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>=20
+</I>&gt;<i> Thanks, incomplete Makefile.am, fixed in CVS now. You can get services.h
+</I>&gt;<i> and string-macros.h from cvs if you don't want to wait for the next
+</I>&gt;<i> ooo-build release.
+</I>&gt;<i>=20
+</I>&gt;<i> Regards,
+</I>&gt;<i> 	Martin
+</I>
+--=-fbmgsbVaqE6Xqs5A1A5e
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.3 (GNU/Linux)
+
+iD8DBQA/h0jiG5D1jWCZpTwRAt77AJ4sFkLOoSvpJPAMAqf3Yob7GHzIVQCcCm1K
+d5vGlgtlAtip+c7ti7Nnokw=
+=0/gn
+-----END PGP SIGNATURE-----
+
+--=-fbmgsbVaqE6Xqs5A1A5e--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000096.html">[Open Office] Other Build Problems
+</A></li>
+	<LI> Next message: <A HREF="000100.html">[Open Office] Other Build Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#98">[ date ]</a>
+              <a href="thread.html#98">[ thread ]</a>
+              <a href="subject.html#98">[ subject ]</a>
+              <a href="author.html#98">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

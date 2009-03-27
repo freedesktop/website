@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] module vcl - checkdll check_libvclplug_kde645li.so fails
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   
+   <LINK REL="Next"  HREF="000603.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] module vcl - checkdll check_libvclplug_kde645li.so fails
+   </H1>
+    <B>Jan Holesovsky
+    </B> 
+    <A HREF="mailto:kendy%40suse.cz"
+       TITLE="[Open Office] module vcl - checkdll check_libvclplug_kde645li.so fails">kendy@suse.cz
+       </A><BR>
+    <I>Wed, 1 Dec 2004 15:55:19 +0100</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="000603.html">[Open Office] module vcl - checkdll
+ check_libvclplug_kde645li.so fails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#602">[ date ]</a>
+              <a href="thread.html#602">[ thread ]</a>
+              <a href="subject.html#602">[ subject ]</a>
+              <a href="author.html#602">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Hanno!
+
+On Monday 29 November 2004 21:04, Hanno Meyer-Thurow wrote:
+
+[...]
+&gt;<i> ../unxlngi4.pro/lib/check_libvclplug_kde645li.so Checking DLL
+</I>&gt;<i> ../unxlngi4.pro/lib/check_libvclplug_kde645li.so ...: ERROR: libkdeui.so.4:
+</I>&gt;<i> cannot open shared object file: No such file or directory dmake:  Error
+</I>&gt;<i> code 1, while making '../unxlngi4.pro/lib/libvclplug_kde645li.so' ---*
+</I>&gt;<i> TG_SLO.MK *---
+</I>&gt;<i>
+</I>&gt;<i> ERROR: Error 65280 occurred while making
+</I>&gt;<i> /var/tmp/portage/openoffice-ximian-1.3.6/work/OOo_1.1.3_src/vcl/util
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> if I add -L/usr/kde/3.3/lib like:
+</I>[...]
+&gt;<i> it works!
+</I>&gt;<i> So my question is: Where do I add $(WIDGETSET_KDE_LIBS) that the
+</I>&gt;<i> checkdll.sh script uses this variable for module vcl? Thanks for help!
+</I>
+Please do you have /usr/kde/3.3/lib in /etc/ld.so.conf, or at least in 
+LD_LIBRARY_PATH? If not, could you try checkdll.sh with exported 
+LD_LIBRARY_PATH=/usr/kde/3.3/lib?
+
+Bye,
+Jan
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="000603.html">[Open Office] module vcl - checkdll
+ check_libvclplug_kde645li.so fails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#602">[ date ]</a>
+              <a href="thread.html#602">[ thread ]</a>
+              <a href="subject.html#602">[ subject ]</a>
+              <a href="author.html#602">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

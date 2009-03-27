@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] CVS HEAD segfaults with sime latin2 languages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20CVS%20HEAD%20segfaults%20with%20sime%20latin2%20languages&In-Reply-To=20070101203240.GA17473%40rene-engelhard.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002177.html">
+   <LINK REL="Next"  HREF="002178.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] CVS HEAD segfaults with sime latin2 languages</H1>
+    <B>Rene Engelhard</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20CVS%20HEAD%20segfaults%20with%20sime%20latin2%20languages&In-Reply-To=20070101203240.GA17473%40rene-engelhard.de"
+       TITLE="[Open Office] CVS HEAD segfaults with sime latin2 languages">rene at debian.org
+       </A><BR>
+    <I>Mon Jan  8 01:22:15 EST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002177.html">[Open Office] CVS HEAD segfaults with sime latin2 languages
+</A></li>
+        <LI>Next message: <A HREF="002178.html">[Open Office] ooqstart &amp; KDE-only systems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2196">[ date ]</a>
+              <a href="thread.html#2196">[ thread ]</a>
+              <a href="subject.html#2196">[ subject ]</a>
+              <a href="author.html#2196">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Rene Engelhard wrote:
+&gt;<i> VMiklos wrote:
+</I>[...]
+&gt;<i> &gt; with this OOo just segfaults with my locale (LANG and LC_ALL set to
+</I>&gt;<i> &gt; hu_HU)
+</I>&gt;<i> 
+</I>&gt;<i> Same here. (with de_DE). Reverting Jians change and my consecutive
+</I>&gt;<i> change from that changlog entry doesn't make a difference, though.
+</I>&gt;<i> 
+</I>&gt;<i> Maybe an issue with some Size things again? size-cppuhelper got touched
+</I>&gt;<i> in the meanwhile... There also was configmgr refactoring....
+</I>
+Trying reveals that disabling size-sal-textenc.diff fixes this. For me
+(with it applied) it works with de_DE and de_DE.utf8 (sorry for the wrong
+comment above, didn't think about the locale affecting it...) but it
+does *not* work with <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">de_DE at euro.</A>
+No idea how it is with other locales (didn't test them...)
+
+I get the following:
+
+#0  0x0f08da88 in osl_getSystemPathFromFileURL ()
+   from /usr/lib/openoffice/program/libuno_sal.so.3
+#1  0x0f082550 in osl_loadModule ()
+   from /usr/lib/openoffice/program/libuno_sal.so.3
+#2  0x0f0b4d60 in Impl_getTextEncodingData ()
+   from /usr/lib/openoffice/program/libuno_sal.so.3
+#3  0x0f0b4b30 in rtl_createUnicodeToTextConverter ()
+   from /usr/lib/openoffice/program/libuno_sal.so.3
+#4  0x0f088e3c in UnicodeToText ()
+   from /usr/lib/openoffice/program/libuno_sal.so.3
+#5  0x0f0825d8 in osl_loadModule ()
+   from /usr/lib/openoffice/program/libuno_sal.so.3
+#6  0x0f0b4d60 in Impl_getTextEncodingData ()
+   from /usr/lib/openoffice/program/libuno_sal.so.3
+#7  0x0f0b4b30 in rtl_createUnicodeToTextConverter ()
+   from /usr/lib/openoffice/program/libuno_sal.so.3
+#8  0x0f088e3c in UnicodeToText ()
+   from /usr/lib/openoffice/program/libuno_sal.so.3
+#9  0x0f0825d8 in osl_loadModule ()
+   from /usr/lib/openoffice/program/libuno_sal.so.3
+#10 0x0f0b4d60 in Impl_getTextEncodingData ()
+   from /usr/lib/openoffice/program/libuno_sal.so.3
+#11 0x0f0b4b30 in rtl_createUnicodeToTextConverter ()
+[...]
+
+Michael, Kendy: An idea what's going wrong here? Should I temporarily
+disable size-sal-textenc.diff until this is fixed?
+
+Regards,
+
+Rene
+-- 
+.''`.  Ren&#233; Engelhard -- Debian GNU/Linux Developer
+ : :' : <A HREF="http://www.debian.org">http://www.debian.org</A> | <A HREF="http://people.debian.org/~rene/">http://people.debian.org/~rene/</A>
+ `. `'  <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rene at debian.org</A> | GnuPG-Key ID: 248AEB73
+   `-   Fingerprint: 41FA F208 28D4 7CA5 19BB  7AD9 F859 90B0 248A EB73
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: Digital signature
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070108/058c81b8/attachment.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20070108/058c81b8/attachment.bin</A> 
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002177.html">[Open Office] CVS HEAD segfaults with sime latin2 languages
+</A></li>
+	<LI>Next message: <A HREF="002178.html">[Open Office] ooqstart &amp; KDE-only systems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2196">[ date ]</a>
+              <a href="thread.html#2196">[ thread ]</a>
+              <a href="subject.html#2196">[ subject ]</a>
+              <a href="author.html#2196">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

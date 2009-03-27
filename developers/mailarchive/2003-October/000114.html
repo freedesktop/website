@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Patches in diff format...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000113.html">
+   <LINK REL="Next"  HREF="000115.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Patches in diff format...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: Patches in diff format...">michael@ximian.com
+       </A><BR>
+    <I>Tue, 28 Oct 2003 14:55:51 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000113.html">[Open Office] Re: bullet issues ....
+</A></li>
+        <LI> Next message: <A HREF="000115.html">[Open Office] opensymbol font nasties ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Anil,
+
+On Tue, 2003-10-28 at 12:56, Anil Anil wrote:
+&gt;<i> The steps that you had given worked out very smoothly. Thanks for adding
+</I>&gt;<i> all the details.....:-)
+</I>
+	Great :-)
+
+&gt;<i> Attached are the patches in diff format:
+</I>
+	Ok - it'd be great if you could concatenate all of these and append
+them to patches/OOO_1_1/gui-symbol remove; you can do this by:
+
+	cat foo-baa.diff &gt;&gt; gui-symbol-remove.diff    # (etc.)
+
+	When you've done that write a suitable ChangeLog entry in the toplevel
+and do a 'cvs commit' [ it's often worth doing a cvs diff -u in
+openoffice/ first to make sure it's all looking good though ].
+
+	I don't think it's a productive use of time to be finding more of these
+and adding this code though :-)
+
+&gt;<i> In case you want to checkin these patches, please feel free to do that.
+</I>&gt;<i> Otherwise if you want me to checkin these, please let me know of your
+</I>&gt;<i> approval. 
+</I>
+	Yes of course etc. :-)	
+
+&gt;<i> As I was going through some of the src files, I found that some of the
+</I>&gt;<i> images (e.g. one_left.bmp, all_left.bmp) are already being used in a
+</I>&gt;<i> similar manner. 
+</I>
+	Right; my feeling is we should try to use Symbol where we can - since
+it makes the resource files smaller.
+
+&gt;<i> In case we go for the other mechanism of rendering images in source
+</I>&gt;<i> rather than in src files, would all of these places require changes...?
+</I>
+	Yes; we'd want to switch them to use Symbol=Foo [ ie. the reverse of
+what we're doing now ]. The problem is, each time we switch one of those
+images we add ~24x24x4 bytes to the resource file = 2 1/2k so we don't
+want to be doing it a lot.
+
+&gt;<i> If yes, then current approach might be better as of now. 
+</I>
+	Sure, for now it's fine.
+
+&gt;<i> Anyways, while I would be working on the current approach (fixing in
+</I>&gt;<i> .src), I would still be interested to know the alternate approach. In
+</I>&gt;<i> case you have some pointers on that, do let me know. 
+</I>
+	The alternative approach is documented in the bug; essentially you need
+to change the code that renders that symbol. The code is in:
+
+	vcl/source/window/decoview.cxx (ImplDrawSymbol)
+
+	search for SYMBOL_ARROW_UP. We would need instead to understand how
+that method is used / works, and have a single copy of the Up/Down (and
+other ugly symbols) icons accessible from that code.
+
+	To do that you'd need to add the icons to vcl/source/src/images.src,
+giving them new SV_RESID_FOO_BAA type identifies defined in
+vcl/inc/svids.hrc, and then add some code that did:
+
+	BitmapEx aBmp(ResId( SV_RESID_FOO_BAA, 
+		      Resource::GetResManager());
+	pDev-&gt;DrawBitmapEx( Point( foo_X, baa_Y ), aBmp );
+
+	or something similar.
+
+	Also - it's best to CC all this sort of thing to the OO.o hackers list
+for public interest / archival.
+
+	Good work anyway :-)
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000113.html">[Open Office] Re: bullet issues ....
+</A></li>
+	<LI> Next message: <A HREF="000115.html">[Open Office] opensymbol font nasties ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.3.10 + win32 berkley build error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:alienoid%40is.lg.ua">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000925.html">
+   <LINK REL="Next"  HREF="000927.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.3.10 + win32 berkley build error
+   </H1>
+    <B>Ruslan Spivak
+    </B> 
+    <A HREF="mailto:alienoid%40is.lg.ua"
+       TITLE="[Open Office] ooo-build-1.3.10 + win32 berkley build error">alienoid@is.lg.ua
+       </A><BR>
+    <I>Tue, 03 May 2005 12:05:37 +0300</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000925.html">[Open Office] Status
+</A></li>
+        <LI> Next message: <A HREF="000927.html">[Open Office] ooo-build-1.3.10 + win32 berkley build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#926">[ date ]</a>
+              <a href="thread.html#926">[ thread ]</a>
+              <a href="subject.html#926">[ subject ]</a>
+              <a href="author.html#926">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello.
+
+I'm trying to build OOo 1.1.4 on win32 under cygwin and get following
+error regarding berkley db:
+
+/usr/bin/touch.exe ./wntmsci8.pro/misc/build/so_patched_so_berkeleydb
+mkdir.pl ./wntmsci8.pro/misc/build/db-4.2.52.NC/build_win32
+cd ./wntmsci8.pro/misc/build/db-4.2.52.NC/build_win32 &amp;&amp; wdevenv
+Berkeley_DB Release  &amp;&amp; /usr/bin/touch.exe so_configured_so_berkeleydb
+Wait....
+mv ./wntmsci8.pro/misc/build/db-4.2.52.NC/build_win32/so_configured_so_berkeleydb ./wntmsci8.pro/misc/build/so_configured_so_berkeleydb
+mkdir.pl ./wntmsci8.pro/misc/build/db-4.2.52.NC/build_win32
+cd ./wntmsci8.pro/misc/build/db-4.2.52.NC/build_win32 &amp;&amp; devenv
+Berkeley_DB.sln /build Release /project build_all /useenv ; devenv
+Berkeley_DB.sln /build Release /project db_java /useenv
+&amp;&amp; /usr/bin/touch.exe so_built_so_berkeleydb
+dmake:  Error code 1, while making
+'./wntmsci8.pro/misc/build/so_built_so_berkeleydb'
+echo: No match.
+
+ERROR: Error 65280 occurred while making /home/alienoid/ooo-
+build/build/OOO_1_1_4/berkeleydb
+make: *** [stamp/build] Error 1
+
+---------------------------------------------------------------
+
+As i understand the problem is in db_java.
+Can somebody give any hint how to disable that db_java or make
+workaround?
+Thanks a lot in advance.
+
+Ruslan
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000925.html">[Open Office] Status
+</A></li>
+	<LI> Next message: <A HREF="000927.html">[Open Office] ooo-build-1.3.10 + win32 berkley build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#926">[ date ]</a>
+              <a href="thread.html#926">[ thread ]</a>
+              <a href="subject.html#926">[ subject ]</a>
+              <a href="author.html#926">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

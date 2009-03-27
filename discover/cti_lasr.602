@@ -1,0 +1,240 @@
+@CT 1
+@LM 5
+@RM 75
+@PL 62
+@TB -----T-----T-----T-----T-----T-----T-----T-----T-----T-----T-----T-----T-----T-----T-----T-----T-----T-----T-----T-----T-----T-----T
+@MT 1
+@MB 1
+@PO 5
+@PN 1
+@OP 
+@LH 6
+.KAP(1.) éVODNÖ INFORMACE
+
+      ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+      ³          Textovì  editor Text602          ³
+      ³                           verze: 3.00                         ³
+      ³                                                               ³
+      ³    Drivery pro laserov‚ tisk rny    ³
+      ³                                                               ³
+      ³  Software602, spol. s r.o., Pod pramenem 3,  Praha 4 - Nusle  ³
+      ³                                                               ³
+      ³  Objedn vky ................. P.O.Box 1, 140 00  Praha 4      ³
+      ³  Prodejny :                                                   ³
+      ³               Praha 1, Sp len  19     (Po-P   9,00-17,00)     ³
+      ³               Praha 1, Biskupskì Dv…r (Po-P  10,00-18,00)     ³
+      ³                                                               ³
+      ³  éstıedna :    (02)423817      nebo           (02)421368      ³
+      ³                                                               ³
+      ³  Hotline a z znam hovor… v mimopracovn¡ dobØ                  ³
+      ³                                                               ³
+      ³                (02)422506      nebo           (02)420905      ³
+      ³                                                               ³
+      ³  Fax :         (02)421105      Mail602 :      (02)420448      ³
+      ³                                                               ³
+      ³  Expedice :    (02)421517                                     ³
+      ³                                                               ³
+      ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+
+      Diference mezi naŸ¡t n¡m downloadu verze 3.00 od verze 2.x:
+
+    Download se  spouçt¡ pouze z  prostıed¡ textov‚ho editoru  tak, §e jako
+    definiŸn¡ soubor pro tisk si zvol¡te pı¡sluçnì DST soubor v nab¡dce pro
+    tisk. Download z…st v  naŸten v tisk rnØ i po opuçtØn¡ T602 do t‚ doby,
+    dokud  nevypnete  tisk rnu.  Opakovan‚mu  naŸ¡t n¡  downloadu zabr n¡te
+    stlaŸen¡m kl vesy ESC.
+
+    Pozn mka :  Download pracuje pouze v prostıed¡ textov‚ho editoru.
+
+.ENDTEXT
+.KAP(2.) SPUæT·NÖ A PüÖKLADY
+
+PüIPOJENÖ PüES SRIOV ROZHRANÖ
+
+       Pokud je  tisk rna pıipojena k  s‚riov‚mu rozhran¡ poŸ¡taŸe  (COM1:,
+    COM2:) je  tıeba zaıadit do  souboru AUTOEXEC.BAT parametry  se kterìmi
+    pracuje tisk rna. Tento pı¡kaz  se definuje pomoc¡ standardn¡ho pı¡kazu
+    MODE. (Podrobnì popis pı¡kazu MODE najdete v manu lu MS-DOSu.)
+
+       Pı¡klad:              mode com1:9600,n,8,1
+
+    (9600 baud,  § dn  parita, d‚lka slova  8 bit… a 1  stop bit) a z roveå
+    mus¡  bìt stejnØ  nastavena vaçe  tisk rna. VØtçinou  se tyto parametry
+    nastavuj¡ buÔ  DIP pıep¡naŸi nebo standardn¡mi  tlaŸ¡tky pı¡mo z panelu
+    tisk rny (bli§ç¡ informace naleznete v manu lu k vaç¡ tisk rnØ). Nasta­
+    ven¡ parametr… pıenosu m…§ete samozıejmØ zvolit i jin‚, ne§ bylo uvede­
+    no v naçem pı¡kladu. Mus¡te se ale pıitom dr§et n sleduj¡c¡ch pravidel:
+
+       - d‚lka slova mus¡ bìt 8 bit…,
+       - je vhodn‚ zvolit maxim ln¡ pıenosovou rychlost,
+       - tisk rnØ se pos¡l  velk‚ mno§stv¡ dat,
+       - nesm¡te pou§¡t  parametr p (v opaŸn‚m  pı¡padØ by s v mi
+         editor pıestal  komunikovat, pokud by  tisk rna byla off
+         line, vypnut  apod.)
+
+
+.ENDTEXT
+.KAP(3.) PüEHLED LASEROVíCH TISKµREN
+@PA
+             PüEHLED PODPOROVANíCH LASEROVíCH TISKµREN
+
+   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+   ³ Tisk rna                  ³ DST          ³ Emulace                 ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ AcerLP-76                 ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Borsu Blaserstar II       ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Brother HL-8e             ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Canon LaserJet LBP 4 PLUS ³ LBP4_CUR     ³ Min. 1MB RAM pamØœ      ³
+   ³                LBP 8      ³ LBP4_ROM     ³ Neumo§åuje tisk obr zk… ³
+   ³                           ³ LBP4_SER     ³                         ³
+   ³                           ³ LBP4_SCR     ³                         ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Canon LaserJet LBP 4 LITE ³ LBP4LITE     ³ Pouze COURIER           ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Citizen Overture 106      ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Dataproducts LZR 650      ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Epson CG-5000             ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Facit P6060               ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ HP LaserJet II            ³ LJII_ROM     ³                         ³
+   ³ Custom Font Cartridge     ³              ³                         ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ HP LaserJet plus          ³ LJ__Plus     ³                         ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ HP LaserJet II, IID       ³ LJ_2.DST     ³                         ³
+   ³ HP LaserJet IIP           ³              ³                         ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ HP LaserJet III, IIID     ³ LJ_3.DST     ³                         ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ HP LaserJet 4             ³ LJ_4.DST     ³                         ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ HP LaserJet 4L            ³ LJ_4LCS.DST  ³Vyu§¡v  intern¡ Ÿeçtinu  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Kyocera F-800             ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Mannesm.Tally MT905       ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Memorex Telex 1808        ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Nixdorf MD12              ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Okilaser 400              ³ OKI400E.DST  ³ HP Laserjet             ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Okilaser 400e             ³ OKI400E.DST  ³ HP Laserjet             ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Okilaser 400ex            ³ OKI400EX.DST ³ HP Laserjet             ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Okilaser 410              ³ OKI410.DST   ³ HP Laserjet             ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Okilaser 800              ³ OKI810.DST   ³ HP Laserjet             ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Okilaser 810              ³ OKI810.DST   ³ HP Laserjet             ³
+   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+   ³ Philips NMS 1480          ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Profex LD                 ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Ricoh PC Laser 6000       ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Sanyo SPX 608             ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Schneider S Printer       ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Seikosha OP-105           ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Sharp JX-9500             ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Star Laserprinter 4       ³ STAR_LS4.DST ³ HP Laserjet             ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Star Laserprinter 8       ³ STAR_LS4.DST ³ HP Laserjet             ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Star LaserPrinter 5       ³ STAR_LS5.DST ³ HP Laserjet             ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ IBM LEXMARK 4029          ³ IBM_4029     ³ HP Laserjet             ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ IBM LEXMARK 4037          ³ IBM_4037     ³ HP Laserjet             ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ IBM LEXMARK 4039          ³ IBM_4039     ³ HP Laserjet             ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Ta TriumAdler SDR 77      ³ LJP__LQ      ³ HP Laserjet+        *)  ³
+   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+   ³ Wang LDP8-DSK             ³ LJII_LQ      ³ HP Laserjet II      *)  ³
+   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+       *)  Takto oznaŸen‚  tisk rny  nejsou  odzkouçen‚. Tisk rnu  je tıeba
+    nastavit do pı¡sluçn‚ho emulaŸn¡ho m¢du.
+
+
+    Multifonty pro laserov‚ tisk rny:
+
+    KromØ  z kladn¡ch fontu  pro tisk rny  nab¡z¡me v  kompletu nov‚  verze
+    textov‚ho editoru Ÿtyıi typy p¡sma:
+
+                        1. COURIER
+                        2. ROMAN
+                        3. SERIF
+                        4. SCRIPT
+
+.ENDTEXT
+.KAP(4.) POZNµMKY
+
+@PA
+N·KTER ASPEKTY PRAKTICKHO POU¦ITÖ LASEROVíCH TISKµREN
+
+      Tisk rny, kter‚ nejsou vìrobkem firmy Hewlett-Packard, nicm‚nØ emulu­
+    j¡ LaserJet Plus  nebo LaserJet II, je tıeba  do tohoto emulaŸn¡ho m¢du
+    pıepnout: buÔ z kontroln¡ho panelu tisk rny, nebo pıepnut¡m pı¡sluçnìch
+    DIP pıep¡naŸ…, popı¡padØ zasunut¡m pı¡sluçn‚ emulaŸn¡ karty.
+
+      V souŸasn‚ dobØ si ji§ § dnì vìrobce nedovol¡ ignorovat tento pr…mys­
+    lovì standard, kterì je v oblasti laserovìch tisk ren stejnØ silnì, ja­
+    ko ESC/P protokol firmy EPSON pro maticov‚ tisk rny.
+
+
+o Pozn mka 1
+
+       Pokud je nastaven na kontroln¡m panelu tisk rny jinì re§im (po­
+       Ÿet kopi¡, landscape fonty ap.)  ne§ v jak‚m ji chcete provozo­
+       vat spolu  s editorem Text602,  je tıeba jej  zmØnit buÔ pomoc¡
+       kontroln¡ho  panelu,  nebo  £pravou  pı¡kaz…  <INIT>  a <RESET>
+       v pı¡sluçn‚m DST souboru.
+
+o Pozn mka 2
+
+       Vzhledem k tomu, §e se jedn   o tisk pomoc¡ download nelze kom­
+       binovat r…zn‚ velikosti p¡sma mezi sebou (Elite, Condens, çiro­
+       k‚, vysok‚ a  velk‚) nebo s tuŸnìm p¡smem  a kurz¡vou. Je mo§n‚
+       je kombinovat pouze s podtr§en¡m a indexy. Z kladn¡ druhy p¡sma
+       (standardn¡, tuŸn‚ a kurz¡va) jsou k dispozici ve velikosti Pi­
+       ca.
+
+
+o Pozn mka 3
+
+       DefiniŸn¡ soubor  LJII_ROM.DST nepou§¡v  download -  je urŸen pro HP
+       LASERJET Custom Font Cartridge, kterou distribuuje Hewlett - Packard
+       ke svìm laserovìm tisk rn m.
+
+o Pozn mka 4
+
+       U tisk rny  STAR LS5 a OKI  400e doch z¡ z d…vodu  nedostatku pamØti
+       k  pıeplnØn¡ bufferu  a n sledn‚  chybØ. Z  tohoto d…vodu  je omezen
+       poŸet  font…,  kter‚  budete  moci  v  z kladn¡ konfiguraci tisk rny
+       vyu§¡vat.
+
+o Pozn mka 5
+
+       Tisk rna HP LaserJet  4L vyu§¡v  intern¡ Ÿesk‚ fonty  a neprov d¡ se
+       tedy download tisk rny. Vzhledem k tomu, §e se jedn  o tzv. SCALABLE
+    fonty (INTELLIFONTY), nelze dos hnout vysok‚ a çirok‚ p¡smo.
+
+.ENDTEXT
+.STOP

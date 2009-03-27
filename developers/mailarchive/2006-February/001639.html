@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] regcomp crashes during make install
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20regcomp%20crashes%20during%20make%20install&In-Reply-To=e8b3acb60602192225y476c505dn86be2fdff1616f9c%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001624.html">
+   <LINK REL="Next"  HREF="001625.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] regcomp crashes during make install</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20regcomp%20crashes%20during%20make%20install&In-Reply-To=e8b3acb60602192225y476c505dn86be2fdff1616f9c%40mail.gmail.com"
+       TITLE="[Open Office] regcomp crashes during make install">bero at arklinux.org
+       </A><BR>
+    <I>Thu Feb 23 11:19:06 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001624.html">[Open Office] regcomp crashes during make install
+</A></li>
+        <LI>Next message: <A HREF="001625.html">[Open Office] qatesttool
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1639">[ date ]</a>
+              <a href="thread.html#1639">[ thread ]</a>
+              <a href="subject.html#1639">[ subject ]</a>
+              <a href="author.html#1639">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday, 20. February 2006 07:25, Weichuan Lin wrote:
+&gt;<i> hi, Bernhard.
+</I>&gt;<i> which platform do you use? on 64 bit system, the registering of java
+</I>&gt;<i> component still has some weik prolem.
+</I>
+This is a normal x86 box -- I think it's possibly related to
+<A HREF="http://gcc.gnu.org/bugzilla/show_bug.cgi?id=26410">http://gcc.gnu.org/bugzilla/show_bug.cgi?id=26410</A>
+
+Some parts of OOo use this stuff, and if it exists in the parsers but not in 
+the base class, this will obviously go wrong.
+
+I'm currently rebuilding all the Java stuff after applying the fix to gcc -- 
+but I'm rather pessimistic; if this were the problem it would probably fail 
+for many more people (or is everyone else using a different JAXP 
+implementation?).
+
+Since compiling OOo takes 4 days on my hardware these days (All the Java stuff 
+certainly slows things to a crawl -- e.g. the &quot;gcj -o libxercesImpl.jar.so 
+libxercesImpl.jar&quot; part takes almost a full day if you have 256 MB RAM -- but 
+that's gcc's fault), it'll be a while before we know.
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001624.html">[Open Office] regcomp crashes during make install
+</A></li>
+	<LI>Next message: <A HREF="001625.html">[Open Office] qatesttool
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1639">[ date ]</a>
+              <a href="thread.html#1639">[ thread ]</a>
+              <a href="subject.html#1639">[ subject ]</a>
+              <a href="author.html#1639">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

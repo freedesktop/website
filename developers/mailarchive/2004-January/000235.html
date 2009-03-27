@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOo text layout
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000227.html">
+   <LINK REL="Next"  HREF="000239.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOo text layout
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] OOo text layout">michael@ximian.com
+       </A><BR>
+    <I>Sat, 17 Jan 2004 13:06:00 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000227.html">[Open Office] OOo text layout
+</A></li>
+        <LI> Next message: <A HREF="000239.html">[Open Office] OOo text layout
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#235">[ date ]</a>
+              <a href="thread.html#235">[ thread ]</a>
+              <a href="subject.html#235">[ subject ]</a>
+              <a href="author.html#235">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Rama,
+
+On Tue, 2004-01-13 at 23:38, Ramanan Selvaratnam wrote:
+&gt;<i> I wish to understand how OOo renders complex text in the indic range.
+</I>
+	Right - I don't understand this but I can give you a few pointers. As I
+understand it's different on Unix and Windows - on Unix we use ICE, but
+on win32 I believe we use uniscribe.
+
+&gt;<i> Where should I look to understand the mechanism for text layout?
+</I>
+	I believe you want to see 'sallayout' and it's implentations in
+vcl/[unx/win]/source/gdi/sallayout.cxx or somesuch.
+
+&gt;<i> Tamil unicode fonts are experiencing a trauma due to non standard
+</I>&gt;<i> encoding history. My immediate task is to filter the good ones out.
+</I>
+	Ah - if it's a font problem - the solution is perhaps easier; the font
+code is _highly_ complex; but it's possible you can fix the problem with
+a simple schema fix. The best way to prototype this is to edit a live
+install's file mine is:
+
+	/usr/lib/ooo-1.1.0/share/registry/data/org/openoffice/VCL.xcu 
+
+	And update the mappings to suit your paticular locale best. If you can
+do that, send in a patch and we can include it in ooo-build / help get
+it up-stream.
+
+&gt;<i> (what is confusing is the conflicting reports I am getting from those
+</I>&gt;<i> using OOo in MS-Windows. My understandig was the text rendering and
+</I>&gt;<i> layout engine was ICU and it was cross platform)
+</I>
+	No idea about that. Try asking on <A HREF="mailto:dev@gsl.openoffice.org.">dev@gsl.openoffice.org.</A>
+
+	HTH,
+
+		Michael.
+
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000227.html">[Open Office] OOo text layout
+</A></li>
+	<LI> Next message: <A HREF="000239.html">[Open Office] OOo text layout
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#235">[ date ]</a>
+              <a href="thread.html#235">[ thread ]</a>
+              <a href="subject.html#235">[ subject ]</a>
+              <a href="author.html#235">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

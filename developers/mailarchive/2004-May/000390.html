@@ -1,0 +1,1113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Make-ification patch ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-May/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000395.html">
+   <LINK REL="Next"  HREF="000396.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Make-ification patch ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Make-ification patch ...">michael@ximian.com
+       </A><BR>
+    <I>Tue, 18 May 2004 14:30:39 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000395.html">[Open Office] [Fwd: Re: OOo opens several windows when opening a single document]
+</A></li>
+        <LI> Next message: <A HREF="000396.html">[Open Office] Bounties link
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#390">[ date ]</a>
+              <a href="thread.html#390">[ thread ]</a>
+              <a href="subject.html#390">[ subject ]</a>
+              <a href="author.html#390">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-5bJvvn8kBFfCOpe+WzHO
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+Hi guys,
+
+	So - I'm off on holiday until next Wednesday; I've attached the patch
+I've just tested to switch us (half way) towards a 'make' driven build
+process  ( The Debian Way ;-).
+
+	Anyhow, patch attached - comments most welcome; I use a
+'Makefile.shared' file, so - hopefully - it can be massaged (in theory)
+to be shared with whatever Debian is using.
+
+	I'm still using (separated) scripts, since there is still a chunk of
+stuff in setup.in that probably needs to move to configure.in before we
+can move much more into Makefile.shared.
+
+	Anyhow - it gets us closer to a sweeter, more integrated, easy to
+resume / develop-with build (I hope). I'm holding off committing it
+though, since I'm off and it's almost certain to break something.
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+--=-5bJvvn8kBFfCOpe+WzHO
+Content-Disposition: attachment; filename=oomake.diff
+Content-Type: text/x-patch; name=oomake.diff; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+
+Index: ChangeLog
+===================================================================
+RCS file: /cvs/gnome/ooo-build/ChangeLog,v
+retrieving revision 1.832
+diff -u -p -u -r1.832 ChangeLog
+--- ChangeLog	14 May 2004 16:36:17 -0000	1.832
++++ ChangeLog	18 May 2004 08:38:14 -0000
+@@ -1,4 +1,11 @@
++2004-05-17  Michael Meeks  &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt;
++
++	* bin/build-tools, bin/unpack, bin/install-artwork,
++	* Makefile.shared: add.
++
+ 2004-05-14  Michael Meeks  &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt;
++
++	* Makefile.am: Move build logic here.
+ 
+ 	* configure.in, Makefile.am, stamp/*: add directory
+ 	for make to leave stamp files.
+Index: Makefile.am
+===================================================================
+RCS file: /cvs/gnome/ooo-build/Makefile.am,v
+retrieving revision 1.24
+diff -u -p -u -r1.24 Makefile.am
+--- Makefile.am	14 May 2004 16:36:17 -0000	1.24
++++ Makefile.am	18 May 2004 08:38:14 -0000
+@@ -4,7 +4,7 @@ endif
+ 
+ SUBDIRS = po desktop bin etc patches man doc fonts stamp src www $(MAYBE_BONOBO)
+ 
+-
++include $(top_srcdir)/Makefile.shared
+ 
+ EXTRA_DIST = \
+ 	emacs.el		\
+Index: Makefile.shared
+===================================================================
+RCS file: Makefile.shared
+diff -N Makefile.shared
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ Makefile.shared	18 May 2004 08:38:14 -0000
+@@ -0,0 +1,72 @@
++# If we 'export' all our variables to forked processes
++# we end up with a horrible mess - since we propagate
++# eg. ACLOCAL_M4, AMDEP_TRUE, COMPATH etc.
++# - a nightmare in a nutshell =&gt; we need to export on a
++#   need-to-know / minimal basis.
++
++STAMP_DIR=$(top_builddir)/stamp
++FONTMUNGE_FILE=$(OOBUILDDIR)/officecfg/registry/data/org/openoffice/VCL.xcu
++
++# Source preparation
++
++unpack : $(STAMP_DIR)/unpack
++$(STAMP_DIR)/unpack : $(top_srcdir)/bin/unpack
++	cd $(top_srcdir)/bin ; ./unpack
++	touch $@
++
++artwork.install : unpack $(STAMP_DIR)/artwork.install
++$(STAMP_DIR)/artwork.install :
++	cd $(top_srcdir)/bin ; ./install-artwork
++	touch $@
++
++patch.apply: unpack $(STAMP_DIR)/patch.apply
++$(STAMP_DIR)/patch.apply : $(top_srcdir)/patches/apply.pl \
++			   $(top_srcdir)/patches/*/*
++	cp -af $(BUILDDIR)/x86/* $(OOBUILDDIR)/external/dbghelp # dbghelp
++	cp -af $(BUILDDIR)/*.dll $(OOBUILDDIR)/external/unicows # unicows
++	if test -f $(FONTMUNGE_FILE).bak; then \
++	    echo &quot;Revert font mapping munging ...&quot; \
++	    mv -f $(FONTMUNGE_FILE).bak $(FONTMUNGE_FILE); \
++	fi
++	$(TOOLSDIR)/patches/apply.pl $(TOOLSDIR)/patches/$(CVSTAG) $(OOBUILDDIR) --distro=$(DISTRO) -f
++	cp -a $(FONTMUNGE_FILE) &quot;$(FONTMUNGE_FILE).bak&quot;;
++	echo &quot;Munging font mappings ...&quot; \
++	$(TOOLSDIR)/bin/font-munge $(FONTMUNGE_FILE); \
++	echo &quot;done munging fonts.&quot;
++	echo &quot;Poking resource builds&quot;;
++	find $(OOBUILDDIR)/*/*.pro -name '*.dpr' -exec rm {} \; || true
++	find $(OOBUILDDIR)/*/*.pro -name '*.don' -exec rm {} \; || true
++	find $(OOBUILDDIR)/*/*.pro -name '*.srs' -exec rm {} \; || true
++	touch $@
++
++# Build bits:
++
++prebuild : $(STAMP_DIR)/prebuild
++$(STAMP_DIR)/prebuild :
++	echo &quot;Creating environment&quot;
++	mkdir -p $(BUILDDIR)
++	mkdir -p $(BUILDDIR)/bin
++	mkdir -p $(BUILDDIR)/share
++	mkdir -p $(BUILDDIR)/share/aclocal
++	mkdir -p $(BUILDDIR)/share/autoconf
++	mkdir -p $(BUILDDIR)/lib
++	mkdir -p $(BUILDDIR)/man
++	mkdir -p $(BUILDDIR)/man/man1
++	mkdir -p $(OOBUILDDIR)
++	mkdir -p $(OOBUILDDIR)/external/msvcp71
++	touch $@
++
++build.tools : $(STAMP_DIR)/build.tools
++$(STAMP_DIR)/build.tools :
++	cd $(top_srcdir)/bin ; ./build-tools
++	touch $@
++
++build : $(STAMP_DIR)/build
++$(STAMP_DIR)/build : unpack patch.apply artwork.install prebuild
++	cd $(top_srcdir)/bin ; ./build-ooo
++	touch $@
++
++all: build
++
++install: build
++	cd bin ; ./package-ooo
+Index: configure.in
+===================================================================
+RCS file: /cvs/gnome/ooo-build/configure.in,v
+retrieving revision 1.93
+diff -u -p -u -r1.93 configure.in
+--- configure.in	14 May 2004 16:36:17 -0000	1.93
++++ configure.in	18 May 2004 08:38:14 -0000
+@@ -114,8 +114,6 @@ dnl Setup the misc. tweaks we need.
+ dnl
+ BASEDIR=`pwd`
+ TOOLSDIR=$BASEDIR
+-AC_SUBST(BASEDIR)
+-AC_SUBST(TOOLSDIR)
+ 
+ AC_PATH_PROG(PERL, perl)
+ if test -z &quot;PERL&quot;; then
+@@ -200,8 +198,8 @@ if test -f $srcdir/patches/$with_tag/app
+ else
+    AC_MSG_ERROR( Can't locate patch set for: $with_tag )
+ fi
+-TAG=$with_tag
+-AC_SUBST(TAG)
++CVSTAG=$with_tag
++AC_SUBST(CVSTAG)
+ 
+ warn_use_download=
+ AC_MSG_CHECKING( for tag's source )
+@@ -213,11 +211,11 @@ elif test &quot;${with_src:0:1}&quot; != &quot;/&quot;; then
+    AC_MSG_ERROR( --with-src= must be an absolute path );
+ else
+    ext_srcdir=$with_src
+-   if test -d &quot;$with_src/$TAG&quot;; then
+-      AC_MSG_RESULT( found '$with_src/$TAG' )
++   if test -d &quot;$with_src/$CVSTAG&quot;; then
++      AC_MSG_RESULT( found '$with_src/$CVSTAG' )
+    else
+       AC_MSG_WARN([
+-     Missing pristine unpacked source in $with_src/$TAG
++     Missing pristine unpacked source in $with_src/$CVSTAG
+      ]);
+    fi
+ fi
+@@ -225,16 +223,24 @@ fi
+ WITH_SRC=$with_src
+ AC_SUBST(WITH_SRC)
+ 
++if test &quot;z$WITH_SRC&quot; != &quot;z&quot;; then
++    BASEDIR=$WITH_SRC
++    SRCDIR='&lt;No manual unpacking required&gt;'
++    BUILDDIR=$BASEDIR
++else
++    BUILDDIR=$BASEDIR/build
++    SRCDIR=$BASEDIR/src
++fi
++
+ if test &quot;z$with_ooo_builddir&quot; = &quot;z&quot;; then
+-   if test &quot;z$with_src&quot; = &quot;z&quot;; then
+-      OOBUILDDIR=$BASEDIR/build/$TAG
+-   else
+-      OOBUILDDIR=$WITH_SRC/$TAG
+-   fi
++   OOBUILDDIR=$BUILDDIR/$CVSTAG
+ else
+    OOBUILDDIR=$with_ooo_builddir
+ fi
+ 
++AC_SUBST(SRCDIR)
++AC_SUBST(BUILDDIR)
++AC_SUBST(TOOLSDIR)
+ AC_SUBST(OOBUILDDIR)
+ 
+ LIBART_VERSION=2.3.13
+@@ -414,6 +420,10 @@ else
+ fi
+ AC_SUBST(OOOINSTALLDIRNAME)
+ 
++
++
++
++
+ AC_CONFIG_FILES([download], [chmod +x download])
+ AC_CONFIG_FILES([intltool-extract intltool-merge intltool-update], [chmod +x intltool*])
+ AC_OUTPUT([ 
+@@ -440,9 +450,11 @@ www/tinder-scripts/Makefile
+ 
+ echo &quot;
+ Building openoffice
+-	tag:                $TAG
++	tag:                $CVSTAG
+ 	src:                $ext_srcdir
+ 	build dir:          $OOBUILDDIR
++	tools dir:          $TOOLSDIR
++	src package dir:    $SRCDIR
+ 	distro:             $with_distro
+ 	icons:		    $with_icons
+ 	system gcc:         $with_system_gcc
+Index: bin/Makefile.am
+===================================================================
+RCS file: /cvs/gnome/ooo-build/bin/Makefile.am,v
+retrieving revision 1.15
+diff -u -p -u -r1.15 Makefile.am
+--- bin/Makefile.am	16 Apr 2004 11:26:06 -0000	1.15
++++ bin/Makefile.am	18 May 2004 08:38:14 -0000
+@@ -16,9 +16,3 @@ script_files = \
+ 	scale-icons
+ 
+ EXTRA_DIST = $(script_files)
+-
+-all:
+-	./build-ooo ${TAG} --checkout
+-
+-install:
+-	./package-ooo ${TAG}
+Index: bin/build-ooo
+===================================================================
+RCS file: /cvs/gnome/ooo-build/bin/build-ooo,v
+retrieving revision 1.79
+diff -u -p -u -r1.79 build-ooo
+--- bin/build-ooo	10 May 2004 16:20:47 -0000	1.79
++++ bin/build-ooo	18 May 2004 08:38:14 -0000
+@@ -5,413 +5,8 @@
+ #
+ . ./setup
+ 
+-if test &quot;z$1&quot; = 'z--help'; then
+-	echo &quot;build-ooo &lt;BRANCH&gt; [--checkout[--clean]|--help]&quot;;
+-	echo &quot; --checkout: updates CVS tree&quot;;
+-	echo &quot; --clean:    cleans OO build tree&quot;;
+-	echo &quot; --nopatch:  doesn't re-patch the tree&quot;;
+-	exit 0;
+-fi
+-
+-# Ensure dirs
+-echo &quot;Creating environment&quot;
+-mkdir -p $BUILDDIR
+-
+-# misc install brokenness
+-mkdir -p $BUILDDIR/bin
+-mkdir -p $BUILDDIR/share
+-mkdir -p $BUILDDIR/share/aclocal
+-mkdir -p $BUILDDIR/share/autoconf
+-mkdir -p $BUILDDIR/lib
+-mkdir -p $BUILDDIR/man
+-mkdir -p $BUILDDIR/man/man1
+-mkdir -p $OOBUILDDIR
+-
+-# Versions
+-GCC_VER=gcc-3.2.2
+-GCC_TARBALL=gcc-3.2.2.tar.bz2
+-GCC_UNTAR_OPTIONS=jxf
+-
+-BINUTILS_VER=binutils-2.13.2.1
+-BINUTILS_TARBALL=binutils-2.13.2.1.tar.bz2
+-BINUTILS_UNTAR_OPTIONS=jxf
+-BINUTILS_PATCH=$TOOLSDIR/patches/ld-2.13.2.1.diff
+-
+-if test &quot;z$ENABLE_JAVA&quot; = &quot;zyes&quot;; then
+-    # If the user didn't specify the location of the JDK,
+-    # use builtin/downloaded one
+-    if test &quot;z$JDK_HOME&quot; = &quot;z&quot;; then
+-        JDK_VER=j2sdk1.4.1
+-        JDK_TARBALL=j2sdk-1.4.1-01-linux-i586-gcc3.2.tar.bz2
+-        JDK_UNTAR_OPTIONS=jxf
+-    fi
+-fi
+-
+-
+-if test &quot;z$DISTRO&quot; = &quot;zArk&quot;; then
+-    # The Ark Linux build system automatically recompresses
+-    # source files to bzip2
+-    OOO_ICONS_TARBALL=$OOO_ICONS_VER.tar.bz2
+-    OOO_ICONS_UNTAR_OPTIONS=xjf
+-else
+-    OOO_ICONS_TARBALL=$OOO_ICONS_VER.tar.gz
+-    OOO_ICONS_UNTAR_OPTIONS=xzf
+-fi
+-
+-OOO_SCALED_ICONS_VER=ooo-scaled-icons
+-OOO_SCALED_ICONS_TARBALL=$OOO_SCALED_ICONS_VER.tar.gz
+-OOO_SCALED_ICONS_UNTAR_OPTIONS=xzf
+-
+-OOO_TARBALL=&quot;$CVSTAG.tar.bz2&quot;
+-OOO_UNTAR_OPTIONS=jxf
+-
+-check-tarball ()
+-{
+-    echo -n &quot;Looking for $1 ... &quot;;
+-    if test ! -f $1; then
+-	echo &quot;missing the $1 archive; run './download'&quot;
+-	exit 1;
+-    else
+-	echo &quot;ok&quot;
+-    fi
+-}
+-
+-check-file ()
+-{
+-    echo -n &quot;Looking for $1 ... &quot;;
+-    if test ! -f $1; then
+-	echo &quot;missing required archive; run ./download'&quot;;
+-	exit 1;
+-    else
+-	echo &quot;ok&quot;
+-    fi
+-}
+-
+-if test &quot;z$WITH_SRC&quot; = &quot;z&quot;; then
+-    mkdir -p $SRCDIR
+-    cd $SRCDIR
+-
+-    echo &quot;Checking for source packages in $SRCDIR&quot;;
+-    if test &quot;z$SYSTEM_GCC&quot; = &quot;z&quot;; then
+-        check-tarball $GCC_TARBALL
+-        check-tarball $BINUTILS_TARBALL
+-    fi
+-    if test &quot;z$ENABLE_JAVA&quot; = &quot;zyes&quot; &amp;&amp;
+-       test &quot;z$JDK_HOME&quot; = &quot;z&quot;; then
+-        check-tarball $JDK_TARBALL
+-    fi
+-    check-tarball $OOO_TARBALL
+-    check-tarball $OOO_ICONS_TARBALL
+-
+-    if test &quot;z$SYSTEM_GCC&quot; = &quot;z&quot;; then
+-      if test ! -f $GCC_TARBALL; then
+-	   echo &quot;You need to put the relevant source packages into $SRCDIR before commencing the build&quot;;
+-	   exit 1
+-      fi
+-    fi
+-
+-    if test &quot;z$BUILD_WIN32&quot; != &quot;z&quot;; then
+-	check-tarball $OOO_SCALED_ICONS_TARBALL
+-    fi
+-
+-elif test &quot;z$SYSTEM_GCC&quot; = &quot;z&quot;; then
+-    if test &quot;z$ENABLE_JAVA&quot; = &quot;zyes&quot; &amp;&amp;
+-       test ! -d &quot;$BUILDDIR/$JDK_VER&quot; &amp;&amp;
+-       test &quot;z$JDK_HOME&quot; = &quot;z&quot;; then
+-        echo &quot;Missing the JDK&quot;;
+-    fi
+-
+-    if test ! -d &quot;$BUILDDIR/$GCC_VER&quot; ||
+-       test ! -d &quot;$BUILDDIR/$OOO_ICONS_VER&quot; ||
+-       test ! -d &quot;$BUILDDIR/$BINUTILS_VER&quot;; then
+-        echo &quot;Missing some of the helper source&quot;;
+-        exit 1;
+-    fi
+-fi
+-
+-cd $BUILDDIR
+-
+-UNICOWS_SRC=$SRCDIR/unicows.exe;
+-DBGINST_SRC=$SRCDIR/dbghinst.EXE;
+-# ODMA_SRC=$SRCDIR/5_11_98Odma20.zip;
+-if test &quot;z$BUILD_WIN32&quot; != &quot;z&quot;; then
+-    check-file $UNICOWS_SRC
+-    check-file $DBGINST_SRC
+-#    check-file $ODMA_SRC
+-fi
+-
+-if test &quot;z$ENABLE_JAVA&quot; = &quot;zyes&quot; &amp;&amp;
+-   test &quot;z$JDK_HOME&quot; = &quot;z&quot;; then
+-    # unpack the Jdk
+-    PKG_VER=$JDK_VER
+-
+-    if test -f $BUILDDIR/$PKG_VER/$STAMP; then
+-	echo &quot;Skipping $PKG_VER&quot;;
+-	ln -sfn $PKG_VER $BUILDDIR/jdk
+-    else
+-	echo &quot;Unpacking $PKG_VER&quot;;
+-	cd $BUILDDIR
+-	if test &quot;z$WITH_SRC&quot; = &quot;z&quot;; then
+-	    tar $JDK_UNTAR_OPTIONS $SRCDIR/$JDK_TARBALL || exit 1;
+-	fi
+-# Link it into where we expect it in the path
+-	ln -sfn $PKG_VER $BUILDDIR/jdk
+-	touch $BUILDDIR/$PKG_VER/$STAMP || exit 1;
+-    fi
+-fi
+-
+-if test &quot;z$SYSTEM_GCC&quot; = &quot;z&quot;; then
+-	# build binutils
+-	PKG_VER=$BINUTILS_VER
+-
+-	# -- evil cut --
+-	if test -f $BUILDDIR/$PKG_VER/$STAMP; then
+-		echo &quot;Skipping $PKG_VER&quot;;
+-	else
+-		echo &quot;Building $PKG_VER&quot;;
+-		cd $BUILDDIR
+-		if test &quot;z$WITH_SRC&quot; = &quot;z&quot;; then
+-			tar $BINUTILS_UNTAR_OPTIONS $SRCDIR/$BINUTILS_TARBALL || exit 1;
+-			patch -p0 &lt; $BINUTILS_PATCH || exit 1;
+-		fi
+-		cd $PKG_VER
+-		./configure --prefix=$BUILDDIR || exit 1;
+-		make &amp;&amp; make install || exit 1;
+-		touch $BUILDDIR/$PKG_VER/$STAMP || exit 1;
+-	fi
+-	# -- cut --
+-
+-	# build gcc
+-	PKG_VER=$GCC_VER
+-
+-	# -- evil cut --
+-	if test -f $BUILDDIR/$PKG_VER/$STAMP; then
+-		echo &quot;Skipping $PKG_VER&quot;;
+-	else
+-		echo &quot;Building $PKG_VER&quot;;
+-		cd $BUILDDIR
+-		if test &quot;z$WITH_SRC&quot; = &quot;z&quot;; then
+-			tar $GCC_UNTAR_OPTIONS $SRCDIR/$GCC_TARBALL || exit 1;
+-		fi
+-		cd $PKG_VER
+-		./configure --prefix=$BUILDDIR --enable-languages=c++ || exit 1;
+-		make &amp;&amp; make install || exit 1;
+-		touch $BUILDDIR/$PKG_VER/$STAMP
+-	fi
+-	# -- cut --
+-fi
+-
+-PKG_VER=$OOO_ICONS_VER
+-
+-# -- evil cut --
+-if test -f $BUILDDIR/$PKG_VER/$STAMP; then
+-	echo &quot;Skipping $PKG_VER&quot;;
+-else
+-	echo &quot;Building $PKG_VER&quot;;
+-	cd $BUILDDIR
+-	if test &quot;z$WITH_SRC&quot; = &quot;z&quot;; then
+-	    tar $OOO_ICONS_UNTAR_OPTIONS $SRCDIR/$OOO_ICONS_TARBALL || exit 1;
+-	fi
+-	touch $BUILDDIR/$PKG_VER/$STAMP || exit 1;
+-fi
+-# -- cut --
+-
+-PKG_VER=$OOO_SCALED_ICONS_VER
+-
+-# -- evil cut --
+-if test &quot;z$BUILD_WIN32&quot; != &quot;z&quot;; then
+-    if test -f $BUILDDIR/$PKG_VER/$STAMP; then
+-	echo &quot;Skipping $PKG_VER&quot;;
+-    else
+-	echo &quot;Building $PKG_VER&quot;;
+-	cd $BUILDDIR
+-	if test &quot;z$WITH_SRC&quot; = &quot;z&quot;; then
+-	    tar $OOO_SCALED_ICONS_UNTAR_OPTIONS $SRCDIR/$OOO_SCALED_ICONS_TARBALL || exit 1;
+-	fi
+-	touch $BUILDDIR/$PKG_VER/$STAMP || exit 1;
+-    fi
+-fi
+-# -- cut --
+-
+-# Copy all splash artwork into offmgr regardless
+-
+-mkdir -p $OOBUILDDIR/offmgr/res
+-cp $TOOLSDIR/src/openabout_*.bmp $OOBUILDDIR/offmgr/res/
+-cp $TOOLSDIR/src/openintro_*.bmp $OOBUILDDIR/offmgr/res/
+-
+-# Checkout / Update source:
+-if (test &quot;z$2&quot; = &quot;z--checkout&quot;) || !(test -f $OOBUILDDIR/$STAMP); then
+-
+-	FONTMUNGE_FILE=&quot;$OOBUILDDIR/officecfg/registry/data/org/openoffice/VCL.xcu&quot;;
+-
+-	if test &quot;z$WITH_SRC&quot; = &quot;z&quot;; then
+-		PRISTINE_SOURCE=0
+-		if test ! -d $OOBUILDDIR/solenv; then
+-			echo &quot;OOo build tree not found; unpacking it... [go make some tea]&quot;
+-			cd $OOBUILDDIR
+-			cd ..
+-			tar $OOO_UNTAR_OPTIONS $SRCDIR/$OOO_TARBALL || exit 1
+-			PRISTINE_SOURCE=1
+-		else
+-			if test -f &quot;$FONTMUNGE_FILE.bak&quot;; then
+-			    echo &quot;Revert font mapping munging ...&quot;
+-			    mv -f &quot;$FONTMUNGE_FILE.bak&quot; $FONTMUNGE_FILE;
+-			fi
+-
+-			echo &quot;Reverting patches ...&quot;
+-			$TOOLSDIR/patches/apply.pl $TOOLSDIR/patches/$CVSTAG $OOBUILDDIR --distro=$DISTRO -R || exit 1;
+-		fi
+-
+-		if test &quot;z$BUILD_WIN32&quot; = &quot;z&quot;; then
+-			echo &quot;Removing custom icons&quot;;
+-			$TOOLSDIR/bin/scale-icons $OOBUILDDIR --remove || exit 1;
+-		fi
+-
+-		echo &quot;Poking resource builds&quot;;
+-		find $OOBUILDDIR/*/*.pro -name '*.dpr' -exec rm {} \;
+-		find $OOBUILDDIR/*/*.pro -name '*.don' -exec rm {} \;
+-		find $OOBUILDDIR/*/*.pro -name '*.srs' -exec rm {} \;
+-
+-		echo &quot;Updating source ...&quot;
+-		cd $OOBUILDDIR
+-
+-		if test -f $SRCDIR/$CVSTAG.tar.bz2; then
+-			# Don't re-untar the sources if you've just untarred a pristine copy above
+-			if test &quot;$OOO_TARBALL&quot; != &quot;$CVSTAG.tar.bz2&quot; -o $PRISTINE_SOURCE -eq 0; then
+-				cd ..
+-				tar xjf $SRCDIR/$CVSTAG.tar.bz2;
+-			else
+-				echo &quot;Actually, not updating because sources are pristine.&quot;
+-			fi
+-		else
+-			echo &quot;Unreliably broken CVS branch...&quot;;
+-			if test &quot;z`hostname`&quot; = &quot;zchampignon.ximian.com&quot;; then
+-				cvs -d /cvsroot update -dP
+-			else
+-				cvs -z3 -q -d ':pserver:<A HREF="mailto:anoncvs@ftp.stardiv.de">anoncvs@ftp.stardiv.de</A>:/cvs' checkout -r $CVSTAG OpenOffice || exit 1;
+-#				cvs -z3 -q -d ':pserver:<A HREF="mailto:mmeeks@localhost">mmeeks@localhost</A>:/cvs' checkout -r $CVSTAG OpenOffice || echo &quot;Some error updating [?]&quot;;
+-			fi
+-		fi
+-	else
+-		# We expect a pristine copy to be there already ...
+-
+-		if test ! -d &quot;$BUILDDIR/$CVSTAG&quot;; then
+-			echo &quot;Missing the main OO.o source tree&quot;;
+-		fi
+-	fi
+-
+-	# Win32 prerequisites ...
+-	if test &quot;z$BUILD_WIN32&quot; != &quot;z&quot;; then
+-
+-	    # ODMA
+-#	    cd $BUILDDIR;
+-#	    DEST=$OOBUILDDIR/ucb/source/ucp/odma
+-#	    if test ! -f $DEST/ODMA.H; then
+-#		echo -n &quot;Extracting ODMA SDK &quot;
+-#		unzip -o $ODMA_SRC
+-#		TARGET=Odma20.exe
+-#		if test ! -f $TARGET; then
+-#		    echo &quot;failed&quot;;
+-#		    exit 1;
+-#		fi
+-#		mkdir -p $DEST
+-#		cd $DEST
+-#		unzip -o $BUILDDIR/$TARGET
+-#		echo &quot;done&quot;;
+-#	    else
+-#		echo &quot;Already have ODMA SDK&quot;;
+-#	    fi
+-
+-	    # dbghelp
+-	    cd $BUILDDIR;
+-	    if test ! -f $OOBUILDDIR/external/dbghelp/DbgHelp.Dll; then
+-		echo -n &quot;Extracting dbghelp &quot;
+-		cabextract -q $DBGINST_SRC
+-		TARGET=dbghelp.exe
+-		if test ! -f $TARGET; then
+-		    echo &quot;failed&quot;;
+-		    exit 1;
+-		fi
+-		unzip -o $TARGET
+-		cp -af x86/* $OOBUILDDIR/external/dbghelp
+-		echo &quot;done&quot;;
+-	    else
+-		echo &quot;Already have dbghelp&quot;;
+-	    fi
+-
+-	    # unicows
+-	    cd $BUILDDIR;
+-	    if test ! -f $OOBUILDDIR/external/dbghelp/unicows.dll; then
+-		echo -n &quot;Extracting unicows &quot;
+-		cabextract -q $UNICOWS_SRC
+-		TARGET=unicows.dll
+-		if test ! -f $TARGET; then
+-		    echo &quot;failed&quot;;
+-		    exit 1;
+-		fi
+-		cp -af $TARGET $OOBUILDDIR/external/unicows
+-		echo &quot;done&quot;;
+-	    else
+-		echo &quot;Already have unicows&quot;;
+-	    fi
+-
+-	    # vcp bits (?)
+-	    mkdir -p $OOBUILDDIR/external/msvcp71
+-	fi
+-
+-	cd $OOBUILDDIR
+-
+-	# (re)apply patches
+-	if test &quot;z$2&quot; = &quot;z--nopatch&quot;; then
+-		echo &quot;Skipping patching&quot;;
+-	else
+-		echo &quot;Re-applying patches&quot;
+-		$TOOLSDIR/patches/apply.pl $TOOLSDIR/patches/$CVSTAG $OOBUILDDIR --distro=$DISTRO -f || exit 1;
+-	fi
+-
+-	if test &quot;z$BUILD_WIN32&quot; = &quot;z&quot;; then
+-		echo &quot;Installing / scaling icons&quot;;
+-		$TOOLSDIR/bin/scale-icons $OOBUILDDIR || echo &quot;Error: scaling failed&quot;;
+-		echo &quot;done icon scaling&quot;;
+-	else
+-	    cp -Rvf $BUILDDIR/$OOO_SCALED_ICONS_VER/* $OOBUILDDIR || echo &quot;Scaled icon copy failed&quot;
+-	fi
+-
+-	cp -Rvf $BUILDDIR/$OOO_ICONS_VER/* $OOBUILDDIR || echo &quot;Icon copy failed&quot;;
+-	echo &quot;Copied new artwork into the tree&quot;;
+-	if test &quot;z$BUILD_WIN32&quot; != &quot;z&quot;; then
+-	    cp -vf $TOOLSDIR/src/file-bug-16.bmp $OOBUILDDIR/res/sc05406.bmp
+-	    cp -vf $TOOLSDIR/src/file-bug-24.bmp $OOBUILDDIR/res/lc05406.bmp
+-	    echo &quot;Copied Win32 bug-work into the tree&quot;;
+-	fi
+-
+-	cp -vf $TOOLSDIR/fonts/opens___.ttf $OOBUILDDIR/extras/source/truetype/symbol || echo &quot;font copy failed&quot;;
+-	echo &quot;Copied new opensymbol font into the tree&quot;;
+-	
+-	find $OOBUILDDIR -name '*.src' -exec touch {} \;;
+-
+-	echo &quot;Munging font mappings ...&quot;
+-	$TOOLSDIR/bin/font-munge $FONTMUNGE_FILE;
+-	echo &quot;done munging fonts.&quot;
+-
+-	touch $OOBUILDDIR/$STAMP;
+-else
+-	echo &quot;Skipping checkout, use --checkout to update&quot;;
+-fi
+-
+-if test &quot;z$3&quot; = &quot;z--clean&quot;; then
+-	cd $OOBUILDDIR
+-	echo &quot;Cleaning ...&quot;
+-	find -name 'unxlngi4.pro' -exec rm -Rf {} \;
+-	exit 0;
+-fi
+-
+ # configure
+ 
+-#  copy oowintool into the tree
+-cp -af $TOOLSDIR/bin/oowintool $OOBUILDDIR/config_office
+-chmod a+x $OOBUILDDIR/config_office/oowintool
+-
+ #  dmake security patch
+ cd $OOBUILDDIR/dmake
+ autoconf || exit 1;
+@@ -477,9 +72,9 @@ fi
+ 
+ # Accelerate straight-through compiles by not building / using dependencies
+ export nodep=1
++echo &quot;Env:&quot;
++set
+ perl $SOLARENV/bin/build.pl --all $EXTRA_BUILD_FLAGS || exit 1;
+-
+-touch $OOBUILDDIR/$STAMP || exit 1;
+ 
+ echo &quot;Build succeeded ...!&quot;
+ exit 0;
+Index: bin/build-tools
+===================================================================
+RCS file: bin/build-tools
+diff -N bin/build-tools
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ bin/build-tools	18 May 2004 08:38:14 -0000
+@@ -0,0 +1,21 @@
++#!/bin/bash
++
++#
++# See setup for user tweakables.
++#
++. ./setup
++
++if test &quot;z$SYSTEM_GCC&quot; != &quot;z&quot;; then
++    echo &quot;Not building gcc / binutils&quot;;
++fi
++
++# build binutils
++echo &quot;Building $BINUTILS_VER&quot;;
++cd $BUILDDIR/$BINUTILS_VER
++./configure --prefix=$BUILDDIR || exit 1;
++make &amp;&amp; make install || exit 1;
++
++echo &quot;Building $GCC_VER&quot;;
++cd $BUILDDIR/$GCC_VER
++./configure --prefix=$BUILDDIR --enable-languages=c++ || exit 1;
++make &amp;&amp; make install || exit 1;
+Index: bin/install-artwork
+===================================================================
+RCS file: bin/install-artwork
+diff -N bin/install-artwork
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ bin/install-artwork	18 May 2004 08:38:14 -0000
+@@ -0,0 +1,27 @@
++#!/bin/bash
++
++#
++# See setup for user tweakables.
++#
++. ./setup
++
++# Copy all splash artwork into offmgr regardless
++mkdir -p $OOBUILDDIR/offmgr/res
++cp $TOOLSDIR/src/openabout_*.bmp $OOBUILDDIR/offmgr/res/
++cp $TOOLSDIR/src/openintro_*.bmp $OOBUILDDIR/offmgr/res/
++
++if test &quot;z$BUILD_WIN32&quot; = &quot;z&quot;; then
++    echo &quot;Installing / scaling icons&quot;;
++    $TOOLSDIR/bin/scale-icons $OOBUILDDIR || echo &quot;Error: scaling failed&quot;;
++    echo &quot;done icon scaling&quot;;
++else
++    cp -Rvf $BUILDDIR/$OOO_SCALED_ICONS_VER/* $OOBUILDDIR || echo &quot;Scaled icon copy failed&quot;
++    cp -vf $TOOLSDIR/src/file-bug-16.bmp $OOBUILDDIR/res/sc05406.bmp
++    cp -vf $TOOLSDIR/src/file-bug-24.bmp $OOBUILDDIR/res/lc05406.bmp
++    echo &quot;Copied Win32 bug-work into the tree&quot;;
++fi
++
++cp -Rvf $BUILDDIR/$OOO_ICONS_VER/* $OOBUILDDIR || echo &quot;Icon copy failed&quot;;
++
++cp -vf $TOOLSDIR/fonts/opens___.ttf $OOBUILDDIR/extras/source/truetype/symbol || echo &quot;font copy failed&quot;;
++echo &quot;Copied new opensymbol font into the tree&quot;;
+Index: bin/setup.in
+===================================================================
+RCS file: /cvs/gnome/ooo-build/bin/setup.in,v
+retrieving revision 1.54
+diff -u -p -u -r1.54 setup.in
+--- bin/setup.in	8 May 2004 23:40:49 -0000	1.54
++++ bin/setup.in	18 May 2004 08:38:15 -0000
+@@ -1,3 +1,8 @@
++# ------------------------------------
++# This file is generated from setup.in
++# ------------------------------------
++
++
+ # The tree layout with WITH_SRC is:
+ #
+ #   ooo/ [ pointed to by WITH_SRC ]
+@@ -17,7 +22,7 @@ VENDORNAME='@VENDORNAME@'
+ WITH_SRC='@WITH_SRC@'
+ VERSION='@OOO_VERSION@'
+ BINSUFFIX='@OOO_BINSUFFIX@'
+-CVSTAG='@TAG@'
++CVSTAG='@CVSTAG@'
+ BUILD_NCPUS='@BUILD_NCPUS@'
+ CCACHE_ALLOWED='@CCACHE_ALLOWED@'
+ OOO_ICONS_VER='@OOO_ICONS_VER@'
+@@ -82,7 +87,6 @@ JDK_HOME=@JDK_HOME@
+ # Misc. internal
+ STAMP=ooo-build-stamp
+ TOOLSDIR='@TOOLSDIR@'
+-BASEDIR='@BASEDIR@'
+ OODESTDIR=$DESTDIR
+ OOBUILDDIR='@OOBUILDDIR@'
+ SYSTEM_GCC='@SYSTEM_GCC@'
+@@ -95,19 +99,8 @@ if test &quot;z$CCACHE_ALLOWED&quot; != &quot;zyes&quot; ; t
+ fi
+ unset ERROR_FLAGS;
+ unset MAKE
+-unset BUILDDIR
+-unset SRCDIR
+ unset WARN_CFLAGS
+ 
+-if test &quot;z$WITH_SRC&quot; != &quot;z&quot;; then
+-	# Building in the build system ...
+-	echo &quot;In the build system ...&quot;
+-	
+-	BASEDIR=&quot;@WITH_SRC@&quot;
+-	SRCDIR='&lt;No manual unpacking required&gt;'
+-	BUILDDIR=$BASEDIR
+-fi
+-
+ # Where to install to
+ PREFIXBASE=@prefix@
+ PREFIX=$OODESTDIR$PREFIXBASE
+@@ -117,16 +110,10 @@ OOINSTBASE=@prefix@/lib/@OOOINSTALLDIRNA
+ OOINSTDIR=$OODESTDIR$OOINSTBASE
+ OOOINSTALLDIRNAME=@OOOINSTALLDIRNAME@
+ OOO_BUILD_EXTENSION=@OOO_BUILD_EXTENSION@
+-
+-CVSROOT=':pserver:<A HREF="mailto:anoncvs@cvs.openoffice.org">anoncvs@cvs.openoffice.org</A>:/cvs'
++SRCDIR=@SRCDIR@
++BUILDDIR=@BUILDDIR@
+ TCSH=/bin/tcsh
+ 
+-# Misc directories
+-if test &quot;z$WITH_SRC&quot; = &quot;z&quot;; then
+-	SRCDIR=$BASEDIR/src
+-	BUILDDIR=$BASEDIR/build
+-fi
+-
+ # setup paths
+ PATH=&quot;$BUILDDIR/bin:$PATH:$TOOLSDIR/bin&quot;
+ if test &quot;z$ENABLE_JAVA&quot; = &quot;zyes&quot;; then
+@@ -148,7 +135,51 @@ if test &quot;z$CCACHE_DIR&quot; = &quot;z&quot; ; then
+     CCACHE_DIR=$BUILDDIR/.ccache
+ fi
+ 
+-export LD_LIBRARY_PATH PATH CVSROOT CVSTAG
++# ---------------------------
++#   Source / Version setup:
++# ---------------------------
++GCC_VER=gcc-3.2.2
++GCC_TARBALL=gcc-3.2.2.tar.bz2
++GCC_UNTAR_OPTIONS=jxf
++
++BINUTILS_VER=binutils-2.13.2.1
++BINUTILS_TARBALL=binutils-2.13.2.1.tar.bz2
++BINUTILS_UNTAR_OPTIONS=jxf
++BINUTILS_PATCH=$TOOLSDIR/patches/ld-2.13.2.1.diff
++
++if test &quot;z$ENABLE_JAVA&quot; = &quot;zyes&quot;; then
++    # If the user didn't specify the location of the JDK,
++    # use builtin/downloaded one
++    if test &quot;z$JDK_HOME&quot; = &quot;z&quot;; then
++        JDK_VER=j2sdk1.4.1
++        JDK_TARBALL=j2sdk-1.4.1-01-linux-i586-gcc3.2.tar.bz2
++        JDK_UNTAR_OPTIONS=jxf
++    fi
++fi
++
++if test &quot;z$DISTRO&quot; = &quot;zArk&quot;; then
++    # The Ark Linux build system automatically recompresses
++    # source files to bzip2
++    OOO_ICONS_TARBALL=$OOO_ICONS_VER.tar.bz2
++    OOO_ICONS_UNTAR_OPTIONS=xjf
++else
++    OOO_ICONS_TARBALL=$OOO_ICONS_VER.tar.gz
++    OOO_ICONS_UNTAR_OPTIONS=xzf
++fi
++
++OOO_SCALED_ICONS_VER=ooo-scaled-icons
++OOO_SCALED_ICONS_TARBALL=$OOO_SCALED_ICONS_VER.tar.gz
++OOO_SCALED_ICONS_UNTAR_OPTIONS=xzf
++
++OOO_TARBALL=&quot;$CVSTAG.tar.bz2&quot;
++OOO_UNTAR_OPTIONS=jxf
++
++UNICOWS_SRC=$SRCDIR/unicows.exe;
++DBGINST_SRC=$SRCDIR/dbghinst.EXE;
++# ODMA_SRC=$SRCDIR/5_11_98Odma20.zip;
++
++
++export LD_LIBRARY_PATH PATH CVSTAG
+ export CCACHE_DIR BUILDDIR OOBUILDDIR BUILD_FLAGS
+ export VERSION TOOLSDIR VENDORNAME
+ export PREFIX PREFIXBASE SYSCONFDIR SYSCONFBASE
+Index: bin/unpack
+===================================================================
+RCS file: bin/unpack
+diff -N bin/unpack
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ bin/unpack	18 May 2004 08:38:15 -0000
+@@ -0,0 +1,168 @@
++#!/bin/bash
++
++#
++# See setup for user tweakables.
++#
++. ./setup
++
++if test &quot;z$WITH_SRC&quot; != &quot;z&quot;; then
++	echo &quot;Nothing to do - package build&quot;
++	exit 0;
++fi
++
++check-tarball ()
++{
++    echo -n &quot;Looking for $1 ... &quot;;
++    if test ! -f $1; then
++	echo &quot;missing the $1 archive; run './download'&quot;
++	exit 1;
++    else
++	echo &quot;ok&quot;
++    fi
++}
++
++check-file ()
++{
++    echo -n &quot;Looking for $1 ... &quot;;
++    if test ! -f $1; then
++	echo &quot;missing required archive; run ./download'&quot;;
++	exit 1;
++    else
++	echo &quot;ok&quot;
++    fi
++}
++
++mkdir -p $SRCDIR
++cd $SRCDIR
++
++echo &quot;Checking for source packages in $SRCDIR&quot;;
++if test &quot;z$SYSTEM_GCC&quot; = &quot;z&quot;; then
++    check-tarball $GCC_TARBALL
++    check-tarball $BINUTILS_TARBALL
++fi
++if test &quot;z$ENABLE_JAVA&quot; = &quot;zyes&quot; &amp;&amp;
++    test &quot;z$JDK_HOME&quot; = &quot;z&quot;; then
++    check-tarball $JDK_TARBALL
++fi
++check-tarball $OOO_TARBALL
++check-tarball $OOO_ICONS_TARBALL
++
++if test &quot;z$BUILD_WIN32&quot; != &quot;z&quot;; then
++    check-tarball $OOO_SCALED_ICONS_TARBALL
++fi
++
++if test &quot;z$SYSTEM_GCC&quot; = &quot;z&quot;; then
++    if test &quot;z$ENABLE_JAVA&quot; = &quot;zyes&quot; &amp;&amp;
++	test ! -d &quot;$BUILDDIR/$JDK_VER&quot; &amp;&amp;
++	test &quot;z$JDK_HOME&quot; = &quot;z&quot;; then
++        echo &quot;Missing the JDK&quot;;
++    fi
++    
++    if test ! -d &quot;$BUILDDIR/$GCC_VER&quot; ||
++	test ! -d &quot;$BUILDDIR/$OOO_ICONS_VER&quot; ||
++	test ! -d &quot;$BUILDDIR/$BINUTILS_VER&quot;; then
++        echo &quot;Missing some of the helper source&quot;;
++        exit 1;
++    fi
++fi
++
++cd $BUILDDIR
++
++if test &quot;z$BUILD_WIN32&quot; != &quot;z&quot;; then
++    check-file $UNICOWS_SRC
++    check-file $DBGINST_SRC
++#    check-file $ODMA_SRC
++fi
++
++if test &quot;z$ENABLE_JAVA&quot; = &quot;zyes&quot; &amp;&amp;
++   test &quot;z$JDK_HOME&quot; = &quot;z&quot;; then
++    # unpack the Jdk
++    PKG_VER=$JDK_VER
++
++    echo &quot;Unpacking $PKG_VER&quot;;
++    cd $BUILDDIR
++    if test &quot;z$WITH_SRC&quot; = &quot;z&quot;; then
++	tar $JDK_UNTAR_OPTIONS $SRCDIR/$JDK_TARBALL || exit 1;
++    fi
++# Link it into where we expect it in the path
++    ln -sfn $PKG_VER $BUILDDIR/jdk
++fi
++
++if test &quot;z$SYSTEM_GCC&quot; = &quot;z&quot;; then
++    # unpack binutils
++    cd $BUILDDIR
++    echo &quot;Unpacking compiler bits&quot;
++
++    tar $BINUTILS_UNTAR_OPTIONS $SRCDIR/$BINUTILS_TARBALL || exit 1;
++    patch -p0 &lt; $BINUTILS_PATCH || exit 1;
++    tar $GCC_UNTAR_OPTIONS $SRCDIR/$GCC_TARBALL || exit 1;
++fi
++
++echo &quot;Unpacking icons&quot;
++tar $OOO_ICONS_UNTAR_OPTIONS $SRCDIR/$OOO_ICONS_TARBALL || exit 1;
++
++if test &quot;z$BUILD_WIN32&quot; != &quot;z&quot;; then
++    echo &quot;Unpacking scaled icons&quot;
++    tar $OOO_SCALED_ICONS_UNTAR_OPTIONS $SRCDIR/$OOO_SCALED_ICONS_TARBALL || exit 1;
++fi
++
++echo &quot;Unpacking OO.o build tree - [ go make some tea ] ...&quot;
++tar $OOO_UNTAR_OPTIONS $SRCDIR/$OOO_TARBALL || exit 1
++
++#  copy oowintool into the tree
++cp -af $TOOLSDIR/bin/oowintool $OOBUILDDIR/config_office
++chmod a+x $OOBUILDDIR/config_office/oowintool
++
++# Win32 prerequisites ...
++if test &quot;z$BUILD_WIN32&quot; != &quot;z&quot;; then
++
++	    # ODMA
++#	    cd $BUILDDIR;
++#	    DEST=$OOBUILDDIR/ucb/source/ucp/odma
++#	    if test ! -f $DEST/ODMA.H; then
++#		echo -n &quot;Extracting ODMA SDK &quot;
++#		unzip -o $ODMA_SRC
++#		TARGET=Odma20.exe
++#		if test ! -f $TARGET; then
++#		    echo &quot;failed&quot;;
++#		    exit 1;
++#		fi
++#		mkdir -p $DEST
++#		cd $DEST
++#		unzip -o $BUILDDIR/$TARGET
++#		echo &quot;done&quot;;
++#	    else
++#		echo &quot;Already have ODMA SDK&quot;;
++#	    fi
++
++    # dbghelp
++    cd $BUILDDIR;
++    if test ! -f $OOBUILDDIR/external/dbghelp/DbgHelp.Dll; then
++	echo -n &quot;Extracting dbghelp &quot;
++	cabextract -q $DBGINST_SRC
++	TARGET=dbghelp.exe
++	if test ! -f $TARGET; then
++	    echo &quot;failed&quot;;
++	    exit 1;
++	fi
++	unzip -o $TARGET
++	echo &quot;done&quot;;
++    else
++	echo &quot;Already have dbghelp&quot;;
++    fi
++    
++    # unicows
++    cd $BUILDDIR;
++    if test ! -f $OOBUILDDIR/external/dbghelp/unicows.dll; then
++	echo -n &quot;Extracting unicows &quot;
++	cabextract -q $UNICOWS_SRC
++	TARGET=unicows.dll
++	if test ! -f $TARGET; then
++	    echo &quot;failed&quot;;
++	    exit 1;
++	fi
++	echo &quot;done&quot;;
++    else
++	echo &quot;Already have unicows&quot;;
++    fi
++fi
+
+--=-5bJvvn8kBFfCOpe+WzHO--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000395.html">[Open Office] [Fwd: Re: OOo opens several windows when opening a single document]
+</A></li>
+	<LI> Next message: <A HREF="000396.html">[Open Office] Bounties link
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#390">[ date ]</a>
+              <a href="thread.html#390">[ thread ]</a>
+              <a href="subject.html#390">[ subject ]</a>
+              <a href="author.html#390">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

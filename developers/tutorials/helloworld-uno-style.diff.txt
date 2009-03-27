@@ -1,0 +1,201 @@
+--- helloworld/inc/helloworld.hxx	2005-07-20 13:17:57.504281011 +0530
++++ helloworld/inc/helloworld.hxx	2005-07-20 13:26:05.653411957 +0530
+@@ -1,12 +1,47 @@
++#ifndef _RTL_USTRING_HXX_
++#include <rtl/ustring.hxx>
++#endif
++#ifndef _CPPUHELPER_IMPLBASE1_HXX_
++#include <cppuhelper/implbase1.hxx>
++#endif
++#ifndef _CPPUHELPER_FACTORY_HXX_
++#include <cppuhelper/factory.hxx>
++#endif
++#ifndef _COM_SUN_STAR_LANG_XSINGLESERVICEFACTORY_HPP_
++#include <com/sun/star/lang/XSingleServiceFactory.hpp>
++#endif
++#ifndef _COM_SUN_STAR_REGISTRY_XREGISTRYKEY_HPP_
++#include <com/sun/star/registry/XRegistryKey.hpp>
++#endif
++#ifndef _COM_SUN_STAR_UI_DIALOGS_XEXECUTABLEDIALOG_HPP_
++#include <com/sun/star/ui/dialogs/XExecutableDialog.hpp>
++#endif
++
++using namespace rtl;
++using namespace com::sun::star::uno;
++using namespace com::sun::star::lang;
++using namespace com::sun::star::registry;
++using namespace ::cppu;
++using ::com::sun::star::ui::dialogs::XExecutableDialog;
+ 
+ namespace hello {
+ 
+ 	namespace world {
+ 
+-	class HelloWorld {
++	class HelloWorld : public WeakImplHelper1< XExecutableDialog > {
++
++		Reference< XMultiServiceFactory > _xServiceManager;
+ 
+ 	public:
+ 
++		virtual void SAL_CALL setTitle( const OUString& aTitle ) 
++			throw( RuntimeException );
++
++		virtual sal_Int16 SAL_CALL execute( ) 
++			throw( RuntimeException );
++
++		HelloWorld( const Reference< XMultiServiceFactory > & xServiceManager );
++
+ 		void adios();
+ 
+ 		};
+--- helloworld/source/helloworld.cxx	2005-07-20 13:18:55.965713320 +0530
++++ helloworld/source/helloworld.cxx	2005-07-20 13:33:52.756043677 +0530
+@@ -1,9 +1,80 @@
+ 
+ #include "helloworld.hxx"
+ 
++#define OU2A(rtlOUString)  (::rtl::OUStringToOString((rtlOUString), RTL_TEXTENCODING_ASCII_US).getStr())
++
+ using namespace hello::world;
+ 
++HelloWorld::HelloWorld( const Reference< XMultiServiceFactory > & xServiceManager )
++	: _xServiceManager( xServiceManager )
++{
++}
++
+ void HelloWorld::adios()
+ {
+     fprintf( stderr, "Hello, World! :-)\n" );
+ }
++
++// XExecutableDialog Methods
++void SAL_CALL HelloWorld::setTitle( const OUString& rTitle ) throw( RuntimeException )
++{
++	fprintf( stderr, "HelloWorld::setTitle: %s\n", OU2A( rTitle ) );
++}
++
++sal_Int16 SAL_CALL HelloWorld::execute() throw( RuntimeException )
++{
++	fprintf( stderr, "HelloWorld::execute\n" );
++}
++
++// UNO component instantiator class
++Reference< XInterface > createHelloWorld(
++	const Reference< XMultiServiceFactory > & xMgr )
++{
++	return Reference< XInterface >( static_cast< XExecutableDialog* >( new HelloWorld( xMgr ) ) );
++}
++
++// UNO registration and invocation
++extern "C" 
++{
++
++void SAL_CALL component_getImplementationEnvironment(
++	const sal_Char ** ppEnvTypeName, uno_Environment ** ppEnv )
++{
++	*ppEnvTypeName = CPPU_CURRENT_LANGUAGE_BINDING_NAME;
++}
++
++sal_Bool SAL_CALL component_writeInfo( void* pServiceManager, void* pRegistryKey )
++{
++	if ( pRegistryKey )
++	{
++		Reference< XRegistryKey > xNewKey( reinterpret_cast< XRegistryKey * >( pRegistryKey )->createKey(
++			OUString( RTL_CONSTASCII_USTRINGPARAM("/org.openoffice.world.hello/UNO/SERVICES") ) ) );
++		xNewKey->createKey( OUString( RTL_CONSTASCII_USTRINGPARAM("org.openoffice.helloWorld") ) );
++		return sal_True;
++	}
++	return sal_False;
++}
++
++void * SAL_CALL component_getFactory(
++	const sal_Char * pImplName, void * pServiceManager, void * pRegistryKey )
++{
++	void * pRet = 0;
++	if (pServiceManager && !rtl_str_compare( pImplName, "org.openoffice.world.hello" ))
++	{
++		OUString aServiceName( RTL_CONSTASCII_USTRINGPARAM("org.openoffice.helloWorld") );
++		Reference< XSingleServiceFactory > xFactory(
++			createSingleFactory(
++				reinterpret_cast< XMultiServiceFactory * >( pServiceManager ),
++				OUString::createFromAscii( pImplName ),
++				createHelloWorld,
++				Sequence< OUString >( &aServiceName, 1 ) ) );
++		if (xFactory.is())
++		{
++			xFactory->acquire();
++			pRet = xFactory.get();
++		}
++	}
++	return pRet;
++}
++
++} // extern "C"
+--- helloworld/source/makefile.mk	2005-07-20 13:15:10.908549636 +0530
++++ helloworld/source/makefile.mk	2005-07-09 17:20:38.000000000 +0530
+@@ -15,6 +15,8 @@ SLOFILES=\
+ 
+ SHL1TARGET= 	hworld$(UPD)$(DLLPOSTFIX)
+ SHL1LIBS=       $(SLB)$/helloworld.lib
++SHL1STDLIBS=\
++	$(CPPUHELPERLIB) 
+ 
+ # --- Targets ----------------------------------
+ 
+--- svx/source/dialog/charmap.cxx	2004-07-13 15:15:11.000000000 +0530
++++ svx/source/dialog/charmap.cxx	2005-07-20 13:57:39.557992653 +0530
+@@ -61,6 +61,8 @@
+ 
+ // include ---------------------------------------------------------------
+ 
++#include<helloworld/helloworld.hxx>
++
+ #include <stdio.h>
+ 
+ #define _SVX_CHARMAP_CXX_
+@@ -117,6 +119,9 @@
+ #ifndef _COMPHELPER_TYPES_HXX_
+ #include <comphelper/types.hxx>
+ #endif
++#ifndef _UNOTOOLS_PROCESSFACTORY_HXX
++#include <comphelper/processfactory.hxx>
++#endif
+ 
+ #include "rtl/ustrbuf.hxx"
+ 
+@@ -1097,6 +1102,15 @@ void SvxCharMapData::SetCharFont( const 
+ 
+ IMPL_LINK( SvxCharMapData, OKHdl, OKButton *, EMPTYARG )
+ {
++    Reference< XExecutableDialog > xHelloWorld( ::comphelper::getProcessServiceFactory()->
++        createInstance( ::rtl::OUString( RTL_CONSTASCII_USTRINGPARAM("org.openoffice.helloWorld") ) ), UNO_QUERY );
++
++    if( xHelloWorld.is() )
++        xHelloWorld->execute();
++    else
++        fprintf( stderr, "Unable to instantiate xHelloWorld.\n" );
++
++
+     String aStr = aShowText.GetText();
+ 
+     if ( !aStr.Len() )
+--- scp2/source/ooo/file_library_ooo.scp	2004-12-21 14:49:11.000000000 +0530
++++ scp2/source/ooo/file_library_ooo.scp	2004-12-24 10:11:44.343252931 +0530
+@@ -458,6 +458,16 @@ File gid_File_Lib_Db_Cxx
+ End
+ #endif
+ 
++#ifdef UNX
++File gid_File_Lib_Hl_World
++    TXT_FILE_BODY;
++    Styles = (PACKED,UNO_COMPONENT);
++    RegistryID = gid_Starregistry_Services_Rdb;
++    Dir = gid_Dir_Program;
++    Name = STRING(CONCAT4(libhworld,OFFICEUPD,DLLSUFFIX,UNXSUFFIX));
++End
++#endif
++
+ #endif
+ 
+ STD_UNO_LIB_FILE( gid_File_Lib_Dba, dba)

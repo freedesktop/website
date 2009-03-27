@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.9.121.1: build broken on x86_64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-August/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-1.9.121.1%3A%20build%20broken%20on%20x86_64&In-Reply-To=42F60417.9050208%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001079.html">
+   <LINK REL="Next"  HREF="001081.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.9.121.1: build broken on x86_64</H1>
+    <B>J&#252;rg Billeter</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build-1.9.121.1%3A%20build%20broken%20on%20x86_64&In-Reply-To=42F60417.9050208%40gmx.net"
+       TITLE="[Open Office] ooo-build-1.9.121.1: build broken on x86_64">j at bitron.ch
+       </A><BR>
+    <I>Sun Aug  7 09:14:01 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001079.html">[Open Office] ooo-build-1.9.121.1: build broken on x86_64
+</A></li>
+        <LI>Next message: <A HREF="001081.html">[Open Office] ooo-build-1.9.121.1: build broken on x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1080">[ date ]</a>
+              <a href="thread.html#1080">[ thread ]</a>
+              <a href="subject.html#1080">[ subject ]</a>
+              <a href="author.html#1080">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Son, 2005-08-07 at 14:52 +0200, Martin Kretzschmar wrote:
+&gt;<i> Hi J&#252;rg,
+</I>&gt;<i> 
+</I>&gt;<i> J&#252;rg Billeter schrieb:
+</I>&gt;<i> &gt; Trying to build ooo-build-1.9.121.1 on x86_64/linux with gcc 4.0.1
+</I>&gt;<i> &gt; results in the following error:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; /usr/bin/ld: /usr/src/ooo-build-1.9.121.1/build/src680-m121/solver/680/unxlngx4.pro/lib/libmdbsql.a(mdbsql.o): relocation R_X86_64_32 against `a local symbol' can not be used when making a shared object; recompile with -fPIC
+</I>&gt;<i> &gt; /usr/src/ooo-build-1.9.121.1/build/src680-m121/solver/680/unxlngx4.pro/lib/libmdbsql.a: could not read symbols: Bad value
+</I>&gt;<i> 
+</I>&gt;<i> Can you try and change (after removing mdbtools/unxlngx4.pro)
+</I>&gt;<i> 
+</I>&gt;<i> CONFIGURE_ACTION=./configure CFLAGS=&quot;-O2 $(ARCH_FLAGS)&quot;
+</I>&gt;<i> to
+</I>&gt;<i> CONFIGURE_ACTION=./configure CFLAGS=&quot;-O2 $(ARCH_FLAGS) --with-pic&quot;
+</I>&gt;<i> 
+</I>&gt;<i> in mdbtools/makefile.mk.
+</I>
+--with-pic didn't work, gcc doesn't accept this parameter. Replacing it
+by -fPIC seems to have worked, build and delivery of mdbtools and
+connectivity succeeded. Didn't try to complete the whole build, though.
+
+Regards,
+
+J&#252;rg
+
+-- 
+J&#252;rg Billeter &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">j at bitron.ch</A>&gt;
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001079.html">[Open Office] ooo-build-1.9.121.1: build broken on x86_64
+</A></li>
+	<LI>Next message: <A HREF="001081.html">[Open Office] ooo-build-1.9.121.1: build broken on x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1080">[ date ]</a>
+              <a href="thread.html#1080">[ thread ]</a>
+              <a href="subject.html#1080">[ subject ]</a>
+              <a href="author.html#1080">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

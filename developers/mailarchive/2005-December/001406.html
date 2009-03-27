@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] mono_proxy.cxx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20mono_proxy.cxx&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001405.html">
+   <LINK REL="Next"  HREF="001407.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] mono_proxy.cxx</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20mono_proxy.cxx&In-Reply-To="
+       TITLE="[Open Office] mono_proxy.cxx">michael.meeks at novell.com
+       </A><BR>
+    <I>Thu Dec  8 04:57:46 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001405.html">[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx
+</A></li>
+        <LI>Next message: <A HREF="001407.html">[Open Office] Re: mono_proxy.cxx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1406">[ date ]</a>
+              <a href="thread.html#1406">[ thread ]</a>
+              <a href="subject.html#1406">[ subject ]</a>
+              <a href="author.html#1406">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi dudie,
+
+	Weichuan is getting some 64bit compiler issue with:
+
+uno_Interface * SAL_CALL cli_uno_environment_createMonoProxyAndRegister(
+    uno_ExtEnvironment *pUnoEnv, void *pMonoProxy, rtl_uString *pOid,
+    typelib_TypeDescription *pTD )
+    SAL_THROW_EXTERN_C()
+{
+    uno_Interface * proxy = static_cast&lt; uno_Interface * &gt;(
+        new MonoProxy( pUnoEnv,
+*********              reinterpret_cast&lt; guint32 &gt;( pMonoProxy ),
+                       pOid, pTD ) );
+
+    pUnoEnv-&gt;registerProxyInterface(
+        pUnoEnv,
+        reinterpret_cast&lt; void ** &gt;( &amp;proxy ),
+        mono_proxy_free,
+        pOid,
+        (typelib_InterfaceTypeDescription*) pTD );
+
+    return proxy;
+}
+
+	Should the cast not be a call to:
+
+guint32      mono_gchandle_new         (MonoObject *obj, gboolean
+pinned);
+
+	Also - I'm nervous about passing &amp;proxy to registerProxyInterface -
+presumably that stack pointer is not stored longer than the lifetime of
+the method call ?
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001405.html">[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx
+</A></li>
+	<LI>Next message: <A HREF="001407.html">[Open Office] Re: mono_proxy.cxx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1406">[ date ]</a>
+              <a href="thread.html#1406">[ thread ]</a>
+              <a href="subject.html#1406">[ subject ]</a>
+              <a href="author.html#1406">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

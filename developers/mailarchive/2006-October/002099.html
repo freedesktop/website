@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] JRE register fails when	building	2.0.4	on	Mandriva 2007 x86_64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%0A%09building%092.0.4%09on%09Mandriva%202007%20x86_64&In-Reply-To=4540876B.3080205%40norbit.no">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002098.html">
+   <LINK REL="Next"  HREF="002100.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] JRE register fails when	building	2.0.4	on	Mandriva 2007 x86_64</H1>
+    <B>Caolan McNamara</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%0A%09building%092.0.4%09on%09Mandriva%202007%20x86_64&In-Reply-To=4540876B.3080205%40norbit.no"
+       TITLE="[Open Office] JRE register fails when	building	2.0.4	on	Mandriva 2007 x86_64">caolanm at redhat.com
+       </A><BR>
+    <I>Thu Oct 26 06:12:31 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002098.html">[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+        <LI>Next message: <A HREF="002100.html">[Open Office] JRE register fails when	building	2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2099">[ date ]</a>
+              <a href="thread.html#2099">[ thread ]</a>
+              <a href="subject.html#2099">[ subject ]</a>
+              <a href="author.html#2099">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 2006-10-26 at 12:01 +0200, Atle Nissestad wrote:
+&gt;<i> Caolan McNamara wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; If for some reason we have *no* m_sJavaHome value, we set it to a
+</I>&gt;<i> &gt; default of /usr/lib. Depending on what you get as the results above it
+</I>&gt;<i> &gt; might be the case that we might need to change... 
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; if (!m_sJavaHome.getLength())
+</I>&gt;<i> &gt;     m_sJavaHome = &quot;<A HREF="file:///usr/lib&quot;;">file:///usr/lib&quot;;</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; to
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; if (!m_sJavaHome.getLength())
+</I>&gt;<i> &gt; #ifdef X86_64
+</I>&gt;<i> &gt;     m_sJavaHome = &quot;<A HREF="file:///usr/lib64&quot;;">file:///usr/lib64&quot;;</A>
+</I>&gt;<i> &gt; #else
+</I>&gt;<i> &gt;     m_sJavaHome = &quot;<A HREF="file:///usr/lib&quot;;">file:///usr/lib&quot;;</A>
+</I>&gt;<i> &gt; #endif
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   
+</I>&gt;<i> Yepp, but for me m_sJavaHome was set, so my ugly hack ended up like this:
+</I>&gt;<i> 
+</I>&gt;<i> #ifndef X86_64
+</I>&gt;<i> if (!m_sJavaHome.getLength())
+</I>&gt;<i>     m_sJavaHome = &quot;<A HREF="file:///usr/lib&quot;;">file:///usr/lib&quot;;</A>
+</I>&gt;<i> #else
+</I>&gt;<i>     m_sJavaHome = &quot;<A HREF="file:///usr/lib64&quot;;">file:///usr/lib64&quot;;</A>
+</I>&gt;<i> #endif
+</I>&gt;<i> 
+</I>&gt;<i> This apparently caused both /usr/lib and /usr/lib64 to be used as lib
+</I>&gt;<i> search path.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; but then we might fall afoul of gcj's on x86_64 where there isn't a
+</I>&gt;<i> &gt; java.home set, but libgcj.so has been put into /usr/lib in which case we
+</I>&gt;<i> &gt; might need an additional
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; #ifdef X86_64
+</I>&gt;<i> &gt;     if (!bRt)
+</I>&gt;<i> &gt;     {
+</I>&gt;<i> &gt;         m_sHome = &quot;<A HREF="file:///usr/lib64&quot;;">file:///usr/lib64&quot;;</A>
+</I>&gt;<i> &gt;         for(i_path ip = libpaths.begin(); ip != libpaths.end(); ip++)
+</I>&gt;<i> &gt;         {
+</I>&gt;<i> &gt;             //Construct an absolute path to the possible runtime
+</I>&gt;<i> &gt;             OUString usRt= m_sHome + *ip;
+</I>&gt;<i> &gt;             DirectoryItem item;
+</I>&gt;<i> &gt;             if(DirectoryItem::get(usRt, item) == File::E_None)
+</I>&gt;<i> &gt;             {
+</I>&gt;<i> &gt;                 //found runtime lib
+</I>&gt;<i> &gt;                 m_sRuntimeLibrary = usRt;
+</I>&gt;<i> &gt;                 bRt = true;
+</I>&gt;<i> &gt;                 break;
+</I>&gt;<i> &gt;             }
+</I>&gt;<i> &gt;         }
+</I>&gt;<i> &gt;     }
+</I>&gt;<i> &gt; #endif
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; after the existing last 
+</I>&gt;<i> &gt; if (!bRt) ...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   
+</I>&gt;<i> Ok, maybe that's the way to go. Thanks for the explanation (code hacking
+</I>&gt;<i> is not my strong side ..).
+</I>
+yeah, maybe it is. If all else fails and we're built for x86_64 give one
+final go if m_sHome != &quot;<A HREF="file:///usr/lib64&quot;">file:///usr/lib64&quot;</A> and try a m_sHome value
+of /usr/lib64. 
+
+gcj is sort of in a transition period at the moment I guess, I'd expect
+that next iteration of gcj for nearly everyone will move to a standalone
+libjvm.so in which case the java.home value becomes reliable to find the
+jvm providing library and everyone marches along quite happily. In the
+meantime though an additional fallback can't hurt.
+
+There *might* be an argument that mandriva's 64bit gij's java.home
+should be /usr/lib64 not /usr/lib (like I bet it says) but
+<A HREF="http://gcc.gnu.org/onlinedocs/gcj/GNU-Classpath-Properties.html">http://gcc.gnu.org/onlinedocs/gcj/GNU-Classpath-Properties.html</A> doesn't
+really give any guarantee that it points above the libgcj.so dir, it
+probably just so happens to do so for me and a few others.
+
+C.
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002098.html">[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+	<LI>Next message: <A HREF="002100.html">[Open Office] JRE register fails when	building	2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2099">[ date ]</a>
+              <a href="thread.html#2099">[ thread ]</a>
+              <a href="subject.html#2099">[ subject ]</a>
+              <a href="author.html#2099">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

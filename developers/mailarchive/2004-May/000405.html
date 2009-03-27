@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build 1.1.57
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-May/index.html" >
+   <LINK REL="made" HREF="mailto:rmrmg%40wp.pl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+   <LINK REL="Previous"  HREF="000404.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build 1.1.57
+   </H1>
+    <B>Rafał 'rmrmg' Roszak
+    </B> 
+    <A HREF="mailto:rmrmg%40wp.pl"
+       TITLE="[Open Office] ooo-build 1.1.57">rmrmg@wp.pl
+       </A><BR>
+    <I>Sat, 29 May 2004 13:56:32 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000404.html">[Open Office] Unsubscribing to Openoffice
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#405">[ date ]</a>
+              <a href="thread.html#405">[ thread ]</a>
+              <a href="subject.html#405">[ subject ]</a>
+              <a href="author.html#405">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a multi-part message in MIME format.
+
+--Multipart=_Sat__29_May_2004_13_56_32_+0200_t4ieRYYf.lCxpFun
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+
+Hi 
+I find ooo-build 1.1.57 (why U don't announce it?)
+It still have the same problem with ./download but I find annother
+problem (after command make):
+
+./unpack: line 22: `check-tarball': not a valid identifier
+
+In attachment my patch for this, it change check-tarball for
+check_tarball and check-file for check_file.
+-- 
+. JID: rmrmg(at)jabberpl(dot)org |   RMRMG   .
+.           gg: #2311504         | signature .
+.   mail: rmrmg(at)wp(dot)pl     |  version  .
+.  registered Linux user 261525  |   0.0.3   .
+
+--Multipart=_Sat__29_May_2004_13_56_32_+0200_t4ieRYYf.lCxpFun
+Content-Type: application/octet-stream;
+ name=&quot;unpack.patch&quot;
+Content-Disposition: attachment;
+ filename=&quot;unpack.patch&quot;
+Content-Transfer-Encoding: base64
+
+LS0tIC4vdW5wYWNrLW9yaWcJMjAwNC0wNS0yOSAxMzo0NDoxMS4wMDAwMDAwMDAgKzAyMDAKKysr
+IC4vdW5wYWNrCTIwMDQtMDUtMjkgMTM6NDI6MjguMDAwMDAwMDAwICswMjAwCkBAIC0xMCw3ICsx
+MCw3IEBACiAJZXhpdCAwOwogZmkKIAotY2hlY2stdGFyYmFsbCAoKQorY2hlY2tfdGFyYmFsbCgp
+CiB7CiAgICAgZWNobyAtbiAiTG9va2luZyBmb3IgJDEgLi4uICI7CiAgICAgaWYgdGVzdCAhIC1m
+ICQxOyB0aGVuCkBAIC0yMSw3ICsyMSw3IEBACiAgICAgZmkKIH0KIAotY2hlY2stZmlsZSAoKQor
+Y2hlY2tfZmlsZSgpCiB7CiAgICAgZWNobyAtbiAiTG9va2luZyBmb3IgJDEgLi4uICI7CiAgICAg
+aWYgdGVzdCAhIC1mICQxOyB0aGVuCkBAIC0zNywyNiArMzcsMjYgQEAKIAogZWNobyAiQ2hlY2tp
+bmcgZm9yIHNvdXJjZSBwYWNrYWdlcyBpbiAkU1JDRElSIjsKIGlmIHRlc3QgInokU1lTVEVNX0dD
+QyIgPSAieiI7IHRoZW4KLSAgICBjaGVjay10YXJiYWxsICRHQ0NfVEFSQkFMTAotICAgIGNoZWNr
+LXRhcmJhbGwgJEJJTlVUSUxTX1RBUkJBTEwKKyAgICBjaGVja190YXJiYWxsICRHQ0NfVEFSQkFM
+TAorICAgIGNoZWNrX3RhcmJhbGwgJEJJTlVUSUxTX1RBUkJBTEwKIGZpCiBpZiB0ZXN0ICJ6JEVO
+QUJMRV9KQVZBIiA9ICJ6eWVzIiAmJgogICAgIHRlc3QgInokSkRLX0hPTUUiID0gInoiOyB0aGVu
+Ci0gICAgY2hlY2stdGFyYmFsbCAkSkRLX1RBUkJBTEwKKyAgICBjaGVja190YXJiYWxsICRKREtf
+VEFSQkFMTAogZmkKLWNoZWNrLXRhcmJhbGwgJE9PT19UQVJCQUxMCi1jaGVjay10YXJiYWxsICRP
+T09fSUNPTlNfVEFSQkFMTAorY2hlY2tfdGFyYmFsbCAkT09PX1RBUkJBTEwKK2NoZWNrX3RhcmJh
+bGwgJE9PT19JQ09OU19UQVJCQUxMCiAKIGlmIHRlc3QgInokQlVJTERfV0lOMzIiICE9ICJ6Ijsg
+dGhlbgotICAgIGNoZWNrLXRhcmJhbGwgJE9PT19TQ0FMRURfSUNPTlNfVEFSQkFMTAorICAgIGNo
+ZWNrX3RhcmJhbGwgJE9PT19TQ0FMRURfSUNPTlNfVEFSQkFMTAogZmkKIAogbWtkaXIgLXAgJEJV
+SUxERElSCiBjZCAkQlVJTERESVIKIAogaWYgdGVzdCAieiRCVUlMRF9XSU4zMiIgIT0gInoiOyB0
+aGVuCi0gICAgY2hlY2stZmlsZSAkVU5JQ09XU19TUkMKLSAgICBjaGVjay1maWxlICREQkdJTlNU
+X1NSQworICAgIGNoZWNrX2ZpbGUgJFVOSUNPV1NfU1JDCisgICAgY2hlY2tfZmlsZSAkREJHSU5T
+VF9TUkMKICMgICAgY2hlY2stZmlsZSAkT0RNQV9TUkMKIGZpCiAK
+
+--Multipart=_Sat__29_May_2004_13_56_32_+0200_t4ieRYYf.lCxpFun--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000404.html">[Open Office] Unsubscribing to Openoffice
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#405">[ date ]</a>
+              <a href="thread.html#405">[ thread ]</a>
+              <a href="subject.html#405">[ subject ]</a>
+              <a href="author.html#405">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

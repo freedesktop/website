@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-wrapper.in
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-wrapper.in&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001683.html">
+   <LINK REL="Next"  HREF="001684.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-wrapper.in</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-wrapper.in&In-Reply-To="
+       TITLE="[Open Office] ooo-wrapper.in">ghibo at mandriva.com
+       </A><BR>
+    <I>Tue Mar  7 02:28:33 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001683.html">[Open Office] Build without java broken
+</A></li>
+        <LI>Next message: <A HREF="001684.html">[Open Office] ooo-wrapper.in
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1682">[ date ]</a>
+              <a href="thread.html#1682">[ thread ]</a>
+              <a href="subject.html#1682">[ subject ]</a>
+              <a href="author.html#1682">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've seen recently the wrapper is changed to don't use
+ooqstart if no argument is passed using:
+
+if ($Binary eq &quot;ooqstart&quot; &amp;&amp; $ENV{OOO_EXTRA_ARG} eq &quot;&quot;) {
+     $Binary = &quot;soffice&quot;;
+}
+
+but wouldn't be better to provide a default OOO_EXTRA_ARG='' in
+this case, so that ooqstart anyway used? Sort of:
+
+     if ($0 =~ m/\/oo(calc|draw|impress|math|web|writer|base)$BinSuffix$/) {
+         $arg = &quot;-$1&quot;;
+     } elsif ($0 =~ m/\/oofromtemplate$BinSuffix$/) {
+         $arg = &quot;slot:5500&quot;;
+     }
+     else
+	$ENV{OOO_EXTRA_ARG} ||= '';
+
+?
+
+Also, since the wrapper can understand whether the ooqstart it's installed
+or not, what about moving the qstart files to a standalone subpackage,
+using this attached patch? Do you agree if I apply to current head wrapper?
+
+Bye
+Giuseppe.
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: qstart.diff
+Type: text/x-diff
+Size: 832 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060307/3f2eed88/qstart.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060307/3f2eed88/qstart.bin</A>
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001683.html">[Open Office] Build without java broken
+</A></li>
+	<LI>Next message: <A HREF="001684.html">[Open Office] ooo-wrapper.in
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1682">[ date ]</a>
+              <a href="thread.html#1682">[ thread ]</a>
+              <a href="subject.html#1682">[ subject ]</a>
+              <a href="author.html#1682">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

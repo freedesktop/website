@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.9.90: build error in project shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:michael.meeks%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000906.html">
+   <LINK REL="Next"  HREF="000908.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.9.90: build error in project shell
+   </H1>
+    <B>michael meeks
+    </B> 
+    <A HREF="mailto:michael.meeks%40novell.com"
+       TITLE="[Open Office] ooo-build-1.9.90: build error in project shell">michael.meeks@novell.com
+       </A><BR>
+    <I>Tue, 19 Apr 2005 17:28:33 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000906.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+        <LI> Next message: <A HREF="000908.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#907">[ date ]</a>
+              <a href="thread.html#907">[ thread ]</a>
+              <a href="subject.html#907">[ subject ]</a>
+              <a href="author.html#907">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 2005-04-19 at 18:32 +0200, Jürg Billeter wrote:
+&gt;<i> Hi Michael
+</I>&gt;<i> 
+</I>&gt;<i> On Die, 2005-04-19 at 11:32 +0100, michael meeks wrote:
+</I>&gt;<i> &gt; On Sat, 2005-04-16 at 12:07 +0200, Jürg Billeter wrote:
+</I>&gt;<i> &gt; &gt; Building ooo-build-1.9.90 with gcc 4.0 RC1 and GNOME 2.10 and without
+</I>&gt;<i> &gt; &gt; java breaks with two linker errors. Should glib-2.0 and ORBit-2.0 be
+</I>&gt;<i> &gt; &gt; added as pkgconfig modules to gconfbe or how can I resolve this issue?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 	Interesting; they should be there as pkg-config deps anyway I think;
+</I>&gt;<i> &gt; check pkg-config --libs gconf-2.0 or whatever.
+</I>&gt;<i>
+</I>&gt;<i> Thanks for your reply, that was the right hint. This only returns
+</I>&gt;<i> -Wl,--export-dynamic -pthread -lgconf-2
+</I>&gt;<i> on my system. pkg-config since version 0.17 doesn't return indirect
+</I>&gt;<i> library dependencies by default anymore. So it seems that glib-2.0 and
+</I>&gt;<i> ORBit-2.0 should indeed be added to gconfbe as they are used directly,
+</I>&gt;<i> if I've understood this correctly?
+</I>
+	So - How odd ? Jurg - can you paste the link error again ? James - any
+ideas why is this now broken ? and/or the change in behavior here seems
+odd.
+
+	Before I try to get some odd-looking change up-stream here for all our
+pkg-config usage, it'd be nice to have some rational/authoritative
+explanation for why pkg-config has &quot;gone autotools&quot; in it's backwards
+compatibility strategy.
+
+	Hmm,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000906.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+	<LI> Next message: <A HREF="000908.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#907">[ date ]</a>
+              <a href="thread.html#907">[ thread ]</a>
+              <a href="subject.html#907">[ subject ]</a>
+              <a href="author.html#907">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] 2.0.4 build from scratch stopped
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%202.0.4%20build%20from%20scratch%20stopped&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002054.html">
+   <LINK REL="Next"  HREF="002062.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] 2.0.4 build from scratch stopped</H1>
+    <B>Giuseppe Castagno</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%202.0.4%20build%20from%20scratch%20stopped&In-Reply-To="
+       TITLE="[Open Office] 2.0.4 build from scratch stopped">giuseppe.castagno at acca-esse.eu
+       </A><BR>
+    <I>Sat Oct 14 03:07:19 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002054.html">[Open Office] ooo-build-2-0-4 build problem in	sd/source/ui/slideshow
+</A></li>
+        <LI>Next message: <A HREF="002062.html">[Open Office] 2.0.4 build from scratch stopped
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2051">[ date ]</a>
+              <a href="thread.html#2051">[ thread ]</a>
+              <a href="subject.html#2051">[ subject ]</a>
+              <a href="author.html#2051">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+My system is FC5 current, I use gcj for the Java stuff.
+
+I tried a build from scratch of 2.0.4.0, checking out ooo-build-2-0-4, 
+topmost ChangeLog lines are:
+
+2006-10-13  Tor Lillqvist  &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">tml at novell.com</A>&gt;
+
+	* bin/build-ooo: Before looking for GSI_*.sdf files in src,
+	uncompress any GSI_*.sdf.bz2 and GSI_*.sdf.gz files there.
+
+now the log:
+
+...begin log...
+
+The variable DMAKEROOT         is set to: $SOLARENVINC/startup
+The variable JAVACISGCJ        is set to: unset
+The variable AWTLIB            is set to: -lgcjawt -lgcj
+The variable JDK               is set to: gcj
+The variable JAVA_SOURCE_VER   is set to: unset
+The variable JAVA_TARGET_VER   is set to: unset
+The variable JAVAINTERPRETER   is set to: 
+/usr/lib/jvm/java-1.4.2-gcj/bin/java
+The variable JAVACOMPILER      is set to: 
+/usr/lib/jvm/java-1.4.2-gcj/bin/javac
+The variable JAVAAOTCOMPILER   is set to: unset
+The variable JAVADOC           is set to: 
+/usr/lib/jvm/java-1.4.2-gcj/bin/javadoc
+
+...snip...
+
+=============
+Building project beanshell
+=============
+/home/beppe/ooo-b/2.0.4.0/build/OOO_2_0_4/beanshell
+mkout -- version: 1.7
+-------------
+if test -f ./unxlngi6.pro/misc/build/BeanShell ; then mv
+
+... snip ...
+
+/usr/bin/ant -Dprj=../../../.. -Dprjname=ooo_beanshell 
+-Djava.source.ver= -Djava.target.ver=  -Ddebug=off -Doptimize=on 
+-Dtarget=jarall -Dsolar.update=on  -Dout=../../../../unxlngi6.pro 
+-Dinpath=unxlngi6.pro -Dproext=&quot;.pro&quot; 
+-Dsolar.bin=/home/beppe/ooo-b/2.0.4.0/build/OOO_2_0_4/solver/680/unxlngi6.pro/bin 
+ 
+-Dsolar.jar=/home/beppe/ooo-b/2.0.4.0/build/OOO_2_0_4/solver/680/unxlngi6.pro/bin 
+-Dsolar.doc=/home/beppe/ooo-b/2.0.4.0/build/OOO_2_0_4/solver/680/unxlngi6.pro/doc 
+-Dcommon.jar=/home/beppe/ooo-b/2.0.4.0/build/OOO_2_0_4/solver/680/unxlngi6.pro/bin 
+  -Dcommon.doc= -f build.xml  -emacs
+Buildfile: build.xml
+
+checkjjt:
+
+jjtree:
+
+checkjj:
+
+javacc:
+
+builddir:
+
+compile:
+Compiling 143 source files to 
+/home/beppe/ooo-b/2.0.4.0/build/OOO_2_0_4/beanshell/unxlngi6.pro/misc/build/BeanShell/classes
+target level should be comprised in between '1.1' and '1.5' (or '5' or 
+'5.0'):
+
+BUILD FAILED
+/home/beppe/ooo-b/2.0.4.0/build/OOO_2_0_4/beanshell/unxlngi6.pro/misc/build/BeanShell/build.xml:178: 
+Compile failed; see the compiler error output for details.
+
+Total time: 4 seconds
+dmake:  Error code 1, while making 'ANTBUILD'
+'---* tg_merge.mk *---'
+dmake:  Error code 255, while making 
+'./unxlngi6.pro/misc/build/so_built_ooo_beanshell'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making 
+/home/beppe/ooo-b/2.0.4.0/build/OOO_2_0_4/beanshell
+make: *** [stamp/build] Error 1
+
+......end log.......
+
+Disabling the patch build-java-target.diff I was able to complete the build.
+
+HTH.
+
+-- 
+Kind Regards,
+Giuseppe Castagno
+
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002054.html">[Open Office] ooo-build-2-0-4 build problem in	sd/source/ui/slideshow
+</A></li>
+	<LI>Next message: <A HREF="002062.html">[Open Office] 2.0.4 build from scratch stopped
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2051">[ date ]</a>
+              <a href="thread.html#2051">[ thread ]</a>
+              <a href="subject.html#2051">[ subject ]</a>
+              <a href="author.html#2051">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

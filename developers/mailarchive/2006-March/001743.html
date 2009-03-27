@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] LDAP configuration fixes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20LDAP%20configuration%20fixes&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001742.html">
+   <LINK REL="Next"  HREF="001744.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] LDAP configuration fixes</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20LDAP%20configuration%20fixes&In-Reply-To="
+       TITLE="[Open Office] LDAP configuration fixes">h.mth at web.de
+       </A><BR>
+    <I>Thu Mar 30 08:44:51 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001742.html">[Open Office] Re: [PATCH] experimental system STLport5 support
+</A></li>
+        <LI>Next message: <A HREF="001744.html">[Open Office] LDAP configuration fixes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1743">[ date ]</a>
+              <a href="thread.html#1743">[ thread ]</a>
+              <a href="subject.html#1743">[ subject ]</a>
+              <a href="author.html#1743">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi list!
+Some distros build Mozilla or Firefox without LDAP support. For that
+one can use OpenLDAP to build the LDAP backend in OOo2.
+
+Until now there are these hacks necessary not to fail:
+<A HREF="http://ooo.ximian.com/patches/src680/disable-np_sdk.diff">http://ooo.ximian.com/patches/src680/disable-np_sdk.diff</A>
+<A HREF="http://ooo.ximian.com/patches/src680/no-ldap-mozilla.diff">http://ooo.ximian.com/patches/src680/no-ldap-mozilla.diff</A>
+
+I replaced them with this patch:
+<A HREF="http://ooo.ximian.com/patches/src680/config_office-ldap.diff">http://ooo.ximian.com/patches/src680/config_office-ldap.diff</A>
+
+Bugreport is here:
+<A HREF="http://www.openoffice.org/issues/show_bug.cgi?id=63782">http://www.openoffice.org/issues/show_bug.cgi?id=63782</A>
+
+I would like to see this patch applied in BuildBits section after
+config_office-openldap-fix.diff.
+
+Since my patch changes configure flags I want you to know about it
+before I silently add it there.
+
+The changes are (or not):
+
+	* --enable-openldap -&gt; --enable-ldap / --with-openldap
+
+	* by default without flags set it builds with Mozilla's LDAP
+
+	* --with-openldap chooses OpenLDAP over Mozilla's LDAP
+
+
+IF there are no concerns I move it to BuildBits in a week or so.
+
+
+Regards,
+Hanno
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001742.html">[Open Office] Re: [PATCH] experimental system STLport5 support
+</A></li>
+	<LI>Next message: <A HREF="001744.html">[Open Office] LDAP configuration fixes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1743">[ date ]</a>
+              <a href="thread.html#1743">[ thread ]</a>
+              <a href="subject.html#1743">[ subject ]</a>
+              <a href="author.html#1743">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%0A%09own%20distro%20tag&In-Reply-To=200602220950.05839.kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001635.html">
+   <LINK REL="Next"  HREF="001637.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag</H1>
+    <B>Andreas Radke</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%0A%09own%20distro%20tag&In-Reply-To=200602220950.05839.kendy%40suse.cz"
+       TITLE="[Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag">a.radke at arcor.de
+       </A><BR>
+    <I>Wed Feb 22 11:37:44 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001635.html">[Open Office] oob680.1.1 - new issues and qustion getting our own	distro tag
+</A></li>
+        <LI>Next message: <A HREF="001637.html">[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1636">[ date ]</a>
+              <a href="thread.html#1636">[ thread ]</a>
+              <a href="subject.html#1636">[ subject ]</a>
+              <a href="author.html#1636">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jan Holesovsky schrieb:
+&gt;<i> On Wednesday 22 February 2006 00:53, Andreas Radke wrote:
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> /usr/bin/perl
+</I>&gt;&gt;<i> /var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1
+</I>&gt;&gt;<i> /solenv/bin/leconvert.pl dos 
+</I>&gt;&gt;<i> ./unxlngx6.pro/misc/build/hsqldb/build/build.xml
+</I>&gt;&gt;<i> ./unxlngx6.pro/misc/build/hsqldb/doc/changelist_1_8_0.txt
+</I>&gt;&gt;<i> ./unxlngx6.pro/misc/build/hsqldb/src/org/hsqldb/resources/sql-error-message
+</I>&gt;&gt;<i> s_it.properties &amp;&amp; touch ./unxlngx6.pro/misc/convert_dos_flag
+</I>&gt;&gt;<i> touch ./unxlngx6.pro/misc/build/so_configured_so_hsqldb
+</I>&gt;&gt;<i> mkdir ./unxlngx6.pro/misc/build/hsqldb/
+</I>&gt;&gt;<i> mkdir: cannot create directory `./unxlngx6.pro/misc/build/hsqldb/': File
+</I>&gt;&gt;<i> exists
+</I>&gt;&gt;<i> cd ./unxlngx6.pro/misc/build/hsqldb/ &amp;&amp;
+</I>&gt;&gt;<i> /var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1
+</I>&gt;&gt;<i> /external/common/apache-ant-1.6.1/bin/ant
+</I>&gt;&gt;<i> -Dbuild.label=&quot;build-680m1(Build:9006)&quot; -f build/build.xml jar  &amp;&amp; touch
+</I>&gt;&gt;<i> so_built_so_hsqldb
+</I>&gt;&gt;<i> /var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1
+</I>&gt;&gt;<i> /external/common/apache-ant-1.6.1/bin/ant: Command not found.
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Looks like 'ant' is not found, but no idea why...
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Jan
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Just a dirty hack to bring the executable binary to that path:
+
+ # fix ant is not found
+  mkdir -p
+$startdir/src/ooo-build-oob680.1.1/build/oob680-m1/external/common/apache-ant-1.6.1/bin/
+  ln -s /usr/bin/ant
+$startdir/src/ooo-build-oob680.1.1/build/oob680-m1/external/common/apache-ant-1.6.1/bin/ant
+
+so now I get this:
+
+patching file hsqldb/src/org/hsqldb/scriptio/ScriptWriterBase.java
+/usr/bin/perl
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/solenv/bin/leconvert.pl
+dos  ./unxlngx6.pro/misc/build/hsqldb/build/build.xml
+./unxlngx6.pro/misc/build/hsqldb/doc/changelist_1_8_0.txt
+./unxlngx6.pro/misc/build/hsqldb/src/org/hsqldb/resources/sql-error-messages_it.properties
+&amp;&amp; touch ./unxlngx6.pro/misc/convert_dos_flag
+touch ./unxlngx6.pro/misc/build/so_configured_so_hsqldb
+mkdir ./unxlngx6.pro/misc/build/hsqldb/
+mkdir: cannot create directory `./unxlngx6.pro/misc/build/hsqldb/': File
+exists
+cd ./unxlngx6.pro/misc/build/hsqldb/ &amp;&amp;
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/external/common/apache-ant-1.6.1/bin/ant
+-Dbuild.label=&quot;build-680m1(Build:9006)&quot; -f build/build.xml jar  &amp;&amp; touch
+so_built_so_hsqldb
+Error: JAVA_HOME is not defined correctly.
+  We cannot execute NO_JAVA_HOME/bin/java
+dmake:  Error code 1, while making
+'./unxlngx6.pro/misc/build/so_built_so_hsqldb'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/hsqldb
+make: *** [stamp/build] Error 1
+==&gt; ERROR: Build Failed.  Aborting...
+
+
+What option to enable?
+
+Andreas Radke
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001635.html">[Open Office] oob680.1.1 - new issues and qustion getting our own	distro tag
+</A></li>
+	<LI>Next message: <A HREF="001637.html">[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1636">[ date ]</a>
+              <a href="thread.html#1636">[ thread ]</a>
+              <a href="subject.html#1636">[ subject ]</a>
+              <a href="author.html#1636">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

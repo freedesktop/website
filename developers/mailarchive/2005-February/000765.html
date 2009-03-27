@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] More src680-m76 build breakages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000762.html">
+   <LINK REL="Next"  HREF="000767.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] More src680-m76 build breakages
+   </H1>
+    <B>Jan Holesovsky
+    </B> 
+    <A HREF="mailto:kendy%40suse.cz"
+       TITLE="[Open Office] More src680-m76 build breakages">kendy@suse.cz
+       </A><BR>
+    <I>Wed, 9 Feb 2005 11:17:55 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000762.html">[Open Office] More src680-m76 build breakages
+</A></li>
+        <LI> Next message: <A HREF="000767.html">[Open Office] More src680-m76 build breakages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#765">[ date ]</a>
+              <a href="thread.html#765">[ thread ]</a>
+              <a href="subject.html#765">[ subject ]</a>
+              <a href="author.html#765">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+
+On Tuesday 08 February 2005 00:53, Bernhard Rosenkraenzer wrote:
+
+&gt;<i> This seems to be caused by sd-export-html-theme.diff:
+</I>
+[...]
+
+&gt;<i> To make things somewhat more strange:
+</I>&gt;<i> $ nm sd/unxlngi4.pro/lib/libsd680li.so |grep getTheme
+</I>&gt;<i> [...] 0027749c t _ZN11SdTheme8getThemeEv
+</I>
+I think that lowercase &quot;t&quot; means that the symbol is not exported, right?
+
+I guess that it could be something with visibility again, but really, it's 
+just a guess ;)
+
+&gt;<i> $ c++filt _ZN11SdTheme8getThemeEv
+</I>&gt;<i> SdHtmlTheme::getTheme()
+</I>&gt;<i>
+</I>&gt;<i> So this stuff definitely is being defined...
+</I>
+Bye,
+Jan
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000762.html">[Open Office] More src680-m76 build breakages
+</A></li>
+	<LI> Next message: <A HREF="000767.html">[Open Office] More src680-m76 build breakages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#765">[ date ]</a>
+              <a href="thread.html#765">[ thread ]</a>
+              <a href="subject.html#765">[ subject ]</a>
+              <a href="author.html#765">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

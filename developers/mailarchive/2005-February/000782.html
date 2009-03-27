@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Friday
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000781.html">
+   <LINK REL="Next"  HREF="000784.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Friday
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Status Friday">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Fri, 11 Feb 2005 18:23:24 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000781.html">[Open Office] Status
+</A></li>
+        <LI> Next message: <A HREF="000784.html">[Open Office] Status Monday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#782">[ date ]</a>
+              <a href="thread.html#782">[ thread ]</a>
+              <a href="subject.html#782">[ subject ]</a>
+              <a href="author.html#782">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+      * Set up a mono_uno directory in bridges/source, added it to
+        prj/*.lst. (All the native code will be mono specific, its
+        embedding API is different from .Net's).
+      * Started the implementation with mono_bridge.cxx which has the
+        bridge entry points. Took the boilerplate code that's common to
+        the Java and CLI bridges and adapted it to mono_uno.
+      * Nothing to show yet. The bridge doesn't map anything, and the
+        code is almost indistinguishable from a jni_uno subset. Will add
+        diffs to ooo-build on Monday.
+
+Regards,
+
+Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000781.html">[Open Office] Status
+</A></li>
+	<LI> Next message: <A HREF="000784.html">[Open Office] Status Monday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#782">[ date ]</a>
+              <a href="thread.html#782">[ thread ]</a>
+              <a href="subject.html#782">[ subject ]</a>
+              <a href="author.html#782">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

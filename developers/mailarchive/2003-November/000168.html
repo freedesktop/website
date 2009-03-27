@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Regarding Minor Tasks
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000165.html">
+   <LINK REL="Next"  HREF="000170.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Regarding Minor Tasks
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Re: Regarding Minor Tasks">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Wed, 26 Nov 2003 19:02:29 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000165.html">[Open Office] Re: Regarding Minor Tasks
+</A></li>
+        <LI> Next message: <A HREF="000170.html">[Open Office] Re: Regarding Minor Tasks
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#168">[ date ]</a>
+              <a href="thread.html#168">[ thread ]</a>
+              <a href="subject.html#168">[ subject ]</a>
+              <a href="author.html#168">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Do, den 27.11.2003 schrieb Michael Meeks um 07:05:
+
+^^ can't wait so see the fix for this, now that there's a bounty
+
+&gt;<i> On Mon, 2003-11-24 at 04:56, amit wrote:
+</I>&gt;<i> &gt; I was looking at the toolbar zoom combo box, i wasnt quiet sure what u
+</I>&gt;<i> &gt; mean by fit to page width, as page width option is already present.
+</I>&gt;<i> 
+</I>&gt;<i> 	I'm talking about the zoom combo in eg. writer; it sits beside the
+</I>&gt;<i> Gallery button, and the available options that I see are:
+</I>&gt;<i> 25,50,75,100,150,200% - I'd like to see Optimal, Page Width, Entire Page
+</I>&gt;<i> as per the bottom right-click zoom popup
+</I>
+I'd like to see that too, that's why I added it to the todo file, but
+then my section of that file vanished ;-)
+
+&gt;<i>  - I think that's a moderately
+</I>&gt;<i> difficult task; the current code is implemented with
+</I>&gt;<i> patches/OOO_1_1/zoom-combobox.diff - Martin did the work originally,
+</I>&gt;<i> perhaps he can give you some pointers.
+</I>
+It should be only UI work. Add Optimal, Page Width etc. to the list.
+Auto completion would be nice, too.
+
+To zoom the view to Page Width etc, just create SvxZoomItems as in the
+patch, but replace SVX_ZOOM_PERCENT with something else (can't remember
+what, probably SVX_ZOOM_somethingelse).
+
+The combobox will display the zoom level in percent even if you select
+the named zoom levels. That's no problem, I think.
+
+&gt;<i> &gt; other option is multi-page view, which i think is a good option to
+</I>&gt;<i> &gt; provide, apart from these i didnt get what is the issue, is there any
+</I>&gt;<i> &gt; issue no. which can be referred? or we have to create one.
+</I>
+The comment in the apply file points to the issue where I attached the patch.
+No information about this part of the task though.
+
+HTH,
+	Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000165.html">[Open Office] Re: Regarding Minor Tasks
+</A></li>
+	<LI> Next message: <A HREF="000170.html">[Open Office] Re: Regarding Minor Tasks
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#168">[ date ]</a>
+              <a href="thread.html#168">[ thread ]</a>
+              <a href="subject.html#168">[ subject ]</a>
+              <a href="author.html#168">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] CVS HEAD segfaults with sime latin2 languages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20CVS%20HEAD%20segfaults%20with%20sime%20latin2%20languages&In-Reply-To=20061228212827.GE21674%40genesis.frugalware.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="002196.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] CVS HEAD segfaults with sime latin2 languages</H1>
+    <B>Rene Engelhard</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20CVS%20HEAD%20segfaults%20with%20sime%20latin2%20languages&In-Reply-To=20061228212827.GE21674%40genesis.frugalware.org"
+       TITLE="[Open Office] CVS HEAD segfaults with sime latin2 languages">rene at debian.org
+       </A><BR>
+    <I>Mon Jan  1 15:32:40 EST 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="002196.html">[Open Office] CVS HEAD segfaults with sime latin2 languages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2177">[ date ]</a>
+              <a href="thread.html#2177">[ thread ]</a>
+              <a href="subject.html#2177">[ subject ]</a>
+              <a href="author.html#2177">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>VMiklos wrote:
+&gt;<i> hi,
+</I>&gt;<i> 
+</I>&gt;<i> i built cvs head on 7th, the last entry in changelog was:
+</I>&gt;<i> 
+</I>&gt;<i> 2006-12-07  Jan Holesovsky  &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">kendy at suse.cz</A>&gt;
+</I>&gt;<i> 
+</I>&gt;<i>         * bin/cws-commit-patch,
+</I>&gt;<i>           bin/cws-commit-patch-old: Renamed to avoid confusion - it just went
+</I>&gt;<i>           up-stream.
+</I>&gt;<i> 
+</I>&gt;<i> i had basically no problem
+</I>&gt;<i> 
+</I>&gt;<i> then i made a new build yesterday, the last entry:
+</I>&gt;<i> 
+</I>&gt;<i> 2006-12-21  Rene Engelhard  &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rene at debian.org</A>&gt;
+</I>&gt;<i> 
+</I>&gt;<i>         * patches/src680/apply: apply CairoFonts patchset for
+</I>&gt;<i>         * Debian{,64}, too
+</I>&gt;<i>         * patches/src680/ooo59127.vcl.honourcairofont.diff: add
+</I>&gt;<i>           checks for appropriate gdk and cairo, adapt to apply
+</I>&gt;<i>           after Jians fix
+</I>&gt;<i> 
+</I>&gt;<i> with this OOo just segfaults with my locale (LANG and LC_ALL set to
+</I>&gt;<i> hu_HU)
+</I>
+Same here. (with de_DE). Reverting Jians change and my consecutive
+change from that changlog entry doesn't make a difference, though.
+
+Maybe an issue with some Size things again? size-cppuhelper got touched
+in the meanwhile... There also was configmgr refactoring....
+
+Michael?
+
+Regards,
+
+Rene
+-- 
+.''`.  Ren&#233; Engelhard -- Debian GNU/Linux Developer
+ : :' : <A HREF="http://www.debian.org">http://www.debian.org</A> | <A HREF="http://people.debian.org/~rene/">http://people.debian.org/~rene/</A>
+ `. `'  <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rene at debian.org</A> | GnuPG-Key ID: 248AEB73
+   `-   Fingerprint: 41FA F208 28D4 7CA5 19BB  7AD9 F859 90B0 248A EB73
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: Digital signature
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070101/4c123c7b/attachment.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20070101/4c123c7b/attachment.bin</A> 
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="002196.html">[Open Office] CVS HEAD segfaults with sime latin2 languages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2177">[ date ]</a>
+              <a href="thread.html#2177">[ thread ]</a>
+              <a href="subject.html#2177">[ subject ]</a>
+              <a href="author.html#2177">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

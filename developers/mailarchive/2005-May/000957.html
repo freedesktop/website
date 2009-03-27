@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Status&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000956.html">
+   <LINK REL="Next"  HREF="000958.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status</H1>
+    <B>Nicel KM</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Status&In-Reply-To="
+       TITLE="[Open Office] Status">mnicel at novell.com
+       </A><BR>
+    <I>Tue May 17 07:35:52 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000956.html">[Open Office] KDE file selector broken in current HEAD w/ m102
+	and pre-m103
+</A></li>
+        <LI>Next message: <A HREF="000958.html">[Open Office] Doubt about SFXRequest
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#957">[ date ]</a>
+              <a href="thread.html#957">[ thread ]</a>
+              <a href="subject.html#957">[ subject ]</a>
+              <a href="author.html#957">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+	Quite sometime since my last status report. I've been looking into the
+VBA interoperability all these days. Lot of code reading, notes etc.
+Got some initial interfaces defined and Michael's helped with an initial
+implementation/stub and integrating it into the build system. He has the
+process of adding new interfaces captured in hackers guide.
+
+Interfaces for WorkBook, WorkSheet and Range are defined and some dummy
+implementation available for these.
+
+I feel the progress is bit slow there, esp with lots of queries and
+trying to figure out the answers for those thorough code reading etc.
+
+Now, with these interfaces defined, next thing is to try to represent
+the relation ship between WorkBook, WorkSheet and Range in .idl, as it
+turns out the WorkSheet can be referred independently in which case it
+refers to ActiveSheet or in the context of WorkBook or WorkSheets.
+Similar is the case with Range to WorkSheet.
+
+regards,
+-Nicel.
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000956.html">[Open Office] KDE file selector broken in current HEAD w/ m102
+	and pre-m103
+</A></li>
+	<LI>Next message: <A HREF="000958.html">[Open Office] Doubt about SFXRequest
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#957">[ date ]</a>
+              <a href="thread.html#957">[ thread ]</a>
+              <a href="subject.html#957">[ subject ]</a>
+              <a href="author.html#957">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

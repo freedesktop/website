@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regarding Minor Tasks
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:samit%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000131.html">
+   <LINK REL="Next"  HREF="000165.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regarding Minor Tasks
+   </H1>
+    <B>amit
+    </B> 
+    <A HREF="mailto:samit%40novell.com"
+       TITLE="[Open Office] Regarding Minor Tasks">samit@novell.com
+       </A><BR>
+    <I>24 Nov 2003 18:26:45 +0530</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000131.html">[Open Office] Regarding Issue No. 49916
+</A></li>
+        <LI> Next message: <A HREF="000165.html">[Open Office] Re: Regarding Minor Tasks
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#163">[ date ]</a>
+              <a href="thread.html#163">[ thread ]</a>
+              <a href="subject.html#163">[ subject ]</a>
+              <a href="author.html#163">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Michael,
+
+I was looking at the toolbar zoom combo box, i wasnt quiet sure what u
+mean by fit to page width, as page width option is already present. The
+other option is multi-page view, which i think is a good option to
+provide, apart from these i didnt get what is the issue, is there any
+issue no. which can be referred? or we have to create one.
+
+What about the patch i sent for issue 49919 ?
+
+The ldap/evo task is still long way to go.
+
+regards,
+Amit 
+
+On Fri, 2003-11-07 at 00:25, Michael Meeks wrote:
+&gt;<i> Hi Amit,
+</I>&gt;<i> 
+</I>&gt;<i> On Thu, 2003-11-06 at 12:19, Amit Shrivastava wrote:
+</I>&gt;<i> &gt; I have just joined the lists and am looking the Issue 49916. This seems
+</I>&gt;<i> &gt; to be problem in the way the pData-&gt;nBits of a MenuItem is handled. I
+</I>&gt;<i> &gt; traced based on the strings, swmn.src is the UI Descrptor file for this
+</I>&gt;<i> &gt; Menu. 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; But I could'nt get a clue as to how the nBits are initialized, thus I
+</I>&gt;<i> &gt; am stuck in the path:
+</I>&gt;<i> 
+</I>&gt;<i> 	Right; so the bits should be read / initialized based on data from the
+</I>&gt;<i> resource file. The resource seems to be read in
+</I>&gt;<i> vcl/source/window/menu.cxx (Menu::InsertItem(constResId*)), and looks
+</I>&gt;<i> like it uses 'nStatus' to set 'nBits' but not so sure.
+</I>&gt;<i> 
+</I>&gt;<i> 	Possibly we need to add a new keyword to the resource compiler (code in
+</I>&gt;<i> the 'rsc/' toplevel) to handle this, then annotate the src files that
+</I>&gt;<i> are compiled by 'rsc' into the resource files we read. Possibly we're
+</I>&gt;<i> just missing some annotation in the .src that sets nStatus
+</I>&gt;<i> (RSC_MENUITEM_STATUS) -&gt;nBits correctly.
+</I>&gt;<i> 
+</I>&gt;<i> 	Hope that helps,
+</I>&gt;<i> 
+</I>&gt;<i> 	Regards,
+</I>&gt;<i> 
+</I>&gt;<i> 		Michael.
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000131.html">[Open Office] Regarding Issue No. 49916
+</A></li>
+	<LI> Next message: <A HREF="000165.html">[Open Office] Re: Regarding Minor Tasks
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#163">[ date ]</a>
+              <a href="thread.html#163">[ thread ]</a>
+              <a href="subject.html#163">[ subject ]</a>
+              <a href="author.html#163">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

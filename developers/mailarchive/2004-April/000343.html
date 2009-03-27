@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Problems compiling OO.o 1.1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:nhudson%40lunar-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000341.html">
+   <LINK REL="Next"  HREF="000347.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Problems compiling OO.o 1.1.1
+   </H1>
+    <B>Nick Hudson
+    </B> 
+    <A HREF="mailto:nhudson%40lunar-linux.org"
+       TITLE="[Open Office] Problems compiling OO.o 1.1.1">nhudson@lunar-linux.org
+       </A><BR>
+    <I>Sat, 03 Apr 2004 10:22:21 -0600</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000341.html">[Open Office] Multiple bugs found in calc...
+</A></li>
+        <LI> Next message: <A HREF="000347.html">[Open Office] tail versions ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#343">[ date ]</a>
+              <a href="thread.html#343">[ thread ]</a>
+              <a href="subject.html#343">[ subject ]</a>
+              <a href="author.html#343">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-KJ3IPyFnakkghGzuEI0c
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Greetings,
+
+	I get the following error message when compiling with bonobo support
+with the ooo-build-1.1.52 and OOO_1_1_1 sources.  Looks like a file
+rtl/ustring.hxx and com/sun/star/uno/XComponentContext.hpp are missing
+from the source for some reason.
+
+Thanks
+
+Nick
+
+In file included from ooo-bonobo-control.cxx:1:
+ooo-bonobo-control.h:6:27: rtl/ustring.hxx: No such file or directory
+ooo-bonobo-control.h:8:50: com/sun/star/uno/XComponentContext.hpp: No
+such file or directory
+In file included from ooo-bonobo-control.cxx:1:
+ooo-bonobo-control.h:31: error: `::com' undeclared (first use here)
+ooo-bonobo-control.h:31: error: parse error before `::' token
+ooo-bonobo-control.cxx:5:47: com/sun/star/beans/XPropertySet.hpp: No
+such file or directory
+ooo-bonobo-control.cxx:6:51: com/sun/star/bridge/XUnoUrlResolver.hpp: No
+such file or directory
+ooo-bonobo-control.cxx:7:52: com/sun/star/document/XTypeDetection.hpp:
+No such file or directory
+ooo-bonobo-control.cxx:8:52: com/sun/star/frame/XDispatchProvider.hpp:
+No such file or directory
+ooo-bonobo-control.cxx:9:44: com/sun/star/frame/XDispatch.hpp: No such
+file or directory
+ooo-bonobo-control.cxx:10:41: com/sun/star/frame/XFrame.hpp: No such
+file or directory
+ooo-bonobo-control.cxx:11:58:
+com/sun/star/frame/XSynchronousFrameLoader.hpp: No such file or
+directory
+ooo-bonobo-control.cxx:12:56:
+com/sun/star/lang/XMultiComponentFactory.hpp: No such file or directory
+ooo-bonobo-control.cxx:13:54:
+com/sun/star/lang/XMultiServiceFactory.hpp: No such file or directory
+ooo-bonobo-control.cxx:14:37: com/sun/star/util/URL.hpp: No such file or
+directory
+ooo-bonobo-control.cxx:15:49: com/sun/star/util/XURLTransformer.hpp: No
+such file or directory
+ooo-bonobo-control.cxx:16:50: com/sun/star/view/DocumentZoomType.hpp: No
+such file or directory
+In file included from services.h:4,
+                 from ooo-bonobo-control.cxx:18:
+string-macros.h:70:27: rtl/ustring.hxx: No such file or directory
+string-macros.h:74:25: rtl/textenc.h: No such file or directory
+In file included from ooo-bonobo-control.cxx:19:
+star-frame-widget.h:16:40: com/sun/star/awt/XWindow.hpp: No such file or
+directory
+star-frame-widget.h:17:44: com/sun/star/awt/XWindowPeer.hpp: No such
+file or directory
+star-frame-widget.h:18:47: com/sun/star/beans/XPropertySet.hpp: No such
+file or directory
+star-frame-widget.h:19:41: com/sun/star/frame/XFrame.hpp: No such file
+or directory
+star-frame-widget.h:20:54: com/sun/star/lang/XMultiServiceFactory.hpp:
+No such file or directory
+star-frame-widget.h:21:50: com/sun/star/uno/XComponentContext.hpp: No
+such file or directory
+star-frame-widget.h:22:37: com/sun/star/util/URL.hpp: No such file or
+directory
+star-frame-widget.h:23:47: com/sun/star/beans/XPropertySet.hpp: No such
+file or directory
+In file included from ooo-bonobo-control.cxx:19:
+star-frame-widget.h:25: error: parse error before `::' token
+star-frame-widget.h:35: error: `XMultiServiceFactory' was not declared
+in this
+   scope
+star-frame-widget.h:35: error: 'Reference' is used as a type, but is not
+   defined as a type.
+star-frame-widget.h:43: error: `Reference' was not declared in this
+scope
+star-frame-widget.h:43: error: `XComponentContext' was not declared in
+this
+   scope
+star-frame-widget.h:43: error: `component_context' was not declared in
+this
+   scope
+star-frame-widget.h:45: error: `XFrame' was not declared in this scope
+star-frame-widget.h:45: error: parse error before `*' token
+star-frame-widget.h:46: error: no type `com' in `::'
+star-frame-widget.h:46: error: parse error before `::' token
+star-frame-widget.h:47: error: type specifier omitted for parameter
+`sal_Bool'
+star-frame-widget.h:47: error: parse error before `)' token
+star-frame-widget.h:50: error: syntax error before `::' token
+ooo-bonobo-control.cxx:28: error: parse error before `::' token
+ooo-bonobo-control.cxx:29: error: parse error before `::' token
+ooo-bonobo-control.cxx:35: error: syntax error before `*' token
+ooo-bonobo-control.cxx:36: error: syntax error before `*' token
+ooo-bonobo-control.cxx:37: error: syntax error before `*' token
+ooo-bonobo-control.cxx:39: error: syntax error before `::' token
+ooo-bonobo-control.cxx:40: error: 'gboolean' is used as a type, but is
+not
+   defined as a type.
+ooo-bonobo-control.cxx:43: error: `OOoBonoboControlClass' was not
+declared in
+   this scope
+ooo-bonobo-control.cxx:43: error: `klass' was not declared in this scope
+ooo-bonobo-control.cxx:43: error: `void' fails to be a typedef or built
+in type
+ooo-bonobo-control.cxx:43: error: ISO C++ forbids declaration of `
+   ooo_bonobo_control_class_init' with no type
+ooo-bonobo-control.cxx:43: error: `OOoBonoboControl' was not declared in
+this
+   scope
+ooo-bonobo-control.cxx:43: error: `object' was not declared in this
+scope
+ooo-bonobo-control.cxx:43: error: `void' fails to be a typedef or built
+in type
+ooo-bonobo-control.cxx:43: error: ISO C++ forbids declaration of `
+   ooo_bonobo_control_instance_init' with no type
+ooo-bonobo-control.cxx:43: error: syntax error before `*' token
+ooo-bonobo-control.cxx:43: error: `gpointer' was not declared in this
+scope
+ooo-bonobo-control.cxx:43: error: parse error before `,' token
+ooo-bonobo-control.cxx:43: error: `void' fails to be a typedef or built
+in type
+ooo-bonobo-control.cxx:43: error: ISO C++ forbids declaration of `
+   ooo_bonobo_control_class_init_trampoline' with no type
+ooo-bonobo-control.cxx: In function `int
+   ooo_bonobo_control_class_init_trampoline(...)':
+ooo-bonobo-control.cxx:43: error: `parent_class' undeclared (first use
+this
+   function)
+ooo-bonobo-control.cxx:43: error: (Each undeclared identifier is
+reported only
+   once for each function it appears in.)
+ooo-bonobo-control.cxx:43: error: `BonoboControlClass' undeclared (first
+use
+   this function)
+ooo-bonobo-control.cxx:43: error: parse error before `)' token
+ooo-bonobo-control.cxx:43: error: `OOoBonoboControlClass' undeclared
+(first use
+   this function)
+ooo-bonobo-control.cxx:43: error: parse error before `)' token
+ooo-bonobo-control.cxx: At global scope:
+ooo-bonobo-control.cxx:43: error: parse error before `)' token
+ooo-bonobo-control.cxx:43: error: ISO C++ forbids declaration of
+`object_type'
+   with no type
+ooo-bonobo-control.cxx:43: error: `bonobo_control_get_type' was not
+declared in
+   this scope
+ooo-bonobo-control.cxx:43: error: `object_info' was not declared in this
+scope
+ooo-bonobo-control.cxx:43: error: `bonobo_type_unique' was not declared
+in this
+   scope
+ooo-bonobo-control.cxx:43: error: parse error before `}' token
+ooo-bonobo-control.cxx:54: error: `BonoboZoomable' was not declared in
+this
+   scope
+ooo-bonobo-control.cxx:54: error: `zoomable' was not declared in this
+scope
+ooo-bonobo-control.cxx:55: error: `Reference' was not declared in this
+scope
+ooo-bonobo-control.cxx:55: error: `XPropertySet' was not declared in
+this scope
+ooo-bonobo-control.cxx:55: error: `view_properties' was not declared in
+this
+   scope
+ooo-bonobo-control.cxx:56: error: `void' fails to be a typedef or built
+in type
+ooo-bonobo-control.cxx:56: error: ISO C++ forbids declaration of `
+   zoomable_report_zoom_level_changed' with no type
+ooo-bonobo-control.cxx:56: error: initializer list being treated as
+compound
+   expression
+ooo-bonobo-control.cxx:56: error: syntax error before `{' token
+ooo-bonobo-control.cxx:58: error: syntax error before `::' token
+ooo-bonobo-control.cxx:59: error: syntax error before `&gt;&gt;=3D' token
+ooo-bonobo-control.cxx:61: error: parse error before `=3D' token
+ooo-bonobo-control.cxx:62: error: `zoomable' was not declared in this
+scope
+ooo-bonobo-control.cxx:62: error: `zoom_level' was not declared in this
+scope
+ooo-bonobo-control.cxx:62: error: ISO C++ forbids declaration of `
+   bonobo_zoomable_report_zoom_level_changed' with no type
+ooo-bonobo-control.cxx:62: error: `int
+   bonobo_zoomable_report_zoom_level_changed' redeclared as different
+kind of
+   symbol
+/usr/include/libbonoboui-2.0/bonobo/bonobo-zoomable.h:78: error:
+previous
+   declaration of `void
+   bonobo_zoomable_report_zoom_level_changed(BonoboZoomable*, float,
+   CORBA_Environment*)'
+ooo-bonobo-control.cxx:62: error: initializer list being treated as
+compound
+   expression
+ooo-bonobo-control.cxx:63: error: parse error before `}' token
+ooo-bonobo-control.cxx:66: error: `BonoboZoomable' was not declared in
+this
+   scope
+ooo-bonobo-control.cxx:66: error: `zoomable' was not declared in this
+scope
+ooo-bonobo-control.cxx:67: error: `CORBA_float' was not declared in this
+scope
+ooo-bonobo-control.cxx:67: error: parse error before `,' token
+ooo-bonobo-control.cxx:69: error: `void' fails to be a typedef or built
+in type
+ooo-bonobo-control.cxx:69: error: ISO C++ forbids declaration of `
+   zoomable_set_zoom_level_cb' with no type
+ooo-bonobo-control.cxx: In function `int
+zoomable_set_zoom_level_cb(...)':
+ooo-bonobo-control.cxx:70: error: `GTypeInstance' undeclared (first use
+this
+   function)
+ooo-bonobo-control.cxx:70: error: `__inst' undeclared (first use this
+function)
+ooo-bonobo-control.cxx:70: error: parse error before `)' token
+ooo-bonobo-control.cxx:70: error: `user_data' undeclared (first use this
+   function)
+ooo-bonobo-control.cxx:70: error: `GType' undeclared (first use this
+function)
+ooo-bonobo-control.cxx:70: error: parse error before `=3D' token
+ooo-bonobo-control.cxx:70: error: `gboolean' undeclared (first use this
+   function)
+ooo-bonobo-control.cxx:70: error: `__t' undeclared (first use this
+function)
+ooo-bonobo-control.cxx:70: error: `__r' undeclared (first use this
+function)
+ooo-bonobo-control.cxx:70: error: `g_type_check_instance_is_a'
+undeclared
+   (first use this function)
+ooo-bonobo-control.cxx:70: error: could not convert `({...})' to `bool'
+ooo-bonobo-control.cxx:70: error: `_g_boolean_var_' undeclared (first
+use this
+   function)
+ooo-bonobo-control.cxx:70: confused by earlier errors, bailing out
+make[2]: *** [ooo-bonobo-control.o] Error 1
+make[2]: Leaving directory `/usr/src/ooo-build-1.1.52/bonobo/src'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/usr/src/ooo-build-1.1.52/bonobo'
+make: *** [all-recursive] Error 1
+
+
+--=-KJ3IPyFnakkghGzuEI0c
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.4 (GNU/Linux)
+
+iD8DBQBAbuS9G5D1jWCZpTwRAmYsAJ0VK6yqFg1AtT3j/X1HwMTQNYbxXQCgvWBX
+0FGT4Kjh/ra9J+OfdJjXTkQ=
+=L9so
+-----END PGP SIGNATURE-----
+
+--=-KJ3IPyFnakkghGzuEI0c--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000341.html">[Open Office] Multiple bugs found in calc...
+</A></li>
+	<LI> Next message: <A HREF="000347.html">[Open Office] tail versions ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#343">[ date ]</a>
+              <a href="thread.html#343">[ thread ]</a>
+              <a href="subject.html#343">[ subject ]</a>
+              <a href="author.html#343">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regcomp segfaults when registering java components
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=20061129222403.609df9a7%40workstation64.home">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002149.html">
+   <LINK REL="Next"  HREF="002147.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regcomp segfaults when registering java components</H1>
+    <B>Atle Nissestad</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=20061129222403.609df9a7%40workstation64.home"
+       TITLE="[Open Office] Regcomp segfaults when registering java components">atle.nissestad at norbit.no
+       </A><BR>
+    <I>Wed Nov 29 17:02:10 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002149.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+        <LI>Next message: <A HREF="002147.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2146">[ date ]</a>
+              <a href="thread.html#2146">[ thread ]</a>
+              <a href="subject.html#2146">[ subject ]</a>
+              <a href="author.html#2146">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 29 November 2006 22:24, Andreas Radke wrote:
+
+&gt;<i>
+</I>&gt;<i> ERROR: Error 65280 occurred while
+</I>&gt;<i> making
+</I>&gt;<i> /var/abs/local/openoffice-base/src/ooo_OOE680_m5_src/testtools/source/bridg
+</I>&gt;<i>etest dmake:  Error code 1, while making 'build_instsetoo_native' '---* 
+</I>&gt;<i> *---' ==&gt; ERROR: Build Failed.  Aborting...
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> How can I solve that segfault?
+</I>&gt;<i>
+</I>&gt;<i> I already tried the gcc-gcj patch
+</I>&gt;<i> (<A HREF="http://gcc.gnu.org/bugzilla/show_bug.cgi?id=13212">http://gcc.gnu.org/bugzilla/show_bug.cgi?id=13212</A>) and
+</I>&gt;<i> the disable-regcomp-java.diff disable-regcomp-java.diff
+</I>&gt;<i> without any change.
+</I>&gt;<i>
+</I>&gt;<i> Andreas Radke
+</I>
+Have you checked this thread: 
+<A HREF="../2006-October/002072.html">http://lists.ximian.com/pipermail/openoffice/2006-October/002072.html</A>
+At least in my case the build failure in /testtools/source/bridgetest was 
+caused by javaldx beeing unable to find the gcj runtime lib (libgcj.so, or 
+libjvm.so). 
+
+The gcj dlopen() bug (gcc PR13212) was triggered when registering the java 
+components during the installation process.
+
+- Atle
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002149.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+	<LI>Next message: <A HREF="002147.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2146">[ date ]</a>
+              <a href="thread.html#2146">[ thread ]</a>
+              <a href="subject.html#2146">[ subject ]</a>
+              <a href="author.html#2146">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

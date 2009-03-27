@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build 1.3.13
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%201.3.13&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000990.html">
+   <LINK REL="Next"  HREF="000995.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build 1.3.13</H1>
+    <B>Brian Thomason</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%201.3.13&In-Reply-To="
+       TITLE="[Open Office] ooo-build 1.3.13">brian.thomason at linspireinc.com
+       </A><BR>
+    <I>Fri Jun  3 20:12:44 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000990.html">[Open Office] Re: &quot;save as&quot; does not work in m100 and m104
+</A></li>
+        <LI>Next message: <A HREF="000995.html">[Open Office] [PATCH] updated pkgconfig 0.17 fixes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#991">[ date ]</a>
+              <a href="thread.html#991">[ thread ]</a>
+              <a href="subject.html#991">[ subject ]</a>
+              <a href="author.html#991">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm attempting to build OOo 1.1.4 using ooo-build 1.3.13 and have run 
+into the following error:
+
+Making: ../unxlngi4.pro/obj/cppsetup.obj
+gcc -fmessage-length=0 -c -I.  -I. -I../inc -I../inc -I../unx/inc
+-I../unxlngi4.pro/inc -I.
+-I/source/openoffice/ooo-build-1.3.13/build/OOO_1_1_4/solver/645/unxlngi4.pro/inc/dont_use_stl
+-I/source/openoffice/ooo-build-1.3.13/build/OOO_1_1_4/solver/645/unxlngi4.pro/inc/external
+-I/source/openoffice/ooo-build-1.3.13/build/OOO_1_1_4/solver/645/unxlngi4.pro/inc
+-I/source/openoffice/ooo-build-1.3.13/build/OOO_1_1_4/solenv/unxlngi4/inc
+-I/source/openoffice/ooo-build-1.3.13/build/OOO_1_1_4/solenv/inc
+-I/source/openoffice/ooo-build-1.3.13/build/OOO_1_1_4/res
+-I/source/openoffice/ooo-build-1.3.13/build/OOO_1_1_4/solver/645/unxlngi4.pro/inc/dont_use_stl
+-I/source/openoffice/ooo-build-1.3.13/build/OOO_1_1_4/solenv/inc/Xp31
+-I/usr/include -I/usr/include/linux
+-I/usr/include/native_threads/include -I/usr/X11R6/include     -I.
+-I../res -I. -O1   -pipe -mcpu=pentiumpro   -DLINUX -DUNX -DVCL -DGCC
+-DC300 -DINTEL -DGXX_INCLUDE_PATH=/usr/include/c++/3.3 -DCVER=C300
+-D_USE_NAMESPACE -DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR
+-D_USE_NAMESPACE=1 -DSTLPORT_VERSION=400 -D__DMAKE -DUNIX
+-DCPPU_ENV=gcc3 -DSUPD=645 -DPRODUCT -DNDEBUG -DPRODUCT_FULL
+-DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DEXCEPTIONS_OFF -DCUI -DSOLAR_JAVA
+-DSRX645   -DNO_X11 -DXP_PC -DHW_THREADS -DINCLUDEDIR=\&quot;.\&quot;
+-DSINGLETHREAD   -o ../unxlngi4.pro/obj/cppsetup.o cppsetup.c
+In file included from /usr/include/_G_config.h:44,
+                 from /usr/include/libio.h:32,
+                 from /usr/include/stdio.h:72,
+                 from def.h:39,
+                 from cppsetup.c:29:
+/usr/include/gconv.h:72: error: parse error before &quot;size_t&quot;
+/usr/include/gconv.h:88: error: parse error before &quot;size_t&quot;
+/usr/include/gconv.h:97: error: parse error before &quot;size_t&quot;
+/usr/include/gconv.h:174: error: parse error before &quot;size_t&quot;
+/usr/include/gconv.h:177: error: parse error before '}' token
+In file included from /usr/include/libio.h:32,
+                 from /usr/include/stdio.h:72,
+                 from def.h:39,
+                 from cppsetup.c:29:
+/usr/include/_G_config.h:47: error: field `__cd' has incomplete type
+/usr/include/_G_config.h:50: error: field `__cd' has incomplete type
+In file included from /usr/include/stdio.h:72,
+                 from def.h:39,
+                 from cppsetup.c:29:
+/usr/include/libio.h:351: error: parse error before &quot;size_t&quot;
+/usr/include/libio.h:360: error: parse error before &quot;size_t&quot;
+/usr/include/libio.h:468: error: parse error before &quot;_IO_sgetn&quot;
+/usr/include/libio.h:468: error: parse error before &quot;size_t&quot;
+In file included from def.h:39,
+                 from cppsetup.c:29:
+/usr/include/stdio.h:302: error: parse error before &quot;size_t&quot;
+/usr/include/stdio.h:309: error: parse error before &quot;size_t&quot;
+/usr/include/stdio.h:351: error: parse error before &quot;size_t&quot;
+/usr/include/stdio.h:355: error: parse error before &quot;size_t&quot;
+/usr/include/stdio.h:603: error: parse error before &quot;fread&quot;
+/usr/include/stdio.h:603: error: parse error before &quot;size_t&quot;
+/usr/include/stdio.h:609: error: parse error before &quot;fwrite&quot;
+/usr/include/stdio.h:609: error: parse error before &quot;size_t&quot;
+/usr/include/stdio.h:631: error: parse error before &quot;fread_unlocked&quot;
+/usr/include/stdio.h:631: error: parse error before &quot;size_t&quot;
+/usr/include/stdio.h:633: error: parse error before &quot;fwrite_unlocked&quot;
+/usr/include/stdio.h:633: error: parse error before &quot;size_t&quot;
+In file included from def.h:40,
+                 from cppsetup.c:29:
+/usr/include/stdlib.h:137: error: parse error before &quot;__ctype_get_mb_cur_max&quot;
+In file included from /usr/include/sys/types.h:133,
+                 from /usr/include/stdlib.h:416,
+                 from def.h:40,
+                 from cppsetup.c:29:
+/usr/include/linux/time.h:13: error: parse error before &quot;time_t&quot;
+BriansTestBox:/source/openoffice/ooo-build-1.3.13# dpkg -S /usr/include/gconv.h
+libc6-dev: /usr/include/gconv.h
+
+Using gcc-3.3.5 and libc6 2.3.2.ds1 from Debian SID.
+
+Any ideas?
+
+Thanks,
+
+-Brian
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <A HREF="http://galactus.ximian.com/pipermail/openoffice/attachments/20050603/1afef420/attachment.html">http://galactus.ximian.com/pipermail/openoffice/attachments/20050603/1afef420/attachment.html</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000990.html">[Open Office] Re: &quot;save as&quot; does not work in m100 and m104
+</A></li>
+	<LI>Next message: <A HREF="000995.html">[Open Office] [PATCH] updated pkgconfig 0.17 fixes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#991">[ date ]</a>
+              <a href="thread.html#991">[ thread ]</a>
+              <a href="subject.html#991">[ subject ]</a>
+              <a href="author.html#991">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

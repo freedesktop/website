@@ -1,0 +1,661 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20scsolver%20build%20failsure%20on%20windows%20%28was%3A%20Fwd%3A%0A%09Your%20interesting%20stuffs%20%3Ao%29%20%29&In-Reply-To=1139921189.684.38.camel%40pettson">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001583.html">
+   <LINK REL="Next"  HREF="001588.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )</H1>
+    <B>Tor Lillqvist</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20scsolver%20build%20failsure%20on%20windows%20%28was%3A%20Fwd%3A%0A%09Your%20interesting%20stuffs%20%3Ao%29%20%29&In-Reply-To=1139921189.684.38.camel%40pettson"
+       TITLE="[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )">tml at novell.com
+       </A><BR>
+    <I>Tue Feb 14 09:00:40 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001583.html">[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+</A></li>
+        <LI>Next message: <A HREF="001588.html">[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1584">[ date ]</a>
+              <a href="thread.html#1584">[ thread ]</a>
+              <a href="subject.html#1584">[ subject ]</a>
+              <a href="author.html#1584">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ti 2006-02-14 klockan 14:46 +0200 skrev Tor Lillqvist:
+&gt;<i> Ain't C++ lovely?
+</I>
+Attached you will find two diffs, to the scsolver code and to the ublas
+header files in boost. With these patches, scsolver builds for me with
+MSVC7.1. Whether it works on Win32 I have no idea...
+
+Need to confirm that it still builds on Linux as before after these
+patches, after that I guess the scsolver diff can be applied and
+committed to the ooo-build CVS. (Or does scsolver have a real upstream
+location elsewhere?) 
+
+As to the boost patch, some hack is needed so it is applied before boost
+gets built and its headers copied to the solver directory.
+
+--tml
+
+-------------- next part --------------
+diff -pru ../../../scratch/scsolver/source/inc/baselistener.hxx ./source/inc/baselistener.hxx
+--- ../../../scratch/scsolver/source/inc/baselistener.hxx	2006-01-09 13:38:25.000000000 +0200
++++ ./source/inc/baselistener.hxx	2006-02-14 15:37:54.979125000 +0200
+@@ -28,6 +28,10 @@
+ #ifndef _BASELISTENER_HXX_
+ #define _BASELISTENER_HXX_
+ 
++#ifndef _CPPU_MACROS_HXX_
++#include &quot;cppu/macros.hxx&quot;
++#endif
++
+ #include &lt;unoglobal.hxx&gt;
+ 
+ #include &lt;cppuhelper/implbase1.hxx&gt;
+@@ -68,8 +72,8 @@ public:
+ 	ActionListener( BaseDialog* pDlg ) : Listener( pDlg ) {}
+ 	virtual ~ActionListener() throw() = 0;
+ 	
+-	virtual void disposing( const lang::EventObject&amp; ) throw ( RuntimeException ) {}
+-	virtual void actionPerformed( const awt::ActionEvent&amp; ) throw ( RuntimeException ) {}
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; ) throw ( RuntimeException ) {}
++	virtual void SAL_CALL actionPerformed( const awt::ActionEvent&amp; ) throw ( RuntimeException ) {}
+ };
+ 
+ 
+@@ -79,8 +83,8 @@ public:
+ 	ItemListener( BaseDialog* pDlg ) : Listener( pDlg ) {}
+ 	virtual ~ItemListener() throw() = 0;
+ 
+-	virtual void disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException ) {}
+-	virtual void itemStateChanged( const awt::ItemEvent&amp; oEvt ) throw ( RuntimeException ) {}
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException ) {}
++	virtual void SAL_CALL itemStateChanged( const awt::ItemEvent&amp; oEvt ) throw ( RuntimeException ) {}
+ };
+ 
+ 
+@@ -90,9 +94,9 @@ public:
+ 	FocusListener( BaseDialog* pDlg ) : Listener( pDlg ) {}
+ 	virtual ~FocusListener() throw() = 0;
+ 	
+-	virtual void focusGained( const awt::FocusEvent&amp; ) throw( RuntimeException ) {}
+-	virtual void focusLost( const awt::FocusEvent&amp; ) throw( RuntimeException ) {}
+-	virtual void disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException ) {}
++	virtual void SAL_CALL focusGained( const awt::FocusEvent&amp; ) throw( RuntimeException ) {}
++	virtual void SAL_CALL focusLost( const awt::FocusEvent&amp; ) throw( RuntimeException ) {}
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException ) {}
+ };	
+ 
+ class MouseListener : public ::cppu::WeakImplHelper1&lt; awt::XMouseListener &gt;, public Listener
+@@ -101,12 +105,12 @@ public:
+ 	MouseListener( BaseDialog* pDlg ) : Listener( pDlg ) {}
+ 	virtual ~MouseListener() throw() = 0;
+ 	
+-	virtual void mousePressed( const awt::MouseEvent&amp; ) throw( RuntimeException ) {}
+-	virtual void mouseReleased( const awt::MouseEvent&amp; o) throw( RuntimeException ) {}
+-	virtual void mouseEntered( const awt::MouseEvent&amp; o) throw( RuntimeException ) {}
+-	virtual void mouseExited( const awt::MouseEvent&amp; o) throw( RuntimeException ) {}
++	virtual void SAL_CALL mousePressed( const awt::MouseEvent&amp; ) throw( RuntimeException ) {}
++	virtual void SAL_CALL mouseReleased( const awt::MouseEvent&amp; o) throw( RuntimeException ) {}
++	virtual void SAL_CALL mouseEntered( const awt::MouseEvent&amp; o) throw( RuntimeException ) {}
++	virtual void SAL_CALL mouseExited( const awt::MouseEvent&amp; o) throw( RuntimeException ) {}
+ 	
+-	virtual void disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException ) {}
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException ) {}
+ };
+ 
+ 
+diff -pru ../../../scratch/scsolver/source/inc/listener.hxx ./source/inc/listener.hxx
+--- ../../../scratch/scsolver/source/inc/listener.hxx	2006-01-09 13:38:25.000000000 +0200
++++ ./source/inc/listener.hxx	2006-02-14 15:41:29.010375000 +0200
+@@ -87,9 +87,9 @@ public:
+ 	RngSelListener( BaseDialog*, RngBtnListener*, const rtl::OUString&amp; );
+ 	~RngSelListener() throw();
+ 	
+-	virtual void disposing( const lang::EventObject&amp; ) throw ( RuntimeException );
+-	virtual void done( const sheet::RangeSelectionEvent&amp; ) throw ( RuntimeException );
+-	virtual void aborted( const sheet::RangeSelectionEvent&amp; ) throw ( RuntimeException );
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; ) throw ( RuntimeException );
++	virtual void SAL_CALL done( const sheet::RangeSelectionEvent&amp; ) throw ( RuntimeException );
++	virtual void SAL_CALL aborted( const sheet::RangeSelectionEvent&amp; ) throw ( RuntimeException );
+ 	
+ private:
+ 	BaseDialog* m_pDlg;
+@@ -110,10 +110,10 @@ public:
+ 	virtual ~RngBtnListener() throw();
+ 
+ 	// XEventListener
+-	virtual void disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException );
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException );
+ 
+ 	// XActionListener
+-	virtual void actionPerformed( const awt::ActionEvent&amp; ) throw ( RuntimeException );
++	virtual void SAL_CALL actionPerformed( const awt::ActionEvent&amp; ) throw ( RuntimeException );
+ 
+ 	void registerRngSelListener();	
+ 	void setEventOwner( bool b ) { m_bEventOwner = b; }
+@@ -140,10 +140,10 @@ public:
+ 	virtual ~SolveBtnListener() throw();
+ 
+ 	// XEventListener
+-	virtual void disposing( const lang::EventObject&amp; ) throw ( RuntimeException );
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; ) throw ( RuntimeException );
+ 
+ 	// XActionListener
+-	virtual void actionPerformed( const awt::ActionEvent&amp; ) throw ( RuntimeException );
++	virtual void SAL_CALL actionPerformed( const awt::ActionEvent&amp; ) throw ( RuntimeException );
+ 
+ };
+ 
+@@ -157,10 +157,10 @@ public:
+ 	virtual ~CloseBtnListener() throw();
+ 
+ 	// XEventListener
+-	virtual void disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException );
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException );
+ 
+ 	// XActionListener
+-	virtual void actionPerformed( const awt::ActionEvent&amp; ) 
++	virtual void SAL_CALL actionPerformed( const awt::ActionEvent&amp; ) 
+ 		throw ( RuntimeException );
+ };
+ 
+@@ -174,10 +174,10 @@ public:
+ 	virtual ~SaveBtnListener() throw();
+ 
+ 	// XEventListener
+-	virtual void disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException );
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException );
+ 
+ 	// XActionListener
+-	virtual void actionPerformed( const awt::ActionEvent&amp; ) 
++	virtual void SAL_CALL actionPerformed( const awt::ActionEvent&amp; ) 
+ 		throw ( RuntimeException );
+ };
+ 
+@@ -191,10 +191,10 @@ public:
+ 	virtual ~LoadBtnListener() throw();
+ 
+ 	// XEventListener
+-	virtual void disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException );
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException );
+ 
+ 	// XActionListener
+-	virtual void actionPerformed( const awt::ActionEvent&amp; ) 
++	virtual void SAL_CALL actionPerformed( const awt::ActionEvent&amp; ) 
+ 		throw ( RuntimeException );
+ };
+ 
+@@ -208,10 +208,10 @@ public:
+ 	virtual ~ResetBtnListener() throw();
+ 
+ 	// XEventListener
+-	virtual void disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException );
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException );
+ 
+ 	// XActionListener
+-	virtual void actionPerformed( const awt::ActionEvent&amp; ) 
++	virtual void SAL_CALL actionPerformed( const awt::ActionEvent&amp; ) 
+ 		throw ( RuntimeException );
+ 
+ private:
+@@ -228,10 +228,10 @@ public:
+ 	virtual ~ConstEditBtnListener() throw();
+ 
+ 	// XEventListener
+-	virtual void disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException );
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException );
+ 
+ 	// XActionListener
+-	virtual void actionPerformed( const awt::ActionEvent&amp; ) throw ( RuntimeException );
++	virtual void SAL_CALL actionPerformed( const awt::ActionEvent&amp; ) throw ( RuntimeException );
+ 
+ private:
+ 
+@@ -247,9 +247,9 @@ public:
+ 	ConstListBoxListener( SolverDialog* );
+ 	virtual ~ConstListBoxListener() throw() { Debug( &quot;ConstListBoxListener d'tor&quot; ); }
+ 
+-	virtual void disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException ) {}
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException ) {}
+ 	
+-	virtual void itemStateChanged( const awt::ItemEvent&amp; ) throw ( RuntimeException );
++	virtual void SAL_CALL itemStateChanged( const awt::ItemEvent&amp; ) throw ( RuntimeException );
+ 		
+ private:
+ 
+@@ -265,8 +265,8 @@ public:
+ 	MaxRadioBtnListener( SolverDialog* pDlg );
+ 	virtual ~MaxRadioBtnListener() throw();
+ 	
+-	virtual void disposing( const lang::EventObject&amp; ) throw ( RuntimeException );
+-	virtual void itemStateChanged( const awt::ItemEvent&amp; ) throw ( RuntimeException );
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; ) throw ( RuntimeException );
++	virtual void SAL_CALL itemStateChanged( const awt::ItemEvent&amp; ) throw ( RuntimeException );
+ };
+ 
+ 
+@@ -279,9 +279,9 @@ public:
+ 	
+ 	virtual rtl::OUString getListenerType() const { return ascii( &quot;FocusListener&quot; ); }
+ 	
+-	virtual void disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException ) {}
+-	virtual void focusGained( const awt::FocusEvent&amp; ) throw( RuntimeException );
+-	virtual void focusLost( const awt::FocusEvent&amp; ) throw( RuntimeException );
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException ) {}
++	virtual void SAL_CALL focusGained( const awt::FocusEvent&amp; ) throw( RuntimeException );
++	virtual void SAL_CALL focusLost( const awt::FocusEvent&amp; ) throw( RuntimeException );
+ 	
+ };
+ 
+@@ -293,12 +293,12 @@ public:
+ 	WindowMouseListener( BaseDialog* );
+ 	virtual ~WindowMouseListener() throw();
+ 	
+-	virtual void mousePressed( const awt::MouseEvent&amp; ) throw( RuntimeException );
+-	virtual void mouseReleased( const awt::MouseEvent&amp; o) throw( RuntimeException ) {}
+-	virtual void mouseEntered( const awt::MouseEvent&amp; o) throw( RuntimeException ) {}
+-	virtual void mouseExited( const awt::MouseEvent&amp; o) throw( RuntimeException ) {}
++	virtual void SAL_CALL mousePressed( const awt::MouseEvent&amp; ) throw( RuntimeException );
++	virtual void SAL_CALL mouseReleased( const awt::MouseEvent&amp; o) throw( RuntimeException ) {}
++	virtual void SAL_CALL mouseEntered( const awt::MouseEvent&amp; o) throw( RuntimeException ) {}
++	virtual void SAL_CALL mouseExited( const awt::MouseEvent&amp; o) throw( RuntimeException ) {}
+ 	
+-	virtual void disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException ) {}
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; oEvt ) throw ( RuntimeException ) {}
+ };
+ 
+ //--------------------------------------------------------------------------
+@@ -311,10 +311,10 @@ public:
+ 	virtual ~OKCancelBtnListener() throw();
+ 
+ 	// XEventListener
+-	virtual void disposing( const lang::EventObject&amp; ) throw ( RuntimeException );
++	virtual void SAL_CALL disposing( const lang::EventObject&amp; ) throw ( RuntimeException );
+ 
+ 	// XActionListener
+-	virtual void actionPerformed( const awt::ActionEvent&amp; ) throw ( RuntimeException );
++	virtual void SAL_CALL actionPerformed( const awt::ActionEvent&amp; ) throw ( RuntimeException );
+ 		
+ private:
+ 
+diff -pru ../../../scratch/scsolver/source/numeric/matrix.cxx ./source/numeric/matrix.cxx
+--- ../../../scratch/scsolver/source/numeric/matrix.cxx	2006-02-10 16:11:57.717750000 +0200
++++ ./source/numeric/matrix.cxx	2006-02-14 15:06:23.432250000 +0200
+@@ -35,7 +35,9 @@
+ #include &lt;exception&gt;
+ #include &lt;iterator&gt;
+ 
++#ifdef __GNUC__
+ #warning &quot;noalias not present in boost 1.30.2&quot;
++#endif
+ #undef noalias
+ #define noalias(a) (a)
+ 
+diff -pru ../../../scratch/scsolver/source/numeric/nlpqnewton.cxx ./source/numeric/nlpqnewton.cxx
+--- ../../../scratch/scsolver/source/numeric/nlpqnewton.cxx	2006-01-09 14:13:36.000000000 +0200
++++ ./source/numeric/nlpqnewton.cxx	2006-02-14 15:11:14.447875000 +0200
+@@ -99,7 +99,11 @@ double QuasiNewtonImpl::norm( const Matr
+ 		double f = mxX( i, 0 );
+ 		fNorm += f*f;
+ 	}
++#ifdef _MSC_VER
++	return ::sqrt( fNorm );
++#else
+ 	return std::sqrt( fNorm );
++#endif
+ }
+ 
+ double QuasiNewtonImpl::evalF( const BaseFuncObj&amp; oF, const Matrix&amp; mxVars, vector&lt;double&gt;&amp; fVars )
+-------------- next part --------------
+diff -pru ./matrix.hpp ../../../../../../../../solver/680/wntmsci10.pro/inc/boost/numeric/ublas/matrix.hpp
+--- ./matrix.hpp	2003-03-01 15:23:52.000000000 +0200
++++ ../../../../../../../../solver/680/wntmsci10.pro/inc/boost/numeric/ublas/matrix.hpp	2006-02-14 15:01:57.369750000 +0200
+@@ -402,11 +402,13 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 const self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), 0); 
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 const self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), m.size2 ()); 
+@@ -528,11 +530,13 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             iterator2 begin () const {
+                 self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), 0);
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             iterator2 end () const {
+                 self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), m.size2 ());
+@@ -1291,11 +1295,13 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 const self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), 0); 
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 const self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), m.size2 ()); 
+@@ -1434,11 +1440,13 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             iterator2 begin () const {
+                 self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), 0);
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             iterator2 end () const {
+                 self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), m.size2 ());
+@@ -2057,11 +2065,13 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 const self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), 0); 
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 const self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), m.size2 ()); 
+@@ -2500,11 +2510,13 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 const self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), 0);
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 const self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), m.size2 ());
+@@ -2928,11 +2940,13 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 const scalar_matrix &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), 0); 
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 const scalar_matrix &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), m.size2 ()); 
+@@ -3542,11 +3556,13 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 const self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), 0); 
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 const self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), m.size2 ()); 
+@@ -3668,11 +3684,13 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             iterator2 begin () const {
+                 self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), 0);
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             iterator2 end () const {
+                 self_type &amp;m = (*this) ();
+                 return m.find_first2 (1, index1 (), m.size2 ());
+diff -pru ./matrix_expression.hpp ../../../../../../../../solver/680/wntmsci10.pro/inc/boost/numeric/ublas/matrix_expression.hpp
+--- ./matrix_expression.hpp	2003-02-18 09:32:46.000000000 +0200
++++ ../../../../../../../../solver/680/wntmsci10.pro/inc/boost/numeric/ublas/matrix_expression.hpp	2006-02-14 14:55:04.119750000 +0200
+@@ -778,10 +778,12 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 return (*this) ().find_first2 (1, index1 (), 0);
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 return (*this) ().find_first2 (1, index1 (), (*this) ().size2 ());
+             }
+@@ -1232,10 +1234,12 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 return (*this) ().find_first2 (1, index1 (), 0);
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 return (*this) ().find_first2 (1, index1 (), (*this) ().size2 ());
+             }
+@@ -1666,10 +1670,12 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 return (*this) ().find_first2 (1, index1 (), 0);
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 return (*this) ().find_first2 (1, index1 (), (*this) ().size2 ());
+             }
+@@ -2234,10 +2240,12 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 return (*this) ().find_first2 (1, index1 (), 0);
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 return (*this) ().find_first2 (1, index1 (), (*this) ().size2 ());
+             }
+@@ -2808,10 +2816,12 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 return (*this) ().find_first2 (1, index1 (), 0);
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 return (*this) ().find_first2 (1, index1 (), (*this) ().size2 ());
+             }
+@@ -3240,10 +3250,12 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 return (*this) ().find_first2 (1, index1 (), 0);
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 return (*this) ().find_first2 (1, index1 (), (*this) ().size2 ());
+             }
+@@ -4530,10 +4542,12 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 return (*this) ().find_first2 (1, index1 (), 0);
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 return (*this) ().find_first2 (1, index1 (), (*this) ().size2 ());
+             }
+Only in ../../../../../../../../solver/680/wntmsci10.pro/inc/boost/numeric/ublas: matrix_expression.hpp~
+diff -pru ./matrix_proxy.hpp ../../../../../../../../solver/680/wntmsci10.pro/inc/boost/numeric/ublas/matrix_proxy.hpp
+--- ./matrix_proxy.hpp	2003-03-01 15:23:52.000000000 +0200
++++ ../../../../../../../../solver/680/wntmsci10.pro/inc/boost/numeric/ublas/matrix_proxy.hpp	2006-02-14 14:57:56.885375000 +0200
+@@ -2998,11 +2998,13 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 const self_type &amp;mr = (*this) ();
+                 return mr.find_first2 (1, index1 (), 0);
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 const self_type &amp;mr = (*this) ();
+                 return mr.find_first2 (1, index1 (), mr.size2 ());
+@@ -3126,11 +3128,13 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             iterator2 begin () const {
+                 self_type &amp;mr = (*this) ();
+                 return mr.find_first2 (1, index1 (), 0);
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             iterator2 end () const {
+                 self_type &amp;mr = (*this) ();
+                 return mr.find_first2 (1, index1 (), mr.size2 ());
+@@ -3906,10 +3910,12 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 return const_iterator2 ((*this) (), it1_, it2_ ().begin ());
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 return const_iterator2 ((*this) (), it1_, it2_ ().end ());
+             }
+@@ -4032,10 +4038,12 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             iterator2 begin () const {
+                 return iterator2 ((*this) (), it1_, it2_ ().begin ());
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             iterator2 end () const {
+                 return iterator2 ((*this) (), it1_, it2_ ().end ());
+             }
+@@ -4816,10 +4824,12 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 begin () const {
+                 return const_iterator2 ((*this) (), it1_, it2_ ().begin ());
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             const_iterator2 end () const {
+                 return const_iterator2 ((*this) (), it1_, it2_ ().end ());
+             }
+@@ -4942,10 +4952,12 @@ namespace boost { namespace numeric { na
+             }
+ 
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             iterator2 begin () const {
+                 return iterator2 ((*this) (), it1_, it2_ ().begin ());
+             }
+             BOOST_UBLAS_INLINE
++	    typename self_type::
+             iterator2 end () const {
+                 return iterator2 ((*this) (), it1_, it2_ ().end ());
+             }
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001583.html">[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+</A></li>
+	<LI>Next message: <A HREF="001588.html">[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1584">[ date ]</a>
+              <a href="thread.html#1584">[ thread ]</a>
+              <a href="subject.html#1584">[ subject ]</a>
+              <a href="author.html#1584">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

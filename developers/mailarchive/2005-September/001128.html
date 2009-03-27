@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Pending task for VBA macro - OOo interop
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Pending%20task%20for%20VBA%20macro%20-%20OOo%20interop&In-Reply-To=431864640200008700002327%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001129.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Pending task for VBA macro - OOo interop</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Pending%20task%20for%20VBA%20macro%20-%20OOo%20interop&In-Reply-To=431864640200008700002327%40novell.com"
+       TITLE="[Open Office] Re: Pending task for VBA macro - OOo interop">michael.meeks at novell.com
+       </A><BR>
+    <I>Fri Sep  2 07:21:08 EDT 2005</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001129.html">[Open Office] Re: Pending task for VBA macro - OOo interop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1128">[ date ]</a>
+              <a href="thread.html#1128">[ thread ]</a>
+              <a href="subject.html#1128">[ subject ]</a>
+              <a href="author.html#1128">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there,
+
+	Prolly best to discuss on the mailing list I guess - since almost
+everyone is involved ;-) Also - IMHO it'd be best to start discussing
+this sort of thing on the public list I think. Apparently Sun is less
+annoyed than I thought about us working on this.
+
+On Fri, 2005-09-02 at 05:10 -0400, Jayant Balraj Madavi wrote:
+&gt;<i> a) what is missing to implement:
+</I>&gt;<i>   Please have a look at the attached document(&quot;VbaPendingTasks.sxw&quot;)
+</I>&gt;<i> for pending activities/task for VBA work. Most of the data is
+</I>&gt;<i> gathered from the sample macro provided by Robert.
+</I>
+	Ok - I'm really looking for a more rigorous analysis of his files - ie.
+script-generated frequencies of various property names etc. ie. getting
+a good prioritisation here is important. Also - it shouldn't be
+particularly hard to do - but perhaps Robert will help us with that.
+
+	Some comments:
+
+	1.2 - How we deal with these pseudo-methods like 'Cells' that
+	      are clearly really just inherited from the 'ActiveSheet'
+	      I don't know. I don't want to see lots of stubs / code
+	      duplication here - I'd like a more elegant solution using
+	      the introspection code.
+
+	2.1 - similarly Worksheetfunctions - I do not want an IDL file
+	      that duplicates loads of information available elsewhere
+              we should dynamically generate that interface.
+
+	8 - working with another application is deep, deep future - lets
+	    not go there yet.
+
+Misc tasks:
+
+	1 - not clear what this is - why 'dynamically constructed 
+	    object' ? do you mean 'custom worksheet function' ?
+
+	2.2 - really blocks on Jody's re-write of the expression parser
+
+	2.4 - what is missing wrt. Array support ?
+
+	3.1 - Noel's piece
+
+	3.2 - Is this -really- used ? I'd like some hard numbers there.
+
+	3.3 - 'for each' doesn't work ?
+
+	3.4 - I guess this covers a huge chunk of constants that we're 
+              going to need - some fruitful IDL typing work there I 
+              think.
+
+	7 - is that a syntax issue ?
+
+	8. is conceptually the same as 2.2
+
+	9. - again - syntax ?
+
+
+	It'd be great to see a re-worked version of this document. Also - I'd
+like to see the results of the analysis of the data it's based on.
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001129.html">[Open Office] Re: Pending task for VBA macro - OOo interop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1128">[ date ]</a>
+              <a href="thread.html#1128">[ thread ]</a>
+              <a href="subject.html#1128">[ subject ]</a>
+              <a href="author.html#1128">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

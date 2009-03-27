@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] parallel building fails...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20parallel%20building%20fails...&In-Reply-To=43EAFBA0.2090503%40mandriva.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001565.html">
+   <LINK REL="Next"  HREF="001567.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] parallel building fails...</H1>
+    <B>Caolan McNamara</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20parallel%20building%20fails...&In-Reply-To=43EAFBA0.2090503%40mandriva.com"
+       TITLE="[Open Office] parallel building fails...">caolanm at redhat.com
+       </A><BR>
+    <I>Thu Feb  9 03:41:24 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001565.html">[Open Office] parallel building fails...
+</A></li>
+        <LI>Next message: <A HREF="001567.html">[Open Office] parallel building fails...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1566">[ date ]</a>
+              <a href="thread.html#1566">[ thread ]</a>
+              <a href="subject.html#1566">[ subject ]</a>
+              <a href="author.html#1566">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 2006-02-09 at 09:21 +0100, Giuseppe Ghib&#242; wrote:
+&gt;<i> Caolan McNamara wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; On Sun, 2006-02-05 at 20:06 +0100, Giuseppe Ghib&#242; wrote:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> [ ParallelMake ]
+</I>&gt;<i> 
+</I>&gt;<i> cws-dmake43p01-20060131.diff
+</I>&gt;<i> 
+</I>&gt;<i> but it didn't help, as I still get errors:
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="http://peoples.mandriva.com/~ghibo/failed_2.txt.bz2">http://peoples.mandriva.com/~ghibo/failed_2.txt.bz2</A>
+</I>&gt;<i> 
+</I>
+&gt;<i> At this point the error seems in:
+</I>&gt;<i> 
+</I>&gt;<i> Checking DLL ../unxlngi6.pro/lib/check_libswui680li.so ...dmake:  Error: -- 
+</I>&gt;<i> `../unxlngi6.pro/slb/vbaobj.lib' not found, and can't be made
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>
+It's a parallel build so the output is mixed up. The process from where
+the &quot;dmake:  Error: --&quot; error was reported is mixed up with the
+perfectly ok &quot;Checking DLL...&quot; output from the other process. If you
+look further down your log at the end you have...
+
+&quot;ERROR: error 65280 occurred while
+making /home/ghibo/rpm/BUILD/ooo-build/build/src680-m155/sc/util&quot;
+
+So if you take your full log and search backwards for error: around sc
+\/util then you should see the line which really caused &quot;vbaobj.lib not
+found&quot;
+
+&gt;<i> 
+</I>&gt;<i> i.e. vbaobj.lib not built (but later).
+</I>
+Without the dmak43p01 patch I don't trust the logs but with it in place
+we can be fairly sure that what it complains about is really there. So
+something uses &quot;vbaobj.lib&quot; but doesn't have correct dependencies
+actually set on that.
+
+vbaobj is added by ooo-build vba set of patches, and isn't in the
+upstream. I'd guess that a bit of digging into the makefile.mk in
+sc/util and the vba patches which touch it should throw up some info.
+
+C.
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001565.html">[Open Office] parallel building fails...
+</A></li>
+	<LI>Next message: <A HREF="001567.html">[Open Office] parallel building fails...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1566">[ date ]</a>
+              <a href="thread.html#1566">[ thread ]</a>
+              <a href="subject.html#1566">[ subject ]</a>
+              <a href="author.html#1566">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

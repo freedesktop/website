@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] JRE register fails when building 2.0.4 on Mandriva 2007 x86_64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%20building%202.0.4%20on%0A%20Mandriva%202007%20x86_64&In-Reply-To=1161849904.14229.17.camel%40soulcrusher.caolan.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002089.html">
+   <LINK REL="Next"  HREF="002092.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] JRE register fails when building 2.0.4 on Mandriva 2007 x86_64</H1>
+    <B>Atle Nissestad</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%20building%202.0.4%20on%0A%20Mandriva%202007%20x86_64&In-Reply-To=1161849904.14229.17.camel%40soulcrusher.caolan.org"
+       TITLE="[Open Office] JRE register fails when building 2.0.4 on Mandriva 2007 x86_64">atle.nissestad at norbit.no
+       </A><BR>
+    <I>Thu Oct 26 05:07:37 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002089.html">[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+        <LI>Next message: <A HREF="002092.html">[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2090">[ date ]</a>
+              <a href="thread.html#2090">[ thread ]</a>
+              <a href="subject.html#2090">[ subject ]</a>
+              <a href="author.html#2090">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Caolan McNamara wrote:
+&gt;<i> This might be <A HREF="http://qa.openoffice.org/issues/show_bug.cgi?id=68665">http://qa.openoffice.org/issues/show_bug.cgi?id=68665</A>
+</I>&gt;<i> though I would have expected that to be in place in ooo-build.
+</I>&gt;<i>   
+</I>This is where I got the idea where to look for the error, and yes - this
+patch is included in the ooo-build version I'm using, ooo-build-2-0-4
+cvs 20061017.
+&gt;<i> So my view is that for newer gcj's which provide a libjvm.so to emulate
+</I>&gt;<i> java's libjvm.so then they should be used at build-time by OOo through
+</I>&gt;<i> java-gcj-compat and OOo configured with...
+</I>&gt;<i> --with-jdk-home=/usr/lib/jvm/java-1.4.2-gcj-1.4.2.0
+</I>&gt;<i> to point OOo to the java-esque hierarchy above that libjvm.so
+</I>&gt;<i>   
+</I>I'm using gcj 4.1.1. It does not have libjvm.so.
+How are the library paths determined when compiling with
+--with-java=gij, then ?
+(JAVA_HOME is set to /usr inside the ooo build environment).
+&gt;<i> I don't know what version of OOo you're building, but I *think* I
+</I>&gt;<i> upstreamed everything in this area into current upstream OOo head, so
+</I>&gt;<i> that with a gcj that has a separate libgcj and libjvm (and a gcj where
+</I>&gt;<i> was itself configured correctly to set java.home to where libjvm was
+</I>&gt;<i> installed) I'd expect it to work without pain.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>OOO_2_0_4 from <A HREF="http://www.go-ooo.org/packages/OOD680,">http://www.go-ooo.org/packages/OOD680,</A> and ooo-build
+version as given above.
+
+It seems there are some obstacles when building the openoffice
+java-stuff in Mandriva 2007 64bit w/ GNU java:
+* Using  --with-jdk-home=/usr/lib/jvm/java-gcj instead of
+--with-java=gij i sa no-go, as /usr/lib/jvm/java-gcj/bin/javac points to
+ecj, which breaks the build at some point (don't remember where).
+* /usr/bin/java points to jamvm, which triggers the 'javaldx failed'
+error no mather what I do, so I have to give the bootstrap parameter
+UNO_JAVA_JFW_JREHOME=<A HREF="file:///usr/lib/jvm/java-gcj">file:///usr/lib/jvm/java-gcj</A> to the Jvmfwk, as that
+points java to /usr/bin/gij
+* libgjc.so is in /usr/lib64
+
+Maybe I should switch distro ...
+
+Atle
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002089.html">[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+	<LI>Next message: <A HREF="002092.html">[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2090">[ date ]</a>
+              <a href="thread.html#2090">[ thread ]</a>
+              <a href="subject.html#2090">[ subject ]</a>
+              <a href="author.html#2090">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

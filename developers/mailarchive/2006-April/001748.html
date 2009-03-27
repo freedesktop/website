@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] m162 and -system tarball problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m162%20and%20-system%20tarball%20problem&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001747.html">
+   <LINK REL="Next"  HREF="001749.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] m162 and -system tarball problem</H1>
+    <B>VMiklos</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m162%20and%20-system%20tarball%20problem&In-Reply-To="
+       TITLE="[Open Office] m162 and -system tarball problem">vmiklos at frugalware.org
+       </A><BR>
+    <I>Tue Apr  4 19:30:20 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001747.html">[Open Office] incremental build (tip) ...
+</A></li>
+        <LI>Next message: <A HREF="001749.html">[Open Office] m162 and -system tarball problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1748">[ date ]</a>
+              <a href="thread.html#1748">[ thread ]</a>
+              <a href="subject.html#1748">[ subject ]</a>
+              <a href="author.html#1748">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>hi
+
+i'm building m162 on an x86_64. compiles fine, but make install stops
+with:
+
+.. analyzing files ...
+ERROR: The following files could not be found:
+ERROR: File not found: writingaids.zip
+
+Pavel suggested that the dicts are missing somehow. and yes, the -system
+tarball does not get downloaded only for a few SuSE distro in the
+download script (this one is Frugalware64):
+
+Downloading files for src680-m162
+Skipping cli_types.dll
+Skipping cli_types_bridgetest.dll
+Skipping cairo-1.0.2.tar.gz
+Skipping glitz-0.4.3.tar.gz
+Skipping mdbtools-0.6pre1.tar.gz
+Skipping src680-m162-core.tar.bz2
+Skipping extras-2.tar.bz2
+Skipping xt-20051206-src-only.zip
+Skipping src680-m162-lang.tar.bz2
+Done
+
+^^ no -system
+
+also if i download the tarball manually and place it in /src, it is not
+extracted. after manually extracting make install works fine
+
+is this a known issue?
+
+thanks,
+VMiklos
+
+-- 
+Developer of Frugalware Linux, to make things frugal - <A HREF="http://frugalware.org">http://frugalware.org</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001747.html">[Open Office] incremental build (tip) ...
+</A></li>
+	<LI>Next message: <A HREF="001749.html">[Open Office] m162 and -system tarball problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1748">[ date ]</a>
+              <a href="thread.html#1748">[ thread ]</a>
+              <a href="subject.html#1748">[ subject ]</a>
+              <a href="author.html#1748">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

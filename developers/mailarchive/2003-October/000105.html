@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: ANNOUNCE: ooo-build-1.1.44
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000099.html">
+   <LINK REL="Next"  HREF="000106.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: ANNOUNCE: ooo-build-1.1.44
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] Re: ANNOUNCE: ooo-build-1.1.44">halls@debian.org
+       </A><BR>
+    <I>Mon, 13 Oct 2003 18:59:16 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000099.html">[Open Office] Re: ANNOUNCE: ooo-build-1.1.44
+</A></li>
+        <LI> Next message: <A HREF="000106.html">[Open Office] Re: ANNOUNCE: ooo-build-1.1.44
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#105">[ date ]</a>
+              <a href="thread.html#105">[ thread ]</a>
+              <a href="subject.html#105">[ subject ]</a>
+              <a href="author.html#105">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Oct 13, 2003 at 10:01:22AM +0100, Michael Meeks wrote:
+&gt;<i> 	Of course, if you only have ~2GB of spare space, you could help by
+</I>&gt;<i> re-hashing some of the 'deliver' scripts to use hard-linking instead of
+</I>&gt;<i> copying ;-) [ eg. ], which would be a help to others;
+</I>
+Uuuh..
+
+$ deliver.pl -h
+deliver -- version: 1.50.8.1
+deliver: ERROR: invalid option -h
+Usage:
+deliver [-force] [-minor] [-check] [-zip] [-delete] [destination-path]
+Options:
+  -force        copy even if not newer
+  -minor        deliver into minor
+  -check        just print what would happen, no actual copying of files
+  -zip          create additional zip files of delivered content
+  -delete       delete files, use with care
+  -link         hard link files into the solver to save disk space
+  -deloutput    remove the output tree
+The option -zip and a destination-path are mutually exclusive
+
+deliver -link  will hardlink into the solver
+deliver -deloutput will delete the output directory too
+
+I wrote those exactly for this purpose.  At the time, we were trying to
+build for powerpc on an aging machine with a very small disk.
+
+Chris
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000099.html">[Open Office] Re: ANNOUNCE: ooo-build-1.1.44
+</A></li>
+	<LI> Next message: <A HREF="000106.html">[Open Office] Re: ANNOUNCE: ooo-build-1.1.44
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#105">[ date ]</a>
+              <a href="thread.html#105">[ thread ]</a>
+              <a href="subject.html#105">[ subject ]</a>
+              <a href="author.html#105">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

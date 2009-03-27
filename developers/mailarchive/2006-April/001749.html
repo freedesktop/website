@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] m162 and -system tarball problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m162%20and%20-system%20tarball%20problem&In-Reply-To=20060404233020.GT5908%40genesis.frugalware.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001748.html">
+   <LINK REL="Next"  HREF="001751.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] m162 and -system tarball problem</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m162%20and%20-system%20tarball%20problem&In-Reply-To=20060404233020.GT5908%40genesis.frugalware.org"
+       TITLE="[Open Office] m162 and -system tarball problem">pmladek at suse.cz
+       </A><BR>
+    <I>Wed Apr  5 06:01:25 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001748.html">[Open Office] m162 and -system tarball problem
+</A></li>
+        <LI>Next message: <A HREF="001751.html">[Open Office] m162 and -system tarball problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1749">[ date ]</a>
+              <a href="thread.html#1749">[ thread ]</a>
+              <a href="subject.html#1749">[ subject ]</a>
+              <a href="author.html#1749">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 05 April 2006 01:30, VMiklos wrote:
+&gt;<i> hi
+</I>&gt;<i>
+</I>&gt;<i> i'm building m162 on an x86_64. compiles fine, but make install stops
+</I>&gt;<i> with:
+</I>&gt;<i>
+</I>&gt;<i> .. analyzing files ...
+</I>&gt;<i> ERROR: The following files could not be found:
+</I>&gt;<i> ERROR: File not found: writingaids.zip
+</I>&gt;<i>
+</I>&gt;<i> Pavel suggested that the dicts are missing somehow. and yes, the -system
+</I>&gt;<i> tarball does not get downloaded only for a few SuSE distro in the
+</I>&gt;<i> download script (this one is Frugalware64):
+</I>
+It is related to the configure switch --without-myspell-dicts. It is used by 
+many distributions but not by all, see ooo-build/distro-configs.
+
+I have updated ooo-build/download.in (in cvs HEAD), so that it will download 
+-system.tar.bz2 for all disctributions that do not use 
+--without-myspell-dicts in ooo-build/distro-configs (including Frugalware).
+
+The list is still hardcoded there. It would be better to join it will the 
+--without-myspell-dicts configure check. I'll most probably do it later as 
+part of upstreaming the ooo-build stuff.
+
+&gt;<i> Downloading files for src680-m162
+</I>&gt;<i> Skipping cli_types.dll
+</I>&gt;<i> Skipping cli_types_bridgetest.dll
+</I>&gt;<i> Skipping cairo-1.0.2.tar.gz
+</I>&gt;<i> Skipping glitz-0.4.3.tar.gz
+</I>&gt;<i> Skipping mdbtools-0.6pre1.tar.gz
+</I>&gt;<i> Skipping src680-m162-core.tar.bz2
+</I>&gt;<i> Skipping extras-2.tar.bz2
+</I>&gt;<i> Skipping xt-20051206-src-only.zip
+</I>&gt;<i> Skipping src680-m162-lang.tar.bz2
+</I>&gt;<i> Done
+</I>&gt;<i>
+</I>&gt;<i> ^^ no -system
+</I>&gt;<i>
+</I>&gt;<i> also if i download the tarball manually and place it in /src, it is not
+</I>&gt;<i> extracted. after manually extracting make install works fine
+</I>&gt;<i>
+</I>&gt;<i> is this a known issue?
+</I>&gt;<i>
+</I>&gt;<i> thanks,
+</I>&gt;<i> VMiklos
+</I>
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001748.html">[Open Office] m162 and -system tarball problem
+</A></li>
+	<LI>Next message: <A HREF="001751.html">[Open Office] m162 and -system tarball problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1749">[ date ]</a>
+              <a href="thread.html#1749">[ thread ]</a>
+              <a href="subject.html#1749">[ subject ]</a>
+              <a href="author.html#1749">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Mark config files in file lists
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000460.html">
+   <LINK REL="Next"  HREF="000461.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Mark config files in file lists
+   </H1>
+    <B>Petr Mladek
+    </B> 
+    <A HREF="mailto:pmladek%40suse.cz"
+       TITLE="[Open Office] Mark config files in file lists">pmladek@suse.cz
+       </A><BR>
+    <I>Fri, 30 Jul 2004 11:40:07 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000460.html">[Open Office] Mark config files in file lists
+</A></li>
+        <LI> Next message: <A HREF="000461.html">[Open Office] Removing HTML
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#462">[ date ]</a>
+              <a href="thread.html#462">[ thread ]</a>
+              <a href="subject.html#462">[ subject ]</a>
+              <a href="author.html#462">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 29 July 2004 17:01, Arkadiusz Miskiewicz wrote:
+&gt;<i> On Thursday 29 of July 2004 16:44, Petr Mladek wrote:
+</I>&gt;<i> &gt; Hello all,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I would like to improve the generated file lists and mark the files
+</I>&gt;<i> &gt; which can be configured by users.
+</I>&gt;<i>
+</I>&gt;<i> First of all configuration files should not live in /usr or any other
+</I>&gt;<i> directory beside /etc (at least that's what we do at PLD, keep
+</I>&gt;<i> configuration in /etc).
+</I>
+Fully agree.
+
+&gt;<i> Maybe symlinks pointing from /usr/lib/..../somefile to
+</I>&gt;<i> -&gt; /etc/openoffice/conf/somefile and mark
+</I>&gt;<i> %config /etc/openoffice/conf/somefile?
+</I>
+Yes, it would be one hackish solution.
+
+The problem would be with directories. I think it would be fine to link the 
+entire directories like share/config or share/registry from /etc but there is 
+problem with update. RPM does not support to replace a directory with a 
+symlink within an update.
+
+&gt;<i> Also such configs should be per-user not system wide but probably that
+</I>&gt;<i> can't be easily fixed so this is better that than nothing.
+</I>
+I think that this is not the problem. The system configuration defines the 
+default setting. The user can change it in his personal configuration. I 
+think that this approach is the same for any other software.
+
+IMHO the problem is that the configuration in not on one place.
+
+&gt;<i> But that's not so important for us right now so we will follow the way you
+</I>&gt;<i> choose.
+</I>&gt;<i>
+</I>&gt;<i> &gt; I am afraid that we do not find a compromise. So, I would suggest to set
+</I>&gt;<i> &gt; a vendor dependent variable in bin/setup. Something like that:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; if test &quot;z$DISTRO&quot; = &quot;zNLD&quot; -o &quot;z$DISTRO&quot; = &quot;zSUSE&quot;; then
+</I>&gt;<i> &gt; 	RPM_CONFIG_FLAG=&quot;%config&quot;
+</I>&gt;<i> &gt; elif test &quot;z$DISTRO&quot; = &quot;zPLD&quot; ; then
+</I>&gt;<i> &gt; 	RPM_CONFIG_FLAG=&quot;%config(noreplace) %verify(not md5 size mtime)&quot;
+</I>&gt;<i> &gt; fi
+</I>&gt;<i>
+</I>&gt;<i> I'm ok with this.
+</I>
+OK, I'll do what I proposed ;)
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="mailto:pmladek@suse.cz">pmladek@suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000460.html">[Open Office] Mark config files in file lists
+</A></li>
+	<LI> Next message: <A HREF="000461.html">[Open Office] Removing HTML
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#462">[ date ]</a>
+              <a href="thread.html#462">[ thread ]</a>
+              <a href="subject.html#462">[ subject ]</a>
+              <a href="author.html#462">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

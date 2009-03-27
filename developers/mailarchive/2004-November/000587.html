@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Gentoo / OO.o package ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-November/index.html" >
+   <LINK REL="made" HREF="mailto:suka%40gentoo.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000586.html">
+   <LINK REL="Next"  HREF="000589.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Gentoo / OO.o package ...
+   </H1>
+    <B>suka
+    </B> 
+    <A HREF="mailto:suka%40gentoo.org"
+       TITLE="[Open Office] Re: Gentoo / OO.o package ...">suka@gentoo.org
+       </A><BR>
+    <I>Tue, 16 Nov 2004 13:39:59 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000586.html">[Open Office] Re: Gentoo / OO.o package ...
+</A></li>
+        <LI> Next message: <A HREF="000589.html">[Open Office] Re: Gentoo / OO.o package ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#587">[ date ]</a>
+              <a href="thread.html#587">[ thread ]</a>
+              <a href="subject.html#587">[ subject ]</a>
+              <a href="author.html#587">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-6K+P9gpidJ40jbL3Iuop
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Hi Michael,=20
+
+I'm tuning in here as most of this questions should be directed to me,
+as I am the current Gentoo maintainer for OOo.
+
+On Tue, 2004-11-16 at 13:07 +0000, Michael Meeks wrote:
+&gt;<i> 	Ah ! - ok, I downloaded it and started to have a poke:
+</I>&gt;<i>=20
+</I>&gt;<i> 	* Why are you not pushing this back to us as patches ? *
+</I>&gt;<i> 		+ there seems to be some good stuff in there
+</I>
+To be honest: Mostly lack of time, but I'll try to push things more in
+the future=20
+
+&gt;<i> 	So - some other questions;
+</I>&gt;<i>=20
+</I>&gt;<i> 	* Why do you need so much code in penoffice-ximian-1.4.ebuild ?
+</I>&gt;<i> 		+ the package is setup for 'make' 'make install',=20
+</I>&gt;<i> 		  package
+</I>&gt;<i> 		+ can you not re-use eg. bin/unpack, or some of the=20
+</I>&gt;<i> 		  Makefile.shared rules; eg. 'make patch.apply' ?
+</I>
+The last time I checked this didn't work, it's also a little bit
+difficult to get this &quot;right&quot; for us, as users are building their own
+packages from source in Gentoo and we give them some build-options to
+choose. But I'll try again to change over to your build system and write
+in more detail about the issues I get in relation to Gentoo, when I come
+around them.=20
+=09
+&gt;<i> 	I've added your gcc34 patches; and created a GentooOnly section that
+</I>&gt;<i> includes those patches. It'd be great to get your work in there, so
+</I>&gt;<i> other distros can re-use / test / bug-fix &amp; we share the packaging
+</I>&gt;<i> burden - that's the philosophy behind it at least. How can we help you
+</I>&gt;<i> do that ?
+</I>
+just kick me in the ass from time to time? ;)
+
+Btw: the internal stlport also won't compile with gcc-3.4, we are
+patching the build to use a newer version
+
+And thanks for adding our stuff!
+
+suka
+
+--=20
+Andreas Proschofsky
+Gentoo Developer / OpenOffice.org
+
+--=-6K+P9gpidJ40jbL3Iuop
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.6 (GNU/Linux)
+
+iD8DBQBBmfUfauoogOee02MRAlOTAJoCXc5UddwrwC8JG8PLGpMvERCgRACggYpN
+yNaaUyMKiuiirZFoFVnZues=
+=+iSk
+-----END PGP SIGNATURE-----
+
+--=-6K+P9gpidJ40jbL3Iuop--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000586.html">[Open Office] Re: Gentoo / OO.o package ...
+</A></li>
+	<LI> Next message: <A HREF="000589.html">[Open Office] Re: Gentoo / OO.o package ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#587">[ date ]</a>
+              <a href="thread.html#587">[ thread ]</a>
+              <a href="subject.html#587">[ subject ]</a>
+              <a href="author.html#587">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

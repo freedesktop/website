@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] build/running  problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:mjayant%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000515.html">
+   <LINK REL="Next"  HREF="000516.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] build/running  problem
+   </H1>
+    <B>Jayant Balraj Madavi
+    </B> 
+    <A HREF="mailto:mjayant%40novell.com"
+       TITLE="[Open Office] build/running  problem">mjayant@novell.com
+       </A><BR>
+    <I>Fri, 27 Aug 2004 00:06:01 -0600</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000515.html">[Open Office] status thursday
+</A></li>
+        <LI> Next message: <A HREF="000516.html">[Open Office] status thursday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#514">[ date ]</a>
+              <a href="thread.html#514">[ thread ]</a>
+              <a href="subject.html#514">[ subject ]</a>
+              <a href="author.html#514">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>hi
+  Now this could be problem 
+I do NOT have 
+
+/usr/lib/ooo-1.1/program/resource.gnome
+/usr/lib/ooo-1.1/program/resource.kde
+/usr/lib/ooo-1.1/program/resource.deafult
+
+where could be the problem ?
+
+One more thing
+ iso645??.res  [these files are present in the build area and not in
+/usr/lib/ooo-1.1]
+
+problem ?
+
+Note: Sorry for  top posting; my mail client does not support &gt;&gt;
+
+-Jayant(aZEN_JM)
+&gt;&gt;&gt;<i> Petr Mladek &lt;<A HREF="mailto:pmladek@suse.cz">pmladek@suse.cz</A>&gt; 8/26/2004 10:50:35 PM &gt;&gt;&gt;
+</I>On Thursday 26 August 2004 18:49, Jayant Balraj Madavi wrote:
+&gt;<i> Problem :
+</I>&gt;<i>
+</I>&gt;<i> I install NLD ..OOo is running fine
+</I>&gt;<i>
+</I>&gt;<i> I did a #cvs checkoout ;did a #make
+</I>&gt;<i> #make install
+</I>&gt;<i>
+</I>&gt;<i> Now I run OOo, the application does not start
+</I>&gt;<i> it stops with an error popup dialog
+</I>&gt;<i>
+</I>&gt;<i> &quot;The application cannot be started
+</I>&gt;<i>   iso resource could not be loaded by SfxApplication&quot;.
+</I>&gt;<i>
+</I>&gt;<i> My Solution steps done till now :
+</I>&gt;<i>
+</I>&gt;<i> these are the steps that i have already done without any &quot;proper
+</I>&gt;<i> result&quot;
+</I>&gt;<i>
+</I>&gt;<i> 1&gt; setup
+</I>&gt;<i> 2&gt; #mv /usr/lib/ooo-1.1 /usr/lib/ooo-1.1_backup
+</I>&gt;<i>      # make install (from the build area)
+</I>&gt;<i>
+</I>&gt;<i> Any suggestion are welcomed
+</I>
+The resources should be either in the 
+directory /usr/lib/ooo-1.1/program/resource or there could be more 
+directories with resources like:
+/usr/lib/ooo-1.1/program/resource.gnome
+/usr/lib/ooo-1.1/program/resource.kde
+and a symlink to the default resources:
+/usr/lib/ooo-1.1/program/resource.default 
+-&gt; /usr/lib/ooo-1.1/program/resource.gnome
+
+What resource directories do you have?
+
+What is the content of the directories?
+Is there any file like iso645??.res or ooo645??.res?
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+--------------------------------------------------------------------- 
+
+SuSE CR, s.r.o.                             e-mail: <A HREF="mailto:pmladek@suse.cz">pmladek@suse.cz</A> 
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000515.html">[Open Office] status thursday
+</A></li>
+	<LI> Next message: <A HREF="000516.html">[Open Office] status thursday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#514">[ date ]</a>
+              <a href="thread.html#514">[ thread ]</a>
+              <a href="subject.html#514">[ subject ]</a>
+              <a href="author.html#514">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Issues i#59089 and i#57862
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Issues%20i%2359089%20and%20i%2357862&In-Reply-To=2e2d80650601120104r178f143eu660e8d9d9cf36fe2%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001485.html">
+   <LINK REL="Next"  HREF="001489.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Issues i#59089 and i#57862</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Issues%20i%2359089%20and%20i%2357862&In-Reply-To=2e2d80650601120104r178f143eu660e8d9d9cf36fe2%40mail.gmail.com"
+       TITLE="[Open Office] Re: Issues i#59089 and i#57862">michael.meeks at novell.com
+       </A><BR>
+    <I>Fri Jan 13 13:17:05 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001485.html">[Open Office] Issues i#59089 and i#57862
+</A></li>
+        <LI>Next message: <A HREF="001489.html">[Open Office] Re: Issues i#59089 and i#57862
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1488">[ date ]</a>
+              <a href="thread.html#1488">[ thread ]</a>
+              <a href="subject.html#1488">[ subject ]</a>
+              <a href="author.html#1488">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there,
+
+On Thu, 2006-01-12 at 10:04 +0100, Giuseppe Castagno wrote:
+&gt;<i> please find attached two patches that should fix the issues #59089
+</I>&gt;<i> and #57862.
+</I>
+	So - these are nice :-) this is good stuff.
+
+&gt;<i> They where formed against the oo.o official CVS.
+</I>&gt;<i> I built an ooo-build tag m148 from scratch without problem.
+</I>
+	Sure - we can include them easily; but a few comments 1st perhaps (?).
+
+&gt;<i> BTW it took me 3/4 of an hour to file the two of them of issue
+</I>&gt;<i> tracker, is this all right ?
+</I>
+	Sorry about that, SourceCast sucks (it seems).
+
+&gt;<i> Comments are accepted, welcome, etc...
+</I>
+	So - wrt. i#59089 I'm happy to commit it now - with a little cleanup:
+
+	+ no need for all the bepecc comments - the function is 
+	  clear &amp; the patch is easy to read, I've removed them,
+	  your name lives on in the ChangeLog.
+
+	+ we should use a bit-field for the flag, see the other
+	  flags are of the form:
+		unsigned int foo : 1;
+
+	  the ':1' in a structure means it will only consume a single
+	  bit, vs 4 bytes on Intel :-)
+
+	The other patch looks fine modulo comments - I've committed both as
+ui-macro-warnings[2].diff.
+
+	Have you signed the JCA ? this is really a pre-requisite for getting
+code up-stream &amp; as such for ooo-build too; checkout the wiki &amp; let me
+know.
+
+	Thanks &amp; welcome to OO.o hacking,
+
+	Regards,
+
+		Michael.
+
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001485.html">[Open Office] Issues i#59089 and i#57862
+</A></li>
+	<LI>Next message: <A HREF="001489.html">[Open Office] Re: Issues i#59089 and i#57862
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1488">[ date ]</a>
+              <a href="thread.html#1488">[ thread ]</a>
+              <a href="subject.html#1488">[ subject ]</a>
+              <a href="author.html#1488">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] [PATCH] Fix compile on systems without gstreamer
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5BPATCH%5D%20Fix%20compile%20on%20systems%20without%20gstreamer&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002225.html">
+   <LINK REL="Next"  HREF="002227.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] [PATCH] Fix compile on systems without gstreamer</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5BPATCH%5D%20Fix%20compile%20on%20systems%20without%20gstreamer&In-Reply-To="
+       TITLE="[Open Office] [PATCH] Fix compile on systems without gstreamer">bero at arklinux.org
+       </A><BR>
+    <I>Mon Feb 19 17:00:57 EST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002225.html">[Open Office] adapting apply to build newer versions ...
+</A></li>
+        <LI>Next message: <A HREF="002227.html">[Open Office] [PATCH] Fix compile on systems without gstreamer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2226">[ date ]</a>
+              <a href="thread.html#2226">[ thread ]</a>
+              <a href="subject.html#2226">[ subject ]</a>
+              <a href="author.html#2226">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Currently, ooo-build fails to build on Linux systems that don't have gstreamer 
+installed.
+
+The patch I've attached is a replacement for ooo-build's 
+gstreamer-config-office.diff, it adds a proper check for gstreamer, and also 
+adds a --disable-gstreamer switch for people who have gstreamer but don't 
+want the dependency in.
+
+I'm not committing it because it's the first time something in ooo-build wants 
+to use PKG_CHECK_EXIST -- aclocal has to be rerun to drag in the definition 
+after applying the patch, and I'm not sure adding an aclocal run to the build 
+scripts is ok with everyone.
+
+Regards,
+bero
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: gstreamer-config-office.diff
+Type: text/x-diff
+Size: 3356 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070219/8f3539fe/attachment.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20070219/8f3539fe/attachment.bin</A> 
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002225.html">[Open Office] adapting apply to build newer versions ...
+</A></li>
+	<LI>Next message: <A HREF="002227.html">[Open Office] [PATCH] Fix compile on systems without gstreamer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2226">[ date ]</a>
+              <a href="thread.html#2226">[ thread ]</a>
+              <a href="subject.html#2226">[ subject ]</a>
+              <a href="author.html#2226">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

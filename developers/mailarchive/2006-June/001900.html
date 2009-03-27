@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build --with-vendor configure switch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20--with-vendor%20configure%20switch&In-Reply-To=449EBDF6.5020109%40mandriva.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001897.html">
+   <LINK REL="Next"  HREF="001903.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build --with-vendor configure switch</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20--with-vendor%20configure%20switch&In-Reply-To=449EBDF6.5020109%40mandriva.com"
+       TITLE="[Open Office] ooo-build --with-vendor configure switch">kendy at suse.cz
+       </A><BR>
+    <I>Mon Jun 26 04:44:12 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001897.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+        <LI>Next message: <A HREF="001903.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1900">[ date ]</a>
+              <a href="thread.html#1900">[ thread ]</a>
+              <a href="subject.html#1900">[ subject ]</a>
+              <a href="author.html#1900">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sunday 25 June 2006 18:46, Giuseppe Ghib&#242; wrote:
+&gt;<i> &gt;&gt;Oh, OK.  So what about to let VENDORNAME as it is, but set it
+</I>&gt;<i> &gt;&gt;programatically based on DISTRO? ;-)  Something like the following in the
+</I>&gt;<i> &gt;&gt;configure.in:
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;case $DISTRO in
+</I>&gt;<i> &gt;&gt;	Ark*) VENDORNAME=&quot;Ark&quot; ;;
+</I>&gt;<i> &gt;&gt;	Debian*) VENDORNAME=&quot;Debian&quot; ;;
+</I>&gt;<i> &gt;&gt;	Frugalware*) VENDORNAME=&quot;Frugalware&quot; ;;
+</I>&gt;<i> &gt;&gt;	Mandriva*) VENDORNAME=&quot;Mandriva&quot; ;;
+</I>&gt;<i> &gt;&gt;	SUSE*|Novell*|NLD*) VENDORNAME=&quot;Novell&quot; ;;
+</I>&gt;<i> &gt;&gt;	Ubuntu*) VENDORNAME=&quot;Ubuntu&quot; ;;
+</I>&gt;<i> &gt;&gt;	*) VENDORNAME=&quot;$DISTRO&quot; ;;
+</I>&gt;<i> &gt;&gt;esac
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;Would it be OK?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; +1
+</I>&gt;<i> &gt; Sounds good.
+</I>&gt;<i>
+</I>&gt;<i> So --with-distro=... switch will remain as is (and with config
+</I>&gt;<i> files into distro-configs/*)?
+</I>
+--with-distro= would go away from the ooo-build/configure, but stay as it is 
+in ooo-build/build/*/config_office/configure
+
+Regards,
+Jan
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001897.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+	<LI>Next message: <A HREF="001903.html">[Open Office] ooo-build --with-vendor configure switch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1900">[ date ]</a>
+              <a href="thread.html#1900">[ thread ]</a>
+              <a href="subject.html#1900">[ subject ]</a>
+              <a href="author.html#1900">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

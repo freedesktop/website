@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Please apply following patch for	your	gstreamer-avmedia-source-gstreamer.diff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Please%20apply%20following%20patch%20for%0A%09your%09gstreamer-avmedia-source-gstreamer.diff&In-Reply-To=20060904.053957.41695435.chat95%40mac.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001981.html">
+   <LINK REL="Next"  HREF="001984.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Please apply following patch for	your	gstreamer-avmedia-source-gstreamer.diff</H1>
+    <B>Radek Doul&#237;k</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Please%20apply%20following%20patch%20for%0A%09your%09gstreamer-avmedia-source-gstreamer.diff&In-Reply-To=20060904.053957.41695435.chat95%40mac.com"
+       TITLE="[Open Office] Please apply following patch for	your	gstreamer-avmedia-source-gstreamer.diff">rodo at novell.com
+       </A><BR>
+    <I>Mon Sep  4 05:19:11 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001981.html">[Open Office] Please apply following patch for your gstreamer-avmedia-source-gstreamer.diff
+</A></li>
+        <LI>Next message: <A HREF="001984.html">[Open Office] Please apply following patch for your gstreamer-avmedia-source-gstreamer.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1983">[ date ]</a>
+              <a href="thread.html#1983">[ thread ]</a>
+              <a href="subject.html#1983">[ subject ]</a>
+              <a href="author.html#1983">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi NAKATA,
+
+thanks for your patch. It is fixed in cvs now.
+
+Cheers
+Radek
+
+On Mon, 2006-09-04 at 05:39 +0900, NAKATA Maho wrote:
+&gt;<i> Hello Radek Doulik 
+</I>&gt;<i> 
+</I>&gt;<i> I tried your gstremer in ooo-build for FreeBSD, and unfortunately there is a build issue.
+</I>&gt;<i> 
+</I>&gt;<i> * pow10 is only implemeted for GNU/Linux(it seems it requires #define _GNU_SOURCE ?) 
+</I>&gt;<i> * IMHO using pow(10.0,x) is portable.
+</I>&gt;<i> * If you don't mind please apply the following patch!
+</I>&gt;<i> 
+</I>&gt;<i> following patch will solve this problem:
+</I>&gt;<i> 
+</I>&gt;<i> --- patches/gstreamer/gstreamer-avmedia-source-gstreamer.diff~  Fri Sep  1 03:11:26 2006
+</I>&gt;<i> +++ patches/gstreamer/gstreamer-avmedia-source-gstreamer.diff   Sun Sep  3 20:57:30 2006
+</I>&gt;<i> @@ -1162,7 +1162,7 @@
+</I>&gt;<i>  +void SAL_CALL Player::setVolumeDB( sal_Int16 nVolumeDB )
+</I>&gt;<i>  +    throw (uno::RuntimeException)
+</I>&gt;<i>  +{
+</I>&gt;<i> -+    mnUnmutedVolume = pow10 ( nVolumeDB / 20.0 );
+</I>&gt;<i> ++    mnUnmutedVolume = pow ( 10.0, nVolumeDB / 20.0 );
+</I>&gt;<i>  +
+</I>&gt;<i>  +    OSL_TRACE( &quot;set volume: %d gst volume: %lf&quot;, nVolumeDB, mnUnmutedVolume );
+</I>&gt;<i>  +
+</I>&gt;<i> 
+</I>&gt;<i> thanks,
+</I>&gt;<i> -- NAKATA, Maho (<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">maho at FreeBSD.org</A>)
+</I>&gt;<i> 
+</I>-- 
+Radek Doul&#237;k &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rodo at novell.com</A>&gt;
+Novell, Inc.
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001981.html">[Open Office] Please apply following patch for your gstreamer-avmedia-source-gstreamer.diff
+</A></li>
+	<LI>Next message: <A HREF="001984.html">[Open Office] Please apply following patch for your gstreamer-avmedia-source-gstreamer.diff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1983">[ date ]</a>
+              <a href="thread.html#1983">[ thread ]</a>
+              <a href="subject.html#1983">[ subject ]</a>
+              <a href="author.html#1983">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

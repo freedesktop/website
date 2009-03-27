@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] m181 problem with	/solver/680/unxlngx6.pro/xml/registry/component-update.dtd
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m181%20problem%20with%0A%09/solver/680/unxlngx6.pro/xml/registry/component-update.dtd&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001973.html">
+   <LINK REL="Next"  HREF="001972.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] m181 problem with	/solver/680/unxlngx6.pro/xml/registry/component-update.dtd</H1>
+    <B>VMiklos</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m181%20problem%20with%0A%09/solver/680/unxlngx6.pro/xml/registry/component-update.dtd&In-Reply-To="
+       TITLE="[Open Office] m181 problem with	/solver/680/unxlngx6.pro/xml/registry/component-update.dtd">vmiklos at frugalware.org
+       </A><BR>
+    <I>Wed Aug 16 10:54:45 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001973.html">[Open Office] m181 fails on updatecheck.cxx
+</A></li>
+        <LI>Next message: <A HREF="001972.html">[Open Office] m181 problem with	/solver/680/unxlngx6.pro/xml/registry/component-update.dtd
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1968">[ date ]</a>
+              <a href="thread.html#1968">[ thread ]</a>
+              <a href="subject.html#1968">[ subject ]</a>
+              <a href="author.html#1968">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>hi
+
+i hit the following issue on x86_64:
+
+Making: ../../../unxlngx6.pro/lib/updchk.uno.so
+ccache g++ -Wl,-z,combreloc -Wl,-z,defs -Wl,-rpath,'$ORIGIN' -shared
+-Wl,-O1 -Wl,--version-script
+../../../unxlngx6.pro/misc/exports_updchk.uno.map
+-L../../../unxlngx6.pro/lib -L../lib
+-L/var/tmp/fst/src/ooo-build/build/src680-m181/solenv/unxlngx6/lib
+-L/var/tmp/fst/src/ooo-build/build/src680-m181/solver/680/unxlngx6.pro/lib
+-L/var/tmp/fst/src/ooo-build/build/src680-m181/solenv/unxlngx6/lib
+-L/usr/lib64 -L/usr/jre/lib/amd64 -L/usr/jre/lib/amd64/server
+-L/usr/jre/lib/amd64/native_threads -L/usr/lib64
+-L/usr/lib/firefox-1.5.0.6 ../../../unxlngx6.pro/slo/updatecheck.o
+../../../unxlngx6.pro/slo/updatecheckconfig.o
+../../../unxlngx6.pro/slo/updateprotocol.o
+../../../unxlngx6.pro/slo/updchk.uno_version.o
+../../../unxlngx6.pro/slo/updchk_description.o -o
+../../../unxlngx6.pro/lib/updchk.uno.so -luno_cppuhelpergcc3 -luno_cppu
+-luno_sal -ldl -lpthread -lm -Wl,-Bdynamic -lstlport_gcc
+-rwxrwxr-x  1 root root 737784 Aug 10 20:51
+../../../unxlngx6.pro/lib/updchk.uno.so
+-------------
+dmake:  Error: --
+`/var/tmp/fst/src/ooo-build/build/src680-m181/solver/680/unxlngx6.pro/xml/registry/component-update.dtd'
+not found, and can't be made
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making
+/var/tmp/fst/src/ooo-build/build/src680-m181/extensions/source/update/check
+make: *** [stamp/build] Error 1
+
+is this a known problem? should that dtd be generated, or is this just a
+packaging problem?
+
+udv / greetings,
+VMiklos
+
+-- 
+Developer of Frugalware Linux, to make things frugal - <A HREF="http://frugalware.org">http://frugalware.org</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001973.html">[Open Office] m181 fails on updatecheck.cxx
+</A></li>
+	<LI>Next message: <A HREF="001972.html">[Open Office] m181 problem with	/solver/680/unxlngx6.pro/xml/registry/component-update.dtd
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1968">[ date ]</a>
+              <a href="thread.html#1968">[ thread ]</a>
+              <a href="subject.html#1968">[ subject ]</a>
+              <a href="author.html#1968">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

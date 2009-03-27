@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Build error in cli_ure with m142
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Build%20error%20in%20cli_ure%20with%20m142&In-Reply-To=200512011900.04029.pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001368.html">
+   <LINK REL="Next"  HREF="001369.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Build error in cli_ure with m142</H1>
+    <B>Martin Kretzschmar</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20Build%20error%20in%20cli_ure%20with%20m142&In-Reply-To=200512011900.04029.pmladek%40suse.cz"
+       TITLE="[Open Office] Re: Build error in cli_ure with m142">m_kretzschmar at gmx.net
+       </A><BR>
+    <I>Tue Dec 13 06:26:43 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001368.html">[Open Office] Build error in cli_ure with m142
+</A></li>
+        <LI>Next message: <A HREF="001369.html">[Open Office] ooo-build-src680-140.1 system-agg fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1413">[ date ]</a>
+              <a href="thread.html#1413">[ thread ]</a>
+              <a href="subject.html#1413">[ subject ]</a>
+              <a href="author.html#1413">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Petr,
+
+Petr Mladek schrieb:
+&gt;<i> I got this build error in the project cli_use with m142 when mono enabled:
+</I>&gt;<i> --- cut ---
+</I>&gt;<i> /usr/src/packages/BUILD/ooo-build-src680.141.99.0/build/src680-m142/cli_ure/source/ure
+</I>&gt;<i> -------------
+</I>&gt;<i> /usr/bin/mcs -warnaserror+ -incremental- -noconfig -optimize \
+</I>&gt;<i>                 -target:library \
+</I>&gt;<i>                 -out:../../unxlngi6.pro/bin/cli_ure.dll \
+</I>&gt;<i>                 -reference:../../unxlngi6.pro/bin/cli_types.dll \
+</I>&gt;<i>                 -reference:System.dll \
+</I>&gt;<i>                 uno/util/DisposeGuard.cs                                                
+</I>&gt;<i> uno/util/WeakAdapter.cs                            
+</I>&gt;<i>                 uno/util/WeakBase.cs                                                    
+</I>&gt;<i> uno/util/WeakComponentBase.cs           ../../unxln
+</I>&gt;<i> gi6.pro/misc/assembly_ure_ure.cs
+</I>&gt;<i> If code has changed then provide a policy assembly and change the version!
+</I>&gt;<i> cp -f cli_ure.config ../../unxlngi6.pro/bin  
+</I>&gt;<i> AL.exe -out:../../unxlngi6.pro/bin/policy.1.0.cli_ure.dll \
+</I>&gt;<i>                         -version:1.0.0.0 \
+</I>&gt;<i>                         -keyfile:../../unxlngi6.pro/bin/cliuno.snk \
+</I>&gt;<i>                         -link:cli_ure.config
+</I>&gt;<i> AL.exe: Command not found.
+</I>&gt;<i> dmake:  Error code 1, while making 
+</I>&gt;<i> '../../unxlngi6.pro/bin/policy.1.0.cli_ure.dll'
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>&gt;<i> 
+</I>&gt;<i> ERROR: Error 65280 occurred while 
+</I>&gt;<i> making /usr/src/packages/BUILD/ooo-build-src680.141.99.0/build/src680-m142/cli_ure/source/ure
+</I>&gt;<i> --- cut ---
+</I>&gt;<i> 
+</I>&gt;<i> In the previous milestones, the .exe commands were used only in the 
+</I>&gt;<i> subdirectories that were built on Windows only. The AL.exe command is called 
+</I>&gt;<i> even in the subdirectories that are build on UN*X now.
+</I>
+Sorry, haven't had a close look at this. yet.
+
+But my mono installation comes with an al program. Can you add a check 
+to configure and use a make variable AL (like we do for CSC now)?
+
+You could also try replacing AL.exe with just al or /usr/bin/al in the 
+makefile and I'll do the configure thing later.
+
+HTH,
+
+Martin
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001368.html">[Open Office] Build error in cli_ure with m142
+</A></li>
+	<LI>Next message: <A HREF="001369.html">[Open Office] ooo-build-src680-140.1 system-agg fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1413">[ date ]</a>
+              <a href="thread.html#1413">[ thread ]</a>
+              <a href="subject.html#1413">[ subject ]</a>
+              <a href="author.html#1413">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

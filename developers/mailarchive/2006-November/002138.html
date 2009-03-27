@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Calc Solver updates
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Calc%20Solver%20updates&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002136.html">
+   <LINK REL="Next"  HREF="002140.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Calc Solver updates</H1>
+    <B>Kohei Yoshida</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Calc%20Solver%20updates&In-Reply-To="
+       TITLE="[Open Office] Calc Solver updates">kohei.yoshida at gmail.com
+       </A><BR>
+    <I>Tue Nov 21 23:14:55 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002136.html">[Open Office] Patches ordering
+</A></li>
+        <LI>Next message: <A HREF="002140.html">[Open Office] Calc Solver updates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2138">[ date ]</a>
+              <a href="thread.html#2138">[ thread ]</a>
+              <a href="subject.html#2138">[ subject ]</a>
+              <a href="author.html#2138">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hey list,
+
+I just decided to post some update here since I just finished
+committing fair amount of changes to the scsolver module that
+addresses some important issues.
+
+The following four issues are addressed in this round of change.
+
+1) Handle window close event so that each dialog can be closed by
+clicking the window manager's close button.  Incidentally, hitting the
+escape key also closes the dialog with this change.
+
+2) Reworked the code that parses constraint cells and converts them
+into internal model.  The old code simply didn't do it right when a
+left-hand-side (LHS) constraint cell contained a constant term in the
+formula expression (e.g. =A1-B1*2+100 : A1 and B1 are both variable
+cells).  It only worked when the expression contained no constant term
+(e.g. =A1-B1*2).
+
+3) While making change 2), I also made the parsing code flexible
+enough so that even when the right-hand side constraint cell contains
+one or more variable cells, it would convert correctly.  Previous code
+always assumed that the RHS cell was constant.
+
+4) When data is loaded from the document, and the user decides to
+change one of its constraints immediately afterwards, the constraint
+dialog failed to show the correct equality value in the first dialog
+instance.  This is fixed.
+
+4) A couple of crasher bugs fixed.
+
+All of these changes are committed to the ooo-build-2-0-4 branch.
+Please grab the code from that branch if this interests you.
+
+Thanks,
+Kohei
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002136.html">[Open Office] Patches ordering
+</A></li>
+	<LI>Next message: <A HREF="002140.html">[Open Office] Calc Solver updates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2138">[ date ]</a>
+              <a href="thread.html#2138">[ thread ]</a>
+              <a href="subject.html#2138">[ subject ]</a>
+              <a href="author.html#2138">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

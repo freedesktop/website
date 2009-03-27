@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] other compile problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000033.html">
+   <LINK REL="Next"  HREF="000035.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] other compile problems
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] other compile problems">halls@debian.org
+       </A><BR>
+    <I>Tue, 26 Aug 2003 13:39:40 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000033.html">[Open Office] other compile problems
+</A></li>
+        <LI> Next message: <A HREF="000035.html">[Open Office] other compile problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Aug 26, 2003 at 06:21:15AM -0500, Nick Hudson wrote:
+&gt;<i> Yeah I saw that in HEAD and tried using it.  So far it doesnt work.  The
+</I>&gt;<i> configure script in config_office tells you that your gcc is corrupt,
+</I>&gt;<i> then bombs out.  That part I dont understand because my gcc isnt corrupt
+</I>&gt;<i> being I compile every single app on my box.  Glad you could use that
+</I>&gt;<i> though.
+</I>
+The last comment on issue 18282 is:
+
+------- Additional Comments From Ken Foskey 2003-08-22 06:04 PDT -------
+
+REduced error to only error when small selected for symbols.  This
+crashes the build with an internal compiler error.
+---------------
+
+So gcc 3.2.3 crashes with an internal error when you are compiling with -g1.
+
+&gt;<i> 
+</I>&gt;<i> I have some other people trying to build it also and they are getting
+</I>&gt;<i> totally diffrent compile errors.  Mostly theirs are stopping when it
+</I>&gt;<i> tries to compile the mozilla stuff.
+</I>&gt;<i> 
+</I>&gt;<i> /usr/src/ooo-build-1.1.35/build/RC3_030729/connectivity/source/drivers/mozab/mozillasrc/MDatabaseMetaDataHelper.cxx:210: warning: `const char*kPropertyName' defined but not used
+</I>&gt;<i> dmake:  Error code 1, while making
+</I>&gt;<i> '../../../../unxlngi4.pro/slo/MDatabaseMetaDataHelper.obj'
+</I>&gt;<i> ---* TG_SLO.MK *---
+</I>
+That's only a warning.  You need to include more context in your report.
+
+Chris
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000033.html">[Open Office] other compile problems
+</A></li>
+	<LI> Next message: <A HREF="000035.html">[Open Office] other compile problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

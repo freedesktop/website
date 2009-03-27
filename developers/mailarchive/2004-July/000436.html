@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] cvs problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:rmrmg%40wp.pl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+   <LINK REL="Previous"  HREF="000432.html">
+   <LINK REL="Next"  HREF="000437.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] cvs problem
+   </H1>
+    <B>Rafał 'rmrmg' Roszak
+    </B> 
+    <A HREF="mailto:rmrmg%40wp.pl"
+       TITLE="[Open Office] cvs problem">rmrmg@wp.pl
+       </A><BR>
+    <I>Mon, 5 Jul 2004 18:57:04 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000432.html">[Open Office] cvs problem
+</A></li>
+        <LI> Next message: <A HREF="000437.html">[Open Office] cvs problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#436">[ date ]</a>
+              <a href="thread.html#436">[ thread ]</a>
+              <a href="subject.html#436">[ subject ]</a>
+              <a href="author.html#436">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>begin  Michael Meeks &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt; quote:
+
+&gt;<i> 
+</I>&gt;<i> On Sun, 2004-07-04 at 19:10 +0200, Rafał 'rmrmg' Roszak wrote:
+</I>&gt;<i> &gt; I've tried compile OOo 1.1.2  (oo-build from cvs) with any special
+</I>&gt;<i> &gt; options, and have this problem:
+</I>&gt;<i> 
+</I>&gt;<i> 	Any chance of pasting some of the surrounding code to the
+</I>&gt;<i> 	errors:
+</I>
+Ok, it was msg from STDERR, this is msg from STDERR and STDOUT:
+
+
+
+Making: ../../unxlngi4.pro/slo/button.obj
+g++ -fmessage-length=0 -c -I.  -I. -I../inc -I../../inc -I../../unx/inc
+-I../../unxlngi4.pro/inc -I.
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/build
+/OOO_1_1_2/solver/645/unxlngi4.pro/inc/stl
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/build
+/OOO_1_1_2/solver/645/unxlngi4.pro/inc/external
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/build
+/OOO_1_1_2/solver/645/unxlngi4.pro/inc
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/build
+/OOO_1_1_2/solenv/unxlngi4/inc
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/build
+/OOO_1_1_2/solenv/inc
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/build
+/OOO_1_1_2/res
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/build
+/OOO_1_1_2/solver/645/unxlngi4.pro/inc/stl
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/build
+/OOO_1_1_2/solenv/inc/Xp31 -INO_JAVA_HOME/include
+-INO_JAVA_HOME/include/linux
+-INO_JAVA_HOME/include/native_threads/include -I/usr/X11R6/include    
+-I. -I../../res -I. -O1   -pipe -mcpu=pentiumpro -fno-for-scope
+-fpermissive -fno-rtti -include preinclude.h -fno-exceptions   -fpic
+-DLINUX -DUNX -DVCL -DGCC -DC300 -DINTEL
+-DGXX_INCLUDE_PATH=/notslack/compiled/OpenOffice/oooximian/ooo-build-cv
+s/ooo-build/build/include/c++/3.2.2 -DCVER=C300 -D_USE_NAMESPACE
+-DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1
+-DSTLPORT_VERSION=400 -D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DSUPD=645
+-DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE
+-DEXCEPTIONS_OFF -DCUI -DSRX645 -DUSE_BUILTIN_RASTERIZER -DENABLE_CTL
+-DSHAREDLIB -D_DLL_  -DMULTITHREAD   -o ../../unxlngi4.pro/slo/button.o
+/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/build/O
+OO_1_1_2/vcl/source/control/button.cxx In file included from
+../../inc/outdev.hxx:429,                 from ../../inc/window.hxx:69,
+                 from ../../inc/syswin.hxx:69,
+                 from ../../inc/dialog.hxx:69,
+                 from
+/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/build/O
+OO_1_1_2/vcl/source/control/button.cxx:91:../../inc/outdev.imp:64:
+warning: class `OutputDevice' is implicitly friends with
+itself../../inc/outdev.imp:65: warning: `VirtualDevice' is already a
+friend of `OutputDevice'../../inc/outdev.imp:73: warning:
+`vcl::PDFWriterImpl' is already a friend of
+`OutputDevice'/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo
+-build/build/OOO_1_1_2/vcl/source/control/button.cxx: In member function
+`virtual void CheckBox::DataChanged(const
+DataChangedEvent&amp;)':/notslack/compiled/OpenOffice/oooximian/ooo-build-c
+vs/ooo-build/build/OOO_1_1_2/vcl/source/control/button.cxx:3514: parse
+error before `::'
+token/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/bu
+ild/OOO_1_1_2/vcl/source/control/button.cxx:3519: `rNEvt' undeclared
+(first use this
+function)/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-buil
+d/build/OOO_1_1_2/vcl/source/control/button.cxx:3519: (Each undeclared
+identifier is reported only once for each function it appears
+in.)/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/bui
+ld/OOO_1_1_2/vcl/source/control/button.cxx:3542: `nDone' undeclared
+(first use this
+function)/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-buil
+d/build/OOO_1_1_2/vcl/source/control/button.cxx:3542: warning:
+return-statement with a value, in function declared with a void return
+type/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/bui
+ld/OOO_1_1_2/vcl/source/control/button.cxx: At global
+scope:/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/b
+uild/OOO_1_1_2/vcl/source/control/button.cxx:3546: parse error before
+`.'
+token/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/bu
+ild/OOO_1_1_2/vcl/source/control/button.cxx:3551: warning: ISO C++
+forbids declaration of `Invalidate' with no
+type/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/bui
+ld/OOO_1_1_2/vcl/source/control/button.cxx:3552: parse error before `}'
+token dmake:  Error code 1, while making
+'../../unxlngi4.pro/slo/button.obj'
+---* TG_SLO.MK *---
+
+ERROR: Error 65280 occurred while making
+/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/ooo-build/build/O
+OO_1_1_2/vcl/source/control make: *** [stamp/build] Błąd 1
+
+-- 
+. JID: rmrmg(at)jabberpl(dot)org | Wszystko jest trudne
+.   mail: rmrmg(at)wp(dot)pl     |   przy odpowiednim
+.  registered Linux user 261525  |  stopniu abstrakcji
+ _______     RMRMG signature version 0.0.5     ________
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000432.html">[Open Office] cvs problem
+</A></li>
+	<LI> Next message: <A HREF="000437.html">[Open Office] cvs problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#436">[ date ]</a>
+              <a href="thread.html#436">[ thread ]</a>
+              <a href="subject.html#436">[ subject ]</a>
+              <a href="author.html#436">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

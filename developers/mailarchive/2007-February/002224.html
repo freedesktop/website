@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] adapting apply to build newer versions ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20adapting%20apply%20to%20build%20newer%20versions%20...&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002223.html">
+   <LINK REL="Next"  HREF="002225.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] adapting apply to build newer versions ...</H1>
+    <B>Michael Meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20adapting%20apply%20to%20build%20newer%20versions%20...&In-Reply-To="
+       TITLE="[Open Office] adapting apply to build newer versions ...">michael.meeks at novell.com
+       </A><BR>
+    <I>Wed Feb 14 05:32:55 EST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002223.html">[Open Office] ooo-build-2-1: Branch for the 2.1 release
+</A></li>
+        <LI>Next message: <A HREF="002225.html">[Open Office] adapting apply to build newer versions ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2224">[ date ]</a>
+              <a href="thread.html#2224">[ thread ]</a>
+              <a href="subject.html#2224">[ subject ]</a>
+              <a href="author.html#2224">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there,
+
+	So - just some rules on changes to ooo-build - particularly relating
+the the 'apply' file; I'm sure it's not just you Andreas doing this, but
+you feature in the example.
+
+	Firstly - the contents of 'apply' are *really* important, it is
+critical that we don't let it get cluttered up with obsolete stuff
+and/or difficult to identify stuff.
+
+	Of course, I understand that sometimes people want to do quick hacks to
+make things build, but then these need to be tagged; when I see eg.:
+
+svn annotate apply
+..
+  8448    michael # more helpful VCL debugging
+  8454    aprosky #vcl-debug.diff, i#72880, michael
+  8448    michael 
+
+	What do I learn ? why was vcl-debug disabled ? was this because we want
+to keep the patch because it's still not up-stream, and further work is
+required ? was it because someone wanted it to build in a hurry and
+didn't bother to check ? etc.
+
+	So - here is the mechanism that must be used for people in a hurry that
+don't want to help :-)
+
+	Please add &quot;FIXME&quot; to the line - if you don't understand what you're
+doing; then we can quickly identify patches that have been explicitely
+disabled by a maintainer for some (hopefully well-thought-through)
+reason, and those that were quickly removed to adapt to a new version.
+
+	Of course - in this case it is a shame: it is transparently obvious by
+reading the patch &amp; the new source that the patch made it's way
+up-stream intact. Even as a non-hacker you can verify this in the issue
+&amp; EIS. In this case you need to:
+
+	* remove all reference to the patch &amp; it's comment
+	* svn remove the patch itself
+	* add a ChangeLog entry describing it as obsolete
+	* commit.
+
+	Of course - it's necessary to have a fairly high certainty that this is
+in fact now up-stream correctly, so this is best for slam-dunks :-)
+
+	Anyhow - I hope that helps; /me is trying to unwind the find-unused
+output to review all disabled patches to clean this up :-)
+
+	Thanks,
+
+		Michael.
+
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002223.html">[Open Office] ooo-build-2-1: Branch for the 2.1 release
+</A></li>
+	<LI>Next message: <A HREF="002225.html">[Open Office] adapting apply to build newer versions ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2224">[ date ]</a>
+              <a href="thread.html#2224">[ thread ]</a>
+              <a href="subject.html#2224">[ subject ]</a>
+              <a href="author.html#2224">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

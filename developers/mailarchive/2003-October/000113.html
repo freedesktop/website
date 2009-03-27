@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: bullet issues ....
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000112.html">
+   <LINK REL="Next"  HREF="000114.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: bullet issues ....
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: bullet issues ....">michael@ximian.com
+       </A><BR>
+    <I>Tue, 28 Oct 2003 13:47:26 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000112.html">[Open Office] bullet issues ....
+</A></li>
+        <LI> Next message: <A HREF="000114.html">[Open Office] Re: Patches in diff format...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#113">[ date ]</a>
+              <a href="thread.html#113">[ thread ]</a>
+              <a href="subject.html#113">[ subject ]</a>
+              <a href="author.html#113">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Caolan,
+
+	Firstly, thanks so much for the great write-up, extremely helpful as I
+try and untangle what we've done wrong somehow.
+
+On Tue, 2003-10-28 at 10:14, Caolan McNamara wrote:
+&gt;<i> The thinking is as follows....
+</I>
+	Sure - it makes sense to convert immediately before rendering; knowing
+that is the strategy helps me understand the code a lot better. It
+interests me that while the export process can switch-font &amp; character,
+it seems the render RecodeString can only switch character - so there
+must be some font munging stuff I've not found yet.
+
+&gt;<i> Now *cough*, you should compare wrtw8num.cxx from 1.1.1 and current head
+</I>&gt;<i> and take the diff which in SubstituteBullet turns 
+</I>...
+&gt;<i> +	rNumStr = cChar | 0xF000;
+</I>&gt;<i>
+</I>&gt;<i> Adding that to your version *might* help.
+</I>
+	Well ;-) it made things different, I now get nice boxes instead of
+characters; and indeed we're doing some re-coding action: my churning
+debug says fontcvt's RecodeString does: recode 0xf0b7 to 0xe12c - which
+is fun I suppose :-) unfortunately, that is a non-existent character in
+the font [ and makes little sense to me ]. Anyhow - investigations
+continue.
+
+&gt;<i> The charset for a font describes the source encoding of nonunicode text
+</I>&gt;<i> written in that font, only a small handful of fonts are actual unicode
+</I>&gt;<i> fonts. Many are e.g. CP1252 fonts where the text needs to be converted
+</I>&gt;<i> from 1252 to unicode to be useful, symbol fonts are the same and they
+</I>&gt;<i> have a SYMBOL encoding, this is of limited utility in one sense, as you
+</I>&gt;<i> generally need to know the same of the font to do a useful conversion
+</I>&gt;<i> seeing as this charset is totally unregulated and nonstandard between
+</I>&gt;<i> different symbol fonts, but it is a useful flag
+</I>
+	:-) right; I see stuff in sal/ to munge this sort of thing, must have a
+read.
+
+&gt;<i> So if you write a native .sxw writer document with OOo under windows and
+</I>&gt;<i> choose the 0xB7 bullet character in windows Symbol as the bullet for
+</I>&gt;<i> something and import it in your version you should see the same effect
+</I>&gt;<i> as exporting a word document in your version using the standard
+</I>&gt;<i> starsymbol bullet and reimporting.
+</I>
+	Right :-) so - nauseatingly word does a great job of hunting bullets
+for various combinations of export from OO.o in .doc format, so
+everything we export loads fine in word, but not back to OO.o ;-) There
+were a couple of initial queries I had though in psudo patch form:
+
+--- sw/inc/numrule.hxx	10 Jun 2003 13:16:59 -0000	1.8
++++ sw/inc/numrule.hxx	28 Oct 2003 12:44:48 -0000
+@@ -106,7 +106,7 @@ inline BYTE GetRealLevel( const BYTE nLv
+-const sal_Unicode cBulletChar	= 0x2022;	// Charakter fuer Aufzaehlungen
++const sal_Unicode cBulletChar	= 0x25cf;	// Charakter fuer Aufzaehlungen
+
+	Why do we use a rather small bullet char for our default bullet in OO.o
+? it seems Word 97 by default uses a rather larger version; is there
+some highly subtle / fragility around here ? an LXR for 0x2022 gets a
+number of scattered hits which is interesting.
+
+	In a similar vein is this code what is intended:
+
+--- vcl/source/gdi/fontcvt.cxx	10 Jun 2002 11:06:06 -0000	1.13
++++ vcl/source/gdi/fontcvt.cxx	28 Oct 2003 12:44:48 -0000
+@@ -1260,7 +1262,7 @@ StarSymbolToMSMultiFontImpl::StarSymbolT
+     if (!bPerfectOnly)
+         nEntries = sizeof(aAgressiveTable) /
+sizeof(aAgressiveTable[0]);
+     else
+-        nEntries = 1;
++        nEntries = 0; /* ? */
+ 
+     for (i = 0; i &lt; nEntries; ++i)
+     {
+
+	Is it a feature that the 1st element of the 'aggressive' table is used
+even if bPerfectOnly is selected ? also, since aAgressiveTable contains
+a load of integer / numeric indicees can we call it 'anAgressiveTable'
+;-&gt;
+
+	Thanks again,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000112.html">[Open Office] bullet issues ....
+</A></li>
+	<LI> Next message: <A HREF="000114.html">[Open Office] Re: Patches in diff format...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#113">[ date ]</a>
+              <a href="thread.html#113">[ thread ]</a>
+              <a href="subject.html#113">[ subject ]</a>
+              <a href="author.html#113">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

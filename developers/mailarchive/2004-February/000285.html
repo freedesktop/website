@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regarding addressbook integration with OOo
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-February/index.html" >
+   <LINK REL="made" HREF="mailto:samit%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000286.html">
+   <LINK REL="Next"  HREF="000287.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regarding addressbook integration with OOo
+   </H1>
+    <B>Amit Shrivastava
+    </B> 
+    <A HREF="mailto:samit%40novell.com"
+       TITLE="[Open Office] Regarding addressbook integration with OOo">samit@novell.com
+       </A><BR>
+    <I>Wed, 04 Feb 2004 08:14:59 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000286.html">[Open Office] Re: Regarding addressbook integration with OOo
+</A></li>
+        <LI> Next message: <A HREF="000287.html">[Open Office] Fix for row/hide sensitization
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#285">[ date ]</a>
+              <a href="thread.html#285">[ thread ]</a>
+              <a href="subject.html#285">[ subject ]</a>
+              <a href="author.html#285">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I just thought i will update you on the task,
+
+I have connected the code between evo-api and the driver, thus am able
+to get the local evolution addressbook contacts without running the
+evolution-addressbook-export command. Thus the flow is :
+
+Statement.executeQuery -&gt; reads using LTable -&gt; reads from filestream
+&lt;- evo-api writes to filestream. 
+
+Thus the communication mechanism is UCB Filestream. With some more
+tweaking dependency over command line tool can be completely removed. I
+have added the uri parsing code as well, but it seems there is some
+problem in the evo-api itself and it doesnt bring data from the
+specified uri properly. I am into it now ;-)
+
+The above is a cumbersome but fast option, the other alternative is to
+completely rewrite the evoab driver code which as of now completely
+depends on File driver code base. This is quite a bit of task. As it
+will involve a good amount of coding.
+
+As of now what I am doing is going with the first option and trying to
+get the addressbook data of ldap,groupwise etc backend based on the uri,
+user and password.
+
+What are your suggestions ? 
+
+regards,
+Amit 
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000286.html">[Open Office] Re: Regarding addressbook integration with OOo
+</A></li>
+	<LI> Next message: <A HREF="000287.html">[Open Office] Fix for row/hide sensitization
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#285">[ date ]</a>
+              <a href="thread.html#285">[ thread ]</a>
+              <a href="subject.html#285">[ subject ]</a>
+              <a href="author.html#285">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

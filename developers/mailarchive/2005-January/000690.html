@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] build problems with ooo-build 1.3.7
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:suka%40gentoo.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000689.html">
+   <LINK REL="Next"  HREF="000694.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] build problems with ooo-build 1.3.7
+   </H1>
+    <B>suka
+    </B> 
+    <A HREF="mailto:suka%40gentoo.org"
+       TITLE="[Open Office] build problems with ooo-build 1.3.7">suka@gentoo.org
+       </A><BR>
+    <I>Sun, 16 Jan 2005 16:57:28 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000689.html">[Open Office] Status this week
+</A></li>
+        <LI> Next message: <A HREF="000694.html">[Open Office] build problems with ooo-build 1.3.7
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#690">[ date ]</a>
+              <a href="thread.html#690">[ thread ]</a>
+              <a href="subject.html#690">[ subject ]</a>
+              <a href="author.html#690">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-qUFeJgXB3I/OoWCwepgF
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Some of our (Gentoo) users are experiencing build problems with
+ooo-build 1.3.7:
+
+Checking
+DLL ../../unxlngi4.pro/lib/check_pythonloader.uno.so ...-rwxr-xr-x  1
+root root 28030 15. Jan 16:10 ../../unxlngi4.pro/lib/pythonloader.uno.so
+------------------------------
+Making: ../../unxlngi4.pro/lib/ipythonloader.uno.lib
+no ImportLibs on Mac and *ix
+-------------
+cp pythonloader.py ../../unxlngi4.pro/lib/pythonloader.py
+rm -f ../../unxlngi4.pro/lib/pyuno_services.rdb ../../unxlngi4.pro/lib/pyun=
+o_services.tmp ../../unxlngi4.pro/lib/pyuno_services.rdb
+cd ../../unxlngi4.pro/lib &amp;&amp; regcomp -register -r pyuno_services.tmp -c typ=
+econverter.uno -c invocation.uno -c corereflection.uno -c introspection.uno=
+ -c invocadapt.uno -c proxyfac.uno -c pythonloader.uno
+register component 'typeconverter.uno' in registry 'pyuno_services.tmp' suc=
+cesful!
+register component 'invocation.uno' in registry 'pyuno_services.tmp' succes=
+ful!
+terminate called after throwing an instance of 'com::sun::star::registry::I=
+nvalidValueException'
+Abort
+dmake:  Error code 134, while making '../../unxlngi4.pro/lib/pyuno_services=
+.rdb'
+---* TG_SLO.MK *---
+
+ERROR: Error 65280 occurred while making /var/tmp/portage/openoffice-ximian=
+-1.3.7/work/OOo_1.1.3_src/pyuno/source/loader
+
+!!! ERROR: app-office/openoffice-ximian-1.3.7 failed.
+
+I can't reproduce this myself, so I thought, I'd ask if someone else has se=
+en this, for further information see also:
+
+<A HREF="http://bugs.gentoo.org/show_bug.cgi?id=3D77784">http://bugs.gentoo.org/show_bug.cgi?id=3D77784</A>
+
+thanks and bye
+Andreas
+--=20
+Andreas Proschofsky
+Gentoo Developer / OpenOffice.org
+
+--=-qUFeJgXB3I/OoWCwepgF
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.0 (GNU/Linux)
+
+iD8DBQBB6o7oauoogOee02MRAl28AKCA5UqePWniDtViwmOBoQZJmpsudgCeMMSX
+Xw97qjgc8WHVoe3PqK20JYA=
+=EQSM
+-----END PGP SIGNATURE-----
+
+--=-qUFeJgXB3I/OoWCwepgF--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000689.html">[Open Office] Status this week
+</A></li>
+	<LI> Next message: <A HREF="000694.html">[Open Office] build problems with ooo-build 1.3.7
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#690">[ date ]</a>
+              <a href="thread.html#690">[ thread ]</a>
+              <a href="subject.html#690">[ subject ]</a>
+              <a href="author.html#690">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] New files to ./download
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20New%20files%20to%20./download&In-Reply-To=200702020018.36875.ismail%40pardus.org.tr">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002220.html">
+   <LINK REL="Next"  HREF="002222.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] New files to ./download</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20New%20files%20to%20./download&In-Reply-To=200702020018.36875.ismail%40pardus.org.tr"
+       TITLE="[Open Office] New files to ./download">pmladek at suse.cz
+       </A><BR>
+    <I>Fri Feb  2 05:26:58 EST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002220.html">[Open Office] New files to ./download
+</A></li>
+        <LI>Next message: <A HREF="002222.html">[Open Office] New files to ./download
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2221">[ date ]</a>
+              <a href="thread.html#2221">[ thread ]</a>
+              <a href="subject.html#2221">[ subject ]</a>
+              <a href="author.html#2221">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 01 February 2007 23:18, Ismail D&#246;nmez wrote:
+&gt;<i> On Tuesday 30 January 2007 16:43:39 Fridrich Strba wrote:
+</I>&gt;<i> &gt; Fixed now in svn, thanks for the information
+</I>&gt;<i>
+</I>&gt;<i> I am still getting the same error with latest svn, should I rm -rf build
+</I>&gt;<i> and restart?
+</I>
+The download/unpack phase is skipped in incremental builds. The next clean 
+build should be without problems.
+
+If you want to continue the current build, you can:
+
+1. download:
+
+	<A HREF="http://go-oo.org/packages/libwpd/libwpd-0.8.8.tar.gz">http://go-oo.org/packages/libwpd/libwpd-0.8.8.tar.gz</A>
+	<A HREF="http://go-oo.org/packages/SRC680/libwps-0.1.0~svn20070129.tar.gz">http://go-oo.org/packages/SRC680/libwps-0.1.0~svn20070129.tar.gz</A>
+
+2. Install them at:
+
+	ooe680-m6/libwpd/download/libwpd-0.8.8.tar.gz
+	ooe680-m6/libwps/download/libwps-0.1.0~svn20070129.tar.gz
+
+3. I would also remove the current build dir in the libwpd module 
+
+	rm -rf 	ooe680-m6/libwpd/unxlngi6.pro
+
+Then it should build fine...
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SUSE LINUX, s. r. o.                        e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Lihovarsk&#225; 1060/12                          tel: +420 284 028 952
+190 00 Prague 9                             fax: +420 284 028 951
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002220.html">[Open Office] New files to ./download
+</A></li>
+	<LI>Next message: <A HREF="002222.html">[Open Office] New files to ./download
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2221">[ date ]</a>
+              <a href="thread.html#2221">[ thread ]</a>
+              <a href="subject.html#2221">[ subject ]</a>
+              <a href="author.html#2221">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

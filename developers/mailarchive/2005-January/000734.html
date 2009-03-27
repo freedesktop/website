@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.3.8 won't build without QT.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:rcook%40wyrms.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000732.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.3.8 won't build without QT.
+   </H1>
+    <B>Robin Cook
+    </B> 
+    <A HREF="mailto:rcook%40wyrms.net"
+       TITLE="[Open Office] ooo-build-1.3.8 won't build without QT.">rcook@wyrms.net
+       </A><BR>
+    <I>Mon, 31 Jan 2005 06:57:51 -0600</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000732.html">[Open Office] ooo-build-1.3.8 won't build without QT.
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#734">[ date ]</a>
+              <a href="thread.html#734">[ thread ]</a>
+              <a href="subject.html#734">[ subject ]</a>
+              <a href="author.html#734">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-tCnYUGKMUlpXS/KIUJwJ
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Ok tried that but still failed at the same point trying to detect Qt
+headers.
+
+Robin Cook
+
+On Sun, 2005-01-30 at 23:20 -0700, Jayant Balraj Madavi wrote:
+&gt;<i> Hi Robin Cook,
+</I>&gt;<i>=20
+</I>&gt;<i> though its a bad hack ...
+</I>&gt;<i> in your &lt;install path&gt;bin/setup.in
+</I>&gt;<i> remove --enable-kde from CONFIGURE_OPTION
+</I>&gt;<i>=20
+</I>&gt;<i>=20
+</I>&gt;<i> ideally #./configure --help should tell you all the options
+</I>&gt;<i>=20
+</I>&gt;<i> Regards,
+</I>&gt;<i> Jayant
+</I>&gt;<i>=20
+</I>&gt;<i> &gt;&gt;&gt; Robin Cook &lt;<A HREF="mailto:rcook@wyrms.net">rcook@wyrms.net</A>&gt; 01/31/05 11:14 AM &gt;&gt;&gt;
+</I>&gt;<i> Yes, tried that and it still failed at the same place.
+</I>&gt;<i>=20
+</I>&gt;<i> Robin Cook
+</I>&gt;<i>=20
+</I>&gt;<i>=20
+</I>&gt;<i> On Mon, 2005-01-31 at 10:52 +0530, jayant M wrote:
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt;  U tried with #./configure --disable-kde ??
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; On Sun, 2005-01-30 at 22:53 -0600, Robin Cook wrote:
+</I>&gt;<i> &gt; &gt; I have tried to get it to compile without QT but keep failing on
+</I>&gt;<i> &gt; &gt; checking for Qt headers.
+</I>&gt;<i> &gt; &gt;=20
+</I>&gt;<i> &gt; &gt; checking WIDGETSET_GTK_CFLAGS... -I/usr/include/gtk-2.0
+</I>&gt;<i> &gt; &gt; -I/usr/lib/gtk-2.0/include -I/usr/X11R6/include
+</I>&gt;<i> -I/usr/include/atk-1.0
+</I>&gt;<i> &gt; &gt; -I/usr/include/pango-1.0 -I/usr/include/freetype2
+</I>&gt;<i> &gt; &gt; -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include
+</I>&gt;<i> &gt; &gt; checking WIDGETSET_GTK_LIBS... -Wl,--export-dynamic -lgtk-x11-2.0
+</I>&gt;<i> &gt; &gt; -lgdk-x11-2.0 -latk-1.0 -lpangoxft-1.0 -lpangox-1.0 -lpango-1.0
+</I>&gt;<i> &gt; &gt; -lgdk_pixbuf_xlib-2.0 -lgdk_pixbuf-2.0 -lm -lgobject-2.0
+</I>&gt;<i> -lgmodule-2.0
+</I>&gt;<i> &gt; &gt; -ldl -lglib-2.0
+</I>&gt;<i> &gt; &gt; checking for Qt headers... no
+</I>&gt;<i> &gt; &gt; configure: error: Qt headers not found.  Please specify the root
+</I>&gt;<i> of
+</I>&gt;<i> &gt; &gt; your Qt installation by exporting QTDIR before running
+</I>&gt;<i> &quot;configure&quot;.
+</I>&gt;<i> &gt; &gt; make[1]: *** [stamp/build] Error 1
+</I>&gt;<i> &gt; &gt; make[1]: Leaving directory `/usr/src/ooo-build-1.3.8'
+</I>&gt;<i> &gt; &gt;=20
+</I>&gt;<i> &gt; &gt; Robin Cook
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; Regards,
+</I>&gt;<i> &gt; Jayant (aZEN_JM)
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Openoffice mailing list
+</I>&gt;<i> &gt; <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>=20
+</I>&gt;<i> &gt; <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice=20">http://lists.ximian.com/mailman/listinfo/openoffice=20</A>
+</I>&gt;<i> &gt;=20
+</I>&gt;<i>=20
+</I>
+--=-tCnYUGKMUlpXS/KIUJwJ
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.0 (GNU/Linux)
+
+iD4DBQBB/itPX/PXxBKTNeMRAvC3AJwK/oEaFs77WoWg8aNBN06ePTuQngCY+Lxl
+jqAUJ8J/asG1uGlpRARmhQ==
+=Dr2a
+-----END PGP SIGNATURE-----
+
+--=-tCnYUGKMUlpXS/KIUJwJ--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000732.html">[Open Office] ooo-build-1.3.8 won't build without QT.
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#734">[ date ]</a>
+              <a href="thread.html#734">[ thread ]</a>
+              <a href="subject.html#734">[ subject ]</a>
+              <a href="author.html#734">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

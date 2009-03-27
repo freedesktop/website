@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOo 1.1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000346.html">
+   <LINK REL="Next"  HREF="000350.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOo 1.1.1
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] OOo 1.1.1">michael@ximian.com
+       </A><BR>
+    <I>Wed, 07 Apr 2004 13:38:43 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000346.html">[Open Office] OOo 1.1.1
+</A></li>
+        <LI> Next message: <A HREF="000350.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#348">[ date ]</a>
+              <a href="thread.html#348">[ thread ]</a>
+              <a href="subject.html#348">[ subject ]</a>
+              <a href="author.html#348">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 2004-04-06 at 23:14 +0200, Rafa³ 'rmrmg' Roszak wrote:
+&gt;<i> It's not solution when i erase virgule from this file I had problem
+</I>&gt;<i> with apply.pl and norwegian-translation.diff when a remove apply.pl
+</I>&gt;<i> script and create empty file apply.pl i had other problem:
+</I>
+	Yes - removing apply.pl is not going to be the solution. I think
+norwegian-translation.diff is just a pain since it doesn't unapply
+cleanly (at least for me). Ultimately, you can't edit stuff and do a
+'make' - since it'll get trashed; you have to do an incremental build
+for which you need to cd build/OOO_1_1_1 ; . ./*.Set.sh ; dmake ... but
+it looks like you hosed build/ quite badly; IIWY I'd trash it: rm -Rf
+openoffice/build and start again.
+
+&gt;<i> configure: creating ./config.status
+</I>&gt;<i> config.status: creating set_soenv
+</I>&gt;<i> configure: creating ./config.status
+</I>&gt;<i> config.status: creating set_soenv
+</I>&gt;<i> config.status: creating ../berkeleydb/prj/d.lst
+</I>&gt;<i> config.status: error: cannot find input file: ../berkeleydb/prj/d.lst.in
+</I>
+	This just means you applied half of the system-db patch set I think;
+system-db.diff depends on the configure changes which are glupped
+together in another diff AFAIR.
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000346.html">[Open Office] OOo 1.1.1
+</A></li>
+	<LI> Next message: <A HREF="000350.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#348">[ date ]</a>
+              <a href="thread.html#348">[ thread ]</a>
+              <a href="subject.html#348">[ subject ]</a>
+              <a href="author.html#348">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

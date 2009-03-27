@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOo-Ximian with GCC-3.4.x - ucb module help needed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-November/index.html" >
+   <LINK REL="made" HREF="mailto:h.mth%40web.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000579.html">
+   <LINK REL="Next"  HREF="000591.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOo-Ximian with GCC-3.4.x - ucb module help needed
+   </H1>
+    <B>Hanno Meyer-Thurow
+    </B> 
+    <A HREF="mailto:h.mth%40web.de"
+       TITLE="[Open Office] OOo-Ximian with GCC-3.4.x - ucb module help needed">h.mth@web.de
+       </A><BR>
+    <I>Sun, 14 Nov 2004 12:11:30 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000579.html">[Open Office] Re: OpenOffice.org 1.1.3 and ooo-build
+</A></li>
+        <LI> Next message: <A HREF="000591.html">[Open Office] GAIM OOo integration
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#582">[ date ]</a>
+              <a href="thread.html#582">[ thread ]</a>
+              <a href="subject.html#582">[ subject ]</a>
+              <a href="author.html#582">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ken Foskey &lt;<A HREF="mailto:foskey@optusnet.com.au">foskey@optusnet.com.au</A>&gt; schrieb am 14.11.04 08:02:58:
+
+&gt;<i> Head is OOo 2.0 (aka 1.9) not 1.1.  The decision was that it was a
+</I>&gt;<i> worthwhile feature for 2.0 but not necessary for 1.1.  I am very pleased
+</I>&gt;<i> that your opinion differs :-)
+</I>
+In my patchset is no backport of HEAD or branch gcc340fixes01 except the static_type function implementation. ;)
+
+There are two cases which i would really like that someone with background would verify is the diff for cpputype.cxx I added (v1.28 -&gt; v1.28.10.2 from gcc340fixes01 branch) and how to fix mozab/mozillasrc from connectivity. I exclude these two parts from building right now because they want that the mozilla headers get 'template&lt;&gt;' at some points which is not in HEAD either and it works there. I am not that deep involved. A 'dumb' backport of connectivity breaks because of UNO API change. If it was UNO or whatever...
+
+I use Ximian with '--disable-mozilla' so that second one is no matter for me but could be cool to be fixed.
+__________________________________________________________
+Mit WEB.DE FreePhone mit hoechster Qualitaet ab 0 Ct./Min.
+weltweit telefonieren! <A HREF="http://freephone.web.de/?mc=021201">http://freephone.web.de/?mc=021201</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000579.html">[Open Office] Re: OpenOffice.org 1.1.3 and ooo-build
+</A></li>
+	<LI> Next message: <A HREF="000591.html">[Open Office] GAIM OOo integration
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#582">[ date ]</a>
+              <a href="thread.html#582">[ thread ]</a>
+              <a href="subject.html#582">[ subject ]</a>
+              <a href="author.html#582">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

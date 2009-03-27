@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Build_problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build_problem&In-Reply-To=20060906074458.78916.qmail%40web86909.mail.ukl.yahoo.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001985.html">
+   <LINK REL="Next"  HREF="001988.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Build_problem</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build_problem&In-Reply-To=20060906074458.78916.qmail%40web86909.mail.ukl.yahoo.com"
+       TITLE="[Open Office] Build_problem">pmladek at suse.cz
+       </A><BR>
+    <I>Wed Sep  6 08:28:54 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001985.html">[Open Office] Build_problem
+</A></li>
+        <LI>Next message: <A HREF="001988.html">[Open Office] icuupgrade CWS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1986">[ date ]</a>
+              <a href="thread.html#1986">[ thread ]</a>
+              <a href="subject.html#1986">[ subject ]</a>
+              <a href="author.html#1986">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 06 September 2006 09:44, Ken Sarawiwa wrote:
+&gt;<i> Hi
+</I>&gt;<i>  Am building kiswahili version of OpenOffice.org 2.0 using a
+</I>&gt;<i> ooo-build-2.0.0.0.tar.gz package things went well  when i run 1.
+</I>
+ooo-build-2.0.0.0.tar.gz is quite old. You might want to use a newer OOo and 
+ooo-build sources.
+
+&gt;<i> ./doconfigure
+</I>&gt;<i>  2. ./download
+</I>&gt;<i>  3. make
+</I>&gt;<i>  after completion of make then during the  running of
+</I>&gt;<i>  /bin/ooinstall &lt;directory&gt;
+</I>&gt;<i>  then things went as shown in the ATTACHED file
+</I>&gt;<i>  I put kiswahili GSi file in a folder src/
+</I>&gt;<i>  when the ooinstall finished the i run the openoffice using ./soffice.bin 
+</I>&gt;<i> and Novell version of openoffice.org 2.0 appeared without kiswahili.
+</I>&gt;<i>
+</I>&gt;<i>  I need some help to solve this problem
+</I>
+The process looks good. 
+
+The localization of OOo is defined by locales by default. Could you please 
+cut&amp;paste the output from the following command?
+
+	locale
+
+You could try to start OOo using the following command:
+
+LANG=sw_KE.UTF-8 /opt/OOInstall/program/soffice
+
+Hmm, it seems that the Swahili locales sw_KE.UTF-8 are not supported by linux 
+system. Well, you could also set the Swahili localizations in menu in 
+&quot;Tools/Options.../Language Settings/Languages/User Interface&quot;. You would need 
+to restart OOo after you change the UI language.
+
+If it does not help, could you check if your installation includes the files 
+(ooo-installation-prefix)/program/resource/*sw.res?
+
+
+I have some more ideas but let's start with the above things.
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SUSE LINUX, s. r. o.                        e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Lihovarsk&#225; 1060/12                          tel: +420 284 028 952
+190 00 Prague 9                             fax: +420 284 028 951
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001985.html">[Open Office] Build_problem
+</A></li>
+	<LI>Next message: <A HREF="001988.html">[Open Office] icuupgrade CWS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1986">[ date ]</a>
+              <a href="thread.html#1986">[ thread ]</a>
+              <a href="subject.html#1986">[ subject ]</a>
+              <a href="author.html#1986">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

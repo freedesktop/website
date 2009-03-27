@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Debian / Gnome OO.o
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000021.html">
+   <LINK REL="Next"  HREF="000024.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Debian / Gnome OO.o
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] Re: Debian / Gnome OO.o">dan@bigw.org
+       </A><BR>
+    <I>Mon, 11 Aug 2003 10:13:21 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000021.html">[Open Office] Re: Debian / Gnome OO.o
+</A></li>
+        <LI> Next message: <A HREF="000024.html">[Open Office] Re: Debian / Gnome OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#22">[ date ]</a>
+              <a href="thread.html#22">[ thread ]</a>
+              <a href="subject.html#22">[ subject ]</a>
+              <a href="author.html#22">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Chris,
+
+On Monday, August 11, 2003, at 09:43  AM, Chris Halls wrote:
+&gt;<i>   002_dmake_tempnam.diff: IZ#7800 waiting for your approval
+</I>
+This one looks OK, why hasn't it gotten through, Ken?  (I know everyone 
+gets busy at times though...)  Are you worried about side-effect?  I 
+did double-check to make sure that $(mktemp $(TMPFILE)...) wasn't used, 
+and its not.  However, we need to make sure people know this if this 
+feature is finally disabled.
+
+&gt;<i>   906_set_gnome_menu_right.diff: IZ#11738
+</I>
+-    createControl($out_dir, &quot;%PRODUCTNAME Calc&quot;, &quot;spreadsheet&quot;, 
+&quot;ooo_calc&quot;, &quot;scalc&quot;, &quot;application/vnd.sun.xml.calc 
+application/vnd.stardivision.calc application/vnd.stardivision.chart&quot;, 
+$lang, *ref);
++    createControl($out_dir, &quot;%PRODUCTNAME Calc&quot;, &quot;spreadsheet&quot;, 
+&quot;ooo_calc&quot;, &quot;scalc&quot;, &quot;application/vnd.sun.xml.calc 
+application/vnd.stardivision.calc application/vnd.stardivision.chart&quot;, 
+$lang,, *ref);
+
+Are there really supposed to be two &quot;,,&quot; after the $lang in the 
+replacement line here?  If these &quot;,,&quot; are valid, can you pass a NULl 
+value or something to indicate that its not really a typo?  Other than 
+that, most of the changes are spacing, but I'm not really qualified to 
+approve :)
+
+&gt;<i>   041_sv_HTML_typo.diff: IZ#16437, no reaction since I filed it.
+</I>
+Approved.
+
+&gt;<i> Plus, where am I supposed to put things?  I don't know of an open 
+</I>&gt;<i> branch for
+</I>&gt;<i> anything other than 1.1, and that is frozen for anything but severe bug
+</I>&gt;<i> fixes.
+</I>
+This one is a bit tricky, since there are any number of branches open 
+at one time of course.  Make sure you get things in HEAD and the 
+current master workspace (mws), otherwise the chance they will not get 
+into successive branches is greater, since they might get missed in a 
+merge.  I know Martin and Heiner try not to miss stuff, but invariably 
+it happens.  After HEAD, whatever is the next branch for release.  In 
+this case, IZ#16437 would have been a great candidate for any 1.1 RC 
+branch.  Sometimes it takes perseverance and a bit of yelling and 
+prodding to get something in.  For example, I'm happy to approve and 
+commit small chunks of code that I can easily verify as being correct, 
+like IZ#16437.  But around release time it gets a lot harder, and since 
+RC3 may already be closed these bugs might have to get punted til 1.1.1.
+
+&gt;<i> I also still need a mechanism to apply patches for fixes that are in 
+</I>&gt;<i> CVS but
+</I>&gt;<i> not yet in the particular release/branch that we are building from.
+</I>
+As long as the patches get into the main branches (ie HEAD, current 
+mws, and the next-release branch) they should get merged periodically 
+to other branches.  If not, then you have to speak up and get them 
+merged or approved and applied.  I know this takes a bunch of work on 
+your part (and believe me, I'm no stranger to unmerged patches), but 
+until the patch/approval process gets even _more_ streamlined, that's 
+how it is :(
+
+Again, if you need patches approved, post on the dev@ lists and I or 
+others can approve or at least post comments to the patch on how to 
+improve it.  I've found out that you really can't rely on the default 
+person IZ assigns a new issue to, because they usually have a ton of 
+work to do.  People like me on the other hand don't have that much and 
+therefore you can get a much quicker turnaround time from us.
+
+dan
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000021.html">[Open Office] Re: Debian / Gnome OO.o
+</A></li>
+	<LI> Next message: <A HREF="000024.html">[Open Office] Re: Debian / Gnome OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#22">[ date ]</a>
+              <a href="thread.html#22">[ thread ]</a>
+              <a href="subject.html#22">[ subject ]</a>
+              <a href="author.html#22">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

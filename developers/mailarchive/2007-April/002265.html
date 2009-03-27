@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Problems with go-ooo builds
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Problems%20with%20go-ooo%20builds&In-Reply-To=20070420202313.f964c50c.h.mth%40web.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002263.html">
+   <LINK REL="Next"  HREF="002264.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Problems with go-ooo builds</H1>
+    <B>Ismail D&#246;nmez</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Problems%20with%20go-ooo%20builds&In-Reply-To=20070420202313.f964c50c.h.mth%40web.de"
+       TITLE="[Open Office] Problems with go-ooo builds">ismail at pardus.org.tr
+       </A><BR>
+    <I>Mon Apr 23 12:14:10 EDT 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002263.html">[Open Office] Problems with go-ooo builds
+</A></li>
+        <LI>Next message: <A HREF="002264.html">[Open Office] no suitable windowing system found, exiting.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2265">[ date ]</a>
+              <a href="thread.html#2265">[ thread ]</a>
+              <a href="subject.html#2265">[ subject ]</a>
+              <a href="author.html#2265">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 20 April 2007 21:23:13 Hanno Meyer-Thurow wrote:
+&gt;<i> Hi list!
+</I>&gt;<i> The cause for Impress' segfault lays in STLport-5.x usage.
+</I>&gt;<i>
+</I>&gt;<i> In sd/source/ui/toolpanel/controls/MasterPageObserver.cxx one destructor
+</I>&gt;<i> tries to erase an entry from a hashmap. I did not have a closer look. Just
+</I>&gt;<i> added a check that, at least, hides the segfault. See attached patch.
+</I>
+This indeed fixes the problem for me, cheers!
+
+
+
+-- 
+Life is a game, and if you aren't in it to win,
+what the heck are you still doing here?
+
+-- Linus Torvalds (talking about open source development)
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: This is a digitally signed message part.
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20070423/83c85fc4/attachment.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20070423/83c85fc4/attachment.bin</A> 
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002263.html">[Open Office] Problems with go-ooo builds
+</A></li>
+	<LI>Next message: <A HREF="002264.html">[Open Office] no suitable windowing system found, exiting.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2265">[ date ]</a>
+              <a href="thread.html#2265">[ thread ]</a>
+              <a href="subject.html#2265">[ subject ]</a>
+              <a href="author.html#2265">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

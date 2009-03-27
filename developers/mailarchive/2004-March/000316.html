@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Bug Identification
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-March/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000315.html">
+   <LINK REL="Next"  HREF="000317.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Bug Identification
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: Bug Identification">michael@ximian.com
+       </A><BR>
+    <I>Fri, 05 Mar 2004 11:17:31 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000315.html">[Open Office] Menu Row Bar
+</A></li>
+        <LI> Next message: <A HREF="000317.html">[Open Office] Not using Red Carpet...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#316">[ date ]</a>
+              <a href="thread.html#316">[ thread ]</a>
+              <a href="subject.html#316">[ subject ]</a>
+              <a href="author.html#316">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Sachin,
+
+	Firstly, it's worth always CC'ing the mailing list - I've done so in
+reply; I hope you don't mind - it saves us from answering the same
+question multiple times.
+
+On Fri, 2004-03-05 at 03:17 +0800, Sachin Keswani wrote:
+&gt;<i> Wanted to know if u have any specifc bug related to encrypted
+</I>&gt;<i> documents requiring immediate attention in ooo.I'll be interested
+</I>&gt;<i> in the same..saw the bugs ownership under u in bugzilla but
+</I>&gt;<i> couldn't find one..
+</I>
+	Right - don't worry about it not being in bugzilla :-) just go for it.
+Ultimately, there is some old / vestigal code in OO.o that never got
+finished in both these areas; and there is some stuff Caolan did with
+the RSA encryption; the pointers I have are:
+
+	+ encryption: sw/source/core/sw3io/sw3misc.cxx, line 689
+	+ XL encryption: sc/source/filter/excel/impop.cxx 
+	                 (SC_XCL_USEDECR)
+	+ <A HREF="http://www.csn.ul.ie/~caolan/Packages/wvDecrypt.html">http://www.csn.ul.ie/~caolan/Packages/wvDecrypt.html</A>
+
+&gt;<i> Also has anything specifc decided about overcoming the general slowness
+</I>&gt;<i> that XD2 shows while opening any app in ooo...Mark told be about a
+</I>&gt;<i> prestarategy for loading some part of ooo at boot time only..to make
+</I>&gt;<i> it faster..
+</I>
+	Mark ? there is a speedup in 1.1.51 that is quite significant for cold
+starts; I also asked to have an Intern look at the session
+management/lifecycle stuff so we can have it (sanely) running in the
+background which would make a big difference.
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000315.html">[Open Office] Menu Row Bar
+</A></li>
+	<LI> Next message: <A HREF="000317.html">[Open Office] Not using Red Carpet...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#316">[ date ]</a>
+              <a href="thread.html#316">[ thread ]</a>
+              <a href="subject.html#316">[ subject ]</a>
+              <a href="author.html#316">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

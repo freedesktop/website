@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] build is failing on mdbtools
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20build%20is%20failing%20on%20mdbtools&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001207.html">
+   <LINK REL="Next"  HREF="001209.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] build is failing on mdbtools</H1>
+    <B>Lupine</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20build%20is%20failing%20on%20mdbtools&In-Reply-To="
+       TITLE="[Open Office] build is failing on mdbtools">thelupine at softhome.net
+       </A><BR>
+    <I>Thu Oct 20 14:38:27 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001207.html">[Open Office] problem with beanshell
+</A></li>
+        <LI>Next message: <A HREF="001209.html">[Open Office] build is failing on mdbtools
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1208">[ date ]</a>
+              <a href="thread.html#1208">[ thread ]</a>
+              <a href="subject.html#1208">[ subject ]</a>
+              <a href="author.html#1208">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>First off thanks to &#304;smail D&#246;nmez who has gotten me this far, however
+I've found a new problem with the ooo-build-2.0.0 install.
+
+Here is the information:
+
+---------------------------------------
+OS: Linux From Scratch
+
+GNOME: version 2.12.1 built from tarballs (ftp.gnome.org)
+
+JAVA:  java -version
+java version &quot;1.4.2_09&quot;
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.4.2_09-b05)
+
+ANT: ant -version
+Apache Ant version 1.6.2 compiled on August 13 2005
+
+GCC: gcc --version
+gcc (GCC) 3.4.4
+
+CONFIGURE:
+./configure --prefix=/opt/OpenOffice --disable-kde &amp;&amp; ./download &amp;&amp; make
+...
+...
+
+if gcc -DHAVE_CONFIG_H -I. -I. -I../../include  -I../../include
+-DORBIT2=1 -pthread -I/usr/include/libglade-2.0 -I/usr/include/gtk-2.0
+-I/usr/include/libxml2 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0
+-I/usr/include/freetype2 -I/usr/include/cairo -I/usr/include/pango-1.0
+-I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include
+-I/usr/include/libgnomeui-2.0 -I/usr/include/libgnome-2.0
+-I/usr/include/libgnomecanvas-2.0 -I/usr/include/libart-2.0
+-I/usr/include/gconf/2 -I/usr/include/libbonoboui-2.0
+-I/usr/include/gnome-vfs-2.0 -I/usr/lib/gnome-vfs-2.0/include
+-I/usr/include/gnome-keyring-1 -I/usr/include/orbit-2.0
+-I/usr/include/libbonobo-2.0 -I/usr/include/bonobo-activation-2.0
+-DDATADIR=\&quot;&quot;/usr/local/share&quot;\&quot; -DGMDB_ICONDIR=
+\&quot;&quot;/usr/local/share/gmdb/glade/&quot;\&quot; -DGMDB_GLADEDIR=
+\&quot;&quot;/usr/local/share/gmdb/glade/&quot;\&quot;    -O2 -mtune=pentiumpro -DSQL -MT
+table_export.o -MD -MP -MF &quot;.deps/table_export.Tpo&quot; \
+  -c -o table_export.o `test -f 'table_export.c' || echo
+'./'`table_export.c; \
+then mv -f &quot;.deps/table_export.Tpo&quot; &quot;.deps/table_export.Po&quot;; \
+else rm -f &quot;.deps/table_export.Tpo&quot;; exit 1; \
+fi
+table_export.c:238: error: conflicting types for
+'gmdb_table_export_populate_dialog'
+table_export.c:234: error: previous implicit declaration of
+'gmdb_table_export_populate_dialog' was here
+make[4]: *** [table_export.o] Error 1
+make[4]: Leaving directory
+`/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/mdbtools/unxlngi6.pro/misc/build/mdbtools-0.6pre1/src/gmdb2'
+make[3]: *** [all-recursive] Error 1
+make[3]: Leaving directory
+`/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/mdbtools/unxlngi6.pro/misc/build/mdbtools-0.6pre1/src/gmdb2'
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory
+`/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/mdbtools/unxlngi6.pro/misc/build/mdbtools-0.6pre1/src'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory
+`/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/mdbtools/unxlngi6.pro/misc/build/mdbtools-0.6pre1'
+dmake:  Error code 2, while making
+'./unxlngi6.pro/misc/build/so_built_mdbtools'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while
+making /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/mdbtools
+make: *** [stamp/build] Error 1
+---------------------------------------
+
+
+As usual, thanks to all the help this lists provides! 
+-Lup
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001207.html">[Open Office] problem with beanshell
+</A></li>
+	<LI>Next message: <A HREF="001209.html">[Open Office] build is failing on mdbtools
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1208">[ date ]</a>
+              <a href="thread.html#1208">[ thread ]</a>
+              <a href="subject.html#1208">[ subject ]</a>
+              <a href="author.html#1208">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

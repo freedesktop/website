@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Wednesday, Thursday
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   
+   <LINK REL="Next"  HREF="000890.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Wednesday, Thursday
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Status Wednesday, Thursday">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Fri, 01 Apr 2005 10:28:35 +0200</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="000890.html">[Open Office] Status Wednesday, Thursday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#889">[ date ]</a>
+              <a href="thread.html#889">[ thread ]</a>
+              <a href="subject.html#889">[ subject ]</a>
+              <a href="author.html#889">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+When I was autotoolizing the bridge I was hoping, that Paolo could use
+it with the 1.1 sdk package. It almost worked. But I wasn't able to
+backport one function that's crucial for the demo programs :-(
+
+Following a hint by Michael, I looked for other places than
+mono_runtime_invoke as the source of my fatal mono thread warnings.
+Turns out that I misunderstood what mono_thread_attach is for. It can
+only be used in threads that the gc already knows about. The abort came
+from there.
+
+Started new builds of m88 (~same environment as Rene) to eventually have
+some debs for Paolo. No luck with Rene's gij-4.0 patches. Made a build
+with Sun Java. In the night to Friday, started a build of m89. Had to
+make some gcc 3.3 build fixes. Segfaults during registration of java
+components.
+
+Regards,
+
+Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="000890.html">[Open Office] Status Wednesday, Thursday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#889">[ date ]</a>
+              <a href="thread.html#889">[ thread ]</a>
+              <a href="subject.html#889">[ subject ]</a>
+              <a href="author.html#889">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

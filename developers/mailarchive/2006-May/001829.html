@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] 64bit Sun JDK 1.5.0.06 - JNI exception
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-May/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%2064bit%20Sun%20JDK%201.5.0.06%20-%20JNI%20exception&In-Reply-To=20060523225823.3f3338fe.h.mth%40web.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001827.html">
+   <LINK REL="Next"  HREF="001830.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] 64bit Sun JDK 1.5.0.06 - JNI exception</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%2064bit%20Sun%20JDK%201.5.0.06%20-%20JNI%20exception&In-Reply-To=20060523225823.3f3338fe.h.mth%40web.de"
+       TITLE="[Open Office] 64bit Sun JDK 1.5.0.06 - JNI exception">h.mth at web.de
+       </A><BR>
+    <I>Wed May 24 05:03:45 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001827.html">[Open Office] 64bit Sun JDK 1.5.0.06 - JNI exception
+</A></li>
+        <LI>Next message: <A HREF="001830.html">[Open Office] 64bit Sun JDK 1.5.0.06 - JNI exception
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1829">[ date ]</a>
+              <a href="thread.html#1829">[ thread ]</a>
+              <a href="subject.html#1829">[ subject ]</a>
+              <a href="author.html#1829">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 23 May 2006 22:58:23 +0200
+Hanno Meyer-Thurow &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">h.mth at web.de</A>&gt; wrote:
+
+&gt;<i> Hi list,
+</I>&gt;<i> I found some users that tested ooc680-m2 with Sun JDK 1.5 on amd64.
+</I>&gt;<i> I traced it to this piece returning NULL and therefor throwing the 'JNI exception'.
+</I>&gt;<i> To be exact the CallObjectMethodA function returns NULL.
+</I>&gt;<i> 
+</I>&gt;<i> # grep -n -A 3 -B 1 CallObjectMethodA stoc/source/javavm/javavm.cxx 
+</I>&gt;<i> 1773-    jclass class_UnoClassLoader = static_cast&lt; jclass &gt;(
+</I>&gt;<i> 1774:        environment-&gt;CallObjectMethodA(cl1, method_loadClass, args));
+</I>&gt;<i> 1775-    if (class_UnoClassLoader == 0) {
+</I>&gt;<i> 1776-        handleJniException(environment);
+</I>&gt;<i> 1777-    }
+</I>
+Attached is a diff that throws a usual Java error
+when that 'JNI exception' happens.
+
+Anyone on amd64 with Sun JDK 1.5 may test this, please.
+
+
+Regards,
+Hanno
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: jni-debug.diff
+Type: text/x-patch
+Size: 379 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060524/144baf36/jni-debug.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060524/144baf36/jni-debug.bin</A>
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001827.html">[Open Office] 64bit Sun JDK 1.5.0.06 - JNI exception
+</A></li>
+	<LI>Next message: <A HREF="001830.html">[Open Office] 64bit Sun JDK 1.5.0.06 - JNI exception
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1829">[ date ]</a>
+              <a href="thread.html#1829">[ thread ]</a>
+              <a href="subject.html#1829">[ subject ]</a>
+              <a href="author.html#1829">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot; module
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-November/index.html" >
+   <LINK REL="made" HREF="mailto:fridrich.strba%40bluewin.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000565.html">
+   <LINK REL="Next"  HREF="000570.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot; module
+   </H1>
+    <B>Fridrich Strba
+    </B> 
+    <A HREF="mailto:fridrich.strba%40bluewin.ch"
+       TITLE="[Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot; module">fridrich.strba@bluewin.ch
+       </A><BR>
+    <I>Sun, 07 Nov 2004 19:02:43 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000565.html">[Open Office] ooo-build HEAD updated to src680-m60
+</A></li>
+        <LI> Next message: <A HREF="000570.html">[Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot; module
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#569">[ date ]</a>
+              <a href="thread.html#569">[ thread ]</a>
+              <a href="subject.html#569">[ subject ]</a>
+              <a href="author.html#569">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>William,
+
+William Lachance wrote:
+&gt;<i> What this brings us:
+</I>&gt;<i> 1. Easier regression testing of WriterPerfect. Now we can use a sane
+</I>&gt;<i> command-line utility to see what's gone wrong with a minor change! This
+</I>&gt;<i> will also make it _much_ easier to refactor WriterPerfect in the future.
+</I>
+Authomatic regression: YES! Maybe we could even have automatically 
+validated the resulting XML ??? OK, just an idea.
+
+&gt;<i> 2. We can debug build/linker problems with a tiny, sane, stand-alone
+</I>&gt;<i> application.
+</I>&gt;<i> 3. Our users get a funky way of mass-converting their old WordPerfect
+</I>&gt;<i> documents without the overhead of using OOo.
+</I>
+Wonderful, wpd2sxw is alive, long life to wpd2sxw ;-)
+
+&gt;<i> What needs immediate work:
+</I>&gt;<i> - The win32 build stuff needs to be updated.
+</I>
+I'll do this in about 10 days time
+
+&gt;<i> - There's A LOT of string allocation/conversion going on right now: this
+</I>&gt;<i> needs to be reduced (even so, wpd2sxw is quite fast on my P4-2ghz). :-)
+</I>&gt;<i> - We need to update all the packaging.
+</I>
+I propose to do this too in the above mentioned deadline.
+
+BTW, would there be a way to integrate our (libwpd) file-type detection 
+mechanism in the build inside OOo tree? I was thinking that calling 
+WPDocument::isFooSupported would be possible from iodetect.hxx, but 
+mmeeks believes that it would just unnecessarily add to loaded elements. 
+I tried to think about another solution, but I do not see how to 
+identify the WP42 documents without Marc's heuristics. Any ideas?
+
+Cheers
+
+Fridrich
+
+P.S. In one week time I should be back from my leave and have some more 
+time for serious work.
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000565.html">[Open Office] ooo-build HEAD updated to src680-m60
+</A></li>
+	<LI> Next message: <A HREF="000570.html">[Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot; module
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#569">[ date ]</a>
+              <a href="thread.html#569">[ thread ]</a>
+              <a href="subject.html#569">[ subject ]</a>
+              <a href="author.html#569">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

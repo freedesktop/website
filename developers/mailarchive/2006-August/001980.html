@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] build error.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20build%20error.&In-Reply-To=1156896386.17663.2.camel%40LARS">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001979.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] build error.</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20build%20error.&In-Reply-To=1156896386.17663.2.camel%40LARS"
+       TITLE="[Open Office] build error.">pmladek at suse.cz
+       </A><BR>
+    <I>Wed Aug 30 07:16:17 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001979.html">[Open Office] build error.
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1980">[ date ]</a>
+              <a href="thread.html#1980">[ thread ]</a>
+              <a href="subject.html#1980">[ subject ]</a>
+              <a href="author.html#1980">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 30 August 2006 02:06, Hussam Al-Tayeb wrote:
+&gt;<i> Can somebody please take a look at this build error?
+</I>&gt;<i> <A HREF="http://pastebin.ca/153942">http://pastebin.ca/153942</A>
+</I>
+The problem is the -Werror compile flag. It causes that the warnings are 
+treated as errors, see the log for the line:
+
+	cc1plus: warnings being treated as errors
+
+It works for Sun because they use an older compiler that produces less 
+warnings. I suggest to disable the compiler flag. You can either:
+
+	export EXTERNAL_WARNINGS_NOT_ERRORS=&quot;TRUE&quot;
+
+before you start the build or your can use the attached patch.
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SUSE LINUX, s. r. o.                        e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Lihovarsk&#225; 1060/12                          tel: +420 284 028 952
+190 00 Prague 9                             fax: +420 284 028 951
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: buildfix-no-werror.diff
+Type: text/x-diff
+Size: 841 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060830/a6d05d04/attachment.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060830/a6d05d04/attachment.bin</A> 
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001979.html">[Open Office] build error.
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1980">[ date ]</a>
+              <a href="thread.html#1980">[ thread ]</a>
+              <a href="subject.html#1980">[ subject ]</a>
+              <a href="author.html#1980">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] cvs problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:rmrmg%40wp.pl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+   <LINK REL="Previous"  HREF="000439.html">
+   <LINK REL="Next"  HREF="000441.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] cvs problem
+   </H1>
+    <B>Rafał 'rmrmg' Roszak
+    </B> 
+    <A HREF="mailto:rmrmg%40wp.pl"
+       TITLE="[Open Office] cvs problem">rmrmg@wp.pl
+       </A><BR>
+    <I>Tue, 6 Jul 2004 16:18:17 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000439.html">[Open Office] cvs problem
+</A></li>
+        <LI> Next message: <A HREF="000441.html">[Open Office] cvs problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#440">[ date ]</a>
+              <a href="thread.html#440">[ thread ]</a>
+              <a href="subject.html#440">[ subject ]</a>
+              <a href="author.html#440">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>begin  Michael Meeks &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt; quote:
+
+&gt;<i> 	Perhaps I'm being daft; but the code looks fine - and it looks
+</I>&gt;<i> 	just
+</I>&gt;<i> like what I'm building very happily here.
+</I>&gt;<i> 
+</I>
+funcion CheckBox::DataChanged in oryg. file
+#v+
+void CheckBox::DataChanged( const DataChangedEvent&amp; rDCEvt )
+{
+    Button::DataChanged( rDCEvt );
+
+    if ( (rDCEvt.GetType() == DATACHANGED_FONTS) ||
+         (rDCEvt.GetType() == DATACHANGED_FONTSUBSTITUTION) ||
+         ((rDCEvt.GetType() == DATACHANGED_SETTINGS) &amp;&amp;
+          (rDCEvt.GetFlags() &amp; SETTINGS_STYLE)) )
+    {
+        ImplInitSettings( TRUE, TRUE, TRUE );
+        Invalidate();
+    }
+}
+#v-
+
+in patched file is only
+
+#v+
+ void CheckBox::DataChanged( const DataChangedEvent&amp; rDCEvt )
+   {
+      Button::DataChanged( rDCEvt );
+  if ( (rDCEvt.GetType() == DATACHANGED_FONTS) ||
+#v-
+
+I don't know C but it look very strange for me.
+
+  3512	    if ( (rDCEvt.GetType() == DATACHANGED_FONTS) ||
+  3513	
+  3514	long CheckBox::PreNotify( NotifyEvent&amp; rNEvt )
+
+Is it valid instruction?
+
+
+&gt;<i> g++ -c ......
+</I>&gt;<i> ..... several lines of this ....
+</I>&gt;<i> ........ -o .../file.o file.cxx
+</I>&gt;<i> 
+</I>&gt;<i> error: leaving directory foo/baa
+</I>&gt;<i> 
+</I>&gt;<i> 	And do: cd foo/baa; then cut/paste that compile line, and
+</I>&gt;<i> 	replace the
+</I>&gt;<i> '-c' with a -E, and the .../file.o with eg. /tmp/outp.cxx
+</I>&gt;<i> 
+</I>&gt;<i> 	The outp.cxx should contain the full pre-processed output; if
+</I>&gt;<i> 	you could
+</I>&gt;<i> send that outp.cxx, we can perhaps have a better go at working out
+</I>&gt;<i> what's wrong.
+</I>&gt;<i> 
+</I>
+Hmm:
+
+[<A HREF="mailto:root@slack">root@slack</A>:/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/build
+/OOO_1_1_2/vcl/source/control#] LC_ALL=C ../../../../gcc-3.2.2/gcc/g++
+-fmessage-length=0 -E -I.  -I. -I../inc -I../../inc -I../../unx/inc
+-I../../unxlngi4.pro/inc -I.
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/build/OOO_1_1_2
+/solver/645/unxlngi4.pro/inc/stl
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/build/OOO_1_1_2
+/solver/645/unxlngi4.pro/inc/external
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/build/OOO_1_1_2
+/solver/645/unxlngi4.pro/inc
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/build/OOO_1_1_2
+/solenv/unxlngi4/inc
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/build/OOO_1_1_2
+/solenv/inc
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/build/OOO_1_1_2
+/res
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/build/OOO_1_1_2
+/solver/645/unxlngi4.pro/inc/stl
+-I/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/build/OOO_1_1_2
+/solenv/inc/Xp31 -INO_JAVA_HOME/include -INO_JAVA_HOME/include/linux
+-INO_JAVA_HOME/include/native_threads/include -I/usr/X11R6/include    
+-I. -I../../res -I. -O1   -pipe -mcpu=pentiumpro -fno-for-scope
+-fpermissive -fno-rtti -include preinclude.h -fno-exceptions   -fpic
+-DLINUX -DUNX -DVCL -DGCC -DC300 -DINTEL
+-DGXX_INCLUDE_PATH=/notslack/compiled/OpenOffice/oooximian/ooo-build-cv
+s/build/include/c++/3.2.2 -DCVER=C300 -D_USE_NAMESPACE -DGLIBC=2 -DX86
+-D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1
+-DSTLPORT_VERSION=400 -D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DSUPD=645
+-DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE
+-DEXCEPTIONS_OFF -DCUI -DSRX645 -DUSE_BUILTIN_RASTERIZER -DENABLE_CTL
+-DSHAREDLIB -D_DLL_  -DMULTITHREAD   -o ../../unxlngi4.pro/slo/button.o
+/tmp/button.cxx g++: /tmp/button.cxx: No such file or directory
+g++: no input files
+[<A HREF="mailto:root@slack">root@slack</A>:/notslack/compiled/OpenOffice/oooximian/ooo-build-cvs/build
+/OOO_1_1_2/vcl/source/control#] 
+
+
+-- 
+. JID: rmrmg(at)jabberpl(dot)org | Wszystko jest trudne
+.   mail: rmrmg(at)wp(dot)pl     |   przy odpowiednim
+.  registered Linux user 261525  |  stopniu abstrakcji
+ _______     RMRMG signature version 0.0.5     ________
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000439.html">[Open Office] cvs problem
+</A></li>
+	<LI> Next message: <A HREF="000441.html">[Open Office] cvs problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#440">[ date ]</a>
+              <a href="thread.html#440">[ thread ]</a>
+              <a href="subject.html#440">[ subject ]</a>
+              <a href="author.html#440">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOo 1.1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000356.html">
+   <LINK REL="Next"  HREF="000355.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOo 1.1.1
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] OOo 1.1.1">halls@debian.org
+       </A><BR>
+    <I>Tue, 13 Apr 2004 13:27:47 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000356.html">[Open Office] OOo 1.1.1
+</A></li>
+        <LI> Next message: <A HREF="000355.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#366">[ date ]</a>
+              <a href="thread.html#366">[ thread ]</a>
+              <a href="subject.html#366">[ subject ]</a>
+              <a href="author.html#366">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2004-04-09 at 05:29, Dan Williams wrote:
+&gt;<i> The advantage of this method over what I understand Chris' to be 
+</I>&gt;<i> (correct me if I'm wrong) is that my method would allow for conditional 
+</I>&gt;<i> building of directories _inside_ modules too, not just the whole module 
+</I>&gt;<i> itself.  I'll keep hacking away and see what I get.  It might be 
+</I>&gt;<i> sufficient to simply have a list of conditionals and assume that they 
+</I>&gt;<i> can be OR-ed.
+</I>
+Sorry for taking such a long time to respond.
+
+I was actually thinking along the lines of additing conditional stuff
+that did not need any patches at all.  I was thinking of using an
+environment variable, passed through from configure/the *.Set file, that
+would tell build.pl not to build the particular project.  E.g.
+
+Say I had packaged libsal separately:
+
+./configure --skip-projects=sal --without-mozilla
+
+Might end up with this in the *.Set file:
+
+SKIP_PROJECTS=&quot;sal moz&quot;
+
+And build.pl would not run dmake in those projecs.  I hadn't thought
+about per-directory specifications, but the syntax could be extended to
+do that too.
+
+There is maybe a use for both types of conditional build, depending on
+what we are trying to achieve.  I was looking mainly for a way to split
+the OOo build into several seperate pieces for the purposes of
+packaging, which maybe doesn't fit so well with what Dan was thinking
+of.
+
+BTW, Dan mentioned problems due to several different code paths in
+build.pl.  I had decided to add the new logic to 'module_classify',
+which gets called from all paths as far as I can see.
+
+Chris
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000356.html">[Open Office] OOo 1.1.1
+</A></li>
+	<LI> Next message: <A HREF="000355.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#366">[ date ]</a>
+              <a href="thread.html#366">[ thread ]</a>
+              <a href="subject.html#366">[ subject ]</a>
+              <a href="author.html#366">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

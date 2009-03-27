@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.9.90: build error in project shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:j%40bitron.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000905.html">
+   <LINK REL="Next"  HREF="000907.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.9.90: build error in project shell
+   </H1>
+    <B>Jürg Billeter
+    </B> 
+    <A HREF="mailto:j%40bitron.ch"
+       TITLE="[Open Office] ooo-build-1.9.90: build error in project shell">j@bitron.ch
+       </A><BR>
+    <I>Tue, 19 Apr 2005 18:32:07 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000905.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+        <LI> Next message: <A HREF="000907.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#906">[ date ]</a>
+              <a href="thread.html#906">[ thread ]</a>
+              <a href="subject.html#906">[ subject ]</a>
+              <a href="author.html#906">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-icK62o6RcgFNuEW7DNY+
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi Michael
+
+On Die, 2005-04-19 at 11:32 +0100, michael meeks wrote:
+&gt;<i> On Sat, 2005-04-16 at 12:07 +0200, J=C3=BCrg Billeter wrote:
+</I>&gt;<i> &gt; Building ooo-build-1.9.90 with gcc 4.0 RC1 and GNOME 2.10 and without
+</I>&gt;<i> &gt; java breaks with two linker errors. Should glib-2.0 and ORBit-2.0 be
+</I>&gt;<i> &gt; added as pkgconfig modules to gconfbe or how can I resolve this issue?
+</I>&gt;<i>=20
+</I>&gt;<i> 	Interesting; they should be there as pkg-config deps anyway I think;
+</I>&gt;<i> check pkg-config --libs gconf-2.0 or whatever.
+</I>
+Thanks for your reply, that was the right hint. This only returns
+-Wl,--export-dynamic -pthread -lgconf-2
+on my system. pkg-config since version 0.17 doesn't return indirect
+library dependencies by default anymore. So it seems that glib-2.0 and
+ORBit-2.0 should indeed be added to gconfbe as they are used directly,
+if I've understood this correctly?
+
+Will test now with attached patch.
+
+Regards,
+
+J=C3=BCrg
+--=20
+J=C3=BCrg Billeter &lt;<A HREF="mailto:j@bitron.ch">j@bitron.ch</A>&gt;
+
+--=-icK62o6RcgFNuEW7DNY+
+Content-Description: 
+Content-Disposition: inline; filename=buildfix-pkgconfig-0.17-gconfbe.diff
+Content-Type: text/x-patch; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Index: shell/source/backends/gconfbe/makefile.mk
+===================================================================
+RCS file: /cvs/gsl/shell/source/backends/gconfbe/makefile.mk,v
+retrieving revision 1.11
+diff -u -r1.11 makefile.mk
+--- shell/source/backends/gconfbe/makefile.mk 21 Feb 2005 12:06:04 -0000      1.11
++++ shell/source/backends/gconfbe/makefile.mk 19 Apr 2005 16:34:21 -0000
+@@ -83,7 +83,7 @@
+
+ .IF &quot;$(ENABLE_GNOMEVFS)&quot;!=&quot;&quot;
+ COMPILER_WARN_ALL=TRUE
+-PKGCONFIG_MODULES=gconf-2.0 gobject-2.0
++PKGCONFIG_MODULES=gconf-2.0 gobject-2.0 glib-2.0 ORBit-2.0
+ .INCLUDE: pkg_config.mk
+
+ .IF &quot;$(OS)&quot; == &quot;SOLARIS&quot;
+
+--=-icK62o6RcgFNuEW7DNY+--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000905.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+	<LI> Next message: <A HREF="000907.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#906">[ date ]</a>
+              <a href="thread.html#906">[ thread ]</a>
+              <a href="subject.html#906">[ subject ]</a>
+              <a href="author.html#906">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

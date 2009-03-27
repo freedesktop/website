@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OpenSymbol font nasties ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000115.html">
+   <LINK REL="Next"  HREF="000118.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OpenSymbol font nasties ...
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] OpenSymbol font nasties ...">michael@ximian.com
+       </A><BR>
+    <I>Wed, 29 Oct 2003 17:28:56 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000115.html">[Open Office] opensymbol font nasties ...
+</A></li>
+        <LI> Next message: <A HREF="000118.html">[Open Office] Re: Make OpenOffice.org without JDK on own child workspace
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#116">[ date ]</a>
+              <a href="thread.html#116">[ thread ]</a>
+              <a href="subject.html#116">[ subject ]</a>
+              <a href="author.html#116">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ilko / Tom,
+
+On Wed, 2003-10-29 at 14:01, Ilko Hoepping wrote:
+&gt;<i> I do not really know what your needs are, but I can give some 
+</I>&gt;<i> information about the OpenSymbol and StarSymbol font.
+</I>
+	Thanks for the great information; for the benefit of those who are new
+to this here is the problem:
+
+	Sun ships 'StarSymbol' which contains symbols which match with mapping
+tables in vcl/source/gdi/fontcvt.cxx. The font appears to contain many
+duplicates - however these are in fact metrically different versions of
+similar characters. Since many fonts eg. wingdings, webdings map to the
+same 'StarSymbol' font - there are many regions each with a distinctive
+offset eg. 0xe100 contains much of the Adobe (&quot;symbol&quot;) glyphs, 0xe300
+all of the &quot;webdings&quot; glyphs etc. StarSymbol is a propriatory font from
+AGFA which the Free software community cannot use.
+
+	Thankfully, before licensing this font, Sun had it's own version -
+starbats / stardings (?) which it has munged together to produce the
+'OpenSymbol' font ( extras/source/truetype/symbol/opens___.ttf ).
+However - all is not well with OpenSymbol, while it contains many useful
+glyphs, in very many cases it doesn't contain them at the offsets
+expected (equivalent to the StarSymbol offsets). Thus eg. much of the
+crucial Adobe (&quot;symbol&quot;) font mapping points to non-existent characters
+in the 0xe100 range.
+
+	In order to fix this, I have done some quick, ugly, initial cut &amp;
+pasting action of opens___.ttf - copying glyphs from their previous
+locations, to new locations inside the font. This has the effect of
+creating visually similar (ie. a bullet not a box) glyphs, but naturally
+with substantially incorrect metrics.
+
+	It is my feeling that it is indisputably better to have some similar
+looking glyph than just a box ;-) The new re-arranged font can be found
+here: <A HREF="http://ooo.ximian.com/openoffice/fonts/.">http://ooo.ximian.com/openoffice/fonts/.</A>
+
+	So - this is not a complete solution, indeed I'd like Novell to invest
+some artist time in merging in some of the new glyphs that were drawn
+for our LingDings / NetDings fonts to incorporate them into OpenSymbol.
+
+	However - it seems to me that TrueType files are an aweful format for
+CVS use, extremely difficult to manage, and may easily lead to horrible
+problems with merging in glyphs. Thankfully there is pfaedit's native
+file format - which suffers from none of these problems - is text based,
+and can be trivially diffed / patched; Thus:
+
+* Proposal 1
+
+	We should switch opens___.ttf to a dual-font scheme, with the
+authoritative version being an OpenSymbol.sfd file that we can easily
+deal with / accept multiple contributions from, and that we should also
+keep the generated binary opens___.ttf in CVS - since while we could
+incorporate a pfaedit script into the build, it's not a reasonable
+requirement.
+
+* Proposal 2
+
+	We should start working together on expanding and filling out the
+opensymbol font to eventually obsolete the StarSymbol font; starting by
+getting the above into CVS [ all under the JCA etc. ].
+
+	I'd very much appreciate your input on this, and look forward to
+working together.
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000115.html">[Open Office] opensymbol font nasties ...
+</A></li>
+	<LI> Next message: <A HREF="000118.html">[Open Office] Re: Make OpenOffice.org without JDK on own child workspace
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#116">[ date ]</a>
+              <a href="thread.html#116">[ thread ]</a>
+              <a href="subject.html#116">[ subject ]</a>
+              <a href="author.html#116">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OO.org 1.1.3 compilation failed using gcc-3.4.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:h.mth%40web.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000615.html">
+   <LINK REL="Next"  HREF="000614.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OO.org 1.1.3 compilation failed using gcc-3.4.3
+   </H1>
+    <B>Hanno Meyer-Thurow
+    </B> 
+    <A HREF="mailto:h.mth%40web.de"
+       TITLE="[Open Office] OO.org 1.1.3 compilation failed using gcc-3.4.3">h.mth@web.de
+       </A><BR>
+    <I>Thu, 2 Dec 2004 22:52:05 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000615.html">[Open Office] OO.org 1.1.3 compilation failed using gcc-3.4.3
+</A></li>
+        <LI> Next message: <A HREF="000614.html">[Open Office] ooo-build-1.3.7: build error in vcl/util
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#616">[ date ]</a>
+              <a href="thread.html#616">[ thread ]</a>
+              <a href="subject.html#616">[ subject ]</a>
+              <a href="author.html#616">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 02 Dec 2004 21:31:36 +0100
+J=FCrg Billeter &lt;<A HREF="mailto:j@bitron.ch">j@bitron.ch</A>&gt; wrote:
+
+&gt;<i> On Don, 2004-12-02 at 17:45 -0200, Gustavo Pichorim Boiko wrote:
+</I>&gt;<i> &gt; I'm trying to compile OOO_1_1_3 using gcc-3.4.3 but it is failing when=
+</I>=20
+&gt;<i> &gt; compiling stlport, with this error:
+</I>&gt;<i> &gt; ../stlport/stl/_alloc.h:416: error: non-template `rebind' used as templ=
+</I>ate
+&gt;<i> &gt;=20
+</I>&gt;<i> &gt; This is a known stlport problem=20
+</I>&gt;<i> &gt; ( <A HREF="http://www.stlport.com/dcforum/DCForumID6/1687.html">http://www.stlport.com/dcforum/DCForumID6/1687.html</A> ) but I want to k=
+</I>now if=20
+&gt;<i> &gt; there's someone working to get it to compile.
+</I>&gt;<i>=20
+</I>&gt;<i> gentoo's openoffice ebuild updates stlport in the source tree of OOo
+</I>&gt;<i> 1.1.3 to circumvent the gcc 3.4 build problem. You can find ebuild and
+</I>&gt;<i> patches in
+</I>&gt;<i> <A HREF="http://darkstar.ist.utl.pt/gentoo/portage/app-office/openoffice-ximian/">http://darkstar.ist.utl.pt/gentoo/portage/app-office/openoffice-ximian/</A>
+</I>&gt;<i> or any other gentoo mirror.
+</I>&gt;<i>=20
+</I>&gt;<i> With this applied, the stlport within openoffice builds fine, but
+</I>&gt;<i> afterwards I've got caught by other problems, see my other post.
+</I>
+Once again for Ximian OOo ml:
+
+OOo 1.9.x builds STLport 4.5 with GCC-3.4.3 (I use gentoo's -r1 which is a =
+1125 snap plus some GCC-4.0.0 backports).
+On OOo IZ are GCC 3.4 patches for STLport 4.5.3.
+And like you say gentoo uses STLport 4.6.2 which needs no GCC 3.4 patches.
+
+You may have a look at these if you need a one of these versions.
+
+Sincerely,
+Hanno
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000615.html">[Open Office] OO.org 1.1.3 compilation failed using gcc-3.4.3
+</A></li>
+	<LI> Next message: <A HREF="000614.html">[Open Office] ooo-build-1.3.7: build error in vcl/util
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#616">[ date ]</a>
+              <a href="thread.html#616">[ thread ]</a>
+              <a href="subject.html#616">[ subject ]</a>
+              <a href="author.html#616">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

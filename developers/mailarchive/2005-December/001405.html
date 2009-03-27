@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20error%20in%0A%09solver/680/unxlngi6.pro/inc/comphelper/property.hxx&In-Reply-To=200511301044.21881.pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001401.html">
+   <LINK REL="Next"  HREF="001406.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20error%20in%0A%09solver/680/unxlngi6.pro/inc/comphelper/property.hxx&In-Reply-To=200511301044.21881.pmladek%40suse.cz"
+       TITLE="[Open Office] error in
+	solver/680/unxlngi6.pro/inc/comphelper/property.hxx">pmladek at suse.cz
+       </A><BR>
+    <I>Wed Dec  7 12:33:27 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001401.html">[Open Office] Problem with Tahoma.ttf and OpenOffice 2.0.1
+</A></li>
+        <LI>Next message: <A HREF="001406.html">[Open Office] mono_proxy.cxx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1405">[ date ]</a>
+              <a href="thread.html#1405">[ thread ]</a>
+              <a href="subject.html#1405">[ subject ]</a>
+              <a href="author.html#1405">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 30 November 2005 10:44, Petr Mladek wrote:
+&gt;<i> On Wednesday 30 November 2005 02:03, NAKATA Maho wrote:
+</I>&gt;<i> &gt; &gt; I would like to get your patches but I do not use ooo-build.
+</I>&gt;<i> &gt; &gt; Is there any way I can get those patches?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Yes, I'm also very interested in this. Since we FreeBSD people doesn't
+</I>&gt;<i> &gt; have a released Java; so we must use GNU/Linux version for bootstrapping.
+</I>&gt;<i> &gt; of course we need sources as well. To download the source we must accept
+</I>&gt;<i> &gt; SCSL which many people don't want to accept. I know gcc-4.0.2 compiles
+</I>&gt;<i> &gt; OOo for GNU/Linux but it doesn't for FBSD; AWT somehow doesn't work just
+</I>&gt;<i> &gt; dumped cores. I tried many snapshots, and recently AWT peer via GTK
+</I>&gt;<i> &gt; works for me. (afaik after September or something; but builds were broken
+</I>&gt;<i> &gt; due to regressions or changes in gcc).
+</I>&gt;<i> &gt; Currently gcc41 becomes solid but failed where you pointed out at
+</I>&gt;<i> &gt; <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">dev at porting.</A> Well we can use ooo-build, but for FreeBSD, it requires
+</I>&gt;<i> &gt; porting. I alywas commit to FBSD specific patches to ports cvs repo, but
+</I>&gt;<i> &gt; not for ooo-build. maintaining both are very hard.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; This is the reason why I'm very very interested in your patch, so
+</I>&gt;<i> &gt; could you please send me as well?
+</I>
+I attach patches for the module binfilter to be buildable with gcc-4.1.
+I also attach the updated version of cws-sb41.diff. There is added one more 
+fix for comphelper/inc/comphelper/extract.hxx.
+
+I am just committing the patches into CWS gcc41.
+
+You also might be interested in the issue 
+<A HREF="http://www.openoffice.org/issues/show_bug.cgi?id=59036">http://www.openoffice.org/issues/show_bug.cgi?id=59036</A>
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: buildfix-gcc41-extra-qualification-binfilter.diff
+Type: text/x-diff
+Size: 15587 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051207/aca65862/buildfix-gcc41-extra-qualification-binfilter-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20051207/aca65862/buildfix-gcc41-extra-qualification-binfilter-0001.bin</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: buildfix-gcc41-friend-decl-binfilter.diff
+Type: text/x-diff
+Size: 2442 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051207/aca65862/buildfix-gcc41-friend-decl-binfilter-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20051207/aca65862/buildfix-gcc41-friend-decl-binfilter-0001.bin</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: cws-sb41.diff
+Type: text/x-diff
+Size: 87259 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051207/aca65862/cws-sb41-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20051207/aca65862/cws-sb41-0001.bin</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001401.html">[Open Office] Problem with Tahoma.ttf and OpenOffice 2.0.1
+</A></li>
+	<LI>Next message: <A HREF="001406.html">[Open Office] mono_proxy.cxx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1405">[ date ]</a>
+              <a href="thread.html#1405">[ thread ]</a>
+              <a href="subject.html#1405">[ subject ]</a>
+              <a href="author.html#1405">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

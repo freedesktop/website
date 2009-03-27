@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] problem with beanshell
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20problem%20with%20beanshell&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001238.html">
+   <LINK REL="Next"  HREF="001202.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] problem with beanshell</H1>
+    <B>Lupine</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20problem%20with%20beanshell&In-Reply-To="
+       TITLE="[Open Office] problem with beanshell">thelupine at softhome.net
+       </A><BR>
+    <I>Thu Oct 20 09:56:11 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001238.html">[Open Office] ANNOUNCE: ooo-build-2.0.0
+</A></li>
+        <LI>Next message: <A HREF="001202.html">[Open Office] problem with beanshell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1201">[ date ]</a>
+              <a href="thread.html#1201">[ thread ]</a>
+              <a href="subject.html#1201">[ subject ]</a>
+              <a href="author.html#1201">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all,
+
+Just downloaded and tried to build the new ooo-build-2.0.0 package, and
+it's having a problem with beanshell.  Here is the information:
+
+------------------------------------------------------------------------------------------------
+OS: Linux From Scratch
+
+GNOME: version 2.12.1 built from tarballs (ftp.gnome.org)
+
+Java: java -version
+java version &quot;1.5.0_04&quot;
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_04-b05)
+Java HotSpot(TM) Client VM (build 1.5.0_04-b05, mixed mode, sharing)
+
+ANT: ant -version
+Apache Ant version 1.6.2 compiled on August 13 2005
+
+GCC: gcc --version
+gcc (GCC) 3.4.4
+
+CONFIGURE:
+./configure --prefix=/opt/OpenOffice --disable-kde --enable-hunspell
+--with-system-hunspell &amp;&amp; ./download &amp;&amp; make
+
+MAKE:
+=============
+Building project beanshell
+=============
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell
+-------------
+mkdir ./unxlngi6.pro/misc/build/BeanShell/
+mkdir: cannot create directory `./unxlngi6.pro/misc/build/BeanShell/':
+File exists
+cd ./unxlngi6.pro/misc/build/BeanShell/ &amp;&amp; dmake    &amp;&amp; touch
+so_built_ooo_beanshell
+-------------
+/usr/share/ant/bin/ant -Dprj=../../../.. -Dprjname=ooo_beanshell
+-Ddebug=off -Doptimize=on  -Dtarget=jarall -Dsolar.update=on
+-Dout=../../../../unxlngi6.pro -Dinpath=unxlngi6.pro -Dproext=&quot;.pro&quot;
+-Dsolar.bin=/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/solver/680/unxlngi6.pro/bin -Dsolar.jar=/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/solver/680/unxlngi6.pro/bin -Dsolar.doc=/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/solver/680/unxlngi6.pro/doc  -Dcommon.jar=/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/solver/680/common.pro/bin -Dcommon.doc=/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/solver/680/common.pro/doc  -f build.xml  -emacs
+Buildfile: build.xml
+
+checkjjt:
+
+jjtree:
+
+checkjj:
+
+javacc:
+
+builddir:
+
+compile:
+Compiling 74 source files
+to /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/classes
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/ClassGeneratorUtil.java:137: reference to Type is ambiguous, both class java.lang.reflect.Type in java.lang.reflect and class bsh.org.objectweb.asm.Type in bsh.org.objectweb.asm match
+                this.superClassName =
+Type.getInternalName( superClass );
+                                      ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/ClassGeneratorUtil.java:185: reference to Type is ambiguous, both class java.lang.reflect.Type in java.lang.reflect and class bsh.org.objectweb.asm.Type in bsh.org.objectweb.asm match
+
+interfaceNames[i]=Type.getInternalName( interfaces[i] );
+                                          ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/ClassGeneratorUtil.java:362: reference to Type is ambiguous, both class java.lang.reflect.Type in java.lang.reflect and class bsh.org.objectweb.asm.Type in bsh.org.objectweb.asm match
+                                Type.getType(Object.class),
+                                ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/ClassGeneratorUtil.java:363: reference to Type is ambiguous, both class java.lang.reflect.Type in java.lang.reflect and class bsh.org.objectweb.asm.Type in bsh.org.objectweb.asm match
+                                new Type [] {
+                                    ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/ClassGeneratorUtil.java:364: reference to Type is ambiguous, both class java.lang.reflect.Type in java.lang.reflect and class bsh.org.objectweb.asm.Type in bsh.org.objectweb.asm match
+                                        Type.getType(String.class),
+                                        ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/ClassGeneratorUtil.java:365: reference to Type is ambiguous, both class java.lang.reflect.Type in java.lang.reflect and class bsh.org.objectweb.asm.Type in bsh.org.objectweb.asm match
+                                        Type.getType(Object [].class),
+                                        ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/ClassGeneratorUtil.java:366: reference to Type is ambiguous, both class java.lang.reflect.Type in java.lang.reflect and class bsh.org.objectweb.asm.Type in bsh.org.objectweb.asm match
+                                        Type.getType(Interpreter.class),
+                                        ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/ClassGeneratorUtil.java:367: reference to Type is ambiguous, both class java.lang.reflect.Type in java.lang.reflect and class bsh.org.objectweb.asm.Type in bsh.org.objectweb.asm match
+                                        Type.getType(CallStack.class),
+                                        ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/ClassGeneratorUtil.java:368: reference to Type is ambiguous, both class java.lang.reflect.Type in java.lang.reflect and class bsh.org.objectweb.asm.Type in bsh.org.objectweb.asm match
+                                        Type.getType(SimpleNode.class),
+                                        ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/ClassGeneratorUtil.java:369: reference to Type is ambiguous, both class java.lang.reflect.Type in java.lang.reflect and class bsh.org.objectweb.asm.Type in bsh.org.objectweb.asm match
+                                        Type.getType(Boolean.TYPE)
+                                        ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/ClassGeneratorUtil.java:361: reference to Type is ambiguous, both class java.lang.reflect.Type in java.lang.reflect and class bsh.org.objectweb.asm.Type in bsh.org.objectweb.asm match
+                        Type.getMethodDescriptor(
+                        ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/Reflect.java:129: warning: [deprecation] getAssignableForm(java.lang.Object,java.lang.Class) in bsh.Types has been deprecated
+                                tmpArgs[i] =
+Types.getAssignableForm( args[i], types[i] );
+                                                  ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/Remote.java:143: warning: [deprecation] encode(java.lang.String) in java.net.URLEncoder has been deprecated
+                sb.append( URLEncoder.encode( text ) );
+                                     ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/util/AWTConsole.java:223: warning: [deprecation] getPeer() in java.awt.Component has been deprecated
+
+((java.awt.peer.TextComponentPeer)getPeer()).setCaretPosition(
+                                                  ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/util/AWTConsole.java:328: warning: [deprecation] show() in java.awt.Window has been deprecated
+                f.show();
+                 ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/util/ClassBrowser.java:412: warning: [deprecation] show() in java.awt.Window has been deprecated
+                f.show();
+                 ^
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/src/bsh/util/Util.java:83: warning: [deprecation] show() in java.awt.Window has been deprecated
+        win.show();
+           ^
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+11 errors
+6 warnings
+
+BUILD FAILED
+/home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell/unxlngi6.pro/misc/build/BeanShell/build.xml:176: Compile failed; see the compiler error output for details.
+
+Total time: 3 seconds
+dmake:  Error code 1, while making 'ANTBUILD'
+'---* tg_merge.mk *---'
+dmake:  Error code 255, while making
+'./unxlngi6.pro/misc/build/so_built_ooo_beanshell'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while
+making /home/da104983/DLoads/OfficeApps/ooo-build-2.0.0/build/ooo680-m3/beanshell
+make: *** [stamp/build] Error 1
+
+------------------------------------------------------------------------------------------------
+
+
+Thanks, and please let me know if any other information is needed.
+-Lup
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001238.html">[Open Office] ANNOUNCE: ooo-build-2.0.0
+</A></li>
+	<LI>Next message: <A HREF="001202.html">[Open Office] problem with beanshell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1201">[ date ]</a>
+              <a href="thread.html#1201">[ thread ]</a>
+              <a href="subject.html#1201">[ subject ]</a>
+              <a href="author.html#1201">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Ximian patches integration in RC3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:jwarnier%40beeznest.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000015.html">
+   <LINK REL="Next"  HREF="000051.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Ximian patches integration in RC3
+   </H1>
+    <B>Jérôme Warnier
+    </B> 
+    <A HREF="mailto:jwarnier%40beeznest.net"
+       TITLE="[Open Office] Ximian patches integration in RC3">jwarnier@beeznest.net
+       </A><BR>
+    <I>10 Aug 2003 11:59:47 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000015.html">[Open Office] Problems building OO.o
+</A></li>
+        <LI> Next message: <A HREF="000051.html">[Open Office] Re: Ximian patches integration in RC3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#14">[ date ]</a>
+              <a href="thread.html#14">[ thread ]</a>
+              <a href="subject.html#14">[ subject ]</a>
+              <a href="author.html#14">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-Z2Rr38+Va2jDA8P4o+3V
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: quoted-printable
+
+Hi guys, as I told some weeks ago, I've been working on integration of
+some of the Ximian patches into the Debian packages for OOo. As Chris
+told me, no more patches were to enter to RC2, if it gets out some day,
+but to RC3 it was (still) possible.
+
+Meanwhile, I've run into some problems for building the whole OOo, but
+now that I've understood from my errors, I should not lose so much time
+to do it again.
+
+For those who may be interested in packages for Woody, use this
+sources.list line:
+deb <A HREF="http://apt.bxlug.be">http://apt.bxlug.be</A> ooo/=20
+Be aware though that they have been almost not tested at all, and have
+been compiled with GCC 3.0 from Woody.
+Currently, I've applied the following patches from Ximian:
+- bmp32.diff
+- icon-render.diff
+- thread-yield.diff
+- deliver-compare.diff
+- path-home-documents.diff
+
+
+I applied some patches but have a few questions:
+- how to give a name/a number to the patches? I've started using
+debian/patches/9xx_ximian-* naming scheme. Is it ok?
+- how to test with RC2/RC3?
+- how to submit them to you?
+
+
+
+I also would like to discuss with you about what is &quot;including
+unnecessary dependencies into the packages&quot;. Most Ximian patches are
+about GNOME integration, but not all of them, and as they took care also
+to respect freedesktop.org guidelines, they are often useful for KDE
+too. I may be wrong though, so I would like to talk to someone
+knowledgeable about the KDE part.
+Particularly, the &quot;recent-files.diff&quot; is problematic for me. I find it
+useful, but I'm not sure it will play well with KDE.
+
+Some of those patches are nothing related with GTK or GNOME, or nothing.
+Those are particularly easy to integrate, and I think they should be
+integrated into &quot;our&quot; packages.
+
+Well, there's still much to discuss about integrating some patches or
+not, and I cannot decide alone.
+
+--=20
+J=E9r=F4me Warnier &lt;<A HREF="mailto:jwarnier@beeznest.net">jwarnier@beeznest.net</A>&gt;
+
+--=-Z2Rr38+Va2jDA8P4o+3V
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: Ceci est une partie de message
+	=?ISO-8859-1?Q?num=E9riquement?= =?ISO-8859-1?Q?_sign=E9e?=
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.2 (GNU/Linux)
+
+iD8DBQA/NhcRMhzBDATfw0ARAjuNAJ90QIZhu37VhCFAbDNz7tvNgdq/swCfaYiF
+ZZXem5EuX1j91k/bCglCpTM=
+=Zl4h
+-----END PGP SIGNATURE-----
+
+--=-Z2Rr38+Va2jDA8P4o+3V--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000015.html">[Open Office] Problems building OO.o
+</A></li>
+	<LI> Next message: <A HREF="000051.html">[Open Office] Re: Ximian patches integration in RC3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#14">[ date ]</a>
+              <a href="thread.html#14">[ thread ]</a>
+              <a href="subject.html#14">[ subject ]</a>
+              <a href="author.html#14">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

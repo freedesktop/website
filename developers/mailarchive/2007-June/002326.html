@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] VBA part build failure..on FreeBSD
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20VBA%20part%20build%20failure..on%20FreeBSD&In-Reply-To=1182501406.28951.277.camel%40trouble2.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002324.html">
+   <LINK REL="Next"  HREF="002325.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] VBA part build failure..on FreeBSD</H1>
+    <B>Hubert Figuiere</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20VBA%20part%20build%20failure..on%20FreeBSD&In-Reply-To=1182501406.28951.277.camel%40trouble2.site"
+       TITLE="[Open Office] VBA part build failure..on FreeBSD">hfiguiere at novell.com
+       </A><BR>
+    <I>Fri Jun 22 12:01:13 EDT 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002324.html">[Open Office] VBA part build failure..on FreeBSD
+</A></li>
+        <LI>Next message: <A HREF="002325.html">[Open Office] Caption related ask - Hungarian community builds
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2326">[ date ]</a>
+              <a href="thread.html#2326">[ thread ]</a>
+              <a href="subject.html#2326">[ subject ]</a>
+              <a href="author.html#2326">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2007-06-22 at 09:36 +0100, Noel Power wrote:
+&gt;<i> &gt; ----------
+</I>&gt;<i> &gt; actually following part is the essential:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:50:68: macro &quot;MIN&quot; requires 2 arguments, but only 1 given
+</I>&gt;<i> &gt; /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:51:68: macro &quot;MAX&quot; requires 2 arguments, but only 1 given
+</I>&gt;<i> hmmm, it would the compiler/included files combination results in
+</I>&gt;<i> macro(s) MIN and MAX ( from where I wonder? )  conflicting with the
+</I>&gt;<i> local definitions, I would change MIN &amp; MAX to something like MIN_VAL
+</I>&gt;<i> &amp;
+</I>&gt;<i> MAX_VAL ( and also change the value, &quot;AutoOrigin&quot; which is clearly ...
+</I>&gt;<i> wrong ) I presume this is some variant of ooo-build ? let me know if
+</I>&gt;<i> this fixes it for you, then I will fix it here ( /me has too many
+</I>&gt;<i> different branches ooo-build, cws versions etc. to track ) 
+</I>
+Lot of includes define MIN and MAX as macro to return the minimum or
+maximum of the 2 parameters.
+
+So yeah it would be better to use something for values.
+
+And also recommend using std::min and std::max instead of the macros.
+
+
+Hub
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002324.html">[Open Office] VBA part build failure..on FreeBSD
+</A></li>
+	<LI>Next message: <A HREF="002325.html">[Open Office] Caption related ask - Hungarian community builds
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2326">[ date ]</a>
+              <a href="thread.html#2326">[ thread ]</a>
+              <a href="subject.html#2326">[ subject ]</a>
+              <a href="author.html#2326">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

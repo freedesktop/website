@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Help me to fix this problem 
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Help%20me%20to%20fix%20this%20problem%20&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001420.html">
+   <LINK REL="Next"  HREF="001426.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Help me to fix this problem </H1>
+    <B>Ken Sarawiwa</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Help%20me%20to%20fix%20this%20problem%20&In-Reply-To="
+       TITLE="[Open Office] Help me to fix this problem ">kenfactz at yahoo.co.uk
+       </A><BR>
+    <I>Wed Dec 21 07:40:52 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001420.html">[Open Office] OpenOffice 2.0 and Mono 1.1.10
+</A></li>
+        <LI>Next message: <A HREF="001426.html">[Open Office] Help me to fix this problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1422">[ date ]</a>
+              <a href="thread.html#1422">[ thread ]</a>
+              <a href="subject.html#1422">[ subject ]</a>
+              <a href="author.html#1422">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+ Am using ooo-build-2.0.0 to build the version 2.0 of openoffice.org
+ my computer has FC4 and am using jdk1.4.2_10. This error appeared after 
+ 1hour and 20min during the running process.
+ The section below may help you to trace on how to fix this error.
+ 
+ Making: ../unxlngi6.pro/slo/vclplug_gen_dflt_version.obj
+ gcc -Wreturn-type -fmessage-length=0 -c -I.  -I. -I../inc -I../inc -I../unx/inc -I../unxlngi6.pro/inc -I. -I/kilinux/oobuilds/second_build/build/ooo680-m3/solver/680/unxlngi6.pro/inc/dont_use_stl -I/kilinux/oobuilds/second_build/build/ooo680-m3/solver/680/unxlngi6.pro/inc/external -I/kilinux/oobuilds/second_build/build/ooo680-m3/solver/680/unxlngi6.pro/inc -I/kilinux/oobuilds/second_build/build/ooo680-m3/solenv/unxlngi6/inc -I/kilinux/oobuilds/second_build/build/ooo680-m3/solenv/inc -I/kilinux/oobuilds/second_build/build/ooo680-m3/res -I/kilinux/oobuilds/second_build/build/ooo680-m3/solver/680/unxlngi6.pro/inc/dont_use_stl -I/kilinux/oobuilds/second_build/build/ooo680-m3/solenv/inc/Xp31 -I/usr/java/j2sdk1.4.2_10/include -I/usr/java/j2sdk1.4.2_10/include/linux -I/usr/java/j2sdk1.4.2_10/include/native_threads/include -I/usr/X11R6/include     -I. -I../res -I. -Os -fno-strict-aliasing -Wuninitialized   -fvisibility=hidden -DXTHREADS -D_REENTRANT -DXUSE_MTSAFE_API -pthread
+ -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/X11R6/include -I/usr/include/atk-1.0 -I/usr/include/pango-1.0 -I/usr/include/freetype2 -I/usr/include/freetype2/config -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -pipe -mtune=pentiumpro -fpic -DLINUX -DUNX -DVCL -DGCC -DC341 -DINTEL -DGXX_INCLUDE_PATH=/usr/lib/gcc/i386-redhat-linux/4.0.0/../../../../include/c++/4.0.0 -DCVER=C341 -D_USE_NAMESPACE -DNPTL -DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1 -DSTLPORT_VERSION=400 -DHAVE_GCC_VISIBILITY_FEATURE -D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DSUPD=680 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DEXCEPTIONS_OFF -DCUI -DSOLAR_JAVA -DOOO680 -DUSE_BUILTIN_RASTERIZER  -DVCL_DLLIMPLEMENTATION -DSHAREDLIB -D_DLL_   -o ../unxlngi6.pro/slo/vclplug_gen_dflt_version.o ../unxlngi6.pro/misc/vclplug_gen_dflt_version.c
+ if ( -e ../unxlngi6.pro/slo/vclplug_gen_dflt_version.o) touch ../unxlngi6.pro/slo/vclplug_gen_dflt_version.obj
+ ------------------------------
+ Making: ../unxlngi6.pro/lib/libvclplug_gen680li.so
+ g++ -Wl,-z,combreloc -Wl,-z,defs -Wl,-rpath,'$ORIGIN' -shared -L../unxlngi6.pro/lib -L../lib -L/kilinux/oobuilds/second_build/build/ooo680-m3/solenv/unxlngi6/lib -L/kilinux/oobuilds/second_build/build/ooo680-m3/solver/680/unxlngi6.pro/lib -L/kilinux/oobuilds/second_build/build/ooo680-m3/solenv/unxlngi6/lib -L/usr/java/j2sdk1.4.2_10/lib -L/usr/java/j2sdk1.4.2_10/jre/lib/i386 -L/usr/java/j2sdk1.4.2_10/jre/lib/i386/client -L/usr/java/j2sdk1.4.2_10/jre/lib/i386/native_threads -L/usr/X11R6/lib -L/usr/lib/mozilla-1.7.8 ../unxlngi6.pro/slo/vclplug_gen_dflt_version.o ../unxlngi6.pro/slo/vclplug_gen_dflt_description.o -o ../unxlngi6.pro/lib/libvclplug_gen680li.so ../unxlngi6.pro/slo/FWS.o ../unxlngi6.pro/slo/salframe.o ../unxlngi6.pro/slo/salobj.o ../unxlngi6.pro/slo/salmenu.o ../unxlngi6.pro/slo/salgdi2.o ../unxlngi6.pro/slo/salbmp.o ../unxlngi6.pro/slo/salgdi.o ../unxlngi6.pro/slo/salvd.o ../unxlngi6.pro/slo/salogl.o ../unxlngi6.pro/slo/dtint.o ../unxlngi6.pro/slo/salcvt.o
+ ../unxlngi6.pro/slo/xfont.o ../unxlngi6.pro/slo/xlfd_attr.o ../unxlngi6.pro/slo/xlfd_extd.o ../unxlngi6.pro/slo/xlfd_smpl.o ../unxlngi6.pro/slo/salgdi3.o ../unxlngi6.pro/slo/pspgraphics.o ../unxlngi6.pro/slo/salprnpsp.o ../unxlngi6.pro/slo/gcach_xpeer.o ../unxlngi6.pro/slo/i18n_cb.o ../unxlngi6.pro/slo/i18n_ic.o ../unxlngi6.pro/slo/i18n_im.o ../unxlngi6.pro/slo/i18n_xkb.o ../unxlngi6.pro/slo/i18n_wrp.o ../unxlngi6.pro/slo/i18n_status.o ../unxlngi6.pro/slo/i18n_keysym.o ../unxlngi6.pro/slo/saldata.o ../unxlngi6.pro/slo/saltimer.o ../unxlngi6.pro/slo/saldisp.o ../unxlngi6.pro/slo/salinst.o ../unxlngi6.pro/slo/salsys.o ../unxlngi6.pro/slo/soicon.o ../unxlngi6.pro/slo/sm.o ../unxlngi6.pro/slo/keysymnames.o ../unxlngi6.pro/slo/wmadaptor.o ../unxlngi6.pro/slo/salsound2.o ../unxlngi6.pro/slo/osssound.o ../unxlngi6.pro/slo/devaudiosound.o ../unxlngi6.pro/slo/audioconvert.o ../unxlngi6.pro/slo/rptpsound.o ../unxlngi6.pro/slo/nassound.o ../unxlngi6.pro/slo/pasfsound.o -lvcl680li -lpsp
+ 680li
+ -lsot680li -lutl680li -ltl680li -lcomphelp4gcc3 -lucbhelper3gcc3 -luno_cppuhelpergcc3 -luno_cppu -lvos3gcc3 -luno_sal -Wl,-Bstatic -lXinerama -Wl,-Bdynamic -lsndfile -lportaudio -laudio -lstartup-notification-1 -lXext -lSM -lICE -lX11 -ldl -ldl -lpthread -lm -Wl,-Bdynamic -lstlport_gcc
+ rm -f ../unxlngi6.pro/lib/check_libvclplug_gen680li.so
+ mv ../unxlngi6.pro/lib/libvclplug_gen680li.so ../unxlngi6.pro/lib/check_libvclplug_gen680li.so
+ /kilinux/oobuilds/second_build/build/ooo680-m3/solenv/bin/checkdll.sh -L../unxlngi6.pro/lib -L../lib -L/kilinux/oobuilds/second_build/build/ooo680-m3/solenv/unxlngi6/lib -L/kilinux/oobuilds/second_build/build/ooo680-m3/solver/680/unxlngi6.pro/lib -L/kilinux/oobuilds/second_build/build/ooo680-m3/solenv/unxlngi6/lib -L/usr/java/j2sdk1.4.2_10/lib -L/usr/java/j2sdk1.4.2_10/jre/lib/i386 -L/usr/java/j2sdk1.4.2_10/jre/lib/i386/client -L/usr/java/j2sdk1.4.2_10/jre/lib/i386/native_threads -L/usr/X11R6/lib -L/usr/lib/mozilla-1.7.8 ../unxlngi6.pro/lib/check_libvclplug_gen680li.so
+ Checking DLL ../unxlngi6.pro/lib/check_libvclplug_gen680li.so ...: ERROR: ../unxlngi6.pro/lib/check_libvclplug_gen680li.so: cannot restore segment prot after reloc: Permission denied
+ dmake:  Error code 1, while making '../unxlngi6.pro/lib/libvclplug_gen680li.so'
+ '---* tg_merge.mk *---'
+ 
+ ERROR: Error 65280 occurred while making /kilinux/oobuilds/second_build/build/ooo680-m3/vcl/util
+ make: *** [stamp/build] Error 1
+ 
+		
+---------------------------------
+To help you stay safe and secure online, we've developed the all new Yahoo! Security Centre.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051221/f5f1d689/attachment.html">http://lists.ximian.com/pipermail/openoffice/attachments/20051221/f5f1d689/attachment.html</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001420.html">[Open Office] OpenOffice 2.0 and Mono 1.1.10
+</A></li>
+	<LI>Next message: <A HREF="001426.html">[Open Office] Help me to fix this problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1422">[ date ]</a>
+              <a href="thread.html#1422">[ thread ]</a>
+              <a href="subject.html#1422">[ subject ]</a>
+              <a href="author.html#1422">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

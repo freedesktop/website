@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Wednesday/Thursday
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000839.html">
+   <LINK REL="Next"  HREF="000841.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Wednesday/Thursday
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Status Wednesday/Thursday">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Thu, 10 Mar 2005 22:36:28 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000839.html">[Open Office] Status ( today)
+</A></li>
+        <LI> Next message: <A HREF="000841.html">[Open Office] Status Thu-Fri
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#840">[ date ]</a>
+              <a href="thread.html#840">[ thread ]</a>
+              <a href="subject.html#840">[ subject ]</a>
+              <a href="author.html#840">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I'm working on native parts of the bridge code (bridges/source/mono_uno)
+now. Deleted some code that I had written before the C# bridge code and
+replaced it with mono-specific code that calls into the managed bridge.
+
+Decided to throw sample code (odk/examples/CLI) at it. And behold, uno
+picked up my libcli_uno.so. It didn't do anything because some glue is
+still missing. But it was cool to see that mono can generate a
+meaningful stack trace although there were two transitions to native
+code between the point where the terminating exception was thrown and
+the Main method.
+
+Now I implement the rest in the order that the mono runtime tells me to.
+Already found some places where the C# method signatures had to be
+adjusted for the real world.
+
+Regards,
+Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000839.html">[Open Office] Status ( today)
+</A></li>
+	<LI> Next message: <A HREF="000841.html">[Open Office] Status Thu-Fri
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#840">[ date ]</a>
+              <a href="thread.html#840">[ thread ]</a>
+              <a href="subject.html#840">[ subject ]</a>
+              <a href="author.html#840">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

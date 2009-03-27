@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Wednesday
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000769.html">
+   <LINK REL="Next"  HREF="000776.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Wednesday
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] Status Wednesday">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Wed, 09 Feb 2005 19:44:30 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000769.html">[Open Office] Status 1th - 9th Feb
+</A></li>
+        <LI> Next message: <A HREF="000776.html">[Open Office] [kde-announce] ANNOUNCE: ooo-build-1.9.78
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#770">[ date ]</a>
+              <a href="thread.html#770">[ thread ]</a>
+              <a href="subject.html#770">[ subject ]</a>
+              <a href="author.html#770">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+today, I finally got a working build and packages of m76 after I found
+out that the problem was in the packaging script that was apparently
+untested for m76. Generalised the fix so that it doesn't break m74
+builds and committed.
+
+Also, pointed Shreyas, who wants to forward port zoom-combobox, to the
+zoom combobox in sw's print preview.
+
+Code reading: poked at cppu to see how bridges are loaded.
+
+Bonsai'ed for cws_src644_cliuno01, the first cws with cliuno. There was
+some code that might have been an attempt at a component loader for
+managed code UNO components. Yesterday I noted in mono.txt that there is
+no component loader for cli-uno. That code from the cws is not in HEAD.
+Didn't look any closer here.
+
+Mailed <A HREF="mailto:dev@udk">dev@udk</A> which (incidentally) had a recent thread wrt UNO+mono,
+asked for some advice on where/how to make the native/managed split
+which is only implicit in the current managed C++ CLI-UNO. Was told to
+look at the JNI-based Java bridge. And my understanding of climaker was
+confirmed (I think).
+
+Next: have to read about .Net remoting, TransparentProxies, RealProxies
+etc. and Mono embedding. And the Java bridge.
+
+Regards,
+
+Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000769.html">[Open Office] Status 1th - 9th Feb
+</A></li>
+	<LI> Next message: <A HREF="000776.html">[Open Office] [kde-announce] ANNOUNCE: ooo-build-1.9.78
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#770">[ date ]</a>
+              <a href="thread.html#770">[ thread ]</a>
+              <a href="subject.html#770">[ subject ]</a>
+              <a href="author.html#770">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

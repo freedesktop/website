@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] PATCH: build.pl conditional module building
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000355.html">
+   <LINK REL="Next"  HREF="000360.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] PATCH: build.pl conditional module building
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] PATCH: build.pl conditional module building">dan@bigw.org
+       </A><BR>
+    <I>Fri, 9 Apr 2004 01:18:01 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000355.html">[Open Office] OOo 1.1.1
+</A></li>
+        <LI> Next message: <A HREF="000360.html">[Open Office] PATCH: build.pl conditional module building
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#359">[ date ]</a>
+              <a href="thread.html#359">[ thread ]</a>
+              <a href="subject.html#359">[ subject ]</a>
+              <a href="author.html#359">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--Apple-Mail-5-101466345
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed
+
+Diff against 1.1.1 attached.
+
+o Conditional format (logical OR):       blah blah blah NULL    
+([!]ENV_VAR[,ENV_VAR[,ENV_VAR]])
+Example:
+-----------------------------
+moz	moz : solenv NULL   (!ENABLE_CORE_OFFICE)
+moz	moz					usr1	-	all	moz_mkout NULL
+moz	moz\zipped			nmake	-	all	moz_zipped NULL    (!BLAH,FOO)
+
+This would mean that if the ENABLE_CORE_OFFICE environment variable 
+exists and has some value, the whole module would _not_ be built.  
+Furthermore, if ENABLE_CORE_OFFICE is not set at all, then the 
+moz\zipped project will not be built if BLAH is non-blank, but will be 
+built if FOO is non-blank (even if BLAH is non-blank too).  Its a 
+logical OR system.
+
+Dan
+
+
+--Apple-Mail-5-101466345
+Content-Transfer-Encoding: 7bit
+Content-Type: application/octet-stream;
+	x-unix-mode=0644;
+	name=&quot;build-pl-conditionals.patch&quot;
+Content-Disposition: attachment;
+	filename=build-pl-conditionals.patch
+
+Index: build.pl
+===================================================================
+RCS file: /cvs/tools/solenv/bin/build.pl,v
+retrieving revision 1.86.18.1
+diff -u -r1.86.18.1 build.pl
+--- build.pl	9 Jan 2004 18:59:07 -0000	1.86.18.1
++++ build.pl	9 Apr 2004 05:10:37 -0000
+@@ -123,6 +123,7 @@
+     $show = 0;
+     $deliver = 0;
+     %LocalDepsHash = ();
++    %BuildConditionalsHash = ();
+     %BuildQueue = ();
+     %PathHash = ();
+     %PlatformHash = ();
+@@ -305,32 +306,40 @@
+                 my $module_type = &amp;module_classify($Prj);
+                 
+                 &amp;print_annonce($Prj) if ($module_type eq 'lnk');
+-            &amp;print_annonce($Prj . '.incomp') if ($module_type eq 'img');
+-            if ($module_type eq 'mod') {
++                &amp;print_annonce($Prj . '.incomp') if ($module_type eq 'img');
++                if ($module_type eq 'mod') {
+ 				if (scalar keys %broken_build) {
+ 					print $echo.	&quot;Skipping project $Prj because of error(s)\n&quot;;
+-            		&amp;RemoveFromDependencies($Prj, \%global_deps_hash);
++					&amp;RemoveFromDependencies($Prj, \%global_deps_hash);
+ 					next;
+ 				};
+-	            &amp;print_annonce($Prj);
+-            	$PrjDir = &amp;CorrectPath($StandDir.$Prj);
++				&amp;print_annonce($Prj);
++				$PrjDir = &amp;CorrectPath($StandDir.$Prj);
+ 				&amp;mark_force_deliver($Prj, $PrjDir) if (defined $ENV{CWS_WORK_STAMP});
+-		 		&amp;get_deps_hash($PrjDir, \%LocalDepsHash);
+-		 		&amp;BuildDependent(\%LocalDepsHash);
+-				my $deliver_commando = &amp;get_deliver_commando($Prj);
+-		 		if ($cmd_file) {
+-		 			print &quot;$deliver_commando\n&quot;;
+-		 		} else {
+-		 			system (&quot;$deliver_commando&quot;) if (!$show &amp;&amp; ($Prj ne $CurrentPrj) &amp;&amp; !$deliver);
+-		 	    };
+-		 	    print $check_error_string;
+-            };
+-            &amp;RemoveFromDependencies($Prj, \%global_deps_hash);
+-        	$no_projects = 0;
+-		};
++				my $Cond = &amp;GetModuleBuildConditional( $PrjDir );
++				if ( &amp;CheckBuildConditional($Cond) eq 1) {
++    		 		    &amp;get_deps_hash($PrjDir, \%LocalDepsHash);
++		 		    &amp;BuildDependent(\%LocalDepsHash);
++				    my $deliver_commando = &amp;get_deliver_commando($Prj);
++		 		    if ($cmd_file) {
++                            print &quot;$deliver_commando\n&quot;;
++		 		    } else {
++                            system (&quot;$deliver_commando&quot;) if (!$show &amp;&amp; ($Prj ne $CurrentPrj) &amp;&amp; !$deliver);
++                        };
++				} else {
++					print STDERR &quot;!!!! Not building project $Prj due to build conditional $Cond\n&quot;;
++				};
++		 	     print $check_error_string;
++                };
++                &amp;RemoveFromDependencies($Prj, \%global_deps_hash);
++        	      $no_projects = 0;
++		  };
+ 	} else {
+-		&amp;get_deps_hash('.', \%LocalDepsHash);
+-		&amp;BuildDependent(\%LocalDepsHash);
++		my $Cond = &amp;GetModuleBuildConditional( '.' );
++		if ( &amp;CheckBuildConditional($Cond) eq 1) {
++			&amp;get_deps_hash('.', \%LocalDepsHash);
++			&amp;BuildDependent(\%LocalDepsHash);
++		};
+ 	};
+ };
+ 
+@@ -469,7 +478,7 @@
+ 		};
+ 		s/\r\n//;
+ 		if ($_ =~ /nmake/o) {
+-			my ($Platform, $Dependencies, $Dir, $DirAlias, @Array);
++			my ($Platform, $Dependencies, $Dir, $DirAlias, @Array, $Cond);
+ 			$Dependencies = $';
+ 			$dummy = $`;
+ 			$dummy =~ /(\S+)\s+(\S+)/o;
+@@ -491,6 +500,8 @@
+             &amp;print_error(&quot;$PrjToBuild/prj/build.lst has wrong written dependencies string:\n$_\n&quot;) if (!$Dependencies);
+ 			@Array = &amp;GetDependenciesArray($Dependencies);
+ 			$$dependencies_hash{$DirAlias} = [@Array];
++			$Cond = &amp;GetStringBuildConditional($Dependencies);
++			$BuildConditionalsHash{$DirAlias} = &amp;CheckBuildConditional($Cond);
+ 			$BuildQueue{$DirAlias}++;
+ 			$PathHash{$DirAlias} = $Dir;
+ 		};
+@@ -614,10 +625,25 @@
+ #
+ sub PickPrjToBuild {
+ 	my ($Prj, $DepsHash);
++ 	my $i = 0;
++
+ 	$DepsHash = shift;
+-    &amp;handle_dead_children if ($QuantityToBuild);
+-	$Prj = &amp;FindIndepPrj($DepsHash);
+-	delete $$DepsHash{$Prj};
++	&amp;handle_dead_children if ($QuantityToBuild);
++
++ 	# Keep getting projects until we find one we are supposed to build
++ 	while ($i &lt; 1) {
++ 		$i = 1;
++		$Prj = &amp;FindIndepPrj($DepsHash);
++		delete $$DepsHash{$Prj};
++ 
++ 		# Only if the project exists in the hash do we check for a conditional
++ 		if (exists $BuildConditionalsHash{$Prj}) {
++ 			$i = $BuildConditionalsHash{$Prj};
++ 			if ( $i &lt; 1 ) {
++ 				print STDERR &quot;!!!! Not building project $Prj due to build conditional\n&quot;;
++ 			};
++ 		};
++ 	};
+ 	return $Prj;
+ };
+ 
+@@ -634,6 +660,95 @@
+ 	return 1 if (($ENV{GUI} eq 'WNT') &amp;&amp; 
+ 	   				(($Platform eq 'w') || ($Platform eq 'n')));
+ 	return 0;
++};
++
++#
++# Check a conditional build variable
++#
++sub CheckBuildConditional {
++	my $conditional_string = shift;
++	my $do_build = 0;
++	my $dont_build = 0;
++	my $Negate = 0;
++	my ($<A HREF="mailto:condition,@tokens">condition,@tokens</A>);
++
++	chomp($conditional_string);
++
++	# return true if empty conditional string
++	if ( $conditional_string eq '' ) {
++		return 1;
++	};
++
++	@tokens = split( ',', $conditional_string );
++	foreach $condition (@tokens) {
++		# Check for negation of the environment variable
++		if (substr($condition, 0, 1) eq '!') {
++			$Negate = 1;
++			$condition = substr($condition, 1, length($condition) - 1);
++		};
++
++		if (($ENV{$condition} ne '') &amp;&amp; ($Negate eq 0)) {
++			$do_build += 1;
++		} elsif (($ENV{$condition} ne '') &amp;&amp; ($Negate eq 1)) {
++			$dont_build += 1;
++		};
++	};
++
++	# if there is at _least_ one do_build, or there are no conditionals
++	# at all, we build this module
++	if ( $do_build &gt; 0 ) {
++		return 1;
++	} elsif ( $dont_build &gt; 0 ) {
++		return 0;
++	} else {
++		# shouldn't get here, but whatever...
++		return 1;
++	};
++};
++
++#
++# Gets a possible build conditional string from the first line
++# of build.lst
++#
++sub GetModuleBuildConditional {
++	my $PrjToBuild;
++	my $ConditionalString;
++
++	$PrjToBuild = shift;
++	chdir $PrjToBuild;
++	open (BUILD_LST, 'prj/build.lst');
++	while (&lt;BUILD_LST&gt;) {
++		if ($_ =~ /#/) {
++			if ($`) {
++				$_ = $`;
++			} else {
++				next;
++			};
++		};
++		s/\r\n//;
++		if ($_ =~ /:/) {
++			$ConditionalString = $';
++			$ConditionalString =~ /\((\S+)\)/;
++			$ConditionalString = $1;
++			break;
++		};
++	};
++	close BUILD_LST;
++	return $ConditionalString;
++};
++
++#
++# Gets a possible build conditional string
++#
++sub GetStringBuildConditional {
++	my $ConditionalString = shift;
++
++	chomp($ConditionalString);
++	if ( $ConditionalString =~ /\((\S+)\)/ ) {
++		return $1;
++	};
++
++	return '';
+ };
+ 
+ #
+
+--Apple-Mail-5-101466345--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000355.html">[Open Office] OOo 1.1.1
+</A></li>
+	<LI> Next message: <A HREF="000360.html">[Open Office] PATCH: build.pl conditional module building
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#359">[ date ]</a>
+              <a href="thread.html#359">[ thread ]</a>
+              <a href="subject.html#359">[ subject ]</a>
+              <a href="author.html#359">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

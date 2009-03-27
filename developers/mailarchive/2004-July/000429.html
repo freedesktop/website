@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] [ooo-build 1.1.60] error &quot;No ImageList found&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:eb%40indesko.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000427.html">
+   <LINK REL="Next"  HREF="000430.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] [ooo-build 1.1.60] error &quot;No ImageList found&quot;
+   </H1>
+    <B>Eric Barroca
+    </B> 
+    <A HREF="mailto:eb%40indesko.com"
+       TITLE="[Open Office] [ooo-build 1.1.60] error &quot;No ImageList found&quot;">eb@indesko.com
+       </A><BR>
+    <I>Sun, 4 Jul 2004 17:26:32 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000427.html">[Open Office] dropping OOO_1_1_0 patch-sets ...
+</A></li>
+        <LI> Next message: <A HREF="000430.html">[Open Office] cvs problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#429">[ date ]</a>
+              <a href="thread.html#429">[ thread ]</a>
+              <a href="subject.html#429">[ subject ]</a>
+              <a href="author.html#429">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I'm trinying to build OOo 1.1.2 with KDE widget set and experiencing an 
+obscur error after a long time of work :
+
+--- EXCEPTIONSFILES ---
+`../../unxlngppc.pro/slo/imagemgr.obj' is up to date
+`../../unxlngppc.pro/slo/appopen.obj' is up to date
+`../../unxlngppc.pro/slo/appmain.obj' is up to date
+`../../unxlngppc.pro/slo/appmisc.obj' is up to date
+`../../unxlngppc.pro/slo/frstinit.obj' is up to date
+`../../unxlngppc.pro/slo/appinit.obj' is up to date
+`../../unxlngppc.pro/slo/appcfg.obj' is up to date
+`../../unxlngppc.pro/slo/helpinterceptor.obj' is up to date
+`../../unxlngppc.pro/slo/newhelp.obj' is up to date
+`../../unxlngppc.pro/slo/sfxhelp.obj' is up to date
+`../../unxlngppc.pro/slo/shutdownicon.obj' is up to date
+`../../unxlngppc.pro/slo/shutdowniconw32.obj' is up to date
+`../../unxlngppc.pro/slo/sfxpicklist.obj' is up to date
+`../../unxlngppc.pro/slo/helpdispatch.obj' is up to date
+--- EXCEPTIONSFILES OVER ---
+------------------------------
+`../../unxlngppc.pro/srs/appl.srs' is up to date
+`../../unxlngppc.pro/srs/sfx.srs' is up to date
+-----------------
+Making Imagelists:
+-----------------
+bmp ../../unxlngppc.pro/srs/appl.srs ../../unxlngppc.pro/res/49 deut 49 
+-I ../../win/res -I /home/eric/tmp/ooo-build-1.1.60/build/OOO_1_1_2/res 
+-f ../../unxlngppc.pro/misc/appl_img49.don
+ERROR: No ImageList found in SRS file!
+Abandon
+dmake:  Error code 134, while making 
+'../../unxlngppc.pro/misc/appl_img49.don'
+---* TG_SLO.MK *---
+
+ERROR: Error 65280 occurred while 
+making /home/eric/tmp/ooo-build-1.1.60/build/OOO_1_1_2/sfx2/source/appl
+make: *** [stamp/build] Erreur 1
+
+(<A HREF="mailto:eric@emob">eric@emob</A>)-(16:39) %
+
+
+I've tried with :
+	configure --with-distro=KDE --with-icons=KDE
+	configure --with-distro=Debian --with-widgetsets=kde --with-icons=KDE
+
+Google isn't helpfull, and I can't figure the source of that error.
+
+Have anyone an idea ?
+
+
+Thanks,
+
+EB.
+
+-- 
+Eric Barroca &lt;<A HREF="mailto:ebarroca@indesko.com">ebarroca@indesko.com</A>&gt;
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000427.html">[Open Office] dropping OOO_1_1_0 patch-sets ...
+</A></li>
+	<LI> Next message: <A HREF="000430.html">[Open Office] cvs problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#429">[ date ]</a>
+              <a href="thread.html#429">[ thread ]</a>
+              <a href="subject.html#429">[ subject ]</a>
+              <a href="author.html#429">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

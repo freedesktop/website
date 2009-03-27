@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] RE: OpenOffice.org 2.0.1 (Experimantal) issue with
+	-fvisibility=hidden
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20RE%3A%20OpenOffice.org%202.0.1%20%28Experimantal%29%20issue%20with%0A%09-fvisibility%3Dhidden&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001486.html">
+   <LINK REL="Next"  HREF="001492.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] RE: OpenOffice.org 2.0.1 (Experimantal) issue with
+	-fvisibility=hidden</H1>
+    <B>Devaiah, Naren</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20RE%3A%20OpenOffice.org%202.0.1%20%28Experimantal%29%20issue%20with%0A%09-fvisibility%3Dhidden&In-Reply-To="
+       TITLE="[Open Office] RE: OpenOffice.org 2.0.1 (Experimantal) issue with
+	-fvisibility=hidden">naren.devaiah at intel.com
+       </A><BR>
+    <I>Fri Jan 13 00:27:29 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001486.html">[Open Office] New desktop files
+</A></li>
+        <LI>Next message: <A HREF="001492.html">[Open Office] Re: OpenOffice.org 2.0.1 (Experimantal) issue with
+	-fvisibility=hidden
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1487">[ date ]</a>
+              <a href="thread.html#1487">[ thread ]</a>
+              <a href="subject.html#1487">[ subject ]</a>
+              <a href="author.html#1487">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Martin,
+
+
+The reason we have segfaults is simple.
+
+When you say -fvisibility=hidden, GCC 4.x will by default make every
+symbol no explicitly marks as 'visibile', hidden. This affects the
+loader/linker because these symbols are no longer visibile to the
+linker/loader when the library is loaded for relocation leading to
+problems. This is specially true when doing dl_open because there is no
+easy way to check if a symbol is visibile or not beforehand.
+
+The only way to prevent this without disabling -fvisibility is to
+determine all required symbols and marking them as 'visibile' (using
+SAL_DLLPUBLIC macro) for example.
+Granted this will be time consuming and potentially difficult, but that
+is the only way I know to solve this problem given the constraints.
+
+ 
+HTH,
+Naren
+
+&gt;<i>-----Original Message-----
+</I>&gt;<i>From: Martin Kretzschmar [mailto:<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">martin.kretzschmar at googlemail.com</A>] 
+</I>&gt;<i>Sent: Thursday, January 12, 2006 9:50 AM
+</I>&gt;<i>To: OOo-Build; Devaiah, Naren
+</I>&gt;<i>Subject: Fwd: OpenOffice.org 2.0.1 (Experimantal) issue with 
+</I>&gt;<i>-fvisibility=hidden
+</I>&gt;<i>
+</I>&gt;<i>Hi Naren,
+</I>&gt;<i>
+</I>&gt;<i>we got this report on the debian-openoffice list. As it seems to be not
+</I>&gt;<i>debian-specific at all and you are doing visibility stuff (IIRC), I'm
+</I>&gt;<i>forwarding it.
+</I>&gt;<i>
+</I>&gt;<i>So, do you know more about this, and if it's fixable without disabling
+</I>&gt;<i>-fvisibility
+</I>&gt;<i>completely?
+</I>&gt;<i>
+</I>&gt;<i>(Apologies if this was already discussed on IRC.)
+</I>&gt;<i>
+</I>&gt;<i>Regards,
+</I>&gt;<i>
+</I>&gt;<i>Martin
+</I>&gt;<i>
+</I>&gt;<i>---------- Forwarded message ----------
+</I>&gt;<i>From: YABUKI Yukiharu &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">yabuki at good-day.co.jp</A>&gt;
+</I>&gt;<i>Date: Tue, 10 Jan 2006 16:50:42 +0900
+</I>&gt;<i>Subject: OpenOffice.org 2.0.1 (Experimantal) issue with 
+</I>&gt;<i>-fvisibility=hidden
+</I>&gt;<i>To: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">debian-openoffice at lists.debian.org</A>
+</I>&gt;<i>
+</I>&gt;<i>I found a crash issue OpenOffice.org 2.0.1 in experimental.
+</I>&gt;<i>
+</I>&gt;<i>Please do not use g++(4.0) option which is &quot;-fvisibility=hidden&quot;.
+</I>&gt;<i>See also:
+</I>&gt;<i><A HREF="http://bugs.debian.org/307207">http://bugs.debian.org/307207</A>
+</I>&gt;<i>[PR 22587] shared libraries built with -fvisibility=hidden segfaults
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>When Japanse envirionment, Sometime Openoffice.org 2.0.1 crash in
+</I>&gt;<i>libdict_ja.so. But, I compile openoffice.org except 
+</I>&gt;<i>&quot;-fvisibility=hidden&quot;
+</I>&gt;<i>option. libdict_ja.so is fine.
+</I>&gt;<i>
+</I></PRE>
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001486.html">[Open Office] New desktop files
+</A></li>
+	<LI>Next message: <A HREF="001492.html">[Open Office] Re: OpenOffice.org 2.0.1 (Experimantal) issue with
+	-fvisibility=hidden
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1487">[ date ]</a>
+              <a href="thread.html#1487">[ thread ]</a>
+              <a href="subject.html#1487">[ subject ]</a>
+              <a href="author.html#1487">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

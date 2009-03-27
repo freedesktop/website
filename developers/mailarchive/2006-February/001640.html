@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%0A%09own%20distro%20tag&In-Reply-To=20060222203501.GB30661%40amarooas.com.au">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001638.html">
+   <LINK REL="Next"  HREF="001641.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag</H1>
+    <B>Andreas Radke</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%0A%09own%20distro%20tag&In-Reply-To=20060222203501.GB30661%40amarooas.com.au"
+       TITLE="[Open Office] oob680.1.1 - new issues and qustion getting our
+	own distro tag">a.radke at arcor.de
+       </A><BR>
+    <I>Thu Feb 23 17:11:10 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001638.html">[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag
+</A></li>
+        <LI>Next message: <A HREF="001641.html">[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1640">[ date ]</a>
+              <a href="thread.html#1640">[ thread ]</a>
+              <a href="subject.html#1640">[ subject ]</a>
+              <a href="author.html#1640">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jim Watson schrieb:
+&gt;<i> On Thu, Feb 23, 2006 at 07:25:49AM +1100, Jim Watson wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> On Wed, Feb 22, 2006 at 05:37:44PM +0100, Andreas Radke wrote:
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> Error: JAVA_HOME is not defined correctly.
+</I>&gt;&gt;&gt;<i>   We cannot execute NO_JAVA_HOME/bin/java
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;<i> -----------------------^^^^^^^^^^^^^
+</I>&gt;<i> and
+</I>&gt;<i>
+</I>&gt;<i> NO_JAVA_HOME is from configure -- building without java ??
+</I>&gt;<i>
+</I>&gt;<i> jim
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>I've got it compiling much further using this configure
+
+./configure --prefix=/opt/openoffice \
+   --with-arch=&quot;x86_64&quot; \
+   --with-srcdir=$startdir/src \
+   --with-binsuffix=2 \
+   --disable-access \
+   --disable-mono \
+   --disable-cairo \
+   --without-firefox-nss \
+   --with-mozilla-nss \
+   --disable-post-install-scripts \
+   --mandir=/usr/man \
+   --without-docdir \
+   --with-hunspell \
+   --with-system-fonts \
+   --with-system-gpc \
+   --with-distro=SUSE-64 \
+   --with-xulrunner \
+   --with-lang=ALL \
+   --with-system-curl \
+   --with-system-expat \
+   --with-system-odbc-headers \
+   --with-system-xrender-headers \
+   --with-system-sane-header \
+   --with-system-sndfile \
+   --with-system-neon \
+   --disable-gnome-vfs \
+   --enable-pam-link \
+   --enable-xrender-link \
+   --enable-vba \
+   --with-java \
+   --with-jdk-home=/opt/java \
+
+Now it breaks much later this:
+
+Checking DLL ../../unxlngx6.pro/lib/check_constructors.uno.so
+...-rwxr-xr-x  1 root root 56334 Feb 23 22:53
+../../unxlngx6.pro/lib/constructors.uno.so
+------------------------------
+Making: ../../unxlngx6.pro/lib/iconstructors.uno.lib
+no ImportLibs on Mac and *ix
+-------------
+echo ../../unxlngx6.pro/lib
+../../unxlngx6.pro/lib
+cp -p
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/solver/680/unxlngx6.pro/bin/udkapi.rdb
+../../unxlngx6.pro/lib/uno_types.rdbregmerge
+../../unxlngx6.pro/lib/uno_types.rdb / ../../unxlngx6.pro/bin/bridgetest.rdb
+mkdir ../../unxlngx6.pro/misc/bridgetest/
+cp -f
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/solver/680/unxlngx6.pro/bin/types.rdb
+../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb
+regcomp -register -r ../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb -c
+javaloader.uno.so \
+        -c javavm.uno.so -c uriproc.uno.so
+[Java framework] The JRE specified by the bootstrap variable
+UNO_JAVA_JFW_JREHOME  or  UNO_JAVA_JFW_ENV_JREHOME  could not be
+recognized. Check the values and make sure that you use a plug-in
+library that can recognize that JRE.javaldx failed!
+register component 'javaloader.uno.so' in registry
+'../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb' succesful!
+register component 'javavm.uno.so' in registry
+'../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb' succesful!
+register component 'uriproc.uno.so' in registry
+'../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb' succesful!
+mkdir ../../unxlngx6.pro/lib/
+mkdir: cannot create directory `../../unxlngx6.pro/lib/': File exists
+cd ../../unxlngx6.pro/lib &amp;&amp;  regcomp -register -br uno_types.rdb -r
+uno_services.rdb\
+        -c acceptor.uno.so \
+        -c bridgefac.uno.so \
+        -c connector.uno.so \
+        -c remotebridge.uno.so \
+        -c uuresolver.uno.so \
+        -c bridgetest.uno.so \
+        -c cppobj.uno.so \
+        -c uriproc.uno.so \
+        -c constructors.uno.so
+[Java framework] The JRE specified by the bootstrap variable
+UNO_JAVA_JFW_JREHOME  or  UNO_JAVA_JFW_ENV_JREHOME  could not be
+recognized. Check the values and make sure that you use a plug-in
+library that can recognize that JRE.javaldx failed!
+register component 'acceptor.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'bridgefac.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'connector.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'remotebridge.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'uuresolver.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'bridgetest.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'cppobj.uno.so' in registry 'uno_services.rdb' succesful!
+register component 'uriproc.uno.so' in registry 'uno_services.rdb'
+succesful!
+register component 'constructors.uno.so' in registry 'uno_services.rdb'
+succesful!
+regcomp -register -br ../../unxlngx6.pro/lib/uno_types.rdb -r
+../../unxlngx6.pro/lib/uno_services.rdb \
+        -c javaloader.uno.so -c javavm.uno.so
+[Java framework] The JRE specified by the bootstrap variable
+UNO_JAVA_JFW_JREHOME  or  UNO_JAVA_JFW_ENV_JREHOME  could not be
+recognized. Check the values and make sure that you use a plug-in
+library that can recognize that JRE.javaldx failed!
+register component 'javaloader.uno.so' in registry
+'../../unxlngx6.pro/lib/uno_services.rdb' succesful!
+register component 'javavm.uno.so' in registry
+'../../unxlngx6.pro/lib/uno_services.rdb' succesful!
+regcomp -register  -br ../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb
+-r ../../unxlngx6.pro/lib/uno_services.rdb -c \
+       
+<A HREF="file:///var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar">file:///var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar</A>
+\
+       
+-env:URE_INTERNAL_JAVA_DIR=<A HREF="file:///var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/solver/680/unxlngx6.pro/bin">file:///var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/solver/680/unxlngx6.pro/bin</A>
+[Java framework] The JRE specified by the bootstrap variable
+UNO_JAVA_JFW_JREHOME  or  UNO_JAVA_JFW_ENV_JREHOME  could not be
+recognized. Check the values and make sure that you use a plug-in
+library that can recognize that JRE.javaldx failed!
+[Java framework] The JRE specified by the bootstrap variable
+UNO_JAVA_JFW_JREHOME  or  UNO_JAVA_JFW_ENV_JREHOME  could not be
+recognized. Check the values and make sure that you use a plug-in
+library that can recognize that JRE.register component
+'<A HREF="file:///var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar'">file:///var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar'</A>
+in registry '../../unxlngx6.pro/lib/uno_services.rdb' failed!
+error (RuntimeException): [JavaVirtualMachine]:An unexpected error
+occurred while starting Java!
+using loader com.sun.star.loader.Java2
+dmake:  Error code 1, while making '../../unxlngx6.pro/lib/uno_services.rdb'
+dmake:  '../../unxlngx6.pro/lib/uno_services.rdb' removed.
+'---* tg_merge.mk *---'
+==&gt; ERROR: Build Failed.  Aborting...
+
+ERROR: Error 65280 occurred while making
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/testtools/source/bridgetest
+make: *** [stamp/build] Error 1
+
+real    39m13.854s
+user    19m51.534s
+sys     6m45.541s
+
+
+So what's now the problem???
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001638.html">[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag
+</A></li>
+	<LI>Next message: <A HREF="001641.html">[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1640">[ date ]</a>
+              <a href="thread.html#1640">[ thread ]</a>
+              <a href="subject.html#1640">[ subject ]</a>
+              <a href="author.html#1640">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

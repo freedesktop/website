@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.9.90: build error in project shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:j%40bitron.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000909.html">
+   <LINK REL="Next"  HREF="000914.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.9.90: build error in project shell
+   </H1>
+    <B>Jürg Billeter
+    </B> 
+    <A HREF="mailto:j%40bitron.ch"
+       TITLE="[Open Office] ooo-build-1.9.90: build error in project shell">j@bitron.ch
+       </A><BR>
+    <I>Wed, 20 Apr 2005 14:06:50 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000909.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+        <LI> Next message: <A HREF="000914.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#910">[ date ]</a>
+              <a href="thread.html#910">[ thread ]</a>
+              <a href="subject.html#910">[ subject ]</a>
+              <a href="author.html#910">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-RHxCF23jV+S3M96J0Q9c
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+On Mit, 2005-04-20 at 12:07 +0100, michael meeks wrote:
+&gt;<i> On Tue, 2005-04-19 at 20:24 +0200, J=C3=BCrg Billeter wrote:
+</I>&gt;<i> &gt; The backward compatibility may be a problem but as I've built GNOME 2.1=
+</I>0
+&gt;<i> &gt; without any issues from scratch, this doesn't seem to appear very often=
+</I>.
+&gt;<i> &gt; BTW: There is a pkgconfig compile-time option to disable the new
+</I>&gt;<i> &gt; behavior.
+</I>&gt;<i>=20
+</I>&gt;<i> 	OK - so I understand the issue now :-) your patch looks fine in which
+</I>&gt;<i> case; I'll get it commited to ooo-build &amp; file it up-stream for you :-)
+</I>
+Found more missing pkgconfig modules during the build later on: modules
+ucb, vcl and the evoab patch are affected. I hopefully have caught all
+now but the build hasn't completed yet. Patch against ooo-build HEAD
+attached. Will reply as soon as I've successfully built ooo-build 1.9.92
+with patch.
+
+Regards,
+
+J=C3=BCrg
+
+--=20
+J=C3=BCrg Billeter &lt;<A HREF="mailto:j@bitron.ch">j@bitron.ch</A>&gt;
+
+--=-RHxCF23jV+S3M96J0Q9c
+Content-Disposition: attachment; filename=ooo-build-pkgconfig-0.17-1.diff
+Content-Type: text/x-patch; name=ooo-build-pkgconfig-0.17-1.diff; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Index: ChangeLog
+===================================================================
+RCS file: /cvs/gnome/ooo-build/ChangeLog,v
+retrieving revision 1.2248
+diff -u -r1.2248 ChangeLog
+--- ChangeLog	19 Apr 2005 17:12:14 -0000	1.2248
++++ ChangeLog	20 Apr 2005 11:53:47 -0000
+@@ -1,3 +1,10 @@
++2005-04-20  Juerg Billeter  &lt;<A HREF="mailto:j@bitron.ch">j@bitron.ch</A>&gt;
++
++	* patches/src680/buildfix-pkgconfig-0.17.diff,
++	patches/evo2/connectivity-source-drivers-evoab1-5-makefile-mk.diff:
++	add missing pkgconfig modules, fixes build with pkgconfig &gt;= 0.17
++	* patches/src680/apply: add to BuildBits
++
+ 2005-04-19  Michael Meeks  &lt;<A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>&gt;
+ 
+ 	* ** m94 build still very unfinished **
+Index: patches/evo2/connectivity-source-drivers-evoab1-5-makefile-mk.diff
+===================================================================
+RCS file: /cvs/gnome/ooo-build/patches/evo2/connectivity-source-drivers-evoab1-5-makefile-mk.diff,v
+retrieving revision 1.3
+diff -u -r1.3 connectivity-source-drivers-evoab1-5-makefile-mk.diff
+--- patches/evo2/connectivity-source-drivers-evoab1-5-makefile-mk.diff	2 Feb 2005 05:24:23 -0000	1.3
++++ patches/evo2/connectivity-source-drivers-evoab1-5-makefile-mk.diff	20 Apr 2005 11:53:47 -0000
+@@ -1,6 +1,6 @@
+ --- /dev/null	2004-08-25 23:04:59.000000000 +0530
+ +++ connectivity/source/drivers/evoab1.5/makefile.mk	2005-02-01 19:58:47.856045147 +0530
+-@@ -0,0 +1,141 @@
++@@ -0,0 +1,142 @@
+ +#*************************************************************************
+ +#
+ +#   The Contents of this file are made available subject to the terms of
+@@ -129,6 +129,7 @@
+ +.ENDIF
+ +#SHL1STDLIBS+=`pkg-config --libs gtk+-2.0`
+ +SHL1STDLIBS+=`pkg-config --libs gobject-2.0`
+++SHL1STDLIBS+=`pkg-config --libs glib-2.0`
+ +#SHL1STDLIBS+=`pkg-config --libs libebook-1.0 `
+ +
+ +SHL1DEPN=
+Index: patches/src680/apply
+===================================================================
+RCS file: /cvs/gnome/ooo-build/patches/src680/apply,v
+retrieving revision 1.69
+diff -u -r1.69 apply
+--- patches/src680/apply	19 Apr 2005 17:12:15 -0000	1.69
++++ patches/src680/apply	20 Apr 2005 11:53:48 -0000
+@@ -366,6 +366,9 @@
+ # &quot;-z now&quot; is a linker option, so it should be marked with -Wl, #46384, n#74011
+ buildfix-ld-z-now.diff
+ 
++# fix build of gconfbe, ucb, and vcl with pkgconfig 0.17 and later
++buildfix-pkgconfig-0.17.diff
++
+ [ ParallelMake ]
+ # Fixes for distributed building (with icecream) #35627
+ parallel-solenv-target-mk.diff
+Index: patches/src680/buildfix-pkgconfig-0.17.diff
+===================================================================
+RCS file: patches/src680/buildfix-pkgconfig-0.17.diff
+diff -N patches/src680/buildfix-pkgconfig-0.17.diff
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ patches/src680/buildfix-pkgconfig-0.17.diff	20 Apr 2005 11:53:48 -0000
+@@ -0,0 +1,48 @@
++Index: shell/source/backends/gconfbe/makefile.mk
++===================================================================
++RCS file: /cvs/gsl/shell/source/backends/gconfbe/makefile.mk,v
++retrieving revision 1.11
++diff -u -r1.11 makefile.mk
++--- shell/source/backends/gconfbe/makefile.mk 21 Feb 2005 12:06:04 -0000      1.11
+++++ shell/source/backends/gconfbe/makefile.mk 19 Apr 2005 16:34:21 -0000
++@@ -83,7 +83,7 @@
++
++ .IF &quot;$(ENABLE_GNOMEVFS)&quot;!=&quot;&quot;
++ COMPILER_WARN_ALL=TRUE
++-PKGCONFIG_MODULES=gconf-2.0 gobject-2.0
+++PKGCONFIG_MODULES=gconf-2.0 gobject-2.0 glib-2.0 ORBit-2.0
++ .INCLUDE: pkg_config.mk
++
++ .IF &quot;$(OS)&quot; == &quot;SOLARIS&quot;
++Index: ucb/source/ucp/gvfs/makefile.mk
++===================================================================
++RCS file: /cvs/ucb/ucb/source/ucp/gvfs/makefile.mk,v
++retrieving revision 1.4
++diff -u -r1.4 makefile.mk
++--- ucb/source/ucp/gvfs/makefile.mk	21 Jan 2005 11:38:43 -0000	1.4
+++++ ucb/source/ucp/gvfs/makefile.mk	19 Apr 2005 20:39:54 -0000
++@@ -75,7 +75,7 @@
++ 
++ .IF &quot;$(ENABLE_GNOMEVFS)&quot;!=&quot;&quot;
++ COMPILER_WARN_ALL=TRUE
++-PKGCONFIG_MODULES=gnome-vfs-2.0
+++PKGCONFIG_MODULES=gnome-vfs-2.0 glib-2.0 gthread-2.0
++ .INCLUDE: pkg_config.mk
++ 
++ .IF &quot;$(OS)&quot; == &quot;SOLARIS&quot;
++Index: vcl/util/makefile.mk
++===================================================================
++RCS file: /cvs/gsl/vcl/util/makefile.mk,v
++retrieving revision 1.65
++diff -u -r1.65 makefile.mk
++--- vcl/util/makefile.mk	13 Jan 2005 18:16:05 -0000	1.65
+++++ vcl/util/makefile.mk	20 Apr 2005 06:43:17 -0000
++@@ -362,7 +362,7 @@
++ 
++ # gtk plugin
++ .IF &quot;$(ENABLE_GTK)&quot; != &quot;&quot;
++-PKGCONFIG_MODULES=gtk+-2.0 gthread-2.0
+++PKGCONFIG_MODULES=gtk+-2.0 gthread-2.0 gdk-x11-2.0 gdk-pixbuf-2.0 glib-2.0 gobject-2.0 pango
++ .INCLUDE: pkg_config.mk
++ 
++ LIB4TARGET=$(SLB)$/igtk_plug_
+
+--=-RHxCF23jV+S3M96J0Q9c--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000909.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+	<LI> Next message: <A HREF="000914.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#910">[ date ]</a>
+              <a href="thread.html#910">[ thread ]</a>
+              <a href="subject.html#910">[ subject ]</a>
+              <a href="author.html#910">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] m109 build failure with ooo-build HEAD and gcc4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m109%20build%20failure%20with%20ooo-build%20HEAD%20and%20gcc4&In-Reply-To=200506171141.26398.pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001021.html">
+   <LINK REL="Next"  HREF="001024.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] m109 build failure with ooo-build HEAD and gcc4</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m109%20build%20failure%20with%20ooo-build%20HEAD%20and%20gcc4&In-Reply-To=200506171141.26398.pmladek%40suse.cz"
+       TITLE="[Open Office] m109 build failure with ooo-build HEAD and gcc4">michael.meeks at novell.com
+       </A><BR>
+    <I>Fri Jun 17 06:39:41 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001021.html">[Open Office] m109 build failure with ooo-build HEAD and gcc4
+</A></li>
+        <LI>Next message: <A HREF="001024.html">[Open Office] m108 fails with --disable-mozilla
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1022">[ date ]</a>
+              <a href="thread.html#1022">[ thread ]</a>
+              <a href="subject.html#1022">[ subject ]</a>
+              <a href="author.html#1022">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Petr,
+
+On Fri, 2005-06-17 at 11:41 +0200, Petr Mladek wrote:
+&gt;<i> If I understand it correctly, the symbols are visible just in libsvl but 
+</I>&gt;<i> libucpchelp1.so is linked against libsvt. libsvt itself is linked against 
+</I>&gt;<i> libsvl but this does not seems to be enough to make the symbols visible for 
+</I>&gt;<i> libucpchelp1.so.
+</I>
+	How odd; that's very weird ;-)
+
+&gt;<i> The build pass if I link rather against libsvl. The patch is:
+</I>&gt;<i> --- xmlhelp/util/makefile.mk.old        2005-06-16 18:41:13.000000000 +0200 
+</I>&gt;<i> +++ xmlhelp/util/makefile.mk    2005-06-17 11:22:04.000000000 +0200 
+</I>&gt;<i> @@ -105,7 +105,7 @@ 
+</I>&gt;<i>         $(SABLOT3RDLIB)          \ 
+</I>&gt;<i>         $(EXPATASCII3RDLIB)      \ 
+</I>&gt;<i>         $(UCBHELPERLIB)          \ 
+</I>&gt;<i> -       $(SVTOOLLIB)             \ 
+</I>&gt;<i> +       $(SVLLIB)             \ 
+</I>&gt;<i>         $(BERKELEYLIB) 
+</I>&gt;<i>  #      $(BERKELEYCPPLIB) 
+</I>&gt;<i>
+</I>&gt;<i> But I am not sure about the fix. I don't know what's the difference between 
+</I>&gt;<i> libsvl and libsvt and what library should be used here.
+</I>
+	Well - lets link to both for now - if it uses SVL directly it should be
+on the link line - can you commit that fix ?
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001021.html">[Open Office] m109 build failure with ooo-build HEAD and gcc4
+</A></li>
+	<LI>Next message: <A HREF="001024.html">[Open Office] m108 fails with --disable-mozilla
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1022">[ date ]</a>
+              <a href="thread.html#1022">[ thread ]</a>
+              <a href="subject.html#1022">[ subject ]</a>
+              <a href="author.html#1022">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

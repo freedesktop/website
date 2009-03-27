@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] patch for sun jdk1.5 enum keyword problem,
+	base on src680-m136
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20patch%20for%20sun%20jdk1.5%20enum%20keyword%20problem%2C%0A%09base%20on%20src680-m136&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001281.html">
+   <LINK REL="Next"  HREF="001278.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] patch for sun jdk1.5 enum keyword problem,
+	base on src680-m136</H1>
+    <B>Lin, Weichuan</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20patch%20for%20sun%20jdk1.5%20enum%20keyword%20problem%2C%0A%09base%20on%20src680-m136&In-Reply-To="
+       TITLE="[Open Office] patch for sun jdk1.5 enum keyword problem,
+	base on src680-m136">weichuan.lin at intel.com
+       </A><BR>
+    <I>Tue Nov  8 02:41:51 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001281.html">[Open Office] Screensaver toggler in presentation mode
+</A></li>
+        <LI>Next message: <A HREF="001278.html">[Open Office] patch for sun jdk1.5 enum keyword problem,
+	base on src680-m136
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1277">[ date ]</a>
+              <a href="thread.html#1277">[ thread ]</a>
+              <a href="subject.html#1277">[ subject ]</a>
+              <a href="author.html#1277">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The patch is for Sun jdk1.5.0_05, enum is interpreted as keyword by the
+jvm, and the old code use enum as an identifier. This patch just revises
+them to &quot;enumer&quot;.
+
+I have successfully built the ooo with this patch on FC4, ia32, and
+--with-tag=src680-m136, the tar file which I got is
+ooo-build-src680.137.0.tar.gz.
+
+BTW, because I failed when I try to build with m137, the patching
+process of ooo-build stops after I typed make, I have to use m136. Has
+this enum related problem been solved in m137?
+
+
+
+
+
+diff -urp
+ooo-build-src680.137.0.orig/build/src680-m136/xmerge/source/xmerge/java/
+org/openoffice/xmerge/ConvertData.java
+ooo-build-src680.137.0/build/src680-m136/xmerge/source/xmerge/java/org/o
+penoffice/xmerge/ConvertData.java
+---
+ooo-build-src680.137.0.orig/build/src680-m136/xmerge/source/xmerge/java/
+org/openoffice/xmerge/ConvertData.java	2005-11-08 13:27:21.000000000
++0800
++++
+ooo-build-src680.137.0/build/src680-m136/xmerge/source/xmerge/java/org/o
+penoffice/xmerge/ConvertData.java	2005-11-08 13:06:06.000000000
++0800
+@@ -127,8 +127,8 @@ public class ConvertData {
+      *           &lt;code&gt;Vector&lt;/code&gt; of &lt;code&gt;Document&lt;/code&gt; objects.
+      */
+     public Enumeration getDocumentEnumeration() {
+-        Enumeration enum = v.elements();
+-		return (enum);
++        Enumeration enumer = v.elements();
++		return (enumer);
+ 	}
+ 
+ 
+diff -urp
+ooo-build-src680.137.0.orig/build/src680-m136/xmerge/source/xmerge/java/
+org/openoffice/xmerge/converter/xml/xslt/DocumentDeserializerImpl.java
+ooo-build-src680.137.0/build/src680-m136/xmerge/source/xmerge/java/org/o
+penoffice/xmerge/converter/xml/xslt/DocumentDeserializerImpl.java
+---
+ooo-build-src680.137.0.orig/build/src680-m136/xmerge/source/xmerge/java/
+org/openoffice/xmerge/converter/xml/xslt/DocumentDeserializerImpl.java
+2005-11-08 13:29:15.000000000 +0800
++++
+ooo-build-src680.137.0/build/src680-m136/xmerge/source/xmerge/java/org/o
+penoffice/xmerge/converter/xml/xslt/DocumentDeserializerImpl.java
+2005-11-08 13:11:05.000000000 +0800
+@@ -155,14 +155,14 @@ public final class DocumentDeserializerI
+      */
+     public Document deserialize() throws ConvertException, IOException
+{
+ 	log(&quot;\nFound the XSLT deserializer&quot;);
+-	Enumeration enum = cd.getDocumentEnumeration();
++	Enumeration enumer = cd.getDocumentEnumeration();
+ 	org.w3c.dom.Document domDoc=null;
+ 	DOMDocument docOut=null;
+ 	GenericOfficeDocument doc = null;
+ 	ByteArrayOutputStream baos =null;
+ 	GenericOfficeDocument sxwDoc = new
+GenericOfficeDocument(&quot;output&quot;);
+-	while (enum.hasMoreElements()) {       
+-		 docOut = (DOMDocument) enum.nextElement();
++	while (enumer.hasMoreElements()) {       
++		 docOut = (DOMDocument) enumer.nextElement();
+ 	}
+ 	domDoc = docOut.getContentDOM();	
+ 	try{
+diff -urp
+ooo-build-src680.137.0.orig/build/src680-m136/xmerge/source/xmerge/java/
+org/openoffice/xmerge/converter/xml/xslt/PluginFactoryImpl.java
+ooo-build-src680.137.0/build/src680-m136/xmerge/source/xmerge/java/org/o
+penoffice/xmerge/converter/xml/xslt/PluginFactoryImpl.java
+---
+ooo-build-src680.137.0.orig/build/src680-m136/xmerge/source/xmerge/java/
+org/openoffice/xmerge/converter/xml/xslt/PluginFactoryImpl.java
+2005-11-08 13:29:04.000000000 +0800
++++
+ooo-build-src680.137.0/build/src680-m136/xmerge/source/xmerge/java/org/o
+penoffice/xmerge/converter/xml/xslt/PluginFactoryImpl.java
+2005-11-08 13:14:00.000000000 +0800
+@@ -183,9 +183,9 @@ public final class PluginFactoryImpl ext
+ 	String ext= &quot;.txt&quot;;
+ 	String mimeType = null;
+ 	ConverterInfo ci = this.getConverterInfo();
+-	Enumeration enum = ci.getDeviceMime();
+-	while (enum.hasMoreElements()) {       
+-	    mimeType= (String) enum.nextElement();
++	Enumeration enumer = ci.getDeviceMime();
++	while (enumer.hasMoreElements()) {       
++	    mimeType= (String) enumer.nextElement();
+ 	}
+ 	try {
+ 	    props.load(is);
+
+
+
+
+Best Regards
+Weichuan
+
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001281.html">[Open Office] Screensaver toggler in presentation mode
+</A></li>
+	<LI>Next message: <A HREF="001278.html">[Open Office] patch for sun jdk1.5 enum keyword problem,
+	base on src680-m136
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1277">[ date ]</a>
+              <a href="thread.html#1277">[ thread ]</a>
+              <a href="subject.html#1277">[ subject ]</a>
+              <a href="author.html#1277">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

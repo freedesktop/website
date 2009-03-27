@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Debian / Gnome OO.o
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000022.html">
+   <LINK REL="Next"  HREF="000010.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Debian / Gnome OO.o
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Re: Debian / Gnome OO.o">michael@ximian.com
+       </A><BR>
+    <I>Mon, 11 Aug 2003 18:01:18 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000022.html">[Open Office] Re: Debian / Gnome OO.o
+</A></li>
+        <LI> Next message: <A HREF="000010.html">[Open Office] Building OOo on debian.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ken,
+
+On Mon, 2003-08-11 at 12:23, Ken Foskey wrote:
+&gt;<i> explain why we are using patch sets instead of aggressively getting them
+</I>&gt;<i> implemented into CVS?
+</I>
+	Well - it seems to me there will always be features that work well for
+one platform (Unix, Mac, Gnome) etc. that have possibly detrimental
+effects on the other platforms.
+
+	Thus - it makes sense to have patches separated; eg. looking at my
+existing patch-set (most of which are filed in bugzilla, see the #
+numbers in RC3_030729/apply eg.) some of the patches are Linux specific
+and no-brainers eg. not doing hundreds of sched_yields - just in case
+someone is using green-threads (see #9277 for a much lamer fix).
+
+	Others are simply festering in IZ - un-commented on, or with
+ultra-conservatives behind them ;-) yet others are not done prettily -
+eg. the alpha blending work is not done in a robust way - it happens to
+work - but it's not suitable for folding up-stream until we have a
+decently scalable alpha-rendering API - that I have yet to even look at.
+
+	So - it seems to me, that for the foreseeable future it will be
+necessary to fairly heavily patch OO.o for virtually all distributions -
+and it's likely that this problem will get worse and worse during the
+lifetime of OO.o.
+
+	Anyway, that's my thinking - as it stands, of course - the other nice
+thing about a separate patch-set like this is that it can (perhaps)
+centralise the myriad slightly differently buggy hacks that people wrap
+OO.o with (cf. the differences in wrapper scripts for Mdk, RH, Debian,
+Ximian eg.) - thus saving work, and reducing confusion [ I hope ].
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000022.html">[Open Office] Re: Debian / Gnome OO.o
+</A></li>
+	<LI> Next message: <A HREF="000010.html">[Open Office] Building OOo on debian.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

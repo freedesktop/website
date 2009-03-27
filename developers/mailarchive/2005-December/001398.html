@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Icon switching patches
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Icon%20switching%20patches&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001397.html">
+   <LINK REL="Next"  HREF="001399.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Icon switching patches</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Icon%20switching%20patches&In-Reply-To="
+       TITLE="[Open Office] Icon switching patches">kendy at suse.cz
+       </A><BR>
+    <I>Tue Dec  6 04:19:08 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001397.html">[Open Office] unsubcribe
+</A></li>
+        <LI>Next message: <A HREF="001399.html">[Open Office] KDE build of m140+
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1398">[ date ]</a>
+              <a href="thread.html#1398">[ thread ]</a>
+              <a href="subject.html#1398">[ subject ]</a>
+              <a href="author.html#1398">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I changed the old icon switchitching patches for a snapshot of 
+'iconswitching1' CWS for the milestones m141 and newer.  The functionality 
+should be the same - but there is one incompatibility.
+
+'iconswitching1' uses name of the theme as the value in the configuration file 
+when storing the settings.  The old patches were using its index, which can 
+result in an error during startup (corrupted user configuration).  This 
+should not affect users, because we were using '.ooo-2.0-pre' as the user's 
+directory for 2.0, and now we have switched to '.ooo-2.0'.  The developers 
+that install OOo from HEAD regularly should just remove their config 
+directory.
+
+If you used another user's directory in your distro (like '.ooo-2.0' already 
+for the 2.0), you'll probably have to change it to something like 
+'.ooo-2.0.1'.  Sorry for the inconvenience :-(
+
+Regards,
+Jan
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001397.html">[Open Office] unsubcribe
+</A></li>
+	<LI>Next message: <A HREF="001399.html">[Open Office] KDE build of m140+
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1398">[ date ]</a>
+              <a href="thread.html#1398">[ thread ]</a>
+              <a href="subject.html#1398">[ subject ]</a>
+              <a href="author.html#1398">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

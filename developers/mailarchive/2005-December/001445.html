@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] CWS for non-Domain Developer
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20CWS%20for%20non-Domain%20Developer&In-Reply-To=43B5794C.9050700%40sjsoft.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001444.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] CWS for non-Domain Developer</H1>
+    <B>Volker Quetschke</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20CWS%20for%20non-Domain%20Developer&In-Reply-To=43B5794C.9050700%40sjsoft.com"
+       TITLE="[Open Office] CWS for non-Domain Developer">quetschke at scytek.de
+       </A><BR>
+    <I>Fri Dec 30 18:44:05 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001444.html">[Open Office] CWS for non-Domain Developer
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1445">[ date ]</a>
+              <a href="thread.html#1445">[ thread ]</a>
+              <a href="subject.html#1445">[ subject ]</a>
+              <a href="author.html#1445">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>David Fraser wrote:
+&gt;<i> Hi
+</I>&gt;<i> 
+</I>&gt;<i> I'm trying to find out what's involved in certain CWSs. Using EIS I can
+</I>&gt;<i> see the issues attached to a CWS but not what actual files have been
+</I>&gt;<i> changed and the changes made.
+</I>&gt;<i> So what I'd really like to do is get a patch that corresponds to all the
+</I>&gt;<i> changes made in that CWS.
+</I>&gt;<i> The cws tools (and the ooo-build enhancement cws-extract) should be able
+</I>&gt;<i> to do that.
+</I>You can use Bonsai. &lt;<A HREF="http://go-oo.org/bonsai/cvsqueryform.cgi">http://go-oo.org/bonsai/cvsqueryform.cgi</A>&gt;
+
+And once you know which modules are touched (cwsquery can help
+you with this task) you can also use cvs to get the actual patch.
+For example:
+
+$ cvs diff -u -rCWS_SRC680_VQ25_ANCHOR -rcws_src680_vq25 config_office
+
+&gt;<i> However, because I'm not a Domain Developer and don't have a OOo CVS
+</I>&gt;<i> account, I can't access the EIS SOAP service that lets you do that.
+</I>&gt;<i> So two proposals:
+</I>&gt;<i> 1) It would be nice to access the EIS SOAP service without a CVS write
+</I>&gt;<i> account
+</I>&gt;<i> 2) In the mean time, it would be nice if either EIS or some other web
+</I>&gt;<i> site provided such patches. They need not be generated dynamically, a
+</I>&gt;<i> nightly run of cws-extract would be great and they could offer static
+</I>&gt;<i> links to the patches.
+</I>Looks like you are looking for the Bonsai page ;)
+
+Volker
+
+-- 
+If you like my work consider:  <A HREF="http://www.scytek.de/donations.html">http://www.scytek.de/donations.html</A>
+PGP/GPG key  (ID: 0x9F8A785D)  available  from  wwwkeys.de.pgp.net
+key-fingerprint 550D F17E B082 A3E9 F913  9E53 3D35 C9BA 9F8A 785D
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 254 bytes
+Desc: OpenPGP digital signature
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051230/9949e79f/signature.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20051230/9949e79f/signature.bin</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001444.html">[Open Office] CWS for non-Domain Developer
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1445">[ date ]</a>
+              <a href="thread.html#1445">[ thread ]</a>
+              <a href="subject.html#1445">[ subject ]</a>
+              <a href="author.html#1445">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

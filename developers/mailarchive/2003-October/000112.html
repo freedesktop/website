@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] bullet issues ....
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000111.html">
+   <LINK REL="Next"  HREF="000113.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] bullet issues ....
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] bullet issues ....">michael@ximian.com
+       </A><BR>
+    <I>Mon, 27 Oct 2003 18:38:12 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000111.html">[Open Office] Re: Defect Fixed
+</A></li>
+        <LI> Next message: <A HREF="000113.html">[Open Office] Re: bullet issues ....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#112">[ date ]</a>
+              <a href="thread.html#112">[ thread ]</a>
+              <a href="subject.html#112">[ subject ]</a>
+              <a href="author.html#112">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Caolan,
+
+	We're suffering some nasty issues with bullet import / export.
+
+	It seems on export wrtw8num.cxx (SubstituteBullet) uses
+StarSymbolToMSMultiFont to switch font / character (and it's own mapping
+stuff).
+
+	However - on re-import we are having issues - such that we end up with
+a 0xb7 character for the stock bullet in font &quot;symbol&quot;, which is
+somewhat broken :-) The import code in ww8par3.cxx (AdjustLVL) seems
+bereft of equivalent cleverness.
+
+	By adding manglings to VCL's fontcvt.cxx the problem can be hidden; [
+in ImplRecodeString ], however this seems somewhat inelegant to me (if
+not plain wrong). That code (it appears) is only used by the internal
+OutputDevice::Layout code at render-time.
+
+	So - I guess my question is: what is the big-picture strategy for the
+symbol font / the piece-wise approach that MS adopts ? do we keep the
+font as a non-existent &quot;symbol&quot; internally and then try to map that to
+real characters at render time ? or is there something better whereby we
+can map to open/star symbol on import (much like the converse on export)
+?
+
+	Also; I guess reading it introduced me to the RTL_TEXTENCODING_SYMBOL
+charset - how does that tie in ?
+
+	The problem (apparently) doesn't manifest itself with the stock OO.o -
+but I havn't verified that. Since we don't really patch this ourselves,
+I guess that is down to some font-subsetting / listing issue - we have a
+rather reduced set of (only truetype) fonts.
+
+	Advice / input / code pointers much appreciated,
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000111.html">[Open Office] Re: Defect Fixed
+</A></li>
+	<LI> Next message: <A HREF="000113.html">[Open Office] Re: bullet issues ....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#112">[ date ]</a>
+              <a href="thread.html#112">[ thread ]</a>
+              <a href="subject.html#112">[ subject ]</a>
+              <a href="author.html#112">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

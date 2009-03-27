@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] cvs problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000438.html">
+   <LINK REL="Next"  HREF="000440.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] cvs problem
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] cvs problem">michael@ximian.com
+       </A><BR>
+    <I>Tue, 06 Jul 2004 11:56:45 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000438.html">[Open Office] cvs problem
+</A></li>
+        <LI> Next message: <A HREF="000440.html">[Open Office] cvs problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#439">[ date ]</a>
+              <a href="thread.html#439">[ thread ]</a>
+              <a href="subject.html#439">[ subject ]</a>
+              <a href="author.html#439">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Rafal,
+
+On Tue, 2004-07-06 at 00:02 +0200, Rafa³ 'rmrmg' Roszak wrote:
+&gt;<i> &gt; 	ie. the file button.cxx in the above path; +/- 5 lines around
+</I>&gt;<i> &gt; 	line  3514. 
+</I>&gt;<i>
+</I>&gt;<i> In attachment,  but i probably find the problem
+</I>&gt;<i> After building is 
+</I>
+	Perhaps I'm being daft; but the code looks fine - and it looks just
+like what I'm building very happily here.
+
+	So - a different tack ;-) can you - instead, find the command-line that
+kills it: eg.
+
+g++ -c ......
+..... several lines of this ....
+........ -o .../file.o file.cxx
+
+error: leaving directory foo/baa
+
+	And do: cd foo/baa; then cut/paste that compile line, and replace the
+'-c' with a -E, and the .../file.o with eg. /tmp/outp.cxx
+
+	The outp.cxx should contain the full pre-processed output; if you could
+send that outp.cxx, we can perhaps have a better go at working out
+what's wrong.
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000438.html">[Open Office] cvs problem
+</A></li>
+	<LI> Next message: <A HREF="000440.html">[Open Office] cvs problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#439">[ date ]</a>
+              <a href="thread.html#439">[ thread ]</a>
+              <a href="subject.html#439">[ subject ]</a>
+              <a href="author.html#439">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

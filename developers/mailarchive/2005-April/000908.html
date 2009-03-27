@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build-1.9.90: build error in project shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:j%40bitron.ch">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000907.html">
+   <LINK REL="Next"  HREF="000909.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build-1.9.90: build error in project shell
+   </H1>
+    <B>J�rg Billeter
+    </B> 
+    <A HREF="mailto:j%40bitron.ch"
+       TITLE="[Open Office] ooo-build-1.9.90: build error in project shell">j@bitron.ch
+       </A><BR>
+    <I>Tue, 19 Apr 2005 20:24:18 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000907.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+        <LI> Next message: <A HREF="000909.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#908">[ date ]</a>
+              <a href="thread.html#908">[ thread ]</a>
+              <a href="subject.html#908">[ subject ]</a>
+              <a href="author.html#908">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Die, 2005-04-19 at 17:28 +0100, michael meeks wrote:
+&gt;<i> On Tue, 2005-04-19 at 18:32 +0200, Jürg Billeter wrote:
+</I>&gt;<i> &gt; on my system. pkg-config since version 0.17 doesn't return indirect
+</I>&gt;<i> &gt; library dependencies by default anymore. So it seems that glib-2.0 and
+</I>&gt;<i> &gt; ORBit-2.0 should indeed be added to gconfbe as they are used directly,
+</I>&gt;<i> &gt; if I've understood this correctly?
+</I>&gt;<i> 
+</I>&gt;<i> 	So - How odd ? Jurg - can you paste the link error again ? James - any
+</I>&gt;<i> ideas why is this now broken ? and/or the change in behavior here seems
+</I>&gt;<i> odd.
+</I>
+Making: ../../../unxlngi6.pro/lib/gconfbe1.uno.so
+g++ -z combreloc -Wl,-z,defs -Wl,-rpath,'$ORIGIN' -shared -Wl,-O1
+-Wl,--version-script ../../../unxlngi6.pro/misc/exports_gconfbe1.uno.map
+-L../../../unxlngi6.pro/lib -L../lib
+-L/usr/src/ooo-build-1.9.90/build/src680-m90/solenv/unxlngi6/lib
+-L/usr/src/ooo-build-1.9.90/build/src680-m90/solver/680/unxlngi6.pro/lib
+-L/usr/src/ooo-build-1.9.90/build/src680-m90/solenv/unxlngi6/lib
+-LNO_JAVA_HOME/lib -LNO_JAVA_HOME/jre/lib/i386
+-LNO_JAVA_HOME/jre/lib/i386/client
+-LNO_JAVA_HOME/jre/lib/i386/native_threads -L/usr/X11R6/lib
+-L/usr/lib/firefox ../../../unxlngi6.pro/slo/gconfbecdef.o ../../../unxlngi6.pro/slo/gconfbackend.o ../../../unxlngi6.pro/slo/gconfvcllayer.o ../../../unxlngi6.pro/slo/gconfinetlayer.o ../../../unxlngi6.pro/slo/gconfcommonlayer.o ../../../unxlngi6.pro/slo/gconfbe1.uno_version.o
+../../../unxlngi6.pro/slo/gconfbe_description.o
+-o ../../../unxlngi6.pro/lib/gconfbe1.uno.so -luno_cppuhelpergcc3
+-luno_cppu -luno_sal -Wl,--export-dynamic -Wl,--export-dynamic -pthread
+-lgconf-2 -lgobject-2.0 -ldl -lpthread -lm -Wl,-Bdynamic -lstlport_gcc
+../../../unxlngi6.pro/slo/gconfbecdef.o(.text+0x34b): In function
+`createGconfBackend':
+/usr/src/ooo-build-1.9.90/build/src680-m90/shell/source/backends/gconfbe/gconfbecdef.cxx:107: undefined reference to `orbit_major_version'
+../../../unxlngi6.pro/slo/gconfbecdef.o(.text
++0x356):/usr/src/ooo-build-1.9.90/build/src680-m90/shell/source/backends/gconfbe/gconfbecdef.cxx:107: undefined reference to `orbit_minor_version'
+../../../unxlngi6.pro/slo/gconfbackend.o(.text+0x229): In function
+`GconfBackend::getGconfClient()':
+/usr/src/ooo-build-1.9.90/build/src680-m90/shell/source/backends/gconfbe/gconfbackend.cxx:170: undefined reference to `g_error_free'
+collect2: ld returned 1 exit status
+
+&gt;<i> 
+</I>&gt;<i> 	Before I try to get some odd-looking change up-stream here for all our
+</I>&gt;<i> pkg-config usage, it'd be nice to have some rational/authoritative
+</I>&gt;<i> explanation for why pkg-config has &quot;gone autotools&quot; in it's backwards
+</I>&gt;<i> compatibility strategy.
+</I>
+IMO it makes sense to only link explicitly requested libraries and not
+some randomly included indirect dependencies. I don't see this patch as
+an odd change; in contrary, this clarifies what packages are direct
+dependencies and removes unneeded dependencies from the resulting binary
+even without --as-needed.
+
+The backward compatibility may be a problem but as I've built GNOME 2.10
+without any issues from scratch, this doesn't seem to appear very often.
+BTW: There is a pkgconfig compile-time option to disable the new
+behavior.
+
+Regards,
+
+Jürg
+
+-- 
+Jürg Billeter &lt;<A HREF="mailto:j@bitron.ch">j@bitron.ch</A>&gt;
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000907.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+	<LI> Next message: <A HREF="000909.html">[Open Office] ooo-build-1.9.90: build error in project shell
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#908">[ date ]</a>
+              <a href="thread.html#908">[ thread ]</a>
+              <a href="subject.html#908">[ subject ]</a>
+              <a href="author.html#908">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

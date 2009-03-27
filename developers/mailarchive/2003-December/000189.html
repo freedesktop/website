@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Dictionaries in build 47
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-December/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000187.html">
+   <LINK REL="Next"  HREF="000191.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Dictionaries in build 47
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Dictionaries in build 47">michael@ximian.com
+       </A><BR>
+    <I>Wed, 17 Dec 2003 10:17:59 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000187.html">[Open Office] Dictionaries in build 47
+</A></li>
+        <LI> Next message: <A HREF="000191.html">[Open Office] Dictionaries in build 47
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#189">[ date ]</a>
+              <a href="thread.html#189">[ thread ]</a>
+              <a href="subject.html#189">[ subject ]</a>
+              <a href="author.html#189">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Mike,
+
+On Mon, 2003-12-15 at 20:36, <A HREF="mailto:msowka@rogers.com">msowka@rogers.com</A> wrote:
+&gt;<i> I've figured out what's &quot;goin on&quot;. Neither the ooo-1.1 or
+</I>&gt;<i> ooo-dictionaries packages have dictionary.lst file...
+</I>
+	Right; this was fixed a couple of days ago, and the ooo-dictionaries
+package is going through QA. Of course - since in fact the only change
+is adding this file to ooo-dictionaries one might hope this would happen
+quite quickly :-)
+
+&gt;<i> ... after copying that file from oo.org distribution into my dict/ooo
+</I>&gt;<i> directory, I can once again use dicts and thesaurus.
+</I>
+	The file you want is now here too:
+
+	<A HREF="http://ooo.ximian.com/dictionary.lst">http://ooo.ximian.com/dictionary.lst</A>
+
+	And it needs to go in:
+
+	/usr/lib/ooo-1.1.0/share/dict/ooo/
+
+&gt;<i> Is there a script in ooo and dictionaries packages that's supposed
+</I>&gt;<i> to create the dictionary.lst file, and is it broken?
+</I>
+	Yes; there is a script, and it is broken ;-) we'll fix that in
+a later update - I over-enthusiastically binned the script - since we
+no longer needed it to do vile XML re-writing in Perl, but we still need
+it to update the simple text list it seems.
+
+	Thanks for the report,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000187.html">[Open Office] Dictionaries in build 47
+</A></li>
+	<LI> Next message: <A HREF="000191.html">[Open Office] Dictionaries in build 47
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#189">[ date ]</a>
+              <a href="thread.html#189">[ thread ]</a>
+              <a href="subject.html#189">[ subject ]</a>
+              <a href="author.html#189">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

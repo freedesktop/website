@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOo 1.1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:rene%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000348.html">
+   <LINK REL="Next"  HREF="000351.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOo 1.1.1
+   </H1>
+    <B>Rene Engelhard
+    </B> 
+    <A HREF="mailto:rene%40debian.org"
+       TITLE="[Open Office] OOo 1.1.1">rene@debian.org
+       </A><BR>
+    <I>Thu, 8 Apr 2004 04:07:28 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000348.html">[Open Office] OOo 1.1.1
+</A></li>
+        <LI> Next message: <A HREF="000351.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#350">[ date ]</a>
+              <a href="thread.html#350">[ thread ]</a>
+              <a href="subject.html#350">[ subject ]</a>
+              <a href="author.html#350">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hi,
+
+Michael Meeks wrote:
+&gt;<i> 	Yes - removing apply.pl is not going to be the solution. I think
+</I>&gt;<i> norwegian-translation.diff is just a pain since it doesn't unapply
+</I>&gt;<i> cleanly (at least for me). Ultimately, you can't edit stuff and do a
+</I>
+as I told on IRC, I do not see this.... I did many full unapply/apply
+cycles since I committed this.
+
+&gt;<i> &gt; config.status: creating set_soenv
+</I>&gt;<i> &gt; configure: creating ./config.status
+</I>&gt;<i> &gt; config.status: creating set_soenv
+</I>&gt;<i> &gt; config.status: creating ../berkeleydb/prj/d.lst
+</I>&gt;<i> &gt; config.status: error: cannot find input file: ../berkeleydb/prj/d.lst.in
+</I>&gt;<i> 
+</I>&gt;<i> 	This just means you applied half of the system-db patch set I think;
+</I>&gt;<i> system-db.diff depends on the configure changes which are glupped
+</I>&gt;<i> together in another diff AFAIR.
+</I>
+actually this looks like the other way round - you probably applied
+config-switches.diff (and system-preprocess.diff which actually contains
+the AC_OUTPUT stuff which is done here) which detects whether you want to
+build with or without system berkeleydb without applying system-db.diff
+- - and that d.lst.in is created by system-db.diff.
+
+(the same issue exists with the need of system-sane.diff,
+system-x11-extensions.diff and system-unixodbc.diff, not to speak that
+config-switches.diff needs system-preprocess.diff.....)
+
+IIRC and AFAIS this step isn't even needed for berkeleydb, I'll
+investigate.
+
+Grüße/Regards,
+
+René
+- -- 
+ .''`.  René Engelhard -- Debian GNU/Linux Developer
+ : :' : <A HREF="http://www.debian.org">http://www.debian.org</A> | <A HREF="http://people.debian.org/~rene/">http://people.debian.org/~rene/</A>
+ `. `'  <A HREF="mailto:rene@debian.org">rene@debian.org</A> | GnuPG-Key ID: 248AEB73
+   `-   Fingerprint: 41FA F208 28D4 7CA5 19BB  7AD9 F859 90B0 248A EB73
+      
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.4 (GNU/Linux)
+
+iD8DBQFAdLPg+FmQsCSK63MRAmKDAJwO8B0l6ukEBnfUwrLVstk5I34HowCfb4Yp
+8EhTssdNSbX76N/0ZJt6t5c=
+=xWK+
+-----END PGP SIGNATURE-----
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000348.html">[Open Office] OOo 1.1.1
+</A></li>
+	<LI> Next message: <A HREF="000351.html">[Open Office] OOo 1.1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#350">[ date ]</a>
+              <a href="thread.html#350">[ thread ]</a>
+              <a href="subject.html#350">[ subject ]</a>
+              <a href="author.html#350">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

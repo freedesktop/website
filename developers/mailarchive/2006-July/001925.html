@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] HEAD with system icu fails
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20HEAD%20with%20system%20icu%20fails&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001932.html">
+   <LINK REL="Next"  HREF="001926.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] HEAD with system icu fails</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20HEAD%20with%20system%20icu%20fails&In-Reply-To="
+       TITLE="[Open Office] HEAD with system icu fails">h.mth at web.de
+       </A><BR>
+    <I>Wed Jul  5 08:20:08 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001932.html">[Open Office] Fwd: ooo-build-2-0-3
+</A></li>
+        <LI>Next message: <A HREF="001926.html">[Open Office] SuSE 7.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1925">[ date ]</a>
+              <a href="thread.html#1925">[ thread ]</a>
+              <a href="subject.html#1925">[ subject ]</a>
+              <a href="author.html#1925">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi list!
+My build just failed with ooo-build HEAD, src680-m174 and system icu.
+Anyone any ideas about this?
+
+Making: ../unxlngi6.pro/lib/i18npool.uno.so
+g++ -Wl,-z,combreloc -Wl,-z,defs -Wl,-rpath,'$ORIGIN' -Wl,-zdynsort -shared -Wl,-O1 -Wl,--version-script ../unxlngi6.pro/misc/i18npool_i18npool.uno.map -L../unxlngi6.pro/lib -L../lib -L/var/tmp/portage/openoffice-680.174.0/work/ooo-build/build/src680-m174/solenv/unxlngi6/lib -L/var/tmp/portage/openoffice-680.174.0/work/ooo-build/build/src680-m174/solver/680/unxlngi6.pro/lib -L/var/tmp/portage/openoffice-680.174.0/work/ooo-build/build/src680-m174/solenv/unxlngi6/lib -L/opt/gcj-4.1.1/lib -L/opt/gcj-4.1.1/jre/lib/i386 -L/opt/gcj-4.1.1/jre/lib/i386/client -L/opt/gcj-4.1.1/jre/lib/i386/native_threads -L/usr/lib -L/usr/X11R6/lib -L/usr/lib/mozilla-firefox ../unxlngi6.pro/slo/i18npool.uno_version.o ../unxlngi6.pro/slo/i18npool.uno_description.o -o ../unxlngi6.pro/lib/i18npool.uno.so ../unxlngi6.pro/slo/defaultnumberingprovider.o ../unxlngi6.pro/slo/nativenumbersupplier.o ../unxlngi6.pro/slo/registerservices.o ../unxlngi6.pro/slo/numberformatcode.o ../unxlngi6.pro/slo/localedata.o ../unxlngi6.pro/slo/indexentrysupplier.o ../unxlngi6.pro/slo/indexentrysupplier_asian.o ../unxlngi6.pro/slo/indexentrysupplier_ja_phonetic.o ../unxlngi6.pro/slo/indexentrysupplier_default.o ../unxlngi6.pro/slo/indexentrysupplier_common.o ../unxlngi6.pro/slo/calendarImpl.o ../unxlngi6.pro/slo/calendar_gregorian.o ../unxlngi6.pro/slo/calendar_hijri.o ../unxlngi6.pro/slo/calendar_jewish.o ../unxlngi6.pro/slo/breakiteratorImpl.o ../unxlngi6.pro/slo/breakiterator_cjk.o ../unxlngi6.pro/slo/breakiterator_ctl.o ../unxlngi6.pro/slo/breakiterator_th.o ../unxlngi6.pro/slo/breakiterator_hi.o ../unxlngi6.pro/slo/breakiterator_unicode.o ../unxlngi6.pro/slo/xdictionary.o ../unxlngi6.pro/slo/OpenOffice_icu_dat.o ../unxlngi6.pro/slo/OpenOffice_char_ta_brk.o ../unxlngi6.pro/slo/OpenOffice_count_word_fi_brk.o ../unxlngi6.pro/slo/OpenOffice_count_word_brk.o ../unxlngi6.pro/slo/OpenOffice_dict_word_ca_brk.o ../unxlngi6.pro/slo/OpenOffice_dict_word_fi_brk.o ../unxlngi6.pro/slo/OpenOffice_dict_word_he_brk.o ../unxlngi6.pro/slo/OpenOffice_dict_word_hu_brk.o ../unxlngi6.pro/slo/OpenOffice_dict_word_brk.o ../unxlngi6.pro/slo/OpenOffice_edit_word_he_brk.o ../unxlngi6.pro/slo/OpenOffice_edit_word_brk.o ../unxlngi6.pro/slo/OpenOffice_line_brk.o ../unxlngi6.pro/slo/transliteration_body.o ../unxlngi6.pro/slo/transliteration_caseignore.o ../unxlngi6.pro/slo/transliterationImpl.o ../unxlngi6.pro/slo/transliteration_commonclass.o ../unxlngi6.pro/slo/transliteration_OneToOne.o ../unxlngi6.pro/slo/transliteration_Ignore.o ../unxlngi6.pro/slo/transliteration_Numeric.o ../unxlngi6.pro/slo/hiraganaToKatakana.o ../unxlngi6.pro/slo/katakanaToHiragana.o ../unxlngi6.pro/slo/ignoreKana.o ../unxlngi6.pro/slo/halfwidthToFullwidth.o ../unxlngi6.pro/slo/fullwidthToHalfwidth.o ../unxlngi6.pro/slo/ignoreWidth.o ../unxlngi6.pro/slo/smallToLarge_ja_JP.o ../unxlngi6.pro/slo/largeToSmall_ja_JP.o ../unxlngi6.pro/slo/ignoreSize_ja_JP.o ../unxlngi6.pro/slo/ignoreMinusSign_ja_JP.o ../unxlngi6.pro/slo/ignoreIterationMark_ja_JP.o ../unxlngi6.pro/slo/ignoreTraditionalKana_ja_JP.o ../unxlngi6.pro/slo/ignoreTraditionalKanji_ja_JP.o ../unxlngi6.pro/slo/ignoreProlongedSoundMark_ja_JP.o ../unxlngi6.pro/slo/ignoreZiZu_ja_JP.o ../unxlngi6.pro/slo/ignoreBaFa_ja_JP.o ../unxlngi6.pro/slo/ignoreTiJi_ja_JP.o ../unxlngi6.pro/slo/ignoreHyuByu_ja_JP.o ../unxlngi6.pro/slo/ignoreSeZe_ja_JP.o ../unxlngi6.pro/slo/ignoreIandEfollowedByYa_ja_JP.o ../unxlngi6.pro/slo/ignoreKiKuFollowedBySa_ja_JP.o ../unxlngi6.pro/slo/ignoreSeparator_ja_JP.o ../unxlngi6.pro/slo/ignoreSpace_ja_JP.o ../unxlngi6.pro/slo/ignoreMiddleDot_ja_JP.o ../unxlngi6.pro/slo/textToPronounce_zh.o ../unxlngi6.pro/slo/numtochar.o ../unxlngi6.pro/slo/numtotext_cjk.o ../unxlngi6.pro/slo/chartonum.o ../unxlngi6.pro/slo/texttonum.o ../unxlngi6.pro/slo/characterclassificationImpl.o ../unxlngi6.pro/slo/cclass_unicode.o ../unxlngi6.pro/slo/cclass_unicode_parser.o ../unxlngi6.pro/slo/scripttypedetector.o ../unxlngi6.pro/slo/collatorImpl.o ../unxlngi6.pro/slo/chaptercollator.o ../unxlngi6.pro/slo/collator_unicode.o ../unxlngi6.pro/slo/inputsequencechecker.o ../unxlngi6.pro/slo/inputsequencechecker_th.o ../unxlngi6.pro/slo/inputsequencechecker_hi.o ../unxlngi6.pro/slo/textconversionImpl.o ../unxlngi6.pro/slo/textconversion.o ../unxlngi6.pro/slo/textconversion_ko.o ../unxlngi6.pro/slo/textconversion_zh.o -li18nutilgcc3 -luno_cppuhelpergcc3 -luno_cppu -luno_sal -licui18n -licuuc -ldl -lpthread -lm -Wl,-Bdynamic -lstlport
+../unxlngi6.pro/slo/OpenOffice_icu_dat.o:(.data.rel+0x2c): undefined reference to `OpenOffice_icu_______unxlngi6_pro_misc_OpenOffice_char_ta_brk'
+../unxlngi6.pro/slo/OpenOffice_icu_dat.o:(.data.rel+0x34): undefined reference to `OpenOffice_icu_______unxlngi6_pro_misc_OpenOffice_count_word_brk'
+../unxlngi6.pro/slo/OpenOffice_icu_dat.o:(.data.rel+0x3c): undefined reference to `OpenOffice_icu_______unxlngi6_pro_misc_OpenOffice_count_word_fi_brk'
+../unxlngi6.pro/slo/OpenOffice_icu_dat.o:(.data.rel+0x44): undefined reference to `OpenOffice_icu_______unxlngi6_pro_misc_OpenOffice_dict_word_brk'
+../unxlngi6.pro/slo/OpenOffice_icu_dat.o:(.data.rel+0x4c): undefined reference to `OpenOffice_icu_______unxlngi6_pro_misc_OpenOffice_dict_word_ca_brk'
+../unxlngi6.pro/slo/OpenOffice_icu_dat.o:(.data.rel+0x54): undefined reference to `OpenOffice_icu_______unxlngi6_pro_misc_OpenOffice_dict_word_fi_brk'
+../unxlngi6.pro/slo/OpenOffice_icu_dat.o:(.data.rel+0x5c): undefined reference to `OpenOffice_icu_______unxlngi6_pro_misc_OpenOffice_dict_word_he_brk'
+../unxlngi6.pro/slo/OpenOffice_icu_dat.o:(.data.rel+0x64): undefined reference to `OpenOffice_icu_______unxlngi6_pro_misc_OpenOffice_dict_word_hu_brk'
+../unxlngi6.pro/slo/OpenOffice_icu_dat.o:(.data.rel+0x6c): undefined reference to `OpenOffice_icu_______unxlngi6_pro_misc_OpenOffice_edit_word_brk'
+../unxlngi6.pro/slo/OpenOffice_icu_dat.o:(.data.rel+0x74): undefined reference to `OpenOffice_icu_______unxlngi6_pro_misc_OpenOffice_edit_word_he_brk'
+../unxlngi6.pro/slo/OpenOffice_icu_dat.o:(.data.rel+0x7c): undefined reference to `OpenOffice_icu_______unxlngi6_pro_misc_OpenOffice_line_brk'
+collect2: ld gab 1 als Ende-Status zur&#252;ck
+dmake:  Error code 1, while making '../unxlngi6.pro/lib/i18npool.uno.so'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making /var/tmp/portage/openoffice-680.174.0/work/ooo-build/build/src680-m174/i18npool/util
+
+
+Regards,
+Hanno
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001932.html">[Open Office] Fwd: ooo-build-2-0-3
+</A></li>
+	<LI>Next message: <A HREF="001926.html">[Open Office] SuSE 7.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1925">[ date ]</a>
+              <a href="thread.html#1925">[ thread ]</a>
+              <a href="subject.html#1925">[ subject ]</a>
+              <a href="author.html#1925">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build HEAD updated to src680-m60
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-November/index.html" >
+   <LINK REL="made" HREF="mailto:kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000564.html">
+   <LINK REL="Next"  HREF="000569.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build HEAD updated to src680-m60
+   </H1>
+    <B>Jan Holesovsky
+    </B> 
+    <A HREF="mailto:kendy%40suse.cz"
+       TITLE="[Open Office] ooo-build HEAD updated to src680-m60">kendy@suse.cz
+       </A><BR>
+    <I>Fri, 5 Nov 2004 16:03:08 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000564.html">[Open Office] ooo-build HEAD updated to src680-m60
+</A></li>
+        <LI> Next message: <A HREF="000569.html">[Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot; module
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#565">[ date ]</a>
+              <a href="thread.html#565">[ thread ]</a>
+              <a href="subject.html#565">[ subject ]</a>
+              <a href="author.html#565">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+On Thursday 04 November 2004 10:52, Jan Holesovsky wrote:
+
+&gt;<i> I updated patches/src680 to be against src680-m60 now. The patches that
+</I>&gt;<i> were problematic with m60 are moved to patches/src680-m57, as well as the
+</I>&gt;<i> patches that are obsolete.
+</I>&gt;<i>
+</I>&gt;<i> Please note that the default tag is still src680-m57, because m60 does not
+</I>&gt;<i> contain 'instsetoo', just 'instsetoo_native', and I did not adapt the
+</I>&gt;<i> 'install' makefile rule yet. I'll announce when finished.
+</I>
+I made src680-m60 the default tag. You can still compile src680-m57 by 
+specifying --with-tag=src680-m57 to ./configure.
+
+'make install' does not work with m60, use the target 'rpms' instead. At the 
+moment, the procedure of compiling m60 with ooo-build HEAD looks like:
+
+./autogen.sh (add your favorite flags here)
+./download
+make
+make rpms
+
+Use at your own risk :-)
+
+Bye,
+Jan
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000564.html">[Open Office] ooo-build HEAD updated to src680-m60
+</A></li>
+	<LI> Next message: <A HREF="000569.html">[Open Office] Re: [Libwpd-devel] Commit: New &quot;WriterPerfect&quot; module
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#565">[ date ]</a>
+              <a href="thread.html#565">[ thread ]</a>
+              <a href="subject.html#565">[ subject ]</a>
+              <a href="author.html#565">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

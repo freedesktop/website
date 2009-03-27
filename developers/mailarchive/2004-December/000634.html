@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Ximian's OOo - GCC 3.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:bero%40arklinux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000633.html">
+   <LINK REL="Next"  HREF="000635.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Ximian's OOo - GCC 3.4
+   </H1>
+    <B>Bernhard Rosenkraenzer
+    </B> 
+    <A HREF="mailto:bero%40arklinux.org"
+       TITLE="[Open Office] Re: Ximian's OOo - GCC 3.4">bero@arklinux.org
+       </A><BR>
+    <I>Thu, 16 Dec 2004 09:18:59 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000633.html">[Open Office] Status Report
+</A></li>
+        <LI> Next message: <A HREF="000635.html">[Open Office] Status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#634">[ date ]</a>
+              <a href="thread.html#634">[ thread ]</a>
+              <a href="subject.html#634">[ subject ]</a>
+              <a href="author.html#634">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--Boundary-00=_zTUwB2sZ5nvjtT2
+Content-Type: text/plain;
+  charset=&quot;gb2312&quot;
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+On Wednesday 15 December 2004 15:54, Hanno Meyer-Thurow wrote:
+&gt;<i> Hey Bero,
+</I>&gt;<i>
+</I>&gt;<i> may you send me a copy of the diffs you add to the gcc34 diffs in
+</I>&gt;<i> ooo-biuld-1-3 and explain why.
+</I>
+I added the patches because the gcc34 diffs don't apply here without them 
+(with 1.3 branch and OOO_1_1_3.tar.bz2). One hunk of the patch was malformed, 
+some others were duplicated by more recent backports. I've attached the diff.
+
+&gt;<i> Thanks a lot! You may comment on the 
+</I>&gt;<i> attached update diff I have for the cvs gcc34 diffs.
+</I>
+Doesn't work here:
+patching file psprint/source/helper/ppdparser.cxx
+Hunk #1 FAILED at 68.
+1 out of 1 hunk FAILED -- saving rejects to file 
+psprint/source/helper/ppdparser.cxx.rej
+[...]
+Testing patch gcc34-main.diff failed. 
+at /usr/src/ark/BUILD/ooo-build/patches/apply.pl line 44.
+make: *** [stamp/patch.apply] Error 1
+
+&gt;<i> 1. Since module psprint is back to m46 the diff for
+</I>&gt;<i> psprint/source/helper/ppdparser.cxx should be back in. Or am I wrong? :)
+</I>
+Either the patch is in or it's something done locally (I'm using the Ark 
+config; maybe it's an extra patch applied there).
+Removing just the ppdparser.cxx hunk from your gcc34-update.diff makes it work 
+here.
+
+Btw, is there a backport of the &quot;use system libstdc++ instead of STLport&quot; 
+feature from head? STLport is still causing me headaches w/ gcc 3.4.
+
+LLaP
+bero
+
+--Boundary-00=_zTUwB2sZ5nvjtT2
+Content-Type: text/x-diff;
+  charset=&quot;gb2312&quot;;
+  name=&quot;gcc34stuff.diff&quot;
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename=&quot;gcc34stuff.diff&quot;
+
+Index: gcc34-main.diff
+===================================================================
+RCS file: /cvs/gnome/ooo-build/patches/gcc34/Attic/gcc34-main.diff,v
+retrieving revision 1.1.2.1
+retrieving revision 1.1.2.8
+diff -u -r1.1.2.1 -r1.1.2.8
+--- gcc34-main.diff	16 Nov 2004 12:13:14 -0000	1.1.2.1
++++ gcc34-main.diff	30 Nov 2004 04:51:59 -0000	1.1.2.8
+@@ -1193,23 +1193,6 @@
+  }
+  
+  //--------------------------------------------------------------------
+-@@ -125,6 +125,9 @@
+- /*************************************************************************
+-  * history:
+-  *	$Log: gcc34-main.diff,v $
+-  *	Revision 1.1.2.1  2004/11/16 12:13:14  michael
+-  *	2004-11-16  Hanno Meyer-Thurow  &lt;<A HREF="mailto:h.mth@web.de">h.mth@web.de</A>&gt;
+-  *	
+-  *		* patches/OOO_1_1_3/apply,
+-  *		* patches/gcc34/*: add gcc 3.4 support patches
+-  *		and Gentoo target.
+-  *	
+-+ *	Revision 1.3.268.1  2004/07/13 16:56:04  hr
+-+ *	#i31439#: fix template resolution
+-+ *	
+-  *	Revision 1.3  2001/09/05 06:40:48  fs
+-  *	#88891# override the XTypeProvider methods
+-  *	
+ --- icu/icu-2.2.patch.orig	2004-05-17 16:48:45.000000000 +0200
+ +++ icu/icu-2.2.patch	2004-07-14 11:04:23.405216347 +0200
+ @@ -17,16 +17,6 @@
+@@ -1307,17 +1290,6 @@
+  #ifdef __CACHE_DIAGNOSE
+              OSL_ENSURE( insertion.second, &quot;### inserting new cache entry failed?!&quot; );
+  #endif
+---- psprint/source/helper/ppdparser.cxx.gcc341psprint	2004-07-14 08:55:32.562784456 +0200
+-+++ psprint/source/helper/ppdparser.cxx	2004-07-14 09:57:21.569795875 +0200
+-@@ -70,7 +70,7 @@
+- // define a hash for PPDKey
+- namespace psp { class PPDKey; }
+- 
+--struct std::hash&lt; const psp::PPDKey* &gt;
+-+template&lt;&gt; struct std::hash&lt; const psp::PPDKey* &gt;
+- {
+-     size_t operator()( const psp::PPDKey * pKey) const
+-     { return (size_t)pKey; }
+ --- sablot/Sablot-0.52.patch.orig	2003-08-05 11:41:11.000000000 +0200
+ +++ sablot/Sablot-0.52.patch	2004-06-04 17:42:27.000000000 +0200
+ @@ -1,9 +1,66 @@
+@@ -4389,15 +4361,6 @@
+  				return &amp;aIt-&gt;m_aValue;
+ --- vcl/inc/glyphcache.hxx.orig	2004-11-01 17:03:13.382022656 +0100
+ +++ vcl/inc/glyphcache.hxx	2004-11-01 17:03:40.646877768 +0100
+-@@ -124,7 +124,7 @@
+-     void                        RemoveFont( const ImplFontData* );
+- 
+- private:
+--friend ServerFont;
+-+friend class ServerFont;
+-     // used by ServerFont class only
+-     void                        AddedGlyph( ServerFont&amp; rServerFont, GlyphData&amp; rGlyphData );
+-     void                        RemovingGlyph( ServerFont&amp; rSF, GlyphData&amp; rGD, int nGlyphIndex );
+ @@ -244,8 +244,8 @@
+      void*                       GetExtPointer() { return mpExtData; }
+  
+@@ -4409,41 +4372,6 @@
+                                  ServerFont( const ImplFontSelectData&amp;, const glyphKernMap* pGlyphKern = NULL, const unicodeKernMap* pUniKern = NULL );
+      virtual                     ~ServerFont();
+  
+---- vcl/source/glyphs/gcach_ftyp.hxx.orig	2004-11-01 17:05:05.711945912 +0100
+-+++ vcl/source/glyphs/gcach_ftyp.hxx	2004-11-01 17:05:20.783654664 +0100
+-@@ -213,7 +213,7 @@
+-     int                         GetEmUnits() const;
+- 
+- protected:
+--friend GlyphCache;
+-+friend class GlyphCache;
+- 
+-     int                         ApplyGlyphTransform( int nGlyphFlags, FT_GlyphRec_* ) const;
+-     virtual void                InitGlyphData( int nGlyphIndex, GlyphData&amp; ) const;
+---- vcl/source/glyphs/gcach_vdev.hxx.orig	2004-11-01 17:06:31.296935016 +0100
+-+++ vcl/source/glyphs/gcach_vdev.hxx	2004-11-01 17:06:45.682748040 +0100
+-@@ -72,7 +72,7 @@
+- 	virtual bool				GetGlyphOutline( int nGlyphIndex, PolyPolygon&amp; ) const;
+- 
+- protected:
+--friend GlyphCache;
+-+friend class GlyphCache;
+- 	static long					FetchFontList( ImplDevFontList* );
+- 	static void					ClearFontList();
+- 
+---- vcl/unx/source/gdi/xlfd_extd.hxx.orig	2004-11-01 17:08:46.444389480 +0100
+-+++ vcl/unx/source/gdi/xlfd_extd.hxx	2004-11-01 17:09:03.511794840 +0100
+-@@ -93,8 +93,8 @@
+- 
+- class ExtendedXlfd {
+- 
+--	friend VirtualXlfd;
+--	friend XlfdStorage;
+-+	friend class VirtualXlfd;
+-+	friend class XlfdStorage;
+- 
+- 	public:
+- 			 				ExtendedXlfd();
+ --- svtools/inc/communi.hxx.orig	2004-11-01 17:17:44.167643120 +0100
+ +++ svtools/inc/communi.hxx	2004-11-01 17:17:54.092134368 +0100
+ @@ -141,7 +141,7 @@
+
+--Boundary-00=_zTUwB2sZ5nvjtT2--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000633.html">[Open Office] Status Report
+</A></li>
+	<LI> Next message: <A HREF="000635.html">[Open Office] Status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#634">[ date ]</a>
+              <a href="thread.html#634">[ thread ]</a>
+              <a href="subject.html#634">[ subject ]</a>
+              <a href="author.html#634">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

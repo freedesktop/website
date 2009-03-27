@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build HEAD / src680-m137 build error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20HEAD%20/%20src680-m137%20build%20error&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001258.html">
+   <LINK REL="Next"  HREF="001260.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build HEAD / src680-m137 build error</H1>
+    <B>Hanno Meyer-Thurow</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20ooo-build%20HEAD%20/%20src680-m137%20build%20error&In-Reply-To="
+       TITLE="[Open Office] ooo-build HEAD / src680-m137 build error">h.mth at web.de
+       </A><BR>
+    <I>Wed Nov  2 17:43:51 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001258.html">[Open Office] Cairo patch for FreeBSD
+</A></li>
+        <LI>Next message: <A HREF="001260.html">[Open Office] ooo-build HEAD / src680-m137 build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1259">[ date ]</a>
+              <a href="thread.html#1259">[ thread ]</a>
+              <a href="subject.html#1259">[ subject ]</a>
+              <a href="author.html#1259">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi list!
+I try to build OpenOffice.org with ooo-build HEAD and src680-m137 source.
+I use GCJ 4.0.2 to build the Java code. On module xmerge it breaks:
+
+---
+/usr/bin/ant -Dbuild.compiler=gcj -Dprj=../.. -Dprjname= -Ddebug=off  -Doptimize=on -Dtarget=xmerge -Dsolar.update=on -Dout=../../unxlngi6.pro -Dinpath=unxlngi6.pro  -Dproext=&quot;.pro&quot; -Dsolar.bin=/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/solver/680/unxlngi6.pro/bin -Dsolar.jar=/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/solver/680/unxlngi6.pro/bin  -Dsolar.doc=/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/solver/680/unxlngi6.pro/doc -Dcommon.jar=/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/solver/680/common.pro/bin  -Dcommon.doc=/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/solver/680/common.pro/doc -f build.xml  -emacs
+Buildfile: build.xml
+
+init:
+Created dir: /var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/unxlngi6.pro/class/xmerge
+
+compile:
+Compiling 96 source files to /var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/unxlngi6.pro/class/xmerge
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/xslt/DocumentSerializerImpl.java:95: error: Class or interface 'org.apache.xalan.templates.OutputProperties' not found in import.
+   import org.apache.xalan.templates.OutputProperties;
+          ^
+1 error
+---
+
+I could fix this with attached diff. (Xalan is not used anymore)
+Then I got another build error on other files there:
+
+---
+/usr/bin/ant -Dbuild.compiler=gcj -Dprj=../.. -Dprjname= -Ddebug=off  -Doptimize=on -Dtarget=xmerge -Dsolar.update=on -Dout=../../unxlngi6.pro -Dinpath=unxlngi6.pro  -Dproext=&quot;.pro&quot; -Dsolar.bin=/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/solver/680/unxlngi6.pro/bin -Dsolar.jar=/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/solver/680/unxlngi6.pro/bin  -Dsolar.doc=/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/solver/680/unxlngi6.pro/doc -Dcommon.jar=/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/solver/680/common.pro/bin  -Dcommon.doc=/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/solver/680/common.pro/doc -f build.xml  -emacs
+Buildfile: build.xml
+
+init:
+Created dir: /var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/unxlngi6.pro/class/xmerge
+
+compile:
+Compiling 96 source files to /var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/unxlngi6.pro/class/xmerge
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/xslt/DocumentSerializerImpl.java:94: warning: The class 'org.apache.xalan.serialize.SerializerFactory' has been deprecated.
+   import org.apache.xalan.serialize.SerializerFactory;
+          ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java: In class 'org.openoffice.xmerge.converter.xml.OfficeDocument':
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java: In method 'org.openoffice.xmerge.converter.xml.OfficeDocument.read(java.io.InputStream,boolean)':
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:581: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+                          tmpNode = contentDoc.importNode(nodeList.item(0),true);
+                                              ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:587: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+   	              tmpNode = contentDoc.importNode(nodeList.item(0),true);
+                                             ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:593: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+   	              tmpNode = contentDoc.importNode(nodeList.item(0),true);
+                                             ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:605: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+       	              tmpNode = styleDoc.importNode(nodeList.item(0),true);
+                                           ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:611: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+   	              tmpNode = styleDoc.importNode(nodeList.item(0),true);
+                                           ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:618: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+                         tmpNode = styleDoc.importNode(nodeList.item(0),true);
+                                           ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:625: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+                          tmpNode = styleDoc.importNode(nodeList.item(0),true);
+                                            ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:635: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+   	              tmpNode = settingsDoc.importNode(nodeList.item(0),true);
+                                              ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:644: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+   	              tmpNode = metaDoc.importNode(nodeList.item(0),true);
+                                          ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java: In method 'org.openoffice.xmerge.converter.xml.OfficeDocument.write(java.io.OutputStream,boolean)':
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:788: error: Can't find method 'getDOMImplementation()' in type 'javax.xml.parsers.DocumentBuilder'.
+   		DOMImplementation domImpl = builder.getDOMImplementation();
+                                                      ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:789: error: Can't find method 'createDocumentType(Ljava/lang/String;Ljava/lang/String;V)' in type 'org.w3c.dom.DOMImplementation'.
+   		DocumentType docType =domImpl.createDocumentType(&quot;office:document&quot;,&quot;-//OpenOffice.org//DTD OfficeDocument 1.0//EN&quot;,null);
+                                                ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:790: error: Can't find method 'createDocument(Ljava/lang/String;Ljava/lang/String;V)' in type 'org.w3c.dom.DOMImplementation'.
+   		org.w3c.dom.Document newDoc = domImpl.createDocument(&quot;<A HREF="http://openoffice.org/2000/office&quot;,&quot;office:document&quot;,null">http://openoffice.org/2000/office&quot;,&quot;office:document&quot;,null</A>);
+                                                        ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:826: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+   			tmpNode = newDoc.importNode(nodeList.item(0),true);
+                                           ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:832: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+   			tmpNode = newDoc.importNode(nodeList.item(0),true);
+                                           ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:839: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+   			tmpNode = newDoc.importNode(nodeList.item(0),true);
+                                           ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:846: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+   			tmpNode = newDoc.importNode(nodeList.item(0),true);
+                                           ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:852: error: Can't find method 'importNode(Lorg/w3c/dom/Node;Z)' in type 'org.w3c.dom.Document'.
+   			tmpNode = newDoc.importNode(nodeList.item(0),true);
+                                           ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java: In method 'org.openoffice.xmerge.converter.xml.OfficeDocument.initManifestDOM()':
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:1240: error: Can't find method 'getDOMImplementation()' in type 'javax.xml.parsers.DocumentBuilder'.
+               DOMImplementation domImpl = builder.getDOMImplementation();
+                                                  ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:1242: error: Can't find method 'createDocumentType(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)' in type 'org.w3c.dom.DOMImplementation'.
+               DocumentType docType = domImpl.createDocumentType(TAG_MANIFEST_ROOT, 
+                                             ^
+/var/tmp/portage/openoffice-2.1.137/work/ooo-build/build/src680-m137/xmerge/source/xmerge/java/org/openoffice/xmerge/converter/xml/OfficeDocument.java:1245: error: Can't find method 'createDocument(Ljava/lang/String;Ljava/lang/String;Lorg/w3c/dom/DocumentType;)' in type 'org.w3c.dom.DOMImplementation'.
+   	    manifestDoc = domImpl.createDocument(&quot;manifest&quot;, TAG_MANIFEST_ROOT, docType);
+                                    ^
+20 errors, 1 warning
+---
+
+If anyone got any ideas to solve this I am pleased to listen them.
+
+
+TIA and regards,
+Hanno Meyer-Thurow
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: xmerge.diff
+Type: text/x-patch
+Size: 637 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051102/5bec97cf/xmerge-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20051102/5bec97cf/xmerge-0001.bin</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001258.html">[Open Office] Cairo patch for FreeBSD
+</A></li>
+	<LI>Next message: <A HREF="001260.html">[Open Office] ooo-build HEAD / src680-m137 build error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1259">[ date ]</a>
+              <a href="thread.html#1259">[ thread ]</a>
+              <a href="subject.html#1259">[ subject ]</a>
+              <a href="author.html#1259">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

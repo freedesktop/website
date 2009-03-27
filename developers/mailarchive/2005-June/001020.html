@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] m108 build failure with Sun JDK 1.4.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m108%20build%20failure%20with%20Sun%20JDK%201.4.2&In-Reply-To=42B24699.7030104%40linspireinc.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001019.html">
+   <LINK REL="Next"  HREF="001023.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] m108 build failure with Sun JDK 1.4.2</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m108%20build%20failure%20with%20Sun%20JDK%201.4.2&In-Reply-To=42B24699.7030104%40linspireinc.com"
+       TITLE="[Open Office] m108 build failure with Sun JDK 1.4.2">pmladek at suse.cz
+       </A><BR>
+    <I>Fri Jun 17 04:21:19 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001019.html">[Open Office] m108 build failure with Sun JDK 1.4.2
+</A></li>
+        <LI>Next message: <A HREF="001023.html">[Open Office] m108 build failure with Sun JDK 1.4.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1020">[ date ]</a>
+              <a href="thread.html#1020">[ thread ]</a>
+              <a href="subject.html#1020">[ subject ]</a>
+              <a href="author.html#1020">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 17 June 2005 05:42, Brian Thomason wrote:
+&gt;<i> I had attempted to build m108 myself the other day and ran into the
+</I>&gt;<i> following error:
+</I>&gt;<i>
+</I>&gt;<i> /Create files in subtree index
+</I>&gt;<i>
+</I>&gt;<i> ...........................rm
+</I>&gt;<i> ../../unxlngi6.pro/bin/odk680/docs/cpp/ref//cpp.css
+</I>&gt;<i> tr -d &quot;\015&quot; &lt; ../../docs/cpp/ref/cpp.css &gt;
+</I>&gt;<i> ../../unxlngi6.pro/bin/odk680/docs/cpp/ref//cpp.css
+</I>&gt;<i> /source/oo2-new/ooo-build-1.9.108/build/src680-m108/odk/pack/checkbin
+</I>&gt;<i> /usr/bin/perl ../../util/check.pl ../../unxlngi6.pro/bin/odk680 linux
+</I>&gt;<i> &quot;&quot; ../../unxlngi6.pro/misc/checkbin.txt
+</I>&gt;<i> Check for linux
+</I>&gt;<i> check binaries: ++++++++++++++
+</I>&gt;<i> check packaging files: ++++++++++++++++++++++++++
+</I>&gt;<i> check config files:
+</I>&gt;<i> check setting files:
+</I>&gt;<i> check cpp docu:
+</I>&gt;<i> +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+</I>&gt;<i>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+</I>&gt;<i>+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+</I>&gt;<i>
+</I>&gt;<i> check java docu:
+</I>&gt;<i> check examples:
+</I>&gt;<i> +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+</I>&gt;<i>+++++++++++++++
+</I>&gt;<i>
+</I>&gt;<i> ERROR
+</I>&gt;<i> dmake:  Error code 1, while making '../../unxlngi6.pro/misc/checkbin.txt'
+</I>&gt;<i> '---* RULES.MK *---'
+</I>&gt;<i>
+</I>&gt;<i> ERROR: Error 65280 occurred while making
+</I>&gt;<i> /source/oo2-new/ooo-build-1.9.108/build/src680-m108/odk/pack/checkbin
+</I>&gt;<i> make: *** [stamp/build] Error 1 /
+</I>&gt;<i>
+</I>&gt;<i> A couple of days later, I noticed Rene from Debian had uploaded some
+</I>&gt;<i> packages of m108 and I revisited tos ee where I went wrong.  m108 builds
+</I>&gt;<i> just fine when using gjc4.0 but fails with the error above when using
+</I>&gt;<i> j2sdk1.4.2 from Sun.  Is building against the Sun JVM no longer supported?
+</I>
+I have successfully built m108 with Sun J2sdk1.4.6_06 but I did not build the 
+odk module. The odk is necessary just for development with OOo.
+
+We disable it using the odk-disable.diff, see ooo-build/patches/src680/apply. 
+It is in the NovellOnly section. The comment above the patch says:
+# The odk has a horribly slow &amp; buggy build &amp; we don't package it
+
+So, you can either use the patch as well or you could try to investigate the 
+problem. The log above does not say much about the real problem. You could 
+get a better log if you start dmake -v. You can do it in the odk project the 
+following way:
+
+cd /source/oo2-new/ooo-build-1.9.108/build/src680-m108/
+source LinuxIntelEnv.Set.sh
+cd odk
+build -- -v
+
+
+Maybe, you would need to 
+remove /source/oo2-new/ooo-build-1.9.108/build/src680-m108/odk/unxlngi6.pro
+to start the build of the module from the scratch. Maybe, you would need to 
+set some environment variables before &quot;source LinuxIntelEnv.Set.sh&quot; (the same 
+variables as you set before you run &quot;make&quot;).
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">pmladek at suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001019.html">[Open Office] m108 build failure with Sun JDK 1.4.2
+</A></li>
+	<LI>Next message: <A HREF="001023.html">[Open Office] m108 build failure with Sun JDK 1.4.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1020">[ date ]</a>
+              <a href="thread.html#1020">[ thread ]</a>
+              <a href="subject.html#1020">[ subject ]</a>
+              <a href="author.html#1020">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

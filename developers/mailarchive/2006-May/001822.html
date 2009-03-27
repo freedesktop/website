@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] &quot;all-am: Makefile $(SCRIPTS)&quot; line in ooo-build
+	Makefile
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-May/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%22all-am%3A%20Makefile%20%24%28SCRIPTS%29%22%20line%20in%20ooo-build%0A%09Makefile&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001821.html">
+   <LINK REL="Next"  HREF="001823.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] &quot;all-am: Makefile $(SCRIPTS)&quot; line in ooo-build
+	Makefile</H1>
+    <B>Karl Ostmo</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%22all-am%3A%20Makefile%20%24%28SCRIPTS%29%22%20line%20in%20ooo-build%0A%09Makefile&In-Reply-To="
+       TITLE="[Open Office] &quot;all-am: Makefile $(SCRIPTS)&quot; line in ooo-build
+	Makefile">kostmo at gmail.com
+       </A><BR>
+    <I>Sat May 20 04:39:02 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001821.html">[Open Office] error with patches
+</A></li>
+        <LI>Next message: <A HREF="001823.html">[Open Office] automake 1.9 / failed patch(es)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1822">[ date ]</a>
+              <a href="thread.html#1822">[ thread ]</a>
+              <a href="subject.html#1822">[ subject ]</a>
+              <a href="author.html#1822">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all,
+I am running Ubuntu 5.10 on a Pentium 4 laptop.  I've downloaded
+ooo-build from CVS and successfully run ./autogen.sh
+--with-distro=Ubuntu and completed ./download.  However, &quot;make&quot;
+instantly returns with an error after entering the directory &quot;po/&quot;:
+
+make[1]: *** No rule to make target `yes', needed by `all-am'.  Stop.
+
+It is the exact same problem encountered by this person in October:
+<A HREF="http://www.openoffice.org/servlets/ReadMsg?list=dev&amp;msgNo=15139">http://www.openoffice.org/servlets/ReadMsg?list=dev&amp;msgNo=15139</A>
+
+I've tracked the problem down to an inconsistency in the Makefile of
+the po/ directory, and, as it happens, every subdirectory of
+ooo-build/.  There is a line in each subdirectory's Makefile as
+follows:
+
+all-am: Makefile $(SCRIPTS)
+
+where $(SCRIPTS) has been set equal to $(RUN_POST_INSTALL_SCRIPTS),
+which has been set to the value &quot;yes&quot;, explaining the error I get from
+make.  However, &quot;sparcmoz&quot; on #OpenOffice.org IRC running a sparc
+linux debian system could not replicate this problem.  The same line
+in his Makefile looks like:
+
+all-am: Makefile
+
+Removing $(SCRIPTS) from that line of my Makefile allows &quot;make&quot; to
+proceed to the next subdirectory, but make stops if it encounters the
+&quot;yes&quot; substitution there.
+
+What is causing $(SCRIPTS) to be added to that line on my computer?
+
+I appreciate the help,
+-Karl
+
+-- 
+Sapere aude
+&quot;Dare to know&quot;
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001821.html">[Open Office] error with patches
+</A></li>
+	<LI>Next message: <A HREF="001823.html">[Open Office] automake 1.9 / failed patch(es)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1822">[ date ]</a>
+              <a href="thread.html#1822">[ thread ]</a>
+              <a href="subject.html#1822">[ subject ]</a>
+              <a href="author.html#1822">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

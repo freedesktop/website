@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOE680 vs. SRC680 confusion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20OOE680%20vs.%20SRC680%20confusion&In-Reply-To=20061114160347.GC29702%40genesis.frugalware.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002133.html">
+   <LINK REL="Next"  HREF="002131.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOE680 vs. SRC680 confusion</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20OOE680%20vs.%20SRC680%20confusion&In-Reply-To=20061114160347.GC29702%40genesis.frugalware.org"
+       TITLE="[Open Office] OOE680 vs. SRC680 confusion">pmladek at suse.cz
+       </A><BR>
+    <I>Thu Nov 16 08:09:33 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002133.html">[Open Office] OOE680 vs. SRC680 confusion
+</A></li>
+        <LI>Next message: <A HREF="002131.html">[Open Office] ooe680-m2 -- 2 more patches need porting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2137">[ date ]</a>
+              <a href="thread.html#2137">[ thread ]</a>
+              <a href="subject.html#2137">[ subject ]</a>
+              <a href="author.html#2137">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday 14 November 2006 17:03, VMiklos wrote:
+&gt;<i> On Tue, Nov 14, 2006 at 02:10:40PM +0100, Jan Holesovsky &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">kendy at suse.cz</A>&gt; 
+</I>wrote:
+&gt;<i> &gt; I've updated/removed/etc. the patches so that we support just ooe680-m2
+</I>&gt;<i> &gt; (in HEAD), and nothing else.  Sorry, Hanno, I had to remove your work
+</I>&gt;<i> &gt; regarding m193 - but we should return to src680 after 2.1 is released...
+</I>&gt;<i>
+</I>&gt;<i> ./download would like to fetch cli_types.dll from /OOE680 while it's
+</I>&gt;<i> under /OOO680. am i right about this is a bug?
+</I>
+Well, the new mono started to require exactly the same versions of the .dlls 
+that are defined in cli_ure/version/version.txt. This is why I moved 
+the .dlls to the MWS dependent directory.
+
+Kendy has already copied the .dlls for OOE680.
+
+I wanted to prepeare a better solution with a version check in configune... 
+Though, it won't be necessary because Radek is porting the sources for mono, 
+so we should be able to rebuild the .dlls during the normal build on Linux 
+soon.
+
+Best Regards,
+Petr
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002133.html">[Open Office] OOE680 vs. SRC680 confusion
+</A></li>
+	<LI>Next message: <A HREF="002131.html">[Open Office] ooe680-m2 -- 2 more patches need porting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2137">[ date ]</a>
+              <a href="thread.html#2137">[ thread ]</a>
+              <a href="subject.html#2137">[ subject ]</a>
+              <a href="author.html#2137">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] kdefilepicker sigpipe in oob680-m5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20kdefilepicker%20sigpipe%20in%20oob680-m5&In-Reply-To=5b8c5a2c0603010720t15d2e106tced8e69c1199d408%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001665.html">
+   <LINK REL="Next"  HREF="001667.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] kdefilepicker sigpipe in oob680-m5</H1>
+    <B>Giuseppe Ghib&#242;</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20kdefilepicker%20sigpipe%20in%20oob680-m5&In-Reply-To=5b8c5a2c0603010720t15d2e106tced8e69c1199d408%40mail.gmail.com"
+       TITLE="[Open Office] kdefilepicker sigpipe in oob680-m5">ghibo at mandriva.com
+       </A><BR>
+    <I>Wed Mar  1 10:29:36 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001665.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+        <LI>Next message: <A HREF="001667.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1666">[ date ]</a>
+              <a href="thread.html#1666">[ thread ]</a>
+              <a href="subject.html#1666">[ subject ]</a>
+              <a href="author.html#1666">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Martin Kretzschmar wrote:
+
+&gt;<i> On 3/1/06, Giuseppe Ghib&#242; &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">ghibo at mandriva.com</A>&gt; wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>OK, I found. Someone had updated kde to 3.5.1 in the building system that
+</I>&gt;&gt;<i>I was not aware of, while my local system where i ran it was still with 3.4.2.
+</I>&gt;&gt;<i>So it should work ok, right now. Thanks for the filepicker hints.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>But remain the problem with files with accented character...,
+</I>&gt;&gt;<i>i.e. a file like &quot;test&#224;.odt&quot; is tried to be opened/save as
+</I>&gt;&gt;<i>test%E0.odt (and thus not found). This happens either in plain
+</I>&gt;&gt;<i>as well as UTF8 non english locales (gnomepicker instead works
+</I>&gt;&gt;<i>OK with files with accented chars so it should be something in filepicker,
+</I>
+also default OOo dialogs have the right behaviour.
+
+&gt;&gt;<i>IMHO). Any other magic hint for filepicker to
+</I>&gt;&gt;<i>track down this?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Recently I had a look at the gtk filepicker code. <A HREF="file:///path/to/test%E0.odt">file:///path/to/test%E0.odt</A> is
+</I>&gt;<i> not a valid URL from OOo's point of view. (?Most modern parts of?) OOo
+</I>&gt;<i> assume(s) that the URL contains only ASCII characters (which test%E0.odt
+</I>&gt;<i> does) and is UTF-8 after unescaping (which <A HREF="file:///path/test%E0.odt">file:///path/test%E0.odt</A> is not).
+</I>&gt;<i> Cf. the comment in sal/inc/osl/file.h.
+</I>&gt;<i> 
+</I>&gt;<i> The gtk filepicker jumps through some hoops to get this right.
+</I>&gt;<i> (fpicker/source/unx/gnome/SalGtkPicker.cxx:uritounicode). It simply
+</I>&gt;<i> converts
+</I>&gt;<i> gtk file:// URLs back to on-disk filenames and then creates an OOo URL from
+</I>&gt;<i> that filename. You'll need something like that.
+</I>&gt;<i> 
+</I>&gt;<i> Martin
+</I>
+Sorry, but according to this, shouldn't everyone using the kdefilepicker
+obtain the same behaviour (i.e. wrong accent expansion) like me?
+
+Note that before (let's say for 2.0.1) the behaviour was to read a file called 
+&quot;test&#224;.odt&quot; from filesystem but saving as &quot;test%E0.odt&quot; in the filesystem (i.e. 
+t-e-s-t-%-E-0-.-o-d-t) while right now is to show the file &quot;test&#224;.odt&quot; in
+the KDE filepicker but then after having selected it and clicking on &quot;Open&quot;,
+OOo complains saying that <A HREF="file:///path/th/test%E0.odt">file:///path/th/test%E0.odt</A> don't exists.
+
+Bye
+Giuseppe.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001665.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+	<LI>Next message: <A HREF="001667.html">[Open Office] kdefilepicker sigpipe in oob680-m5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1666">[ date ]</a>
+              <a href="thread.html#1666">[ thread ]</a>
+              <a href="subject.html#1666">[ subject ]</a>
+              <a href="author.html#1666">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

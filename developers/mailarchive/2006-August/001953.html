@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] problem with OOo file digital signature ( using	--with-system-xmlsec ) in m179
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20problem%20with%20OOo%20file%20digital%20signature%20%28%20using%0A%09--with-system-xmlsec%20%29%20in%20m179&In-Reply-To=2e2d80650608030514y602c4afeob6beac22975dbb35%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001950.html">
+   <LINK REL="Next"  HREF="001954.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] problem with OOo file digital signature ( using	--with-system-xmlsec ) in m179</H1>
+    <B>Giuseppe Castagno</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20problem%20with%20OOo%20file%20digital%20signature%20%28%20using%0A%09--with-system-xmlsec%20%29%20in%20m179&In-Reply-To=2e2d80650608030514y602c4afeob6beac22975dbb35%40mail.gmail.com"
+       TITLE="[Open Office] problem with OOo file digital signature ( using	--with-system-xmlsec ) in m179">giuseppe.castagno at gmail.com
+       </A><BR>
+    <I>Fri Aug  4 07:34:53 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001950.html">[Open Office] problem with OOo file digital signature ( using	--with-system-xmlsec ) in m179
+</A></li>
+        <LI>Next message: <A HREF="001954.html">[Open Office] problem with OOo file digital signature (	using	--with-system-xmlsec ) in m179
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1953">[ date ]</a>
+              <a href="thread.html#1953">[ thread ]</a>
+              <a href="subject.html#1953">[ subject ]</a>
+              <a href="author.html#1953">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+a followup.
+
+On 8/3/06, Giuseppe Castagno &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">giuseppe.castagno at gmail.com</A>&gt; wrote:
+&gt;<i> Hi all,
+</I>&gt;<i>
+</I>&gt;<i> my system:
+</I>&gt;<i> FC5, gcc (GCC) 4.1.1 20060525 (Red Hat 4.1.1-1)
+</I>&gt;<i>
+</I>&gt;<i> libxmlsec1:
+</I>&gt;<i> [<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">beppe at nbklx</A> program]$ rpm -qa xmlsec\*
+</I>&gt;<i> xmlsec1-nss-1.2.9-4.2
+</I>&gt;<i> xmlsec1-debuginfo-1.2.9-4.2
+</I>&gt;<i> xmlsec1-devel-1.2.9-4.2
+</I>&gt;<i> xmlsec1-nss-devel-1.2.9-4.2
+</I>&gt;<i> xmlsec1-1.2.9-4.2
+</I>&gt;<i>
+</I>&gt;<i> [<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">beppe at nbklx</A> beppe]$ rpm -qa nss\*
+</I>&gt;<i> nss-devel-3.11.1-1.fc5
+</I>&gt;<i> nss_db-2.2-35
+</I>&gt;<i> nss-3.11.1-1.fc5
+</I>&gt;<i> nss_ldap-249-1
+</I>&gt;<i>
+</I>&gt;<i> Top of ooo-build/ChangeLog:
+</I>&gt;<i>
+</I>&gt;<i> 2006-08-01  Noel Power  &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">noel.power at novell.com</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i>         * patches/vba/extensions-source-propctrlr-makefile-mk.diff: removed
+</I>&gt;<i>         unused patches
+</I>&gt;<i>         * patches/vba/extensions-source-propctrlr-formcontroller-cxx.diff:
+</I>&gt;<i>         * patches/vba/vba-runtime-vba-enabled.diff:
+</I>&gt;<i>
+</I>&gt;<i> 2006-08-01  Michael Meeks  &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> Up to m177 I was able to compile using the local libxmlsec (1.2.6),
+</I>&gt;<i> until then no problem popped up.
+</I>&gt;<i>
+</I>&gt;<i> Starting with m179 I was no longer able to compile with  the local
+</I>&gt;<i> xmlsec library.
+</I>&gt;<i> With the following configure flags, added to CommonLinux.conf:
+</I>&gt;<i>
+</I>....
+
+&gt;<i>
+</I>&gt;<i>  The libxmlsec configuration stopped with:
+</I>&gt;<i> ...
+</I>&gt;<i>
+</I>&gt;<i> checking libxml2   yes  ... checking for libxslt libraries &gt;= 1.0.20... no
+</I>&gt;<i> checking for openssl libraries &gt;= 0.9.6... no
+</I>&gt;<i> checking for gnutls libraries &gt;= 0.8.1... no
+</I>&gt;<i> checking for mozilla-nspr &gt;= 1.4 mozilla-nss &gt;= 1.4... checking for
+</I>&gt;<i> nspr libraries &gt;= 4.0... no
+</I>&gt;<i> checking for nss libraries &gt;= 3.2... no
+</I>&gt;<i> checking for crypto library... configure: error: At least one crypto
+</I>&gt;<i> library should exist for xmlsec1
+</I>&gt;<i> dmake:  Error code 1, while making
+</I>&gt;<i> './unxlngi6.pro/misc/build/so_configured_so_xmlsec1'
+</I>&gt;<i> '---* tg_merge.mk *---'
+</I>&gt;<i>
+</I>&gt;<i> ERROR: Error 65280 occurred while making
+</I>&gt;<i> /media/usb-1/home/beppe/ooo-b-m179/build/src680-m179/libxmlsec
+</I>&gt;<i> make: *** [stamp/build] Error 1
+</I>&gt;<i>
+</I>&gt;<i> The patch that allowed the local compilation (with nss) was
+</I>&gt;<i> buildfix-system-nss.diff, if I recall; it's no longer there.
+</I>&gt;<i>
+</I>&gt;<i> So I tried to use --with-system-xmlsec, the compilation ended
+</I>&gt;<i> successfully, but part of the libxmlsec functionality disappeared.
+</I>&gt;<i>
+</I>............
+&gt;<i>
+</I>&gt;<i> OOo encrypt the files, but no signing is possible.
+</I>&gt;<i> I tried to investigate and it seems that libxmlsec1 is badly initialized.
+</I>&gt;<i>
+</I>&gt;<i> Did someone experience the same problem ? Or there is still a way to
+</I>&gt;<i> compile the local libxmlsec with system nss ?
+</I>&gt;<i>
+</I>&gt;<i> I have a 2.0.3 (compiled with local xmlsec) installed on the same PC
+</I>&gt;<i> that can sign the OOo files, so I think that's not a problem with
+</I>&gt;<i> mozilla or firefox.
+</I>&gt;<i>
+</I>
+I tried to debug the thing a little and the attached patch was needed
+to have at least the signature already present in the file to be
+listed (attention: it's not thread safe), it loads the libxmlsec1-nss
+library for crypto.
+
+But with that, when I tried to add a signature by selecting the
+signature from the list box of signatures available and confirm, the
+OOo crashes in libxmlsec1.
+
+I tried with the FC5 stock OOo, from udate and ended up hitting the
+same bug. I reported this to redhat bugzilla (redhat i#201305).
+
+I gave up and was successfull in building m179 with digital signature
+OK only with the prebuild mozilla files available on OOo site and
+local libxmlsec.
+
+-- 
+Kind regards,
+Giuseppe Castagno
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: xmlsec-syst.diff
+Type: text/x-patch
+Size: 1439 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060804/c4cbe8e8/attachment.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060804/c4cbe8e8/attachment.bin</A> 
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001950.html">[Open Office] problem with OOo file digital signature ( using	--with-system-xmlsec ) in m179
+</A></li>
+	<LI>Next message: <A HREF="001954.html">[Open Office] problem with OOo file digital signature (	using	--with-system-xmlsec ) in m179
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1953">[ date ]</a>
+              <a href="thread.html#1953">[ thread ]</a>
+              <a href="subject.html#1953">[ subject ]</a>
+              <a href="author.html#1953">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

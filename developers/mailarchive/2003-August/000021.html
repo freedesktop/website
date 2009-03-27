@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Debian / Gnome OO.o
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:halls%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000020.html">
+   <LINK REL="Next"  HREF="000022.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Debian / Gnome OO.o
+   </H1>
+    <B>Chris Halls
+    </B> 
+    <A HREF="mailto:halls%40debian.org"
+       TITLE="[Open Office] Re: Debian / Gnome OO.o">halls@debian.org
+       </A><BR>
+    <I>Mon, 11 Aug 2003 16:43:37 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000020.html">[Open Office] Re: Debian / Gnome OO.o
+</A></li>
+        <LI> Next message: <A HREF="000022.html">[Open Office] Re: Debian / Gnome OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#21">[ date ]</a>
+              <a href="thread.html#21">[ thread ]</a>
+              <a href="subject.html#21">[ subject ]</a>
+              <a href="author.html#21">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--J2SCkAp4GZ/dPZZf
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Aug 11, 2003 at 09:23:28PM +1000, Ken Foskey wrote:
+&gt;<i> &gt; The idea is for our packages to use his scripts to apply the patches in=
+</I>stead
+&gt;<i> &gt; of the modified dbs we currently have.  So we would add the existing
+</I>&gt;<i> &gt; Debian-only patches into Michael's directory, and probably stop using
+</I>&gt;<i> &gt; debian/patches.  The remaining patches can be converted to -p0 format.
+</I>&gt;<i>=20
+</I>&gt;<i> explain why we are using patch sets instead of aggressively getting them
+</I>&gt;<i> implemented into CVS?
+</I>
+Sleeping in Issuezilla:
+
+  002_dmake_tempnam.diff: IZ#7800 waiting for your approval
+  906_set_gnome_menu_right.diff: IZ#11738
+  041_sv_HTML_typo.diff: IZ#16437, no reaction since I filed it.
+
+Specific problems caused by our packaging:
+
+  011_stlportlink.diff: use system libstlport, would break setup on .tar.gz
+			installs
+  901_disable_langcheck.diff: Makes no sense for non langpack setups
+  902_remove_rpaths.diff: Debian insists on no rpaths but these have been
+			  recently added, I haven't worked out why yet.
+
+
+Not yet ready for submission:
+
+  021_SAL_DEBUG.diff: I'm not happy enough with the names of the vars to
+		      submit
+  022_config_switches.diff: Incomplete (not yet fully implemented)
+  024_system_python.diff: Incomplete (strange renaming of libraries, I need
+				      to discuss this first)
+  025_aclocal_update.diff: Only needed to support 022 and 024
+
+  032_select_instsets.diff, 033_scpzip_dontpackswitch.diff: Incomplete,
+	  michael had a look at these last week so maybe ready now.
+
+  905_remove_lzwc.diff: Incomplete (no configure switch)
+
+Compare that to &gt; 50 patches that are already integrated from our work over
+the past 18 months.
+
+Plus, where am I supposed to put things?  I don't know of an open branch for
+anything other than 1.1, and that is frozen for anything but severe bug
+fixes.
+
+I also still need a mechanism to apply patches for fixes that are in CVS but
+not yet in the particular release/branch that we are building from.
+
+Chris
+
+--J2SCkAp4GZ/dPZZf
+Content-Type: application/pgp-signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.2 (GNU/Linux)
+
+iD8DBQE/N6uZexmdExmX588RAv51AJ9gPmUvjAL8gC6XcJff/X31viSDeACeLOGl
+6r34m65b/vR3IDADPTds4CM=
+=8xUQ
+-----END PGP SIGNATURE-----
+
+--J2SCkAp4GZ/dPZZf--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000020.html">[Open Office] Re: Debian / Gnome OO.o
+</A></li>
+	<LI> Next message: <A HREF="000022.html">[Open Office] Re: Debian / Gnome OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#21">[ date ]</a>
+              <a href="thread.html#21">[ thread ]</a>
+              <a href="subject.html#21">[ subject ]</a>
+              <a href="author.html#21">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

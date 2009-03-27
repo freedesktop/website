@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Report
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:sshilpa%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000850.html">
+   <LINK REL="Next"  HREF="000832.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Report
+   </H1>
+    <B>Sreeramalu Shilpa
+    </B> 
+    <A HREF="mailto:sshilpa%40novell.com"
+       TITLE="[Open Office] Status Report">sshilpa@novell.com
+       </A><BR>
+    <I>Tue, 08 Mar 2005 09:31:46 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000850.html">[Open Office] gnome &amp; debian problems
+</A></li>
+        <LI> Next message: <A HREF="000832.html">[Open Office] Status Tuesday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#831">[ date ]</a>
+              <a href="thread.html#831">[ thread ]</a>
+              <a href="subject.html#831">[ subject ]</a>
+              <a href="author.html#831">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Worked on the bug # 66822 with shreyas.
+
+Included a conditional to check on the variable $(WITH_BINFILTER) in the
+filter/source/config/fragments/fcfg_calc.mk. if $(WITH_BINFILTER)==NO
+then the staroffice fileformats are disabled.With this the save as
+dialog is not working properly.
+
+Went through the trace and saw the function impl_readoldformats() is
+called in the filtercache.cxx which tries to read the old configuration
+data. Probably need to include a condition there also. will try to do it
+tomorrow.
+
+Regards
+Shilpa
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000850.html">[Open Office] gnome &amp; debian problems
+</A></li>
+	<LI> Next message: <A HREF="000832.html">[Open Office] Status Tuesday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#831">[ date ]</a>
+              <a href="thread.html#831">[ thread ]</a>
+              <a href="subject.html#831">[ subject ]</a>
+              <a href="author.html#831">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

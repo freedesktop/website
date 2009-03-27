@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Identifying untranslated strings
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Identifying%20untranslated%20strings&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002271.html">
+   <LINK REL="Next"  HREF="002269.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Identifying untranslated strings</H1>
+    <B>Matthias Klose</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Identifying%20untranslated%20strings&In-Reply-To="
+       TITLE="[Open Office] Identifying untranslated strings">doko at ubuntu.com
+       </A><BR>
+    <I>Tue Apr 24 08:07:07 EDT 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002271.html">[Open Office] no suitable windowing system found, exiting.
+</A></li>
+        <LI>Next message: <A HREF="002269.html">[Open Office] Licenses of OOOP materials
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2267">[ date ]</a>
+              <a href="thread.html#2267">[ thread ]</a>
+              <a href="subject.html#2267">[ subject ]</a>
+              <a href="author.html#2267">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Looking at the export of strings from 2.2.0, I see many strings exported as
+having a translation while it actually is untranslated. Example:
+
+  basic/source/app/basic.src
+  basic/source/app/localize.sdf
+
+RID_CALLDLG isn't translated for it, ja, pt-BR, sw-TZ, zh-CN, zh-TW. The sv
+translation as well, but has an upper/lowercase typo.
+
+Exporting one of these translations using 'localize -e -l &lt;id&gt; -f &lt;file&gt;'
+exports the &quot;untranslated&quot; string as well. Using the exported file for further
+translations is ugly, because you start with 100% translated messages unless you
+assume that for languages != en-*, all messages with msgid=msgstr are actually
+untranslated.
+
+ - Is there a better way to do that?
+
+ - Why are the untranslated messages imported in the sources in the first
+   place?  Is OOo unable to handle untranslated messages, or should these
+   no-translations just be removed?
+
+Matthias
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002271.html">[Open Office] no suitable windowing system found, exiting.
+</A></li>
+	<LI>Next message: <A HREF="002269.html">[Open Office] Licenses of OOOP materials
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2267">[ date ]</a>
+              <a href="thread.html#2267">[ thread ]</a>
+              <a href="subject.html#2267">[ subject ]</a>
+              <a href="author.html#2267">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

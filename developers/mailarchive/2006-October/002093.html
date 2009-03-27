@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] JRE register fails when building	2.0.4	on	Mandriva 2007 x86_64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%20building%0A%092.0.4%09on%09Mandriva%202007%20x86_64&In-Reply-To=63594A01-25F0-4C11-AD39-A9407E178400%40amarooas.com.au">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002091.html">
+   <LINK REL="Next"  HREF="002095.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] JRE register fails when building	2.0.4	on	Mandriva 2007 x86_64</H1>
+    <B>Caolan McNamara</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20fails%20when%20building%0A%092.0.4%09on%09Mandriva%202007%20x86_64&In-Reply-To=63594A01-25F0-4C11-AD39-A9407E178400%40amarooas.com.au"
+       TITLE="[Open Office] JRE register fails when building	2.0.4	on	Mandriva 2007 x86_64">caolanm at redhat.com
+       </A><BR>
+    <I>Thu Oct 26 05:30:45 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002091.html">[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+        <LI>Next message: <A HREF="002095.html">[Open Office] JRE register fails when building	2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2093">[ date ]</a>
+              <a href="thread.html#2093">[ thread ]</a>
+              <a href="subject.html#2093">[ subject ]</a>
+              <a href="author.html#2093">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 2006-10-26 at 19:24 +1000, Jim Watson wrote:
+&gt;<i> On 26/10/2006, at 6:05 PM, Caolan McNamara wrote:
+</I>&gt;<i> &gt; --with-jdk-home=/usr/lib/jvm/java-1.4.2-gcj-1.4.2.0
+</I>&gt;<i> &gt; to point OOo to the java-esque hierarchy above that libjvm.so
+</I>&gt;<i> 
+</I>&gt;<i> On debian/unstable the directory is different:
+</I>&gt;<i> java.home=    /usr/lib/jvm/java-1.4.2-gcj-4.1-1.4.2.0
+</I>&gt;<i> Is it a typo or a difference between distributions?
+</I>
+well, it's actually /usr/lib/jvm/java-1.4.2-gcj for me, it's a symlink.
+what the symlink points to is almost certainly distro dependant. 
+
+If &quot;/usr/lib/jvm/java-1.4.2-gcj&quot; was common across distros (I don't
+know, it might be as I assume it came from jpackage naming schemes) then
+we might be able to default to this jdk-home if one is not set and we
+have detected from configure that we are running a gij which is a high
+enough version to come with libjvm.so. If it was fairly likely to exist
+on fedora (yes), debian and other java-gcj using distros then that would
+make building OOo with gcj more pain-free.
+
+C.
+
+</PRE>
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002091.html">[Open Office] JRE register fails when building 2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+	<LI>Next message: <A HREF="002095.html">[Open Office] JRE register fails when building	2.0.4	on	Mandriva 2007 x86_64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2093">[ date ]</a>
+              <a href="thread.html#2093">[ thread ]</a>
+              <a href="subject.html#2093">[ subject ]</a>
+              <a href="author.html#2093">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

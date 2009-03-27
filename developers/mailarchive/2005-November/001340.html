@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] configure help
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20configure%20help&In-Reply-To=1133216721.25009.6.camel%40mleibowi-nld.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001336.html">
+   <LINK REL="Next"  HREF="001349.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] configure help</H1>
+    <B>Jan Holesovsky</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20configure%20help&In-Reply-To=1133216721.25009.6.camel%40mleibowi-nld.site"
+       TITLE="[Open Office] configure help">kendy at suse.cz
+       </A><BR>
+    <I>Tue Nov 29 04:22:18 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001336.html">[Open Office] configure help
+</A></li>
+        <LI>Next message: <A HREF="001349.html">[Open Office] configure help
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1340">[ date ]</a>
+              <a href="thread.html#1340">[ thread ]</a>
+              <a href="subject.html#1340">[ subject ]</a>
+              <a href="author.html#1340">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+On Monday 28 November 2005 23:25, Michael Leibowitz wrote:
+
+&gt;<i> I'm trying to make a configure option that is, in turn, passed to the
+</I>&gt;<i> openoffice.org configure script (--with-foo=bar would be passed on to
+</I>&gt;<i> oo.o configure).  I am an autoconf neophyte, and am unskilled in the
+</I>&gt;<i> ways that are not cut and paste.  Any guidance appreciated.  :-)
+</I>
+I am not sure if I understand you correctly, but IIRC all the configure 
+options that are specified to ooo-build's configure are passed to OOo's 
+configure as well.
+
+~/ooo-build$ ./configure --with-distro=BLAH --with-special-option=whatever
+
+will result in something like
+
+configure --option-for-distro-BLAH-1 \
+          --option-for-distro-BLAH-2 ... \
+          '--with-distro=BLAH' '--with-special-option=whatever'
+
+for OOo.
+
+Or - do you mean something different?
+
+Regards,
+Jan
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001336.html">[Open Office] configure help
+</A></li>
+	<LI>Next message: <A HREF="001349.html">[Open Office] configure help
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1340">[ date ]</a>
+              <a href="thread.html#1340">[ thread ]</a>
+              <a href="subject.html#1340">[ subject ]</a>
+              <a href="author.html#1340">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

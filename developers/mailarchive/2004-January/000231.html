@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] OOO_1_1_0.tar.bz2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:khirano%40transwift.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000238.html">
+   <LINK REL="Next"  HREF="000232.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] OOO_1_1_0.tar.bz2
+   </H1>
+    <B>Hirano Kazunari
+    </B> 
+    <A HREF="mailto:khirano%40transwift.net"
+       TITLE="[Open Office] OOO_1_1_0.tar.bz2">khirano@transwift.net
+       </A><BR>
+    <I>Tue, 20 Jan 2004 06:13:37 +0900</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000238.html">[Open Office] recent-files issues ...
+</A></li>
+        <LI> Next message: <A HREF="000232.html">[Open Office] configure switches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#231">[ date ]</a>
+              <a href="thread.html#231">[ thread ]</a>
+              <a href="subject.html#231">[ subject ]</a>
+              <a href="author.html#231">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hirano Kazunari wrote:
+
+&gt;<i> Hi Michael,
+</I>&gt;<i>
+</I>&gt;<i> Michael Meeks wrote:
+</I>&gt;<i>
+</I>&gt;&gt;&gt;<i> what license do you apply to your ooo-build-1.1.4x.x.tar.gz?
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     A good question; I'll update COPYING in CVS; it's the same as OO.o
+</I>&gt;&gt;<i> up-stream, all under the JCA: so LGPL/SISSL.
+</I>&gt;&gt;<i>
+</I>&gt;<i> I see. Very Good!
+</I>&gt;<i>
+</I>&gt;<i> Now I will show you what I did:
+</I>&gt;<i>
+</I>&gt;<i> 1) Configure:
+</I>&gt;<i>
+</I>&gt;<i> --with-system-gcc
+</I>&gt;<i> --enable-bonobo
+</I>&gt;<i> --enable-java
+</I>&gt;<i> --with-jdk-home=/home/khirano/j2sdk_nb/j2sdk1.4.2
+</I>&gt;<i> --with-distro=RHFedoraOnly
+</I>&gt;<i>
+</I>&gt;<i> &quot;make&quot; stopped at external ;)
+</I>&gt;<i>
+</I>&gt;<i> 2)libstdc++.so.5 &amp; libgcc_s.so.1
+</I>&gt;<i> /usr/lib/libstdc++.so.5
+</I>&gt;<i> /lib/libgcc_s.so.1
+</I>&gt;<i> copy these two files to /solver/645/unxlngi4.pro/lib
+</I>&gt;<i>
+</I>&gt;<i> 3) apply a patch to compile with jdk1.4.2
+</I>&gt;<i> <A HREF="http://www.openoffice.org/issues/show_bug.cgi?id=16626">http://www.openoffice.org/issues/show_bug.cgi?id=16626</A>
+</I>&gt;<i>
+</I>&gt;<i> 4) ja_config.sh:
+</I>&gt;<i> move to /build/OOO_1_1_0
+</I>&gt;<i> execute ja_config.sh below.
+</I>&gt;<i> -----------------------------
+</I>&gt;<i> #!/bin/sh
+</I>&gt;<i>
+</I>&gt;<i> SRC_ROOT=`pwd`
+</I>&gt;<i> TEMP_DIR=${SRC_ROOT}/temp
+</I>&gt;<i>
+</I>&gt;<i> GPC_LOCATE=<A HREF="ftp://ftp.cs.man.ac.uk/pub/toby/gpc">ftp://ftp.cs.man.ac.uk/pub/toby/gpc</A>
+</I>&gt;<i> GPC_ARCHIVE=gpc231.zip
+</I>&gt;<i> HELPCONTENT_LOCATE=<A HREF="http://ftp.services.openoffice.org/pub/OpenOffice.org/contrib/helpcontent/">http://ftp.services.openoffice.org/pub/OpenOffice.org/contrib/helpcontent/</A> 
+</I>&gt;<i>
+</I>&gt;<i> HELPCONTENT_ARCHIVE=helpcontent_81_unix.tgz
+</I>&gt;<i>
+</I>&gt;<i> # =================================================
+</I>&gt;<i> # create a tempolary directory
+</I>&gt;<i> # =================================================
+</I>&gt;<i> mkdir -p ${TEMP_DIR}
+</I>&gt;<i>
+</I>&gt;<i> # =================================================
+</I>&gt;<i> # Download gpc and extract to ${SRC_ROOT}/external/gpc
+</I>&gt;<i> # =================================================
+</I>&gt;<i> if [ ! -f ${TEMP_DIR}/${GPC_ARCHIVE} ]; then
+</I>&gt;<i> wget ${GPC_LOCATE}/${GPC_ARCHIVE} -O ${TEMP_DIR}/${GPC_ARCHIVE}
+</I>&gt;<i> fi
+</I>&gt;<i>
+</I>&gt;<i> unzip -o -d ${TEMP_DIR} ${TEMP_DIR}/${GPC_ARCHIVE}
+</I>&gt;<i>
+</I>&gt;<i> cp -v -f ${TEMP_DIR}/gpc231/gpc.c ${SRC_ROOT}/external/gpc
+</I>&gt;<i> cp -v -f ${TEMP_DIR}/gpc231/gpc.h ${SRC_ROOT}/external/gpc
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> # ==================================================
+</I>&gt;<i> # Download Japanese Help content and extract to 
+</I>&gt;<i> ${SRC_ROOT}/helpcontent/unx
+</I>&gt;<i> # ==================================================
+</I>&gt;<i> if [ ! -f ${TEMP_DIR}/${HELPCONTENT_ARCHIVE} ]; then
+</I>&gt;<i> wget ${HELPCONTENT_LOCATE}/${HELPCONTENT_ARCHIVE} -O 
+</I>&gt;<i> ${TEMP_DIR}/${HELPCONTENT_ARCHIVE}
+</I>&gt;<i> fi
+</I>&gt;<i>
+</I>&gt;<i> cd ${TEMP_DIR}
+</I>&gt;<i> tar zxvf ${HELPCONTENT_ARCHIVE}
+</I>&gt;<i> cd ${SRC_ROOT}
+</I>&gt;<i>
+</I>&gt;<i> mkdir -p ${SRC_ROOT}/helpcontent/unx/common/japanese
+</I>&gt;<i> unzip -o -d ${SRC_ROOT}/helpcontent/unx/common/japanese 
+</I>&gt;<i> ${TEMP_DIR}/shared81.zip
+</I>&gt;<i>
+</I>&gt;<i> mkdir -p ${SRC_ROOT}/helpcontent/unx/swriter/japanese
+</I>&gt;<i> unzip -o -d ${SRC_ROOT}/helpcontent/unx/swriter/japanese 
+</I>&gt;<i> ${TEMP_DIR}/swriter81.zip
+</I>&gt;<i>
+</I>&gt;<i> mkdir -p ${SRC_ROOT}/helpcontent/unx/scalc/japanese
+</I>&gt;<i> unzip -o -d ${SRC_ROOT}/helpcontent/unx/scalc/japanese 
+</I>&gt;<i> ${TEMP_DIR}/scalc81.zip
+</I>&gt;<i>
+</I>&gt;<i> mkdir -p ${SRC_ROOT}/helpcontent/unx/schart/japanese
+</I>&gt;<i> unzip -o -d ${SRC_ROOT}/helpcontent/unx/schart/japanese 
+</I>&gt;<i> ${TEMP_DIR}/schart81.zip
+</I>&gt;<i>
+</I>&gt;<i> mkdir -p ${SRC_ROOT}/helpcontent/unx/sbasic/japanese
+</I>&gt;<i> unzip -o -d ${SRC_ROOT}/helpcontent/unx/sbasic/japanese 
+</I>&gt;<i> ${TEMP_DIR}/sbasic81.zip
+</I>&gt;<i>
+</I>&gt;<i> mkdir -p ${SRC_ROOT}/helpcontent/unx/smath/japanese
+</I>&gt;<i> unzip -o -d ${SRC_ROOT}/helpcontent/unx/smath/japanese 
+</I>&gt;<i> ${TEMP_DIR}/smath81.zip
+</I>&gt;<i>
+</I>&gt;<i> mkdir -p ${SRC_ROOT}/helpcontent/unx/simpress/japanese
+</I>&gt;<i> unzip -o -d ${SRC_ROOT}/helpcontent/unx/simpress/japanese 
+</I>&gt;<i> ${TEMP_DIR}/simpress81.zip
+</I>&gt;<i>
+</I>&gt;<i> mkdir -p ${SRC_ROOT}/helpcontent/unx/sdraw/japanese
+</I>&gt;<i> unzip -o -d ${SRC_ROOT}/helpcontent/unx/sdraw/japanese 
+</I>&gt;<i> ${TEMP_DIR}/sdraw81.zip
+</I>&gt;<i>
+</I>&gt;<i> # configure
+</I>&gt;<i> # ==================================================
+</I>&gt;<i> cd ${SRC_ROOT}/config_office
+</I>&gt;<i>
+</I>&gt;<i> ./configure --with-lang=JAPN --with-dict=ALL 
+</I>&gt;<i> --with-jdk-home=/home/khirano/j2sdk_nb/j2sdk1.4.2 
+</I>&gt;<i> --with-ant-home=/home/khirano/apache-ant-1.6.0
+</I>&gt;<i>
+</I>&gt;<i> # ==================================================
+</I>&gt;<i> # Set enviroment values and bootstrap
+</I>&gt;<i> # ==================================================
+</I>&gt;<i> cd ${SRC_ROOT}
+</I>&gt;<i>
+</I>&gt;<i> # Optional: use ccache to shorten compilation time
+</I>&gt;<i> sed -e 's/=\&quot;gcc/=\&quot;ccache gcc/' -e 's/=\&quot;c++/=\&quot;ccache c++/' -e 
+</I>&gt;<i> 's/=\&quot;g++/=\&quot;ccache g++/' LinuxIntelEnv.Set.sh &gt; 
+</I>&gt;<i> ${TEMP_DIR}/LinuxIntelEnv.Set.sh
+</I>&gt;<i> cp -v -f ${TEMP_DIR}/LinuxIntelEnv.Set.sh 
+</I>&gt;<i> ${SRC_ROOT}/LinuxIntelEnv.Set.sh
+</I>&gt;<i>
+</I>&gt;<i> # ==================================================
+</I>&gt;<i> # Fixed Japanese original issues
+</I>&gt;<i> # For the detail, see issue #10718
+</I>&gt;<i> # ==================================================
+</I>&gt;<i> cd ${SRC_ROOT}/extras/source/wordbook/lang
+</I>&gt;<i> mkdir -p japanese
+</I>&gt;<i> cp -v -f english_us/soffice.dic japanese
+</I>&gt;<i>
+</I>&gt;<i> cd ${SRC_ROOT}/extras/source/templates/wizard/report/lang/
+</I>&gt;<i> mkdir -p japanese
+</I>&gt;<i> cp -v -f english_us/* japanese
+</I>&gt;<i>
+</I>&gt;<i> # ==================================================
+</I>&gt;<i> # Output the preparation finished
+</I>&gt;<i> # ==================================================
+</I>&gt;<i> echo 'The preparation completed.'
+</I>&gt;<i> echo 'Please type dmake'
+</I>&gt;<i> ---------------------------------
+</I>&gt;<i>
+</I>&gt;<i> 5) dmake
+</I>&gt;<i> source LinuxIntelEnv.Set.sh
+</I>&gt;<i> ./bootstrap
+</I>&gt;<i> dmake
+</I>&gt;<i>
+</I>&gt;<i> Then I got ooo installation set for 49 and 81.
+</I>&gt;<i>
+</I>&gt;<i> Thanks
+</I>&gt;<i> khirano
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000238.html">[Open Office] recent-files issues ...
+</A></li>
+	<LI> Next message: <A HREF="000232.html">[Open Office] configure switches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#231">[ date ]</a>
+              <a href="thread.html#231">[ thread ]</a>
+              <a href="subject.html#231">[ subject ]</a>
+              <a href="author.html#231">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] stupid? tools/inc/solar.h question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:bero%40arklinux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000741.html">
+   <LINK REL="Next"  HREF="000743.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] stupid? tools/inc/solar.h question
+   </H1>
+    <B>Bernhard Rosenkraenzer
+    </B> 
+    <A HREF="mailto:bero%40arklinux.org"
+       TITLE="[Open Office] stupid? tools/inc/solar.h question">bero@arklinux.org
+       </A><BR>
+    <I>Sat, 5 Feb 2005 16:58:04 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000741.html">[Open Office] To fix -Suse9.3
+</A></li>
+        <LI> Next message: <A HREF="000743.html">[Open Office] stupid? tools/inc/solar.h question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#742">[ date ]</a>
+              <a href="thread.html#742">[ thread ]</a>
+              <a href="subject.html#742">[ subject ]</a>
+              <a href="author.html#742">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>While fixing some more Min/Max ambiguities on 32 bit machines with 64 bit 
+patches applied, I came across this in tools/inc/solar.h:
+
+inline int Min(int a, int b) { return (a&lt;b?a:b); }
+inline char Min(char a, char b) { return (a&lt;b?a:b); }
+inline BYTE Min(BYTE a, BYTE b) { return (a&lt;b?a:b); }
+[.... repeated for numerous other types ....]
+
+Is there any reason why we aren't doing the obvious?
+
+template &lt;class T&gt; inline T Min(T a, T b) { return (a&lt;b?a:b); }
+
+?
+
+It generates the exact same code, so optimization can't be the issue here, at 
+least on systems with any sanity.
+
+That would also be far more consistent with what happens if the same file is 
+included by C code (&quot;#ifndef __cplusplus [...] #define min(a,b) (((a)&lt;(b)) ? 
+(a) : (b))&quot;).
+
+Not checking in a patch to do this for now because this is so obvious that I 
+simply must be overlooking some reason not to do it ;)
+
+LLaP
+bero
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000741.html">[Open Office] To fix -Suse9.3
+</A></li>
+	<LI> Next message: <A HREF="000743.html">[Open Office] stupid? tools/inc/solar.h question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#742">[ date ]</a>
+              <a href="thread.html#742">[ thread ]</a>
+              <a href="subject.html#742">[ subject ]</a>
+              <a href="author.html#742">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

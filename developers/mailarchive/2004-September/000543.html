@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build and repeated OO build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-September/index.html" >
+   <LINK REL="made" HREF="mailto:pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000541.html">
+   <LINK REL="Next"  HREF="000544.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build and repeated OO build
+   </H1>
+    <B>Petr Mladek
+    </B> 
+    <A HREF="mailto:pmladek%40suse.cz"
+       TITLE="[Open Office] ooo-build and repeated OO build">pmladek@suse.cz
+       </A><BR>
+    <I>Fri, 10 Sep 2004 10:31:02 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000541.html">[Open Office] gtk fpicker and the &quot;Versions&quot; list
+</A></li>
+        <LI> Next message: <A HREF="000544.html">[Open Office] ANNOUNCE: ooo-build-1.3.5.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#543">[ date ]</a>
+              <a href="thread.html#543">[ thread ]</a>
+              <a href="subject.html#543">[ subject ]</a>
+              <a href="author.html#543">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 09 September 2004 09:54, Michael Meeks wrote:
+&gt;<i> Hi Ruslan,
+</I>&gt;<i>
+</I>&gt;<i> On Fri, 2004-09-03 at 10:22 +0300, Ruslan wrote:
+</I>&gt;<i> &gt; Could somebody tell me how to repeat OO build with ooo-build in case i
+</I>&gt;<i> &gt; have already build OO and after that i added unzipped localized
+</I>&gt;<i> &gt; helpcontent into $SRC_ROOT/solver/645/wntmsci8.pro/pck
+</I>&gt;<i>
+</I>&gt;<i>  This is really a question for Petr I think, he hacked that code.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Just running 'make' in the top of ooo-build begins to run and stops with
+</I>&gt;<i> &gt; saying - nothing to do. I tried to delete compiled setup from instsetoo
+</I>&gt;<i> &gt; and ran'make' again - result is the same - nothing to do.
+</I>&gt;<i>
+</I>&gt;<i>  Try removing some stamp/ files - those are used to mark whether the
+</I>&gt;<i> build has been completed etc.
+</I>
+In your case I suggest to remove the file ooo-build/stamp/build and run make 
+again.
+
+Another solution would be to put the tar-ball with localized help content into 
+the directory ooo-build/src/, for example 
+ooo-build-1.3.2/src/helpcontent_49_unix.tar.bz2. Then it will be installed 
+automatically within &quot;make install&quot;. See ooo-build/bin/install-help for more 
+details.
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="mailto:pmladek@suse.cz">pmladek@suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000541.html">[Open Office] gtk fpicker and the &quot;Versions&quot; list
+</A></li>
+	<LI> Next message: <A HREF="000544.html">[Open Office] ANNOUNCE: ooo-build-1.3.5.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#543">[ date ]</a>
+              <a href="thread.html#543">[ thread ]</a>
+              <a href="subject.html#543">[ subject ]</a>
+              <a href="author.html#543">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

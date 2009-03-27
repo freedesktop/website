@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] build breakage ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:michael.meeks%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000874.html">
+   <LINK REL="Next"  HREF="000878.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] build breakage ...
+   </H1>
+    <B>michael meeks
+    </B> 
+    <A HREF="mailto:michael.meeks%40novell.com"
+       TITLE="[Open Office] build breakage ...">michael.meeks@novell.com
+       </A><BR>
+    <I>Tue, 29 Mar 2005 16:28:02 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000874.html">[Open Office] Status
+</A></li>
+        <LI> Next message: <A HREF="000878.html">[Open Office] Status Tuesday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#876">[ date ]</a>
+              <a href="thread.html#876">[ thread ]</a>
+              <a href="subject.html#876">[ subject ]</a>
+              <a href="author.html#876">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there,
+
+	Looks like we're missing a check to see if the archive exists before
+unpacking it, I've added that in HEAD.
+
+	Hmm,
+
+		Michael.
+
+1.27         (brosenk  21-Mar-05): else
+1.27         (brosenk  21-Mar-05):     # System is optional, but parts
+of it are useful
+1.27         (brosenk  21-Mar-05):     tar $OOO_UNTAR_OPTIONS
+$SRCDIR/$OOO_SYSTEM_TARBALL
+1.2          (michael  26-May-04): fi
+
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000874.html">[Open Office] Status
+</A></li>
+	<LI> Next message: <A HREF="000878.html">[Open Office] Status Tuesday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#876">[ date ]</a>
+              <a href="thread.html#876">[ thread ]</a>
+              <a href="subject.html#876">[ subject ]</a>
+              <a href="author.html#876">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

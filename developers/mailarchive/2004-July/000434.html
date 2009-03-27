@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] ooo-build and JCAs/issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000443.html">
+   <LINK REL="Next"  HREF="000427.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] ooo-build and JCAs/issues
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] ooo-build and JCAs/issues">michael@ximian.com
+       </A><BR>
+    <I>Mon, 05 Jul 2004 12:07:52 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000443.html">[Open Office] ooo-build and JCAs/issues
+</A></li>
+        <LI> Next message: <A HREF="000427.html">[Open Office] dropping OOO_1_1_0 patch-sets ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#434">[ date ]</a>
+              <a href="thread.html#434">[ thread ]</a>
+              <a href="subject.html#434">[ subject ]</a>
+              <a href="author.html#434">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin,
+
+On Fri, 2004-07-02 at 15:14 +0200, Martin Hollmichel wrote:
+&gt;<i> Are all the diffs contained in ooo-build intended to go back
+</I>&gt;<i> into the OOo tree ?
+</I>
+	In the abstract - certainly yes.
+
+&gt;<i> * have all authors signed JCA ? (I cannot  find one for  Frederico)
+</I>
+	Yes; this is our policy and practice; I'll refer to the web mirror of
+our code, it's just what is in CVS, cf:
+	<A HREF="http://ooo.ximian.com/ooo-build/HACKING">http://ooo.ximian.com/ooo-build/HACKING</A>
+
+	Federico works for me, for Ximian, now Novell - so all his
+contributions are covered under the Ximian/Novell blanket-assignment.
+
+&gt;<i> * Do we have OOo issues for the patches ? Michael, I know you find it 
+</I>&gt;<i> someway bureaucratic, but it makes my life of writing release notes more 
+</I>&gt;<i> easy and exact (also QA will be happy if they are able to track the 
+</I>&gt;<i> milestones).
+</I>
+	I try to file issues per patch; especially for the ones that can
+usefully go up-stream easily. However, the practice varies amongst
+people working on ooo-build, and we're not too anal ;-) best practice as
+codified here: <A HREF="http://ooo.ximian.com/ooo-build.html#section-2.4">http://ooo.ximian.com/ooo-build.html#section-2.4</A> is to
+commit to IZ before CVS.
+
+&gt;<i> If the answer is no, how can we set up a plan, what needs to get in OOo 
+</I>&gt;<i> and what not. Is everybody aware of the current plan for 2.0 (UI freeze 
+</I>&gt;<i> end of July, Beta in October) or does anybody need a change of the plan ?
+</I>
+	Well - we hope to be working on the 2.0 branch more actively in a few
+weeks/months. Whether the bugs get up-stream or not is _really_ more a
+function of whether the Sun / IZ process is at all workable - so far,
+without periodic kickings of backsides by interested parties [ Stefan /
+you ] almost nothing would be merged up.
+
+	OTOH, some of the bug numbers in the patches list, are things that have
+been applied to HEAD, and will not be applied to stable; others are
+plain back-ports of HEAD features; others have been (already)
+gratuitously re-written up-stream, and we're waiting for someone to do
+the work comparing / selecting / re-back-porting the new work. Some
+other patches belong to essentially vendor-specific stuff, eg. strike-
+versioning, branding patches etc. and yet others belong to in-progress
+feature development.
+
+	Anyhow - in total, it's great to have your interest / attention. The
+best place for the latest patch / issues list is:
+	<A HREF="http://ooo.ximian.com/ooo-build/patches/OOO_1_1_2/apply">http://ooo.ximian.com/ooo-build/patches/OOO_1_1_2/apply</A>
+
+	Hope that helps,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000443.html">[Open Office] ooo-build and JCAs/issues
+</A></li>
+	<LI> Next message: <A HREF="000427.html">[Open Office] dropping OOO_1_1_0 patch-sets ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#434">[ date ]</a>
+              <a href="thread.html#434">[ thread ]</a>
+              <a href="subject.html#434">[ subject ]</a>
+              <a href="author.html#434">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

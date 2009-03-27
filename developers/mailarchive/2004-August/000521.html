@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] writerperfect / ooo-build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000520.html">
+   <LINK REL="Next"  HREF="000523.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] writerperfect / ooo-build
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] writerperfect / ooo-build">michael@ximian.com
+       </A><BR>
+    <I>Fri, 27 Aug 2004 16:11:11 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000520.html">[Open Office] ANNOUNCE: ooo-build-1.3.2
+</A></li>
+        <LI> Next message: <A HREF="000523.html">[Open Office] Re: Bad patch to default resources
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#521">[ date ]</a>
+              <a href="thread.html#521">[ thread ]</a>
+              <a href="subject.html#521">[ subject ]</a>
+              <a href="author.html#521">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there,
+
+	So - I just hacked up my 'gen' script a little more sensibly - and it
+seems perhaps the best way to work with writerperfect - since it's
+relatively small; is to commit fixes / improvements direct to OO.o cvs;
+and then run:
+
+	.../ooo-build/bin/gen .../ooo-build/patches/wpd -R writerperfect
+
+	which should then re-generate the writerperfect patch set in ooo-build
+nicely ( at least, that's one plan ).
+
+	Of course; to integrate it into 2.0 - I guess we'll need more modules
+adding to the 'wpd01' cws; Martin - can we add 'scp' and 'officecfg' to
+that cws ?
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000520.html">[Open Office] ANNOUNCE: ooo-build-1.3.2
+</A></li>
+	<LI> Next message: <A HREF="000523.html">[Open Office] Re: Bad patch to default resources
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#521">[ date ]</a>
+              <a href="thread.html#521">[ thread ]</a>
+              <a href="subject.html#521">[ subject ]</a>
+              <a href="author.html#521">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

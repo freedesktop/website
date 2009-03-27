@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] A weird build problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20A%20weird%20build%20problem&In-Reply-To=1136290932.6693.109.camel%40linux.site">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001449.html">
+   <LINK REL="Next"  HREF="001453.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] A weird build problem</H1>
+    <B>Ismail Donmez</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20A%20weird%20build%20problem&In-Reply-To=1136290932.6693.109.camel%40linux.site"
+       TITLE="[Open Office] A weird build problem">ismail at uludag.org.tr
+       </A><BR>
+    <I>Tue Jan  3 07:24:56 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001449.html">[Open Office] A weird build problem
+</A></li>
+        <LI>Next message: <A HREF="001453.html">[Open Office] A weird build problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1451">[ date ]</a>
+              <a href="thread.html#1451">[ thread ]</a>
+              <a href="subject.html#1451">[ subject ]</a>
+              <a href="author.html#1451">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sal&#305; 3 Ocak 2006 14:22 tarihinde, michael meeks &#351;unlar&#305; yazm&#305;&#351;t&#305;: 
+&gt;<i> On Fri, 2005-12-23 at 19:59 +0100, Andreas Proschofsky wrote:
+</I>&gt;<i> &gt; Just to follow up on this: ooo-build-2.0.1 still fails with KDE only, so
+</I>&gt;<i> &gt; it would be nice if someone with a little bit more knowledge could take
+</I>&gt;<i> &gt; a look at the patches and fix this.
+</I>&gt;<i>
+</I>&gt;<i> 	So everyone says - but no-one sends me a log :-)
+</I>&gt;<i>
+</I>&gt;<i> 	Any chance of the compiler output ? I can't easily replicate that here.
+</I>
+Well I did sent the gcc log ( unless you mean something else of course ) :
+
+Making: ../../unxlngi6.pro/slo/shutdownicon.obj
+g++ -Wreturn-type -fmessage-length=0 -c -I.  -I. -I../inc -I../../inc -I../../unx/inc -I../../unxlngi6.pro/inc -I. -I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/stl 
+-I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/external -I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc 
+-I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solenv/unxlngi6/inc -I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solenv/inc -I/home/cartman/OpenOffice/ooo-build/build/src680-m143/res 
+-I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solver/680/unxlngi6.pro/inc/stl -I/home/cartman/OpenOffice/ooo-build/build/src680-m143/solenv/inc/Xp31 
+-I/opt/blackdown-jdk-1.4.2.02/include -I/opt/blackdown-jdk-1.4.2.02/include/linux -I/opt/blackdown-jdk-1.4.2.02/include/native_threads/include -I/usr/include     -I. -I../../res -I. -Os -fno-strict-aliasing -Wuninitialized   
+-fvisibility=hidden -pipe -mtune=pentiumpro -Wno-ctor-dtor-privacy -fvisibility-inlines-hidden -fexceptions -fno-enforce-eh-specs   -fpic -DLINUX -DUNX -DVCL -DGCC -DC341 -DINTEL 
+-DGXX_INCLUDE_PATH=/usr/lib/gcc/i686-pc-linux-gnu/3.4.5/include/g++-v3 -DCVER=C341 -D_USE_NAMESPACE -DNPTL -DGLIBC=2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1 
+-DSTLPORT_VERSION=400 -DHAVE_GCC_VISIBILITY_FEATURE -D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DSUPD=680 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DEXCEPTIONS_ON 
+-DCUI -DSOLAR_JAVA -DSRC680   -DSFX2_DLLIMPLEMENTATION -DDLL_NAME=libsfx680li.so -DSHAREDLIB -D_DLL_  -DMULTITHREAD  -o ../../unxlngi6.pro/slo/shutdownicon.o
+ /home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx: 
+In member function `void ShutdownIcon::initSystray()':
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:203: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:215: 
+error: expected primary-expression before '(' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:215: 
+error: expected primary-expression before &quot;aSMgr&quot;
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:215: 
+error: expected `;' before ':' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:226: 
+error: no matching function for call to `ShutdownIcon::ShutdownIcon()'
+./shutdownicon.hxx:93: note: candidates are: virtual 
+ShutdownIcon::~ShutdownIcon()
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:227: 
+error: expected `;' before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:234: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:263: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:398: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:439: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:452: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:461: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:469: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:496: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:505: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:515: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:523: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:535: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:543: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:598: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:605: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:613: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:675: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:703: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:721: 
+error: a function-definition is not allowed here before '{' token
+/home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl/shutdownicon.cxx:779: 
+error: expected `}' at end of input
+dmake:  Error code 1, while making '../../unxlngi6.pro/slo/shutdownicon.obj'
+'---* tg_merge.mk *---'
+dmake:  Error code 255, while making 'do_it_exceptions'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while 
+making /home/cartman/OpenOffice/ooo-build/build/src680-m143/sfx2/source/appl
+make: *** [stamp/build] Error 1
+
+Regards,
+ismail
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001449.html">[Open Office] A weird build problem
+</A></li>
+	<LI>Next message: <A HREF="001453.html">[Open Office] A weird build problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1451">[ date ]</a>
+              <a href="thread.html#1451">[ thread ]</a>
+              <a href="subject.html#1451">[ subject ]</a>
+              <a href="author.html#1451">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

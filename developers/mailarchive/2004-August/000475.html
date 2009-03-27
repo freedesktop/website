@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: writerperfect / integration &amp; accounts ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-August/index.html" >
+   <LINK REL="made" HREF="mailto:rene%40debian.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000474.html">
+   <LINK REL="Next"  HREF="000476.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: writerperfect / integration &amp; accounts ...
+   </H1>
+    <B>Rene Engelhard
+    </B> 
+    <A HREF="mailto:rene%40debian.org"
+       TITLE="[Open Office] Re: writerperfect / integration &amp; accounts ...">rene@debian.org
+       </A><BR>
+    <I>Fri, 6 Aug 2004 22:52:43 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000474.html">[Open Office] Re: writerperfect / integration &amp; accounts ...
+</A></li>
+        <LI> Next message: <A HREF="000476.html">[Open Office] newbie: custom splashscreen
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#475">[ date ]</a>
+              <a href="thread.html#475">[ thread ]</a>
+              <a href="subject.html#475">[ subject ]</a>
+              <a href="author.html#475">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--UlVJffcvxoiEqYs2
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi Michael,
+
+Michael Meeks wrote:
+&gt;<i> 	Well; OO.o _will_ ship with a built-in version of libwpd [ at least,
+</I>&gt;<i> all the RH/SuSE packages will I think, Debian is a law unto itself ].
+</I>
+And then you have a security update or some other important update and
+you need to rebuild the whole OOo...
+
+Unless it is heavily patched where the patches are needed and it cannot be
+used external (icu, jpeg, sablotron, expat, ...) I see advantages in using
+it externally..
+
+&gt;<i> Certainly, until all the features we use are completely settled, and the
+</I>&gt;<i> library has been boringly stable for 6 months or so I'd not want to have
+</I>&gt;<i> libwpd external :-) so - this won't be a system library, but a private
+</I>
+SONAME wise? API-wise? &quot;Normal&quot; stability?
+That's what bugreports and testing is for.
+
+If there is a hughe problem with a later version where the bug lies in libw=
+pd
+it must get fixed. You always could use an older version in your dist if
+that won't work out or provide libwpdFOO and libwpdBAR since library packag=
+es
+are parallel installable anyhow (or at least should be) as Debian does
+with libneon23 (used by OOo) and libneon24 for example.
+
+And if only the SONAME changes you just could rebuild against it when the
+time comes...
+
+We will see...
+
+&gt;<i> internal one.
+</I>
+libwpd (0.7.1-4) unstable; urgency=3Dmedium
+
+  * Now libwpd-dev depends on libglib2.0-dev and libgsf-1-dev - closes: #25=
+3014
+  * Added Build-Depends: libbz2-dev - closes: #253911
+
+ -- Masayuki Hatta (mhatta) &lt;<A HREF="mailto:mhatta@debian.org">mhatta@debian.org</A>&gt;  Sun, 20 Jun 2004 02:41:29 =
++0900
+
+libwpd (0.7.1-3) unstable; urgency=3Dlow
+
+  * Made it versioned build-dep for libxml2-dev - closes: #242970
+
+ -- Masayuki Hatta (mhatta) &lt;<A HREF="mailto:mhatta@debian.org">mhatta@debian.org</A>&gt;  Mon, 26 Apr 2004 22:56:13 =
++0900
+
+libwpd (0.7.1-2) unstable; urgency=3Dlow
+
+  * [control] changed Maintainer field.
+  * [control] fixed typos.
+  * Changed the mail address of upstream authors.
+
+ -- Masayuki Hatta (mhatta) &lt;<A HREF="mailto:mhatta@debian.org">mhatta@debian.org</A>&gt;  Mon, 16 Feb 2004 12:19:43 =
++0900
+
+libwpd (0.7.1-1) unstable; urgency=3Dlow
+
+  * New upstream release.
+
+ -- Masayuki Hatta (mhatta) &lt;<A HREF="mailto:mhatta@debian.org">mhatta@debian.org</A>&gt;  Sat,  7 Feb 2004 16:08:40 =
++0900
+
+libwpd (0.6.6-1) unstable; urgency=3Dlow
+
+  * New upstream release
+  * Changed libwp4 to libwpd5 since soname has been bumped up again.  Oh bo=
+y.
+
+ -- Masayuki Hatta &lt;<A HREF="mailto:mhatta@debian.org">mhatta@debian.org</A>&gt;  Mon, 10 Nov 2003 18:38:55 +0900
+
+The last SONAME change (0.7.1 has 7) happened in Feb or earlier. Not a short
+time, is there?
+
+Gr=FC=DFe/Regards,
+
+Ren=E9
+--=20
+ .''`.  Ren=E9 Engelhard -- Debian GNU/Linux Developer
+ : :' : <A HREF="http://www.debian.org">http://www.debian.org</A> | <A HREF="http://people.debian.org/~rene/">http://people.debian.org/~rene/</A>
+ `. `'  <A HREF="mailto:rene@debian.org">rene@debian.org</A> | GnuPG-Key ID: 248AEB73
+   `-   Fingerprint: 41FA F208 28D4 7CA5 19BB  7AD9 F859 90B0 248A EB73
+     =20
+
+--UlVJffcvxoiEqYs2
+Content-Type: application/pgp-signature; name=&quot;signature.asc&quot;
+Content-Description: Digital signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.4 (GNU/Linux)
+
+iD8DBQFBE++b+FmQsCSK63MRAmYcAJ9Gpr3qTqEz5KJIgBWdNddZAHNI+gCdHz6u
++9E0qCMOmIrVHw8o6XME5lI=
+=quCu
+-----END PGP SIGNATURE-----
+
+--UlVJffcvxoiEqYs2--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000474.html">[Open Office] Re: writerperfect / integration &amp; accounts ...
+</A></li>
+	<LI> Next message: <A HREF="000476.html">[Open Office] newbie: custom splashscreen
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#475">[ date ]</a>
+              <a href="thread.html#475">[ thread ]</a>
+              <a href="subject.html#475">[ subject ]</a>
+              <a href="author.html#475">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

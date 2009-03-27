@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] xmlhelp-port-to-db-4.3.diff seems to not apply
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20xmlhelp-port-to-db-4.3.diff%20seems%20to%20not%20apply&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002193.html">
+   <LINK REL="Next"  HREF="002198.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] xmlhelp-port-to-db-4.3.diff seems to not apply</H1>
+    <B>Jonathan Smith</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20xmlhelp-port-to-db-4.3.diff%20seems%20to%20not%20apply&In-Reply-To="
+       TITLE="[Open Office] xmlhelp-port-to-db-4.3.diff seems to not apply">smithj at rpath.com
+       </A><BR>
+    <I>Fri Jan 12 13:27:37 EST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002193.html">[Open Office] Good day
+</A></li>
+        <LI>Next message: <A HREF="002198.html">[Open Office] autoreconf: aclocal-1.9: cannot open &gt; aclocal.m4:	Permission denied
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2197">[ date ]</a>
+              <a href="thread.html#2197">[ thread ]</a>
+              <a href="subject.html#2197">[ subject ]</a>
+              <a href="author.html#2197">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>When running make unpack, I get this error [1]. However, when applying 
+the patch by hand (right after the build script fails to apply it), it 
+works perfectly. I can't seem to figure out what's going on here.
+
+-smithj
+
+
+[1]
+xmlhelp-port-to-db-4.3.diff: testing...( sed 's/^\(@.*\)\r$/\1/' | patch 
+-l -p0  -d /home/smithj/build/openoffice.org/ooo-build/build/OOE680_m6 
+--dry-run ) &lt; 
+/home/smithj/build/openoffice.org/ooo-build/patches/src680/./xmlhelp-port-to-db-4.3.diff
+patching file xmlhelp/source/com/sun/star/help/StringDbt.java
+Hunk #1 succeeded at 38 (offset 26 lines).
+Hunk #3 succeeded at 70 (offset 26 lines).
+Hunk #5 succeeded at 128 (offset 26 lines).
+Hunk #7 succeeded at 181 (offset 26 lines).
+patching file xmlhelp/source/com/sun/star/help/HelpKeyword.java
+Hunk #1 succeeded at 38 (offset 29 lines).
+Hunk #3 succeeded at 100 (offset 29 lines).
+patching file xmlhelp/source/com/sun/star/help/HelpIndexer.java
+Hunk #1 succeeded at 124 (offset -27 lines).
+Hunk #3 succeeded at 204 with fuzz 1 (offset -27 lines).
+Hunk #4 succeeded at 319 (offset 3 lines).
+Hunk #5 succeeded at 439 with fuzz 1 (offset 8 lines).
+Hunk #6 FAILED at 453.
+Hunk #7 FAILED at 477.
+Hunk #8 succeeded at 446 (offset -32 lines).
+2 out of 8 hunks FAILED -- saving rejects to file 
+xmlhelp/source/com/sun/star/help/HelpIndexer.java.rej
+patching file xmlhelp/source/com/sun/star/help/HelpURLParameter.java
+Hunk #1 succeeded at 230 (offset 35 lines).
+Hunk #3 succeeded at 319 (offset 35 lines).
+patching file xmlhelp/source/com/sun/star/help/HelpDatabases.java
+Hunk #1 succeeded at 260 (offset 35 lines).
+Hunk #3 succeeded at 554 (offset 35 lines).
+patching file xmlhelp/source/com/sun/star/help/HelpLinker.java
+Hunk #1 succeeded at 63 (offset -26 lines).
+Hunk #2 succeeded at 394 (offset -2 lines).
+Hunk #3 succeeded at 574 (offset -40 lines).
+Hunk #4 succeeded at 637 (offset -2 lines).
+Hunk #5 succeeded at 704 (offset -34 lines).
+Hunk #6 succeeded at 750 (offset -2 lines).
+Hunk #7 succeeded at 741 (offset -34 lines).
+Testing patch xmlhelp-port-to-db-4.3.diff failed. at 
+/home/smithj/build/openoffice.org/ooo-build/patches/apply.pl line 54.
+make: *** [stamp/patch.apply] Error 1
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002193.html">[Open Office] Good day
+</A></li>
+	<LI>Next message: <A HREF="002198.html">[Open Office] autoreconf: aclocal-1.9: cannot open &gt; aclocal.m4:	Permission denied
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2197">[ date ]</a>
+              <a href="thread.html#2197">[ thread ]</a>
+              <a href="subject.html#2197">[ subject ]</a>
+              <a href="author.html#2197">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

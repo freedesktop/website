@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] initVMConfiguration() always fail--64bit java relate
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20initVMConfiguration%28%29%20always%20fail--64bit%20java%20relate&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001498.html">
+   <LINK REL="Next"  HREF="001499.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] initVMConfiguration() always fail--64bit java relate</H1>
+    <B>Weichuan Lin</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20initVMConfiguration%28%29%20always%20fail--64bit%20java%20relate&In-Reply-To="
+       TITLE="[Open Office] initVMConfiguration() always fail--64bit java relate">weichuan.lin at gmail.com
+       </A><BR>
+    <I>Wed Jan 18 10:35:14 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001498.html">[Open Office] evo2 address book, version 2 and wizard
+</A></li>
+        <LI>Next message: <A HREF="001499.html">[Open Office] evo2 address book, version 2 and wizard
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1497">[ date ]</a>
+              <a href="thread.html#1497">[ thread ]</a>
+              <a href="subject.html#1497">[ subject ]</a>
+              <a href="author.html#1497">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, all
+I am building the ooo-build with Sun's jdk with build version 1.5.0_05
+on x86_64 platform, but I always encounter error of registering
+component written in java, no matter I use m136 or m148 source code,
+the the part of log is showed as follow, all the component in stoc
+module is build with debug option enabled.
+
+I have traced some function call, follow the first function called in
+initVMConfiguration, that is:
+javavm.cxx:getINetProsFromConfig()-&gt;
+factory.cxx:css::uno::Reference&lt;css::lang::XMultiComponentFactory&gt;::createInstanceWithContext()
+    ||
+servicemanager.cxx:OServiceManager::createInstanceWithContext
+
+in servicemanager.cxx:OServiceManager::createInstanceWithContext,
+there is a  definition of
+Sequence&lt; Reference&lt; XInterface &gt; &gt; factories(queryServiceFactories(
+rServiceSpecifier, xContext) );
+here, a queryServiceFactories return nothing. so the sequence of
+factories contain no element.
+so, follow the queryServiceFactories()-&gt;
+servicemanager.cxx:ORegistryServiceManager::queryServiceFactories() -&gt;
+servicemanager.cxx:ORegistryServiceManager::loadWithImplementationName()
+
+in ORegistryServiceManager::loadWithImplementationName(),there is a
+sentence like:
+Reference&lt;XRegistryKey &gt; xImpKey = m_xRootKey-&gt;openKey(implementationName);
+the openKey operation fails, it return the value of NULL.
+It seems that the implementationName of
+&quot;/IMPLEMENTATIONS/com.sun.star.configuration.ConfigurationRegistry&quot; is
+not in the register file. but I am
+not clear about when and where the component is registered into the
+register file, and for which register file the ServiceManager will
+look
+
+does anybody have suggestion?
+
+BTW. :the log like &quot;####name of service###
+/IMPLEMENTATIONS/com.sun.star.configuration.ConfigurationRegistry&quot; is
+not in the original source file.
+It is the helping message what I add.
+
+end of log of building:
+regcomp -register  -br
+../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb -r
+../../unxlngx6.pro/lib/uno_services.rdb -c \
+        <A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar</A>
+\
+        -env:URE_INTERNAL_JAVA_DIR=<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/bin">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/bin</A>
+[Java framework] Using configuration file
+<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/jvmfwk3rc">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/jvmfwk3rc</A>
+[Java framework] Using bootstrap parameter UNO_JAVA_JFW_ENV_JREHOME
+with JAVA_HOME = /home/weichuan/jdk1.5.0_05.
+[Java framework] Using bootstrap parameter
+UNO_JAVA_JFW_VENDOR_SETTINGS =
+<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/javavendors.xml.">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/javavendors.xml.</A>
+Thread:      1 :component
+path=<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/servicemgr.uno.so">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/servicemgr.uno.so</A>
+
+Thread:      1 :component
+path=<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/servicemgr.uno.so">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/servicemgr.uno.so</A>
+
+&gt;<i> implementation com.sun.star.comp.stoc.OServiceManagerWrapper supports: com.sun.star.lang.MultiServiceFactory
+</I>Thread:      1 :component
+path=<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/shlibloader.uno.so">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/shlibloader.uno.so</A>
+
+&gt;<i> implementation com.sun.star.comp.stoc.DLLComponentLoader supports: com.sun.star.loader.SharedLibrary
+</I>Thread:      1 :component
+path=<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/simplereg.uno.so">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/simplereg.uno.so</A>
+
+&gt;<i> implementation com.sun.star.comp.stoc.SimpleRegistry supports: com.sun.star.registry.SimpleRegistry
+</I>Thread:      1 :component
+path=<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/nestedreg.uno.so">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/nestedreg.uno.so</A>
+
+&gt;<i> implementation com.sun.star.comp.stoc.NestedRegistry supports: com.sun.star.registry.NestedRegistry
+</I>Thread:      1 :component
+path=<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/typemgr.uno.so">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/typemgr.uno.so</A>
+
+&gt;<i> implementation com.sun.star.comp.stoc.TypeDescriptionManager supports: com.sun.star.reflection.TypeDescriptionManager
+</I>Thread:      1 :component
+path=<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/implreg.uno.so">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/implreg.uno.so</A>
+
+&gt;<i> implementation com.sun.star.comp.stoc.ImplementationRegistration supports: com.sun.star.registry.ImplementationRegistration
+</I>Thread:      1 :component
+path=<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/security.uno.so">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/security.uno.so</A>
+
+&gt;<i> implementation com.sun.star.security.comp.stoc.AccessController supports: com.sun.star.security.AccessController
+</I>Thread:      1 :component
+path=<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/security.uno.so">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/security.uno.so</A>
+
+&gt;<i> implementation com.sun.star.security.comp.stoc.FilePolicy supports: com.sun.star.security.Policy
+</I>Thread:      1 :component
+path=<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/simplereg.uno.so">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/simplereg.uno.so</A>
+
+Thread:      1 :component
+path=<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/regtypeprov.uno.so">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/regtypeprov.uno.so</A>
+
+Thread:      1 :####name of service###
+/IMPLEMENTATIONS/com.sun.star.comp.stoc.JavaComponentLoader
+Thread:      1 :component path=javaloader.uno.so
+
+Thread:      1 :####name of service###
+/IMPLEMENTATIONS/com.sun.star.comp.stoc.JavaVirtualMachine
+Thread:      1 :component path=javavm.uno.so
+
+Thread:      1 :####name of service###
+/IMPLEMENTATIONS/com.sun.star.configuration.ConfigurationRegistry
+Thread:      1 :javavm.cxx: can not get INetProps cause of
+&gt;<i>javavm.cxx: couldn't get ConfigurationRegistry&lt;
+</I>Thread:      1 :####name of service###
+/IMPLEMENTATIONS/com.sun.star.configuration.ConfigurationRegistry
+Thread:      1 :javavm.cxx: can not get locale cause of &gt;javavm.cxx:
+couldn't get ConfigurationRegistry&lt;
+Thread:      1 :####name of service###
+/IMPLEMENTATIONS/com.sun.star.configuration.ConfigurationRegistry
+Thread:      1 :javavm.cxx: couldn't get safety settings because of
+&gt;<i>javavm.cxx: couldn't get ConfigurationRegistry&lt;
+</I>[Java framework] Using configuration file
+<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/jvmfwk3rc">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/jvmfwk3rc</A>
+[Java framework] Using bootstrap parameter UNO_JAVA_JFW_ENV_JREHOME
+with JAVA_HOME = /home/weichuan/jdk1.5.0_05.
+[Java framework] Using bootstrap parameter
+UNO_JAVA_JFW_VENDOR_SETTINGS =
+<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/javavendors.xml.">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/javavendors.xml.</A>
+[Java framework] Using bootstrap parameter
+UNO_JAVA_JFW_VENDOR_SETTINGS =
+<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/javavendors.xml.">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/lib/javavendors.xml.</A>
+[Java framework] Using bootstrap parameter UNO_JAVA_JFW_ENV_CLASSPATH
+and class path is:
+ .:../../unxlngx6.pro/class:/home/weichuan/jdk1.5.0_05/jre/lib/rt.jar:.
+:<i>/home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/bin/java_uno.jar:
+</I>/home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/bin/jurt.jar:
+/home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/solver/680/unxlngx6.pro/bin/ridl.jar.
+Thread:      1 :####name of service###
+/IMPLEMENTATIONS/com.sun.star.comp.uri.ExternalUriReferenceTranslator
+Thread:      1 :component path=uriproc.uno.so
+
+register component
+'<A HREF="file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar'">file:///home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/testtools/source/bridgetest/../../unxlngx6.pro/class/testComponent.jar'</A>
+in registry '../../unxlngx6.pro/lib/uno_services.rdb' failed!
+error (RuntimeException): JNI exception occurred
+using loader com.sun.star.loader.Java2
+=&gt; no CPLD_ACCESSPATH set.
+dmake:  Error code 1, while making '../../unxlngx6.pro/lib/uno_services.rdb'
+dmake:  '../../unxlngx6.pro/lib/uno_services.rdb' removed.
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making
+/home/weichuan/ooo/ooo-build-src680.137.0/build/src680-m136/testtools/source/bridgetest
+make: *** [stamp/build] Error 1
+
+
+--
+Best Regards
+Weichuan
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001498.html">[Open Office] evo2 address book, version 2 and wizard
+</A></li>
+	<LI>Next message: <A HREF="001499.html">[Open Office] evo2 address book, version 2 and wizard
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1497">[ date ]</a>
+              <a href="thread.html#1497">[ thread ]</a>
+              <a href="subject.html#1497">[ subject ]</a>
+              <a href="author.html#1497">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

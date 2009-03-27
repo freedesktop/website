@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] making in freebsd 4.11 failed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20making%20in%20freebsd%204.11%20failed&In-Reply-To=20051104.132002.41665208.chat95%40mac.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001272.html">
+   <LINK REL="Next"  HREF="001267.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] making in freebsd 4.11 failed</H1>
+    <B>tempo at kgs.ru</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20making%20in%20freebsd%204.11%20failed&In-Reply-To=20051104.132002.41665208.chat95%40mac.com"
+       TITLE="[Open Office] making in freebsd 4.11 failed">tempo at kgs.ru
+       </A><BR>
+    <I>Fri Nov  4 00:17:36 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001272.html">[Open Office] making in freebsd 4.11 failed
+</A></li>
+        <LI>Next message: <A HREF="001267.html">[Open Office] error while building with
+	ooo-build-src680.137.0.tar.gz under cygwin
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1273">[ date ]</a>
+              <a href="thread.html#1273">[ thread ]</a>
+              <a href="subject.html#1273">[ subject ]</a>
+              <a href="author.html#1273">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>in your case, i suspect jdk 1.5 is choosen...
+what is the output of
+tcsh ; cd work/??/ ; source FreeBSDenv.sh ; javaldx
+
+currently only jdk 1.4.2 works for me(additional patches
+are req'ed for build with 1.3.1).
+-- NAKATA, Maho (<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">maho at FreeBSD.org</A>)
+
+
+Costs still javavmwrapper-2.0_6 and it is by default started java 1.4.2
+
+
+Has made in bash 
+cd/usr/ports/editors/openoffice.org-2.0/work/OOo_2.0.0rc3_src; source 
+FreeBSDEnv. Set.sh; javaldx 
+result 
+[Java framework] Error in function getLibraryLocation (fwkutil.cxx) .javaldx 
+failed!
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: FreeBSDEnv.Set.sh
+Type: application/x-shellscript
+Size: 10367 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20051104/abe000cd/FreeBSDEnv.Set.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20051104/abe000cd/FreeBSDEnv.Set.bin</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001272.html">[Open Office] making in freebsd 4.11 failed
+</A></li>
+	<LI>Next message: <A HREF="001267.html">[Open Office] error while building with
+	ooo-build-src680.137.0.tar.gz under cygwin
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1273">[ date ]</a>
+              <a href="thread.html#1273">[ thread ]</a>
+              <a href="subject.html#1273">[ subject ]</a>
+              <a href="author.html#1273">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

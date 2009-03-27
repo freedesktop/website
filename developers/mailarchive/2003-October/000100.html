@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Other Build Problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000098.html">
+   <LINK REL="Next"  HREF="000099.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Other Build Problems
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Other Build Problems">michael@ximian.com
+       </A><BR>
+    <I>Mon, 13 Oct 2003 10:40:11 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000098.html">[Open Office] Other Build Problems
+</A></li>
+        <LI> Next message: <A HREF="000099.html">[Open Office] Re: ANNOUNCE: ooo-build-1.1.44
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#100">[ date ]</a>
+              <a href="thread.html#100">[ thread ]</a>
+              <a href="subject.html#100">[ subject ]</a>
+              <a href="author.html#100">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Nick,
+
+On Sat, 2003-10-11 at 01:03, Nick Hudson wrote:
+&gt;<i> Ok I just wanted to say I got OO.o to build and install though without
+</I>&gt;<i> bonobo support it works.  I had another bonobo error that I will try to
+</I>&gt;<i> look at again later and will post what I find.  Anyway its installed and
+</I>&gt;<i> working and looks great.  Thanks for all the help guys and good job
+</I>&gt;<i> hacking on OO.o its quite nice.
+</I>
+	:-) glad you like it.
+
+&gt;<i> I have a quick question though the --with-distro tag, what is the used
+</I>&gt;<i> for?  If I say --with-distro=Lunar-Linux (my distro) the build fails
+</I>&gt;<i> with the mozilla error I posted a few days ago.  If I dont put anything
+</I>&gt;<i> it compiles fine. 
+</I>
+	If you use no --with-distro tag it uses the Ximian patch set [ this is
+prolly what you want for maximum features ]. If you want to customize
+your patch set you can use --with-distro=LunarLinux and edit
+patches/OOO_1_1_0/apply to sub-set the patches for your particular
+distro. If you're going to do that though; I suspect we're going to need
+to expand how the patch sub-setting works currently to functionally
+annotate the patches themselves and specify sub-sets differently since:
+
+[ Debian, Ximian, Mdk, RedHat, LunarLinux ]
+
+	is getting a bit unweildy; I suppose we should start doing functional
+sub-setting ie.
+
+[ GnomeVFS ]
+[ Java ]
+
+	or whatever, and have some map of requested tags.
+
+&gt;<i> Now to make it work with our packaging scheme and I will include it with
+</I>&gt;<i> my distro... yay another 12 hours compile time ! :)
+</I>
+	Right :-)
+
+	Glad you found ooo-build helpful, looking forward to your patches :-)
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000098.html">[Open Office] Other Build Problems
+</A></li>
+	<LI> Next message: <A HREF="000099.html">[Open Office] Re: ANNOUNCE: ooo-build-1.1.44
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#100">[ date ]</a>
+              <a href="thread.html#100">[ thread ]</a>
+              <a href="subject.html#100">[ subject ]</a>
+              <a href="author.html#100">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

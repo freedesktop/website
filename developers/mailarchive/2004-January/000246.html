@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] menu icon colors
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:m_kretzschmar%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000240.html">
+   <LINK REL="Next"  HREF="000247.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] menu icon colors
+   </H1>
+    <B>Martin Kretzschmar
+    </B> 
+    <A HREF="mailto:m_kretzschmar%40gmx.net"
+       TITLE="[Open Office] menu icon colors">m_kretzschmar@gmx.net
+       </A><BR>
+    <I>Tue, 20 Jan 2004 11:10:38 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000240.html">[Open Office] menu icon colors
+</A></li>
+        <LI> Next message: <A HREF="000247.html">[Open Office] menu icon colors
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#246">[ date ]</a>
+              <a href="thread.html#246">[ thread ]</a>
+              <a href="subject.html#246">[ subject ]</a>
+              <a href="author.html#246">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Am Di, den 20.01.2004 schrieb Hirano Kazunari um 00:49:
+&gt;<i> &gt; Hirano Kazunari wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;&gt; I got the build japanese version on Fedora Core 1!
+</I>&gt;<i> &gt;&gt; <A HREF="http://prdownloads.sourceforge.jp/waooo/7705/ooo110ximian20030118fedora1.tar.gz">http://prdownloads.sourceforge.jp/waooo/7705/ooo110ximian20030118fedora1.tar.gz</A>
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; I installed this on SuSE9 and it works! :)
+</I>&gt;<i> &gt;&gt; <A HREF="http://www.transwift.net/ooo/ooo110ximian.png">http://www.transwift.net/ooo/ooo110ximian.png</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> I also build it on SuSE8.1 with glibc2.2.5.  And it works on the same 
+</I>&gt;<i> system.
+</I>&gt;<i> <A HREF="http://prdownloads.sourceforge.jp/waooo/7747/ooo111ximian2003glibc225.tar.gz">http://prdownloads.sourceforge.jp/waooo/7747/ooo111ximian2003glibc225.tar.gz</A>
+</I>&gt;<i> 
+</I>&gt;<i> If you compare menu icons of my build (japanese, inside the picture 
+</I>&gt;<i> below) to those of Debian's ooo package (english, outside in the picture 
+</I>&gt;<i> below):
+</I>&gt;<i> <A HREF="http://openoffice-org.hp.infoseek.co.jp/ooo/icon_compare.PNG">http://openoffice-org.hp.infoseek.co.jp/ooo/icon_compare.PNG</A>
+</I>&gt;<i> background color of my build icons are looking reversed.
+</I>
+If you compiled --with-distro=RHFedoraOnly, then that's the reason for the bad
+background color. With that switch, you get only a very small (and odd) set of
+patches: those that are used only for Fedora. This means the patches common to
+all distros won't be applied. Some of the common patches make the icons look
+better :). Safe values for --with-distro are Minimal, Ximian, and RHFedora.
+The other patch sets were probably never built with ooo-build.
+
+HTH,
+	Martin
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000240.html">[Open Office] menu icon colors
+</A></li>
+	<LI> Next message: <A HREF="000247.html">[Open Office] menu icon colors
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#246">[ date ]</a>
+              <a href="thread.html#246">[ thread ]</a>
+              <a href="subject.html#246">[ subject ]</a>
+              <a href="author.html#246">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

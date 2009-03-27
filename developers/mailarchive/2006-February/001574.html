@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Still getting NullPointerExceptions from HelpLinker...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Still%20getting%20NullPointerExceptions%20from%20HelpLinker...&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001591.html">
+   <LINK REL="Next"  HREF="001575.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Still getting NullPointerExceptions from HelpLinker...</H1>
+    <B>Bernhard Rosenkraenzer</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Still%20getting%20NullPointerExceptions%20from%20HelpLinker...&In-Reply-To="
+       TITLE="[Open Office] Still getting NullPointerExceptions from HelpLinker...">bero at arklinux.org
+       </A><BR>
+    <I>Mon Feb 13 09:25:06 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001591.html">[Open Office] scsolver build failsure on windows (was: Fwd: Your
+	interesting stuffs :o) )
+</A></li>
+        <LI>Next message: <A HREF="001575.html">[Open Office] Still getting NullPointerExceptions from
+	HelpLinker...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1574">[ date ]</a>
+              <a href="thread.html#1574">[ thread ]</a>
+              <a href="subject.html#1574">[ subject ]</a>
+              <a href="author.html#1574">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+I'm still getting NullPointerException crashes from HelpLinker after patching 
+gcc with <A HREF="http://gcc.gnu.org/bugzilla/show_bug.cgi?id=25426">http://gcc.gnu.org/bugzilla/show_bug.cgi?id=25426</A>
+
+HelpLinker @/tmp/mkDRzUsM
+java.lang.NullPointerException
+   at com.jclark.xsl.sax.XMLProcessorImpl.load (libxt.jar.so)
+   at com.jclark.xsl.sax.XSLProcessorImpl.loadStylesheet (libxt.jar.so)
+   at com.sun.star.help.HelpIndexer$ParseStuff.&lt;init&gt; (HelpLinker)
+   at com.sun.star.help.HelpCompiler.getSourceDocument (HelpLinker)
+   at com.sun.star.help.HelpCompiler.compile (HelpLinker)
+   at com.sun.star.help.HelpLinker.link (HelpLinker)
+   at com.sun.star.help.HelpLinker.main (HelpLinker)
+dmake:  Error code 1, while making '../../unxlngi6.pro/bin/sbasic_en-US.zip'
+'---* tg_merge.mk *---'
+
+I tried using ecj rather than gcj -C to bytecompile the java files to make 
+sure it's not the gcj private/public bug, but that refuses to build the 
+included Xt (works nicely on system xt though) because it doesn't overload a 
+number of abstract methods.
+
+/me wishes OOo was written completely in C++, much less of a pain to debug...
+
+Any ideas?
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001591.html">[Open Office] scsolver build failsure on windows (was: Fwd: Your
+	interesting stuffs :o) )
+</A></li>
+	<LI>Next message: <A HREF="001575.html">[Open Office] Still getting NullPointerExceptions from
+	HelpLinker...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1574">[ date ]</a>
+              <a href="thread.html#1574">[ thread ]</a>
+              <a href="subject.html#1574">[ subject ]</a>
+              <a href="author.html#1574">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

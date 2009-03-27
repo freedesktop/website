@@ -1,0 +1,1372 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] gtk folder picker
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-September/index.html" >
+   <LINK REL="made" HREF="mailto:caolanm%40redhat.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000539.html">
+   <LINK REL="Next"  HREF="000541.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] gtk folder picker
+   </H1>
+    <B>Caolan McNamara
+    </B> 
+    <A HREF="mailto:caolanm%40redhat.com"
+       TITLE="[Open Office] gtk folder picker">caolanm@redhat.com
+       </A><BR>
+    <I>Wed, 08 Sep 2004 10:48:52 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000539.html">[Open Office] Installing Ximian OO.O
+</A></li>
+        <LI> Next message: <A HREF="000541.html">[Open Office] gtk fpicker and the &quot;Versions&quot; list
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#540">[ date ]</a>
+              <a href="thread.html#540">[ thread ]</a>
+              <a href="subject.html#540">[ subject ]</a>
+              <a href="author.html#540">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-jH9ocpCByBUvcaJs7KFa
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+Attached is the implementation of a gtk folderpicker to go with the gtk
+filepicker which I've just commited to the gtkfpicker1 2.0 workspace.
+Hamburg QA pointed to this as one of the outstanding requirements for
+upstream 2.0 acceptance. The only place I know that this is being used
+is from Tools-&gt;Options-&gt;Paths-&gt;Edit. There is of course large
+commonality between the filepicker and folderpicker which is reflected
+in the patch.
+
+C.
+
+--=-jH9ocpCByBUvcaJs7KFa
+Content-Disposition: attachment; filename=fpicker.gnome.folderpicker.patch
+Content-Type: text/x-patch; name=fpicker.gnome.folderpicker.patch; charset=ANSI_X3.4-1968
+Content-Transfer-Encoding: 7bit
+
+? source/unx/foo
+? source/win32/folderpicker/.MtaFop.cxx.swp
+Index: source/unx/gnome/FPServiceInfo.hxx
+===================================================================
+RCS file: /cvs/gsl/fpicker/source/unx/gnome/Attic/FPServiceInfo.hxx,v
+retrieving revision 1.1.2.2
+diff -u -p -r1.1.2.2 FPServiceInfo.hxx
+--- source/unx/gnome/FPServiceInfo.hxx	23 Aug 2004 13:07:49 -0000	1.1.2.2
++++ source/unx/gnome/FPServiceInfo.hxx	8 Sep 2004 09:35:46 -0000
+@@ -68,14 +68,17 @@
+ 
+ // the service names
+ #define FILE_PICKER_SERVICE_NAME &quot;com.sun.star.ui.dialogs.GtkFilePicker&quot;
++#define FOLDER_PICKER_SERVICE_NAME &quot;com.sun.star.ui.dialogs.GtkFolderPicker&quot;
+ 
+ // the implementation names		
+ #define FILE_PICKER_IMPL_NAME    &quot;com.sun.star.ui.dialogs.SalGtkFilePicker&quot;
++#define FOLDER_PICKER_IMPL_NAME    &quot;com.sun.star.ui.dialogs.SalGtkFolderPicker&quot;
+ 
+ // the registry key names
+ // a key under which this service will be registered,
+ // Format: -&gt; &quot;/ImplName/UNO/SERVICES/ServiceName&quot;
+ //  &lt;Implementation-Name&gt;&lt;/UNO/SERVICES/&gt;&lt;Service-Name&gt; 
+ #define FILE_PICKER_REGKEY_NAME  &quot;/com.sun.star.ui.dialogs.SalGtkFilePicker/UNO/SERVICES/com.sun.star.ui.dialogs.GtkFilePicker&quot;
++#define FOLDER_PICKER_REGKEY_NAME  &quot;/com.sun.star.ui.dialogs.SalGtkFolderPicker/UNO/SERVICES/com.sun.star.ui.dialogs.GtkFolderPicker&quot;
+ 
+ #endif
+Index: source/unx/gnome/FPentry.cxx
+===================================================================
+RCS file: /cvs/gsl/fpicker/source/unx/gnome/Attic/FPentry.cxx,v
+retrieving revision 1.1.2.3
+diff -u -p -r1.1.2.3 FPentry.cxx
+--- source/unx/gnome/FPentry.cxx	23 Aug 2004 13:07:49 -0000	1.1.2.3
++++ source/unx/gnome/FPentry.cxx	8 Sep 2004 09:35:46 -0000
+@@ -75,9 +75,13 @@
+ #include &lt;osl/diagnose.h&gt;
+ #endif
+ 
+-#ifndef _FILEPICKER_HXX_
++#ifndef _SALGTKFILEPICKER_HXX_
+ #include &quot;SalGtkFilePicker.hxx&quot;
+ #endif
++#ifndef _SALGTKFOLDERPICKER_HXX_
++#include &quot;SalGtkFolderPicker.hxx&quot;
++#endif
++
+ 
+ #ifndef _FPSERVICEINFO_HXX_
+ #include &quot;FPServiceInfo.hxx&quot;
+@@ -92,19 +96,20 @@ extern      const guint gtk_minor_versio
+ // namespace directives
+ //-----------------------------------------------
+ 
+-using namespace ::rtl						;
+-using namespace ::com::sun::star::uno		;
+-using namespace ::com::sun::star::container	;
+-using namespace ::com::sun::star::lang		;
+-using namespace ::com::sun::star::registry	;
+-using namespace ::cppu					    ;
++using namespace ::rtl;
++using namespace ::com::sun::star::uno;
++using namespace ::com::sun::star::container;
++using namespace ::com::sun::star::lang;
++using namespace ::com::sun::star::registry;
++using namespace ::cppu;
+ using ::com::sun::star::ui::dialogs::XFilePicker;
++using ::com::sun::star::ui::dialogs::XFolderPicker;
+ 
+ //------------------------------------------------
+ // 
+ //------------------------------------------------
+ 
+-static Reference&lt; XInterface &gt; SAL_CALL createInstance( 
++static Reference&lt; XInterface &gt; SAL_CALL createFileInstance( 
+ 	const Reference&lt; XMultiServiceFactory &gt;&amp; rServiceManager )
+ {
+ 	return Reference&lt; XInterface &gt;( 
+@@ -112,6 +117,14 @@ static Reference&lt; XInterface &gt; SAL_CALL 
+ 			new SalGtkFilePicker( rServiceManager ) ) );
+ }
+ 
++static Reference&lt; XInterface &gt; SAL_CALL createFolderInstance( 
++	const Reference&lt; XMultiServiceFactory &gt;&amp; rServiceManager )
++{
++	return Reference&lt; XInterface &gt;( 
++		static_cast&lt; XFolderPicker* &gt;( 
++			new SalGtkFolderPicker( rServiceManager ) ) );
++}
++
+ //------------------------------------------------
+ // the three uno functions that will be exported
+ //------------------------------------------------
+@@ -143,6 +156,7 @@ sal_Bool SAL_CALL component_writeInfo( v
+ 		{
+ 			Reference&lt; XRegistryKey &gt; pXNewKey( static_cast&lt; XRegistryKey* &gt;( pRegistryKey ) );				
+ 			pXNewKey-&gt;createKey( OUString::createFromAscii( FILE_PICKER_REGKEY_NAME ) );
++			pXNewKey-&gt;createKey( OUString::createFromAscii( FOLDER_PICKER_REGKEY_NAME ) );
+ 		}
+ 		catch( InvalidRegistryException&amp; )
+ 		{			
+@@ -163,24 +177,48 @@ void* SAL_CALL component_getFactory( 
+ {
+ 	void* pRet = 0;
+ 
+-	if( pSrvManager &amp;&amp; ( 0 == rtl_str_compare( pImplName, FILE_PICKER_IMPL_NAME ) ) )
++	if( pSrvManager )
+ 	{
+-		if( !g_type_from_name( &quot;GdkDisplay&quot; ) || !( gtk_major_version &gt;= 2 &amp;&amp; gtk_minor_version &gt;= 4 ) )
+-			return pRet; // crude gtkplug check.
+-
+-		Sequence&lt; OUString &gt; aSNS( 1 );
+-		aSNS.getArray( )[0] = OUString::createFromAscii( FILE_PICKER_SERVICE_NAME );		
+-				
+-		Reference&lt; XSingleServiceFactory &gt; xFactory ( createSingleFactory(
+-			reinterpret_cast&lt; XMultiServiceFactory* &gt; ( pSrvManager ),
+-			OUString::createFromAscii( pImplName ),
+-			createInstance,
+-			aSNS ) );
+-		if ( xFactory.is() )
+-		{
+-			xFactory-&gt;acquire();
+-			pRet = xFactory.get();
+-		}			
++			if (
++				 !g_type_from_name( &quot;GdkDisplay&quot; ) || 
++				 !( gtk_major_version &gt;= 2 &amp;&amp; gtk_minor_version &gt;= 4 ) 
++			   )
++			{
++					return 0; // crude gtkplug check.
++			}
++
++			Reference&lt; XSingleServiceFactory &gt; xFactory;
++
++			if (0 == rtl_str_compare(pImplName, FILE_PICKER_IMPL_NAME))
++			{
++				Sequence&lt; OUString &gt; aSNS( 1 );
++				aSNS.getArray( )[0] = 
++					OUString::createFromAscii(FILE_PICKER_SERVICE_NAME);
++						
++				xFactory = createSingleFactory(
++					reinterpret_cast&lt; XMultiServiceFactory* &gt; ( pSrvManager ),
++					OUString::createFromAscii( pImplName ),
++					createFileInstance,
++					aSNS );
++			}
++			else if (0 == rtl_str_compare(pImplName, FOLDER_PICKER_IMPL_NAME))
++			{
++				Sequence&lt; OUString &gt; aSNS( 1 );
++				aSNS.getArray( )[0] = 
++					OUString::createFromAscii(FOLDER_PICKER_SERVICE_NAME);
++						
++				xFactory = createSingleFactory(
++					reinterpret_cast&lt; XMultiServiceFactory* &gt; ( pSrvManager ),
++					OUString::createFromAscii( pImplName ),
++					createFolderInstance,
++					aSNS );
++			}
++
++			if ( xFactory.is() )
++			{
++				xFactory-&gt;acquire();
++				pRet = xFactory.get();
++			}			
+ 	}
+ 
+ 	return pRet;
+Index: source/unx/gnome/SalGtkFilePicker.cxx
+===================================================================
+RCS file: /cvs/gsl/fpicker/source/unx/gnome/Attic/SalGtkFilePicker.cxx,v
+retrieving revision 1.1.2.3
+diff -u -p -r1.1.2.3 SalGtkFilePicker.cxx
+--- source/unx/gnome/SalGtkFilePicker.cxx	7 Sep 2004 11:25:49 -0000	1.1.2.3
++++ source/unx/gnome/SalGtkFilePicker.cxx	8 Sep 2004 09:35:49 -0000
+@@ -102,7 +102,7 @@
+ #ifndef _SV_SVAPP_HXX
+ #include &lt;vcl/svapp.hxx&gt;
+ #endif
+-#ifndef _GNOMEFILEOPENIMPL_HXX_
++#ifndef _SALGTKFILEPICKER_HXX_
+ #include &lt;SalGtkFilePicker.hxx&gt;
+ #endif
+ 
+@@ -111,31 +111,11 @@
+ #include &lt;tools/urlobj.hxx&gt;
+ 
+ #include &lt;iostream&gt;
+-/*
+-#ifndef _SVTOOLS_IODLGIMPL_HRC
+-#include &lt;svtools/svtools.hrc&gt;
+-#endif
+-*/
+ #include &quot;resourceprovider.hxx&quot;
+ #ifndef _SV_RC_H
+ #include &lt;tools/rc.hxx&gt;
+ #endif
+ 
+-#include &lt;signal.h&gt;
+-
+-/*
+-#ifndef _SVTOOLS_SVTDATA_HXX
+-#include &lt;svtools/svtdata.hxx&gt;
+-#endif
+-
+-#ifndef INCLUDED_SVTOOLS_USEROPTIONS_HXX
+-#include &lt;svtools/useroptions.hxx&gt;
+-#endif
+-#ifndef _ISOLANG_HXX
+-#include &lt;tools/isolang.hxx&gt;
+-#endif
+-*/
+-
+ //------------------------------------------------------------------------
+ // namespace directives
+ //------------------------------------------------------------------------
+@@ -186,7 +166,6 @@ SalGtkFilePicker::SalGtkFilePicker( cons
+ 		lang::XServiceInfo&gt;( m_rbHelperMtx ),
+ 	m_xServiceMgr( xServiceMgr ),
+ 	m_aAsyncEventNotifier( rBHelper ),
+-	m_pDialog( NULL ),
+ 	m_pVBox ( NULL ),
+ 	m_pFilterList( NULL ),
+ 	mHID_Preview( ( gulong ) NULL ),
+@@ -684,36 +663,15 @@ void SAL_CALL SalGtkFilePicker::setDefau
+ 					   aStr.getStr() );
+ }
+ 
+-void SAL_CALL SalGtkFilePicker::setDisplayDirectory( const rtl::OUString&amp; aDirectory ) 
+-	throw( uno::RuntimeException )
++void SAL_CALL SalGtkFilePicker::setDisplayDirectory( const rtl::OUString&amp; rDirectory ) 
++	throw( lang::IllegalArgumentException, uno::RuntimeException )
+ {
+-	OSL_ASSERT( m_pDialog != NULL );
+-	::vos::OGuard aGuard( Application::GetSolarMutex() );
+-
+-	OString aTxt = OUStringToOString( aDirectory, RTL_TEXTENCODING_UTF8 );
+-
+-	if( aTxt.lastIndexOf('/') == aTxt.getLength() - 1 )
+-		aTxt = aTxt.copy( 0, aTxt.getLength() - 1 );
+-
+-	OSL_TRACE( &quot;setting path to %s\n&quot;, aTxt.getStr() );
+-
+-	gtk_file_chooser_set_current_folder_uri( GTK_FILE_CHOOSER( m_pDialog ),
+-						 aTxt.getStr() );
++	implsetDisplayDirectory(rDirectory);
+ }
+ 
+ rtl::OUString SAL_CALL SalGtkFilePicker::getDisplayDirectory() throw( uno::RuntimeException )
+ {
+-	OSL_ASSERT( m_pDialog != NULL );
+-	::vos::OGuard aGuard( Application::GetSolarMutex() );
+-	
+-	gchar* pCurrentFolder = 
+-		gtk_file_chooser_get_current_folder_uri( GTK_FILE_CHOOSER( m_pDialog ) );
+-	::rtl::OUString aCurrentFolderName = 
+-		::rtl::OUString( const_cast&lt;const sal_Char *&gt;( pCurrentFolder ),
+-					strlen( pCurrentFolder ), RTL_TEXTENCODING_UTF8 );
+-	g_free( pCurrentFolder );
+-
+-	return aCurrentFolderName;
++	return implgetDisplayDirectory();
+ }
+ 
+ uno::Sequence&lt;rtl::OUString&gt; SAL_CALL SalGtkFilePicker::getFiles() throw( uno::RuntimeException )
+@@ -806,13 +764,9 @@ uno::Sequence&lt;rtl::OUString&gt; SAL_CALL Sa
+ // XExecutableDialog functions
+ //-----------------------------------------------------------------------------------------
+ 
+-void SAL_CALL SalGtkFilePicker::setTitle( const rtl::OUString&amp; aTitle ) throw( uno::RuntimeException )
++void SAL_CALL SalGtkFilePicker::setTitle( const rtl::OUString&amp; rTitle ) throw( uno::RuntimeException )
+ {
+-	OSL_ASSERT( m_pDialog != NULL );
+-	::vos::OGuard aGuard( Application::GetSolarMutex() );
+-	
+-	::rtl::OString aWindowTitle = OUStringToOString( aTitle, RTL_TEXTENCODING_UTF8 );
+-	gtk_window_set_title( GTK_WINDOW( m_pDialog ), aWindowTitle.getStr() );
++	implsetTitle(rTitle);
+ }
+ 
+ sal_Int16 SAL_CALL SalGtkFilePicker::execute() throw( uno::RuntimeException )
+@@ -1637,5 +1591,4 @@ SalGtkFilePicker::~SalGtkFilePicker()
+ 		m_pFilterList-&gt;clear();
+ 
+ 	gtk_widget_destroy( m_pVBox );
+-	gtk_widget_destroy( m_pDialog );
+ }
+Index: source/unx/gnome/SalGtkFilePicker.hxx
+===================================================================
+RCS file: /cvs/gsl/fpicker/source/unx/gnome/Attic/SalGtkFilePicker.hxx,v
+retrieving revision 1.1.2.2
+diff -u -p -r1.1.2.2 SalGtkFilePicker.hxx
+--- source/unx/gnome/SalGtkFilePicker.hxx	23 Aug 2004 13:07:50 -0000	1.1.2.2
++++ source/unx/gnome/SalGtkFilePicker.hxx	8 Sep 2004 09:35:50 -0000
+@@ -59,8 +59,8 @@
+  *
+  ************************************************************************/
+ 
+-#ifndef _GNOMEFILEPICKER_HXX_
+-#define _GNOMEFILEPICKER_HXX_
++#ifndef _SALGTKFILEPICKER_HXX_
++#define _SALGTKFILEPICKER_HXX_
+ 
+ //_______________________________________________________________________________________________________________________
+ //	includes of other projects
+@@ -70,18 +70,10 @@
+ #include &lt;cppuhelper/compbase9.hxx&gt;
+ #endif
+ 
+-#ifndef _OSL_MUTEX_HXX_
+-#include &lt;osl/mutex.hxx&gt;
+-#endif
+-
+ #ifndef _COM_SUN_STAR_LANG_XINITIALIZATION_HPP_
+ #include &lt;com/sun/star/lang/XInitialization.hpp&gt;
+ #endif
+ 
+-#ifndef _COM_SUN_STAR_LANG_XSERVICEINFO_HPP_
+-#include &lt;com/sun/star/lang/XServiceInfo.hpp&gt;
+-#endif
+-
+ #ifndef _COM_SUN_STAR_UI_DIALOGS_XFILEPICKERNOTIFIER_HPP_
+ #include &lt;com/sun/star/ui/dialogs/XFilePickerNotifier.hpp&gt;
+ #endif
+@@ -102,23 +94,20 @@
+ #include &lt;com/sun/star/ui/dialogs/XFilePreview.hpp&gt;
+ #endif
+ 
+-#ifndef _COM_SUN_STAR_UTIL_XCANCELLABLE_HPP_
+-#include &lt;com/sun/star/util/XCancellable.hpp&gt;
+-#endif
+-
+ #ifndef _COM_SUN_STAR_BEANS_STRINGPAIR_HPP_
+ #include &lt;com/sun/star/beans/StringPair.hpp&gt;
+ #endif
+ 
++#ifndef _SALGTKPICKER_HXX_
++#include &quot;SalGtkPicker.hxx&quot;
++#endif
++
+ #ifndef _ASYNCEVENTNOTIFIER_HXX_
+ #include &quot;asynceventnotifier.hxx&quot;
+ #endif
+ 
+ #include &lt;memory&gt;
+ 
+-#include &lt;gtk/gtk.h&gt;
+-#include &lt;gdk/gdkkeysyms.h&gt;
+-
+ #ifndef _RTL_USTRING_H_
+ #include &lt;rtl/ustring.hxx&gt;
+ #endif
+@@ -133,8 +122,6 @@
+ // forward declarations
+ //----------------------------------------------------------
+ 
+-//class SalGtkFileDialog;
+-//#include &quot;SalGtkFileDialog.hxx&quot;
+ using namespace rtl;
+ 
+ struct FilterEntry;
+@@ -150,14 +137,8 @@ typedef ::com::sun::star::uno::Sequence&lt;
+ // class declaration		
+ //----------------------------------------------------------
+ 
+-class SalGtkFilePickerDummy
+-{
+-	protected:
+-		osl::Mutex	m_rbHelperMtx;
+-};
+-
+ class SalGtkFilePicker : 
+-        public SalGtkFilePickerDummy,
++        public SalGtkPicker,
+ 	public cppu::WeakComponentImplHelper9&lt;         
+         ::com::sun::star::ui::dialogs::XFilterManager,
+         ::com::sun::star::ui::dialogs::XFilterGroupManager,
+@@ -204,7 +185,8 @@ class SalGtkFilePicker : 
+ 			throw( ::com::sun::star::uno::RuntimeException );
+ 
+ 		virtual void SAL_CALL setDisplayDirectory( const ::rtl::OUString&amp; aDirectory ) 
+-			throw( ::com::sun::star::uno::RuntimeException );
++			throw( com::sun::star::lang::IllegalArgumentException, 
++				::com::sun::star::uno::RuntimeException );
+ 
+ 		virtual ::rtl::OUString SAL_CALL getDisplayDirectory(  ) 
+ 			throw( ::com::sun::star::uno::RuntimeException );
+@@ -335,14 +317,12 @@ class SalGtkFilePicker : 
+ 
+ 		void ensureFilterList( const ::rtl::OUString&amp; _rInitialCurrentFilter );
+ 
+-	private:
+-
+-		// to instanciate own services		
++		// to instanciate own services
+ 		::com::sun::star::uno::Reference&lt; ::com::sun::star::lang::XMultiServiceFactory &gt; m_xServiceMgr;
+ 
++	private:
+ 		SalGtkAsyncEventNotifier m_aAsyncEventNotifier;
+ 		FilterList *m_pFilterList;
+-		GtkWidget  *m_pDialog;
+ 		GtkWidget  *m_pVBox;
+ 
+ 		enum { 
+@@ -413,4 +393,4 @@ class SalGtkFilePicker : 
+ 
+ }; 
+ 
+-#endif // _GNOMEFILEPICKER_HXX_
++#endif // _SALGTKFILEPICKER_HXX_
+Index: source/unx/gnome/SalGtkFolderPicker.cxx
+===================================================================
+RCS file: source/unx/gnome/SalGtkFolderPicker.cxx
+diff -N source/unx/gnome/SalGtkFolderPicker.cxx
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ source/unx/gnome/SalGtkFolderPicker.cxx	8 Sep 2004 09:35:50 -0000
+@@ -0,0 +1,302 @@
++/*************************************************************************
++ *
++ *  $RCSfile: SalGtkFilePicker.cxx,v $
++ *
++ *  $Revision: 1.1.2.3 $ 
++ *
++ *  last change: $Author: cmc $ $Date: 2004/09/07 11:25:49 $
++ *
++ *  The Contents of this file are made available subject to the terms of
++ *  either of the following licenses
++ *
++ *         - GNU Lesser General Public License Version 2.1
++ *         - Sun Industry Standards Source License Version 1.1
++ *
++ *  Sun Microsystems Inc., October, 2000
++ *
++ *  GNU Lesser General Public License Version 2.1
++ *  =============================================
++ *  Copyright 2000 by Sun Microsystems, Inc.
++ *  901 San Antonio Road, Palo Alto, CA 94303, USA
++ *
++ *  This library is free software; you can redistribute it and/or
++ *  modify it under the terms of the GNU Lesser General Public
++ *  License version 2.1, as published by the Free Software Foundation.
++ *
++ *  This library is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ *  Lesser General Public License for more details.
++ *
++ *  You should have received a copy of the GNU Lesser General Public
++ *  License along with this library; if not, write to the Free Software
++ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
++ *  MA  02111-1307  USA
++ *
++ *
++ *  Sun Industry Standards Source License Version 1.1
++ *  =================================================
++ *  The contents of this file are subject to the Sun Industry Standards
++ *  Source License Version 1.1 (the &quot;License&quot;); You may not use this file
++ *  except in compliance with the License. You may obtain a copy of the
++ *  License at <A HREF="http://www.openoffice.org/license.html.">http://www.openoffice.org/license.html.</A>
++ *
++ *  Software provided under this License is provided on an &quot;AS IS&quot; basis,
++ *  WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING,
++ *  WITHOUT LIMITATION, WARRANTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
++ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
++ *  See the License for the specific provisions governing your rights and
++ *  obligations concerning the Software.
++ *
++ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc.
++ *
++ *  Copyright: 2000 by Sun Microsystems, Inc.
++ *
++ *  All Rights Reserved.
++ *
++ *  Contributor(s): Anil Bhatia
++ *
++ *
++ ************************************************************************/
++
++//------------------------------------------------------------------------
++// includes
++//------------------------------------------------------------------------
++
++#ifndef _COM_SUN_STAR_LANG_DISPOSEDEXCEPTION_HPP_
++#include &lt;com/sun/star/lang/DisposedException.hpp&gt;
++#endif
++#ifndef _COM_SUN_STAR_LANG_XMULTISERVICEFACTORY_HPP_
++#include &lt;com/sun/star/lang/XMultiServiceFactory.hpp&gt;
++#endif
++#ifndef  _COM_SUN_STAR_UI_DIALOGS_EXECUTABLEDIALOGRESULTS_HPP_
++#include &lt;com/sun/star/ui/dialogs/ExecutableDialogResults.hpp&gt;
++#endif
++#ifndef  _COM_SUN_STAR_UI_DIALOGS_EXTENDEDFILEPICKERELEMENTIDS_HPP_
++#include &lt;com/sun/star/ui/dialogs/ExtendedFilePickerElementIds.hpp&gt;
++#endif
++#ifndef _COM_SUN_STAR_UI_DIALOGS_COMMONFILEPICKERELEMENTIDS_HPP_
++#include &lt;com/sun/star/ui/dialogs/CommonFilePickerElementIds.hpp&gt;
++#endif
++#ifndef _COM_SUN_STAR_UI_DIALOGS_EXTENDEDFILEPICKERELEMENTIDS_HPP_
++#include &lt;com/sun/star/ui/dialogs/ExtendedFilePickerElementIds.hpp&gt;
++#endif
++#ifndef _CPPUHELPER_INTERFACECONTAINER_H_
++#include &lt;cppuhelper/interfacecontainer.h&gt;
++#endif
++#ifndef _OSL_DIAGNOSE_H_
++#include &lt;osl/diagnose.h&gt;
++#endif
++#ifndef _COM_SUN_STAR_UI_DIALOGS_TEMPLATEDESCRIPTION_HPP_
++#include &lt;com/sun/star/ui/dialogs/TemplateDescription.hpp&gt;
++#endif
++#ifndef  _COM_SUN_STAR_UNO_ANY_HXX_
++#include &lt;com/sun/star/uno/Any.hxx&gt;
++#endif
++#ifndef _FPSERVICEINFO_HXX_
++#include &lt;FPServiceInfo.hxx&gt;
++#endif
++#ifndef _VOS_MUTEX_HXX_
++#include &lt;vos/mutex.hxx&gt;
++#endif
++#ifndef _SV_SVAPP_HXX
++#include &lt;vcl/svapp.hxx&gt;
++#endif
++#ifndef _SALGTKFOLDERPICKER_HXX_
++#include &quot;SalGtkFolderPicker.hxx&quot;
++#endif
++
++#include &lt;tools/urlobj.hxx&gt;
++
++#include &lt;iostream&gt;
++#include &quot;resourceprovider.hxx&quot;
++#ifndef _SV_RC_H
++#include &lt;tools/rc.hxx&gt;
++#endif
++
++//------------------------------------------------------------------------
++// namespace directives
++//------------------------------------------------------------------------
++
++using namespace ::rtl;
++using namespace ::com::sun::star;
++using namespace ::com::sun::star::ui::dialogs;
++using namespace ::com::sun::star::lang;
++using namespace ::com::sun::star::uno;
++
++//------------------------------------------------------------------------
++// helper functions
++//------------------------------------------------------------------------
++
++namespace
++{
++	// controling event notifications    
++	uno::Sequence&lt;rtl::OUString&gt; SAL_CALL FolderPicker_getSupportedServiceNames()
++	{
++		uno::Sequence&lt;rtl::OUString&gt; aRet(3);
++        aRet[0] = rtl::OUString::createFromAscii( &quot;com.sun.star.ui.dialogs.FolderPicker&quot; );
++		aRet[1] = rtl::OUString::createFromAscii( &quot;com.sun.star.ui.dialogs.SystemFolderPicker&quot; );
++		aRet[2] = rtl::OUString::createFromAscii( &quot;com.sun.star.ui.dialogs.GtkFolderPicker&quot; );
++		return aRet;
++	}
++}
++
++//-----------------------------------------------------------------------------------------
++// constructor
++//-----------------------------------------------------------------------------------------
++SalGtkFolderPicker::SalGtkFolderPicker( const uno::Reference&lt;lang::XMultiServiceFactory&gt;&amp; xServiceMgr ) : 
++	m_xServiceMgr( xServiceMgr )
++{
++	m_pDialog = gtk_file_chooser_dialog_new( &quot;Folder Selection&quot;, NULL, 
++		GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, 
++		GTK_STOCK_OK, GTK_RESPONSE_ACCEPT, NULL );
++
++	gtk_dialog_set_default_response( GTK_DIALOG (m_pDialog), GTK_RESPONSE_ACCEPT );
++	gtk_file_chooser_set_local_only( GTK_FILE_CHOOSER( m_pDialog ), FALSE );
++	gtk_file_chooser_set_select_multiple( GTK_FILE_CHOOSER( m_pDialog ), FALSE );
++}
++
++// -------------------------------------------------
++// XEventListener
++// -------------------------------------------------
++
++void SAL_CALL SalGtkFolderPicker::disposing( const lang::EventObject&amp; aEvent ) 
++	throw( uno::RuntimeException )
++{
++}
++
++void SAL_CALL SalGtkFolderPicker::setDisplayDirectory( const rtl::OUString&amp; aDirectory ) 
++	throw( lang::IllegalArgumentException, uno::RuntimeException )
++{
++	OSL_ASSERT( m_pDialog != NULL );
++	::vos::OGuard aGuard( Application::GetSolarMutex() );
++
++	OString aTxt = OUStringToOString( aDirectory, RTL_TEXTENCODING_UTF8 );
++
++	if( aTxt.lastIndexOf('/') == aTxt.getLength() - 1 )
++		aTxt = aTxt.copy( 0, aTxt.getLength() - 1 );
++
++	OSL_TRACE( &quot;setting path to %s\n&quot;, aTxt.getStr() );
++
++	gtk_file_chooser_set_current_folder_uri( GTK_FILE_CHOOSER( m_pDialog ),
++						 aTxt.getStr() );
++}
++
++rtl::OUString SAL_CALL SalGtkFolderPicker::getDisplayDirectory() throw( uno::RuntimeException )
++{
++	OSL_ASSERT( m_pDialog != NULL );
++	::vos::OGuard aGuard( Application::GetSolarMutex() );
++	
++	gchar* pCurrentFolder = 
++		gtk_file_chooser_get_current_folder_uri( GTK_FILE_CHOOSER( m_pDialog ) );
++	::rtl::OUString aCurrentFolderName = 
++		::rtl::OUString( const_cast&lt;const sal_Char *&gt;( pCurrentFolder ),
++					strlen( pCurrentFolder ), RTL_TEXTENCODING_UTF8 );
++	g_free( pCurrentFolder );
++
++	return aCurrentFolderName;
++}
++
++rtl::OUString SAL_CALL SalGtkFolderPicker::getDirectory() throw( uno::RuntimeException )
++{
++	return getDisplayDirectory();
++}
++
++void SAL_CALL SalGtkFolderPicker::setDescription( const rtl::OUString&amp; rDescription )
++	throw( uno::RuntimeException )
++{
++	::rtl::OString aDescription = OUStringToOString( rDescription, RTL_TEXTENCODING_UTF8 );
++	fprintf(stderr, &quot;desc is %s\n&quot;, aDescription.getStr());
++}
++
++
++
++//-----------------------------------------------------------------------------------------
++// XExecutableDialog functions
++//-----------------------------------------------------------------------------------------
++
++void SAL_CALL SalGtkFolderPicker::setTitle( const rtl::OUString&amp; aTitle ) throw( uno::RuntimeException )
++{
++	OSL_ASSERT( m_pDialog != NULL );
++	::vos::OGuard aGuard( Application::GetSolarMutex() );
++	
++	::rtl::OString aWindowTitle = OUStringToOString( aTitle, RTL_TEXTENCODING_UTF8 );
++	gtk_window_set_title( GTK_WINDOW( m_pDialog ), aWindowTitle.getStr() );
++
++	fprintf(stderr, &quot;title is %s\n&quot;, aWindowTitle.getStr());
++
++}
++
++sal_Int16 SAL_CALL SalGtkFolderPicker::execute() throw( uno::RuntimeException )
++{
++	OSL_TRACE( &quot;1: HERE WE ARE\n&quot;);
++	OSL_ASSERT( m_pDialog != NULL );
++	::vos::OGuard aGuard( Application::GetSolarMutex() );
++
++	sal_Int16 retVal = 0;
++
++	gint nStatus = gtk_dialog_run( GTK_DIALOG( m_pDialog ) );
++	gtk_widget_hide( m_pDialog );
++	switch( nStatus )
++	{
++		case GTK_RESPONSE_ACCEPT:
++			retVal = ExecutableDialogResults::OK;
++			break;
++		case GTK_RESPONSE_CANCEL:
++			retVal = ExecutableDialogResults::CANCEL;
++			break;
++		default:
++			retVal = 0;
++			break;
++	}
++
++	return retVal;
++}
++
++//------------------------------------------------------------------------------------
++// XCancellable
++//------------------------------------------------------------------------------------
++
++void SAL_CALL SalGtkFolderPicker::cancel() throw( uno::RuntimeException )
++{
++	OSL_ASSERT( m_pDialog != NULL );
++	::vos::OGuard aGuard( Application::GetSolarMutex() );
++
++	// TODO m_pImpl-&gt;cancel();  
++}
++
++// -------------------------------------------------
++// XServiceInfo
++// -------------------------------------------------
++
++rtl::OUString SAL_CALL SalGtkFolderPicker::getImplementationName() 
++	throw( uno::RuntimeException )
++{
++	return rtl::OUString::createFromAscii( FOLDER_PICKER_IMPL_NAME );
++}
++
++// -------------------------------------------------
++//	XServiceInfo
++// -------------------------------------------------
++
++sal_Bool SAL_CALL SalGtkFolderPicker::supportsService( const rtl::OUString&amp; ServiceName ) 
++	throw( uno::RuntimeException )
++{
++	uno::Sequence &lt;rtl::OUString&gt; SupportedServicesNames = FolderPicker_getSupportedServiceNames();
++
++	for( sal_Int32 n = SupportedServicesNames.getLength(); n--; )
++		if( SupportedServicesNames[n].compareTo( ServiceName ) == 0)
++			return sal_True;
++
++	return sal_False;
++}
++
++// -------------------------------------------------
++//	XServiceInfo
++// -------------------------------------------------
++
++uno::Sequence&lt;rtl::OUString&gt; SAL_CALL SalGtkFolderPicker::getSupportedServiceNames() 
++	throw( uno::RuntimeException )
++{
++	return FolderPicker_getSupportedServiceNames();
++}
+Index: source/unx/gnome/SalGtkFolderPicker.hxx
+===================================================================
+RCS file: source/unx/gnome/SalGtkFolderPicker.hxx
+diff -N source/unx/gnome/SalGtkFolderPicker.hxx
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ source/unx/gnome/SalGtkFolderPicker.hxx	8 Sep 2004 09:35:50 -0000
+@@ -0,0 +1,169 @@
++/*************************************************************************
++ *
++ *  $RCSfile: SalGtkFilePicker.hxx,v $
++ *
++ *  $Revision: 1.1.2.2 $
++ *
++ *  last change: $Author: cmc $ $Date: 2004/08/23 13:07:50 $
++ *
++ *  The Contents of this file are made available subject to the terms of
++ *  either of the following licenses
++ *
++ *         - GNU Lesser General Public License Version 2.1
++ *         - Sun Industry Standards Source License Version 1.1
++ *
++ *  Sun Microsystems Inc., October, 2000
++ *
++ *  GNU Lesser General Public License Version 2.1
++ *  =============================================
++ *  Copyright 2000 by Sun Microsystems, Inc.
++ *  901 San Antonio Road, Palo Alto, CA 94303, USA
++ *
++ *  This library is free software; you can redistribute it and/or
++ *  modify it under the terms of the GNU Lesser General Public
++ *  License version 2.1, as published by the Free Software Foundation.
++ *
++ *  This library is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ *  Lesser General Public License for more details.
++ *
++ *  You should have received a copy of the GNU Lesser General Public
++ *  License along with this library; if not, write to the Free Software
++ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
++ *  MA  02111-1307  USA
++ *
++ *
++ *  Sun Industry Standards Source License Version 1.1
++ *  =================================================
++ *  The contents of this file are subject to the Sun Industry Standards
++ *  Source License Version 1.1 (the &quot;License&quot;); You may not use this file
++ *  except in compliance with the License. You may obtain a copy of the
++ *  License at <A HREF="http://www.openoffice.org/license.html.">http://www.openoffice.org/license.html.</A>
++ *
++ *  Software provided under this License is provided on an &quot;AS IS&quot; basis,
++ *  WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING,
++ *  WITHOUT LIMITATION, WARRANTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
++ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
++ *  See the License for the specific provisions governing your rights and
++ *  obligations concerning the Software.
++ *
++ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc.
++ *
++ *  Copyright: 2000 by Sun Microsystems, Inc.
++ *
++ *  All Rights Reserved.
++ *
++ *  Contributor(s): Anil Bhatia
++ *
++ *
++ ************************************************************************/
++
++#ifndef _SALGTKFOLDERPICKER_HXX_
++#define _SALGTKFOLDERPICKER_HXX_
++
++//_______________________________________________________________________________________________________________________
++//	includes of other projects
++//_______________________________________________________________________________________________________________________
++
++#ifndef _CPPUHELPER_COMPBASE3_HXX_
++#include &lt;cppuhelper/implbase3.hxx&gt;
++#endif
++
++#ifndef _SALGTKPICKER_HXX_
++#include &quot;SalGtkPicker.hxx&quot;
++#endif
++
++#include &lt;memory&gt;
++
++#ifndef _RTL_USTRING_H_
++#include &lt;rtl/ustring.hxx&gt;
++#endif
++
++#include &lt;list&gt;
++
++//----------------------------------------------------------
++// class declaration		
++//----------------------------------------------------------
++
++class SalGtkFolderPicker : 
++        public SalGtkPicker,
++	public cppu::WeakImplHelper3&lt;
++	::com::sun::star::ui::dialogs::XFolderPicker,	
++	::com::sun::star::lang::XServiceInfo,
++        ::com::sun::star::util::XCancellable &gt;
++{
++	public:
++
++		// constructor
++		SalGtkFolderPicker( const ::com::sun::star::uno::Reference&lt; ::com::sun::star::lang::XMultiServiceFactory &gt;&amp; xServiceMgr );
++
++		//------------------------------------------------------------------------------------
++		// XExecutableDialog functions
++		//------------------------------------------------------------------------------------
++	
++		virtual void SAL_CALL setTitle( const ::rtl::OUString&amp; aTitle ) 
++			throw( ::com::sun::star::uno::RuntimeException );
++
++		virtual sal_Int16 SAL_CALL execute(  ) 
++			throw( ::com::sun::star::uno::RuntimeException );
++
++		//------------------------------------------------------------------------------------
++		// XFolderPicker functions
++		//------------------------------------------------------------------------------------
++
++		virtual void SAL_CALL setDisplayDirectory( const rtl::OUString&amp; rDirectory )
++			throw( com::sun::star::lang::IllegalArgumentException, com::sun::star::uno::RuntimeException );
++
++		virtual rtl::OUString SAL_CALL getDisplayDirectory(  )
++			throw( com::sun::star::uno::RuntimeException );
++
++		virtual rtl::OUString SAL_CALL getDirectory( )
++			throw( com::sun::star::uno::RuntimeException );
++
++		virtual void SAL_CALL setDescription( const rtl::OUString&amp; rDescription )
++			throw( com::sun::star::uno::RuntimeException );
++
++
++		//------------------------------------------------
++		// XServiceInfo
++		//------------------------------------------------ 
++
++		virtual ::rtl::OUString SAL_CALL getImplementationName(	 )
++			throw(::com::sun::star::uno::RuntimeException);
++
++		virtual sal_Bool SAL_CALL supportsService( const ::rtl::OUString&amp; ServiceName ) 
++			throw(::com::sun::star::uno::RuntimeException);
++
++		virtual ::com::sun::star::uno::Sequence&lt; ::rtl::OUString &gt; SAL_CALL getSupportedServiceNames(  ) 
++			throw(::com::sun::star::uno::RuntimeException);
++
++		//------------------------------------------------
++		// XCancellable
++		//------------------------------------------------
++
++		virtual void SAL_CALL cancel( )
++			throw( ::com::sun::star::uno::RuntimeException );
++
++		//------------------------------------------------
++		// XEventListener
++		//------------------------------------------------
++
++		virtual void SAL_CALL disposing( const ::com::sun::star::lang::EventObject&amp; aEvent ) 
++			throw(::com::sun::star::uno::RuntimeException);
++
++	private:
++		// prevent copy and assignment
++		SalGtkFolderPicker( const SalGtkFolderPicker&amp; );           
++		SalGtkFolderPicker&amp; operator=( const SalGtkFolderPicker&amp; );
++	private:
++		// to instanciate own services
++		::com::sun::star::uno::Reference&lt; ::com::sun::star::lang::XMultiServiceFactory &gt; m_xServiceMgr;
++
++#if 0
++	public: 
++		 virtual ~SalGtkFolderPicker();
++#endif
++}; 
++
++#endif // _SALGTKFOLDERPICKER_HXX_
+Index: source/unx/gnome/SalGtkPicker.cxx
+===================================================================
+RCS file: source/unx/gnome/SalGtkPicker.cxx
+diff -N source/unx/gnome/SalGtkPicker.cxx
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ source/unx/gnome/SalGtkPicker.cxx	8 Sep 2004 09:35:51 -0000
+@@ -0,0 +1,151 @@
++/*************************************************************************
++ *
++ *  $RCSfile: SalGtkFilePicker.cxx,v $
++ *
++ *  $Revision: 1.1.2.3 $ 
++ *
++ *  last change: $Author: cmc $ $Date: 2004/09/07 11:25:49 $
++ *
++ *  The Contents of this file are made available subject to the terms of
++ *  either of the following licenses
++ *
++ *         - GNU Lesser General Public License Version 2.1
++ *         - Sun Industry Standards Source License Version 1.1
++ *
++ *  Sun Microsystems Inc., October, 2000
++ *
++ *  GNU Lesser General Public License Version 2.1
++ *  =============================================
++ *  Copyright 2000 by Sun Microsystems, Inc.
++ *  901 San Antonio Road, Palo Alto, CA 94303, USA
++ *
++ *  This library is free software; you can redistribute it and/or
++ *  modify it under the terms of the GNU Lesser General Public
++ *  License version 2.1, as published by the Free Software Foundation.
++ *
++ *  This library is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ *  Lesser General Public License for more details.
++ *
++ *  You should have received a copy of the GNU Lesser General Public
++ *  License along with this library; if not, write to the Free Software
++ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
++ *  MA  02111-1307  USA
++ *
++ *
++ *  Sun Industry Standards Source License Version 1.1
++ *  =================================================
++ *  The contents of this file are subject to the Sun Industry Standards
++ *  Source License Version 1.1 (the &quot;License&quot;); You may not use this file
++ *  except in compliance with the License. You may obtain a copy of the
++ *  License at <A HREF="http://www.openoffice.org/license.html.">http://www.openoffice.org/license.html.</A>
++ *
++ *  Software provided under this License is provided on an &quot;AS IS&quot; basis,
++ *  WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING,
++ *  WITHOUT LIMITATION, WARRANTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
++ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
++ *  See the License for the specific provisions governing your rights and
++ *  obligations concerning the Software.
++ *
++ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc.
++ *
++ *  Copyright: 2000 by Sun Microsystems, Inc.
++ *
++ *  All Rights Reserved.
++ *
++ *  Contributor(s): Anil Bhatia
++ *
++ *
++ ************************************************************************/
++
++//------------------------------------------------------------------------
++// includes
++//------------------------------------------------------------------------
++
++#ifndef _COM_SUN_STAR_LANG_DISPOSEDEXCEPTION_HPP_
++#include &lt;com/sun/star/lang/DisposedException.hpp&gt;
++#endif
++#ifndef _COM_SUN_STAR_LANG_XMULTISERVICEFACTORY_HPP_
++#include &lt;com/sun/star/lang/XMultiServiceFactory.hpp&gt;
++#endif
++#ifndef _CPPUHELPER_INTERFACECONTAINER_H_
++#include &lt;cppuhelper/interfacecontainer.h&gt;
++#endif
++#ifndef _OSL_DIAGNOSE_H_
++#include &lt;osl/diagnose.h&gt;
++#endif
++#ifndef  _COM_SUN_STAR_UNO_ANY_HXX_
++#include &lt;com/sun/star/uno/Any.hxx&gt;
++#endif
++#ifndef _FPSERVICEINFO_HXX_
++#include &lt;FPServiceInfo.hxx&gt;
++#endif
++#ifndef _VOS_MUTEX_HXX_
++#include &lt;vos/mutex.hxx&gt;
++#endif
++#ifndef _SV_SVAPP_HXX
++#include &lt;vcl/svapp.hxx&gt;
++#endif
++#ifndef _SALGTKPICKER_HXX_
++#include &quot;SalGtkPicker.hxx&quot;
++#endif
++
++//------------------------------------------------------------------------
++// namespace directives
++//------------------------------------------------------------------------
++
++using namespace ::rtl;
++using namespace ::com::sun::star;
++using namespace ::com::sun::star::lang;
++using namespace ::com::sun::star::uno;
++
++SalGtkPicker::~SalGtkPicker()
++{
++	if (m_pDialog)
++		gtk_widget_destroy(m_pDialog);
++}
++
++void SAL_CALL SalGtkPicker::implsetDisplayDirectory( const rtl::OUString&amp; aDirectory ) 
++	throw( lang::IllegalArgumentException, uno::RuntimeException )
++{
++	OSL_ASSERT( m_pDialog != NULL );
++	::vos::OGuard aGuard( Application::GetSolarMutex() );
++
++	OString aTxt = OUStringToOString( aDirectory, RTL_TEXTENCODING_UTF8 );
++
++	if( aTxt.lastIndexOf('/') == aTxt.getLength() - 1 )
++		aTxt = aTxt.copy( 0, aTxt.getLength() - 1 );
++
++	OSL_TRACE( &quot;setting path to %s\n&quot;, aTxt.getStr() );
++
++	gtk_file_chooser_set_current_folder_uri( GTK_FILE_CHOOSER( m_pDialog ),
++						 aTxt.getStr() );
++}
++
++rtl::OUString SAL_CALL SalGtkPicker::implgetDisplayDirectory() throw( uno::RuntimeException )
++{
++	OSL_ASSERT( m_pDialog != NULL );
++	::vos::OGuard aGuard( Application::GetSolarMutex() );
++	
++	gchar* pCurrentFolder = 
++		gtk_file_chooser_get_current_folder_uri( GTK_FILE_CHOOSER( m_pDialog ) );
++	::rtl::OUString aCurrentFolderName = 
++		::rtl::OUString( const_cast&lt;const sal_Char *&gt;( pCurrentFolder ),
++					strlen( pCurrentFolder ), RTL_TEXTENCODING_UTF8 );
++	g_free( pCurrentFolder );
++
++	return aCurrentFolderName;
++}
++
++void SAL_CALL SalGtkPicker::implsetTitle( const rtl::OUString&amp; aTitle ) throw( uno::RuntimeException )
++{
++	OSL_ASSERT( m_pDialog != NULL );
++	::vos::OGuard aGuard( Application::GetSolarMutex() );
++	
++	::rtl::OString aWindowTitle = OUStringToOString( aTitle, RTL_TEXTENCODING_UTF8 );
++	gtk_window_set_title( GTK_WINDOW( m_pDialog ), aWindowTitle.getStr() );
++
++	fprintf(stderr, &quot;title is %s\n&quot;, aWindowTitle.getStr());
++
++}
+Index: source/unx/gnome/SalGtkPicker.hxx
+===================================================================
+RCS file: source/unx/gnome/SalGtkPicker.hxx
+diff -N source/unx/gnome/SalGtkPicker.hxx
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ source/unx/gnome/SalGtkPicker.hxx	8 Sep 2004 09:35:51 -0000
+@@ -0,0 +1,116 @@
++/*************************************************************************
++ *
++ *  $RCSfile: SalGtkFilePicker.hxx,v $
++ *
++ *  $Revision: 1.1.2.2 $
++ *
++ *  last change: $Author: cmc $ $Date: 2004/08/23 13:07:50 $
++ *
++ *  The Contents of this file are made available subject to the terms of
++ *  either of the following licenses
++ *
++ *         - GNU Lesser General Public License Version 2.1
++ *         - Sun Industry Standards Source License Version 1.1
++ *
++ *  Sun Microsystems Inc., October, 2000
++ *
++ *  GNU Lesser General Public License Version 2.1
++ *  =============================================
++ *  Copyright 2000 by Sun Microsystems, Inc.
++ *  901 San Antonio Road, Palo Alto, CA 94303, USA
++ *
++ *  This library is free software; you can redistribute it and/or
++ *  modify it under the terms of the GNU Lesser General Public
++ *  License version 2.1, as published by the Free Software Foundation.
++ *
++ *  This library is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ *  Lesser General Public License for more details.
++ *
++ *  You should have received a copy of the GNU Lesser General Public
++ *  License along with this library; if not, write to the Free Software
++ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
++ *  MA  02111-1307  USA
++ *
++ *
++ *  Sun Industry Standards Source License Version 1.1
++ *  =================================================
++ *  The contents of this file are subject to the Sun Industry Standards
++ *  Source License Version 1.1 (the &quot;License&quot;); You may not use this file
++ *  except in compliance with the License. You may obtain a copy of the
++ *  License at <A HREF="http://www.openoffice.org/license.html.">http://www.openoffice.org/license.html.</A>
++ *
++ *  Software provided under this License is provided on an &quot;AS IS&quot; basis,
++ *  WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING,
++ *  WITHOUT LIMITATION, WARRANTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
++ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
++ *  See the License for the specific provisions governing your rights and
++ *  obligations concerning the Software.
++ *
++ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc.
++ *
++ *  Copyright: 2000 by Sun Microsystems, Inc.
++ *
++ *  All Rights Reserved.
++ *
++ *  Contributor(s): Anil Bhatia
++ *
++ *
++ ************************************************************************/
++
++#ifndef _SALGTKFPICKER_HXX_
++#define _SALGTKFPICKER_HXX_
++
++//_____________________________________________________________________________
++//	includes of other projects
++//_____________________________________________________________________________
++
++#ifndef _OSL_MUTEX_HXX_
++#include &lt;osl/mutex.hxx&gt;
++#endif
++
++#ifndef _COM_SUN_STAR_UI_DIALOGS_XFILEPICKER_HPP_
++#include &lt;com/sun/star/ui/dialogs/XFilePicker.hpp&gt;
++#endif
++
++#ifndef _COM_SUN_STAR_UI_XFOLDERPICKER_HPP_
++#include &lt;com/sun/star/ui/dialogs/XFolderPicker.hpp&gt;
++#endif
++
++#ifndef _COM_SUN_STAR_LANG_XSERVICEINFO_HPP_
++#include &lt;com/sun/star/lang/XServiceInfo.hpp&gt;
++#endif
++
++#ifndef _COM_SUN_STAR_UTIL_XCANCELLABLE_HPP_
++#include &lt;com/sun/star/util/XCancellable.hpp&gt;
++#endif
++
++#include &lt;gtk/gtk.h&gt;
++#include &lt;gdk/gdkkeysyms.h&gt;
++
++//----------------------------------------------------------
++// class declaration		
++//----------------------------------------------------------
++
++class SalGtkPicker
++{
++	public:
++		SalGtkPicker() : m_pDialog(0) {}
++		virtual ~SalGtkPicker();
++	protected:
++		osl::Mutex m_rbHelperMtx;
++		GtkWidget  *m_pDialog;
++	protected:
++		virtual void SAL_CALL implsetTitle( const ::rtl::OUString&amp; aTitle ) 
++			throw( ::com::sun::star::uno::RuntimeException );
++
++		virtual void SAL_CALL implsetDisplayDirectory( const rtl::OUString&amp; rDirectory )
++			throw( com::sun::star::lang::IllegalArgumentException, com::sun::star::uno::RuntimeException );
++
++		virtual rtl::OUString SAL_CALL implgetDisplayDirectory(  )
++			throw( com::sun::star::uno::RuntimeException );
++
++};
++
++#endif
+Index: source/unx/gnome/fps_gnome.xml
+===================================================================
+RCS file: /cvs/gsl/fpicker/source/unx/gnome/Attic/fps_gnome.xml,v
+retrieving revision 1.1.2.1
+diff -u -p -r1.1.2.1 fps_gnome.xml
+--- source/unx/gnome/fps_gnome.xml	4 Aug 2004 15:03:07 -0000	1.1.2.1
++++ source/unx/gnome/fps_gnome.xml	8 Sep 2004 09:35:51 -0000
+@@ -41,6 +41,34 @@
+         &lt;type&gt;	com.sun.star.uno.XAggregation				&lt;/type&gt;
+         &lt;type&gt;	com.sun.star.registry.XRegistryKey			&lt;/type&gt;
+         &lt;type&gt;	com.sun.star.container.XSet					&lt;/type&gt;
++	&lt;/component-description&gt;
++    &lt;component-description&gt;
++		&lt;author&gt; Caolan McNamara &lt;/author&gt;
++        &lt;name&gt;	com.sun.star.comp.ui.dialogs.FolderPicker &lt;/name&gt;
++        &lt;description&gt;
++			The Gnome implementation of the FolderPicker service.
++		&lt;/description&gt;
++        &lt;loader-name&gt;com.sun.star.loader.SharedLibrary&lt;/loader-name&gt;
++        &lt;language&gt;	c++	&lt;/language&gt;
++        &lt;status value=&quot;beta&quot;/&gt;
++		&lt;supported-service&gt;	com.sun.star.ui.dialogs.FolderPicker &lt;/supported-service&gt;		
++        &lt;service-dependency&gt;...&lt;/service-dependency&gt;
++		&lt;type&gt;	com.sun.star.ui.dialogs.XExecutableDialog			&lt;/type&gt;
++        &lt;type&gt;	com.sun.star.ui.dialogs.XFolderPicker				&lt;/type&gt;
++		&lt;type&gt;	com.sun.star.ui.dialogs.ExecutableDialogException	&lt;/type&gt;
++		&lt;type&gt;	com.sun.star.ui.dialogs.ExecutableDialogResults		&lt;/type&gt;		
++		&lt;type&gt;	com.sun.star.util.XCancellable				&lt;/type&gt;
++	    &lt;type&gt;	com.sun.star.lang.XComponent				&lt;/type&gt;
++        &lt;type&gt;	com.sun.star.lang.XMultiServiceFactory		&lt;/type&gt;
++        &lt;type&gt;	com.sun.star.lang.XSingleServiceFactory		&lt;/type&gt;
++        &lt;type&gt;	com.sun.star.lang.XServiceInfo				&lt;/type&gt;
++        &lt;type&gt;	com.sun.star.lang.XTypeProvider				&lt;/type&gt;
++        &lt;type&gt;	com.sun.star.lang.IllegalArgumentException	&lt;/type&gt;
++        &lt;type&gt;	com.sun.star.uno.TypeClass					&lt;/type&gt;
++        &lt;type&gt;	com.sun.star.uno.XWeak						&lt;/type&gt;
++        &lt;type&gt;	com.sun.star.uno.XAggregation				&lt;/type&gt;
++        &lt;type&gt;	com.sun.star.registry.XRegistryKey			&lt;/type&gt;
++        &lt;type&gt;	com.sun.star.container.XSet					&lt;/type&gt;
+     &lt;/component-description&gt;
+     &lt;project-build-dependency&gt;	cppuhelper	&lt;/project-build-dependency&gt;
+     &lt;project-build-dependency&gt;	cppu		&lt;/project-build-dependency&gt;
+Index: source/unx/gnome/makefile.mk
+===================================================================
+RCS file: /cvs/gsl/fpicker/source/unx/gnome/Attic/makefile.mk,v
+retrieving revision 1.1.2.1
+diff -u -p -r1.1.2.1 makefile.mk
+--- source/unx/gnome/makefile.mk	4 Aug 2004 15:03:07 -0000	1.1.2.1
++++ source/unx/gnome/makefile.mk	8 Sep 2004 09:35:51 -0000
+@@ -88,10 +88,12 @@ CFLAGS+=`pkg-config --cflags gtk+-2.0`
+ # --- Files --------------------------------------------------------
+ 
+ SLOFILES =\
+-		$(SLO)$/SalGtkFilePicker.obj		\
+-		$(SLO)$/resourceprovider.obj		\
+-               $(SLO)$/asynceventnotifier.obj          \
+-               $(SLO)$/filepickereventnotification.obj \
++		$(SLO)$/SalGtkPicker.obj				\
++		$(SLO)$/SalGtkFilePicker.obj			\
++		$(SLO)$/SalGtkFolderPicker.obj			\
++		$(SLO)$/resourceprovider.obj			\
++        $(SLO)$/asynceventnotifier.obj          \
++        $(SLO)$/filepickereventnotification.obj \
+ 		$(SLO)$/FPentry.obj
+ 
+ .ENDIF # &quot;$(GUIBASE)&quot; != &quot;unx&quot; || &quot;$(WITH_WIDGETSET)&quot; != &quot;gnome&quot;
+
+--=-jH9ocpCByBUvcaJs7KFa
+Content-Disposition: attachment; filename=svtools.folderpicker.patch
+Content-Type: text/x-patch; name=svtools.folderpicker.patch; charset=ANSI_X3.4-1968
+Content-Transfer-Encoding: 7bit
+
+? one
+? source/filepicker/arse
+? source/filepicker/foobar
+Index: source/filepicker/folderpicker.cxx
+===================================================================
+RCS file: /cvs/util/svtools/source/filepicker/folderpicker.cxx,v
+retrieving revision 1.18
+diff -u -p -r1.18 folderpicker.cxx
+--- source/filepicker/folderpicker.cxx	12 Jun 2003 08:22:33 -0000	1.18
++++ source/filepicker/folderpicker.cxx	8 Sep 2004 09:12:12 -0000
+@@ -265,7 +265,21 @@ void SAL_CALL SvtFolderPicker::setDescri
+ // ------------------------------------------------------------------------
+ // misc. helpers
+ //------------------------------------------------------------------------------------
+-#define SYSTEM_FOLDER_OPEN_SERVICE_NAME &quot;com.sun.star.ui.dialogs.SystemFolderPicker&quot;
++::rtl::OUString impl_SystemFolderOpenServiceName()
++{
++	const ::rtl::OUString &amp;rDesktopEnvironment =
++		Application::GetDesktopEnvironment();
++
++	if ( rDesktopEnvironment.equalsIgnoreAsciiCaseAscii( &quot;gnome&quot; ) )
++	{
++		return ::rtl::OUString::createFromAscii( &quot;com.sun.star.ui.dialogs.GtkFolderPicker&quot; );
++	}
++	else if ( rDesktopEnvironment.equalsIgnoreAsciiCaseAscii( &quot;kde&quot; ) )
++	{
++		return ::rtl::OUString::createFromAscii( &quot;com.sun.star.ui.dialogs.KDEFolderPicker&quot; );
++	}
++	return ::rtl::OUString::createFromAscii( &quot;com.sun.star.ui.dialogs.SystemFolderPicker&quot; );
++}
+ 
+ sal_Bool SvtFolderPicker::HasSystemFolderPicker( const Reference&lt; XMultiServiceFactory &gt; xFactory )
+ {
+@@ -279,7 +293,7 @@ sal_Bool SvtFolderPicker::HasSystemFolde
+ 
+     try
+     {
+-		::rtl::OUString aFolderService( RTL_CONSTASCII_USTRINGPARAM( SYSTEM_FOLDER_OPEN_SERVICE_NAME ) );
++		::rtl::OUString aFolderService = impl_SystemFolderOpenServiceName();
+ 
+         Reference&lt; XEnumeration &gt; xEnum = xEnumAccess-&gt;createContentEnumeration( aFolderService );
+         if ( xEnum.is() &amp;&amp; xEnum-&gt;hasMoreElements() )
+@@ -365,7 +379,7 @@ Reference&lt; XInterface &gt; SAL_CALL SvtFold
+ 
+         if ( bHasSystemFolderPicker &amp;&amp; UseSystemFolderPicker() )
+         {
+-            ::rtl::OUString aFolderService( RTL_CONSTASCII_USTRINGPARAM( SYSTEM_FOLDER_OPEN_SERVICE_NAME ) );
++            ::rtl::OUString aFolderService = impl_SystemFolderOpenServiceName();
+             xRet = xServiceManager-&gt;createInstance( aFolderService );
+         }
+     }
+
+--=-jH9ocpCByBUvcaJs7KFa--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000539.html">[Open Office] Installing Ximian OO.O
+</A></li>
+	<LI> Next message: <A HREF="000541.html">[Open Office] gtk fpicker and the &quot;Versions&quot; list
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#540">[ date ]</a>
+              <a href="thread.html#540">[ thread ]</a>
+              <a href="subject.html#540">[ subject ]</a>
+              <a href="author.html#540">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

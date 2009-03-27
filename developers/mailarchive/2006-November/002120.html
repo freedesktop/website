@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Problems with kde integration on Archlinux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Problems%20with%20kde%20integration%20on%20Archlinux&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002119.html">
+   <LINK REL="Next"  HREF="002121.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Problems with kde integration on Archlinux</H1>
+    <B>Hussam Al-Tayeb</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Problems%20with%20kde%20integration%20on%20Archlinux&In-Reply-To="
+       TITLE="[Open Office] Problems with kde integration on Archlinux">ht990332 at gmail.com
+       </A><BR>
+    <I>Wed Nov  1 14:43:00 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002119.html">[Open Office] 2.0.4 - vba-basic-array-erase.diff
+</A></li>
+        <LI>Next message: <A HREF="002121.html">[Open Office] GNOME CVS: ooo-build brosenk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2120">[ date ]</a>
+              <a href="thread.html#2120">[ thread ]</a>
+              <a href="subject.html#2120">[ subject ]</a>
+              <a href="author.html#2120">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm building openoffice 2.0.4 on archlinux. this is the PKGBUILD (build
+script)
+<A HREF="http://aur.archlinux.org/packages/openoffice/openoffice/PKGBUILD">http://aur.archlinux.org/packages/openoffice/openoffice/PKGBUILD</A>
+
+This is the list of patches I use:
+
+buildfix-new-xslt.diff
+check-buttons-rendering-fix.diff
+default-no-registration-menu.diff
+default-no-registration.diff
+default-no-startup-wizard.diff
+default-system-fpicker.diff
+fpicker-common-build-backported.diff
+fpicker-common-scp2.diff
+fpicker-kde0-dialog.diff
+fpicker-kde1-service.diff
+fpicker-kde2-partial-kio.diff
+fpicker-kde3-local-media.diff
+fpicker-kde4-gcc4-visibility.diff
+fpicker-kde5-resmgr.diff
+framework-layered-accelerators.diff
+gui-insensitive.diff
+intros-config_office.diff
+leak-sal-file.diff
+nomozplug.diff
+OOD680_m5-hinting.diff
+readlicense_oo-xml-apis.diff
+sc-default-color-modify.diff
+session-management.diff
+size-vcl-fontcfg.diff
+soffice-detect-mozilla-certificates.diff
+system-icu.diff
+system-xmlsec.diff
+vcl-gnome-screensaver-poke.diff
+warning-uninitialized-variables-sc.diff
+warning-uninitialized-variables-sw.diff
+warning-uninitialized-variables-sw2.diff
+warning-uninitialized-variables-vcl.diff
+xmlhelp-use-libxslt-from-system.diff
+
+Now, using gnome, the gtk filepicker works brilliantly as expected but
+when we build with --enable-kde, the kdefilepicker crashes when used
+under openoffice. So when someone opens/saves a file, the kdefilepicker
+crashes but the file actually does open or save correctly.
+
+
+Even then, the gtk filepicker continues to work correctly without any
+crashes.
+
+One of the guys who also tried this reported this stacktrace:
+<A HREF="http://kenny.juvepoland.com/~swiergot/kdefilepicker.txt">http://kenny.juvepoland.com/~swiergot/kdefilepicker.txt</A>
+
+Can someone take a look at this since it is the only remaining issue
+with building natively on Archlinux?
+
+
+-- 
+Regards,
+Hussam Al-Tayeb.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002119.html">[Open Office] 2.0.4 - vba-basic-array-erase.diff
+</A></li>
+	<LI>Next message: <A HREF="002121.html">[Open Office] GNOME CVS: ooo-build brosenk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2120">[ date ]</a>
+              <a href="thread.html#2120">[ thread ]</a>
+              <a href="subject.html#2120">[ subject ]</a>
+              <a href="author.html#2120">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

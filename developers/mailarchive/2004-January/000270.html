@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Print to PDF
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000269.html">
+   <LINK REL="Next"  HREF="000272.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Print to PDF
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Print to PDF">michael@ximian.com
+       </A><BR>
+    <I>Thu, 29 Jan 2004 15:37:53 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000269.html">[Open Office] Print to PDF
+</A></li>
+        <LI> Next message: <A HREF="000272.html">[Open Office] Print to PDF
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#270">[ date ]</a>
+              <a href="thread.html#270">[ thread ]</a>
+              <a href="subject.html#270">[ subject ]</a>
+              <a href="author.html#270">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Carlos,
+
+On Tue, 2004-01-27 at 19:55, Carlos Alberto wrote:
+&gt;<i> It seems that OOo 1.1.0 don't read the psprint.conf 
+</I>&gt;<i> file anymore, and as spadmin is not in my &quot;program&quot;
+</I>&gt;<i> directory anymore I pressume it will not be supported
+</I>&gt;<i> as it depends on java in some way,
+</I>
+	Nope; it's more that spadmin is the most grotesque hack  and couples
+with the code in a really evil way :-)
+
+&gt;<i> So if I don't have a printer, and everytime I press
+</I>&gt;<i> &quot;Print&quot; I want OOo to create a PDF file; sometime ago
+</I>&gt;<i> I used that file (psprint.conf), but now that
+</I>&gt;<i> configuration is not loaded anymore. What can I do?.
+</I>
+	I'm guessing this is harder; you really need to persuade cups that this
+is what you want to do; ultimately I certainly don't think 
+adding yet another ghostscript hack to OO.o is a good plan long term.
+
+	If you export SAL_PDF_CONVERT_CMD you can affect how the
+File-&gt;Print-&gt;To File effect works (rather than using the hard-coding pdf
+print command).
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000269.html">[Open Office] Print to PDF
+</A></li>
+	<LI> Next message: <A HREF="000272.html">[Open Office] Print to PDF
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#270">[ date ]</a>
+              <a href="thread.html#270">[ thread ]</a>
+              <a href="subject.html#270">[ subject ]</a>
+              <a href="author.html#270">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

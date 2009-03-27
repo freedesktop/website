@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] VBA part build failure..on FreeBSD
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20VBA%20part%20build%20failure..on%20FreeBSD&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002321.html">
+   <LINK REL="Next"  HREF="002323.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] VBA part build failure..on FreeBSD</H1>
+    <B>Maho NAKATA</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20VBA%20part%20build%20failure..on%20FreeBSD&In-Reply-To="
+       TITLE="[Open Office] VBA part build failure..on FreeBSD">chat95 at mac.com
+       </A><BR>
+    <I>Thu Jun 21 20:31:29 EDT 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002321.html">[Open Office] OOo Status digest issue #7 - June 18th 2007
+</A></li>
+        <LI>Next message: <A HREF="002323.html">[Open Office] VBA part build failure..on FreeBSD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2322">[ date ]</a>
+              <a href="thread.html#2322">[ thread ]</a>
+              <a href="subject.html#2322">[ subject ]</a>
+              <a href="author.html#2322">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Noel,
+
+Build has been failed for ooo-build-2.2.0.2.tar.gz with FreeBSD 6.2 + patches 
+like following:
+
+ccache g++-ooo -fmessage-length=0 -c -Os -fno-strict-aliasing
+   -D_FILE_OFFSET_BITS=no -I.  -I../../../unxfbsdi.pro/inc/vbaobj -I../inc -I../../../inc/pch -I../../../inc -I../../../unx/inc -I../../../unxfbsdi.pro/inc -I. -I/work/ports/editors/ooo-build/work/OOF680_m18/solver/680/unxfbsdi.pro/inc/stl -I/work/ports/editors/ooo-build/work/OOF680_m18/solver/680/unxfbsdi.pro/inc/external -I/work/ports/editors/ooo-build/work/OOF680_m18/solver/680/unxfbsdi.pro/inc -I/work/ports/editors/ooo-build/work/OOF680_m18/solenv/unxfbsdi/inc -I/work/ports/editors/ooo-build/work/OOF680_m18/solenv/inc -I/work/ports/editors/ooo-build/work/OOF680_m18/res -I/work/ports/editors/ooo-build/work/OOF680_m18/solver/680/unxfbsdi.pro/inc/stl -I/work/ports/editors/ooo-build/work/OOF680_m18/solenv/inc/Xp31 -I/usr/local/diablo-jdk1.5.0/include
+ -I/usr/local/diablo-jdk1.5.0/include/freebsd -I/usr/local/diablo-jdk1.5.0/include/bsd -I/usr/local/diablo-jdk1.5.0/include/linux -I/usr/local/diablo-jdk1.5.0/include/native_threads/include -I/usr/local/include -I/usr/local/include
+     -I/work/ports/editors/ooo-build/work/OOF680_m18/solver/680/unxfbsdi.pro/inc/offuh -I. -I../../../res -I. -pipe -mtune=pentiumpro -fvisibility-inlines-hidden -g1 -Wall -Wextra -Wendif-labels -Wshadow -Wno-ctor-dtor-privacy     -Wno-non-virtual-dtor   -fpic -DFREEBSD -DUNX -DVCL -DGCC -DC341 -DINTEL -DCVER=C341 -DX86  -D_PTHREADS -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=1 -DSTLPORT_VERSION=450 -DHAVE_GCC_VISIBILITY_FEATURE -D__DMAKE -DUNIX -DCPPU_ENV=gcc3 -DGXX_INCLUDE_PATH=/usr/local/gcc-ooo/i386-portbld-freebsd6.2/3.4.1/include/c++
+ -DSUPD=680 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=0 -DOPTIMIZE -DGSTREAMER -DCUI -DSOLAR_JAVA -DOOF680=OOF680   -DSHAREDLIB -D_DLL_  -DMULTITHREAD -fexceptions -fno-enforce-eh-specs -DEXCEPTIONS_ON  -o ../../../unxfbsdi.pro/slo/vbaaxis.o /work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx 
+
+/work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:50:68: macro &quot;MIN&quot; requires 2 arguments, but only 1 given
+/work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:51:68: macro &quot;MAX&quot; requires 2 arguments, but only 1 given
+dmake:  Error code 1, while making '../../../unxfbsdi.pro/slo/vbaaxis.obj'
+'---* tg_merge.mk *---'
+
+----------
+actually following part is the essential:
+
+/work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:50:68: macro &quot;MIN&quot; requires 2 arguments, but only 1 given
+/work/ports/editors/ooo-build/work/OOF680_m18/sc/source/ui/vba/vbaaxis.cxx:51:68: macro &quot;MAX&quot; requires 2 arguments, but only 1 given
+
+Is it related to
+<A HREF="http://gcc.gnu.org/bugzilla/show_bug.cgi?id=29989">http://gcc.gnu.org/bugzilla/show_bug.cgi?id=29989</A>
+?
+
+Any suggestion is really appreciated. I'm using
+% gcc-ooo -v
+Reading specs from /usr/local/gcc-ooo/i386-portbld-freebsd6.2/3.4.1/lib/gcc/i386-portbld-freebsd6.2/3.4.1/specs
+Configured with: ./..//gcc-3.4.1/configure --disable-nls --with-system-zlib --with-libiconv-prefix=/usr/local --program-suffix=-ooo --libdir=/usr/local/gcc-ooo/i386-portbld-freebsd6.2/3.4.1/lib --libexecdir=/usr/local/gcc-ooo/i386-portbld-freebsd6.2/3.4.1/libexec --with-gxx-include-dir=/usr/local/gcc-ooo/i386-portbld-freebsd6.2/3.4.1/include/c++/ --disable-shared --prefix=/usr/local i386-portbld-freebsd6.2
+Thread model: posix
+gcc version 3.4.1 [FreeBSD]
+
+actually gcc-3.4.1+enum fix+visibility patch.
+
+Thanks,
+-- Nakata Maho (<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">maho at FreeBSD.org</A>)
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002321.html">[Open Office] OOo Status digest issue #7 - June 18th 2007
+</A></li>
+	<LI>Next message: <A HREF="002323.html">[Open Office] VBA part build failure..on FreeBSD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2322">[ date ]</a>
+              <a href="thread.html#2322">[ thread ]</a>
+              <a href="subject.html#2322">[ subject ]</a>
+              <a href="author.html#2322">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

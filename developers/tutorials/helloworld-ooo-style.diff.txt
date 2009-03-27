@@ -1,0 +1,115 @@
+--- /dev/null	2004-08-25 23:04:59.000000000 +0530
++++ helloworld/prj/build.lst	2004-12-23 23:59:37.000000000 +0530
+@@ -0,0 +1,2 @@
++hw	helloworld	:	NULL
++hw	helloworld\source		nmake	-	all	hw_src	NULL
+--- /dev/null	2004-08-25 23:04:59.000000000 +0530
++++ helloworld/source/makefile.mk	2005-01-11 13:12:59.286842056 +0530
+@@ -0,0 +1,21 @@
++
++PRJ=..
++PRJNAME=helloworld
++TARGET=helloworld
++
++
++# --- Settings ----------------------------------
++
++.INCLUDE : settings.mk
++
++# --- Files -------------------------------------
++
++SLOFILES=\
++	$(SLO)$/helloworld.obj
++
++SHL1TARGET= 	hworld$(UPD)$(DLLPOSTFIX)
++SHL1LIBS=       $(SLB)$/helloworld.lib
++
++# --- Targets ----------------------------------
++
++.INCLUDE : target.mk
+--- /dev/null	2004-08-25 23:04:59.000000000 +0530
++++ helloworld/source/helloworld.cxx	2005-01-11 13:42:41.860234605 +0530
+@@ -0,0 +1,9 @@
++
++#include <helloworld.hxx>
++
++using namespace hello::world;
++
++void HelloWorld::adios()
++{
++    fprintf( stderr, "Hello, World! :-)\n" );
++}
+--- /dev/null	2004-08-25 23:04:59.000000000 +0530
++++ helloworld/inc/helloworld.hxx	2005-01-11 13:42:48.155200104 +0530
+@@ -0,0 +1,13 @@
++
++namespace hello {
++
++    namespace world {
++
++	class HelloWorld {
++
++	public:
++	    void adios();
++	    
++	};
++    };
++};
+--- /dev/null	2004-08-25 23:04:59.000000000 +0530
++++ helloworld/prj/d.lst	2005-01-11 12:59:08.464432327 +0530
+@@ -0,0 +1,3 @@
++hedabu: ..\inc\helloworld.hxx %_DEST%\inc%_EXT%\helloworld\helloworld.hxx
++
++..\%__SRC%\lib\lib*.* %_DEST%\lib%_EXT%\lib*.*
+--- svx/source/dialog/charmap.cxx.orig	2005-01-11 12:01:02.238019934 +0530
++++ svx/source/dialog/charmap.cxx	2005-01-11 12:02:24.277586493 +0530
+@@ -120,6 +120,8 @@
+ 
+ #include "rtl/ustrbuf.hxx"
+ 
++#include <helloworld/helloworld.hxx>
++
+ using namespace ::com::sun::star::accessibility;
+ using namespace ::com::sun::star::uno;
+ //CHINA001 // class SvxShowText =====================================================
+@@ -1097,6 +1099,10 @@
+ 
+ IMPL_LINK( SvxCharMapData, OKHdl, OKButton *, EMPTYARG )
+ {
++    using namespace hello::world;
++    HelloWorld hw;
++    hw.adios();
++
+     String aStr = aShowText.GetText();
+ 
+     if ( !aStr.Len() )
+--- svx/util/makefile.mk.orig	2005-01-11 12:21:28.351114984 +0530
++++ svx/util/makefile.mk	2005-01-11 12:23:03.122572903 +0530
+@@ -147,7 +147,8 @@
+             $(SALLIB) \
+                      $(XMLSCRIPTLIB) \
+             $(ICUUCLIB) \
+-			$(AVMEDIALIB)	
++			$(AVMEDIALIB)	\
++		-lhworld680li
+ 
+ .IF "$(GUI)"=="WNT"
+ SHL1STDLIBS+=\
+--- scp2/source/ooo/file_library_ooo.scp	2004-12-21 14:49:11.000000000 +0530
++++ scp2/source/ooo/file_library_ooo.scp	2004-12-24 10:11:44.343252931 +0530
+@@ -458,6 +458,15 @@ File gid_File_Lib_Db_Cxx
+ End
+ #endif
+ 
++#ifdef UNX
++File gid_File_Lib_Hl_World
++    TXT_FILE_BODY;
++    Styles = (PACKED);
++    Dir = gid_Dir_Program;
++    Name = STRING(CONCAT4(libhworld,OFFICEUPD,DLLSUFFIX,UNXSUFFIX));
++End
++#endif
++
+ #endif
+ 
+ STD_UNO_LIB_FILE( gid_File_Lib_Dba, dba)

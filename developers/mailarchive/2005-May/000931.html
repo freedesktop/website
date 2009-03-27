@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] --enable-debug ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:michael.meeks%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000930.html">
+   <LINK REL="Next"  HREF="000946.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] --enable-debug ...
+   </H1>
+    <B>michael meeks
+    </B> 
+    <A HREF="mailto:michael.meeks%40novell.com"
+       TITLE="[Open Office] --enable-debug ...">michael.meeks@novell.com
+       </A><BR>
+    <I>Fri, 06 May 2005 10:37:20 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000930.html">[Open Office] Status
+</A></li>
+        <LI> Next message: <A HREF="000946.html">[Open Office] Re: --enable-debug ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#931">[ date ]</a>
+              <a href="thread.html#931">[ thread ]</a>
+              <a href="subject.html#931">[ subject ]</a>
+              <a href="author.html#931">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there,
+
+	So - not having debugging symbols in the default build is rather a pain
+for a lot of people; so - it seems best (to me) to ensure that our
+install uses --enable-debug, and bins the stripping action in
+solenv/bin/modules/installer/strip.pm
+
+	That then leaves us space to make debug RPMs or let distros strip after
+install if they wish.
+
+	On that basis, I'd like to add --enable-debug to Common.conf.in - is
+that ok with everyone ? [ I've added it just to our targets so far ].
+
+	Thanks,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael.meeks@novell.com">michael.meeks@novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000930.html">[Open Office] Status
+</A></li>
+	<LI> Next message: <A HREF="000946.html">[Open Office] Re: --enable-debug ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#931">[ date ]</a>
+              <a href="thread.html#931">[ thread ]</a>
+              <a href="subject.html#931">[ subject ]</a>
+              <a href="author.html#931">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

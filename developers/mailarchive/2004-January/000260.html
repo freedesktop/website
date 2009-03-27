@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Can't compile salgdi3.cxx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000259.html">
+   <LINK REL="Next"  HREF="000261.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Can't compile salgdi3.cxx
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] Can't compile salgdi3.cxx">dan@bigw.org
+       </A><BR>
+    <I>Sun, 25 Jan 2004 11:10:58 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000259.html">[Open Office] Can't compile salgdi3.cxx
+</A></li>
+        <LI> Next message: <A HREF="000261.html">[Open Office] Can't compile salgdi3.cxx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#260">[ date ]</a>
+              <a href="thread.html#260">[ thread ]</a>
+              <a href="subject.html#260">[ subject ]</a>
+              <a href="author.html#260">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&lt;why does this damn list always reply to the OP rather than the =20
+_list_???  Annoying.&gt;
+
+Anyway, Hirano,
+
+This structure I think is the PrinterInfo structure that its =20
+complaining about.  That's defined in &lt;psprint/printerinfomanager.hxx&gt;, =20=
+
+which should be #included at the top of salgdi3.cxx unless one of the =20=
+
+patches takes it out...  Can you check for:
+
+1) #include &lt;psprint/printerinfomanager.cxx&gt; at the top of salgdi3.cxx
+2) Make sure that the &quot;psprint&quot; module actually got delivered?
+3) Make sure there's a PrinterInfo structure in printerinfomanager.cxx
+
+I've built 3 different versions of OOo this week using =20
+--with-distro=3DRHFedora, so it worked for me.  However, that doesn't =20=
+
+mean something's not going wrong here...
+
+Dan
+
+On Jan 25, 2004, at 8:25 AM, Hirano Kazunari wrote:
+
+&gt;<i> Using the recent ooo-build I could build up OOO_1_1_0 with &quot;configure =20=
+</I>
+&gt;<i> --with-distro=3DRHFedoraOnly&quot; but its menu icons have got some color =20=
+</I>
+&gt;<i> trouble.
+</I>&gt;<i> Now I am building it with &quot;configure --with-distro=3DRHFedora&quot; and =20
+</I>&gt;<i> stopping at salgdi3.cxx.
+</I>&gt;<i>
+</I>&gt;<i> Making: ../../../unxlngi4.pro/slo/salgdi3.obj
+</I>&gt;<i> ccache g++ -fmessage-length=3D0 -c -I.  -I. -I../inc -I../../../inc =20=
+</I>
+&gt;<i> -I../../../unx/inc -I../../../unxlngi4.pro/inc -I. =20
+</I>&gt;<i> -I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solver/645/=20
+</I>&gt;<i> unxlngi4.pro/inc/stl =20
+</I>&gt;<i> -I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solver/645/=20
+</I>&gt;<i> unxlngi4.pro/inc/external =20
+</I>&gt;<i> -I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solver/645/=20
+</I>&gt;<i> unxlngi4.pro/inc =20
+</I>&gt;<i> -I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solenv/unxlngi4/inc =
+</I>=20
+&gt;<i> -I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solenv/inc =20
+</I>&gt;<i> -I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/res =20
+</I>&gt;<i> -I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solver/645/=20
+</I>&gt;<i> unxlngi4.pro/inc/stl =20
+</I>&gt;<i> -I/home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solenv/inc/Xp31 =20
+</I>&gt;<i> -I/home/khirano/j2sdk_nb/j2sdk1.4.2/include =20
+</I>&gt;<i> -I/home/khirano/j2sdk_nb/j2sdk1.4.2/include/linux =20
+</I>&gt;<i> -I/home/khirano/j2sdk_nb/j2sdk1.4.2/include/native_threads/include =20
+</I>&gt;<i> -I/usr/X11R6/include     -I. -I../../../res -I. -O1   -pipe =20
+</I>&gt;<i> -mcpu=3Dpentiumpro -fno-for-scope -fpermissive -fno-rtti -include =20
+</I>&gt;<i> preinclude.h -fno-exceptions   -fpic -DLINUX -DUNX -DVCL -DGCC -DC300 =20=
+</I>
+&gt;<i> -DINTEL -DCVER=3DC300 -D_USE_NAMESPACE -DGLIBC=3D2 -DX86 -D_PTHREADS =20=
+</I>
+&gt;<i> -D_REENTRANT -DNEW_SOLAR -D_USE_NAMESPACE=3D1 -DSTLPORT_VERSION=3D400 =20=
+</I>
+&gt;<i> -D__DMAKE -DUNIX -DCPPU_ENV=3Dgcc3 -DSUPD=3D645 -DPRODUCT -DNDEBUG =20
+</I>&gt;<i> -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=3D0 -DOPTIMIZE -DEXCEPTIONS_OFF -DCUI =
+</I>=20
+&gt;<i> -DSOLAR_JAVA -DSRX645 -DUSE_BUILTIN_RASTERIZER -DENABLE_CTL =20
+</I>&gt;<i> -DSHAREDLIB -D_DLL_  -DMULTITHREAD   -o =20
+</I>&gt;<i> ../../../unxlngi4.pro/slo/salgdi3.o =20
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/=20=
+</I>
+&gt;<i> salgdi3.cxx
+</I>&gt;<i> In file included from gcach_xpeer.hxx:65,
+</I>&gt;<i>                 from =20
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/=20=
+</I>
+&gt;<i> salgdi3.cxx:80:
+</I>&gt;<i> ../../../inc/glyphcache.hxx:95: =BE=AF=B8=E6: specializing `struct =20
+</I>&gt;<i> _STL::hash&lt;ImplFontSelectData&gt;' in different namespace
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/solver/645/=20
+</I>&gt;<i> unxlngi4.pro/inc/stl/stl/_hash_fun.h:40: =BE=AF=B8=E6:   from =
+</I>definition of =20
+&gt;<i> `template&lt;class _Key&gt; struct _STL::hash'
+</I>&gt;<i> ../../../inc/glyphcache.hxx:121: =BE=AF=B8=E6: friend declaration =
+</I>requires =20
+&gt;<i> class-key, i.e. `friend struct ServerFont'
+</I>&gt;<i> ../../../inc/glyphcache.hxx:241: =BE=AF=B8=E6: friend declaration =
+</I>requires =20
+&gt;<i> class-key, i.e. `friend class GlyphCache'
+</I>&gt;<i> ../../../inc/glyphcache.hxx:242: =BE=AF=B8=E6: friend declaration =
+</I>requires =20
+&gt;<i> class-key, i.e. `friend struct ServerFontLayout'
+</I>&gt;<i> In file included from ../../../inc/outdev.hxx:429,
+</I>&gt;<i>                 from ../../../inc/salgdi.hxx:82,
+</I>&gt;<i>                 from =20
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/=20=
+</I>
+&gt;<i> salgdi3.cxx:96:
+</I>&gt;<i> ../../../inc/outdev.imp:64: =BE=AF=B8=E6: class `OutputDevice' is =
+</I>implicitly =20
+&gt;<i> friends with itself
+</I>&gt;<i> ../../../inc/outdev.imp:65: =BE=AF=B8=E6: `VirtualDevice' is already a =
+</I>friend of =20
+&gt;<i> `OutputDevice'
+</I>&gt;<i> ../../../inc/outdev.imp:73: =BE=AF=B8=E6: `vcl::PDFWriterImpl' is =
+</I>already a =20
+&gt;<i> friend of `OutputDevice'
+</I>&gt;<i> In file included from =20
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/=20=
+</I>
+&gt;<i> salgdi3.cxx:145:
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/=20=
+</I>
+&gt;<i> xlfd_extd.hxx:96: =BE=AF=B8=E6: friend declaration requires class-key, =
+</I>i.e. =20
+&gt;<i> `friend struct VirtualXlfd'
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/=20=
+</I>
+&gt;<i> xlfd_extd.hxx:97: =BE=AF=B8=E6: friend declaration requires class-key, =
+</I>i.e. =20
+&gt;<i> `friend struct XlfdStorage'
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/=20=
+</I>
+&gt;<i> salgdi3.cxx: member function =C4=DA=A4=CE `void =20
+</I>&gt;<i> SalGraphicsData::DrawServerAAFontString(const ServerFontLayout&amp;)':
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/=20=
+</I>
+&gt;<i> salgdi3.cxx:891: =BE=AF=B8=E6: initialization to non-pointer type =
+</I>`Picture' from =20
+&gt;<i> NULL
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/=20=
+</I>
+&gt;<i> salgdi3.cxx:891: =BE=AF=B8=E6: argument to non-pointer type `long =
+</I>unsigned int' =20
+&gt;<i> from NULL
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/=20=
+</I>
+&gt;<i> salgdi3.cxx: member function =C4=DA=A4=CE `void =20
+</I>&gt;<i> SalGraphics::GetDevFontSubstList(OutputDevice*)':
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/=20=
+</I>
+&gt;<i> salgdi3.cxx:1844: error: =CE=C4=B7=A8=A5=A8=A5=E9=A9` before `&amp;' token
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/=20=
+</I>
+&gt;<i> salgdi3.cxx:1845: error: `rInfo' undeclared (first use this function)
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi/=20=
+</I>
+&gt;<i> salgdi3.cxx:1845: error: (Each undeclared identifier is reported only =20=
+</I>
+&gt;<i> once for each function it appears in.)
+</I>&gt;<i> dmake:  Error code 1, while making =20
+</I>&gt;<i> '../../../unxlngi4.pro/slo/salgdi3.obj'
+</I>&gt;<i> ---* TG_SLO.MK *---
+</I>&gt;<i> ERROR: Error 65280 occurred while making =20
+</I>&gt;<i> /home/khirano/ooo-build-1.1.49.2/build/OOO_1_1_0/vcl/unx/source/gdi
+</I>&gt;<i> dmake:  Error code 1, while making 'build_all'
+</I>&gt;<i> ---* TG_SLO.MK *---
+</I>&gt;<i> [<A HREF="mailto:khirano@localhost">khirano@localhost</A> OOO_1_1_0]$
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000259.html">[Open Office] Can't compile salgdi3.cxx
+</A></li>
+	<LI> Next message: <A HREF="000261.html">[Open Office] Can't compile salgdi3.cxx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#260">[ date ]</a>
+              <a href="thread.html#260">[ thread ]</a>
+              <a href="subject.html#260">[ subject ]</a>
+              <a href="author.html#260">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

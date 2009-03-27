@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] [dev] crash reporter,	what are the various distro's strategies	?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5Bdev%5D%20crash%20reporter%2C%0A%09what%20are%20the%20various%20distro%27s%20strategies%09%3F&In-Reply-To=f2kaht%244e7%241%40staroffice-news.germany.sun.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002288.html">
+   <LINK REL="Next"  HREF="002290.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] [dev] crash reporter,	what are the various distro's strategies	?</H1>
+    <B>Caolan McNamara</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20%5Bdev%5D%20crash%20reporter%2C%0A%09what%20are%20the%20various%20distro%27s%20strategies%09%3F&In-Reply-To=f2kaht%244e7%241%40staroffice-news.germany.sun.com"
+       TITLE="[Open Office] [dev] crash reporter,	what are the various distro's strategies	?">caolanm at redhat.com
+       </A><BR>
+    <I>Fri May 18 10:12:02 EDT 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002288.html">[Open Office] crash reporter,	what are the various distro's strategies ?
+</A></li>
+        <LI>Next message: <A HREF="002290.html">[Open Office] [PATCH] Fix parallel build of oovbaapi
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2289">[ date ]</a>
+              <a href="thread.html#2289">[ thread ]</a>
+              <a href="subject.html#2289">[ subject ]</a>
+              <a href="author.html#2289">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2007-05-18 at 15:43 +0200, Bernd Eilers wrote:
+&gt;<i> Caolan McNamara wrote:
+</I>&gt;<i> &gt; So when OOo crashes, what are the strategies that distros employ here if
+</I>&gt;<i> &gt; any ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Sun has a SOAP receiving service for crash reports, 
+</I>
+I'm aware of the tooling there, but this is somewhat orthogonal as the
+Sun tooling is internal and doesn't factor into this much.
+
+&gt;<i> &gt; For RH we don't build the crashreporter (as it's basically unusable info
+</I>&gt;<i> &gt; for Sun),
+</I>&gt;<i> 
+</I>&gt;<i> This is because Sun would not have the debug information created during 
+</I>&gt;<i> building those Releases which would be needed to 'resolv' the crash
+</I>
+But we do of course, and are both able to and actually do the mapping.
+And probably other distros can as well, and actually any of the distros
+using debuginfo rpms can use the simple RH ooomapstack tooling without
+much modification I'd assume.
+
+&gt;<i> This ooomapstack utility most likely will also need access to debug 
+</I>&gt;<i> information kept during the build, wouldn&#180;t it?
+</I>
+Yup, not a problem. We keep that info around for all our packages e.g.
+for the latest Fedora Core 6 it just needs an unpacked
+<A HREF="http://download.fedora.redhat.com/pub/fedora/linux/core/updates/6/i386/debug/openoffice.org-debuginfo-2.0.4-5.5.22.i386.rpm">http://download.fedora.redhat.com/pub/fedora/linux/core/updates/6/i386/debug/openoffice.org-debuginfo-2.0.4-5.5.22.i386.rpm</A>
+so any potential cross-distro crash server would just need a little
+fedora core disto specific plugin to go fetch the matching debuginfo rpm
+and run ooomapstack on it.
+
+&gt;<i> I see a few potential problems with that:
+</I>&gt;<i> 
+</I>&gt;<i> 1.) Crash data does contain dump of memmory which in some cases might 
+</I>&gt;<i> contain personal information which end-users would not want others to be 
+</I>&gt;<i> able to find on public websites. 
+</I>
+All that's at stack here is the basic simple stack traces, without
+memory dumps. So the issue doesn't arise.
+
+&gt;<i> 2.) Who should host this repository? Or are you thinking about some kind 
+</I>&gt;<i> of distributed or partly distributed repository?
+</I>
+Well, that's the nub of the issue isn't it. But I don't see this as affecting Sun
+in any way, i.e. this isn't intended as pumping more data into Suns database, 
+just an alternative crash reporter for the distro builders that might point at a
+shared database.
+
+Certainly there may be issues of scalability and it may be impractical. I was thinking 
+of whipping something Red Hat specific together and giving it a whirl during the up and
+coming development cycle when there are a limited number of users to get a feel for 
+how much data and server load would be involved when not considering vast number of 
+window users and where all traces would generally come from a very homogeneous environment.  
+
+C.
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002288.html">[Open Office] crash reporter,	what are the various distro's strategies ?
+</A></li>
+	<LI>Next message: <A HREF="002290.html">[Open Office] [PATCH] Fix parallel build of oovbaapi
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2289">[ date ]</a>
+              <a href="thread.html#2289">[ thread ]</a>
+              <a href="subject.html#2289">[ subject ]</a>
+              <a href="author.html#2289">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

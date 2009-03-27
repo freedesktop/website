@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Building Problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:gers4302%40kettering.edu">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000091.html">
+   <LINK REL="Next"  HREF="000093.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Building Problems
+   </H1>
+    <B>gers4302@kettering.edu
+    </B> 
+    <A HREF="mailto:gers4302%40kettering.edu"
+       TITLE="[Open Office] Building Problems">gers4302@kettering.edu
+       </A><BR>
+    <I>Thu, 09 Oct 2003 16:06:39 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000091.html">[Open Office] ImageMagick dependancy
+</A></li>
+        <LI> Next message: <A HREF="000093.html">[Open Office] Building Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#92">[ date ]</a>
+              <a href="thread.html#92">[ thread ]</a>
+              <a href="subject.html#92">[ subject ]</a>
+              <a href="author.html#92">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've tried building for RC3 and RC4 with their corresponding build
+packages and I've recieved the following error in both:
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+Building project idlc
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+/root/ooo-build-1.1.39/build/OOO_1_1_RC3/idlc/source/preproc
+-------------
+/root/ooo-build-1.1.39/build/OOO_1_1_RC3/idlc/source
+------------------------------
+Making: ../unxlngi4.pro/obj/parser.obj
+g++ -fmessage-length=3D0 -c -I.  -I. -I../inc -I../inc -I../unx/inc
+-I../unxlngi4.pro/inc -I.
+-I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solver/645/unxlngi4.pro/inc/stl =
+-I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solver/645/unxlngi4.pro/inc/exte=
+rnal -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solver/645/unxlngi4.pro/inc=
+ -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solenv/unxlngi4/inc -I/root/ooo=
+-build-1.1.39/build/OOO_1_1_RC3/solenv/inc -I/root/ooo-build-1.1.39/build/O=
+OO_1_1_RC3/res -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solver/645/unxlng=
+i4.pro/inc/stl -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solenv/inc/Xp31 -=
+I/root/ooo-build-1.1.39/build/jdk/include -I/root/ooo-build-1.1.39/build/jd=
+k/include/linux -I/root/ooo-build-1.1.39/build/jdk/include/native_threads/i=
+nclude -I/usr/X11R6/include     -I. -I../res -I. -O1   -pipe -mcpu=3Dpentiu=
+mpro -fno-for-scope -fpermissive -fno-rtti -include preinclude.h -fexceptio=
+ns -fno-enforce-eh-specs    -DLINUX -DUNX -DVCL -DGCC -DC300 -DINTEL -DCVER=
+=3DC300 -D_USE_NAMESPACE -DGLIBC=3D2 -DX86 -D_PTHREADS -D_REENTRANT -DNEW_S=
+OLAR -D_USE_NAMESPACE=3D1 -DSTLPORT_VERSION=3D400 -D__DMAKE -DUNIX -DCPPU_E=
+NV=3Dgcc3 -DSUPD=3D645 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LEVEL=
+=3D0 -DOPTIMIZE -DEXCEPTIONS_ON -DCUI -DSOLAR_JAVA -DSRX645  -DMULTITHREAD =
+ -DMULTITHREAD   -o ../unxlngi4.pro/obj/parser.o ../unxlngi4.pro/misc/parse=
+r.cxx
+../unxlngi4.pro/misc/parser.cxx: In function `int yyparse()':
+../unxlngi4.pro/misc/parser.cxx:4740: parse error before `goto'
+dmake:  Error code 1, while making '../unxlngi4.pro/obj/parser.obj'
+---* TG_SLO.MK *---
+=20
+ERROR: Error 65280 occurred while making
+/root/ooo-build-1.1.39/build/OOO_1_1_RC3/idlc/source
+dmake:  Error code 1, while making 'build_all'
+---* TG_SLO.MK *---
+make[1]: *** [all] Error 1
+make[1]: Leaving directory `/root/ooo-build-1.1.39/bin'
+make: *** [all-recursive] Error 1
+
+Looking for ideas...
+
+Thanks
+
+Stephen Gerstacker
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000091.html">[Open Office] ImageMagick dependancy
+</A></li>
+	<LI> Next message: <A HREF="000093.html">[Open Office] Building Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#92">[ date ]</a>
+              <a href="thread.html#92">[ thread ]</a>
+              <a href="subject.html#92">[ subject ]</a>
+              <a href="author.html#92">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

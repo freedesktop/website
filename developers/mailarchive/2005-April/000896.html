@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] status
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:jody%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000895.html">
+   <LINK REL="Next"  HREF="000897.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] status
+   </H1>
+    <B>Jody Goldberg
+    </B> 
+    <A HREF="mailto:jody%40novell.com"
+       TITLE="[Open Office] status">jody@novell.com
+       </A><BR>
+    <I>Tue, 5 Apr 2005 23:38:17 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000895.html">[Open Office] m90 &amp; dropped patches ...
+</A></li>
+        <LI> Next message: <A HREF="000897.html">[Open Office] status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#896">[ date ]</a>
+              <a href="thread.html#896">[ thread ]</a>
+              <a href="subject.html#896">[ subject ]</a>
+              <a href="author.html#896">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mon &amp; Tues
+     - clean builds --without-java of m89 and m90 under
+       debian.
+     - perused issuezilla a bit looking for bugs that would be
+       educational and picked
+	: <A HREF="http://qa.openoffice.org/issues/show_bug.cgi?id=46210">http://qa.openoffice.org/issues/show_bug.cgi?id=46210</A>
+	    A1:OFFSET(...) does not work
+	    This problem can lie in several layers
+		a) OFFSET doesn't return a range properly (it seems correct)
+		b) Can the interpreter accept range returns
+		c) Can the interpreter constuct a ref (and does it
+		  support the dependencies that result)
+
+	: <A HREF="http://qa.openoffice.org/issues/show_bug.cgi?id=8947">http://qa.openoffice.org/issues/show_bug.cgi?id=8947</A>
+	    MATCH(..., FREQUENCY ()) does not work
+	    This also touches on array formulas and what sorts of
+	    semantics the interpreter can support.  I've got some
+	    old (jpr wrote them) test cases for MATCH.
+
+	: Played with XL import performance
+	    : <A HREF="http://qa.openoffice.org/issues/show_bug.cgi?id=28620">http://qa.openoffice.org/issues/show_bug.cgi?id=28620</A>
+	    Looks like objects are damn expensive
+
+Tommorow
+     - m89 build crashes.  Let's see if m90 does any better
+     - Extend the MATCH tests, let's see what we're up against
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000895.html">[Open Office] m90 &amp; dropped patches ...
+</A></li>
+	<LI> Next message: <A HREF="000897.html">[Open Office] status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#896">[ date ]</a>
+              <a href="thread.html#896">[ thread ]</a>
+              <a href="subject.html#896">[ subject ]</a>
+              <a href="author.html#896">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

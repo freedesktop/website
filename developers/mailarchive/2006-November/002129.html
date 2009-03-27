@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regcomp segfaults when registering java components
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=5B996ED0-D2E1-4E3E-AEAA-409AEB2C7DB9%40amarooas.com.au">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002128.html">
+   <LINK REL="Next"  HREF="002139.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regcomp segfaults when registering java components</H1>
+    <B>Atle Nissestad</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=5B996ED0-D2E1-4E3E-AEAA-409AEB2C7DB9%40amarooas.com.au"
+       TITLE="[Open Office] Regcomp segfaults when registering java components">atle.nissestad at norbit.no
+       </A><BR>
+    <I>Mon Nov 13 17:43:26 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002128.html">[Open Office] Novell Edition of OpenOffice.org 2.0.4 for Windows
+</A></li>
+        <LI>Next message: <A HREF="002139.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2129">[ date ]</a>
+              <a href="thread.html#2129">[ thread ]</a>
+              <a href="subject.html#2129">[ subject ]</a>
+              <a href="author.html#2129">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jim Watson wrote:
+&gt;<i> On 31/10/2006, at 8:44 PM, VMiklos wrote:
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> so i suspect this is a gcj bug, you may try to build on from a  
+</I>&gt;&gt;<i> snapshot.
+</I>&gt;&gt;<i> i'm waiting for the next stable gcc release..
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> I saw bugs like those on gnu linux/sparc, but did not see the problem  
+</I>&gt;<i> at all since building with gcc4.1.2 preview
+</I>&gt;<i>
+</I>&gt;<i> jim
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>I've had a go at this issue again, this time with a self-built gcc 4.1.2
+(preview 20061027) - and regcomp still segfaults. Argh..
+I have attached the gdb traces for gcc4.1.1 regcomp (gdb_gcc411.log) and
+gcc4.1.2 regcomp (gdb_gcc412.log), in case  someone who hath
+understanding (and is in touch with the force) could have a look at
+them. If it really is a compiler bug, I guess gcc 4.2 is the next option.
+
+Atle
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: gdb_gcc411.log
+Type: text/x-log
+Size: 17986 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20061113/0734f467/attachment-0002.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20061113/0734f467/attachment-0002.bin</A> 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: gdb_gcc412.log
+Type: text/x-log
+Size: 27293 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20061113/0734f467/attachment-0003.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20061113/0734f467/attachment-0003.bin</A> 
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002128.html">[Open Office] Novell Edition of OpenOffice.org 2.0.4 for Windows
+</A></li>
+	<LI>Next message: <A HREF="002139.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2129">[ date ]</a>
+              <a href="thread.html#2129">[ thread ]</a>
+              <a href="subject.html#2129">[ subject ]</a>
+              <a href="author.html#2129">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

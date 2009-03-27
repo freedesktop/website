@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regcomp segfaults when registering java components
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=20061031014430.GI13190%40genesis.frugalware.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002110.html">
+   <LINK REL="Next"  HREF="002112.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regcomp segfaults when registering java components</H1>
+    <B>Atle Nissestad</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=20061031014430.GI13190%40genesis.frugalware.org"
+       TITLE="[Open Office] Regcomp segfaults when registering java components">atle.nissestad at norbit.no
+       </A><BR>
+    <I>Tue Oct 31 02:50:59 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002110.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+        <LI>Next message: <A HREF="002112.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2111">[ date ]</a>
+              <a href="thread.html#2111">[ thread ]</a>
+              <a href="subject.html#2111">[ subject ]</a>
+              <a href="author.html#2111">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+VMiklos wrote:
+&gt;<i> On Mon, Oct 30, 2006 at 11:23:24PM +0100, Atle Nissestad &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">atle.nissestad at norbit.no</A>&gt; wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> More problems with java, regcomp and x86_64 (Mandriva 2007)... When
+</I>&gt;&gt;<i> running make install, regcomp segfaults when registering the java
+</I>&gt;&gt;<i> components:
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> see <A HREF="http://www.openoffice.org/issues/show_bug.cgi?id=65026">http://www.openoffice.org/issues/show_bug.cgi?id=65026</A>
+</I>&gt;<i>
+</I>&gt;<i> i've attached a workaround to the bug
+</I>&gt;<i>
+</I>&gt;<i> udv / greetings,
+</I>&gt;<i> VMiklos
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Yepp, that was the bug I was refering to, and I used your patch to be
+able to finish the installation (the reported issue is without the patch
+of course ..). Did you by the way rebuild more than cpputools with debug
+enabled ?
+I see that your gdb trace is different from mine.
+
+But .. I guess something will be broken when the registration is not
+completed. Currently oobase crashes when trying to open an internal
+database (hsqldb). That is perhaps related to this issue ?
+
+I think I forgot to include the OO version in the last post:
+
+OpenOffice 2.0.4
+Ooo-build 2.0.4 cvs 20061024
+
+Atle
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002110.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+	<LI>Next message: <A HREF="002112.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2111">[ date ]</a>
+              <a href="thread.html#2111">[ thread ]</a>
+              <a href="subject.html#2111">[ subject ]</a>
+              <a href="author.html#2111">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

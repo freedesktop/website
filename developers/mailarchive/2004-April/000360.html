@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] PATCH: build.pl conditional module building
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-April/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000359.html">
+   <LINK REL="Next"  HREF="000362.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] PATCH: build.pl conditional module building
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] PATCH: build.pl conditional module building">dan@bigw.org
+       </A><BR>
+    <I>Fri, 9 Apr 2004 01:30:05 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000359.html">[Open Office] PATCH: build.pl conditional module building
+</A></li>
+        <LI> Next message: <A HREF="000362.html">[Open Office] PATCH: build.pl conditional module building
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#360">[ date ]</a>
+              <a href="thread.html#360">[ thread ]</a>
+              <a href="subject.html#360">[ subject ]</a>
+              <a href="author.html#360">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Forgot to mention:
+
+o  This _does_ work with &quot;build --all&quot;
+o  This _does_ work with &quot;build -P2&quot;
+o  This does _NOT_ work with &quot;build --all -P2&quot; (conditionals are 
+ignored)
+
+However, since at this time ooo-build is not multiprocess build safe 
+(build script hangs without exiting at end of build), its not as much 
+of an issue.
+
+Dan
+
+On Apr 9, 2004, at 1:18 AM, Dan Williams wrote:
+
+&gt;<i> Diff against 1.1.1 attached.
+</I>&gt;<i>
+</I>&gt;<i> o Conditional format (logical OR):       blah blah blah NULL    
+</I>&gt;<i> ([!]ENV_VAR[,ENV_VAR[,ENV_VAR]])
+</I>&gt;<i> Example:
+</I>&gt;<i> -----------------------------
+</I>&gt;<i> moz	moz : solenv NULL   (!ENABLE_CORE_OFFICE)
+</I>&gt;<i> moz	moz					usr1	-	all	moz_mkout NULL
+</I>&gt;<i> moz	moz\zipped			nmake	-	all	moz_zipped NULL    (!BLAH,FOO)
+</I>&gt;<i>
+</I>&gt;<i> This would mean that if the ENABLE_CORE_OFFICE environment variable 
+</I>&gt;<i> exists and has some value, the whole module would _not_ be built.  
+</I>&gt;<i> Furthermore, if ENABLE_CORE_OFFICE is not set at all, then the 
+</I>&gt;<i> moz\zipped project will not be built if BLAH is non-blank, but will be 
+</I>&gt;<i> built if FOO is non-blank (even if BLAH is non-blank too).  Its a 
+</I>&gt;<i> logical OR system.
+</I>&gt;<i>
+</I>&gt;<i> Dan
+</I>&gt;<i>
+</I>&gt;<i> &lt;build-pl-conditionals.patch&gt;
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000359.html">[Open Office] PATCH: build.pl conditional module building
+</A></li>
+	<LI> Next message: <A HREF="000362.html">[Open Office] PATCH: build.pl conditional module building
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#360">[ date ]</a>
+              <a href="thread.html#360">[ thread ]</a>
+              <a href="subject.html#360">[ subject ]</a>
+              <a href="author.html#360">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

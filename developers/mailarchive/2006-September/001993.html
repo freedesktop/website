@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] 32-bit OOo crashes - non-implemented umask ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%2032-bit%20OOo%20crashes%20-%20non-implemented%20umask%20%3F&In-Reply-To=200609192046.05028.pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001992.html">
+   <LINK REL="Next"  HREF="001994.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] 32-bit OOo crashes - non-implemented umask ?</H1>
+    <B>Petr Mladek</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%2032-bit%20OOo%20crashes%20-%20non-implemented%20umask%20%3F&In-Reply-To=200609192046.05028.pmladek%40suse.cz"
+       TITLE="[Open Office] 32-bit OOo crashes - non-implemented umask ?">pmladek at suse.cz
+       </A><BR>
+    <I>Thu Sep 21 06:19:43 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001992.html">[Open Office] 32-bit OOo crashes - non-implemented umask ?
+</A></li>
+        <LI>Next message: <A HREF="001994.html">[Open Office] 32-bit OOo crashes - non-implemented umask ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1993">[ date ]</a>
+              <a href="thread.html#1993">[ thread ]</a>
+              <a href="subject.html#1993">[ subject ]</a>
+              <a href="author.html#1993">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+the non-implemented umask was printed by 64-bit strace on 32-bit OOo, so it 
+was unusable.
+
+More interesting is the following piece from the backtrace (see also the full 
+attached log):
+
+--- cut ---
+(gdb) bt
+#0  0xf7461865 in osl_decrementInterlockedCount (pCount=0xf2691a70) at 
+interlck.c:72
+#1  0xf7477536 in rtl_uString_release (pThis=0xf2691a70) at strtmpl.c:1051
+#2  0xf26938b4 in ~OUStringBuffer (this=0xfffbf12c)
+    
+at /usr/src/debug/ooo-build-ood680-m2f/build/ood680-m4/solver/680/unxlngi6.pro/inc/rtl/ustrbuf.hxx:169
+#3  0xf26938ca in ~INetURLObject (this=0xfffbf12c)
+    
+at /usr/src/debug/ooo-build-ood680-m2f/build/ood680-m4/solver/680/unxlngi6.pro/inc/tools/urlobj.hxx:172
+#4  0xf2691a8e in FSStorage::getByName (this=0x85dca48, aName=@0xfffbf208)
+    
+at /usr/src/debug/ooo-build-ood680-m2f/build/ood680-m4/svtools/source/fsstor/fsstorage.cxx:1180
+--- cut ---
+
+I did not see the crash on SL 10.1, so I tried to play with it. It went out 
+that the crash did not happen when svtools/source/fsstor/fsstorage.cxx was 
+compilled with -O0.
+
+I wonder if it could be gcc bug. We use gcc-4.1.2-20060913 on the current 
+openSUSE-alpha.
+
+
+Regards,
+Petr
+
+
+On Tuesday 19 September 2006 20:46, Petr Mladek wrote:
+&gt;<i> Hello,
+</I>&gt;<i>
+</I>&gt;<i> I am not able to run the current 32-bit build of ood680-m4 with ooo-build
+</I>&gt;<i> HEAD. It has happened also with m2, m3. The strange thing is that it works
+</I>&gt;<i> with 64-bit build on x86_64.
+</I>&gt;<i>
+</I>&gt;<i> Here is some output from strace:
+</I>&gt;<i>
+</I>&gt;<i> --- cut ---
+</I>&gt;<i> [pid 18789]
+</I>&gt;<i> access(&quot;/usr/lib/ooo-2.0/share/uno_packages/cache/registry/com.sun.star.com
+</I>&gt;<i>p.deployment.configuration.PackageRegistryBackend/registry/data/org/openoffi
+</I>&gt;<i>ce/ucb&quot;, F_OK) = -1 ENOENT (No such file or directory)
+</I>&gt;<i> [pid 18789]
+</I>&gt;<i> access(&quot;/home/pmladek/.ooo-2.0/user/uno_packages/cache/registry/com.sun.sta
+</I>&gt;<i>r.comp.deployment.configuration.PackageRegistryBackend/registry/data/org/ope
+</I>&gt;<i>noffice/ucb&quot;, F_OK) = -1 ENOENT (No such file or directory)
+</I>&gt;<i> [pid 18789] stat64(0xffd45bd0, 0xffd46bd0) = -1 ENOENT (No such file or
+</I>&gt;<i> directory)
+</I>&gt;<i> [pid 18789] access(&quot;/tmp/sv4mm.tmp&quot;, F_OK) = 0
+</I>&gt;<i> [pid 18789] lstat64(0x81d8cc0, 0xffd47308) = 0
+</I>&gt;<i> [pid 18789] open(&quot;/tmp/sv4mm.tmp&quot;, O_RDONLY|O_NONBLOCK|O_LARGEFILE|
+</I>&gt;<i> O_DIRECTORY) = 18
+</I>&gt;<i> [pid 18789] fstat64(0x12, 0xffd462cc)   = 0
+</I>&gt;<i> [pid 18789] fcntl64(18, F_SETFD, FD_CLOEXEC) = 0
+</I>&gt;<i> [pid 18789] getdents64(18, /* 2 entries */, 4096) = 48
+</I>&gt;<i> [pid 18789] getdents64(18, /* 0 entries */, 4096) = 0
+</I>&gt;<i> [pid 18789] close(18)                   = 0
+</I>&gt;<i> [pid 18789] rmdir(&quot;/tmp/sv4mm.tmp&quot;)     = 0
+</I>&gt;<i> [pid 18789] mkdir(&quot;/tmp&quot;, 0777)         = -1 EEXIST (File exists)
+</I>&gt;<i> [pid 18789] umask(077 &lt;unfinished ...&gt;
+</I>&gt;<i> [pid 18789] --- SIGSEGV (Segmentation fault) @ 0 (0) ---
+</I>&gt;<i> [pid 18789] &lt;... umask resumed&gt; )       = -1 ENOSYS (Function not
+</I>&gt;<i> implemented) [pid 18790] &lt;... futex resumed&gt; )       = -1 EINTR
+</I>&gt;<i> (Interrupted system call) [pid 18791] &lt;... accept resumed&gt; 0, NULL) = ?
+</I>&gt;<i> ERESTARTSYS (To be restarted) [pid 18792] &lt;... poll resumed&gt; [{fd=16,
+</I>&gt;<i> events=POLLIN}, {fd=15,
+</I>&gt;<i> events=POLLIN}], 2, 4294967295) = -1 EINTR (Interrupted system call)
+</I>&gt;<i> --- cut ---
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Huh, I am mixed by the line:
+</I>&gt;<i> --- cut ---
+</I>&gt;<i> [pid 18789] &lt;... umask resumed&gt; )       = -1 ENOSYS (Function not
+</I>&gt;<i> implemented) --- cut ---
+</I>&gt;<i>
+</I>&gt;<i> I think that it could be related to the crash. Do you have any idea what
+</I>&gt;<i> went wrong?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks in advance.
+</I>-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: backtrace.1.log
+Type: text/x-log
+Size: 12501 bytes
+Desc: not available
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20060921/cb53660e/attachment-0001.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20060921/cb53660e/attachment-0001.bin</A> 
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001992.html">[Open Office] 32-bit OOo crashes - non-implemented umask ?
+</A></li>
+	<LI>Next message: <A HREF="001994.html">[Open Office] 32-bit OOo crashes - non-implemented umask ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1993">[ date ]</a>
+              <a href="thread.html#1993">[ thread ]</a>
+              <a href="subject.html#1993">[ subject ]</a>
+              <a href="author.html#1993">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

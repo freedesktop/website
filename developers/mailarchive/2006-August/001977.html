@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] VBA patches
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20VBA%20patches&In-Reply-To=1156505980.20193.39.camel%40echelon.vojta">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001976.html">
+   <LINK REL="Next"  HREF="001978.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] VBA patches</H1>
+    <B>Noel Power</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20VBA%20patches&In-Reply-To=1156505980.20193.39.camel%40echelon.vojta"
+       TITLE="[Open Office] VBA patches">npower at openoffice.org
+       </A><BR>
+    <I>Fri Aug 25 08:23:45 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001976.html">[Open Office] VBA patches
+</A></li>
+        <LI>Next message: <A HREF="001978.html">[Open Office] VBA patches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1977">[ date ]</a>
+              <a href="thread.html#1977">[ thread ]</a>
+              <a href="subject.html#1977">[ subject ]</a>
+              <a href="author.html#1977">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Robert,
+I'm sorry that this happened, for some reason it worked for me, then 
+failed after another modification. There is an order dependency 
+introduced after I last regenerated vba-basic-default.diff. In the apply 
+file vba-basic-defulat should now appear after 
+patches/vba/basic-newsize-image-layout.diff.
+
+basic-newsize-image-layout is changing USHORT -&gt; UINT32
+vba-basic-default should now show UINT32(s) in the differenences
+
+can you update and check again
+
+( I hope your patches haven't go into a knot like they did for me, I was 
+able to save myself by some protracted manual tweaking )
+
+Noel
+
+Robert Vojta wrote:
+&gt;<i> Hallo *, Noel,
+</I>&gt;<i> 
+</I>&gt;<i>   I'm just building HEAD (OOD680-M1) for Win32 and these two patches
+</I>&gt;<i> have problems with apply:
+</I>&gt;<i> 
+</I>&gt;<i>   o patches/vba/basic-newsize-image-layout.diff
+</I>&gt;<i>   o patches/vba/vba-basic-default.diff
+</I>&gt;<i> 
+</I>&gt;<i>   It's all about USHORT &amp; UINT32. Which one is correct? USHORT or
+</I>&gt;<i> UINT32? One patch wants to make USHORT from UINT32, another wants to
+</I>&gt;<i> make UINT32 from USHORT, but there is UINT32 already, ...
+</I>&gt;<i> 
+</I>&gt;<i>   Note - all patches were applied correctly two (?) days ago.
+</I>&gt;<i> 
+</I>&gt;<i> Regards,
+</I>&gt;<i> Robert
+</I>&gt;<i>  
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001976.html">[Open Office] VBA patches
+</A></li>
+	<LI>Next message: <A HREF="001978.html">[Open Office] VBA patches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1977">[ date ]</a>
+              <a href="thread.html#1977">[ thread ]</a>
+              <a href="subject.html#1977">[ subject ]</a>
+              <a href="author.html#1977">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

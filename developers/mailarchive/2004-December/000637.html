@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Status Wed, Thu
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:rsiddhartha%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000636.html">
+   <LINK REL="Next"  HREF="000638.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Status Wed, Thu
+   </H1>
+    <B>Raul Siddhartha
+    </B> 
+    <A HREF="mailto:rsiddhartha%40novell.com"
+       TITLE="[Open Office] Status Wed, Thu">rsiddhartha@novell.com
+       </A><BR>
+    <I>Thu, 16 Dec 2004 20:12:39 +0530</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000636.html">[Open Office] Status [ Thursday]
+</A></li>
+        <LI> Next message: <A HREF="000638.html">[Open Office] Status Friday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#637">[ date ]</a>
+              <a href="thread.html#637">[ thread ]</a>
+              <a href="subject.html#637">[ subject ]</a>
+              <a href="author.html#637">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+
+ - The Visual Studio installation is still not finding the csc.exe,
+tried uninstalling/re-installing - need to check what could have been
+wrong. Guess it wasnt necessary for building 1.1.3 earlier...
+ - Been working on [side-ward ? :-)] porting the sd-save-image-context-
+menu.diff into Writer, but halted on the place where the Graphic is
+extracted out of the document - getting a segmentation fault at the
+place.
+ - Moved Shilpa's Quattro Pro changes over to 1.1.3 and committed them
+in for her.
+ - Built m65 on a machine to just check up on the source
+ - Set up a new build on a different machine and discovered that the
+configure procedure is not halting when evolution-data-server-devel,
+pam-devel or cups-devel are not available on the machine. Made some
+changes to configure.in for the same, but I dont think they are proper
+yet. The test condition in the bash shell seems to be validating as true
+if the variable is set, irrespective of whether it is set as true or
+false [patch below]
+
+Regards,
+Raul
+
+--
+
+--- configure.in	30 Nov 2004 06:00:16 -0000	1.144.4.6
++++ configure.in	16 Dec 2004 14:24:35 -0000
+@@ -205,7 +205,7 @@
+ PKG_CHECK_MODULES( FOO_COMMON, 
+ 		   [ gtk+-2.0 libxml-2.0 fontconfig &gt;= 1.0.1 \
+ 		   libstartup-notification-1.0 ],
+-		   have_common=true, have_common=false )
++		   have_common=true, have_common=)
+ 
+ # NB. according to:
+ #   <A HREF="http://sources.redhat.com/ml/bug-automake/2002/msg02066.html">http://sources.redhat.com/ml/bug-automake/2002/msg02066.html</A>
+@@ -235,7 +235,7 @@
+ fi
+ 
+ PKG_CHECK_MODULES( FOO_GNOME, [ gnome-vfs-2.0 ],
+-		   have_gnome=true, have_gnome=false )
++		   have_gnome=true, have_gnome=)
+ 
+ if test ! $have_gnome; then
+     AC_MSG_ERROR([Gnome library requirements were not met])
+@@ -313,7 +313,7 @@
+ fi
+ 
+ PKG_CHECK_MODULES( BAA, libart-2.0 &gt;= $LIBART_VERSION,
+-		   have_baa=true, have_baa=false )
++		   have_baa=true, have_baa=)
+ 
+ if test &quot;z$with_win32&quot; = &quot;z&quot;; then
+     if test ! $have_baa; then
+@@ -334,9 +334,11 @@
+ AC_SUBST(DISTRO)
+ 
+ PKG_CHECK_MODULES( BAZ, evolution-data-server-1.0 &gt;= 0.0.92,
+-		   have_baz=true, have_baz=false )
+-if test &quot;z$with_distro&quot; = &quot;NLD&quot; -a ! $have_baz; then
+-   AC_MSG_ERROR([You need to install evolution-data-server])
++		   have_baz=true, have_baz=)
++if test &quot;z$with_distro&quot; = &quot;zNLD&quot;; then
++   if test ! $have_baz; then
++       AC_MSG_ERROR([You need to install evolution-data-server-devel])
++   fi
+ fi
+ 
+ VENDORNAME=OpenOffice
+@@ -386,22 +388,24 @@
+ AC_SUBST(JDK_HOME)
+ AC_SUBST(ANT_HOME)
+ 
+-AC_CHECK_HEADER(security/pam_appl.h, have_pam=true, have_pam=false)
+-AC_CHECK_HEADER(png.h, have_png=true, have_png=false)
+-AC_CHECK_HEADER(zlib.h, have_zlib=true, have_zlib=false)
++AC_CHECK_HEADER(security/pam_appl.h, have_pam=true, have_pam=)
++AC_CHECK_HEADER(cups/cups.h, have_cups=true, have_cups=)
++AC_CHECK_HEADER(png.h, have_png=true, have_png=)
++AC_CHECK_HEADER(zlib.h, have_zlib=true, have_zlib=)
+ 
+-if test &quot;z$with_win32&quot; = &quot;z&quot;; then
++if test &quot;z$with_win32&quot; = &quot;z&quot; ; then
+     if test ! $have_pam; then
+ 	AC_MSG_ERROR(install pam-devel)
+     fi
++    if test ! $have_cups; then
++	AC_MSG_ERROR(install cups-devel)
++    fi
+     if test ! $have_png; then
+ 	AC_MSG_ERROR(install png-devel)
+     fi
+-
+     if test ! $have_zlib; then
+ 	AC_MSG_ERROR(install zlib-devel)
+     fi
+-
+     AC_CHECK_PROG(IMG_MAGIC, convert, yes)
+     if ! test &quot;z$IMG_MAGIC&quot; = &quot;zyes&quot;; then
+        AC_MSG_ERROR( ImageMagick must be installed )
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000636.html">[Open Office] Status [ Thursday]
+</A></li>
+	<LI> Next message: <A HREF="000638.html">[Open Office] Status Friday
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#637">[ date ]</a>
+              <a href="thread.html#637">[ thread ]</a>
+              <a href="subject.html#637">[ subject ]</a>
+              <a href="author.html#637">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

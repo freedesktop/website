@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] m181 fails on updatecheck.cxx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m181%20fails%20on%20updatecheck.cxx&In-Reply-To=20060819143424.GA2482%40mysza.eu.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001970.html">
+   <LINK REL="Next"  HREF="001973.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] m181 fails on updatecheck.cxx</H1>
+    <B>NAKATA Maho</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20m181%20fails%20on%20updatecheck.cxx&In-Reply-To=20060819143424.GA2482%40mysza.eu.org"
+       TITLE="[Open Office] m181 fails on updatecheck.cxx">chat95 at mac.com
+       </A><BR>
+    <I>Mon Aug 21 03:43:10 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001970.html">[Open Office] m181 fails on updatecheck.cxx
+</A></li>
+        <LI>Next message: <A HREF="001973.html">[Open Office] m181 fails on updatecheck.cxx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1971">[ date ]</a>
+              <a href="thread.html#1971">[ thread ]</a>
+              <a href="subject.html#1971">[ subject ]</a>
+              <a href="author.html#1971">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>In Message-ID: &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">20060819143424.GA2482 at mysza.eu.org</A>&gt; 
+Adam Go&#322;&#281;biowski &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">adamg at pld-linux.org</A>&gt; wrote:
+
+&gt;<i> On Wed, Aug 16, 2006 at 01:15:41PM +0200, Jan Holesovsky wrote:
+</I>&gt;<i> &gt; Could you try to add
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; #ifndef _COM_SUN_STAR_BEANS_NAMEDVALUE_HPP_
+</I>&gt;<i> &gt; #include &lt;com/sun/star/beans/NamedValue.hpp&gt;
+</I>&gt;<i> &gt; #endif
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; at the beginning of updatecheck.cxx?  Does that help?
+</I>&gt;<i> 
+</I>&gt;<i> tried that, didn't change anything. 
+</I>
+Jan, i do think this is a regression of gcc-3.3
+<A HREF="http://www.openoffice.org/issues/show_bug.cgi?id=68785">http://www.openoffice.org/issues/show_bug.cgi?id=68785</A>
+
+BTW: build passed with FreeBSD/gcc 3.4.1+visibility+enum fix.
+
+thanks,
+-- NAKATA, Maho (<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">maho at FreeBSD.org</A>)
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001970.html">[Open Office] m181 fails on updatecheck.cxx
+</A></li>
+	<LI>Next message: <A HREF="001973.html">[Open Office] m181 fails on updatecheck.cxx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1971">[ date ]</a>
+              <a href="thread.html#1971">[ thread ]</a>
+              <a href="subject.html#1971">[ subject ]</a>
+              <a href="author.html#1971">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

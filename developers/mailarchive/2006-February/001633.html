@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] oob680.1.1 - new issues and qustion getting our
+	own	distro tag
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%0A%09own%09distro%20tag&In-Reply-To=200602211448.01385.kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001632.html">
+   <LINK REL="Next"  HREF="001634.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] oob680.1.1 - new issues and qustion getting our
+	own	distro tag</H1>
+    <B>Andreas Radke</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20oob680.1.1%20-%20new%20issues%20and%20qustion%20getting%20our%0A%09own%09distro%20tag&In-Reply-To=200602211448.01385.kendy%40suse.cz"
+       TITLE="[Open Office] oob680.1.1 - new issues and qustion getting our
+	own	distro tag">a.radke at arcor.de
+       </A><BR>
+    <I>Tue Feb 21 18:53:10 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001632.html">[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag
+</A></li>
+        <LI>Next message: <A HREF="001634.html">[Open Office] oob680.1.1 - new issues and qustion getting our
+	own	distro tag
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1633">[ date ]</a>
+              <a href="thread.html#1633">[ thread ]</a>
+              <a href="subject.html#1633">[ subject ]</a>
+              <a href="author.html#1633">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jan Holesovsky schrieb:
+&gt;<i> On Tuesday 21 February 2006 14:20, Petr Mladek wrote:
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;&gt;<i> Do I have to add it to the apply file?
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> Exactly. You should put the patch below ooo-build/patches/src680 and
+</I>&gt;&gt;<i> mention it in a suitable section of the apply file.
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> It's already in ooo-build (thanks, Bero! :-) ), in SystemJavaBits section (it 
+</I>&gt;<i> depends on workspace.systemjava.diff).  It should be enough to add 
+</I>&gt;<i> SystemJavaBits to eg. LinuxCommon, if it's interesting for other distros as 
+</I>&gt;<i> well.
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Jan
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">Openoffice at lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Thank you all so far. I've added SystemJavaBits to LinuxCommon and also
+added the no_java.patch
+Bit I still get this error:
+
+/usr/bin/perl
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/solenv/bin/leconvert.pl
+dos  ./unxlngx6.pro/misc/build/hsqldb/build/build.xml
+./unxlngx6.pro/misc/build/hsqldb/doc/changelist_1_8_0.txt
+./unxlngx6.pro/misc/build/hsqldb/src/org/hsqldb/resources/sql-error-messages_it.properties
+&amp;&amp; touch ./unxlngx6.pro/misc/convert_dos_flag
+touch ./unxlngx6.pro/misc/build/so_configured_so_hsqldb
+mkdir ./unxlngx6.pro/misc/build/hsqldb/
+mkdir: cannot create directory `./unxlngx6.pro/misc/build/hsqldb/': File
+exists
+cd ./unxlngx6.pro/misc/build/hsqldb/ &amp;&amp;
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/external/common/apache-ant-1.6.1/bin/ant
+-Dbuild.label=&quot;build-680m1(Build:9006)&quot; -f build/build.xml jar  &amp;&amp; touch
+so_built_so_hsqldb
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/external/common/apache-ant-1.6.1/bin/ant:
+Command not found.
+dmake:  Error code 1, while making
+'./unxlngx6.pro/misc/build/so_built_so_hsqldb'
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while making
+/var/abs/testing/openoffice.org-RC/src/ooo-build-oob680.1.1/build/oob680-m1/hsqldb
+make: *** [stamp/build] Error 1
+==&gt; ERROR: Build Failed.  Aborting...
+
+
+I have this set for configure:
+./configure --prefix=/opt/openoffice \
+   --with-arch=&quot;x86_64&quot; \
+   --with-srcdir=$startdir/src \
+   --with-binsuffix=2 \
+   --disable-access \
+   --disable-mono \
+   --disable-cairo \
+   --without-firefox-nss \
+   --with-mozilla-nss \
+   --disable-post-install-scripts \
+   --mandir=/usr/man \
+   --without-docdir \
+   --with-hunspell \
+   --with-system-fonts \
+   --with-system-gpc \
+   --with-distro=SUSE-64 \
+   --with-xulrunner \
+   --with-lang=ALL \
+   --with-system-curl \
+   --with-system-expat \
+   --with-system-odbc-headers \
+   --with-system-xrender-headers \
+   --with-system-sane-header \
+   --with-system-sndfile \
+   --with-system-db \
+   --with-system-neon \
+   --disable-gnome-vfs \
+   --enable-pam-link \
+   --enable-xrender-link \
+   --enable-vba \
+   --with-java=no \
+
+What's wrong here?
+
+Andreas Radke
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001632.html">[Open Office] oob680.1.1 - new issues and qustion getting our own
+	distro tag
+</A></li>
+	<LI>Next message: <A HREF="001634.html">[Open Office] oob680.1.1 - new issues and qustion getting our
+	own	distro tag
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1633">[ date ]</a>
+              <a href="thread.html#1633">[ thread ]</a>
+              <a href="subject.html#1633">[ subject ]</a>
+              <a href="author.html#1633">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

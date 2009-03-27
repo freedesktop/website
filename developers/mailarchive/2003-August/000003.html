@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Problems building OO.o
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-August/index.html" >
+   <LINK REL="made" HREF="mailto:michael%40ximian.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000050.html">
+   <LINK REL="Next"  HREF="000004.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Problems building OO.o
+   </H1>
+    <B>Michael Meeks
+    </B> 
+    <A HREF="mailto:michael%40ximian.com"
+       TITLE="[Open Office] Problems building OO.o">michael@ximian.com
+       </A><BR>
+    <I>Fri, 08 Aug 2003 18:04:40 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000050.html">[Open Office] Problems building OO.o
+</A></li>
+        <LI> Next message: <A HREF="000004.html">[Open Office] Problems building OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3">[ date ]</a>
+              <a href="thread.html#3">[ thread ]</a>
+              <a href="subject.html#3">[ subject ]</a>
+              <a href="author.html#3">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Nick,
+
+On Fri, 2003-08-08 at 13:11, Nick Hudson wrote:
+&gt;<i> 	I was wondering if maybe someone could tell me why I keep generating
+</I>&gt;<i> what looks to be bison errors.  I have created a few patches for the
+</I>&gt;<i> errors but they keep coming up in diffrent spots but its always the same
+</I>&gt;<i> kind of error.  Here is the url for the patches:
+</I>
+	:-)
+
+&gt;<i> <A HREF="http://www.lunar-linux.org/~nhudson/patches/ooo-fix1.patch">http://www.lunar-linux.org/~nhudson/patches/ooo-fix1.patch</A>
+</I>&gt;<i> <A HREF="http://www.lunar-linux.org/~nhudson/patches/ooo-fix2.patch">http://www.lunar-linux.org/~nhudson/patches/ooo-fix2.patch</A>
+</I>&gt;<i> <A HREF="http://www.lunar-linux.org/~nhudson/patches/ooo-fix3.patch">http://www.lunar-linux.org/~nhudson/patches/ooo-fix3.patch</A>
+</I>&gt;<i> 
+</I>&gt;<i> Now the only problem with this it looks to me is that you cannot apply
+</I>&gt;<i> the patches until after you get the error that comes up.  Its always in
+</I>&gt;<i> the same kind of directory.  For example:
+</I>
+	This is of course very odd; I suspect then that (somehow) your bison is
+out of step with your gcc; can you tell me:
+
+	* what system you're using
+	* what version of gcc you're using
+	* what version of bison you have
+
+&gt;<i> Is it a bison problem or is it something else.?  I am
+</I>&gt;<i> using the openoffice build script from gnome cvs.
+</I>
+	I think part of the problem may be that we have to build our own
+compiler for RedHat 7.3 builds - since gcc-3.2+ is necessary for a sane
+system ABI. Can you try hacking build-ooo to remove the code that builds
+/ installs binutils and gcc - and removing those directories from your
+build/ directory ? [ bin/ include/ etc. ], and seeing if that does the
+trick - if so we should add a --with-system-compiler switch to configure
+that disables that build.
+
+	Thanks for trying out 'openoffice',
+
+	Regards,
+
+		Michael.
+
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000050.html">[Open Office] Problems building OO.o
+</A></li>
+	<LI> Next message: <A HREF="000004.html">[Open Office] Problems building OO.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3">[ date ]</a>
+              <a href="thread.html#3">[ thread ]</a>
+              <a href="subject.html#3">[ subject ]</a>
+              <a href="author.html#3">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

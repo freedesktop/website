@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regarding defect 49914...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-November/index.html" >
+   <LINK REL="made" HREF="mailto:banil%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000171.html">
+   <LINK REL="Next"  HREF="000137.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regarding defect 49914...
+   </H1>
+    <B>Anil Anil
+    </B> 
+    <A HREF="mailto:banil%40novell.com"
+       TITLE="[Open Office] Regarding defect 49914...">banil@novell.com
+       </A><BR>
+    <I>Mon, 10 Nov 2003 00:09:08 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000171.html">OT evolution attribution line (was: Re: [Open Office] Re:
+ Regarding Minor Tasks)
+</A></li>
+        <LI> Next message: <A HREF="000137.html">[Open Office] Regarding defect 49914...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#133">[ date ]</a>
+              <a href="thread.html#133">[ thread ]</a>
+              <a href="subject.html#133">[ subject ]</a>
+              <a href="author.html#133">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Michael,
+
+Have tried the approach suggested earlier. 
+------------------------------------------------------------
+BitmapEx aBmp(ResId( SV_RESID_FOO_BAA,
+              Resource::GetResManager());
+    pDev-&gt;DrawBitmapEx( Point( foo_X, baa_Y ), aBmp );
+
+    or something similar, to be added in DecorationView::DrawSymbol
+------------------------------------------------------------
+
+This gives me some junk image. On digging it further, I fould that the
+size for the Bitmap that it gets from Resource Manager looks abnormal
+(4912, 16) instead of (32, 32) or similar. I guess that before calling
+Image/Bitmap Constructor, we need to call
+ImplInitResData() and ImplLoadRes(), the way its hapenning in PushButton
+c'tor. But these functions are available to children of Window classes.
+DecorationView is not a child of Window. Can still try to do that but
+have another point to discuss before that.
+
+Tried this approach from multiple angles - Making a new Bitmap,
+BitmapEx, Image, etc...   But another different approach worked that is
+described later.
+
+Another point - If this approach somehow works - BitmapEx, Bitmap or
+Image would get constructed in DecoView::DrawImage or a related method.
+I felt that there are 2 parts of drawing anything.
+
+Part 1- Construct the image/symbol to be drawn in memory - All the
+constructors (Image or Bitmap etc.) get called.
+
+Part 2 - Only the drawing on the screen (Output Device) takes place.
+This has to be as fast as possible. For Current DecoView - My
+understanding is that this will be called on a Draw/Paint of dialog,
+e.g. when a dialog is moved, or whenever a dialog is redrawn due to
+shifting focus from another app to this one, or changing desktops while
+dialog is displayed.
+
+I felt that we should avoid calling Image or Bitmap c'tors in Part 2 as
+it will be slowed down.
+
+Therefore I tried to fix this in the Image c'tor. (where Symbol handling
+is done). That seems to work (renders a proper image).
+
+If we take this new approach we still need to fix at multiple places
+(for PushButton, MenuItems, etc.) .
+
+If you are ok with this approach, please let me know. In case you want
+images to be rendered inside DecoView, I'll dig it up further. 
+
+Btw, are there some general usage guidelines for VCL, something like API
+help...? Basically I am looking for some doc that tells about the APIs
+in VCL and the sequence in which they shd be called...
+
+Regards
+-Anil
+
+Anil Bhatia,
+Sr. Software Engineer,
+Novell Software Development(I) Ltd.,
+Bangalore.
+Ph: 5731856-58, Extn:3111.
+Novell, Inc., The leading provider of Net services software.
+www.novell.com
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000171.html">OT evolution attribution line (was: Re: [Open Office] Re:
+ Regarding Minor Tasks)
+</A></li>
+	<LI> Next message: <A HREF="000137.html">[Open Office] Regarding defect 49914...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#133">[ date ]</a>
+              <a href="thread.html#133">[ thread ]</a>
+              <a href="subject.html#133">[ subject ]</a>
+              <a href="author.html#133">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

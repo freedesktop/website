@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: Gtk+ plugin branch ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:samit%40novell.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000223.html">
+   <LINK REL="Next"  HREF="000226.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: Gtk+ plugin branch ...
+   </H1>
+    <B>Amit Shrivastava
+    </B> 
+    <A HREF="mailto:samit%40novell.com"
+       TITLE="[Open Office] Re: Gtk+ plugin branch ...">samit@novell.com
+       </A><BR>
+    <I>Tue, 13 Jan 2004 00:46:40 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000223.html">[Open Office] ooo-build-1.1.49.2
+</A></li>
+        <LI> Next message: <A HREF="000226.html">[Open Office] build stopped at readlicense_oo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#225">[ date ]</a>
+              <a href="thread.html#225">[ thread ]</a>
+              <a href="subject.html#225">[ subject ]</a>
+              <a href="author.html#225">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I was facing build prob in officecfg it was not getting xsltproc. I set
+the XSLTPROC env and it works. I wonder if anyone faced this problem.
+
+regards,
+Amit
+
+&gt;&gt;&gt;<i> Michael Meeks &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt; 12/19/03 10:08:21 PM &gt;&gt;&gt;
+</I>Hi Anil / Amit,
+
+	Hope you had a great Christmas break,
+
+	I won't be back until the 5th, but I would like you two to be
+working
+from this Child Work Space (CWS) [cws_src680_vcl17] - I append my
+instructions to Carl on how to check that out / build it.
+
+	To do the file-selector and the evo. integration you're going to
+need
+to be using this branch - I'll back-port the changes into ooo-build
+mid
+Jan.
+
+	My feeling is - that the difficult issues are mostly solved with
+this
+branch that you might have hit, so you should be able to get something
+working quite nicely :-)
+
+	HTH,
+
+		Michael.
+
+-----Forwarded Message-----
+From: Michael Meeks &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt;
+To: Carl Worth &lt;<A HREF="mailto:cworth@east.isi.edu">cworth@east.isi.edu</A>&gt;
+Subject: Re: [gsl-dev] cairo sample hack ...
+Date: Thu, 18 Dec 2003 14:07:23 +0000
+
+Hi Carl,
+
+On Thu, 2003-12-18 at 12:58, Carl Worth wrote:
+&gt;<i> This looks quite interesting. Good work!
+</I>
+	Heh ;-)
+
+&gt;<i> I'm wondering if I might not be insane for thinking of trying to
+</I>build
+&gt;<i> OOo. We'll see...
+</I>
+	Perhaps not; let me try and help you.
+
+&gt;<i> 	checking for tag ... configure: error: Can't locate patch set
+</I>for: cws_src680_vcl17
+
+	Ok - the problem is that this 'cws' is in fact a nasty mess of
+tags
+from CVS; and won't really build easily for you from CVS either; I'll
+come up with a more step-wise approach to getting it to work, and a
+biggish patch to apply to your checkout.
+
+&gt;<i> PS. Since you asked: Yes, the reply-to munging on this mailing list
+</I>&gt;<i> does drive me nuts. I very nearly sent this to message to the whole
+</I>&gt;<i> list rather than just to you.
+</I>
+	Crazy 'collab.net' I'm afraid; and totally unfixable. The people
+who
+should least be posting, post hundreds of mails, and don't want to see
+the volume of their crime come-back into their inbox ;-)
+
+&gt;<i> So, what do I need to do to start from that branch?
+</I>
+	So; you need to do something like this:
+
+	export
+CVSROOT=:pserver:<A HREF="mailto:anoncvs@anoncvs.services.openoffice.org">anoncvs@anoncvs.services.openoffice.org</A>:/cvs 
+	cvs login &lt;enter&gt;
+	mkdir cws_src680_vcl17 ; cd $_
+	cvs -z3 checkout -r SRC680_m15 OpenOffice
+
+	That grabs the base checkout; then you need to do:
+
+	cvs -z3 upd -r cws_src680_vcl17 dtrans framework officecfg
+solenv vcl
+
+	Having done that you want to apply the attached patch to
+everything.
+
+	Then do:
+
+	cd config_office
+	./configure --enable-libart --enable-libsn --disable-java
+	cd ..
+	. ./LinuxIntelEnv.Set.sh
+	./bootstrap
+	dmake
+
+	... sit back and wait ... hopefully you have a 'normal' looking
+gcc -
+right ? :-) when it's finished grok the hackers guide again.
+
+	You might also benefit from the detailed hackers guide here:
+		<A HREF="http://ooo.ximian.com/detailed-build-guide.html">http://ooo.ximian.com/detailed-build-guide.html</A> 
+
+	To install from instsetoo I used an autoresponse file like
+this:
+
+[ENVIRONMENT]
+INSTALLATIONMODE=INSTALL_NORMAL
+INSTALLATIONTYPE=STANDARD
+DESTINATIONPATH=/opt/GTInstall
+OUTERPATH=
+LOGFILE=
+LANGUAGELIST=&lt;LANGUAGE&gt;
+
+	in /tmp/autoresponse.conf then:
+
+	cd instsetoo/unxlngi4.pro/01/normal/
+	./setup -net -v -r:/tmp/autoresponse.conf
+
+	Then you should be able to run /opt/GTInstall/soffice with
+impunity.
+After you do a linkoo, the devel loop is very tight (mercifully) this
+is all
+1st time pain.
+
+	For help; head down to #OpenOffice.org, or #ooogtk on
+irc.freenode.net
+when it all falls apart.
+
+	It'd be great to have you looking at this; unfortunately, there
+are
+some bits in the underlying API that don't lend themselves to a
+pleasant cairo
+implementation: copyArea, XOR stuff etc. I think it'll only make sense
+for
+XRender capable displays, however - we can easily detect that and
+run-time link
+in a separate Cairo module if that's the case.
+
+	Regards,
+
+		Michael.
+-- 
+ <A HREF="mailto:michael@ximian.com">michael@ximian.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000223.html">[Open Office] ooo-build-1.1.49.2
+</A></li>
+	<LI> Next message: <A HREF="000226.html">[Open Office] build stopped at readlicense_oo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#225">[ date ]</a>
+              <a href="thread.html#225">[ thread ]</a>
+              <a href="subject.html#225">[ subject ]</a>
+              <a href="author.html#225">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

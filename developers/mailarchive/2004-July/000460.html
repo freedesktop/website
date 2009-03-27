@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Mark config files in file lists
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:arekm%40pld-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000459.html">
+   <LINK REL="Next"  HREF="000462.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Mark config files in file lists
+   </H1>
+    <B>Arkadiusz Miskiewicz
+    </B> 
+    <A HREF="mailto:arekm%40pld-linux.org"
+       TITLE="[Open Office] Mark config files in file lists">arekm@pld-linux.org
+       </A><BR>
+    <I>Thu, 29 Jul 2004 17:01:57 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000459.html">[Open Office] Mark config files in file lists
+</A></li>
+        <LI> Next message: <A HREF="000462.html">[Open Office] Mark config files in file lists
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#460">[ date ]</a>
+              <a href="thread.html#460">[ thread ]</a>
+              <a href="subject.html#460">[ subject ]</a>
+              <a href="author.html#460">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 29 of July 2004 16:44, Petr Mladek wrote:
+&gt;<i> Hello all,
+</I>&gt;<i>
+</I>&gt;<i> I would like to improve the generated file lists and mark the files
+</I>&gt;<i> which can be configured by users.
+</I>=46irst of all configuration files should not live in /usr or any other=20
+directory beside /etc (at least that's what we do at PLD, keep configuratio=
+n=20
+in /etc).
+
+Maybe symlinks pointing from /usr/lib/..../somefile to=20
+=2D&gt; /etc/openoffice/conf/somefile and mark=20
+%config /etc/openoffice/conf/somefile?
+
+Also such configs should be per-user not system wide but probably that can'=
+t=20
+be easily fixed so this is better that than nothing.
+
+But that's not so important for us right now so we will follow the way you=
+=20
+choose.
+
+&gt;<i> I am afraid that we do not find a compromise. So, I would suggest to set
+</I>&gt;<i> a vendor dependent variable in bin/setup. Something like that:
+</I>&gt;<i>
+</I>&gt;<i> if test &quot;z$DISTRO&quot; =3D &quot;zNLD&quot; -o &quot;z$DISTRO&quot; =3D &quot;zSUSE&quot;; then
+</I>&gt;<i> 	RPM_CONFIG_FLAG=3D&quot;%config&quot;
+</I>&gt;<i> elif test &quot;z$DISTRO&quot; =3D &quot;zPLD&quot; ; then
+</I>&gt;<i> 	RPM_CONFIG_FLAG=3D&quot;%config(noreplace) %verify(not md5 size mtime)&quot;
+</I>&gt;<i> fi
+</I>I'm ok with this.
+
+=2D-=20
+Arkadiusz Mi=B6kiewicz     CS at FoE, Wroclaw University of Technology
+arekm.pld-linux.org, 1024/3DB19BBD, JID: arekm.jabber.org, PLD/Linux
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000459.html">[Open Office] Mark config files in file lists
+</A></li>
+	<LI> Next message: <A HREF="000462.html">[Open Office] Mark config files in file lists
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#460">[ date ]</a>
+              <a href="thread.html#460">[ thread ]</a>
+              <a href="subject.html#460">[ subject ]</a>
+              <a href="author.html#460">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

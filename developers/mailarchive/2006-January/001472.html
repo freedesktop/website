@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Re: trivial patch of configmgr module
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20trivial%20patch%20of%20configmgr%20module&In-Reply-To=200601051441.03389.kendy%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001462.html">
+   <LINK REL="Next"  HREF="001476.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Re: trivial patch of configmgr module</H1>
+    <B>Weichuan Lin</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Re%3A%20trivial%20patch%20of%20configmgr%20module&In-Reply-To=200601051441.03389.kendy%40suse.cz"
+       TITLE="[Open Office] Re: trivial patch of configmgr module">weichuan.lin at gmail.com
+       </A><BR>
+    <I>Mon Jan  9 08:42:15 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001462.html">[Open Office] trivial patch of configmgr module
+</A></li>
+        <LI>Next message: <A HREF="001476.html">[Open Office] Re: trivial patch of configmgr module
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1472">[ date ]</a>
+              <a href="thread.html#1472">[ thread ]</a>
+              <a href="subject.html#1472">[ subject ]</a>
+              <a href="author.html#1472">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>hi, kendy.
+I think it is better for me if I can know exactly how java VM is
+started up in OOo, when I used m136, if I turned off the
+--with-system-boost, the java component registering failure will occur
+at compiling stage, if I turned on the option, the failure will be
+postponed to the installation stage. I haven't try m148 yet, but the
+patch seems that can be patched smoothly. so, if I have enough machine
+time, I will try it.  do you have any suggestion to know the detail of
+the java VM boost up? such as document or website?
+
+
+On 1/5/06, Jan Holesovsky &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">kendy at suse.cz</A>&gt; wrote:
+&gt;<i> On Thursday 05 January 2006 14:09, Jan Holesovsky wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; m136 is too old, it is not supported in ooo-build any more.  You should
+</I>&gt;<i> &gt; update to something more recent, probably m147; I haven't updated the
+</I>&gt;<i> 64bit
+</I>&gt;<i> &gt; patches for m148 yet.
+</I>&gt;<i>
+</I>&gt;<i> Done now - but no idea whether it builds ATM.
+</I>&gt;<i>
+</I>&gt;<i> Please note that I switched from --without-java to --with-java=gij in
+</I>&gt;<i> distro-configs/NLD64.conf.in to use GCJ during the build.  This is
+</I>&gt;<i> experimental, and known not to work ;-) - would be great if you were able to
+</I>&gt;<i> look at the issues it has :-)
+</I>&gt;<i>
+</I>&gt;<i> FWIW, I am using SUSE10 &amp; gcc, gcj, etc. from 10.1alpha now - to have the
+</I>&gt;<i> gcj4.1 which already contains several GNU Classpath features missing in the
+</I>&gt;<i> older version.  If you are interested, it is available here:
+</I>&gt;<i> <A HREF="http://www.opensuse.org/Development_Version">http://www.opensuse.org/Development_Version</A> (search for the link
+</I>&gt;<i> &quot;Installation Repository&quot;).
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Jan
+</I>&gt;<i>
+</I>
+
+--
+Best Regards
+Weichuan
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001462.html">[Open Office] trivial patch of configmgr module
+</A></li>
+	<LI>Next message: <A HREF="001476.html">[Open Office] Re: trivial patch of configmgr module
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1472">[ date ]</a>
+              <a href="thread.html#1472">[ thread ]</a>
+              <a href="subject.html#1472">[ subject ]</a>
+              <a href="author.html#1472">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

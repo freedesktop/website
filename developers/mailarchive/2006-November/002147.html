@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Regcomp segfaults when registering java components
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=200611292302.11029.atle.nissestad%40norbit.no">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002146.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Regcomp segfaults when registering java components</H1>
+    <B>Andreas Radke</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Regcomp%20segfaults%20when%20registering%20java%20components&In-Reply-To=200611292302.11029.atle.nissestad%40norbit.no"
+       TITLE="[Open Office] Regcomp segfaults when registering java components">a.radke at arcor.de
+       </A><BR>
+    <I>Wed Nov 29 17:42:19 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002146.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2147">[ date ]</a>
+              <a href="thread.html#2147">[ thread ]</a>
+              <a href="subject.html#2147">[ subject ]</a>
+              <a href="author.html#2147">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Wed, 29 Nov 2006 23:02:10 +0100
+schrieb Atle Nissestad &lt;<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">atle.nissestad at norbit.no</A>&gt;:
+
+&gt;<i> Have you checked this thread: 
+</I>&gt;<i> <A HREF="../2006-October/002072.html">http://lists.ximian.com/pipermail/openoffice/2006-October/002072.html</A>
+</I>&gt;<i> At least in my case the build failure in /testtools/source/bridgetest
+</I>&gt;<i> was caused by javaldx beeing unable to find the gcj runtime lib
+</I>&gt;<i> (libgcj.so, or libjvm.so). 
+</I>&gt;<i> 
+</I>&gt;<i> The gcj dlopen() bug (gcc PR13212) was triggered when registering the
+</I>&gt;<i> java components during the installation process.
+</I>&gt;<i> 
+</I>&gt;<i> - Atle
+</I>
+I've already tested the gcc-gcj patch without success.
+
+We have our libs all in /lib and /usr/lib. I wonder why our people from
+the ppc port can build it using same gcc-gcj version.
+
+Andy
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002146.html">[Open Office] Regcomp segfaults when registering java components
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2147">[ date ]</a>
+              <a href="thread.html#2147">[ thread ]</a>
+              <a href="subject.html#2147">[ subject ]</a>
+              <a href="author.html#2147">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] JRE register component still broken
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20component%20still%20broken&In-Reply-To=20060623001228.2096eafd%40workstation64.home">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001868.html">
+   <LINK REL="Next"  HREF="001870.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] JRE register component still broken</H1>
+    <B>jim</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20JRE%20register%20component%20still%20broken&In-Reply-To=20060623001228.2096eafd%40workstation64.home"
+       TITLE="[Open Office] JRE register component still broken">jim at amarooas.com.au
+       </A><BR>
+    <I>Thu Jun 22 19:21:27 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001868.html">[Open Office] JRE register component still broken
+</A></li>
+        <LI>Next message: <A HREF="001870.html">[Open Office] JRE register component still broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1869">[ date ]</a>
+              <a href="thread.html#1869">[ thread ]</a>
+              <a href="subject.html#1869">[ subject ]</a>
+              <a href="author.html#1869">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, Jun 23, 2006 at 12:12:28AM +0200, Andreas Radke wrote:
+&gt;<i> For a long time the build on Arch64 - archlinux x86_64 port the build
+</I>&gt;<i> breaks like this:
+</I>&gt;<i> 
+</I>&gt;<i> OOC680_m6
+</I>&gt;<i> 
+</I>&gt;<i> regcomp -register -r ../../unxlngx6.pro/misc/bridgetest/bootstrap.rdb -c javaloader.uno.so \
+</I>&gt;<i>         -c javavm.uno.so -c uriproc.uno.so
+</I>&gt;<i> [Java framework] The JRE specified by the bootstrap variable UNO_JAVA_JFW_JREHOME  or  UNO_JAVA_JFW_ENV_JREHOME  could not be recognized. Check the values and make sure that you use a plug-in library that can recognize that JRE.javaldx failed!
+</I>&gt;<i> 
+</I>&gt;<i> We are using gcc4.1.1/jre 1.5.0.6(7 also tested)/glibc2.4
+</I>&gt;<i> 
+</I>&gt;<i> Any idea? I've seen this error a few times but don't know how to fix it.
+</I>
+
+Did you have a look where that error message comes in
+jvmfwk/source/framework.cxx?
+
+What values do you get for running this
+GetJVMInfo.java?
+
+class GetJVMInfo
+{
+  public static void main(String [] args)
+   {
+    System.out.println(&quot;java.version= &quot;+System.getProperty(&quot;java.version&quot;));
+    System.out.println(&quot;java.vendor=  &quot;+System.getProperty(&quot;java.vendor&quot;));
+    System.out.println(&quot;java.home=    &quot;+System.getProperty(&quot;java.home&quot;));
+   }
+}
+
+jim
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001868.html">[Open Office] JRE register component still broken
+</A></li>
+	<LI>Next message: <A HREF="001870.html">[Open Office] JRE register component still broken
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1869">[ date ]</a>
+              <a href="thread.html#1869">[ thread ]</a>
+              <a href="subject.html#1869">[ subject ]</a>
+              <a href="author.html#1869">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

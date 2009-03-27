@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] gcc-3.4.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:rmrmg%40wp.pl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+   <LINK REL="Previous"  HREF="000451.html">
+   <LINK REL="Next"  HREF="000452.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] gcc-3.4.1
+   </H1>
+    <B>Rafał 'rmrmg' Roszak
+    </B> 
+    <A HREF="mailto:rmrmg%40wp.pl"
+       TITLE="[Open Office] gcc-3.4.1">rmrmg@wp.pl
+       </A><BR>
+    <I>Tue, 13 Jul 2004 23:31:28 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000451.html">[Open Office] branching ooo-build ...
+</A></li>
+        <LI> Next message: <A HREF="000452.html">[Open Office] 1.9.x support?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#450">[ date ]</a>
+              <a href="thread.html#450">[ thread ]</a>
+              <a href="subject.html#450">[ subject ]</a>
+              <a href="author.html#450">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+I was try compile ooo-build 1.1.61 using gcc-3.4.1, and have this error:
+
+Building gcc-3.2.2
+Configuring for a i686-pc-linux-gnu host.
+*** This configuration is not supported in the following subdirectories:
+     target-libf2c target-libffi target-boehm-gc target-zlib
+target-libjava zlib fastjar target-libobjc    (Any other directories
+should still work fine.) Created &quot;Makefile&quot; in
+/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.61/build/gcc-3.2.2
+using
+&quot;mt-frag&quot;/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.61/build
+/bin/ld: unrecognized option
+'--as-needed'/notslack/compiled/OpenOffice/oooximian/ooo-build-1.1.61/b
+uild/bin/ld: use the --help option for usage information collect2: ld
+returned 1 exit status*** The command 'gcc -o conftest -march=athlon-xp
+-Os -mfpmath=sse -msse -mmmx -m3dnow   conftest.c' failed.*** You must
+set the environment variable CC to a working compiler. make: ***
+[stamp/build.tools] Błąd 1
+
+
+It was working with gcc-3.4.0 and older.
+
+Gcc-3.4.1 is the newest stable version ...
+Is posible/Do you plan change gcc-3.2.2 for newer version in ooo-build?
+
+-- 
+. JID: rmrmg(at)jabberpl(dot)org | Wszystko jest trudne
+.   mail: rmrmg(at)wp(dot)pl     |   przy odpowiednim
+.  registered Linux user 261525  |  stopniu abstrakcji
+ _______     RMRMG signature version 0.0.5     ________
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000451.html">[Open Office] branching ooo-build ...
+</A></li>
+	<LI> Next message: <A HREF="000452.html">[Open Office] 1.9.x support?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#450">[ date ]</a>
+              <a href="thread.html#450">[ thread ]</a>
+              <a href="subject.html#450">[ subject ]</a>
+              <a href="author.html#450">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

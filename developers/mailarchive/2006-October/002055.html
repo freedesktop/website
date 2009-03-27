@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Build broken with system-icu
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build%20broken%20with%20system-icu&In-Reply-To=20061015135529.ab638aee.h.mth%40web.de">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002058.html">
+   <LINK REL="Next"  HREF="002056.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Build broken with system-icu</H1>
+    <B>Rene Engelhard</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Build%20broken%20with%20system-icu&In-Reply-To=20061015135529.ab638aee.h.mth%40web.de"
+       TITLE="[Open Office] Build broken with system-icu">rene at debian.org
+       </A><BR>
+    <I>Sun Oct 15 08:58:04 EDT 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002058.html">[Open Office] Build broken with system-icu
+</A></li>
+        <LI>Next message: <A HREF="002056.html">[Open Office] Build broken with system-icu
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2055">[ date ]</a>
+              <a href="thread.html#2055">[ thread ]</a>
+              <a href="subject.html#2055">[ subject ]</a>
+              <a href="author.html#2055">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hanno Meyer-Thurow wrote:
+&gt;<i> My fix is attached.
+</I>&gt;<i> Could be cool if someone applies it to cvs, thanks!
+</I>
+Everything buiolds with 2.6,3.4 and 3.6 now? now?
+
+&gt;<i> @@ -71,7 +74,7 @@
+</I>&gt;<i>  +}
+</I>&gt;<i>  +       ], [ICU_VERSION_MINOR=$v], [])
+</I>&gt;<i>  +    done
+</I>&gt;<i> -+    if test &quot;$ICU_VERSION_MINOR&quot; -gt &quot;4&quot;; then
+</I>&gt;<i> ++    if test &quot;$ICU_VERSION_MINOR&quot; == &quot;4&quot; || test &quot;$ICU_VERSION_MINOR&quot; == &quot;6&quot;; then
+</I>&gt;<i>  +       AC_MSG_RESULT([OK])
+</I>&gt;<i>  +       ICU_VERSION=3.$ICU_VERSION_MINOR
+</I>&gt;<i>  +    else
+</I>
+=, not ==. 
+
+&gt;<i> -+.IF &quot;$(ICU_VERSION)&quot; == &quot;3.4&quot;
+</I>&gt;<i>  +MY_BRK_NAMEDBRKFILES:=$(subst,data/,OpenOffice_ $(MY_BRK_TXTFILES:s/.txt/.brk/))
+</I>&gt;<i>  +.ENDIF
+</I>&gt;<i> -+
+</I>
+This is wrong. This line appears only in the diff for 3.4, not for 3.6,
+sdo the .IF there *is* right.
+
+&gt;<i>  +MY_MISC_CXXFILES := \
+</I>&gt;<i> @@ -173,7 +173,7 @@
+</I>&gt;<i>  +.ELSE
+</I>&gt;<i>   $(MISC)$/OpenOffice_icu_dat.c :  $(MY_BRK_BRKFILES)
+</I>&gt;<i>  -    +$(WRAPCMD) $(SOLARBINDIR)$/gencmn -e OpenOffice_icu -n OpenOffice_icu -t tmp -S -d $(MISC) O $(mktmp $(MY_BRK_BRKFILES:t&quot;\n&quot;))
+</I>&gt;<i> -+    +$(WRAPCMD) gencmn -e OpenOffice_icu -n OpenOffice_icu -t tmp -S -d $(MISC) O $(mktmp $(MY_BRK_BRKFILES:t&quot;\n&quot;))
+</I>&gt;<i> ++    +$(WRAPCMD) gencmn -e OpenOffice_icu -n OpenOffice_icu -t tmp -S -d $(MISC) O $(mktmp $(MY_BRK_NAMEDBRKFILES:t&quot;\n&quot;))
+</I>&gt;<i>       +echo $(USQ)#ifdef _MSC_VER$(USQ) &gt; $@
+</I>&gt;<i>       +echo $(USQ)#pragma warning( disable : 4229 4668 )$(USQ) &gt;&gt; $@
+</I>&gt;<i>       +echo $(USQ)#endif$(USQ) &gt;&gt; $@
+</I>&gt;<i> @@ -183,7 +183,7 @@
+</I>&gt;<i>  +    +$(WRAPCMD) genbrk -r $&lt; -o $(MISC)$/OpenOffice_$*.brk
+</I>&gt;<i>   $(MISC)$/%_brk.c : $(MISC)$/%.brk
+</I>&gt;<i>  -    +$(WRAPCMD) $(SOLARBINDIR)$/genccode -d $(MISC)$ $(MISC)$/$*.brk
+</I>&gt;<i> -+    +$(WRAPCMD) genccode -d $(MISC)$ $(MISC)$/$*.brk
+</I>&gt;<i> ++    +$(WRAPCMD) genccode -e OpenOffice_icu -n OpenOffice_icu -d $(MISC)$ $(MISC)$/$*.brk
+</I>&gt;<i>  +.ENDIF
+</I>&gt;<i>  +
+</I>&gt;<i>  Index: linguistic/source/hhconvdic.cxx
+</I>
+Looks good. For 3.4. But this breaks internal icu AFAIS. At least thst
+differs from the &quot;&quot;normal&quot; code but matches with the icu 3.4 patch.
+
+&gt;<i> @@ -461,8 +461,8 @@
+</I>&gt;<i>               icuBI-&gt;aBreakIterator = new RuleBasedBreakIterator(udata_open(&quot;OpenOffice&quot;, &quot;brk&quot;, 
+</I>&gt;<i>                       OUStringToOString(OUString::createFromAscii(rule)+OUString::createFromAscii(&quot;_&quot;)+rLocale.Language,
+</I>&gt;<i>                       RTL_TEXTENCODING_ASCII_US).getStr(), &amp;status), status);
+</I>&gt;<i> -+#endif
+</I>&gt;<i>               if (!U_SUCCESS(status) ) {
+</I>&gt;<i> ++#endif
+</I>
+Why? Apparently this is needed for 2.6 *and* 3.6.
+
+&gt;<i>                   status = U_ZERO_ERROR;
+</I>&gt;<i>  +#if U_ICU_VERSION_MAJOR_NUM == 3 &amp;&amp; U_ICU_VERSION_MINOR_NUM == 6
+</I>&gt;<i>  +                pUData = udata_open(&quot;OpenOffice&quot;, &quot;brk&quot;, rule, &amp;status);
+</I>
+Already fixed in up-to-date patch...
+
+Please do not commit that patch. I am working on it (which also
+included the missing ; fixed, don't you Gentoo guys not have any
+in-Gentoo communication)?
+
+Gr&#252;&#223;e/Regards,
+
+Ren&#233;
+-- 
+ .''`.  Ren&#233; Engelhard -- Debian GNU/Linux Developer
+ : :' : <A HREF="http://www.debian.org">http://www.debian.org</A> | <A HREF="http://people.debian.org/~rene/">http://people.debian.org/~rene/</A>
+ `. `'  <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">rene at debian.org</A> | GnuPG-Key ID: 248AEB73
+   `-   Fingerprint: 41FA F208 28D4 7CA5 19BB  7AD9 F859 90B0 248A EB73
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: Digital signature
+Url : <A HREF="http://lists.ximian.com/pipermail/openoffice/attachments/20061015/d0fcaad1/attachment.bin">http://lists.ximian.com/pipermail/openoffice/attachments/20061015/d0fcaad1/attachment.bin</A> 
+</PRE>
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002058.html">[Open Office] Build broken with system-icu
+</A></li>
+	<LI>Next message: <A HREF="002056.html">[Open Office] Build broken with system-icu
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2055">[ date ]</a>
+              <a href="thread.html#2055">[ thread ]</a>
+              <a href="subject.html#2055">[ subject ]</a>
+              <a href="author.html#2055">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

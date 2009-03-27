@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] configure help
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20configure%20help&In-Reply-To=69F69FD5FD4A9843ACBF7CE9B7830B4A0695B9D8%40orsmsx408">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001351.html">
+   <LINK REL="Next"  HREF="001359.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] configure help</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20configure%20help&In-Reply-To=69F69FD5FD4A9843ACBF7CE9B7830B4A0695B9D8%40orsmsx408"
+       TITLE="[Open Office] configure help">michael.meeks at novell.com
+       </A><BR>
+    <I>Wed Nov 30 04:43:20 EST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001351.html">[Open Office] configure help
+</A></li>
+        <LI>Next message: <A HREF="001359.html">[Open Office] ooo-build-src680.140.0 mdbtools unpack issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1357">[ date ]</a>
+              <a href="thread.html#1357">[ thread ]</a>
+              <a href="subject.html#1357">[ subject ]</a>
+              <a href="author.html#1357">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+On Tue, 2005-11-29 at 09:21 -0800, Leibowitz, Michael wrote:
+&gt;<i> I forgot to explain that for ooo-build, I want the option to have a
+</I>&gt;<i> different default.  This option is for which malloc is being used.  For
+</I>&gt;<i> ooo-build, I want to make the default allocator ptmalloc2 (glibc).  It
+</I>&gt;<i> is marginally faster on recent machines, and makes debugging easier.
+</I>&gt;<i> However, the oo.o configure will keep oomalloc as its default.
+</I>
+	Ah - that's pretty easy to do.
+
+	Just add the same configure option to both external &amp; internal
+configures; if the option is not set in the external one - propagate the
+default you wish for ooo-build (cf. OOO_WIDGET_FLAGS &amp; bin/setup.in), if
+not set in the internal configure default to the option for up-stream
+OO.o
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001351.html">[Open Office] configure help
+</A></li>
+	<LI>Next message: <A HREF="001359.html">[Open Office] ooo-build-src680.140.0 mdbtools unpack issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1357">[ date ]</a>
+              <a href="thread.html#1357">[ thread ]</a>
+              <a href="subject.html#1357">[ subject ]</a>
+              <a href="author.html#1357">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

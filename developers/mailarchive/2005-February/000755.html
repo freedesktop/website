@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] More src680-m76 build breakages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:bero%40arklinux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000786.html">
+   <LINK REL="Next"  HREF="000760.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] More src680-m76 build breakages
+   </H1>
+    <B>Bernhard Rosenkraenzer
+    </B> 
+    <A HREF="mailto:bero%40arklinux.org"
+       TITLE="[Open Office] More src680-m76 build breakages">bero@arklinux.org
+       </A><BR>
+    <I>Tue, 8 Feb 2005 00:53:44 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000786.html">[Open Office] Re: Ark/Debian configure options ...
+</A></li>
+        <LI> Next message: <A HREF="000760.html">[Open Office] More src680-m76 build breakages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#755">[ date ]</a>
+              <a href="thread.html#755">[ thread ]</a>
+              <a href="subject.html#755">[ subject ]</a>
+              <a href="author.html#755">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This seems to be caused by sd-export-html-theme.diff:
+
+Making: ../unxlngi4.pro/lib/libsdui680li.so
+gcc -c -fPIC -o ../unxlngi4.pro/slo/sdui_dflt_version.o -DUNX =20
+=2DI../unxlngi4.pro/inc /usr/src/ark/BUILD/ooo-build-HEAD/build/src680-m76/=
+solenv/src/version.c
+gcc -O2 -Bsymbolic -z combreloc -z defs -Wl,-rpath,'$ORIGIN' -shared -Wl,-O=
+1=20
+=2DWl,--version-script ../unxlngi4.pro/misc/sdui_sdui680li.map=20
+=2DL../unxlngi4.pro/lib-L../lib=20
+=2DL/usr/src/ark/BUILD/ooo-build-HEAD/build/src680-m76/solenv/unxlngi4/lib=
+=20
+=2DL/usr/src/ark/BUILD/ooo-build-HEAD/build/src680-m76/solver/680/unxlngi4.=
+pro/lib=20
+=2DL/usr/src/ark/BUILD/ooo-build-HEAD/build/src680-m76/solenv/unxlngi4/lib=
+=20
+=2DLNO_JAVA_HOME/lib -LNO_JAVA_HOME/jre/lib/i386=20
+=2DLNO_JAVA_HOME/jre/lib/i386/client -LNO_JAVA_HOME/jre/lib/i386/native_thr=
+eads=20
+=2DL/usr/X11R6/lib=20
+=2DL/usr/lib/mozilla-1.8b ../unxlngi4.pro/slo/sdui_dflt_version.o ../unxlng=
+i4.pro/slo/sdui_dflt_description.o=20
+=2Do ../unxlngi4.pro/lib/libsdui680li.so ../unxlngi4.pro/slo/masterlayoutdl=
+g.o ../unxlngi4.pro/slo/headerfooterdlg.o ../unxlngi4.pro/slo/sduiexp.o ../=
+unxlngi4.pro/slo/sddlgfact.o ../unxlngi4.pro/slo/brkdlg.o ../unxlngi4.pro/s=
+lo/copydlg.o ../unxlngi4.pro/slo/custsdlg.o ../unxlngi4.pro/slo/dlgchar.o .=
+=2E/unxlngi4.pro/slo/dlgass.o ../unxlngi4.pro/slo/dlgassim.o ../unxlngi4.pr=
+o/slo/dlgfield.o ../unxlngi4.pro/slo/dlgpage.o ../unxlngi4.pro/slo/dlgsnap.=
+o ../unxlngi4.pro/slo/inspage.o ../unxlngi4.pro/slo/ins_paste.o ../unxlngi4=
+=2Epro/slo/inspagob.o ../unxlngi4.pro/slo/morphdlg.o ../unxlngi4.pro/slo/ne=
+wfoil.o ../unxlngi4.pro/slo/dlgolbul.o ../unxlngi4.pro/slo/paragr.o ../unxl=
+ngi4.pro/slo/present.o ../unxlngi4.pro/slo/printdlg.o ../unxlngi4.pro/slo/p=
+rltempl.o ../unxlngi4.pro/slo/sdpreslt.o ../unxlngi4.pro/slo/tabtempl.o ../=
+unxlngi4.pro/slo/tpaction.o ../unxlngi4.pro/slo/tpoption.o ../unxlngi4.pro/=
+slo/vectdlg.o ../unxlngi4.pro/slo/prntopts.o ../unxlngi4.pro/slo/bulmaper.o=
+ ../unxlngi4.pro/slo/htmlattr.o ../unxlngi4.pro/slo/pubdlg.o=20
+=2Dlsd680li -lsvx680li -lsfx680li -lsb680li -lbasegfx680li -lgo680li -lso68=
+0li=20
+=2Dlsvt680li -ltk680li -lvcl680li -lsvl680li -lsot680li -lutl680li -ltl680l=
+i=20
+=2Dlcomphelp4gcc3 -lucbhelper3gcc3 -luno_cppuhelpergcc3 -luno_cppu -lvos3gc=
+c3=20
+=2Dluno_sal -ldl -lpthread -lm -Wl,-Bdynamic -lstlport_gcc -lstdc++
+=2E./unxlngi4.pro/slo/pubdlg.o(.text+0x7135): In function=20
+`SdPublishingDlg::LoadPreviewButtons()':
+pubdlg.cxx: undefined reference to `SdHtmlTheme::getTheme()'
+=2E./unxlngi4.pro/slo/pubdlg.o(.text+0x7190):pubdlg.cxx: undefined referenc=
+e to=20
+`SdHtmlTheme::getThumbnail(int) const'
+=2E./unxlngi4.pro/slo/pubdlg.o(.text+0x7201):pubdlg.cxx: undefined referenc=
+e to=20
+`SdHtmlTheme::getThemeCount() const'
+=2E./unxlngi4.pro/slo/pubdlg.o(.text+0x7214):pubdlg.cxx: undefined referenc=
+e to=20
+`SdHtmlTheme::~SdHtmlTheme()'
+
+To make things somewhat more strange:
+$ nm sd/unxlngi4.pro/lib/libsd680li.so |grep getTheme
+[...] 0027749c t _ZN11SdTheme8getThemeEv
+$ c++filt _ZN11SdTheme8getThemeEv
+SdHtmlTheme::getTheme()
+
+So this stuff definitely is being defined...
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000786.html">[Open Office] Re: Ark/Debian configure options ...
+</A></li>
+	<LI> Next message: <A HREF="000760.html">[Open Office] More src680-m76 build breakages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#755">[ date ]</a>
+              <a href="thread.html#755">[ thread ]</a>
+              <a href="subject.html#755">[ subject ]</a>
+              <a href="author.html#755">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

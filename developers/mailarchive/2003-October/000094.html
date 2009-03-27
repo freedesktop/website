@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Building Problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2003-October/index.html" >
+   <LINK REL="made" HREF="mailto:nhudson%40lunar-linux.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000093.html">
+   <LINK REL="Next"  HREF="000097.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Building Problems
+   </H1>
+    <B>Nick Hudson
+    </B> 
+    <A HREF="mailto:nhudson%40lunar-linux.org"
+       TITLE="[Open Office] Building Problems">nhudson@lunar-linux.org
+       </A><BR>
+    <I>Thu, 09 Oct 2003 20:59:07 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000093.html">[Open Office] Building Problems
+</A></li>
+        <LI> Next message: <A HREF="000097.html">[Open Office] Building Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#94">[ date ]</a>
+              <a href="thread.html#94">[ thread ]</a>
+              <a href="subject.html#94">[ subject ]</a>
+              <a href="author.html#94">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-CtNN9wVoFcDQUOpUOCay
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+I have a nice patch to fix this problem with bison if you wish to use
+it.  You can get it here
+<A HREF="http://www.lunar-linux.org/~nhudson/bison-yyerror-1.patch.bz2">http://www.lunar-linux.org/~nhudson/bison-yyerror-1.patch.bz2</A>
+
+hth
+
+Nick Hudson
+
+
+On Thu, 2003-10-09 at 20:45, Dan Williams wrote:
+&gt;<i> Hi,
+</I>&gt;<i>=20
+</I>&gt;<i> There is an incompatibility between Bison 1.85 and gcc 3.2.3.  You'll nee=
+</I>d
+&gt;<i> to upgrade to a later release of Bison (or pull from CVS) to correct this=
+</I>.
+&gt;<i>=20
+</I>&gt;<i> Dan
+</I>&gt;<i>=20
+</I>&gt;<i> On Thu, 9 Oct 2003 <A HREF="mailto:gers4302@kettering.edu">gers4302@kettering.edu</A> wrote:
+</I>&gt;<i>=20
+</I>&gt;<i> &gt; I've tried building for RC3 and RC4 with their corresponding build
+</I>&gt;<i> &gt; packages and I've recieved the following error in both:
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+</I>&gt;<i> &gt; Building project idlc
+</I>&gt;<i> &gt; =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+</I>&gt;<i> &gt; /root/ooo-build-1.1.39/build/OOO_1_1_RC3/idlc/source/preproc
+</I>&gt;<i> &gt; -------------
+</I>&gt;<i> &gt; /root/ooo-build-1.1.39/build/OOO_1_1_RC3/idlc/source
+</I>&gt;<i> &gt; ------------------------------
+</I>&gt;<i> &gt; Making: ../unxlngi4.pro/obj/parser.obj
+</I>&gt;<i> &gt; g++ -fmessage-length=3D0 -c -I.  -I. -I../inc -I../inc -I../unx/inc
+</I>&gt;<i> &gt; -I../unxlngi4.pro/inc -I.
+</I>&gt;<i> &gt; -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solver/645/unxlngi4.pro/inc/=
+</I>stl -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solver/645/unxlngi4.pro/inc/=
+external -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solver/645/unxlngi4.pro=
+/inc -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solenv/unxlngi4/inc -I/root=
+/ooo-build-1.1.39/build/OOO_1_1_RC3/solenv/inc -I/root/ooo-build-1.1.39/bui=
+ld/OOO_1_1_RC3/res -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solver/645/un=
+xlngi4.pro/inc/stl -I/root/ooo-build-1.1.39/build/OOO_1_1_RC3/solenv/inc/Xp=
+31 -I/root/ooo-build-1.1.39/build/jdk/include -I/root/ooo-build-1.1.39/buil=
+d/jdk/include/linux -I/root/ooo-build-1.1.39/build/jdk/include/native_threa=
+ds/include -I/usr/X11R6/include     -I. -I../res -I. -O1   -pipe -mcpu=3Dpe=
+ntiumpro -fno-for-scope -fpermissive -fno-rtti -include preinclude.h -fexce=
+ptions -fno-enforce-eh-specs    -DLINUX -DUNX -DVCL -DGCC -DC300 -DINTEL -D=
+CVER=3DC300 -D_USE_NAMESPACE -DGLIBC=3D2 -DX86 -D_PTHREADS -D_REENTRANT -DN=
+EW_SOLAR -D_USE_NAMESPACE=3D1 -DSTLPORT_VERSION=3D400 -D__DMAKE -DUNIX -DCP=
+PU_ENV=3Dgcc3 -DSUPD=3D645 -DPRODUCT -DNDEBUG -DPRODUCT_FULL -DOSL_DEBUG_LE=
+VEL=3D0 -DOPTIMIZE -DEXCEPTIONS_ON -DCUI -DSOLAR_JAVA -DSRX645  -DMULTITHRE=
+AD  -DMULTITHREAD   -o ../unxlngi4.pro/obj/parser.o ../unxlngi4.pro/misc/pa=
+rser.cxx
+&gt;<i> &gt; ../unxlngi4.pro/misc/parser.cxx: In function `int yyparse()':
+</I>&gt;<i> &gt; ../unxlngi4.pro/misc/parser.cxx:4740: parse error before `goto'
+</I>&gt;<i> &gt; dmake:  Error code 1, while making '../unxlngi4.pro/obj/parser.obj'
+</I>&gt;<i> &gt; ---* TG_SLO.MK *---
+</I>&gt;<i> &gt; =20
+</I>&gt;<i> &gt; ERROR: Error 65280 occurred while making
+</I>&gt;<i> &gt; /root/ooo-build-1.1.39/build/OOO_1_1_RC3/idlc/source
+</I>&gt;<i> &gt; dmake:  Error code 1, while making 'build_all'
+</I>&gt;<i> &gt; ---* TG_SLO.MK *---
+</I>&gt;<i> &gt; make[1]: *** [all] Error 1
+</I>&gt;<i> &gt; make[1]: Leaving directory `/root/ooo-build-1.1.39/bin'
+</I>&gt;<i> &gt; make: *** [all-recursive] Error 1
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; Looking for ideas...
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; Thanks
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; Stephen Gerstacker
+</I>&gt;<i> &gt;=20
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Openoffice mailing list
+</I>&gt;<i> &gt; <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> &gt; <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>&gt;<i> &gt;=20
+</I>&gt;<i>=20
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>
+--=-CtNN9wVoFcDQUOpUOCay
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.3 (GNU/Linux)
+
+iD8DBQA/hhJrG5D1jWCZpTwRAoWUAJ9W3Bao4F2z4N8yfYRuy3qp4K3/mwCg/ITq
+WAKfUjxwt/upCYKVnWf/5p0=
+=mz6v
+-----END PGP SIGNATURE-----
+
+--=-CtNN9wVoFcDQUOpUOCay--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000093.html">[Open Office] Building Problems
+</A></li>
+	<LI> Next message: <A HREF="000097.html">[Open Office] Building Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#94">[ date ]</a>
+              <a href="thread.html#94">[ thread ]</a>
+              <a href="subject.html#94">[ subject ]</a>
+              <a href="author.html#94">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

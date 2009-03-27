@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] cvs problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:rmrmg%40wp.pl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+   <LINK REL="Previous"  HREF="000437.html">
+   <LINK REL="Next"  HREF="000439.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] cvs problem
+   </H1>
+    <B>Rafał 'rmrmg' Roszak
+    </B> 
+    <A HREF="mailto:rmrmg%40wp.pl"
+       TITLE="[Open Office] cvs problem">rmrmg@wp.pl
+       </A><BR>
+    <I>Tue, 6 Jul 2004 00:02:54 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000437.html">[Open Office] cvs problem
+</A></li>
+        <LI> Next message: <A HREF="000439.html">[Open Office] cvs problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#438">[ date ]</a>
+              <a href="thread.html#438">[ thread ]</a>
+              <a href="subject.html#438">[ subject ]</a>
+              <a href="author.html#438">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a multi-part message in MIME format.
+
+--Multipart=_Tue__6_Jul_2004_00_02_54_+0200_MIw+sQ/exzzpfM.N
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+
+begin  Michael Meeks &lt;<A HREF="mailto:michael@ximian.com">michael@ximian.com</A>&gt; quote:
+ 
+&gt;<i> 	ie. the file button.cxx in the above path; +/- 5 lines around
+</I>&gt;<i> 	line  3514. 
+</I>In attachment,  but i probably find the problem
+After building is 
+
+#v+
+ void CheckBox::DataChanged( const DataChangedEvent&amp; rDCEvt )
+   {
+      Button::DataChanged( rDCEvt );
+  if ( (rDCEvt.GetType() == DATACHANGED_FONTS) ||
+#v-
+
+In OOo source  was:
+
+#v+
+void CheckBox::DataChanged( const DataChangedEvent&amp; rDCEvt )
+{
+    Button::DataChanged( rDCEvt );
+
+    if ( (rDCEvt.GetType() == DATACHANGED_FONTS) ||
+         (rDCEvt.GetType() == DATACHANGED_FONTSUBSTITUTION) ||
+         ((rDCEvt.GetType() == DATACHANGED_SETTINGS) &amp;&amp;
+          (rDCEvt.GetFlags() &amp; SETTINGS_STYLE)) )
+    {
+        ImplInitSettings( TRUE, TRUE, TRUE );
+        Invalidate();
+    }
+}
+#v-
+
+-- 
+. JID: rmrmg(at)jabberpl(dot)org | Wszystko jest trudne
+.   mail: rmrmg(at)wp(dot)pl     |   przy odpowiednim
+.  registered Linux user 261525  |  stopniu abstrakcji
+ _______     RMRMG signature version 0.0.5     ________
+
+--Multipart=_Tue__6_Jul_2004_00_02_54_+0200_MIw+sQ/exzzpfM.N
+Content-Type: application/octet-stream;
+ name=&quot;code.txt&quot;
+Content-Disposition: attachment;
+ filename=&quot;code.txt&quot;
+Content-Transfer-Encoding: base64
+
+ICAzNTA2CS8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiAgMzUwNwkKICAzNTA4CXZvaWQgQ2hlY2tCb3g6OkRh
+dGFDaGFuZ2VkKCBjb25zdCBEYXRhQ2hhbmdlZEV2ZW50JiByRENFdnQgKQogIDM1MDkJewogIDM1
+MTAJICAgIEJ1dHRvbjo6RGF0YUNoYW5nZWQoIHJEQ0V2dCApOwogIDM1MTEJCiAgMzUxMgkgICAg
+aWYgKCAockRDRXZ0LkdldFR5cGUoKSA9PSBEQVRBQ0hBTkdFRF9GT05UUykgfHwKICAzNTEzCQog
+IDM1MTQJbG9uZyBDaGVja0JveDo6UHJlTm90aWZ5KCBOb3RpZnlFdmVudCYgck5FdnQgKQogIDM1
+MTUJewogIDM1MTYJICAgIGxvbmcgbkRvbmUgPSAwOwogIDM1MTcJICAgIGNvbnN0IE1vdXNlRXZl
+bnQqIHBNb3VzZUV2dCA9IE5VTEw7CiAgMzUxOAkKICAzNTE5CSAgICBpZiggKHJORXZ0LkdldFR5
+cGUoKSA9PSBFVkVOVF9NT1VTRU1PVkUpICYmIChwTW91c2VFdnQgPSByTkV2dC5HZXRNb3VzZUV2
+ZW50KCkpICkKICAzNTIwCSAgICB7CiAgMzUyMQkgICAgICAgIGlmKCAhcE1vdXNlRXZ0LT5HZXRC
+dXR0b25zKCkgJiYgIXBNb3VzZUV2dC0+SXNTeW50aGV0aWMoKSAmJiAhcE1vdXNlRXZ0LT5Jc01v
+ZGlmaWVyQ2hhbmdlZCgpICkKICAzNTIyCSAgICAgICAgewogIDM1MjMJICAgICAgICAgICAgLy8g
+dHJpZ2dlciByZWRyYXcgaWYgbW91c2Ugb3ZlciBzdGF0ZSBoYXMgY2hhbmdlZAogIDM1MjQJICAg
+ICAgICAgICAgaWYoIElzTmF0aXZlQ29udHJvbFN1cHBvcnRlZChDVFJMX0NIRUNLQk9YLCBQQVJU
+X0VOVElSRV9DT05UUk9MKSApCiAgMzUyNQkgICAgICAgICAgICB7CiAgMzUyNgkgICAgICAgICAg
+ICAgICAgaWYoICggbWFNb3VzZVJlY3QuSXNJbnNpZGUoIEdldFBvaW50ZXJQb3NQaXhlbCgpKSAm
+JiAKICAzNTI3CSAgICAgICAgICAgICAgICAgICAgICFtYU1vdXNlUmVjdC5Jc0luc2lkZSggR2V0
+TGFzdFBvaW50ZXJQb3NQaXhlbCgpKSApIHx8CiAgMzUyOAkgICAgICAgICAgICAgICAgICAgICgg
+bWFNb3VzZVJlY3QuSXNJbnNpZGUoIEdldExhc3RQb2ludGVyUG9zUGl4ZWwoKSkgJiYgCiAgMzUy
+OQkgICAgICAgICAgICAgICAgICAgICAhbWFNb3VzZVJlY3QuSXNJbnNpZGUoIEdldFBvaW50ZXJQ
+b3NQaXhlbCgpKSApIHx8CiAgMzUzMAkgICAgICAgICAgICAgICAgICAgIHBNb3VzZUV2dC0+SXNM
+ZWF2ZVdpbmRvdygpIHx8IHBNb3VzZUV2dC0+SXNFbnRlcldpbmRvdygpICkKICAzNTMxCSAgICAg
+ICAgICAgICAgICB7CiAgMzUzMgkKICAzNTMzCSAgICAgICAgICAgICAgICAgICAgUmVnaW9uIGFS
+Z24oIEdldEFjdGl2ZUNsaXBSZWdpb24oKSApOwogIDM1MzQJICAgICAgICAgICAgICAgICAgICBT
+ZXRDbGlwUmVnaW9uKCBtYVN0YXRlUmVjdCApOwogIDM1MzUJICAgICAgICAgICAgICAgICAgICBQ
+YWludCggbWFTdGF0ZVJlY3QgKTsKICAzNTM2CSAgICAgICAgICAgICAgICAgICAgU2V0Q2xpcFJl
+Z2lvbiggYVJnbiApOwogIDM1MzcJICAgICAgICAgICAgICAgIH0KICAzNTM4CSAgICAgICAgICAg
+IH0KICAzNTM5CSAgICAgICAgfQogIDM1NDAJICAgIH0KICAzNTQxCQogIDM1NDIJICAgIHJldHVy
+biBuRG9uZSA/IG5Eb25lIDogQnV0dG9uOjpQcmVOb3RpZnkock5FdnQpOwogIDM1NDMJfQogIDM1
+NDQJCg==
+
+--Multipart=_Tue__6_Jul_2004_00_02_54_+0200_MIw+sQ/exzzpfM.N--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000437.html">[Open Office] cvs problem
+</A></li>
+	<LI> Next message: <A HREF="000439.html">[Open Office] cvs problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#438">[ date ]</a>
+              <a href="thread.html#438">[ thread ]</a>
+              <a href="subject.html#438">[ subject ]</a>
+              <a href="author.html#438">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

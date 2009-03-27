@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] cwsextract, rdiff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20cwsextract%2C%20rdiff&In-Reply-To=1140186555.4350.14.camel%40localhost.localdomain">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001688.html">
+   <LINK REL="Next"  HREF="001691.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] cwsextract, rdiff</H1>
+    <B>David Fraser</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20cwsextract%2C%20rdiff&In-Reply-To=1140186555.4350.14.camel%40localhost.localdomain"
+       TITLE="[Open Office] cwsextract, rdiff">davidf at sjsoft.com
+       </A><BR>
+    <I>Tue Mar  7 13:31:20 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001688.html">[Open Office] Re: stale patches ...
+</A></li>
+        <LI>Next message: <A HREF="001691.html">[Open Office] cwsextract, rdiff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1689">[ date ]</a>
+              <a href="thread.html#1689">[ thread ]</a>
+              <a href="subject.html#1689">[ subject ]</a>
+              <a href="author.html#1689">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Caolan McNamara wrote:
+&gt;<i> FWIW I reckon cwsextract can be implemented with cvs rdiff, 
+</I>&gt;<i>
+</I>&gt;<i> cvs rdiff works out of the box with anoncvs, and while it doesn't with
+</I>&gt;<i> the tunnel, 
+</I>&gt;<i> cvs -d:<A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">username at localhost</A>:2401/shared/data/helm/cvs/repository rdiff
+</I>&gt;<i> does work. Should be a speed win there for getting workspaces.
+</I>&gt;<i>   
+</I>I wrote a little Python script that parses the lists of files from EIS, 
+then uses cvs diff on only the files listed as having changed in the 
+cws. Might be even faster but haven't used it for a while.
+The idea again was to work where the cwsextract tool wouldn't because of 
+permissions etc
+By default it will run and extract all the current cws into patch files 
+for fun and extra load on the servers :-)
+Attached in case anyone is interested
+
+David
+-------------- next part --------------
+#!/usr/bin/env python
+
+import eis
+
+class TestEIS:
+    def setup_class(cls):
+        cls.eis = eis.EIS()
+
+    def testcwsid(self):
+        assert self.eis.getcwsid(&quot;hr26&quot;) == 3367
+
+    def testcwsmodules(self):
+        assert sorted(self.eis.getcwsmodules(&quot;os67&quot;)) == [&quot;officecfg&quot;, &quot;svtools&quot;, &quot;sw&quot;]
+
+    def testcwsfiles(self):
+        os67files = sorted(self.eis.getcwsfiles(&quot;os67&quot;))
+        assert ('officecfg', 'registry/data/org/openoffice/Office/Writer.xcu') in os67files
+        assert ('sw', 'source/ui/dbui/mmmergepage.src') in os67files
+        assert len(os67files) == 37
+
+-------------- next part --------------
+#!/usr/bin/env python
+
+import urllib2
+import cookielib
+import os
+import BeautifulSoup
+import cgi
+import sys
+
+class EIS:
+    def __init__(self, cookiefile=&quot;eis.lwp&quot;):
+        self.cookiefile = cookiefile
+        self.cookiejar = cookielib.LWPCookieJar()
+        if os.path.isfile(self.cookiefile):
+          self.cookiejar.load(self.cookiefile)
+        opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(self.cookiejar))
+        urllib2.install_opener(opener)
+        self.login()
+        self.cache = {}
+
+    def login(self):
+        urllib2.urlopen(&quot;<A HREF="http://eis.services.openoffice.org/EIS2/GuestLogon&quot;">http://eis.services.openoffice.org/EIS2/GuestLogon&quot;</A>).read()
+        self.cookiejar.save(self.cookiefile)
+
+    def cacheurl(self, url):
+        if url in self.cache:
+            return self.cache[url]
+        else:
+            try:
+                contents = urllib2.urlopen(url).read()
+            except urllib2.HTTPError, e:
+                if e.code == 401:
+                    self.login()
+                    contents = urllib2.urlopen(url).read()
+                else:
+                    raise
+            self.cache[url] = contents
+            return contents
+
+    def findcws(self, mws=None, milestone=None, cws=None, cwsid=None):
+        &quot;&quot;&quot;lists all cws available, as mws, milestone, cws, cwsid&quot;&quot;&quot;
+        milestoneindex = self.cacheurl(&quot;<A HREF="http://eis.services.openoffice.org/EIS2/servlet/cws.CWSExplorer?Mode=Milestones&quot;">http://eis.services.openoffice.org/EIS2/servlet/cws.CWSExplorer?Mode=Milestones&quot;</A>)
+        cwslist = []
+        for line in milestoneindex.replace(&quot;\r&quot;, &quot;&quot;).split(&quot;\n&quot;):
+            # cws.ShowCWS?Path=SRC680%2Fm54%2Fdba15&amp;Id=1431
+            startmark, endmark = '&quot;/EIS2/cws.ShowCWS?', '&quot;'
+            if line.startswith(&quot;theMenu.addChild&quot;) and startmark in line:
+                cwsargs = line[line.find(startmark) + len(startmark):]
+                cwsargs = cwsargs[:cwsargs.find(endmark)]
+                cwsargs = cgi.parse_qs(cwsargs)
+                cwspath = cwsargs[&quot;Path&quot;][0]
+                thismws, thismilestone, thiscws = cwspath.split(&quot;/&quot;, 3)
+                thiscwsid = int(cwsargs[&quot;Id&quot;][0])
+                if (mws is None or mws == thismws) and \
+                   (milestone is None or milestone == thismilestone) and \
+                   (cws is None or cws == thiscws) and \
+                   (cwsid is None or cwsid == thiscwsid):
+                    cwslist.append((thismws, thismilestone, thiscws, thiscwsid))
+        return cwslist
+
+    def getcwsid(self, cwsname):
+        for mws, milestone, somecws, somecwsid in self.findcws(cws=cwsname):
+            return somecwsid
+        raise ValueError(&quot;no id found for cws %s&quot; % cwsname)
+        milestoneindex = self.cacheurl(&quot;<A HREF="http://eis.services.openoffice.org/EIS2/servlet/cws.CWSExplorer?Mode=Milestones&quot;">http://eis.services.openoffice.org/EIS2/servlet/cws.CWSExplorer?Mode=Milestones&quot;</A>)
+        for line in milestoneindex.replace(&quot;\r&quot;, &quot;&quot;).split(&quot;\n&quot;):
+            if line.startswith(&quot;theMenu.addChild&quot;):
+                if line.find('&quot;%s&quot;' % cwsname) != -1:
+                    cwsid = line[line.find(&quot;&amp;Id=&quot;)+4:]
+                    for i, c in enumerate(cwsid):
+                        if not c.isdigit():
+                            if not cwsid[:i]:
+                                raise ValueError(&quot;invalid cwsid %s for cws %s&quot; % (cwsid, cwsname))
+                            return int(cwsid[:i])
+                    return cwsid
+
+    def getcwsinfo(self, cwsname):
+        cwsid = self.getcwsid(cwsname)
+        return self.cacheurl(&quot;<A HREF="http://eis.services.openoffice.org/EIS2/cws.ShowCWS?Id=%d&quot;">http://eis.services.openoffice.org/EIS2/cws.ShowCWS?Id=%d&quot;</A> % cwsid)
+
+    def getcwsmodules(self, cwsname):
+        cwsinfo = self.getcwsinfo(cwsname)
+        infosoup = BeautifulSoup.BeautifulSoup(cwsinfo)
+        titlesoup = infosoup.first(&quot;h4&quot;).findNext(&quot;h4&quot;, {}, &quot;Modules &amp;amp; Files&quot;).parent
+        modulesoup = titlesoup.findNext(&quot;table&quot;)
+        modules = []
+        for tr in modulesoup(&quot;tr&quot;):
+          module = tr.first(&quot;td&quot;).first(&quot;font&quot;).string
+          if module and module not in modules:
+            modules.append(module)
+        return modules
+
+    def getcwsfiles(self, cwsname):
+        cwsinfo = self.getcwsinfo(cwsname)
+        infosoup = BeautifulSoup.BeautifulSoup(cwsinfo)
+        titlesoup = infosoup.first(&quot;h4&quot;).findNext(&quot;h4&quot;, {}, &quot;Modules &amp;amp; Files&quot;).parent
+        modulesoup = titlesoup.findNext(&quot;table&quot;)
+        files = []
+        for tr in modulesoup(&quot;tr&quot;):
+          module = tr.first(&quot;td&quot;).first(&quot;font&quot;).string
+          if module:
+            filename = tr.first(&quot;td&quot;).findNext(&quot;td&quot;).first(&quot;font&quot;).string.strip()
+            if filename:
+              files.append((module, filename))
+        return files
+
+    def getcwspatch(self, srcdir, cwsname):
+        cwsmodules = self.getcwsmodules(cwsname)
+        cwsfiles = self.getcwsfiles(cwsname)
+        patches = []
+        for module, filename in cwsfiles:
+           moduledir = os.path.join(srcdir, module)
+           cwsanchor = &quot;CWS_SRC680_%s_ANCHOR&quot; % cwsname.upper()
+           cwsbranch = &quot;cws_src680_%s&quot; % cwsname
+           cvsresult = None
+           if &quot;/&quot; in filename:
+               dirname = filename[:filename.rfind(&quot;/&quot;)]
+               osdirname = os.path.join(*dirname.split(&quot;/&quot;))
+               if not os.path.exists(os.path.join(srcdir, module, osdirname)):
+                   print &gt;&gt; sys.stderr, &quot;warning: directory %s does not exist&quot; % dirname
+                   parentdirname = os.path.dirname(osdirname)
+                   actualbranch = &quot;HEAD&quot;
+                   parenttagfile = os.path.join(srcdir, module, parentdirname, &quot;CVS&quot;, &quot;Tag&quot;)
+                   if os.path.exists(parenttagfile):
+                        actualbranch = open(parenttagfile).read()[1:].strip()
+                   checkoutdir = os.path.basename(osdirname)
+                   try:
+                       cvscmd = &quot;cd %s ; (cd %s ; cvs up -d -r %s %s) ; cvs diff -uN -r %s -r %s %s&quot; % (moduledir, parentdirname, cwsbranch, checkoutdir, cwsanchor, cwsbranch, filename)
+                       cvsresult = os.popen(cvscmd).read()
+                   finally:
+                       os.system(&quot;cd %s ; (cd %s ; cvs up -P -r %s %s) ; rm -fr %s&quot; % (moduledir, parentdirname, actualbranch, checkoutdir, osdirname))
+           cvscmd = &quot;cd %s ; cvs diff -uN -r %s -r %s %s&quot; % (moduledir, cwsanchor, cwsbranch, filename)
+           if cvsresult is None:
+               cvsresult = os.popen(cvscmd).read()
+           cvsresult = cvsresult.replace(&quot;Index: %s&quot; % filename, &quot;Index: %s/%s&quot; % (module, filename))
+           cvsresult = cvsresult.replace(&quot;--- %s&quot; % filename, &quot;--- %s/%s&quot; % (module, filename))
+           cvsresult = cvsresult.replace(&quot;+++ %s&quot; % filename, &quot;+++ %s/%s&quot; % (module, filename))
+           patches.append(cvsresult)
+        return &quot;&quot;.join(patches)
+
+if __name__ == &quot;__main__&quot;:
+    eis = EIS()
+    srcdir = &quot;/share/openoffice/ximian/linux-build-HEAD/build/&quot;
+    for cws in sys.argv[1:]:
+        # print cws + &quot; : &quot; + &quot; &quot;.join(eis.getcwsmodules(cws))
+        sys.stdout.write(eis.getcwspatch(os.path.join(srcdir, &quot;src680-m151&quot;), cws))
+    if not sys.argv[1:]:
+        for mws, milestone, cws, cwsid in eis.findcws(mws=&quot;SRC680&quot;):
+            print &quot;extracting patch for %s %s %s&quot; % (mws, milestone, cws)
+            cwspatch = eis.getcwspatch(os.path.join(srcdir, &quot;src680-m151&quot;), cws)
+            cwsfile = open(os.path.join(&quot;patches&quot;, &quot;%s-%s-%s.diff&quot; % (mws, milestone, cws)), &quot;w&quot;)
+            cwsfile.write(cwspatch)
+            cwsfile.close()
+
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001688.html">[Open Office] Re: stale patches ...
+</A></li>
+	<LI>Next message: <A HREF="001691.html">[Open Office] cwsextract, rdiff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1689">[ date ]</a>
+              <a href="thread.html#1689">[ thread ]</a>
+              <a href="subject.html#1689">[ subject ]</a>
+              <a href="author.html#1689">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20scsolver%20build%20failsure%20on%20windows%20%28was%3A%20Fwd%3A%0A%09Your%20interesting%20stuffs%20%3Ao%29%20%29&In-Reply-To=8c0175c60602121846ua0ee10bxe98fbf9f91377197%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001573.html">
+   <LINK REL="Next"  HREF="001577.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )</H1>
+    <B>michael meeks</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20scsolver%20build%20failsure%20on%20windows%20%28was%3A%20Fwd%3A%0A%09Your%20interesting%20stuffs%20%3Ao%29%20%29&In-Reply-To=8c0175c60602121846ua0ee10bxe98fbf9f91377197%40mail.gmail.com"
+       TITLE="[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )">michael.meeks at novell.com
+       </A><BR>
+    <I>Tue Feb 14 05:18:25 EST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001573.html">[Open Office] scsolver build failsure on windows (was: Fwd: Your
+	interesting stuffs :o) )
+</A></li>
+        <LI>Next message: <A HREF="001577.html">[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1576">[ date ]</a>
+              <a href="thread.html#1576">[ thread ]</a>
+              <a href="subject.html#1576">[ subject ]</a>
+              <a href="author.html#1576">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there,
+
+On Sun, 2006-02-12 at 21:46 -0500, Kohei Yoshida wrote:
+&gt;<i> Could someone on this list help him out?  He is having trouble
+</I>&gt;<i> building the scsolver on Windows.  I don't do Windows build, so I have
+</I>&gt;<i> no idea.
+</I>
+	Tor - are you building HEAD on Win32 ? - including the solver work ?
+prolly worth doing a little polish there.
+
+&gt;<i> guw.pl /cygdrive/c/PROGRA~1/MICROS~2.NET/Vc7/bin/cl.exe @/tmp/mkdJXCbY
+</I>&gt;<i> lpbase.cxx
+</I>&gt;<i> c:\202155\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expression.hpp(781)
+</I>&gt;<i> : error C2027: use of undefined type
+</I>&gt;<i> 'boost::numeric::ublas::vector_matrix_binary&lt;E1,E2,F&gt;::const_iterator2'
+</I>&gt;<i>         c:\202155\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expression.hpp(603)
+</I>&gt;<i> : see declaration of
+</I>&gt;<i> 'boost::numeric::ublas::vector_matrix_binary&lt;E1,E2,F&gt;::const_iterator2'
+</I>&gt;<i>         c:\202155\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expression.hpp(700)
+</I>&gt;<i> : see reference to class template instantiation
+</I>&gt;<i> 'boost::numeric::ublas::vector_matrix_binary&lt;E1,E2,F&gt;::const_iterator1'
+</I>&gt;<i> being compiled
+</I>&gt;<i>         c:\202155\solver\680\wntmsci10.pro\inc\boost\numeric\ublas\matrix_expression.hpp(1034)
+</I>&gt;<i> : see reference to class template instantiation
+</I>&gt;<i> 'boost::numeric::ublas::vector_matrix_binary&lt;E1,E2,F&gt;' being compiled
+</I>&gt;<i>         c:\202155\solver\680\wntmsci10.pro\inc\stl\stdexcept(149) :
+</I>
+	Well it certainly seems to get nice &amp; confused here :-)
+
+	I've no idea how to extract the pre-processed output from VC++, but
+reviewing that might help see what it's doing; the messages don't seem
+that helpful :-)
+
+	HTH,
+
+		Michael.
+
+-- 
+ <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">michael.meeks at novell.com</A>  &lt;&gt;&lt;, Pseudo Engineer, itinerant idiot
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001573.html">[Open Office] scsolver build failsure on windows (was: Fwd: Your
+	interesting stuffs :o) )
+</A></li>
+	<LI>Next message: <A HREF="001577.html">[Open Office] scsolver build failsure on windows (was: Fwd:
+	Your interesting stuffs :o) )
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1576">[ date ]</a>
+              <a href="thread.html#1576">[ thread ]</a>
+              <a href="subject.html#1576">[ subject ]</a>
+              <a href="author.html#1576">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Problems building OOffice-m121/122
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2005-August/index.html" >
+   <LINK REL="made" HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Problems%20building%20OOffice-m121/122&In-Reply-To=42F60EAF.2080000%40gmx.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001081.html">
+   <LINK REL="Next"  HREF="001084.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Problems building OOffice-m121/122</H1>
+    <B>Thorsten Kolb</B> 
+    <A HREF="mailto:openoffice%40lists.ximian.com?Subject=%5BOpen%20Office%5D%20Problems%20building%20OOffice-m121/122&In-Reply-To=42F60EAF.2080000%40gmx.net"
+       TITLE="[Open Office] Problems building OOffice-m121/122">thorsten_kolb at urz.uni-heidelberg.de
+       </A><BR>
+    <I>Sun Aug  7 11:21:18 EDT 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001081.html">[Open Office] ooo-build-1.9.121.1: build broken on x86_64
+</A></li>
+        <LI>Next message: <A HREF="001084.html">[Open Office] Problems building OOffice-m121/122
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1082">[ date ]</a>
+              <a href="thread.html#1082">[ thread ]</a>
+              <a href="subject.html#1082">[ subject ]</a>
+              <a href="author.html#1082">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Yesterday I tried to build OO-m121, with ooo-build-1.9.121.1 and got the 
+following error:
+
+
+LINKLIB: libcairo.so.1.0.0 
+-&gt; /home/simon/openoffice/ooo-build-1.9.121.1/build/src680-m122/solver/680/unxlngi6.pro/lib/libcairo.so
+LOG: 
+writing /home/simon/openoffice/ooo-build-1.9.121.1/build/src680-m122/solver/680/unxlngi6.pro/inc/cairo/deliver.log
+Statistics:
+Files copied: 6
+Files unchanged/not matching: 1
+
+=============
+Building project mdbtools
+=============
+/home/simon/openoffice/ooo-build-1.9.121.1/build/src680-m122/mdbtools
+mkout -- version: 1.4
+------------------------------
+Making: ./unxlngi6.pro/misc/mdbtools.dpc
+dmake subdmake=true  -f makefile.mk  depend=t ALLDPC
+------------------------------
+No Dependencies
+-------------
+dmake:  Error -- `./unxlngi6.pro/misc/mdbtools-0.6pre1.unpack' not found, and 
+can't be made
+'---* tg_merge.mk *---'
+
+ERROR: Error 65280 occurred while 
+making /home/simon/openoffice/ooo-build-1.9.121.1/build/src680-m122/mdbtools
+make: *** [stamp/build] Error 1
+bash-3.00$ pwd
+/home/simon/openoffice/ooo-build-1.9.121.1
+bash-3.00$                   
+
+
+How could I solve this??
+
+regards 
+
+Thorsten
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001081.html">[Open Office] ooo-build-1.9.121.1: build broken on x86_64
+</A></li>
+	<LI>Next message: <A HREF="001084.html">[Open Office] Problems building OOffice-m121/122
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1082">[ date ]</a>
+              <a href="thread.html#1082">[ thread ]</a>
+              <a href="subject.html#1082">[ subject ]</a>
+              <a href="author.html#1082">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://lists.ximian.com/mailman/listinfo/openoffice">More information about the Openoffice
+mailing list</a><br>
+</body></html>

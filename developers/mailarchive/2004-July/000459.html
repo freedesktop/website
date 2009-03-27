@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Mark config files in file lists
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-July/index.html" >
+   <LINK REL="made" HREF="mailto:pmladek%40suse.cz">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000458.html">
+   <LINK REL="Next"  HREF="000460.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Mark config files in file lists
+   </H1>
+    <B>Petr Mladek
+    </B> 
+    <A HREF="mailto:pmladek%40suse.cz"
+       TITLE="[Open Office] Mark config files in file lists">pmladek@suse.cz
+       </A><BR>
+    <I>Thu, 29 Jul 2004 16:44:18 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000458.html">[Open Office] openoffice-xlate-lang languages
+</A></li>
+        <LI> Next message: <A HREF="000460.html">[Open Office] Mark config files in file lists
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#459">[ date ]</a>
+              <a href="thread.html#459">[ thread ]</a>
+              <a href="subject.html#459">[ subject ]</a>
+              <a href="author.html#459">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all,
+
+I would like to improve the generated file lists and mark the files
+which can be configured by users.
+
+The questions are:
+
+1. Which files should be marked?
+2. How they should be marked?
+3. Where this action should be done?
+
+
+ad 1. Which files should be marked?
+
+I propose to mark the following files:
+/usr/lib/help/.*\.xsl
+/usr/lib/help/.*\.css
+/usr/lib/program/[a-zA-Z0-9]*rc
+/usr/lib/program/.*\.xsl
+/usr/lib/share/config/[a-zA-Z0-9]*rc
+/usr/lib/share/dict/ooo/.*\.lst
+/usr/lib/share/psprint/.*\.conf
+/usr/lib/share/psprint/.*\.PS
+/usr/lib/share/registry/.*\.xcu
+/usr/lib/share/registry/.*\.properties
+/usr/lib/share/registry/.*\.xcs
+/usr/lib/user/config/.*\.so.
+
+
+2. How they should be marked?
+
+I know that the guys from PLD would prefere:
+%config(noreplace) %verify(not md5 size mtime)
+
+I do not want to use %verify(not md5 size mtime) because the user
+does verification if something does not work and he should be informed
+also about his own changes in configuration.
+
+Also I am not sure about (noreplace). It could be fine for example for
+an update between minor versions like from 1.1.0 to 1.1.1 but I don't
+think that this is fine anytime.
+
+So, I would prefere to mark them simply with:
+%config.
+
+I am afraid that we do not find a compromise. So, I would suggest to set
+a vendor dependent variable in bin/setup. Something like that:
+
+if test &quot;z$DISTRO&quot; = &quot;zNLD&quot; -o &quot;z$DISTRO&quot; = &quot;zSUSE&quot;; then
+	RPM_CONFIG_FLAG=&quot;%config&quot;
+elif test &quot;z$DISTRO&quot; = &quot;zPLD&quot; ; then
+	RPM_CONFIG_FLAG=&quot;%config(noreplace) %verify(not md5 size mtime)&quot;
+fi
+
+
+3. Where this action should be done?
+
+I would prefere to do it at one place in bin/pack-ooo at the end of the part
+&quot;Cleaning up lists of files...&quot;
+
+I suggest something like that:
+
+if test &quot;z$RPM_CONFIG_FLAG&quot; != &quot;z&quot; ; then
+	perl -pi -e &quot;s|^(\&quot;$OOINSTBASE/help/.*\.xsl\&quot;)\$|$RPM_CONFIG_FLAG \\1|;\ 
+               	     s|^(\&quot;$OOINSTBASE/help/.*\.css\&quot;)\$|$RPM_CONFIG_FLAG \\1|;\ 
+               	     s|^(\&quot;$OOINSTBASE/program/[a-zA-Z0-9]*rc\&quot;)\$|$RPM_CONFIG_FLAG \\1
+               	     s|^(\&quot;$OOINSTBASE/program/.*\.xsl\&quot;)\$|$RPM_CONFIG_FLAG \\1|;\ 
+               	     s|^(\&quot;$OOINSTBASE/share/config/[a-zA-Z0-9]*rc\&quot;)\$|%confi
+               	     s|^(\&quot;$OOINSTBASE/share/dict/ooo/.*\.lst\&quot;)\$|$RPM_CONFIG_FLAG \\1
+               	     s|^(\&quot;$OOINSTBASE/share/psprint/.*\.conf\&quot;)\$|$RPM_CONFIG_FLAG \\1
+               	     s|^(\&quot;$OOINSTBASE/share/psprint/.*\.PS\&quot;)\$|$RPM_CONFIG_FLAG \\1|;
+               	     s|^(\&quot;$OOINSTBASE/share/registry/.*\.xcu\&quot;)\$|$RPM_CONFIG_FLAG \\1
+               	     s|^(\&quot;$OOINSTBASE/share/registry/.*\.properties\&quot;)\$|%con
+               	     s|^(\&quot;$OOINSTBASE/share/registry/.*\.xcs\&quot;)\$|$RPM_CONFIG_FLAG \\1
+               	     s|^(\&quot;$OOINSTBASE/user/config/.*\.so.\&quot;)\$|$RPM_CONFIG_FLAG \\1|&quot; \
+		*_list.txt
+fi
+
+
+Do you have any comments?
+
+
+-- 
+Best Regards,
+
+Petr Mladek
+software developer
+---------------------------------------------------------------------  
+SuSE CR, s.r.o.                             e-mail: <A HREF="mailto:pmladek@suse.cz">pmladek@suse.cz</A>
+Drahobejlova 27                             tel:+420 296 542 373 
+190 00 Praha 9                              fax:+420 296 542 374   
+Czech Republic                              <A HREF="http://www.suse.cz/">http://www.suse.cz/</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000458.html">[Open Office] openoffice-xlate-lang languages
+</A></li>
+	<LI> Next message: <A HREF="000460.html">[Open Office] Mark config files in file lists
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#459">[ date ]</a>
+              <a href="thread.html#459">[ thread ]</a>
+              <a href="subject.html#459">[ subject ]</a>
+              <a href="author.html#459">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

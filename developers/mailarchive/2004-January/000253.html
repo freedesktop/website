@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Open Office] Failed to copy some files
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.ximian.com/pipermail/openoffice/2004-January/index.html" >
+   <LINK REL="made" HREF="mailto:dan%40bigw.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000252.html">
+   <LINK REL="Next"  HREF="000255.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Open Office] Failed to copy some files
+   </H1>
+    <B>Dan Williams
+    </B> 
+    <A HREF="mailto:dan%40bigw.org"
+       TITLE="[Open Office] Failed to copy some files">dan@bigw.org
+       </A><BR>
+    <I>Thu, 22 Jan 2004 10:28:47 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000252.html">[Open Office] Failed to copy some files
+</A></li>
+        <LI> Next message: <A HREF="000255.html">[Open Office] Failed to copy some files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#253">[ date ]</a>
+              <a href="thread.html#253">[ thread ]</a>
+              <a href="subject.html#253">[ subject ]</a>
+              <a href="author.html#253">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Yes, since ooo-build-derived OpenOffice.org installations do not use the
+&quot;spadmin&quot; program, and hence the libspa* libraries, these will not be
+installed.  This is normal.  All font configuration is done with normal
+Linux font tools, and fonts are located from fontconfig places.
+
+What we should do is to patch the *.scp files that install these libraries
+so the warnings go away.
+
+Dan
+
+On Thu, 22 Jan 2004, Carlos Alberto wrote:
+
+&gt;<i> Hi you guys, I'm working with OOO_1_1_0 on a Fedora
+</I>&gt;<i> machine, yesterday I finish the compiling process and
+</I>&gt;<i> today I installed it by using an . ./env &amp;&amp;
+</I>&gt;<i> soffice.bin command.
+</I>&gt;<i>=20
+</I>&gt;<i> And I got an error saying that two files:
+</I>&gt;<i>=20
+</I>&gt;<i> libspa645li.so and spa64501.res
+</I>&gt;<i>=20
+</I>&gt;<i> where unable to be copied to the install directory.=20
+</I>&gt;<i>=20
+</I>&gt;<i> I first used / as an install directory path, and then
+</I>&gt;<i> on a second try just switched it to /root/. Neither of
+</I>&gt;<i> them worked.
+</I>&gt;<i>=20
+</I>&gt;<i> After the second one I run swriter and it worked so
+</I>&gt;<i> good. By the way that new splash screen looks great.
+</I>&gt;<i>=20
+</I>&gt;<i> So in case those missing files  gets me in troubles,
+</I>&gt;<i> I'm planning to copy that files from a rpm package.
+</I>&gt;<i>=20
+</I>&gt;<i> Well, this is just to inform you, if you have any
+</I>&gt;<i> comments are welcomed :)
+</I>&gt;<i>=20
+</I>&gt;<i> Thanks in advance,
+</I>&gt;<i>=20
+</I>&gt;<i> =3D=3D=3D=3D=3D
+</I>&gt;<i> Atte.Carlos Alberto Vences S=E1nchez0172112393Metepec, M=<A HREF="mailto:E9xicoxneon79@ne">E9xicoxneon79@ne</A>=
+</I>tscape.net
+&gt;<i>=20
+</I>&gt;<i> __________________________________
+</I>&gt;<i> Do you Yahoo!?
+</I>&gt;<i> Yahoo! SiteBuilder - Free web site building tool. Try it!
+</I>&gt;<i> <A HREF="http://webhosting.yahoo.com/ps/sb/">http://webhosting.yahoo.com/ps/sb/</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Openoffice mailing list
+</I>&gt;<i> <A HREF="mailto:Openoffice@lists.ximian.com">Openoffice@lists.ximian.com</A>
+</I>&gt;<i> <A HREF="http://lists.ximian.com/mailman/listinfo/openoffice">http://lists.ximian.com/mailman/listinfo/openoffice</A>
+</I>&gt;<i>=20
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000252.html">[Open Office] Failed to copy some files
+</A></li>
+	<LI> Next message: <A HREF="000255.html">[Open Office] Failed to copy some files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#253">[ date ]</a>
+              <a href="thread.html#253">[ thread ]</a>
+              <a href="subject.html#253">[ subject ]</a>
+              <a href="author.html#253">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>
