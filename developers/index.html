@@ -152,18 +152,20 @@
 
 	<h4>Source</h4>
     <p>ooo-build sources are stored in 
-    <a href="http://developer.gnome.org/tools/svn.html">Subversion</a>.
-    To check out the latest version of ooo-build:</p>
+    <a href="http://git-scm.com/">Git</a>, <a
+    href="http://www.freedesktop.org/wiki/Software/ooo-build/GettingIt">more
+    detailed instructions</a> are available, but to simply check out the latest
+    version of ooo-build:</p>
 
     <div class="pre">
-        svn co http://svn.gnome.org/svn/ooo-build/trunk ooo-build
+        git clone git://anongit.freedesktop.org/git/ooo-build/ooo-build
     </div>
 
     <p>Registered developers should use the following command to enable writing
     to the repository:</p>
 
     <div class="pre">
-        svn co svn+ssh://<i>login@</i>svn.gnome.org/svn/ooo-build/trunk ooo-build
+        git clone ssh://[username@]git.freedesktop.org/git/ooo-build/ooo-build
     </div>
 
     <p>Once the source has been checked out, ooo-build can be built in 
