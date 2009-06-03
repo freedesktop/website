@@ -8,9 +8,9 @@ $content = <<<EOT
 
 <h3><a href="http://go-oo.mirrorbrain.org/stable/win32/">Windows</a></h3>
 <p>Simply download the 
-<a href="http://go-oo.mirrorbrain.org/stable/win32/3.0.1/GoOo-3.0.1-4.exe">GoOo-en-US-<i>version</i>.exe</a>
+<a href="http://go-oo.mirrorbrain.org/stable/win32/3.1/GoOo-3.1-10.exe">GoOo-en-US-<i>version</i>.exe</a>
 file, and your
-<a href="http://go-oo.mirrorbrain.org/stable/win32/3.0.1/">native lang-pack</a>, and
+<a href="http://go-oo.mirrorbrain.org/stable/win32/3.1/">native lang-pack</a>, and
 install them one by one.
 </p>
 
@@ -24,9 +24,9 @@ installing <a href="http://go-oo.mirrorbrain.org/stable/linux-i586/GoOo-release-
 
 <h3><a href="http://download.go-oo.org/">Source Code</a></h3>
 
-<p>Download: <a href="http://download.go-oo.org/OOO300/ooo-build-3.0.1.2.tar.gz">ooo-build-3.0.1.2</a>
+<p>Download: <a href="http://download.go-oo.org/OOO310/ooo-build-3.1.0.6.tar.gz">ooo-build-3.1.0.6</a>
 <br />
-Browse: <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/">general overview</a>, <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/">master branch</a>, <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/?h=ooo-build-3-0-1">ooo-build-3-0-1 branch</a>
+Browse: <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/">general overview</a>, <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/">master branch</a>, <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/?h=ooo-build-3-1">ooo-build-3-1 branch</a>
 <br />
 To clone: <tt>\$ git clone git://anongit.freedesktop.org/git/ooo-build/ooo-build</tt> (<a href="http://www.freedesktop.org/wiki/Software/ooo-build/GettingIt">more info</a>)
 <br />
@@ -40,13 +40,20 @@ Announces: subscribe to the <a href="http://lists.go-oo.org/listinfo.cgi/announc
 <h3>openSUSE</h3>
 <dd><a href="http://en.opensuse.org/OpenOffice.org">Information</a>, and Repositories:
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/SLED_10/">SLED10</a>, 
-<a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/openSUSE_10.2/">10.2</a>,
+<a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/SLED_11/">SLED11</a>
+<a href="http://software.opensuse.org/ymp/OpenOffice.org:STABLE/SLE_11/OpenSUSE_org.ymp">
+<img src="opensuse-1click.png" title="1-click install" alt="1-click install" />
+</a>
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/openSUSE_10.3/">10.3</a>
 <a href="http://software.opensuse.org/ymp/OpenOffice.org:STABLE/openSUSE_10.3/OpenSUSE_org.ymp">
 <img src="opensuse-1click.png" title="1-click install" alt="1-click install" border="0" />
 </a>,
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/openSUSE_11.0/">11.0</a>
 <a href="http://software.opensuse.org/ymp/OpenOffice.org:STABLE/openSUSE_11.0/OpenSUSE_org.ymp">
+<img src="opensuse-1click.png" title="1-click install" alt="1-click install" />
+</a>
+<a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/openSUSE_11.1/">11.1</a>
+<a href="http://software.opensuse.org/ymp/OpenOffice.org:STABLE/openSUSE_11.1/OpenSUSE_org.ymp">
 <img src="opensuse-1click.png" title="1-click install" alt="1-click install" />
 </a>
 </dd>
@@ -108,13 +115,20 @@ case you get to keep both bits.</dd>
 <a href="http://go-oo.mirrorbrain.org/unstable/linux-i586/">Universal Linux</a></dd>
 <dd>SUSE:
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/SLED_10/">SLED10</a>, 
-<a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_10.2/">10.2</a>,
+<a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/SLE_11/">SLED11</a>
+<a href="http://software.opensuse.org/ymp/OpenOffice.org:UNSTABLE/SLE_11/OpenSUSE_org.ymp">
+<img src="opensuse-1click.png" title="1-click install" alt="1-click install" />
+</a>
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_10.3/">10.3</a>
 <a href="http://software.opensuse.org/ymp/OpenOffice.org:UNSTABLE/openSUSE_10.3/OpenSUSE_org.ymp">
 <img src="opensuse-1click.png" title="1-click install" alt="1-click install" width="101"
 border="0" height="26"/></a>,
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_11.0/">11.0</a>
 <a href="http://software.opensuse.org/ymp/OpenOffice.org:UNSTABLE/openSUSE_11.0/OpenSUSE_org.ymp">
+<img src="opensuse-1click.png" title="1-click install" alt="1-click install" width="101"
+border="0" height="26"/></a>
+<a href="http://download.opensuse.org/repositories/OpenOffice.org:/UNSTABLE/openSUSE_11.1/">11.1</a>
+<a href="http://software.opensuse.org/ymp/OpenOffice.org:UNSTABLE/openSUSE_11.1/OpenSUSE_org.ymp">
 <img src="opensuse-1click.png" title="1-click install" alt="1-click install" width="101"
 border="0" height="26"/></a>
 </dd>
