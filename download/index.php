@@ -11,7 +11,7 @@ $content = <<<EOT
 <a href="http://go-oo.mirrorbrain.org/stable/win32/3.1/GoOo-3.1-10.exe">GoOo-en-US-<i>version</i>.exe</a>
 file, and your
 <a href="http://go-oo.mirrorbrain.org/stable/win32/3.1/">native lang-pack</a>, and
-install them one by one.
+install them one by one. We suggest to uninstall the older version before.
 </p>
 
 <h3><a href="http://go-oo.mirrorbrain.org/stable/linux-i586/">Universal Linux</a></h3>
