@@ -105,10 +105,12 @@ $content = <<<EOT
 	<h4>Mailing List</h4>
 	
 	<p>There is a mailing for ooo-build development. 
-	<a href="http://lists.go-oo.org/listinfo.cgi/dev-go-oo.org">More info</a> on
-	how to <a href="http://lists.go-oo.org/listinfo.cgi/dev-go-oo.org">subscribe</a> or to 
-	read the <a href="http://lists.go-oo.org/pipermail/dev-go-oo.org/">archive</a>. 
-	There is also the <a href="mailarchive/">old mailing list archive</a>.</p>
+	<a href="http://lists.freedesktop.org/mailman/listinfo/ooo-build">More info</a> on
+	how to <a href="http://lists.freedesktop.org/mailman/listinfo/ooo-build">subscribe</a> or to 
+	read the <a href="http://lists.freedesktop.org/archives/ooo-build/">archive</a>. 
+	The mailing list have been migrated twice over the time, so you can see
+	also the <a href="mailarchive/">first old mailing list archive</a>, and the
+	<a href="http://lists.go-oo.org/pipermail/dev-go-oo.org/">second old archive</a>.</p>
 
 	<h4>Tarballs</h4>
         <p>You can download <a href="http://download.go-oo.org/">packages of OO.o here</a>. 

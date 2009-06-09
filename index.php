@@ -52,7 +52,7 @@ $content = <<<EOT
     <p>
 	Contributing code to go-oo is simple, and fast, following the
 	traditional hackers' process of peer code review: just mail
-	patches to the <a href="http://lists.go-oo.org/listinfo.cgi/dev-go-oo.org">
+	patches to the <a href="http://lists.freedesktop.org/mailman/listinfo/ooo-build">
 	mailing list</a>, or when we get used to your code - commit your
 	patch immediately to HEAD ooo-build: no CWS, no hours of tagging,
 	paperwork, no specification, no hassle. Of course - if

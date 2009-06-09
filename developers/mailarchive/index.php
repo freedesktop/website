@@ -6,9 +6,10 @@ $content = <<<EOT
      <p>
      This is the archive of the old mailing list that was running
      at Ximian. If you are looking for the new archive, go 
-     <a href="http://lists.go-oo.org/pipermail/dev-go-oo.org/">here</a>.
+     <a href="http://lists.freedesktop.org/archives/ooo-build/">here</a>.
+     [At some stage we also had the archive <a href="http://lists.go-oo.org/pipermail/dev-go-oo.org/">here</a>.]
      If you are looking for information on how to subscribe or unsubscribe,
-     go <a href="http://lists.go-oo.org/listinfo.cgi/dev-go-oo.org">here</a>.
+     go <a href="http://lists.freedesktop.org/mailman/listinfo/ooo-build">here</a>.
      </p>
      
      	<table border="3">
