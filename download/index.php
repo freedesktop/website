@@ -77,6 +77,10 @@ To install it just type as root <pre># apt-get install openoffice.org</pre></dd>
 To install it just type as root <pre># apt-get install openoffice.org</pre></dd>
 <dl>
 
+<h3>Mandriva</h3>
+<dd>Mandriva provides Go-OO in their repositories. 
+<dl>
+
 <h3>NeoOffice</h3>
 <dd><a href="http://www.neooffice.org/">NeoOffice</a> - which provides openoffice
 for the Mac / OS/X is built on top of the Go-OO! version.</dd>
