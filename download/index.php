@@ -26,7 +26,7 @@ can be simply added by installing <a href="http://go-oo.mirrorbrain.org/stable/l
 <h3><a href="http://go-oo.mirrorbrain.org/stable/mac/">MAC OSX Intel</a></h3>
 <p>Simply download the
 <a href="http://go-oo.mirrorbrain.org/stable/mac/3.1.1/OOo_3.1.1_090902_MacOSXIntel_install.dmg">main</a>
-package, and your <a href="http://go-oo.mirrorbrain.org/stable/mac/3.1/">native lang-pack</a>.
+package, and your <a href="http://go-oo.mirrorbrain.org/stable/mac/3.1.1/">native lang-pack</a>.
 Then install the main package, the usual way, e.g. drag the ooo icon inside the dmg to the Application folder.
 Finally, run the included lang pack installer, e.g. open .dmg, double click the icon inside, and answer the questions.
 </p>
