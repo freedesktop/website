@@ -25,7 +25,7 @@ can be simply added by installing <a href="http://go-oo.mirrorbrain.org/stable/l
 
 <h3><a href="http://go-oo.mirrorbrain.org/stable/mac/">MAC OSX Intel</a></h3>
 <p>Simply download the
-<a href="http://go-oo.mirrorbrain.org/stable/mac/3.1/OOo_3.1.0_rc6_MacOSXIntel_install.dmg">main</a>
+<a href="http://go-oo.mirrorbrain.org/stable/mac/3.1.1/OOo_3.1.1_090902_MacOSXIntel_install.dmg">main</a>
 package, and your <a href="http://go-oo.mirrorbrain.org/stable/mac/3.1/">native lang-pack</a>.
 Then install the main package, the usual way, e.g. drag the ooo icon inside the dmg to the Application folder.
 Finally, run the included lang pack installer, e.g. open .dmg, double click the icon inside, and answer the questions.
@@ -33,9 +33,9 @@ Finally, run the included lang pack installer, e.g. open .dmg, double click the 
 
 <h3><a href="http://download.go-oo.org/">Source Code</a></h3>
 
-<p>Download: <a href="http://download.go-oo.org/OOO310/ooo-build-3.1.0.6.tar.gz">ooo-build-3.1.0.6</a>
+<p>Download: <a href="http://download.go-oo.org/OOO310/ooo-build-3.1.1.1.tar.gz">ooo-build-3.1.1.1</a>
 <br />
-Browse: <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/">general overview</a>, <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/">master branch</a>, <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/?h=ooo-build-3-1">ooo-build-3-1 branch</a>
+Browse: <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/">general overview</a>, <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/">master branch</a>, <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/?h=ooo-build-3-1-1">ooo-build-3-1-1 branch</a>
 <br />
 To clone: <tt>\$ git clone git://anongit.freedesktop.org/git/ooo-build/ooo-build</tt> (<a href="http://www.freedesktop.org/wiki/Software/ooo-build/GettingIt">more info</a>)
 <br />
