@@ -21,6 +21,8 @@ The URLs <a href="http://go-oo.mirrorbrain.org/stable/linux-i586/">http://go-oo.
 <a href="http://go-oo.mirrorbrain.org/stable/linux-x86_64/">http://go-oo.mirrorbrain.org/stable/linux-x86_64/</a>
 are YUM repositories. You could add them as extra installation sources into your favourite package manager. The i586 repository
 can be simply added by installing <a href="http://go-oo.mirrorbrain.org/stable/linux-i586/GoOo-release-0.0.3-0.noarch.rpm">this package</a>.
+Alternatively, you might download the packages by <a href="http://go-oo.org/download/download-go-oo.py">this script</a>.
+You need to set executive permissions or call it: <code>python download-go-oo.py</code>.
 </p>
 
 <h3><a href="http://go-oo.mirrorbrain.org/stable/mac/">MAC OSX Intel</a></h3>
