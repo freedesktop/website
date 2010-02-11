@@ -28,22 +28,22 @@ import re
 import sys
 import urllib
 system = "linux-i586"
-version = "3.1.1"
-source = "http://go-oo.mirrorbrain.org/stable/linux-i586/3.1.1"
+version = "3.2"
+source = "http://go-oo.mirrorbrain.org/stable/linux-i586/3.2"
 
 language = "en_US"
 distribution = "freedesktop"
 
 package_list = {}
 # All localizations
-localizations = ["af", "ar", "as", "be", "bg", "bn", "br", "brx", "bs", "by", 
+localizations = ["af", "ar", "as", "be", "bg", "bn", "bo", "br", "brx", "bs", "by", 
     "ca", "cs", "cy", "da", "de", "dgo", "dz", "el", "en", "eo", "es", "et", 
     "eu", "fa", "fi", "fr", "ga", "gd", "gl", "gu", "he", "hi", "hr", "hu", 
-    "it", "ja", "ka", "kk", "km", "kn", "ko", "kok", "ks", "ku", "lo", "lt", 
+    "is", "it", "ja", "ka", "kid", "kk", "km", "kn", "ko", "kok", "ks", "ku", "ky", "lo", "lt", 
     "lv", "mai", "mk", "ml", "mn", "mni", "mr", "ms", "my", "nb", "ne", "nl",
-    "nn", "nr", "ns", "oc", "or", "pa", "pl", "pt", "ro", "ru", "rw", "sa", 
-    "sat", "sc", "sd", "sh", "sk", "sl", "sr", "ss", "st", "sv", "sw", "ta",
-    "te", "tg", "th", "ti", "tn", "tr", "ts", "uk", "ur", "uz", "ve", "vi", 
+    "nn", "nr", "ns", "oc", "om", "or", "pa", "pap", "pl", "ps", "pt", "ro", "ru", "rw", "sa", 
+    "sat", "sc", "sd", "sh", "si", "sk", "sl", "sr", "ss", "st", "sv", "sw", "ta",
+    "te", "tg", "th", "ti", "tn", "tr", "ts", "ug", "uk", "ur", "uz", "ve", "vi", 
     "xh", "zh", "zu"] 
 # All dialects
 sublocalizations = { "bn": [None, "BD", "IN"], "en": ["GB", "US", "ZA"],
