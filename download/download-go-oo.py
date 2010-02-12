@@ -47,7 +47,8 @@ localizations = ["af", "ar", "as", "be", "bg", "bn", "bo", "br", "brx", "bs", "b
     "xh", "zh", "zu"] 
 # All dialects
 sublocalizations = { "bn": [None, "BD", "IN"], "en": ["GB", "US", "ZA"],
-    "pt": [None, "BR"], "sw": [None, "TZ"], "zh": ["CN", "TW"] }
+    "pt": [None, "BR"], "sw": [None, "TZ"], "zh": ["CN", "TW"], 
+    "gu" : [None, "IN"] }
 # analyze parameters
 for arg in sys.argv[1:]:
   if arg == "--help" or arg == "help":
@@ -67,7 +68,10 @@ for arg in sys.argv[1:]:
     for l in localizations[:-1]:
       if sublocalizations.has_key(l):
 	for s in sublocalizations[l]:
-	  print "%s_%s,"%(l,s),
+	  if s:
+	    print "%s_%s,"%(l,s),
+	  else:
+	    print "%s,"%l,
       else:
 	print "%s,"%l,
     print localizations[-1],"\n"
@@ -76,7 +80,7 @@ for arg in sys.argv[1:]:
     print "freedesktop, mandriva, redhat, suse\n"
 
     print "Supported systems:"
-    print "linux-i586, linux-x86_64\n"
+    print "linux-i586, linux-x86, linux-x86_64\n"
     sys.exit(0)
 
   param, value = arg.split("=")
