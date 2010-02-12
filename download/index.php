@@ -41,7 +41,7 @@ Browse: <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/">general overv
 <br />
 To clone: <tt>\$ git clone git://anongit.freedesktop.org/git/ooo-build/ooo-build</tt> (<a href="http://www.freedesktop.org/wiki/Software/ooo-build/GettingIt">more info</a>)
 <br />
-Announces: subscribe to the <a href="http://lists.go-oo.org/listinfo.cgi/announce-go-oo.org">Go-OO announce mailing list</a>
+Announces: subscribe to the <a href="http://lists.freedesktop.org/mailman/listinfo/ooo-build-announce">Go-OO announce mailing list</a>
 </p>
 
 <hr>
