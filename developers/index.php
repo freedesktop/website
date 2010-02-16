@@ -87,7 +87,7 @@ $content = <<<EOT
                         <li><a href="http://wiki.services.openoffice.org/wiki/DomainDeveloper">Who is Whom?</a></li>
                         <li><a href="http://eis.services.openoffice.org/EIS2/servlet/GuestLogon">EIS</a></li>
                         <li><a href="http://wiki.services.openoffice.org/wiki/Tinderbox_Setup">Tinderbox setup</a></li>
-                        <li>ooo-build <a href="http://download.go-oo.org/">source</a> &amp; <a href="http://svn.gnome.org/viewvc/ooo-build/trunk/patches/">patches</a></li>
+                        <li>ooo-build <a href="http://download.go-oo.org/">source</a> &amp; <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/patches">patches</a></li>
                         <li><a href="/users/mgp/">MagicPoint users</a></li>
                 <li><a href="http://docs.go-oo.org/index.html">source code documentation</a></li>
                     </ul>
@@ -99,7 +99,7 @@ $content = <<<EOT
         <p>We have a channel #go-oo on irc.freenode.net, where you can discuss development 
 	issues with hackers.</p>
         <p>To contact anyone wrt. go-oo see the ooo-build 
-	<a href="http://svn.gnome.org/viewcvs/ooo-build/trunk/AUTHORS?view=markup">maintainers</a> 
+	<a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/AUTHORS">maintainers</a> 
 	or contact <i>mmeeks T novell com</i></p>
 
 	<h4>Mailing List</h4>
@@ -154,7 +154,7 @@ $content = <<<EOT
     </div>
 
     <p>where <i>DISTRO</i> is the basename of a file in the 
-    <a href="http://svn.gnome.org/viewvc/ooo-build/trunk/distro-configs/">distro-configs</a>
+    <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/distro-configs">distro-configs</a>
     directory, such as <i>Debian</i>, <i>SUSE</i>, or <i>Ubuntu</i>.</p>
 
     <p>See the 
