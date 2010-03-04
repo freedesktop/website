@@ -8,7 +8,7 @@ $content = <<<EOT
 
 <h3><a href="http://go-oo.mirrorbrain.org/stable/win32/">Windows</a></h3>
 <p>Simply download the 
-<a href="http://go-oo.mirrorbrain.org/stable/win32/3.2/GoOo-3.2-12.exe">GoOo-en-US-<i>version</i>.exe</a>
+<a href="http://go-oo.mirrorbrain.org/stable/win32/3.2/GoOo-3.2-13.exe">GoOo-en-US-<i>version</i>.exe</a>
 file, and your
 <a href="http://go-oo.mirrorbrain.org/stable/win32/3.2/">native lang-pack, interesting extensions</a>, and
 install them one by one. We suggest to uninstall the older version before. 
