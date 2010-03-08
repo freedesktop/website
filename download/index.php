@@ -35,7 +35,7 @@ Finally, run the included lang pack installer, e.g. open .dmg, double click the 
 
 <h3><a href="http://download.go-oo.org/">Source Code</a></h3>
 
-<p>Download: <a href="http://download.go-oo.org/OOO320/ooo-build-3.2.0.5.tar.gz">ooo-build-3.2.0.5</a>
+<p>Download: <a href="http://download.go-oo.org/OOO320/ooo-build-3.2.0.7.tar.gz">ooo-build-3.2.0.7</a>
 <br />
 Browse: <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/">general overview</a>, <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/">master branch</a>, <a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/?h=ooo-build-3-2">ooo-build-3-2 branch</a>
 <br />
