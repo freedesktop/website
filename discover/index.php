@@ -151,7 +151,7 @@ alt="go-oo EMF support screenshot" /></a></td></tr>
 <h4 id="wp-graphics-import">WordPerfect Graphics import</h4>
 <p>Go-oo imports graphics in the
 WordPerfect WPG format
-which supplements Go-oo's
+which supplements Go-oo&rsquo;s
 WordPerfect importer.
 (<a href="wpg-support.wpg" type="image/wpg">sample</a>)</p>
 <a href="go-wpg-support.png"><img src="go-wpg-support-thumb.png" 
