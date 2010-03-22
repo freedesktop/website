@@ -54,7 +54,7 @@ for a lightning second start. <br>
 
 <div class="discover-tile" style="width: 15em;">
 <h4 id="enhanced-sheet-tab">Enhanced sheet tab</h4>
-<p>Go-oo's Calc allows sheet tabs to be colored, and provides a quick way to insert new sheets.</p>
+<p>Go-oo&rsquo;s Calc allows sheet tabs to be colored, and provides a quick way to insert new sheets.</p>
 <img src="go-calc-sheet-tab.png" alt="go-oo enhanced sheet tab screenshot" />
 </div>
 
