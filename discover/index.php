@@ -53,12 +53,9 @@ for a lightning second start. <br>
 </div>
 
 <div class="discover-tile" style="width: 15em;">
-<h4 id="calc-solver">Calc solver</h4>
-<p>Go-oo has a linear optimization solver
-that can optimize a cell value based on
-arbitrary constraints, built into Calc.</p>
-<a href="go-calc-solver.png">
-<img src="go-calc-solver-thumb.png" alt="go-oo solver screenshot" /></a>
+<h4 id="enhanced-sheet-tab">Enhanced sheet tab</h4>
+<p>Go-oo's Calc allows sheet tabs to be colored, and provides a quick way to insert new sheets.</p>
+<img src="go-calc-sheet-tab.png" alt="go-oo enhanced sheet tab screenshot" />
 </div>
 
 <div class="discover-tile" style="width: 34em;">
