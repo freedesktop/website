@@ -38,10 +38,11 @@ SVG import filter. (<a href="tiger.svg" type="image/svg+xml">sample</a>)</p>
 </div>
 
 <div class="discover-tile" style="width: 15em;">
-<h4>Startup performance</h4>
-<p>Go-oo starts faster:<br>
-go-oo 2.1 vs. Sun/OO.o 2.3</p>
-<img src="startup.png" alt="startup comparison chart" />
+<h4>1 million rows in Calc</h4>
+<p>Go-oo&rsquo;s Calc supports 1 million rows.  Major performance issues associated with the row limit increase have been worked out to ensure usability 
+    (<a href="http://kohei.us/2010/02/20/increasing-calcs-row-limit-to-1-million/">read more</a>).<br>
+</p>
+<img src="go-calc-row-limit.png" alt="1 million row support" />
 </div>
 
 <div class="discover-tile" style="width: 15em;">
