@@ -77,10 +77,13 @@ numbers as context demands.
 
 <div class="discover-tile" style="width: 15em;">
 <h4 id="vba-support">VBA support</h4>
-<p>Go-oo provides VBA macro support
+<p>Go-oo provides VBA macro and Userform support
 for OpenOffice.org (<a href="go-vba-hypo.xls">sample</a>).</p>
 <a href="go-excel-vba.png">
 <img src="go-excel-vba-thumb.png" alt="go-oo screenshot for VBA"/></a>
+Userform (<a href="go-puzzler.xls">sample</a>)
+<a href="go-puzzler.png">
+<img src="go-puzzler-thumb.png" alt="go-oo screenshot for VBA ( userform support )"/></a>
 </div>
 
 <div class="discover-tile" style="width: 15em;">
