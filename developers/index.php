@@ -188,10 +188,9 @@ print_page("Go-OO! - Developers",
    "Developers",
    $content,
    array (
-      "Bonsai" => "http://bonsai.go-oo.org/cvsqueryform.cgi",
       "OpenGrok" => "http://svn.services.openoffice.org/opengrok/",
       "Tinderbox" => "http://tinderbox.go-oo.org/",
-      "Buildbot" => "http://buildbot.go-oo.org",
+      "Buildbot" => "http://termite.services.openoffice.org",
       "#go-oo IRC Channel" => array (
            "href" => "http://embed.mibbit.com/?server=irc.freenode.net&channel=%23go-oo&noServerTab=false",
            "target" => "blank"
