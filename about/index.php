@@ -29,7 +29,7 @@ for($i=0;$i<count($names);$i+=$limit)
 }
 $content .= <<<EOT
 <p>If you believe you should be on this page, but are missing please
-ping me <i>michael dot meeks at</i><i> novell.com</i></p>
+ping me <i>kendy at</i><i> novell.com</i></p>
 EOT;
 
 
