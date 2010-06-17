@@ -183,6 +183,13 @@ alt="go-oo Lotus WordPro support screenshot" /></a>
 </p>
 </div>
 
+<div class="discover-title">
+<h4 id="navigator">Foldable headings in navigator</h4>
+<p>Go-oo Writer navigator is improved to allow folding the headings for better usability.<br/>
+<img src="go-navigator.png" alt="go-oo foldable entries in navigator"/>
+</p>
+</div>
+
 <hr>
 <p>Of course, there are many other fixes and features included, too numerous to mention.</p>
 
