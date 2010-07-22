@@ -28,8 +28,8 @@ import re
 import sys
 import urllib
 system = "linux-i586"
-version = "3.2"
-source = "http://go-oo.mirrorbrain.org/stable/linux-i586/3.2"
+version = "3.2.1"
+source = "http://go-oo.mirrorbrain.org/stable/linux-i586/3.2.1"
 
 language = "en_US"
 distribution = "freedesktop"
