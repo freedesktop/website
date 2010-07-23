@@ -51,8 +51,12 @@ Announces: subscribe to the <a href="http://lists.freedesktop.org/mailman/listin
 <h3>openSUSE</h3>
 <dd><a href="http://en.opensuse.org/OpenOffice.org">Information</a>, and Repositories:
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/SLED_10/">SLED10</a>, 
-<a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/SLED_11/">SLED11</a>
+<a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/SLE_11/">SLED11</a>
 <a href="http://software.opensuse.org/ymp/OpenOffice.org:STABLE/SLE_11/OpenSUSE_org.ymp">
+<img src="opensuse-1click.png" title="1-click install" alt="1-click install" />
+</a>
+<a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/SLE_11_SP1/">SLED11-SP1</a>
+<a href="http://software.opensuse.org/ymp/OpenOffice.org:STABLE/SLE_11_SP1/OpenSUSE_org.ymp">
 <img src="opensuse-1click.png" title="1-click install" alt="1-click install" />
 </a>
 <a href="http://download.opensuse.org/repositories/OpenOffice.org:/STABLE/openSUSE_11.1/">11.1</a>
