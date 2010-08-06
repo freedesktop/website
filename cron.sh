@@ -1,5 +1,9 @@
 #! /bin/sh
 
-cd /home/ooo/planet
-date >> /home/ooo/planet/log
-python planet.py ooo/config.ini >> /home/ooo/planet/log 2>&1
+cd /srv/planet-config
+
+(
+    flock 200
+    date >> /var/log/planet.log
+    python /srv/planet-2.0/planet.py config.ini >> /var/log/planet.log 2>&1
+) 200>/srv/planet-config/planet.lock
