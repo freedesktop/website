@@ -1,5 +1,1 @@
-AddCharset UTF-8 .xml
-<Directory ~ "^.svn">
-    Order allow,deny
-    Deny from all
-</Directory>
+DirectoryIndex index.html
