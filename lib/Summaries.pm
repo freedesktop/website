@@ -108,7 +108,7 @@ sub summary_pages {
   # However, we do not wish to run these functions if tinderbox is
   # configured to run without a build module or TreeState.
 
-  if ( (!($@)) && (@LATEST_STATUS) && (@BUILD_NAMES) ) {
+  #FIXME if ( (!($@)) && (@LATEST_STATUS) && (@BUILD_NAMES) ) {
     @SUMMARY_FUNCS = (
                       'quickparse',
                       'panel',
@@ -123,7 +123,7 @@ sub summary_pages {
 #                          'rdf',
 
                      );
-  }
+  #}
 
   my ($index_file) = FileStructure::get_filename($tree,'index');
 
@@ -135,7 +135,7 @@ sub summary_pages {
                     );
 
   foreach $func (sort @SUMMARY_FUNCS) {
-    
+   	#print "processing $tree with $func\n";  
     my ($header, $body, $footer, $extension) = &$func();
 
     my ($summary_file) = (FileStructure::get_filename($tree, 'tree_HTML').
@@ -239,7 +239,6 @@ sub treegroup_func_page    {
 
 sub create_global_index {
   my ($summary_ref) = @_;
-
   my ($out);
   my (@trees) = TreeData::get_all_trees();
   my (@tree_admin_links, @tree_dir_links);
@@ -277,7 +276,6 @@ sub create_global_index {
   # manager views are defined in TreeData.pm
 
   foreach $groupname (sort keys %TreeData::VC_TREE_GROUPS) {
-
     push @func_summary_links, (
                                "<p>Summary Information for <strong>$groupname</strong>:</p>\n\n",
                                "\t<ul>\n",

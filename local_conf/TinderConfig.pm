@@ -100,7 +100,7 @@ $TINDERBOX_HTML_DIR = "/home/ooweb/tinderbox.go-oo.org";
 # outside of the HTML tree so that the web server can not send the
 # internal data over the network.
 
-$TINDERBOX_DATA_DIR = "/home/ooweb/tinderbox";
+$TINDERBOX_DATA_DIR = "/home/ooweb/var/tinderboxdata";
 
 # Where to store the compressed HTML converted log files. Typically
 # this is either the DATA_DIR or the HTML dir, though it can be
@@ -132,7 +132,7 @@ $GIF_URL = 'http://lounge.mozilla.org/tinderbox2/gif';
 
 # Error log filename:
 
-$ERROR_LOG = "/home/ooweb/var/log/tinderbox2/tinderbox2.log";
+$ERROR_LOG = "/home/ooweb/var/log/tinderbox2.log";
   
 # Where the daemon mode lock (for all trees) is placed
 $LOCK_FILE = $TINDERBOX_HTML_DIR."/tinderd.lock";
@@ -212,7 +212,7 @@ $PopUpImpl = (
 
 #	   'TinderDB::VC_CVS',
 	   #svnbackup 'TinderDB::VC_Bonsai',
-	   'TinderDB::VC_SVN',
+	   'TinderDB::VC_OOo',
 #	   'TinderDB::VC_PVCSDimensions',
 #         'TinderDB::VC_Perforce',
 
@@ -369,7 +369,7 @@ $VC_NAME = "Guilty";
 
 # a regular expression to find bug ticket numbers in checkin comments.
 
-$VC_BUGNUM_REGEXP = '(\d\d\d+)';
+$VC_BUGNUM_REGEXP = '#i(\d\d\d+)#';
 
 # Pick one method for storing data, Data::Dumper is slow but text
 # files allows great debugging capabilities and Storable, available
@@ -421,7 +421,7 @@ $BONSAI_DIR = "/home/ooweb/bonsai.go-oo.org";
 # If you your using BT_Generic we need to know how to make HTML
 # to point to the bug tracking CGI programs.
 
-$BT_URL	= 'http://www.openoffice.org/issues';
+$BT_URL	= 'http://qa.openoffice.org/issues/show_bug.cgi?id=';
 
 # The name of the bug tracking system as it should appear on the
 # column heading.

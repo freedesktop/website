@@ -266,18 +266,24 @@ sub addTreesFromFile($)
     if (open ($OtherTrees, $FileName)) {
         while (<$OtherTrees>) {
                 /^\#/ && next;
+		chomp;
                 my $tree;
 		my $master;
 		my $codeline;
 		my $branch;
+		my ($modules, $new_modules, $vcs);
 		my $svnurl = 'svn://svn.services.openoffice.org/ooo';
-    		($tree, $master, $branch) = split(" : ");
-		chomp($tree);
+    		($tree, $master, $branch, $modules, $new_modules, $vcs) = split(/\s*:\s*/);
 #               $tree =~ s/\s*:.*//g;
 #               print STDERR "Add tree '$tree' from file $FileName\n";
 		next if $tree eq "";
 		if ($tree =~ /^[A-Z]+/) {
 			$svnurl=$svnurl."/tags/".$tree;
+			$vcs='SVN' if ($tree =~ /^OOO3[2-9]/ || $tree =~ /^DEV/); # assume svn for all milestones
+			# DEV300_m64 and later, OOO320_m13 and later in hg
+			my $treenum =$tree;
+			$vcs='HG' if ( ($treenum =~ s/^DEV300_m//) && ($treenum >= 64)); 
+			$vcs='HG' if ( ($treenum =~ s/^OOO320_m//) && ($treenum >= 13)); 
 		} else {
 			$svnurl=$svnurl."/cws/".$tree;
 		}
@@ -296,6 +302,7 @@ sub addTreesFromFile($)
                                     codeline => $codeline, 
                                     cwsstate => $cwsstate, 
                                     branch => $branch };
+		$VC_TREE{$tree}{'VCS'} = $vcs if (defined $vcs);
                 # add the tree to the treegroup (creates seperate summaries)
                 $VC_TREE_GROUPS{$group}{$tree} = 1;
 		$count_trees_by_master{$master}{$tree} = 1;
@@ -304,6 +311,11 @@ sub addTreesFromFile($)
     }
 }
 
+# create default groups, to have the status pages cleared when there are no entries
+%{$VC_TREE_GROUPS{'new'}}=();
+%{$VC_TREE_GROUPS{'ready_for_QA'}}=();
+%{$VC_TREE_GROUPS{'approved'}}=();
+%{$VC_TREE_GROUPS{'nominated'}}=();
 addTreesFromFile("/home/ooweb/tinderbox.go-oo.org/tags/tag-list-qa");
 addTreesFromFile("/home/ooweb/tinderbox.go-oo.org/tags/tag-list-new");
 addTreesFromFile("/home/ooweb/tinderbox.go-oo.org/tags/tag-list-approved");
@@ -505,7 +517,6 @@ sub get_tree_codeline {
 
 sub tree_exists {
   my ($tree) = @_;
-
   ($VC_TREE{$tree}) &&
     return 1;
 

@@ -104,6 +104,9 @@ $VC_BUGNUM_REGEXP = $TinderConfig::VC_BUGNUM_REGEXP || '(\d\d\d+)';
 $NOTICE = TinderDB::Notice->new();
 $DEBUG  = 1;
 
+#print "init SVN.pm\n";
+my %SVNTREES = ();
+
 sub parse_svn_time { 
   # convert svn times into unix times.
   # timestamp is passed in as "2005-06-02 01:38:15 -0400 (Thu, 02 Jun 2005)"
@@ -196,25 +199,26 @@ sub get_all_svn_data {
   my (@times) = sort {$b <=> $a} keys %{ $DATABASE{$tree} };
 
   my $out;
-  $out .= "<HTML>\n";
-  $out .= "<HEAD>\n";
-  $out .= "\t<TITLE>SVN Checkin Data as gathered by Tinderbox</TITLE>\n";
-  $out .= "</HEAD>\n";
-  $out .= "<BODY>\n";
-  $out .= "<H3>SVN Checkin Data as gathered by Tinderbox</H3>\n";
+  $out .= "<html>\n";
+  $out .= "<head>\n";
+  $out .= "\t<title>SVN Checkin Data as gathered by Tinderbox</title>\n";
+  $out .= "</head>\n";
+  $out .= "<body>\n";
+  $out .= "<h3>SVN Checkin Data as gathered by Tinderbox</h3>\n";
   $out .= "\n\n";
-  $out .= "<TABLE BORDER=1 BGCOLOR='#FFFFFF' CELLSPACING=1 CELLPADDING=1>\n";
-  $out .= "\t<TR>\n";
-  $out .= "\t\t<TH>Time</TH>\n";
-  $out .= "\t\t<TH>Tree State</TH>\n";
-  $out .= "\t\t<TH>Author</TH>\n";
-  $out .= "\t\t<TH>File</TH>\n";
-  $out .= "\t</TR>\n";
+  $out .= "<table BORDER=1 BGCOLOR='#FFFFFF' CELLSPACING=1 CELLPADDING=1>\n";
+  $out .= "\t<tr>\n";
+  $out .= "\t\t<th>Time</th>\n";
+  $out .= "\t\t<th>Tree State</th>\n";
+  $out .= "\t\t<th>Author</th>\n";
+  $out .= "\t\t<th>Comment</th>\n";
+  $out .= "\t\t<th>File</th>\n";
+  $out .= "\t</tr>\n";
 
   # we want to be able to make links into this page either with the
   # times of checkins or of times which are round numbers.
 
-  my $rounded_increment = $main::SECONDS_PER_MINUTE * 5;
+  my $rounded_increment = $main::SECONDS_PER_MINUTE * 30;
   my $rounded_time = main::round_time($times[0]);
 
   # Why are the names so confusing in this code?
@@ -253,12 +257,12 @@ sub get_all_svn_data {
 
           $treestate = $DATABASE{$tree}{$time}{'treestate'};
 
-          $out .= "\t<TR>\n";
-          $out .= "\t\t<TD>$cell_time</TD>\n";
-          $out .= "\t\t<TD ALIGN=center >$treestate</TD>\n";
-          $out .= "\t\t<TD>$HTMLPopUp::EMPTY_TABLE_CELL</TD>\n";
-          $out .= "\t\t<TD>$HTMLPopUp::EMPTY_TABLE_CELL</TD>\n";
-          $out .= "\t</TR>\n";
+          $out .= "\t<tr>\n";
+          $out .= "\t\t<td>$cell_time</td>\n";
+          $out .= "\t\t<td ALIGN=center >$treestate</td>\n";
+          $out .= "\t\t<td>$HTMLPopUp::EMPTY_TABLE_CELL</td>\n";
+          $out .= "\t\t<td>$HTMLPopUp::EMPTY_TABLE_CELL</td>\n";
+          $out .= "\t</tr>\n";
       }
 
       if ( defined($DATABASE{$tree}{$time}{'author'}) ) {
@@ -270,34 +274,36 @@ sub get_all_svn_data {
               my @files =  sort (keys %{ $recs->{$author} });
               my $rowspan = scalar (@files);
               my $cell_options = "ALIGN=center ROWSPAN=$rowspan";
-
-              $out .= "\t<TR>\n";
-              $out .= "\t\t<TD $cell_options>$cell_time</TD>\n";
-              $out .= "\t\t<TD $cell_options>$treestate</TD>\n";
-              $out .= "\t\t<TD $cell_options>$author</TD>\n";
+              my $comment = $DATABASE{$tree}{$time}{'log'}{$author};
+              $comment =~ s/$VC_BUGNUM_REGEXP/<a href="$TinderConfig::BT_URL$1">$1<\/a>/g;
+              $out .= "\t<tr>\n";
+              $out .= "\t\t<td $cell_options>$cell_time</td>\n";
+              $out .= "\t\t<td $cell_options>$treestate</td>\n";
+              $out .= "\t\t<td $cell_options>$author</td>\n";
+              $out .= "\t\t<td $cell_options>$comment</td>\n";
 
               my $num;
 
               foreach $file (@files) {
-                  ($num) && ($out .= "\t<TR>\n");
+                  ($num) && ($out .= "\t<tr>\n");
 
                   $num ++;
 
-                  $out .= "\t\t<TD>$file</TD>\n";
-                  $out .= "\t</TR>\n";
+                  $out .= "\t\t<td>$file</td>\n";
+                  $out .= "\t</tr>\n";
               } # $file
           } # $author
       }
 
   } # $time
 
-  $out .= "</TABLE>\n";
+  $out .= "</table>\n";
   $out .= "\n\n";
   $out .= "This page was generated at: ";
   $out .= localtime($main::TIME);
   $out .= "\n\n";
-  $out .= "</BODY>\n";
-  $out .= "</HTML>\n";
+  $out .= "</body>\n";
+  $out .= "</html>\n";
   return $out;
 }
 
@@ -345,6 +351,20 @@ sub apply_db_updates {
   # Get the recent data from SVN and the treestate file.
 
   my ($self, $tree,) = @_;
+
+  unless (%SVNTREES) {
+    # create list of cws tracked in svn
+    print "getting trees tracked in svn\n";
+    my @svnlist = main::cache_cmd("svn list svn://svn.services.openoffice.org/ooo/tags svn://svn.services.openoffice.org/ooo/cws");
+    foreach my $cws (@svnlist) {
+      chomp $cws; chop $cws; # remove trailing slash
+      $SVNTREES{$cws}=0;
+    }
+  }
+  unless (defined $SVNTREES{$tree}) {
+    #print "not tracked in svn: $tree\n";
+    return 0;
+  }
 
   my ($new_tree_state) = TinderHeader::gettree_header('TreeState', $tree);
   my ($last_tree_data, $second2last_tree_data, $last_svn_data) = 
@@ -400,8 +420,8 @@ sub apply_db_updates {
  #              '--revision', $svn_date_str, 
  #              $TreeData::VC_TREE{$tree}{'root'},);
   # HACKY HACKY HACKY - the duplication with grep is to make that command not fail for cvs based trees
-  my (@cmd) = ('svn log --verbose --revision '.$svn_date_str.' '.$TreeData::VC_TREE{$tree}{'root'}.
-	       '|| ( svn log '.$TreeData::VC_TREE{$tree}{'root'}.' 2>&1 | grep "^svn: File not found: revision" >/dev/null )' ,);
+  my (@cmd) = ('svn log --verbose --revision '.$svn_date_str.' '.$TreeData::VC_TREE{$tree}{'root'},);
+	       #'|| ( svn log '.$TreeData::VC_TREE{$tree}{'root'}.' 2>&1 | grep "^svn: File not found: revision" >/dev/null )' ,);
 
   my (@svn_output) = main::cache_cmd(@cmd);
 
@@ -460,7 +480,7 @@ sub apply_db_updates {
 
             $commentlinecount = shift @line;
 
-            ($dest_dir, $repository_dir, $file, $comments) = '';
+            ($dest_dir, $repository_dir, $file, $comment) = '';
 
             $parseRevision = False;
             $parseComments = False;
@@ -496,6 +516,7 @@ sub apply_db_updates {
                 $commentlinecount -= 1;
               
                 if ( $commentlinecount == 0 ) {
+		    $DATABASE{$tree}{$time}{'log'}{$author} = $comment;
                     $parseComments = False;
                     $parseRevision = True;
                 }

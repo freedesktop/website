@@ -38,6 +38,9 @@
 
 
 package Error_Parse;
+use utf8;
+binmode STDIN, ':encoding(utf8)';
+binmode STDOUT, ':encoding(utf8)';
 
 # This package must not use any tinderbox specific libraries.  It is
 # intended to be a base class.
@@ -213,7 +216,7 @@ sub line_type {
                      ($line =~ m#^find.*/usr/lib/debug: No such file or directory$#) ||
                      ($line =~ m/^Warning: Can.t check separators used in FormatCode due to LC_CTYPE ref=.(es_ES|zh_TW|zh_CN)./) ||
                       #07-02-07
-                     ($line =~ m/^xmlrole.c: In function 'error'/) ||
+                     ($line =~ m/^xmlrole.c: In (f|F)un(c|K)tion .error./) ||
                      ($line =~ m#^find:.*openoffice.org-freedesktop-menus.*/usr/lib: No such file or directory#) ||
                      ($line =~ m/^This version of java does not support the classic compiler; upgrading to modern/) ||
 
@@ -256,6 +259,20 @@ sub line_type {
 		     ($line =~ m/configure: WARNING: Internal freetype2 does not support emboldening./) ||
 		     ($line =~ m#/o3/lx_ia32/glibc-pc-linux-gnu/include/stdlib.h:486: warning: ISO C90 does not support 'long long'#) ||
 		     ($line =~ m#^\s*import com.sun.star.uno.Exception;#) ||
+		     #10-04-08
+		     ($line =~ m#^COPY:.*(/inc/boost/exception/.*\.hpp) -> .*\1#) ||
+		     ($line =~ m#^checking dynamic linker characteristics\.\.\. cat: /etc/ld\.so\.conf\.d/\*\.conf: No such file or directory#) ||
+		     ($line =~ m#^checking for shared library run path origin\.\.\. /bin/sh: \./config\.rpath: No such file or directory#) ||
+		     ($line =~ m#^\s*\[echo\]\s*Clover not found\. Code coverage reports disabled\.#) ||
+		     ($line =~ m#^pk11merge\.c:[0-9]+:.*error. may be used uninitialized in this function#) ||
+		     # python-build related
+		     ($line =~ m#^Failed to find the necessary bits to build these modules:#) ||
+		     ($line =~ m#^INFO: Can't locate Tcl/Tk libs and/or headers#) ||
+		     # apache-commons related
+		     ($line =~ m#^\s*\[echo\]\s*Log4j 1\.2 not found: Cannot Build Log4JLogger#) ||
+		     ($line =~ m#^\s*\[echo\]\s*LogKit not found: Cannot Build LogKitLogger#) ||
+		     ($line =~ m#^\s*\[echo\]\s*Avalon-Framework not found: Cannot Build AvalonLogger#) ||
+		     
                      0);
       
       if ($ignore) {

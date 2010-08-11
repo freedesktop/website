@@ -1,0 +1,262 @@
+2008-10-15  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* ~/tinderbox/local_conf/Tree_Data.pm - change to support svn/use
+	states
+	* ~/tinderbox/local_conf/TinderConfig.pm - change to support svn
+	* ~/tinderbox/lib/TinderDB/Build.pm - change to support svn
+	* ~/tinderbox/lib/TinderDB/VC_SVN.pm - added (from mozilla cvs) to
+	support svn/use states
+
+2008-10-14  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* ~/tinderbox/tag-latest-master - add trees from svn
+
+2008-06-30  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* ~/tinderbox/local_conf/Tree_Data.pm - change bonsai module to
+	"all" instead of "OpenOffice" that misses loads of modules
+	(OpenOffice2/3 + Extensions3 would be the "correct" one, but bonasi
+	doesn't allow multi-selection AFAIK)
+
+2008-05-04  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* ~/tinderbox/tag-latest-master - release master is now BEA300
+
+2008-02-24  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* ~/tinderbox/tag-latest-master - added DEV300 
+
+2008-01-08  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* ~/tinderbox/tag-latest-master - updated to OOH680 
+
+2008-01-03  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* ~/tinderbox/local_conf/Error_Parse.pm - silence two configure 
+	lines and the ISO C90 does not support 'long long' one
+
+2007-09-12  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* ~/tinderbox/local_conf/Error_Parse.pm - ignore the "found file
+	for virtual target" errormessages
+
+2007-10-27  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* ~/tinderbox/local_conf/Tree_Data.pm - add a codeline key to 
+	the VC_TREE hash, so that the status page can link to the EIS
+	page for all trees, not only those that are based on SRC680
+	* ~/tindebox/lib/HTMLPopUp/OverLib.pm - query the codeline and
+	don't hardcode SRC680
+
+#### the changes below were done before the server move ####
+2007-09-12  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/local_conf/Error_Parse.pm - ignore gcj errors that
+	otherwise flood the summary with more than 700 errors of the very
+	same type
+
+2007-07-05  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/local_conf/Build.Status.pm - Add 'fold' state
+	to allow the buildbot buildslaves to gracefully reject a tree.
+
+2007-07-04  Volker Quetschke <vq@openoffice.org>
+
+	* /var/tinderbox/local_conf/Error_Parse.pm - ignore cygwin dmake
+	internal warning about extra process.
+
+2007-05-24  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/bin/processmail_builds - add hack to ignore 
+	maildelay for the Mac tinderbox. Its mails get delayed excessively
+	somewhere. This is meant to be temporary.
+
+2007-05-10  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/local_conf/Error_Parse.pm - use the special 
+	quotes for the xmlrole.c line, add some more false positives (mac 
+	when building nas)
+
+2007-04-26  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/local_conf/TreeData.pm - Add "nominated" and
+	 "approved by QA" taglists
+
+2007-02-07  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/local_conf/Error_Parse.pm - remove some more
+	false positives
+
+2007-02-06  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/lib/Summaries.pm - fix a typo BPRDER -> BORDER
+
+2007-01-22  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/local_conf/TreeData.pm - only create goups per
+	 milestone if there are at least 3 cws with that milestone
+
+2007-01-19  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/local_conf/TreeData.pm - create goups per milestone
+	in addition to the ready-for-qa & new groups
+
+2007-01-09  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/lib/Summaries.pm - beautify the output, remove
+	the admin-tree links, make the ul to use columns (css)
+
+2006-11-29  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/lib/TinderDB/Build.pm - use HEAD instead of 
+	OOO-BUILD to save the average times
+
+2006-11-27  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/lib/TinderDB/Build.pm - trigger a savetree_db when 
+	the average times are written in the OOO-BUILD tree..
+
+2006-11-24  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/lib/TinderDB/Build.pm - Write the averate build 
+	and deadtimes to the OOO-BUILD pseudo tree instead of each tree (so
+	that new trees have the average times available from the beginning)
+
+	* /var/tinderbox/local_conf/TinderConfig.pm - Reduce the 
+	MAX_UPDATES_SINCE_TRIM to 10 (was 50 - otherwise the limit will 
+	almost never be reached for a tree) 
+
+	* /var/tinderbox/lib/HTMLPopUp/Overlib.pm - update the overlib.js to
+	version 4.21 (4.00 doesn't work with Opera at all)
+
+2006-11-23  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/lib/TinderDB/Build.pm - Rewrite trim_db to better 
+	match OOo's usage (computing average build times)
+
+2006-07-27  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/lib/HTMLPopUp/OverLib.pm - Link to CWS in EIS from 
+	the individual summary pages (hardcodes SRC680)
+
+2006-06-15  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/local_conf/Error_Parse.pm - fix broken 
+	ignore-expression
+
+2006-06-03  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/lib/TinderDB/BasicTxtDB.pm 
+	* /var/tinderbox/lib/TinderDB/Build.pm 
+	* /var/tinderbox/lib/TinderDB/BT_Generic.pm 
+	* /var/tinderbox/lib/TinderDB/Notice.pm 
+	* /var/tinderbox/lib/TinderDB/Time.pm 
+	* /var/tinderbox/lib/TinderDB/Time_Local.pm 
+	* /var/tinderbox/lib/TinderDB/Time_UTC.pm 
+	* /var/tinderbox/lib/TinderDB/VC_Bonsai.pm 
+	* /var/tinderbox/lib/VCDisplay/Bonsai.pm
+	* /var/tinderbox/lib/Persistence/Storable.pm
+	* /var/tinderbox/lib/TinderHeader/BasicTxtHeader.pm
+	* /var/tinderbox/lib/TinderHeader/Build.pm
+	* /var/tinderbox/lib/TinderHeader/IgnoreBuilds.pm
+	* /var/tinderbox/lib/TinderHeader/MOTD.pm
+	* /var/tinderbox/lib/TinderHeader/TreeState.pm
+	* /var/tinderbox/lib/TinderHeader/TreeState_Bonsai.pm
+	* Yvar/tinderbox/lib/HTMLPopUp/OverLib.pm - /home/tinderbox is no more
+	Hopefully this will make the tinerbox use the correct Error_Parser.pm
+	and use of the dirty status again..
+
+2006-05-31  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/www/tinderbox/gunzip.cgi /home/tinderbox doesn't
+	exist on the new box, correct the paths to /var/tinderbox
+
+2006-05-19  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/lib/TinderDB/VC_Bonsai.pm Don't limit the "show 
+	checkins within 24 hours/7 days" to one committer only
+
+2006-04-30  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/local_conf/Build.Status.pm - Use 'dirty' state
+	as well when a new build was started, but is not yet finished.
+	(the previous result is not valid just because you start a new build) 
+
+2006-04-26  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/local_conf/TreeData.pm - Add support for 
+	Tree-groups (ready-for-qa and new)
+
+2006-04-25  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/local_conf/BuildStatus.pm - Add 'dirty' 
+	status
+	* /var/tinderbox/lib/TinderDB/Build.pm - Add check whether
+	there was a commit after start-of-build and use a status of "dirty"
+	for the table-header in that case
+	Add it for both the trees' individual status page, as well as for the
+	summary-page
+
+2006-04-21  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/local_conf/TreeData.pm - Use the cvs tag 
+	for branch-info, don't always use "HEAD"
+	* /var/tinderbox/local_conf/TreeData.pm - Fix mail-suffix
+	(was @mozilla.org, now is @openoffice.org)
+
+2006-04-19  Chrisian Lohmaier <cloph@openoffice.org>
+	
+	* /var/tinderbox/local_conf/Error_Parse.pm - add some more 
+	false positives.
+
+2006-02-07  Volker Quetschke  <quetschke@scytek.de>
+
+	*/var/tinderbox/local_conf/Error_Parse.pm - Make "deprecated"
+	a warning keyword instead of an error.
+	
+2006-02-03  Volker Quetschke  <quetschke@scytek.de>
+
+	*/var/tinderbox/local_conf/Error_Parse.pm - ignore false positives
+	in tinderbox build logfiles.
+	
+2006-01-04  Volker Quetschke  <quetschke@scytek.de>
+
+	*/var/tinderbox/bin/rmolddirs.pl - New script that checks
+	the tinderbox html and data directory for unused/obsolete
+	directories. If started with "KILLTHEM" it deletes them.
+
+2005-12-29  Volker Quetschke  <quetschke@scytek.de>
+
+	*/home/tinderbox/lib/TinderDB/VC_Bonsai.pm - beautify html output
+	by always keeping the full hour timestamps
+
+2005-12-24  Volker Quetschke  <quetschke@scytek.de>
+
+	* /home/tinderbox/bin/processmail_builds - change to log processed
+	trees
+
+2005-08-31  Volker Quetschke  <quetschke@scytek.de>
+
+	* Modify tinderbox:
+	        + /home/tinderbox/tag-list - generates
+		+ /var/www/tinderbox/tags/tag-list-qa - "Ready for QA"
+		+ /var/www/tinderbox/tags/tag-list-new - "new"
+		+ /var/www/tinderbox/tags/tag-list - Both, qa and new
+	        + /home/tinderbox/tag-latest-master - generates
+	        + /var/www/tinderbox/tags/tag-latest-master - The last
+	          three MWSs with modules
+	  (Both sripts are run by Michael's tag-list-update)
+
+2005-06-22  Michael Meeks  <michael.meeks@novell.com>
+
+	* Setup tinderbox:
+		+ /home/tinderbox/tag-list - generates
+		+ /var/www/tinderbox/tags/tag-list
+			+ this script is run by 'michael' to
+			  avoid exposing my .cwspass unnecessarily
+		+ /home/tinderbox/local_config/TreeData.pm now reads
+		  the tag-list
+
+2005-02-11  Chris Halls <halls@debian.org>
+
+	* Add drbyte's ssh key
