@@ -43,9 +43,9 @@ use CGI ':standard';
 
 # Tinderbox libraries
 
-use lib '/home/oowweb/tinderbox/local_conf',
-   '/home/ooweb/tinderbox/default_conf',
-   '/home/ooweb/tinderbox/lib';
+use lib '/srv/tinderbox/local_conf',
+   '/srv/tinderbox/default_conf',
+   '/srv/tinderbox/lib';
 
   # '/home/ooweb/mozilla/webtools/tinderbox2/./build/local_conf',
   # '/home/ooweb/mozilla/webtools/tinderbox2/./build/default_conf',

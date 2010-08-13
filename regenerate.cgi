@@ -41,12 +41,9 @@
 
 # Tinderbox libraries
 
-use lib '/home/ooweb/tinderbox/local_conf',
-   '/home/ooweb/tinderbox/default_conf',
-   '/home/ooweb/tinderbox/lib',
-   '/home/ooweb/mozilla/webtools/tinderbox2/./build/local_conf',
-   '/home/ooweb/mozilla/webtools/tinderbox2/./build/default_conf',
-   '/home/ooweb/mozilla/webtools/tinderbox2/./build/lib';
+use lib '/srv/tinderbox/local_conf',
+   '/srv/tinderbox/default_conf',
+   '/srv/tinderbox/lib';
 
 use TinderConfig;
 use TreeData;

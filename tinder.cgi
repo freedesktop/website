@@ -43,9 +43,9 @@ use Time::Local;
 
 # Tinderbox libraries
 
-use lib '/home/ooweb/tinderbox/local_conf',
-   '/home/ooweb/tinderbox/default_conf',
-   '/home/ooweb/tinderbox/lib';
+use lib '/srv/tinderbox/local_conf',
+   '/srv/tinderbox/default_conf',
+   '/srv/tinderbox/lib';
 
 use TinderConfig;
 use Utils;
