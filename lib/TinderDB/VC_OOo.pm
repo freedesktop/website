@@ -664,8 +664,8 @@ sub apply_db_updates {
     # date|hgdate|user → only unixtimestamp, no timezone offset
     # using seperate file_* directives is slower than just using files, but since it's local...
     my $template = "'{node|short}".$sep.'{date|hgdate|user}'.$sep.'{author|user}'.$sep.'{desc|escape|addbreaks}'.$sep.'{file_adds}'.$sep.'{file_dels}'.$sep.'{file_mods}'.$record_sep."'";
-    my $hg_cmd = 'PYTHONPATH=/home/ooweb/lib/python ~/bin/hg';
-    my $hgrepodir = '~/var/mercurial/DEV300-repo';
+    my $hg_cmd = 'hg';
+    my $hgrepodir = '/var/mercurial/DEV300-repo';
     # get current id of cws with hg id....
     my $current_id = `$hg_cmd id $sourceurl`;
     chomp $current_id;
