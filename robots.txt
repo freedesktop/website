@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /addnote.cgi
+Disallow: /admintree.cgi
+Disallow: /regenerate.cgi
+Disallow: /tinder.cgi
