@@ -316,12 +316,12 @@ sub addTreesFromFile($)
 %{$VC_TREE_GROUPS{'ready_for_QA'}}=();
 %{$VC_TREE_GROUPS{'approved'}}=();
 %{$VC_TREE_GROUPS{'nominated'}}=();
-addTreesFromFile("/home/ooweb/tinderbox.go-oo.org/tags/tag-list-qa");
-addTreesFromFile("/home/ooweb/tinderbox.go-oo.org/tags/tag-list-new");
-addTreesFromFile("/home/ooweb/tinderbox.go-oo.org/tags/tag-list-approved");
-addTreesFromFile("/home/ooweb/tinderbox.go-oo.org/tags/tag-list-nominated");
-addTreesFromFile("/home/ooweb/tinderbox.go-oo.org/tags/tag-latest-master-list");
-addTreesFromFile("/home/ooweb/tinderbox.go-oo.org/tags/temp-list");
+addTreesFromFile("/srv/www/tinderbox.go-oo.org/tags/tag-list-qa");
+addTreesFromFile("/srv/www/tinderbox.go-oo.org/tags/tag-list-new");
+addTreesFromFile("/srv/www/tinderbox.go-oo.org/tags/tag-list-approved");
+addTreesFromFile("/srv/www/tinderbox.go-oo.org/tags/tag-list-nominated");
+addTreesFromFile("/srv/www/tinderbox.go-oo.org/tags/tag-latest-master-list");
+addTreesFromFile("/srv/www/tinderbox.go-oo.org/tags/temp-list");
 # We always want there to be one summary pages showing all trees.
 
 foreach $tree (keys %VC_TREE) {

@@ -3,12 +3,12 @@
 use strict;
 use utf8;
 # Global cvstmp location. Edit here
-my $CVS_TMPDIR="/home/ooweb/tmp/cvstmp";
+my $CVS_TMPDIR="/tmp/cvstmp";
 my $CVS_ROOT=":pserver:anoncvs\@anoncvs.services.openoffice.org:/cvs";
 my $SVN_URL="svn://svn.services.openoffice.org/ooo/tags";
-my $hg_cmd = 'PYTHONPATH=/home/ooweb/lib/python ~/bin/hg';
-my $hgrepodir = '~/var/mercurial/DEV300-repo';
-my $hgrepodir_maint = '~/var/mercurial/OOO320-repo';
+my $hg_cmd = 'hg';
+my $hgrepodir = '/var/mercurial/DEV300-repo';
+my $hgrepodir_maint = '/var/mercurial/OOO320-repo';
 my $HG_URL = 'http://hg.services.openoffice.org/DEV300';
 # add corresponding pull command in case more release clones are added
 my $HG_URL_MAINT32 = 'http://hg.services.openoffice.org/OOO320';

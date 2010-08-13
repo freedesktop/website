@@ -89,7 +89,7 @@ $URL_HTML = "http://tinderbox.go-oo.org";
 # The full path name tinderbox will use to access the tinderbox
 # servers root data directory where the html will be written.
 
-$TINDERBOX_HTML_DIR = "/home/ooweb/tinderbox.go-oo.org";
+$TINDERBOX_HTML_DIR = "/srv/www/tinderbox.go-oo.org";
 
 # The full path name tinderbox will use to access the tinderbox
 # servers root data directory where the data will be written.  For
@@ -100,7 +100,7 @@ $TINDERBOX_HTML_DIR = "/home/ooweb/tinderbox.go-oo.org";
 # outside of the HTML tree so that the web server can not send the
 # internal data over the network.
 
-$TINDERBOX_DATA_DIR = "/home/ooweb/var/tinderboxdata";
+$TINDERBOX_DATA_DIR = "/var/tinderboxdata";
 
 # Where to store the compressed HTML converted log files. Typically
 # this is either the DATA_DIR or the HTML dir, though it can be
@@ -113,7 +113,7 @@ $TINDERBOX_GZLOG_DIR = $TINDERBOX_HTML_DIR;
 # The full path name tinderbox will use to access the tinderbox
 # cgi scripts.
 
-$TINDERBOX_CGIBIN_DIR = "/home/ooweb/tinderbox";
+$TINDERBOX_CGIBIN_DIR = "/srv/tinderbox";
 
 # The top level tinderbox index file. Change this if you wish to
 # provide your own index file for tinderboxes web pages.
@@ -132,7 +132,7 @@ $GIF_URL = 'http://lounge.mozilla.org/tinderbox2/gif';
 
 # Error log filename:
 
-$ERROR_LOG = "/home/ooweb/var/log/tinderbox2.log";
+$ERROR_LOG = "/var/log/tinderbox/tinderbox2.log";
   
 # Where the daemon mode lock (for all trees) is placed
 $LOCK_FILE = $TINDERBOX_HTML_DIR."/tinderd.lock";
@@ -401,7 +401,7 @@ $BONSAI_URL = "http://bonsai.go-oo.org";
 # needs to be able to see the bonsai directories to get bonsai checkin
 # and treestate data.
 
-$BONSAI_DIR = "/home/ooweb/bonsai.go-oo.org";
+$BONSAI_DIR = "/srv/www/bonsai.go-oo.org";
 
 # If we use perforce set the port and information on how to find p4db.
 # I would like to use p4web since there is a security patch out
