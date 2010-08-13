@@ -74,12 +74,9 @@ use File::Basename;
 use Time::Local;
 
 # Load Tinderbox libraries
-use lib '/home/ooweb/tinderbox/local_conf',
-   '/home/ooweb/tinderbox/default_conf',
-   '/var/tinderbox/lib',
-   '/home/ooo/mozilla/webtools/tinderbox2/./build/local_conf',
-   '/home/ooo/mozilla/webtools/tinderbox2/./build/default_conf',
-   '/home/ooo/mozilla/webtools/tinderbox2/./build/lib';
+use lib '/srv/tinderbox/local_conf',
+   '/srv/tinderbox/default_conf',
+   '/var/tinderbox/lib';
 
 use TinderDB::BasicTxtDB;
 use Utils;
