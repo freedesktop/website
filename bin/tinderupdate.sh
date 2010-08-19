@@ -16,5 +16,5 @@ $TINDERBOX_BIN/get-latest-master.pl
 $TINDERBOX_BIN/bypass_postfixlimit.sh >> $TINDERBOX_LOG 2>&1
 
 # regenerate tinderbox-HTML pages
-$TINDERBOX_WWW/tinder.cgi >> $TINDERBOX_LOG 2>&1
+$TINDERBOX_WWW/cgi-bin/tinder.cgi >> $TINDERBOX_LOG 2>&1
 echo finished updating at $(date -u) >> $TINDERBOX_LOG

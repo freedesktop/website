@@ -49,7 +49,6 @@ package TinderConfig;
 # set the path for Tinderbox.
 $ENV{'PATH'}=  (
                 '/bin'.
-':/home/kestes/mozilla/webtools/tinderbox2/build/test/vcsim'.
                 ':/usr/bin'.
                 ':/usr/local/bin'.
                 ':/opt/gnu/bin'.
@@ -79,7 +78,7 @@ $TINDERBOX_GID=100;
 
 # The url to the tinderbox server binary directory
 
-$URL_BIN = "http://tinderbox.go-oo.org";
+$URL_BIN = "http://tinderbox.go-oo.org/cgi-bin";
 
 
 # The url to the tinderbox server HTML directory
@@ -113,7 +112,7 @@ $TINDERBOX_GZLOG_DIR = $TINDERBOX_HTML_DIR;
 # The full path name tinderbox will use to access the tinderbox
 # cgi scripts.
 
-$TINDERBOX_CGIBIN_DIR = "/srv/tinderbox";
+$TINDERBOX_CGIBIN_DIR = "/srv/www/tinderbox.go-oo.org/cgi-bin";
 
 # The top level tinderbox index file. Change this if you wish to
 # provide your own index file for tinderboxes web pages.
