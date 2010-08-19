@@ -1,0 +1,7 @@
+# Ignore everything
+*
+# but:
+!.gitignore
+!cgi-bin
+!favicon.*
+!robots.txt
