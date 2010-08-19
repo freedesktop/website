@@ -658,6 +658,8 @@ sub apply_db_updates {
     my $old_id = 0;
     $old_id = $METADATA{$tree}{'last_id'} if defined($METADATA{$tree}{'last_id'});
 
+    # force update of hg-id to accelerate update of next diff, no matter whether there are checkins or not
+    $num_updates++ if("$old_id" eq "0");
     # date|hgdate|user → only unixtimestamp, no timezone offset
     # using seperate file_* directives is slower than just using files, but since it's local...
     my $template = "'{node|short}".$sep.'{date|hgdate|user}'.$sep.'{author|user}'.$sep.'{desc|escape|addbreaks}'.$sep.'{file_adds}'.$sep.'{file_dels}'.$sep.'{file_mods}'.$record_sep."'";

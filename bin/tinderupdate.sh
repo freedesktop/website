@@ -5,6 +5,8 @@ TINDERBOX_WWW=/srv/www/tinderbox.go-oo.org
 TINDERBOX_LOG=/var/log/tinderbox/tinderbox2.log
 
 cd /srv/tinderbox
+# disable cronjob without removing cronjob entry
+#exit 0 
 
 echo starting update at   $(date -u) >> $TINDERBOX_LOG
 # update the tag-lists

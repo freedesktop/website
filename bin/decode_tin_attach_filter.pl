@@ -9,7 +9,7 @@ binmode STDIN, ":encoding(utf8)";
 binmode STDOUT, ":encoding(utf8)";
 
 my $parser = new MIME::Parser;
-$parser->output_under("$ENV{HOME}/tmp/mimemail");
+$parser->output_under("/tmp/mimemail");
 
 ### Parse input:
 my $entity = $parser->parse(\*STDIN) or die "parse failed $!\n";
