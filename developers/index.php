@@ -61,7 +61,7 @@ $content = <<<EOT
                           <a href="http://termite.services.openoffice.org">Buildbot</a>
                           (<a href="http://wiki.services.openoffice.org/wiki/Buildbot">More information</a>)
                         </li>
-                        <li><a href="http://embed.mibbit.com/?server=irc.freenode.net&channel=%23go-oo&noServerTab=false" target="blank">#go-oo IRC Chat</a></li>
+                        <li><a href="http://webchat.freenode.net/" target="blank">#go-oo IRC Chat</a></li>
                     </ul>
                 </dd>
                 <dt>Hacker Guides</dt> 
@@ -95,7 +95,7 @@ $content = <<<EOT
         </div>
 	<div>
 	<h4 id="irc">IRC</h4>
-        <p>We have a channel #go-oo on irc.freenode.net, where you can discuss development 
+        <p>We have a channel #go-oo on <a href="http://webchat.freenode.net/">irc.freenode.net</a>, where you can discuss development 
 	issues with hackers.</p>
         <p>To contact anyone wrt. go-oo see the ooo-build 
 	<a href="http://cgit.freedesktop.org/ooo-build/ooo-build/tree/AUTHORS">maintainers</a> 
@@ -195,7 +195,7 @@ print_page("Go-OO! - Developers",
       "Tinderbox" => "http://tinderbox.go-oo.org/",
       "Buildbot" => "http://termite.services.openoffice.org",
       "#go-oo IRC Channel" => array (
-           "href" => "http://embed.mibbit.com/?server=irc.freenode.net&channel=%23go-oo&noServerTab=false",
+           "href" => "http://webchat.freenode.net/",
            "target" => "blank"
       ),
    )
