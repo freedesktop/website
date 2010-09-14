@@ -81,7 +81,7 @@ numbers as context demands.
 for OpenOffice.org (<a href="go-vba-hypo.xls">sample</a>).</p>
 <a href="go-excel-vba.png">
 <img src="go-excel-vba-thumb.png" alt="go-oo screenshot for VBA"/></a>
-Userform (<a href="go-puzzler.xls">sample</a>)
+Userform (<a href="Suse-puzzler.xls">sample</a>)
 <a href="go-puzzler.png">
 <img src="go-puzzler-thumb.png" alt="go-oo screenshot for VBA ( userform support )"/></a>
 </div>
