@@ -1,0 +1,29 @@
+Options -MultiViews
+Redirect /foundingmembers http://www.documentfoundation.org/foundation
+Redirect /foundingmembers/ http://www.documentfoundation.org/foundation/
+Redirect /contact/tdf_release.html http://www.documentfoundation.org/contact/tdf_release.xml
+
+<Files *.php>
+order deny,allow
+deny from all
+</Files>
+
+<Files Makefile>
+order deny,allow
+deny from all
+</Files>
+
+<Files Makefile~>
+order deny,allow
+deny from all
+</Files>
+
+<Files README>
+order deny,allow
+deny from all
+</Files>
+
+<Files README_FIRST>
+order deny,allow
+deny from all
+</Files>

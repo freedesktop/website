@@ -1,0 +1,24 @@
+** Read Me First **
+        + edit the php files
+        + run:
+                $ make
+        + to re-build / staticise the web-site
+	+ git commit -a # (as wsadmin) to commit
+
+Changing the web-site:
+
+	+ first - you need php installed
+	+ then you need to edit the php files
+	+ then you need to run make to re-staticise the files
+	+ then re-load in the browser
+
+Where are some things:
+	+ front-page:
+		content: /index.php
+		surround images: img/bg-header img/bg-content,
+		img/bg-logo, img/logo, img/bg-sidebar
+	+ front page images
+	+ the top-bar title: /template.php - /tagline/
+	+ the list of tabs: /template.php - /array ( "summary" =>...)/
+	+ the list of visible tabs: /template.php - /$tabs = array (/
+	+ misc. colors css/style.css

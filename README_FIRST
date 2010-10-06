@@ -1,0 +1,5 @@
+** Read Me First **
+        + edit the php files
+        + run:
+                $ make
+        + to re-build / staticise the web-site
