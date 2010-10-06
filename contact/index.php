@@ -75,6 +75,14 @@ To unsubscribe yourself again, send an empty e-mail to <a href="mailto:users+uns
 <a href="mailto:website+subscribe@libreoffice.org">website+subscribe@libreoffice.org</a>.
 For receiving a digest of the mail archive, subscribe yourself at <a href="mailto:website+subscribe-digest@libreoffice.org">website+subscribe-digest@libreoffice.org</a>.
 To unsubscribe yourself again, send an empty e-mail to <a href="mailto:website+unsubscribe@libreoffice.org">website+unsubscribe@libreoffice.org</a>.</li>
+<li><b>Documentation:</b> If you want to contribute in writing documentation, please join our dedicated mailing list by sending an empty e-mail to
+<a href="mailto:documentation+subscribe@libreoffice.org">documentation+subscribe@libreoffice.org</a>.
+For receiving a digest of the mail archive, subscribe yourself at <a href="mailto:documentation+subscribe-digest@libreoffice.org">documentation+subscribe-digest@libreoffice.org</a>.
+To unsubscribe yourself again, send an empty e-mail to <a href="mailto:documentation+unsubscribe@libreoffice.org">documentation+unsubscribe@libreoffice.org</a>.</li>
+<li><b>Marketing:</b> To help us market LibreOffice, please join our dedicated mailing list by sending an empty e-mail to
+<a href="mailto:marketing+subscribe@libreoffice.org">marketing+subscribe@libreoffice.org</a>.
+For receiving a digest of the mail archive, subscribe yourself at <a href="mailto:marketing+subscribe-digest@libreoffice.org">marketing+subscribe-digest@libreoffice.org</a>.
+To unsubscribe yourself again, send an empty e-mail to <a href="mailto:marketing+unsubscribe@libreoffice.org">marketing+unsubscribe@libreoffice.org</a>.</li>
 </ul>
 
 <h3>Social Networks and IRC</h3>
