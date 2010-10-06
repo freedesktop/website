@@ -65,8 +65,7 @@ Mozilla Firefox has done for browsers</i>".
 <tr>
     <td><b><a name="redhat">Red Hat</a></b></td> 
     <td>
-        <b>Jan Wildeboer</b>, EMEA Open Source Affairs at Red Hat, has
-commented: "<i>All over the world, users, companies and governments are
+"<i>All over the world, users, companies and governments are
 moving to innovative technology solutions based on Open Standards. 
 Red Hat is proud to join this effort</i>".
     </td>
