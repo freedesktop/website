@@ -10,7 +10,7 @@ info@documentfoundation.org</a>.
 
 <h3>Press and Media Contacts</h3>
 
-<p>We have a dedicated group of press contacts who are happy to answer your questions on The Document Foundation
+<p>We have a dedicated group of press contacts who are happy to answer your questions about The Document Foundation
 and LibreOffice. <b>To receive a reply in time, we recommend contacting us directly at <a href="mailto:info@documentfoundation.org">
 info@documentfoundation.org</a>, which will be distributed to all contacts below.</b></p>
 <ul>
@@ -35,55 +35,63 @@ info@documentfoundation.org</a>, which will be distributed to all contacts below
 <p>A new press info &quot;Numbers @ The Document Foundation&quot; can be found <a href="/contact/tdf_numbers.pdf">here</a> (PDF).</p>
 <p>Please find The Document Foundation press release <a href="/contact/tdf_release.xml">here</a> (<a href="/contact/tdf_release.pdf">PDF</a>).</p>
 
-<h3>Blogosphere</h3>
+<h3>Mailing Lists</h3>
 
-<p>Read what bloggers say on our <a href="http://planet.documentfoundation.org">The Document Foundation Planet</a>.</p>
+We have several mailing lists available, which are our primary discussion platform.<br>
+<b>Everything you post to public mailing lists, <u>including your e-mail address and other personal data contained in your e-mail</u>, will be publicly archived and cannot be deleted. So, post wisely!</b><br>
+Information on how to unsubscribe will be sent to you in the confirmation e-mail, and is shown in the footer of every message.<br>
+<ul>
+<li><b>announce@documentfoundation.org:</b> News and press releases by The Document Foundation<br>
+Subscription: <a href="mailto:announce+subscribe@documentfoundation.org">announce+subscribe@documentfoundation.org</a><br>
+Digest subscription: <a href="mailto:announce+subscribe-digest@documentfoundation.org">announce+subscribe-digest@documentfoundation.org</a><br>
+Archives: <a href="http://www.documentfoundation.org/lists/announce/">http://www.documentfoundation.org/lists/announce/</a><br>
+GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.announce">http://dir.gmane.org/gmane.comp.documentfoundation.announce</a></li>
+<li><b>discuss@documentfoundation.org:</b> Discussions about The Document Foundation<br>
+Subscription: <a href="mailto:discuss+subscribe@documentfoundation.org">discuss+subscribe@documentfoundation.org</a><br>
+Digest subscription: <a href="mailto:discuss+subscribe-digest@documentfoundation.org">discuss+subscribe-digest@documentfoundation.org</a><br>
+Archives: <a href="http://www.documentfoundation.org/lists/discuss/">http://www.documentfoundation.org/lists/discuss/</a><br>
+GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.discuss">http://dir.gmane.org/gmane.comp.documentfoundation.discuss</a></li>
+<li><b>mirrors@documentfoundation.org:</b> Platform for administrators providing mirror space for our products<br>
+Subscription: <a href="mailto:mirrors+subscribe@documentfoundation.org">mirrors+subscribe@documentfoundation.org</a><br>
+Digest subscription: <a href="mailto:mirrors+subscribe-digest@documentfoundation.org">mirrors+subscribe-digest@documentfoundation.org</a><br>
+Archives: <a href="http://www.documentfoundation.org/lists/mirrors/">http://www.documentfoundation.org/lists/mirrors/</a><br>
+GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.mirrors">http://dir.gmane.org/gmane.comp.documentfoundation.mirrors</a></li>
+<hr>
+<li><b>l10n@libreoffice.org:</b> Mailing list for people in charge of LibreOffice localization<br>
+Subscription: <a href="mailto:l10n+subscribe@libreoffice.org">l10n+subscribe@libreoffice.org</a><br>
+Digest subscription: <a href="mailto:l10n+subscribe-digest@libreoffice.org">l10n+subscribe-digest@libreoffice.org</a><br>
+Archives: <a href="http://www.libreoffice.org/lists/l10n/">http://www.libreoffice.org/lists/l10n/</a><br>
+GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.l10n">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.l10n</a></li>
+<li><b>users@libreoffice.org:</b> User support list for LibreOffice<br>
+Subscription: <a href="mailto:users+subscribe@libreoffice.org">users+subscribe@libreoffice.org</a><br>
+Digest subscription: <a href="mailto:users+subscribe-digest@libreoffice.org">users+subscribe-digest@libreoffice.org</a><br>
+Archives: <a href="http://www.libreoffice.org/lists/users/">http://www.libreoffice.org/lists/users/</a><br>
+GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.user">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.user</a></li>
+<li><b>website@libreoffice.org:</b> Discussions on maintaining and enhancing our website, wiki, planet and other infrastructure<br>
+Subscription: <a href="mailto:website+subscribe@libreoffice.org">website+subscribe@libreoffice.org</a><br>
+Digest subscription: <a href="mailto:website+subscribe-digest@libreoffice.org">website+subscribe-digest@libreoffice.org</a><br>
+Archives: <a href="http://www.libreoffice.org/lists/website/">http://www.libreoffice.org/lists/website/</a><br>
+GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.website">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.website</a></li>
+<li><b>documentation@libreoffice.org:</b> Group for people working on LibreOffice documentation and help system<br>
+Subscription: <a href="mailto:documentation+subscribe@libreoffice.org">documentation+subscribe@libreoffice.org</a><br>
+Digest subscription: <a href="mailto:documentation+subscribe-digest@libreoffice.org">documentation+subscribe-digest@libreoffice.org</a><br>
+Archives: <a href="http://www.libreoffice.org/lists/documentation/">http://www.libreoffice.org/lists/documentation/</a><br>
+GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.documentation">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.documentation</a></li>
+<li><b>marketing@libreoffice.org:</b> Mailing list for marketing and promoting LibreOffice<br>
+Subscription: <a href="mailto:marketing+subscribe@libreoffice.org">marketing+subscribe@libreoffice.org</a><br>
+Digest subscription: <a href="mailto:marketing+subscribe-digest@libreoffice.org">marketing+subscribe-digest@libreoffice.org</a><br>
+Archives: <a href="http://www.libreoffice.org/lists/marketing/">http://www.libreoffice.org/lists/marketing/</a><br>
+GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.marketing">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.marketing</a></li>
+</ul>
 
 <h3>Security Contact</h3>
 
 <p>To reach our security team, please drop an e-mail to <a href="mailto:security@documentfoundation.org">
 security@documentfoundation.org</a>.
 
-<h3>Mailing Lists</h3>
+<h3>Blogosphere</h3>
 
-Currently, we have set up three mailing lists to help you keeping in touch with us.
-<b>Be advised that everything you post to public mailing lists will be archived and cannot be deleted. So, post wisely!</b>
-<ul>
-<li><b>Announcements:</b> For receiving news and press releases on The Document Foundation and its
-products, please subscribe to our announcement mailing list by sending an empty e-mail to
-<a href="mailto:announce+subscribe@documentfoundation.org">announce+subscribe@documentfoundation.org</a>.
-For receiving a digest of the mail archive, subscribe yourself at <a href="mailto:announce+subscribe-digest@documentfoundation.org">announce+subscribe-digest@documentfoundation.org</a>.
-To unsubscribe yourself again, send an empty e-mail to <a href="mailto:announce+unsubscribe@documentfoundation.org">announce+unsubscribe@documentfoundation.org</a>.</li>
-<li><b>Discussions:</b> To discuss our ideas, goals and visions, feel free to join our discussion
-mailing list by sending an empty e-mail to <a href="mailto:discuss+subscribe@documentfoundation.org">discuss+subscribe@documentfoundation.org</a>.
-For receiving a digest of the mail archive, subscribe yourself at <a href="mailto:discuss+subscribe-digest@documentfoundation.org">discuss+subscribe-digest@documentfoundation.org</a>.
-To unsubscribe yourself again, send an empty e-mail to <a href="mailto:discuss+unsubscribe@documentfoundation.org">discuss+unsubscribe@documentfoundation.org</a>.</li>
-<li><b>Mirrors:</b> If you want to join our growing team of mirrors, providing downloads for LibreOffice and
-our other products, please join our dedicated mailing list by sending an empty e-mail to
-<a href="mailto:mirrors+subscribe@documentfoundation.org">mirrors+subscribe@documentfoundation.org</a>.
-For receiving a digest of the mail archive, subscribe yourself at <a href="mailto:mirrors+subscribe-digest@documentfoundation.org">mirrors+subscribe-digest@documentfoundation.org</a>.
-To unsubscribe yourself again, send an empty e-mail to <a href="mailto:mirrors+unsubscribe@documentfoundation.org">mirrors+unsubscribe@documentfoundation.org</a>.</li>
-<li><b>Localization:</b> To discuss about localization of LibreOffice, please join our dedicated mailing list by sending an empty e-mail to
-<a href="mailto:l10n+subscribe@libreoffice.org">l10n+subscribe@libreoffice.org</a>.
-For receiving a digest of the mail archive, subscribe yourself at <a href="mailto:l10n+subscribe-digest@libreoffice.org">l10n+subscribe-digest@libreoffice.org</a>.
-To unsubscribe yourself again, send an empty e-mail to <a href="mailto:l10n+unsubscribe@libreoffice.org">l10n+unsubscribe@libreoffice.org</a>.</li>
-<li><b>User Support:</b> To get user support on LibreOffice, please join our dedicated mailing list by sending an empty e-mail to
-<a href="mailto:users+subscribe@libreoffice.org">users+subscribe@libreoffice.org</a>.
-For receiving a digest of the mail archive, subscribe yourself at <a href="mailto:users+subscribe-digest@libreoffice.org">users+subscribe-digest@libreoffice.org</a>.
-To unsubscribe yourself again, send an empty e-mail to <a href="mailto:users+unsubscribe@libreoffice.org">users+unsubscribe@libreoffice.org</a>.</li>
-<li><b>Website:</b> If you want to contribute in designing our website, the planet and the wiki, please join our dedicated mailing list by sending an empty e-mail to
-<a href="mailto:website+subscribe@libreoffice.org">website+subscribe@libreoffice.org</a>.
-For receiving a digest of the mail archive, subscribe yourself at <a href="mailto:website+subscribe-digest@libreoffice.org">website+subscribe-digest@libreoffice.org</a>.
-To unsubscribe yourself again, send an empty e-mail to <a href="mailto:website+unsubscribe@libreoffice.org">website+unsubscribe@libreoffice.org</a>.</li>
-<li><b>Documentation:</b> If you want to contribute in writing documentation, please join our dedicated mailing list by sending an empty e-mail to
-<a href="mailto:documentation+subscribe@libreoffice.org">documentation+subscribe@libreoffice.org</a>.
-For receiving a digest of the mail archive, subscribe yourself at <a href="mailto:documentation+subscribe-digest@libreoffice.org">documentation+subscribe-digest@libreoffice.org</a>.
-To unsubscribe yourself again, send an empty e-mail to <a href="mailto:documentation+unsubscribe@libreoffice.org">documentation+unsubscribe@libreoffice.org</a>.</li>
-<li><b>Marketing:</b> To help us market LibreOffice, please join our dedicated mailing list by sending an empty e-mail to
-<a href="mailto:marketing+subscribe@libreoffice.org">marketing+subscribe@libreoffice.org</a>.
-For receiving a digest of the mail archive, subscribe yourself at <a href="mailto:marketing+subscribe-digest@libreoffice.org">marketing+subscribe-digest@libreoffice.org</a>.
-To unsubscribe yourself again, send an empty e-mail to <a href="mailto:marketing+unsubscribe@libreoffice.org">marketing+unsubscribe@libreoffice.org</a>.</li>
-</ul>
+<p>Read what bloggers say on our <a href="http://planet.documentfoundation.org">The Document Foundation Planet</a>.</p>
 
 <h3>Social Networks and IRC</h3>
 <p>The Document Foundation also provides communication channels on IRC and various social networks.</p>
