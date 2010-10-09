@@ -105,6 +105,7 @@ security@documentfoundation.org</a>.
         <li><b>Facebook:</b> At Facebook, The Document Foundation maintains <a href="http://www.facebook.com/group.php?gid=159921240700930">a group</a>
 as well as a <a href="http://www.facebook.com/documentfoundation">fan page</a>.</li>
         <li><b>LinkedIn:</b> Users of LinkedIn find our group <a href="http://www.linkedin.com/groups?mostPopular=&amp;gid=3469260">here</a>.</li>
+        <li><b>XING:</b> We provide a group at XING. To join, click <a href="http://www.xing.com/group-60064.a12be3">here</a>.</li>
 </ul>
 
 EOT;
