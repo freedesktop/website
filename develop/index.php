@@ -67,7 +67,7 @@ mailing list, or contact michael.meeks@novell.com.
 require care and time to improve - this provides a wonderful opportunity
 to get involved in the code, to understand it and to get sucked into
 the joy of LibreOffice. The wiki contains a <a
-href="http://www.freedesktop.org/wiki/Software/libreoffice/EasyHacks">page
+href="http://wiki.documentfoundation.org/Easy_Hacks">page
 of easy tasks</a> - listing the skills required, and so on. In some
 cases these extend only to the ability to detect un-necessary comments.</p>
 
