@@ -17,6 +17,13 @@ A statement from the French AFUL is available <a href="http://aful.org/communiqu
 </tr>
 
 <tr>
+    <td><b><a name="april">April</a></b></td>
+    <td>
+      A statement from April is available <a href="http://www.april.org/en/april-welcomes-document-foundation-launched-openofficeorg-community">from their website</a>.
+    </td>
+</tr>
+
+<tr>
     <td><b><a name="broffice">BrOffice.org</a></b></td> 
     <td>
   "<i>The creation of The Document Foundation is in line with the vision
@@ -233,7 +240,7 @@ supporters and users, and this might accelerate the adoption process of
 ODF at government and enterprise level</i>".
     </td>
 </tr>
-
+      
 <tr>
     <td><b><a name="odfellowship">OpenDocument Fellowship</a></b></td> 
     <td>
@@ -243,6 +250,19 @@ OpenOffice.org codebase. This means nothing but good things for the broader ODF 
     </td>
 </tr> 
 
+<tr>
+    <td><b><a name="OFS">Open Framework Systems as</a></b></td> 
+    <td>
+      "<i>We believe this is a step in the right direction and a cooperation with
+      The Document Foundation will make it easier to create more innovative
+      and userfriendly soloutions We have developed a secure real time Collaboration solution for
+      OpenOffice and MS Office and a centralized administration module for
+      OpenOffice. We believe that it will be easier to develop these products
+      further when we have fewer rights barriers and a more open access to the
+      code and standards.</i>"<br>
+      <b>Karl Morten Ramberg</b>
+    </td>
+</tr>
 
 <tr>
     <td><b><a name="ooodev">OpenOffice.org Deutschland e.V.</a></b></td>
@@ -264,6 +284,25 @@ and I think that with the 10 year anniversary a new era in OpenOffice.org to gro
 even more free and open to a mature community that has achieve the wide spread recognition of
 its product. I applaud the efforts of such and want to provide the resources and support from
 OOoES.</i>" said <b>Alexandro Colorado</b>, OOoES president
+    </td>
+</tr> 
+
+<tr>
+    <td><b><a name="oootr">OOo Turkey/ LKD</a></b></td> 
+    <td>
+      "<i>After passing the ownership of Sun Microsystems to Oracle, the future of
+      OpenOffice.org project have become unclear for Turkish Free Software
+      communities and supporters. We are very pleased to hear the establishment of the Document Foundation
+      towards an active community with a well established organization
+      listening to requirements of end users. We also support the new project,
+      LibreOffice, comprising of invaluable voluntary efforts of free
+      developers which meets requirements of companies and end users for more
+      than 10 years. We believe that this big step is a chance to develop new
+      opportunities for developing a truly independent office solution.
+      Sharing the similar values and objectives, we warmly welcome this
+      initiative as we look forward to being an active supporter of The
+      Document Foundation community.</i>"<br>
+      <b>Volkan Evrin, General Secretary LKD & Gorkem Cetin, coordinator of OOo Turkey community</b>
     </td>
 </tr> 
 

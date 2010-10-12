@@ -19,18 +19,16 @@ $rightnavigation
 
 <p>The Document Foundation is proud to be the home of <a href="download">LibreOffice</a>, the next evolution of the world's leading free office suite.</p>
 
-<hr>
+<h3>News</h3>
 
-<h2>News</h2>
+<p>2010-10-06 <b>Press Materials</b><br>
+Numbers @ The Document Foundation press release is <a href="/contact/tdf_numbers.pdf">here</a> (PDF).</p>
 
-<h3>Press Materials</h3>
+<p>2010-09-28 <b>Press Materials</b><br>
+Announcement of The Document Foundation (<a href="/contact/tdf_release.xml">HTML</a>/<a href="/contact/tdf_release.pdf">PDF</a>).</p>
 
-<p>Numbers @ The Document Foundation press release is <a href="/contact/tdf_numbers.pdf">here</a> (PDF).</p>
-<p>Announcement of The Document Foundation (<a href="/contact/tdf_release.xml">HTML</a>/<a href="/contact/tdf_release.pdf">PDF</a>).</p>
-
-<h3>Blogosphere</h3>
-
-<p>Bloggers can be found on the <a href="http://planet.documentfoundation.org">The Document Foundation Planet</a>.</p>
+<p>2010-09-28 <b>Blogosphere</b><br>
+Bloggers can be found on the <a href="http://planet.documentfoundation.org">The Document Foundation Planet</a>.</p>
 
 </div>
 EOT;

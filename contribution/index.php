@@ -11,7 +11,9 @@ $content = <<<"EOT"
 
 <p>Come and join us! Subscribe to our mailing lists and support us with your skills! We need you for code development, testing, translation, documentation, design, marketing and many other tasks in our world-wide community!</p>
 
-<p>For code contribution, have a look at our <a href="/develop/">Develop</a> page - for the available mailing lists, please refer to our <a href="/contact/">Contact</a> page.</p>
+<p>For code contribution, have a look at our <a href="/develop/">Develop</a> page - for the available mailing lists, please scroll down.</p>
+<p>We also offer <a href="http://wiki.documentfoundation.org">a wiki</a>, <a href="http://planet.documentfoundation.org">a blog planet</a>, as well as
+<a href="#lists">some mailing lists</a>.
 </div>
 
 <h3>Show Your Support</h3>
@@ -79,7 +81,7 @@ If you are living in Germany, you may also use <a href="http://www.ooodev.org/sp
 <br>
 </div>
 
-<h3>Mailing Lists</h3>
+<h3><a name="lists">Mailing Lists</a></h3>
 
 We have several mailing lists available, which are our primary discussion platform.<br>
 <b>Everything you post to public mailing lists, <u>including your e-mail address and other personal data contained in your e-mail</u>, will be publicly archived and cannot be deleted. So, post wisely!</b><br>
@@ -126,6 +128,9 @@ Subscription: <a href="mailto:marketing+subscribe@libreoffice.org">marketing+sub
 Digest subscription: <a href="mailto:marketing+subscribe-digest@libreoffice.org">marketing+subscribe-digest@libreoffice.org</a><br>
 Archives: <a href="http://www.libreoffice.org/lists/marketing/">http://www.libreoffice.org/lists/marketing/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.marketing">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.marketing</a></li>
+<hr>
+<li>There is also a <a href="http://lists.freedesktop.org/mailman/listinfo/libreoffice">development mailing list</a> available for those interested
+in code contributions. This list is hosted by FreeDesktop.org.</li>
 </ul>
 
 <h3>Keeping up with progress</h3>
