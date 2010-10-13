@@ -126,6 +126,19 @@ cooperate on development of the body of the code</i>".
 </tr>
 
 <tr>
+    <td><b><a name="fsfhu">FSF HU</a></b></td>
+    <td>
+        "<i>As we have been devoted supporters of free software for a long time,
+we are proud that we can continue our work, which we started 8 years
+ago with OpenOffice.org, in a more open fashion with LibreOffice. We
+keep on supporting the free office software with localization,
+bugfixes, and innovative development in order to contribute to its
+success in Hungary and worldwide.</i>"<br>
+<b>Erdei Csaba</b>
+   </td>
+</tr>
+
+<tr>
     <td><b><a name="gnome">The GNOME Foundation</a></b></td>
     <td>
   "<i>We welcome the LibreOffice project to the free software community

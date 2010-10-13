@@ -30,11 +30,6 @@ info@documentfoundation.org</a>, which will be distributed to all contacts below
 	E-mail: <a href="mailto:italo.vignoli@documentfoundation.org">italo.vignoli@documentfoundation.org</a></li>
 </ul>
 
-<h3>Press Materials</h3>
-
-<p>Numbers @ The Document Foundation press release is <a href="/contact/tdf_numbers.pdf">here</a> (PDF).</p>
-<p>Announcement of The Document Foundation (<a href="/contact/tdf_release.xml">HTML</a>/<a href="/contact/tdf_release.pdf">PDF</a>).</p>
-
 <h3>Blogosphere</h3>
 
 <p>Bloggers can be found on the <a href="http://planet.documentfoundation.org">The Document Foundation Planet</a>.</p>

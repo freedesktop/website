@@ -41,7 +41,6 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
     <head>
-	<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
         <title><?php print $heading; ?> - The Document Foundation</title>
         <style type="text/css">
             @import url(/css/blueprint/print.css) print;
