@@ -37,15 +37,16 @@ This beta release is not intended for production use! <b>Be advised that the cur
 <div id="download-nav">
     <ul id="dlnav">
        <li class="dlnav-win32"><a href="$urlbase/3.3.0-beta2/win/x86/LibO_3.3.0_beta2_Win_x86_install_multi.exe">Download and install this for the International version to be used on Microsoft Windows.</a></li>
-       <li class="dlnav-linux32"><a href="$urlbase/3.3.0-beta2/rpm/x86/LibO_3.3.0_beta2_Linux_x86_install-rpm_en-US.tar.gz">Download</a> and install this for the English version to be used on various GNU/Linux 32-bit distributions (<a href="$urlbase/3.3.0-beta2/deb/x86/LibO_3.3.0_beta2_Linux_x86_install-deb_en-US.tar.gz">here</a> are .debs).</li>
-       <li class="dlnav-linux64"><a href="$urlbase/3.3.0-beta2/rpm/x86_64/LibO_3.3.0_beta2_Linux_x86-64_install-rpm_en-US.tar.gz">Download</a> and install this for the English version to be used on various GNU/Linux 64-bit distributions (<a href="$urlbase/3.3.0-beta2/deb/x86_64/LibO_3.3.0_beta2_Linux_x86-64_install-deb_en-US.tar.gz">here</a> are .debs).</li>
+       <li class="dlnav-linux32"><a href="$urlbase/3.3.0-beta2/rpm/x86/LibO_3.3.0_beta2_Linux_x86_install-rpm_en-US.tar.gz">Download and install this for the English version to be used on various GNU/Linux 32-bit distributions.</a></li>
+       <li class="dlnav-linux64"><a href="$urlbase/3.3.0-beta2/rpm/x86_64/LibO_3.3.0_beta2_Linux_x86-64_install-rpm_en-US.tar.gz">Download and install this for the English version to be used on various GNU/Linux 64-bit distributions.</a></li>
        <li class="dlnav-mac"><a href="$urlbase/3.3.0-beta2/mac/x86/LibO_3.3.0_MacOS_x86_install_en-US.dmg">Download and install this for the English version to be used on Apple MacOS X.</a></li>
        <li class="dlnav-source"><a href="$download_source">Click here to download the tarball containing the source code.</a></li>
     </ul>
 
     <p>You can also <a href="http://tracker.documentfoundation.org:6969">download using BitTorrent</a>,
     or <a href="$urlbase/3.3.0-beta2">browse all the Beta2 installation packages</a> to get inofficial
-    Debian packages, or language packs.</p>
+       Debian packages (<a href="$urlbase/3.3.0-beta2/deb/x86/LibO_3.3.0_beta2_Linux_x86_install-deb_en-US.tar.gz">32-bit .debs</a> 
+    or <a href="$urlbase/3.3.0-beta2/deb/x86_64/LibO_3.3.0_beta2_Linux_x86-64_install-deb_en-US.tar.gz">64-bit .debs</a>), or language packs.</p>
 </div>
 
 <h3 id="release-notes">Beta Release Notes</h3>
