@@ -81,6 +81,10 @@ div.pre {
             text-align: left;
         }
 
+        #rnav li.rnav-birthday a {
+            height: 400px;
+            background: url(/img/anniversary.png) no-repeat;
+        }
         #rnav li.rnav-download a {
             height: 81px;
             background: url(/img/controls/ControlElement_Button_DownloadLibreOffice_Default.png) no-repeat;
