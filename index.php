@@ -22,7 +22,8 @@ $rightnavigation
 <h3>News</h3>
 
 <p>2010-10-13 <b>The Next Decade Manifesto</b><br>
-The announcement of the next decade manifesto is available <a href="/pdf/tdf_nextdecade.pdf">here</a>.</p>
+The announcement of the next decade manifesto is available <a href="/pdf/tdf_nextdecade.pdf">here</a>.<br>
+The manifesto itself is <a href="/pdf/tdf_manifesto.pdf">available as PDF</a> and <a href="http://wiki.documentfoundation.org/TDF/Next_Decade_Manifesto">in our wiki</a>.</p>
 
 <p>2010-10-06 <b>Numbers of the first week</b><br>
 Numbers @ The Document Foundation press release is available <a href="/pdf/tdf_numbers.pdf">here</a>.</p>

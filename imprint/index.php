@@ -21,7 +21,7 @@ Thomas Krumbein (Vorsitzender),
 Jacqueline Rahemipour, Florian Effenberger (Anschrift jeweils wie oben)<br>
 Registergericht: Amtsgericht Wiesbaden<br>
 Registernummer: VR 3850<br>
-Steuernummer: 043 250 78217<br>
+USt-IdNr.: DE261529002<br>
 </p>
 
 <h3>Disclaimer</h3>
