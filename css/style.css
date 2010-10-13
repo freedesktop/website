@@ -82,6 +82,8 @@ div.pre {
         }
 
         #rnav li.rnav-birthday a {
+            height: 400px;
+	    width: 400px;	
             background: url(/img/anniversary-small.png) no-repeat;
         }
         #rnav li.rnav-download a {
