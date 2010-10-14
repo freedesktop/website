@@ -145,6 +145,7 @@ $rightnavigation = <<<EOT
 <div id="right-nav">
     <ul id="rnav">
        <li class="rnav-birthday"><a href="/foundation">Understand the reasons for The Document Foundation</a></li>
+       <li class="rnav-download"><a href="/download">Download LibreOffice</a></li>
     </ul>
 </div>
 
