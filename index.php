@@ -19,6 +19,10 @@ $rightnavigation
 
 <p>The Document Foundation is proud to be the home of <a href="download">LibreOffice</a>, the next evolution of the world's leading free office suite.</p>
 
+<h3>Want to meet us?</h3>
+
+<p>See the <a href="http://wiki.documentfoundation.org/Events">list of events</a> where you can meet The Document Foundation and members of the Community.</p>
+
 <h3>News</h3>
 
 <p>2010-10-13 <b>The Next Decade Manifesto</b><br>
