@@ -399,6 +399,20 @@ Red Hat is proud to join this effort</i>".
     </td>
 </tr>
 
+<tr>
+    <td><b><a name="univention">Univention</a></b></td> 
+    <td>
+      "<i>The formation of a
+      vendor-independent community organisation is a major step for safeguarding
+      the long term success of an open source project. We are very excited that this
+      step was now successfully completed for one of the most important open source
+      projects by founding the Document Foundation and by making LibreOffice
+      available." Univention sees LibreOffice as one of the major future parts of
+      its open source desktop solutions and is happy to support The Document
+      Foundation where possible"</i>, says <b>Peter H. Ganten</b>, Founder and Director of Univention
+    </td>
+</tr>
+
 
 </table>
 </div>

@@ -61,7 +61,7 @@ This beta release is not intended for production use! <b>Be advised that the cur
     <a href="https://bugs.freedesktop.org/show_bug.cgi?id=30797">wrong description
     of several languages</a>.</li>
 <li>The Linux and MacOSX builds are English builds with the possibility to install language packs.
-    Please browse <a href="$urlbase/3.3.0-beta2">the archives</a> to get the langugage pack you need 
+    Please browse <a href="$urlbase/3.3.0-beta2">the archives</a> to get the language pack you need 
     for your platform.</li>
 <li>The LibreOffice branding and renaming is new and work in progress. You may still see old graphics, 
     icons or websites. So please bear with us. This also applies to
