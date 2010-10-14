@@ -139,6 +139,25 @@ GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.m
 <hr>
 <li>There is also a <a href="http://lists.freedesktop.org/mailman/listinfo/libreoffice">development mailing list</a> available for those interested
 in code contributions. This list is hosted by FreeDesktop.org.</li>
+<a name="lists_de"><hr></a>
+<li><b>announce@de.libreoffice.org:</b> German announcement mailing list<br>
+Subscription: <a href="mailto:announce+subscribe@de.libreoffice.org">announce+subscribe@de.libreoffice.org</a><br>
+Digest subscription: <a href="mailto:announce+subscribe-digest@de.libreoffice.org">announce+subscribe-digest@de.libreoffice.org</a><br>
+Archives: <a href="http://de.libreoffice.org/lists/announce/">http://de.libreoffice.org/lists/announce/</a><br>
+Mail-Archive.com: <a href="http://www.mail-archive.com/announce@de.libreoffice.org/">http://www.mail-archive.com/announce@de.libreoffice.org/</a><br>
+GMANE: pending</li>
+<li><b>discuss@de.libreoffice.org:</b> German discussion mailing list<br>
+Subscription: <a href="mailto:discuss+subscribe@de.libreoffice.org">discuss+subscribe@de.libreoffice.org</a><br>
+Digest subscription: <a href="mailto:discuss+subscribe-digest@de.libreoffice.org">discuss+subscribe-digest@de.libreoffice.org</a><br>
+Archives: <a href="http://de.libreoffice.org/lists/discuss/">http://de.libreoffice.org/lists/discuss/</a><br>
+Mail-Archive.com: <a href="http://www.mail-archive.com/discuss@de.libreoffice.org/">http://www.mail-archive.com/discuss@de.libreoffice.org/</a><br>
+GMANE: pending</li>
+<li><b>users@de.libreoffice.org:</b> German user support mailing list<br>
+Subscription: <a href="mailto:users+subscribe@de.libreoffice.org">users+subscribe@de.libreoffice.org</a><br>
+Digest subscription: <a href="mailto:users+subscribe-digest@de.libreoffice.org">users+subscribe-digest@de.libreoffice.org</a><br>
+Archives: <a href="http://de.libreoffice.org/lists/users/">http://de.libreoffice.org/lists/users/</a><br>
+Mail-Archive.com: <a href="http://www.mail-archive.com/users@de.libreoffice.org/">http://www.mail-archive.com/users@de.libreoffice.org/</a><br>
+GMANE: pending</li>
 </ul>
 
 <h3>Keeping up with progress</h3>
