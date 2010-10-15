@@ -19,6 +19,11 @@ $rightnavigation
 
 <p>The Document Foundation is proud to be the home of <a href="download">LibreOffice</a>, the next evolution of the world's leading free office suite.</p>
 
+<h3>Business and Administration Congress</h3>
+
+<p>You can meet founding members of The Document Foundation at the <b>Business and Administration Congress</b>, taking place
+<i>November 16th and 17th</i> in <i>Munich</i>. More information is available at <a href="http://www.oookwv.de">http://www.OOoKWV.de</a>.</p>
+
 <h3>Want to meet us?</h3>
 
 <p>See the <a href="http://wiki.documentfoundation.org/Events">list of events</a> where you can meet The Document Foundation and members of the Community.</p>
