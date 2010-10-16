@@ -158,6 +158,13 @@ Digest subscription: <a href="mailto:users+subscribe-digest@de.libreoffice.org">
 Archives: <a href="http://de.libreoffice.org/lists/users/">http://de.libreoffice.org/lists/users/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/users@de.libreoffice.org/">http://www.mail-archive.com/users@de.libreoffice.org/</a><br>
 GMANE: pending</li>
+<hr>
+<li><b>marketing@us.libreoffice.org:</b> US marketing<br>
+Subscription: <a href="mailto:marketing+subscribe@us.libreoffice.org">marketing+subscribe@us.libreoffice.org</a><br>
+Digest subscription: <a href="mailto:marketing+subscribe-digest@us.libreoffice.org">marketing+subscribe-digest@us.libreoffice.org</a><br>
+Archives: <a href="http://us.libreoffice.org/lists/marketing/">http://us.libreoffice.org/lists/marketing/</a><br>
+Mail-Archive.com: <a href="http://www.mail-archive.com/marketing@us.libreoffice.org/">http://www.mail-archive.com/marketing@us.libreoffice.org/</a><br>
+GMANE: pending</li>
 </ul>
 
 <h3>Keeping up with progress</h3>
