@@ -81,9 +81,9 @@ If you are living in Germany, you may also use <a href="http://www.ooodev.org/sp
 <br>
 </div>
 
-<h3><a name="lists">Mailing Lists</a></h3>
+<h3><a name="lists">Global Mailing Lists</a></h3>
 
-We have several mailing lists available, which are our primary discussion platform.<br>
+We have several global mailing lists available, which are our primary discussion platform.<br>
 <b>Everything you post to public mailing lists, <u>including your e-mail address and other personal data contained in your e-mail</u>, will be publicly archived and cannot be deleted. So, post wisely!</b><br>
 Information on how to unsubscribe will be sent to you in the confirmation e-mail, and is shown in the footer of every message.<br>
 <ul>
@@ -139,33 +139,11 @@ GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.m
 <hr>
 <li>There is also a <a href="http://lists.freedesktop.org/mailman/listinfo/libreoffice">development mailing list</a> available for those interested
 in code contributions. This list is hosted by FreeDesktop.org.</li>
-<a name="lists_de"><hr></a>
-<li><b>announce@de.libreoffice.org:</b> German announcement mailing list<br>
-Subscription: <a href="mailto:announce+subscribe@de.libreoffice.org">announce+subscribe@de.libreoffice.org</a><br>
-Digest subscription: <a href="mailto:announce+subscribe-digest@de.libreoffice.org">announce+subscribe-digest@de.libreoffice.org</a><br>
-Archives: <a href="http://de.libreoffice.org/lists/announce/">http://de.libreoffice.org/lists/announce/</a><br>
-Mail-Archive.com: <a href="http://www.mail-archive.com/announce@de.libreoffice.org/">http://www.mail-archive.com/announce@de.libreoffice.org/</a><br>
-GMANE: pending</li>
-<li><b>discuss@de.libreoffice.org:</b> German discussion mailing list<br>
-Subscription: <a href="mailto:discuss+subscribe@de.libreoffice.org">discuss+subscribe@de.libreoffice.org</a><br>
-Digest subscription: <a href="mailto:discuss+subscribe-digest@de.libreoffice.org">discuss+subscribe-digest@de.libreoffice.org</a><br>
-Archives: <a href="http://de.libreoffice.org/lists/discuss/">http://de.libreoffice.org/lists/discuss/</a><br>
-Mail-Archive.com: <a href="http://www.mail-archive.com/discuss@de.libreoffice.org/">http://www.mail-archive.com/discuss@de.libreoffice.org/</a><br>
-GMANE: pending</li>
-<li><b>users@de.libreoffice.org:</b> German user support mailing list<br>
-Subscription: <a href="mailto:users+subscribe@de.libreoffice.org">users+subscribe@de.libreoffice.org</a><br>
-Digest subscription: <a href="mailto:users+subscribe-digest@de.libreoffice.org">users+subscribe-digest@de.libreoffice.org</a><br>
-Archives: <a href="http://de.libreoffice.org/lists/users/">http://de.libreoffice.org/lists/users/</a><br>
-Mail-Archive.com: <a href="http://www.mail-archive.com/users@de.libreoffice.org/">http://www.mail-archive.com/users@de.libreoffice.org/</a><br>
-GMANE: pending</li>
-<hr>
-<li><b>marketing@us.libreoffice.org:</b> US marketing<br>
-Subscription: <a href="mailto:marketing+subscribe@us.libreoffice.org">marketing+subscribe@us.libreoffice.org</a><br>
-Digest subscription: <a href="mailto:marketing+subscribe-digest@us.libreoffice.org">marketing+subscribe-digest@us.libreoffice.org</a><br>
-Archives: <a href="http://us.libreoffice.org/lists/marketing/">http://us.libreoffice.org/lists/marketing/</a><br>
-Mail-Archive.com: <a href="http://www.mail-archive.com/marketing@us.libreoffice.org/">http://www.mail-archive.com/marketing@us.libreoffice.org/</a><br>
-GMANE: pending</li>
 </ul>
+
+<h3>Local and Regional Mailing Lists</h3>
+
+<p>To see local and regional mailing lists in your language, please <a href="http://wiki.documentfoundation.org/Local_Mailing_Lists">refer to the table in our wiki</a>.</p>
 
 <h3>Keeping up with progress</h3>
 <div id="contribute">
