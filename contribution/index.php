@@ -86,6 +86,9 @@ If you are living in Germany, you may also use <a href="http://www.ooodev.org/sp
 We have several global mailing lists available, which are our primary discussion platform.<br>
 <b>Everything you post to public mailing lists, <u>including your e-mail address and other personal data contained in your e-mail</u>, will be publicly archived and cannot be deleted. So, post wisely!</b><br>
 Information on how to unsubscribe will be sent to you in the confirmation e-mail, and is shown in the footer of every message.<br>
+<b>A note for GMANE users:</b>
+In order to use GMANE to post to the mailing lists, you need to supply your e-mail address. This is to protect our lists from spam. You can either subscribe to the lists or their digests, but this might defeat the purpose of using GMANE. If you do not want to receive any e-mail from the lists, but be able to post, please subscribe to the so-called "nomail" version of the list by attaching -nomail to the normal subscription address.<br>
+Example: discuss+subscribe-nomail@documentfoundation.org or website+subscribe-nomail@libreoffice.org
 <ul>
 <li><b>announce@documentfoundation.org:</b> News and press releases by The Document Foundation<br>
 Subscription: <a href="mailto:announce+subscribe@documentfoundation.org">announce+subscribe@documentfoundation.org</a><br>
