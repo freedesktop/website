@@ -75,7 +75,7 @@ cases these extend only to the ability to detect un-necessary comments.</p>
 use <code>git diff</code> to extract changes to mail in to <a
 href="http://lists.freedesktop.org/mailman/listinfo/libreoffice">libreoffice@lists.freedesktop.org</a>
 (don't be shy, please mention your code is contributed under the
-LGPLv3+).</p>
+LGPLv3+ / MPL).</p>
 
 <h3 id="buckstop">When Everything Fails</h3>
 
