@@ -95,15 +95,15 @@ $content = <<<EOT
     </p>
 
     <h3>Go-oo joins forces with LibreOffice</h3>
+    <div style="width: 70%; float: left;">
     <p>
-    <table><tr><td>
 	Go-oo shares much of its goals and philosophy with <a href="http://documentfoundation.org">The Document 
     Foundation's</a> LibreOffice project, we're therefore supporting LibreOffice since it's inception, and are
     in the process of merging most of our patches over, as well as migrating to Document Foundation infrastructure.
     Going forward, the Go-oo project will be discontinued in favor of LibreOffice.
-    </td>
-    <td><a href="http://documentfoundation.org"><img src="img/libreoffice-logo.png"></a></td></tr></table>
     </p>
+    </div>
+    <div style="width: 20%; float: right;"><p><a href="http://documentfoundation.org"><img src="img/libreoffice-logo.png"></a></p></div>
 EOT;
 
 print_page("Go-OO!", array("summary"),
