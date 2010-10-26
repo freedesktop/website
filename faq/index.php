@@ -29,7 +29,7 @@ $content = <<<"EOT"
 </p>
 
 <h5><span class="faq-question" id="Q:_What_does_this_announcement_mean_to_other_derivatives_of_OpenOffice.org.3F"> Q: What does this announcement mean to other derivatives of OpenOffice.org?  </span></h5>
-<p>A: We want The Document Foundation to be open to code contributions from as many people as possible. We are delighted to announce that the enhancements produced by the Go-OOo team will be merged into LibreOffice, effective immediately. We hope that others will follow suit. 
+<p>A: We want The Document Foundation to be open to code contributions from as many people as possible. We are delighted to announce that the enhancements produced by RedHat and the Go-OOo team will be merged into LibreOffice, effective immediately. We hope that others will follow suit. 
 </p>
 
 <h5><span class="faq-question" id="Q:_What_difference_will_this_make_to_the_commercial_products_produced_by_Oracle_Corporation.2C_IBM.2C_Novell.2C_Red_Flag.2C_etc.3F"> Q: What difference will this make to the commercial products produced by Oracle Corporation, IBM, Novell, Red Flag, etc?  </span></h5>
