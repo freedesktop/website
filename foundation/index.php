@@ -136,7 +136,7 @@ $vspacer
 	<td style="padding-left: 14px">
 		<b>Charles-H. Schulz</b>
 		<p class="roles">
-		NLC Lead, Community Council Member (Lang Representative)
+		Former OpenOffice.org NLC Lead and OpenOffice.org Community Council Member (Lang Representative)
 		</p><p>
 		Charles-H. Schulz (The "H" letter standing for his second name "Henri") is a 
 		French technologist, Free Software and Open Standards advocate. As a long time
@@ -162,7 +162,7 @@ $vspacer
 	<td style="padding-left: 14px">
 		<b>Florian Effenberger</b>
 		<p class="roles">
-		Marketing Project Lead and German MarCon, Board of Directors OpenOffice.org Deutschland e.V. 
+		Former OpenOffice.org Marketing Project Lead and German MarCon, Board of Directors OpenOffice.org Deutschland e.V. 
 		</p><p>
 		Florian Effenberger has been an open source evangelist for many years. He is 
 		lead of the international OpenOffice.org marketing project as well as a member 
@@ -186,7 +186,7 @@ $vspacer
 	<td style="padding-left: 14px">
 		<b>Sophie Gautier </b>
 		<p class="roles">
-		Francophone project co-lead, former Project Lead Education Project, former Community Council Member for Native Lang projects category
+		Francophone project co-lead, Former OpenOffice.org Project Lead Education Project, Former OpenOffice.org Community Council Member for Native Lang projects category
 		</p><p>
 		I've been deeply involved in the OpenOffice.org Community since its very beginning in 2000. 
 		First I participated to the Documentation Project, then  I've been the lead of the French-speaking 
@@ -297,7 +297,7 @@ $vspacer
 	<td style="padding-left: 14px">
 		<b>Christoph Noack</b>
 		<p class="roles">
-		OpenOffice.org User Experience Team Co-Lead, OpenOffice.org Community Council Member (Product Development Representative) 
+		Former OpenOffice.org User Experience Team Co-Lead, Former OpenOffice.org Community Council Member (Product Development Representative) 
 		</p><p>
 		Christoph Noack made his first experiences with one of the predecessors of OpenOffice.org 
 		in the ages of DOS. Since that time, he got a strong supporter of both the software and 
@@ -338,7 +338,7 @@ $vspacer
 	<td style="padding-left: 14px">
 		<b>Cor Nouws</b>
 		<p class="roles">
-		Community Council member
+		Former OpenOffice.org Community Council member
 		</p><p>
 		Cor Nouws is an active member of the OpenOffice.org community since 2004,
 	involved mainly in testing, localisation and marketing. He also maintains some
@@ -502,7 +502,7 @@ $vspacer
 	<td style="padding-left: 14px">
 		<b>Jesús Corrius</b>
 		<p class="roles">
-		Catalan Native Lang Project Leader, Catalan L10N Project Leader 
+		Former OpenOffice.org Catalan Native Lang Project Leader, Former OpenOffice.org Catalan L10N Project Leader 
 		</p><p>
 		Since 2000 has been the Catalan Native Lang Project Leader / L10N of OpenOffice.org
 		and started to produce full builds of the suite in Catalan language downloaded 
