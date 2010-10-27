@@ -162,16 +162,16 @@ $vspacer
 	<td style="padding-left: 14px">
 		<b>Florian Effenberger</b>
 		<p class="roles">
-		Former OpenOffice.org Marketing Project Lead and German MarCon, Board of Directors OpenOffice.org Deutschland e.V. 
+		Board of Directors OpenOffice.org Deutschland e.V., Former OpenOffice.org Marketing Project Lead and German MarCon
 		</p><p>
-		Florian Effenberger has been an open source evangelist for many years. He is 
-		lead of the international OpenOffice.org marketing project as well as a member 
-		of the management board of the non-profit organization OpenOffice.org 
-		Deutschland e.V. He has ten years of experience in designing computer 
-		networks in enterprises and educational settings. This includes software 
-		deployment based on free software. He is also a frequent contributor to a 
-		variety of professional magazines worldwide on topics such as free software, 
-		open standards and legal matters.
+		Florian Effenberger has been an open source evangelist for many years.
+		He is founding member and part of the Steering Committee at
+		The Document Foundation. He has previously been active in the OpenOffice.org
+		project for seven years, most recently as Marketing Project Lead.
+		Florian has ten years' experience in designing enterprise and educational
+		computer networks, including software deployment based on free software.
+		He is also a frequent contributor to a variety of professional magazines
+		worldwide on topics such as free software, open standards and legal matters.
 	   </p>
 	</td>
 </tr>
