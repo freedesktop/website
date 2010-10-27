@@ -238,7 +238,7 @@ $vspacer
 	<td style="padding-left: 14px">
 		<b>Olivier Hallot</b>
 		<p class="roles">
-		BrOffice.org CFO, Community Council Member, Main translator for pt-BR 
+		BrOffice.org CFO, Former OpenOffice.org Community Council Member, Main translator for pt-BR 
 		</p><p>
 		Graduated Electronic Engineer in 1982, MSc in Digital Signal Processing in 1985
 		and MBA in Oil &amp; Gas industry in 2001. He initiated his career as Associate
