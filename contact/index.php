@@ -6,7 +6,8 @@ $content = <<<"EOT"
 <h3>General Inquiries</h3>
 
 <p>For general inquiries, please contact us directly at <a href="mailto:info@documentfoundation.org">
-info@documentfoundation.org</a>.
+info@documentfoundation.org</a>. This is <b><u>NOT A SUPPORT ADDRESS!</u></b> For support, please
+refer to our <a href="/contribution/#lists">mailing lists</a>.
 
 <h3>Press and Media Contacts</h3>
 

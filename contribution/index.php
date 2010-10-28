@@ -148,6 +148,7 @@ GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.m
 <hr>
 <li>There is also a <a href="http://lists.freedesktop.org/mailman/listinfo/libreoffice">development mailing list</a> available for those interested
 in code contributions. This list is hosted by FreeDesktop.org.</li>
+<li>If you are more comfortable with using forums, you can use our <a href="http://nabble.documentfoundation.org">Nabble gateway</a>.</li>
 </ul>
 
 <h3>Local and Regional Mailing Lists</h3>
