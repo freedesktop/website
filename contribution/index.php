@@ -113,7 +113,7 @@ Subscription: <a href="mailto:steering-discuss+subscribe@documentfoundation.org"
 Digest subscription: <a href="mailto:steering-discuss+subscribe-digest@documentfoundation.org">steering-discuss+subscribe-digest@documentfoundation.org</a><br>
 Archives: <a href="http://www.documentfoundation.org/lists/steering-discuss/">http://www.documentfoundation.org/lists/steering-discuss/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/steering-discuss@documentfoundation.org/">http://www.mail-archive.com/steering-discuss@documentfoundation.org/</a><br>
-GMANE: pending</li>
+GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.steering-discuss">http://dir.gmane.org/gmane.comp.documentfoundation.steering-discuss</a></li>
 <hr>
 <li><b>l10n@libreoffice.org:</b> Mailing list for people in charge of LibreOffice localization<br>
 Subscription: <a href="mailto:l10n+subscribe@libreoffice.org">l10n+subscribe@libreoffice.org</a><br>
