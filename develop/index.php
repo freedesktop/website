@@ -6,7 +6,7 @@ $content = <<<"EOT"
 <h3 id="code">The Code</h3>
 
 <br>
-All our source code is hosted in git, which is easy to use:
+All our source code is hosted in git:
 <br>
 <b>Clone:</b> <tt>\$ git clone git://anongit.freedesktop.org/git/libreoffice/build</tt>
 # <a href="$freedesktop_cgit">(browse)</a> <a
@@ -22,7 +22,7 @@ under the <a href="/lgpl">LGPLv3</a>. We intend to make new code
 modules available under a dual LGPLv3(or later) / MPL license to
 allow the license to be upgraded - there is no requirement to
 assign your copyright to anyone in order to get your code contributed
-- all contributions are welcome.</p>
+- all contributions are welcome. You can see a list of past and present contributors <a href="http://libreoffice.org/credits.html">here</a>.</p>
 
 <h3 id="building">Building And Running It</h3>
 
