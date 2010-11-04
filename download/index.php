@@ -31,7 +31,7 @@ the incomplete language packaging situation.
 </p>
 
 <p>
-This beta release is not intended for production use! <b>Be advised that the current beta might replace your OpenOffice.org installation.</b>
+This beta release is not intended for production use!
 </p>
 
 <div id="download-nav">
