@@ -44,7 +44,7 @@ way to do this is something like this:</p>
 <br>
 <p>If you have problems with the build - don't be put off, get in touch
 with us on IRC, and/or read the wiki page <a
-href="http://www.freedesktop.org/wiki/Software/LibreOffice/HowToBuild">How
+href="http://wiki.documentfoundation.org/Development/How_to_build">How
 To Build</a>. To <b>run</b> it do:</p>
 <code>cd &lt;<i>/path/to/scratch/dir/</i>&gt;/program</code><br>
 <code>. ./ooenv</code><br>
