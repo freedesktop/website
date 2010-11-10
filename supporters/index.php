@@ -98,6 +98,22 @@ formed Foundation continued success</i>", says <b>Mark Lee</b>, CEO & President 
 </tr>
 
 <tr>
+    <td><b><a name="eoffice">eOffice Network</a></b></td> 
+    <td>
+        <b>Tom Gordon</b>, founder and CEO of eOffice® Network, the
+Original Online Office Network(TM), says: <i>"In the open-source world of
+Office Productivity, freedom hails from three absolutely essential
+camps: Operating Systems, Office Suites, and now Online Office Networks.
+The Document Foundation has stepped forward as THE ring bearer of
+freedom for the Office Suite group – what a courageous move! Our support
+for their success plays an important role in our own nascent effort to
+unify these three camps under one Constitutional Flag with something we
+call the eOffice® Group, a Constitutional Community Enterprise. Rock On
+Guys! . . . rock on."</i>.
+    </td>
+</tr>
+
+<tr>
     <td><b><a name="france">French community</a></b></td> 
     <td>
         Speaking for the group of volunteers, <strong>Sophie
@@ -381,6 +397,18 @@ open collaborative communities for open source software,</i>"  said
 welcome this new initiative and look forward to the innovation it is
 able to drive with a truly open community gathered around a free
 software commons, in the spirit of the best of open source software.</i>"
+    </td>
+</tr>
+
+<tr>
+    <td><b><a name="tlm">The Learning Machine</a></b></td> 
+    <td>
+        The Learning Machine is an awarding organisation accredited by the UK
+government that supports learning about and with Open Systems and Free
+Software. Chief Assessor <b>Ian Lynch</b> who was instrumental in setting up
+the Open Document Fellowship to provide early independent support for
+ISO 26300 said: <i>"We are committed to social and digital inclusion and we
+will do all we can to help make The Document Foundation successful.</i>"
     </td>
 </tr>
 

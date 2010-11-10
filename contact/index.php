@@ -41,10 +41,6 @@ info@documentfoundation.org</a>, which will be distributed to all contacts below
 <p>To reach our security team, please drop an e-mail to <a href="mailto:security@documentfoundation.org">
 security@documentfoundation.org</a>.
 
-<h3>Blogosphere</h3>
-
-<p>Read what bloggers say on our <a href="http://planet.documentfoundation.org">The Document Foundation Planet</a>.</p>
-
 <h3>Social Networks and IRC</h3>
 <p>The Document Foundation also provides communication channels on IRC and various social networks.</p>
 <ul>

@@ -44,7 +44,7 @@ This beta release is not intended for production use!
     </ul>
 
     <p>You can also <a href="http://tracker.documentfoundation.org:6969">download using BitTorrent</a>,
-    or <a href="$urlbase/3.3.0-beta3">browse all the Beta3 installation packages</a> to get inofficial
+    or <a href="$urlbase/3.3.0-beta3">browse all the Beta3 installation packages</a> to get unofficial
        Debian packages (<a href="$urlbase/3.3.0-beta3/deb/x86/LibO_3.3.0_Linux_x86_install-deb_en-US.tar.gz">32-bit .debs</a> 
     or <a href="$urlbase/3.3.0-beta3/deb/x86_64/LibO_3.3.0_Linux_x86-64_install-deb_en-US.tar.gz">64-bit .debs</a>), or language packs.</p>
 </div>
