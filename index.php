@@ -33,7 +33,7 @@ $rightnavigation
 <p>2010-11-17 <b>Blog</b><br>
 The official Document Foundation blog is <a href="http://blog.documentfoundation.org">here</a>.</p>
 
-<p>2010-11-10 <b>TDF offers preview of future product and technology developments</b><br>
+<p>2010-11-10 <b>Preview of future product and technology developments</b><br>
 Read the press release <a href="http://www.documentfoundation.org/lists/announce/msg00016.html">here.</a></p>
 
 <p>2010-10-13 <b>The Next Decade Manifesto</b><br>
