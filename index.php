@@ -33,6 +33,9 @@ $rightnavigation
 <p>2010-11-17 <b>Blog</b><br>
 The official Document Foundation blog is <a href="http://blog.documentfoundation.org">here</a>.</p>
 
+<p>2010-11-10 <b>TDF offers preview of future product and technology developments</b><br>
+Read the press release <a href="http://www.documentfoundation.org/lists/announce/msg00016.html">here.</a></p>
+
 <p>2010-10-13 <b>The Next Decade Manifesto</b><br>
 The announcement of the next decade manifesto is available <a href="/pdf/tdf_nextdecade.pdf">here</a>.<br>
 The manifesto itself is <a href="/pdf/tdf_manifesto.pdf">available as PDF</a> and <a href="http://wiki.documentfoundation.org/TDF/Next_Decade_Manifesto">in our wiki</a>.</p>
