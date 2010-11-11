@@ -3,8 +3,8 @@ Redirect /foundingmembers http://www.documentfoundation.org/foundation
 Redirect /foundingmembers/ http://www.documentfoundation.org/foundation/
 Redirect /contact/tdf_release.html http://www.documentfoundation.org/contact/tdf_release.xml
 
-Redirect /en http://www.documentfoundation.org
-Redirect /en/ http://www.documentfoundation.org/
+RedirectMatch /..$ http://www.documentfoundation.org
+RedirectMatch /../$ http://www.documentfoundation.org
 
 <Files *.php>
 order deny,allow

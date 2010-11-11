@@ -19,7 +19,8 @@ activity across the Community.
 
 <h3>Our Team</h3>
 <p>Here is a (still incomplete) list of those deeply involved in the creation
-of the Document Foundation, and its steering committee.
+of the Document Foundation, and its steering committee. <b>For a list of official spokespeople and,
+please see our <a href="/contact">contact page</a>.</b>
 </p>
 
 <style type="text/css">
