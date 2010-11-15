@@ -203,6 +203,22 @@ in the project through its Open Source Software Assurance.</i>"
 </tr>
 
 <tr>
+    <td><b><a name="mageia">Mageia</a></b></td> 
+    <td>"<i>After the announcement of LibreOffice, Mageia decided to give
+full official support to this new project. There are obvious similarities
+between the histories of Mageia and LibreOffice. Because both projects
+futures were unclear, teams decided – in both projects respectively – to
+create a fork that respects the FOSS (Free Open Source Software) principles
+and sets a more predictable governance model that relies on its community.
+We believe LibreOffice will be a great success for developers and users
+alike and that it will provide full and efficient document-processing
+applications based on open standards.
+We look forward to packaging, and contributing to the LibreOffice project
+and we will provide it in the upcoming Mageia releases.
+    </td>
+</tr>
+
+<tr>
     <td><b><a name="neooffice">NeoOffice</a></b></td> 
     <td>
   <b>Patrick Luby</b>, Chief Engineer of NeoOffice says "<i>I am happy
