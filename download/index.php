@@ -19,7 +19,7 @@ office suites, and available on a variety of platforms. It is free software
 and therefore free to download, use and distribute.
 </p>
 
-<h3>Download LibreOffice Beta2</h3>
+<h3>Download LibreOffice Beta3</h3>
 
 <p>
 The following software packages are intended to give you a first impression of what LibreOffice 
@@ -36,17 +36,17 @@ This beta release is not intended for production use! <b>Be advised that the cur
 
 <div id="download-nav">
     <ul id="dlnav">
-       <li class="dlnav-win32"><a href="$urlbase/3.3.0-beta2/win/x86/LibO_3.3.0_beta2_Win_x86_install_multi.exe">Download and install this for the International version to be used on Microsoft Windows.</a></li>
-       <li class="dlnav-linux32"><a href="$urlbase/3.3.0-beta2/rpm/x86/LibO_3.3.0_beta2_Linux_x86_install-rpm_en-US.tar.gz">Download and install this for the English version to be used on various GNU/Linux 32-bit distributions.</a></li>
-       <li class="dlnav-linux64"><a href="$urlbase/3.3.0-beta2/rpm/x86_64/LibO_3.3.0_beta2_Linux_x86-64_install-rpm_en-US.tar.gz">Download and install this for the English version to be used on various GNU/Linux 64-bit distributions.</a></li>
-       <li class="dlnav-mac"><a href="$urlbase/3.3.0-beta2/mac/x86/LibO_3.3.0_MacOS_x86_install_en-US.dmg">Download and install this for the English version to be used on Apple MacOS X.</a></li>
+       <li class="dlnav-win32"><a href="$urlbase/3.3.0-beta3/win/x86/LibO_3.3.0_Win_x86_install_multi.exe">Download and install this for the International version to be used on Microsoft Windows.</a></li>
+       <li class="dlnav-linux32"><a href="$urlbase/3.3.0-beta3/rpm/x86/LibO_3.3.0_Linux_x86_install-rpm_en-US.tar.gz">Download and install this for the English version to be used on various GNU/Linux 32-bit distributions.</a></li>
+       <li class="dlnav-linux64"><a href="$urlbase/3.3.0-beta3/rpm/x86_64/LibO_3.3.0_Linux_x86-64_install-rpm_en-US.tar.gz">Download and install this for the English version to be used on various GNU/Linux 64-bit distributions.</a></li>
+       <li class="dlnav-mac"><a href="$urlbase/3.3.0-beta3/mac/x86/LibO_3.3.0_MacOS_x86_install_en-US.dmg">Download and install this for the English version to be used on Apple MacOS X.</a></li>
        <li class="dlnav-source"><a href="$download_source">Click here to download the tarball containing the source code.</a></li>
     </ul>
 
     <p>You can also <a href="http://tracker.documentfoundation.org:6969">download using BitTorrent</a>,
-    or <a href="$urlbase/3.3.0-beta2">browse all the Beta2 installation packages</a> to get inofficial
-       Debian packages (<a href="$urlbase/3.3.0-beta2/deb/x86/LibO_3.3.0_beta2_Linux_x86_install-deb_en-US.tar.gz">32-bit .debs</a> 
-    or <a href="$urlbase/3.3.0-beta2/deb/x86_64/LibO_3.3.0_beta2_Linux_x86-64_install-deb_en-US.tar.gz">64-bit .debs</a>), or language packs.</p>
+    or <a href="$urlbase/3.3.0-beta3">browse all the Beta3 installation packages</a> to get inofficial
+       Debian packages (<a href="$urlbase/3.3.0-beta3/deb/x86/LibO_3.3.0_Linux_x86_install-deb_en-US.tar.gz">32-bit .debs</a> 
+    or <a href="$urlbase/3.3.0-beta3/deb/x86_64/LibO_3.3.0_Linux_x86-64_install-deb_en-US.tar.gz">64-bit .debs</a>), or language packs.</p>
 </div>
 
 <h3 id="release-notes">Beta Release Notes</h3>
@@ -61,7 +61,7 @@ This beta release is not intended for production use! <b>Be advised that the cur
     <a href="https://bugs.freedesktop.org/show_bug.cgi?id=30797">wrong description
     of several languages</a>.</li>
 <li>The Linux and MacOSX builds are English builds with the possibility to install language packs.
-    Please browse <a href="$urlbase/3.3.0-beta2">the archives</a> to get the language pack you need 
+    Please browse <a href="$urlbase/3.3.0-beta3">the archives</a> to get the language pack you need 
     for your platform.</li>
 <li>The LibreOffice branding and renaming is new and work in progress. You may still see old graphics, 
     icons or websites. So please bear with us. This also applies to
