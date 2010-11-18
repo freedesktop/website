@@ -30,7 +30,7 @@ $rightnavigation
 
 <h3>News</h3>
 
-<p>2010-11-17 <b>Blog</b><br>
+<p>2010-11-17 <b>Official TDF blog opens</b><br>
 The official Document Foundation blog is <a href="http://blog.documentfoundation.org">here</a>.</p>
 
 <p>2010-11-10 <b>Preview of future product and technology developments</b><br>
