@@ -66,8 +66,7 @@ This beta release is not intended for production use! <b>Be advised that the cur
 <li>The LibreOffice branding and renaming is new and work in progress. You may still see old graphics, 
     icons or websites. So please bear with us. This also applies to
     the BrOffice.org branding - applicable in Brazil.</li>
-<li>Filters for the legacy StarOffice binary formats are missing.</li>
-<li>Adding a caption to a frame in writer causes a crash (sadly fixed shortly after Beta2).</li>
+<li>Filters for the legacy StarOffice binary formats may be missing.</li>
 </ul>
 
 <h3>Keeping Up With the Progress</h3>
