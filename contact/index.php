@@ -33,6 +33,7 @@ info@documentfoundation.org</a>, which will be distributed to all contacts below
 <h3>Blogosphere</h3>
 
 <p>Bloggers can be found on the <a href="http://planet.documentfoundation.org">The Document Foundation Planet</a>.</p>
+<p>The official Document Foundation blog can be found <a href="http://blog.documentfoundation.org">here</a>.</p>
 
 <h3>Security Contact</h3>
 

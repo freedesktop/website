@@ -12,7 +12,7 @@ $content = <<<"EOT"
 <p>Come and join us! Subscribe to our mailing lists and support us with your skills! We need you for code development, testing, translation, documentation, design, marketing and many other tasks in our world-wide community!</p>
 
 <p>For code contribution, have a look at our <a href="/develop/">Develop</a> page - for the available mailing lists, please scroll down.</p>
-<p>We also offer <a href="http://wiki.documentfoundation.org">a wiki</a>, <a href="http://planet.documentfoundation.org">a blog planet</a>, as well as
+<p>We also offer <a href="http://wiki.documentfoundation.org">a wiki</a>, <a href="http://blog.documentfoundation.org">an official blog</a>, <a href="http://planet.documentfoundation.org">a blog planet</a>, as well as
 <a href="#lists">some mailing lists</a>.
 </div>
 
