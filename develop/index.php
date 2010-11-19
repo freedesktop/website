@@ -9,7 +9,8 @@ $content = <<<"EOT"
 All our source code is hosted in git, which is easy to use:
 <br>
 <b>Clone:</b> <tt>\$ git clone git://anongit.freedesktop.org/git/libreoffice/build</tt>
-# <a href="$freedesktop_cgit">(browse)</a>
+# <a href="$freedesktop_cgit">(browse)</a> <a
+href="http://anongit.freedesktop.org/git/libreoffice/build.git/">(http URL)</a> 
 <br>
 <b>Tarball:</b> <a href="$download_source">$download_source</a>.
 <br>
