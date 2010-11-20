@@ -145,6 +145,12 @@ Digest subscription: <a href="mailto:marketing+subscribe-digest@libreoffice.org"
 Archives: <a href="http://www.libreoffice.org/lists/marketing/">http://www.libreoffice.org/lists/marketing/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/marketing@libreoffice.org/">http://www.mail-archive.com/marketing@libreoffice.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.marketing">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.marketing</a></li>
+<li><b>design@libreoffice.org:</b> Mailing list for LibreOffice design and artwork<br>
+Subscription: <a href="mailto:design+subscribe@libreoffice.org">design+subscribe@libreoffice.org</a><br>
+Digest subscription: <a href="mailto:design+subscribe-digest@libreoffice.org">design+subscribe-digest@libreoffice.org</a><br>
+Archives: <a href="http://www.libreoffice.org/lists/design/">http://www.libreoffice.org/lists/design/</a><br>
+Mail-Archive.com: <a href="http://www.mail-archive.com/design@libreoffice.org/">http://www.mail-archive.com/design@libreoffice.org/</a><br>
+GMANE: pending</li>
 <hr>
 <li>There is also a <a href="http://lists.freedesktop.org/mailman/listinfo/libreoffice">development mailing list</a> available for those interested
 in code contributions. This list is hosted by FreeDesktop.org.</li>
