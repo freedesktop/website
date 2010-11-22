@@ -53,13 +53,11 @@ This beta release is not intended for production use!
 <p>This beta release is not intended for production use!</p>
 <p>There are a number of known issues being worked on:</p>
 <ul class="list-libreoffice">
-<li>The Windows build is an International build - you can choose the user 
-    interface language that is suitable for you, but the help is always English.
-    We are currently working on improving the delivery mechanism to be able to 
-    provide you with the localized help.
-    We are also working on smaller problems like
-    <a href="https://bugs.freedesktop.org/show_bug.cgi?id=30797">wrong description
-    of several languages</a>.</li>
+<li>The Windows build is an International build - you can choose the user interface language that 
+    is suitable for you. The help content is not included. We are working on the online version. 
+    Alternatively, it will be possible to install it separately. Beware that beta3 <a href="https://bugs.freedesktop.org/show_bug.cgi?id=31494">crashes on 
+    exit</a>. It should not affect normal work, though. Additionally, we are working on smaller problems 
+    like <a href="https://bugs.freedesktop.org/show_bug.cgi?id=30797">wrong description of several languages</a>.</li>
 <li>The Linux and MacOSX builds are English builds with the possibility to install language packs.
     Please browse <a href="$urlbase/3.3.0-beta3">the archives</a> to get the language pack you need 
     for your platform.</li>
