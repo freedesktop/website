@@ -68,6 +68,28 @@ a:link:after, a:visited:after {
   font-size: 90%;
 }
 
+
+div#header a:after {
+  content: "";
+}
+ul#nav {
+  font-size: 80%;
+  float: right;
+  width: 100%;
+  min-width: 0;
+}
+ul#nav li a {
+  width: auto;
+  height: auto;
+  margin-left: 1em;
+}
+div#container {
+  width: 100%;
+}
+div#container > h2:first-child {
+  margin-top: 0.6em;
+  padding-top: 0;
+}
 /* If you're having trouble printing relative links, uncomment and customize this:
    (note: This is valid CSS3, but it still won't go through the W3C CSS Validator) */
 
