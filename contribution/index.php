@@ -145,7 +145,7 @@ Digest subscription: <a href="mailto:marketing+subscribe-digest@libreoffice.org"
 Archives: <a href="http://www.libreoffice.org/lists/marketing/">http://www.libreoffice.org/lists/marketing/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/marketing@libreoffice.org/">http://www.mail-archive.com/marketing@libreoffice.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentation.libreoffice.marketing">http://dir.gmane.org/gmane.comp.documentation.libreoffice.marketing</a></li>
-<li><b>design@libreoffice.org:</b> Mailing list for LibreOffice design and artwork<br>
+<li><b>design@libreoffice.org:</b> LibreOffice Design Team mailing list covering user experience design and visual identity design<br>
 Subscription: <a href="mailto:design+subscribe@libreoffice.org">design+subscribe@libreoffice.org</a><br>
 Digest subscription: <a href="mailto:design+subscribe-digest@libreoffice.org">design+subscribe-digest@libreoffice.org</a><br>
 Archives: <a href="http://www.libreoffice.org/lists/design/">http://www.libreoffice.org/lists/design/</a><br>

@@ -18,7 +18,7 @@ activity across the Community.
 </p>
 
 <h3>Our Team</h3>
-<p>Here is a (still incomplete) list of those deeply involved in the creation
+<p>Here is a list of those deeply involved in the creation
 of the Document Foundation, and its steering committee. <b>For a list of official spokespeople and,
 please see our <a href="/contact">contact page</a>.</b>
 </p>
@@ -267,7 +267,7 @@ $vspacer
 	<td style="padding-left: 14px">
 		<b>Thorsten Behrens</b>
 		<p class="roles">
-		GSL Project co-lead, OASIS ODF TC / ECMA TC45 / ISO SC34 WG4 participant
+		Former GSL Project co-lead, OASIS ODF TC / ECMA TC45 / ISO SC34 WG4 participant
 		</p><p>
 		Thorsten was part of OpenOffice.org almost from the start, when he joined the then-Sun-Microsystems 
 		development team back in early 2001. He's a computer scientist by education, and a Free Software 
@@ -590,6 +590,31 @@ $vspacer
 		related books and active involved in major migration projects. Specialized in custom
 		adjustments and improvements using script languages he is one of the experts in UNO
 		API in Germany.
+	   </p>
+	</td>
+</tr>
+$vspacer
+
+<tr>
+	<td style="padding-top:1.5em">
+		<a href="images/TDF_Jourdain_David-Emmerich.jpg">
+		<img src="images/TDF_Jourdain_David-Emmerich_gray_small.jpg" alt="David Emmerich Jourdain" width="100">
+		</a>
+	</td>
+	<td style="padding-left: 14px">
+		<b>David Emmerich Jourdain</b>
+		<p class="roles">
+		BrOffice co-founder, Brazilian LibreOffice community representative
+		</p><p> David Emmerich Jourdain is participating in various
+        free software projects since 1998 and is a founding member of
+        the NGO <a href="http://broffice.org">BrOffice.Org</a>. He
+        started a university research project in 2003, to develop a
+        Linux distribution to support the migration of MS-Windows
+        users, which was called Famelix GNU/Linux, now known as
+        BRLix. David is the LibreOffice community representative in
+        Brazil.<br> He is currently busy developing code for the
+        kernel, to help brazilian manufacturers of desktops and
+        notebooks, who want to sell computers with preinstalled Linux.
 	   </p>
 	</td>
 </tr>
