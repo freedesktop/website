@@ -150,7 +150,7 @@ Subscription: <a href="mailto:design+subscribe@libreoffice.org">design+subscribe
 Digest subscription: <a href="mailto:design+subscribe-digest@libreoffice.org">design+subscribe-digest@libreoffice.org</a><br>
 Archives: <a href="http://www.libreoffice.org/lists/design/">http://www.libreoffice.org/lists/design/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/design@libreoffice.org/">http://www.mail-archive.com/design@libreoffice.org/</a><br>
-GMANE: pending</li>
+GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.design">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.design</a></li>
 <hr>
 <li>There is also a <a href="http://lists.freedesktop.org/mailman/listinfo/libreoffice">development mailing list</a> available for those interested
 in code contributions. This list is hosted by FreeDesktop.org.</li>
