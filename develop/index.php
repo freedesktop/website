@@ -8,9 +8,9 @@ $content = <<<"EOT"
 <br>
 All our source code is hosted in git:
 <br>
-<b>Clone:</b> <tt>\$ git clone git://anongit.freedesktop.org/git/libreoffice/build</tt>
+<b>Clone:</b> <tt>\$ git clone git://anongit.freedesktop.org/git/libreoffice/bootstrap</tt>
 # <a href="$freedesktop_cgit">(browse)</a> <a
-href="http://anongit.freedesktop.org/git/libreoffice/build.git/">(http URL)</a> 
+href="http://anongit.freedesktop.org/git/libreoffice/bootstrap.git/">(http URL)</a> 
 <br>
 <b>Tarball:</b> <a href="$download_source">$download_source</a>.
 <br>
@@ -37,8 +37,7 @@ way to do this is something like this:</p>
 <br>
 <p>Then to download the full source and <b>build</b>:</p>
 
-<code>./autogen.sh --with-git --with-num-cpus=2</code><br>
-<code>./download</code><br>
+<code>./autogen.sh --with-num-cpus=2</code><br>
 <code>make</code><br>
 <code>bin/ooinstall -l &lt;<i>/path/to/scratch/dir/</i>&gt;</code><br>
 <br>
