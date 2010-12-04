@@ -182,6 +182,17 @@ Document Foundation and participate in the project</i>".
 </tr>
 
 <tr>
+    <td><b><a name="gurley">Gabriel Gurley</a></b></td> 
+    <td>
+"<i>I am proud to support the founding of The Document Foundation and its
+development of LibreOffice for office productivity users. I recommend
+teachers, students, parents and school administators to evaluate
+LibreOffice as an instructional resource for successful learning.</i>"
+said <b>Gabriel Gurley</b>, Educator and Author, gabrielgurley.com.
+    </td>
+</tr> 
+
+<tr>
     <td><b><a name="istplanbar">IST planbar GmbH</a></b></td> 
     <td>
 IST planbar GmbH is a subsidiary company of RE/init e.V., a German

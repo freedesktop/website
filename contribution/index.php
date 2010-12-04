@@ -114,6 +114,12 @@ Digest subscription: <a href="mailto:steering-discuss+subscribe-digest@documentf
 Archives: <a href="http://www.documentfoundation.org/lists/steering-discuss/">http://www.documentfoundation.org/lists/steering-discuss/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/steering-discuss@documentfoundation.org/">http://www.mail-archive.com/steering-discuss@documentfoundation.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.steering-discuss">http://dir.gmane.org/gmane.comp.documentfoundation.steering-discuss</a></li>
+<li><b>moderators@documentfoundation.org:</b> Discussions for moderators of our mailing lists<br>
+Subscription: <a href="mailto:moderators+subscribe@documentfoundation.org">moderators+subscribe@documentfoundation.org</a><br>
+Digest subscription: <a href="mailto:moderators+subscribe-digest@documentfoundation.org">moderators+subscribe-digest@documentfoundation.org</a><br>
+Archives: <a href="http://www.documentfoundation.org/lists/moderators/">http://www.documentfoundation.org/lists/moderators/</a><br>
+Mail-Archive.com: <a href="http://www.mail-archive.com/moderators@documentfoundation.org/">http://www.mail-archive.com/moderators@documentfoundation.org/</a><br>
+GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.moderators">http://dir.gmane.org/gmane.comp.documentfoundation.moderators</a></li>
 <hr>
 <li><b>l10n@libreoffice.org:</b> Mailing list for people in charge of LibreOffice localization<br>
 Subscription: <a href="mailto:l10n+subscribe@libreoffice.org">l10n+subscribe@libreoffice.org</a><br>
@@ -151,6 +157,12 @@ Digest subscription: <a href="mailto:design+subscribe-digest@libreoffice.org">de
 Archives: <a href="http://www.libreoffice.org/lists/design/">http://www.libreoffice.org/lists/design/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/design@libreoffice.org/">http://www.mail-archive.com/design@libreoffice.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.design">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.design</a></li>
+<li><b>accessibility@libreoffice.org:</b> Accessibility discussions on LibreOffice<br>
+Subscription: <a href="mailto:accessibility+subscribe@libreoffice.org">accessibility+subscribe@libreoffice.org</a><br>
+Digest subscription: <a href="mailto:accessibility+subscribe-digest@libreoffice.org">accessibility+subscribe-digest@libreoffice.org</a><br>
+Archives: <a href="http://www.libreoffice.org/lists/accessibility/">http://www.libreoffice.org/lists/accessibility/</a><br>
+Mail-Archive.com: <a href="http://www.mail-archive.com/accessibility@libreoffice.org/">http://www.mail-archive.com/accessibility@libreoffice.org/</a><br>
+GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.accessibility">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.accessibility</a></li>
 <hr>
 <li>There is also a <a href="http://lists.freedesktop.org/mailman/listinfo/libreoffice">development mailing list</a> available for those interested
 in code contributions. This list is hosted by FreeDesktop.org.</li>
