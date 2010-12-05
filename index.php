@@ -25,6 +25,9 @@ $rightnavigation
 
 <h3>News</h3>
 
+<p>2010-12-05 <b>Release Candidate 1 available</b><br>
+LibreOffice 3.3 Release Candidate 1 is available. Download it <a href="download/">from here</a>.</p>
+
 <p>2010-11-17 <b>Official TDF blog opens</b><br>
 The official Document Foundation blog is <a href="http://blog.documentfoundation.org">here</a>.</p>
 
