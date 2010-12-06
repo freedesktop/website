@@ -272,6 +272,11 @@ sub line_type {
 		     ($line =~ m#^\s*\[echo\]\s*Log4j 1\.2 not found: Cannot Build Log4JLogger#) ||
 		     ($line =~ m#^\s*\[echo\]\s*LogKit not found: Cannot Build LogKitLogger#) ||
 		     ($line =~ m#^\s*\[echo\]\s*Avalon-Framework not found: Cannot Build AvalonLogger#) ||
+		     # some more filenames that cause a false trigger
+		     ($line =~ m#^/bin/sh \.\./\.\./libtool --tag=CXX.*DynamicLibraryManagerException\.lo Exception\.lo#) ||
+		     ($line =~ m#^boost_1_39_0/(boost(/tr1/tr1(/sun)?)?|libs(/unordered/test)?)/exception/#) ||
+		     ($line =~ m#^commons-lang-2\.3-src/src/(java|test)/org/apache/commons/lang/exception/#) ||
+		     ($line =~ m#^commons-httpclient-3\.1/docs/exception-handling\.html#) ||
 		     
                      0);
       
