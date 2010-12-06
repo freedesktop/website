@@ -245,67 +245,65 @@ $VERSION = '#tinder_version#';
                   );
 
 my %count_trees_by_master = ();
-sub addTreesFromFile($)
-{ 
+sub addTreesFromFile($) {
     my $FileName = shift;
 
     my $group = 'new'; #default group
     my $cwsstate = 'Open'; #default state
     if ($FileName =~ /qa/ or $FileName =~ /master/) {
-	    $group = 'ready_for_QA';
-	    $cwsstate = 'Closed';
+        $group = 'ready_for_QA';
+        $cwsstate = 'Closed';
     } elsif ($FileName =~ /approved/) {
-	    $group = 'approved';
-	    $cwsstate = 'Restricted';
+        $group = 'approved';
+        $cwsstate = 'Restricted';
     } elsif ($FileName =~ /nominated/) {
-	    $group = 'nominated';
-	    $cwsstate = 'Metered';
+        $group = 'nominated';
+        $cwsstate = 'Metered';
     }
 
     my $OtherTrees;
     if (open ($OtherTrees, $FileName)) {
         while (<$OtherTrees>) {
-                /^\#/ && next;
-		chomp;
-                my $tree;
-		my $master;
-		my $codeline;
-		my $branch;
-		my ($modules, $new_modules, $vcs);
-		my $svnurl = 'svn://svn.services.openoffice.org/ooo';
-    		($tree, $master, $branch, $modules, $new_modules, $vcs) = split(/\s*:\s*/);
-#               $tree =~ s/\s*:.*//g;
-#               print STDERR "Add tree '$tree' from file $FileName\n";
-		next if $tree eq "";
-		if ($tree =~ /^[A-Z]+/) {
-			$svnurl=$svnurl."/tags/".$tree;
-			$vcs='SVN' if ($tree =~ /^OOO3[2-9]/ || $tree =~ /^DEV/); # assume svn for all milestones
-			# DEV300_m64 and later, OOO320_m13 and later in hg
-			my $treenum =$tree;
-			$vcs='HG' if ( ($treenum =~ s/^DEV300_m//) && ($treenum >= 64)); 
-			$vcs='HG' if ( ($treenum =~ s/^OOO320_m//) && ($treenum >= 13)); 
-		} else {
-			$svnurl=$svnurl."/cws/".$tree;
-		}
-		# untaint the svnurl
-		if ($svnurl =~ m%^(svn://svn.services.openoffice.org/ooo/(tags|cws)/([-\w]+))$% ) {
-			$svnurl=$1;
-		} else {
-			die "Bad data in '$svnurl'"; 	# log this somewhere
-		}
-		
-		$codeline = $master;
-		$codeline =~ s/_.*//;
-                #svnbackup $VC_TREE{$tree} = { root => '/home/ooweb/cvsup',
-                $VC_TREE{$tree} = { root => $svnurl,
-                                    module => 'all', 
-                                    codeline => $codeline, 
-                                    cwsstate => $cwsstate, 
-                                    branch => $branch };
-		$VC_TREE{$tree}{'VCS'} = $vcs if (defined $vcs);
-                # add the tree to the treegroup (creates seperate summaries)
-                $VC_TREE_GROUPS{$group}{$tree} = 1;
-		$count_trees_by_master{$master}{$tree} = 1;
+            /^\#/ && next;
+            chomp;
+            my $tree;
+            my $master;
+            my $codeline;
+            my $branch;
+            my ($modules, $new_modules, $vcs);
+            my $svnurl = 'svn://svn.services.openoffice.org/ooo';
+            ($tree, $master, $branch, $modules, $new_modules, $vcs) = split(/\s*:\s*/);
+            next if $tree eq "";
+            if ($tree =~ /^[A-Z]+/) {
+                $svnurl=$svnurl."/tags/".$tree;
+                $vcs='SVN' if ($tree =~ /^OOO32/ || $tree =~ /^DEV/); # assume svn for all milestones
+                # DEV300_m64 and later, OOO320_m13 and later in hg
+                my $treenum =$tree;
+                $vcs='HG' if ( ($treenum =~ s/^DEV300_m//) && ($treenum >= 64));
+                $vcs='HG' if ( ($treenum =~ s/^OOO320_m//) && ($treenum >= 13));
+                $vcs='HG' if (  $treenum =~ s/^OOO3[3-9][0-9]_m//);
+            } else {
+                $svnurl=$svnurl."/cws/".$tree;
+            }
+            # untaint the svnurl
+            if ($svnurl =~ m%^(svn://svn.services.openoffice.org/ooo/(tags|cws)/([-\w]+))$% ) {
+                $svnurl=$1;
+            } else {
+                die "Bad data in '$svnurl'";    # log this somewhere
+            }
+
+            $codeline = $master;
+            $codeline =~ s/_.*//;
+            #svnbackup $VC_TREE{$tree} = { root => '/home/ooweb/cvsup',
+            $VC_TREE{$tree} = { root => $svnurl,
+                module => 'all',
+                codeline => $codeline,
+                cwsstate => $cwsstate,
+                branch => $branch };
+            $VC_TREE{$tree}{'VCS'} = $vcs if (defined $vcs);
+            # add the tree to the treegroup (creates seperate summaries)
+            $VC_TREE_GROUPS{$group}{$tree} = 1;
+            $count_trees_by_master{$master}{$tree} = 1;
         }
         close ($OtherTrees);
     }
@@ -555,3 +553,4 @@ sub VCName2MailAddress {
 }
 
 1;
+# vim: set ts=4 sw=4 et :
