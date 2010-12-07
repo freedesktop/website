@@ -27,8 +27,7 @@ assign your copyright to anyone in order to get your code contributed
 <h3 id="building">Building And Running It</h3>
 
 <p>These instructions are primarily focused at a GNU/Linux user.
-They are somewhat raw; they will improve rather rapidly over the next
-few days. <b>Bootstrap</b> your system by installing all the packages
+<b>Bootstrap</b> your system by installing all the packages
 required to build your distribution's openoffice package. The easiest
 way to do this is something like this:</p>
 <code>sudo apt-get build-dep openoffice.org # Debian &amp; derivatives</code><br>
@@ -39,12 +38,11 @@ way to do this is something like this:</p>
 
 <code>./autogen.sh --with-num-cpus=2</code><br>
 <code>make</code><br>
-<code>bin/ooinstall -l &lt;<i>/path/to/scratch/dir/</i>&gt;</code><br>
+<code>ooinstall -l &lt;<i>/path/to/scratch/dir/</i>&gt;</code>or <code>make install</code> to properly install it (by default into /usr/local)<br>
 <br>
-<p>If you have problems with the build - don't be put off, get in touch
-with us on IRC, and/or read the wiki page <a
+<p>Further information and more details can be found on our <a
 href="http://wiki.documentfoundation.org/Development/How_to_build">How
-To Build</a>. To <b>run</b> it do:</p>
+To Build</a> wiki page. To <b>run</b> it do:</p>
 <code>cd &lt;<i>/path/to/scratch/dir/</i>&gt;/program</code><br>
 <code>. ./ooenv</code><br>
 <code>gdb --args ./soffice.bin -writer</code><br>
