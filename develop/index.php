@@ -45,7 +45,7 @@ href="http://wiki.documentfoundation.org/Development/How_to_build">How
 To Build</a> wiki page. To <b>run</b> it do:</p>
 <code>cd &lt;<i>/path/to/scratch/dir/</i>&gt;/program</code><br>
 <code>. ./ooenv</code><br>
-<code>gdb --args ./soffice.bin -writer</code><br>
+<code>gdb --args ./soffice.bin -writer</code><br> (this starts LibO writer in a debugger session)
 ...<br>
 
 <h3 id="contact">Finding Other Developers</h3>
