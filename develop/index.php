@@ -38,7 +38,7 @@ way to do this is something like this:</p>
 
 <code>./autogen.sh --with-num-cpus=2</code><br>
 <code>make</code><br>
-<code>ooinstall -l &lt;<i>/path/to/scratch/dir/</i>&gt;</code>or <code>make install</code> to properly install it (by default into /usr/local)<br>
+<code>make dev-install</code> to install into a folder 'install', <code>ooinstall -l &lt;<i>/path/to/scratch/dir/</i>&gt;</code> for dev-installs somewhere else or <code>make install</code> to properly install rather than symlink it (by default into /usr/local).<br>
 <br>
 <p>Further information and more details can be found on our <a
 href="http://wiki.documentfoundation.org/Development/How_to_build">How
