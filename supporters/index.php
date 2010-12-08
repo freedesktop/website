@@ -230,6 +230,17 @@ in the project through its Open Source Software Assurance.</i>"
 </tr>
 
 <tr>
+    <td><b><a name="lpod">lpOD</a></b></td> 
+    <td>
+"<i>The lpOD project hails the birth of the Document Foundation, and
+believes it is a symbol of digital freedom.</i>" said <b>Luis Belmar-Letelier</b>,
+leader of the lpOD Project and CEO of Itaapy, "<i>The lpOD project looks
+forward to the success of The Document Foundation and is interested in
+contributing to the foundation's projects.</i>"
+    </td>
+</tr>
+
+<tr>
     <td><b><a name="mageia">Mageia</a></b></td> 
     <td>"<i>After the announcement of LibreOffice, Mageia decided to give
 full official support to this new project. There are obvious similarities
