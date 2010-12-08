@@ -8,9 +8,9 @@ $content = <<<"EOT"
 <br>
 All our source code is hosted in git:
 <br>
-<b>Clone:</b> <tt>\$ git clone git://anongit.freedesktop.org/git/libreoffice/build</tt>
+<b>Clone:</b> <tt>\$ git clone git://anongit.freedesktop.org/git/libreoffice/bootstrap</tt>
 # <a href="$freedesktop_cgit">(browse)</a> <a
-href="http://anongit.freedesktop.org/git/libreoffice/build.git/">(http URL)</a> 
+href="http://anongit.freedesktop.org/git/libreoffice/bootstrap.git/">(http URL)</a> 
 <br>
 <b>Tarball:</b> <a href="$download_source">$download_source</a>.
 <br>
@@ -36,17 +36,16 @@ way to do this is something like this:</p>
 <br>
 <p>Then to download the full source and <b>build</b>:</p>
 
-<code>./autogen.sh --with-git --with-num-cpus=2</code><br>
+<code>./autogen.sh --with-num-cpus=2</code><br>
 <code>make fetch all</code><br>
-<code>bin/ooinstall -l &lt;<i>/path/to/scratch/dir/</i>&gt;</code><br>
+<code>make dev-install</code> to install into a folder 'install', <code>ooinstall -l &lt;<i>/path/to/scratch/dir/</i>&gt;</code> for dev-installs somewhere else or <code>make install</code> to properly install rather than symlink it (by default into /usr/local).<br>
 <br>
-<p>If you have problems with the build - don't be put off, get in touch
-with us on IRC, and/or read the wiki page <a
+<p>Further information and more details can be found on our <a
 href="http://wiki.documentfoundation.org/Development/How_to_build">How
-To Build</a>. To <b>run</b> it do:</p>
+To Build</a> wiki page. To <b>run</b> it do:</p>
 <code>cd &lt;<i>/path/to/scratch/dir/</i>&gt;/program</code><br>
 <code>. ./ooenv</code><br>
-<code>gdb --args ./soffice.bin -writer</code><br>
+<code>gdb --args ./soffice.bin -writer</code><br> (this starts LibO writer in a debugger session)
 ...<br>
 
 <h3 id="contact">Finding Other Developers</h3>
