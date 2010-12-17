@@ -63,6 +63,7 @@ This release candidate is not intended for production use!
     icons or websites. So please bear with us. This also applies to
     the BrOffice.org branding - applicable in Brazil.</li>
 <li>Filters for the legacy StarOffice binary formats may be missing.</li>
++<li>More detailed release notes are <a href="http://wiki.documentfoundation.org/Releases/3.3/RC1">available in our wiki.</a>
 </ul>
 
 <h3>Keeping Up With the Progress</h3>
