@@ -36,10 +36,11 @@ way to do this is something like this:</p>
 <br>
 <p>Then to download the full source and <b>build</b>:</p>
 
-<code>git clone git://anongit.freedesktop.org/libreoffice/bootstrap libo</code>
-<code>cd libo ; ./autogen.sh --with-num-cpus=2</code><br>
-<code>make fetch all</code><br>
-<code>make dev-install</code> to install into a folder 'install', <code>ooinstall -l &lt;<i>/path/to/scratch/dir/</i>&gt;</code> for dev-installs somewhere else or <code>make install</code> to properly install rather than symlink it (by default into /usr/local).<br>
+<code>git clone git://anongit.freedesktop.org/libreoffice/bootstrap libo</code><br/>
+<code>cd libo</code><br/>
+<code>./autogen.sh --with-num-cpus=2</code><br/>
+<code>make fetch all</code><br/>
+<code>make dev-install</code> to install into a folder 'install', <code>ooinstall -l &lt;<i>/path/to/scratch/dir/</i>&gt;</code> for dev-installs somewhere else or <code>make install</code> to properly install rather than symlink it (by default into /usr/local).<br/>
 <br>
 <p>Further information and more details can be found on our <a
 href="http://wiki.documentfoundation.org/Development/How_to_build">How
