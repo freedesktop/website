@@ -8,7 +8,7 @@ $content = <<<"EOT"
 <br>
 All our source code is hosted in git:
 <br>
-<b>Clone:</b> <tt>\$ git clone git://anongit.freedesktop.org/git/libreoffice/bootstrap</tt>
+<b>Clone:</b> <tt>\$ git clone git://anongit.freedesktop.org/libreoffice/bootstrap</tt>
 # <a href="$freedesktop_cgit">(browse)</a> <a
 href="http://anongit.freedesktop.org/git/libreoffice/bootstrap.git/">(http URL)</a> 
 <br>
@@ -36,7 +36,8 @@ way to do this is something like this:</p>
 <br>
 <p>Then to download the full source and <b>build</b>:</p>
 
-<code>./autogen.sh --with-num-cpus=2</code><br>
+<code>git clone git://anongit.freedesktop.org/libreoffice/bootstrap libo</code>
+<code>cd libo ; ./autogen.sh --with-num-cpus=2</code><br>
 <code>make fetch all</code><br>
 <code>make dev-install</code> to install into a folder 'install', <code>ooinstall -l &lt;<i>/path/to/scratch/dir/</i>&gt;</code> for dev-installs somewhere else or <code>make install</code> to properly install rather than symlink it (by default into /usr/local).<br>
 <br>
