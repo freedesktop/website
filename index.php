@@ -28,6 +28,9 @@ $rightnavigation
 <p>2010-12-23 <b>Release Candidate 2 available</b><br>
 LibreOffice 3.3 Release Candidate 2 is available. Download it <a href="download/">from here</a>.</p>
 
+<p>2010-12-20 <b>TDF joins Open Invention Network</b><br>
+The Document Foundation joins the Open Invention Network. <a href="http://www.documentfoundation.org/lists/announce/msg00021.html">Read our press release</a>.</p>
+
 <p>2010-12-06 <b>LibreOffice development extends to Brazil</b><br>
 The Document Foundation welcomes the new BrOffice Centre of Excellence for Free Software,
 a software development project recently announced by BrOffice, Itaipu Binacional and the
