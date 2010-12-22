@@ -25,13 +25,13 @@ $rightnavigation
 
 <h3>News</h3>
 
+<p>2010-12-23 <b>Release Candidate 2 available</b><br>
+LibreOffice 3.3 Release Candidate 2 is available. Download it <a href="download/">from here</a>.</p>
+
 <p>2010-12-06 <b>LibreOffice development extends to Brazil</b><br>
 The Document Foundation welcomes the new BrOffice Centre of Excellence for Free Software,
 a software development project recently announced by BrOffice, Itaipu Binacional and the
 Itaipu Technological Park Foundation. <a href="http://www.documentfoundation.org/lists/announce/msg00020.html">Read the press release.</a></p>
-
-<p>2010-12-05 <b>Release Candidate 1 available</b><br>
-LibreOffice 3.3 Release Candidate 1 is available. Download it <a href="download/">from here</a>.</p>
 
 <p>2010-11-17 <b>Official TDF blog opens</b><br>
 The official Document Foundation blog is <a href="http://blog.documentfoundation.org">here</a>.</p>
