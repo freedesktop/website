@@ -31,7 +31,7 @@ Only the provider of the respective website is liable for it's contents.
 
 <h3>Privacy statement</h3>
 <p>For information about data privacy, please refer to our
-<a href="privacy_policy.html">Privacy Policy</a>.</p>
+<a href="/privacy">Privacy Policy</a>.</p>
 
  
 <h3>Haftungshinweis</h3>
@@ -40,7 +40,7 @@ Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreibe
 
 <h3>Datenschutzerklärung</h3>
 <p>Bitte lesen Sie hierzu unsere ausführliche, eigenständige Seite zum 
-<a href="privacy_policy.html#german">Datenschutz</a>.</p>
+<a href="/privacy">Datenschutz</a>.</p>
 
 
 EOT;
