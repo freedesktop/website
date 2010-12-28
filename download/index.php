@@ -39,14 +39,16 @@ This release candidate is not intended for production use!
        <li class="dlnav-win32"><a href="$urlbase/3.3.0-rc2/win/x86/LibO_3.3.0rc2_Win_x86_install_multi.exe">Download and install this for the International version to be used on Microsoft Windows.</a></li>
        <li class="dlnav-linux32"><a href="$urlbase/3.3.0-rc2/rpm/x86/LibO_3.3.0rc2_Linux_x86_install-rpm_en-US.tar.gz">Download and install this for the English version to be used on various GNU/Linux 32-bit distributions.</a></li>
        <li class="dlnav-linux64"><a href="$urlbase/3.3.0-rc2/rpm/x86_64/LibO_3.3.0rc2_Linux_x86-64_install-rpm_en-US.tar.gz">Download and install this for the English version to be used on various GNU/Linux 64-bit distributions.</a></li>
-       <li class="dlnav-mac"><a href="$urlbase/3.3.0-rc2/mac/x86/LibO_3.3.0rc2_MacOS_x86_install_en-US.dmg">Download and install this for the English version to be used on Apple MacOS X.</a></li>
+       <li class="dlnav-mac"><a href="$urlbase/3.3.0-rc2/mac/x86/LibO_3.3.0rc2_MacOS_x86_install_en-US.dmg">Download and install this for the English version to be used on Apple MacOS X (x86).</a></li>
        <li class="dlnav-source"><a href="$download_source">Click here to download the tarball containing the source code.</a></li>
     </ul>
 
     <p>You can also <a href="http://tracker.documentfoundation.org:6969">download using BitTorrent</a>,
     or <a href="$urlbase/3.3.0-rc2">browse all the RC2 installation packages</a> to get unofficial
        Debian packages (<a href="$urlbase/3.3.0-rc2/deb/x86/LibO_3.3.0rc2_Linux_x86_install-deb_en-US.tar.gz">32-bit .debs</a> 
-    or <a href="$urlbase/3.3.0-rc2/deb/x86_64/LibO_3.3.0rc2_Linux_x86-64_install-deb_en-US.tar.gz">64-bit .debs</a>), or language packs.</p>
+    or <a href="$urlbase/3.3.0-rc2/deb/x86_64/LibO_3.3.0rc2_Linux_x86-64_install-deb_en-US.tar.gz">64-bit .debs</a>),
+    <a href="$urlbase/3.3.0-rc2/mac/ppc/LibO_3.3.0rc2_MacOS_PPC_install_en-US.dmg">Apple MacOS X (PPC)</a>
+    or language packs.</p>
 </div>
 
 <h3 id="release-notes">Release Notes</h3>
