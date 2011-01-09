@@ -225,6 +225,12 @@ $VERSION = '#tinder_version#';
                    module => 'all',
                    branch => 'trunk',
                   },
+            'MASTER' =>  {
+                   root => 'git://anongit.freedesktop.org/git/libreoffice/bootstrap',
+                   module => 'all',
+                   branch => 'master',
+                   VCS  => 'GIT',
+                  },
            );
 
 # We group trees into sets so that individual managers can get a page
