@@ -15,7 +15,7 @@ $content = <<<EOT
 
 <p>
 LibreOffice is a productivity suite that is compatible with other major 
-office suites, and available on a variety of platforms. It is free software 
+office suites, and is available on a variety of platforms. It is free software 
 and therefore free to download, use and distribute.
 </p>
 
