@@ -138,7 +138,7 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 $freedesktop_name="libreoffice";
 $freedesktop_cgit="http://cgit.freedesktop.org/$freedesktop_name";
 $download_binaries="http://download.documentfoundation.org/libreoffice/testing";
-$download_source="http://download.documentfoundation.org/libreoffice/src/libreoffice-build-3.3.0.2.tar.gz";
+$download_source="http://download.documentfoundation.org/libreoffice/src/libreoffice-build-3.3.0.3.tar.gz";
 
 $rightnavigation = <<<EOT
 

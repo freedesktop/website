@@ -36,18 +36,18 @@ This release candidate is not intended for production use!
 
 <div id="download-nav">
     <ul id="dlnav">
-       <li class="dlnav-win32"><a href="$urlbase/3.3.0-rc2/win/x86/LibO_3.3.0rc2_Win_x86_install_multi.exe">Download and install this for the International version to be used on Microsoft Windows.</a></li>
-       <li class="dlnav-linux32"><a href="$urlbase/3.3.0-rc2/rpm/x86/LibO_3.3.0rc2_Linux_x86_install-rpm_en-US.tar.gz">Download and install this for the English version to be used on various GNU/Linux 32-bit distributions.</a></li>
-       <li class="dlnav-linux64"><a href="$urlbase/3.3.0-rc2/rpm/x86_64/LibO_3.3.0rc2_Linux_x86-64_install-rpm_en-US.tar.gz">Download and install this for the English version to be used on various GNU/Linux 64-bit distributions.</a></li>
-       <li class="dlnav-mac"><a href="$urlbase/3.3.0-rc2/mac/x86/LibO_3.3.0rc2_MacOS_x86_install_en-US.dmg">Download and install this for the English version to be used on Apple MacOS X (x86).</a></li>
+       <li class="dlnav-win32"><a href="$urlbase/3.3.0-rc3/win/x86/LibO_3.3.0rc3_Win_x86_install_multi.exe">Download and install this for the International version to be used on Microsoft Windows.</a></li>
+       <li class="dlnav-linux32"><a href="$urlbase/3.3.0-rc3/rpm/x86/LibO_3.3.0rc3_Linux_x86_install-rpm_en-US.tar.gz">Download and install this for the English version to be used on various GNU/Linux 32-bit distributions.</a></li>
+       <li class="dlnav-linux64"><a href="$urlbase/3.3.0-rc3/rpm/x86_64/LibO_3.3.0rc3_Linux_x86-64_install-rpm_en-US.tar.gz">Download and install this for the English version to be used on various GNU/Linux 64-bit distributions.</a></li>
+       <li class="dlnav-mac"><a href="$urlbase/3.3.0-rc3/mac/x86/LibO_3.3.0rc3_MacOS_x86_install_en-US.dmg">Download and install this for the English version to be used on Apple MacOS X (x86).</a></li>
        <li class="dlnav-source"><a href="$download_source">Click here to download the tarball containing the source code.</a></li>
     </ul>
 
     <p>You can also <a href="http://tracker.documentfoundation.org:6969">download using BitTorrent</a>,
-    or <a href="$urlbase/3.3.0-rc2">browse all the RC2 installation packages</a> to get unofficial
-       Debian packages (<a href="$urlbase/3.3.0-rc2/deb/x86/LibO_3.3.0rc2_Linux_x86_install-deb_en-US.tar.gz">32-bit .debs</a> 
-    or <a href="$urlbase/3.3.0-rc2/deb/x86_64/LibO_3.3.0rc2_Linux_x86-64_install-deb_en-US.tar.gz">64-bit .debs</a>),
-    <a href="$urlbase/3.3.0-rc2/mac/ppc/LibO_3.3.0rc2_MacOS_PPC_install_en-US.dmg">Apple MacOS X (PPC)</a>
+    or <a href="$urlbase/3.3.0-rc3">browse all the RC3 installation packages</a> to get unofficial
+       Debian packages (<a href="$urlbase/3.3.0-rc3/deb/x86/LibO_3.3.0rc3_Linux_x86_install-deb_en-US.tar.gz">32-bit .debs</a> 
+    or <a href="$urlbase/3.3.0-rc3/deb/x86_64/LibO_3.3.0rc3_Linux_x86-64_install-deb_en-US.tar.gz">64-bit .debs</a>),
+    <a href="$urlbase/3.3.0-rc3/mac/ppc/LibO_3.3.0rc3_MacOS_PPC_install_en-US.dmg">Apple MacOS X (PPC)</a>
     or language packs.</p>
 </div>
 
@@ -57,16 +57,16 @@ This release candidate is not intended for production use!
 <ul class="list-libreoffice">
 <li>The Windows build is an International build - you can choose the user interface language that 
     is suitable for you. The help content is not included, but using an online version. 
-    Alternatively, there are separate helppacks available. Please browse <a href="$urlbase/3.3.0-rc2">the archives</a> 
+    Alternatively, there are separate helppacks available. Please browse <a href="$urlbase/3.3.0-rc3">the archives</a> 
     to get the helppack pack you need for your platform.</li>
 <li>The Linux and MacOSX builds are English builds with the possibility to install language packs.
-    Please browse <a href="$urlbase/3.3.0-rc2">the archives</a> to get the language pack you need 
+    Please browse <a href="$urlbase/3.3.0-rc3">the archives</a> to get the language pack you need 
     for your platform.</li>
 <li>The LibreOffice branding and renaming is new and work in progress. You may still see old graphics, 
     icons or websites. So please bear with us. This also applies to
     the BrOffice.org branding - applicable in Brazil.</li>
 <li>Filters for the legacy StarOffice binary formats may be missing.</li>
-<li>More detailed release notes are <a href="http://wiki.documentfoundation.org/Releases/3.3/RC2">available in our wiki.</a>
+<li>More detailed release notes are <a href="http://wiki.documentfoundation.org/Releases/3.3/RC3">available in our wiki.</a>
 </ul>
 
 <h3>Keeping Up With the Progress</h3>
