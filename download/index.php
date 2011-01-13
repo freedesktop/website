@@ -19,7 +19,7 @@ office suites, and is available on a variety of platforms. It is free software
 and therefore free to download, use and distribute.
 </p>
 
-<h3>Download LibreOffice Release Candidate 2</h3>
+<h3>Download LibreOffice Release Candidate 3</h3>
 
 <p>
 The following software packages are intended to give you a first impression of what LibreOffice 
