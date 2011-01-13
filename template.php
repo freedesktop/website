@@ -109,7 +109,7 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 	<div id="footer">
 	      <table>
 	      <tr> 
-		<td colspan=2><a href="/imprint">Imprint</a>&nbsp;&nbsp;<a href="/privacy">Privacy Policy</a>
+		<td colspan=2><a href="/imprint">Impressum (Legal Info)</a>&nbsp;&nbsp;<a href="/privacy">Privacy Policy</a>
 		</td>
 	      </tr>
 	      <tr> 
@@ -144,7 +144,7 @@ $rightnavigation = <<<EOT
        <li class="rnav-download"><a href="http://www.libreoffice.org/download">Download LibreOffice</a></li>
        <li class="rnav-blue"><a href="/foundation">Understand the reasons for The Document Foundation</a></li>
        <li class="rnav-green"><a href="/contribution">Sign up and get in touch with the community</a></li>
-       <li class="rnav-magenta"><a href="/contact">Get press material and contat spokes people</a></li>
+       <li class="rnav-magenta"><a href="/contact">Get press material and contact spokespeople</a></li>
        <li class="rnav-orange"><a href="/supporters">Read what supporters of The Document Foundation say</a></li>
     </ul>
 </div>
