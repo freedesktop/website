@@ -8,7 +8,6 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
         //  - (optional) the id of the tab it is under, this is for subsections
 	$hnav = array( "summary" => array("/", "Welcome"),
 			"foundation" => array("/foundation", "Foundation"),
-			"libreoffice" => array("/download/", "LibreOffice"),
 			"develop" => array("/develop/", "Develop"),
 			"contribute" => array("/contribution/", "Contribute"),
 			"supporters" => array("/supporters/", "Supporters") ,
@@ -20,7 +19,6 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 	// this is all dependent on ths CSS used.
 	$tabs = array ( "summary" => "container", 
 	       	       	 "foundation" => "container", 
-	       	       	 "libreoffice" => "container", 
 			 "develop" => "container",
 			 "contribute" => "container",
 	       		 "supporters" => "container",
@@ -137,7 +135,6 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 
 $freedesktop_name="libreoffice";
 $freedesktop_cgit="http://cgit.freedesktop.org/$freedesktop_name";
-$download_binaries="http://download.documentfoundation.org/libreoffice/testing";
 $download_source="http://download.documentfoundation.org/libreoffice/src/libreoffice-build-3.3.0.3.tar.gz";
 
 $rightnavigation = <<<EOT

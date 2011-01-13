@@ -17,7 +17,9 @@ $rightnavigation
 <!--    <li><div>It is proud to be the home of LibreOffice, the next evolution of the world's leading free office suite.</div></li> -->
 </ul> 
 
-<p>The Document Foundation is proud to be the home of <a href="download">LibreOffice</a>, the next evolution of the world's leading free office suite.</p>
+<p>The Document Foundation is proud to be the home of <a
+href="http://www.libreoffice.org/download/">LibreOffice</a>,
+the next evolution of the world's leading free office suite.</p>
 
 <h3>Want to meet us?</h3>
 
