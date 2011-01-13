@@ -8,7 +8,6 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
         //  - (optional) the id of the tab it is under, this is for subsections
 	$hnav = array( "summary" => array("/", "Welcome"),
 			"foundation" => array("/foundation", "Foundation"),
-			"libreoffice" => array("/download/", "LibreOffice"),
 			"develop" => array("/develop/", "Develop"),
 			"contribute" => array("/contribution/", "Contribute"),
 			"supporters" => array("/supporters/", "Supporters") ,
@@ -20,7 +19,6 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 	// this is all dependent on ths CSS used.
 	$tabs = array ( "summary" => "container", 
 	       	       	 "foundation" => "container", 
-	       	       	 "libreoffice" => "container", 
 			 "develop" => "container",
 			 "contribute" => "container",
 	       		 "supporters" => "container",
@@ -137,14 +135,13 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 
 $freedesktop_name="libreoffice";
 $freedesktop_cgit="http://cgit.freedesktop.org/$freedesktop_name";
-$download_binaries="http://download.documentfoundation.org/libreoffice/testing";
 $download_source="http://download.documentfoundation.org/libreoffice/src/libreoffice-build-3.3.0.3.tar.gz";
 
 $rightnavigation = <<<EOT
 
 <div id="right-nav">
     <ul id="rnav">
-       <li class="rnav-download"><a href="/download">Download LibreOffice</a></li>
+       <li class="rnav-download"><a href="http://www.libreoffice.org/download">Download LibreOffice</a></li>
        <li class="rnav-blue"><a href="/foundation">Understand the reasons for The Document Foundation</a></li>
        <li class="rnav-green"><a href="/contribution">Sign up and get in touch with the community</a></li>
        <li class="rnav-magenta"><a href="/contact">Get press material and contat spokes people</a></li>

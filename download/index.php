@@ -1,8 +1,6 @@
 <?php
 require("../template.php");
 
-$urlbase=$download_binaries;
-
 $content = <<<EOT
 
 
@@ -11,6 +9,7 @@ $content = <<<EOT
 
 <div id="right-download"><div id="screenshot-slide"><a href="/download/"><img id="screenshot-slide-image" src="/img/slides/scaled/LO_StartCenter_Small.png" alt="Download LibreOffice"></a></div></div>
 
+<<<<<<< HEAD
 <h3>About LibreOffice</h3>
 
 <p>
@@ -68,15 +67,14 @@ This release candidate is not intended for production use!
 <li>Filters for the legacy StarOffice binary formats may be missing.</li>
 <li>More detailed release notes are <a href="http://wiki.documentfoundation.org/Releases/3.3/RC3">available in our wiki.</a>
 </ul>
+=======
+<h3>Downloading LibreOffice</h3>
+>>>>>>> remove the download tab, and re-direct to libreoffice.org/download
 
-<h3>Keeping Up With the Progress</h3>
 <p>
-To be informed about the latest updates and releases of LibreOffice,
-send an empty mail to <a
-href="mailto:announce+subscribe@documentfoundation.org">announce+subscribe@documentfoundation.org</a>.<br>
-To join our discussion mailing list, send an empty mail to <a
-href="mailto:discuss+subscribe@documentfoundation.org">discuss+subscribe@documentfoundation.org</a>.<br>
-More information are available on our <a href="/contact/">Contacts</a> page.
+This page is obsolete.
+You can download LibreOffice from the libreoffice.org download site which is at
+<a href="http://www.libreoffice.org/download/">http://www.libreoffice.org/download</a>.
 </p>
 
 </div>
