@@ -59,7 +59,7 @@ $content = <<<EOT
 	your patch sucks - expect to hear how it can be improved.
     </p>
 
-    <h3>Freer licensing</h3>
+    <h3>Free-er licensing</h3>
     <p>
 	For the code to live, grow and improve, to encourage participation and
 	compete with the other office suite - we need sensible licensing: ie.
@@ -75,7 +75,7 @@ $content = <<<EOT
     </p>
     <p>
 	We believe that copyright assignment to a single corporate entity opens
-	the door for substantial abuse of the best-interests of the codebase
+	the door for substantial abuse of the best interests of the codebase
 	and developer community. As such, we prefer either eclectic ownership
 	(cf. Mozilla, GNOME, KDE, Linux), or an independent, meritocratic foundation
 	(cf. Eclipse, Apache) to own the rights. Having said that we recognise and
