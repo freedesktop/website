@@ -12,7 +12,7 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 			"contribute" => array("/contribution/", "Contribute"),
 			"supporters" => array("/supporters/", "Supporters") ,
 			"contact" => array("/contact/", "Contact") ,
-			"faq" => array("/faq/", "FAQ") 
+			"faq" => array("/faq/", "FAQ")
 			);
         // tabs state. the all have the "container" value
 	// and the current one MUST have the "selected" value
@@ -24,8 +24,8 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 	       		 "supporters" => "container",
 	       		 "contact" => "container",
 	       		 "faq" => "container"
-		 ); 
-	
+		 );
+
 	$id = "summary";
 	foreach ($context as $c) {
 		if (array_key_exists ($c, $tabs)) {
@@ -150,6 +150,5 @@ $rightnavigation = <<<EOT
 </div>
 
 EOT;
-
 
 ?>

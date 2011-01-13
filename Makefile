@@ -1,6 +1,5 @@
 ALL_TARGETS = \
 	index.html\
-	download/index.html\
 	lgpl/index.html\
 	foundation/index.html\
 	foundation/newindex.html\
