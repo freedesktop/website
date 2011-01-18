@@ -25,6 +25,10 @@ the next evolution of the world's leading free office suite.</p>
 
 <p>See the <a href="http://wiki.documentfoundation.org/Events">list of events</a> where you can meet The Document Foundation and members of the Community.</p>
 
+<h3>Press Releases</h3>
+
+<p>Our press releases are available <a href="http://listarchives.documentfoundation.org/www/announce/">in our archive</a>.</p>
+
 </div>
 EOT;
 
