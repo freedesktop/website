@@ -120,6 +120,12 @@ Digest subscription: <a href="mailto:moderators+subscribe-digest@documentfoundat
 Archives: <a href="http://www.documentfoundation.org/lists/moderators/">http://www.documentfoundation.org/lists/moderators/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/moderators@documentfoundation.org/">http://www.mail-archive.com/moderators@documentfoundation.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.moderators">http://dir.gmane.org/gmane.comp.documentfoundation.moderators</a></li>
+<li><b>test@documentfoundation.org:</b> Mailing list for testing the mailing list manager<br>
+Subscription: <a href="mailto:test+subscribe@documentfoundation.org">test+subscribe@documentfoundation.org</a><br>
+Digest subscription: <a href="mailto:test+subscribe-digest@documentfoundation.org">test+subscribe-digest@documentfoundation.org</a><br>
+Archives: <a href="http://www.documentfoundation.org/lists/test/">http://www.documentfoundation.org/lists/test/</a><br>
+Mail-Archive.com: <a href="http://www.mail-archive.com/test@documentfoundation.org/">http://www.mail-archive.com/test@documentfoundation.org/</a><br>
+GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.test">http://dir.gmane.org/gmane.comp.documentfoundation.test</a></li>
 <hr>
 <li><b>l10n@libreoffice.org:</b> Mailing list for people in charge of LibreOffice localization<br>
 Subscription: <a href="mailto:l10n+subscribe@libreoffice.org">l10n+subscribe@libreoffice.org</a><br>
