@@ -1,0 +1,973 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="442.09915"
+   height="182.56021"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docbase="D:\vektorkunst"
+   sodipodi:docname="futurecar.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.95565961"
+     inkscape:cx="221.04958"
+     inkscape:cy="91.280106"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1280"
+     inkscape:window-height="750"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     showborder="true" />
+  <defs
+     id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient7515">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop7517" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop7519" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3268">
+      <stop
+         style="stop-color:#ff4500;stop-opacity:1;"
+         offset="0"
+         id="stop3270" />
+      <stop
+         style="stop-color:#ff4500;stop-opacity:0;"
+         offset="1"
+         id="stop3272" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3236">
+      <stop
+         style="stop-color:#c20000;stop-opacity:1"
+         offset="0"
+         id="stop3238" />
+      <stop
+         style="stop-color:#2b0000;stop-opacity:1"
+         offset="1"
+         id="stop3240" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient6154">
+      <stop
+         offset="0"
+         style="stop-color:#c0c0c0;stop-opacity:0;"
+         id="stop6156" />
+      <stop
+         offset="1"
+         style="stop-color:#787878;stop-opacity:0.68656719;"
+         id="stop6158" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4161">
+      <stop
+         offset="0"
+         style="stop-color:#6d6d6d;stop-opacity:1;"
+         id="stop4163" />
+      <stop
+         offset="1"
+         style="stop-color:#000000;stop-opacity:1;"
+         id="stop4165" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient22893"
+       inkscape:collect="always">
+      <stop
+         offset="0"
+         style="stop-color:#ffffff;stop-opacity:1;"
+         id="stop22895" />
+      <stop
+         offset="1"
+         style="stop-color:#ffffff;stop-opacity:0;"
+         id="stop22897" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient15979"
+       inkscape:collect="always">
+      <stop
+         offset="0"
+         style="stop-color:#ffffff;stop-opacity:1;"
+         id="stop15981" />
+      <stop
+         offset="1"
+         style="stop-color:#ffffff;stop-opacity:0;"
+         id="stop15983" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3183">
+      <stop
+         offset="0"
+         style="stop-color:#160b00;stop-opacity:1;"
+         id="stop3185" />
+      <stop
+         offset="1"
+         style="stop-color:#ce6a03;stop-opacity:0;"
+         id="stop3187" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient6111">
+      <stop
+         offset="0"
+         style="stop-color:#000000;stop-opacity:1;"
+         id="stop6113" />
+      <stop
+         offset="0.43084911"
+         style="stop-color:#000000;stop-opacity:1;"
+         id="stop6119" />
+      <stop
+         offset="0.57324839"
+         style="stop-color:#454545;stop-opacity:1;"
+         id="stop6123" />
+      <stop
+         offset="0.63032979"
+         style="stop-color:#000000;stop-opacity:1;"
+         id="stop6121" />
+      <stop
+         offset="1"
+         style="stop-color:#000000;stop-opacity:1;"
+         id="stop6115" />
+    </linearGradient>
+    <radialGradient
+       r="28.252651"
+       id="radialGradient6130"
+       fx="247.00888"
+       fy="210.83682"
+       gradientUnits="userSpaceOnUse"
+       inkscape:collect="always"
+       cy="210.83682"
+       cx="247.00888"
+       xlink:href="#linearGradient6111"
+       gradientTransform="matrix(1.5388068,7.4100704e-2,-4.5902318e-2,2.0747518,-123.41216,-244.90079)" />
+    <radialGradient
+       r="28.252651"
+       id="radialGradient7109"
+       fx="247.00888"
+       fy="210.83682"
+       gradientUnits="userSpaceOnUse"
+       inkscape:collect="always"
+       cy="210.83682"
+       cx="247.00888"
+       xlink:href="#linearGradient6111"
+       gradientTransform="matrix(1.5388068,7.4100704e-2,-4.5902318e-2,2.0747518,-123.41216,-244.90079)" />
+    <linearGradient
+       id="linearGradient3189"
+       gradientUnits="userSpaceOnUse"
+       inkscape:collect="always"
+       x1="442.21323"
+       x2="442.785"
+       xlink:href="#linearGradient3183"
+       gradientTransform="matrix(0.9987829,-4.9322096e-2,4.9322096e-2,0.9987829,-18.169781,328.47879)"
+       y1="-84.904564"
+       y2="-80.444695" />
+    <filter
+       id="filter10061"
+       inkscape:collect="always">
+      <feGaussianBlur
+         stdDeviation="1.941339"
+         id="feGaussianBlur10063"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       id="filter17973"
+       width="1.1237053"
+       y="-0.15422425"
+       x="-0.061852671"
+       height="1.3084486"
+       inkscape:collect="always">
+      <feGaussianBlur
+         stdDeviation="5.3386823"
+         id="feGaussianBlur17975"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       id="filter20948"
+       inkscape:collect="always">
+      <feGaussianBlur
+         stdDeviation="3.0855965"
+         id="feGaussianBlur20950"
+         inkscape:collect="always" />
+    </filter>
+    <linearGradient
+       id="linearGradient22899"
+       gradientUnits="userSpaceOnUse"
+       inkscape:collect="always"
+       x1="356.06754"
+       x2="372.13623"
+       xlink:href="#linearGradient22893"
+       gradientTransform="translate(-25.116195,300.09017)"
+       y1="-71.659111"
+       y2="-20.420919" />
+    <radialGradient
+       r="43.290749"
+       id="radialGradient4167"
+       fx="287.27176"
+       fy="-29.954128"
+       gradientUnits="userSpaceOnUse"
+       inkscape:collect="always"
+       cy="-29.954128"
+       cx="287.27176"
+       xlink:href="#linearGradient4161"
+       gradientTransform="matrix(1.9223301,0.1868132,-2.6991996e-2,0.3558337,-265.76792,-58.404481)" />
+    <filter
+       id="filter5175"
+       inkscape:collect="always">
+      <feGaussianBlur
+         stdDeviation="0.8165566"
+         id="feGaussianBlur5177"
+         inkscape:collect="always" />
+    </filter>
+    <radialGradient
+       r="140.60323"
+       id="radialGradient6162"
+       fx="383.86533"
+       fy="2.0145288"
+       gradientUnits="userSpaceOnUse"
+       inkscape:collect="always"
+       cy="2.0145288"
+       cx="383.86533"
+       xlink:href="#linearGradient6154"
+       gradientTransform="matrix(-2.3038233e-2,-0.2481081,1.3395518,-0.1243802,375.90574,370.43923)" />
+    <filter
+       id="filter16878"
+       inkscape:collect="always">
+      <feGaussianBlur
+         stdDeviation="0.23665844"
+         id="feGaussianBlur16880"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       id="filter26616"
+       inkscape:collect="always">
+      <feGaussianBlur
+         stdDeviation="1.2904133"
+         id="feGaussianBlur26618"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       x="-0.038623989"
+       width="1.077248"
+       y="-0.14580826"
+       height="1.2916166"
+       id="filter3332">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.9602517"
+         id="feGaussianBlur3334" />
+    </filter>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3236"
+       id="radialGradient3346"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.8763342,-0.1029637,3.9440228e-2,1.214517,-459.59511,-14.422004)"
+       cx="240.15456"
+       cy="183.05887"
+       fx="240.15456"
+       fy="183.05887"
+       r="60.434658" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3268"
+       id="linearGradient3348"
+       gradientUnits="userSpaceOnUse"
+       x1="348.18454"
+       y1="171.57921"
+       x2="225.27498"
+       y2="183.53893" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3236"
+       id="radialGradient3350"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.8763342,-0.1029637,3.9440228e-2,1.214517,-459.59511,-14.422004)"
+       cx="240.15456"
+       cy="183.05887"
+       fx="240.15456"
+       fy="183.05887"
+       r="60.434658" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3268"
+       id="linearGradient3352"
+       gradientUnits="userSpaceOnUse"
+       x1="348.18454"
+       y1="171.57921"
+       x2="225.27498"
+       y2="183.53893" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3236"
+       id="radialGradient3360"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.8763342,-0.1029637,3.9440228e-2,1.214517,-459.59511,-14.422004)"
+       cx="240.15456"
+       cy="183.05887"
+       fx="240.15456"
+       fy="183.05887"
+       r="60.434658" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3268"
+       id="linearGradient3362"
+       gradientUnits="userSpaceOnUse"
+       x1="348.18454"
+       y1="171.57921"
+       x2="225.27498"
+       y2="183.53893" />
+    <linearGradient
+       id="linearGradient10084">
+      <stop
+         id="stop10086"
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="0" />
+      <stop
+         id="stop10090"
+         style="stop-color:#464646;stop-opacity:0;"
+         offset="0.62234044" />
+      <stop
+         id="stop10092"
+         style="stop-color:#343434;stop-opacity:1;"
+         offset="0.70001513" />
+      <stop
+         id="stop18048"
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="0.82341313" />
+      <stop
+         id="stop10094"
+         style="stop-color:#c9c9c9;stop-opacity:0;"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient31939">
+      <stop
+         id="stop31941"
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0" />
+      <stop
+         id="stop31943"
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient34913">
+      <stop
+         id="stop34915"
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0" />
+      <stop
+         id="stop34917"
+         style="stop-color:#bbbbbb;stop-opacity:1;"
+         offset="0.48992759" />
+      <stop
+         id="stop34919"
+         style="stop-color:#5f5f5f;stop-opacity:1;"
+         offset="0.62234044" />
+      <stop
+         id="stop34921"
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0.75" />
+      <stop
+         id="stop34923"
+         style="stop-color:#cfcfcf;stop-opacity:1;"
+         offset="1" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient34913"
+       id="radialGradient12288"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.293158,3.5024159e-2,-4.307469e-2,2.1114923,-72.635045,-399.06937)"
+       cx="297.35983"
+       cy="346.58038"
+       fx="297.35983"
+       fy="346.58038"
+       r="26.970984" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient10084"
+       id="radialGradient12290"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1977509,7.4054872e-2,-9.6686087e-2,1.8000138,-24.855492,-302.33907)"
+       cx="305.32678"
+       cy="350.69763"
+       fx="305.32678"
+       fy="350.69763"
+       r="26.970984" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient10084"
+       id="radialGradient13318"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1583007,5.4613033e-2,-6.5629112e-2,1.8480142,-23.628077,-313.1346)"
+       cx="305.26001"
+       cy="350.64441"
+       fx="305.26001"
+       fy="350.64441"
+       r="26.970984" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient34913"
+       id="radialGradient13320"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.3506277,3.0119595e-2,-4.0439964e-2,2.4075778,-90.637354,-500.2284)"
+       cx="297.35983"
+       cy="346.58038"
+       fx="297.35983"
+       fy="346.58038"
+       r="26.970984" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient31939"
+       id="linearGradient4604"
+       x1="307.47018"
+       y1="317.02097"
+       x2="309.26123"
+       y2="358.61398"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7515"
+       id="linearGradient7521"
+       x1="467.85855"
+       y1="213.33633"
+       x2="466.26413"
+       y2="231.94086"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       id="filter8512">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.2880738"
+         id="feGaussianBlur8514" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient15979"
+       id="linearGradient12410"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-22.464599,303.27208)"
+       x1="221.23956"
+       y1="12.388273"
+       x2="218.13461"
+       y2="30.915007" />
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     id="layer1"
+     inkscape:groupmode="layer"
+     transform="translate(-142.4571,-217.33413)">
+    <g
+       id="g5597">
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         sodipodi:nodetypes="csssssscczccccc"
+         id="path31486"
+         d="M 163.66079,362.6664 C 163.66079,362.6664 172.18781,376.91457 178.9988,378.90328 C 192.33716,382.79788 263.57937,399.39434 275.51369,399.39434 C 287.44801,399.39434 314.62621,395.13181 322.88478,389.53983 C 331.98353,383.37897 358.02954,363.68183 367.15579,360.17173 C 376.28203,356.66164 430.33747,332.793 468.24648,343.32328 C 506.15549,353.85356 528.62009,362.27779 537.74633,361.57577 C 546.87258,360.87375 566.28667,355.57241 566.28667,355.57241 L 581.27149,341.21723 C 581.27149,341.21723 590.74498,328.7285 574.74558,323.74198 C 559.05482,318.85165 454.90812,313.13648 454.90812,313.13648 L 416.99911,318.05061 L 351.00936,355.2576 L 285.0196,384.74239 L 163.66079,362.6664 z "
+         style="opacity:0.55518392;fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter8512)" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path5131"
+         d="M 449.50415,226.27208 C 449.20579,226.28083 448.90543,226.33746 448.56665,226.42833 C 445.02363,227.37876 448.53785,252.99019 437.5979,259.49083 C 433.71074,259.4043 430.16571,259.6803 427.6604,260.61583 C 395.11994,272.76704 312.55723,281.43032 276.62915,287.52208 C 241.352,293.50349 232.95572,290.15057 219.19165,287.64708 L 206.94165,294.64708 L 216.31665,304.70958 L 244.44165,306.05333 L 269.56665,296.99083 L 309.4104,290.99083 L 335.5354,302.36583 L 364.3479,295.99083 L 450.75415,273.55333 L 483.25415,268.55333 L 487.5979,263.83458 L 486.9104,262.52208 L 487.2854,262.30333 C 487.2854,262.30333 466.8789,261.83458 461.44165,261.83458 C 460.63618,261.83458 459.45682,261.70549 458.0979,261.55333 L 463.31665,261.74083 C 451.73656,253.60972 457.38915,226.04092 449.50415,226.27208 z "
+         style="fill:#850000;fill-opacity:1;fill-rule:evenodd;stroke:#510000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         transform="matrix(0.974008,0.2265135,0,1,0,0)"
+         rx="6.6777601"
+         ry="6.9868617"
+         y="180.29924"
+         x="382.50284"
+         height="23.501263"
+         width="28.041122"
+         id="rect3634"
+         style="opacity:1;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.852;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <g
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         transform="matrix(0.7481202,0,0,0.7481202,166.05652,311.66)"
+         id="g5179">
+        <path
+           sodipodi:ry="19.742485"
+           sodipodi:rx="19.742485"
+           transform="matrix(0.8674699,0,0,1,23.390645,0)"
+           d="M 215.97802 -45.843262 A 19.742485 19.742485 0 1 1  176.49305,-45.843262 A 19.742485 19.742485 0 1 1  215.97802 -45.843262 z"
+           sodipodi:type="arc"
+           sodipodi:cy="-45.843262"
+           sodipodi:cx="196.23553"
+           id="path4170"
+           style="opacity:1;color:#000000;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.43535089;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <path
+           sodipodi:ry="19.742485"
+           sodipodi:rx="19.742485"
+           transform="matrix(0.8674699,0,0,1,23.390645,0)"
+           d="M 215.97802 -45.843262 A 19.742485 19.742485 0 1 1  176.49305,-45.843262 A 19.742485 19.742485 0 1 1  215.97802 -45.843262 z"
+           sodipodi:type="arc"
+           sodipodi:cy="-45.843262"
+           sodipodi:cx="196.23553"
+           id="path4180"
+           style="opacity:1;color:#000000;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#bebebe;stroke-width:1.10695875;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;filter:url(#filter5175);enable-background:accumulate" />
+        <path
+           d="M 178.44466,-46.247759 C 186.28445,-45.004559 188.62214,-43.664576 193.52433,-39.053507 C 197.49369,-42.868908 205.57347,-46.144711 208.66759,-45.987299 L 208.32434,-49.015794 C 191.6581,-44.569559 191.09475,-46.198389 178.67413,-49.259038 L 178.44466,-46.247759 z "
+           sodipodi:nodetypes="cccccc"
+           id="path4176"
+           style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <path
+           d="M 193.13422,-45.543247 C 186.04965,-42.000958 155.86073,-28.626423 155.86073,-28.626423 L 158.81264,-22.722607 L 194.18463,-42.074835 L 193.13422,-45.543247 z "
+           sodipodi:nodetypes="ccccc"
+           id="path4178"
+           style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      </g>
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         sodipodi:ry="15.460982"
+         sodipodi:rx="43.290749"
+         transform="matrix(1.1318681,0,0,1,-72.17499,304.22353)"
+         d="M 337.28727 -7.3097391 A 43.290749 15.460982 0 1 1  250.70577,-7.3097391 A 43.290749 15.460982 0 1 1  337.28727 -7.3097391 z"
+         sodipodi:type="arc"
+         sodipodi:cy="-7.3097391"
+         sodipodi:cx="293.99652"
+         id="path2219"
+         style="opacity:1;color:#000000;fill:url(#radialGradient4167);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         style="opacity:1;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.852;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3636"
+         width="28.041122"
+         height="23.501263"
+         x="444.1041"
+         y="152.34569"
+         ry="6.9868617"
+         rx="6.6777601"
+         transform="matrix(0.974008,0.2265135,0,1,0,0)" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="rect2205"
+         sodipodi:nodetypes="ccccccccc"
+         d="M 448.7443,217.43563 C 449.23508,218.47934 449.67611,219.5424 453.11528,219.43882 L 572.80536,227.34532 L 578.08507,225.94639 L 534.25051,237.38609 C 533.1987,240.12163 531.07533,240.51972 528.69025,240.34696 L 405.1345,227.67098 C 402.4434,227.35856 402.81834,226.54601 402.46887,225.35474 L 448.7443,217.43563 z "
+         style="color:#000000;fill:#d40000;fill-opacity:1;fill-rule:evenodd;stroke:#8a0000;stroke-width:0.20299999;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path15883"
+         sodipodi:nodetypes="ccccc"
+         d="M 403.11173,225.81589 C 403.15323,226.76443 404.50759,227.05653 406.16348,227.19786 L 529.48908,239.62696 C 531.89373,239.59745 533.02352,237.29403 534.80552,236.8052 C 539.86322,235.02668 570.25814,227.34454 571.70178,227.17088"
+         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter16878)" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path7111"
+         sodipodi:nodetypes="ccccc"
+         d="M 212.29962,292.04556 C 290.62246,247.40214 399.41434,181.16188 490.43061,265.2763 C 389.03506,292.29586 336.44873,311.91644 307.03325,293.17508 L 242.06463,305.00132 C 211.1009,321.95703 206.91344,305.93221 212.29962,292.04556 z "
+         style="fill:url(#radialGradient6162);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.38699999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.47583642" />
+      <g
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="g7101"
+         transform="matrix(0.8115957,0,0,0.9152181,349.80797,125.1647)">
+        <path
+           id="path7103"
+           sodipodi:nodetypes="cccccccccccccc"
+           d="M 240.88377,259.0509 C 238.09265,258.55761 221.33936,254.05168 210.52526,249.19918 L 209.68194,245.21857 L 204.55387,228.82374 L 206.64503,204.6803 L 214.62948,183.00824 L 230.78847,168.7503 L 248.74946,164.36666 L 265.00646,171.56187 L 275.78757,182.28372 L 278.58304,187.34791 L 272.34529,179.13661 C 265.33492,176.31954 259.13572,171.47453 250.83727,171.87765 C 239.71328,168.1507 186.52823,204.10395 240.88377,259.0509 z "
+           style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1" />
+        <path
+           sodipodi:ry="39.150101"
+           sodipodi:rx="28.252651"
+           transform="matrix(1.229911,0.1957397,-0.1680738,1.1963467,-19.976776,-87.649851)"
+           d="M 275.26153 210.83681 A 28.252651 39.150101 0 1 1  218.75623,210.83681 A 28.252651 39.150101 0 1 1  275.26153 210.83681 z"
+           sodipodi:type="arc"
+           sodipodi:cy="210.83681"
+           sodipodi:cx="247.00888"
+           id="path7105"
+           style="opacity:1;color:#000000;fill:url(#radialGradient7109);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <path
+           sodipodi:ry="39.150101"
+           sodipodi:rx="28.252651"
+           transform="matrix(1.0510854,0.1622801,-0.1436363,0.9918441,20.304027,-35.815503)"
+           d="M 275.26153 210.83681 A 28.252651 39.150101 0 1 1  218.75623,210.83681 A 28.252651 39.150101 0 1 1  275.26153 210.83681 z"
+           sodipodi:type="arc"
+           sodipodi:cy="210.83681"
+           sodipodi:cx="247.00888"
+           id="path7107"
+           style="opacity:1;color:#000000;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+      <g
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         transform="translate(52.671165,138.9126)"
+         id="g6125">
+        <path
+           d="M 240.88377,259.0509 C 238.09265,258.55761 221.33936,254.05168 210.52526,249.19918 L 209.68194,245.21857 L 204.55387,228.82374 L 206.64503,204.6803 L 214.62948,183.00824 L 230.78847,168.7503 L 250.03072,160.85479 L 268.85024,166.50065 L 280.67965,185.58901 L 280.67965,188.27752 L 272.34529,179.13661 C 265.33492,176.31954 259.13572,171.47453 250.83727,171.87765 C 239.71328,168.1507 186.52823,204.10395 240.88377,259.0509 z "
+           sodipodi:nodetypes="cccccccccccccc"
+           id="path5140"
+           style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1" />
+        <path
+           sodipodi:ry="39.150101"
+           sodipodi:rx="28.252651"
+           transform="matrix(1.229911,0.1957397,-0.1680738,1.1963467,-19.976776,-87.649851)"
+           d="M 275.26153 210.83681 A 28.252651 39.150101 0 1 1  218.75623,210.83681 A 28.252651 39.150101 0 1 1  275.26153 210.83681 z"
+           sodipodi:type="arc"
+           sodipodi:cy="210.83681"
+           sodipodi:cx="247.00888"
+           id="path4169"
+           style="opacity:1;color:#000000;fill:url(#radialGradient6130);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <path
+           sodipodi:ry="39.150101"
+           sodipodi:rx="28.252651"
+           transform="matrix(1.0510854,0.1622801,-0.1436363,0.9918441,20.304027,-35.815503)"
+           d="M 275.26153 210.83681 A 28.252651 39.150101 0 1 1  218.75623,210.83681 A 28.252651 39.150101 0 1 1  275.26153 210.83681 z"
+           sodipodi:type="arc"
+           sodipodi:cy="210.83681"
+           sodipodi:cx="247.00888"
+           id="path3198"
+           style="opacity:1;color:#000000;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         sodipodi:nodetypes="csssccscscsccsssscccccc"
+         id="path2221"
+         d="M 494.51232,237.25091 C 492.28346,248.59107 490.18236,267.73352 477.90625,265.6875 C 461.13607,262.89248 374.36631,290.49883 361.15625,293.5625 C 348.13254,296.58295 338.90852,301.74641 323.59375,294.1875 C 290.21019,277.71037 248.8125,301.40625 248.8125,301.40625 C 243.01318,302.61334 210.97922,302.0841 211.75,297.5625 C 212.13168,295.04129 214.73354,290.69524 219.96875,287.71875 C 219.96875,287.71876 200.64267,283.88373 185.96875,285.28125 C 147.70693,289.15978 140.05822,320.85814 143.8125,337.15625 C 147.56679,353.45435 156.776,363.52136 166.1875,370.28125 C 174.09488,375.19928 260.57647,392.94538 264.5,390.40625 C 266.84652,388.8877 263.78125,385.5 263.78125,385.5 C 247.17255,347.13838 269.4118,300.02413 308.5625,306.4375 C 343.88341,319.76211 338.96552,359.81913 327.84375,381.3125 C 327.84375,381.31249 358.50127,352.93748 397.3125,331.53125 C 424.30368,316.64434 468.92012,308.4137 489.53125,332.125 C 501.02206,345.34418 518.183,356.09915 520.8125,352.21875 C 524.21296,347.20064 525.15625,346.0625 525.15625,346.0625 C 505.90288,309.74392 541.15536,250.98265 573.1875,290.03125 C 578.19617,288.45826 576.49315,286.38679 574.3125,284.28125 C 561.20276,271.99927 537.4846,266.20286 520.09375,265.625 C 504.79208,265.62499 502.86533,248.65806 501.13732,237.79448 L 494.51232,237.25091 z "
+         style="fill:#aa0000;fill-opacity:1;fill-rule:evenodd;stroke:#7b0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path2223"
+         sodipodi:nodetypes="cccccccszscccccccccc"
+         d="M 469.31665,299.24083 C 443.12111,300.02707 419.45167,313.23928 395.76599,323.07469 C 380.58162,328.52171 360.29719,341.8577 353.58767,339.17793 C 346.12986,337.8659 338.17541,324.61843 342.11107,339.43501 C 343.79796,351.91908 342.79382,355.50767 338.72761,369.59682 C 365.11645,346.81878 381.87621,336.02013 414.27813,322.56335 C 433.85499,315.622 456.66689,308.49214 476.95895,316.24024 C 487.5255,320.82558 489.1786,327.71016 492.03916,333.64477 C 493.64976,336.98619 496.02277,340.72123 499.6546,342.88039 C 505.95932,346.62861 515.30897,353.76702 518.45686,350.87452 C 520.79813,348.7232 520.72246,346.66069 519.74903,341.97354 C 518.58575,331.59155 517.40988,329.16207 506.86268,328.8881 C 492.55071,328.79047 485.03582,315.82547 479.22067,304.7834 C 476.96998,301.54652 473.26678,299.39925 469.31665,299.24083 z M 147.81056,343.07122 C 151.47096,354.94913 158.8642,362.49926 168.4252,369.90966 C 198.22721,378.71527 226.94685,383.68588 257.7181,387.959 C 254.96728,381.05139 252.10671,376.26432 252.04166,368.48066 C 219.60415,368.91999 189.15477,367.13789 159.63441,352.37542 C 154.6066,349.62006 151.6394,347.37381 147.81056,343.07122 z "
+         style="opacity:0.36454851;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter20948)" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path2208"
+         d="M 531.28112,240.16506 L 575.06181,229.00166 L 577.39816,226.18586 L 534.7399,237.29383 L 531.28112,240.16506 z "
+         style="fill:#693601;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path2210"
+         sodipodi:nodetypes="cscccc"
+         d="M 403.28878,225.766 C 403.28878,225.766 403.10164,227.36175 407.22472,227.38714 C 408.9552,227.39779 412.51251,227.81298 412.51251,227.81298 L 453.3597,220.3001 C 451.51182,219.85082 449.56877,219.5066 448.55839,218.13281 L 403.28878,225.766 z "
+         style="fill:url(#linearGradient3189);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path4160"
+         sodipodi:nodetypes="cscscssc"
+         d="M 500.43216,241.17035 C 500.43216,241.17035 502.64253,265.78081 507.23719,267.74663 C 517.7502,272.24461 535.09894,269.86864 536.34631,273.00446 C 539.1549,275.44376 535.53073,280.33829 536.36655,279.94516 C 541.02203,277.75544 545.71082,273.04513 558.61561,276.0707 C 558.82062,275.66068 542.29285,267.82488 524.36241,267.18451 C 515.37321,266.86347 512.17569,266.54006 507.13614,260.7141 C 502.25339,255.06943 501.18368,242.88817 500.43216,241.17035 z "
+         style="opacity:0.17056855;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;filter:url(#filter10061);enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path6102"
+         sodipodi:nodetypes="csccszcc"
+         d="M 145.70597,326.59886 C 142.90407,327.15923 184.21307,348.67551 212.70298,348.54256 C 240.52785,348.41272 252.33898,341.24154 252.33898,341.24154 C 260.33985,307.28032 285.33601,294.56946 312.61636,299.61761 C 318.00188,300.5152 312.84935,294.1283 304.77107,293.23072 C 296.6928,292.33313 275.77697,290.79086 260.61002,301.09082 C 245.55275,311.31631 204.61965,312.106 205.9906,297.71512 C 201.50669,273.11634 145.34265,291.32198 145.70597,326.59886 z "
+         style="opacity:0.75250837;color:#000000;fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;filter:url(#filter17973);enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path6104"
+         sodipodi:nodetypes="cssscssccssssssc"
+         d="M 337.34738,302.03236 C 337.34738,302.03236 359.45278,302.83135 398.86963,289.78117 C 438.28649,276.73099 468.38179,267.9421 478.236,269.54008 C 485.37788,270.69822 488.35655,269.00742 490.75352,259.9522 C 493.15049,250.89697 496.61278,239.71111 496.61278,239.71111 C 496.61278,239.71111 492.08517,263.68082 492.08517,267.14311 C 492.08517,270.6054 496.34645,276.46466 503.0047,276.46466 C 509.66296,276.46466 532.30102,278.86164 530.70304,282.85659 C 519.40881,293.5097 515.99677,309.13416 515.52222,320.40913 C 514.87376,321.01127 506.20067,324.93674 500.3414,315.88152 C 494.48214,306.8263 488.27656,291.41032 482.76362,287.3842 C 472.60558,279.96575 471.22597,279.01403 450.00501,286.31888 C 428.74233,293.63808 379.69386,316.94684 370.10598,320.67546 C 360.5181,324.40408 337.43984,322.59074 336.10819,319.92744 C 332.65748,313.02602 331.35136,309.64487 324.95943,306.18258 C 318.56751,302.72029 337.34738,302.29869 337.34738,302.03236 z "
+         style="opacity:0.75250837;color:#000000;fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;filter:url(#filter17973);enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path7104"
+         sodipodi:nodetypes="ccz"
+         d="M 262.23236,388.43579 C 242.1151,350.70349 261.12793,303.70674 300.79176,301.67712 C 326.98168,302.76367 347.9107,326.55914 335.81656,371.72671"
+         style="opacity:1;color:#000000;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ff4d4d;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;filter:url(#filter26616);enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         d="M 520.39692,349.21867 C 506.77265,309.63124 527.40873,256.60528 568.69581,281.47519"
+         sodipodi:nodetypes="cc"
+         id="path14005"
+         style="fill:none;fill-rule:evenodd;stroke:#ff4d4d;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter26616)" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         sodipodi:nodetypes="ccccccsscccssscccccsccczcccsscccccccsccscsc"
+         id="path14976"
+         d="M 494.78125,243.53125 C 494.71318,243.64069 494.45167,245.65184 494.1875,248.03125 C 494.37517,246.63275 494.56077,245.28925 494.78125,243.71875 C 494.78125,243.55905 494.79738,243.50532 494.78125,243.53125 z M 494.1875,248.03125 C 492.03693,264.05688 491.2804,269.16453 474.53125,268.1875 C 457.37434,268.18749 379.57041,292.03208 344.09375,301.0625 C 331.02945,304.38795 324.48793,297.2527 318.5,295.34375 C 318.47853,295.3369 318.45894,295.31925 318.4375,295.3125 C 311.78868,292.38831 303.9733,290.65317 296.75,290.40625 C 279.10408,290.23728 263.51302,298.02476 247.40625,304.3125 C 240.0571,305.12907 219.60526,305.29958 211.03125,301.625 C 202.45724,297.95042 207.12391,295.94827 206.625,293.96875 C 205.29868,288.70626 184.75252,288.71993 170.40625,297.125 C 159.69211,303.40211 146.59027,316.70056 160.9375,319.84375 C 174.43016,322.8014 210.45476,332.50826 244.15625,331.25 C 249.23143,331.25564 254.42529,328.90554 256.875,322.78125 C 263.0681,303.95445 288.06349,296.06907 303.15625,297.125 C 307.87043,299.26074 324.16113,299.20026 339.25,318.3125 C 342.32727,320.82084 333.59124,310.5008 339.34375,311.4375 C 345.07323,312.37046 389.57664,298.01143 416.09375,291.65625 C 428.02415,288.8398 448.69507,279.77803 457.28125,291.8125 C 465.03954,291.29048 469.40042,295.26378 467.4375,297.34375 C 470.74386,298.43538 473.50772,300.89039 475.25869,299.58498 C 477.00965,298.27957 479.75896,289.60831 478.59375,285.8125 C 475.46219,282.58561 471.29611,282.26405 466.875,281.09375 C 465.70688,280.75249 483.6546,279.31631 486.28125,277.09375 C 487.21633,276.90519 488.59375,276.72822 488.59375,277.40625 C 488.59375,278.41627 487.2251,276.02849 483.4375,285.75 C 481.08596,291.78561 478.97695,297.24699 479.46875,301.8125 C 479.50155,301.85184 479.53263,301.89733 479.5625,301.9375 C 480.38245,304.74822 481.54601,307.25457 483.8125,309.09375 C 488.6557,312.68439 497.67677,317.24433 503.28125,319.9375 C 505.16465,320.48168 507.07768,321.03185 509.03125,321.65625 C 511.34408,298.27216 520.38323,273.4613 546.21875,271 C 537.69847,269.79362 529.73903,267.04525 521.21875,267.375 C 512.27876,267.43761 508.87154,264.44309 505.75,260.90625 C 503.56318,258.42848 502.2077,251.47458 501.46875,246.8125 C 503.70143,261.66795 503.67063,268.52092 493.78125,271.34375 C 491.56635,271.03519 489.68572,270.28789 490.65625,268.5625 C 491.44123,267.16699 491.32275,267.37301 491.78125,266.5625 C 492.93475,265.34618 493.60572,264.08445 493.75,263.21875 C 493.99596,261.743 493.51258,254.11033 494.1875,248.03125 z "
+         style="opacity:0.21070234;fill:url(#linearGradient12410);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path21922"
+         sodipodi:nodetypes="cccsc"
+         d="M 221.08282,291.66452 C 221.73209,288.75094 297.59705,245.10381 352.35949,231.58067 C 388.06122,223.83811 414.56862,225.0155 406.78428,238.66335 C 406.78428,238.66335 398.87781,252.84419 333.10052,268.21746 C 269.99872,282.96542 218.60591,307.63733 221.08282,291.66452 z "
+         style="fill:url(#linearGradient22899);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path11987"
+         sodipodi:nodetypes="czccczcc"
+         d="M 344.0819,365.47699 C 395.847,320.73966 437.03185,308.88019 465.69603,314.67089 C 490.98601,319.77994 494.32438,338.6857 514.46084,347.65122 L 511.80867,335.2599 C 478.02064,321.51241 480.21206,307.72951 456.45033,306.79452 C 420.01144,306.92647 365.4955,344.02746 356.78184,348.39776 C 348.68005,352.46119 346.19141,345.99233 346.19141,345.99233 L 344.0819,365.47699 z "
+         style="opacity:0.1471572;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path12962"
+         sodipodi:nodetypes="cccsscc"
+         d="M 165.97002,368.49696 C 193.19916,377.19911 237.93683,386.22592 255.06832,387.31275 C 255.06832,387.31275 253.04823,378.97197 251.05614,376.31177 C 250.04442,376.20037 249.50756,377.02118 248.48646,377.10429 C 231.08444,378.52071 197.48778,372.63223 160.87519,360.99824 C 158.23456,360.15915 156.78921,358.24886 155.04026,357.8439 C 157.61649,361.18151 161.5596,364.7925 165.97002,368.49696 z "
+         style="opacity:0.1471572;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         d="M 162.74998,365.97735 C 124.39666,331.30226 154.19955,280.44731 202.29868,287.3133 C 205.00945,287.70025 212.99653,289.25802 215.85119,288.88503"
+         sodipodi:nodetypes="csc"
+         id="path26620"
+         style="opacity:1;color:#000000;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ff4d4d;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;filter:url(#filter26616);enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path28560"
+         sodipodi:nodetypes="cccsc"
+         d="M 422.26426,230.64928 C 440.04521,237.67272 482.86021,252.7313 451.04702,265.0482 C 461.75647,262.21831 472.48874,259.25108 482.28685,261.88911 C 482.28685,261.88911 464.32388,246.4178 447.53693,239.0735 C 430.68849,231.70231 422.61527,231.00029 422.26426,230.64928 z "
+         style="opacity:0.36120402;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path30512"
+         sodipodi:nodetypes="csscssc"
+         d="M 285.37061,286.45977 C 285.37061,286.45977 318.10275,284.48448 325.73668,292.42693 C 331.7714,298.70553 352.06238,294.53298 356.2745,292.42693 C 360.48661,290.32087 442.6228,268.55829 442.6228,268.55829 C 442.6228,268.55829 354.16844,283.65169 346.09522,284.0027 C 338.02201,284.35371 339.42604,278.73756 326.08769,278.73756 C 312.74933,278.73756 284.66859,286.45977 285.37061,286.45977 z "
+         style="opacity:0.19063547;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="path2247"
+         sodipodi:nodetypes="ccssc"
+         d="M 416.06419,233.81293 C 435.32412,257.5481 333.0016,276.8265 354.14341,272.92079 C 356.85923,271.83447 417.99777,268.25731 428.3179,263.36883 C 438.63803,258.48034 446.48141,255.53952 437.24761,245.76256 C 428.01381,235.98559 415.52102,234.3561 416.06419,233.81293 z "
+         style="opacity:0.16722406;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <g
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         transform="translate(7.7821969,-2.1424649)"
+         id="g3336">
+        <path
+           sodipodi:type="arc"
+           style="opacity:1;color:#000000;fill:url(#radialGradient3350);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.24800003;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="path2263"
+           sodipodi:cx="286.35269"
+           sodipodi:cy="183.17888"
+           sodipodi:rx="60.434658"
+           sodipodi:ry="14.871356"
+           d="M 346.78735 183.17888 A 60.434658 14.871356 0 1 1  225.91803,183.17888 A 60.434658 14.871356 0 1 1  346.78735 183.17888 z"
+           transform="matrix(0.1589697,-1.1198649e-2,1.0666269e-2,0.1514124,387.59825,268.62274)" />
+        <path
+           transform="matrix(0.1703777,-1.2002289e-2,1.1431704e-2,0.1622781,384.19132,266.8625)"
+           d="M 346.78735 183.17888 A 60.434658 14.871356 0 1 1  225.91803,183.17888 A 60.434658 14.871356 0 1 1  346.78735 183.17888 z"
+           sodipodi:ry="14.871356"
+           sodipodi:rx="60.434658"
+           sodipodi:cy="183.17888"
+           sodipodi:cx="286.35269"
+           id="path3266"
+           style="opacity:1;color:#000000;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:url(#linearGradient3352);stroke-width:1.24800003;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;filter:url(#filter3332);enable-background:accumulate"
+           sodipodi:type="arc" />
+      </g>
+      <g
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         transform="translate(17.234109,3.6957971)"
+         id="g3340">
+        <path
+           transform="matrix(0.1589697,-1.1198649e-2,1.0666269e-2,0.1514124,387.59825,268.62274)"
+           d="M 346.78735 183.17888 A 60.434658 14.871356 0 1 1  225.91803,183.17888 A 60.434658 14.871356 0 1 1  346.78735 183.17888 z"
+           sodipodi:ry="14.871356"
+           sodipodi:rx="60.434658"
+           sodipodi:cy="183.17888"
+           sodipodi:cx="286.35269"
+           id="path3342"
+           style="opacity:1;color:#000000;fill:url(#radialGradient3346);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.24800003;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           sodipodi:type="arc" />
+        <path
+           sodipodi:type="arc"
+           style="opacity:1;color:#000000;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:url(#linearGradient3348);stroke-width:1.24800003;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;filter:url(#filter3332);enable-background:accumulate"
+           id="path3344"
+           sodipodi:cx="286.35269"
+           sodipodi:cy="183.17888"
+           sodipodi:rx="60.434658"
+           sodipodi:ry="14.871356"
+           d="M 346.78735 183.17888 A 60.434658 14.871356 0 1 1  225.91803,183.17888 A 60.434658 14.871356 0 1 1  346.78735 183.17888 z"
+           transform="matrix(0.1703777,-1.2002289e-2,1.1431704e-2,0.1622781,384.19132,266.8625)" />
+      </g>
+      <g
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="g3354"
+         transform="translate(25.425887,9.9971646)">
+        <path
+           sodipodi:type="arc"
+           style="opacity:1;color:#000000;fill:url(#radialGradient3360);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.24800003;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="path3356"
+           sodipodi:cx="286.35269"
+           sodipodi:cy="183.17888"
+           sodipodi:rx="60.434658"
+           sodipodi:ry="14.871356"
+           d="M 346.78735 183.17888 A 60.434658 14.871356 0 1 1  225.91803,183.17888 A 60.434658 14.871356 0 1 1  346.78735 183.17888 z"
+           transform="matrix(0.1589697,-1.1198649e-2,1.0666269e-2,0.1514124,387.59825,268.62274)" />
+        <path
+           transform="matrix(0.1703777,-1.2002289e-2,1.1431704e-2,0.1622781,384.19132,266.8625)"
+           d="M 346.78735 183.17888 A 60.434658 14.871356 0 1 1  225.91803,183.17888 A 60.434658 14.871356 0 1 1  346.78735 183.17888 z"
+           sodipodi:ry="14.871356"
+           sodipodi:rx="60.434658"
+           sodipodi:cy="183.17888"
+           sodipodi:cx="286.35269"
+           id="path3358"
+           style="opacity:1;color:#000000;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:url(#linearGradient3362);stroke-width:1.24800003;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;filter:url(#filter3332);enable-background:accumulate"
+           sodipodi:type="arc" />
+      </g>
+      <g
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         id="g12274">
+        <path
+           sodipodi:type="arc"
+           style="opacity:1;color:#000000;fill:url(#radialGradient13320);fill-opacity:1;fill-rule:evenodd;stroke:#5b5b5b;stroke-width:1.24800003;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="path10322"
+           sodipodi:cx="306.94235"
+           sodipodi:cy="351.53244"
+           sodipodi:rx="26.346983"
+           sodipodi:ry="39.520473"
+           d="M 333.28934 351.53244 A 26.346983 39.520473 0 1 1  280.59537,351.53244 A 26.346983 39.520473 0 1 1  333.28934 351.53244 z"
+           transform="matrix(1.1220734,0.1498867,-0.1300832,0.9738213,3.8678103,-36.145232)" />
+        <path
+           transform="matrix(1.1220734,0.1498867,-0.1300832,0.9738213,3.8678103,-36.145232)"
+           d="M 333.28934 351.53244 A 26.346983 39.520473 0 1 1  280.59537,351.53244 A 26.346983 39.520473 0 1 1  333.28934 351.53244 z"
+           sodipodi:ry="39.520473"
+           sodipodi:rx="26.346983"
+           sodipodi:cy="351.53244"
+           sodipodi:cx="306.94235"
+           id="path11301"
+           style="opacity:1;color:#000000;fill:url(#radialGradient13318);fill-opacity:1;fill-rule:evenodd;stroke:#5b5b5b;stroke-width:1.24800003;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           sodipodi:type="arc" />
+      </g>
+      <g
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         transform="matrix(0.8088691,-1.1448536e-2,2.313627e-3,0.9224802,306.88079,-0.4666303)"
+         id="g12282">
+        <path
+           transform="matrix(1.1220734,0.1498867,-0.1300832,0.9738213,3.8678103,-36.145232)"
+           d="M 333.28934 351.53244 A 26.346983 39.520473 0 1 1  280.59537,351.53244 A 26.346983 39.520473 0 1 1  333.28934 351.53244 z"
+           sodipodi:ry="39.520473"
+           sodipodi:rx="26.346983"
+           sodipodi:cy="351.53244"
+           sodipodi:cx="306.94235"
+           id="path12284"
+           style="opacity:1;color:#000000;fill:url(#radialGradient12288);fill-opacity:1;fill-rule:evenodd;stroke:#5b5b5b;stroke-width:1.24800003;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           sodipodi:type="arc" />
+        <path
+           sodipodi:type="arc"
+           style="opacity:1;color:#000000;fill:url(#radialGradient12290);fill-opacity:1;fill-rule:evenodd;stroke:#5b5b5b;stroke-width:1.24800003;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="path12286"
+           sodipodi:cx="306.94235"
+           sodipodi:cy="351.53244"
+           sodipodi:rx="26.346983"
+           sodipodi:ry="39.520473"
+           d="M 333.28934 351.53244 A 26.346983 39.520473 0 1 1  280.59537,351.53244 A 26.346983 39.520473 0 1 1  333.28934 351.53244 z"
+           transform="matrix(1.1220734,0.1498867,-0.1300832,0.9738213,3.8678103,-36.145232)" />
+      </g>
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="D:\vektorkunst\path5575.png"
+         transform="matrix(1.2340426,0,0,1.1741936,-78.037251,-62.468245)"
+         d="M 325.77906 343.19073 A 14.030191 15.42326 0 1 1  297.71868,343.19073 A 14.030191 15.42326 0 1 1  325.77906 343.19073 z"
+         sodipodi:ry="15.42326"
+         sodipodi:rx="14.030191"
+         sodipodi:cy="343.19073"
+         sodipodi:cx="311.74887"
+         id="path4602"
+         style="opacity:0.45484948;color:#000000;fill:url(#linearGradient4604);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.852;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         sodipodi:type="arc" />
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         sodipodi:nodetypes="cccss"
+         id="path5575"
+         d="M 429.24685,226.66617 C 416.97169,224.93998 445.96235,221.42752 449.96117,220.52859 C 479.30646,221.82324 525.80889,225.87791 566.99975,228.03907 C 561.68521,229.21263 542.12609,234.59798 532.72078,236.38864 C 526.75243,237.52495 448.54513,229.37999 429.24685,226.66617 z "
+         style="fill:url(#linearGradient7521);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>
