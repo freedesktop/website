@@ -10,29 +10,24 @@ $content = <<<EOT
 	</div>
     <h3>Better interoperability</h3>
     <p>
-	Go-oo has built in <a href="/discover/#docx-support">OpenXML</a>
+	Go-oo has built in OpenXML
 	import filters and it will import your
-	Microsoft <a href="/discover/#ms-works-import">Works</a> files.
+	Microsoft Works files.
 	Compared with up-stream OO.o, it has
-	better Microsoft binary file support (with eg. <a
-	href="/discover/#fields-support">fields</a>
-	support), and it will import 
-	<a href="/discover/#wp-graphics-import">WordPerfect</a>
+	better Microsoft binary file support, and it will import 
+	WordPerfect
 	graphics beautifully. If you are reliant on Excel
-	<a href="/discover/#vba-support">VBA</a> macros - then Go-oo
+	VBA macros - then Go-oo
 	offers the best macro fidelity too. If you expect your spreadsheets
-	to calculate compatibly, or you get embedded Visio <a
-	href="/discover/#emf-rendering">diagrams</a> in your documents,
+	to calculate compatibly, or you get embedded Visio diagrams in your documents,
 	you'll want Go-oo.
     </p>
 
     <h3>Better functionality</h3>
     <p>
 	Go-oo's user interface is more familiar, with lots of small pieces
-	of polish. We have built-in (working) <a href="/discover/#gstreamer">
-	multimedia</a> integration on Linux, a beautiful <a
-	href="/discover/#calc-solver">solver</a> component, and your <a
-	href="/discover/#chinese-rendering">Chinese</a> should look sane.
+	of polish. We have built-in (working) multimedia integration on Linux, 
+    a beautiful solver component, and your Chinese should look sane.
 	We also integrate with your system better by default: eg. enabling
 	native file-selectors on Linux.
     </p>
@@ -40,8 +35,8 @@ $content = <<<EOT
     <h3>A Faster application</h3>
     <p>
 	From first-time startup, where we sort I/O to reduce seek cost,
-	to a highly optimised second start application and a systray <a
-	href="/discover/#quickstarter">quick-starter</a> on Linux we
+	to a highly optimised second start application and a systray 
+    quick-starter on Linux we
 	are faster.
 	We use less memory than up-stream, we link faster, use better
 	system allocators, and don't waste so much time &amp; memory in

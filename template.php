@@ -9,7 +9,6 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 	$hnav = array( "summary" => array("/", "Home"),
 			"home" => array("/", "Home"),
 			"download" => array("/download/", "Download"),
-			"discover" => array("/discover/", "Discover"),
 			"comingsoon" => array("/discover/comingsoon/", 
                                               "Coming Soon", "discover"),
 			"planet" => array("http://planet.go-oo.org/", "Planet"),
@@ -25,7 +24,6 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 	// this is all dependent on ths CSS used.
 	$tabs = array ( "summary" => "container", 
 	       	       	 "download" => "container", 
-	       		 "discover" => "container", 
 	       		 "planet" => "container", 
 			 "developers" => "container",
 	       		 "about" => "container" ); 
