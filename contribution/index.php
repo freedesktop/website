@@ -92,86 +92,100 @@ Example: discuss+subscribe-nomail@documentfoundation.org or website+subscribe-no
 <ul>
 <li><b>announce@documentfoundation.org:</b> News and press releases by The Document Foundation<br>
 Subscription: <a href="mailto:announce+subscribe@documentfoundation.org">announce+subscribe@documentfoundation.org</a><br>
+
 Digest subscription: <a href="mailto:announce+subscribe-digest@documentfoundation.org">announce+subscribe-digest@documentfoundation.org</a><br>
-Archives: <a href="http://www.documentfoundation.org/lists/announce/">http://www.documentfoundation.org/lists/announce/</a><br>
+Archives: <a href="http://listarchives.documentfoundation.org/www/announce/">http://listarchives.documentfoundation.org/www/announce/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/announce@documentfoundation.org/">http://www.mail-archive.com/announce@documentfoundation.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.announce">http://dir.gmane.org/gmane.comp.documentfoundation.announce</a></li>
 <li><b>discuss@documentfoundation.org:</b> Discussions about The Document Foundation<br>
 Subscription: <a href="mailto:discuss+subscribe@documentfoundation.org">discuss+subscribe@documentfoundation.org</a><br>
+
 Digest subscription: <a href="mailto:discuss+subscribe-digest@documentfoundation.org">discuss+subscribe-digest@documentfoundation.org</a><br>
-Archives: <a href="http://www.documentfoundation.org/lists/discuss/">http://www.documentfoundation.org/lists/discuss/</a><br>
+Archives: <a href="http://listarchives.documentfoundation.org/www/discuss/">http://listarchives.documentfoundation.org/www/discuss/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/discuss@documentfoundation.org/">http://www.mail-archive.com/discuss@documentfoundation.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.discuss">http://dir.gmane.org/gmane.comp.documentfoundation.discuss</a></li>
 <li><b>mirrors@documentfoundation.org:</b> Platform for administrators providing mirror space for our products<br>
 Subscription: <a href="mailto:mirrors+subscribe@documentfoundation.org">mirrors+subscribe@documentfoundation.org</a><br>
+
 Digest subscription: <a href="mailto:mirrors+subscribe-digest@documentfoundation.org">mirrors+subscribe-digest@documentfoundation.org</a><br>
-Archives: <a href="http://www.documentfoundation.org/lists/mirrors/">http://www.documentfoundation.org/lists/mirrors/</a><br>
+Archives: <a href="http://listarchives.documentfoundation.org/www/mirrors/">http://listarchives.documentfoundation.org/www/mirrors/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/mirrors@documentfoundation.org/">http://www.mail-archive.com/mirrors@documentfoundation.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.mirrors">http://dir.gmane.org/gmane.comp.documentfoundation.mirrors</a></li>
 <li><b>steering-discuss@documentfoundation.org:</b> Discussions of the Steering Committee<br>
 Subscription: <a href="mailto:steering-discuss+subscribe@documentfoundation.org">steering-discuss+subscribe@documentfoundation.org</a><br>
+
 Digest subscription: <a href="mailto:steering-discuss+subscribe-digest@documentfoundation.org">steering-discuss+subscribe-digest@documentfoundation.org</a><br>
-Archives: <a href="http://www.documentfoundation.org/lists/steering-discuss/">http://www.documentfoundation.org/lists/steering-discuss/</a><br>
+Archives: <a href="http://listarchives.documentfoundation.org/www/steering-discuss/">http://listarchives.documentfoundation.org/www/steering-discuss/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/steering-discuss@documentfoundation.org/">http://www.mail-archive.com/steering-discuss@documentfoundation.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.steering-discuss">http://dir.gmane.org/gmane.comp.documentfoundation.steering-discuss</a></li>
 <li><b>moderators@documentfoundation.org:</b> Discussions for moderators of our mailing lists<br>
 Subscription: <a href="mailto:moderators+subscribe@documentfoundation.org">moderators+subscribe@documentfoundation.org</a><br>
+
 Digest subscription: <a href="mailto:moderators+subscribe-digest@documentfoundation.org">moderators+subscribe-digest@documentfoundation.org</a><br>
-Archives: <a href="http://www.documentfoundation.org/lists/moderators/">http://www.documentfoundation.org/lists/moderators/</a><br>
+Archives: <a href="http://listarchives.documentfoundation.org/www/moderators/">http://listarchives.documentfoundation.org/www/moderators/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/moderators@documentfoundation.org/">http://www.mail-archive.com/moderators@documentfoundation.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.moderators">http://dir.gmane.org/gmane.comp.documentfoundation.moderators</a></li>
 <li><b>test@documentfoundation.org:</b> Mailing list for testing the mailing list manager<br>
 Subscription: <a href="mailto:test+subscribe@documentfoundation.org">test+subscribe@documentfoundation.org</a><br>
+
 Digest subscription: <a href="mailto:test+subscribe-digest@documentfoundation.org">test+subscribe-digest@documentfoundation.org</a><br>
-Archives: <a href="http://www.documentfoundation.org/lists/test/">http://www.documentfoundation.org/lists/test/</a><br>
+Archives: <a href="http://listarchives.documentfoundation.org/www/test/">http://listarchives.documentfoundation.org/www/test/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/test@documentfoundation.org/">http://www.mail-archive.com/test@documentfoundation.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.test">http://dir.gmane.org/gmane.comp.documentfoundation.test</a></li>
 <hr>
 <li><b>l10n@libreoffice.org:</b> Mailing list for people in charge of LibreOffice localization<br>
+
 Subscription: <a href="mailto:l10n+subscribe@libreoffice.org">l10n+subscribe@libreoffice.org</a><br>
 Digest subscription: <a href="mailto:l10n+subscribe-digest@libreoffice.org">l10n+subscribe-digest@libreoffice.org</a><br>
-Archives: <a href="http://www.libreoffice.org/lists/l10n/">http://www.libreoffice.org/lists/l10n/</a><br>
+Archives: <a href="http://listarchives.libreoffice.org/www/l10n/">http://listarchives.libreoffice.org/www/l10n/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/l10n@libreoffice.org/">http://www.mail-archive.com/l10n@libreoffice.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.l10n">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.l10n</a></li>
 <li><b>users@libreoffice.org:</b> User support list for LibreOffice<br>
+
 Subscription: <a href="mailto:users+subscribe@libreoffice.org">users+subscribe@libreoffice.org</a><br>
 Digest subscription: <a href="mailto:users+subscribe-digest@libreoffice.org">users+subscribe-digest@libreoffice.org</a><br>
-Archives: <a href="http://www.libreoffice.org/lists/users/">http://www.libreoffice.org/lists/users/</a><br>
+Archives: <a href="http://listarchives.libreoffice.org/www/users/">http://listarchives.libreoffice.org/www/users/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/users@libreoffice.org/">http://www.mail-archive.com/users@libreoffice.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.user">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.user</a></li>
 <li><b>website@libreoffice.org:</b> Discussions on maintaining and enhancing our website, wiki, planet and other infrastructure<br>
+
 Subscription: <a href="mailto:website+subscribe@libreoffice.org">website+subscribe@libreoffice.org</a><br>
 Digest subscription: <a href="mailto:website+subscribe-digest@libreoffice.org">website+subscribe-digest@libreoffice.org</a><br>
-Archives: <a href="http://www.libreoffice.org/lists/website/">http://www.libreoffice.org/lists/website/</a><br>
+Archives: <a href="http://listarchives.libreoffice.org/www/website/">http://listarchives.libreoffice.org/www/website/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/website@libreoffice.org/">http://www.mail-archive.com/website@libreoffice.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.website">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.website</a></li>
 <li><b>documentation@libreoffice.org:</b> Group for people working on LibreOffice documentation and help system<br>
+
 Subscription: <a href="mailto:documentation+subscribe@libreoffice.org">documentation+subscribe@libreoffice.org</a><br>
 Digest subscription: <a href="mailto:documentation+subscribe-digest@libreoffice.org">documentation+subscribe-digest@libreoffice.org</a><br>
-Archives: <a href="http://www.libreoffice.org/lists/documentation/">http://www.libreoffice.org/lists/documentation/</a><br>
+Archives: <a href="http://listarchives.libreoffice.org/www/documentation/">http://listarchives.libreoffice.org/www/documentation/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/documentation@libreoffice.org/">http://www.mail-archive.com/documentation@libreoffice.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.documentation">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.documentation</a></li>
 <li><b>marketing@libreoffice.org:</b> Mailing list for marketing and promoting LibreOffice<br>
+
 Subscription: <a href="mailto:marketing+subscribe@libreoffice.org">marketing+subscribe@libreoffice.org</a><br>
 Digest subscription: <a href="mailto:marketing+subscribe-digest@libreoffice.org">marketing+subscribe-digest@libreoffice.org</a><br>
-Archives: <a href="http://www.libreoffice.org/lists/marketing/">http://www.libreoffice.org/lists/marketing/</a><br>
+Archives: <a href="http://listarchives.libreoffice.org/www/marketing/">http://listarchives.libreoffice.org/www/marketing/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/marketing@libreoffice.org/">http://www.mail-archive.com/marketing@libreoffice.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentation.libreoffice.marketing">http://dir.gmane.org/gmane.comp.documentation.libreoffice.marketing</a></li>
 <li><b>design@libreoffice.org:</b> LibreOffice Design Team mailing list covering user experience design and visual identity design<br>
+
 Subscription: <a href="mailto:design+subscribe@libreoffice.org">design+subscribe@libreoffice.org</a><br>
 Digest subscription: <a href="mailto:design+subscribe-digest@libreoffice.org">design+subscribe-digest@libreoffice.org</a><br>
-Archives: <a href="http://www.libreoffice.org/lists/design/">http://www.libreoffice.org/lists/design/</a><br>
+Archives: <a href="http://listarchives.libreoffice.org/www/design/">http://listarchives.libreoffice.org/www/design/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/design@libreoffice.org/">http://www.mail-archive.com/design@libreoffice.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.design">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.design</a></li>
 <li><b>accessibility@libreoffice.org:</b> Accessibility discussions on LibreOffice<br>
+
 Subscription: <a href="mailto:accessibility+subscribe@libreoffice.org">accessibility+subscribe@libreoffice.org</a><br>
 Digest subscription: <a href="mailto:accessibility+subscribe-digest@libreoffice.org">accessibility+subscribe-digest@libreoffice.org</a><br>
-Archives: <a href="http://www.libreoffice.org/lists/accessibility/">http://www.libreoffice.org/lists/accessibility/</a><br>
+Archives: <a href="http://listarchives.libreoffice.org/www/accessibility/">http://listarchives.libreoffice.org/www/accessibility/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/accessibility@libreoffice.org/">http://www.mail-archive.com/accessibility@libreoffice.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.accessibility">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.accessibility</a></li>
 <hr>
 <li>There is also a <a href="http://lists.freedesktop.org/mailman/listinfo/libreoffice">development mailing list</a> available for those interested
 in code contributions. This list is hosted by FreeDesktop.org.</li>
+
 <li>If you are more comfortable with using forums, you can use our <a href="http://www.documentfoundation.org/nabble/">Nabble gateway</a>.</li>
 </ul>
 
