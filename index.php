@@ -21,13 +21,9 @@ $rightnavigation
 href="http://www.libreoffice.org/download/">LibreOffice</a>,
 the next evolution of the world's leading free office suite.</p>
 
-<h3>Want to meet us?</h3>
+<h2>Help us funding the Foundation!</h2>
 
-<p>See the <a href="http://wiki.documentfoundation.org/Events">list of events</a> where you can meet The Document Foundation and members of the Community.</p>
-
-<h3>Press Releases</h3>
-
-<p>Our press releases are available <a href="http://listarchives.documentfoundation.org/www/announce/">in our archive</a>.</p>
+<p>The community around LibreOffice, the free office productivity suite, <a href="http://challenge.documentfoundation.org">announced its fifty-thousand Euro challenge for setting-up The Document Foundation as a legal entity</a>. The race for funds is open until March 21st 2011, which marks the beginning of Spring in the northern hemisphere. All users - especially enterprises - are invited to donate to the capital stock of the future foundation.</p>
 
 </div>
 EOT;
