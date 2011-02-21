@@ -25,7 +25,7 @@ USt-IdNr.: DE261529002<br>
 </p>
 
 <h3>Disclaimer</h3>
-<p>Despite toroughly testing of external websites we are not liable for the content of linked websites. 
+<p>Despite thoroughly testing of external websites we are not liable for the content of linked websites. 
 Only the provider of the respective website is liable for it's contents.
 </p>
 
