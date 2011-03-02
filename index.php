@@ -66,20 +66,6 @@ donation marked with the keyword "Document Foundation" will be used to support o
 	<input src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal secure payments." type="image">
 	</p>
 	</form>
-<br>
-<p>Bank account information:
-<pre>Owner: OpenOffice.org Deutschland e.V.
-Subject: The Document Foundation
-Account Number: 3497390
-Bank Code: 66690000
-Bank: Volksbank Pforzheim
-IBAN: DE12666900000003497390
-BIC: VBPFDE66
-
-Address of recipient: OpenOffice.org Deutschland e.V., Riederbergstr. 92, 65195 Wiesbaden, Germany
-Address of bank: Volksbank Pforzheim eG, Westliche-Karl-Friedrich-Str. 53, 75172 Pforzheim, Germany</pre>
-</p>
-<br>
 </div>
 </div>
 EOT;
