@@ -31,14 +31,15 @@ If you like to support our work on LibreOffice and The Document Foundation but c
 <a href="http://www.ooodev.org">OpenOffice.org Deutschland e.V.</a> will handle donations on our behalf. Each 
 donation marked with the keyword "Document Foundation" will be used to support our efforts.
 </p>
-<p>PayPal: paypal@ooodev.org</p>
+<p>PayPal: donations@documentfoundation.org</p>
 	<form action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
 	<p>
+	<input name="lc" value="EN" type="hidden">
 	<input name="cmd" value="_donations" type="hidden">
-	<input name="business" value="paypal@ooodev.org" type="hidden">
+	<input name="business" value="donations@documentfoundation.org" type="hidden">
 	<input name="return" value="http://www.documentfoundation.org" type="hidden">
 	<input name="undefined_quantity" value="0" type="hidden">
-	<input name="item_name" value="Document Foundation" type="hidden">
+	<input name="item_name" value="The Document Foundation" type="hidden">
 	Amount: <input name="amount" size="4" maxlength="10" value="" style="text-align: right;" type="text">
 		<select name="currency_code">
 			<option value="EUR">EUR</option>
@@ -62,20 +63,25 @@ donation marked with the keyword "Document Foundation" will be used to support o
 	</select>
 	<input name="charset" value="utf-8" type="hidden">
 	<input name="no_shipping" value="1" type="hidden">
-	<input name="image_url" value="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" type="hidden">
+	<input name="image_url" value="https://www.libreoffice.org/themes/libo/images/logo.png" type="hidden">
 	<input name="cancel_return" value="http://www.documentfoundation.org" type="hidden">
-	<input name="no_note" value="0" type="hidden"><br><br>
+	<input name="no_note" value="1" type="hidden"><br><br>
 	<input src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal secure payments." type="image">
 	</p>
 	</form>
 <br>
 <p>Bank account information:
-<pre>OpenOffice.org Deutschland e.V.
-IBAN: DE18 5465 1240 0000 9609 71
-SWIFT-BIC: MALADE51DKH
-Subject: Document Foundation</pre>
+<pre>Owner: OpenOffice.org Deutschland e.V.
+Subject: The Document Foundation
+Account Number: 3497390
+Bank Code: 66690000
+Bank: Volksbank Pforzheim
+IBAN: DE12666900000003497390
+BIC: VBPFDE66
+
+Address of recipient: OpenOffice.org Deutschland e.V., Riederbergstr. 92, 65195 Wiesbaden, Germany
+Address of bank: Volksbank Pforzheim eG, Westliche-Karl-Friedrich-Str. 53, 75172 Pforzheim, Germany</pre
 <p>
-If you are living in Germany, you may also use <a href="http://www.ooodev.org/spenden.html">domestic bank transfer</a>.
 <br>
 </p>
 <br>
