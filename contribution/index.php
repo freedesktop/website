@@ -80,9 +80,7 @@ IBAN: DE12666900000003497390
 BIC: VBPFDE66
 
 Address of recipient: OpenOffice.org Deutschland e.V., Riederbergstr. 92, 65195 Wiesbaden, Germany
-Address of bank: Volksbank Pforzheim eG, Westliche-Karl-Friedrich-Str. 53, 75172 Pforzheim, Germany</pre
-<p>
-<br>
+Address of bank: Volksbank Pforzheim eG, Westliche-Karl-Friedrich-Str. 53, 75172 Pforzheim, Germany</pre>
 </p>
 <br>
 </div>
