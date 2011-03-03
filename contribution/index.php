@@ -186,7 +186,6 @@ Digest subscription: <a href="mailto:accessibility+subscribe-digest@libreoffice.
 Archives: <a href="http://listarchives.libreoffice.org/www/accessibility/">http://listarchives.libreoffice.org/www/accessibility/</a><br>
 Mail-Archive.com: <a href="http://www.mail-archive.com/accessibility@libreoffice.org/">http://www.mail-archive.com/accessibility@libreoffice.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.accessibility">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.accessibility</a></li>
-<hr>
 <li><b>projects@libreoffice.org:</b> Project coordination<br>
 
 Subscription: <a href="mailto:projects+subscribe@libreoffice.org">projects+subscribe@libreoffice.org</a><br>
