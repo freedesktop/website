@@ -187,6 +187,14 @@ Archives: <a href="http://listarchives.libreoffice.org/www/accessibility/">http:
 Mail-Archive.com: <a href="http://www.mail-archive.com/accessibility@libreoffice.org/">http://www.mail-archive.com/accessibility@libreoffice.org/</a><br>
 GMANE: <a href="http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.accessibility">http://dir.gmane.org/gmane.comp.documentfoundation.libreoffice.accessibility</a></li>
 <hr>
+<li><b>projects@libreoffice.org:</b> Project coordination<br>
+
+Subscription: <a href="mailto:projects+subscribe@libreoffice.org">projects+subscribe@libreoffice.org</a><br>
+Digest subscription: <a href="mailto:projects+subscribe-digest@libreoffice.org">projects+subscribe-digest@libreoffice.org</a><br>
+Archives: <a href="http://listarchives.libreoffice.org/www/projects/">http://listarchives.libreoffice.org/www/projects/</a><br>
+Mail-Archive.com: <a href="http://www.mail-archive.com/projects@libreoffice.org/">http://www.mail-archive.com/projects@libreoffice.org/</a><br>
+GMANE: pending</li>
+<hr>
 <li>There is also a <a href="http://lists.freedesktop.org/mailman/listinfo/libreoffice">development mailing list</a> available for those interested
 in code contributions. This list is hosted by FreeDesktop.org.</li>
 
