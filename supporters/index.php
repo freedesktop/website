@@ -10,6 +10,16 @@ organisations. Stay tuned - many more will come.</p>
 <table>
 
 <tr>
+    <td><b><a name="4linux">4Linux</a></b></td>
+    <td>
+	"<i>We welcome LibreOffice and The Document Foundation</i>", says <b>Rodolfo Gobbi</b>, Director
+	4Linux, "<i>4Linux is the Brazilian leader in open source training and consulting services,
+	and our commitment to use, help to spread and support both ODF and Free Software is very
+	aligned with The Document Foundation and we are very happy to help the success of LibreOffice.</i>"
+    </td>
+</tr>
+
+<tr>
     <td><b><a name="aful">AFUL</a></b></td>
     <td>
 A statement from the French AFUL is available <a href="http://aful.org/communiques/libreoffice-reaffirme-fondamentaux-libre">from their website</a>.
@@ -37,7 +47,7 @@ BrOffice.org NGO of Brazil.
 </tr>
 
 <tr>
-    <td><b><a name="brsoft">BSRSoft LTDA</a></b></td> 
+    <td><b><a name="brsoft">BSRSoft LTDA</a></b></td>
     <td>
 "<i>Both the creation of the foundation, as the birth of LibreOffice, is great news for
 the market of free software. Companies like BSRSoft, providing services and products based
@@ -45,10 +55,10 @@ entirely on free software, see the project as the best way to achieve productivi
 free a new technical level, and increase the security of continuity</i>", says
 <b>André Luis Pereira dos Santos</b>, CEO of BSRSoft LTDA
     </td>
-</tr> 
+</tr>
 
 <tr>
-    <td><b><a name="canonical">Canonical</a></b></td> 
+    <td><b><a name="canonical">Canonical</a></b></td>
     <td>
         <b>Mark Shuttleworth</b>, founder and major shareholder of
 Canonical, the makers of Ubuntu, has declared: "<i>Office productivity
@@ -62,10 +72,22 @@ solution for the desktop in office environments</i>".
 </tr>
 
 <tr>
-    <td><b><a name="collabora">Collabora</a></b></td> 
+    <td><b><a name="codethink">Codethink</a></b></td>
+    <td>
+	"<i>We are delighted to see LibreOffice gaining new momentum</i>"
+    says <b>Rob Taylor</b>, Codethink's Founder and CTO, "<i>As a company
+    that helps customers to leverage the open source developement model,
+    we think that a truly open community will generate a great ecosystem
+    around the project, of which we hope to be part. Codethink is pleased
+    to be able to provide its development services around LibreOffice.</i>"
+    </td>
+</tr>
+
+<tr>
+    <td><b><a name="collabora">Collabora</a></b></td>
     <td>
 "<i>The LibreOffice project is great news for the open source community, both on the desktop and further afield</i>"
-said <b>Robert McQueen</b>, Director at Collabora. 
+said <b>Robert McQueen</b>, Director at Collabora.
 <i>"We have always believed that the open source projects with true open governance and diverse participation are the most vibrant and valuable to the community, allowing them to be supported by a range of different business models.</i>"
     </td>
 </tr>
