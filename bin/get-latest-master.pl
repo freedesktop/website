@@ -133,7 +133,7 @@ close ($CvsRoot) || return 0;
 die "couldn't determine master-list!" unless ( @latestmasters );
 die "couldn't determine modules!" unless ( @modules );
 
-open (MASTER_LIST, ">/srv/www/tinderbox.go-oo.org/tags/tag-latest-master-list");
+open (MASTER_LIST, ">/srv/www/tinderbox.libreoffice.org/tags/tag-latest-master-list");
 print MASTER_LIST "# List of the last three master workspaces\n";
 print MASTER_LIST "# <name> : <master-tag> : <master-tag> : <modules>\n";
 

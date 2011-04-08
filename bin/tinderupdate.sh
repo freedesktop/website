@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TINDERBOX_BIN=/srv/tinderbox/bin
-TINDERBOX_WWW=/srv/www/tinderbox.go-oo.org
+TINDERBOX_WWW=/srv/www/tinderbox.libreoffice.org
 TINDERBOX_LOG=/var/log/tinderbox/tinderbox2.log
 
 cd /srv/tinderbox

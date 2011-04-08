@@ -30,10 +30,10 @@ my $new            = $eis->getTinderboxTagList('new');
 
 die "EIS not reachable?!" unless (defined($new) and defined($ready_for_QA) and defined($approved_by_QA) and defined($nominated));
 
-print_tags("/srv/www/tinderbox.go-oo.org/tags/tag-list-nominated", $nominated); 
-print_tags("/srv/www/tinderbox.go-oo.org/tags/tag-list-approved",  $approved_by_QA);
-print_tags("/srv/www/tinderbox.go-oo.org/tags/tag-list-qa",        $ready_for_QA);
-print_tags("/srv/www/tinderbox.go-oo.org/tags/tag-list-new",       $new);
+print_tags("/srv/www/tinderbox.libreoffice.org/tags/tag-list-nominated", $nominated); 
+print_tags("/srv/www/tinderbox.libreoffice.org/tags/tag-list-approved",  $approved_by_QA);
+print_tags("/srv/www/tinderbox.libreoffice.org/tags/tag-list-qa",        $ready_for_QA);
+print_tags("/srv/www/tinderbox.libreoffice.org/tags/tag-list-new",       $new);
 
-print_tags("/srv/www/tinderbox.go-oo.org/tags/tag-list", $nominated.$approved_by_QA.$ready_for_QA.$new);
+print_tags("/srv/www/tinderbox.libreoffice.org/tags/tag-list", $nominated.$approved_by_QA.$ready_for_QA.$new);
 

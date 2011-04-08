@@ -78,17 +78,17 @@ $TINDERBOX_GID=100;
 
 # The url to the tinderbox server binary directory
 
-$URL_BIN = "http://tinderbox.go-oo.org/cgi-bin";
+$URL_BIN = "http://tinderbox.libreoffice.org/cgi-bin";
 
 
 # The url to the tinderbox server HTML directory
 
-$URL_HTML = "http://tinderbox.go-oo.org";
+$URL_HTML = "http://tinderbox.libreoffice.org";
 
 # The full path name tinderbox will use to access the tinderbox
 # servers root data directory where the html will be written.
 
-$TINDERBOX_HTML_DIR = "/srv/www/tinderbox.go-oo.org";
+$TINDERBOX_HTML_DIR = "/srv/www/tinderbox.libreoffice.org";
 
 # The full path name tinderbox will use to access the tinderbox
 # servers root data directory where the data will be written.  For
@@ -112,7 +112,7 @@ $TINDERBOX_GZLOG_DIR = $TINDERBOX_HTML_DIR;
 # The full path name tinderbox will use to access the tinderbox
 # cgi scripts.
 
-$TINDERBOX_CGIBIN_DIR = "/srv/www/tinderbox.go-oo.org/cgi-bin";
+$TINDERBOX_CGIBIN_DIR = "/srv/www/tinderbox.libreoffice.org/cgi-bin";
 
 # The top level tinderbox index file. Change this if you wish to
 # provide your own index file for tinderboxes web pages.
@@ -393,14 +393,14 @@ $DISPLAY_BUILD_ERRORS = 1;
 # to make HTML to point to the bonsai CGI programs. We do not need to
 # have this link point to the same webserver as tinderbox.
 
-$BONSAI_URL = "http://bonsai.go-oo.org";
+$BONSAI_URL = "http://bonsai.libreoffice.org";
 
 # If we query bonsai data (e.g., DBImpl above is set to Bonsai), we
 # need to know the directory which bonsai is installed in. Tinderbox
 # needs to be able to see the bonsai directories to get bonsai checkin
 # and treestate data.
 
-$BONSAI_DIR = "/srv/www/bonsai.go-oo.org";
+$BONSAI_DIR = "/srv/www/bonsai.libreoffice.org";
 
 # If we use perforce set the port and information on how to find p4db.
 # I would like to use p4web since there is a security patch out
