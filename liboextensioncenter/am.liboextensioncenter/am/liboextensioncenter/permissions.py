@@ -3,10 +3,10 @@ $Id: permissions.py 65992 2008-06-01 00:40:45Z rossp $
 """
 from Products.CMFCore.permissions import setDefaultRoles
 
-AddExtensionCenter = "LibOExtensionCenter: Add Extension Center"
-AddProject = 'LibOExtensionCenter: Add Project'
-AddReviewComment = 'LibOExtension: Add Review Comment'
-ApproveProject = 'LibOExtensionCenter: Approve Project'
+AddExtensionCenter = "liboextensioncenter: Add Extension Center"
+AddProject = 'liboextensioncenter: Add Project'
+AddReviewComment = 'liboextension: Add Review Comment'
+ApproveProject = 'liboextensioncenter: Approve Project'
 
 # Let members add new projects, but only manager add help centres
 setDefaultRoles(AddSoftwareCenter, ('Manager',))
