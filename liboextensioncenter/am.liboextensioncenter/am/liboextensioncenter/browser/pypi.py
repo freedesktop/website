@@ -15,10 +15,10 @@ from Products.CMFCore.WorkflowCore import WorkflowException
 from Products.Five import BrowserView
 from Products.Archetypes.event import ObjectEditedEvent
 
-from Products.PloneSoftwareCenter.utils import VersionPredicate
-from Products.PloneSoftwareCenter.utils import which_platform
-from Products.PloneSoftwareCenter.utils import is_distutils_file
-from Products.PloneSoftwareCenter.utils import get_projects_by_distutils_ids
+from Products.liboextensioncenter.utils import VersionPredicate
+from Products.liboextensioncenter.utils import which_platform
+from Products.liboextensioncenter.utils import is_distutils_file
+from Products.liboextensioncenter.utils import get_projects_by_distutils_ids
 
 from plone.i18n.normalizer.interfaces import IFileNameNormalizer
 
