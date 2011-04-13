@@ -14,13 +14,13 @@ import project
 import release
 import releasefolder
 
-sys.modules['Products.PloneSoftwareCenter.content.PloneSoftwareCenter'] = root
-sys.modules['Products.PloneSoftwareCenter.content.PSCDocumentationFolder'] = docfolder
-sys.modules['Products.PloneSoftwareCenter.content.PSCFile'] = downloadablefile
-sys.modules['Products.PloneSoftwareCenter.content.PSCFileLink'] = filelink
-sys.modules['Products.PloneSoftwareCenter.content.PSCImprovementProposal'] = proposal
-sys.modules['Products.PloneSoftwareCenter.content.PSCImprovementProposalFolder'] = proposalfolder
-sys.modules['Products.PloneSoftwareCenter.content.PSCProject'] = project
-sys.modules['Products.PloneSoftwareCenter.content.PSCRelease'] = release
-sys.modules['Products.PloneSoftwareCenter.content.PSCReleaseFolder'] = releasefolder
+sys.modules['am.liboextensioncenter.content.liboextensioncenter'] = root
+sys.modules['am.liboextensioncenter.content.PSCDocumentationFolder'] = docfolder
+sys.modules['am.liboextensioncenter.content.PSCFile'] = downloadablefile
+sys.modules['am.liboextensioncenter.content.PSCFileLink'] = filelink
+sys.modules['am.liboextensioncenter.content.PSCImprovementProposal'] = proposal
+sys.modules['am.liboextensioncenter.content.PSCImprovementProposalFolder'] = proposalfolder
+sys.modules['am.liboextensioncenter.content.PSCProject'] = project
+sys.modules['am.liboextensioncenter.content.PSCRelease'] = release
+sys.modules['am.liboextensioncenter.content.PSCReleaseFolder'] = releasefolder
 
