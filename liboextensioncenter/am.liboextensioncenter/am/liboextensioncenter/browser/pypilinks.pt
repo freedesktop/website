@@ -10,7 +10,7 @@
   <title>List of available downloads</title>
  </head>
  <body>
-  <p i18n:translate="label_pypi_links">This page is generated automatically by PloneSoftwareCenter</p>
+  <p i18n:translate="label_pypi_links">This page is generated automatically by liboextensioncenter</p>
   <tal:block tal:repeat="file_ view/get_files">
    <a title=""
       tal:attributes="href file_/url;

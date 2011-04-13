@@ -24,7 +24,7 @@ class RoadmapView(BrowserView):
         
         return self.context.utranslate(
           msgid='workflow_state_title_%s' % state,
-          domain='plonesoftwarecenter',
+          domain='liboextensioncenter',
           default=wf.states[state].title)
 
     def improvement_proposals(self, review_state = []):
