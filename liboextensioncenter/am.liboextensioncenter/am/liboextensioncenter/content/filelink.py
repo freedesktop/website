@@ -6,7 +6,7 @@ import re
 
 from zope.interface import  implements
 
-from Products.PloneSoftwareCenter.interfaces import IFileLinkContent
+from Products.liboextensioncenter.interfaces import IFileLinkContent
 
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore import permissions
@@ -14,7 +14,7 @@ from Products.CMFCore import permissions
 from Products.Archetypes.atapi import *
 from Products.ATContentTypes.content.base import ATCTMixin
 
-from Products.PloneSoftwareCenter.config import PROJECTNAME
+from Products.liboextensioncenter.config import PROJECTNAME
 
 PSCFileLinkSchema = BaseSchema.copy() + Schema((
 
