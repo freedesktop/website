@@ -18,7 +18,7 @@ from zope.interface import implements
 from Products.validation.interfaces.IValidator import IValidator
 from zope.component import adapts
 from Products.Archetypes.interfaces import IObjectPreValidation
-from Products.PloneSoftwareCenter.interfaces import IProjectContent
+from Products.liboextensioncenter.interfaces import IProjectContent
 
 from zope.i18nmessageid import MessageFactory
 

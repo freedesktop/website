@@ -10,7 +10,7 @@ from itertools import groupby
 PYPI_CLASSIFIERS_URL = 'http://pypi.python.org/pypi?%3Aaction=list_classifiers'
 
 class TroveClassifier(object):
-    """PloneSoftware-friendly Trove provider
+    """liboextension-friendly Trove provider
     """
 
     def __init__(self, default=None):

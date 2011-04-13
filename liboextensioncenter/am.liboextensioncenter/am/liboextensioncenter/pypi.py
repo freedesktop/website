@@ -6,7 +6,7 @@ import transaction
 import xmlrpclib
 from Products.CMFCore.utils import getToolByName
 
-logger = logging.getLogger('Products.PloneSoftwareCenter')
+logger = logging.getLogger('am.liboextensioncenter')
 
 client = xmlrpclib.ServerProxy('http://pypi.python.org/pypi')
 

@@ -21,8 +21,8 @@ from OFS.Image import File
 from zExceptions import Unauthorized
 from Products.Archetypes.atapi import *
 from Products.CMFCore.utils import getToolByName
-from Products.PloneSoftwareCenter import config
-from Products.PloneSoftwareCenter.content.downloadablefile import PSCFile, PSCFileSchema
+from Products.liboextensioncenter import config
+from Products.liboextensioncenter.content.downloadablefile import PSCFile, PSCFileSchema
 from ZODB.POSException import ConflictError
 
 NAME = re.compile('Name: (.*)')
@@ -195,9 +195,9 @@ def before_1_5(portal_setup):
     cat = getToolByName(portal_setup, 'portal_catalog')
     
     # getting all PSC instances
-    pscs = cat(**{'portal_type': 'PloneSoftwareCenter'})
+    pscs = cat(**{'portal_type': 'liboextensioncenter'})
 
-    # checking all PloneSoftwareCenter instances
+    # checking all liboextensioncenter instances
     for psc in pscs:
         psc = psc.getObject()
 
