@@ -2,7 +2,7 @@ from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Acquisition import aq_inner
 
-from Products.PloneSoftwareCenter.browser.project import _upcoming_releases
+from Products.liboextensioncenter.browser.project import _upcoming_releases
 
 class RoadmapView(BrowserView):
 

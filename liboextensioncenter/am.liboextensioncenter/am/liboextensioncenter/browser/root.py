@@ -39,7 +39,7 @@ class SoftwareCenterView(BrowserView):
     def can_add_project(self):
         """Determine if the current user has permission to add a project
         """
-        return self.membership.checkPermission('PloneSoftwareCenter: Add Project', self.context)
+        return self.membership.checkPermission('liboextensioncenter: Add Project', self.context)
         
     def project_count(self):
         """Return number of projects
