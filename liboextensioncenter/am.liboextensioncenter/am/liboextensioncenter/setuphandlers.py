@@ -434,11 +434,11 @@ def setupCioppinoTwoThumbs(self, out):
 
 def importVarious(context):
     """
-    Final plonesoftwarecenter import steps.
+    Final liboextensioncenter import steps.
     """
 
     # Only run step if a flag file is present (e.g. not an extension profile)
-    if context.readDataFile('plonesoftwarecenter-various.txt') is None:
+    if context.readDataFile('liboextensioncenter-various.txt') is None:
         return
 
     site = context.getSite()
