@@ -82,7 +82,7 @@ def migrate(self):
     """Run migrations
     """
     out = StringIO()
-    print >> out, "Starting PloneSoftwareCenter migration"
+    print >> out, "Starting liboextensioncenter migration"
     v1beta7_v1beta8(self, out)
-    print >> out, "PloneSoftwareCenter migrations finished"
+    print >> out, "liboextensioncenter migrations finished"
     return out.getvalue()

@@ -1,9 +1,9 @@
 from StringIO import StringIO
 from Products.CMFCore.utils import getToolByName
 
-from Products.PloneSoftwareCenter import config
+from am.liboextensioncenter import config
 
-EXTENSION_PROFILES = ('Products.PloneSoftwareCenter:default',)
+EXTENSION_PROFILES = ('am.liboextensioncenter:default',)
 
 def install(self):
     out = StringIO()
