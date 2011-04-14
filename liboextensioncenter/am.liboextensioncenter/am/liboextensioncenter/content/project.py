@@ -4,7 +4,7 @@ $Id: PSCProject.py 24623 2006-06-09 08:13:43Z optilude $
 from zope.interface import implements
 from zope.component import getMultiAdapter
 
-from Products.PloneSoftwareCenter.interfaces import IProjectContent
+from am.liboextensioncenter.interfaces import IProjectContent
 
 from AccessControl import ClassSecurityInfo
 
@@ -20,10 +20,10 @@ try:
 except ImportError:
     NEEDS_UPDATE = False
     
-from Products.PloneSoftwareCenter import config
-from Products.PloneSoftwareCenter.permissions import ApproveProject, \
+from am.liboextensioncenter import config
+from am.liboextensioncenter.permissions import ApproveProject, \
   AddReviewComment
-from Products.PloneSoftwareCenter.utils import get_projects_by_distutils_ids
+from am.liboextensioncenter.utils import get_projects_by_distutils_ids
 
 from zExceptions import Unauthorized
 import DateTime

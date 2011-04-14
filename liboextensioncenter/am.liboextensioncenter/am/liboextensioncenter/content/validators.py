@@ -1,5 +1,5 @@
 import zope.deprecation
-zope.deprecation.moved('Products.PloneSoftwareCenter.validators', 'version 1.6')
+zope.deprecation.moved('am.liboextensioncenter.validators', 'version 1.6')
 
 # Old Style
  
@@ -11,11 +11,11 @@ import re
 from zope.interface import implements
 from zope.component import adapts
 from Products.Archetypes.interfaces import IObjectPreValidation
-from Products.PloneSoftwareCenter.interfaces import IProjectContent
+from am.liboextensioncenter.interfaces import IProjectContent
 
 from zope.i18nmessageid import MessageFactory
 
-_ = MessageFactory('plonesoftwarecenter')
+_ = MessageFactory('liboextensioncenter')
 
 is_valid_contact = re.compile('[mailto:,http:]')
 

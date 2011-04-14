@@ -4,7 +4,7 @@ $Id: PSCRelease.py 24703 2006-06-11 01:44:04Z optilude $
 
 from zope.interface import implements
 
-from Products.PloneSoftwareCenter.interfaces import IReleaseContent
+from am.liboextensioncenter.interfaces import IReleaseContent
 
 import re
 
@@ -23,7 +23,7 @@ from Products.ATContentTypes.content.base import ATCTMixin
 
 from Products.AddRemoveWidget import AddRemoveWidget
 
-from Products.PloneSoftwareCenter import config
+from am.liboextensioncenter import config
 
 from zope.annotation.interfaces import IAnnotations
 

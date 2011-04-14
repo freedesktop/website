@@ -4,7 +4,7 @@ $Id: PSCReleaseFolder.py 24400 2006-06-04 22:38:43Z optilude $
 
 from zope.interface import implements
 
-from Products.PloneSoftwareCenter.interfaces import IReleaseFolderContent
+from am.liboextensioncenter.interfaces import IReleaseFolderContent
 
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore import permissions
@@ -18,7 +18,7 @@ except ImportError:  # BBB
 
 from Products.ATContentTypes.content.base import ATCTMixin
 
-from Products.PloneSoftwareCenter import config
+from am.liboextensioncenter import config
 
 PSCReleaseFolderSchema = OrderedBaseFolderSchema.copy() + Schema((
 

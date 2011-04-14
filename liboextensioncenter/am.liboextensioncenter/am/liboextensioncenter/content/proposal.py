@@ -4,7 +4,7 @@ $Id: PSCImprovementProposal.py 24697 2006-06-10 22:01:35Z optilude $
 
 from zope.interface import implements
 
-from Products.PloneSoftwareCenter.interfaces import IImprovementProposalContent
+from am.liboextensioncenter.interfaces import IImprovementProposalContent
 
 from AccessControl import ClassSecurityInfo
 
@@ -19,7 +19,7 @@ except ImportError:  # BBB
 
 from Products.ATContentTypes.content.base import ATCTMixin
 
-from Products.PloneSoftwareCenter.config import PROJECTNAME
+from am.liboextensioncenter.config import PROJECTNAME
 
 TEXT_TYPES = (
     'text/structured',

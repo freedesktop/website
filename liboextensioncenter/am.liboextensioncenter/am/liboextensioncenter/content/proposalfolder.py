@@ -4,7 +4,7 @@ $Id: PSCImprovementProposalFolder.py 24400 2006-06-04 22:38:43Z optilude $
 
 from zope.interface import implements
 
-from Products.PloneSoftwareCenter.interfaces import IImprovementProposalFolderContent
+from am.liboextensioncenter.interfaces import IImprovementProposalFolderContent
 
 from AccessControl import ClassSecurityInfo
 
@@ -19,7 +19,7 @@ except ImportError:  # BBB
 
 from Products.ATContentTypes.content.base import ATCTMixin
 
-from Products.PloneSoftwareCenter.config import PROJECTNAME, IMPROVEMENTS_ID
+from am.liboextensioncenter.config import PROJECTNAME, IMPROVEMENTS_ID
 
 from Products.CMFCore.utils import getToolByName
 

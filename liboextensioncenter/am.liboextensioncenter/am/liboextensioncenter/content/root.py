@@ -5,9 +5,9 @@ $Id: PloneSoftwareCenter.py 24613 2006-06-08 23:40:22Z optilude $
 from zope.interface import implements
 from zope import event
 
-from Products.PloneSoftwareCenter.interfaces import ISoftwareCenterContent
-from Products.PloneSoftwareCenter.storage import getFileStorageVocab
-from Products.PloneSoftwareCenter.events.softwarecenter import \
+from am.liboextensioncenter.interfaces import ISoftwareCenterContent
+from am.liboextensioncenter.storage import getFileStorageVocab
+from am.liboextensioncenter.events.softwarecenter import \
         StorageStrategyChanging
 
 from AccessControl import ClassSecurityInfo
@@ -27,10 +27,10 @@ from Products.ArchAddOn.Fields import SimpleDataGridField
 from Products.ArchAddOn.Widgets import SimpleDataGridWidget
 from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 
-from Products.PloneSoftwareCenter.config import PROJECTNAME
-from Products.PloneSoftwareCenter.config import trove
+from am.liboextensioncenter.config import PROJECTNAME
+from am.liboextensioncenter.config import trove
 
-PloneSoftwareCenterSchema = OrderedBaseFolder.schema.copy() + Schema((
+liboextensioncenterSchema = OrderedBaseFolder.schema.copy() + Schema((
 
     TextField('description',
         searchable=1,
@@ -230,7 +230,7 @@ PloneSoftwareCenterSchema = OrderedBaseFolder.schema.copy() + Schema((
 
 ))
 
-class PloneSoftwareCenter(ATCTMixin, BaseBTreeFolder):
+class liboextensioncenter(ATCTMixin, BaseBTreeFolder):
     """A simple folderish archetype for the Software Center."""
 
     implements(ISoftwareCenterContent)
@@ -238,14 +238,14 @@ class PloneSoftwareCenter(ATCTMixin, BaseBTreeFolder):
     content_icon = 'product_icon.gif'
 
     archetype_name = 'Software Center'
-    metatype = 'PloneSoftwareCenter'
+    metatype = 'liboextensioncenter'
     immediate_view = default_view = 'plonesoftwarecenter_view'
     suppl_views = ()
 
     global_allow = 1
     filter_content_types = 1
     allowed_content_types = ('PSCProject',)
-    schema = PloneSoftwareCenterSchema
+    schema = liboextensioncenterSchema
     _at_rename_after_creation = True
 
     security = ClassSecurityInfo()
@@ -387,4 +387,4 @@ class PloneSoftwareCenter(ATCTMixin, BaseBTreeFolder):
             event.notify(StorageStrategyChanging(self, old, value))
         self.getField('storageStrategy').set(self, value, **kw)
 
-registerType(PloneSoftwareCenter, PROJECTNAME)
+registerType(liboextensioncenter, PROJECTNAME)
