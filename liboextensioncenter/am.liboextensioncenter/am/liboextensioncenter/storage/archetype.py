@@ -3,7 +3,7 @@ from zope.component import adapts
 
 from Products.Archetypes.atapi import AttributeStorage
 
-from Products.PloneSoftwareCenter.storage.interfaces import IPSCFileStorage
+from am.liboextensioncenter.storage.interfaces import IPSCFileStorage
 from Products.Archetypes.interfaces.storage import IStorage
 
 class ArchetypeStorage(AttributeStorage):
