@@ -40,7 +40,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_project_short_name",
             description="Should not contain spaces, underscores or mixed case. Short Name is part of the item's web address.",
             description_msgid="help_project_short_name",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
     
@@ -55,7 +55,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_project_description",
             description="A short summary of the project.",
             description_msgid="help_description",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
             rows=5,
         ),
     ),
@@ -73,7 +73,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_package_body_text",
             description="The complete project description.",
             description_msgid="help_package_body_text",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
             rows=25,
         ),
     ),
@@ -90,7 +90,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid='label_classifiers',
             description='Trove classifiers for this item.',
             description_msgid='help_classifiers',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             rows=6,
         ),
     ),
@@ -106,7 +106,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_categories",
             description='Categories that this item should appear in.',
             description_msgid="help_categories",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
     
@@ -121,7 +121,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
                          " or registered, the project description is "
                          " updated consequently"),
             description_msgid="help_project_distutils_main_id",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
     
@@ -135,7 +135,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_project_distutils_secondary_ids",
             description='Other Distutils names managed by this project.',
             description_msgid="help_project_distutils_secondary_id",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
     
@@ -147,7 +147,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid = 'label_project_download_count',
             description = 'Download count retrieved from pypi. Set to -1 to deprioritize and exclude from updates.',
             description_msgid = 'help_project_download_count',
-            i18n_domain = 'plonesoftwarecenter',
+            i18n_domain = 'liboextensioncenter',
             ),
         write_permission = 'Manage portal',
         ),
@@ -164,7 +164,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_self_certification_checklist",
             description='Check which criteria this project fulfills.',
             description_msgid="help_self_certification_checklist",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
             format="checkbox",
         ),
     ),
@@ -178,7 +178,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_approved",
             description_msgid="description_approved",
             description="Indicate whether this project is approved by product reviewers.",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
     
@@ -192,7 +192,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_review_comment",
             description="Additional notes by reviewers of this project.",
             description_msgid="help_review_comment",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -206,7 +206,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_unsupported_versions",
             description_msgid="description_unsupported_versions",
             description="For documentation items and releases, users will be warned if the relevant version is in the list on the right.",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -218,7 +218,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_package_contact_address",
             description="Contact address for the project. Use mailto: or http:// prefix depending on what contact method you prefer.",
             description_msgid="help_package_contact_address",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -231,7 +231,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_package_homepage",
             description="If the project has an external home page, enter its URL.",
             description_msgid="help_package_homepage",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -244,7 +244,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_package_documentation",
             description="If the project has externally hosted documentation, enter its URL.",
             description_msgid="help_package_documentation",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -257,7 +257,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_package_repository",
             description="If the project has a code repository, enter its URL.",
             description_msgid="help_package_repository",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -270,7 +270,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_package_tracker",
             description="If the project has an external issue tracker, enter its URL.",
             description_msgid="help_package_tracker",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -283,7 +283,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_package_mailinglist",
             description="URL of mailing list information page/archives or support forum, if the project has one.",
             description_msgid="help_package_mailinglist",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -296,7 +296,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_package_logo",
             description="Add a logo for the project (or organization/company) by clicking the 'Browse' button. Max 150x75 pixels (will be resized if bigger).",
             description_msgid="help_package_logo",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -309,7 +309,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_package_logo_link",
             description="The URL the logo should link to, if applicable.",
             description_msgid="help_package_logo_link",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -322,7 +322,7 @@ PSCProjectSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_package_screenshot",
             description="Add a screenshot by clicking the 'Browse' button. Max 800x600 (will be resized if bigger).",
             description_msgid="help_package_screenshot",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 

@@ -45,7 +45,7 @@ PSCFileSchema = BaseSchema.copy() + Schema((
                         "separate modules. The actual file name will "
                         "be the same as the file you upload.",
             description_msgid="help_file_title",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -57,7 +57,7 @@ PSCFileSchema = BaseSchema.copy() + Schema((
             label_msgid="label_file_description",
             description="Click 'Browse' to upload a release file.",
             description_msgid="help_file_description",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
         storage=DynamicStorage(),
     ),
@@ -71,7 +71,7 @@ PSCFileSchema = BaseSchema.copy() + Schema((
             label_msgid="label_file_platform",
             description="List of platforms available for selection",
             description_msgid="help_file_platform",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 

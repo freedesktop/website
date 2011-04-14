@@ -46,7 +46,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
                         "state as this is handled by the "
                         "workflow. Example: '0.1'.",
             description_msgid='help_release_version',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
         ),
     ),
 
@@ -59,7 +59,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid="label_release_title",
             description="The title of the release, computed from the title of the project and the version number.",
             description_msgid="help_release_title",
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             modes=('view',),
             visible={
                 'edit': 'invisible',
@@ -83,7 +83,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
                         'Also note that this number ' 
                         'will be automatically adjusted if you re-release using the "state" menu.',
             description_msgid='help_release_number',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
         ),
     ),
 
@@ -95,7 +95,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid='label_release_codename',
             description='Codename for this release, if you have one.',
             description_msgid='help_release_codename',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
         ),
     ),
 
@@ -113,7 +113,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
                         'but in plain text what the main benefit of '
                         'this release is.',
             description_msgid='help_release_summary',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             rows=5,
         ),
     ),
@@ -129,7 +129,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid='label_release_body_text',
             description='The complete release text.',
             description_msgid='help_release_body_text',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             rows=15,
         ),
     ),
@@ -145,7 +145,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid='label_release_changelog',
             description='A detailed log of what has changed since the previous release.',
             description_msgid='help_release_changelog',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             rows=10,
         ),
     ),
@@ -158,7 +158,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid='label_release_relmgr',
             description='Release manager for this release.',
             description_msgid='help_release_relmgr',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
         ),
     ),
 
@@ -170,7 +170,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid='label_release_relmgr_email',
             description='Contact e-mail for Release Manager.',
             description_msgid='help_release_relmgr_email',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
         ),
     ),
 
@@ -182,7 +182,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid='label_release_improvement_proposal_freeze_date',
             description='Date after which no more Improvement Proposals will be associated with the release',
             description_msgid='help_release_improvement_proposal_freeze_date',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             show_hm = False,
         ),
     ),
@@ -195,7 +195,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid='label_release_feature_freeze_date',
             description='Date after which no new features will added to the release',
             description_msgid='help_release_feature_freeze_date',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             show_hm = False,
         ),
     ),
@@ -208,7 +208,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid='label_release_expected_date',
             description='Date on which a final release is expected to be made or was made',
             description_msgid='help_release_expected_date',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             show_hm = False,
         ),
     ),
@@ -222,7 +222,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid='label_release_license',
             description='Release License',
             description_msgid='help_release_license',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
         ),
     ),
 
@@ -237,7 +237,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid='label_release_compatibility',
             description='Tested and working with the following versions:',
             description_msgid='help_release_compatibility',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenterr',
         ),
     ),
 
@@ -251,7 +251,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid="label_release_associated_feature_proposals",
             description="Please select related improvement proposals for features going into this release.",
             description_msgid="help_release_associated_feature_proposals",
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
         ),
         vocabulary='getRelatedFeaturesVocab',
     ),
@@ -266,7 +266,7 @@ PSCReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid="label_release_repository",
             description="URL of version control repository branch for this release.",
             description_msgid="help_release_repository",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 

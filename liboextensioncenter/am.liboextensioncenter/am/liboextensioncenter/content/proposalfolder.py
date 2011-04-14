@@ -35,7 +35,7 @@ PSCImprovementProposalFolderSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid="label_proposalfolder_short_name",
             description="Short name of the container - this should be 'roadmap' to comply with the standards.",
             description_msgid="help_proposalfolder_short_name",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -49,7 +49,7 @@ PSCImprovementProposalFolderSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid="label_proposalfolder_title",
             description="Enter a title for the container",
             description_msgid="help_proposalfolder_title",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -63,7 +63,7 @@ PSCImprovementProposalFolderSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid="label_proposalfolder_description",
             description="Enter a description of the container",
             description_msgid="help_proposalfolder_description",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
     
@@ -77,7 +77,7 @@ PSCImprovementProposalFolderSchema = OrderedBaseFolderSchema.copy() + Schema((
             label_msgid="label_roadmap_types",
             description='You will have a roadmap available in your project, and you can add categories of enhancement specifications below.',
             description_msgid="help_roadmap_types",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 

@@ -41,7 +41,7 @@ liboextensioncenterSchema = OrderedBaseFolder.schema.copy() + Schema((
             label='Description',
             description_msgid='help_package_area',
             description='Description for the software center.',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             rows=6,
         ),
     ),
@@ -58,7 +58,7 @@ liboextensioncenterSchema = OrderedBaseFolder.schema.copy() + Schema((
                          'The Id must be unique, and Trove id corresponds '
                          'to the Trove value'),
             description_msgid='help_classifiers_vocab',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             rows=6,
         ),
     ),
@@ -74,7 +74,7 @@ liboextensioncenterSchema = OrderedBaseFolder.schema.copy() + Schema((
                          "In that case it gets all lines starting with "
                          "'Topic' and builds the category list with them." 
                          ),
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
     ),
 
@@ -92,7 +92,7 @@ liboextensioncenterSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid='label_categories_vocab',
             description='Define the available categories for classifying the projects. The format is Short Name | Long name | Description. The id must be unique.',
             description_msgid='help_categories_vocab',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             rows=6,
         ),
     ),
@@ -115,7 +115,7 @@ liboextensioncenterSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid='label_licenses_vocab',
             description='Define the available licenses for software releases. The format is Short Name | Title | URL.',
             description_msgid='help_licenses_vocab',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             rows=6,
         ),
     ),
@@ -132,7 +132,7 @@ liboextensioncenterSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid='label_versions_vocab',
             description='Define the vocabulary for versions that software releases can be listed as being compatible with. The first item will be the default selection.',
             description_msgid='help_versions_vocab',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             rows=6,
         ),
     ),
@@ -151,7 +151,7 @@ liboextensioncenterSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid='label_platforms_vocab',
             description='Define the available platforms for software files. The first line is reserved for All platforms or any equivalent labeling.',
             description_msgid='help_platforms_vocab',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             rows=6,
         ),
     ),
@@ -163,7 +163,7 @@ liboextensioncenterSchema = OrderedBaseFolder.schema.copy() + Schema((
                 label_msgid="label_project_evaluators",
                 description="Enter additional names (no need to include the current owner) for those who can make official reviews of projects.",
                 description_msgid="help_project_evaluators",
-                i18n_domain="plonesoftwarecenter",
+                i18n_domain="liboextensioncenter",
                 ),
         ),
     
@@ -183,7 +183,7 @@ liboextensioncenterSchema = OrderedBaseFolder.schema.copy() + Schema((
             description='Define the available criteria for developers to '
               'self-certify their projects.',
             description_msgid='help_self_certification_criteria_vocab',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
             rows=10,
         ),
     ),
@@ -196,9 +196,9 @@ liboextensioncenterSchema = OrderedBaseFolder.schema.copy() + Schema((
             label='Featured Project',
             label_msgid='label_featured_project',
             description='Featured project for the software center '
-                        '(for use with the plonesoftwarecenter_ploneorg template).',
+                        '(for use with the liboextensioncenter_ploneorg template).',
             description_msgid='help_featured_project',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
         ),
     ),
 
@@ -210,9 +210,9 @@ liboextensioncenterSchema = OrderedBaseFolder.schema.copy() + Schema((
             label='Featured Project Release',
             label_msgid='label_featured_project_release',
             description='Featured project release for the featured project of the software center '
-                        '(for use with the plonesoftwarecenter_ploneorg template).',
+                        '(for use with the liboextensioncenter_ploneorg template).',
             description_msgid='help_featured_project',
-            i18n_domain='plonesoftwarecenter',
+            i18n_domain='liboextensioncenter',
         ),
     ),
 
@@ -224,7 +224,7 @@ liboextensioncenterSchema = OrderedBaseFolder.schema.copy() + Schema((
             label_msgid="label_storage_strategy",
             description="Defines the storage strategies for files",
             description_msgid="help_storage_strategy",
-            i18n_domain="plonesoftwarecenter",
+            i18n_domain="liboextensioncenter",
         ),
 ),             
 
@@ -239,7 +239,7 @@ class liboextensioncenter(ATCTMixin, BaseBTreeFolder):
 
     archetype_name = 'Software Center'
     metatype = 'liboextensioncenter'
-    immediate_view = default_view = 'plonesoftwarecenter_view'
+    immediate_view = default_view = 'liboextensioncenter_view'
     suppl_views = ()
 
     global_allow = 1
