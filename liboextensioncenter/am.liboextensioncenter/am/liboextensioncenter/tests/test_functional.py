@@ -7,7 +7,7 @@ import os
 from ZPublisher.HTTPRequest import FileUpload
 
 from Testing.ZopeTestCase import FunctionalDocFileSuite as Suite
-from Products.PloneSoftwareCenter.tests.base import PSCFunctionalTestCase
+from am.liboextensioncenter.tests.base import PSCFunctionalTestCase
 
 
 OPTIONFLAGS = (doctest.REPORT_NDIFF |
@@ -22,7 +22,7 @@ def addMember(self, username, fullname="", email="", roles=('Member',)):
 def setUp(context):
     """creates a software center"""
     context.setRoles(['Manager'])
-    context.portal.invokeFactory('PloneSoftwareCenter', id='psc')
+    context.portal.invokeFactory('liboextensioncenter', id='psc')
     addMember(context, 'member1', 'Member one')
 
 class FileHolder(object):
@@ -45,7 +45,7 @@ def test_suite():
     return Suite(os.path.basename('pypi.txt'),
                  os.path.basename('permissions.txt'),
                  optionflags=OPTIONFLAGS,
-                 package='Products.PloneSoftwareCenter.tests',
+                 package='am.liboextensioncenter.tests',
                  test_class=PSCFunctionalTestCase,
                  setUp=setUp, globs=globs)
 

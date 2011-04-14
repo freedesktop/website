@@ -5,7 +5,7 @@ import unittest
 import os
 from App.Common import package_home
 
-from Products.PloneSoftwareCenter.trove import TroveClassifier
+from am.liboextensioncenter.trove import TroveClassifier
 
 GLOBALS = globals()
 

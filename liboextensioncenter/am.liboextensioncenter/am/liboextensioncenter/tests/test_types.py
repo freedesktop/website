@@ -6,9 +6,9 @@ class TestInstantiation(PSCTestCase):
         self.setRoles(('Manager',))
         
         try:
-            self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+            self.portal.invokeFactory('liboextensioncenter', 'psc')
         except:
-            self.fail('Failed to instantiate a PloneSoftwareCenter')
+            self.fail('Failed to instantiate a liboextensioncenter')
         self.psc = self.portal.psc
         
         try:

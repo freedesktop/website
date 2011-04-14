@@ -4,7 +4,7 @@ class TestReleaseFolder(PSCTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         
         self.psc = self.portal.psc
@@ -35,7 +35,7 @@ class TestReleaseFolderView(PSCTestCase):
     
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         self.releases = self.portal.psc.proj.releases
         

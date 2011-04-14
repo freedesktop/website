@@ -15,7 +15,7 @@ ZopeTestCase.installProduct('DataGridField')
 ZopeTestCase.installProduct('ExternalStorage')
 # If PloneHelpCenter is available, initialize it.
 ZopeTestCase.installProduct('PloneHelpCenter')
-ZopeTestCase.installProduct('PloneSoftwareCenter')
+ZopeTestCase.installProduct('liboextensioncenter')
 
 from Products.PloneTestCase.PloneTestCase import PloneTestCase
 from Products.PloneTestCase.PloneTestCase import FunctionalTestCase
@@ -32,7 +32,7 @@ def install_plugins():
     ZopeTestCase.installPackage('collective.psc.externalstorage')
 
 install_plugins()
-setupPloneSite(products=('PloneSoftwareCenter',))
+setupPloneSite(products=('liboextensioncenter',))
 
 class DeveloperWarning(Warning):
     pass
@@ -49,9 +49,9 @@ class PSCTestCase(PloneTestCase):
     class layer(PloneSite):
         @classmethod
         def setUp(cls):
-            import Products.PloneSoftwareCenter
+            import am.liboextensioncenter
             fiveconfigure.debug_mode = True
-            zcml.load_config('configure.zcml', Products.PloneSoftwareCenter)
+            zcml.load_config('configure.zcml', am.liboextensioncenter)
     
             # loading externalstorage if present in the environment
             try:

@@ -40,10 +40,10 @@ def test_edit_project_fields():
     * Project Creator: member3
     * Generic User: member4
     
-        >>> from Products.PloneSoftwareCenter.permissions import AddSoftwareCenter
+        >>> from am.liboextensioncenter.permissions import AddSoftwareCenter
         >>> self.portal.manage_permission(AddSoftwareCenter,
         ...   ['Manager', 'Owner'])
-        >>> from Products.PloneSoftwareCenter.tests import utils
+        >>> from am.liboextensioncenter.tests import utils
         >>> utils.setUpDefaultMembers(self.portal)
         
     One member creates a software center, and another is promoted to Evaluator.
@@ -55,7 +55,7 @@ def test_edit_project_fields():
     Now we create the software center.
     
         >>> self.login('member1')
-        >>> self.portal.Members.member1.invokeFactory('PloneSoftwareCenter',
+        >>> self.portal.Members.member1.invokeFactory('liboextensioncenter',
         ...   'psc')
         '...'
         >>> self.psc = self.portal.Members.member1.psc

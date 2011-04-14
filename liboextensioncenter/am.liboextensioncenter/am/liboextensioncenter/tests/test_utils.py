@@ -1,7 +1,7 @@
-""" Tests for Products.PloneSOftwareCenter.utils
+""" Tests for am.liboextensioncenter.utils
 """
 import unittest
-from Products.PloneSoftwareCenter.utils import which_platform
+from am.liboextensioncenter.utils import which_platform
 
 class TestUtils(unittest.TestCase):
 

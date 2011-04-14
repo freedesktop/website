@@ -7,8 +7,8 @@ import os
 
 from Products.CMFCore.utils import getToolByName
 
-from Products.PloneSoftwareCenter.tests.utils import PACKAGE_HOME
-from Products.PloneSoftwareCenter.tests.utils import verifyURLWithRequestVars
+from am.liboextensioncenter.tests.utils import PACKAGE_HOME
+from am.liboextensioncenter.tests.utils import verifyURLWithRequestVars
 
 from zExceptions import Unauthorized
 
@@ -29,7 +29,7 @@ class TestProject(PSCTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         
         self.psc = self.portal.psc
@@ -287,7 +287,7 @@ class TestProject(PSCTestCase):
 class TestProjectWithPloneHelpCenterIntegration(PSCTestCase):
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         
         self.psc = self.portal.psc
@@ -317,7 +317,7 @@ class TestProjectView(PSCTestCase):
     
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         self.proj = self.portal.psc.proj
         self.resetView()
@@ -555,7 +555,7 @@ class TestProjectInternationalized(PSCTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         
         self.psc = self.portal.psc

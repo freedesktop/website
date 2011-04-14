@@ -7,7 +7,7 @@ class TestCategoryView(PSCTestCase):
 
         self.setRoles(('Manager',))
 
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
 
         self.psc = self.portal.psc
 

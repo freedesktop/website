@@ -2,13 +2,13 @@ from base import PSCTestCase
 
 from DateTime.DateTime import DateTime
 
-from Products.PloneSoftwareCenter.tests.utils import verifyURLWithRequestVars
+from am.liboextensioncenter.tests.utils import verifyURLWithRequestVars
 
 class TestSoftwareCenter(PSCTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.psc = self.portal.psc
     
     def testValidateAvailableCategories(self):
@@ -131,7 +131,7 @@ class TestSoftwareCenterRoles(PSCTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.psc = self.portal.psc
     
     def testProjectEvaluatorRole(self):
@@ -141,7 +141,7 @@ class TestSoftwareCenterAsContainer(PSCTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.psc = self.portal.psc
         
         for id in ['proj4', 'proj3', 'proj2', 'proj1']: 
@@ -197,7 +197,7 @@ class TestSoftwareCenterView(PSCTestCase):
     
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.psc = self.portal.psc
         self.resetView()
         
@@ -246,13 +246,13 @@ class TestSoftwareCenterView(PSCTestCase):
         self.assertEqual(1, len(results))
     
     def test_can_add_project(self):
-        self.psc.manage_permission('PloneSoftwareCenter: Add Project',
+        self.psc.manage_permission('liboextensioncenter: Add Project',
            roles=['Member'], acquire=0)
         
         self.setRoles(['Member'])
         self.failUnless(self.view.can_add_project())
         
-        self.psc.manage_permission('PloneSoftwareCenter: Add Project',
+        self.psc.manage_permission('liboextensioncenter: Add Project',
            roles=['Manager'], acquire=0)
         
         self.failIf(self.view.can_add_project())

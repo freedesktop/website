@@ -6,7 +6,7 @@ class TestDocFolder(PSCTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         self.portal.psc.proj.invokeFactory('PSCDocumentationFolder',
           'documentation')
@@ -79,7 +79,7 @@ class TestDocFolderView(PSCTestCase):
     
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         self.portal.psc.proj.invokeFactory('PSCDocumentationFolder',
           'documentation')

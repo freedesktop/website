@@ -7,7 +7,7 @@ from tempfile import TemporaryFile
 
 from ZPublisher.HTTPRequest import FileUpload
 
-from Products.PloneSoftwareCenter.tests.utils import PACKAGE_HOME
+from am.liboextensioncenter.tests.utils import PACKAGE_HOME
 
 from Testing import ZopeTestCase
 try:
@@ -36,7 +36,7 @@ class TestProjectDOAPView(PSCTestCase):
     
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         self.proj = self.portal.psc.proj
         self.resetView()

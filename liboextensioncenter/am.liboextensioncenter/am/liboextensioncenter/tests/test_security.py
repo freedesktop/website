@@ -6,7 +6,7 @@ from AccessControl.Permission import Permission
 
 from Products.CMFCore.utils import getToolByName
 
-from Products.PloneSoftwareCenter.permissions import AddSoftwareCenter
+from am.liboextensioncenter.permissions import AddSoftwareCenter
 
 def allowMembersToAddCenter(obj):
     perms = [p for p in obj.ac_inherited_permissions(1) if p[0] == AddSoftwareCenter]
@@ -37,7 +37,7 @@ class TestCenterSecurity(PSCTestCase):
         membership.addMember('user2', 'secret', ['Member'], [])
         
         self.login('user1')
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
     
     def testProjectApproval(self):
         self.login('user2')
@@ -63,7 +63,7 @@ class TestProjectSecurity(PSCTestCase):
         membership.addMember('user2', 'secret', ['Member'], [])
         
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.psc = self.portal.psc
         
         self.login('user1')
@@ -127,7 +127,7 @@ class TestPloneHelpCenterIntegration(PSCTestCase):
         membership.addMember('user2', 'secret', ['Member'], [])
         
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.psc = self.portal.psc
         
         self.login('user1')

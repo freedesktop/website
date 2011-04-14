@@ -5,7 +5,7 @@ class TestProductInstall(PSCTestCase):
 
     def afterSetUp(self):
         self.types = {
-            'PloneSoftwareCenter'           : 'psc_area_workflow',
+            'liboextensioncenter'           : 'psc_area_workflow',
             'PSCProject'                    : 'psc_package_workflow',
             'PSCReleaseFolder'              : None,
             'PSCRelease'                    : 'psc_release_workflow',
@@ -62,7 +62,7 @@ class TestProductInstall(PSCTestCase):
         
     def testNavtreePropertiesConfigured(self):
         pmntq = self.portal.portal_properties.navtree_properties.parentMetaTypesNotToQuery
-        for t in ('PloneSoftwareCenter', 'PSCReleaseFolder', 'PSCImprovementProposalFolder', 'PSCRelease'):
+        for t in ('liboextensioncenter', 'PSCReleaseFolder', 'PSCImprovementProposalFolder', 'PSCRelease'):
             self.failUnless(t in pmntq)
     
     # XXX I don't think this is a good test because

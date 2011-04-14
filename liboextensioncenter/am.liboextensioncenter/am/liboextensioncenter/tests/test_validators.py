@@ -1,12 +1,12 @@
 from base import PSCTestCase
 
-from Products.PloneSoftwareCenter.validators import ProjectIdValidator
+from am.liboextensioncenter.validators import ProjectIdValidator
 
 class TestValidators(PSCTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         
         self.psc = self.portal.psc

@@ -4,7 +4,7 @@ class TestProposalFolder(PSCTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         self.portal.psc.proj.invokeFactory('PSCImprovementProposalFolder',
           'roadmap')
@@ -33,7 +33,7 @@ class TestProposalFolderView(PSCTestCase):
     
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         self.portal.psc.proj.invokeFactory('PSCImprovementProposalFolder',
           'roadmap')
@@ -60,7 +60,7 @@ class TestProposalFolderView(PSCTestCase):
           self.view.state_title('being-discussed'))
     
     def test_state_title_internationalized(self):
-        self.warning("*** TODO: FUTURE - PloneSoftwareCenter is not "
+        self.warning("*** TODO: FUTURE - liboextensioncenter is not "
           "internationalized yet. This method state_title actually is -- "
           "it's just not clear how to test it! Also need to "
           "internationalize PSCProject, method getCategoryTitles, among "

@@ -5,8 +5,8 @@ from AccessControl import Unauthorized
 
 from Products.CMFCore.utils import getToolByName
 
-from Products.PloneSoftwareCenter.permissions import AddSoftwareCenter
-from Products.PloneSoftwareCenter.browser.pypi import PyPIView
+from am.liboextensioncenter.permissions import AddSoftwareCenter
+from am.liboextensioncenter.browser.pypi import PyPIView
 
 def allowMembersToAddCenter(obj):
     perms = [p for p in obj.ac_inherited_permissions(1) if p[0] == AddSoftwareCenter]
@@ -47,7 +47,7 @@ class TestPyPI(PSCTestCase):
         
     def testSubmit(self):
         self.login('user1')
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         psc = self.portal.psc
 
         # a user can submit a package
@@ -94,7 +94,7 @@ class TestPyPI(PSCTestCase):
 
     def test_edit_project(self):
         self.login('user1')
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         psc = self.portal.psc
 
         # making sure the project is correctly set
@@ -127,7 +127,7 @@ class TestPyPI(PSCTestCase):
         # make sure the server doesn't fail on unexisting
         # classifiers
         self.login('user1')
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         psc = self.portal.psc
 
         # making sure the project is correctly set
@@ -160,7 +160,7 @@ class TestPyPI(PSCTestCase):
     def test_list_classifiers(self):
         # everyone can get the classifier list
         self.login('user1')
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         psc = self.portal.psc
 
         self.login('user2')
@@ -175,7 +175,7 @@ class TestPyPI(PSCTestCase):
         # let's create a PSC with a project that 
         # has the same name but no distutils fixed 
         self.login('user1')
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         psc = self.portal.psc
         psc.invokeFactory('PSCProject', 'iw.dist')
         self.assertEquals(['iw.dist'], list(psc.objectIds()))
@@ -202,7 +202,7 @@ class TestPyPI(PSCTestCase):
         # let's create a PSC with a project that 
         # has the same name but no distutils fixed 
         self.login('user1')
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         psc = self.portal.psc
         psc.invokeFactory('PSCProject', 'iw.dist')
         self.assertEquals(['iw.dist'], list(psc.objectIds()))
@@ -228,11 +228,11 @@ class TestPyPI(PSCTestCase):
 
     def test_filename_normalization(self):
         """ Make sure product ids are following our conventions. 
-            http://plone.org/products/plonesoftwarecenter/issues/81
+            http://plone.org/products/liboextensioncenter/issues/81
         """
         
         self.login('user1')
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         psc = self.portal.psc
         
         def createProductWithName(name):
@@ -255,7 +255,7 @@ class TestPyPI(PSCTestCase):
         """ Make sure that release workflow state is being properly set using the upload's version as a guide. """
 
         self.login('user1')
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         psc = self.portal.psc
         wf = self.portal.portal_workflow
 

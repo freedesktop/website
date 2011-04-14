@@ -1,15 +1,15 @@
-from Products.PloneSoftwareCenter.tests.base import PSCTestCase
-from Products.PloneSoftwareCenter.storage.interfaces import IPSCFileStorage
-from Products.PloneSoftwareCenter.storage.archetype import ArchetypeStorage
-from Products.PloneSoftwareCenter.storage import getFileStorageVocab
-from Products.PloneSoftwareCenter.storage import DynamicStorage
-from Products.PloneSoftwareCenter.storage import getFileStorageAdapters
+from am.liboextensioncenter.tests.base import PSCTestCase
+from am.liboextensioncenter.storage.interfaces import IPSCFileStorage
+from am.liboextensioncenter.storage.archetype import ArchetypeStorage
+from am.liboextensioncenter.storage import getFileStorageVocab
+from am.liboextensioncenter.storage import DynamicStorage
+from am.liboextensioncenter.storage import getFileStorageAdapters
 
 class TestStorage(PSCTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         
         self.psc = self.portal.psc

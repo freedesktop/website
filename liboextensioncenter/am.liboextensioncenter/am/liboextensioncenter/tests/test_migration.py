@@ -1,12 +1,12 @@
 """Tests for migration."""
 from socket import gaierror
 import os
-from Products.PloneSoftwareCenter.tests.base import PSCTestCase
+from am.liboextensioncenter.tests.base import PSCTestCase
 from Products.CMFCore.utils import getToolByName
 
-from Products.PloneSoftwareCenter.setuphandlers import before_1_5
-from Products.PloneSoftwareCenter.setuphandlers import extract_distutils_id 
-from Products.PloneSoftwareCenter.setuphandlers import _pypi_certified_owner
+from am.liboextensioncenterr.setuphandlers import before_1_5
+from am.liboextensioncenter.setuphandlers import extract_distutils_id 
+from am.liboextensioncenter.setuphandlers import _pypi_certified_owner
 
 curdir = os.path.dirname(__file__)
 
@@ -18,7 +18,7 @@ class TestMigration(PSCTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         
         self.psc = self.portal.psc
@@ -62,7 +62,7 @@ class TestMigration(PSCTestCase):
         # testing the real server
         # XXX this is not optimal 
         try:
-            contacts = _pypi_certified_owner('Products.PloneSoftwareCenter')
+            contacts = _pypi_certified_owner('am.liboextensioncenter')
         except gaierror:
             pass
         else:
@@ -75,7 +75,7 @@ class TestMigration(PSCTestCase):
         def _owner(id_):
             return 'tarek@ziade.org' 
 
-        from Products.PloneSoftwareCenter import setuphandlers
+        from am.liboextensioncenter import setuphandlers
         setuphandlers._pypi_certified_owner = _owner
 
         # let's add some files

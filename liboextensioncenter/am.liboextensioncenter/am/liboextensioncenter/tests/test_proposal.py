@@ -4,7 +4,7 @@ class TestProposal(PSCTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         self.portal.psc.proj.invokeFactory('PSCImprovementProposalFolder',
           'roadmap')
@@ -109,7 +109,7 @@ class TestProposalView(PSCTestCase):
     
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         self.portal.psc.proj.invokeFactory('PSCImprovementProposalFolder',
           'roadmap')

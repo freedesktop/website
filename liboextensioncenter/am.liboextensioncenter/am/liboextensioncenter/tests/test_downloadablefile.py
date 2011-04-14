@@ -6,7 +6,7 @@ from tempfile import TemporaryFile
 
 from ZPublisher.HTTPRequest import FileUpload
 
-from Products.PloneSoftwareCenter.tests.utils import PACKAGE_HOME
+from am.liboextensioncenter.tests.utils import PACKAGE_HOME
 
 def createFileUpload(data, filename):
     fp = TemporaryFile('w+b')
@@ -27,7 +27,7 @@ class TestPSCFile(PSCTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         self.portal.psc.proj.releases.invokeFactory('PSCRelease', '1.0')
         self.portal.psc.proj.releases['1.0'].invokeFactory('PSCFile', 'file')
@@ -61,7 +61,7 @@ class TestPSCFileView(PSCTestCase):
     
     def afterSetUp(self):
         self.setRoles(('Manager',))
-        self.portal.invokeFactory('PloneSoftwareCenter', 'psc')
+        self.portal.invokeFactory('liboextensioncenter', 'psc')
         self.portal.psc.invokeFactory('PSCProject', 'proj')
         self.portal.psc.proj.releases.invokeFactory('PSCRelease', '1.0')
         self.portal.psc.proj.releases['1.0'].invokeFactory('PSCFile', 'file')
