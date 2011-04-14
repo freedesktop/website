@@ -53,9 +53,9 @@ def main():
             skins = os.path.join(__INSTANCE_HOME, 'Products')
             if os.path.isdir(skins):
                 if product == 'plonesoftwarecenter':
-                    skins = os.path.join(skins, 'PloneSoftwareCenter')
+                    skins = os.path.join(skins, 'liboextensioncenter')
                 elif product == 'plone':
-                    skins = os.path.join(skins, 'PloneSoftwareCenter')
+                    skins = os.path.join(skins, 'liboextensioncenter')
                 skins = os.path.join(skins, 'skins')
             else:
                 skinserror = True
