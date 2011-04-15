@@ -10,7 +10,7 @@
 <head>
     <metal:css fill-slot="style_slot">
         <style type="text/css" media="all" 
-            tal:content="string:@import url($portal_url/plonesoftwarecenter.css);">
+            tal:content="string:@import url($portal_url/liboextensioncenter.css);">
         </style>
         <style type="text/css">
             .screenshot {
@@ -138,7 +138,7 @@
                 i18n:translate="heading_want_addon_package">Want to list your add-on package?</dt>
             <dd class="portletItem" style="text-align: center">
                 <form action="createObject" 
-                      tal:condition="python: user.has_permission('PloneSoftwareCenter: Add Project', context)">
+                      tal:condition="python: user.has_permission('liboextensioncenter: Add Project', context)">
                     <input name="type_name"
                            type="hidden"
                            value="PSCProject"
@@ -300,12 +300,12 @@
         <div class="visualClear"><!----></div>
         
         <div class="poweredBy" i18n:translate="label_powered_by_ploneorg">
-            Powered by <img src="product_icon.gif" alt="Plone Software Center's Home Page"
+            Powered by <img src="product_icon.gif" alt="liboextensioncenter's Home Page"
                         i18n:attributes="alt label_psc_homepage">
             <a class="link-plain" 
-               href="http://plone.org/products/plonesoftwarecenter"
-               title="Plone Software Center's Home Page"
-               i18n:attributes="title title_psc_homepage">Plone Software Center</a>
+               href="http://plone.org/products/liboextensioncenter"
+               title="liboextensioncenterr's Home Page"
+               i18n:attributes="title title_psc_homepage">liboextensioncenter</a>
         </div>
 
     </div>

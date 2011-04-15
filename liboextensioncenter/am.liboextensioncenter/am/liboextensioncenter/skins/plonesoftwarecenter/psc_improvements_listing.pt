@@ -9,7 +9,7 @@
 <head>
     <metal:css fill-slot="style_slot">
       <style type="text/css" media="all"
-             tal:content="string:@import url($portal_url/plonesoftwarecenter.css);"></style>
+             tal:content="string:@import url($portal_url/liboextensioncenter.css);"></style>
     </metal:css>
 </head>
 

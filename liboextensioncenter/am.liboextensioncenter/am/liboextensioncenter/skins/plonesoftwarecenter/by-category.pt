@@ -5,7 +5,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="here/main_template/macros/master"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="plonesoftwarecenter">
+      i18n:domain="liboextensioncenter">
 
 <head>
     <metal:top fill-slot="top_slot">
@@ -13,7 +13,7 @@
     </metal:top>
     <metal:css fill-slot="style_slot">
       <style type="text/css" media="all"
-             tal:content="string:@import url($portal_url/plonesoftwarecenter.css);"></style>
+             tal:content="string:@import url($portal_url/liboextensioncenter.css);"></style>
     </metal:css>
     <metal:override fill-slot="column_two_slot" />
 </head>

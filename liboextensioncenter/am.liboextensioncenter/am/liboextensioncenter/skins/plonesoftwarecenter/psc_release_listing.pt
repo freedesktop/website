@@ -5,7 +5,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="context/main_template/macros/master"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="plonesoftwarecenter">
+      i18n:domain="liboextensioncenter">
 
 <body>
 
