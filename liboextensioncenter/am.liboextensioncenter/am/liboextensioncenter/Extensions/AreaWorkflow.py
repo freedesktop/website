@@ -17,7 +17,7 @@ __version__ = "$Revision: 1.6 $"[11:-2]
 from Products.CMFCore.WorkflowTool import addWorkflowFactory
 from Products.DCWorkflow.DCWorkflow import DCWorkflowDefinition
 
-from Products.PloneSoftwareCenter.permissions import AddProject 
+from am.liboextensioncenter.permissions import AddProject 
 from Products.CMFCore import permissions
 
 
