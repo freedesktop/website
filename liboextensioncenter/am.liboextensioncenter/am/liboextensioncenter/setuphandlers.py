@@ -21,8 +21,8 @@ from OFS.Image import File
 from zExceptions import Unauthorized
 from Products.Archetypes.atapi import *
 from Products.CMFCore.utils import getToolByName
-from Products.liboextensioncenter import config
-from Products.liboextensioncenter.content.downloadablefile import PSCFile, PSCFileSchema
+from am.liboextensioncenter import config
+from am.liboextensioncenter.content.downloadablefile import PSCFile, PSCFileSchema
 from ZODB.POSException import ConflictError
 
 NAME = re.compile('Name: (.*)')

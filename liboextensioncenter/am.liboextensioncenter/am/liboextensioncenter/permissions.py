@@ -3,7 +3,7 @@ $Id: permissions.py 65992 2008-06-01 00:40:45Z rossp $
 """
 from Products.CMFCore.permissions import setDefaultRoles
 
-AddExtensionCenter = "liboextensioncenter: Add Extension Center"
+AddSoftwareCenter = "liboextensioncenter: Add Extension Center"
 AddProject = 'liboextensioncenter: Add Project'
 AddReviewComment = 'liboextension: Add Review Comment'
 ApproveProject = 'liboextensioncenter: Approve Project'
