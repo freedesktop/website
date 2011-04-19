@@ -8,7 +8,7 @@
   <title>Simple Index</title>
  </head>
  <body>
-  <p i18n:translate="label_pypi_links">This page is generated automatically by LibOExtensionCenter</p>
+  <p i18n:translate="label_pypi_links">This page is generated automatically by liboextensioncenter</p>
   <tal:block tal:repeat="project view/get_projects">
    <a title=""
       tal:attributes="href project/url;

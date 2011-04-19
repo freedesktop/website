@@ -4,13 +4,13 @@
 
   <adapter 
      name="simple"
-     for="LibOExtensionCenter.interfaces.ISoftwareCenterContent"
+     for="am.liboextensioncenter.interfaces.ISoftwareCenterContent"
      factory=".pypisimple.PyPISimpleTraverser"
      provides="zope.traversing.interfaces.ITraversable" />
 
   <view
     name="simple"
-    for="am.LibOExtensionCenter.interfaces.ISoftwareCenterContent"
+    for="am.liboextensioncenter.interfaces.ISoftwareCenterContent"
     type="zope.interface.Interface"
     provides="zope.traversing.interfaces.ITraversable" 
     factory=".pypisimple.PyPISimpleTraverser"  

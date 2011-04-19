@@ -9,7 +9,7 @@
   <title tal:content="title">Links for the project</title>
  </head>
  <body>
-  <p i18n:translate="label_pypi_links">This page is generated automatically by LibOExtensionCenter</p>
+  <p i18n:translate="label_pypi_links">This page is generated automatically by liboextensioncenter</p>
   <h1 tal:content="title">Links for the project</h1>
   <tal:block tal:repeat="release view/get_links">
   <a title=""
