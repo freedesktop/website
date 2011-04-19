@@ -1,5 +1,5 @@
 """
-$Id: PloneSoftwareCenter.py 24613 2006-06-08 23:40:22Z optilude $
+$Id: liboextensioncenter.py 24613 2006-06-08 23:40:22Z optilude $
 """
 
 from zope.interface import implements
