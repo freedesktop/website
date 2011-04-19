@@ -1,0 +1,15 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:gs="http://namespaces.zope.org/genericsetup"
+           i18n_domain="liboextensioncenter"
+           xmlns:zcml="http://namespaces.zope.org/zcml">
+
+   <gs:registerProfile
+        name="default"
+        title="liboextensioncenter"
+        directory="profiles/default"
+        description="What's powering the products section on plone.org"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+	/>
+
+</configure>
+
