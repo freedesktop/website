@@ -2,7 +2,7 @@ Metadata-Version: 1.0
 Name: am.LiboExtensionCenter
 Version: 1.0
 Summary: A extension center for LibreOffice
-Home-page: http://svn.plone.org/svn/collective/
+Home-page: http://cgit.freedesktop.org/libreoffice/website/
 Author: Andreas Mantke
 Author-email: maand@gmx.de
 License: GPL
