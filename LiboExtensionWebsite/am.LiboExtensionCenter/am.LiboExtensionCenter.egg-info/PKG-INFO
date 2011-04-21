@@ -1,0 +1,27 @@
+Metadata-Version: 1.0
+Name: am.LiboExtensionCenter
+Version: 1.0
+Summary: A extension center for LibreOffice
+Home-page: http://svn.plone.org/svn/collective/
+Author: Andreas Mantke
+Author-email: maand@gmx.de
+License: GPL
+Description: Introduction
+        ============
+        
+        This package creates a protension website for LibreOffice that provide users direct access to such add-ons.
+        
+        This product may contain traces of nuts.
+        
+        Changelog
+        =========
+        
+        1.0dev (unreleased)
+        -------------------
+        
+        - Initial release
+        
+Keywords: Plone LibreOffice Extensions
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Programming Language :: Python
