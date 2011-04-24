@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object name="portal_factory" meta_type="Plone Factory Tool">
+ <factorytypes>
+  <type portal_type="LECImprovementProposal"/>
+  <type portal_type="LiboExtensionCenter"/>
+  <type portal_type="LECRelease"/>
+  <type portal_type="LECFile"/>
+  <type portal_type="LECReleaseFolder"/>
+  <type portal_type="LECDocumentationFolder"/>
+  <type portal_type="LECFileLink"/>
+  <type portal_type="LECImprovementProposalFolder"/>
+  <type portal_type="LECProject"/>
+ </factorytypes>
+</object>
