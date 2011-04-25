@@ -84,7 +84,7 @@ class LECReleaseFolder(ATCTMixin, OrderedBaseFolder):
     _at_rename_after_creation = True
 
     typeDescMsgId = 'description_edit_releasefolder'
-    typeDescription = ('A Releases Section is used to hold software '
+    typeDescription = ('A Releases Section is used to hold extension '
                        'releases. It is given a default short name and '
                        'title to ensure that projects are consistent. '
                        'Please do not rename it.')

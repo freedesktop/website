@@ -116,7 +116,7 @@ class LECDocumentationFolder(ATCTMixin, OrderedBaseFolder):
                              'HelpCenterReferenceManualFolder',)
 
     typeDescMsgId = 'description_edit_documentationfolder'
-    typeDescription = ('A Documentation Section is used to hold software '
+    typeDescription = ('A Documentation Section is used to hold extension '
                        'documentation. It is given a default short name and '
                        'title to ensure that projects are consistent. '
                        'Please do not rename it.')

@@ -275,7 +275,7 @@ LECReleaseSchema = OrderedBaseFolderSchema.copy() + Schema((
 LECReleaseSchema.moveField('releaseNumber', before='description')
 
 class LECRelease(ATCTMixin, OrderedBaseFolder):
-    """A release of a software project, either final or in progress"""
+    """A release of a extension project, either final or in progress"""
 
     implements(IReleaseContent)
 

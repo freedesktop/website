@@ -357,7 +357,7 @@ class LECProject(ATCTMixin, OrderedBaseFolder):
 
     typeDescMsgId = 'description_edit_package'
     typeDescription = ('A Extension Project contains details about a '
-                       'particular software package. It can keep track '
+                       'particular extension package. It can keep track '
                        'of meta-data about the project, as well as '
                        'releases and improvement proposals.')
     if NEEDS_UPDATE:                   
