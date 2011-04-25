@@ -17,12 +17,12 @@ By default the LEC is visible to anonymous users.
 
 Anonymous users can't add projects.
 
-    >>> browser.getLink('Add Software Project')
+    >>> browser.getLink('Add Extension Project')
     Traceback (most recent call last):
     LinkNotFoundError
-    >>> browser.getControl('Add New Software Project')
+    >>> browser.getControl('Add New Extension Project')
     Traceback (most recent call last):
-    LookupError: label 'Add New Software Project'
+    LookupError: label 'Add New Extension Project'
 
 Log in as a normal member.
 
@@ -39,7 +39,7 @@ Log in as a normal member.
 By default the LEC is in the open workflow state so normal members can
 add projects.
 
-    >>> browser.getControl('Add New Software Project').click()
+    >>> browser.getControl('Add New Extension Project').click()
     >>> browser.getControl('Title').value = 'Foo Project Title'
     >>> browser.getControl(
     ...     'Project Summary').value = 'Foo Project Summary'
@@ -60,9 +60,9 @@ If the LEC is in the closed state, members can't add projects.
 
     >>> portal.portal_workflow.doActionFor(portal.lec, 'retract')
     >>> browser.open(portal.lec.absolute_url())
-    >>> browser.getLink('Add Software Project')
+    >>> browser.getLink('Add Extension Project')
     Traceback (most recent call last):
     LinkNotFoundError
-    >>> browser.getControl('Add New Software Project')
+    >>> browser.getControl('Add New Extension Project')
     Traceback (most recent call last):
-    LookupError: label 'Add New Software Project'
+    LookupError: label 'Add New Extension Project'

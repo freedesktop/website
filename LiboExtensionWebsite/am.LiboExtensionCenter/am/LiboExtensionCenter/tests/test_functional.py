@@ -20,7 +20,7 @@ def addMember(self, username, fullname="", email="", roles=('Member',)):
     member.setMemberProperties({'fullname': fullname, 'email': email})
 
 def setUp(context):
-    """creates a software center"""
+    """creates a extension center"""
     context.setRoles(['Manager'])
     context.portal.invokeFactory('LiboExtensionCenter', id='lec')
     addMember(context, 'member1', 'Member one')

@@ -35,7 +35,7 @@ def test_edit_project_fields():
     
     
     We create various users.
-    * Software Center Creator: member1
+    * Extension Center Creator: member1
     * LECEvaluator: member2
     * Project Creator: member3
     * Generic User: member4
@@ -46,13 +46,13 @@ def test_edit_project_fields():
         >>> from am.LiboExtensionCenter.tests import utils
         >>> utils.setUpDefaultMembers(self.portal)
         
-    One member creates a software center, and another is promoted to Evaluator.
+    One member creates a extension center, and another is promoted to Evaluator.
     First we log in with the testbrowser to ensure that the member's folder is
     created.
     
         >>> browserLogin('member1', 'secret')
         
-    Now we create the software center.
+    Now we create the extension center.
     
         >>> self.login('member1')
         >>> self.portal.Members.member1.invokeFactory('LiboExtensionCenter',
@@ -100,7 +100,7 @@ def test_edit_project_fields():
         >>> unlock_url = '%s/@@plone_lock_operations/force_unlock' % self.proj.absolute_url()
         >>> browser.open(unlock_url)
     
-    However, the software center creator and the LECEvaluator can edit
+    However, the extension center creator and the LECEvaluator can edit
     these fields.
     
         >>> browserLogin('member1', 'secret')
