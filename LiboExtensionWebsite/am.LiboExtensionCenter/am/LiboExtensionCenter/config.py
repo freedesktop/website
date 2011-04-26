@@ -17,7 +17,7 @@ USE_EXTERNAL_STORAGE = True
 # the ExternalStorage config (default: EXTERNAL_STORAGE_BASE_PATH)
 EXTERNAL_STORAGE_PATH = 'files'
 
-PROJECTNAME = 'LibExtensionCenter'
+PROJECTNAME = 'LiboExtensionCenter'
 SKINS_DIR = 'skins'
 
 HARD_DEPS = ('AddRemoveWidget', 'ArchAddOn', 'DataGridField',)
