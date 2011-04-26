@@ -1,0 +1,15 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:gs="http://namespaces.zope.org/genericsetup"
+           i18n_domain="plonesoftwarecenter"
+           xmlns:zcml="http://namespaces.zope.org/zcml">
+   
+   <gs:registerProfile
+      name="default"
+      title="LiboExtensionCenter"
+      directory="profiles/default"
+      description="Installs the am.LiboExtensionCenter package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+</configure>
+
