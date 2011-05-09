@@ -5,8 +5,7 @@ use utf8;
 use MIME::Parser;
 use MIME::Entity;
 use Compress::Zlib; 
-binmode STDIN, ":encoding(utf8)";
-binmode STDOUT, ":encoding(utf8)";
+use open ':encoding(utf8)', ':std';
 
 my $parser = new MIME::Parser;
 $parser->output_under("/tmp/mimemail");
