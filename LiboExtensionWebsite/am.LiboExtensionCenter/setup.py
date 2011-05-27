@@ -12,7 +12,10 @@ setup(name='am.LiboExtensionCenter',
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
         "Framework :: Plone",
+        "Framework :: Zope2",
+        "Framework :: Zope3",
         "Programming Language :: Python",
+        "Topic :: Software Development :: Libraries :: Python Modules",
         ],
       keywords='Plone LibreOffice Extensions',
       author='Andreas Mantke',
@@ -26,6 +29,12 @@ setup(name='am.LiboExtensionCenter',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'Products.ArchAddOn',
+          'Products.AddRemoveWidget',
+          'Products.DataGridField',
+          'cioppino.twothumbs',
+          # this is temporary until we get the ratings migrated
+          'plone.contentratings',
       ],
       entry_points="""
       # -*- Entry points: -*-
