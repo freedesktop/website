@@ -7,10 +7,10 @@
  <object name="archaddon" meta_type="Filesystem Directory View"
     directory="ArchAddOn/skins/archaddon"/>
  <object name="liboextensioncenter" meta_type="Filesystem Directory View"
-    directory="LiboExtensionCenter/skins/liboextensioncenter"/>
- <object name="liboextensioncenter_images"
-    meta_type="Filesystem Directory View"
-    directory="LiboExtensionCenter/skins/liboextensioncenter_images"/>
+     directory="am.LiboExtensionCenter:skins/liboextensioncenter"/>
+<object name="liboextensioncenter_images"
+     meta_type="Filesystem Directory View"
+     directory="am.LiboExtensionCenter:skins/liboextensioncenter_images"/>
  <skin-path name="*">
   <layer name="liboextensioncenter_images" 
      insert-after="custom"/>
