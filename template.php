@@ -9,8 +9,6 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 	$hnav = array( "summary" => array("/", "Home"),
 			"home" => array("/", "Home"),
 			"download" => array("/download/", "Download"),
-			"comingsoon" => array("/discover/comingsoon/", 
-                                              "Coming Soon", "discover"),
 			"planet" => array("http://planet.go-oo.org/", "Planet"),
 			"developers" => array("/developers/", "Developers"),
 			"users" => array("/users/", "Users"),
