@@ -1720,8 +1720,9 @@ sub Link {
       $popup .= ",STICKY";
       
       $popup .= "); \" ";
-      
-      $popup .= "onMouseOut=\" return nd(); \" ";
+     
+      # MouseOut functions currently disabled for better UX 
+      # $popup .= "onMouseOut=\" return nd(); \" ";
   }
   
 
