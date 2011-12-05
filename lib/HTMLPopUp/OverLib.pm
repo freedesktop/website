@@ -532,7 +532,7 @@ function ol_content_caption(text,title,close) {
 	var closing, closeevent;
 
 	closing = "";
-	closeevent = "onmouseover";
+	closeevent = "onclick";
 	if (o3_closeclick == 1) closeevent = (o3_closetitle ? "title='" + o3_closetitle +"'" : "") + " onclick";
 	if (o3_capicon != "") {
 	  nameId = ' hspace = \"5\"'+' align = \"middle\" alt = \"\"';
