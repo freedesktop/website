@@ -101,8 +101,6 @@ $VC_BUGNUM_REGEXP = $TinderConfig::VC_BUGNUM_REGEXP || '(\d\d\d+)';
 $NOTICE = TinderDB::Notice->new();
 $DEBUG  = 1;
 
-my %SVNTREES = ();
-
 sub parse_svn_time { 
   # convert svn times into unix times.
   # timestamp is passed in as "2005-06-02 01:38:15 -0400 (Thu, 02 Jun 2005)"
@@ -472,15 +470,6 @@ sub apply_db_updates {
 
   my ($self, $tree,) = @_;
 
-  unless (%SVNTREES) {
-    # create list of cws tracked in svn
-    #print "getting trees tracked in svn\n";
-    my @svnlist = main::cache_cmd("svn list svn://svn.services.openoffice.org/ooo/tags svn://svn.services.openoffice.org/ooo/cws");
-    foreach my $cws (@svnlist) {
-      chomp $cws; chop $cws; # remove trailing slash
-      $SVNTREES{$cws}=0;
-    }
-  }
   return 0 unless defined($TreeData::VC_TREE{$tree}{'VCS'});
  
   my $vcs = $TreeData::VC_TREE{$tree}{'VCS'};
@@ -530,10 +519,6 @@ sub apply_db_updates {
   my ($num_updates) = 0;
 
   if ($vcs eq 'SVN') {
-    unless (defined $SVNTREES{$tree}) {
-      print "Wrong status for: $tree - claims to be in SVN but is not available!\n";
-      return 0;
-    }
     my ($svn_date_str) = time2svnformat($last_svn_data, DEBUGFILE);
 
     $svn_date_str = "{$svn_date_str}:HEAD";
