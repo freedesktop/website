@@ -226,9 +226,21 @@ $VERSION = '#tinder_version#';
                    branch => 'trunk',
                   },
             'MASTER' =>  {
-                   root => 'git://anongit.freedesktop.org/git/libreoffice/bootstrap',
+                   root => 'git://anongit.freedesktop.org/git/libreoffice/core',
                    module => 'all',
                    branch => 'master',
+                   VCS  => 'GIT',
+                  },
+            'libreoffice-3-5' =>  {
+                   root => 'git://anongit.freedesktop.org/git/libreoffice/core',
+                   module => 'all',
+                   branch => 'libreoffice-3-5',
+                   VCS  => 'GIT',
+                  },
+            'libreoffice-3-4' =>  {
+                   root => 'git://anongit.freedesktop.org/git/libreoffice/core',
+                   module => 'all',
+                   branch => 'libreoffice-3-4',
                    VCS  => 'GIT',
                   },
            );
@@ -250,96 +262,13 @@ $VERSION = '#tinder_version#';
 #                             },
                   );
 
-my %count_trees_by_master = ();
-sub addTreesFromFile($) {
-    my $FileName = shift;
-
-    my $group = 'new'; #default group
-    my $cwsstate = 'Open'; #default state
-    if ($FileName =~ /qa/ or $FileName =~ /master/) {
-        $group = 'ready_for_QA';
-        $cwsstate = 'Closed';
-    } elsif ($FileName =~ /approved/) {
-        $group = 'approved';
-        $cwsstate = 'Restricted';
-    } elsif ($FileName =~ /nominated/) {
-        $group = 'nominated';
-        $cwsstate = 'Metered';
-    }
-
-    my $OtherTrees;
-    if (open ($OtherTrees, $FileName)) {
-        while (<$OtherTrees>) {
-            /^\#/ && next;
-            chomp;
-            my $tree;
-            my $master;
-            my $codeline;
-            my $branch;
-            my ($modules, $new_modules, $vcs);
-            my $svnurl = 'svn://svn.services.openoffice.org/ooo';
-            ($tree, $master, $branch, $modules, $new_modules, $vcs) = split(/\s*:\s*/);
-            next if $tree eq "";
-            if ($tree =~ /^[A-Z]+/) {
-                $svnurl=$svnurl."/tags/".$tree;
-                $vcs='SVN' if ($tree =~ /^OOO32/ || $tree =~ /^DEV/); # assume svn for all milestones
-                # DEV300_m64 and later, OOO320_m13 and later in hg
-                my $treenum =$tree;
-                $vcs='HG' if ( ($treenum =~ s/^DEV300_m//) && ($treenum >= 64));
-                $vcs='HG' if ( ($treenum =~ s/^OOO320_m//) && ($treenum >= 13));
-                $vcs='HG' if (  $treenum =~ s/^OOO3[3-9][0-9]_m//);
-            } else {
-                $svnurl=$svnurl."/cws/".$tree;
-            }
-            # untaint the svnurl
-            if ($svnurl =~ m%^(svn://svn.services.openoffice.org/ooo/(tags|cws)/([-\w]+))$% ) {
-                $svnurl=$1;
-            } else {
-                die "Bad data in '$svnurl'";    # log this somewhere
-            }
-
-            $codeline = $master;
-            $codeline =~ s/_.*//;
-            #svnbackup $VC_TREE{$tree} = { root => '/home/ooweb/cvsup',
-            $VC_TREE{$tree} = { root => $svnurl,
-                module => 'all',
-                codeline => $codeline,
-                cwsstate => $cwsstate,
-                branch => $branch };
-            $VC_TREE{$tree}{'VCS'} = $vcs if (defined $vcs);
-            # add the tree to the treegroup (creates seperate summaries)
-            $VC_TREE_GROUPS{$group}{$tree} = 1;
-            $count_trees_by_master{$master}{$tree} = 1;
-        }
-        close ($OtherTrees);
-    }
-}
-
-# create default groups, to have the status pages cleared when there are no entries
-%{$VC_TREE_GROUPS{'new'}}=();
-%{$VC_TREE_GROUPS{'ready_for_QA'}}=();
-%{$VC_TREE_GROUPS{'approved'}}=();
-%{$VC_TREE_GROUPS{'nominated'}}=();
-addTreesFromFile("/srv/www/tinderbox.libreoffice.org/tags/tag-list-qa");
-addTreesFromFile("/srv/www/tinderbox.libreoffice.org/tags/tag-list-new");
-addTreesFromFile("/srv/www/tinderbox.libreoffice.org/tags/tag-list-approved");
-addTreesFromFile("/srv/www/tinderbox.libreoffice.org/tags/tag-list-nominated");
-addTreesFromFile("/srv/www/tinderbox.libreoffice.org/tags/tag-latest-master-list");
-addTreesFromFile("/srv/www/tinderbox.libreoffice.org/tags/temp-list");
 # We always want there to be one summary pages showing all trees.
-
 foreach $tree (keys %VC_TREE) {
   $VC_TREE_GROUPS{'all_trees'}{$tree} =1;
+  $VC_TREE_GROUPS{'LibreOffice'}{$tree} =1;
 }
-## add summaries for master-milestones with at least 3 cws, create
-## the group "other_milestones" for the rest
-foreach $master (keys %count_trees_by_master) {
-        my $group = "other_milestones";
-        $group = $master if ( (keys %{$count_trees_by_master{$master}}) >= 3);
-        foreach $tree (keys %{$count_trees_by_master{$master}}) {
-                $VC_TREE_GROUPS{$group}{$tree}=1;
-        }
-}
+# remove HEAD (pseudo tree (ab)used for bookkeeping of build-stats)
+delete($VC_TREE_GROUPS{'LibreOffice'}{'HEAD'});
 
 # what to append to a user name from the VC system to turn it into a
 # mail address.  The Mozilla/Netscape people do not need this because
