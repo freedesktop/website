@@ -275,10 +275,31 @@ sub line_type {
 		     # some more filenames that cause a false trigger
 		     ($line =~ m#^/bin/sh \.\./\.\./libtool --tag=CXX.*DynamicLibraryManagerException\.lo Exception\.lo#) ||
 		     ($line =~ m#^boost_1_39_0/(boost(/tr1/tr1(/sun)?)?|libs(/unordered/test)?)/exception(\.|/)?#) ||
+		     ($line =~ m#^boost_1_44_0/(boost(/tr1/tr1(/sun)?)?|libs(/unordered/test)?)/exception(\.|/)?#) ||
 		     ($line =~ m#^commons-lang-2\.3-src/src/(java|test)/org/apache/commons/lang/exception/#) ||
 		     ($line =~ m#^commons-httpclient-3\.1/docs/exception-handling\.html#) ||
 		     # annoying configure messages
 		     ($line =~ m#^checking (if|whether).*/bin/rm: cannot remove `conftest\*´: No such file or directory$#) ||
+		     ($line =~ m#^checking for -Bsymbolic-functions linker support \.\.\. not found#) ||
+		     # gettext related
+		     ($line =~ m#^checking where term(info|cap) library functions come from\.\.\. not found, consider installing GNU ncurses#) ||
+		     ($line =~ m#^  CC     (error-progname|fatal-signal).lo#) ||
+		     ($line =~ m#^  CCLD   (gdbus-)?error#) ||
+		     # libgsf related
+		     ($line =~ m#^configure: WARNING: thumbnailer will not be built, unable to find gconftool-2#) ||
+		     # rules in instsetoo_native/util/makefile.mk
+		     ($line =~ m#^dmake:  makefile\.mk:  line (222|277):  Warning: -- Prior to dmake 4\.5 only one#) ||
+		     # odk - subclass copying where no subclass exists
+		     ($line =~ m#^cp: .*/class/com/sun/star/lib/loader/WinRegKey(Exception)?\$\*\.class'?: No such file or directory#) ||
+		     # gbuildified modules - filenames
+		     ($line =~ m#^\[ build IDL \] udkapi/com/sun/star/uno/Exception\.urd#) ||
+		     # gentoo-box
+		     ($line =~ m#^checking dynamic linker characteristics\.\.\. cat: ld\.so\.conf\.d/\*\.conf: No such file or directory#) ||
+		     ($line =~ m#^((\.\./)?\.)?\./libtool: line [0-9]+: cd: \.\./lib: No such file or directory#) ||
+		     # SuSE box
+		     ($line =~ m#\.\./\.\./dist/include/xpcom_obsolete/nsFileStream\.h: In member function 'PRBool nsErrorProne::failed\(\) const':$#) ||
+		     # system-libs
+		     ($line =~ m#^Therefore the version provided here does not need to be built in addition\.#) ||
 		     
                      0);
       
