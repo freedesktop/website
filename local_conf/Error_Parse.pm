@@ -160,6 +160,7 @@ sub line_type {
             ($line =~ /jmake.MakerFailedException:/) ||         # Java error
             ($line =~ /  Warning:/)                  ||         # dmake warning
             ($line =~ /  Error:/)                    ||         # dmake error
+            ($line =~ /\*\*\* No rule to make target/) ||       # make error (no rule or failed to build)
             0);
 
 
