@@ -32,13 +32,15 @@ function get_update_info($agent=null) {
 # Every released version has to be added here
 # (all betas, RC's and final versions)
 $update_versions = array(
-    '146fa8d-7f15fca-1fc8c06-ca8e46d' => 'LO-3.5' # test
-    #'7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5' # 3.5.0 Beta1
+    '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5' # 3.5.0 Beta1
 );
 
 # Descriptions of the target versions
+# The entry must point to the newest version
+# 'buildnum' is the number from program/versionrc:ProductBuildId of the newest version
+# 'id' is what is going to be shown in the update information dialog
 $update_map = array(
-    'LO-3.5' => array('buildid'     => '8589e48-760cc4d-f39cf3d-1b2857e-60db978',
+    'LO-3.5' => array('buildnum'    => '2',
                       'id'          => 'LibreOffice 3.5.0 Beta2',
                       'version'     => '3.5.0 Beta2',
                       'update_type' => 'text/html',
@@ -61,7 +63,7 @@ function print_update_xml($buildid, $os, $arch, $langs) {
 
     print '<?xml version="1.0" encoding="utf-8"?>
 <inst:description xmlns:inst="http://update.libreoffice.org/description">
-  <inst:buildid>' . $new['buildid'] . '</inst:buildid>
+  <inst:buildid>' . $new['buildnum'] . '</inst:buildid>
   <inst:os>' . $os . '</inst:os>
   <inst:arch>' . $arch . '</inst:arch>
   <inst:id>' . $new['id'] . '</inst:id>
