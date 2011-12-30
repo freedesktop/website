@@ -20,7 +20,7 @@ function get_update_info($agent=null) {
     if ($agent == null)
         return array();
 
-    $pattern = '#^(?P<product>[^/ ]+)[/ ]+(?P<version>[0-9]+(?:\.[0-9]+)?) +\((?P<milestone>[^;\( ]*) *\(build:(?P<buildid>[^;\( ]*)\); (?P<os>[^; ]*); (?P<arch>[^; ]*); BundledLanguages=(?<langs>[^; ]*)\)#i';
+    $pattern = '#^(?P<product>[^/ ]+)[/ ]+(?P<version>[0-9]+(?:\.[0-9]+)?) +\((?P<buildid>[^;\( ]*) *; (?P<os>[^; ]*); (?P<arch>[^; ]*); BundledLanguages=(?<langs>[^;\)]*)\)#i';
 
     if (!preg_match($pattern, $agent, $match))
         return array();
@@ -28,44 +28,54 @@ function get_update_info($agent=null) {
     return $match;
 }
 
-# Map the versions
+# Map the id's to the target versions
+# Every released version has to be added here
+# (all betas, RC's and final versions)
+$update_versions = array(
+    '146fa8d-7f15fca-1fc8c06-ca8e46d' => 'LO-3.5' # test
+    #'7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5' # 3.5.0 Beta1
+);
+
+# Descriptions of the target versions
 $update_map = array(
-    '340m1' => array('buildid'     => 102,
-                     'id'          => 'LibreOffice_3.4',
-                     'version'     => '3.4.2',
-                     'update_type' => 'text/html',
-                     'update_src'  => 'http://www.libreoffice.org/download/')
+    'LO-3.5' => array('buildid'     => '8589e48-760cc4d-f39cf3d-1b2857e-60db978',
+                      'id'          => 'LibreOffice 3.5.0 Beta2',
+                      'version'     => '3.5.0 Beta2',
+                      'update_type' => 'text/html',
+                      'update_src'  => 'http://www.libreoffice.org/download/pre-releases/')
 );
 
 # Print the update xml
-function print_update_xml($milestone, $buildid, $os, $arch, $langs) {
-    global $update_map;
+function print_update_xml($buildid, $os, $arch, $langs) {
+    global $update_versions, $update_map;
 
-    $new = $update_map[$milestone];
-
-    if ($new == null)
+    if (!array_key_exists($buildid, $update_versions))
         error('No update for your LibreOffice version.');
 
-    if ($buildid >= $new['buildid'])
-        error('Your LibreOffice is up to date.');
+    $target_version = $update_versions[$buildid];
+
+    if (!array_key_exists($target_version, $update_map))
+        error('Internal error of the update service.');
+
+    $new = $update_map[$target_version];
 
     print '<?xml version="1.0" encoding="utf-8"?>
 <inst:description xmlns:inst="http://update.libreoffice.org/description">
-  <inst:id>' . $new['id'] . '</inst:id>
-  <inst:version>' . $new['version'] . '</inst:version>
   <inst:buildid>' . $new['buildid'] . '</inst:buildid>
   <inst:os>' . $os . '</inst:os>
   <inst:arch>' . $arch . '</inst:arch>
+  <inst:id>' . $new['id'] . '</inst:id>
+  <inst:version>' . $new['version'] . '</inst:version>
   <inst:update type="' . $new['update_type'] . '" src="' . $new['update_src'] . '" />
 </inst:description>
 ';
 }
 
 # Main
-#$info = get_update_info("LibreOffice/2.2 (340m1 (Build:100); Solaris; SPARC; BundledLanguages=en-US_fr) Ugh blah/ggg");
+#$info = get_update_info("LOdev 3.5 (7362ca8-b5a8e65-af86909-d471f98-61464c4; Windows; x86; BundledLanguages=en-US af ar as ast be bg bn bo br brx bs ca ca-XV cs cy da de dgo dz el en-GB en-ZA eo es et eu fa fi fr ga gd gl gu he hi hr hu id is it ja ka kk km kn ko kok ks ku lb lo lt lv mai mk ml mn mni mr my nb ne nl nn nr nso oc om or pa-IN pl pt pt-BR qtz ro ru rw sa-IN sat sd sh si sk sl sq sr ss st sv sw-TZ ta te tg th tn tr ts tt ug uk uz ve vi xh zh-CN zh-TW zu)");
 $info = get_update_info();
 
-if (!array_key_exists('product', $info) || $info['product'] != 'LibreOffice')
+if (!array_key_exists('product', $info) || ($info['product'] != 'LibreOffice' && $info['product'] != 'LOdev'))
     error('<b>Error:</b> Only LibreOffice can access the update service.');
 
-print_update_xml($info['milestone'], $info['buildid'], $info['os'], $info['arch'], $info['langs']);
+print_update_xml($info['buildid'], $info['os'], $info['arch'], $info['langs']);
