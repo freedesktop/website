@@ -29,10 +29,11 @@ function get_update_info($agent=null) {
 }
 
 # Map the id's to the target versions
-# Every released version has to be added here
-# (all betas, RC's and final versions)
+# Every released version has to be added here (all betas, RC's and final
+# versions) as soon as they are out
 $update_versions = array(
-    '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5' # 3.5.0 Beta1
+    '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5', # 3.5.0 Beta1
+    '8589e48-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.5'  # 3.5.0 Beta2
 );
 
 # Descriptions of the target versions
