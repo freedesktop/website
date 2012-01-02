@@ -1,19 +1,32 @@
 <?php
 
+$debug = 0;
+
 # When something goes wrong
 function error($message) {
-    print "<html>
+    global $debug;
+
+    $out = "<html>
 <head><title>LibreOffice Update Service</title></head>
 <body>
   <h1>LibreOffice Update Service</h1>
   <p>$message</p>
 </body>
 </html>\n";
+
+    print $out;
+    if ($debug)
+        error_log($out);
     exit;
 }
 
 # Parse the User-Agent: string from the browser
 function get_update_info($agent=null) {
+    global $debug;
+
+    if ($debug)
+        error_log($_SERVER['HTTP_USER_AGENT'] . "; " . $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+
     if ($agent == null && array_key_exists('HTTP_USER_AGENT', $_SERVER))
         $agent = $_SERVER['HTTP_USER_AGENT'];
 
@@ -24,6 +37,9 @@ function get_update_info($agent=null) {
 
     if (!preg_match($pattern, $agent, $match))
         return array();
+
+    # additionally store language of the user interface
+    $match['lang'] = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
     return $match;
 }
@@ -49,8 +65,8 @@ $update_map = array(
 );
 
 # Print the update xml
-function print_update_xml($buildid, $os, $arch, $langs) {
-    global $update_versions, $update_map;
+function print_update_xml($buildid, $os, $arch, $lang) {
+    global $update_versions, $update_map, $debug;
 
     if (!array_key_exists($buildid, $update_versions))
         error('No update for your LibreOffice version.');
@@ -62,7 +78,7 @@ function print_update_xml($buildid, $os, $arch, $langs) {
 
     $new = $update_map[$target_version];
 
-    print '<?xml version="1.0" encoding="utf-8"?>
+    $out = '<?xml version="1.0" encoding="utf-8"?>
 <inst:description xmlns:inst="http://update.libreoffice.org/description">
   <inst:buildid>' . $new['buildnum'] . '</inst:buildid>
   <inst:os>' . $os . '</inst:os>
@@ -72,6 +88,11 @@ function print_update_xml($buildid, $os, $arch, $langs) {
   <inst:update type="' . $new['update_type'] . '" src="' . $new['update_src'] . '" />
 </inst:description>
 ';
+
+    print $out;
+
+    if ($debug)
+        error_log($out);
 }
 
 # Main
@@ -81,4 +102,4 @@ $info = get_update_info();
 if (!array_key_exists('product', $info) || ($info['product'] != 'LibreOffice' && $info['product'] != 'LOdev'))
     error('<b>Error:</b> Only LibreOffice can access the update service.');
 
-print_update_xml($info['buildid'], $info['os'], $info['arch'], $info['langs']);
+print_update_xml($info['buildid'], $info['os'], $info['arch'], $info['lang']);
