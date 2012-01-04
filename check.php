@@ -1,6 +1,6 @@
 <?php
 
-$debug = 0;
+$debug = false;
 
 # When something goes wrong
 function error($message) {
@@ -44,11 +44,53 @@ function get_update_info($agent=null) {
     return $match;
 }
 
-# Map the id's to the target versions
+# Localization of the URLs
+$localize_map = array(
+    'http://www.libreoffice.org/download/' => array(
+        'cs' => 'http://cs.libreoffice.org/stahnout/',
+        'da' => 'http://da.libreoffice.org/hent-libreoffice/',
+        'de' => 'http://de.libreoffice.org/download/',
+        'eo' => 'http://eo.libreoffice.org/elsxuti/',
+        'es' => 'http://es.libreoffice.org/descarga/',
+        'fi' => 'http://fi.libreoffice.org/lataa/',
+        'fr' => 'http://fr.libreoffice.org/telecharger/',
+        'ga' => 'http://ga.libreoffice.org/iosluchtu/',
+        'gd' => 'http://gd.libreoffice.org/faigh-e/',
+        'hu' => 'http://hu.libreoffice.org/letoeltes/',
+        'it' => 'http://it.libreoffice.org/download/',
+        'ja' => 'http://ja.libreoffice.org/download/',
+        'lt' => 'http://lt.libreoffice.org/parsisiuntimas/',
+        'nl' => 'http://nl.libreoffice.org/download/',
+        'pt' => 'http://pt.libreoffice.org/transferir-e-instalar/',
+        'pt-br' => 'http://pt-br.libreoffice.org/baixe-ja-o-libreoffice-em-portugues-do-brasil/',
+        'sl' => 'http://sl.libreoffice.org/prenosi/',
+        'zh-tw' => 'http://zh-tw.libreoffice.org/download/',
+    ),
+    'http://www.libreoffice.org/download/pre-releases/' => array(
+        'da' => 'http://da.libreoffice.org/hent-libreoffice/test/',
+        'de' => 'http://de.libreoffice.org/download/testversionen/',
+        'es' => 'http://es.libreoffice.org/descarga/pre-lanzamientos/',
+        'fi' => 'http://fi.libreoffice.org/lataa/testiversioita/',
+        'fr' => 'http://fr.libreoffice.org/telecharger/pre-versions/',
+        'ga' => 'http://ga.libreoffice.org/iosluchtu/reamhleagan/',
+        'gd' => 'http://gd.libreoffice.org/faigh-e/deuchainn-lann/',
+        'hu' => 'http://hu.libreoffice.org/letoeltes/el-zetes-kiadasok/',
+        'it' => 'http://it.libreoffice.org/download/pre-release/',
+        'ja' => 'http://ja.libreoffice.org/download/pre-releases/',
+        'lt' => 'http://lt.libreoffice.org/parsisiuntimas/testuojamosios-versijos/',
+        'nl' => 'http://nl.libreoffice.org/download/pre-releases/',
+        'pt' => 'http://pt.libreoffice.org/pre-lancamentos/',
+        'pt-br' => 'http://pt-br.libreoffice.org/baixe-ja-o-libreoffice-em-portugues-do-brasil/prelancamento/',
+        'sl' => 'http://sl.libreoffice.org/prenosi/prenosi-poskusnih-gradenj/',
+        'zh-tw' => 'http://zh-tw.libreoffice.org/download/pre-releases/',
+    )
+);
+
+# Map the id's of the versions we want to update to the target version
 # Every released version has to be added here (all betas, RC's and final
 # versions) as soon as they are out
 $update_versions = array(
-    '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5'  # 3.5.0 Beta1
+    '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5', # 3.5.0 Beta1
     #'8589e48-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.5'  # 3.5.0 Beta2
 );
 
@@ -66,7 +108,7 @@ $update_map = array(
 
 # Print the update xml
 function print_update_xml($buildid, $os, $arch, $lang) {
-    global $update_versions, $update_map, $debug;
+    global $update_versions, $update_map, $localize_map, $debug;
 
     if (!array_key_exists($buildid, $update_versions))
         error('No update for your LibreOffice version.');
@@ -77,6 +119,23 @@ function print_update_xml($buildid, $os, $arch, $lang) {
         error('Internal error of the update service.');
 
     $new = $update_map[$target_version];
+
+    # try to localize
+    $update_src = $new['update_src'];
+    if (array_key_exists($update_src, $localize_map))
+    {
+        $lang = strtolower($lang);
+        $src_array = $localize_map[$update_src];
+
+        if (array_key_exists($lang, $src_array))
+            $update_src = $src_array[$lang];
+        else
+        {
+            $lang_only = strtok($lang, '-');
+            if ($lang_only != false && array_key_exists($lang_only, $src_array))
+                $update_src = $src_array[$lang_only];
+        }
+    }
 
     # inst:buildid is a legacy thing, and we need to set it in order to
     # update 3.5.0 Beta1 and Beta2 to further versions too
@@ -89,7 +148,7 @@ function print_update_xml($buildid, $os, $arch, $lang) {
   <inst:arch>' . $arch . '</inst:arch>
   <inst:version>' . $new['version'] . '</inst:version>
   <inst:buildid>9999</inst:buildid>
-  <inst:update type="' . $new['update_type'] . '" src="' . $new['update_src'] . '" />
+  <inst:update type="' . $new['update_type'] . '" src="' . $update_src . '" />
 </inst:description>
 ';
 
