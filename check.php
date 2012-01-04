@@ -48,16 +48,16 @@ function get_update_info($agent=null) {
 # Every released version has to be added here (all betas, RC's and final
 # versions) as soon as they are out
 $update_versions = array(
-    '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5', # 3.5.0 Beta1
-    '8589e48-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.5'  # 3.5.0 Beta2
+    '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5'  # 3.5.0 Beta1
+    #'8589e48-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.5'  # 3.5.0 Beta2
 );
 
 # Descriptions of the target versions
 # The entry must point to the newest version
-# 'buildnum' is the number from program/versionrc:ProductBuildId of the newest version
+# 'gitid' is the content of program/versionrc:buildid of the newest version
 # 'id' is what is going to be shown in the update information dialog
 $update_map = array(
-    'LO-3.5' => array('buildnum'    => '2',
+    'LO-3.5' => array('gitid'       => '8589e48-760cc4d-f39cf3d-1b2857e-60db978',
                       'id'          => 'LibreOffice 3.5.0 Beta2',
                       'version'     => '3.5.0 Beta2',
                       'update_type' => 'text/html',
@@ -78,13 +78,17 @@ function print_update_xml($buildid, $os, $arch, $lang) {
 
     $new = $update_map[$target_version];
 
+    # inst:buildid is a legacy thing, and we need to set it in order to
+    # update 3.5.0 Beta1 and Beta2 to further versions too
+    # We can get rid of it when there is no Beta1 or Beta2 in use out there
     $out = '<?xml version="1.0" encoding="utf-8"?>
 <inst:description xmlns:inst="http://update.libreoffice.org/description">
-  <inst:buildid>' . $new['buildnum'] . '</inst:buildid>
+  <inst:id>' . $new['id'] . '</inst:id>
+  <inst:gitid>' . $new['gitid'] . '</inst:gitid>
   <inst:os>' . $os . '</inst:os>
   <inst:arch>' . $arch . '</inst:arch>
-  <inst:id>' . $new['id'] . '</inst:id>
   <inst:version>' . $new['version'] . '</inst:version>
+  <inst:buildid>9999</inst:buildid>
   <inst:update type="' . $new['update_type'] . '" src="' . $new['update_src'] . '" />
 </inst:description>
 ';
