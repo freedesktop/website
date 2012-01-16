@@ -90,8 +90,9 @@ $localize_map = array(
 # Every released version has to be added here (all betas, RC's and final
 # versions) as soon as they are out
 $update_versions = array(
-    '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5', # 3.5.0 Beta1
-    #'8589e48-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.5'  # 3.5.0 Beta2
+    '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5',  # 3.5.0 Beta1
+    '8589e48-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.5',  # 3.5.0 Beta2
+    #'e40af8c-10029e3-615e522-88673a2-727f724' => 'LO-3.5',  # 3.5.0 Beta3
 );
 
 # Descriptions of the target versions
@@ -99,9 +100,9 @@ $update_versions = array(
 # 'gitid' is the content of program/versionrc:buildid of the newest version
 # 'id' is what is going to be shown in the update information dialog
 $update_map = array(
-    'LO-3.5' => array('gitid'       => '8589e48-760cc4d-f39cf3d-1b2857e-60db978',
-                      'id'          => 'LibreOffice 3.5.0 Beta2',
-                      'version'     => '3.5.0 Beta2',
+    'LO-3.5' => array('gitid'       => 'e40af8c-10029e3-615e522-88673a2-727f724',
+                      'id'          => 'LibreOffice 3.5.0 Beta3',
+                      'version'     => '3.5.0 Beta3',
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/pre-releases/')
 );
