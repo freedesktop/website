@@ -101,7 +101,7 @@ $update_versions = array(
 # 'gitid' is the content of program/versionrc:buildid of the newest version
 # 'id' is what is going to be shown in the update information dialog
 $update_map = array(
-    'LO-3.5' => array('gitid'       => b6c8ba5-8c0b455-0b5e650-d7f0dd3-b100c87'',
+    'LO-3.5' => array('gitid'       => 'b6c8ba5-8c0b455-0b5e650-d7f0dd3-b100c87',
                       'id'          => 'LibreOffice 3.5.0 RC1',
                       'version'     => '3.5.0 RC1',
                       'update_type' => 'text/html',
