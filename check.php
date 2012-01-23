@@ -92,6 +92,7 @@ $localize_map = array(
 $update_versions = array(
     '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5',  # 3.5.0 Beta1
     '8589e48-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.5',  # 3.5.0 Beta2
+    'da8462e-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.5',  # 3.5.0 Beta2 (MacOSX)
     'e40af8c-10029e3-615e522-88673a2-727f724' => 'LO-3.5',  # 3.5.0 Beta3
     #'b6c8ba5-8c0b455-0b5e650-d7f0dd3-b100c87' => 'LO-3.5',  # 3.5.0 RC1
 );
