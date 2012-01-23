@@ -1,5 +1,9 @@
 <?php
 
+# License: MPL 1.1 / GPLv3+ / LGPLv3+
+#
+# Copyright (C) 2012 Jan Holesovsky <kendy@suse.cz>, SUSE (initial developer)
+
 $debug = false;
 
 # When something goes wrong
