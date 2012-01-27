@@ -98,7 +98,7 @@ $update_versions = array(
     '8589e48-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.5',  # 3.5.0 Beta2
     'da8462e-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.5',  # 3.5.0 Beta2 (MacOSX)
     'e40af8c-10029e3-615e522-88673a2-727f724' => 'LO-3.5',  # 3.5.0 Beta3
-    #'b6c8ba5-8c0b455-0b5e650-d7f0dd3-b100c87' => 'LO-3.5',  # 3.5.0 RC1
+    'b6c8ba5-8c0b455-0b5e650-d7f0dd3-b100c87' => 'LO-3.5',  # 3.5.0 RC1
 );
 
 # Descriptions of the target versions
@@ -106,9 +106,9 @@ $update_versions = array(
 # 'gitid' is the content of program/versionrc:buildid of the newest version
 # 'id' is what is going to be shown in the update information dialog
 $update_map = array(
-    'LO-3.5' => array('gitid'       => 'b6c8ba5-8c0b455-0b5e650-d7f0dd3-b100c87',
-                      'id'          => 'LibreOffice 3.5.0 RC1',
-                      'version'     => '3.5.0 RC1',
+    'LO-3.5' => array('gitid'       => 'e371a95-bf68a13-5a1aa2b-d3c1ae9-b938258',
+                      'id'          => 'LibreOffice 3.5.0 RC2',
+                      'version'     => '3.5.0 RC2',
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/pre-releases/')
 );
