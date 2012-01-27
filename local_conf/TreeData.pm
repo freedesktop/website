@@ -243,6 +243,24 @@ $VERSION = '#tinder_version#';
                    branch => 'libreoffice-3-4',
                    VCS  => 'GIT',
                   },
+            'feature/gbuild_extensions' =>  {
+                   root => 'git://anongit.freedesktop.org/git/libreoffice/core',
+                   module => 'all',
+                   branch => 'feature/gbuild_extensions',
+                   VCS  => 'GIT',
+                  },
+            'feature/gbuild_cppuhelper' =>  {
+                   root => 'git://anongit.freedesktop.org/git/libreoffice/core',
+                   module => 'all',
+                   branch => 'feature/gbuild_cppuhelper',
+                   VCS  => 'GIT',
+                  },
+            'feature/gbuild_java' =>  {
+                   root => 'git://anongit.freedesktop.org/git/libreoffice/core',
+                   module => 'all',
+                   branch => 'feature/gbuild_java',
+                   VCS  => 'GIT',
+                  },
            );
 
 # We group trees into sets so that individual managers can get a page

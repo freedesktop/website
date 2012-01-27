@@ -161,6 +161,7 @@ sub line_type {
             ($line =~ /  Warning:/)                  ||         # dmake warning
             ($line =~ /  Error:/)                    ||         # dmake error
             ($line =~ /\*\*\* No rule to make target/) ||       # make error (no rule or failed to build)
+            ($line =~ /^cc1plus: warnings being treated as errors/) || 
             0);
 
 

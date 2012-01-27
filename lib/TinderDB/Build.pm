@@ -181,7 +181,7 @@ $NUM_OF_AVERAGE = 10;
  
 $NOTICE= TinderDB::Notice->new();
 
-$DEBUG=1;
+$DEBUG=0;
 
 # Find the name of each build and the proper order to display them.
 # No part of the code should peek at keys %{ $DATABASE{$tree} } directly.
@@ -1337,45 +1337,16 @@ sub buildcell_links {
     # We wish to encourage people to use the brief log.  If they need
     # the full log they can get there from the brief log page.
 
-    if ($current_rec->{'brieflog'}) {
       $links.= "\t\t\t".
         HTMLPopUp::Link(
-                        "linktxt"=>"l", 
+                        "linktxt"=>"details", 
                         # the mail processor tells us the URL to
                         # retreive the log files.
                         "href"=>$current_rec->{'brieflog'},
                         "windowtxt"=>$current_rec->{'info'}.$index_links, 
                         "windowtitle" =>$title,
                        )."\n";
-    }
     
-    if ($current_rec->{'fulllog'}) {
-      $links.= "\t\t\t".
-        HTMLPopUp::Link(
-                        "linktxt"=>"L", 
-                        # the mail processor tells us the URL to
-                        # retreive the log files.
-                        "href"=>$current_rec->{'fulllog'},
-                        "windowtxt"=>$current_rec->{'info'}.$index_links, 
-                        "windowtitle" =>$title,
-                       )."\n";
-  }
-    
-    # Binary file Link
-    my $binary_ref = (
-                      FileStructure::get_filename($tree, build_bin_dir) . 
-                      $current_rec->{'binaryname'}
-                      );
-
-    if ($current_rec->{'binaryname'}) {
-        $links.= "\t\t\t".
-            HTMLPopUp::Link(
-                            "linktxt"=>"B",
-                            "href"=> $binary_ref,
-                            "windowtxt"=>$current_rec->{'info'}.$index_links, 
-                            "windowtitle" =>$title,
-                            )."\n";
-    }
     
     # Bloat Data Link
 
@@ -1394,27 +1365,6 @@ sub buildcell_links {
     }
     
     # What Changed Link
-    if ( $current_rec->{'previousbuildtime'} ) {
-
-      # If the current build is broken, show what to see what has
-      # changed in VC during the last build.
-
-      my ($maxdate) = $current_rec->{'starttime'};
-      my ($mindate) = $current_rec->{'previousbuildtime'};
-
-      $links .= (
-                 "\t\t\t". 
-                 VCDisplay::query(
-                                   'linktxt'=> "C",
-                                   'tree' => $tree,
-                                   'mindate' => $mindate,
-                                   'maxdate' => $maxdate,
-                                   "windowtxt"=>$current_rec->{'info'}.$index_links, 
-                                   "windowtitle" =>$title,
-                                  ).
-                 "\n"
-                );
-    }
 
     # Error count (not a link, but hey)
 
