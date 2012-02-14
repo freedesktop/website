@@ -100,7 +100,8 @@ $update_versions = array(
     'e40af8c-10029e3-615e522-88673a2-727f724' => 'LO-3.5',  # 3.5.0 Beta3
     'b6c8ba5-8c0b455-0b5e650-d7f0dd3-b100c87' => 'LO-3.5',  # 3.5.0 RC1
     'e371a95-bf68a13-5a1aa2b-d3c1ae9-b938258' => 'LO-3.5',  # 3.5.0 RC2
-    #'7e68ba2-a744ebf-1f241b7-c506db1-7d53735' => 'LO-3.5',  # 3.5.0 RC3
+    # To be uncommented when 3.5.1 Final is out
+    #'7e68ba2-a744ebf-1f241b7-c506db1-7d53735' => 'LO-3.5',  # 3.5.0 RC3 / Final
 );
 
 # Descriptions of the target versions
@@ -109,10 +110,16 @@ $update_versions = array(
 # 'id' is what is going to be shown in the update information dialog
 $update_map = array(
     'LO-3.5' => array('gitid'       => '7e68ba2-a744ebf-1f241b7-c506db1-7d53735',
-                      'id'          => 'LibreOffice 3.5.0 RC3',
-                      'version'     => '3.5.0 RC3',
+                      'id'          => 'LibreOffice 3.5.0',
+                      'version'     => '3.5.0',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/pre-releases/')
+                      'update_src'  => 'http://www.libreoffice.org/download/'),
+# To be uncommented when 3.5.1 RC2 is out, to get updates from 3.5.1 RC1
+#    'LO-3.5-pre' => array('gitid'       => '',
+#                          'id'          => 'LibreOffice 3.5.1 RC2',
+#                          'version'     => '3.5.1 RC2',
+#                          'update_type' => 'text/html',
+#                          'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
 );
 
 # Print the update xml
