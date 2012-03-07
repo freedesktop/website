@@ -94,6 +94,7 @@ $localize_map = array(
 # Every released version has to be added here (all betas, RC's and final
 # versions) as soon as they are out
 $update_versions = array(
+    # 3.5.0 versions
     '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5',  # 3.5.0 Beta1
     '8589e48-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.5',  # 3.5.0 Beta2
     'da8462e-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.5',  # 3.5.0 Beta2 (MacOSX)
@@ -102,6 +103,11 @@ $update_versions = array(
     'e371a95-bf68a13-5a1aa2b-d3c1ae9-b938258' => 'LO-3.5',  # 3.5.0 RC2
     # To be uncommented when 3.5.1 Final is out
     #'7e68ba2-a744ebf-1f241b7-c506db1-7d53735' => 'LO-3.5',  # 3.5.0 RC3 / Final
+
+    # 3.5.1 versions
+    '45a2874-aa8c38d-dff3b9c-def3dbd-62463c8' => 'LO-3.5-pre',  # 3.5.1 RC1
+    # To be uncommented when 3.5.2 Final is out
+    #'dc9775d-05ecbee-0851ad3-1586698-727bf66' => 'LO-3.5',  # 3.5.1 RC2
 );
 
 # Descriptions of the target versions
@@ -114,10 +120,16 @@ $update_map = array(
                       'version'     => '3.5.0',
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/'),
-# To be uncommented when 3.5.1 RC2 is out, to get updates from 3.5.1 RC1
+# To be deleted when 3.5.1 is Final
+    'LO-3.5-pre' => array('gitid'       => 'dc9775d-05ecbee-0851ad3-1586698-727bf66',
+                          'id'          => 'LibreOffice 3.5.1 RC2',
+                          'version'     => '3.5.1 RC2',
+                          'update_type' => 'text/html',
+                          'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
+# To be uncommented when 3.5.2 RC2 is out, to get updates from 3.5.2 RC1
 #    'LO-3.5-pre' => array('gitid'       => '',
-#                          'id'          => 'LibreOffice 3.5.1 RC2',
-#                          'version'     => '3.5.1 RC2',
+#                          'id'          => 'LibreOffice 3.5.2 RC2',
+#                          'version'     => '3.5.2 RC2',
 #                          'update_type' => 'text/html',
 #                          'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
 );
