@@ -105,12 +105,10 @@ $update_versions = array(
 
     # 3.5.1 versions
     '45a2874-aa8c38d-dff3b9c-def3dbd-62463c8' => 'LO-3.5',  # 3.5.1 RC1
-    # To be uncommented when 3.5.2 Final is out
-    #'dc9775d-05ecbee-0851ad3-1586698-727bf66' => 'LO-3.5',  # 3.5.1 RC2 / Final
+    'dc9775d-05ecbee-0851ad3-1586698-727bf66' => 'LO-3.5',  # 3.5.1 RC2 / Final
 
     # 3.5.2 versions
-    # "-pre" to be deleted when 3.5.2 Final is out
-    '1488b14-519dc6f-43021d0-52136ea-8d338cc' => 'LO-3.5-pre',  # 3.5.2 RC1
+    '1488b14-519dc6f-43021d0-52136ea-8d338cc' => 'LO-3.5',  # 3.5.2 RC1
     # To be uncommented when 3.5.3 Final is out
     #'281b639-6baa1d3-ef66a77-d866f25-f36d45f' => 'LO-3.5',  # 3.5.2 RC2 / Final
 );
@@ -120,18 +118,11 @@ $update_versions = array(
 # 'gitid' is the content of program/versionrc:buildid of the newest version
 # 'id' is what is going to be shown in the update information dialog
 $update_map = array(
-    'LO-3.5' => array('gitid'       => 'dc9775d-05ecbee-0851ad3-1586698-727bf66',
-                      'id'          => 'LibreOffice 3.5.1',
-                      'version'     => '3.5.1',
+    'LO-3.5' => array('gitid'       => '281b639-6baa1d3-ef66a77-d866f25-f36d45f',
+                      'id'          => 'LibreOffice 3.5.2',
+                      'version'     => '3.5.2',
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/'),
-
-# To be removed when 3.5.2 RC2 becomes Final
-    'LO-3.5-pre' => array('gitid'       => '281b639-6baa1d3-ef66a77-d866f25-f36d45f',
-                          'id'          => 'LibreOffice 3.5.2 RC2',
-                          'version'     => '3.5.2 RC2',
-                          'update_type' => 'text/html',
-                          'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
 
 # To be uncommented when 3.5.3 RC2 is out, to get updates from 3.5.3 RC1
 #    'LO-3.5-pre' => array('gitid'       => '',
