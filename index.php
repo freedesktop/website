@@ -3,10 +3,22 @@ require("template.php");
 
 $content = <<<EOT
 
+    <h1>Go-oo is obsoleted by LibreOffice</h1>
+    <div style="width: 20%; float: right;"><p><a href="http://documentfoundation.org"><img src="img/libreoffice-logo.png"></a></p></div>
+    <div style="width: 70%; float: left;">
+    <p>
+	The creation of <a href="http://documentfoundation.org">The Document
+	Foundation's</a> has provided the ideal home for the go-oo developers.
+	The go-oo project has been dis-continued in favour of <a
+	href="http://www.libreoffice.org">LibreOffice - the new home of the
+	open office suite</a>.
+    </p>
+    </div>
+    <hr/>
 	<div id="download">
-		<a href="/download/">
+		<a href="http://www.libreoffice.org/download/">
 	  <img id="home_oo_image" src="img/thumb_go-oox-pptx.png" /><br />
-		<a href="/download/">Download</a>
+		<a href="http://www.libreoffice.org/download/">Download</a>
 	</div>
     <h3>Better interoperability</h3>
     <p>
@@ -88,17 +100,6 @@ $content = <<<EOT
 	that's really excellent, but this is not our focus: there are no formal
 	roles in development to reflect this valuable work.
     </p>
-
-    <h3>Go-oo joins forces with LibreOffice</h3>
-    <div style="width: 70%; float: left;">
-    <p>
-	Go-oo shares much of its goals and philosophy with <a href="http://documentfoundation.org">The Document 
-    Foundation's</a> LibreOffice project, we're therefore supporting LibreOffice since it's inception, and are
-    in the process of merging most of our patches over, as well as migrating to Document Foundation infrastructure.
-    Going forward, the Go-oo project will be discontinued in favor of LibreOffice.
-    </p>
-    </div>
-    <div style="width: 20%; float: right;"><p><a href="http://documentfoundation.org"><img src="img/libreoffice-logo.png"></a></p></div>
 EOT;
 
 print_page("Go-OO!", array("summary"),

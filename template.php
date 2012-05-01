@@ -60,7 +60,7 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
 		?>
                 </ul>
                 <div id="tagline">
-                        <a href="http://www.go-oo.org">Better, Faster, Free-er</a>
+                        <a href="http://www.libreoffice.org">LibreOffice is now Better, Faster, Free-er</a>
                 </div>
 <?php
 		if (count ($subtabs) > 0) {
