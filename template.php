@@ -8,26 +8,18 @@ function print_page($title, $context, $heading, $content, $subtabs = array())
         //  - (optional) the id of the tab it is under, this is for subsections
 	$hnav = array( "summary" => array("/", "Home"),
 			"home" => array("/", "Home"),
-			"download" => array("/download/", "Download"),
-			"comingsoon" => array("/discover/comingsoon/", 
-                                              "Coming Soon", "discover"),
-			"planet" => array("http://planet.go-oo.org/", "Planet"),
-			"developers" => array("/developers/", "Developers"),
-			"users" => array("/users/", "Users"),
-			"mgp" => array("/users/mgp", "Magicpoint"),
-			"mailarchive" => array("/developers/mailarchive", 
+			"download" => array("http://www.libreoffice.org/download/", "Download"),
+			"developers" => array("http://www.libreoffice.org/developers/", "Developers"),
+			"mailarchive" => array("/developers/mailarchive",
                                                "Mail archive", "developers"),
-			"about" => array("/about/", "About") 
 			);
         // tabs state. the all have the "container" value
 	// and the current one MUST have the "selected" value
 	// this is all dependent on ths CSS used.
-	$tabs = array ( "summary" => "container", 
-	       	       	 "download" => "container", 
-	       		 "planet" => "container", 
-			 "developers" => "container",
-	       		 "about" => "container" ); 
-	
+	$tabs = array ( "summary" => "container",
+	       	       	 "download" => "container",
+			 "developers" => "container" );
+
 	$id = "summary";
 	foreach ($context as $c) {
 		if (array_key_exists ($c, $tabs)) {
