@@ -94,6 +94,7 @@ $localize_map = array(
 # Every released version has to be added here (all betas, RC's and final
 # versions) as soon as they are out
 $update_versions = array(
+    ##################
     # 3.5.0 versions
     '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.5',  # 3.5.0 Beta1
     '8589e48-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.5',  # 3.5.0 Beta2
@@ -119,6 +120,11 @@ $update_versions = array(
     '7306755-f4f605c-738527d-1cf4bc1-9930dc8' => 'LO-3.5',  # 3.5.4 RC1
     # To be uncommented when 3.5.5 Final is out
     #'165a79a-7059095-e13bb37-fef39a4-9503d18' => 'LO-3.5',  # 3.5.4 RC2 / Final
+
+    ##################
+    # 3.6.0 versions
+    '1f1cdd8-e28082e-41df8bf-b153627-a97a84' => 'LO-3.6-pre',  # 3.6.0 Beta1
+    #'f010139-41cc8cc-da4127d-d2bb4b0-f433b8' => 'LO-3.6-pre',  # 3.6.0 Beta2
 );
 
 # Descriptions of the target versions
@@ -138,6 +144,12 @@ $update_map = array(
 #                          'version'     => '3.5.5 RC2',
 #                          'update_type' => 'text/html',
 #                          'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
+
+    'LO-3.6-pre' => array('gitid'       => 'f010139-41cc8cc-da4127d-d2bb4b0-f433b8',
+                          'id'          => 'LibreOffice 3.6.0 Beta2',
+                          'version'     => '3.6.0 Beta2',
+                          'update_type' => 'text/html',
+                          'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
 );
 
 # Print the update xml
