@@ -118,8 +118,13 @@ $update_versions = array(
 
     # 3.5.4 versions
     '7306755-f4f605c-738527d-1cf4bc1-9930dc8' => 'LO-3.5',  # 3.5.4 RC1
-    # To be uncommented when 3.5.5 Final is out
-    #'165a79a-7059095-e13bb37-fef39a4-9503d18' => 'LO-3.5',  # 3.5.4 RC2 / Final
+    '165a79a-7059095-e13bb37-fef39a4-9503d18' => 'LO-3.5',  # 3.5.4 RC2 / Final
+
+    # 3.5.5 versions
+    'c9944f7-48b7ff5-0507789-54a4c8a-8b242a8' => 'LO-3.5',  # 3.5.5 RC1
+    '24b32b4-b87ec2e-85c8e98-87a4e20-9a1b8c1' => 'LO-3.5',  # 3.5.5 RC2
+    # To be uncommented when 3.5.6 Final is out
+    #'7122e39-92ed229-498d286-15e43b4-d70da21' => 'LO-3.5',  # 3.5.5 RC3 / Final
 
     ##################
     # 3.6.0 versions
@@ -133,16 +138,16 @@ $update_versions = array(
 # 'gitid' is the content of program/versionrc:buildid of the newest version
 # 'id' is what is going to be shown in the update information dialog
 $update_map = array(
-    'LO-3.5' => array('gitid'       => '165a79a-7059095-e13bb37-fef39a4-9503d18',
-                      'id'          => 'LibreOffice 3.5.4',
-                      'version'     => '3.5.4',
+    'LO-3.5' => array('gitid'       => '7122e39-92ed229-498d286-15e43b4-d70da21',
+                      'id'          => 'LibreOffice 3.5.5',
+                      'version'     => '3.5.5',
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/'),
 
-# To be uncommented when 3.5.5 RC2 is out, to get updates from 3.5.5 RC1
+# To be uncommented when 3.5.6 RC2 is out, to get updates from 3.5.6 RC1
 #    'LO-3.5-pre' => array('gitid'       => '',
-#                          'id'          => 'LibreOffice 3.5.5 RC2',
-#                          'version'     => '3.5.5 RC2',
+#                          'id'          => 'LibreOffice 3.5.6 RC2',
+#                          'version'     => '3.5.6 RC2',
 #                          'update_type' => 'text/html',
 #                          'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
 
