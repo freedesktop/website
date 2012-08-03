@@ -132,7 +132,9 @@ $update_versions = array(
     'f010139-41cc8cc-da4127d-d2bb4b0-f433b8' => 'LO-3.6-pre',  # 3.6.0 Beta2
     '3e2b862-dd05a58-d67668b-8ec3f67-dfb62d' => 'LO-3.6-pre',  # 3.6.0 Beta3
     '73f9fb6-115b9dc-d7b744e-21dd070-d656a7' => 'LO-3.6-pre',  # 3.6.0 RC1
-    #'815c576-a5d8898-9df72e7-b4d87fe-96ce64' => 'LO-3.6-pre',  # 3.6.0 RC2
+    '815c576-a5d8898-9df72e7-b4d87fe-96ce64' => 'LO-3.6-pre',  # 3.6.0 RC2
+    '61d5034-02759b5-145085a-056ecdd-4e8a3e' => 'LO-3.6-pre',  # 3.6.0 RC3
+    #'932b512-69e3009-7a10e5c-fc86223-a55908' => 'LO-3.6-pre',  # 3.6.0 RC4
 );
 
 # Descriptions of the target versions
@@ -153,9 +155,9 @@ $update_map = array(
 #                          'update_type' => 'text/html',
 #                          'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
 
-    'LO-3.6-pre' => array('gitid'       => '815c576-a5d8898-9df72e7-b4d87fe-96ce64',
-                          'id'          => 'LibreOffice 3.6.0 RC2',
-                          'version'     => '3.6.0 RC2',
+    'LO-3.6-pre' => array('gitid'       => '932b512-69e3009-7a10e5c-fc86223-a55908',
+                          'id'          => 'LibreOffice 3.6.0 RC4',
+                          'version'     => '3.6.0 RC4',
                           'update_type' => 'text/html',
                           'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
 );
