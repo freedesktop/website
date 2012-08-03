@@ -275,7 +275,6 @@ sub line_type {
 		     ($line =~ m#^\s*\[echo\]\s*LogKit not found: Cannot Build LogKitLogger#) ||
 		     ($line =~ m#^\s*\[echo\]\s*Avalon-Framework not found: Cannot Build AvalonLogger#) ||
 		     # some more filenames that cause a false trigger
-		     ($line =~ m#^/bin/sh \.\./\.\./libtool --tag=CXX.*DynamicLibraryManagerException\.lo Exception\.lo#) ||
 		     ($line =~ m#^boost_1_39_0/(boost(/tr1/tr1(/sun)?)?|libs(/unordered/test)?)/exception(\.|/)?#) ||
 		     ($line =~ m#^boost_1_44_0/(boost(/tr1/tr1(/sun)?)?|libs(/unordered/test)?)/exception(\.|/)?#) ||
 		     ($line =~ m#^commons-lang-2\.3-src/src/(java|test)/org/apache/commons/lang/exception/#) ||
@@ -283,6 +282,8 @@ sub line_type {
 		     # annoying configure messages
 		     ($line =~ m#^checking (if|whether).*/bin/rm: cannot remove `conftest\*´: No such file or directory$#) ||
 		     ($line =~ m#^checking for -Bsymbolic-functions linker support \.\.\. not found#) ||
+		     # cppunit
+		     ($line =~ m#^  CXX    Exception.lo#) ||
 		     # gettext related
 		     ($line =~ m#^checking where term(info|cap) library functions come from\.\.\. not found, consider installing GNU ncurses#) ||
 		     ($line =~ m#^  CC     (error-progname|fatal-signal).lo#) ||
