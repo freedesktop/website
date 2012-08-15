@@ -45,6 +45,15 @@ function get_update_info($agent=null) {
     # additionally store language of the user interface
     $match['lang'] = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
+    # check the package format for Linux packages
+    # FIXME this should be improved, but serves the purpose for now
+    if ($_SERVER['QUERY_STRING'] == 'pkgfmt=rpm')
+        $match['pkgfmt'] = 'rpm';
+    else if ($_SERVER['QUERY_STRING'] == 'pkgfmt=deb')
+        $match['pkgfmt'] = 'deb';
+    else
+        $match['pkgfmt'] = '';
+
     return $match;
 }
 
@@ -123,8 +132,12 @@ $update_versions = array(
     # 3.5.5 versions
     'c9944f7-48b7ff5-0507789-54a4c8a-8b242a8' => 'LO-3.5',  # 3.5.5 RC1
     '24b32b4-b87ec2e-85c8e98-87a4e20-9a1b8c1' => 'LO-3.5',  # 3.5.5 RC2
-    # To be uncommented when 3.5.6 Final is out
-    #'7122e39-92ed229-498d286-15e43b4-d70da21' => 'LO-3.5',  # 3.5.5 RC3 / Final
+    '7122e39-92ed229-498d286-15e43b4-d70da21' => 'LO-3.5',  # 3.5.5 RC3 / Final
+
+    # 3.5.6 versions
+    '9cb76c3-dcba98b-297ab39-994e618-0f858f0' => 'LO-3.5',  # 3.5.6 RC1
+    # To be uncommented when 3.5.7 Final is out
+    #'e0fbe70-5879838-a0745b0-0cd1158-638b327' => 'LO-3.5',  # 3.5.6 RC2 / Final
 
     ##################
     # 3.6.0 versions
@@ -141,17 +154,22 @@ $update_versions = array(
 # The entry must point to the newest version
 # 'gitid' is the content of program/versionrc:buildid of the newest version
 # 'id' is what is going to be shown in the update information dialog
+# 'update_src' specifies the target url.  When 'substitute' is set to true,
+#   you can use there a string like
+#   'http://www.libreoffice.org/download/?type=<type>&lang=<lang>&version=3.5.6'
+#   where '<type>' and '<lang>' will be substitued with the right value
 $update_map = array(
-    'LO-3.5' => array('gitid'       => '7122e39-92ed229-498d286-15e43b4-d70da21',
-                      'id'          => 'LibreOffice 3.5.5',
-                      'version'     => '3.5.5',
+    'LO-3.5' => array('gitid'       => 'e0fbe70-5879838-a0745b0-0cd1158-638b327',
+                      'id'          => 'LibreOffice 3.5.6',
+                      'version'     => '3.5.6',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/'),
+                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&lang=<lang>&version=3.5.6',
+                      'substitute'  => true ),
 
-# To be uncommented when 3.5.6 RC2 is out, to get updates from 3.5.6 RC1
+# To be uncommented when 3.5.7 RC2 is out, to get updates from 3.5.7 RC1
 #    'LO-3.5-pre' => array('gitid'       => '',
-#                          'id'          => 'LibreOffice 3.5.6 RC2',
-#                          'version'     => '3.5.6 RC2',
+#                          'id'          => 'LibreOffice 3.5.7 RC2',
+#                          'version'     => '3.5.7 RC2',
 #                          'update_type' => 'text/html',
 #                          'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
 
@@ -163,7 +181,7 @@ $update_map = array(
 );
 
 # Print the update xml
-function print_update_xml($buildid, $os, $arch, $lang) {
+function print_update_xml($buildid, $os, $arch, $lang, $pkgfmt) {
     global $update_versions, $update_map, $localize_map, $debug;
 
     if (!array_key_exists($buildid, $update_versions))
@@ -191,6 +209,54 @@ function print_update_xml($buildid, $os, $arch, $lang) {
             if ($lang_only != false && array_key_exists($lang_only, $src_array))
                 $update_src = $src_array[$lang_only];
         }
+    }
+
+    # substitute '<lang>' and '<type>' with the right values
+    if (array_key_exists('substitute', $new) && $new['substitute'])
+    {
+        $target_type = '';
+        switch ($os) {
+            case 'Linux':
+                if ($pkgfmt == '')
+                    $pkgfmt = 'rpm';
+
+                if ($arch == 'X86_64')
+                    $target_type = $pkgfmt . "-x86_64";
+                else
+                    $target_type = $pkgfmt . "-x86";
+                break;
+            case 'MacOSX':
+                if ($arch == 'PowerPC')
+                    $target_type = 'mac-ppc';
+                else
+                    $target_type = 'mac-x86';
+                break;
+            case 'Windows':
+                $target_type = 'win-x86';
+                break;
+        }
+
+        $target_lang = strtok($lang, '-');
+        if ($target_lang == false ||
+            $lang == 'en-US' || $lang == 'ca-XV' || $lang == 'en-GB' || $lang == 'en-ZA' ||
+            $lang == 'pa-IN' || $lang == 'pt-BR' || $lang == 'sa-IN' || $lang == 'sw-TZ' ||
+            $lang == 'zh-CN' || $lang == 'zh-TW')
+        {
+            $target_lang = $lang;
+        }
+        if ($target_lang == '')
+            $target_lang = 'en-US';
+
+        $patterns = array();
+        $replacementns = array();
+
+        $patterns[0] = '/<type>/';
+        $replacements[0] = $target_type;
+
+        $patterns[1] = '/<lang>/';
+        $replacements[1] = $target_lang;
+
+        $update_src = preg_replace($patterns, $replacements, $update_src);
     }
 
     # inst:buildid is a legacy thing, and we need to set it in order to
@@ -221,4 +287,4 @@ $info = get_update_info();
 if (!array_key_exists('product', $info) || ($info['product'] != 'LibreOffice' && $info['product'] != 'LOdev'))
     error('<b>Error:</b> Only LibreOffice can access the update service.');
 
-print_update_xml($info['buildid'], $info['os'], $info['arch'], $info['lang']);
+print_update_xml($info['buildid'], $info['os'], $info['arch'], $info['lang'], $info['pkgfmt']);
