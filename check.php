@@ -29,7 +29,7 @@ function get_update_info($agent=null) {
     global $debug;
 
     if ($debug)
-        error_log($_SERVER['HTTP_USER_AGENT'] . "; " . $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        error_log($_SERVER['HTTP_USER_AGENT'] . "; " . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "; " . $_SERVER['QUERY_STRING']);
 
     if ($agent == null && array_key_exists('HTTP_USER_AGENT', $_SERVER))
         $agent = $_SERVER['HTTP_USER_AGENT'];
@@ -47,12 +47,14 @@ function get_update_info($agent=null) {
 
     # check the package format for Linux packages
     # FIXME this should be improved, but serves the purpose for now
-    if ($_SERVER['QUERY_STRING'] == 'pkgfmt=rpm')
-        $match['pkgfmt'] = 'rpm';
-    else if ($_SERVER['QUERY_STRING'] == 'pkgfmt=deb')
-        $match['pkgfmt'] = 'deb';
-    else
-        $match['pkgfmt'] = '';
+    $match['pkgfmt'] = '';
+    if (array_key_exists('QUERY_STRING', $_SERVER))
+    {
+        if ($_SERVER['QUERY_STRING'] == 'pkgfmt=rpm')
+            $match['pkgfmt'] = 'rpm';
+        else if ($_SERVER['QUERY_STRING'] == 'pkgfmt=deb')
+            $match['pkgfmt'] = 'deb';
+    }
 
     return $match;
 }
@@ -156,14 +158,15 @@ $update_versions = array(
 # 'id' is what is going to be shown in the update information dialog
 # 'update_src' specifies the target url.  When 'substitute' is set to true,
 #   you can use there a string like
-#   'http://www.libreoffice.org/download/?type=<type>&lang=<lang>&version=3.5.6'
+#   'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.5.6'
 #   where '<type>' and '<lang>' will be substitued with the right value
+#   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
     'LO-3.5' => array('gitid'       => 'e0fbe70-5879838-a0745b0-0cd1158-638b327',
                       'id'          => 'LibreOffice 3.5.6',
                       'version'     => '3.5.6',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&lang=<lang>&version=3.5.6',
+                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.5.6',
                       'substitute'  => true ),
 
 # To be uncommented when 3.5.7 RC2 is out, to get updates from 3.5.7 RC1
