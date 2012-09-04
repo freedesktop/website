@@ -283,7 +283,7 @@ sub line_type {
 		     ($line =~ m#^checking (if|whether).*/bin/rm: cannot remove `conftest\*´: No such file or directory$#) ||
 		     ($line =~ m#^checking for -Bsymbolic-functions linker support \.\.\. not found#) ||
 		     # cppunit
-		     ($line =~ m#^  CXX    Exception.lo#) ||
+		     ($line =~ m#^\s*CXX\s*Exception.lo#) ||
 		     # gettext related
 		     ($line =~ m#^checking where term(info|cap) library functions come from\.\.\. not found, consider installing GNU ncurses#) ||
 		     ($line =~ m#^  CC     (error-progname|fatal-signal).lo#) ||
