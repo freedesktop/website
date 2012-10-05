@@ -153,8 +153,12 @@ $update_versions = array(
 
     # 3.6.1 versions
     '4db6344-f0536b8-bbcdb32-f398e1b-f43716' => 'LO-3.6',  # 3.6.1.1
-    #'e29a214-2bbed72-0621de6-a97528c-8f066d' => 'LO-3.6',  # 3.6.1.2 / Final
+    'e29a214-2bbed72-0621de6-a97528c-8f066d' => 'LO-3.6',  # 3.6.1.2 / Final
 
+    # 3.6.2 versions
+    'ba822cc-88e2710-134b205-7cd8c5c-680b12' => 'LO-3.6',  # 3.6.2.1
+    # To be uncommented when 3.6.3 Final is out
+    #'da8c1e6-fd468f4-454e206-f42a4a9-143cfd' => 'LO-3.6',  # 3.6.2.2 / Final
 );
 
 # Descriptions of the target versions
@@ -181,9 +185,9 @@ $update_map = array(
 #                          'update_type' => 'text/html',
 #                          'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
 
-    'LO-3.6' => array('gitid'       => 'e29a214-2bbed72-0621de6-a97528c-8f066d',
-                      'id'          => 'LibreOffice 3.6.1',
-                      'version'     => '3.6.1',
+    'LO-3.6' => array('gitid'       => 'da8c1e6-fd468f4-454e206-f42a4a9-143cfd',
+                      'id'          => 'LibreOffice 3.6.2',
+                      'version'     => '3.6.2',
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/'),
 );
