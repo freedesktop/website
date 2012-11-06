@@ -138,8 +138,12 @@ $update_versions = array(
 
     # 3.5.6 versions
     '9cb76c3-dcba98b-297ab39-994e618-0f858f0' => 'LO-3.5',  # 3.5.6 RC1
-    # To be uncommented when 3.5.7 Final is out
-    #'e0fbe70-5879838-a0745b0-0cd1158-638b327' => 'LO-3.5',  # 3.5.6 RC2 / Final
+    'e0fbe70-5879838-a0745b0-0cd1158-638b327' => 'LO-3.5',  # 3.5.6 RC2 / Final
+
+    # 3.5.7 versions
+    '3fa2330-e49ffd2-90d118b-705e248-051e21c' => 'LO-3.5',  # 3.5.7 RC1
+    # To be uncommented when we abandon 3.5, and redirect everything to 3.6
+    #'3215f89-f603614-ab984f2-7348103-1225a5b' => 'LO-3.5',  # 3.5.7 RC2 / Final
 
     ##################
     # 3.6.0 versions
@@ -175,11 +179,11 @@ $update_versions = array(
 #   where '<type>' and '<lang>' will be substitued with the right value
 #   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
-    'LO-3.5' => array('gitid'       => 'e0fbe70-5879838-a0745b0-0cd1158-638b327',
-                      'id'          => 'LibreOffice 3.5.6',
-                      'version'     => '3.5.6',
+    'LO-3.5' => array('gitid'       => '3215f89-f603614-ab984f2-7348103-1225a5b',
+                      'id'          => 'LibreOffice 3.5.7',
+                      'version'     => '3.5.7',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.5.6',
+                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.5.7',
                       'substitute'  => true ),
 
 # To be uncommented when 3.5.7 RC2 is out, to get updates from 3.5.7 RC1
