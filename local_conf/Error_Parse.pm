@@ -303,6 +303,8 @@ sub line_type {
 		     ($line =~ m#\.\./\.\./dist/include/xpcom_obsolete/nsFileStream\.h: In member function 'PRBool nsErrorProne::failed\(\) const':$#) ||
 		     # system-libs
 		     ($line =~ m#^Therefore the version provided here does not need to be built in addition\.#) ||
+                     # XCode 2.5
+		     ($line =~ m#ld: warning can't open dynamic library: \@loader_path/lib(glib|gmodule|gobject|gthread)-2\.0\.0\.dylib referenced from:.*\(checking for undefined symbols may be affected\)#) ||
 		     
                      0);
       
