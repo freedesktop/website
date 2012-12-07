@@ -124,12 +124,12 @@ $update_versions = array(
     '281b639-6baa1d3-ef66a77-d866f25-f36d45f' => 'LO-3.6',  # 3.5.2 RC2 / Final
 
     # 3.5.3 versions
-    '21cb047-d7e6025-9ba54fc-b4a51a8-f42372b' => 'LO-3.5',  # 3.5.3 RC1
-    '235ab8a-3802056-4a8fed3-2d66ea8-e241b80' => 'LO-3.5',  # 3.5.3 RC2 / Final
+    '21cb047-d7e6025-9ba54fc-b4a51a8-f42372b' => 'LO-3.6',  # 3.5.3 RC1
+    '235ab8a-3802056-4a8fed3-2d66ea8-e241b80' => 'LO-3.6',  # 3.5.3 RC2 / Final
 
     # 3.5.4 versions
-    '7306755-f4f605c-738527d-1cf4bc1-9930dc8' => 'LO-3.5',  # 3.5.4 RC1
-    '165a79a-7059095-e13bb37-fef39a4-9503d18' => 'LO-3.5',  # 3.5.4 RC2 / Final
+    '7306755-f4f605c-738527d-1cf4bc1-9930dc8' => 'LO-3.6',  # 3.5.4 RC1
+    '165a79a-7059095-e13bb37-fef39a4-9503d18' => 'LO-3.6',  # 3.5.4 RC2 / Final
 
     # 3.5.5 versions
     'c9944f7-48b7ff5-0507789-54a4c8a-8b242a8' => 'LO-3.5',  # 3.5.5 RC1
@@ -165,8 +165,12 @@ $update_versions = array(
 
     # 3.6.3 versions
     'f8fce0b-300fad7-0c1a2b6-334b928-da36a9' => 'LO-3.6',  # 3.6.3.1
-    # To be uncommented when 3.6.4 Final is out
-    #'58f22d5-270d05a-e2abed1-ea17a85-9b5702' => 'LO-3.6',  # 3.6.3.2 / Final
+    '58f22d5-270d05a-e2abed1-ea17a85-9b5702' => 'LO-3.6',  # 3.6.3.2 / Final
+
+    # 3.6.4 versions
+    'a9a0717-273e462-768e6e3-978247f-65e65f' => 'LO-3.6',  # 3.6.4.1
+    # To be uncommented when 3.6.5 Final is out
+    #'2ef5aff-a6fb0ff-166bdff-cf087ad-0f1389' => 'LO-3.6',  # 3.6.4.3 / Final [3.5.4.2 was skipped]
 );
 
 # Descriptions of the target versions
@@ -193,9 +197,9 @@ $update_map = array(
 #                          'update_type' => 'text/html',
 #                          'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
 
-    'LO-3.6' => array('gitid'       => '58f22d5-270d05a-e2abed1-ea17a85-9b5702',
-                      'id'          => 'LibreOffice 3.6.3',
-                      'version'     => '3.6.3',
+    'LO-3.6' => array('gitid'       => '2ef5aff-a6fb0ff-166bdff-cf087ad-0f1389',
+                      'id'          => 'LibreOffice 3.6.4',
+                      'version'     => '3.6.4',
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/'),
 );
