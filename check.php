@@ -37,7 +37,7 @@ function get_update_info($agent=null) {
     if ($agent == null)
         return array();
 
-    $pattern = '#^(?P<product>[^/ ]+)[/ ]+(?P<version>[0-9]+(?:\.[0-9]+)?) +\((?P<buildid>[^;\( ]*) *; (?P<os>[^; ]*); (?P<arch>[^; ]*); BundledLanguages=(?<langs>[^;\)]*)\)#i';
+    $pattern = '#^(?P<product>[^/ ]+)[/ ]+(?P<version>[0-9]+(?:\.[0-9]+)?)[^\(]+\((?P<buildid>[^;\( ]*) *; (?P<os>[^; ]*); (?P<arch>[^; ]*); BundledLanguages=(?<langs>[^;\)]*)\)#i';
 
     if (!preg_match($pattern, $agent, $match))
         return array();
@@ -171,6 +171,14 @@ $update_versions = array(
     'a9a0717-273e462-768e6e3-978247f-65e65f' => 'LO-3.6',  # 3.6.4.1
     # To be uncommented when 3.6.5 Final is out
     #'2ef5aff-a6fb0ff-166bdff-cf087ad-0f1389' => 'LO-3.6',  # 3.6.4.3 / Final [3.5.4.2 was skipped]
+
+    ##################
+    # 4.0.0 versions
+    '87906242e87d3ddb2ba9827818f2d1416d80cc7' => 'LO-4.0', # 4.0.0 Beta1
+    '4104d660979c57e1160b5135634f732918460a0' => 'LO-4.0', # 4.0.0 Beta2
+    '527dba6f6e0cfbbc71bd6e7b88a52699bb48799' => 'LO-4.0', # 4.0.0 RC1
+    #'408fe71bd18616c467b3dcd7ab6756528ffcae2' => 'LO-4.0', # 4.0.0 RC2
+    #'5991f37846fc3763493029c4958b57282c2597e' => 'LO-4.0', # 4.0.0 RC2 (Windows)
 );
 
 # Descriptions of the target versions
@@ -202,6 +210,12 @@ $update_map = array(
                       'version'     => '3.6.4',
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/'),
+
+    'LO-4.0' => array('gitid'       => '5991f37846fc3763493029c4958b57282c2597e',
+                      'id'          => 'LibreOffice 4.0.0 RC2',
+                      'version'     => '4.0.0 RC2',
+                      'update_type' => 'text/html',
+                      'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
 );
 
 # Print the update xml
