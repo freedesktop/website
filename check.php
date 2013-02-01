@@ -132,9 +132,9 @@ $update_versions = array(
     '165a79a-7059095-e13bb37-fef39a4-9503d18' => 'LO-3.6',  # 3.5.4 RC2 / Final
 
     # 3.5.5 versions
-    'c9944f7-48b7ff5-0507789-54a4c8a-8b242a8' => 'LO-3.5',  # 3.5.5 RC1
-    '24b32b4-b87ec2e-85c8e98-87a4e20-9a1b8c1' => 'LO-3.5',  # 3.5.5 RC2
-    '7122e39-92ed229-498d286-15e43b4-d70da21' => 'LO-3.5',  # 3.5.5 RC3 / Final
+    'c9944f7-48b7ff5-0507789-54a4c8a-8b242a8' => 'LO-3.6',  # 3.5.5 RC1
+    '24b32b4-b87ec2e-85c8e98-87a4e20-9a1b8c1' => 'LO-3.6',  # 3.5.5 RC2
+    '7122e39-92ed229-498d286-15e43b4-d70da21' => 'LO-3.6',  # 3.5.5 RC3 / Final
 
     # 3.5.6 versions
     '9cb76c3-dcba98b-297ab39-994e618-0f858f0' => 'LO-3.5',  # 3.5.6 RC1
@@ -169,8 +169,11 @@ $update_versions = array(
 
     # 3.6.4 versions
     'a9a0717-273e462-768e6e3-978247f-65e65f' => 'LO-3.6',  # 3.6.4.1
-    # To be uncommented when 3.6.5 Final is out
-    #'2ef5aff-a6fb0ff-166bdff-cf087ad-0f1389' => 'LO-3.6',  # 3.6.4.3 / Final [3.5.4.2 was skipped]
+    '2ef5aff-a6fb0ff-166bdff-cf087ad-0f1389' => 'LO-3.6',  # 3.6.4.3 / Final [3.6.4.2 was skipped]
+
+    # 3.6.5 versions
+    # To be uncommented when 3.6.6 Final is out
+    #'5b93205-6e6b3fc-7830f6d-c08ad66-1d9bf4' => 'LO-3.6',  # 3.6.5.2 / Final [3.6.5.1 was skipped]
 
     ##################
     # 4.0.0 versions
@@ -205,9 +208,9 @@ $update_map = array(
 #                          'update_type' => 'text/html',
 #                          'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
 
-    'LO-3.6' => array('gitid'       => '2ef5aff-a6fb0ff-166bdff-cf087ad-0f1389',
-                      'id'          => 'LibreOffice 3.6.4',
-                      'version'     => '3.6.4',
+    'LO-3.6' => array('gitid'       => '5b93205-6e6b3fc-7830f6d-c08ad66-1d9bf4',
+                      'id'          => 'LibreOffice 3.6.5',
+                      'version'     => '3.6.5',
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/'),
 
