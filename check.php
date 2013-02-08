@@ -180,8 +180,10 @@ $update_versions = array(
     '87906242e87d3ddb2ba9827818f2d1416d80cc7' => 'LO-4.0', # 4.0.0 Beta1
     '4104d660979c57e1160b5135634f732918460a0' => 'LO-4.0', # 4.0.0 Beta2
     '527dba6f6e0cfbbc71bd6e7b88a52699bb48799' => 'LO-4.0', # 4.0.0 RC1
-    #'408fe71bd18616c467b3dcd7ab6756528ffcae2' => 'LO-4.0', # 4.0.0 RC2
-    #'5991f37846fc3763493029c4958b57282c2597e' => 'LO-4.0', # 4.0.0 RC2 (Windows)
+    '408fe71bd18616c467b3dcd7ab6756528ffcae2' => 'LO-4.0', # 4.0.0 RC2
+    '5991f37846fc3763493029c4958b57282c2597e' => 'LO-4.0', # 4.0.0 RC2 (Windows)
+    #'7545bee9c2a0782548772a21bc84a9dcc583b89' => 'LO-4.0', # 4.0.0 RC3 / Final
+    #'53fd80e80f44edd735c18dbc5b6cde811e0a15c' => 'LO-4.0', # 4.0.0 RC3 / Final (MacOSX)
 );
 
 # Descriptions of the target versions
@@ -215,9 +217,10 @@ $update_map = array(
                       'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.6.5',
                       'substitute'  => true ),
 
-    'LO-4.0' => array('gitid'       => '5991f37846fc3763493029c4958b57282c2597e',
-                      'id'          => 'LibreOffice 4.0.0 RC2',
-                      'version'     => '4.0.0 RC2',
+    'LO-4.0' => array('gitid'       => '7545bee9c2a0782548772a21bc84a9dcc583b89',
+                      'gitidMacOSX' => '53fd80e80f44edd735c18dbc5b6cde811e0a15c',
+                      'id'          => 'LibreOffice 4.0.0',
+                      'version'     => '4.0.0',
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/'),
 );
@@ -301,13 +304,17 @@ function print_update_xml($buildid, $os, $arch, $lang, $pkgfmt) {
         $update_src = preg_replace($patterns, $replacements, $update_src);
     }
 
+    $gitid = $new['gitid'];
+    if (array_key_exists('gitid' . $os, $new))
+        $gitid = $new['gitid' . $os];
+
     # inst:buildid is a legacy thing, and we need to set it in order to
     # update 3.5.0 Beta1 and Beta2 to further versions too
     # We can get rid of it when there is no Beta1 or Beta2 in use out there
     $out = '<?xml version="1.0" encoding="utf-8"?>
 <inst:description xmlns:inst="http://update.libreoffice.org/description">
   <inst:id>' . $new['id'] . '</inst:id>
-  <inst:gitid>' . $new['gitid'] . '</inst:gitid>
+  <inst:gitid>' . $gitid . '</inst:gitid>
   <inst:os>' . $os . '</inst:os>
   <inst:arch>' . $arch . '</inst:arch>
   <inst:version>' . $new['version'] . '</inst:version>
