@@ -212,13 +212,14 @@ $update_map = array(
                       'id'          => 'LibreOffice 3.6.5',
                       'version'     => '3.6.5',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/'),
+                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.6.5',
+                      'substitute'  => true ),
 
     'LO-4.0' => array('gitid'       => '5991f37846fc3763493029c4958b57282c2597e',
                       'id'          => 'LibreOffice 4.0.0 RC2',
                       'version'     => '4.0.0 RC2',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
+                      'update_src'  => 'http://www.libreoffice.org/download/'),
 );
 
 # Print the update xml
