@@ -107,13 +107,13 @@ $localize_map = array(
 $update_versions = array(
     ##################
     # 3.5.0 versions
-    '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-3.6',  # 3.5.0 Beta1
-    '8589e48-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.6',  # 3.5.0 Beta2
-    'da8462e-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-3.6',  # 3.5.0 Beta2 (MacOSX)
-    'e40af8c-10029e3-615e522-88673a2-727f724' => 'LO-3.6',  # 3.5.0 Beta3
-    'b6c8ba5-8c0b455-0b5e650-d7f0dd3-b100c87' => 'LO-3.6',  # 3.5.0 RC1
-    'e371a95-bf68a13-5a1aa2b-d3c1ae9-b938258' => 'LO-3.6',  # 3.5.0 RC2
-    '7e68ba2-a744ebf-1f241b7-c506db1-7d53735' => 'LO-3.6',  # 3.5.0 RC3 / Final
+    '7362ca8-b5a8e65-af86909-d471f98-61464c4' => 'LO-4.0',  # 3.5.0 Beta1
+    '8589e48-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-4.0',  # 3.5.0 Beta2
+    'da8462e-760cc4d-f39cf3d-1b2857e-60db978' => 'LO-4.0',  # 3.5.0 Beta2 (MacOSX)
+    'e40af8c-10029e3-615e522-88673a2-727f724' => 'LO-4.0',  # 3.5.0 Beta3
+    'b6c8ba5-8c0b455-0b5e650-d7f0dd3-b100c87' => 'LO-4.0',  # 3.5.0 RC1
+    'e371a95-bf68a13-5a1aa2b-d3c1ae9-b938258' => 'LO-4.0',  # 3.5.0 RC2
+    '7e68ba2-a744ebf-1f241b7-c506db1-7d53735' => 'LO-4.0',  # 3.5.0 RC3 / Final
 
     # 3.5.1 versions
     '45a2874-aa8c38d-dff3b9c-def3dbd-62463c8' => 'LO-3.6',  # 3.5.1 RC1
@@ -137,23 +137,22 @@ $update_versions = array(
     '7122e39-92ed229-498d286-15e43b4-d70da21' => 'LO-3.6',  # 3.5.5 RC3 / Final
 
     # 3.5.6 versions
-    '9cb76c3-dcba98b-297ab39-994e618-0f858f0' => 'LO-3.5',  # 3.5.6 RC1
-    'e0fbe70-5879838-a0745b0-0cd1158-638b327' => 'LO-3.5',  # 3.5.6 RC2 / Final
+    '9cb76c3-dcba98b-297ab39-994e618-0f858f0' => 'LO-3.6',  # 3.5.6 RC1
+    'e0fbe70-5879838-a0745b0-0cd1158-638b327' => 'LO-3.6',  # 3.5.6 RC2 / Final
 
     # 3.5.7 versions
-    '3fa2330-e49ffd2-90d118b-705e248-051e21c' => 'LO-3.5',  # 3.5.7 RC1
-    # To be uncommented when we abandon 3.5, and redirect everything to 3.6
-    #'3215f89-f603614-ab984f2-7348103-1225a5b' => 'LO-3.5',  # 3.5.7 RC2 / Final
+    '3fa2330-e49ffd2-90d118b-705e248-051e21c' => 'LO-3.6',  # 3.5.7 RC1
+    '3215f89-f603614-ab984f2-7348103-1225a5b' => 'LO-3.6',  # 3.5.7 RC2 / Final
 
     ##################
     # 3.6.0 versions
-    '1f1cdd8-e28082e-41df8bf-b153627-a97a84' => 'LO-3.6',  # 3.6.0 Beta1
-    'f010139-41cc8cc-da4127d-d2bb4b0-f433b8' => 'LO-3.6',  # 3.6.0 Beta2
-    '3e2b862-dd05a58-d67668b-8ec3f67-dfb62d' => 'LO-3.6',  # 3.6.0 Beta3
-    '73f9fb6-115b9dc-d7b744e-21dd070-d656a7' => 'LO-3.6',  # 3.6.0 RC1
-    '815c576-a5d8898-9df72e7-b4d87fe-96ce64' => 'LO-3.6',  # 3.6.0 RC2
-    '61d5034-02759b5-145085a-056ecdd-4e8a3e' => 'LO-3.6',  # 3.6.0 RC3
-    '932b512-69e3009-7a10e5c-fc86223-a55908' => 'LO-3.6',  # 3.6.0 RC4 / Final
+    '1f1cdd8-e28082e-41df8bf-b153627-a97a84' => 'LO-4.0',  # 3.6.0 Beta1
+    'f010139-41cc8cc-da4127d-d2bb4b0-f433b8' => 'LO-4.0',  # 3.6.0 Beta2
+    '3e2b862-dd05a58-d67668b-8ec3f67-dfb62d' => 'LO-4.0',  # 3.6.0 Beta3
+    '73f9fb6-115b9dc-d7b744e-21dd070-d656a7' => 'LO-4.0',  # 3.6.0 RC1
+    '815c576-a5d8898-9df72e7-b4d87fe-96ce64' => 'LO-4.0',  # 3.6.0 RC2
+    '61d5034-02759b5-145085a-056ecdd-4e8a3e' => 'LO-4.0',  # 3.6.0 RC3
+    '932b512-69e3009-7a10e5c-fc86223-a55908' => 'LO-4.0',  # 3.6.0 RC4 / Final
 
     # 3.6.1 versions
     '4db6344-f0536b8-bbcdb32-f398e1b-f43716' => 'LO-3.6',  # 3.6.1.1
@@ -196,20 +195,6 @@ $update_versions = array(
 #   where '<type>' and '<lang>' will be substitued with the right value
 #   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
-    'LO-3.5' => array('gitid'       => '3215f89-f603614-ab984f2-7348103-1225a5b',
-                      'id'          => 'LibreOffice 3.5.7',
-                      'version'     => '3.5.7',
-                      'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.5.7',
-                      'substitute'  => true ),
-
-# To be uncommented when 3.5.7 RC2 is out, to get updates from 3.5.7 RC1
-#    'LO-3.5-pre' => array('gitid'       => '',
-#                          'id'          => 'LibreOffice 3.5.7 RC2',
-#                          'version'     => '3.5.7 RC2',
-#                          'update_type' => 'text/html',
-#                          'update_src'  => 'http://www.libreoffice.org/download/pre-releases/'),
-
     'LO-3.6' => array('gitid'       => '5b93205-6e6b3fc-7830f6d-c08ad66-1d9bf4',
                       'id'          => 'LibreOffice 3.6.5',
                       'version'     => '3.6.5',
