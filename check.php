@@ -120,8 +120,8 @@ $update_versions = array(
     'dc9775d-05ecbee-0851ad3-1586698-727bf66' => 'LO-4.0',  # 3.5.1 RC2 / Final
 
     # 3.5.2 versions
-    '1488b14-519dc6f-43021d0-52136ea-8d338cc' => 'LO-3.6',  # 3.5.2 RC1
-    '281b639-6baa1d3-ef66a77-d866f25-f36d45f' => 'LO-3.6',  # 3.5.2 RC2 / Final
+    '1488b14-519dc6f-43021d0-52136ea-8d338cc' => 'LO-4.0',  # 3.5.2 RC1
+    '281b639-6baa1d3-ef66a77-d866f25-f36d45f' => 'LO-4.0',  # 3.5.2 RC2 / Final
 
     # 3.5.3 versions
     '21cb047-d7e6025-9ba54fc-b4a51a8-f42372b' => 'LO-3.6',  # 3.5.3 RC1
@@ -159,8 +159,8 @@ $update_versions = array(
     'e29a214-2bbed72-0621de6-a97528c-8f066d' => 'LO-4.0',  # 3.6.1.2 / Final
 
     # 3.6.2 versions
-    'ba822cc-88e2710-134b205-7cd8c5c-680b12' => 'LO-3.6',  # 3.6.2.1
-    'da8c1e6-fd468f4-454e206-f42a4a9-143cfd' => 'LO-3.6',  # 3.6.2.2 / Final
+    'ba822cc-88e2710-134b205-7cd8c5c-680b12' => 'LO-4.0',  # 3.6.2.1
+    'da8c1e6-fd468f4-454e206-f42a4a9-143cfd' => 'LO-4.0',  # 3.6.2.2 / Final
 
     # 3.6.3 versions
     'f8fce0b-300fad7-0c1a2b6-334b928-da36a9' => 'LO-3.6',  # 3.6.3.1
@@ -186,7 +186,11 @@ $update_versions = array(
 
     # 4.0.1 versions
     '2c0c17a6e4bee0ee28131ea4bdc47edc700d659' => 'LO-4.0',  # 4.0.1 RC1
-    #'84102822e3d61eb989ddd325abf1ac077904985' => 'LO-4.0',  # 4.0.1 RC2 / Final
+    '84102822e3d61eb989ddd325abf1ac077904985' => 'LO-4.0',  # 4.0.1 RC2 / Final
+
+    # 4.0.2 versions
+    '7e5467ff8f30d821f4fbf69cb2769163eb64c2c' => 'LO-4.0',  # 4.0.2 RC1
+    #'4c82dcdd6efcd48b1d8bba66bfe1989deee49c3' => 'LO-4.0',  # 4.0.2 RC2 / Final
 );
 
 # Descriptions of the target versions
@@ -206,9 +210,9 @@ $update_map = array(
                       'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.6.5',
                       'substitute'  => true ),
 
-    'LO-4.0' => array('gitid'       => '84102822e3d61eb989ddd325abf1ac077904985',
-                      'id'          => 'LibreOffice 4.0.1',
-                      'version'     => '4.0.1',
+    'LO-4.0' => array('gitid'       => '4c82dcdd6efcd48b1d8bba66bfe1989deee49c3',
+                      'id'          => 'LibreOffice 4.0.2',
+                      'version'     => '4.0.2',
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/'),
 );
