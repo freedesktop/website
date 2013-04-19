@@ -171,8 +171,12 @@ $update_versions = array(
     '2ef5aff-a6fb0ff-166bdff-cf087ad-0f1389' => 'LO-3.6',  # 3.6.4.3 / Final [3.6.4.2 was skipped]
 
     # 3.6.5 versions
-    # To be uncommented when 3.6.6 Final is out
-    #'5b93205-6e6b3fc-7830f6d-c08ad66-1d9bf4' => 'LO-3.6',  # 3.6.5.2 / Final [3.6.5.1 was skipped]
+    '5b93205-6e6b3fc-7830f6d-c08ad66-1d9bf4' => 'LO-3.6',  # 3.6.5.2 / Final [3.6.5.1 was skipped]
+
+    # 3.6.6 versions
+    'a61ad19-949f691-349cf55-3bea8d1-2c85eb' => 'LO-3.6',  # 3.6.6.1
+    # To be uncommented when 3.6.7 Final is out
+    #'f969faf-c24b504-8c77064-174276e-40b382' => 'LO-3.6',  # 3.6.6.2 / Final
 
     ##################
     # 4.0.0 versions
@@ -203,11 +207,11 @@ $update_versions = array(
 #   where '<type>' and '<lang>' will be substitued with the right value
 #   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
-    'LO-3.6' => array('gitid'       => '5b93205-6e6b3fc-7830f6d-c08ad66-1d9bf4',
-                      'id'          => 'LibreOffice 3.6.5',
-                      'version'     => '3.6.5',
+    'LO-3.6' => array('gitid'       => 'f969faf-c24b504-8c77064-174276e-40b382',
+                      'id'          => 'LibreOffice 3.6.6',
+                      'version'     => '3.6.6',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.6.5',
+                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.6.6',
                       'substitute'  => true ),
 
     'LO-4.0' => array('gitid'       => '4c82dcdd6efcd48b1d8bba66bfe1989deee49c3',
