@@ -280,8 +280,10 @@ sub line_type {
 		     ($line =~ m#^commons-lang-2\.3-src/src/(java|test)/org/apache/commons/lang/exception/#) ||
 		     ($line =~ m#^commons-httpclient-3\.1/docs/exception-handling\.html#) ||
 		     # annoying configure messages
+		     ($line =~ m#^Running \./configure with#) ||
 		     ($line =~ m#^checking (if|whether).*/bin/rm: cannot remove `conftest\*´: No such file or directory$#) ||
 		     ($line =~ m#^checking for -Bsymbolic-functions linker support \.\.\. not found#) ||
+		     ($line =~ m#^\s*checking whether .* supports pragma GCC diagnostic error/ignored/warning\.\.\.#) ||
 		     # cppunit
 		     ($line =~ m#^\s*CXX\s*Exception.lo#) ||
 		     # gettext related
