@@ -203,7 +203,11 @@ $build_hash_to_version = array(
     # 4.0.3 versions
     'a67943cd4d125208f4ea7fa29439551825cfb39' => '4.0.3.1',
     'c6786add5a58268e11aa027c47054344040db1b' => '4.0.3.2',
-    #'0eaa50a932c8f2199a615e1eb30f7ac74279539' => '4.0.3.3', # Final
+    '0eaa50a932c8f2199a615e1eb30f7ac74279539' => '4.0.3.3', # Final
+
+    # 4.0.4 versions
+    '7fdd5ee61c1c7379dd088f5d50265f0adbccf53' => '4.0.4.1',
+    #'9e9821abd0ffdbc09cd8c52eaa574fa09eb08f2' => '4.0.4.2', # Final
 );
 
 # Descriptions of the target versions
@@ -223,9 +227,9 @@ $update_map = array(
                       'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.6.6',
                       'substitute'  => true ),
 
-    'latest' => array('gitid'       => '0eaa50a932c8f2199a615e1eb30f7ac74279539',
-                      'id'          => 'LibreOffice 4.0.3',
-                      'version'     => '4.0.3',
+    'latest' => array('gitid'       => '9e9821abd0ffdbc09cd8c52eaa574fa09eb08f2',
+                      'id'          => 'LibreOffice 4.0.4',
+                      'version'     => '4.0.4',
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/'),
 );
