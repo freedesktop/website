@@ -179,8 +179,12 @@ $build_hash_to_version = array(
 
     # 3.6.6 versions
     'a61ad19-949f691-349cf55-3bea8d1-2c85eb' => '3.6.6.1',
-    # To be uncommented when 3.6.7 Final is out
-    #'f969faf-c24b504-8c77064-174276e-40b382' => '3.6.6.2', # Final
+    'f969faf-c24b504-8c77064-174276e-40b382' => '3.6.6.2', # Final
+
+    # 3.6.7 versions
+    'a61ad19-949f691-349cf55-3bea8d1-2c85eb' => '3.6.7.1',
+    # to be uncommented when the 3.6 series is retired
+    #'e183d5b-f8ccaf6-3804794-95b4be8-895629' => '3.6.7.2', # Final
 
     ##################
     # 4.0.0 versions
@@ -220,18 +224,19 @@ $build_hash_to_version = array(
 #   where '<type>' and '<lang>' will be substitued with the right value
 #   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
-    'stable' => array('gitid'       => 'f969faf-c24b504-8c77064-174276e-40b382',
-                      'id'          => 'LibreOffice 3.6.6',
-                      'version'     => '3.6.6',
+    'stable' => array('gitid'       => 'e183d5b-f8ccaf6-3804794-95b4be8-895629',
+                      'id'          => 'LibreOffice 3.6.7',
+                      'version'     => '3.6.7',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.6.6',
+                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.6.7',
                       'substitute'  => true ),
 
     'latest' => array('gitid'       => '9e9821abd0ffdbc09cd8c52eaa574fa09eb08f2',
                       'id'          => 'LibreOffice 4.0.4',
                       'version'     => '4.0.4',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/'),
+                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=4.0.4',
+                      'substitute'  => true ),
 );
 
 # Print the update xml
