@@ -183,8 +183,7 @@ $build_hash_to_version = array(
 
     # 3.6.7 versions
     'a61ad19-949f691-349cf55-3bea8d1-2c85eb' => '3.6.7.1',
-    # to be uncommented when the 3.6 series is retired
-    #'e183d5b-f8ccaf6-3804794-95b4be8-895629' => '3.6.7.2', # Final
+    'e183d5b-f8ccaf6-3804794-95b4be8-895629' => '3.6.7.2', # Final (last of 3.6 series)
 
     ##################
     # 4.0.0 versions
@@ -211,7 +210,29 @@ $build_hash_to_version = array(
 
     # 4.0.4 versions
     '7fdd5ee61c1c7379dd088f5d50265f0adbccf53' => '4.0.4.1',
-    #'9e9821abd0ffdbc09cd8c52eaa574fa09eb08f2' => '4.0.4.2', # Final
+    '9e9821abd0ffdbc09cd8c52eaa574fa09eb08f2' => '4.0.4.2', # Final
+
+    # 4.0.5 versions
+    '5eca95953c59f90dec2cd6ed6dab4b1f4b3b24c' => '4.0.5.1',
+    '5464147a081647a250913f19c0715bca595af2f' => '4.0.5.2', # Final
+
+    ##################
+    # 4.1.0 versions
+    '06ebec34fb5a4351b2d356919d5c68a0d4c2e78' => '4.1.0.0.a1', # alpha1 (buildfix2)
+    '3a2c2d2417101e45fe07cfd8358acf2204a98f3' => '4.1.0.0.b1', # beta1
+    '794cd2a652270bfbe3a35910aa6d57964eac257' => '4.1.0.0.b1', # beta1 (buildfix1, only Windows)
+    '33224f4f11a05cfad2249e812fcc2975fbb61f6' => '4.1.0.0.b2', # beta2
+    '43286d64e6126b0915ae60d89d3177018fe63b9' => '4.1.0.1', # rc1 (buildfix1)
+    'a7d538950185d02a6b950cd1cb2dfd79435f6e2' => '4.1.0.1', # rc1 (buildfix2, only Windows)
+    '103a942746cfe346e87daab62acbd4268c38097' => '4.1.0.2',
+    '0f08a823567f802c29cbaf2b327db19aaf72016' => '4.1.0.3',
+    '719826cd009b9a1fa43e253db0616288c682826' => '4.1.0.3', # (hotfixes1, only Windows)
+    '89ea49ddacd9aa532507cbf852f2bb22b1ace28' => '4.1.0.4', # Final
+
+    ##################
+    # 4.1.1 versions
+    'a990db030b8125868501634ff662be1d89d0868' => '4.1.1.1',
+    '7e4286b58adc75a14f6d83f53a03b6c11fa2903' => '4.1.1.2', # (hotfix1)
 );
 
 # Descriptions of the target versions
@@ -224,18 +245,18 @@ $build_hash_to_version = array(
 #   where '<type>' and '<lang>' will be substitued with the right value
 #   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
-    'stable' => array('gitid'       => 'e183d5b-f8ccaf6-3804794-95b4be8-895629',
-                      'id'          => 'LibreOffice 3.6.7',
-                      'version'     => '3.6.7',
+    'stable' => array('gitid'       => '5464147a081647a250913f19c0715bca595af2f',
+                      'id'          => 'LibreOffice 4.0.5',
+                      'version'     => '4.0.5',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=3.6.7',
+                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=4.0.5',
                       'substitute'  => true ),
 
-    'latest' => array('gitid'       => '9e9821abd0ffdbc09cd8c52eaa574fa09eb08f2',
-                      'id'          => 'LibreOffice 4.0.4',
-                      'version'     => '4.0.4',
+    'latest' => array('gitid'       => '5464147a081647a250913f19c0715bca595af2f',
+                      'id'          => 'LibreOffice 4.0.5',
+                      'version'     => '4.0.5',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=4.0.4',
+                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=4.0.5',
                       'substitute'  => true ),
 );
 
