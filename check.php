@@ -243,8 +243,12 @@ $update_map = array(
 function print_update_xml($buildid, $os, $arch, $lang, $pkgfmt) {
     global $build_hash_to_version, $update_map, $localize_map, $debug;
 
-    if (!array_key_exists($buildid, $build_hash_to_version))
+    if(!array_key_exists($buildid, $build_hash_to_version)
+       || $buildid == $update_map['stable']['gitid']
+       || $buildid == $update_map['latest']['gitid']
+    ) {
         error('No update for your LibreOffice version.');
+    }
 
     # We upgrade X.Y.Z to X.Y+1.Z for all X iff Z < latest.Z
     # If today we are at: old: 3.5.4, new: 3.6.1
@@ -268,6 +272,11 @@ function print_update_xml($buildid, $os, $arch, $lang, $pkgfmt) {
 	$new = $update_map['latest'];
     } else {
 	$new = $update_map['stable'];
+    }
+
+    # don't downgrade RC/prerelease users
+    if(version_compare($new['version'], substr($build_hash_to_version[$buildid], 0, 5), '<')) {
+         error('No update for your LibreOffice version.');
     }
 
     # try to localize
