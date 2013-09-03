@@ -252,11 +252,11 @@ $update_map = array(
                       'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=4.0.5',
                       'substitute'  => true ),
 
-    'latest' => array('gitid'       => '89ea49ddacd9aa532507cbf852f2bb22b1ace28',
-                      'id'          => 'LibreOffice 4.1.0',
-                      'version'     => '4.1.0',
+    'latest' => array('gitid'       => '7e4286b58adc75a14f6d83f53a03b6c11fa2903',
+                      'id'          => 'LibreOffice 4.1.1',
+                      'version'     => '4.1.1',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=4.1.0',
+                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=4.1.1',
                       'substitute'  => true ),
 );
 
