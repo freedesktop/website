@@ -218,7 +218,7 @@ $build_hash_to_version = array(
 
     # 4.0.6 versions
     '7168152d13aa529ba3718c9ae3700216a574137' => '4.0.6.1',
-    '2e2573268451a50806fcd60ae2d9fe01dd0ce24' => '4.0.6.1', # Final
+    '2e2573268451a50806fcd60ae2d9fe01dd0ce24' => '4.0.6.2', # Final
 
     ##################
     # 4.1.0 versions
