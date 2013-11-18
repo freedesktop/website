@@ -218,6 +218,7 @@ $build_hash_to_version = array(
 
     # 4.0.6 versions
     '7168152d13aa529ba3718c9ae3700216a574137' => '4.0.6.1',
+    '2e2573268451a50806fcd60ae2d9fe01dd0ce24' => '4.0.6.1', # Final
 
     ##################
     # 4.1.0 versions
@@ -242,6 +243,11 @@ $build_hash_to_version = array(
     '40b2d7fde7e8d2d7bc5a449dc65df4d08a7dd38' => '4.1.2.3', # unscheduled, Final
     # 4.1.3
     'b42498da0e3f91b17e51b55c8295ec4f8f22087' => '4.1.3.1',
+    '70feb7d99726f064edab4605a8ab840c50ec57a' => '4.1.3.2', # Final
+
+    ##################
+    # 4.2.0 versions
+    'c2b9ad37f8a8de9c7dbdd76c86aecf638810705' => '4.2.0.0.a1', # alpha1
 );
 
 # Descriptions of the target versions
@@ -254,18 +260,18 @@ $build_hash_to_version = array(
 #   where '<type>' and '<lang>' will be substitued with the right value
 #   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
-    'stable' => array('gitid'       => '5464147a081647a250913f19c0715bca595af2f',
-                      'id'          => 'LibreOffice 4.0.5',
-                      'version'     => '4.0.5',
+    'stable' => array('gitid'       => '2e2573268451a50806fcd60ae2d9fe01dd0ce24',
+                      'id'          => 'LibreOffice 4.0.6',
+                      'version'     => '4.0.6',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=4.0.5',
+                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=4.0.6',
                       'substitute'  => true ),
 
-    'latest' => array('gitid'       => '40b2d7fde7e8d2d7bc5a449dc65df4d08a7dd38',
-                      'id'          => 'LibreOffice 4.1.2',
-                      'version'     => '4.1.2',
+    'latest' => array('gitid'       => '70feb7d99726f064edab4605a8ab840c50ec57a',
+                      'id'          => 'LibreOffice 4.1.3',
+                      'version'     => '4.1.3',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=4.1.2',
+                      'update_src'  => 'http://www.libreoffice.org/download/?type=<type>&amp;lang=<lang>&amp;version=4.1.3',
                       'substitute'  => true ),
 );
 
