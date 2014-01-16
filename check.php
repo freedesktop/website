@@ -420,7 +420,7 @@ function print_update_xml($buildid, $os, $arch, $lang, $pkgfmt) {
 
 $info = get_update_info();
 
-if (!array_key_exists('product', $info) || ($info['product'] != 'LibreOffice' && $info['product'] != 'LOdev'))
+if (!array_key_exists('product', $info) || ($info['product'] != 'LibreOffice' && $info['product'] != 'LibreOfficeDev' && $info['product'] != 'LOdev'))
     error('<b>Error:</b> Only LibreOffice can access the update service.');
 
 print_update_xml($info['buildid'], $info['os'], $info['arch'], $info['lang'], $info['pkgfmt']);
