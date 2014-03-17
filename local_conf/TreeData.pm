@@ -237,46 +237,10 @@ $VERSION = '#tinder_version#';
                    branch => 'libreoffice-4-1',
                    VCS  => 'GIT',
                   },
-            'libreoffice-4-0' =>  {
+            'libreoffice-4-2' =>  {
                    root => 'git://anongit.freedesktop.org/git/libreoffice/core',
                    module => 'all',
-                   branch => 'libreoffice-4-0',
-                   VCS  => 'GIT',
-                  },
-            'libreoffice-3-6' =>  {
-                   root => 'git://anongit.freedesktop.org/git/libreoffice/core',
-                   module => 'all',
-                   branch => 'libreoffice-3-6',
-                   VCS  => 'GIT',
-                  },
-            'libreoffice-3-5' =>  {
-                   root => 'git://anongit.freedesktop.org/git/libreoffice/core',
-                   module => 'all',
-                   branch => 'libreoffice-3-5',
-                   VCS  => 'GIT',
-                  },
-            'libreoffice-3-4' =>  {
-                   root => 'git://anongit.freedesktop.org/git/libreoffice/core',
-                   module => 'all',
-                   branch => 'libreoffice-3-4',
-                   VCS  => 'GIT',
-                  },
-            'feature/gbuild_extensions' =>  {
-                   root => 'git://anongit.freedesktop.org/git/libreoffice/core',
-                   module => 'all',
-                   branch => 'feature/gbuild_extensions',
-                   VCS  => 'GIT',
-                  },
-            'feature/gbuild_cppuhelper' =>  {
-                   root => 'git://anongit.freedesktop.org/git/libreoffice/core',
-                   module => 'all',
-                   branch => 'feature/gbuild_cppuhelper',
-                   VCS  => 'GIT',
-                  },
-            'feature/gbuild_java' =>  {
-                   root => 'git://anongit.freedesktop.org/git/libreoffice/core',
-                   module => 'all',
-                   branch => 'feature/gbuild_java',
+                   branch => 'libreoffice-4-2',
                    VCS  => 'GIT',
                   },
            );
