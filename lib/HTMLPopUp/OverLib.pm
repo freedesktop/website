@@ -1573,9 +1573,9 @@ sub page_header {
   my $self = shift @_;
   my (%args) = @_;
   
-  my ($label, $branch) = lc($args{'title'} =~ /^([^:]*: )(.*)$/);
+  my ($label, $branch) = ($args{'title'} =~ /^([^:]*: )(.*)$/);
   my $heading = $args{'title'};
-  $heading = "$label <a href=\"http://cgit.freedesktop.org/libreoffice/core/log/?h=$branch\">$branch</a>" unless ($branch =~ /^[A-Z]/);
+  $heading = "$label <a href=\"http://cgit.freedesktop.org/libreoffice/core/log/?h=".lc($branch)."\">$branch</a>" unless ($branch =~ /^[A-Z]/);
 
   my ($html_time) = $main::LOCALTIME;
   $html_time =~ s/:[^:]+$//;
