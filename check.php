@@ -254,28 +254,34 @@ $build_hash_to_version = array(
     '1c1366bba2ba2b554cd2ca4d87c06da81c05d24' => '4.1.5.3', # unscheduled, Final
     # 4.1.6
     'a59ce81388f477fc89db57f0c27f222f31884eb' => '4.1.6.1',
+    '40ff705089295be5be0aae9b15123f687c05b0a' => '4.1.6.2', # Final
 
     ##################
     # 4.2.0 versions
-    'c2b9ad37f8a8de9c7dbdd76c86aecf638810705' => '4.2.0.0.a1', # alpha1
-    'f4ca7b35f580827ad2c69ea6d29f7c9b48ebbac' => '4.2.0.0.b1', # beta1
-    '1a27be92e320f97c20d581a69ef1c8b99ea9885' => '4.2.0.0.b2', # beta2
-    '7bf567613a536ded11709b952950c9e8f7181a4' => '4.2.0.1',
-    'cd65d6220c5694ee7012d7863bcde3455c9e3c3' => '4.2.0.2',
-    '601a398b803303d1a40a3299729531824fe0db5' => '4.2.0.2', # buildfix1
-    'c63c03decdf780d8fb80823950665b782ec9ecd' => '4.2.0.3',
-    '05dceb5d363845f2cf968344d7adab8dcfb2ba7' => '4.2.0.4', # unscheduled, Final
+    'c2b9ad37f8a8de9c7dbdd76c86aecf6388107056' => '4.2.0.0.a1', # alpha1
+    'f4ca7b35f580827ad2c69ea6d29f7c9b48ebbac7' => '4.2.0.0.b1', # beta1
+    '1a27be92e320f97c20d581a69ef1c8b99ea9885d' => '4.2.0.0.b2', # beta2
+    '7bf567613a536ded11709b952950c9e8f7181a4a' => '4.2.0.1',
+    'cd65d6220c5694ee7012d7863bcde3455c9e3c30' => '4.2.0.2',
+    '601a398b803303d1a40a3299729531824fe0db56' => '4.2.0.2', # buildfix1
+    'c63c03decdf780d8fb80823950665b782ec9ecd0' => '4.2.0.3',
+    '05dceb5d363845f2cf968344d7adab8dcfb2ba71' => '4.2.0.4', # unscheduled, Final
     # 4.2.1
-    'd7dbbd7842e6a58b0f521599204e827654e1fb8' => '4.2.1.1', # rc1, was made final
+    'd7dbbd7842e6a58b0f521599204e827654e1fb8b' => '4.2.1.1', # rc1, was made final
     # 4.2.2
-    '3be8cda0bddd8e430d8cda1ebfd581265cca5a0' => '4.2.2.1', # rc1, was made final
+    '3be8cda0bddd8e430d8cda1ebfd581265cca5a0f' => '4.2.2.1', # rc1, was made final
     # 4.2.3
-    '3d4fc3d9dbf8f4c0aeb61498a81f91c5b7922f1' => '4.2.3.1',
-    '7c5c769e412afd32da4d946d2cb0c8b0674e95e' => '4.2.3.2',
-    '6c3586f855673fa6a1576797f575b31ac6fa0ba' => '4.2.3.3',
-    '882f8a0a489bc99a9e60c7905a60226254cb6ff' => '4.2.3.3', # hotfix1, Final
+    '3d4fc3d9dbf8f4c0aeb61498a81f91c5b7922f13' => '4.2.3.1',
+    '7c5c769e412afd32da4d946d2cb0c8b0674e95e0' => '4.2.3.2',
+    '6c3586f855673fa6a1576797f575b31ac6fa0ba3' => '4.2.3.3',
+    '882f8a0a489bc99a9e60c7905a60226254cb6ff0' => '4.2.3.3', # hotfix1, Final
     # 4.2.4
-    'd4c441391e20647b3d2e8dde4d20aa868e77e51' => '4.2.4.1',
+    'd4c441391e20647b3d2e8dde4d20aa868e77e515' => '4.2.4.1',
+    '63150712c6d317d27ce2db16eb94c2f3d7b699f8' => '4.2.4.2', # Final
+
+    ##################
+    # 4.3.0 versions
+    '46cfcd5a05aa1d13fecd73f5a25b64b8d8dd6781' => '4.3.0.0.a1', # alpha1
 );
 
 # Descriptions of the target versions
@@ -288,18 +294,18 @@ $build_hash_to_version = array(
 #   where '<type>' and '<lang>' will be substitued with the right value
 #   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
-    'stable' => array('gitid'       => '1c1366bba2ba2b554cd2ca4d87c06da81c05d24',
-                      'id'          => 'LibreOffice 4.1.5',
-                      'version'     => '4.1.5',
+    'stable' => array('gitid'       => '40ff705089295be5be0aae9b15123f687c05b0a',
+                      'id'          => 'LibreOffice 4.1.6',
+                      'version'     => '4.1.6',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-stable/?type=<type>&amp;lang=<lang>&amp;version=4.1.5',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-stable/?type=<type>&amp;lang=<lang>&amp;version=4.1.6',
                       'substitute'  => true ),
 
-    'latest' => array('gitid'       => '882f8a0a489bc99a9e60c7905a60226254cb6ff',
-                      'id'          => 'LibreOffice 4.2.3',
-                      'version'     => '4.2.3',
+    'latest' => array('gitid'       => '63150712c6d317d27ce2db16eb94c2f3d7b699f8',
+                      'id'          => 'LibreOffice 4.2.4',
+                      'version'     => '4.2.4',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=4.2.3',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=4.2.4',
                       'substitute'  => true ),
 );
 
