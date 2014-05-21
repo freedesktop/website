@@ -243,6 +243,12 @@ $VERSION = '#tinder_version#';
                    branch => 'libreoffice-4-2',
                    VCS  => 'GIT',
                   },
+            'libreoffice-4-3' =>  {
+                   root => 'git://anongit.freedesktop.org/git/libreoffice/core',
+                   module => 'all',
+                   branch => 'libreoffice-4-3',
+                   VCS  => 'GIT',
+                  },
            );
 
 # We group trees into sets so that individual managers can get a page
