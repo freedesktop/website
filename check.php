@@ -281,6 +281,7 @@ $build_hash_to_version = array(
     # 4.2.5
     '881bb88abfe2992c6cede97c23e64a9885de87de' => '4.2.5.1',
     '61cb170a04bb1f12e77c884eab9192be736ec5f5' => '4.2.5.2', # Final
+    '6ff819b65674ae6c83f3cbab9e4a4c2b292a7a94' => '4.2.5.2', # hotfix for windows (i.e. only built version for win)
     # 4.2.6
     '5fdddf655fba363e34f755715238d0943a44857e' => '4.2.6.1',
     '185f2ce4dcc34af9bd97dec29e6d42c39557298f' => '4.2.6.2', # Final
