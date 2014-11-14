@@ -299,6 +299,10 @@ $build_hash_to_version = array(
     'a06aa316117a6ff0f05c697c82831c227812d810' => '4.3.0.0.b1', # beta1-buildfix1
     '67f5430184326974072b65403ef1d9d934fc4481' => '4.3.0.1', # rc1
     '9ed0c4329cf13f882dab0ee8b9ecd7b05e4aafbb' => '4.3.0.1', # rc1-buildfix1
+    '14ed55896fdfcb93ff437b85c4f3e1923d2b1409' => '4.3.0.2', # rc2
+    'fcd3838c4097f7817b5b3984fd88a44e1edd8548' => '4.3.0.3', # rc3
+    '08ebe52789a201dd7d38ef653ef7a48925e7f9f7' => '4.3.0.3', # rc3-buildfix1
+    '62ad5818884a2fc2e5780dd45466868d41009ec0' => '4.3.0.4', # Final
     # 4.3.1
     'c4b15cd4d00dec6b266fa830b4ba73e31ae6ce73' => '4.3.1.1',
     '958349dc3b25111dbca392fbc281a05559ef6848' => '4.3.1.2', # Final
