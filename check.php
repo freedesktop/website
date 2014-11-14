@@ -286,6 +286,9 @@ $build_hash_to_version = array(
     '5fdddf655fba363e34f755715238d0943a44857e' => '4.2.6.1',
     '185f2ce4dcc34af9bd97dec29e6d42c39557298f' => '4.2.6.2', # Final
     '3fd416d4c6db7d3204c17ce57a1d70f6e531ee21' => '4.2.6.3', # unscheduled, 4.2.6-secfix
+    # 4.2.7
+    'ad618ebe74a072c4ad8fae3b902f6ff1be98983d' => '4.2.7.1',
+    '933c0aa564ec4f8883ed5732c866db48dca4dac5' => '4.2.7.2', # Final
 
     ##################
     # 4.3.0 versions
@@ -299,6 +302,20 @@ $build_hash_to_version = array(
     # 4.3.1
     'c4b15cd4d00dec6b266fa830b4ba73e31ae6ce73' => '4.3.1.1',
     '958349dc3b25111dbca392fbc281a05559ef6848' => '4.3.1.2', # Final
+    # 4.3.2
+    'f9b3ad49d92181b0a1fe7e76f785a2c2cd0847d3' => '4.3.2.1',
+    'edfb5295ba211bd31ad47d0bad0118690f76407d' => '4.3.2.2', # Final
+    # 4.3.3
+    '65dc54c61032b7ebe54405cba6b4fb172b9af7d6' => '4.3.3.1', # initial tag, no builds done
+    '7d55112667c8fcddb67bc3803796b46c93aa56b0' => '4.3.3.1', # rc1-buildfix1
+    '9bb7eadab57b6755b1265afa86e04bf45fbfc644' => '4.3.3.2', # Final
+    # 4.3.4
+    'bc356b2f991740509f321d70e4512a6a54c5f243' => '4.3.4.1', # Final (unscheduled additional release)
+
+    ##################
+    # 4.4.0 versions
+    'e73cb2cc40530caa75d588833c4b690e4f49f630' => '4.4.0.0.a1', # alpha1 (calc rendering probs)
+    '24f0a5815f581dd9a7f09d30213a379edee6e9ac' => '4.4.0.0.a1', # alpha2
 );
 
 # Descriptions of the target versions
@@ -318,11 +335,11 @@ $update_map = array(
                       'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=4.2.6',
                       'substitute'  => true ),
 
-    'latest' => array('gitid'       => '958349dc3b25111dbca392fbc281a05559ef6848',
-                      'id'          => 'LibreOffice 4.3.1',
-                      'version'     => '4.3.1',
+    'latest' => array('gitid'       => 'bc356b2f991740509f321d70e4512a6a54c5f243',
+                      'id'          => 'LibreOffice 4.3.4',
+                      'version'     => '4.3.4',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=4.3.1',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=4.3.4',
                       'substitute'  => true ),
 );
 
