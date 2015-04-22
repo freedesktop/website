@@ -444,7 +444,7 @@ function print_update_xml($buildid, $os, $arch, $lang, $pkgfmt) {
                 if ($arch == 'PowerPC')
                     $target_type = 'mac-ppc';
                 else
-                    $target_type = 'mac-x86';
+                    $target_type = 'mac-x86_64';
                 break;
             case 'Windows':
                 $target_type = 'win-x86';
