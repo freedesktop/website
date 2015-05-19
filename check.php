@@ -458,6 +458,7 @@ function print_update_xml($buildid, $os, $arch, $lang, $pkgfmt) {
                             error('No 32bit update available - for OS X 10.8 or later, please install 64bit version of LibreOffice.');
                         }
                     }
+		}
                 break;
             case 'Windows':
                 $target_type = 'win-x86';
