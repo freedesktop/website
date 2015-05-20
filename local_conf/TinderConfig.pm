@@ -246,7 +246,7 @@ $ROW_SPACING_DISIPLINE = (
                           # This keeps the cell box sizes independent
                           # of the amount of data.
 
-                          #'uniform',
+                          'uniform',
 
                           # Use build event times to create times column.
                           # This is traditional Tinderbox1 discipline.
@@ -255,7 +255,7 @@ $ROW_SPACING_DISIPLINE = (
 
                           # Use all event times to create times column.
 
-                          'event_driven',
+                          #'event_driven',
 
                           );
 
@@ -263,7 +263,7 @@ $ROW_SPACING_DISIPLINE = (
 # minimum time between builds (to this value plus 5 minutes).
 # I suggest 5 minutes.
 
-$DB_TABLE_SPACING = 5;
+$DB_TABLE_SPACING = 10;
 
 # Number of times a database can be updated before its contents must
 # be trimmed of old data.  This scan of the database is used to
