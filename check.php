@@ -355,6 +355,21 @@ $build_hash_to_version = array(
     # 4.4.5
     '1b6df295803ea040dab1b48b5424da8d78d94cf0' => '4.4.5.1',
     'a22f674fd25a3b6f45bdebf25400ed2adff0ff99' => '4.4.5.2', # Final
+
+    ##################
+    # 5.0.0 versions
+    '77a35997fa7cff387b5b135ff0c42155f80e9884' => '5.0.0.0.a1', # alpha1
+    'f0853d5c2c38b050fbfd48e09cd0bf0b400aaef8' => '5.0.0.0.a1', # alpha1-builfix1
+    '0a16c3dda4150008d9be6f24cbd15ac198d116d3' => '5.0.0.0.b1', # beta1
+    '059fa2b7a3bda92168c65c61e50cc5c6fda8cfac' => '5.0.0.0.b2', # beta2
+    '900960d3e4220f7e04f45c9bf45a1cd92cd06aff' => '5.0.0.0.b2', # beta2-buildfix1
+    '96345c15d8ab19c49014f055fe41ba8e1f421e5c' => '5.0.0.0.b3', # beta3
+    '9a0b23dd0ab9652e0965484934309f2d49a7758e' => '5.0.0.1',
+    'a26d58f11b99b6aeddf7f7884effea188cc6e512' => '5.0.0.2',
+    'f79b5ba13f5e6cbad23f8038060e556217e66632' => '5.0.0.3',
+    'cf112dc905650fb985306a7a03d2fe3fcc6c978f' => '5.0.0.4',
+    '1b1a90865e348b492231e1c451437d7a15bb262b' => '5.0.0.5', # Final
+    '437e4abdf9e72fd0a6e6f8697a0e659bc77f9b10' => '5.0.0.5', # hotfix1 (gtk window-icon fix, linux only) Final
 );
 
 # Descriptions of the target versions
@@ -367,18 +382,18 @@ $build_hash_to_version = array(
 #   where '<type>' and '<lang>' will be substitued with the right value
 #   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
-    'stable' => array('gitid'       => '8a35821d8636a03b8bf4e15b48f59794652c68ba',
-                      'id'          => 'LibreOffice 4.3.7',
-                      'version'     => '4.3.7',
-                      'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=4.3.7',
-                      'substitute'  => true ),
-
-    'latest' => array('gitid'       => 'a22f674fd25a3b6f45bdebf25400ed2adff0ff99',
+    'stable' => array('gitid'       => 'a22f674fd25a3b6f45bdebf25400ed2adff0ff99',
                       'id'          => 'LibreOffice 4.4.5',
                       'version'     => '4.4.5',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=4.4.5',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=4.4.5',
+                      'substitute'  => true ),
+    'latest' => array('gitid'       => '1b1a90865e348b492231e1c451437d7a15bb262b',
+                      'gitidLinux'  => '437e4abdf9e72fd0a6e6f8697a0e659bc77f9b10',
+                      'id'          => 'LibreOffice 5.0.0',
+                      'version'     => '5.0.0',
+                      'update_type' => 'text/html',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=5.0.0',
                       'substitute'  => true ),
 );
 
@@ -389,6 +404,7 @@ function print_update_xml($buildid, $os, $arch, $lang, $pkgfmt) {
     if(!array_key_exists($buildid, $build_hash_to_version)
        || $buildid == $update_map['stable']['gitid']
        || $buildid == $update_map['latest']['gitid']
+       || $buildid == $update_map['latest']['gitidLinux']
        || ($arch == "PowerPC" && $os == "MacOSX")
     ) {
         error('No update for your LibreOffice version.');
@@ -459,17 +475,14 @@ function print_update_xml($buildid, $os, $arch, $lang, $pkgfmt) {
                     $target_type = 'mac-x86_64';
                 else {
                     $target_type = 'mac-x86';
-                    if ($new == $update_map['latest']) {
-                        # no 4.4 update for 32bit anymore - see whether there's newer oldstable as fallback
-                        $new = $update_map['stable'];
-                        if($buildid == $new['gitid']) {
-                            error('No 32bit update available - for OS X 10.8 or later, please install 64bit version of LibreOffice.');
-                        }
-                    }
-		}
+                    error('No 32bit update available - for OS X 10.8 or later, please install 64bit version of LibreOffice.');
+                }
                 break;
             case 'Windows':
-                $target_type = 'win-x86';
+                if ($arch == 'X86_64')
+                    $target_type = 'win-x86_64';
+                else
+                    $target_type = 'win-x86';
                 break;
         }
 
