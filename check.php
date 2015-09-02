@@ -370,6 +370,9 @@ $build_hash_to_version = array(
     'cf112dc905650fb985306a7a03d2fe3fcc6c978f' => '5.0.0.4',
     '1b1a90865e348b492231e1c451437d7a15bb262b' => '5.0.0.5', # Final
     '437e4abdf9e72fd0a6e6f8697a0e659bc77f9b10' => '5.0.0.5', # hotfix1 (gtk window-icon fix, linux only) Final
+    # 5.0.1
+    '13f702ca819ea5b9f8605782c852d5bb513b3891' => '5.0.1.1',
+    '81898c9f5c0d43f3473ba111d7b351050be20261' => '5.0.1.2', # Final
 );
 
 # Descriptions of the target versions
@@ -388,12 +391,11 @@ $update_map = array(
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=4.4.5',
                       'substitute'  => true ),
-    'latest' => array('gitid'       => '1b1a90865e348b492231e1c451437d7a15bb262b',
-                      'gitidLinux'  => '437e4abdf9e72fd0a6e6f8697a0e659bc77f9b10',
-                      'id'          => 'LibreOffice 5.0.0',
-                      'version'     => '5.0.0',
+    'latest' => array('gitid'       => '81898c9f5c0d43f3473ba111d7b351050be20261',
+                      'id'          => 'LibreOffice 5.0.1',
+                      'version'     => '5.0.1',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=5.0.0',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=5.0.1',
                       'substitute'  => true ),
 );
 
@@ -404,7 +406,6 @@ function print_update_xml($buildid, $os, $arch, $lang, $pkgfmt) {
     if(!array_key_exists($buildid, $build_hash_to_version)
        || $buildid == $update_map['stable']['gitid']
        || $buildid == $update_map['latest']['gitid']
-       || $buildid == $update_map['latest']['gitidLinux']
        || ($arch == "PowerPC" && $os == "MacOSX")
     ) {
         error('No update for your LibreOffice version.');
