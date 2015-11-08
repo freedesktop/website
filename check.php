@@ -355,6 +355,11 @@ $build_hash_to_version = array(
     # 4.4.5
     '1b6df295803ea040dab1b48b5424da8d78d94cf0' => '4.4.5.1',
     'a22f674fd25a3b6f45bdebf25400ed2adff0ff99' => '4.4.5.2', # Final
+    '0117cb452ebc0a76746570e606c6aef5718b1c50' => '4.4.5.3', # unreleased, CVE disclosure incertainity..
+    # 4.4.6
+    '86eeaa3ce8281ef4034ee1f97d7fa699482d04d2' => '4.4.6.1',
+    '008d5d0ddffba0b82de2a2c36a65b9cba0a6b328' => '4.4.6.2',
+    'e8938fd3328e95dcf59dd64e7facd2c7d67c704d' => '4.4.6.3', # Final
 
     ##################
     # 5.0.0 versions
@@ -376,6 +381,9 @@ $build_hash_to_version = array(
     # 5.0.2
     '9a18d52abbdfbdc2ac9acebec2b92e7859eb73b7' => '5.0.2.1',
     '37b43f919e4de5eeaca9b9755ed688758a8251fe' => '5.0.2.2', # Final
+    # 5.0.3
+    'fd8cfc22f7f58033351fcb8a83b92acbadb0749e' => '5.0.3.1',
+    'e5f16313668ac592c1bfb310f4390624e3dbfb75' => '5.0.3.2', # Final
 );
 
 # Descriptions of the target versions
@@ -388,17 +396,17 @@ $build_hash_to_version = array(
 #   where '<type>' and '<lang>' will be substitued with the right value
 #   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
-    'stable' => array('gitid'       => 'a22f674fd25a3b6f45bdebf25400ed2adff0ff99',
-                      'id'          => 'LibreOffice 4.4.5',
-                      'version'     => '4.4.5',
+    'stable' => array('gitid'       => 'e8938fd3328e95dcf59dd64e7facd2c7d67c704d',
+                      'id'          => 'LibreOffice 4.4.6',
+                      'version'     => '4.4.6',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=4.4.5',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=4.4.6',
                       'substitute'  => true ),
-    'latest' => array('gitid'       => '37b43f919e4de5eeaca9b9755ed688758a8251fe',
-                      'id'          => 'LibreOffice 5.0.2',
-                      'version'     => '5.0.2',
+    'latest' => array('gitid'       => 'e5f16313668ac592c1bfb310f4390624e3dbfb75',
+                      'id'          => 'LibreOffice 5.0.3',
+                      'version'     => '5.0.3',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=5.0.2',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=5.0.3',
                       'substitute'  => true ),
 );
 
