@@ -231,10 +231,10 @@ $VERSION = '#tinder_version#';
                    branch => 'master',
                    VCS  => 'GIT',
                   },
-            'libreoffice-4-3' =>  {
+            'libreoffice-5-1' =>  {
                    root => 'git://anongit.freedesktop.org/git/libreoffice/core',
                    module => 'all',
-                   branch => 'libreoffice-4-3',
+                   branch => 'libreoffice-5-1',
                    VCS  => 'GIT',
                   },
             'libreoffice-4-4' =>  {
