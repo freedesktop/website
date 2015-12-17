@@ -360,6 +360,9 @@ $build_hash_to_version = array(
     '86eeaa3ce8281ef4034ee1f97d7fa699482d04d2' => '4.4.6.1',
     '008d5d0ddffba0b82de2a2c36a65b9cba0a6b328' => '4.4.6.2',
     'e8938fd3328e95dcf59dd64e7facd2c7d67c704d' => '4.4.6.3', # Final
+    # 4.4.7
+    'ff36774456acc538223589597da53fd987db12e9' => '4.4.7.1',
+    'f3153a8b245191196a4b6b9abd1d0da16eead600' => '4.4.7.2', # Final
 
     ##################
     # 5.0.0 versions
@@ -396,11 +399,11 @@ $build_hash_to_version = array(
 #   where '<type>' and '<lang>' will be substitued with the right value
 #   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
-    'stable' => array('gitid'       => 'e8938fd3328e95dcf59dd64e7facd2c7d67c704d',
-                      'id'          => 'LibreOffice 4.4.6',
-                      'version'     => '4.4.6',
+    'stable' => array('gitid'       => 'f3153a8b245191196a4b6b9abd1d0da16eead600',
+                      'id'          => 'LibreOffice 4.4.7',
+                      'version'     => '4.4.7',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=4.4.6',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=4.4.7',
                       'substitute'  => true ),
     'latest' => array('gitid'       => 'e5f16313668ac592c1bfb310f4390624e3dbfb75',
                       'id'          => 'LibreOffice 5.0.3',
