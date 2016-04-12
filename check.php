@@ -404,6 +404,14 @@ $build_hash_to_version = array(
     'bcace328aabc4c8c10b56daa87da0a2ee6579b5a' => '5.1.0.1',
     'ecd3574d51754b043f865cf5bafee286d24db7cc' => '5.1.0.2',
     '5e3e00a007d9b3b6efb6797a8b8e57b51ab1f737' => '5.1.0.3', # Final
+    # 5.1.1
+    'c43cb650e9c145b181321ea547d38296db70f36e' => '5.1.1.1',
+    'fe4d9e69c82c6ee6db3c27cd5e2d47558afa80ac' => '5.1.1.2',
+    '89f508ef3ecebd2cfb8e1def0f0ba9a803b88a6d' => '5.1.1.3', # Final
+    # 5.1.2
+    '5f8868b93c074a1680a0e0909a12a29516351466' => '5.1.2.1',
+    '2603b69c5ec5981bb5f053f8ebfd1f3de00a4c29' => '5.1.2.1', # buildfix1
+    'd3bf12ecb743fc0d20e0be0c58ca359301eb705f' => '5.1.2.2', # Final
 );
 
 # Descriptions of the target versions
@@ -422,11 +430,11 @@ $update_map = array(
                       'update_type' => 'text/html',
                       'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=5.0.5',
                       'substitute'  => true ),
-    'latest' => array('gitid'       => '5e3e00a007d9b3b6efb6797a8b8e57b51ab1f737',
-                      'id'          => 'LibreOffice 5.1.0',
-                      'version'     => '5.1.0',
+    'latest' => array('gitid'       => 'd3bf12ecb743fc0d20e0be0c58ca359301eb705f',
+                      'id'          => 'LibreOffice 5.1.2',
+                      'version'     => '5.1.2',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=5.1.0',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=5.1.2',
                       'substitute'  => true ),
 );
 
