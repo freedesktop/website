@@ -41,7 +41,7 @@ function get_update_info($agent=null) {
     if ($agent == null)
         return array();
 
-    $pattern = '#^(?P<product>[^/ ]+)[/ ]+(?P<version>[0-9]+(?:\.[0-9]+)?)[^\(]+\((?P<buildid>[^;\( ]*) *; (?P<os>[^; ]*); (?P<arch>[^; ]*); BundledLanguages=(?<langs>[^;\)]*)\)#i';
+    $pattern = '#^(?P<product>[^/ ]+)[/ ]+(?P<version>[0-9]+(?:\.[0-9]+)?)[^\(]+\((?P<buildid>[^;\( ]*) *; (?P<os>[^; ]*); (?P<arch>[^; ]*); \(BundledLanguages=(?<langs>[^;\)]*)\)?\)#i';
 
     if (!preg_match($pattern, $agent, $match))
         return array();
