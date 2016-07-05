@@ -419,6 +419,9 @@ $build_hash_to_version = array(
     # 5.1.3
     '115e0e13d3c8ac1452186ad2394abce2dd5c2b57' => '5.1.3.1',
     '644e4637d1d8544fd9f56425bd6cec110e49301b' => '5.1.3.2', # Final
+    # 5.1.4
+    'a4d48e4ff0e9f93e78b6356ca7b0b6303e360356' => '5.1.4.1',
+    'f99d75f39f1c57ebdd7ffc5f42867c12031db97a' => '5.1.4.2', # Final
 );
 
 # Descriptions of the target versions
@@ -431,17 +434,17 @@ $build_hash_to_version = array(
 #   where '<type>' and '<lang>' will be substitued with the right value
 #   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
-    'stable' => array('gitid'       => '490fc03b25318460cfc54456516ea2519c11d1aa',
-                      'id'          => 'LibreOffice 5.0.6',
-                      'version'     => '5.0.6',
+    'stable' => array('gitid'       => 'f99d75f39f1c57ebdd7ffc5f42867c12031db97a',
+                      'id'          => 'LibreOffice 5.1.4',
+                      'version'     => '5.1.4',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=5.0.6',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=5.1.4',
                       'substitute'  => true ),
-    'latest' => array('gitid'       => '644e4637d1d8544fd9f56425bd6cec110e49301b',
-                      'id'          => 'LibreOffice 5.1.3',
-                      'version'     => '5.1.3',
+    'latest' => array('gitid'       => 'f99d75f39f1c57ebdd7ffc5f42867c12031db97a',
+                      'id'          => 'LibreOffice 5.1.4',
+                      'version'     => '5.1.4',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=5.1.3',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-fresh/?type=<type>&amp;lang=<lang>&amp;version=5.1.4',
                       'substitute'  => true ),
 );
 
