@@ -425,6 +425,9 @@ $build_hash_to_version = array(
     # 5.1.5
     'bb431b2be5fb7772067efc27a3cc98b6927c7b4c' => '5.1.5.1',
     '7a864d8825610a8c07cfc3bc01dd4fce6a9447e5' => '5.1.5.2', # Final
+    # 5.1.6
+    'f3e25ec0581f5012f54d8810dcddd5824f4ee374' => '5.1.6.1',
+    '07ac168c60a517dba0f0d7bc7540f5afa45f0909' => '5.1.6.2', # Final
 
     ##################
     # 5.2.0 versions
@@ -454,11 +457,11 @@ $build_hash_to_version = array(
 #   where '<type>' and '<lang>' will be substitued with the right value
 #   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
-    'stable' => array('gitid'       => '7a864d8825610a8c07cfc3bc01dd4fce6a9447e5',
-                      'id'          => 'LibreOffice 5.1.5',
-                      'version'     => '5.1.5',
+    'stable' => array('gitid'       => '07ac168c60a517dba0f0d7bc7540f5afa45f0909',
+                      'id'          => 'LibreOffice 5.1.6',
+                      'version'     => '5.1.6',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=5.1.5',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=5.1.6',
                       'substitute'  => true ),
     'latest' => array('gitid'       => '8f96e87c890bf8fa77463cd4b640a2312823f3ad',
                       'id'          => 'LibreOffice 5.2.2',
