@@ -461,11 +461,11 @@ $build_hash_to_version = array(
 #   where '<type>' and '<lang>' will be substitued with the right value
 #   NOTE: '&' in the URL has to be escaped as &amp;
 $update_map = array(
-    'stable' => array('gitid'       => '07ac168c60a517dba0f0d7bc7540f5afa45f0909',
-                      'id'          => 'LibreOffice 5.1.6',
-                      'version'     => '5.1.6',
+    'stable' => array('gitid'       => 'd54a8868f08a7b39642414cf2c8ef2f228f780cf',
+                      'id'          => 'LibreOffice 5.2.3',
+                      'version'     => '5.2.3',
                       'update_type' => 'text/html',
-                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=5.1.6',
+                      'update_src'  => 'http://www.libreoffice.org/download/libreoffice-still/?type=<type>&amp;lang=<lang>&amp;version=5.2.3',
                       'substitute'  => true ),
     'latest' => array('gitid'       => 'd54a8868f08a7b39642414cf2c8ef2f228f780cf',
                       'id'          => 'LibreOffice 5.2.3',
